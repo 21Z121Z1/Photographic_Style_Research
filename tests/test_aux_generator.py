@@ -1,12 +1,15 @@
 import unittest
 from pathlib import Path
+import tempfile
 
 import numpy as np
 from PIL import Image
 
 from tools.aux_generator import (
+    generate_linearthumbnail_from_gainmap,
     generate_linearthumbnail,
     generate_styledeltamap,
+    generate_styledeltamap_from_gainmap,
     _compute_affine_params,
     _resize_fit,
 )
@@ -26,6 +29,21 @@ def _make_test_image(width: int = 800, height: int = 600) -> Path:
             arr[y, x, 1] = int(y / height * 255)
             arr[y, x, 2] = 128
     img = Image.fromarray(arr, "RGB")
+    tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+    img.save(tmp.name)
+    return Path(tmp.name)
+
+
+def _make_test_gainmap(width: int = 400, height: int = 300, *, mono: bool = False) -> Path:
+    x = np.linspace(0, 255, width, dtype=np.uint8)
+    y = np.linspace(0, 255, height, dtype=np.uint8)
+    xx, yy = np.meshgrid(x, y)
+    if mono:
+        arr = ((xx.astype(np.uint16) + yy.astype(np.uint16)) // 2).astype(np.uint8)
+        img = Image.fromarray(arr, "L")
+    else:
+        arr = np.stack([xx, yy, np.full_like(xx, 128)], axis=2)
+        img = Image.fromarray(arr, "RGB")
     tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
     img.save(tmp.name)
     return Path(tmp.name)
@@ -134,6 +152,22 @@ class LinearThumbnailGeneratorTests(unittest.TestCase):
         self.assertGreater(std_10bit, 10)
         self.assertLess(std_10bit, 200)
 
+    def test_generates_linearthumbnail_from_rgb_gainmap(self):
+        base_path = _make_test_image(640, 480)
+        gainmap_path = _make_test_gainmap(320, 240)
+        try:
+            result = generate_linearthumbnail_from_gainmap(base_path, gainmap_path, max_dim=256, gainmap_mode="image")
+            self.assertEqual(result.image.mode, "RGB")
+            self.assertLessEqual(max(result.image.size), 256)
+            self.assertEqual(result.stats["mode"], "gainmap_linearthumbnail")
+            self.assertEqual(result.stats["gainmap_source_mode"], "image-rgb")
+            arr_10bit = np.asarray(result.image, dtype=np.float64) * (1023.0 / 255.0)
+            self.assertGreaterEqual(float(np.min(arr_10bit)), 250)
+            self.assertLessEqual(float(np.max(arr_10bit)), 760)
+        finally:
+            base_path.unlink()
+            gainmap_path.unlink()
+
 
 class StyleDeltaMapGeneratorTests(unittest.TestCase):
     def test_generates_constant_neutral_image(self):
@@ -162,6 +196,42 @@ class StyleDeltaMapGeneratorTests(unittest.TestCase):
         arr = np.asarray(result.image)
         self.assertTrue(np.all(arr == 130))
         self.assertEqual(result.stats["neutral_value_8bit"], 130)
+
+    def test_generates_styledeltamap_from_rgb_gainmap(self):
+        gainmap_path = _make_test_gainmap(64, 48)
+        try:
+            result = generate_styledeltamap_from_gainmap(
+                gainmap_path,
+                width=128,
+                height=96,
+                amplitude=4.0,
+                gainmap_mode="image",
+            )
+            arr = np.asarray(result.image)
+            self.assertEqual(arr.shape, (96, 128, 3))
+            self.assertEqual(result.stats["mode"], "gainmap_styledeltamap")
+            self.assertGreater(result.stats["unique_values"], 8)
+            self.assertTrue(all(120 <= v <= 136 for v in result.stats["mean"]))
+        finally:
+            gainmap_path.unlink()
+
+    def test_generates_dithered_styledeltamap_from_mono_gainmap(self):
+        gainmap_path = _make_test_gainmap(64, 48, mono=True)
+        try:
+            result = generate_styledeltamap_from_gainmap(
+                gainmap_path,
+                width=64,
+                height=48,
+                amplitude=2.0,
+                gainmap_mode="image",
+            )
+            arr = np.asarray(result.image)
+            self.assertEqual(arr.shape, (48, 64, 3))
+            self.assertGreater(result.stats["unique_values"], 2)
+            self.assertTrue(np.all(arr[..., 0] == arr[..., 1]))
+            self.assertTrue(np.all(arr[..., 1] == arr[..., 2]))
+        finally:
+            gainmap_path.unlink()
 
 
 if __name__ == "__main__":

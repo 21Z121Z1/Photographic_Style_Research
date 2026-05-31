@@ -22,6 +22,11 @@ from tools.hevc10_encoder import parse_length_prefixed_nals
 
 
 KEY_ITEMS = ("49", "81", "94", "95", "97", "98", "100", "101", "102")
+STYLE_DELTA_AUX_TYPE = "tag:apple.com,2023:photo:aux:styledeltamap"
+LINEARTHUMB_AUX_TYPE = "tag:apple.com,2023:photo:aux:linearthumbnail"
+HDR_GAINMAP_AUX_TYPE = "urn:com:apple:photo:2020:aux:hdrgainmap"
+SEMANTIC_SKY_MATTE_AUX_TYPE = "urn:com:apple:photo:2020:aux:semanticskymatte"
+STYLE_METADATA_URI_TYPE = "tag:apple.com,2023:photo:metadata:styles"
 DECODED_AUX_FILENAMES = {
     "primary": "decoded.png",
     "styledeltamap": "decoded-tag_apple.com,2023_photo_aux_styledeltamap.png",
@@ -180,6 +185,37 @@ def _payload_hashes(parsed: dict[str, Any], data: bytes) -> dict[str, str]:
     return hashes
 
 
+def _first_item_id(parsed: dict[str, Any], predicate) -> str | None:
+    for item_id, item in parsed.get("items", {}).items():
+        if predicate(item):
+            return item_id
+    return None
+
+
+def _role_item_ids(parsed: dict[str, Any]) -> dict[str, str | None]:
+    primary = parsed.get("primary_item_id")
+    return {
+        "primary": str(primary) if primary is not None else None,
+        "styledeltamap": _first_item_id(parsed, lambda item: item.get("aux_type") == STYLE_DELTA_AUX_TYPE),
+        "hdrgainmap": _first_item_id(parsed, lambda item: item.get("aux_type") == HDR_GAINMAP_AUX_TYPE),
+        "semanticskymatte": _first_item_id(parsed, lambda item: item.get("aux_type") == SEMANTIC_SKY_MATTE_AUX_TYPE),
+        "linearthumbnail": _first_item_id(parsed, lambda item: item.get("aux_type") == LINEARTHUMB_AUX_TYPE),
+        "tmap": _first_item_id(parsed, lambda item: item.get("item_type") == "tmap"),
+        "style_metadata": _first_item_id(
+            parsed,
+            lambda item: item.get("item_type") == "uri " and item.get("uri_type") == STYLE_METADATA_URI_TYPE,
+        ),
+        "exif": _first_item_id(parsed, lambda item: item.get("item_type") == "Exif"),
+    }
+
+
+def _refs_exact(item: dict[str, Any], ref_type: str, to_item_ids: list[int]) -> bool:
+    return any(
+        ref.get("type") == ref_type and ref.get("to_item_ids") == to_item_ids
+        for ref in item.get("references_from", [])
+    )
+
+
 def build_report(
     candidate_path: Path,
     *,
@@ -204,9 +240,17 @@ def build_report(
         "decoded_stats": _decoded_stats(decoded_dir),
         "hard_warnings": [],
     }
-    item101 = candidate.get("items", {}).get("101")
-    if item101:
-        report["style_metadata"] = _plist_summary(_item_payload(candidate_data, item101))
+    role_item_ids = _role_item_ids(candidate)
+    report["role_item_ids"] = role_item_ids
+    report["role_items"] = {
+        role: _item_summary(candidate, candidate_data, item_id) if item_id else None
+        for role, item_id in role_item_ids.items()
+    }
+    style_metadata_role = report["role_items"].get("style_metadata") or {}
+    if style_metadata_role.get("item_id") is not None:
+        item = candidate.get("items", {}).get(str(style_metadata_role["item_id"]))
+        if item:
+            report["style_metadata"] = _plist_summary(_item_payload(candidate_data, item))
 
     for prop in report["irot_properties"]:
         parsed = prop.get("parsed", {})
@@ -214,14 +258,46 @@ def build_report(
             report["hard_warnings"].append(
                 f"irot property {prop.get('index')} has {parsed.get('payload_bytes')} payload bytes"
             )
-    style_item = report["key_items"].get("81") or {}
-    if style_item.get("aux_type") != "tag:apple.com,2023:photo:aux:styledeltamap":
-        report["hard_warnings"].append("item 81 is not the styledeltamap auxiliary item")
-    refs = style_item.get("references_from") or []
-    if not any(ref.get("type") == "auxl" and 49 in ref.get("to_item_ids", []) for ref in refs):
-        report["hard_warnings"].append("styledeltamap item does not auxl-reference primary item 49")
-    linearthumb_item = report["key_items"].get("97") or {}
-    if linearthumb_item.get("aux_type") == "tag:apple.com,2023:photo:aux:linearthumbnail":
+    primary_item = report["role_items"].get("primary") or {}
+    primary_id = primary_item.get("item_id")
+    tmap_item = report["role_items"].get("tmap") or {}
+    tmap_id = tmap_item.get("item_id")
+    gainmap_item = report["role_items"].get("hdrgainmap") or {}
+    gainmap_id = gainmap_item.get("item_id")
+    style_item = report["role_items"].get("styledeltamap") or {}
+    if not style_item:
+        report["hard_warnings"].append("styledeltamap auxiliary item was not found")
+    elif primary_id is not None:
+        expected = [primary_id, tmap_id] if tmap_id is not None else [primary_id]
+        if not _refs_exact(style_item, "auxl", expected):
+            report["hard_warnings"].append(
+                f"styledeltamap item does not auxl-reference expected items {expected}: refs={style_item.get('references_from')}"
+            )
+
+    if tmap_item and primary_item:
+        primary_dims = primary_item.get("dimensions")
+        tmap_dims = tmap_item.get("dimensions")
+        swapped_primary_dims = (
+            {"width": primary_dims["height"], "height": primary_dims["width"]}
+            if isinstance(primary_dims, dict) and "width" in primary_dims and "height" in primary_dims
+            else None
+        )
+    else:
+        primary_dims = None
+        tmap_dims = None
+        swapped_primary_dims = None
+    if tmap_item and primary_item and tmap_dims not in (primary_dims, swapped_primary_dims):
+        report["hard_warnings"].append(
+            f"tmap dimensions {tmap_dims} do not match primary dimensions {primary_dims}"
+        )
+    if tmap_item and primary_id is not None and gainmap_id is not None:
+        if not _refs_exact(tmap_item, "dimg", [primary_id, gainmap_id]):
+            report["hard_warnings"].append(
+                f"tmap item does not dimg-reference [primary, gainmap] {[primary_id, gainmap_id]}: refs={tmap_item.get('references_from')}"
+            )
+
+    linearthumb_item = report["role_items"].get("linearthumbnail") or {}
+    if linearthumb_item.get("aux_type") == LINEARTHUMB_AUX_TYPE:
         nal_summary = linearthumb_item.get("hevc_nals") or {}
         nal_types = nal_summary.get("nal_types")
         if nal_types is None:
@@ -230,11 +306,12 @@ def build_report(
             report["hard_warnings"].append(
                 f"linearthumbnail item payload is not Apple single-IDR profile: nal_types={nal_types}"
             )
-        refs = linearthumb_item.get("references_from") or []
-        if not any(ref.get("type") == "auxl" and ref.get("to_item_ids") == [49, 100] for ref in refs):
+        if primary_id is not None and tmap_id is not None and not _refs_exact(linearthumb_item, "auxl", [primary_id, tmap_id]):
             report["hard_warnings"].append(
-                f"linearthumbnail item does not auxl-reference primary/tmap items [49, 100]: refs={refs}"
+                f"linearthumbnail item does not auxl-reference primary/tmap items {[primary_id, tmap_id]}: refs={linearthumb_item.get('references_from')}"
             )
+    else:
+        report["hard_warnings"].append("linearthumbnail auxiliary item was not found")
 
     candidate_hashes = _payload_hashes(candidate, candidate_data)
     comparisons: dict[str, Any] = {}
@@ -270,6 +347,28 @@ def format_markdown(report: dict[str, Any]) -> str:
     ]
     for warning in report.get("hard_warnings", []):
         lines.append(f"  - {warning}")
+    if report.get("role_items"):
+        lines.extend(["", "## Role Items", ""])
+        lines.append("| Role | Item | Type | Dimensions | Aux Type | Refs |")
+        lines.append("|---|---:|---|---|---|---|")
+        for role, item in report["role_items"].items():
+            if not item:
+                lines.append(f"| {role} |  |  |  |  |  |")
+                continue
+            refs = [
+                f"{ref.get('type')}->{ref.get('to_item_ids')}"
+                for ref in item.get("references_from", [])
+            ]
+            lines.append(
+                "| {role} | {item_id} | `{item_type}` | {dimensions} | {aux_type} | {refs} |".format(
+                    role=role,
+                    item_id=item.get("item_id"),
+                    item_type=item.get("item_type"),
+                    dimensions=item.get("dimensions"),
+                    aux_type=item.get("aux_type") or "",
+                    refs=", ".join(refs),
+                )
+            )
     lines.extend(["", "## Key Items", ""])
     lines.append("| Item | Type | Dimensions | Aux Type | Payload Bytes | NAL Types | Refs | SHA-256 | irot |")
     lines.append("|---:|---|---|---|---:|---|---|---|---|")

@@ -34,6 +34,16 @@ class SemanticFitterReportTests(unittest.TestCase):
         self.assertEqual(linearthumb["hevc_nals"]["nal_count"], 1)
         self.assertEqual(linearthumb["hvcC_raw"]["bytes"], 105)
         self.assertIn({"type": "auxl", "to_item_ids": [49, 100]}, linearthumb["references_from"])
+        self.assertEqual(report["role_items"]["linearthumbnail"]["item_id"], 97)
+        primary_dims = report["role_items"]["primary"]["dimensions"]
+        tmap_dims = report["role_items"]["tmap"]["dimensions"]
+        self.assertIn(
+            tmap_dims,
+            [
+                primary_dims,
+                {"width": primary_dims["height"], "height": primary_dims["width"]},
+            ],
+        )
 
     @unittest.skipUnless(V5.exists(), "v5 artifact not available")
     def test_v5_report_flags_multi_nal_linearthumbnail_regression(self):
