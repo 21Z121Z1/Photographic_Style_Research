@@ -26,7 +26,11 @@ tools/                          # Core tools
   exif_makernote_swap.py        # Apple MakerNote injection
   styledeltamap_diagnostics.py  # Diagnostic extraction tool
 
-tests/                          # Test suite (45 tests)
+Sources/StyleDeltaMapCore/      # macOS app core command/runner layer
+Sources/StyleDeltaMap/          # Native SwiftUI macOS app
+script/build_and_run.sh         # Build, stage, sign, and launch the app
+
+tests/                          # Python and Swift test suites
 docs/                           # Technical documentation
   nofusion_styledeltamap_reverse_engineering.md
   apple_parity_styledeltamap_attempt.md
@@ -117,12 +121,23 @@ heif-convert --with-aux output.heic decoded.png
 python -m pytest tests/ -v
 ```
 
+### Run the macOS app
+
+The native macOS app is an operator shell for the existing tools. It does not include a visual companion pane; it builds safe `Process` argument arrays for direct style injection, gain-map/RAW auxiliary reconstruction, and validation.
+
+```bash
+/bin/bash script/build_and_run.sh
+/bin/bash script/build_and_run.sh --verify
+swift test
+```
+
 ## Documentation
 
 - [NoFusion Reverse Engineering](docs/nofusion_styledeltamap_reverse_engineering.md) — Initial analysis of Apple vs NoFusion HEIC files
 - [Apple Parity Attempt](docs/apple_parity_styledeltamap_attempt.md) — Template-based reconstruction progress
 - [Linear Thumbnail Findings](docs/apple_linearthumbnail_item97_findings_2026-05-31.md) — Item 97 encoding analysis
 - [ISO Auxiliary Writer](docs/iso_aux_styledeltamap_writer.md) — Standards-oriented HEIF writer
+- [macOS App](docs/macos_app_2026-05-31.md) — Native SwiftUI app architecture, usage, and validation evidence
 
 ## Status
 
