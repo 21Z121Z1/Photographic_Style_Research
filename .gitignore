@@ -1,0 +1,37 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Xcode/iOS
+*.ipa
+build/
+DerivedData/
+
+# Claude Code
+.claude/
+
+# Large binary samples (not committed; use separate distribution)
+# Only IMG_0032.HEIC and IMG_0033.HEIC are tracked as reference samples
+Apple_Native_Samples/
+*.HEIC
+*.heic
+
+# Generated artifacts
+artifacts/
+dump.json
+
+# NoFusion
+NoFusion_Samples/
+NoFusion_Work/
+
+# HeifBuilder (work in progress, not ready for release)
+tools/heif_builder.py
+tests/test_heif_builder.py
+
+# Temporary files
+/tmp/
+/private/tmp/
