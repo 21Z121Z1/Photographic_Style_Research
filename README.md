@@ -136,6 +136,7 @@ swift test
 - [NoFusion Reverse Engineering](docs/nofusion_styledeltamap_reverse_engineering.md) — Initial analysis of Apple vs NoFusion HEIC files
 - [Apple Parity Attempt](docs/apple_parity_styledeltamap_attempt.md) — Template-based reconstruction progress
 - [Linear Thumbnail Findings](docs/apple_linearthumbnail_item97_findings_2026-05-31.md) — Item 97 encoding analysis
+- [Preserve-Base HDR Style Graft](docs/preserve_base_hdr_style_graft_2026-06-01.md) — Reuse target HDR graph while adding style items
 - [ISO Auxiliary Writer](docs/iso_aux_styledeltamap_writer.md) — Standards-oriented HEIF writer
 - [macOS App](docs/macos_app_2026-05-31.md) — Native SwiftUI app architecture, usage, and validation evidence
 
@@ -145,8 +146,12 @@ swift test
 - ✅ All auxiliary images correctly encoded (styledeltamap, linearthumbnail, gainmap)
 - ✅ Structural validation passing (0 hard warnings)
 - ✅ macOS sips / heif-convert can decode output
+- ✅ Direct style injection has been user-verified to activate Apple Photos Photographic Styles UI
+- ✅ VideoToolbox Main10 single-IDR linearthumbnail replacement fixes the v1 low-quality q=0.25 direction
+- ✅ Preserve-base HDR graft mode can reuse a target HEIC's own primary/HDR gain map/tmap payloads byte-identically while adding style items
 - 🔄 HeifBuilder (self-contained, no template) — work in progress
-- ❓ Apple Photos UI activation — not yet tested
+- 🔄 Preserve-base HDR graft Photos UI behavior — structurally valid, still needs import testing per target file family
+- ❓ Apple's private styledeltamap math — not proven
 
 ## License
 

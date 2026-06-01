@@ -126,6 +126,24 @@ For gain-map and RAW reconstruction, confidence is intentionally lower. RGB gain
 
 These formulas are diagnostic hypotheses, not proven Apple private styledeltamap formulas. The next Photos-facing test should replace item 97 with a gain-map- or RAW-derived high-quality linearthumbnail first, then test styledeltamap replacement separately so activation and rendering effects stay isolated.
 
+## 2026-06-01 Update
+
+`tools/aux_generator.py linearthumbnail-best` now exposes the reconstruction
+priority directly:
+
+1. DNG/RAW-derived linearthumbnail.
+2. Metadata-aware RGB gain map plus base image.
+3. Mono/Apple gain-map luma fallback.
+
+`tools/gainmap_sources.py` can now identify Apple HEIC HDR gain maps with
+`auxC = urn:com:apple:photo:2020:aux:hdrgainmap` and decode them through
+`heif-convert --with-aux --no-colons` when available. Apple gain maps are
+treated as mono/luma fallback inputs for reconstruction, not as chroma
+residuals.
+
+Preserve-base HDR graft is documented separately in
+`docs/preserve_base_hdr_style_graft_2026-06-01.md`.
+
 ## Verification
 
 Commands run:

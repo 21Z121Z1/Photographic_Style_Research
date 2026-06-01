@@ -10,19 +10,29 @@ from __future__ import annotations
 
 import io
 import json
+import hashlib
 import shutil
 import struct
 import subprocess
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from PIL import Image
 
+if __package__ in (None, ""):
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from tools.heif_dump import parse_file
+
 
 QTI_MARKERS = (b"QTI Debug", b"QTI ")
 FLOAT_144 = struct.pack("<f", 144.0)
 OPPO_UHDR_INFO_FLOAT_COUNT = 20
+APPLE_HDR_GAINMAP_AUX_TYPE = "urn:com:apple:photo:2020:aux:hdrgainmap"
 
 
 @dataclass(frozen=True)
@@ -34,6 +44,44 @@ class GainMapSource:
     image: Image.Image
     metadata: dict[str, Any]
     raw_bytes_len: int = 0
+
+
+def _sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _item_payload(data: bytes, item: dict[str, Any]) -> bytes:
+    payload = bytearray()
+    for extent in item.get("extents", []):
+        offset = int(extent.get("absolute_offset", extent.get("offset", 0)))
+        length = int(extent.get("length", 0))
+        payload.extend(data[offset : offset + length])
+    return bytes(payload)
+
+
+def _child_ids(item: dict[str, Any]) -> list[int]:
+    if item.get("derived_child_item_ids"):
+        return [int(item_id) for item_id in item["derived_child_item_ids"]]
+    for ref in item.get("references_from", []):
+        if ref.get("type") == "dimg":
+            return [int(item_id) for item_id in ref.get("to_item_ids", [])]
+    return []
+
+
+def _has_apple_hdr_gainmap_marker(path: Path) -> bool:
+    try:
+        return APPLE_HDR_GAINMAP_AUX_TYPE.encode("utf-8") in path.read_bytes()
+    except OSError:
+        return False
+
+
+def _sanitize_aux_type(aux_type: str) -> str:
+    return (
+        aux_type.replace(":", "_")
+        .replace("/", "_")
+        .replace(".", ".")
+        .replace(",", ",")
+    )
 
 
 def _try_register_heif_opener() -> None:
@@ -306,16 +354,122 @@ def extract_dng_preview_mpf_gainmap(path: Path) -> GainMapSource:
     )
 
 
+def _decode_apple_aux_with_heif_convert(path: Path, aux_type: str) -> tuple[Image.Image, dict[str, Any]]:
+    heif_convert = shutil.which("heif-convert")
+    if not heif_convert:
+        raise RuntimeError(
+            "heif-convert not found; Apple HDR gain map structure is recognizable, "
+            "but raster decode requires libheif's heif-convert --with-aux"
+        )
+
+    with tempfile.TemporaryDirectory(prefix="apple_heic_gainmap_") as tmpdir:
+        tmp = Path(tmpdir)
+        primary_out = tmp / "decoded.png"
+        proc = subprocess.run(
+            [heif_convert, "--with-aux", "--no-colons", str(path), str(primary_out)],
+            capture_output=True,
+            text=True,
+        )
+        if proc.returncode != 0:
+            raise RuntimeError(
+                "heif-convert could not decode Apple HDR gain map auxiliary image: "
+                f"{proc.stderr.strip() or proc.stdout.strip()}"
+            )
+
+        expected = f"decoded-{_sanitize_aux_type(aux_type)}.png"
+        candidates = [tmp / expected]
+        candidates.extend(sorted(tmp.glob("*hdrgainmap*.png")))
+        aux_path = next((candidate for candidate in candidates if candidate.exists()), None)
+        if aux_path is None:
+            produced = ", ".join(sorted(child.name for child in tmp.iterdir()))
+            raise RuntimeError(
+                "heif-convert completed, but did not emit the Apple HDR gain map PNG. "
+                f"Produced files: {produced or 'none'}"
+            )
+        with Image.open(aux_path) as decoded:
+            image = decoded.convert("L").copy()
+        return image, {
+            "decoder": "heif-convert --with-aux --no-colons",
+            "decoder_stdout": proc.stdout.strip(),
+            "decoder_stderr": proc.stderr.strip(),
+            "decoded_aux_filename": aux_path.name,
+        }
+
+
+def extract_apple_heic_hdr_gainmap(path: Path) -> GainMapSource:
+    """Extract Apple's HEIC HDR gain map auxiliary image when libheif can decode it."""
+    if not _has_apple_hdr_gainmap_marker(path):
+        raise ValueError("Apple HDR gain map aux type marker not found")
+
+    parsed = parse_file(path)
+    data = path.read_bytes()
+    gainmap_item_id: int | None = None
+    for item_id, item in parsed.get("items", {}).items():
+        if item.get("aux_type") == APPLE_HDR_GAINMAP_AUX_TYPE:
+            gainmap_item_id = int(item_id)
+            break
+    if gainmap_item_id is None:
+        raise ValueError("Apple HDR gain map auxC property was not associated with an item")
+
+    gainmap_item = parsed["items"][str(gainmap_item_id)]
+    item_payload = _item_payload(data, gainmap_item)
+    child_hashes: list[dict[str, Any]] = []
+    for child_id in _child_ids(gainmap_item):
+        child_item = parsed.get("items", {}).get(str(child_id))
+        if not child_item:
+            continue
+        child_payload = _item_payload(data, child_item)
+        child_hashes.append(
+            {
+                "item_id": child_id,
+                "item_type": child_item.get("item_type"),
+                "payload_bytes": len(child_payload),
+                "payload_sha256": _sha256(child_payload),
+                "dimensions": child_item.get("dimensions"),
+            }
+        )
+
+    image, decode_metadata = _decode_apple_aux_with_heif_convert(path, APPLE_HDR_GAINMAP_AUX_TYPE)
+    return GainMapSource(
+        source=path,
+        mode="apple-heic-hdrgainmap",
+        image=image,
+        metadata={
+            "container": "apple-heic",
+            "aux_type": APPLE_HDR_GAINMAP_AUX_TYPE,
+            "item_id": gainmap_item_id,
+            "item_type": gainmap_item.get("item_type"),
+            "dimensions": gainmap_item.get("dimensions"),
+            "pixi": gainmap_item.get("pixi"),
+            "references_from": gainmap_item.get("references_from", []),
+            "grid": gainmap_item.get("grid"),
+            "payload_bytes": len(item_payload),
+            "payload_sha256": _sha256(item_payload),
+            "derived_children": child_hashes,
+            "apple_public_description": {
+                "channels": "8-bit single-channel luminance map",
+                "transfer": "Rec.709 transfer function",
+                "typical_resolution": "one quarter of original image resolution",
+            },
+            **decode_metadata,
+        },
+        raw_bytes_len=len(item_payload),
+    )
+
+
 def load_gainmap_source(path: Path, *, mode: str = "auto") -> GainMapSource:
     """Load a gain-map raster from OPPO HEIC, MPF JPEG, or a plain image file."""
-    if mode not in {"auto", "oppo", "mpf", "image"}:
-        raise ValueError("mode must be one of: auto, oppo, mpf, image")
+    if mode not in {"auto", "apple-heic", "oppo", "mpf", "image"}:
+        raise ValueError("mode must be one of: auto, apple-heic, oppo, mpf, image")
     if mode in {"auto", "oppo"} and path.suffix.lower() in {".heic", ".heif", ".hif"}:
         try:
             return extract_oppo_gainmap(path)
         except Exception:
             if mode == "oppo":
                 raise
+    if mode in {"auto", "apple-heic"} and path.suffix.lower() in {".heic", ".heif", ".hif"}:
+        if mode == "apple-heic" or _has_apple_hdr_gainmap_marker(path):
+            return extract_apple_heic_hdr_gainmap(path)
     if mode in {"auto", "mpf"} and path.suffix.lower() in {".jpg", ".jpeg"}:
         try:
             return extract_mpf_gainmap(path)

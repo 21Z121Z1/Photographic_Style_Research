@@ -7,6 +7,7 @@ from PIL import Image
 
 from tools.aux_generator import (
     generate_linearthumbnail_from_gainmap,
+    generate_linearthumbnail_from_best_source,
     generate_linearthumbnail,
     generate_styledeltamap,
     generate_styledeltamap_from_gainmap,
@@ -164,6 +165,39 @@ class LinearThumbnailGeneratorTests(unittest.TestCase):
             arr_10bit = np.asarray(result.image, dtype=np.float64) * (1023.0 / 255.0)
             self.assertGreaterEqual(float(np.min(arr_10bit)), 250)
             self.assertLessEqual(float(np.max(arr_10bit)), 760)
+        finally:
+            base_path.unlink()
+            gainmap_path.unlink()
+
+    def test_best_source_uses_rgb_gainmap_when_dng_is_absent(self):
+        base_path = _make_test_image(320, 240)
+        gainmap_path = _make_test_gainmap(160, 120)
+        try:
+            result = generate_linearthumbnail_from_best_source(
+                base_path=base_path,
+                gainmap_path=gainmap_path,
+                max_dim=128,
+                gainmap_mode="image",
+            )
+            self.assertEqual(result.stats["source_priority"], "P1-rgb-gainmap-metadata-aware")
+            self.assertEqual(result.stats["gainmap_source_mode"], "image-rgb")
+            self.assertEqual(result.stats["selection_decisions"][-1]["priority"], "P1")
+        finally:
+            base_path.unlink()
+            gainmap_path.unlink()
+
+    def test_best_source_marks_mono_gainmap_as_fallback(self):
+        base_path = _make_test_image(320, 240)
+        gainmap_path = _make_test_gainmap(160, 120, mono=True)
+        try:
+            result = generate_linearthumbnail_from_best_source(
+                base_path=base_path,
+                gainmap_path=gainmap_path,
+                max_dim=128,
+                gainmap_mode="image",
+            )
+            self.assertEqual(result.stats["source_priority"], "P2-mono-gainmap-fallback")
+            self.assertEqual(result.stats["source_confidence"], "luma-headroom-only-fallback, no-chroma-recovery")
         finally:
             base_path.unlink()
             gainmap_path.unlink()

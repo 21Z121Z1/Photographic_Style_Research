@@ -1,16 +1,18 @@
 import tempfile
 import unittest
+import shutil
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
 
-from tools.gainmap_sources import extract_oppo_gainmap, load_gainmap_source
+from tools.gainmap_sources import extract_apple_heic_hdr_gainmap, extract_oppo_gainmap, load_gainmap_source
 
 
 UHDR_SAMPLE = Path("/Users/retriedstormtrooper/Documents/proxdrtest/test-samples/uhdr/IMG20260424200116.heic")
 LHDR_SAMPLE = Path("/Users/retriedstormtrooper/Documents/proxdrtest/test-samples/lhdr/IMG20240725150658.heic")
 COMBINED_DNG_SAMPLE = Path("/Users/retriedstormtrooper/Documents/OPPO 互联/combine dng/IMG20260530190200.dng")
+APPLE_HDR_SAMPLE = Path("Apple_Native_Samples/IMG_0032.HEIC")
 
 
 class GainMapSourceTests(unittest.TestCase):
@@ -64,6 +66,18 @@ class GainMapSourceTests(unittest.TestCase):
         self.assertEqual(source.image.mode, "RGB")
         self.assertIn("preview_bytes", source.metadata)
         self.assertGreater(source.raw_bytes_len, 0)
+
+    @unittest.skipUnless(
+        APPLE_HDR_SAMPLE.exists() and shutil.which("heif-convert"),
+        "Apple HDR HEIC sample or heif-convert not available",
+    )
+    def test_extracts_apple_heic_hdr_gainmap_structure_and_raster(self):
+        source = extract_apple_heic_hdr_gainmap(APPLE_HDR_SAMPLE)
+        self.assertEqual(source.mode, "apple-heic-hdrgainmap")
+        self.assertEqual(source.image.mode, "L")
+        self.assertEqual(source.metadata["aux_type"], "urn:com:apple:photo:2020:aux:hdrgainmap")
+        self.assertIn("item_id", source.metadata)
+        self.assertIn("derived_children", source.metadata)
 
 
 if __name__ == "__main__":

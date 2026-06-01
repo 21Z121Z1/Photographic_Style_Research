@@ -9,6 +9,10 @@ from tools.inject_style_family import inject_style_family, load_heif
 
 BASE_SIPS_FULL = Path("artifacts/constructed/apple_parity_styledeltamap/IMG_0342_preview_sips.heic")
 BASE_SIPS_4032 = Path("/private/tmp/IMG_0342_preview_sips_4032.heic")
+BASE_INJECTED_V1 = Path(
+    "artifacts/constructed/apple_style_injected_from_preview_heic_v1/"
+    "apple_style_injected_from_preview_heic_v1.heic"
+)
 DONOR_V8 = Path(
     "artifacts/constructed/apple_parity_styledeltamap_v8_vt_linearthumb_q025/"
     "apple_parity_styledeltamap_v8_vt_linearthumb_q025.heic"
@@ -106,3 +110,45 @@ class StyleFamilyInjectorTests(unittest.TestCase):
             parsed = parse_file(output)
             linearthumb = parsed["items"][str(linearthumb_id)]
             self.assertEqual(linearthumb["hvcC"]["bytes"], len(expected_hvcc))
+
+    @unittest.skipUnless(BASE_INJECTED_V1.exists() and DONOR_V8.exists(), "preserve-base target or donor missing")
+    def test_preserve_base_hdr_family_reuses_target_gainmap_and_tmap_payloads(self):
+        with tempfile.TemporaryDirectory(prefix="style_inject_preserve_hdr_", dir="/private/tmp") as tmpdir:
+            output = Path(tmpdir) / "preserve_hdr.heic"
+            base = load_heif(BASE_INJECTED_V1)
+            base_gainmap_id = next(
+                int(item_id)
+                for item_id, item in base.parsed["items"].items()
+                if item.get("aux_type") == "urn:com:apple:photo:2020:aux:hdrgainmap"
+            )
+            base_tmap_id = next(
+                int(item_id)
+                for item_id, item in base.parsed["items"].items()
+                if item.get("item_type") == "tmap"
+            )
+
+            summary = inject_style_family(
+                BASE_INJECTED_V1,
+                DONOR_V8,
+                output_path=output,
+                preserve_base_hdr_family=True,
+            )
+
+            self.assertTrue(summary["preserve_base_hdr_family"])
+            self.assertTrue(summary["reused_base_hdr_graph"])
+            self.assertFalse(summary["copied_donor_hdr_family"])
+            self.assertEqual(summary["gainmap_item_id"], base_gainmap_id)
+            self.assertEqual(summary["tmap_item_id"], base_tmap_id)
+
+            injected = load_heif(output)
+            self.assertEqual(injected.item_payloads[base_gainmap_id], base.item_payloads[base_gainmap_id])
+            self.assertEqual(injected.item_payloads[base_tmap_id], base.item_payloads[base_tmap_id])
+
+            styledelta = injected.parsed["items"][str(summary["styledeltamap_item_id"])]
+            linearthumb = injected.parsed["items"][str(summary["linearthumbnail_item_id"])]
+            expected_refs = {"type": "auxl", "to_item_ids": [base.parsed["primary_item_id"], base_tmap_id]}
+            self.assertIn(expected_refs, styledelta["references_from"])
+            self.assertIn(expected_refs, linearthumb["references_from"])
+
+            report = output.parent / "style_injection_preservation_report.json"
+            self.assertTrue(report.exists())

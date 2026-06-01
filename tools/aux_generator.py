@@ -254,6 +254,84 @@ def generate_linearthumbnail_from_gainmap(
     return _linearthumbnail_from_float_rgb(hdr_linear, max_dim=max_dim, source_stats=source_stats)
 
 
+def generate_linearthumbnail_from_best_source(
+    *,
+    dng_path: Path | None = None,
+    preview_path: Path | None = None,
+    base_path: Path | None = None,
+    gainmap_path: Path | None = None,
+    max_dim: int = 1024,
+    preview_mix: float = 0.25,
+    gainmap_mode: str = "auto",
+    gain_strength: float = 1.0,
+) -> LinearThumbnailResult:
+    """Generate a linearthumbnail with explicit source priority.
+
+    P0 is DNG/RAW-derived, P1 is metadata-aware RGB gain map, and P2 is
+    mono/Apple gain-map fallback. The priority choice is reported in stats so
+    downstream graft reports do not blur proven inputs with diagnostic ones.
+    """
+    decisions: list[dict[str, Any]] = []
+    if dng_path is not None:
+        result = generate_linearthumbnail_from_dng(
+            dng_path,
+            preview_path,
+            max_dim=max_dim,
+            preview_mix=preview_mix,
+        )
+        stats = {
+            **result.stats,
+            "source_priority": "P0-dng-raw-derived",
+            "source_confidence": "high-for-linearthumbnail-input, unproven-for-Apple-private-style-math",
+            "selection_decisions": [
+                {"priority": "P0", "source": str(dng_path), "selected": True, "reason": "DNG/RAW render was provided"}
+            ],
+        }
+        return LinearThumbnailResult(result.image, stats)
+
+    decisions.append({"priority": "P0", "selected": False, "reason": "DNG/RAW input was not provided"})
+    if base_path is not None and gainmap_path is not None:
+        result = generate_linearthumbnail_from_gainmap(
+            base_path,
+            gainmap_path,
+            max_dim=max_dim,
+            gainmap_mode=gainmap_mode,
+            gain_strength=gain_strength,
+        )
+        source_mode = str(result.stats.get("gainmap_source_mode", ""))
+        is_rgb = source_mode in {"oppo-uhdr-rgb", "mpf-rgb", "dng-preview-mpf-rgb", "image-rgb"}
+        priority = "P1-rgb-gainmap-metadata-aware" if is_rgb else "P2-mono-gainmap-fallback"
+        confidence = (
+            "medium-for-HDR-linear-estimate, diagnostic-for-styledeltamap"
+            if is_rgb
+            else "luma-headroom-only-fallback, no-chroma-recovery"
+        )
+        decisions.append(
+            {
+                "priority": "P1" if is_rgb else "P2",
+                "source": str(gainmap_path),
+                "selected": True,
+                "reason": f"gain map source mode {source_mode}",
+            }
+        )
+        stats = {
+            **result.stats,
+            "source_priority": priority,
+            "source_confidence": confidence,
+            "selection_decisions": decisions,
+        }
+        return LinearThumbnailResult(result.image, stats)
+
+    decisions.append(
+        {
+            "priority": "P1/P2",
+            "selected": False,
+            "reason": "base image and gain-map input were not both provided",
+        }
+    )
+    raise ValueError("No supported linearthumbnail source was provided; supply DNG or base+gainmap")
+
+
 def generate_linearthumbnail_from_dng(
     dng_path: Path,
     preview_path: Path | None = None,
@@ -557,7 +635,8 @@ def main() -> int:
     lt_gm.add_argument("base", type=Path)
     lt_gm.add_argument("gainmap", type=Path)
     lt_gm.add_argument("--max-dim", type=int, default=1024)
-    lt_gm.add_argument("--gainmap-mode", choices=["auto", "oppo", "mpf", "image"], default="auto")
+    gainmap_modes = ["auto", "apple-heic", "oppo", "mpf", "image"]
+    lt_gm.add_argument("--gainmap-mode", choices=gainmap_modes, default="auto")
     lt_gm.add_argument("--gain-strength", type=float, default=1.0)
     lt_gm.add_argument("--output", "-o", type=Path, required=True)
     lt_gm.add_argument("--json", dest="json_path", type=Path)
@@ -569,6 +648,18 @@ def main() -> int:
     lt_dng.add_argument("--preview-mix", type=float, default=0.25)
     lt_dng.add_argument("--output", "-o", type=Path, required=True)
     lt_dng.add_argument("--json", dest="json_path", type=Path)
+
+    lt_best = sub.add_parser("linearthumbnail-best", help="Generate linearthumbnail using DNG > RGB gain map > mono gain map priority")
+    lt_best.add_argument("--dng", type=Path)
+    lt_best.add_argument("--preview", type=Path)
+    lt_best.add_argument("--base", type=Path)
+    lt_best.add_argument("--gainmap", type=Path)
+    lt_best.add_argument("--max-dim", type=int, default=1024)
+    lt_best.add_argument("--preview-mix", type=float, default=0.25)
+    lt_best.add_argument("--gainmap-mode", choices=gainmap_modes, default="auto")
+    lt_best.add_argument("--gain-strength", type=float, default=1.0)
+    lt_best.add_argument("--output", "-o", type=Path, required=True)
+    lt_best.add_argument("--json", dest="json_path", type=Path)
 
     sd = sub.add_parser("styledeltamap", help="Generate styledeltamap (neutral)")
     sd.add_argument("--width", type=int, default=2880)
@@ -590,14 +681,14 @@ def main() -> int:
     sd_gm.add_argument("--width", type=int, default=2880)
     sd_gm.add_argument("--height", type=int, default=2160)
     sd_gm.add_argument("--amplitude", type=float, default=6.0)
-    sd_gm.add_argument("--gainmap-mode", choices=["auto", "oppo", "mpf", "image"], default="auto")
+    sd_gm.add_argument("--gainmap-mode", choices=gainmap_modes, default="auto")
     sd_gm.add_argument("--no-dither-mono", action="store_true")
     sd_gm.add_argument("--output", "-o", type=Path, required=True)
     sd_gm.add_argument("--json", dest="json_path", type=Path)
 
     inspect = sub.add_parser("inspect-gainmap", help="Inspect and optionally preview a supported gain-map input")
     inspect.add_argument("gainmap", type=Path)
-    inspect.add_argument("--gainmap-mode", choices=["auto", "oppo", "mpf", "image"], default="auto")
+    inspect.add_argument("--gainmap-mode", choices=gainmap_modes, default="auto")
     inspect.add_argument("--preview-output", type=Path)
     inspect.add_argument("--json", dest="json_path", type=Path)
 
@@ -635,6 +726,25 @@ def main() -> int:
             args.preview,
             max_dim=args.max_dim,
             preview_mix=args.preview_mix,
+        )
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        result.image.save(args.output)
+        if args.json_path:
+            args.json_path.parent.mkdir(parents=True, exist_ok=True)
+            args.json_path.write_text(json.dumps(result.stats, indent=2, ensure_ascii=False) + "\n")
+        else:
+            print(json.dumps(result.stats, indent=2, ensure_ascii=False))
+
+    elif args.command == "linearthumbnail-best":
+        result = generate_linearthumbnail_from_best_source(
+            dng_path=args.dng,
+            preview_path=args.preview,
+            base_path=args.base,
+            gainmap_path=args.gainmap,
+            max_dim=args.max_dim,
+            preview_mix=args.preview_mix,
+            gainmap_mode=args.gainmap_mode,
+            gain_strength=args.gain_strength,
         )
         args.output.parent.mkdir(parents=True, exist_ok=True)
         result.image.save(args.output)

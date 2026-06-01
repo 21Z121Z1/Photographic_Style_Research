@@ -140,9 +140,15 @@ heif-convert --with-aux --no-colons artifacts/constructed/apple_parity_styledelt
 /private/tmp/styledeltamap-py313/bin/python tools/semantic_fitter.py artifacts/constructed/apple_parity_styledeltamap_v8_vt_linearthumb_q025/apple_parity_styledeltamap_v8_vt_linearthumb_q025.heic --reference artifacts/constructed/apple_parity_styledeltamap_v5_style_safe/apple_parity_styledeltamap_v5_style_safe.heic --template Apple_Native_Samples/IMG_0032.HEIC --decoded-dir artifacts/constructed/apple_parity_styledeltamap_v8_vt_linearthumb_q025 --json artifacts/constructed/apple_parity_styledeltamap_v8_vt_linearthumb_q025/apple_parity_styledeltamap_v8_vt_linearthumb_q025.semantic.json --md artifacts/constructed/apple_parity_styledeltamap_v8_vt_linearthumb_q025/apple_parity_styledeltamap_v8_vt_linearthumb_q025.semantic.md
 ```
 
-## Current Boundary
+## Current Boundary Update - 2026-06-01
 
-This work does not prove Apple Photos UI activation. It proves the generated file now matches the Apple native linearthumbnail item structure and data type much more closely than v5:
+The user later confirmed that `apple_style_injected_from_preview_heic_v1.heic`
+activates Photographic Styles in Apple Photos. The remaining v1 issue is
+linearthumbnail visual quality: q=0.25 was chosen to match the smallest native
+payload scale, but it visibly over-compresses the generated linear thumbnail.
+
+This work proves that generated files can match the Apple native
+linearthumbnail item structure and data type much more closely than v5:
 
 - no multi-NAL linearthumbnail item payload;
 - no x265 110-byte linearthumbnail `hvcC`;
@@ -150,4 +156,17 @@ This work does not prove Apple Photos UI activation. It proves the generated fil
 - no oversized high-quality linearthumbnail payload in the preferred v8 candidate;
 - auxiliary extraction remains valid.
 
-If Photos still does not activate style controls, the next likely targets are style metadata plist semantics, Exif/MakerNote private fields, and generated styledeltamap tile semantics. Sky/person matte generation should remain a separate experiment because the successful `v5_style_safe` still used template-copied semantic matte data.
+The current quality direction is VideoToolbox Main10 plus single-IDR item
+payload with `hvcC` generated from the same encoded stream. q=0.45 is the
+better visual-quality candidate than q=0.25 for practical injection.
+
+Still not proven:
+
+- Apple's real private styledeltamap formula.
+- Whether gain-map or RAW residuals are semantically equivalent to Apple's
+  styledeltamap construction.
+- Whether every preserve-base HDR graft variant activates Photos UI after
+  import.
+
+Sky/person matte generation should remain a separate experiment because the
+successful style path can still use template-copied semantic matte data.

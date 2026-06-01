@@ -114,7 +114,7 @@ Not proven:
 
 - The exact Apple residual formula is still unknown.
 - We have not proven that Apple uses one specific prediction model before writing styledeltamap.
-- We have not yet imported the direct-injection v1 file into Apple Photos to prove UI activation.
+- We have not proven that preserve-base HDR graft outputs activate Apple Photos after import; v1 direct injection itself has been user-confirmed to activate.
 
 ## Next Test
 
@@ -122,4 +122,7 @@ The direct-injection route is viable because v1 activates style controls. The ne
 
 `artifacts/constructed/apple_style_injected_from_preview_heic_v2_q045/apple_style_injected_from_preview_heic_v2_q045.heic`
 
-If v2 activates like v1, use v2 as the baseline for cherry-pick experiments. Replace linearthumbnail, styledeltamap, HDR gainmap, and private metadata one at a time so activation and rendering effects remain attributable.
+Because v1 activates, use the quality-fixed q=0.45 linearthumbnail direction as
+the baseline for cherry-pick experiments. Replace linearthumbnail,
+styledeltamap, HDR gainmap, and private metadata one at a time so activation
+and rendering effects remain attributable.

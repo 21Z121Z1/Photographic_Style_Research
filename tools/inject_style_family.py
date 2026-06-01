@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import shutil
 import subprocess
@@ -12,14 +13,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from PIL import Image
+
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from tools.aux_generator import generate_linearthumbnail_from_best_source
 from tools.apple_template_writer import update_style_metadata_bplist
 from tools.exif_makernote_swap import build_exif_with_template_makernote
 from tools.heif_aux_writer import _box, _full_box, _u16, _u32, _u64
 from tools.heif_dump import STYLE_DELTA_AUX_TYPE, iter_boxes, parse_heif
-from tools.hevc10_encoder import payload_and_hvcc_from_annexb_hevc
+from tools.hevc10_encoder import encode_hevc10_still_videotoolbox, parse_length_prefixed_nals, payload_and_hvcc_from_annexb_hevc
 
 
 LINEARTHUMB_AUX_TYPE = "tag:apple.com,2023:photo:aux:linearthumbnail"
@@ -44,6 +48,10 @@ class LoadedHeif:
 
 def _raw_box(data: bytes, box_info: dict[str, Any]) -> bytes:
     return data[box_info["offset"] : box_info["offset"] + box_info["size"]]
+
+
+def _sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
 
 
 def _find_top_box(data: bytes, box_type: str) -> dict[str, Any]:
@@ -159,7 +167,7 @@ def _child_ids(item: dict[str, Any]) -> list[int]:
     return []
 
 
-def style_family_item_ids(donor: LoadedHeif) -> dict[str, int | list[int]]:
+def style_family_item_ids(donor: LoadedHeif, *, include_hdr_family: bool = True) -> dict[str, int | list[int]]:
     parsed = donor.parsed
     styledeltamap_id = _first_item_id_by_aux(parsed, STYLE_DELTA_AUX_TYPE)
     gainmap_id = _first_item_id_by_aux(parsed, HDR_GAINMAP_AUX_TYPE)
@@ -168,36 +176,42 @@ def style_family_item_ids(donor: LoadedHeif) -> dict[str, int | list[int]]:
     tmap_id = _first_item_id_by_type(parsed, "tmap")
     style_metadata_id = _style_metadata_item_id(parsed)
 
-    required = {
+    required: dict[str, int | None] = {
         "styledeltamap": styledeltamap_id,
-        "gainmap": gainmap_id,
         "linearthumbnail": linearthumb_id,
         "tmap": tmap_id,
         "style_metadata": style_metadata_id,
     }
+    if include_hdr_family:
+        required["gainmap"] = gainmap_id
     missing = [name for name, item_id in required.items() if item_id is None]
     if missing:
         raise ValueError(f"style donor is missing required items: {', '.join(missing)}")
 
     item_ids: set[int] = {
         int(styledeltamap_id),
-        int(gainmap_id),
         int(linearthumb_id),
-        int(tmap_id),
         int(style_metadata_id),
     }
+    if include_hdr_family:
+        item_ids.add(int(gainmap_id))
+        item_ids.add(int(tmap_id))
     if sky_matte_id is not None:
         item_ids.add(int(sky_matte_id))
 
-    for grid_id in (styledeltamap_id, gainmap_id):
+    grid_ids = [styledeltamap_id]
+    if include_hdr_family:
+        grid_ids.append(gainmap_id)
+    for grid_id in grid_ids:
         grid_item = parsed["items"][str(grid_id)]
         item_ids.update(_child_ids(grid_item))
 
-    for item_id, item in parsed.get("items", {}).items():
-        if item.get("item_type") == "mime":
-            for ref in item.get("references_from", []):
-                if ref.get("type") == "cdsc" and gainmap_id in ref.get("to_item_ids", []):
-                    item_ids.add(int(item_id))
+    if include_hdr_family:
+        for item_id, item in parsed.get("items", {}).items():
+            if item.get("item_type") == "mime":
+                for ref in item.get("references_from", []):
+                    if ref.get("type") == "cdsc" and gainmap_id in ref.get("to_item_ids", []):
+                        item_ids.add(int(item_id))
 
     donor_primary = int(parsed["primary_item_id"])
     item_ids.discard(donor_primary)
@@ -208,18 +222,28 @@ def style_family_item_ids(donor: LoadedHeif) -> dict[str, int | list[int]]:
     return {
         "item_ids": sorted(item_ids),
         "styledeltamap": int(styledeltamap_id),
-        "gainmap": int(gainmap_id),
+        "gainmap": int(gainmap_id) if gainmap_id is not None else 0,
         "linearthumbnail": int(linearthumb_id),
         "sky_matte": int(sky_matte_id) if sky_matte_id is not None else 0,
-        "tmap": int(tmap_id),
+        "tmap": int(tmap_id) if tmap_id is not None else 0,
         "style_metadata": int(style_metadata_id),
     }
 
 
-def _build_item_id_map(base: LoadedHeif, donor: LoadedHeif, donor_item_ids: list[int]) -> dict[int, int]:
+def _build_item_id_map(
+    base: LoadedHeif,
+    donor: LoadedHeif,
+    donor_item_ids: list[int],
+    *,
+    role_item_id_map: dict[int, int] | None = None,
+) -> dict[int, int]:
     next_item_id = max(base.item_order)
     id_map = {int(donor.parsed["primary_item_id"]): int(base.parsed["primary_item_id"])}
+    if role_item_id_map:
+        id_map.update({int(key): int(value) for key, value in role_item_id_map.items()})
     for donor_item_id in donor_item_ids:
+        if donor_item_id in id_map:
+            continue
         next_item_id += 1
         id_map[donor_item_id] = next_item_id
     return id_map
@@ -286,9 +310,7 @@ def _build_references(
     donor_item_id_set = set(donor_item_ids)
 
     def map_target(target: int) -> int | None:
-        if target == donor_primary:
-            return id_map[donor_primary]
-        if target in donor_item_id_set:
+        if target == donor_primary or target in donor_item_id_set or target in id_map:
             return id_map[target]
         return None
 
@@ -511,6 +533,197 @@ def _first_exif_item_id(parsed: dict[str, Any]) -> int | None:
     return None
 
 
+def _required_base_hdr_roles(base: LoadedHeif) -> dict[str, int]:
+    gainmap_id = _first_item_id_by_aux(base.parsed, HDR_GAINMAP_AUX_TYPE)
+    tmap_id = _first_item_id_by_type(base.parsed, "tmap")
+    missing = []
+    if gainmap_id is None:
+        missing.append("Apple HDR gain map aux item")
+    if tmap_id is None:
+        missing.append("tmap item")
+    if missing:
+        raise ValueError(
+            "preserve-base HDR mode requires the target base to contain "
+            + " and ".join(missing)
+            + "; use non-preserve mode or --allow-donor-hdr-fallback for the old donor-copy graph"
+        )
+    return {
+        "primary": int(base.parsed["primary_item_id"]),
+        "gainmap": int(gainmap_id),
+        "tmap": int(tmap_id),
+    }
+
+
+def _linearthumb_dimensions(donor: LoadedHeif, donor_family: dict[str, int | list[int]]) -> tuple[int, int]:
+    item_id = int(donor_family["linearthumbnail"])
+    dims = _item_dimensions(donor.parsed, item_id)
+    if not dims:
+        return 1024, 768
+    return int(dims["width"]), int(dims["height"])
+
+
+def _encode_generated_linearthumb(
+    *,
+    donor: LoadedHeif,
+    donor_family: dict[str, int | list[int]],
+    dng_path: Path | None = None,
+    preview_path: Path | None = None,
+    base_path: Path | None = None,
+    gainmap_path: Path | None = None,
+    gainmap_mode: str = "auto",
+    preview_mix: float = 0.25,
+    vt_quality: float = 0.45,
+    output_png: Path | None = None,
+    stats_json: Path | None = None,
+) -> tuple[bytes, bytes, dict[str, Any]]:
+    result = generate_linearthumbnail_from_best_source(
+        dng_path=dng_path,
+        preview_path=preview_path,
+        base_path=base_path,
+        gainmap_path=gainmap_path,
+        max_dim=max(_linearthumb_dimensions(donor, donor_family)),
+        preview_mix=preview_mix,
+        gainmap_mode=gainmap_mode,
+    )
+    width, height = _linearthumb_dimensions(donor, donor_family)
+    image = result.image.resize((width, height), Image.Resampling.LANCZOS)
+    if output_png is not None:
+        output_png.parent.mkdir(parents=True, exist_ok=True)
+        image.save(output_png)
+    payload, hvcc = encode_hevc10_still_videotoolbox(image, item_payload_policy="single_idr", quality=vt_quality)
+    stats = {
+        **result.stats,
+        "encoded_linearthumbnail": {
+            "encoder": "VideoToolbox Main10",
+            "quality": vt_quality,
+            "dimensions": {"width": width, "height": height},
+            "payload_bytes": len(payload),
+            "hvcC_bytes": len(hvcc),
+            "nal_types": [nal.nal_type for nal in parse_length_prefixed_nals(payload)],
+        },
+    }
+    if stats_json is not None:
+        stats_json.parent.mkdir(parents=True, exist_ok=True)
+        stats_json.write_text(json.dumps(stats, indent=2, ensure_ascii=False) + "\n")
+    return payload, hvcc, stats
+
+
+def _payload_report_for_item(loaded: LoadedHeif, item_id: int | None) -> dict[str, Any] | None:
+    if item_id is None:
+        return None
+    item = loaded.parsed.get("items", {}).get(str(item_id))
+    if not item:
+        return None
+    payload = loaded.item_payloads.get(item_id, b"")
+    children = []
+    for child_id in _child_ids(item):
+        child_item = loaded.parsed.get("items", {}).get(str(child_id), {})
+        child_payload = loaded.item_payloads.get(child_id, b"")
+        children.append(
+            {
+                "item_id": child_id,
+                "item_type": child_item.get("item_type"),
+                "dimensions": child_item.get("dimensions"),
+                "payload_bytes": len(child_payload),
+                "payload_sha256": _sha256(child_payload),
+            }
+        )
+    return {
+        "item_id": item_id,
+        "item_type": item.get("item_type"),
+        "dimensions": item.get("dimensions"),
+        "aux_type": item.get("aux_type"),
+        "payload_bytes": len(payload),
+        "payload_sha256": _sha256(payload),
+        "children": children,
+    }
+
+
+def _same_payload_family(before: dict[str, Any] | None, after: dict[str, Any] | None) -> bool:
+    if before is None or after is None:
+        return before == after
+    if before.get("payload_sha256") != after.get("payload_sha256"):
+        return False
+    before_children = before.get("children", [])
+    after_children = after.get("children", [])
+    if len(before_children) != len(after_children):
+        return False
+    return all(
+        left.get("payload_sha256") == right.get("payload_sha256")
+        for left, right in zip(before_children, after_children)
+    )
+
+
+def build_preservation_report(
+    base: LoadedHeif,
+    output: LoadedHeif,
+    *,
+    summary: dict[str, Any],
+    base_hdr_roles: dict[str, int] | None,
+    injected_item_ids: list[int],
+) -> dict[str, Any]:
+    output_primary = int(output.parsed["primary_item_id"])
+    output_gainmap = _first_item_id_by_aux(output.parsed, HDR_GAINMAP_AUX_TYPE)
+    output_tmap = _first_item_id_by_type(output.parsed, "tmap")
+    roles = {
+        "primary": (
+            int(base.parsed["primary_item_id"]),
+            output_primary,
+        ),
+        "hdrgainmap": (
+            base_hdr_roles.get("gainmap") if base_hdr_roles else _first_item_id_by_aux(base.parsed, HDR_GAINMAP_AUX_TYPE),
+            output_gainmap,
+        ),
+        "tmap": (
+            base_hdr_roles.get("tmap") if base_hdr_roles else _first_item_id_by_type(base.parsed, "tmap"),
+            output_tmap,
+        ),
+    }
+    role_reports: dict[str, Any] = {}
+    unable_to_preserve: list[str] = []
+    for role, (before_id, after_id) in roles.items():
+        before = _payload_report_for_item(base, before_id)
+        after = _payload_report_for_item(output, after_id)
+        byte_identical = _same_payload_family(before, after)
+        role_reports[role] = {
+            "before": before,
+            "after": after,
+            "byte_identical_payload_family": byte_identical,
+        }
+        if not byte_identical:
+            unable_to_preserve.append(role)
+
+    remapped_refs = []
+    for ref in output.parsed.get("references", []):
+        if int(ref.get("from_item_id", -1)) in injected_item_ids:
+            remapped_refs.append(
+                {
+                    "type": ref.get("type"),
+                    "from_item_id": int(ref.get("from_item_id")),
+                    "to_item_ids": [int(item_id) for item_id in ref.get("to_item_ids", [])],
+                }
+            )
+
+    return {
+        "base_heic": str(base.path),
+        "output": summary.get("output"),
+        "style_donor": summary.get("style_donor"),
+        "preserve_base_hdr_family": summary.get("preserve_base_hdr_family"),
+        "reused_base_hdr_graph": summary.get("reused_base_hdr_graph"),
+        "copied_donor_hdr_family": summary.get("copied_donor_hdr_family"),
+        "roles": role_reports,
+        "style_metadata_item_id": summary.get("style_metadata_item_id"),
+        "styledeltamap_item_id": summary.get("styledeltamap_item_id"),
+        "linearthumbnail_item_id": summary.get("linearthumbnail_item_id"),
+        "replaced_linearthumbnail": summary.get("replaced_linearthumbnail"),
+        "replacement_linearthumbnail_payload_bytes": summary.get("replacement_linearthumbnail_payload_bytes"),
+        "replacement_linearthumbnail_hvcc_bytes": summary.get("replacement_linearthumbnail_hvcc_bytes"),
+        "replacement_linearthumbnail_nal_types": summary.get("replacement_linearthumbnail_nal_types"),
+        "remapped_references_from_injected_items": remapped_refs,
+        "unable_to_preserve_payload_family": unable_to_preserve,
+    }
+
+
 def inject_style_family(
     base_heic: Path,
     style_donor: Path,
@@ -521,27 +734,63 @@ def inject_style_family(
     update_style_metadata: bool = False,
     allow_dimension_mismatch: bool = False,
     replace_linearthumb_hevc: Path | None = None,
+    replace_linearthumb_payload: bytes | None = None,
+    replace_linearthumb_hvcc: bytes | None = None,
+    preserve_base_hdr_family: bool = False,
+    allow_donor_hdr_fallback: bool = False,
+    generated_linearthumb_stats: dict[str, Any] | None = None,
+    preservation_report_path: Path | None = None,
 ) -> dict[str, Any]:
     base = load_heif(base_heic)
     donor = load_heif(style_donor)
-    donor_family = style_family_item_ids(donor)
+    base_hdr_roles: dict[str, int] | None = None
+    include_donor_hdr_family = True
+    reused_base_hdr_graph = False
+    if preserve_base_hdr_family:
+        try:
+            base_hdr_roles = _required_base_hdr_roles(base)
+            include_donor_hdr_family = False
+            reused_base_hdr_graph = True
+        except ValueError:
+            if not allow_donor_hdr_fallback:
+                raise
+            include_donor_hdr_family = True
+            reused_base_hdr_graph = False
+    donor_family = style_family_item_ids(donor, include_hdr_family=include_donor_hdr_family)
     donor_item_ids = list(donor_family["item_ids"])  # type: ignore[arg-type]
-    id_map = _build_item_id_map(base, donor, donor_item_ids)
+    role_item_id_map: dict[int, int] = {}
+    if base_hdr_roles is not None:
+        role_item_id_map[int(donor_family["tmap"])] = base_hdr_roles["tmap"]
+        if int(donor_family["gainmap"]):
+            role_item_id_map[int(donor_family["gainmap"])] = base_hdr_roles["gainmap"]
+    id_map = _build_item_id_map(base, donor, donor_item_ids, role_item_id_map=role_item_id_map)
 
     base_primary = int(base.parsed["primary_item_id"])
     donor_tmap = int(donor_family["tmap"])
     base_dims = _item_dimensions(base.parsed, base_primary)
     donor_tmap_dims = _item_dimensions(donor.parsed, donor_tmap)
-    if not allow_dimension_mismatch and base_dims != donor_tmap_dims:
-        raise ValueError(f"primary dimensions {base_dims} do not match donor tmap dimensions {donor_tmap_dims}")
+    compare_dims = (
+        _item_dimensions(base.parsed, base_hdr_roles["tmap"])
+        if base_hdr_roles is not None
+        else donor_tmap_dims
+    )
+    if not allow_dimension_mismatch and base_dims != compare_dims:
+        compare_label = "target tmap" if base_hdr_roles is not None else "donor tmap"
+        raise ValueError(f"primary dimensions {base_dims} do not match {compare_label} dimensions {compare_dims}")
     base_exif_item_id = _first_exif_item_id(base.parsed) if preview_jpeg is not None and exif_template is not None else None
     linearthumb_payload: bytes | None = None
     linearthumb_hvcc: bytes | None = None
+    if replace_linearthumb_hevc is not None and (replace_linearthumb_payload is not None or replace_linearthumb_hvcc is not None):
+        raise ValueError("replace_linearthumb_hevc cannot be combined with in-memory linearthumbnail replacement bytes")
+    if (replace_linearthumb_payload is None) != (replace_linearthumb_hvcc is None):
+        raise ValueError("replace_linearthumb_payload and replace_linearthumb_hvcc must be provided together")
     if replace_linearthumb_hevc is not None:
         linearthumb_payload, linearthumb_hvcc = payload_and_hvcc_from_annexb_hevc(
             replace_linearthumb_hevc.read_bytes(),
             item_payload_policy="single_idr",
         )
+    elif replace_linearthumb_payload is not None and replace_linearthumb_hvcc is not None:
+        linearthumb_payload, linearthumb_hvcc = replace_linearthumb_payload, replace_linearthumb_hvcc
 
     records, items_for_iinf = _records_and_items(
         base,
@@ -591,17 +840,23 @@ def inject_style_family(
         "base_heic": str(base_heic),
         "style_donor": str(style_donor),
         "output": str(output_path) if output_path else None,
+        "preserve_base_hdr_family": preserve_base_hdr_family,
+        "reused_base_hdr_graph": reused_base_hdr_graph,
+        "copied_donor_hdr_family": include_donor_hdr_family,
+        "allow_donor_hdr_fallback": allow_donor_hdr_fallback,
         "base_primary_item_id": base_primary,
         "base_primary_dimensions": base_dims,
         "donor_tmap_dimensions": donor_tmap_dims,
+        "target_tmap_dimensions": compare_dims,
         "injected_item_count": len(donor_item_ids),
         "id_map": {str(key): value for key, value in sorted(id_map.items()) if key in donor_item_ids},
         "styledeltamap_item_id": id_map[int(donor_family["styledeltamap"])],
-        "gainmap_item_id": id_map[int(donor_family["gainmap"])],
+        "gainmap_item_id": id_map[int(donor_family["gainmap"])] if int(donor_family["gainmap"]) else base_hdr_roles["gainmap"] if base_hdr_roles else 0,
         "linearthumbnail_item_id": id_map[int(donor_family["linearthumbnail"])],
         "sky_matte_item_id": id_map.get(int(donor_family["sky_matte"]), 0),
         "tmap_item_id": id_map[int(donor_family["tmap"])],
         "style_metadata_item_id": id_map[int(donor_family["style_metadata"])],
+        "base_hdr_roles": base_hdr_roles,
         "base_exif_item_id": base_exif_item_id,
         "updated_base_exif": preview_jpeg is not None and exif_template is not None,
         "updated_style_metadata": update_style_metadata,
@@ -609,11 +864,26 @@ def inject_style_family(
         "replacement_linearthumbnail_hevc": str(replace_linearthumb_hevc) if replace_linearthumb_hevc else None,
         "replacement_linearthumbnail_payload_bytes": len(linearthumb_payload) if linearthumb_payload is not None else 0,
         "replacement_linearthumbnail_hvcc_bytes": len(linearthumb_hvcc) if linearthumb_hvcc is not None else 0,
+        "replacement_linearthumbnail_nal_types": [nal.nal_type for nal in parse_length_prefixed_nals(linearthumb_payload)] if linearthumb_payload else [],
+        "generated_linearthumbnail_stats": generated_linearthumb_stats,
     }
+    if linearthumb_payload is not None:
+        summary["replaced_linearthumbnail"] = True
     if output_path is not None:
+        report_path = preservation_report_path or output_path.parent / "style_injection_preservation_report.json"
+        summary["preservation_report"] = str(report_path)
+        report = build_preservation_report(
+            base,
+            load_heif(output_path),
+            summary=summary,
+            base_hdr_roles=base_hdr_roles,
+            injected_item_ids=[id_map[item_id] for item_id in donor_item_ids],
+        )
         (output_path.parent / "style_injection_summary.json").write_text(
             json.dumps(summary, indent=2, ensure_ascii=False) + "\n"
         )
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     return summary
 
 
@@ -656,10 +926,34 @@ def main() -> int:
     parser.add_argument("--no-update-base-exif", action="store_true")
     parser.add_argument("--update-style-metadata", action="store_true")
     parser.add_argument(
+        "--preserve-base-hdr-family",
+        action="store_true",
+        help="Reuse the target HEIC's own HDR gain map and tmap graph; inject only style-related donor items.",
+    )
+    parser.add_argument(
+        "--allow-donor-hdr-fallback",
+        action="store_true",
+        help="In preserve-base mode, fall back to the old donor gainmap/tmap copy path when the target has no HDR graph.",
+    )
+    parser.add_argument(
         "--replace-linearthumb-hevc",
         type=Path,
         help="Annex-B HEVC stream to use for the injected Apple linearthumbnail item 97 equivalent.",
     )
+    parser.add_argument("--linearthumb-dng", type=Path, help="DNG/RAW input for priority P0 linearthumbnail reconstruction.")
+    parser.add_argument("--linearthumb-preview", type=Path, help="Preview/appearance anchor for DNG linearthumbnail reconstruction.")
+    parser.add_argument("--linearthumb-base", type=Path, help="SDR/base image for gain-map linearthumbnail reconstruction.")
+    parser.add_argument("--linearthumb-gainmap", type=Path, help="Gain-map source for priority P1/P2 linearthumbnail reconstruction.")
+    parser.add_argument(
+        "--linearthumb-gainmap-mode",
+        choices=["auto", "apple-heic", "oppo", "mpf", "image"],
+        default="auto",
+    )
+    parser.add_argument("--linearthumb-preview-mix", type=float, default=0.25)
+    parser.add_argument("--linearthumb-vt-quality", type=float, default=0.45)
+    parser.add_argument("--linearthumb-output-png", type=Path)
+    parser.add_argument("--linearthumb-stats-json", type=Path)
+    parser.add_argument("--preservation-report", type=Path)
     args = parser.parse_args()
 
     if args.make_base_with_sips:
@@ -679,6 +973,36 @@ def main() -> int:
     if not args.no_update_base_exif and args.preview_jpeg is not None:
         exif_template = args.template or args.style_donor
 
+    generated_payload: bytes | None = None
+    generated_hvcc: bytes | None = None
+    generated_stats: dict[str, Any] | None = None
+    has_linearthumb_source = any(
+        value is not None
+        for value in (
+            args.linearthumb_dng,
+            args.linearthumb_base,
+            args.linearthumb_gainmap,
+        )
+    )
+    if args.replace_linearthumb_hevc is not None and has_linearthumb_source:
+        parser.error("--replace-linearthumb-hevc cannot be combined with --linearthumb-* reconstruction inputs")
+    if has_linearthumb_source:
+        donor_for_lt = load_heif(args.style_donor)
+        donor_family_for_lt = style_family_item_ids(donor_for_lt, include_hdr_family=False)
+        generated_payload, generated_hvcc, generated_stats = _encode_generated_linearthumb(
+            donor=donor_for_lt,
+            donor_family=donor_family_for_lt,
+            dng_path=args.linearthumb_dng,
+            preview_path=args.linearthumb_preview or args.preview_jpeg,
+            base_path=args.linearthumb_base or base_heic,
+            gainmap_path=args.linearthumb_gainmap,
+            gainmap_mode=args.linearthumb_gainmap_mode,
+            preview_mix=args.linearthumb_preview_mix,
+            vt_quality=args.linearthumb_vt_quality,
+            output_png=args.linearthumb_output_png,
+            stats_json=args.linearthumb_stats_json,
+        )
+
     summary = inject_style_family(
         base_heic,
         args.style_donor,
@@ -688,6 +1012,12 @@ def main() -> int:
         update_style_metadata=args.update_style_metadata,
         allow_dimension_mismatch=args.allow_dimension_mismatch,
         replace_linearthumb_hevc=args.replace_linearthumb_hevc,
+        replace_linearthumb_payload=generated_payload,
+        replace_linearthumb_hvcc=generated_hvcc,
+        preserve_base_hdr_family=args.preserve_base_hdr_family,
+        allow_donor_hdr_fallback=args.allow_donor_hdr_fallback,
+        generated_linearthumb_stats=generated_stats,
+        preservation_report_path=args.preservation_report,
     )
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     return 0
