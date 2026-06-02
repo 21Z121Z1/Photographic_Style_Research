@@ -6,7 +6,7 @@ public enum ToolCommandBuilderError: LocalizedError, Equatable {
     public var errorDescription: String? {
         switch self {
         case .missingField(let field):
-            "Missing required field: \(field)"
+            String(localized: "Missing required field: \(field)", comment: "Command validation error")
         }
     }
 }

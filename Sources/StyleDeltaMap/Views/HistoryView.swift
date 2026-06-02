@@ -38,9 +38,9 @@ struct HistoryView: View {
         }
         .overlay {
             if store.history.isEmpty {
-                ContentUnavailableView("No Runs Yet", systemImage: "clock", description: Text("Run a workflow to populate history."))
+                ContentUnavailableView(String(localized: "No Runs Yet", comment: "Empty state title"), systemImage: "clock", description: Text(String(localized: "Run a workflow to populate history.", comment: "Empty state description")))
             }
         }
-        .navigationTitle("Run History")
+        .navigationTitle(String(localized: "Run History", comment: "Navigation title"))
     }
 }

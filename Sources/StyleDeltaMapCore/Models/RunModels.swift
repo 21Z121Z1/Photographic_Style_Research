@@ -16,13 +16,13 @@ public enum RunState: Equatable {
     public var label: String {
         switch self {
         case .idle:
-            "Idle"
+            String(localized: "Idle", comment: "Run state label")
         case .running:
-            "Running"
+            String(localized: "Running", comment: "Run state label")
         case .succeeded:
-            "Succeeded"
+            String(localized: "Succeeded", comment: "Run state label")
         case .failed(let code):
-            "Failed (\(code))"
+            String(localized: "Failed (\(code))", comment: "Run state label with exit code")
         }
     }
 }

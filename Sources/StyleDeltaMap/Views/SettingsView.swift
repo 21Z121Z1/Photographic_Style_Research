@@ -5,21 +5,21 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section("Tooling") {
-                DirectoryPickerRow(title: "Repository Root", path: $store.preferences.repositoryRoot)
+            Section(String(localized: "Tooling", comment: "Section header")) {
+                DirectoryPickerRow(title: String(localized: "Repository Root", comment: "Field title"), path: $store.preferences.repositoryRoot)
                 PathPickerRow(
-                    title: "Python",
+                    title: String(localized: "Python", comment: "Field title"),
                     path: $store.preferences.pythonExecutable,
                     allowedExtensions: [],
-                    placeholder: "Leave empty to use STYLEDELTAMAP_PYTHON or python3"
+                    placeholder: String(localized: "Leave empty to use STYLEDELTAMAP_PYTHON or python3", comment: "Placeholder text")
                 )
-                DirectoryPickerRow(title: "Output Directory", path: $store.preferences.outputDirectory)
+                DirectoryPickerRow(title: String(localized: "Output Directory", comment: "Field title"), path: $store.preferences.outputDirectory)
             }
 
-            Section("Defaults") {
-                PathPickerRow(title: "Style Donor", path: $store.preferences.defaultStyleDonor, allowedExtensions: ["heic", "heif", "hif"])
-                PathPickerRow(title: "Template HEIC", path: $store.preferences.defaultTemplateHEIC, allowedExtensions: ["heic", "heif", "hif"])
-                Button("Apply Defaults To Workflows") {
+            Section(String(localized: "Defaults", comment: "Section header")) {
+                PathPickerRow(title: String(localized: "Style Donor", comment: "Field title"), path: $store.preferences.defaultStyleDonor, allowedExtensions: ["heic", "heif", "hif"])
+                PathPickerRow(title: String(localized: "Template HEIC", comment: "Field title"), path: $store.preferences.defaultTemplateHEIC, allowedExtensions: ["heic", "heif", "hif"])
+                Button(String(localized: "Apply Defaults To Workflows", comment: "Button label")) {
                     store.applyDefaults()
                 }
             }

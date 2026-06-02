@@ -6,7 +6,7 @@ struct RunConsoleView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text("Console")
+                Text(String(localized: "Console", comment: "Section header"))
                     .font(.headline)
                 Spacer()
                 Text(store.runState.label)

@@ -11,13 +11,13 @@ public enum WorkflowKind: String, CaseIterable, Identifiable {
     public var title: String {
         switch self {
         case .directInjection:
-            "Direct Injection"
+            String(localized: "Direct Injection", comment: "Sidebar workflow title")
         case .reconstruction:
-            "Gain Map / RAW"
+            String(localized: "Gain Map / RAW", comment: "Sidebar workflow title")
         case .validation:
-            "Validation"
+            String(localized: "Validation", comment: "Sidebar workflow title")
         case .history:
-            "Run History"
+            String(localized: "Run History", comment: "Sidebar workflow title")
         }
     }
 
@@ -37,13 +37,13 @@ public enum WorkflowKind: String, CaseIterable, Identifiable {
     public var subtitle: String {
         switch self {
         case .directInjection:
-            "Build a Photos-activating HEIC"
+            String(localized: "Build a Photos-activating HEIC", comment: "Sidebar workflow subtitle")
         case .reconstruction:
-            "Generate diagnostic auxiliary rasters"
+            String(localized: "Generate diagnostic auxiliary rasters", comment: "Sidebar workflow subtitle")
         case .validation:
-            "Inspect HEIF graph and semantic fit"
+            String(localized: "Inspect HEIF graph and semantic fit", comment: "Sidebar workflow subtitle")
         case .history:
-            "Review recent command output"
+            String(localized: "Review recent command output", comment: "Sidebar workflow subtitle")
         }
     }
 }

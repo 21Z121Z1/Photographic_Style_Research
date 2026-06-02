@@ -15,7 +15,7 @@ struct ContentView: View {
                 Button {
                     store.runSelectedWorkflow()
                 } label: {
-                    Label("Run", systemImage: "play.fill")
+                    Label(String(localized: "Run", comment: "Toolbar button"), systemImage: "play.fill")
                 }
                 .keyboardShortcut(.return, modifiers: [.command])
                 .disabled(store.runState.isRunning || store.selectedWorkflow == .history)
@@ -23,7 +23,7 @@ struct ContentView: View {
                 Button {
                     store.clearConsole()
                 } label: {
-                    Label("Clear Console", systemImage: "eraser")
+                    Label(String(localized: "Clear Console", comment: "Toolbar button"), systemImage: "eraser")
                 }
                 .keyboardShortcut("k", modifiers: [.command, .shift])
             }

@@ -20,7 +20,7 @@ struct PathPickerRow: View {
             } label: {
                 Image(systemName: "folder")
             }
-            .help("Choose \(title)")
+            .help(String(localized: "Choose \(title)", comment: "File picker tooltip"))
         }
     }
 }
@@ -43,7 +43,7 @@ struct DirectoryPickerRow: View {
             } label: {
                 Image(systemName: "folder")
             }
-            .help("Choose \(title)")
+            .help(String(localized: "Choose \(title)", comment: "File picker tooltip"))
         }
     }
 }
@@ -71,7 +71,7 @@ struct SavePathRow: View {
             } label: {
                 Image(systemName: "square.and.arrow.down")
             }
-            .help("Choose output path")
+            .help(String(localized: "Choose output path", comment: "Save path tooltip"))
         }
     }
 }

@@ -20,6 +20,6 @@ struct SidebarView: View {
             .tag(workflow)
         }
         .listStyle(.sidebar)
-        .navigationTitle("Workflows")
+        .navigationTitle(String(localized: "Workflows", comment: "Sidebar navigation title"))
     }
 }

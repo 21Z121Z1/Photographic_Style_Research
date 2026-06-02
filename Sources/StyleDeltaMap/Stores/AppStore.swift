@@ -87,7 +87,7 @@ final class AppStore {
 
     private func run(title: String, build: @escaping () throws -> CommandSpec) {
         guard !runState.isRunning else {
-            append("A command is already running.")
+            append(String(localized: "A command is already running.", comment: "Console error message"))
             return
         }
 

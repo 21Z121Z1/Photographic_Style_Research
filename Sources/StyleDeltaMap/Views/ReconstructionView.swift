@@ -6,8 +6,8 @@ struct ReconstructionView: View {
 
     var body: some View {
         Form {
-            Section("Mode") {
-                Picker("Operation", selection: $store.reconstruction.mode) {
+            Section(String(localized: "Mode", comment: "Section header")) {
+                Picker(String(localized: "Operation", comment: "Picker label"), selection: $store.reconstruction.mode) {
                     ForEach(ReconstructionMode.allCases) { mode in
                         Text(mode.title).tag(mode)
                     }
@@ -15,22 +15,22 @@ struct ReconstructionView: View {
                 .pickerStyle(.segmented)
             }
 
-            Section("Inputs") {
+            Section(String(localized: "Inputs", comment: "Section header")) {
                 switch store.reconstruction.mode {
                 case .inspectGainMap:
-                    PathPickerRow(title: "Gain Map Input", path: $store.reconstruction.gainMap, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
+                    PathPickerRow(title: String(localized: "Gain Map Input", comment: "Field title"), path: $store.reconstruction.gainMap, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
                     gainMapModePicker
                 case .linearthumbnailFromGainMap:
-                    PathPickerRow(title: "Base Image", path: $store.reconstruction.baseImage, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
-                    PathPickerRow(title: "Gain Map Input", path: $store.reconstruction.gainMap, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
+                    PathPickerRow(title: String(localized: "Base Image", comment: "Field title"), path: $store.reconstruction.baseImage, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
+                    PathPickerRow(title: String(localized: "Gain Map Input", comment: "Field title"), path: $store.reconstruction.gainMap, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
                     gainMapModePicker
-                    NumericField(title: "Max Dimension", value: $store.reconstruction.maxDimension, range: 128...4096)
+                    NumericField(title: String(localized: "Max Dimension", comment: "Field title"), value: $store.reconstruction.maxDimension, range: 128...4096)
                 case .linearthumbnailFromDNG:
-                    PathPickerRow(title: "DNG", path: $store.reconstruction.dng, allowedExtensions: ["dng"])
-                    PathPickerRow(title: "Preview", path: $store.reconstruction.preview, allowedExtensions: ["jpg", "jpeg", "png"], placeholder: "Optional rendered preview")
-                    NumericField(title: "Max Dimension", value: $store.reconstruction.maxDimension, range: 128...4096)
+                    PathPickerRow(title: String(localized: "DNG", comment: "Field title"), path: $store.reconstruction.dng, allowedExtensions: ["dng"])
+                    PathPickerRow(title: String(localized: "Preview", comment: "Field title"), path: $store.reconstruction.preview, allowedExtensions: ["jpg", "jpeg", "png"], placeholder: String(localized: "Optional rendered preview", comment: "Placeholder text"))
+                    NumericField(title: String(localized: "Max Dimension", comment: "Field title"), value: $store.reconstruction.maxDimension, range: 128...4096)
                     HStack {
-                        Text("Preview Mix")
+                        Text(String(localized: "Preview Mix", comment: "Field label"))
                             .frame(width: 180, alignment: .trailing)
                             .foregroundStyle(.secondary)
                         Slider(value: $store.reconstruction.previewMix, in: 0...1)
@@ -38,12 +38,12 @@ struct ReconstructionView: View {
                             .frame(width: 44, alignment: .trailing)
                     }
                 case .styledeltamapFromGainMap:
-                    PathPickerRow(title: "Gain Map Input", path: $store.reconstruction.gainMap, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
+                    PathPickerRow(title: String(localized: "Gain Map Input", comment: "Field title"), path: $store.reconstruction.gainMap, allowedExtensions: ["heic", "heif", "hif", "jpg", "jpeg", "png", "dng"])
                     gainMapModePicker
-                    NumericField(title: "Width", value: $store.reconstruction.width, range: 64...8192)
-                    NumericField(title: "Height", value: $store.reconstruction.height, range: 64...8192)
+                    NumericField(title: String(localized: "Width", comment: "Field title"), value: $store.reconstruction.width, range: 64...8192)
+                    NumericField(title: String(localized: "Height", comment: "Field title"), value: $store.reconstruction.height, range: 64...8192)
                     HStack {
-                        Text("Amplitude")
+                        Text(String(localized: "Amplitude", comment: "Field label"))
                             .frame(width: 180, alignment: .trailing)
                             .foregroundStyle(.secondary)
                         Slider(value: $store.reconstruction.amplitude, in: 0...32)
@@ -53,12 +53,12 @@ struct ReconstructionView: View {
                 }
             }
 
-            Section("Outputs") {
+            Section(String(localized: "Outputs", comment: "Section header")) {
                 if store.reconstruction.mode == .inspectGainMap {
-                    SavePathRow(title: "JSON Report", path: $store.reconstruction.jsonOutput, suggestedName: "gainmap_inspect.json", allowedExtension: "json")
+                    SavePathRow(title: String(localized: "JSON Report", comment: "Field title"), path: $store.reconstruction.jsonOutput, suggestedName: "gainmap_inspect.json", allowedExtension: "json")
                 } else {
-                    SavePathRow(title: "Output PNG", path: $store.reconstruction.outputImage, suggestedName: suggestedOutputName, allowedExtension: "png")
-                    SavePathRow(title: "Stats JSON", path: $store.reconstruction.jsonOutput, suggestedName: "aux_stats.json", allowedExtension: "json")
+                    SavePathRow(title: String(localized: "Output PNG", comment: "Field title"), path: $store.reconstruction.outputImage, suggestedName: suggestedOutputName, allowedExtension: "png")
+                    SavePathRow(title: String(localized: "Stats JSON", comment: "Field title"), path: $store.reconstruction.jsonOutput, suggestedName: "aux_stats.json", allowedExtension: "json")
                 }
             }
         }
@@ -68,7 +68,7 @@ struct ReconstructionView: View {
                 Button {
                     store.runReconstruction()
                 } label: {
-                    Label("Run Reconstruction", systemImage: "play.fill")
+                    Label(String(localized: "Run Reconstruction", comment: "Action button"), systemImage: "play.fill")
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(store.runState.isRunning)
@@ -76,7 +76,7 @@ struct ReconstructionView: View {
                 Button {
                     FilePanelService.reveal(path: store.reconstruction.outputImage.isEmpty ? store.reconstruction.jsonOutput : store.reconstruction.outputImage)
                 } label: {
-                    Label("Reveal Output", systemImage: "magnifyingglass")
+                    Label(String(localized: "Reveal Output", comment: "Action button"), systemImage: "magnifyingglass")
                 }
                 Spacer()
                 Text(store.runState.label)
@@ -85,15 +85,15 @@ struct ReconstructionView: View {
             .padding()
             .background(.regularMaterial)
         }
-        .navigationTitle("Gain Map / RAW")
+        .navigationTitle(String(localized: "Gain Map / RAW", comment: "Navigation title"))
     }
 
     private var gainMapModePicker: some View {
-        Picker("Gain Map Mode", selection: $store.reconstruction.gainMapMode) {
-            Text("Auto").tag("auto")
-            Text("OPPO").tag("oppo")
-            Text("MPF").tag("mpf")
-            Text("Image").tag("image")
+        Picker(String(localized: "Gain Map Mode", comment: "Picker label"), selection: $store.reconstruction.gainMapMode) {
+            Text(String(localized: "Auto", comment: "Picker option")).tag("auto")
+            Text(String(localized: "OPPO", comment: "Picker option")).tag("oppo")
+            Text(String(localized: "MPF", comment: "Picker option")).tag("mpf")
+            Text(String(localized: "Image", comment: "Picker option")).tag("image")
         }
     }
 

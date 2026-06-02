@@ -2,9 +2,12 @@ import AppKit
 import SwiftUI
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationDidFinishLaunching(_ notification: Notification) {
+    func applicationWillFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.regular)
-        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApp.activate()
     }
 }
 
@@ -14,19 +17,19 @@ struct StyleDeltaMapApp: App {
     @State private var store = AppStore()
 
     var body: some Scene {
-        WindowGroup("StyleDeltaMap") {
+        WindowGroup(String(localized: "StyleDeltaMap", comment: "App window title")) {
             ContentView(store: store)
                 .frame(minWidth: 1040, minHeight: 680)
         }
         .commands {
             CommandGroup(after: .newItem) {
-                Button("Run Selected Workflow") {
+                Button(String(localized: "Run Selected Workflow", comment: "Menu command")) {
                     store.runSelectedWorkflow()
                 }
                 .keyboardShortcut(.return, modifiers: [.command])
                 .disabled(store.runState.isRunning || store.selectedWorkflow == .history)
 
-                Button("Clear Console") {
+                Button(String(localized: "Clear Console", comment: "Menu command")) {
                     store.clearConsole()
                 }
                 .keyboardShortcut("k", modifiers: [.command, .shift])

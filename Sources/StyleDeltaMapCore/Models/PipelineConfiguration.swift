@@ -51,13 +51,13 @@ public enum ReconstructionMode: String, CaseIterable, Identifiable {
     public var title: String {
         switch self {
         case .inspectGainMap:
-            "Inspect Gain Map"
+            String(localized: "Inspect Gain Map", comment: "Reconstruction mode picker title")
         case .linearthumbnailFromGainMap:
-            "Linearthumbnail From Gain Map"
+            String(localized: "Linearthumbnail From Gain Map", comment: "Reconstruction mode picker title")
         case .linearthumbnailFromDNG:
-            "Linearthumbnail From DNG"
+            String(localized: "Linearthumbnail From DNG", comment: "Reconstruction mode picker title")
         case .styledeltamapFromGainMap:
-            "Styledeltamap From Gain Map"
+            String(localized: "Styledeltamap From Gain Map", comment: "Reconstruction mode picker title")
         }
     }
 }
@@ -117,9 +117,9 @@ public enum ValidationMode: String, CaseIterable, Identifiable {
     public var title: String {
         switch self {
         case .semantic:
-            "Semantic Fit"
+            String(localized: "Semantic Fit", comment: "Validation mode picker title")
         case .heifDump:
-            "HEIF Dump"
+            String(localized: "HEIF Dump", comment: "Validation mode picker title")
         }
     }
 }

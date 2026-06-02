@@ -5,56 +5,56 @@ struct DirectInjectionView: View {
 
     var body: some View {
         Form {
-            Section("Base Image") {
-                Toggle("Create base HEIC from preview with sips", isOn: $store.directInjection.makeBaseWithSips)
+            Section(String(localized: "Base Image", comment: "Section header")) {
+                Toggle(String(localized: "Create base HEIC from preview with sips", comment: "Toggle label"), isOn: $store.directInjection.makeBaseWithSips)
                 PathPickerRow(
-                    title: "Preview JPEG",
+                    title: String(localized: "Preview JPEG", comment: "Field title"),
                     path: $store.directInjection.previewJPEG,
                     allowedExtensions: ["jpg", "jpeg"],
-                    placeholder: "Required when creating base with sips"
+                    placeholder: String(localized: "Required when creating base with sips", comment: "Placeholder text")
                 )
                 if !store.directInjection.makeBaseWithSips {
                     PathPickerRow(
-                        title: "Base HEIC",
+                        title: String(localized: "Base HEIC", comment: "Field title"),
                         path: $store.directInjection.baseHEIC,
                         allowedExtensions: ["heic", "heif", "hif"],
-                        placeholder: "Existing Apple-generated base HEIC"
+                        placeholder: String(localized: "Existing Apple-generated base HEIC", comment: "Placeholder text")
                     )
                 }
                 HStack {
-                    NumericField(title: "Base Width", value: $store.directInjection.baseWidth, range: 1...20000)
-                    NumericField(title: "Base Height", value: $store.directInjection.baseHeight, range: 1...20000)
+                    NumericField(title: String(localized: "Base Width", comment: "Field title"), value: $store.directInjection.baseWidth, range: 1...20000)
+                    NumericField(title: String(localized: "Base Height", comment: "Field title"), value: $store.directInjection.baseHeight, range: 1...20000)
                 }
             }
 
-            Section("Style Family") {
+            Section(String(localized: "Style Family", comment: "Section header")) {
                 PathPickerRow(
-                    title: "Style Donor",
+                    title: String(localized: "Style Donor", comment: "Field title"),
                     path: $store.directInjection.styleDonor,
                     allowedExtensions: ["heic", "heif", "hif"]
                 )
                 PathPickerRow(
-                    title: "Template HEIC",
+                    title: String(localized: "Template HEIC", comment: "Field title"),
                     path: $store.directInjection.templateHEIC,
                     allowedExtensions: ["heic", "heif", "hif"]
                 )
                 PathPickerRow(
-                    title: "Linearthumb HEVC",
+                    title: String(localized: "Linearthumb HEVC", comment: "Field title"),
                     path: $store.directInjection.replacementLinearthumbnailHEVC,
                     allowedExtensions: ["hevc", "h265", "bin"],
-                    placeholder: "Optional q=0.45 replacement"
+                    placeholder: String(localized: "Optional q=0.45 replacement", comment: "Placeholder text")
                 )
             }
 
-            Section("Output") {
+            Section(String(localized: "Output", comment: "Section header")) {
                 SavePathRow(
-                    title: "Output HEIC",
+                    title: String(localized: "Output HEIC", comment: "Field title"),
                     path: $store.directInjection.outputHEIC,
                     suggestedName: "style_injected.heic",
                     allowedExtension: "heic"
                 )
-                Toggle("Update style metadata", isOn: $store.directInjection.updateStyleMetadata)
-                Toggle("Allow dimension mismatch", isOn: $store.directInjection.allowDimensionMismatch)
+                Toggle(String(localized: "Update style metadata", comment: "Toggle label"), isOn: $store.directInjection.updateStyleMetadata)
+                Toggle(String(localized: "Allow dimension mismatch", comment: "Toggle label"), isOn: $store.directInjection.allowDimensionMismatch)
             }
         }
         .formStyle(.grouped)
@@ -63,7 +63,7 @@ struct DirectInjectionView: View {
                 Button {
                     store.runDirectInjection()
                 } label: {
-                    Label("Build HEIC", systemImage: "play.fill")
+                    Label(String(localized: "Build HEIC", comment: "Action button"), systemImage: "play.fill")
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(store.runState.isRunning)
@@ -71,7 +71,7 @@ struct DirectInjectionView: View {
                 Button {
                     FilePanelService.reveal(path: store.directInjection.outputHEIC)
                 } label: {
-                    Label("Reveal Output", systemImage: "magnifyingglass")
+                    Label(String(localized: "Reveal Output", comment: "Action button"), systemImage: "magnifyingglass")
                 }
                 .disabled(store.directInjection.outputHEIC.isEmpty)
 
@@ -82,6 +82,6 @@ struct DirectInjectionView: View {
             .padding()
             .background(.regularMaterial)
         }
-        .navigationTitle("Direct Injection")
+        .navigationTitle(String(localized: "Direct Injection", comment: "Navigation title"))
     }
 }
