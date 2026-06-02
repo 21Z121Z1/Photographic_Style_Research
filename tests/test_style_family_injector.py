@@ -1,10 +1,17 @@
 import tempfile
 import unittest
+import json
 from pathlib import Path
 
 from tools.heif_dump import parse_file
 from tools.hevc10_encoder import payload_and_hvcc_from_annexb_hevc
-from tools.inject_style_family import inject_style_family, load_heif
+from tools.inject_style_family import (
+    _build_item_id_map,
+    _required_base_hdr_roles,
+    inject_style_family,
+    load_heif,
+    style_family_item_ids,
+)
 
 
 BASE_SIPS_FULL = Path("artifacts/constructed/apple_parity_styledeltamap/IMG_0342_preview_sips.heic")
@@ -20,9 +27,56 @@ DONOR_V8 = Path(
 REPLACEMENT_LINEARTHUMB_HEVC = Path("artifacts/constructed/apple_parity_styledeltamap_v7_vt_linearthumb/linearthumbnail_vt.hevc")
 PREVIEW_JPEG = Path("/Users/retriedstormtrooper/Downloads/03_图片素材/RAW_DNG照片/RAW_DNG_JPEG_批量导出/IMG_0342_preview.jpg")
 TEMPLATE = Path("Apple_Native_Samples/IMG_0032.HEIC")
+HDR_TARGET_IMG_2911 = Path("Apple_Native_Samples/IMG_2911.HEIC")
 
 
 class StyleFamilyInjectorTests(unittest.TestCase):
+    @unittest.skipUnless(HDR_TARGET_IMG_2911.exists() and DONOR_V8.exists(), "HDR target or donor missing")
+    def test_preserve_base_allocator_skips_entity_group_ids(self):
+        base = load_heif(HDR_TARGET_IMG_2911)
+        donor = load_heif(DONOR_V8)
+        base_hdr_roles = _required_base_hdr_roles(base)
+        donor_family = style_family_item_ids(donor, include_hdr_family=False)
+        donor_item_ids = list(donor_family["item_ids"])  # type: ignore[arg-type]
+        id_map = _build_item_id_map(
+            base,
+            donor,
+            donor_item_ids,
+            role_item_id_map={int(donor_family["tmap"]): base_hdr_roles["tmap"]},
+        )
+
+        remapped_item_ids = {id_map[item_id] for item_id in donor_item_ids}
+        self.assertFalse(remapped_item_ids & base.entity_group_ids)
+        self.assertEqual(min(remapped_item_ids), 68)
+
+    @unittest.skipUnless(HDR_TARGET_IMG_2911.exists() and DONOR_V8.exists(), "HDR target or donor missing")
+    def test_preserve_base_hdr_family_preserves_target_ftyp_for_hdr_target(self):
+        with tempfile.TemporaryDirectory(prefix="style_inject_preserve_hdr_target_", dir="/private/tmp") as tmpdir:
+            output = Path(tmpdir) / "preserve_hdr_target.heic"
+            report = Path(tmpdir) / "preserve_hdr_target.report.json"
+            base = load_heif(HDR_TARGET_IMG_2911)
+
+            inject_style_family(
+                HDR_TARGET_IMG_2911,
+                DONOR_V8,
+                output_path=output,
+                preserve_base_hdr_family=True,
+                preservation_report_path=report,
+            )
+
+            injected = load_heif(output)
+            base_ftyp = base.data[base.ftyp_box["offset"] : base.ftyp_box["offset"] + base.ftyp_box["size"]]
+            injected_ftyp = injected.data[
+                injected.ftyp_box["offset"] : injected.ftyp_box["offset"] + injected.ftyp_box["size"]
+            ]
+            self.assertEqual(injected_ftyp, base_ftyp)
+            report_data = json.loads(report.read_text())
+            container = report_data["container_preservation"]
+            self.assertEqual(container["base"]["entity_group_ids"], [67])
+            self.assertEqual(container["output"]["id_collisions_with_entity_groups"], [])
+            self.assertIn("meta_child_order", container["base"])
+            self.assertIn("changed_base_item_iloc_records", container)
+
     @unittest.skipUnless(BASE_SIPS_FULL.exists() and DONOR_V8.exists(), "base or donor artifact missing")
     def test_rejects_dimension_mismatch_between_base_primary_and_donor_tmap(self):
         with self.assertRaisesRegex(ValueError, "primary dimensions"):
@@ -141,6 +195,10 @@ class StyleFamilyInjectorTests(unittest.TestCase):
             self.assertEqual(summary["tmap_item_id"], base_tmap_id)
 
             injected = load_heif(output)
+            self.assertEqual(
+                injected.data[injected.ftyp_box["offset"] : injected.ftyp_box["offset"] + injected.ftyp_box["size"]],
+                base.data[base.ftyp_box["offset"] : base.ftyp_box["offset"] + base.ftyp_box["size"]],
+            )
             self.assertEqual(injected.item_payloads[base_gainmap_id], base.item_payloads[base_gainmap_id])
             self.assertEqual(injected.item_payloads[base_tmap_id], base.item_payloads[base_tmap_id])
 

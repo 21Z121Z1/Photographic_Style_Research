@@ -44,6 +44,7 @@ class LoadedHeif:
     item_payloads: dict[int, bytes]
     construction_methods: dict[int, int]
     item_order: list[int]
+    entity_group_ids: set[int]
 
 
 def _raw_box(data: bytes, box_info: dict[str, Any]) -> bytes:
@@ -59,6 +60,31 @@ def _find_top_box(data: bytes, box_type: str) -> dict[str, Any]:
         if box_info["type"] == box_type:
             return box_info
     raise ValueError(f"{box_type} box not found")
+
+
+def _entity_group_ids(data: bytes) -> set[int]:
+    try:
+        meta_box = _find_top_box(data, "meta")
+    except ValueError:
+        return set()
+
+    group_ids: set[int] = set()
+    meta_children = iter_boxes(
+        data,
+        meta_box["payload_offset"] + 4,
+        meta_box["payload_offset"] + meta_box["payload_size"],
+    )
+    for child in meta_children:
+        if child["type"] != "grpl":
+            continue
+        for group in iter_boxes(data, child["payload_offset"], child["payload_offset"] + child["payload_size"]):
+            payload_offset = int(group["payload_offset"])
+            payload_size = int(group["payload_size"])
+            if payload_size < 12:
+                continue
+            # EntityToGroupBox is a FullBox followed by uint32 group_id.
+            group_ids.add(int.from_bytes(data[payload_offset + 4 : payload_offset + 8], "big"))
+    return group_ids
 
 
 def _cstr(value: str | None) -> bytes:
@@ -126,6 +152,7 @@ def load_heif(path: Path) -> LoadedHeif:
         item_payloads=item_payloads,
         construction_methods=construction_methods,
         item_order=item_order,
+        entity_group_ids=_entity_group_ids(data),
     )
 
 
@@ -237,7 +264,10 @@ def _build_item_id_map(
     *,
     role_item_id_map: dict[int, int] | None = None,
 ) -> dict[int, int]:
-    next_item_id = max(base.item_order)
+    reserved_ids = set(base.item_order) | set(base.entity_group_ids)
+    if role_item_id_map:
+        reserved_ids.update(int(value) for value in role_item_id_map.values())
+    next_item_id = max(reserved_ids) if reserved_ids else 0
     id_map = {int(donor.parsed["primary_item_id"]): int(base.parsed["primary_item_id"])}
     if role_item_id_map:
         id_map.update({int(key): int(value) for key, value in role_item_id_map.items()})
@@ -245,7 +275,10 @@ def _build_item_id_map(
         if donor_item_id in id_map:
             continue
         next_item_id += 1
+        while next_item_id in reserved_ids:
+            next_item_id += 1
         id_map[donor_item_id] = next_item_id
+        reserved_ids.add(next_item_id)
     return id_map
 
 
@@ -654,6 +687,121 @@ def _same_payload_family(before: dict[str, Any] | None, after: dict[str, Any] | 
     )
 
 
+def _top_level_box_order(loaded: LoadedHeif) -> list[str]:
+    return [box_info["type"] for box_info in iter_boxes(loaded.data)]
+
+
+def _meta_child_order(loaded: LoadedHeif) -> list[str]:
+    meta_box = _find_top_box(loaded.data, "meta")
+    return [
+        child["type"]
+        for child in iter_boxes(
+            loaded.data,
+            meta_box["payload_offset"] + 4,
+            meta_box["payload_offset"] + meta_box["payload_size"],
+        )
+    ]
+
+
+def _iloc_record_summary(loaded: LoadedHeif, item_id: int) -> dict[str, Any] | None:
+    item = loaded.parsed.get("items", {}).get(str(item_id))
+    if not item:
+        return None
+    return {
+        "item_id": item_id,
+        "construction_method": int(item.get("construction_method", 0)),
+        "data_reference_index": int(item.get("data_reference_index", 0)),
+        "base_offset": int(item.get("base_offset", 0)),
+        "extents": [
+            {
+                "offset": int(extent.get("offset", 0)),
+                "length": int(extent.get("length", 0)),
+                "absolute_offset": int(extent.get("absolute_offset", 0)),
+                "storage": extent.get("storage"),
+            }
+            for extent in item.get("extents", [])
+        ],
+    }
+
+
+def _ipma_summary(loaded: LoadedHeif, item_id: int) -> list[dict[str, Any]]:
+    item = loaded.parsed.get("items", {}).get(str(item_id), {})
+    return [
+        {
+            "property_index": int(assoc.get("property_index", 0)),
+            "essential": bool(assoc.get("essential")),
+            "type": assoc.get("type"),
+        }
+        for assoc in item.get("property_associations", [])
+    ]
+
+
+def _references_from_summary(loaded: LoadedHeif, item_id: int) -> list[dict[str, Any]]:
+    item = loaded.parsed.get("items", {}).get(str(item_id), {})
+    return [
+        {
+            "type": ref.get("type"),
+            "to_item_ids": [int(target) for target in ref.get("to_item_ids", [])],
+        }
+        for ref in item.get("references_from", [])
+    ]
+
+
+def _changed_base_items(
+    base: LoadedHeif,
+    output: LoadedHeif,
+    summarizer,
+) -> list[dict[str, Any]]:
+    changed = []
+    for item_id in base.item_order:
+        before = summarizer(base, item_id)
+        after = summarizer(output, item_id)
+        if before != after:
+            changed.append({"item_id": item_id, "before": before, "after": after})
+    return changed
+
+
+def _container_preservation_report(base: LoadedHeif, output: LoadedHeif) -> dict[str, Any]:
+    output_item_ids = set(output.item_order)
+    base_item_ids = set(base.item_order)
+    iloc_changes = _changed_base_items(base, output, _iloc_record_summary)
+    ipma_changes = _changed_base_items(base, output, _ipma_summary)
+    reference_changes = _changed_base_items(base, output, _references_from_summary)
+    return {
+        "base": {
+            "top_level_box_order": _top_level_box_order(base),
+            "meta_child_order": _meta_child_order(base),
+            "ftyp": base.parsed.get("ftyp"),
+            "entity_group_ids": sorted(base.entity_group_ids),
+            "item_count": len(base.item_order),
+            "item_ids": base.item_order,
+        },
+        "output": {
+            "top_level_box_order": _top_level_box_order(output),
+            "meta_child_order": _meta_child_order(output),
+            "ftyp": output.parsed.get("ftyp"),
+            "entity_group_ids": sorted(output.entity_group_ids),
+            "item_count": len(output.item_order),
+            "item_ids": output.item_order,
+            "new_item_ids": sorted(output_item_ids - base_item_ids),
+            "id_collisions_with_entity_groups": sorted(output_item_ids & output.entity_group_ids),
+        },
+        "changed_ftyp": base.parsed.get("ftyp") != output.parsed.get("ftyp"),
+        "changed_base_item_iloc_records": {
+            "count": len(iloc_changes),
+            "items": iloc_changes,
+        },
+        "changed_base_item_ipma_associations": {
+            "count": len(ipma_changes),
+            "items": ipma_changes,
+        },
+        "changed_base_item_references": {
+            "count": len(reference_changes),
+            "items": reference_changes,
+        },
+    }
+
+
 def build_preservation_report(
     base: LoadedHeif,
     output: LoadedHeif,
@@ -721,6 +869,7 @@ def build_preservation_report(
         "replacement_linearthumbnail_nal_types": summary.get("replacement_linearthumbnail_nal_types"),
         "remapped_references_from_injected_items": remapped_refs,
         "unable_to_preserve_payload_family": unable_to_preserve,
+        "container_preservation": _container_preservation_report(base, output),
     }
 
 
@@ -811,7 +960,7 @@ def inject_style_family(
         base_exif_item_id=base_exif_item_id,
         remapped_tmap_item_id=id_map[int(donor_family["tmap"])],
     )
-    ftyp = _build_ftyp(base, donor)
+    ftyp = _raw_box(base.data, base.ftyp_box) if reused_base_hdr_graph else _build_ftyp(base, donor)
     iinf = _build_iinf(items_for_iinf)
     iref = _build_iref(references)
     iprp = _build_iprp(

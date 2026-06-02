@@ -71,6 +71,12 @@ Generated:
 
 `artifacts/constructed/preserve_base_hdr_style_graft_20260601/apple_hdr_preserve_base_style_graft_from_IMG_2911.heic`
 
+2026-06-02 correction: this artifact is structurally readable by `heif-info`
+but is not Apple-native parseable. `sips` reports nil pixel dimensions, Swift
+ImageIO reports `CGImageSourceGetCount == 0`, and QuickLook times out. The root
+cause and fixed output are documented in
+`docs/preserve_base_parseability_regression_2026-06-02.md`.
+
 Target:
 
 `Apple_Native_Samples/IMG_2911.HEIC`
@@ -91,8 +97,8 @@ Key validation results:
 - new style metadata item `100` has `cdsc -> [50, 66]`;
 - target `tmap` keeps `dimg -> [50, 64]`;
 - `semantic_fitter` hard warnings: `[]`;
-- `heif-info` exits successfully. It prints the same non-fatal brand warning
-  seen in earlier local candidates.
+- `heif-info` exits successfully, but that is not sufficient evidence for
+  Apple-native parseability.
 
 ## Still Not Proven
 
