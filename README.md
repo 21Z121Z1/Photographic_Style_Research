@@ -137,6 +137,7 @@ swift test
 - [Apple Parity Attempt](docs/apple_parity_styledeltamap_attempt.md) — Template-based reconstruction progress
 - [Linear Thumbnail Findings](docs/apple_linearthumbnail_item97_findings_2026-05-31.md) — Item 97 encoding analysis
 - [Preserve-Base HDR Style Graft](docs/preserve_base_hdr_style_graft_2026-06-01.md) — Reuse target HDR graph while adding style items
+- [Spatial Source Ablation](docs/photographic-style-spatial-source-ablation-20260602.md) — Reproducible source perturbation run for base, styledeltamap, linearthumbnail, sky matte, and style metadata
 - [ISO Auxiliary Writer](docs/iso_aux_styledeltamap_writer.md) — Standards-oriented HEIF writer
 - [macOS App](docs/macos_app_2026-05-31.md) — Native SwiftUI app architecture, usage, and validation evidence
 
