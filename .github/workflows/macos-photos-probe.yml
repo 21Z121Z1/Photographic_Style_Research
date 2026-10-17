@@ -1,0 +1,49 @@
+name: macOS Photos capability probe
+
+on:
+  push:
+    branches:
+      - 'research/macos-photos-probe-*'
+  pull_request:
+    paths:
+      - '.github/workflows/macos-photos-probe.yml'
+      - 'script/mac_photos_capability_probe.swift'
+      - 'Package.swift'
+      - 'Sources/**'
+      - 'tests/StyleDeltaMapTests/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-probe:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Xcode and platform
+        run: |
+          sw_vers
+          uname -m
+          xcodebuild -version
+          swift --version
+      - name: Compile and test Swift package
+        run: swift test
+      - name: Native Apple framework probe (synthetic image only)
+        run: |
+          mkdir -p artifacts/macos
+          swift script/mac_photos_capability_probe.swift \
+            artifacts/macos/capabilities.json \
+            artifacts/macos/synthetic.heic
+      - name: Compile Python source without fixtures
+        run: python3 -m compileall -q tools tests
+      - name: Upload macOS results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-photos-capability-results
+          path: artifacts/macos/
+          if-no-files-found: warn
+          retention-days: 14
