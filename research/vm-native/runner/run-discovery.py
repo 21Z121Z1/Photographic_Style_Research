@@ -10,14 +10,12 @@ def run(args,log,env=None):
 flags=['clang','-fobjc-arc','-O1','-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-Wl,-undefined,dynamic_lookup']
 for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls','arithmetic','readback_main','contrast_probe']:
  run(flags+[src/(name+'.m'),'-o','/tmp/'+name],out/(name+'-build.log'))
-run(['/tmp/resolve_calls',src/'call-addresses.json',out/'resolved-calls.json'],out/'resolved-calls.log')
-run(['/tmp/contrast_probe',src,out/'contrast-probe','unused'],out/'contrast-probe.log')
+# Selector and arithmetic discovery results are already archived.
+# Do not repeat the independent contrast control.
 # Arithmetic evidence is preserved in run 39054842867; no repeat here.
-read=out/'carrier-test';read.mkdir(exist_ok=True)
-run(['/tmp/readback_main',root/'research/vm-native/samples/IMG_2600-carrier-test.HEIC',read,'unused'],read/'readback.log')
-# Only these discovery photos can influence the formula. IMG_0032/0033 stay held out.
-for stem in ['IMG_2600','IMG_2604','IMG_2608']:
- photo=root/'research/vm-native/samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'photo-resources'/stem
+# First native consumer evaluation of the two held-out photos, after model freeze.
+for stem in ['IMG_0032','IMG_0033']:
+ photo=root/'Apple_Native_Samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'photo-resources'/stem
  rc=run(['python3',root/'research/vm-native/extract_inputs.py',photo,resources],out/(stem+'-extract.log'))
  if rc!=0:continue
  case=out/stem;case.mkdir(exist_ok=True)
@@ -31,7 +29,7 @@ for stem in ['IMG_2600','IMG_2604','IMG_2608']:
  for p in resources.glob('*.f32'):p.replace(case/p.name)
  for p in resources.glob('*.bin'):p.replace(case/p.name)
  if (resources/'reverse.json').exists():(resources/'reverse.json').replace(case/'reverse.json')
- for tone in [0]:
+ for tone in [0,.35]:
   env=os.environ.copy();env.update({'VM_CONSUMER_MSL':str(src/'consumer-model.metal'),'XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':str(tone),'XD_TONE_MAX_EDGE':'512','XD_TONE_GUIDED_REPLAY':'0'})
   run(['/tmp/native_renderer_trace',photo,resources,case/('tone-'+str(tone))],case/('tone-'+str(tone)+'.log'),env)
  # Preserve shape/dtype even when a stage fails.

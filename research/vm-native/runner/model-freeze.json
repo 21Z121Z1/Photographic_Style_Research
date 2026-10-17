@@ -1,0 +1,43 @@
+{
+  "frozen_utc": "2026-10-17T22:24:01.572457+00:00",
+  "os_build": "26A434",
+  "discovery_photos": [
+    "IMG_2600",
+    "IMG_2604",
+    "IMG_2608"
+  ],
+  "held_out_native_consumer": [
+    "IMG_0032",
+    "IMG_0033"
+  ],
+  "scope": "NumPy consumer algebra, primitive lowering choices, generated MSL; held-out captures must not tune these files",
+  "environment_defaults": {
+    "AIR_FUSION": "1",
+    "AIR_NATIVE_LOWERING": "1",
+    "AIR_TEX_HALF_UP": "1"
+  },
+  "known_failed_gate": "NumPy half bit-exactness on discovery full frames",
+  "files": [
+    {
+      "path": "forward.py",
+      "sha256": "7b3011f046dddb3da9ee9ec7ef8b30a219b0bfe9f7eb01300a71ba023d9fa544",
+      "size": 7542
+    },
+    {
+      "path": "air_numpy.py",
+      "sha256": "b6f7080c737cd108cf187072d736611e5a51dd1321bb0daa19ebdd3cce41a7f4",
+      "size": 22805
+    },
+    {
+      "path": "scripts/air_to_msl.py",
+      "sha256": "dcaa268969a941606cca8a449d130c894a60c5cf6dd9d2eef153eeb419fce8f1",
+      "size": 15244
+    },
+    {
+      "path": "repo/research/vm-native/runner/consumer-model.metal",
+      "sha256": "0686309165c4b230e45b7ebcba4cd2bd66906840ac20c7fb3b293d6d3ba5c7ed",
+      "size": 248244
+    }
+  ],
+  "air_sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1"
+}
