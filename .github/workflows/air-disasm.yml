@@ -1,0 +1,75 @@
+name: air-disasm
+
+# 用 metal-objdump 反汇编 CMImaging metallib 的关键 StyleEngine kernel
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/air-disasm.yml'
+
+jobs:
+  disasm:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 准备
+        run: |
+          mkdir -p out
+          cp /System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources/default.metallib out/
+          echo "SHA: $(shasum -a 256 out/default.metallib | cut -d' ' -f1)"
+
+      - name: build table - module
+        run: |
+          set +e
+          xcrun metal-objdump --build-table=module out/default.metallib > out/build_table_module.txt 2>&1
+          echo "rc=$?"; wc -l out/build_table_module.txt; head -60 out/build_table_module.txt
+
+      - name: metal-nm 全函数
+        run: |
+          set +e
+          xcrun metal-nm out/default.metallib > out/nm.txt 2>&1
+          echo "rc=$? lines=$(wc -l < out/nm.txt)"
+          cat out/nm.txt
+
+      - name: 反汇编全部
+        run: |
+          set +e
+          xcrun metal-objdump -d --demangle out/default.metallib > out/disasm_all.txt 2>&1
+          echo "rc=$? lines=$(wc -l < out/disasm_all.txt)"
+          ls -la out/disasm_all.txt
+          head -40 out/disasm_all.txt
+
+      - name: 剥离出关键 kernel 段
+        run: |
+          set +e
+          cd out
+          for k in MakeWeights Integrate Apply NormalizeWeightPlanes SumWeightPlanes SplitWeightPlanesByColor FillCoefficientTexture CreateLinearSystem GlobalExtrapolation CalculateResiduals; do
+            awk -v k="$k" '
+              /^[A-Za-z_].*:$/ || /^_?[A-Za-z].*\(/ { name=$0 }
+              index($0,k)>0 && /:$/ { infunc=1; print "===== " $0; next }
+              infunc && /^$/ { infunc=0 }
+              infunc { print }
+            ' disasm_all.txt > "kernel_${k}.txt" 2>/dev/null
+            echo "$k -> $(wc -l < kernel_${k}.txt) lines"
+          done
+          echo "=== 若上面全 0，说明 -d 输出格式不同，改用 grep 上下文方式 ==="
+          grep -n "MakeWeights" disasm_all.txt | head -5
+
+      - name: 用 grep 切段（兜底方案）
+        run: |
+          set +e
+          cd out
+          # 找出所有函数边界行
+          grep -nE "^_?[A-Za-z][A-Za-z0-9_:]*:" disasm_all.txt | head -30 > func_boundaries.txt
+          cat func_boundaries.txt
+          echo "=== 统计 ==="
+          wc -l disasm_all.txt
+
+      - name: 上传
+        uses: actions/upload-artifact@v4
+        with:
+          name: air-disasm
+          path: out/
+          retention-days: 14
