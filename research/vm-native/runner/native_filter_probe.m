@@ -42,7 +42,7 @@ static NSDictionary *Render(CIImage *image,CIContext *context,CGColorSpaceRef sp
     CGRect r=image.extent;
     if(CGRectIsInfinite(r)||CGRectIsEmpty(r)) return @{@"invalid_extent":Extent(r)};
     NSUInteger w=llround(r.size.width),h=llround(r.size.height);
-    if(w*h>2000000) return @{@"too_large":Extent(r)};
+    if(w*h>2000000) @throw [NSException exceptionWithName:@"capture-too-large" reason:Extent(r) userInfo:nil];
     NSMutableData *data=[NSMutableData dataWithLength:w*h*16];
     [context render:image toBitmap:data.mutableBytes rowBytes:w*16 bounds:r format:kCIFormatRGBAf colorSpace:space];
     const float *p=data.bytes;double sum=0;float lo=INFINITY,hi=-INFINITY;NSUInteger nonfinite=0;
@@ -194,7 +194,8 @@ int main(int argc,char **argv) {
             } @catch(NSException *exception) {[trials addObject:@{@"use_style_engine":engine,@"exception":exception.description}];}
         }
         facts[@"trials"]=trials;facts[@"gtc_calls"]=Calls;
-        // Direct controlled kernel trials identify argument count and sampling.
+        if([NSProcessInfo.processInfo.environment[@"VM_GTC_SPOTCHECK"] boolValue]) {
+        // Optional single spot-check; the established GTC experiments are not rerun by default.
         NSUInteger width=4096,height=4;
         NSMutableData *ramp=[NSMutableData dataWithLength:width*height*16];float *p=ramp.mutableBytes;
         for(NSUInteger y=0;y<height;y++)for(NSUInteger x=0;x<width;x++) {
@@ -227,6 +228,7 @@ int main(int argc,char **argv) {
             [controlled addObject:@{@"kind":kind,@"domain":@[@0,@1],@"normalizer":@[@(255./256),@(.5/256)],@"output":Render(result,unmanaged,NULL,[out stringByAppendingPathComponent:[kind stringByAppendingString:@"-gtc-ramp.f32"]])}];
         }
         facts[@"controlled_gtc"]=controlled;
+        }
         CGColorSpaceRelease(linear);
         facts[@"os"]=NSProcessInfo.processInfo.operatingSystemVersionString;facts[@"device"]=device.name;
     } @catch(NSException *exception) {facts[@"exception"]=exception.description;}

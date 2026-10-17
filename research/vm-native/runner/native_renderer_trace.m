@@ -140,6 +140,12 @@ static int XDProcess(id self,SEL sel) {
         XDGuidedCalls=nil;
         NSString *dir=[XDTraceDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"renderer-%lu",(unsigned long)serial]];
         [[NSFileManager defaultManager]createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:NULL];
+        NSUInteger dispatchIndex=0;
+        for(NSDictionary *call in ECDispatches){
+            for(NSString *slot in call[@"textures"]){id texture=call[@"textures"][slot];BOOL found=NO;for(id value in saved.allValues)if(value==texture){found=YES;break;}
+                if(!found)saved[[NSString stringWithFormat:@"_dispatch-%lu-slot-%@Texture",(unsigned long)dispatchIndex,slot]]=texture;
+            }dispatchIndex++;
+        }
         XDDump(self,saved,dir,facts);
         ECWrite(dir,saved);
         [[NSJSONSerialization dataWithJSONObject:facts options:NSJSONWritingPrettyPrinted|NSJSONWritingSortedKeys error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"trace.json"] atomically:YES];

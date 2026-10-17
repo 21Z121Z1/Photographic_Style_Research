@@ -22,11 +22,29 @@ static void Require(BOOL condition, NSString *message) {
     if (!condition) @throw [NSException exceptionWithName:@"XDStylesUnavailable" reason:message userInfo:nil];
 }
 
+static NSDictionary *Readback(NSDictionary *request) {
+    NSString *dir=request[@"output_path"],*path=request[@"input_path"];
+    CGSize size=CGSizeMake([request[@"width"] doubleValue],[request[@"height"] doubleValue]);
+    CGColorSpaceRef linear=CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);
+    CIContext *context=Context(linear);
+    NSDictionary *sdr=Render(Canvas(Image(path),size),context,linear,[dir stringByAppendingPathComponent:@"published_sdr.f32"]);
+    CIImage *hdr=[CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:path]
+        options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@YES}];
+    NSDictionary *expanded=Render(Canvas(hdr,size),context,linear,[dir stringByAppendingPathComponent:@"published_hdr.f32"]);
+    CGColorSpaceRelease(linear);
+    return @{@"schema_version":@2,@"sdr":sdr,@"hdr":expanded};
+}
+static CIImage *RawImage(NSString *path) {
+    CIImage *image=[CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:path]
+        options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@NO,kCIImageColorSpace:NSNull.null}];
+    Require(image!=nil,@"Cannot decode Styles auxiliary image");
+    return image;
+}
+
 // Compare logical Objective-C ABI types, independently of argument stack offsets.
 // Struct names are compiler labels; their exact field layout is checked.
 static BOOL TypeMatches(const char *actual, const char *expected) {
-    while(strchr("rnNoORV",*actual) && *actual)actual++;
-    while(strchr("rnNoORV",*expected) && *expected)expected++;
+    while (*actual && strchr("rnNoORV",*actual)) actual++;
     if (*expected == '{') {
         const char *a = strchr(actual, '='), *e = strchr(expected, '=');
         return *actual == '{' && a && e && strcmp(a,e) == 0;
@@ -84,15 +102,20 @@ static NSDictionary *Render(CIImage *image, CIContext *context, CGColorSpaceRef 
     return @{@"width":@(w),@"height":@(h),@"black_fraction":@((double)black/(w*h))};
 }
 
+static void NativeAssertion(id self,SEL cmd,id assertion){@throw [NSException exceptionWithName:@"NativeAssertion" reason:[assertion description] userInfo:nil];}
 static NSDictionary *Decode(NSDictionary *request) {
     NSString *inputPath=request[@"input_path"],*dir=request[@"output_path"];
     NSData *plist=[NSData dataWithContentsOfFile:[dir stringByAppendingPathComponent:@"styles.plist"]];
     NSError *error=nil;
     NSDictionary *stored=[NSPropertyListSerialization propertyListWithData:plist options:NSPropertyListImmutable format:nil error:&error];
     Require([stored isKindOfClass:NSDictionary.class],error.description ?: @"Invalid Styles property list");
+    Require([request[@"supported_metadata_versions"] containsObject:stored[@"0"]],
+        [NSString stringWithFormat:@"Unsupported Styles metadata version 0.%@",stored[@"0"]]);
     NSData *coeff=stored[@"1"];
     Require([coeff isKindOfClass:NSData.class] && coeff.length>0,@"Missing Styles coefficients");
     Require(dlopen("/System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore",RTLD_NOW|RTLD_LOCAL)!=NULL,@"NeutrinoCore is unavailable");
+    Method assertion=class_getInstanceMethod(NSClassFromString(@"NUAssertionPolicyAbort"),NSSelectorFromString(@"notifyAssertion:"));
+    if(assertion)method_setImplementation(assertion,(IMP)NativeAssertion);
     Class propertiesClass=NSClassFromString(@"_NUSemanticStyleProperties"),reverse=NSClassFromString(@"NUStyleTransferReverseNode"),
         thumb=NSClassFromString(@"_NUStyleTransferThumbnailProcessor"),apply=NSClassFromString(@"_NUStyleTransferApplyProcessor"),
         configClass=NSClassFromString(@"_NUStyleEngineConfiguration"),processor=NSClassFromString(@"CMIStyleEngineProcessor"),spaceClass=NSClassFromString(@"NUColorSpace");
@@ -122,14 +145,14 @@ static NSDictionary *Decode(NSDictionary *request) {
     CGImageSourceRef source=CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:inputPath],NULL);
     Require(source!=NULL,@"ImageIO cannot open source");
     NSDictionary *imageProperties=CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(source,0,NULL)); CFRelease(source);
-    int orientation=[imageProperties[(__bridge id)kCGImagePropertyOrientation] intValue];
+    int orientation=[imageProperties[(__bridge id)kCGImagePropertyOrientation] intValue] ?: 1;
     Require(orientation>=1 && orientation<=8,@"Missing or unsupported image orientation");
     NSUInteger edge=[request[@"max_edge"] unsignedIntegerValue];
     double scale=edge?fmin(1.,(double)edge/fmax(input.extent.size.width,input.extent.size.height)):1.;
     CGSize canvas=CGSizeMake(floor(input.extent.size.width*scale),floor(input.extent.size.height*scale));
     input=Canvas(input,canvas);
     // Auxiliary dimensions may differ from the primary. Map each independently.
-    CIImage *delta=Canvas([Image([dir stringByAppendingPathComponent:@"delta.heic"]) imageByColorMatchingColorSpaceToWorkingSpace:nil],canvas);
+    CIImage *delta=Canvas(RawImage([dir stringByAppendingPathComponent:@"delta.heic"]),canvas);
     id space=[spaceClass displayP3ColorSpace];
     XDNUSize thumbSize={[configuration[@"thumbnailWidth"] longLongValue],[configuration[@"thumbnailHeight"] longLongValue]};
     Require(thumbSize.width>0 && thumbSize.height>0,@"Invalid native reverse thumbnail size");
@@ -139,13 +162,14 @@ static NSDictionary *Decode(NSDictionary *request) {
     Require(unstyled!=nil,error.description ?: @"Native reverse Apply failed");
     CGColorSpaceRef linear=CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);
     CIContext *context=Context(linear),*unmanaged=Context(NULL);
-    NSDictionary *u=Render([unstyled imageByApplyingOrientation:orientation],context,linear,[dir stringByAppendingPathComponent:@"unstyled.f32"]);
+    NSDictionary *u=Render(unstyled,context,linear,[dir stringByAppendingPathComponent:@"unstyled.f32"]);
+    Render(input,context,linear,[dir stringByAppendingPathComponent:@"original_sdr.f32"]);
     // Store the original HDR as a baseline and a detail source, not as a scene reference.
     CIImage *hdr=[CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:inputPath] options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@YES}];
-    NSDictionary *b=Render([Canvas(hdr,canvas) imageByApplyingOrientation:orientation],context,linear,[dir stringByAppendingPathComponent:@"original_hdr.f32"]);
-    CIImage *lt=Image([dir stringByAppendingPathComponent:@"linear.heic"]);
+    NSDictionary *b=Render(Canvas(hdr,canvas),context,linear,[dir stringByAppendingPathComponent:@"original_hdr.f32"]);
+    CIImage *lt=RawImage([dir stringByAppendingPathComponent:@"linear.heic"]);
     // Unmanaged rendering preserves the stored Log-like values despite its ICC tag.
-    NSDictionary *l=Render([lt imageByApplyingOrientation:orientation],unmanaged,NULL,[dir stringByAppendingPathComponent:@"thumbnail_codes.f32"]);
+    NSDictionary *l=Render(lt,unmanaged,NULL,[dir stringByAppendingPathComponent:@"thumbnail_codes.f32"]);
     CGColorSpaceRelease(linear);
     NSMutableDictionary *facts=[@{@"schema_version":@2,@"metadata_version":stored[@"0"] ?: @(-1),@"orientation":@(orientation),
         @"unstyled":u,@"original_hdr":b,@"thumbnail":l,@"coefficient_bytes":@(coeff.length),@"coefficient_float16":@(half),
@@ -172,17 +196,16 @@ static NSDictionary *Encode(NSDictionary *request) {
     CGColorSpaceRef linear=CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);
     CIContext *context=Context(linear);
     CIImage *image=[CIImage imageWithBitmapData:data bytesPerRow:w*16 size:CGSizeMake(w,h) format:kCIFormatRGBAf colorSpace:linear];
+    int orientation=[request[@"orientation"] intValue] ?: 1;
+    image=[image imageByApplyingOrientation:orientation];
     NSError *error=nil; NSURL *url=[NSURL fileURLWithPath:out];
-    if([out.pathExtension.lowercaseString isEqualToString:@"exr"]) {
-        Require([context writeOpenEXRRepresentationOfImage:image toURL:url options:@{} error:&error],error.description ?: @"EXR encoding failed");
-    } else {
-        CGColorSpaceRef pq=CGColorSpaceCreateWithName(kCGColorSpaceDisplayP3_PQ);
-        Require([context writeHEIF10RepresentationOfImage:image toURL:url colorSpace:pq options:@{(__bridge id)kCGImageDestinationLossyCompressionQuality:@.97} error:&error],error.description ?: @"HDR HEIC encoding failed");
-        CGColorSpaceRelease(pq);
-    }
+    Require([out.pathExtension.lowercaseString isEqualToString:@"exr"],@"Linear diagnostic output requires an EXR destination");
+    Require([context writeOpenEXRRepresentationOfImage:image toURL:url options:@{} error:&error],error.description ?: @"EXR encoding failed");
     CGColorSpaceRelease(linear);
     // Reopen and render the published representation to prove consumer decoding.
     CIImage *readback=[CIImage imageWithContentsOfURL:url options:@{kCIImageApplyOrientationProperty:@YES,kCIImageExpandToHDR:@YES}];
+    const int inverse[]={0,1,2,3,4,5,8,7,6};
+    readback=[readback imageByApplyingOrientation:inverse[orientation]];
     linear=CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);
     NSDictionary *facts=Render(readback,Context(linear),linear,[request[@"readback_path"] stringByAppendingString:@".f32"]);
     CGColorSpaceRelease(linear);
@@ -190,10 +213,19 @@ static NSDictionary *Encode(NSDictionary *request) {
 }
 
 NSDictionary *XDStylesPerform(NSDictionary *request, NSError **error) {
+    NSDictionary *result=nil;
+    NSError *failure=nil;
+    @autoreleasepool {
     @try {
-        return [request[@"operation"] isEqualToString:@"styles-decode-reverse"] ? Decode(request) : Encode(request);
+        if([request[@"operation"] isEqualToString:@"styles-decode-reverse"]) result=Decode(request);
+        else if([request[@"operation"] isEqualToString:@"styles-readback"]) result=Readback(request);
+        else result=Encode(request);
     } @catch(NSException *exception) {
-        if(error) *error=[NSError errorWithDomain:@"XDStylesNative" code:1 userInfo:@{NSLocalizedDescriptionKey:exception.reason ?: exception.name}];
-        return nil;
+        failure=[NSError errorWithDomain:@"XDStylesNative" code:1 userInfo:@{NSLocalizedDescriptionKey:exception.reason ?: exception.name}];
     }
+    }
+    // Both objects must survive the operation's pool. NSError** is an
+    // autoreleasing out parameter; assign it only after the pool has drained.
+    if(error) *error=failure;
+    return result;
 }

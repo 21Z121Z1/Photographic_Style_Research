@@ -26,8 +26,9 @@ def libheif_visible(data,itemid):
   elif b['type']=='iinf':
    n=2 if data[pos]<=1 else 4
    for infe in iter_boxes(data,pos+4+n,b['offset']+b['size']):
-    if parse_infe(data,infe).get('item_id')==itemid:
-     q=infe['payload_offset'];copy[q+1:q+4]=bytes(3)
+    info=parse_infe(data,infe)
+    if info.get('item_type') in ('grid','hvc1','av01'):
+     q=infe['payload_offset'];copy[q+1:q+4]=(0 if info.get('item_id')==itemid else 1).to_bytes(3,'big')
   elif b['type']=='iref':
    n=2 if data[pos]==0 else 4
    for ref in iter_boxes(data,pos+4,b['offset']+b['size']):
@@ -56,7 +57,7 @@ def extract(path,out):
  inventory={'photo':path.name,'source_sha256':digest(data),'primary_id':primary,'metadata_id':style['item_id'],'version':stored.get('0'),'items':{}}
  for key,suffix in [('linear','linearthumbnail'),('delta','styledeltamap')]:
   item=unique(lambda i:i.get('aux_type')==f'tag:apple.com,2023:photo:aux:{suffix}','auxl')
-  copy=bytearray(data); copy[pos+4:pos+4+n]=item['item_id'].to_bytes(n,'big')
+  copy=libheif_visible(data,item['item_id'])
   target=out/f'{key}.heic'; target.write_bytes(copy)
   inventory['items'][key]={k:safe(item[k]) for k in ['item_id','item_type','dimensions','pixi','hvcC','colr'] if k in item}
   inventory['items'][key]['container_sha256']=digest(copy)
@@ -74,4 +75,4 @@ if __name__=='__main__':
  for key,suffixes in choices.items():
   items=[i for i in h['items'].values() if any(i.get('aux_type','').endswith(s) for s in suffixes)]
   if items:
-   b=bytearray(source.read_bytes());pos=pitm['payload_offset'];n=2 if b[pos]==0 else 4;b[pos+4:pos+4+n]=items[0]['item_id'].to_bytes(n,'big');(out/(key+'.heic')).write_bytes(b)
+   b=libheif_visible(source.read_bytes(),items[0]['item_id']);(out/(key+'.heic')).write_bytes(b)
