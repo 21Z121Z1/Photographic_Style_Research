@@ -121,10 +121,15 @@ static NSString *ReverseDirectory;
 static id (*OriginalMemoryDescriptor)(id,SEL);
 static BOOL (*OriginalSetupProcessor)(id,SEL);
 static NSMutableArray *SetupFacts;
+static NSDictionary *VMProperties(id obj){
+ NSMutableDictionary *d=[NSMutableDictionary new];unsigned count=0;objc_property_t *ps=class_copyPropertyList([obj class],&count);
+ for(unsigned i=0;i<count;i++){NSString *name=@(property_getName(ps[i]));@try{d[name]=VMJSONSafe([obj valueForKey:name]);}@catch(NSException *e){d[name]=e.description;}}free(ps);return d;
+}
 static BOOL TraceSetupProcessor(id self,SEL cmd){
  BOOL ok=OriginalSetupProcessor(self,cmd);
  id processor=[self valueForKey:@"processor"];
- NSDictionary *row=@{@"ok":@(ok),@"processor":[processor description]?:@"nil",@"usage":[[self valueForKey:@"usage"]description]?:@"nil"};
+ id cfg=[self valueForKey:@"configuration"];
+ NSDictionary *row=@{@"nu_configuration":VMProperties(cfg),@"cmi_configuration":VMProperties([cfg styleEngineConfiguration]),@"ok":@(ok),@"processor":[processor description]?:@"nil",@"usage":[[self valueForKey:@"usage"]description]?:@"nil"};
  [SetupFacts addObject:row];
  [[NSJSONSerialization dataWithJSONObject:SetupFacts options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[ReverseDirectory stringByAppendingPathComponent:@"setup-processor.json"]atomically:YES];
  return ok;

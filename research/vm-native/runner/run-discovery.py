@@ -8,14 +8,15 @@ def run(args,log,env=None):
   except OSError as error:f.write(str(error));rc='spawn-error'
  rows.append({'args':[str(x) for x in args],'log':str(log.relative_to(root)),'returncode':rc});return rc
 flags=['clang','-fobjc-arc','-O1','-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-Wl,-undefined,dynamic_lookup']
-for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls','arithmetic','readback_main']:
+for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls','arithmetic','readback_main','contrast_probe']:
  run(flags+[src/(name+'.m'),'-o','/tmp/'+name],out/(name+'-build.log'))
 run(['/tmp/resolve_calls',src/'call-addresses.json',out/'resolved-calls.json'],out/'resolved-calls.log')
+run(['/tmp/contrast_probe',src,out/'contrast-probe','unused'],out/'contrast-probe.log')
 # Arithmetic evidence is preserved in run 39054842867; no repeat here.
 read=out/'carrier-test';read.mkdir(exist_ok=True)
 run(['/tmp/readback_main',root/'research/vm-native/samples/IMG_2600-carrier-test.HEIC',read,'unused'],read/'readback.log')
 # Only these discovery photos can influence the formula. IMG_0032/0033 stay held out.
-for stem in ['IMG_2600']:
+for stem in ['IMG_2600','IMG_2604','IMG_2608']:
  photo=root/'research/vm-native/samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'photo-resources'/stem
  rc=run(['python3',root/'research/vm-native/extract_inputs.py',photo,resources],out/(stem+'-extract.log'))
  if rc!=0:continue
@@ -30,7 +31,7 @@ for stem in ['IMG_2600']:
  for p in resources.glob('*.f32'):p.replace(case/p.name)
  for p in resources.glob('*.bin'):p.replace(case/p.name)
  if (resources/'reverse.json').exists():(resources/'reverse.json').replace(case/'reverse.json')
- for tone in [0,.35,-.35]:
+ for tone in [0]:
   env=os.environ.copy();env.update({'VM_CONSUMER_MSL':str(src/'consumer-model.metal'),'XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':str(tone),'XD_TONE_MAX_EDGE':'512','XD_TONE_GUIDED_REPLAY':'0'})
   run(['/tmp/native_renderer_trace',photo,resources,case/('tone-'+str(tone))],case/('tone-'+str(tone)+'.log'),env)
  # Preserve shape/dtype even when a stage fails.
