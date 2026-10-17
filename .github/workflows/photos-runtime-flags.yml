@@ -1,0 +1,92 @@
+name: photos-runtime-flags
+
+# 尝试让 Photos 真正处理一张 style 照片，并用 LLDB 抓 setInputIsLinear: 的 $w2
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/photos-runtime-flags.yml'
+
+jobs:
+  probe:
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 准备一张测试照片(用 sips 生成纯色 JPEG)
+        run: |
+          set +e
+          mkdir -p /tmp/photolib
+          # 生成一张合法 JPEG
+          python3 - <<'PY'
+          import struct, zlib, os
+          # 用 sips 更简单,先造个 PNG
+          PY
+          # 直接生成 1x1 PNG 再让 sips 转 JPEG 并放大
+          printf '\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x02\x00\x00\x00\x90wS\xde\x00\x00\x00\x0cIDATx\x9cc\xf8\xcf\xc0\x00\x00\x03\x01\x01\x00\x18\xdd\x8d\xb0\x00\x00\x00\x00IEND\xaeB`\x82' > /tmp/t.png
+          sips -s format jpeg -z 1200 1600 /tmp/t.png --out /tmp/testphoto.jpg 2>&1 | tail -2
+          ls -la /tmp/testphoto.jpg
+          file /tmp/testphoto.jpg
+
+      - name: 启动 Photos 并尝试导入
+        run: |
+          set +e
+          open -a Photos
+          sleep 12
+          echo "=== Photos 进程 ==="; pgrep -lf "Photos.app/Contents/MacOS/Photos" | head -2
+          echo "=== 尝试 osascript 导入 ==="
+          osascript <<'AS' 2>&1 | head -10
+          tell application "Photos"
+            activate
+            try
+              set p to import POSIX file "/tmp/testphoto.jpg" skip check duplicates false
+              return "imported: " & (count of p)
+            on error errMsg
+              return "import error: " & errMsg
+            end try
+          end tell
+          AS
+          sleep 5
+          echo "=== 图库条目数 ==="
+          osascript -e 'tell application "Photos" to return count of media items' 2>&1 | head -3
+
+      - name: LLDB 抓 setInputIsLinear 的实参
+        run: |
+          set +e
+          PID=$(pgrep -f "Photos.app/Contents/MacOS/Photos" | head -1)
+          echo "PID=$PID"
+          cat > /tmp/ll.lldb <<'EOF'
+          br set -n '-[CMIStyleEngineConfiguration setInputIsLinear:]'
+          br set -n '-[CMIStyleEngineProcessor _setTuningParameters]'
+          breakpoint command add 1
+          script print("HIT setInputIsLinear w2=%d" % (int(lldb.frame.FindRegister("w2").GetValueAsUnsigned()),))
+          continue
+          DONE
+          breakpoint command add 2
+          script print("HIT _setTuningParameters x0=%#x" % (int(lldb.frame.FindRegister("x0").GetValueAsUnsigned()),))
+          continue
+          DONE
+          continue
+          EOF
+          # 后台 attach，前台做 osascript 操作
+          (lldb -p $PID --source /tmp/ll.lldb > /tmp/lldb_out.txt 2>&1 &) 
+          sleep 6
+          echo "=== 触发编辑操作 ==="
+          osascript <<'AS' 2>&1 | head -8
+          tell application "Photos"
+            activate
+            set items to media items
+            if (count of items) > 0 then
+              set target to item 1 of items
+              edit target with properties {name:"probe"}
+              return "edit attempted"
+            else
+              return "no media items"
+            end if
+          end tell
+          AS
+          sleep 10
+          echo "=== LLDB 捕获 ==="
+          grep -E "HIT|error" /tmp/lldb_out.txt | head -20 || echo "(no hits)"
+          tail -20 /tmp/lldb_out.txt
