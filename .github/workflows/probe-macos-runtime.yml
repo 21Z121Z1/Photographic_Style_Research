@@ -26,18 +26,26 @@ jobs:
 
       - name: 2. CMImaging 全貌
         run: |
+          set +e
           CMI=/System/Library/PrivateFrameworks/CMImaging.framework
-          echo "=== real binary ==="
-          ls -laL "$CMI/CMImaging"
-          echo "=== Versions ==="; ls -la "$CMI/Versions/"
-          echo "=== 是否真身存在 ==="; file -L "$CMI/CMImaging"
-          echo "=== 所有 metallib 在整个 framework ==="
-          find "$CMI" -name '*.metallib' 2>/dev/null | head
-          echo "=== 全系统 CMImaging 相关 metallib ==="
-          find /System -path '*CMImaging*' -name '*.metallib' 2>/dev/null | head
+          echo "=== framework 树 ==="
+          ls -la "$CMI/" || true
+          echo "=== Versions ==="
+          ls -la "$CMI/Versions/" || true
+          echo "=== 真实二进制路径 ==="
+          REAL=$(readlink -f "$CMI/CMImaging" 2>/dev/null || echo "$CMI/Versions/Current/CMImaging")
+          echo "REAL=$REAL"
+          ls -la "$REAL" || true
+          stat -f "size=%z" "$REAL" 2>/dev/null || true
+          file "$REAL" 2>/dev/null || true
+          echo "=== framework 内所有 metallib ==="
+          find "$CMI/" -name '*.metallib' 2>/dev/null | head || true
+          echo "=== Resources 目录 ==="
+          ls -la "$CMI/Versions/Current/Resources/" 2>/dev/null | head -20 || true
 
       - name: 3. 静态 UUID 符号 ivar偏移
         run: |
+          set +e
           CMI=/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging
           echo "=== UUID / size ==="
           dwarfdump --uuid "$CMI" 2>&1 | head -2
@@ -49,6 +57,7 @@ jobs:
 
       - name: 4. dlopen + 实际构造 configuration（关键）
         run: |
+          set +e
           cat > /tmp/probe.m <<'EOF'
           #import <Foundation/Foundation.h>
           #import <objc/runtime.h>
@@ -86,6 +95,7 @@ jobs:
 
       - name: 5. Photos.app 启动（用 perl 替代 timeout）
         run: |
+          set +e
           echo "=== Photos 存在? ==="; ls -d /System/Applications/Photos.app
           echo "=== open ==="; open -a Photos 2>&1; echo "open exit=$?"
           sleep 8
@@ -96,6 +106,7 @@ jobs:
 
       - name: 6. LLDB 附加自身进程
         run: |
+          set +e
           cat > /tmp/spin.c <<'EOF'
           #include <unistd.h>
           int main(void){ for(;;) sleep(1); return 0; }
@@ -109,6 +120,7 @@ jobs:
 
       - name: 7. LLDB 附加 Photos（真正的目标）
         run: |
+          set +e
           PID=$(pgrep -f "Photos.app/Contents/MacOS/Photos" | head -1)
           echo "Photos PID=${PID:-none}"
           if [ -n "$PID" ]; then
