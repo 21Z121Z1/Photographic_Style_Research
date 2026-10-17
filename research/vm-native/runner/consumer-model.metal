@@ -603,7 +603,7 @@ ushort2 v613{};
 ushort2 v614{};
 half4 v616{};
 half4 v617{};
-uint di=uint(v21.y)*v14.get_width()+uint(v21.x);
+uint di=uint(v21.y)*v14.get_width()+uint(v21.x); if(di<512)dbg[di*17]=float4(float(v21.x),float(v21.y),17,19);
 uint pc=24,pred=0;while(true){switch(pc){
 case 24: {
 v25=v19 + (ulong(0))*176 + 160;
@@ -11311,3 +11311,5 @@ v81=(pred==5) ? (v0) : (pred==18) ? (v33) : (pred==7) ? (v0) : (pred==45) ? (v0)
 return v81;
 }
 default:return {};}}}
+
+kernel void sentinel(texture2d<half,access::write> out [[texture(13)]],device float4* dbg [[buffer(30)]],uint2 xy [[thread_position_in_grid]]){out.write(half4(.25h,.5h,.75h,1.h),xy);uint i=xy.y*out.get_width()+xy.x;if(i<512)dbg[i*17]=float4(xy.x,xy.y,17,19); }

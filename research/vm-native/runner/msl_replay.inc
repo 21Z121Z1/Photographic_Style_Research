@@ -21,11 +21,14 @@ static void MSLReplay(id renderer,NSString *dir,NSDictionary *call){
  }
  [enc setBuffer:debug offset:0 atIndex:30];
  NSArray *grid=call[@"grid"],*group=call[@"group"];
- [enc dispatchThreads:MTLSizeMake([grid[0]unsignedIntegerValue],[grid[1]unsignedIntegerValue],1) threadsPerThreadgroup:MTLSizeMake([group[0]unsignedIntegerValue],[group[1]unsignedIntegerValue],1)];
+ [enc dispatchThreads:MTLSizeMake([grid[0]unsignedIntegerValue],[grid[1]unsignedIntegerValue],1) threadsPerThreadgroup:MTLSizeMake(16,16,1)];
  [enc endEncoding];[cb commit];[cb waitUntilCompleted];
+ NSInteger kernelStatus=cb.status;
  if(cb.error){[cb.error.description writeToFile:[dir stringByAppendingPathComponent:@"msl-execution-error.txt"]atomically:YES encoding:NSUTF8StringEncoding error:NULL];return;}
  [[NSData dataWithBytes:debug.contents length:count]writeToFile:[dir stringByAppendingPathComponent:@"msl-checkpoints.f32"]atomically:YES];
  NSUInteger stride=reference.width*8;id<MTLBuffer> read=[device newBufferWithLength:stride*reference.height options:MTLResourceStorageModeShared];cb=[queue commandBuffer];id<MTLBlitCommandEncoder> blit=[cb blitCommandEncoder];[blit copyFromTexture:output sourceSlice:0 sourceLevel:0 sourceOrigin:MTLOriginMake(0,0,0)sourceSize:MTLSizeMake(output.width,output.height,1)toBuffer:read destinationOffset:0 destinationBytesPerRow:stride destinationBytesPerImage:stride*output.height];[blit endEncoding];[cb commit];[cb waitUntilCompleted];
  [[NSData dataWithBytes:read.contents length:read.length]writeToFile:[dir stringByAppendingPathComponent:@"msl-output.f16"]atomically:YES];
- NSDictionary *meta=@{@"shape":@[@(output.height),@(output.width),@4],@"dtype":@"<f2",@"checkpoints_shape":@[@512,@17,@4],@"scope":@"newly compiled SSA model, separate Apple output is oracle",@"device":device.name};[[NSJSONSerialization dataWithJSONObject:meta options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"msl.json"]atomically:YES];
+ NSDictionary *meta=@{@"shape":@[@(output.height),@(output.width),@4],@"dtype":@"<f2",@"checkpoints_shape":@[@512,@17,@4],@"scope":@"newly compiled SSA model, separate Apple output is oracle",@"device":device.name,@"command_status":@(kernelStatus),@"grid":grid,@"max_threads":@(ps.maxTotalThreadsPerThreadgroup),@"execution_width":@(ps.threadExecutionWidth)};[[NSJSONSerialization dataWithJSONObject:meta options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"msl.json"]atomically:YES];
+ ps=[device newComputePipelineStateWithFunction:[library newFunctionWithName:@"sentinel"]error:&err];cb=[queue commandBuffer];enc=[cb computeCommandEncoder];[enc setComputePipelineState:ps];[enc setTexture:output atIndex:13];[enc setBuffer:debug offset:0 atIndex:30];[enc dispatchThreads:MTLSizeMake(reference.width,reference.height,1)threadsPerThreadgroup:MTLSizeMake(16,16,1)];[enc endEncoding];[cb commit];[cb waitUntilCompleted];
+ [[NSData dataWithBytes:debug.contents length:count]writeToFile:[dir stringByAppendingPathComponent:@"sentinel-checkpoints.f32"]atomically:YES];
 }
