@@ -13,7 +13,8 @@ run(['/tmp/resolve_calls',src/'call-addresses.json',out/'resolved-calls.json'],o
 # Only these discovery photos can influence the formula. IMG_0032/0033 stay held out.
 for stem in ['IMG_2600','IMG_2604','IMG_2608']:
  photo=root/'research/vm-native/samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'photo-resources'/stem
- run(['python3',root/'research/vm-native/extract_inputs.py',photo,resources],out/(stem+'-extract.log'))
+ rc=run(['python3',root/'research/vm-native/extract_inputs.py',photo,resources],out/(stem+'-extract.log'))
+ if rc!=0:continue
  case=out/stem;case.mkdir(exist_ok=True)
  run(['/tmp/native_thumbnail_stage',resources,case/'thumbnail'],case/'thumbnail.log')
  run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log')
@@ -32,3 +33,5 @@ for stem in ['IMG_2600','IMG_2604','IMG_2608']:
   if meta:(case/(p.name+'.json')).write_text(json.dumps(meta,indent=2)+'\n')
 (out/'status.json').write_text(json.dumps(rows,indent=2)+'\n')
 print('Probe commands',len(rows),'nonzero',sum(x['returncode']!=0 for x in rows))
+
+sys.exit(1 if any(x["returncode"]!=0 for x in rows) else 0)

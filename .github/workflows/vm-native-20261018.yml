@@ -31,6 +31,7 @@ jobs:
             lldb -b -o "process attach --pid $pid" -o 'process status' -o 'process detach' -o quit > out/lldb-photos-attach.txt 2>&1 || true
           fi
       - name: AIR text with LLVM
+        if: ${{ hashFiles('research/vm-native/runner/need-air') != '' }}
         shell: bash
         run: |
           brew install llvm > out/brew-llvm.log 2>&1
