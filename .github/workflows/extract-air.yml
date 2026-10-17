@@ -1,0 +1,56 @@
+name: extract-air
+
+# 从 metallib 抽出每个 kernel 的完整 LLVM AIR bitcode（SSA），供逐条验证公式
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/extract-air.yml'
+
+jobs:
+  air:
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 工具链探测
+        run: |
+          set +e
+          echo "=== xcrun metal/metallib tools ==="
+          xcrun --find metal 2>&1
+          xcrun --find metal-nm 2>&1
+          xcrun --find metal-objdump 2>&1
+          echo "=== llvm-dis / llvm tools ==="
+          which llvm-dis llvm-nm llvm-objdump 2>&1
+          ls /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ 2>/dev/null | grep -iE "^(llvm|metal)" | head -20
+          echo "=== xcode-select ==="
+          xcode-select -p
+
+      - name: 导出 metallib 到本地
+        run: |
+          set +e
+          mkdir -p out
+          R=/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources
+          cp "$R/default.metallib" out/default.metallib
+          ls -la out/
+
+      - name: 列出 metallib 内所有函数
+        run: |
+          set +e
+          R=out/default.metallib
+          echo "=== metal-nm ==="
+          xcrun metal-nm "$R" > out/functions_nm.txt 2>&1
+          head -50 out/functions_nm.txt
+          echo "=== 函数计数 ==="
+          wc -l out/functions_nm.txt
+
+      - name: 用 metal-objdump 反汇编 / 抽取 AIR
+        run: |
+          set +e
+          R=out/default.metallib
+          xcrun metal-objdump --help 2>&1 | head -20
+          echo "=== 尝试 --bitcode / --llvm ==="
+          xcrun metal-objdump --bitcode "$R" > out/air_bitcode.bc 2>/dev/null; echo "bitcode rc=$?"
+          ls -la out/air_bitcode.bc 2>/dev/null
+          file out/air_bitcode.bc 2>/dev/null
