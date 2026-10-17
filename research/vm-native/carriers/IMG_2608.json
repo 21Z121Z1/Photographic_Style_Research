@@ -1,0 +1,49 @@
+{
+  "source": "inputs/IMG_2608.HEIC",
+  "output": "results/carriers-final/IMG_2608.HEIC",
+  "output_sha256": "55a8e6a12517e4d652b71969ab9cd090f2c1e22f12b58217f61d1f2087ad8b8d",
+  "gain_min_ev": -2.0632407665252686,
+  "gain_max_ev": 3.461482286453247,
+  "gain_step_ev": 0.02166558059991575,
+  "gain_offset": 0.015625,
+  "gain_shape": [
+    1536,
+    2048,
+    3
+  ],
+  "encoder": "libheif x265 8-bit YCbCr 4:4:4 quality95",
+  "sdr_decoder": "libheif 1.21.2",
+  "sdr_components_checked": 73410624,
+  "sdr_decoded_sha256": "e5a15de05bb6ab74745756f184cbb4549c095d45a881da9eaf58c5919a1619bb",
+  "sdr_max_abs_code": 0,
+  "quantization_only": {
+    "mae_ev": 0.004513128053803114,
+    "p90_ev": 0.008428301113388053,
+    "p99_ev": 0.011570889627654684,
+    "max_ev": 0.29548284298011895,
+    "nonpositive_Y": 0
+  },
+  "codec_additional": {
+    "mae_ev": 0.006706564955653488,
+    "p90_ev": 0.016679391565705564,
+    "p99_ev": 0.025398294239899158,
+    "max_ev": 0.4249754925051188,
+    "nonpositive_Y": 0
+  },
+  "quantization_plus_codec": {
+    "mae_ev": 0.008226190663490634,
+    "p90_ev": 0.017244396771273488,
+    "p99_ev": 0.02920608185606223,
+    "max_ev": 0.350571040590269,
+    "nonpositive_Y": 0
+  },
+  "gain_code_codec_max_abs": 6,
+  "native_ImageIO_readback": "pending",
+  "identity": {
+    "primary_item_id": 46,
+    "gain_item_id": 89,
+    "tmap_item_id": 142,
+    "primary_descendant_payloads_checked": 46,
+    "primary_coded_and_properties_identical": true
+  }
+}
