@@ -22,6 +22,10 @@ static void Require(BOOL condition, NSString *message) {
     if (!condition) @throw [NSException exceptionWithName:@"XDStylesUnavailable" reason:message userInfo:nil];
 }
 
+static CIContext *Context(CGColorSpaceRef space);
+static CIImage *Image(NSString *path);
+static CIImage *Canvas(CIImage *image,CGSize size);
+static NSDictionary *Render(CIImage *image,CIContext *context,CGColorSpaceRef space,NSString *path);
 static NSDictionary *Readback(NSDictionary *request) {
     NSString *dir=request[@"output_path"],*path=request[@"input_path"];
     CGSize size=CGSizeMake([request[@"width"] doubleValue],[request[@"height"] doubleValue]);

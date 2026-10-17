@@ -5,6 +5,7 @@ import sys,json,hashlib,plistlib,struct
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 from tools.heif_dump import parse_heif,iter_boxes,parse_infe,_payload_from_item_extents
+from heif_standalone import standalone
 
 def digest(b): return hashlib.sha256(b).hexdigest()
 def safe(x):
@@ -57,7 +58,7 @@ def extract(path,out):
  inventory={'photo':path.name,'source_sha256':digest(data),'primary_id':primary,'metadata_id':style['item_id'],'version':stored.get('0'),'items':{}}
  for key,suffix in [('linear','linearthumbnail'),('delta','styledeltamap')]:
   item=unique(lambda i:i.get('aux_type')==f'tag:apple.com,2023:photo:aux:{suffix}','auxl')
-  copy=libheif_visible(data,item['item_id'])
+  copy=standalone(data,item['item_id'])
   target=out/f'{key}.heic'; target.write_bytes(copy)
   inventory['items'][key]={k:safe(item[k]) for k in ['item_id','item_type','dimensions','pixi','hvcC','colr'] if k in item}
   inventory['items'][key]['container_sha256']=digest(copy)
@@ -75,4 +76,4 @@ if __name__=='__main__':
  for key,suffixes in choices.items():
   items=[i for i in h['items'].values() if any(i.get('aux_type','').endswith(s) for s in suffixes)]
   if items:
-   b=libheif_visible(source.read_bytes(),items[0]['item_id']);(out/(key+'.heic')).write_bytes(b)
+   b=standalone(source.read_bytes(),items[0]['item_id']);(out/(key+'.heic')).write_bytes(b)
