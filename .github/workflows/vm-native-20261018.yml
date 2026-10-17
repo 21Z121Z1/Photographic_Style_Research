@@ -1,0 +1,53 @@
+name: vm-native-20261018
+on:
+  push:
+    branches: ['research/vm-native-20261018']
+  workflow_dispatch:
+jobs:
+  evidence:
+    runs-on: xcode-27
+    timeout-minutes: 55
+    permissions:
+      contents: read
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_INSTALL_CLEANUP: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Host and native capabilities
+        shell: bash
+        run: |
+          mkdir -p out
+          { sw_vers; uname -a; xcodebuild -version; csrutil status; id; stat -f '%Su' /dev/console; df -h /; } > out/host.txt 2>&1
+          env | sort | grep -E '^(ImageOS|ImageVersion|RUNNER_ARCH|RUNNER_OS)=' > out/runner-image.txt
+          clang -fobjc-arc -framework Foundation -framework CoreImage -framework Metal research/vm-native/runner/capabilities.m -o /tmp/style-capabilities
+          /tmp/style-capabilities out/capabilities.json > out/capabilities.log 2>&1
+          open -a Photos > out/photos-open.txt 2>&1 || true
+          sleep 10
+          pgrep -lf 'Photos.app/Contents/MacOS/Photos' > out/photos-process.txt || true
+          osascript -e 'tell application "System Events" to return name of every process whose name is "Photos"' > out/osascript.txt 2>&1 || true
+          pid=$(pgrep -f 'Photos.app/Contents/MacOS/Photos' | head -1)
+          if [ -n "$pid" ]; then
+            lldb -b -o "process attach --pid $pid" -o 'process status' -o 'process detach' -o quit > out/lldb-photos-attach.txt 2>&1 || true
+          fi
+      - name: Install ipsw and collect static evidence
+        shell: bash
+        run: |
+          brew install blacktop/tap/ipsw > out/brew-ipsw.log 2>&1
+          bash research/vm-native/runner/collect-static.sh out > out/static-collection.log 2>&1
+      - name: Seal text evidence
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib,os
+          root=pathlib.Path('out')
+          rows=[{'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(root.rglob('*')) if p.is_file()]
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vm-native-text
+          path: out/
+          retention-days: 1
