@@ -33,7 +33,9 @@ jobs:
       - name: Install ipsw and collect static evidence
         shell: bash
         run: |
-          brew install blacktop/tap/ipsw > out/brew-ipsw.log 2>&1
+          brew tap blacktop/tap > out/brew-ipsw.log 2>&1
+          brew trust --formula blacktop/tap/ipsw-frida >> out/brew-ipsw.log 2>&1
+          brew install --formula blacktop/tap/ipsw >> out/brew-ipsw.log 2>&1
           bash research/vm-native/runner/collect-static.sh out > out/static-collection.log 2>&1
       - name: Seal text evidence
         if: always()
