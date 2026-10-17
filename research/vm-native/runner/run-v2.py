@@ -11,6 +11,6 @@ if run(flags+[src/'native_renderer_trace_v2.m','-o','/tmp/renderer-v2'],out/'ren
  stem='IMG_2600';photo=root/'research/vm-native/samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'v2-resources'/stem
  if run(['python3',root/'research/vm-native/extract_inputs.py',photo,resources],out/'extract.log')==0:
   for tone in [0,.35,-.35]:
-   case=out/stem/('tone-'+str(tone));case.mkdir(parents=True,exist_ok=True);env=os.environ.copy();env.update({'VM_CONSUMER_MSL':str(src/'consumer-model.metal'),'XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':str(tone),'XD_TONE_MAX_EDGE':'512','XD_TONE_GUIDED_REPLAY':'0','VM_EXACT_INVERSE_LIMIT':'4096' if tone==0 else '0'})
-   run(['/tmp/renderer-v2',photo,resources,case],case/'renderer.log',env)
+   case=out/stem/('tone-'+str(tone));case.parent.mkdir(parents=True,exist_ok=True);env=os.environ.copy();env.update({'VM_CONSUMER_MSL':str(src/'consumer-model.metal'),'XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':str(tone),'XD_TONE_MAX_EDGE':'512','XD_TONE_GUIDED_REPLAY':'0','VM_EXACT_INVERSE_LIMIT':'4096' if tone==0 else '0'})
+   run(['/tmp/renderer-v2',photo,resources,case],case.parent/('tone-'+str(tone)+'.log'),env)
 (out/'status.json').write_text(json.dumps(rows,indent=2)+'\n');raise SystemExit(1 if any(x['returncode']!=0 for x in rows) else 0)
