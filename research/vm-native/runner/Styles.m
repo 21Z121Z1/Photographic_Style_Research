@@ -25,6 +25,8 @@ static void Require(BOOL condition, NSString *message) {
 // Compare logical Objective-C ABI types, independently of argument stack offsets.
 // Struct names are compiler labels; their exact field layout is checked.
 static BOOL TypeMatches(const char *actual, const char *expected) {
+    while(strchr("rnNoORV",*actual) && *actual)actual++;
+    while(strchr("rnNoORV",*expected) && *expected)expected++;
     if (*expected == '{') {
         const char *a = strchr(actual, '='), *e = strchr(expected, '=');
         return *actual == '{' && a && e && strcmp(a,e) == 0;

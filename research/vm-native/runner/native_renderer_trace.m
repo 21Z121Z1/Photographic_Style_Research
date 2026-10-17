@@ -9,6 +9,7 @@
 static NSString *XDTraceDirectory;
 static NSMutableDictionary *XDKeptTextures;
 static NSUInteger XDTraceCounter;
+#include "encoder_capture.inc"
 static int (*XDOriginalProcess)(id,SEL);
 static int (*XDOriginalRelease)(id,SEL);
 static int (*XDOriginalGuided)(id,SEL,id,id,id,id,NSUInteger,float);
@@ -69,7 +70,8 @@ static void XDDump(id renderer,NSDictionary *textures,NSString *dir,NSMutableDic
         NSMutableDictionary *meta=[@{@"width":@(t.width),@"height":@(t.height),@"array_length":@(t.arrayLength),@"pixel_format":@(t.pixelFormat),@"storage_mode":@(t.storageMode),@"label":t.label?:@""} mutableCopy];
         [meta addEntriesFromDictionary:layout];outputs[name]=meta;
         meta[@"shape"]=@[@(t.height),@(t.width),layout[@"channels"]?:@0];
-        if(!layout.count || t.width*t.height>4000000 || t.arrayLength!=1 || t.textureType!=MTLTextureType2D)continue;
+        BOOL fullLinear=[name isEqualToString:@"_inputLinearImageTexture"] && [facts[@"serial"] unsignedIntegerValue]==0;
+        if(!layout.count || (t.width*t.height>4000000 && !fullLinear) || t.arrayLength!=1 || t.textureType!=MTLTextureType2D)continue;
         NSUInteger tight=t.width*[layout[@"bytes_per_pixel"] unsignedIntegerValue];NSUInteger stride=(tight+255)&~255;
         id<MTLBuffer> buffer=[device newBufferWithLength:stride*t.height options:MTLResourceStorageModeShared];
         id<MTLCommandBuffer> command=[queue commandBuffer];id<MTLBlitCommandEncoder> blit=[command blitCommandEncoder];
@@ -105,7 +107,9 @@ static int XDProcess(id self,SEL sel) {
     NSString *key=[NSString stringWithFormat:@"%p",self];NSUInteger serial;
     @synchronized(XDKeptTextures) {XDKeptTextures[key]=XDTextures(self);serial=XDTraceCounter++;}
     XDGuidedCalls=[NSMutableArray new];
+    ECStates=[NSMutableDictionary new];ECDispatches=[NSMutableArray new];ECActive=YES;
     int status=XDOriginalProcess(self,sel);
+    ECActive=NO;
     NSMutableDictionary *facts=[@{@"process_status":@(status),@"serial":@(serial)} mutableCopy];
     @try {
         facts[@"finish_status"]=@([self finishProcessing]);
@@ -137,6 +141,7 @@ static int XDProcess(id self,SEL sel) {
         NSString *dir=[XDTraceDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"renderer-%lu",(unsigned long)serial]];
         [[NSFileManager defaultManager]createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:NULL];
         XDDump(self,saved,dir,facts);
+        ECWrite(dir,saved);
         [[NSJSONSerialization dataWithJSONObject:facts options:NSJSONWritingPrettyPrinted|NSJSONWritingSortedKeys error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"trace.json"] atomically:YES];
     } @catch(NSException *e){fprintf(stderr,"Trace exception: %s\n",e.description.UTF8String);}
     return status;
@@ -144,6 +149,7 @@ static int XDProcess(id self,SEL sel) {
 int main(int argc,char **argv) { @autoreleasepool {
     if(argc!=4)return 2;
     XDTraceDirectory=@(argv[3]);XDKeptTextures=[NSMutableDictionary new];
+    ECInstall();
     dlopen("/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",RTLD_NOW|RTLD_LOCAL);
     Class cls=NSClassFromString(@"CMISmartStyleMetalRendererV1");Method m=class_getInstanceMethod(cls,NSSelectorFromString(@"process"));
     XDOriginalProcess=(void *)method_getImplementation(m);method_setImplementation(m,(IMP)XDProcess);

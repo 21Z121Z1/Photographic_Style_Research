@@ -21,7 +21,7 @@ for stem in ['IMG_2600','IMG_2604','IMG_2608']:
  for p in resources.glob('*.f32'):p.replace(case/p.name)
  for p in resources.glob('*.bin'):p.replace(case/p.name)
  if (resources/'reverse.json').exists():(resources/'reverse.json').replace(case/'reverse.json')
- for tone in ([0,.35,-.35] if stem=='IMG_2600' else [0]):
+ for tone in [0]:
   env=os.environ.copy();env.update({'XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':str(tone),'XD_TONE_MAX_EDGE':'512','XD_TONE_GUIDED_REPLAY':'0'})
   run(['/tmp/native_renderer_trace',photo,resources,case/('tone-'+str(tone))],case/('tone-'+str(tone)+'.log'),env)
  # Preserve shape/dtype even when a stage fails.
