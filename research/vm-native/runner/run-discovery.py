@@ -20,9 +20,10 @@ for stem in ['IMG_2600']:
  case=out/stem;case.mkdir(exist_ok=True)
  run(['/tmp/native_thumbnail_stage',resources,case/'thumbnail'],case/'thumbnail.log')
  if stem=='IMG_2600':
-  run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log')
+  env=os.environ.copy();env['VM_DISABLE_RESIDENCY_SETS']='1'
+  run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log',env)
   run(['log','show','--last','2m','--style','compact','--predicate','process == "reverse_main"'],case/'unified.log')
- for diagnostic in ['memory-descriptor.json','reverse-settings.json','setup-processor.json']:
+ for diagnostic in ['memory-descriptor.json','reverse-settings.json','setup-processor.json','runtime-override.txt']:
   if (resources/diagnostic).exists():(resources/diagnostic).replace(case/diagnostic)
  for p in resources.glob('*.f32'):p.replace(case/p.name)
  for p in resources.glob('*.bin'):p.replace(case/p.name)

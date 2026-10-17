@@ -116,6 +116,7 @@ static id VMJSONSafe(id value){
  if([value isKindOfClass:NSString.class]||[value isKindOfClass:NSNumber.class]||[value isKindOfClass:NSNull.class])return value;
  return [value description];
 }
+static BOOL VMNoResidency(id self,SEL cmd){return NO;}
 static NSString *ReverseDirectory;
 static id (*OriginalMemoryDescriptor)(id,SEL);
 static BOOL (*OriginalSetupProcessor)(id,SEL);
@@ -153,6 +154,11 @@ static NSDictionary *Decode(NSDictionary *request) {
     for(NSString *fw in @[@"CMImaging",@"PhotoImaging"]){
       NSString *path=[NSString stringWithFormat:@"/System/Library/PrivateFrameworks/%@.framework/%@",fw,fw];
       Require(dlopen(path.UTF8String,RTLD_NOW|RTLD_LOCAL)!=NULL,@"Explicit framework load failed");
+    }
+    if([NSProcessInfo.processInfo.environment[@"VM_DISABLE_RESIDENCY_SETS"]boolValue]){
+      Method feature=class_getClassMethod(NSClassFromString(@"CMIMetalResourceCache"),NSSelectorFromString(@"_enableResidencySets"));
+      Require(feature!=NULL,@"Residency feature control missing");method_setImplementation(feature,(IMP)VMNoResidency);
+      [@"CMIMetalResourceCache._enableResidencySets forced NO in isolated probe"writeToFile:[dir stringByAppendingPathComponent:@"runtime-override.txt"]atomically:YES encoding:NSUTF8StringEncoding error:NULL];
     }
     Method setup=class_getInstanceMethod(NSClassFromString(@"_NUStyleEngine"),NSSelectorFromString(@"setupProcessor"));
     OriginalSetupProcessor=(void*)method_getImplementation(setup);method_setImplementation(setup,(IMP)TraceSetupProcessor);
