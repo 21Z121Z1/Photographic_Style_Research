@@ -5,6 +5,7 @@
 #import <Metal/Metal.h>
 #import <objc/runtime.h>
 #import <dlfcn.h>
+#import <objc/message.h>
 
 typedef struct { int64_t width, height; } XDNUSize;
 @interface NSObject (XDStylesSPI)
@@ -117,6 +118,16 @@ static id VMJSONSafe(id value){
 }
 static NSString *ReverseDirectory;
 static id (*OriginalMemoryDescriptor)(id,SEL);
+static BOOL (*OriginalSetupProcessor)(id,SEL);
+static NSMutableArray *SetupFacts;
+static BOOL TraceSetupProcessor(id self,SEL cmd){
+ BOOL ok=OriginalSetupProcessor(self,cmd);
+ id processor=[self valueForKey:@"processor"];
+ NSDictionary *row=@{@"ok":@(ok),@"processor":[processor description]?:@"nil",@"usage":[[self valueForKey:@"usage"]description]?:@"nil"};
+ [SetupFacts addObject:row];
+ [[NSJSONSerialization dataWithJSONObject:SetupFacts options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[ReverseDirectory stringByAppendingPathComponent:@"setup-processor.json"]atomically:YES];
+ return ok;
+}
 static id TraceMemoryDescriptor(id self,SEL cmd){
     NSMutableDictionary *facts=[NSMutableDictionary new];
     for(NSString *key in @[@"usage",@"configuration",@"processor",@"processingType"]){@try{id v=[self valueForKey:key];facts[key]=[v description]?:@"nil";}@catch(NSException *e){facts[key]=e.description;}}
@@ -137,7 +148,14 @@ static NSDictionary *Decode(NSDictionary *request) {
     Require(dlopen("/System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore",RTLD_NOW|RTLD_LOCAL)!=NULL,@"NeutrinoCore is unavailable");
     Method assertion=class_getInstanceMethod(NSClassFromString(@"NUAssertionPolicyAbort"),NSSelectorFromString(@"notifyAssertion:"));
     if(assertion)method_setImplementation(assertion,(IMP)NativeAssertion);
-    ReverseDirectory=dir;
+    ReverseDirectory=dir;SetupFacts=[NSMutableArray new];
+    // Load dependencies explicitly in this isolated executable, without Photos.
+    for(NSString *fw in @[@"CMImaging",@"PhotoImaging"]){
+      NSString *path=[NSString stringWithFormat:@"/System/Library/PrivateFrameworks/%@.framework/%@",fw,fw];
+      Require(dlopen(path.UTF8String,RTLD_NOW|RTLD_LOCAL)!=NULL,@"Explicit framework load failed");
+    }
+    Method setup=class_getInstanceMethod(NSClassFromString(@"_NUStyleEngine"),NSSelectorFromString(@"setupProcessor"));
+    OriginalSetupProcessor=(void*)method_getImplementation(setup);method_setImplementation(setup,(IMP)TraceSetupProcessor);
     Method memory=class_getInstanceMethod(NSClassFromString(@"_NUStyleEngine"),NSSelectorFromString(@"memoryDescriptor"));
     OriginalMemoryDescriptor=(void *)method_getImplementation(memory);method_setImplementation(memory,(IMP)TraceMemoryDescriptor);
     Class propertiesClass=NSClassFromString(@"_NUSemanticStyleProperties"),reverse=NSClassFromString(@"NUStyleTransferReverseNode"),

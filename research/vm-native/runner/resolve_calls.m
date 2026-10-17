@@ -5,6 +5,8 @@
 int main(int argc,char **argv) { @autoreleasepool {
     if(argc!=3) return 2;
     dlopen("/System/Library/PrivateFrameworks/PhotoImaging.framework/PhotoImaging",RTLD_NOW|RTLD_LOCAL);
+    dlopen("/System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore",RTLD_NOW|RTLD_LOCAL);
+    dlopen("/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",RTLD_NOW|RTLD_LOCAL);
     Method m=class_getInstanceMethod(NSClassFromString(@"PISemanticStyleFilter"),NSSelectorFromString(@"outputImage"));
     intptr_t slide=(uintptr_t)ptrauth_strip(method_getImplementation(m),ptrauth_key_function_pointer)-0x1cbef1c78ULL;
     NSArray *addresses=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:@(argv[1])] options:0 error:NULL];

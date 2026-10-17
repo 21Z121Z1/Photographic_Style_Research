@@ -11,28 +11,30 @@ flags=['clang','-fobjc-arc','-O1','-framework','Foundation','-framework','CoreIm
 for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls','arithmetic']:
  run(flags+[src/(name+'.m'),'-o','/tmp/'+name],out/(name+'-build.log'))
 run(['/tmp/resolve_calls',src/'call-addresses.json',out/'resolved-calls.json'],out/'resolved-calls.log')
-run(['/tmp/arithmetic',out/'arithmetic'],out/'arithmetic.log')
+# Arithmetic evidence is preserved in run 39054842867; no repeat here.
 # Only these discovery photos can influence the formula. IMG_0032/0033 stay held out.
-for stem in ['IMG_2600','IMG_2604','IMG_2608']:
+for stem in ['IMG_2600']:
  photo=root/'research/vm-native/samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'photo-resources'/stem
  rc=run(['python3',root/'research/vm-native/extract_inputs.py',photo,resources],out/(stem+'-extract.log'))
  if rc!=0:continue
  case=out/stem;case.mkdir(exist_ok=True)
  run(['/tmp/native_thumbnail_stage',resources,case/'thumbnail'],case/'thumbnail.log')
- if stem=='IMG_2600':run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log')
- for diagnostic in ['memory-descriptor.json','reverse-settings.json']:
+ if stem=='IMG_2600':
+  run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log')
+  run(['log','show','--last','2m','--style','compact','--predicate','process == "reverse_main"'],case/'unified.log')
+ for diagnostic in ['memory-descriptor.json','reverse-settings.json','setup-processor.json']:
   if (resources/diagnostic).exists():(resources/diagnostic).replace(case/diagnostic)
  for p in resources.glob('*.f32'):p.replace(case/p.name)
  for p in resources.glob('*.bin'):p.replace(case/p.name)
  if (resources/'reverse.json').exists():(resources/'reverse.json').replace(case/'reverse.json')
- for tone in [0]:
+ for tone in []:
   env=os.environ.copy();env.update({'XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':str(tone),'XD_TONE_MAX_EDGE':'512','XD_TONE_GUIDED_REPLAY':'0'})
   run(['/tmp/native_renderer_trace',photo,resources,case/('tone-'+str(tone))],case/('tone-'+str(tone)+'.log'),env)
  # Preserve shape/dtype even when a stage fails.
  for p in case.glob('*.f32'):
   meta={};f=case/'reverse.json'
   if f.exists():
-   j=json.loads(f.read_text());key={'unstyled.f32':'unstyled','original_hdr.f32':'original_hdr','thumbnail_codes.f32':'thumbnail'}.get(p.name)
+   j=json.loads(f.read_text());key={'unstyled.f32':'unstyled','original_hdr.f32':'original_hdr','original_sdr.f32':'unstyled','thumbnail_codes.f32':'thumbnail'}.get(p.name)
    if key:meta={'shape':[j[key]['height'],j[key]['width'],4],'dtype':'<f4','colour_space':'extended-linear Display P3' if key!='thumbnail' else 'unmanaged'}
   if meta:(case/(p.name+'.json')).write_text(json.dumps(meta,indent=2)+'\n')
 (out/'status.json').write_text(json.dumps(rows,indent=2)+'\n')
