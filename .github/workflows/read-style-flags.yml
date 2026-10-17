@@ -1,0 +1,101 @@
+name: read-style-flags
+
+# 真正闭环 P017/P018/P019：在 GitHub macOS runner 上 dlopen CMImaging，
+# 构造 configuration，读出运行时 flag 值。
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/read-style-flags.yml'
+
+jobs:
+  read:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 探针 1 — 构造 CMIStyleEngineConfiguration 并读 flag
+        run: |
+          set +e
+          cat > /tmp/probe1.m <<'EOF'
+          #import <Foundation/Foundation.h>
+          #import <objc/runtime.h>
+          #import <objc/message.h>
+          #import <dlfcn.h>
+
+          static BOOL bval(id o, const char *sel, int *found) {
+            SEL s = NSSelectorFromString([NSString stringWithUTF8String:sel]);
+            if (![o respondsToSelector:s]) { *found = 0; return NO; }
+            *found = 1;
+            return ((BOOL(*)(id,SEL))objc_msgSend)(o, s);
+          }
+
+          int main(void) {
+            void *h = dlopen("/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/CMImaging", RTLD_NOW|RTLD_LOCAL);
+            if (!h) { printf("DLOPEN_FAIL %s\n", dlerror()); return 1; }
+            printf("DLOPEN_OK\n");
+
+            Class cfgCls = NSClassFromString(@"CMIStyleEngineConfiguration");
+            Class csCls  = NSClassFromString(@"CMIStyleEngineCommonSettings");
+            printf("CONFIG_CLASS %s\n", cfgCls ? "FOUND" : "MISSING");
+            printf("COMMONSETTINGS %s\n", csCls ? "FOUND" : "MISSING");
+
+            // --- 路径 A: 工厂 configurationForUseCase: ---
+            if (csCls) {
+              SEL f = NSSelectorFromString(@"configurationForUseCase:");
+              if ([csCls respondsToSelector:f]) {
+                printf("FACTORY YES\n");
+                for (long uc = 0; uc <= 9; uc++) {
+                  id c = ((id(*)(id,SEL,long))objc_msgSend)(csCls, f, uc);
+                  if (!c) { printf("usecase %ld: nil\n", uc); continue; }
+                  int f1=0,f2=0,f3=0,f4=0;
+                  BOOL il=bval(c,"inputIsLinear",&f1);
+                  BOOL sn=bval(c,"skipWeightPlaneSpatialNormalization",&f2);
+                  BOOL g1=bval(c,"applyGDCToCoefficientsDuringIntegration",&f3);
+                  BOOL g2=bval(c,"applyGDCToWeightPlanesDuringIntegration",&f4);
+                  printf("usecase %ld: inputIsLinear=%d(s%d) skipSpatialNorm=%d(s%d) gdcCoef=%d(s%d) gdcWP=%d(s%d)\n",
+                         uc, il,f1, sn,f2, g1,f3, g2,f4);
+                }
+              } else printf("FACTORY NO\n");
+            }
+
+            // --- 路径 B: 直接 alloc/init ---
+            if (cfgCls) {
+              id c = ((id(*)(id,SEL))objc_msgSend)((id)cfgCls, sel_registerName("alloc"));
+              c = ((id(*)(id,SEL))objc_msgSend)(c, sel_registerName("init"));
+              if (c) {
+                int f1=0,f2=0,f3=0,f4=0;
+                BOOL il=bval(c,"inputIsLinear",&f1);
+                BOOL sn=bval(c,"skipWeightPlaneSpatialNormalization",&f2);
+                BOOL g1=bval(c,"applyGDCToCoefficientsDuringIntegration",&f3);
+                BOOL g2=bval(c,"applyGDCToWeightPlanesDuringIntegration",&f4);
+                printf("INIT-DEFAULT: inputIsLinear=%d(s%d) skipSpatialNorm=%d(s%d) gdcCoef=%d(s%d) gdcWP=%d(s%d)\n",
+                       il,f1, sn,f2, g1,f3, g2,f4);
+              } else printf("INIT-DEFAULT: nil\n");
+            }
+            return 0;
+          }
+          EOF
+          clang -fobjc-arc -framework Foundation -Wl,-undefined,dynamic_lookup -o /tmp/probe1 /tmp/probe1.m 2>&1 | head -20
+          echo "--- run ---"
+          /tmp/probe1 2>&1; echo "exit=$?"
+
+      - name: 探针 2 — 读 plist 调校文件（静态但直接）
+        run: |
+          set +e
+          R=/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources
+          echo "=== files ==="; ls -la "$R" | head
+          for f in StyleEngineTuning.plist SmartStyleTuning.plist RendererTuning.plist; do
+            echo "===== $f ====="
+            plutil -p "$R/$f" 2>&1 | head -40
+          done
+
+      - name: 探针 3 — metallib 元数据
+        run: |
+          set +e
+          M=/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources/default.metallib
+          echo "=== size/sha ==="; stat -f%z "$M"; shasum -a 256 "$M"
+          echo "=== 是否含 AIR bitcode ==="
+          xxd "$M" | head -3
+          strings -a "$M" | grep -iE "MakeWeights|Integrate|Apply|NormalizeWeight|ColorSplit" | sort -u | head -20
