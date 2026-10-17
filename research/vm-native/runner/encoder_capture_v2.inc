@@ -8,6 +8,8 @@ static void (*ECBytes)(id,SEL,const void *,NSUInteger,NSUInteger);
 static void (*ECBuffer)(id,SEL,id,NSUInteger,NSUInteger);
 static void (*ECThreadgroups)(id,SEL,MTLSize,MTLSize);
 static void (*ECThreads)(id,SEL,MTLSize,MTLSize);
+static void (*ECImageblock)(id,SEL,NSUInteger,NSUInteger);
+static void (*ECThreadMemory)(id,SEL,NSUInteger,NSUInteger);
 static NSMutableDictionary *ECState(id self){NSString *k=[NSString stringWithFormat:@"%p",self];NSMutableDictionary *d=ECStates[k];if(!d){d=[@{@"textures":[NSMutableDictionary new],@"bytes":[NSMutableDictionary new],@"buffers":[NSMutableDictionary new]} mutableCopy];ECStates[k]=d;}return d;}
 static void ECSetPipeline(id self,SEL cmd,id p){if(ECActive){ECState(self)[@"pipeline"]=[(id<MTLComputePipelineState>)p label]?:@"unlabelled";ECState(self)[@"pipeline_object"]=p;}ECPipeline(self,cmd,p);}
 static void ECSetTexture(id self,SEL cmd,id t,NSUInteger index){if(ECActive){NSMutableDictionary *d=ECState(self)[@"textures"];if(t)d[@(index).stringValue]=t;else[d removeObjectForKey:@(index).stringValue];}ECTexture(self,cmd,t,index);}
@@ -16,6 +18,8 @@ static void ECSetBuffer(id self,SEL cmd,id b,NSUInteger offset,NSUInteger index)
 static void ECRecord(id self,MTLSize grid,MTLSize group,NSString *kind){if(!ECActive)return;NSMutableDictionary *d=[ECState(self) mutableCopy];d[@"textures"]=[d[@"textures"] copy];d[@"bytes"]=[d[@"bytes"] copy];d[@"buffers"]=[d[@"buffers"] copy];d[@"grid"]=@[@(grid.width),@(grid.height),@(grid.depth)];d[@"group"]=@[@(group.width),@(group.height),@(group.depth)];d[@"dispatch"]=kind;[ECDispatches addObject:d];}
 static void ECDispatchGroups(id self,SEL cmd,MTLSize grid,MTLSize group){ECRecord(self,grid,group,@"groups");ECThreadgroups(self,cmd,grid,group);}
 static void ECDispatchThreads(id self,SEL cmd,MTLSize grid,MTLSize group){ECRecord(self,grid,group,@"threads");ECThreads(self,cmd,grid,group);}
+static void ECSetImageblock(id self,SEL cmd,NSUInteger w,NSUInteger h){if(ECActive)ECState(self)[@"imageblock"]=@[@(w),@(h)];ECImageblock(self,cmd,w,h);}
+static void ECSetThreadMemory(id self,SEL cmd,NSUInteger n,NSUInteger index){if(ECActive){NSMutableDictionary*d=ECState(self)[@"threadgroup_memory"];if(!d){d=[NSMutableDictionary new];ECState(self)[@"threadgroup_memory"]=d;}d[@(index).stringValue]=@(n);}ECThreadMemory(self,cmd,n,index);}
 static void ECInstall(void){
  id<MTLCommandQueue> q=[MTLCreateSystemDefaultDevice() newCommandQueue];id<MTLCommandBuffer> b=[q commandBuffer];id<MTLComputeCommandEncoder> e=[b computeCommandEncoder];Class c=object_getClass(e);Method m;
  #define ECHOOK(name,original,replacement) m=class_getInstanceMethod(c,NSSelectorFromString(@name));if(m){original=(void *)method_getImplementation(m);method_setImplementation(m,(IMP)replacement);}
@@ -25,6 +29,8 @@ static void ECInstall(void){
  ECHOOK("setBuffer:offset:atIndex:",ECBuffer,ECSetBuffer)
  ECHOOK("dispatchThreadgroups:threadsPerThreadgroup:",ECThreadgroups,ECDispatchGroups)
  ECHOOK("dispatchThreads:threadsPerThreadgroup:",ECThreads,ECDispatchThreads)
+ ECHOOK("setImageblockWidth:height:",ECImageblock,ECSetImageblock)
+ ECHOOK("setThreadgroupMemoryLength:atIndex:",ECThreadMemory,ECSetThreadMemory)
  #undef ECHOOK
  [e endEncoding];[b commit];[b waitUntilCompleted];
 }
