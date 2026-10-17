@@ -30,13 +30,16 @@ jobs:
           if [ -n "$pid" ]; then
             lldb -b -o "process attach --pid $pid" -o 'process status' -o 'process detach' -o quit > out/lldb-photos-attach.txt 2>&1 || true
           fi
-      - name: Install ipsw and collect static evidence
+      - name: AIR text with LLVM
         shell: bash
         run: |
-          brew tap blacktop/tap > out/brew-ipsw.log 2>&1
-          brew trust --formula blacktop/tap/ipsw-frida >> out/brew-ipsw.log 2>&1
-          brew install --formula blacktop/tap/ipsw >> out/brew-ipsw.log 2>&1
-          bash research/vm-native/runner/collect-static.sh out > out/static-collection.log 2>&1
+          brew install llvm > out/brew-llvm.log 2>&1
+          python3 research/vm-native/runner/extract_air.py out/air > out/air-extraction.log 2>&1
+      - name: Native discovery probes
+        if: always()
+        shell: bash
+        run: |
+          python3 research/vm-native/runner/run-discovery.py > out/native-discovery.log 2>&1
       - name: Seal text evidence
         if: always()
         shell: bash
