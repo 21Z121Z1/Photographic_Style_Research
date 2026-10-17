@@ -20,18 +20,18 @@ int main(int argc,char**argv){@autoreleasepool{
  CIImage*gain=[CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:@(argv[3])]options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@NO,kCIImageColorSpace:NSNull.null}];
  if(!base||!reference||!gain)return 3;
  CIVector*p=[CIVector vectorWithX:atof(argv[4])Y:atof(argv[5])Z:atof(argv[6])W:0];
- CIColorKernel*logapply=[CIColorKernel kernelWithString:@"kernel vec4 apply_log(vec4 im,vec4 gm,vec4 p){return vec4((im.rgb+p.z)*exp2(p.x+(p.y-p.x)*gm.rgb)-p.z,im.a);}"];
- CIColorKernel*linearize=[CIColorKernel kernelWithString:@"kernel vec4 linearize_gain(vec4 gm,vec4 p){return vec4(exp2(p.x+(p.y-p.x)*gm.rgb),1.0);}"];
- CIColorKernel*linapply=[CIColorKernel kernelWithString:@"kernel vec4 apply_linear(vec4 im,vec4 gm,vec4 p){return vec4((im.rgb+p.z)*gm.rgb-p.z,im.a);}"];
- if(!logapply||!linearize||!linapply)return 4;
+ CIColorKernel*logapply=[CIColorKernel kernelWithString:@"kernel vec4 apply_log(__sample im,__sample gm,vec4 p){return vec4((im.rgb+p.z)*exp2(p.x+(p.y-p.x)*gm.rgb)-p.z,im.a);}"];
+ CIColorKernel*linearize=[CIColorKernel kernelWithString:@"kernel vec4 linearize_gain(__sample gm,vec4 p){return vec4(exp2(p.x+(p.y-p.x)*gm.rgb),1.0);}"];
+ CIColorKernel*linapply=[CIColorKernel kernelWithString:@"kernel vec4 apply_linear(__sample im,__sample gm,vec4 p){return vec4((im.rgb+p.z)*gm.rgb-p.z,im.a);}"];
+ if(!logapply||!linearize||!linapply){fprintf(stderr,"kernel compile nil\n");return 4;}
  NSData*ref=render(reference,ctx,p3,size);crop(ref,[out stringByAppendingPathComponent:@"reference-crop.f32"],size);
  NSMutableDictionary*rows=[NSMutableDictionary new];CGRect full=base.extent;
  CIImage*a=[logapply applyWithExtent:full arguments:@[base,canvas(gain,full.size),p]];
  CIImage*b=[logapply applyWithExtent:CGRectMake(0,0,size.width,size.height)arguments:@[canvas(base,size),canvas(gain,size),p]];
- CIImage*lg=[linearize applyWithExtent:gain.extent arguments:@[gain,p]];NSData*materialized=render(lg,ctx,NULL,gain.extent.size);
+ CIImage*lg=[linearize applyWithExtent:gain.extent arguments:@[gain,p]];if(!a||!b||!lg){fprintf(stderr,"apply nil log_before=%d log_after=%d linearize=%d\n",a!=nil,b!=nil,lg!=nil);return 5;}NSData*materialized=render(lg,ctx,NULL,gain.extent.size);
  lg=[CIImage imageWithBitmapData:materialized bytesPerRow:(size_t)gain.extent.size.width*16 size:gain.extent.size format:kCIFormatRGBAf colorSpace:NULL];
  CIImage*c=[linapply applyWithExtent:full arguments:@[base,canvas(lg,full.size),p]];
- NSArray*images=@[a,b,c];NSArray*names=@[@"log_before_resize",@"log_after_resize",@"linear_gain_before_resize"];
+ if(!c){fprintf(stderr,"linear-gain application nil\n");return 6;}NSArray*images=@[a,b,c];NSArray*names=@[@"log_before_resize",@"log_after_resize",@"linear_gain_before_resize"];
  for(int i=0;i<3;i++){@autoreleasepool{NSData*d=render(images[i],ctx,p3,size);NSMutableDictionary*r=[metrics(d,ref)mutableCopy];r[@"output_sha256"]=sha(d);rows[names[i]]=r;crop(d,[out stringByAppendingPathComponent:[names[i]stringByAppendingString:@"-crop.f32"]],size);}}
  NSDictionary*facts=@{@"os":NSProcessInfo.processInfo.operatingSystemVersionString,@"original_size":@[@(full.size.height),@(full.size.width)],@"gain_size":@[@(gain.extent.size.height),@(gain.extent.size.width)],@"output_shape":@[@1536,@2048,@4],@"crop_shape":@[@64,@64,@4],@"dtype":@"<f4",@"reference_sha256":sha(ref),@"min_ev":@(p.X),@"max_ev":@(p.Y),@"offset":@(p.Z),@"comparisons_to_ImageIO_HDR":rows,@"scope":@"Controlled application/resampling variants; no RAW oracle"};
  [[NSJSONSerialization dataWithJSONObject:facts options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[out stringByAppendingPathComponent:@"order.json"]atomically:YES];CGColorSpaceRelease(p3);return 0;
