@@ -107,6 +107,14 @@ static NSDictionary *Render(CIImage *image, CIContext *context, CGColorSpaceRef 
 }
 
 static void NativeAssertion(id self,SEL cmd,id assertion){fprintf(stderr,"%s\n",[NSThread callStackSymbols].description.UTF8String);@throw [NSException exceptionWithName:@"NativeAssertion" reason:[assertion description] userInfo:nil];}
+static id VMJSONSafe(id value){
+ if(!value)return NSNull.null;
+ if([value isKindOfClass:NSData.class])return @{@"bytes":@([value length])};
+ if([value isKindOfClass:NSDictionary.class]){NSMutableDictionary *d=[NSMutableDictionary new];for(id k in value)d[[k description]]=VMJSONSafe(value[k]);return d;}
+ if([value isKindOfClass:NSArray.class]){NSMutableArray *d=[NSMutableArray new];for(id x in value)[d addObject:VMJSONSafe(x)];return d;}
+ if([value isKindOfClass:NSString.class]||[value isKindOfClass:NSNumber.class]||[value isKindOfClass:NSNull.class])return value;
+ return [value description];
+}
 static NSString *ReverseDirectory;
 static id (*OriginalMemoryDescriptor)(id,SEL);
 static id TraceMemoryDescriptor(id self,SEL cmd){
@@ -152,7 +160,7 @@ static NSDictionary *Decode(NSDictionary *request) {
         if(value[@"spotlightCountX"]) configuration=value;
         if(value[@"WeightPlaneStandardDeviation"]) tuning=value;
     }
-    [[NSJSONSerialization dataWithJSONObject:settings options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"reverse-settings.json"] atomically:YES];
+    [[NSJSONSerialization dataWithJSONObject:VMJSONSafe(settings) options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"reverse-settings.json"] atomically:YES];
     Require(configuration && tuning,@"Apple did not supply a supported reverse configuration");
     id cfg=[[configClass alloc]initWithConfigurationDictionary:configuration];
     BOOL half=[stored[@"2"] boolValue];
