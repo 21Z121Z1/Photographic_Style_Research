@@ -103,6 +103,7 @@ static void XDDump(id renderer,NSDictionary *textures,NSString *dir,NSMutableDic
         @try {facts[name]=Describe([renderer valueForKey:name] ?: NSNull.null);}@catch(NSException *e){facts[name]=e.description;}
     }
 }
+#include "msl_replay.inc"
 static int XDProcess(id self,SEL sel) {
     NSString *key=[NSString stringWithFormat:@"%p",self];NSUInteger serial;
     @synchronized(XDKeptTextures) {XDKeptTextures[key]=XDTextures(self);serial=XDTraceCounter++;}
@@ -148,6 +149,7 @@ static int XDProcess(id self,SEL sel) {
         }
         XDDump(self,saved,dir,facts);
         ECWrite(dir,saved);
+        if(serial==0)for(NSDictionary *call in ECDispatches)if(call[@"textures"][@"13"]==saved[@"_outputImageTexture"])MSLReplay(self,dir,call);
         [[NSJSONSerialization dataWithJSONObject:facts options:NSJSONWritingPrettyPrinted|NSJSONWritingSortedKeys error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"trace.json"] atomically:YES];
     } @catch(NSException *e){fprintf(stderr,"Trace exception: %s\n",e.description.UTF8String);}
     return status;
