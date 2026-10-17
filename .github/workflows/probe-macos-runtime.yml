@@ -1,0 +1,106 @@
+name: probe-macos-runtime
+
+# 最小可行性实验：GitHub Actions macOS runner 到底能不能跑 GUI/私有框架?
+# 预期结论（我的假设）：静态可查，GUI/Photos 不可用，私有框架 dlopen 被 SIP 拦。
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/probe-macos-runtime.yml'
+
+jobs:
+  probe:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 1. 环境基本信息
+        run: |
+          echo "=== macOS 版本 ==="
+          sw_vers
+          echo "=== 架构 ==="
+          uname -m
+          echo "=== Xcode ==="
+          xcodebuild -version 2>&1 | head -3
+          echo "=== SIP 状态 ==="
+          csrutil status 2>&1 || true
+          echo "=== 是否有 Aqua GUI session ==="
+          launchctl print gui/$(id -u) 2>&1 | head -5 || echo "NO GUI SESSION"
+          echo "=== 登录用户 ==="
+          whoami; id -u
+
+      - name: 2. CMImaging.framework 是否存在
+        run: |
+          CMI=/System/Library/PrivateFrameworks/CMImaging.framework
+          echo "=== framework 目录 ==="
+          ls -la "$CMI" 2>&1 || echo "NOT PRESENT"
+          echo "=== CMImaging 二进制 ==="
+          ls -la "$CMI/CMImaging" 2>&1 || echo "NO BINARY"
+          echo "=== metallib 资源 ==="
+          ls -la "$CMI"/*.metallib 2>&1 || echo "NO METALLIB"
+          echo "=== 所有 Framework 里含 Imaging 的 ==="
+          ls /System/Library/PrivateFrameworks/ 2>/dev/null | grep -i imaging || echo "none"
+
+      - name: 3. 静态抓 accessor 符号（这一步 CI 应该能做）
+        run: |
+          CMI=/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging
+          if [ -f "$CMI" ]; then
+            echo "=== UUID ==="
+            dwarfdump --uuid "$CMI" 2>&1 | head -3
+            echo "=== accessor 符号（若被 strip 则为空）==="
+            nm -arch arm64e -m "$CMI" 2>/dev/null | grep -iE "CMIStyleEngineConfiguration.*(Linear|SpatialNormalization|GDC)" | head -20 || echo "符号不可用/被 strip"
+            echo "=== 从 ivar 表抓偏移（otool -ov）==="
+            otool -arch arm64e -ov "$CMI" 2>/dev/null | grep -A4 -iE "_inputIsLinear|_skipWeightPlaneSpatialNormalization" | head -30 || echo "otool 失败"
+            echo "=== strings 找 tuning key ==="
+            strings -a "$CMI" | grep -cE "WeightPlaneDoColorSplit|GlobalBlendOutsideLearningROI" || echo 0
+          else
+            echo "SKIP: CMImaging 不存在于本 runner"
+          fi
+
+      - name: 4. 尝试 dlopen 私有框架（预期失败或被拦）
+        run: |
+          cat > /tmp/dltest.c <<'EOF'
+          #include <stdio.h>
+          #include <dlfcn.h>
+          int main(void){
+            const char *p="/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging";
+            void *h=dlopen(p, RTLD_NOW|RTLD_LOCAL);
+            if(!h){ printf("DLOPEN_FAIL: %s\n", dlerror()); return 1; }
+            printf("DLOPEN_OK\n"); return 0;
+          }
+          EOF
+          cc -o /tmp/dltest /tmp/dltest.c && /tmp/dltest; echo "exit=$?"
+
+      - name: 5. 尝试启动 Photos.app（关键实验）
+        run: |
+          echo "=== Photos.app 是否存在 ==="
+          ls -d /System/Applications/Photos.app 2>&1 || echo "NOT PRESENT"
+          echo "=== 尝试 open（无头环境，预期失败）==="
+          timeout 30 open -a Photos 2>&1; echo "open exit=$?"
+          sleep 5
+          echo "=== 进程是否出现 ==="
+          pgrep -lf Photos || echo "NO PROCESS"
+          echo "=== 尝试 osascript 驱动（无 GUI 预期失败）==="
+          timeout 20 osascript -e 'tell application "Photos" to get name' 2>&1 || echo "osascript failed"
+
+      - name: 6. 尝试 LLDB 附加（验证调试权限）
+        run: |
+          cat > /tmp/spin.c <<'EOF'
+          #include <unistd.h>
+          int main(void){ for(;;) sleep(1); return 0; }
+          EOF
+          cc -o /tmp/spin /tmp/spin
+          /tmp/spin & SPIN=$!
+          sleep 1
+          echo "=== 尝试 lldb 附加到自己的进程 ==="
+          timeout 30 lldb -p $SPIN --batch -o "thread backtrace -c 3" -o "detach" -o "quit" 2>&1 | head -20
+          kill $SPIN 2>/dev/null || true
+
+      - name: 汇总
+        if: always()
+        run: |
+          echo "=== 实验完成 ==="
+          echo "关键判断："
+          echo "  - 步骤3 成功 = 静态分析可跑（有价值）"
+          echo "  - 步骤4/5/6 失败 = 运行时观测不可行（印证假设）"
