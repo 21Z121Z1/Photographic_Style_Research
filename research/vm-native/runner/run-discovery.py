@@ -5,6 +5,7 @@ def run(args,log,env=None):
  with open(log,'w') as f:
   try:r=subprocess.run([str(x) for x in args],stdout=f,stderr=subprocess.STDOUT,timeout=240,env=env);rc=r.returncode
   except subprocess.TimeoutExpired:rc='timeout'
+  except OSError as error:f.write(str(error));rc='spawn-error'
  rows.append({'args':[str(x) for x in args],'log':str(log.relative_to(root)),'returncode':rc});return rc
 flags=['clang','-fobjc-arc','-O1','-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-Wl,-undefined,dynamic_lookup']
 for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls']:
