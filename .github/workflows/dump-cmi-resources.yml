@@ -1,0 +1,52 @@
+name: dump-cmi-resources
+
+# 把 CMImaging 的 tuning plist + metallib 完整 dump 成 artifact
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/dump-cmi-resources.yml'
+
+jobs:
+  dump:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 收集
+        run: |
+          set +e
+          mkdir -p out
+          R=/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources
+          C=/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/CMImaging
+
+          # 1) 所有 plist 明文导出
+          for f in "$R"/*.plist; do
+            b=$(basename "$f")
+            plutil -p "$f" > "out/$b.txt" 2>&1
+            plutil -convert xml1 -o "out/$b.xml" "$f" 2>/dev/null
+          done
+
+          # 2) metallib: 原样 + sha + 函数列表
+          cp "$R/default.metallib" out/default.metallib
+          shasum -a 256 "$R/default.metallib" > out/metallib.sha256
+          metal-nm "$R/default.metallib" > out/metallib_functions.txt 2>&1 || \
+            strings -a "$R/default.metallib" | grep -E "^[A-Za-z_][A-Za-z0-9_:]+$" | sort -u > out/metallib_functions.txt
+
+          # 3) CMImaging 二进制信息
+          dwarfdump --uuid "$C" > out/CMImaging.uuid.txt 2>&1
+          shasum -a 256 "$C" >> out/CMImaging.sha256 2>&1
+          nm -arch arm64e -m "$C" 2>/dev/null > out/CMImaging.symbols.txt
+          otool -arch arm64e -ov "$C" 2>/dev/null > out/CMImaging.objc_metadata.txt
+
+          # 4) 样式引擎相关符号摘要
+          grep -iE "CMIStyleEngineConfiguration" out/CMImaging.symbols.txt | head -200 > out/style_config_symbols.txt 2>&1
+
+          echo "=== collected ==="; ls -la out/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cmi-resources
+          path: out/
+          retention-days: 14
