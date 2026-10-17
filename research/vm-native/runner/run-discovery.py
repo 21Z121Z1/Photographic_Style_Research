@@ -8,9 +8,10 @@ def run(args,log,env=None):
   except OSError as error:f.write(str(error));rc='spawn-error'
  rows.append({'args':[str(x) for x in args],'log':str(log.relative_to(root)),'returncode':rc});return rc
 flags=['clang','-fobjc-arc','-O1','-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-Wl,-undefined,dynamic_lookup']
-for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls']:
+for name in ['native_thumbnail_stage','native_renderer_trace','reverse_main','resolve_calls','arithmetic']:
  run(flags+[src/(name+'.m'),'-o','/tmp/'+name],out/(name+'-build.log'))
 run(['/tmp/resolve_calls',src/'call-addresses.json',out/'resolved-calls.json'],out/'resolved-calls.log')
+run(['/tmp/arithmetic',out/'arithmetic'],out/'arithmetic.log')
 # Only these discovery photos can influence the formula. IMG_0032/0033 stay held out.
 for stem in ['IMG_2600','IMG_2604','IMG_2608']:
  photo=root/'research/vm-native/samples'/(stem+'.HEIC');resources=pathlib.Path(os.environ['RUNNER_TEMP'])/'photo-resources'/stem
@@ -18,7 +19,9 @@ for stem in ['IMG_2600','IMG_2604','IMG_2608']:
  if rc!=0:continue
  case=out/stem;case.mkdir(exist_ok=True)
  run(['/tmp/native_thumbnail_stage',resources,case/'thumbnail'],case/'thumbnail.log')
- run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log')
+ if stem=='IMG_2600':run(['/tmp/reverse_main',photo,resources,'1024'],case/'reverse.log')
+ for diagnostic in ['memory-descriptor.json','reverse-settings.json']:
+  if (resources/diagnostic).exists():(resources/diagnostic).replace(case/diagnostic)
  for p in resources.glob('*.f32'):p.replace(case/p.name)
  for p in resources.glob('*.bin'):p.replace(case/p.name)
  if (resources/'reverse.json').exists():(resources/'reverse.json').replace(case/'reverse.json')

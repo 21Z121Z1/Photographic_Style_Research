@@ -106,7 +106,16 @@ static NSDictionary *Render(CIImage *image, CIContext *context, CGColorSpaceRef 
     return @{@"width":@(w),@"height":@(h),@"black_fraction":@((double)black/(w*h))};
 }
 
-static void NativeAssertion(id self,SEL cmd,id assertion){@throw [NSException exceptionWithName:@"NativeAssertion" reason:[assertion description] userInfo:nil];}
+static void NativeAssertion(id self,SEL cmd,id assertion){fprintf(stderr,"%s\n",[NSThread callStackSymbols].description.UTF8String);@throw [NSException exceptionWithName:@"NativeAssertion" reason:[assertion description] userInfo:nil];}
+static NSString *ReverseDirectory;
+static id (*OriginalMemoryDescriptor)(id,SEL);
+static id TraceMemoryDescriptor(id self,SEL cmd){
+    NSMutableDictionary *facts=[NSMutableDictionary new];
+    for(NSString *key in @[@"usage",@"configuration",@"processor",@"processingType"]){@try{id v=[self valueForKey:key];facts[key]=[v description]?:@"nil";}@catch(NSException *e){facts[key]=e.description;}}
+    id result=OriginalMemoryDescriptor(self,cmd);facts[@"result"]=[result description]?:@"nil";
+    [[NSJSONSerialization dataWithJSONObject:facts options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[ReverseDirectory stringByAppendingPathComponent:@"memory-descriptor.json"] atomically:YES];return result;
+}
+
 static NSDictionary *Decode(NSDictionary *request) {
     NSString *inputPath=request[@"input_path"],*dir=request[@"output_path"];
     NSData *plist=[NSData dataWithContentsOfFile:[dir stringByAppendingPathComponent:@"styles.plist"]];
@@ -120,6 +129,9 @@ static NSDictionary *Decode(NSDictionary *request) {
     Require(dlopen("/System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore",RTLD_NOW|RTLD_LOCAL)!=NULL,@"NeutrinoCore is unavailable");
     Method assertion=class_getInstanceMethod(NSClassFromString(@"NUAssertionPolicyAbort"),NSSelectorFromString(@"notifyAssertion:"));
     if(assertion)method_setImplementation(assertion,(IMP)NativeAssertion);
+    ReverseDirectory=dir;
+    Method memory=class_getInstanceMethod(NSClassFromString(@"_NUStyleEngine"),NSSelectorFromString(@"memoryDescriptor"));
+    OriginalMemoryDescriptor=(void *)method_getImplementation(memory);method_setImplementation(memory,(IMP)TraceMemoryDescriptor);
     Class propertiesClass=NSClassFromString(@"_NUSemanticStyleProperties"),reverse=NSClassFromString(@"NUStyleTransferReverseNode"),
         thumb=NSClassFromString(@"_NUStyleTransferThumbnailProcessor"),apply=NSClassFromString(@"_NUStyleTransferApplyProcessor"),
         configClass=NSClassFromString(@"_NUStyleEngineConfiguration"),processor=NSClassFromString(@"CMIStyleEngineProcessor"),spaceClass=NSClassFromString(@"NUColorSpace");
@@ -140,6 +152,7 @@ static NSDictionary *Decode(NSDictionary *request) {
         if(value[@"spotlightCountX"]) configuration=value;
         if(value[@"WeightPlaneStandardDeviation"]) tuning=value;
     }
+    [[NSJSONSerialization dataWithJSONObject:settings options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"reverse-settings.json"] atomically:YES];
     Require(configuration && tuning,@"Apple did not supply a supported reverse configuration");
     id cfg=[[configClass alloc]initWithConfigurationDictionary:configuration];
     BOOL half=[stored[@"2"] boolValue];

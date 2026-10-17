@@ -23,7 +23,7 @@ def standalone(data,itemid):
  payloads=[_payload_from_item_extents(data,h['items'][str(i)]) for i in ids]
  ftyp=box('ftyp',b'heic'+u32(0)+b'mif1heicmiaf')
  hdlr=full('hdlr',u32(0)+b'pict'+bytes(12)+b'PictureHandler\0')
- pitm=full('pitm',u16(1));infes=[];properties=[];assocs=[]
+ pitm=full('pitm',u16(1));infes=[];properties=[];assocs=[];property_index={}
  for i in ids:
   item=h['items'][str(i)];kind=item['item_type'];nid=mapping[i]
   infes.append(full('infe',u16(nid)+u16(0)+kind.encode()+b'\0',version=2,flags=0 if i==itemid else 1))
@@ -31,7 +31,9 @@ def standalone(data,itemid):
   for a in item.get('property_associations',[]):
    prop=h['properties'][a['property_index']-1]
    if prop['type'] not in ('hvcC','ispe','pixi','colr','clap','pasp'):continue
-   raw=data[prop['offset']:prop['offset']+prop['size']];properties.append(raw);refs.append(len(properties)|(0x8000 if a.get('essential') else 0))
+   raw=data[prop['offset']:prop['offset']+prop['size']]
+   if raw not in property_index:properties.append(raw);property_index[raw]=len(properties)
+   refs.append(property_index[raw]|(0x8000 if a.get('essential') else 0))
   assocs.append(u16(nid)+bytes([len(refs)])+b''.join(u16(r) for r in refs))
  iinf=full('iinf',u16(len(infes))+b''.join(infes));iprp=box('iprp',box('ipco',b''.join(properties))+full('ipma',u32(len(ids))+b''.join(assocs),flags=1))
  iref=full('iref',b''.join(box('dimg',u16(mapping[r['from_item_id']])+u16(len(r['to_item_ids']))+b''.join(u16(mapping[j]) for j in r['to_item_ids'])) for r in links)) if links else b''
