@@ -25,5 +25,9 @@ if p.exists():
  a=load(p);preview(a.copy(),'texture-reference')
  for name in ['UnderEyeBrightening','SkinSmoothingStandalone','Mattify']:
   p=O/'texture'/(name+'.f32')
-  if p.exists():b=load(p);compare(a,b,'texture-'+name);preview(b.copy(),'texture-'+name)
+  if p.exists():
+   b=load(p);compare(a,b,'texture-'+name);preview(b.copy(),'texture-'+name)
+   for kind in ['inverse','roundtrip']:
+    p=O/'texture'/(name+'-'+kind+'.f32')
+    if p.exists():b=load(p);compare(a,b,'texture-'+name+'-'+kind);preview(b.copy(),'texture-'+name+'-'+kind)
 (O/'metrics.json').write_text(json.dumps({'rows':rows,'display':{'ocio_version':ocio.__version__,'config':'cg-config-v2.2.0_aces-v1.3_ocio-v2.4','config_sha256':hashlib.sha256(cfg.serialize().encode()).hexdigest(),'source':'Linear P3-D65','display':'sRGB - Display','view':'ACES 1.0 - SDR Video','exposure_ev':0,'orientation':'coded image rotated clockwise 270 degrees for display'},'caution':'j neutralization is a controlled consumer parameter intervention; its equivalence to camera face-brightening removal is unproven. Texture trials zero-fill a missing hair matte for diagnosis only.'},indent=2)+'\n')

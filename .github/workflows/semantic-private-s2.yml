@@ -12,6 +12,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       HOMEBREW_NO_AUTO_UPDATE: '1'
+      SEMANTIC_PHASE: texture-fix
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

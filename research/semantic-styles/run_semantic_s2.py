@@ -27,7 +27,9 @@ for target,suffix in choices.items():
  if matches:(RES/(target+'.heic')).write_bytes(standalone(data,matches[0]['item_id']))
 flags=['clang','-fobjc-arc','-O1','-I'+str(OLD),'-I'+str(SRC),'-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-Wl,-undefined,dynamic_lookup']
 executables={}
-for name,source in [('thumbnail',OLD/'native_thumbnail_stage.m'),('face',SRC/'semantic_face_s2.m'),('texture',SRC/'semantic_texture_s2.m'),('resolve',OLD/'resolve_calls.m')]:
+sources=[('thumbnail',OLD/'native_thumbnail_stage.m'),('texture',SRC/'semantic_texture_s2.m')]
+if os.environ.get('SEMANTIC_PHASE')!='texture-fix':sources += [('face',SRC/'semantic_face_s2.m'),('resolve',OLD/'resolve_calls.m')]
+for name,source in sources:
  exe=W/name
  if run(flags+[source,'-o',exe],'build-'+name)==0:executables[name]=exe
 if 'resolve'in executables:run([executables['resolve'],SRC/'call-addresses-s2.json',OUT/'resolved-calls.json'],'resolve')
@@ -38,6 +40,7 @@ if 'face'in executables:
   if j:env['SEMANTIC_J']=j
   run([executables['face'],PHOTO,RES,OUT/('face-'+label)],'face-'+label,env)
 if 'texture'in executables:run([executables['texture'],RES,OUT/'texture',PHOTO],'texture',timeout=240)
+run([sys.executable,SRC/'extract_texture_air.py',OUT/'texture-air'],'texture-air',timeout=240)
 run([sys.executable,SRC/'summarize_semantic_s2.py',OUT,RES],'metrics',timeout=180)
 rows=[]
 for p in sorted(OUT.rglob('*')):
