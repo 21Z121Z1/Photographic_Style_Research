@@ -1,0 +1,179 @@
+{
+  "claims": [
+    {
+      "id": "SEM-01",
+      "category": "semantic/metadata",
+      "status": "已验证数值",
+      "claim": "IMG_2810 Styles16: 12 new 2026 mattes at 768x576 plus 3 legacy mattes; no hair matte in this file; j=1.09765625. log2(j)=0.1344263202209261 EV is arithmetic, not an identified inverse.",
+      "os_build": "photo reports iOS27.0.1; exact capture build unverified",
+      "evidence": [
+        {
+          "file": "semantic-20261018/metadata-inventory.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "SEM-02",
+      "category": "semantic/face-exposure/consumer",
+      "status": "已验证数值",
+      "claim": "Fixed 512x384 tone0 consumer inputs; property getter interventions j=actual/1/1.2 yield zero numerical RGB differences in renderer and style-engine paths (4 comparisons x589824 components). This does not prove original camera face exposure has been removed.",
+      "os_build": "26A434",
+      "run_id": "39134556722",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39134556722/selected/out/metrics.json",
+          "line": 4
+        },
+        {
+          "file": "repo/research/semantic-styles/semantic_face_s2.m",
+          "line": 6
+        }
+      ],
+      "camera_inverse_verified": false
+    },
+    {
+      "id": "SEM-03",
+      "category": "semantic/texture/context",
+      "status": "已验证数值",
+      "claim": "The 214-byte texture_styles plist has 7 keys and no postprocessed people array or face-attitude data. The native v3 parser reports zero persons and an empty person input array for the supplied empty aux-metadata dictionary.",
+      "os_build": "26A434",
+      "run_id": "39134556722",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39134556722/selected/out/texture/checkpoint.json",
+          "line": 15
+        },
+        {
+          "file": "semantic-20261018/private/texture_styles-summary.json",
+          "line": 1
+        }
+      ],
+      "camera_effect_absence_inferred": false
+    },
+    {
+      "id": "SEM-04",
+      "category": "semantic/texture/tuning",
+      "status": "已验证数值",
+      "claim": "Native default Studio order: UnderEyeBrightening -> SkinSmoothingStandalone -> Mattify, default intensity about .88, grain0. Matching macOS iPhone19,2/back/still/Common tuning has brightnessMix .5 and Mattify editingStrength .3, rather than generic object defaults; exact capture-firmware tuning equivalence is unproven.",
+      "os_build": "26A434",
+      "run_id": "39133038484",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39133038484/artifacts/semantic-s1/runtime.json",
+          "line": 1
+        },
+        {
+          "file": "semantic-20261018/runs/39133038484/artifacts/semantic-s1/tuning/CMImaging-TextureStyleTuning.plist.json",
+          "line": 1,
+          "json_pointer": "/iPhone19,2/PortTypeBack/Still/Studio/Common"
+        }
+      ]
+    },
+    {
+      "id": "SEM-05",
+      "category": "semantic/face-exposure/producer",
+      "status": "已验证静态",
+      "claim": "CameraColorProcessing LTMCurvesComputeV2.compute has WithoutFaceBoost branches that set driverInput+0x24 to float1 and recompute LTM input and curves before writing curvesType2/3; this is not evidence for subtracting a masked fixed EV from final pixels.",
+      "os_build": "iOS27.0 24A446 iPhone12,1; version/hardware mismatch with IMG_2810",
+      "evidence": [
+        {
+          "file": "iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm",
+          "line": 44130,
+          "symbol": "-[LTMCurvesComputeV2 compute]",
+          "address": "0x256b86e30..0x256b86eec"
+        },
+        {
+          "file": "iterations/20261018-v3/evidence/ios/CameraColorProcessing.literals-checked.asm",
+          "line": 8960,
+          "address": "0x256b65b14..0x256b65b44"
+        }
+      ]
+    },
+    {
+      "id": "SEM-06",
+      "category": "semantic/key1",
+      "status": "已验证静态",
+      "claim": "Existing C08/C09 evidence remains: 8 planes are brightness Gaussian partitions, not semantic labels. A composite key1 polynomial alone does not identify separate skin/person operators.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0126.ll",
+          "line": 30
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0170.ll",
+          "line": 2815
+        }
+      ]
+    },
+    {
+      "id": "SEM-07",
+      "category": "semantic/skin-color/consumer",
+      "status": "已验证静态",
+      "claim": "Consumer renderSkinAdjustments uses SSRFGAdjustment fields9/10, skin weight and a guide. The call follows semantic tone and saturation processing; zeroing person matte would also alter LTM mixing and is not an isolated semantic-color ablation. Working RGB must be obtained from captured SSRColorManagement, not assumed scene-linear P3.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 4375
+        },
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 486
+        },
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 410
+        }
+      ]
+    },
+    {
+      "id": "SEM-08",
+      "category": "semantic/texture/native",
+      "status": "runner",
+      "claim": "Native texture units and fixed-context inverse candidates are not yet accepted: S2 failed on incorrect NSValue extents; S3 failed in auxiliary interface probing; S4 finished but its 6.8MB encrypted artifact awaits explicit disk-limit authorization/download. Workflow success is not operator success.",
+      "os_build": "26A434",
+      "run_id": "39135794320",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39134556722/selected/out/texture.log",
+          "line": 1
+        },
+        {
+          "file": "semantic-20261018/runs/39135405637/selected/out/status.json",
+          "line": 1
+        }
+      ],
+      "acceptance_pass": false
+    },
+    {
+      "id": "SEM-09",
+      "category": "semantic/skin-color/inverse-candidate",
+      "status": "假设",
+      "claim": "A separate continuous float translation of AIR skin adjustment and chunked Newton inverse candidate is provided. It is not native-half certified, not fitted to IMG_2810 camera parameters, and its residual mask is not a uniqueness mask. No finite camera inverse interval is asserted without the missing context.",
+      "os_build": "AIR source26A434; new candidate unvalidated",
+      "evidence": [
+        {
+          "file": "semantic-20261018/semantic_skin_model.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "SEM-10",
+      "category": "semantic/camera-ground-truth",
+      "status": "待实机",
+      "claim": "Original camera face/texture removal requires matched frame context or before/after captures. RAW EV validation still requires IMG_2679/IMG_2408 paired data. New real-photo 512x384 parameter controls do not establish 24MP camera inverse accuracy.",
+      "os_build": "target iOS27.0.1 iPhone18Pro, exact build to capture",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 1
+        }
+      ]
+    }
+  ],
+  "acceptance_complete": false,
+  "scope": "new semantic phase, not a replacement for old consumer gates"
+}
