@@ -1,5 +1,33 @@
 {
-  "run_id": "39134556722",
-  "unchanged_source_artifact": true,
-  "correction": "metrics.json display.orientation wording is incorrect. Actual preview uses np.rot90(k=3): 270 degrees CCW / 90 degrees CW, matching HEIF irot=3. No pixel or archived file was changed."
+  "unchanged_source_artifacts": true,
+  "entries": [
+    {
+      "run_id": "39134556722",
+      "unchanged_source_artifact": true,
+      "correction": "metrics.json display.orientation wording is incorrect. Actual preview uses np.rot90(k=3): 270 degrees CCW / 90 degrees CW, matching HEIF irot=3. No pixel or archived file was changed."
+    },
+    {
+      "run_id": "39135794320",
+      "correction": "S4 metrics display orientation text also wrong. Actual np.rot90(k3)=90CW matches irot3; archives unchanged."
+    },
+    {
+      "run_id": "39139035394",
+      "invalidated": [
+        "directional-estimates/estimates.json numerical metrics",
+        "directional-estimates RGB NPZ arrays"
+      ],
+      "reason": "OCIO preview mutated C-contiguous candidate RGB alias before metrics/storage. Native parameter controls and independent skin-stage checks unaffected.",
+      "replacement_run_id": "39140025554",
+      "replacement_checks": "20/20 before/after input SHA equal",
+      "original_archive_unchanged": true
+    },
+    {
+      "run_id": "39155124218",
+      "correction": "Stored residual float32(.001) comparison differs by six points versus recomputed-half float64 criterion. Keep70387 stored-C-float and70381 recomputed-native-half definitions separately; no threshold relaxation.",
+      "audited_by_run_id": "39156641912"
+    },
+    {
+      "correction": "Retract unproven claim that producer257-point exponent equals1/j: address0x256ba5a44 reads a derived parameter, not established as directj. Cap branch and recompute dataflow have separate evidence."
+    }
+  ]
 }

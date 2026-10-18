@@ -1,4 +1,84 @@
 {
+  "schema_version": 1,
+  "generated_utc": "2026-10-17T23:01:52.117303+00:00",
+  "os_build": "26A434",
+  "status_values": [
+    "已验证静态",
+    "已验证数值",
+    "runner",
+    "待实机",
+    "假设"
+  ],
+  "acceptance_complete": false,
+  "incremental_generated_utc": "2026-10-18T13:35:15.329583+00:00",
+  "categories": [
+    "global",
+    "local",
+    "global/local",
+    "both/scene",
+    "producer",
+    "semantic/metadata",
+    "semantic/face-exposure/consumer",
+    "semantic/face-exposure/producer",
+    "semantic/texture",
+    "semantic/skin-color",
+    "semantic/key1"
+  ],
+  "incremental_claim_ids": [
+    "V3-G01",
+    "V3-G02",
+    "V3-G03",
+    "V3-L01",
+    "V3-L02",
+    "V3-L03",
+    "V3-L04",
+    "V3-L05",
+    "V3-GL01",
+    "V3-GL02",
+    "V3-P01",
+    "V3-P02",
+    "V3-P03",
+    "V3-P04",
+    "V3-P05",
+    "V3-S01",
+    "V3-S02",
+    "V9-C01",
+    "V9-C02",
+    "V9-C03",
+    "V9-C04",
+    "V9-G01",
+    "V9-L01",
+    "V9-S01",
+    "V10-L02"
+  ],
+  "pending_acceptance": [
+    "independent NumPy guided bit-exact gate",
+    "nonzero-tone independent full forward gate",
+    "identified producer global/local pixel factorization",
+    "global-color and camera LUT application domains",
+    "paired RAW scene accuracy",
+    "original-resolution native ROI and inverse (separate from passed captured-frame gate)"
+  ],
+  "current_consumer_pending_gates": [],
+  "research_status": "bit-exact closed by user; semantic investigation active",
+  "failed_gates_at_bit_exact_closeout": [
+    "numpy_half_bit_exact"
+  ],
+  "semantic_generated_utc": "2026-10-18T14:41:36.409237+00:00",
+  "semantic_acceptance_complete": false,
+  "updated_utc": "2026-10-18T19:09:15.123098+00:00",
+  "semantic_acceptance": {
+    "A_phase_complete": false,
+    "original_mask_coverage": 0.9508717854817709,
+    "threshold_max_relative": 0.001,
+    "consumer_skin_inverse_pass": false,
+    "under_eye_conditional_native_roundtrip_pass": true,
+    "under_eye_continuous_forward_pass": false,
+    "camera_face_body_inverse_calibrated": false,
+    "camera_texture_inverse_verified": false,
+    "scene_RAW_EV": "待实机",
+    "old_acceptance_unchanged": true
+  },
   "claims": [
     {
       "id": "SEM-01",
@@ -87,6 +167,20 @@
           "file": "iterations/20261018-v3/evidence/ios/CameraColorProcessing.literals-checked.asm",
           "line": 8960,
           "address": "0x256b65b14..0x256b65b44"
+        },
+        {
+          "file": "semantic-20261018/static/CameraColorProcessing.asm.s6.txt",
+          "line": 126,
+          "sha256": "e02e950e84f3a7137ea7145039b2ec327e60ba9d4194f4501b86f421dd767cdf",
+          "address": "0x256bab880..0x256bab884",
+          "symbol": "LTMDriverV2::Process"
+        },
+        {
+          "file": "semantic-20261018/static/CameraColorProcessing.asm.s6.txt",
+          "line": 126,
+          "sha256": "e02e950e84f3a7137ea7145039b2ec327e60ba9d4194f4501b86f421dd767cdf",
+          "address": "0x256bab880..0x256bab884",
+          "symbol": "LTMDriverV2::Process"
         }
       ]
     },
@@ -125,24 +219,32 @@
         {
           "file": "repo/research/vm-native/model-v10/0010.ll",
           "line": 410
+        },
+        {
+          "file": "repo/research/semantic-styles/run_semantic_s5.py",
+          "line": 23,
+          "sha256": "e44bfb514246e98cc65ff4a7635094ff341c011bebcb812d61dc5c29c21d3a7e"
+        },
+        {
+          "file": "repo/research/semantic-styles/run_semantic_s5.py",
+          "line": 23,
+          "sha256": "e44bfb514246e98cc65ff4a7635094ff341c011bebcb812d61dc5c29c21d3a7e"
         }
       ]
     },
     {
       "id": "SEM-08",
       "category": "semantic/texture/native",
-      "status": "runner",
-      "claim": "Native texture units and fixed-context inverse candidates are not yet accepted: S2 failed on incorrect NSValue extents; S3 failed in auxiliary interface probing; S4 finished but its 6.8MB encrypted artifact awaits explicit disk-limit authorization/download. Workflow success is not operator success.",
+      "status": "已验证数值",
+      "claim": "S4 fixed CIVector extents/checkpoint traversal runs cleanly; all three Studio units are identity because requiresPersonData=true and parsed persons=0. 61/61 related AIR modules exported as text. Identity is not camera effect removal.",
       "os_build": "26A434",
       "run_id": "39135794320",
       "evidence": [
         {
-          "file": "semantic-20261018/runs/39134556722/selected/out/texture.log",
-          "line": 1
-        },
-        {
-          "file": "semantic-20261018/runs/39135405637/selected/out/status.json",
-          "line": 1
+          "file": "semantic-20261018/runs/39135794320/selected/out/metrics.json",
+          "line": 2,
+          "sha256": "9144da3d8fa64b40a23aceec72bd7c6e7f7aceec28bb7c208c2a7d06e6c19d6f",
+          "json_pointer": "/rows"
         }
       ],
       "acceptance_pass": false
@@ -151,14 +253,17 @@
       "id": "SEM-09",
       "category": "semantic/skin-color/inverse-candidate",
       "status": "假设",
-      "claim": "A separate continuous float translation of AIR skin adjustment and chunked Newton inverse candidate is provided. It is not native-half certified, not fitted to IMG_2810 camera parameters, and its residual mask is not a uniqueness mask. No finite camera inverse interval is asserted without the missing context.",
-      "os_build": "AIR source26A434; new candidate unvalidated",
+      "claim": "Separate continuous AIR skin inverse tested in S5/S6, residual max relative1.558759e-6 on model observations. Not native-half certified, not fitted to original camera skin parameters, and residual validity is not uniqueness.",
+      "os_build": "26A434 AIR; S5 continuous candidate tested on runner",
       "evidence": [
         {
-          "file": "semantic-20261018/semantic_skin_model.py",
-          "line": 1
+          "file": "semantic-20261018/runs/39140025554/selected/out/analysis-s5.json",
+          "line": 252,
+          "sha256": "b99020b26d8f599a80d083270688ec64b38a688e9ecb28eab9af0c193ce1766e",
+          "json_pointer": "/cases/2/skin_continuous_inverse"
         }
-      ]
+      ],
+      "camera_inverse_verified": false
     },
     {
       "id": "SEM-10",
@@ -172,8 +277,356 @@
           "line": 1
         }
       ]
+    },
+    {
+      "id": "SEM-11",
+      "category": "semantic/skin-color-and-brightness/consumer",
+      "status": "已验证数值",
+      "claim": "S5 tone+.35 theta9=.5031250119 theta10=-.2223882526; neutralizing only bytes592/596 changes1794/4552/6346 half RGB components; outside-target parameter changes0, native hydration0. Fixed c/d/GTC/guides/stats/all mattes; edited consumer counterfactual, not original camera truth.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39139035394/selected/out/consumer-toneP035/semantic/results.json",
+          "line": 191,
+          "sha256": "d40bece227595a3ae95b2e2209b07975d5515313361747b545a9027db840ab6f",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/native/s8-context.json",
+          "line": 2,
+          "sha256": "279ba8d30d744f96021f0461edf7a66d256298ddc2dbbcec96924ca6e80d8aeb",
+          "json_pointer": "/context_mismatches"
+        },
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/native/s8-results.json",
+          "line": 863,
+          "sha256": "504d7da74935da63702adda377c3344582238e0c89232c892df381f9b096ec96",
+          "json_pointer": "/trials"
+        }
+      ],
+      "camera_inverse_verified": false,
+      "run_id": "39139035394"
+    },
+    {
+      "id": "SEM-12",
+      "category": "semantic/skin/unit-model",
+      "status": "已验证数值",
+      "claim": "Continuous skin model self-roundtrip max relative1.55875898e-6; native internal-stage equivalence not established. Derived MSL full image maxabs.00537109375 at positive tone. No frozen model changed.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39140025554/selected/out/analysis-s5.json",
+          "line": 252,
+          "sha256": "b99020b26d8f599a80d083270688ec64b38a688e9ecb28eab9af0c193ce1766e",
+          "json_pointer": "/cases/2/skin_continuous_inverse"
+        }
+      ],
+      "native_half_certified": false,
+      "run_id": "39140025554"
+    },
+    {
+      "id": "SEM-13",
+      "category": "semantic/skin/inverse-diagnosis",
+      "status": "已验证数值",
+      "claim": "Old full native inverse fails well outside skin and inside m>.5. Only323 original inputs outside old positive search box; incomplete solver cannot be dismissed as all matte-edge/clamp. At true native input only43 of70387 stored-residual failures have low finite-difference Jacobian rank h=.004.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39155124218/selected/out/residual/residual-results.json",
+          "line": 6,
+          "sha256": "90f2c3a5a0c86e19b044add9e422344f86c2316866305cdafe60cd1d7b3aab8c",
+          "json_pointer": "/diagnostics"
+        },
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/analysis/s8-analysis.json",
+          "line": 90,
+          "sha256": "e9e7e0539112b2f6da307e1256e1f1dc6d661e2588df3b1bb8e0b39161294c14",
+          "json_pointer": "/trials"
+        }
+      ],
+      "acceptance_pass": false,
+      "run_id": "39156000731"
+    },
+    {
+      "id": "SEM-14",
+      "category": "semantic/skin/inverse-estimator",
+      "status": "已验证数值",
+      "claim": "Residual estimate y+F0(xhat)-F(xhat) with native fixed context and three output-derived signed-RGB LM seeds. S8 isolated color/brightness/both failures91/205/296; max relative .004085802/.006788866/.006788866 on unchanged95.08718% mask; outside-skin-footprint change0. No full native inverse acceptance.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/native/s8-context.json",
+          "line": 2,
+          "sha256": "279ba8d30d744f96021f0461edf7a66d256298ddc2dbbcec96924ca6e80d8aeb",
+          "json_pointer": "/context_mismatches"
+        },
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/analysis/s8-analysis.json",
+          "line": 90,
+          "sha256": "e9e7e0539112b2f6da307e1256e1f1dc6d661e2588df3b1bb8e0b39161294c14",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/native/s8-results.json",
+          "line": 863,
+          "sha256": "504d7da74935da63702adda377c3344582238e0c89232c892df381f9b096ec96",
+          "json_pointer": "/trials"
+        }
+      ],
+      "acceptance_pass": false,
+      "threshold_max_relative": 0.001,
+      "original_input_used_as_seed": false,
+      "camera_inverse_verified": false,
+      "run_id": "39156000731"
+    },
+    {
+      "id": "SEM-15",
+      "category": "semantic/face-exposure/producer",
+      "status": "已验证静态",
+      "claim": "j enters computeInput+a92c. One LTCGridCalcAlgo branch caps local weights by clamp(a+2*(1-a)*(j-1),0,1), a=clamp(1-1/(kappa*sqrt(N)),0,1), kappa=.22360679507. This is not final masked +log2(j)EV. File faceSkin binding and full producer domain not identified.",
+      "os_build": "iOS27.0/24A446 iPhone12,1 cache; user-provided provenance; capture mismatch",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/CameraColorProcessing.asm.s6.txt",
+          "line": 126,
+          "sha256": "e02e950e84f3a7137ea7145039b2ec327e60ba9d4194f4501b86f421dd767cdf",
+          "address": "0x256bab880..0x256bab884",
+          "symbol": "LTMDriverV2::Process"
+        },
+        {
+          "file": "semantic-20261018/static/CameraColorProcessing.asm.s6.txt",
+          "line": 77,
+          "sha256": "e02e950e84f3a7137ea7145039b2ec327e60ba9d4194f4501b86f421dd767cdf",
+          "address": "0x256ba9edc..0x256ba9f50",
+          "symbol": "LTCGridCalcAlgo"
+        }
+      ]
+    },
+    {
+      "id": "SEM-16",
+      "category": "semantic/face-exposure/producer-instruction-replay",
+      "status": "已验证数值",
+      "claim": "64 inputs replay20 exact AArch64 instructions against cap formula: float32 different0/maxabs0. Not whole native iOS curve generation.",
+      "os_build": "iOS27.0/24A446 code replayed on macOS26A434 runner",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/CameraColorProcessing.asm.s6.txt",
+          "line": 77,
+          "sha256": "e02e950e84f3a7137ea7145039b2ec327e60ba9d4194f4501b86f421dd767cdf",
+          "address": "0x256ba9edc..0x256ba9f50",
+          "symbol": "LTCGridCalcAlgo"
+        },
+        {
+          "file": "semantic-20261018/runs/39140025554/selected/out/producer-j-cap-results.json",
+          "line": 5,
+          "sha256": "2ef0b37f69e63d4fd88513d3c57ea0f6a2d91eca0738c6f23813a573c649a8bf",
+          "json_pointer": "/cases"
+        }
+      ],
+      "run_id": "39140025554"
+    },
+    {
+      "id": "SEM-17",
+      "category": "semantic/face-body-exposure/estimate",
+      "status": "假设",
+      "claim": "Separate face/body scalar RGB gains use chosen .5/1*log2(j) budgets and explicit mask/smoother hypotheses. S6 corrected metrics: background0, budget overshoot0, chromaticity max1.1920929e-7, self-roundtrip max relative<=1.7581232e-7. Camera amplitude/body mapping not identified. OPPO base+gain has no unstyled truth.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39140025554/selected/out/directional-estimates/estimates.json",
+          "line": 16,
+          "sha256": "65ec5029b5d604d86a450b98fa979618d2624b626d6772f9798117dee868efe1",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39140025554/selected/out/preview-integrity.json",
+          "line": 2,
+          "sha256": "df1110e1fb3b0d8dc61aba5847bcea30559acf2a5be4a57016d8da587608179c",
+          "json_pointer": "/checks"
+        }
+      ],
+      "camera_inverse_verified": false,
+      "body_amplitude_identified": false,
+      "apple_mask_smoother_verified": false,
+      "run_id": "39140025554"
+    },
+    {
+      "id": "SEM-18",
+      "category": "semantic/skin/remaining-native-inverse",
+      "status": "runner",
+      "claim": "Further fixed-context SkinSmooth/Mattify nonzero native units and certified skin feasible-set bounds can run on macOS. Current skin candidate still fails1e-3; no threshold relaxation, no renewal of historical bit-exact search.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/analysis/s8-analysis.json",
+          "line": 90,
+          "sha256": "e9e7e0539112b2f6da307e1256e1f1dc6d661e2588df3b1bb8e0b39161294c14",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "semantic-20261018/runs/39156641912/selected/out/diagnostics/s9-diagnostics.json",
+          "line": 14,
+          "sha256": "8545d5fdb0ba076e5fa53b217f6329ea1d85a8b3966f9c3179d4128f3b1603d7",
+          "json_pointer": "/rows"
+        }
+      ],
+      "acceptance_pass": false,
+      "run_id": "39156641912"
+    },
+    {
+      "id": "SEM-19",
+      "category": "semantic/skin/quantization-identifiability",
+      "status": "已验证数值",
+      "claim": "Distinct half inputs found with exact same original native output but different neutral-parameter outputs. S9 unique witness unions color30/brightness57/both87 pixels; largest separation9.765625e-4 (brightness7.32421875e-4). This proves partial nonuniqueness; observed span is a lower bound, not full interval or explanation of all failures.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/analysis/s8-analysis.json",
+          "line": 90,
+          "sha256": "e9e7e0539112b2f6da307e1256e1f1dc6d661e2588df3b1bb8e0b39161294c14",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "semantic-20261018/runs/39156641912/selected/out/diagnostics/s9-diagnostics.json",
+          "line": 14,
+          "sha256": "8545d5fdb0ba076e5fa53b217f6329ea1d85a8b3966f9c3179d4128f3b1603d7",
+          "json_pointer": "/rows"
+        }
+      ],
+      "complete_inverse_interval_available": false,
+      "run_id": "39156641912"
+    },
+    {
+      "id": "SEM-20",
+      "category": "semantic/texture/missing-context",
+      "status": "待实机",
+      "claim": "File has an ExifAux Face region but no complete original postprocessed people/imageStats/instance/eye context. Need matched capture frame and firmware for true camera Studio undo; current parser persons0 is not evidence of absent capture effects.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/CMImaging.txt.s6.txt",
+          "line": 1,
+          "sha256": "db806d2ea6a7fbdcbd4528f7b7115ae09e27f00dfbe0ed97b120f28654e5ce81",
+          "address": "0x233367d70",
+          "symbol": "+[CMITextureStylesPersonInputData personDataFromDictionary:forKeys:]"
+        },
+        {
+          "file": "semantic-20261018/runs/39135794320/selected/out/metrics.json",
+          "line": 2,
+          "sha256": "9144da3d8fa64b40a23aceec72bd7c6e7f7aceec28bb7c208c2a7d06e6c19d6f",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39155124218/selected/out/under-eye/under-eye-results.json",
+          "line": 4,
+          "sha256": "09bbac70011d43a8aa464b6670c498b2188615b8730e18d4b62bb871f722b66b",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39155124218/selected/out/under-eye/imageio-properties.json",
+          "line": 52,
+          "sha256": "ff7d7e39349965d854cd359f0d56decc60758db47e757e2ee880a6702acff9d7",
+          "json_pointer": "/{ExifAux}/Regions/RegionList"
+        }
+      ],
+      "camera_inverse_verified": false,
+      "run_id": "39155124218"
+    },
+    {
+      "id": "SEM-21",
+      "category": "semantic/texture/under-eye-finalmix",
+      "status": "已验证静态",
+      "claim": "UnderEye FinalMix uses excluded-region face*instance weight times blendCondition, brightnessMix and strengthFactor, then half mix of input and editedTex. Known E/w conditional inverse divides by1-w; near1 is ill-conditioned/plateau.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/0138.ll.s6.txt",
+          "line": 1,
+          "sha256": "a6b30ca12c49c53d0c7e9ae60f5c5918dfc09945318503fa31bb9fe8bc005991"
+        }
+      ]
+    },
+    {
+      "id": "SEM-22",
+      "category": "semantic/texture/under-eye-conditional-inverse",
+      "status": "已验证数值",
+      "claim": "Native FinalMix on real primary/mattes with controlled E=1.15X and frozen synthetic stats: mix.5 native roundtrip max relative9.58772784e-4 coverage94.68384%; continuous forward maxabs3.92436981e-4 fails1e-5. Stated [0,1.25] box interval excludes0 originals in valid mask. Not original camera UnderEye undo.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39155124218/selected/out/under-eye/under-eye-results.json",
+          "line": 4,
+          "sha256": "09bbac70011d43a8aa464b6670c498b2188615b8730e18d4b62bb871f722b66b",
+          "json_pointer": "/rows"
+        }
+      ],
+      "native_roundtrip_component_pass": true,
+      "forward_float_accuracy_pass": false,
+      "camera_inverse_verified": false,
+      "run_id": "39155124218"
+    },
+    {
+      "id": "SEM-23",
+      "category": "semantic/texture/smooth-mattify",
+      "status": "已验证静态",
+      "claim": "AIR SkinSmooth final blend combines original, blurred and saturated reconstruction with nonlinear mask/brightness-dependent weights; Mattify has HSL editing, region blend, texture addback and editingStrength. Neither is simply skin*gain. Full original camera inverse not established.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/0151.ll.s6.txt",
+          "line": 18,
+          "sha256": "f1a9e5379c8b0fca017adb7a530158324e8cbdee63760f5015dfe43c0ea33b97"
+        },
+        {
+          "file": "semantic-20261018/static/0067.ll.s6.txt",
+          "line": 1,
+          "sha256": "6d4708bddd578ccc7d21e3e89e31b3a0c869a5f999d132dbfaa00b15b9a67400"
+        }
+      ]
+    },
+    {
+      "id": "SEM-24",
+      "category": "semantic/preview/alias-correction",
+      "status": "已验证数值",
+      "claim": "S5 C-contiguous RGB alias was modified by OCIO in-place; directional metrics/NPZ invalidated, archive unchanged. S6 copy-only recompute20/20 preview before/after input SHA equal; S8 all7 preview inputs unchanged. S5 native ablations and independent model checks unaffected.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39140025554/selected/out/preview-integrity.json",
+          "line": 2,
+          "sha256": "df1110e1fb3b0d8dc61aba5847bcea30559acf2a5be4a57016d8da587608179c",
+          "json_pointer": "/checks"
+        },
+        {
+          "file": "semantic-20261018/runs/39140025554/selected/out/directional-estimates/estimates.json",
+          "line": 16,
+          "sha256": "65ec5029b5d604d86a450b98fa979618d2624b626d6772f9798117dee868efe1",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39156000731/selected/out/analysis/s8-analysis.json",
+          "line": 90,
+          "sha256": "e9e7e0539112b2f6da307e1256e1f1dc6d661e2588df3b1bb8e0b39161294c14",
+          "json_pointer": "/trials"
+        }
+      ],
+      "run_id": "39140025554"
+    },
+    {
+      "id": "SEM-25",
+      "category": "semantic/skin/edges-and-threshold-audit",
+      "status": "已验证数值",
+      "claim": "S9 color/brightness/both failures91/205/296 include82/181/263 matte-edge pixels and5/23/28 observed-nonunique failures; no failed pixel has low h=.004 true-control Jacobian rank. Full-support error-gradient p99 .00226476/.00279184/.00308296 EV/pixel. Stored-f32 vs recomputed-half-f64 old count differs by6 threshold ties; no threshold changed.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39156641912/selected/out/diagnostics/s9-diagnostics.json",
+          "line": 14,
+          "sha256": "8545d5fdb0ba076e5fa53b217f6329ea1d85a8b3966f9c3179d4128f3b1603d7",
+          "json_pointer": "/rows"
+        }
+      ],
+      "run_id": "39156641912"
     }
-  ],
-  "acceptance_complete": false,
-  "scope": "new semantic phase, not a replacement for old consumer gates"
+  ]
 }
