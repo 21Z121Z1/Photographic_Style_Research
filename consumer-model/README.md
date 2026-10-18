@@ -26,7 +26,7 @@ XDRemux tone ±1 checks. It is a research model. Apple's native renderer remains
 | tone=0: the reconstructed MSL matches Apple's original output **half bit-exactly** on 5 full 512×384 frames (IMG_2600/2604/2608 discovery, IMG_0032/0033 held out), 589,824 RGB components each, 0 differing | verified | `evidence/claims.json` C18 (line 330); `evidence/validation-summary.json` `compiled_msl_forward` lines 29, 272, 515, 759, 1003 |
 | Non-zero tone (**±0.35 only**): **not** bit-exact. Max abs 0.0059–0.0073, PSNR (peak 1) 63.20 / 63.34 (IMG_2600 −0.35 / +0.35), 63.94 (IMG_0032 +0.35), 64.28 (IMG_0033 +0.35) | verified, acceptance=false | C20 (line 368); `evidence/msl-checkpoints-contrast-sum.json` lines 8, 234; `evidence/msl-checkpoints-heldout.json` lines 121, 347 |
 | NumPy reference (`python/forward.py`) is **not** bit-exact (about 79–82 dB) because of atan2/FMA lowering | verified, acceptance=false | C19 (line 347) |
-| Full native round-trip (inverse) | **not passing** | C35 (`evidence/claims.json`) |
+| Full native round-trip (inverse) | **not passing** | C35 (`evidence/claims.json` line 617) |
 | tone ±1 | **never measured** | — |
 
 Scope limits: the 5 captured parameter/matte/ROI cases only, at a 512 max edge
