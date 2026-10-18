@@ -33,6 +33,8 @@ jobs:
           gpg --batch --pinentry-mode loopback --passphrase-file "$W/input-key" --output "$W/IMG_2810.HEIC" --decrypt "$W/input.gpg" > "$W/decrypt.log" 2>&1
           rm -f "$W/input-key" "$W/input.gpg"
           python3 -m pip install --quiet numpy pillow opencolorio==2.6.0 > "$W/dependencies.log" 2>&1
+          # A single binary wheel (~40 MB); no LLVM/Homebrew source build.
+          python3 -m pip install --quiet --only-binary=:all: --no-deps llvmlite >> "$W/dependencies.log" 2>&1
       - name: Controlled native semantic tests
         run: |
           set -euo pipefail

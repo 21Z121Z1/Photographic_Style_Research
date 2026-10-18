@@ -39,7 +39,7 @@ if 'face'in executables:
   env={'XD_TONE_MAX_EDGE':'512','XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':'0'}
   if j:env['SEMANTIC_J']=j
   run([executables['face'],PHOTO,RES,OUT/('face-'+label)],'face-'+label,env)
-if 'texture'in executables:run([executables['texture'],RES,OUT/'texture',PHOTO],'texture',timeout=240)
+if 'texture'in executables:run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','--',executables['texture'],RES,OUT/'texture',PHOTO],'texture',timeout=360)
 run([sys.executable,SRC/'extract_texture_air.py',OUT/'texture-air'],'texture-air',timeout=240)
 run([sys.executable,SRC/'summarize_semantic_s2.py',OUT,RES],'metrics',timeout=180)
 rows=[]

@@ -34,9 +34,10 @@ int main(int argc,char**argv){@autoreleasepool{
   NSError*e=nil;NSData*data=[NSData dataWithContentsOfFile:[res stringByAppendingPathComponent:@"styles.plist"]];id semantic=[NSClassFromString(@"_NUSemanticStyleProperties")semanticStylePropertiesFromData:data fromVideo:NO keyTime:kCMTimeInvalid error:&e];
   data=[NSData dataWithContentsOfFile:[res stringByAppendingPathComponent:@"texture_styles.plist"]];id texture=[NSClassFromString(@"_NUTextureStyleProperties")textureStylePropertiesFromImageMetadata:data auxImageMetadata:@{} error:&e];
   f[@"texture_properties"]=Safe(texture,0);f[@"texture_parse_error"]=e.description?:@"none";f[@"person_input_data"]=Safe([NSClassFromString(@"PITextureStyleProcessorKernel")personInputDataFromStillProperties:texture],0);
+  SaveJSON(f,[out stringByAppendingPathComponent:@"checkpoint.json"]);
   Class pipe=NSClassFromString(@"PITextureStylePipelineProcessor");NSMutableArray*usages=[NSMutableArray new];
-  for(NSUInteger u=0;u<8;u++)[usages addObject:@{@"usage":@(u),@"allowed_types":Safe([pipe allowedEffectTypesForUsage:u],0),@"requirements":Safe([pipe inputRequirementsForUsage:u],0)}];f[@"usage_requirements"]=usages;
-  NSMutableDictionary*requirements=[NSMutableDictionary new];for(NSUInteger t=1;t<=3;t++)requirements[[@(t)stringValue]]=Safe([pipe inputConfigurationForEffectType:t isVideo:NO],0);f[@"effect_requirements"]=requirements;SaveJSON(f,[out stringByAppendingPathComponent:@"checkpoint.json"]);
+  for(NSUInteger u=1;u<8;u++){f[@"query_usage"]=@(u);SaveJSON(f,[out stringByAppendingPathComponent:@"query-progress.json"]);id allowed=[pipe allowedEffectTypesForUsage:u];[usages addObject:@{@"usage":@(u),@"allowed_types_description":[allowed description]?:@"nil"}];}f[@"usage_requirements"]=usages;
+  NSMutableDictionary*requirements=[NSMutableDictionary new];for(NSUInteger t=1;t<=3;t++){f[@"query_effect_type"]=@(t);SaveJSON(f,[out stringByAppendingPathComponent:@"query-progress.json"]);id c=[pipe inputConfigurationForEffectType:t isVideo:NO];NSMutableDictionary*q=[@{@"class_info":ClassInfo([c class])}mutableCopy];for(NSString*k in @[@"requiresPersonData",@"requiresLinearThumbnail"]){SEL s=NSSelectorFromString(k);if([c respondsToSelector:s])q[k]=@(((BOOL(*)(id,SEL))objc_msgSend)(c,s));}requirements[[@(t)stringValue]]=q;}f[@"effect_requirements"]=requirements;SaveJSON(f,[out stringByAppendingPathComponent:@"checkpoint.json"]);
   NSDictionary*t=[NSDictionary dictionaryWithContentsOfFile:@"/System/Library/PrivateFrameworks/CMImaging.framework/Resources/TextureStyleTuning.plist"];
   NSDictionary*selected=t[@"iPhone19,2"][@"PortTypeBack"][@"Still"][@"Studio"][@"Common"];if(!selected)@throw[NSException exceptionWithName:@"tuning"reason:@"Exact hardware/port/mode tuning missing"userInfo:nil];f[@"selected_tuning"]=selected;
   id<MTLDevice>dev=MTLCreateSystemDefaultDevice();NSError*le=nil;id<MTLLibrary>lib=[dev newLibraryWithFile:@"/System/Library/PrivateFrameworks/CMImaging.framework/Resources/default.metallib"error:&le];f[@"library_function_names"]=lib.functionNames?:@[];
@@ -54,7 +55,7 @@ int main(int argc,char**argv){@autoreleasepool{
   NSMutableArray*trials=[NSMutableArray new];Class kernel=NSClassFromString(@"PITextureStyleProcessorKernel");
   for(NSString*effect in @[@"UnderEyeBrightening",@"SkinSmoothingStandalone",@"Mattify"]){@try{
     id desc=[kernel descriptorForEffectName:effect tuningDictionary:selected semanticStyleProperties:semantic semanticStyleInfo:@{@"cast":@"Standard",@"color":@0}];
-    NSDictionary*args=@{@"usage":@0,@"intensity":@0.87999999523162842,@"grainIntensity":@0,@"textureStyleProperties":texture,@"semanticStyleProperties":semantic,@"isVideo":@NO,@"effectDescriptors":@[desc],@"extents":extents};
+    NSDictionary*args=@{@"usage":@1,@"intensity":@0.87999999523162842,@"grainIntensity":@0,@"textureStyleProperties":texture,@"semanticStyleProperties":semantic,@"isVideo":@NO,@"effectDescriptors":@[desc],@"extents":extents};
     f[@"current_effect"]=effect;f[@"current_descriptor"]=Safe(desc,0);SaveJSON(f,[out stringByAppendingPathComponent:@"before-render.json"]);
     NSError*err=nil;CIImage*o=[(Class)kernel applyWithExtent:r inputs:inputs arguments:args error:&err];
     NSMutableDictionary*q=[@{@"effect":effect,@"descriptor":Safe(desc,0),@"error":err.description?:@"none"}mutableCopy];

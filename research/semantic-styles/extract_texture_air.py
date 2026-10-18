@@ -2,6 +2,9 @@
 from pathlib import Path
 import ctypes as C,glob,os,sys,re,struct,json,subprocess,hashlib
 if len(sys.argv)>2 and sys.argv[1]=='--child':
+ if sys.argv[2]=='llvmlite':
+  import llvmlite.binding as llvm
+  module=llvm.parse_bitcode(Path(sys.argv[3]).read_bytes());Path(sys.argv[4]).write_text(str(module));raise SystemExit(0)
  lib=C.CDLL(sys.argv[2]);raw=Path(sys.argv[3]).read_bytes();buf=C.create_string_buffer(raw)
  lib.LLVMCreateMemoryBufferWithMemoryRangeCopy.argtypes=[C.c_void_p,C.c_size_t,C.c_char_p];lib.LLVMCreateMemoryBufferWithMemoryRangeCopy.restype=C.c_void_p
  lib.LLVMParseBitcode2.argtypes=[C.c_void_p,C.POINTER(C.c_void_p)];lib.LLVMParseBitcode2.restype=C.c_int
@@ -13,6 +16,10 @@ out=Path(sys.argv[1]);out.mkdir(exist_ok=True);candidates=[]
 for pattern in ['/Applications/Xcode*.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLLVM*.dylib','/opt/homebrew/opt/llvm/lib/libLLVM*.dylib','/Library/Developer/CommandLineTools/usr/lib/libLLVM*.dylib']:
  candidates.extend(glob.glob(pattern))
 usable=[]
+try:
+ import llvmlite.binding
+ usable=['llvmlite']
+except ImportError:pass
 for p in candidates:
  try:
   lib=C.CDLL(p)
