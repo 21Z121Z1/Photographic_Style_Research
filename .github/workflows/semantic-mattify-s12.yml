@@ -1,0 +1,41 @@
+name: semantic-mattify-s12
+on:
+  push:
+    branches: ['research/vm-native-20261019-compile-s12']
+  workflow_dispatch:
+jobs:
+  compile-only:
+    runs-on: xcode-27
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record host and compile probe
+        run: |
+          set -euo pipefail
+          mkdir out
+          sw_vers > out/host.txt
+          test "$(sw_vers -buildVersion)" = 26A434
+          shasum -a 256 /System/Library/PrivateFrameworks/CMImaging.framework/Resources/default.metallib > out/metallib.sha256
+          clang -fobjc-arc -O2 -framework Foundation -framework Metal research/semantic-styles/mattify_compile_s12.m -o "$RUNNER_TEMP/mattify-compile" > out/build.log 2>&1
+      - name: Compile matrix without image inputs
+        run: |
+          python3 - <<'PY'
+          import pathlib,subprocess,json,os,itertools
+          out=pathlib.Path('out');rows=[]
+          for thumbnail,blocks,descriptor in itertools.product([0,1],repeat=3):
+              stem=f't{thumbnail}-b{blocks}-d{descriptor}'
+              with (out/(stem+'.log')).open('w') as log:
+                  try:
+                      rc=subprocess.run([os.environ['RUNNER_TEMP']+'/mattify-compile',str(thumbnail),str(blocks),str(descriptor),str(out/(stem+'.json'))],stdout=log,stderr=subprocess.STDOUT,timeout=50).returncode
+                  except subprocess.TimeoutExpired:rc='timeout'
+              rows.append({'case':stem,'returncode':rc})
+          (out/'matrix-status.json').write_text(json.dumps(rows,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-mattify-s12-text
+          path: out/
+          retention-days: 1
