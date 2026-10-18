@@ -1,0 +1,28 @@
+{
+  "input": {
+    "file": "input.f16",
+    "shape": [
+      13,
+      17,
+      4
+    ],
+    "dtype": "<f2"
+  },
+  "guide": {
+    "file": "guide.f16",
+    "shape": [
+      129,
+      193,
+      4
+    ],
+    "dtype": "<f2"
+  },
+  "output_shape": [
+    384,
+    571,
+    4
+  ],
+  "radius": 1,
+  "epsilon": 0.05,
+  "scope": "RGB log-gain with scalar luma replicated into RGB guide channels; original scalar-guide control kept separately"
+}
