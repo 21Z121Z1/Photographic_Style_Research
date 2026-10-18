@@ -9,11 +9,16 @@ jobs:
     timeout-minutes: 55
     permissions:
       contents: read
+      actions: read
     env:
       HOMEBREW_NO_AUTO_UPDATE: '1'
       HOMEBREW_NO_INSTALL_CLEANUP: '1'
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Host and native capabilities
         shell: bash
         run: |
@@ -36,11 +41,13 @@ jobs:
         run: |
           brew install llvm > out/brew-llvm.log 2>&1
           python3 research/vm-native/runner/extract_air.py out/air > out/air-extraction.log 2>&1
-      - name: V7 native inverse repair and MSL observation control
+      - name: V8 primitive controls and independent consumer forward conformance
         if: always()
         shell: bash
         run: |
-          python3 research/vm-native/runner/run-repair-v7.py > out/guided-v3.log 2>&1
+          python3 -m pip install numpy==2.5.4 > out/pip-numpy-v8.log 2>&1
+          python3 -m pip freeze > out/python-packages-v8.txt
+          python3 research/vm-native/runner/run-precision-v8.py | tee out/precision-v8.log
       - name: Seal text evidence
         if: always()
         shell: bash
