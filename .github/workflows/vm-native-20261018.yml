@@ -36,11 +36,11 @@ jobs:
         run: |
           brew install llvm > out/brew-llvm.log 2>&1
           python3 research/vm-native/runner/extract_air.py out/air > out/air-extraction.log 2>&1
-      - name: Native multiscale half inverse v3
+      - name: Native inverse refinement v4
         if: always()
         shell: bash
         run: |
-          python3 research/vm-native/runner/run-inverse-coarse-v3.py > out/guided-v3.log 2>&1
+          python3 research/vm-native/runner/run-inverse-v4.py > out/guided-v3.log 2>&1
       - name: Seal text evidence
         if: always()
         shell: bash
