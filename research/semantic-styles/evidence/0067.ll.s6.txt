@@ -1,0 +1,116 @@
+100:
+101: ; Function Attrs: convergent inlinehint mustprogress nounwind
+102: define internal fastcc <3 x half> @_ZN23CMITextureStylesMattify36applyRegionAddbackAndEditingStrengthEN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU11MTLconstantKDv4_fS4_S7_S4_S7_S4_S7_S4_S7_Dv2_tS8_Dv3_DhfS9_fRU11MTLconstantK15MattifyParams_t(ptr addrspace(1) %0, ptr addrspace(2) noundef align 16 dereferenceable(16) %1, ptr addrspace(1) %2, ptr addrspace(2) noundef align 16 dereferenceable(16) %3, ptr addrspace(1) %4, ptr addrspace(2) noundef align 16 dereferenceable(16) %5, ptr addrspace(1) %6, ptr addrspace(2) noundef align 16 dereferenceable(16) %7, ptr addrspace(1) %8, ptr addrspace(2) noundef align 16 dereferenceable(16) %9, <2 x i16> noundef %10, <2 x i16> noundef %11, <3 x half> noundef %12, float noundef %13, <3 x half> noundef %14, float noundef %15, ptr addrspace(2) noundef align 4 dereferenceable(72) %16) unnamed_addr #6 {
+103:   %18 = tail call fast <2 x float> @air.convert.f.v2f32.u.v2i16(<2 x i16> %10) #11
+104:   %19 = fadd fast <2 x float> %18, splat (float 5.000000e-01)
+105:   %20 = tail call fast <2 x float> @air.convert.f.v2f32.u.v2i16(<2 x i16> %11) #11
+106:   %21 = fdiv fast <2 x float> %19, %20
+107:   %22 = load <4 x float>, ptr addrspace(2) %1, align 16, !tbaa !50
+108:   %23 = shufflevector <4 x float> %22, <4 x float> poison, <2 x i32> <i32 0, i32 1>
+109:   %24 = shufflevector <4 x float> %22, <4 x float> poison, <2 x i32> <i32 2, i32 3>
+110:   %25 = fmul fast <2 x float> %24, %21
+111:   %26 = fadd fast <2 x float> %25, %23
+112:   %27 = tail call { <4 x half>, i8 } @air.sample_texture_2d.v4f16(ptr addrspace(1) readonly captures(none) %0, ptr addrspace(2) readonly captures(none) @__air_sampler_state, <2 x float> %26, i1 true, <2 x i32> zeroinitializer, i1 false, float 0.000000e+00, float 0.000000e+00, i32 0) #18
+113:   %28 = extractvalue { <4 x half>, i8 } %27, 0
+114:   %29 = shufflevector <4 x half> %28, <4 x half> undef, <3 x i32> zeroinitializer
+115:   %30 = load <4 x float>, ptr addrspace(2) %3, align 16, !tbaa !50
+116:   %31 = shufflevector <4 x float> %30, <4 x float> poison, <2 x i32> <i32 0, i32 1>
+117:   %32 = shufflevector <4 x float> %30, <4 x float> poison, <2 x i32> <i32 2, i32 3>
+118:   %33 = fmul fast <2 x float> %32, %21
+119:   %34 = fadd fast <2 x float> %33, %31
+120:   %35 = tail call { <4 x half>, i8 } @air.sample_texture_2d.v4f16(ptr addrspace(1) readonly captures(none) %2, ptr addrspace(2) readonly captures(none) @__air_sampler_state, <2 x float> %34, i1 true, <2 x i32> zeroinitializer, i1 false, float 0.000000e+00, float 0.000000e+00, i32 0) #18
+121:   %36 = extractvalue { <4 x half>, i8 } %35, 0
+122:   %37 = extractelement <4 x half> %36, i64 0
+123:   %38 = load <4 x float>, ptr addrspace(2) %9, align 16, !tbaa !50
+124:   %39 = shufflevector <4 x float> %38, <4 x float> poison, <2 x i32> <i32 0, i32 1>
+125:   %40 = shufflevector <4 x float> %38, <4 x float> poison, <2 x i32> <i32 2, i32 3>
+126:   %41 = fmul fast <2 x float> %40, %21
+127:   %42 = fadd fast <2 x float> %41, %39
+128:   %43 = tail call { <4 x half>, i8 } @air.sample_texture_2d.v4f16(ptr addrspace(1) readonly captures(none) %8, ptr addrspace(2) readonly captures(none) @__air_sampler_state, <2 x float> %42, i1 true, <2 x i32> zeroinitializer, i1 false, float 0.000000e+00, float 0.000000e+00, i32 0) #18
+129:   %44 = extractvalue { <4 x half>, i8 } %43, 0
+130:   %45 = extractelement <4 x half> %44, i64 0
+131:   %46 = load <4 x float>, ptr addrspace(2) %7, align 16, !tbaa !50
+132:   %47 = shufflevector <4 x float> %46, <4 x float> poison, <2 x i32> <i32 0, i32 1>
+133:   %48 = shufflevector <4 x float> %46, <4 x float> poison, <2 x i32> <i32 2, i32 3>
+134:   %49 = fmul fast <2 x float> %48, %21
+135:   %50 = fadd fast <2 x float> %49, %47
+136:   %51 = tail call { <4 x half>, i8 } @air.sample_texture_2d.v4f16(ptr addrspace(1) readonly captures(none) %6, ptr addrspace(2) readonly captures(none) @__air_sampler_state, <2 x float> %50, i1 true, <2 x i32> zeroinitializer, i1 false, float 0.000000e+00, float 0.000000e+00, i32 0) #18
+137:   %52 = extractvalue { <4 x half>, i8 } %51, 0
+138:   %53 = shufflevector <4 x half> %52, <4 x half> poison, <3 x i32> <i32 0, i32 1, i32 2>
+139:   %54 = tail call fast fastcc <3 x half> @_ZN23CMITextureStylesMattify20applyBlendColorImageEDv3_DhS0_DhDhS0_RU11MTLconstantK15MattifyParams_t(<3 x half> noundef %12, <3 x half> noundef %53, half noundef %45, half noundef %37, <3 x half> noundef %14, ptr addrspace(2) noundef align 4 dereferenceable(72) %16) #19
+140:   %55 = fmul fast half %45, %37
+141:   %56 = insertelement <3 x half> poison, half %55, i64 0
+142:   %57 = shufflevector <3 x half> %56, <3 x half> poison, <3 x i32> zeroinitializer
+143:   %58 = fmul fast <3 x half> %57, %29
+144:   %59 = tail call fast <3 x half> @air.mix.v3f16(<3 x half> %12, <3 x half> %54, <3 x half> %58) #11
+145:   %60 = getelementptr inbounds %struct.MattifyParams_t, ptr addrspace(2) %16, i64 0, i32 0
+146:   %61 = load float, ptr addrspace(2) %60, align 4, !tbaa !77
+147:   %62 = fmul fast float %61, %15
+148:   %63 = fptrunc float %62 to half
+149:   %64 = tail call fast half @air.dot.v3f16(<3 x half> %14, <3 x half> splat (half 0xH3555)) #11
+150:   %65 = fcmp fast ogt half %64, 0xH0000
+151:   %66 = zext i1 %65 to i32
+152:   %67 = tail call fast half @air.convert.f.f16.s.i32(i32 %66) #11
+153:   %68 = fmul fast half %67, %63
+154:   %69 = load i8, ptr addrspace(2) @_ZN23CMITextureStylesMattifyL24styleEngineThumbnailModeE, align 1, !tbaa !45, !range !49
+155:   %70 = icmp eq i8 %69, 0
+156:   %71 = fcmp fast ogt half %68, 0xH0000
+157:   %72 = select i1 %70, i1 %71, i1 false
+158:   br i1 %72, label %73, label %115
+159:
+160: 73:                                               ; preds = %17
+161:   %74 = load <4 x float>, ptr addrspace(2) %5, align 16, !tbaa !50
+162:   %75 = shufflevector <4 x float> %74, <4 x float> poison, <2 x i32> <i32 0, i32 1>
+163:   %76 = shufflevector <4 x float> %74, <4 x float> poison, <2 x i32> <i32 2, i32 3>
+164:   %77 = fmul fast <2 x float> %76, %21
+165:   %78 = fadd fast <2 x float> %77, %75
+166:   %79 = tail call { <4 x half>, i8 } @air.sample_texture_2d.v4f16(ptr addrspace(1) readonly captures(none) %4, ptr addrspace(2) readonly captures(none) @__air_sampler_state, <2 x float> %78, i1 true, <2 x i32> zeroinitializer, i1 false, float 0.000000e+00, float 0.000000e+00, i32 0) #18
+167:   %80 = extractvalue { <4 x half>, i8 } %79, 0
+190:   %103 = fadd fast <3 x half> %102, %59
+191:   %104 = getelementptr inbounds %struct.MattifyParams_t, ptr addrspace(2) %16, i64 0, i32 8
+192:   %105 = load float, ptr addrspace(2) %104, align 4, !tbaa !81
+193:   %106 = fptrunc float %105 to half
+194:   %107 = fptrunc float %13 to half
+195:   %108 = fsub fast half %106, %107
+196:   %109 = getelementptr inbounds %struct.MattifyParams_t, ptr addrspace(2) %16, i64 0, i32 9
+197:   %110 = load float, ptr addrspace(2) %109, align 4, !tbaa !82
+198:   %111 = fptrunc float %110 to half
+199:   %112 = fdiv fast half %108, %111
+200:   %113 = tail call fast half @air.clamp.f16(half %112, half 0xH0000, half 0xH3C00) #11
+201:   %114 = fmul fast half %113, %68
+202:   br label %115
+203:
+204: 115:                                              ; preds = %73, %17
+205:   %116 = phi half [ %68, %17 ], [ %114, %73 ]
+206:   %117 = phi <3 x half> [ %59, %17 ], [ %103, %73 ]
+207:   %118 = insertelement <3 x half> poison, half %116, i64 0
+208:   %119 = shufflevector <3 x half> %118, <3 x half> poison, <3 x i32> zeroinitializer
+209:   %120 = tail call fast <3 x half> @air.mix.v3f16(<3 x half> %12, <3 x half> %117, <3 x half> %119) #11
+210:   ret <3 x half> %120
+211: }
+212:
+213: ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none)
+214: declare <3 x half> @air.mix.v3f16(<3 x half>, <3 x half>, <3 x half>) local_unnamed_addr #0
+215:
+216: ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none)
+217: declare half @air.clamp.f16(half, half, half) local_unnamed_addr #0
+218:
+219: ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none)
+220: declare <3 x half> @air.fmin.v3f16(<3 x half>, <3 x half>) local_unnamed_addr #0
+221:
+222: ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none)
+223: declare half @air.fmin3.f16(half, half, half) local_unnamed_addr #0
+224:
+225: ; Function Attrs: convergent mustprogress nofree nounwind willreturn memory(argmem: read)
+226: declare { <4 x half>, i8 } @air.sample_texture_2d.v4f16(ptr addrspace(1) readonly captures(none), ptr addrspace(2) readonly captures(none), <2 x float>, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #7
+227:
+228: ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none)
+229: declare half @air.convert.f.f16.s.i32(i32) local_unnamed_addr #0
+230:
+231: ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none)
+232: declare half @air.dot.v3f16(<3 x half>, <3 x half>) local_unnamed_addr #0
+233:
+234: ; Function Attrs: inlinehint mustprogress nounwind
+235: define internal fastcc <3 x half> @_ZN23CMITextureStylesMattify20applyBlendColorImageEDv3_DhS0_DhDhS0_RU11MTLconstantK15MattifyParams_t(<3 x half> noundef %0, <3 x half> noundef %1, half noundef %2, half noundef %3, <3 x half> noundef %4, ptr addrspace(2) noundef align 4 dereferenceable(72) %5) unnamed_addr #8 {
+236:   %7 = fdiv fast half 0xH3C00, %2
+237:   %8 = fpext half %2 to float
