@@ -2,7 +2,7 @@
 0150.ll:18:   %27 = tail call ptr addrspace(4) @air.imageblock_data(<2 x i16> %25, i32 0, i16 0) #9
 0150.ll:19:   %28 = load <2 x i32>, ptr addrspace(2) %23, align 8, !tbaa !50, !alias.scope !54, !noalias !57
 0150.ll:360:   br label %337
-0150.ll:361: 
+0150.ll:361:
 0150.ll:362: 337:                                              ; preds = %332, %176, %100
 0150.ll:363:   %338 = phi <4 x half> [ %219, %176 ], [ %336, %332 ], [ %107, %100 ]
 0150.ll:364:   %339 = bitcast ptr addrspace(4) %27 to ptr addrspace(4)
@@ -21,7 +21,7 @@
 0150.ll:377:   %350 = icmp eq <2 x i16> %25, zeroinitializer
 0150.ll:378:   %351 = tail call i1 @air.all.v2i1(<2 x i1> %350) #11
 0150.ll:379:   br i1 %351, label %352, label %353
-0150.ll:380: 
+0150.ll:380:
 0150.ll:381: 352:                                              ; preds = %337
 0150.ll:382:   tail call void @air.write_imageblock_slice_to_texture_2d.i16.v4f16(ptr addrspace(1) captures(none) %2, ptr addrspace(4) captures(none) %27, i1 false, <2 x i16> zeroinitializer, <2 x i16> undef, <2 x i16> %104, i16 0, i1 false, i32 2) #16
 0150.ll:383:   br label %353
