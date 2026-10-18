@@ -1,0 +1,1391 @@
+{
+  "build": "26A434",
+  "photos": {
+    "IMG_2600": {
+      "thumbnail_float": {
+        "max_abs": 1.4914725379733262e-07,
+        "mae": 9.05546155196643e-09,
+        "psnr_peak1_db": 154.71195796224674,
+        "components": 2359296
+      },
+      "numpy_forward": {
+        "capture": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/tone-0/renderer-0",
+        "air_path": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+        "air_sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+        "shape": [
+          384,
+          512,
+          4
+        ],
+        "compared_pixels": 196608,
+        "full_frame": true,
+        "half_differing_components": 129207,
+        "max_abs": 0.002197265625,
+        "mse": 1.1669936506701115e-08,
+        "psnr_peak1_db": 79.32931506839321,
+        "elapsed_seconds": 25.656062126159668,
+        "precision": "AIR half ops rounded by NumPy; fast-math fusion and transcendental approximation need native validation"
+      },
+      "compiled_msl_forward": {
+        "max_abs": 0.0,
+        "mae": 0.0,
+        "psnr_peak1_db": "inf",
+        "components": 589824,
+        "half_differing_components": 0
+      },
+      "semantic_continuous_inverse": {
+        "scope": "512 continuous-formula checkpoint inputs; separate from full native roundtrip acceptance",
+        "pixels": 512,
+        "semantic_params": [
+          1.0,
+          1.0,
+          4.892307758331299,
+          4.892307758331299,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "primary_mask_coverage": 1.0,
+        "primary_max_relative_error": 0.0,
+        "anchor_mask_coverage": 0.0,
+        "anchor_plateau_fraction": 1.0,
+        "anchor_endpoint_fraction": 1.0,
+        "anchor_max_relative_error": null
+      },
+      "scene": {
+        "scope": "relative scene-linear P3 approximation; no unique capture-ISP inverse",
+        "shape": [
+          1536,
+          2048,
+          3
+        ],
+        "exposure_ev": 4.979845792404184,
+        "anchor_offset": 1e-05,
+        "area_constraint": "Nonnegative RGB cell scaling after bilinear log-gain; cell boundaries may gain discontinuities",
+        "pre_area_balance_mae_ev": 0.11927824973879318,
+        "raw_inputs": 0,
+        "nit_calibration": false,
+        "negative_before_clamp_fraction": 6.357828776041666e-07,
+        "native_build": "Version 27.0.1 (Build 26A434)",
+        "masks": {
+          "thumbnail_range_clamp": 7.62939453125e-06,
+          "thumbnail_candidate_toe": 0.09285481770833333,
+          "thumbnail_near_black": 0.0,
+          "gtc_endpoint": 0.23009141286214194,
+          "scene_negative_before_clamp": 1.9073486328125e-06,
+          "primary_near_black": 0.00016276041666666666,
+          "zero_detail_cell": 0.0
+        },
+        "mask_scope": "conservative information-loss/sensitivity flags, not proof of a unique scene inverse",
+        "native_case": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600",
+        "native_unstyled_sha256": "f239a4522e6626e0786cf6c4bfa4a80bfc404e75d7a57d98b4c4593dd6c3257b",
+        "native_thumbnail_sha256": "a8ca61c214f0575b2d162362445cc210855a9a5c5ca7dda9218aee9640319a74",
+        "area_anchor_mae_ev": 3.074387413714293e-08
+      },
+      "carrier": {
+        "source": "inputs/IMG_2600.HEIC",
+        "output": "results/carriers-final/IMG_2600.HEIC",
+        "output_sha256": "fbd57f43013a68ff51f7a4817cd0c9fd0fe02e832f5903f775dbb4178c3d5bff",
+        "gain_min_ev": -4.332335948944092,
+        "gain_max_ev": 4.997084617614746,
+        "gain_step_ev": 0.03658596300611309,
+        "gain_offset": 0.015625,
+        "gain_shape": [
+          1536,
+          2048,
+          3
+        ],
+        "encoder": "libheif x265 8-bit YCbCr 4:4:4 quality95",
+        "sdr_decoder": "libheif 1.21.2",
+        "sdr_components_checked": 73410624,
+        "sdr_max_abs_code": 0,
+        "quantization_only": {
+          "mae_ev": 0.007786458263839016,
+          "p90_ev": 0.014420341615938404,
+          "p99_ev": 0.02157414762209585,
+          "max_ev": 7.178153708834681,
+          "nonpositive_Y": 12
+        },
+        "codec_additional": {
+          "mae_ev": 0.010812829352636498,
+          "p90_ev": 0.028386361370184125,
+          "p99_ev": 0.04341864501997828,
+          "max_ev": 7.3360791101907425,
+          "nonpositive_Y": 14
+        },
+        "quantization_plus_codec": {
+          "mae_ev": 0.013918674425248627,
+          "p90_ev": 0.028828946634642204,
+          "p99_ev": 0.05037009410460679,
+          "max_ev": 7.63656336861118,
+          "nonpositive_Y": 14
+        },
+        "gain_code_codec_max_abs": 5,
+        "native_ImageIO_readback": "pending",
+        "identity": {
+          "primary_item_id": 46,
+          "gain_item_id": 62,
+          "tmap_item_id": 142,
+          "primary_descendant_payloads_checked": 46,
+          "primary_coded_and_properties_identical": true
+        }
+      },
+      "inverse_subset": {
+        "pixels": 4096,
+        "full_frame": false,
+        "mask_coverage": 1.0,
+        "max_relative_error_in_mask": 0.005054759898904802,
+        "failed_eligible_pixels": 517,
+        "native_forward_verified": false,
+        "singular_fraction": 0.0,
+        "solver_scope": "conditional numerical experiment; failure is not evidence of noninvertibility",
+        "bound": "Input restricted to [0,1.25]: conservative absolute RGB error bound 1.25; no finite EV bound at zero or outside a bounded input domain."
+      },
+      "native_full_sdr": {
+        "source_decoded_sha256": "ca724d556cd13d1992e9ca08d7b5ea39aa891fd3d0fc89c1c240df1270ccd826",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "carrier_decoded_sha256": "ca724d556cd13d1992e9ca08d7b5ea39aa891fd3d0fc89c1c240df1270ccd826",
+        "colour_space": "extended-linear Display P3",
+        "nonfinite": 0,
+        "components": 97880832,
+        "apply_orientation": false,
+        "different_float_bitpatterns": 0,
+        "shape": [
+          4284,
+          5712,
+          4
+        ],
+        "max_abs": 0,
+        "expand_hdr": false
+      },
+      "native_hdr_target": {
+        "mae_ev": 0.06268165300364288,
+        "p90_ev": 0.16412050103008943,
+        "p99_ev": 0.43708380144797393,
+        "max_ev": 11.944136073041788,
+        "nonpositive_Y": 7
+      },
+      "gain_application_order": {
+        "crop_shape": [
+          64,
+          64,
+          4
+        ],
+        "original_size": [
+          4284,
+          5712
+        ],
+        "max_ev": 4.997085,
+        "dtype": "<f4",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "min_ev": -4.332336,
+        "scope": "Controlled application/resampling variants; no RAW oracle",
+        "offset": 0.015625,
+        "output_shape": [
+          1536,
+          2048,
+          4
+        ],
+        "reference_sha256": "387ed70a27c65ccfd670f660cf660a54b8f0f2924e2ca13fa287c5930f0d971e",
+        "gain_size": [
+          1536,
+          2048
+        ],
+        "comparisons_to_ImageIO_HDR": {
+          "linear_gain_before_resize": {
+            "mae_ev": 0.012206831855957348,
+            "output_sha256": "2250da18dba812263498ab22bb572dc09539aa7eb794845df42ce28321ca37c5",
+            "nonpositive_Y": 2,
+            "max_ev": 10.222177874578849,
+            "pixels": 3145728,
+            "psnr_peak1_db": 41.2623488880542,
+            "max_abs": 3.1323251724243164
+          },
+          "log_after_resize": {
+            "mae_ev": 0.060512013292343785,
+            "output_sha256": "7d9546842a1a3664ad4280d69a7b96e82a514ad6216907ac45718b401ae2c73d",
+            "nonpositive_Y": 17,
+            "max_ev": 13.039025138755633,
+            "pixels": 3145728,
+            "psnr_peak1_db": 30.45297840272535,
+            "max_abs": 6.517999649047852
+          },
+          "log_before_resize": {
+            "mae_ev": 8.004945399765075e-08,
+            "output_sha256": "fd685e4e513026f96eebd1b06fd1edaa4b4782eeae58638137c475bdb5ba0498",
+            "nonpositive_Y": 7,
+            "max_ev": 4.921014728279825e-05,
+            "pixels": 3145728,
+            "psnr_peak1_db": 136.4227847645622,
+            "max_abs": 2.86102294921875e-06
+          }
+        }
+      },
+      "thumbnail_information_bounds": {
+        "photo": "IMG_2600",
+        "os_build": "26A434",
+        "shape": [
+          768,
+          1024,
+          3
+        ],
+        "native_settings": {
+          "linearGain": 10.360973358154297,
+          "linearRangeMax": 0.34326171875,
+          "linearRangeMin": -0.02032470703125
+        },
+        "native_case": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600",
+        "low_clamp_components": 0,
+        "high_clamp_components": 2,
+        "near_black_pixels": 6,
+        "bounds_scope": "Conditional decoded-RGB +/-halfLSB sensitivity. Lossy HEVC error is not bounded by halfLSB. Unbounded pre-clamp side is represented by +/-inf in NPZ. Not a complete scene inverse.",
+        "unclamped_conditional_abs_bound_max": 0.001284480094909668,
+        "near_zero_EV_bound": "unbounded if the admissible interval contains zero",
+        "scene_gtc_only_upper_bound": "unbounded at GTC upper endpoint absent an explicit maximum-scene prior; a separate valid thumbnail may supply additional information"
+      }
+    },
+    "IMG_2604": {
+      "thumbnail_float": {
+        "max_abs": 3.80824523582568e-08,
+        "mae": 7.707361012036634e-09,
+        "psnr_peak1_db": 159.02113096142642,
+        "components": 2359296
+      },
+      "numpy_forward": {
+        "capture": "runs/39073825646/artifacts/vm-native-text/native/IMG_2604/tone-0/renderer-0",
+        "air_path": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+        "air_sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+        "shape": [
+          384,
+          512,
+          4
+        ],
+        "compared_pixels": 196608,
+        "full_frame": true,
+        "half_differing_components": 147378,
+        "max_abs": 0.001953125,
+        "mse": 8.70562542406647e-09,
+        "psnr_peak1_db": 80.60200023114832,
+        "elapsed_seconds": 16.127673149108887,
+        "precision": "AIR half ops rounded by NumPy; fast-math fusion and transcendental approximation need native validation"
+      },
+      "compiled_msl_forward": {
+        "max_abs": 0.0,
+        "mae": 0.0,
+        "psnr_peak1_db": "inf",
+        "components": 589824,
+        "half_differing_components": 0
+      },
+      "semantic_continuous_inverse": {
+        "scope": "512 continuous-formula checkpoint inputs; separate from full native roundtrip acceptance",
+        "pixels": 512,
+        "semantic_params": [
+          1.0,
+          1.0,
+          5.692307472229004,
+          5.692307472229004,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "primary_mask_coverage": 1.0,
+        "primary_max_relative_error": 0.0,
+        "anchor_mask_coverage": 0.0,
+        "anchor_plateau_fraction": 1.0,
+        "anchor_endpoint_fraction": 1.0,
+        "anchor_max_relative_error": null
+      },
+      "scene": {
+        "scope": "relative scene-linear P3 approximation; no unique capture-ISP inverse",
+        "shape": [
+          1536,
+          2048,
+          3
+        ],
+        "exposure_ev": 5.162508560896221,
+        "anchor_offset": 1e-05,
+        "area_constraint": "Nonnegative RGB cell scaling after bilinear log-gain; cell boundaries may gain discontinuities",
+        "pre_area_balance_mae_ev": 0.060749237644797636,
+        "raw_inputs": 0,
+        "nit_calibration": false,
+        "negative_before_clamp_fraction": 0.0,
+        "native_build": "Version 27.0.1 (Build 26A434)",
+        "masks": {
+          "thumbnail_range_clamp": 0.0006271998087565104,
+          "thumbnail_candidate_toe": 0.032300313313802086,
+          "thumbnail_near_black": 0.0,
+          "gtc_endpoint": 0.0,
+          "scene_negative_before_clamp": 0.0,
+          "primary_near_black": 1.71661376953125e-05,
+          "zero_detail_cell": 0.0
+        },
+        "mask_scope": "conservative information-loss/sensitivity flags, not proof of a unique scene inverse",
+        "native_case": "runs/39073825646/artifacts/vm-native-text/native/IMG_2604",
+        "native_unstyled_sha256": "d1bf5234c9e40ddbfecec357a9f77577174c78edcf3222709b9656237ef978f0",
+        "native_thumbnail_sha256": "013f5ca0e7ef2300f106744f1c89fc2249b07612a4e420a5c26631507514d2eb",
+        "area_anchor_mae_ev": 3.0852609541907886e-08
+      },
+      "carrier": {
+        "source": "inputs/IMG_2604.HEIC",
+        "output": "results/carriers-final/IMG_2604.HEIC",
+        "output_sha256": "29947ad3f60d310e03f9dac7c51947333c36ed3ea9bce2a2cb8675fa3541702a",
+        "gain_min_ev": -1.9910815954208374,
+        "gain_max_ev": 3.8129336833953857,
+        "gain_step_ev": 0.022760844230651854,
+        "gain_offset": 0.015625,
+        "gain_shape": [
+          1536,
+          2048,
+          3
+        ],
+        "encoder": "libheif x265 8-bit YCbCr 4:4:4 quality95",
+        "sdr_decoder": "libheif 1.21.2",
+        "sdr_components_checked": 73410624,
+        "sdr_max_abs_code": 0,
+        "quantization_only": {
+          "mae_ev": 0.004390785102947042,
+          "p90_ev": 0.008233925286724989,
+          "p99_ev": 0.010876147548574496,
+          "max_ev": 0.9290052375010767,
+          "nonpositive_Y": 0
+        },
+        "codec_additional": {
+          "mae_ev": 0.006216974475256161,
+          "p90_ev": 0.01613896724460447,
+          "p99_ev": 0.022934297006010886,
+          "max_ev": 5.973221128114628,
+          "nonpositive_Y": 2
+        },
+        "quantization_plus_codec": {
+          "mae_ev": 0.007980605031174445,
+          "p90_ev": 0.016851508970923374,
+          "p99_ev": 0.027039910747435534,
+          "max_ev": 6.839186836640524,
+          "nonpositive_Y": 2
+        },
+        "gain_code_codec_max_abs": 5,
+        "native_ImageIO_readback": "pending",
+        "identity": {
+          "primary_item_id": 46,
+          "gain_item_id": 62,
+          "tmap_item_id": 142,
+          "primary_descendant_payloads_checked": 46,
+          "primary_coded_and_properties_identical": true
+        }
+      },
+      "inverse_subset": {
+        "pixels": 4096,
+        "full_frame": false,
+        "mask_coverage": 1.0,
+        "max_relative_error_in_mask": 0.004568817818389492,
+        "failed_eligible_pixels": 668,
+        "native_forward_verified": false,
+        "singular_fraction": 0.0,
+        "solver_scope": "conditional numerical experiment; failure is not evidence of noninvertibility",
+        "bound": "Input restricted to [0,1.25]: conservative absolute RGB error bound 1.25; no finite EV bound at zero or outside a bounded input domain."
+      },
+      "native_full_sdr": {
+        "source_decoded_sha256": "409e532c401b3f4e2b19b6bf85bde7e0058b1503d5a5e3ec6cc30a113526aff0",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "carrier_decoded_sha256": "409e532c401b3f4e2b19b6bf85bde7e0058b1503d5a5e3ec6cc30a113526aff0",
+        "colour_space": "extended-linear Display P3",
+        "nonfinite": 0,
+        "components": 97880832,
+        "apply_orientation": false,
+        "different_float_bitpatterns": 0,
+        "shape": [
+          4284,
+          5712,
+          4
+        ],
+        "max_abs": 0,
+        "expand_hdr": false
+      },
+      "native_hdr_target": {
+        "mae_ev": 0.03226364567875883,
+        "p90_ev": 0.08718975921464593,
+        "p99_ev": 0.23172487779716724,
+        "max_ev": 6.076465213131799,
+        "nonpositive_Y": 0
+      },
+      "gain_application_order": {
+        "crop_shape": [
+          64,
+          64,
+          4
+        ],
+        "original_size": [
+          4284,
+          5712
+        ],
+        "max_ev": 3.812934,
+        "dtype": "<f4",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "min_ev": -1.991082,
+        "scope": "Controlled application/resampling variants; no RAW oracle",
+        "offset": 0.015625,
+        "output_shape": [
+          1536,
+          2048,
+          4
+        ],
+        "reference_sha256": "416a6bfcd36359b22ade79c91e94382bae7009d76cdeb0cefb398acc81e8c348",
+        "gain_size": [
+          1536,
+          2048
+        ],
+        "comparisons_to_ImageIO_HDR": {
+          "linear_gain_before_resize": {
+            "mae_ev": 0.004434892122090316,
+            "output_sha256": "3875eb3b2b2a4157d9c87e45508c397cc5320972d7e9f3661fd0ece7c1d6cbf6",
+            "nonpositive_Y": 0,
+            "max_ev": 0.9691326644490708,
+            "pixels": 3145728,
+            "psnr_peak1_db": 57.04048362564141,
+            "max_abs": 0.18005025386810303
+          },
+          "log_after_resize": {
+            "mae_ev": 0.030217816850767378,
+            "output_sha256": "de96954984c44f722212ab28a3c15a17fa55c2bd2e081c63d5f91a3d3179a618",
+            "nonpositive_Y": 2,
+            "max_ev": 11.116260651572365,
+            "pixels": 3145728,
+            "psnr_peak1_db": 42.46486341847639,
+            "max_abs": 0.4811580181121826
+          },
+          "log_before_resize": {
+            "mae_ev": 5.3041200999458256e-08,
+            "output_sha256": "9eac43be42e14e5f32d628749fe6cd7efd498de063b6c6a8108d938e31bf6882",
+            "nonpositive_Y": 0,
+            "max_ev": 2.3634104304741365e-06,
+            "pixels": 3145728,
+            "psnr_peak1_db": 144.1868860534235,
+            "max_abs": 2.384185791015625e-07
+          }
+        }
+      },
+      "thumbnail_information_bounds": {
+        "photo": "IMG_2604",
+        "os_build": "26A434",
+        "shape": [
+          768,
+          1024,
+          3
+        ],
+        "native_settings": {
+          "linearGain": 10.21531867980957,
+          "linearRangeMax": 0.05084228515625,
+          "linearRangeMin": -0.00189208984375
+        },
+        "native_case": "runs/39073825646/artifacts/vm-native-text/native/IMG_2604",
+        "low_clamp_components": 0,
+        "high_clamp_components": 457,
+        "near_black_pixels": 0,
+        "bounds_scope": "Conditional decoded-RGB +/-halfLSB sensitivity. Lossy HEVC error is not bounded by halfLSB. Unbounded pre-clamp side is represented by +/-inf in NPZ. Not a complete scene inverse.",
+        "unclamped_conditional_abs_bound_max": 0.00020454078912734985,
+        "near_zero_EV_bound": "unbounded if the admissible interval contains zero",
+        "scene_gtc_only_upper_bound": "unbounded at GTC upper endpoint absent an explicit maximum-scene prior; a separate valid thumbnail may supply additional information"
+      }
+    },
+    "IMG_2608": {
+      "thumbnail_float": {
+        "max_abs": 1.3103292560712188e-07,
+        "mae": 1.0584111702479141e-08,
+        "psnr_peak1_db": 153.22143094570765,
+        "components": 2359296
+      },
+      "numpy_forward": {
+        "capture": "runs/39073825646/artifacts/vm-native-text/native/IMG_2608/tone-0/renderer-0",
+        "air_path": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+        "air_sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+        "shape": [
+          384,
+          512,
+          4
+        ],
+        "compared_pixels": 196608,
+        "full_frame": true,
+        "half_differing_components": 149648,
+        "max_abs": 0.001953125,
+        "mse": 6.992037115273753e-09,
+        "psnr_peak1_db": 81.55396275036725,
+        "elapsed_seconds": 14.6208176612854,
+        "precision": "AIR half ops rounded by NumPy; fast-math fusion and transcendental approximation need native validation"
+      },
+      "compiled_msl_forward": {
+        "max_abs": 0.0,
+        "mae": 0.0,
+        "psnr_peak1_db": "inf",
+        "components": 589824,
+        "half_differing_components": 0
+      },
+      "semantic_continuous_inverse": {
+        "scope": "512 continuous-formula checkpoint inputs; separate from full native roundtrip acceptance",
+        "pixels": 512,
+        "semantic_params": [
+          1.0,
+          1.0,
+          4.0,
+          4.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "primary_mask_coverage": 1.0,
+        "primary_max_relative_error": 0.0,
+        "anchor_mask_coverage": 0.0,
+        "anchor_plateau_fraction": 1.0,
+        "anchor_endpoint_fraction": 1.0,
+        "anchor_max_relative_error": null
+      },
+      "scene": {
+        "scope": "relative scene-linear P3 approximation; no unique capture-ISP inverse",
+        "shape": [
+          1536,
+          2048,
+          3
+        ],
+        "exposure_ev": 4.945744427552522,
+        "anchor_offset": 1e-05,
+        "area_constraint": "Nonnegative RGB cell scaling after bilinear log-gain; cell boundaries may gain discontinuities",
+        "pre_area_balance_mae_ev": 0.10267176640075777,
+        "raw_inputs": 0,
+        "nit_calibration": false,
+        "negative_before_clamp_fraction": 1.0596381293402777e-07,
+        "native_build": "Version 27.0.1 (Build 26A434)",
+        "masks": {
+          "thumbnail_range_clamp": 0.00019963582356770834,
+          "thumbnail_candidate_toe": 0.15665054321289062,
+          "thumbnail_near_black": 0.0,
+          "gtc_endpoint": 5.086263020833333e-06,
+          "scene_negative_before_clamp": 3.178914388020833e-07,
+          "primary_near_black": 0.00028387705485026043,
+          "zero_detail_cell": 0.0
+        },
+        "mask_scope": "conservative information-loss/sensitivity flags, not proof of a unique scene inverse",
+        "native_case": "runs/39073825646/artifacts/vm-native-text/native/IMG_2608",
+        "native_unstyled_sha256": "76e3bac702ad127da5702ec17f2f9e24a2a63bf6f93c28753b549a19866ddec8",
+        "native_thumbnail_sha256": "cc6d54ab8a18b3e3431cb5aa9503ee06cdc0844c1962bf266775c32c793569d6",
+        "area_anchor_mae_ev": 3.250016150634587e-08
+      },
+      "carrier": {
+        "source": "inputs/IMG_2608.HEIC",
+        "output": "results/carriers-final/IMG_2608.HEIC",
+        "output_sha256": "55a8e6a12517e4d652b71969ab9cd090f2c1e22f12b58217f61d1f2087ad8b8d",
+        "gain_min_ev": -2.0632407665252686,
+        "gain_max_ev": 3.461482286453247,
+        "gain_step_ev": 0.02166558059991575,
+        "gain_offset": 0.015625,
+        "gain_shape": [
+          1536,
+          2048,
+          3
+        ],
+        "encoder": "libheif x265 8-bit YCbCr 4:4:4 quality95",
+        "sdr_decoder": "libheif 1.21.2",
+        "sdr_components_checked": 73410624,
+        "sdr_decoded_sha256": "e5a15de05bb6ab74745756f184cbb4549c095d45a881da9eaf58c5919a1619bb",
+        "sdr_max_abs_code": 0,
+        "quantization_only": {
+          "mae_ev": 0.004513128053803114,
+          "p90_ev": 0.008428301113388053,
+          "p99_ev": 0.011570889627654684,
+          "max_ev": 0.29548284298011895,
+          "nonpositive_Y": 0
+        },
+        "codec_additional": {
+          "mae_ev": 0.006706564955653488,
+          "p90_ev": 0.016679391565705564,
+          "p99_ev": 0.025398294239899158,
+          "max_ev": 0.4249754925051188,
+          "nonpositive_Y": 0
+        },
+        "quantization_plus_codec": {
+          "mae_ev": 0.008226190663490634,
+          "p90_ev": 0.017244396771273488,
+          "p99_ev": 0.02920608185606223,
+          "max_ev": 0.350571040590269,
+          "nonpositive_Y": 0
+        },
+        "gain_code_codec_max_abs": 6,
+        "native_ImageIO_readback": "pending",
+        "identity": {
+          "primary_item_id": 46,
+          "gain_item_id": 89,
+          "tmap_item_id": 142,
+          "primary_descendant_payloads_checked": 46,
+          "primary_coded_and_properties_identical": true
+        }
+      },
+      "inverse_subset": {
+        "pixels": 4096,
+        "full_frame": false,
+        "mask_coverage": 1.0,
+        "max_relative_error_in_mask": 0.004617752693689072,
+        "failed_eligible_pixels": 517,
+        "native_forward_verified": false,
+        "singular_fraction": 0.0,
+        "solver_scope": "conditional numerical experiment; failure is not evidence of noninvertibility",
+        "bound": "Input restricted to [0,1.25]: conservative absolute RGB error bound 1.25; no finite EV bound at zero or outside a bounded input domain."
+      },
+      "native_full_sdr": {
+        "source_decoded_sha256": "73aae8a74747c46a7325e87000d421653c9334543f46d1339e0edeeb926ff629",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "carrier_decoded_sha256": "73aae8a74747c46a7325e87000d421653c9334543f46d1339e0edeeb926ff629",
+        "colour_space": "extended-linear Display P3",
+        "nonfinite": 0,
+        "components": 97880832,
+        "apply_orientation": false,
+        "different_float_bitpatterns": 0,
+        "shape": [
+          4284,
+          5712,
+          4
+        ],
+        "max_abs": 0,
+        "expand_hdr": false
+      },
+      "native_hdr_target": {
+        "mae_ev": 0.050479291702911676,
+        "p90_ev": 0.13424529912684072,
+        "p99_ev": 0.3451014348736223,
+        "max_ev": 5.099163860012959,
+        "nonpositive_Y": 0
+      },
+      "gain_application_order": {
+        "crop_shape": [
+          64,
+          64,
+          4
+        ],
+        "original_size": [
+          4284,
+          5712
+        ],
+        "max_ev": 3.461482,
+        "dtype": "<f4",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "min_ev": -2.063241,
+        "scope": "Controlled application/resampling variants; no RAW oracle",
+        "offset": 0.015625,
+        "output_shape": [
+          1536,
+          2048,
+          4
+        ],
+        "reference_sha256": "f241284c24a361916cd1eb25ee3b6d7e5b70da262d77a2d9f534a7984f9df1c1",
+        "gain_size": [
+          1536,
+          2048
+        ],
+        "comparisons_to_ImageIO_HDR": {
+          "linear_gain_before_resize": {
+            "mae_ev": 0.009199725540445012,
+            "output_sha256": "f128baa5ae02f89d9a0db71339e654dd94ac7d45c76319f3f021858a57704378",
+            "nonpositive_Y": 0,
+            "max_ev": 0.8496928090691067,
+            "pixels": 3145728,
+            "psnr_peak1_db": 52.738602324573094,
+            "max_abs": 0.18433910608291626
+          },
+          "log_after_resize": {
+            "mae_ev": 0.049643310496293454,
+            "output_sha256": "24065d2fac63078349568b2eee92d9b04627df774405e7d80c7d6a67a4cbd74a",
+            "nonpositive_Y": 0,
+            "max_ev": 5.044322669628052,
+            "pixels": 3145728,
+            "psnr_peak1_db": 38.004344600871214,
+            "max_abs": 0.529998779296875
+          },
+          "log_before_resize": {
+            "mae_ev": 4.9334992094944885e-08,
+            "output_sha256": "3e003913abf51436363366841d1ac4226f53dc093d2df07edaafcddf4c1531a2",
+            "nonpositive_Y": 0,
+            "max_ev": 9.614576757840617e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 142.0671011182122,
+            "max_abs": 7.152557373046875e-07
+          }
+        }
+      },
+      "thumbnail_information_bounds": {
+        "photo": "IMG_2608",
+        "os_build": "26A434",
+        "shape": [
+          768,
+          1024,
+          3
+        ],
+        "native_settings": {
+          "linearGain": 8.356185913085938,
+          "linearRangeMax": 0.10894775390625,
+          "linearRangeMin": -0.0019702911376953125
+        },
+        "native_case": "runs/39073825646/artifacts/vm-native-text/native/IMG_2608",
+        "low_clamp_components": 0,
+        "high_clamp_components": 127,
+        "near_black_pixels": 1,
+        "bounds_scope": "Conditional decoded-RGB +/-halfLSB sensitivity. Lossy HEVC error is not bounded by halfLSB. Unbounded pre-clamp side is represented by +/-inf in NPZ. Not a complete scene inverse.",
+        "unclamped_conditional_abs_bound_max": 0.0004353746771812439,
+        "near_zero_EV_bound": "unbounded if the admissible interval contains zero",
+        "scene_gtc_only_upper_bound": "unbounded at GTC upper endpoint absent an explicit maximum-scene prior; a separate valid thumbnail may supply additional information"
+      }
+    },
+    "IMG_0032": {
+      "thumbnail_float": {
+        "max_abs": 6.566574843880346e-07,
+        "mae": 4.859418219314703e-08,
+        "psnr_peak1_db": 142.4511738832636,
+        "components": 2359296
+      },
+      "numpy_forward": {
+        "capture": "runs/39074915781/artifacts/vm-native-text/native/IMG_0032/tone-0/renderer-0",
+        "air_path": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+        "air_sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+        "shape": [
+          384,
+          512,
+          4
+        ],
+        "compared_pixels": 196608,
+        "full_frame": true,
+        "half_differing_components": 51530,
+        "max_abs": 0.00244140625,
+        "mse": 8.420635369543739e-09,
+        "psnr_peak1_db": 80.74655138063738,
+        "elapsed_seconds": 25.41170573234558,
+        "precision": "AIR half ops rounded by NumPy; fast-math fusion and transcendental approximation need native validation"
+      },
+      "compiled_msl_forward": {
+        "max_abs": 0.0,
+        "mae": 0.0,
+        "psnr_peak1_db": "inf",
+        "components": 589824,
+        "half_differing_components": 0
+      },
+      "semantic_continuous_inverse": {
+        "scope": "512 continuous-formula checkpoint inputs; separate from full native roundtrip acceptance",
+        "pixels": 512,
+        "semantic_params": [
+          1.0,
+          1.0,
+          4.015384674072266,
+          4.015384674072266,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "primary_mask_coverage": 1.0,
+        "primary_max_relative_error": 0.0,
+        "anchor_mask_coverage": 0.0,
+        "anchor_plateau_fraction": 1.0,
+        "anchor_endpoint_fraction": 1.0,
+        "anchor_max_relative_error": null
+      },
+      "scene": {
+        "scope": "relative scene-linear P3 approximation; no unique capture-ISP inverse",
+        "shape": [
+          1536,
+          2048,
+          3
+        ],
+        "exposure_ev": 2.1702465740494574,
+        "anchor_offset": 1e-05,
+        "area_constraint": "Nonnegative RGB cell scaling after bilinear log-gain; cell boundaries may gain discontinuities",
+        "pre_area_balance_mae_ev": 0.005602818296543581,
+        "raw_inputs": 0,
+        "nit_calibration": false,
+        "negative_before_clamp_fraction": 0.0,
+        "native_build": "Version 27.0.1 (Build 26A434)",
+        "masks": {
+          "thumbnail_range_clamp": 0.0,
+          "thumbnail_candidate_toe": 0.0,
+          "thumbnail_near_black": 0.0,
+          "gtc_endpoint": 0.05542691548665365,
+          "scene_negative_before_clamp": 0.0,
+          "primary_near_black": 0.0,
+          "zero_detail_cell": 0.0
+        },
+        "mask_scope": "conservative information-loss/sensitivity flags, not proof of a unique scene inverse",
+        "native_case": "runs/39074915781/artifacts/vm-native-text/native/IMG_0032",
+        "native_unstyled_sha256": "7de8b66af801a76ba91dd16b66f46a936cb0c14984e2c2b86752180e002b56f2",
+        "native_thumbnail_sha256": "fb2403f6ba66c966d821401fb093da493cfbcff2b4a995834ff6e814083a787e",
+        "area_anchor_mae_ev": 3.3541517718289404e-08
+      },
+      "carrier": {
+        "source": "repo/Apple_Native_Samples/IMG_0032.HEIC",
+        "output": "results/carriers-final/IMG_0032.HEIC",
+        "output_sha256": "71256224578c7332f0da36eeea8aab62e7395a1450a2f3e53b24c74e5f0304d2",
+        "gain_min_ev": -0.27112558484077454,
+        "gain_max_ev": 2.443281650543213,
+        "gain_step_ev": 0.010644734256407794,
+        "gain_offset": 0.015625,
+        "gain_shape": [
+          1536,
+          2048,
+          3
+        ],
+        "encoder": "libheif x265 8-bit YCbCr 4:4:4 quality95",
+        "sdr_decoder": "libheif 1.21.2",
+        "sdr_components_checked": 36578304,
+        "sdr_decoded_sha256": "61dba7fac3655739d735d92a7567383b0f3372f13fb6289a83fa32692fe79fe2",
+        "sdr_max_abs_code": 0,
+        "quantization_only": {
+          "mae_ev": 0.002029656878902625,
+          "p90_ev": 0.003789228293835545,
+          "p99_ev": 0.004854849983420876,
+          "max_ev": 0.006691881270371031,
+          "nonpositive_Y": 0
+        },
+        "codec_additional": {
+          "mae_ev": 0.0028696023925800997,
+          "p90_ev": 0.0076227076966944324,
+          "p99_ev": 0.009517824796389969,
+          "max_ev": 0.027455019291031325,
+          "nonpositive_Y": 0
+        },
+        "quantization_plus_codec": {
+          "mae_ev": 0.0036344950129810574,
+          "p90_ev": 0.007535378119872236,
+          "p99_ev": 0.011792168851476303,
+          "max_ev": 0.02941108594009772,
+          "nonpositive_Y": 0
+        },
+        "gain_code_codec_max_abs": 5,
+        "native_ImageIO_readback": "pending",
+        "identity": {
+          "primary_item_id": 49,
+          "gain_item_id": 94,
+          "tmap_item_id": 100,
+          "primary_descendant_payloads_checked": 49,
+          "primary_coded_and_properties_identical": true
+        }
+      },
+      "inverse_subset": {
+        "pixels": 4096,
+        "full_frame": false,
+        "mask_coverage": 1.0,
+        "max_relative_error_in_mask": 0.004896626768226333,
+        "failed_eligible_pixels": 457,
+        "native_forward_verified": false,
+        "singular_fraction": 0.0,
+        "solver_scope": "conditional numerical experiment; failure is not evidence of noninvertibility",
+        "bound": "Input restricted to [0,1.25]: conservative absolute RGB error bound 1.25; no finite EV bound at zero or outside a bounded input domain."
+      },
+      "native_full_sdr": {
+        "source_decoded_sha256": "f413f045466e20e22d4fae3a1f60cdcc535d239e3bb8bd750b88b8200a318244",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "carrier_decoded_sha256": "f413f045466e20e22d4fae3a1f60cdcc535d239e3bb8bd750b88b8200a318244",
+        "colour_space": "extended-linear Display P3",
+        "nonfinite": 0,
+        "components": 48771072,
+        "apply_orientation": false,
+        "different_float_bitpatterns": 0,
+        "shape": [
+          3024,
+          4032,
+          4
+        ],
+        "max_abs": 0,
+        "expand_hdr": false
+      },
+      "native_hdr_target": {
+        "mae_ev": 0.0033273355127486685,
+        "p90_ev": 0.0066496047474171715,
+        "p99_ev": 0.009631750263291881,
+        "max_ev": 0.02640472872842853,
+        "nonpositive_Y": 0
+      },
+      "gain_application_order": {
+        "crop_shape": [
+          64,
+          64,
+          4
+        ],
+        "original_size": [
+          3024,
+          4032
+        ],
+        "max_ev": 2.443282,
+        "dtype": "<f4",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "min_ev": -0.271126,
+        "scope": "Controlled application/resampling variants; no RAW oracle",
+        "offset": 0.015625,
+        "output_shape": [
+          1536,
+          2048,
+          4
+        ],
+        "reference_sha256": "b1e769db9aa23cb537c70a784cfd288476013c4558749832544567ddd36fb819",
+        "gain_size": [
+          1536,
+          2048
+        ],
+        "comparisons_to_ImageIO_HDR": {
+          "linear_gain_before_resize": {
+            "mae_ev": 1.8911335624952447e-08,
+            "output_sha256": "43d1f6fdc498df347e8cb0abb23b262c941ffd4b0dd7c8a6205e5a713b82320d",
+            "nonpositive_Y": 0,
+            "max_ev": 3.487103495068389e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 149.18865457202043,
+            "max_abs": 4.76837158203125e-07
+          },
+          "log_after_resize": {
+            "mae_ev": 1.8911335624952447e-08,
+            "output_sha256": "43d1f6fdc498df347e8cb0abb23b262c941ffd4b0dd7c8a6205e5a713b82320d",
+            "nonpositive_Y": 0,
+            "max_ev": 3.487103495068389e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 149.18865457202043,
+            "max_abs": 4.76837158203125e-07
+          },
+          "log_before_resize": {
+            "mae_ev": 1.8911335624952447e-08,
+            "output_sha256": "43d1f6fdc498df347e8cb0abb23b262c941ffd4b0dd7c8a6205e5a713b82320d",
+            "nonpositive_Y": 0,
+            "max_ev": 3.487103495068389e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 149.18865457202043,
+            "max_abs": 4.76837158203125e-07
+          }
+        }
+      },
+      "thumbnail_information_bounds": {
+        "photo": "IMG_0032",
+        "os_build": "26A434",
+        "shape": [
+          768,
+          1024,
+          3
+        ],
+        "native_settings": {
+          "linearGain": 2.171875,
+          "linearRangeMax": 0.8876953125,
+          "linearRangeMin": 0.008880615234375
+        },
+        "native_case": "runs/39074915781/artifacts/vm-native-text/native/IMG_0032",
+        "low_clamp_components": 0,
+        "high_clamp_components": 0,
+        "near_black_pixels": 0,
+        "bounds_scope": "Conditional decoded-RGB +/-halfLSB sensitivity. Lossy HEVC error is not bounded by halfLSB. Unbounded pre-clamp side is represented by +/-inf in NPZ. Not a complete scene inverse.",
+        "unclamped_conditional_abs_bound_max": 0.0033795833587646484,
+        "near_zero_EV_bound": "unbounded if the admissible interval contains zero",
+        "scene_gtc_only_upper_bound": "unbounded at GTC upper endpoint absent an explicit maximum-scene prior; a separate valid thumbnail may supply additional information"
+      }
+    },
+    "IMG_0033": {
+      "thumbnail_float": {
+        "max_abs": 5.505019627372043e-07,
+        "mae": 3.819940925427531e-08,
+        "psnr_peak1_db": 145.21616391974828,
+        "components": 2359296
+      },
+      "numpy_forward": {
+        "capture": "runs/39074915781/artifacts/vm-native-text/native/IMG_0033/tone-0/renderer-0",
+        "air_path": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+        "air_sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+        "shape": [
+          384,
+          512,
+          4
+        ],
+        "compared_pixels": 196608,
+        "full_frame": true,
+        "half_differing_components": 58157,
+        "max_abs": 0.001953125,
+        "mse": 8.515989089448295e-09,
+        "psnr_peak1_db": 80.69764903644639,
+        "elapsed_seconds": 14.070505142211914,
+        "precision": "AIR half ops rounded by NumPy; fast-math fusion and transcendental approximation need native validation"
+      },
+      "compiled_msl_forward": {
+        "max_abs": 0.0,
+        "mae": 0.0,
+        "psnr_peak1_db": "inf",
+        "components": 589824,
+        "half_differing_components": 0
+      },
+      "semantic_continuous_inverse": {
+        "scope": "512 continuous-formula checkpoint inputs; separate from full native roundtrip acceptance",
+        "pixels": 512,
+        "semantic_params": [
+          1.0,
+          1.0,
+          4.015384674072266,
+          4.015384674072266,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "primary_mask_coverage": 1.0,
+        "primary_max_relative_error": 0.0,
+        "anchor_mask_coverage": 0.0,
+        "anchor_plateau_fraction": 1.0,
+        "anchor_endpoint_fraction": 1.0,
+        "anchor_max_relative_error": null
+      },
+      "scene": {
+        "scope": "relative scene-linear P3 approximation; no unique capture-ISP inverse",
+        "shape": [
+          1536,
+          2048,
+          3
+        ],
+        "exposure_ev": 2.2899275690013896,
+        "anchor_offset": 1e-05,
+        "area_constraint": "Nonnegative RGB cell scaling after bilinear log-gain; cell boundaries may gain discontinuities",
+        "pre_area_balance_mae_ev": 0.006351683727503293,
+        "raw_inputs": 0,
+        "nit_calibration": false,
+        "negative_before_clamp_fraction": 0.0,
+        "native_build": "Version 27.0.1 (Build 26A434)",
+        "masks": {
+          "thumbnail_range_clamp": 0.0,
+          "thumbnail_candidate_toe": 0.0,
+          "thumbnail_near_black": 0.0,
+          "gtc_endpoint": 0.0019448598225911458,
+          "scene_negative_before_clamp": 0.0,
+          "primary_near_black": 0.0,
+          "zero_detail_cell": 0.0
+        },
+        "mask_scope": "conservative information-loss/sensitivity flags, not proof of a unique scene inverse",
+        "native_case": "runs/39074915781/artifacts/vm-native-text/native/IMG_0033",
+        "native_unstyled_sha256": "03360bc707ff1226907624c33785f29bf2a3e0608c256b5b6c47d176c66bfed0",
+        "native_thumbnail_sha256": "081b3681c4150b79f40efd5699b665a9885b9b8d37b30af45651afce8cad77a4",
+        "area_anchor_mae_ev": 3.258862738489202e-08
+      },
+      "carrier": {
+        "source": "repo/Apple_Native_Samples/IMG_0033.HEIC",
+        "output": "results/carriers-final/IMG_0033.HEIC",
+        "output_sha256": "a93b9079a78bb518e6d94adf033172d5f0d5d460d16d5034d47be0e347b8d90b",
+        "gain_min_ev": -0.41135454177856445,
+        "gain_max_ev": 2.29374098777771,
+        "gain_step_ev": 0.010608217762965782,
+        "gain_offset": 0.015625,
+        "gain_shape": [
+          1536,
+          2048,
+          3
+        ],
+        "encoder": "libheif x265 8-bit YCbCr 4:4:4 quality95",
+        "sdr_decoder": "libheif 1.21.2",
+        "sdr_components_checked": 36578304,
+        "sdr_decoded_sha256": "c8d40b1c0b94fbde10bd72a788f544ce4a446987b2684e18970879d635de508a",
+        "sdr_max_abs_code": 0,
+        "quantization_only": {
+          "mae_ev": 0.002005398566861423,
+          "p90_ev": 0.0037730217616129135,
+          "p99_ev": 0.004875096158278114,
+          "max_ev": 0.007410631017002074,
+          "nonpositive_Y": 0
+        },
+        "codec_additional": {
+          "mae_ev": 0.0030338560453910513,
+          "p90_ev": 0.007667657848584371,
+          "p99_ev": 0.009778407678022981,
+          "max_ev": 0.028588886555210136,
+          "nonpositive_Y": 0
+        },
+        "quantization_plus_codec": {
+          "mae_ev": 0.0037319716855473625,
+          "p90_ev": 0.007855695958469976,
+          "p99_ev": 0.011988195483408796,
+          "max_ev": 0.03422042863613056,
+          "nonpositive_Y": 0
+        },
+        "gain_code_codec_max_abs": 5,
+        "native_ImageIO_readback": "pending",
+        "identity": {
+          "primary_item_id": 49,
+          "gain_item_id": 94,
+          "tmap_item_id": 100,
+          "primary_descendant_payloads_checked": 49,
+          "primary_coded_and_properties_identical": true
+        }
+      },
+      "inverse_subset": {
+        "pixels": 4096,
+        "full_frame": false,
+        "mask_coverage": 1.0,
+        "max_relative_error_in_mask": 0.006611570247933884,
+        "failed_eligible_pixels": 458,
+        "native_forward_verified": false,
+        "singular_fraction": 0.0,
+        "solver_scope": "conditional numerical experiment; failure is not evidence of noninvertibility",
+        "bound": "Input restricted to [0,1.25]: conservative absolute RGB error bound 1.25; no finite EV bound at zero or outside a bounded input domain."
+      },
+      "native_full_sdr": {
+        "source_decoded_sha256": "22547c2baa9a8bd6178ac6221129cacfff54ebe07ec1de3b9acb62e357a8d935",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "carrier_decoded_sha256": "22547c2baa9a8bd6178ac6221129cacfff54ebe07ec1de3b9acb62e357a8d935",
+        "colour_space": "extended-linear Display P3",
+        "nonfinite": 0,
+        "components": 48771072,
+        "apply_orientation": false,
+        "different_float_bitpatterns": 0,
+        "shape": [
+          3024,
+          4032,
+          4
+        ],
+        "max_abs": 0,
+        "expand_hdr": false
+      },
+      "native_hdr_target": {
+        "mae_ev": 0.00339125807464186,
+        "p90_ev": 0.006739274973381739,
+        "p99_ev": 0.009848082369687492,
+        "max_ev": 0.030563787493728907,
+        "nonpositive_Y": 0
+      },
+      "gain_application_order": {
+        "crop_shape": [
+          64,
+          64,
+          4
+        ],
+        "original_size": [
+          3024,
+          4032
+        ],
+        "max_ev": 2.293741,
+        "dtype": "<f4",
+        "os": "Version 27.0.1 (Build 26A434)",
+        "min_ev": -0.411355,
+        "scope": "Controlled application/resampling variants; no RAW oracle",
+        "offset": 0.015625,
+        "output_shape": [
+          1536,
+          2048,
+          4
+        ],
+        "reference_sha256": "e0d0f062dd140984322f0bc77d97eaeb7a065f035532d8c75a18b0a8e056bf87",
+        "gain_size": [
+          1536,
+          2048
+        ],
+        "comparisons_to_ImageIO_HDR": {
+          "linear_gain_before_resize": {
+            "mae_ev": 1.628943677955701e-08,
+            "output_sha256": "db461824a00c51f2f0db497db3b805ba812a58ddde5ee5c111f893c6de16e7b7",
+            "nonpositive_Y": 0,
+            "max_ev": 3.8161254163300826e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 151.10522127531542,
+            "max_abs": 2.384185791015625e-07
+          },
+          "log_after_resize": {
+            "mae_ev": 1.628943677955701e-08,
+            "output_sha256": "db461824a00c51f2f0db497db3b805ba812a58ddde5ee5c111f893c6de16e7b7",
+            "nonpositive_Y": 0,
+            "max_ev": 3.8161254163300826e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 151.10522127531542,
+            "max_abs": 2.384185791015625e-07
+          },
+          "log_before_resize": {
+            "mae_ev": 1.628943677955701e-08,
+            "output_sha256": "db461824a00c51f2f0db497db3b805ba812a58ddde5ee5c111f893c6de16e7b7",
+            "nonpositive_Y": 0,
+            "max_ev": 3.8161254163300826e-07,
+            "pixels": 3145728,
+            "psnr_peak1_db": 151.10522127531542,
+            "max_abs": 2.384185791015625e-07
+          }
+        }
+      },
+      "thumbnail_information_bounds": {
+        "photo": "IMG_0033",
+        "os_build": "26A434",
+        "shape": [
+          768,
+          1024,
+          3
+        ],
+        "native_settings": {
+          "linearGain": 2.163818359375,
+          "linearRangeMax": 0.65380859375,
+          "linearRangeMin": 0.006824493408203125
+        },
+        "native_case": "runs/39074915781/artifacts/vm-native-text/native/IMG_0033",
+        "low_clamp_components": 0,
+        "high_clamp_components": 0,
+        "near_black_pixels": 0,
+        "bounds_scope": "Conditional decoded-RGB +/-halfLSB sensitivity. Lossy HEVC error is not bounded by halfLSB. Unbounded pre-clamp side is represented by +/-inf in NPZ. Not a complete scene inverse.",
+        "unclamped_conditional_abs_bound_max": 0.0023577213287353516,
+        "near_zero_EV_bound": "unbounded if the admissible interval contains zero",
+        "scene_gtc_only_upper_bound": "unbounded at GTC upper endpoint absent an explicit maximum-scene prior; a separate valid thumbnail may supply additional information"
+      }
+    }
+  },
+  "gates": {
+    "gain_log_before_resize_float_1e-5_psnr60": true,
+    "five_photos_and_two_post_freeze_holdouts": true,
+    "numpy_half_bit_exact": false,
+    "compiled_msl_tone0_half_bit_exact": true,
+    "thumbnail_float_max_1e-5_psnr60": true,
+    "full_native_roundtrip": false,
+    "tested_nonzero_tone_msl_half_bit_exact": false,
+    "decoded_sdr_max0_libheif": true,
+    "decoded_sdr_max0_ImageIO_full": true,
+    "scene_RAW_EV": "\u5f85\u5b9e\u673a\u89e3\u51b3\uff1b\u7f3a\u5c11 IMG_2679/IMG_2408 RAW \u5bf9\u7167\u7ec4"
+  },
+  "limits": [
+    "Native consumer is a controlled direct framework call, not Photos UI or the iOS capture producer.",
+    "Half bit-exactness is mandatory even if PSNR exceeds 60dB.",
+    "Scene and gain transport errors are self-consistency metrics; no paired RAW is present."
+  ],
+  "acceptance_complete": false,
+  "manifest_audit": [
+    {
+      "run_id": "39051597396",
+      "files": 9,
+      "bytes": 220240,
+      "manifest_sha256": "437e44440768a508ce74a5add66f568ad51c2441bda091995180da67feb612fe",
+      "failures": []
+    },
+    {
+      "run_id": "39051942415",
+      "files": 172,
+      "bytes": 161864026,
+      "manifest_sha256": "040cf53bc3f415d6666c954eca2b98374f9ee6b7af6989dba129ecee881b6b94",
+      "failures": []
+    },
+    {
+      "run_id": "39052427081",
+      "files": 94,
+      "bytes": 7026070,
+      "manifest_sha256": "cc4f861f6dec169de22ebbc6db666dc46f8b3582bd04a74f32a10de491a48c3b",
+      "failures": []
+    },
+    {
+      "run_id": "39052749978",
+      "files": 365,
+      "bytes": 119949596,
+      "manifest_sha256": "b03dd03b819c38a8a746dc03d44199a3dd50ebbcc57d62503d3b2928e1691381",
+      "failures": []
+    },
+    {
+      "run_id": "39053209070",
+      "files": 24,
+      "bytes": 5180640,
+      "manifest_sha256": "fcfec64d81f8370ae870f326beac52b80c3b746166011a012eccea1acd5f9c30",
+      "failures": []
+    },
+    {
+      "run_id": "39053554645",
+      "files": 406,
+      "bytes": 661445813,
+      "manifest_sha256": "4bd0ee913bb31eef16867ec201a8221bce53e54b22744cbbc80f7a7ea818f712",
+      "failures": []
+    },
+    {
+      "run_id": "39053990022",
+      "files": 70,
+      "bytes": 14897964,
+      "manifest_sha256": "4f7d607347eab8f77dee394276b246766b1c087a832c9b467eff9cd241ce8cc3",
+      "failures": []
+    },
+    {
+      "run_id": "39054416614",
+      "files": 463,
+      "bytes": 227646721,
+      "manifest_sha256": "5f1357cc0714dbdf8e034f11ccab37da36fd084558a75eccd551a1aa4222483a",
+      "failures": []
+    },
+    {
+      "run_id": "39054842867",
+      "files": 466,
+      "bytes": 229482142,
+      "manifest_sha256": "378229c36ecdb1c88bf3677da26fa25d3f1d2e1337028eaabb37aebf33bd4c9b",
+      "failures": []
+    },
+    {
+      "run_id": "39055408205",
+      "files": 468,
+      "bytes": 229488090,
+      "manifest_sha256": "de9b7854e21eaa347022c41ddb0ca7d9e24483b8ea7cf77a78760c4c412a716e",
+      "failures": []
+    },
+    {
+      "run_id": "39056078429",
+      "files": 33,
+      "bytes": 30358765,
+      "manifest_sha256": "6d2c07a7dbea8b7d8c29e76d97db0ebfcea490551d108e930f44e17b04bd5470",
+      "failures": []
+    },
+    {
+      "run_id": "39056406935",
+      "files": 46,
+      "bytes": 82171806,
+      "manifest_sha256": "915354d30ec18e50cf4bac89863a962b94293a738c366f751a24663704b389eb",
+      "failures": []
+    },
+    {
+      "run_id": "39056794952",
+      "files": 524,
+      "bytes": 385370147,
+      "manifest_sha256": "2bc65384bb409e158ef4411aded8ec2c9122a7df97b1076ee3589e9ae4bffa07",
+      "failures": []
+    },
+    {
+      "run_id": "39057403947",
+      "files": 474,
+      "bytes": 372991899,
+      "manifest_sha256": "403752ee3bd8489badd0b5faa274020c9accdf559ca241353d32b00d69bdab7e",
+      "failures": []
+    },
+    {
+      "run_id": "39073825646",
+      "files": 539,
+      "bytes": 777122098,
+      "manifest_sha256": "6c9cbc391eed2cf59c423e14aa6e47b251eee8de1d2dcb5de4515b3707ecb8ae",
+      "failures": []
+    },
+    {
+      "run_id": "39074915781",
+      "files": 639,
+      "bytes": 581123575,
+      "manifest_sha256": "b9e44f31cab7c8d2849f4a1346bba169096e490034f4b1ea0a4bf9937c80d7fd",
+      "failures": []
+    },
+    {
+      "run_id": "39075649293",
+      "files": 37,
+      "bytes": 251886799,
+      "manifest_sha256": "5f422a099cdcc6f4ea9b1acd0cbf163b706e5726b6bf568fb9ea24c0fc1d6db6",
+      "failures": []
+    },
+    {
+      "run_id": "39076341487",
+      "files": 11,
+      "bytes": 222053,
+      "manifest_sha256": "d137e7820d175f474b8fdf5c2326ad328c30781d6dde82ffa2fb40e7cab760f4",
+      "failures": []
+    },
+    {
+      "run_id": "39076567220",
+      "files": 21,
+      "bytes": 554768,
+      "manifest_sha256": "1e94975a947bb040fd146c3de1cd76703cf33d9a26f5147c876a35b4da59ecde",
+      "failures": []
+    },
+    {
+      "run_id": "39076702678",
+      "files": 41,
+      "bytes": 1541610,
+      "manifest_sha256": "7a1179e923b869debf4c6a58ddd0d264aae07d893b46b9c22a439ed63cd2609b",
+      "failures": []
+    },
+    {
+      "run_id": "39076980947",
+      "files": 46,
+      "bytes": 1543594,
+      "manifest_sha256": "0dff348dfeefbb1c68d662b0228106b1ed55b9c55f6469df8957edb977d214e8",
+      "failures": []
+    }
+  ],
+  "freeze_intact": true
+}

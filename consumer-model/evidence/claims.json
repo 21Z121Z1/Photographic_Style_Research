@@ -1,0 +1,851 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-17T23:01:52.117303+00:00",
+  "os_build": "26A434",
+  "status_values": [
+    "已验证静态",
+    "已验证数值",
+    "runner",
+    "待实机",
+    "假设"
+  ],
+  "acceptance_complete": false,
+  "claims": [
+    {
+      "id": "C01",
+      "status": "已验证数值",
+      "claim": "xcode-27 本次运行实际为 macOS 27.0.1 (26A434)，Metal 设备为 Apple Paravirtual；CI、GUI、Photos、osascript、lldb attach 可用。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39074915781/artifacts/vm-native-text/host.txt",
+          "line": 1
+        },
+        {
+          "file": "runs/39074915781/artifacts/vm-native-text/capabilities.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39074915781/artifacts/vm-native-text/lldb-photos-attach.txt",
+          "line": 1
+        }
+      ],
+      "run_id": "39074915781"
+    },
+    {
+      "id": "C02",
+      "status": "已验证静态",
+      "claim": "四个目标 Mach-O 的 UUID、ipsw 重建文件 SHA256 与缓存/build 证据已归档；未上传完整 Apple 二进制。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39051942415/artifacts/vm-native-text/static/cache-info.txt",
+          "line": 1
+        },
+        {
+          "file": "runs/39051942415/artifacts/vm-native-text/static/CMImaging.uuid.txt",
+          "line": 1
+        },
+        {
+          "file": "runs/39051942415/artifacts/vm-native-text/static/CMImaging.sha256",
+          "line": 1
+        }
+      ],
+      "run_id": "39051942415"
+    },
+    {
+      "id": "C03",
+      "status": "已验证静态",
+      "claim": "203 个 AIR wrapper 中选择的 56 个均已 llvm-dis 成文本；完整 final consumer 在0010.ll。metal-objdump 在该 Xcode 不可用。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/index.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 54
+        },
+        {
+          "file": "runs/39051942415/artifacts/vm-native-text/resources/metal-objdump-help.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "status": "已验证静态",
+      "claim": "Styles plist 由 _NUSemanticStyleProperties 解析，reverse settings 进入 revert-image 调用链。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/static-targets/NeutrinoCore.asm",
+          "line": 650,
+          "symbol": "+[_NUSemanticStyleProperties semanticStylePropertiesFromData:fromVideo:keyTime:error:]:",
+          "address": "0x00000001c5a55afc",
+          "original_line": 207003
+        },
+        {
+          "file": "evidence/static-targets/NeutrinoCore.asm",
+          "line": 3879,
+          "symbol": "+[NUStyleTransferReverseNode reverseSettingsForSemanticStyleProperties:size:]:",
+          "address": "0x00000001c5c9e428",
+          "original_line": 813373
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "status": "已验证静态",
+      "claim": "key1 沿 NUStyleTransferReverseNode → _NUStyleTransferApplyProcessor → _NUStyleEngine → CMIStyleEngineProcessor 路径消费。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/static-targets/NeutrinoCore.asm",
+          "line": 4041,
+          "symbol": "-[NUStyleTransferReverseNode _evaluateImage:]:",
+          "address": "0x00000001c5c9e68c",
+          "original_line": 813535
+        },
+        {
+          "file": "evidence/static-targets/NeutrinoCore.asm",
+          "line": 5666,
+          "symbol": "+[_NUStyleTransferApplyProcessor applyStyle:toImage:thumbnail:target:deltaMap:displacement:colorSpace:configuration:tuningParameters:noiseModel:error:]:",
+          "address": "0x00000001c5ca6b0c",
+          "original_line": 822074
+        },
+        {
+          "file": "evidence/static-targets/NeutrinoCore.asm",
+          "line": 11569,
+          "symbol": "-[_NUStyleEngine setupProcessor]:",
+          "address": "0x00000001c5caf280",
+          "original_line": 830783
+        },
+        {
+          "file": "evidence/static-targets/CMImaging.asm",
+          "line": 4272,
+          "symbol": "-[CMIStyleEngineProcessor setup]:",
+          "address": "0x00000002333fa5d0",
+          "original_line": 188070
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "status": "已验证数值",
+      "claim": "当前 build 的实际 Apply 配置 inputIsLinear/outputShouldBeLinear=false，空间归一化启用，GDC 与 bicubic 关闭，8 planes。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/setup-processor.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/reverse.json",
+          "line": 1
+        }
+      ],
+      "run_id": "39073825646"
+    },
+    {
+      "id": "C07",
+      "status": "已验证静态",
+      "claim": "key1 平铺索引是 x-major spotlight_x*height+spotlight_y，再按 weightPlane、basis、RGB；Float16 key1 为12×9×8×10×3。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0187.ll",
+          "line": 27
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0157.ll",
+          "line": 9
+        },
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/reverse.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "status": "已验证静态",
+      "claim": "8个 weight plane 是由输入亮度投影形成的 Gaussian 分区，不是8种语义对象。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0126.ll",
+          "line": 30
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0128.ll",
+          "line": 27
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0129.ll",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "status": "已验证静态",
+      "claim": "10基函数为[1,R,G,B,R²,RG,RB,G²,GB,B²]；每个基函数有RGB三个输出系数。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0170.ll",
+          "line": 2815
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "status": "已验证静态",
+      "claim": "spotlight 的默认无GDC全ROI坐标由学习图的偶数pitch和ROI变换形成；边缘clamp到首末中心。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0186.ll",
+          "line": 31
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0183.ll",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "status": "已验证静态",
+      "claim": "系数位图160×162只是线性存储打包；不是画面上160×162个spotlight。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/static-targets/CMImaging.asm",
+          "line": 14616,
+          "symbol": "+[CMIStyleEngineProcessor coefficientPixelBufferSizeForConfiguration:float16:]:",
+          "address": "0x0000000233404bb4",
+          "original_line": 198728
+        },
+        {
+          "file": "forward.py",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "status": "已验证静态",
+      "claim": "PISemanticStyleFilter outputImage 准备 CMImaging consumer，final shader 从已上线性P3图、线性缩略图和GTC开始。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/static-targets/PhotoImaging.asm",
+          "line": 931,
+          "symbol": "-[PISemanticStyleFilter outputImage]:",
+          "address": "0x00000001cbef1c78",
+          "original_line": 517825
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "status": "已验证数值",
+      "claim": "两个 guide 的输入分别是主图与线性缩略图；c和d各有独立的guided-filter调用，r=1 eps=.05。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/tone-0/renderer-0/dispatches.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/tone-0/renderer-0/trace.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "status": "已验证静态",
+      "claim": "final consumer 不直接读取 guide；读取独立上采样c/d，使用q=mix(mix(d,c,bgLTM),mix(d,c,fgLTM),person)。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 426
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "status": "已验证静态",
+      "claim": "semanticTone 按缩略图曝光→min(...,1)→GTC混合→除主图→近黑置零→LTM混合→highlight-recovery混合→乘主图→person混合执行。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 5976
+        }
+      ]
+    },
+    {
+      "id": "C16",
+      "status": "已验证静态",
+      "claim": "GTC在half consumer中的采样坐标先half计算x*(N−1)，再转float+.5像素；与CI gtc_rgb clamp/归一化路径不同。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 5987
+        },
+        {
+          "file": "evidence/kernels/gtc_rgb.cikernel",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C17",
+      "status": "已验证静态",
+      "claim": "完整颜色处理顺序和clamp由0010.ll的42函数限定；inputGainMapTex在此final kernel为readnone。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 54
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 430
+        }
+      ]
+    },
+    {
+      "id": "C18",
+      "status": "已验证数值",
+      "claim": "tone=0时重建MSL在五张512×384全帧上与原始Apple输出half逐位一致；两张仅在模型冻结后进入consumer验证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/model-freeze.json",
+          "line": 1
+        },
+        {
+          "file": "results/validation-summary.json",
+          "line": 1
+        }
+      ],
+      "scope": "five captured parameter/matte/ROI cases only"
+    },
+    {
+      "id": "C19",
+      "status": "已验证数值",
+      "claim": "冻结NumPy模型的五张全帧half输出未逐位一致；PSNR高于79dB不能代替该门槛。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/forward-final-train/IMG_2600.json",
+          "line": 1
+        },
+        {
+          "file": "results/forward-heldout/IMG_0032.json",
+          "line": 1
+        },
+        {
+          "file": "results/validation-summary.json",
+          "line": 1
+        }
+      ],
+      "acceptance": false
+    },
+    {
+      "id": "C20",
+      "status": "已验证数值",
+      "claim": "非零tone的重建MSL也未与原始Apple逐位一致，留出+0.35最大绝对误差约.006。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/msl-checkpoints-heldout.json",
+          "line": 1
+        },
+        {
+          "file": "results/msl-checkpoints-contrast-sum.json",
+          "line": 1
+        }
+      ],
+      "acceptance": false
+    },
+    {
+      "id": "C21",
+      "status": "已验证数值",
+      "claim": "独立contrast控制含65536随机输入及512真实输入；重排后的half求和、乘加共有198144RGB分量全一致。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/contrast-independent-control.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/contrast-probe/metadata.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C22",
+      "status": "已验证数值",
+      "claim": "NumPy正确舍入atan2与65536个原生控制有9429处不同，max abs=.0009765625；14个候选未解决。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/arithmetic-models.json",
+          "line": 1
+        },
+        {
+          "file": "results/atan-candidates.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C23",
+      "status": "runner",
+      "claim": "最终GPU指令级fast-math重排与超越函数尚未恢复，原生逐算子控制方案为NATIVE_TODO R1。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 7
+        },
+        {
+          "file": "results/msl-checkpoints-contrast-sum.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C24",
+      "status": "已验证静态",
+      "claim": "CI _appleLogToLinear 的第二compare测试常量正Pt，实际全指数；CPU函数sw_appleLogToLinear也无toe分支。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/kernels/_appleLogToLinear.cikernel",
+          "line": 13
+        },
+        {
+          "file": "evidence/static-targets/CoreImage.asm",
+          "line": 191,
+          "symbol": "__ZN2CI19sw_appleLogToLinearERKNS_22SWRendererFunctionNodeEPKNS_26SWRendererFunctionArgumentEPKNS_24SWRendererFunctionOutputEP10SamplerObjPvRK6IPointm:",
+          "address": "0x000000018e55081c",
+          "original_line": 142880
+        }
+      ]
+    },
+    {
+      "id": "C25",
+      "status": "已验证静态",
+      "claim": "CI _linearToAppleLog encoder确有toe分段；它不证明CameraColorProcessing使用该encoder。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/kernels/_linearToAppleLog.cikernel",
+          "line": 12
+        },
+        {
+          "file": "evidence/static-targets/CoreImage.asm",
+          "line": 141,
+          "symbol": "__ZN2CI19sw_linearToAppleLogERKNS_22SWRendererFunctionNodeEPKNS_26SWRendererFunctionArgumentEPKNS_24SWRendererFunctionOutputEP10SamplerObjPvRK6IPointm:",
+          "address": "0x000000018e550758",
+          "original_line": 142830
+        }
+      ]
+    },
+    {
+      "id": "C26",
+      "status": "已验证数值",
+      "claim": "同一ImageIO codes输入的五张LinearThumbnail float重放max abs均小于1e-5且PSNR高于60dB。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/validation-summary.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C27",
+      "status": "已验证静态",
+      "claim": "五张文件的LinearThumbnail均为1024×768存储尺寸、HEVC Main10、10-bit、4:2:0；portrait的irot单独处理。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "inputs/extracted/IMG_2600/inventory.json",
+          "line": 1
+        },
+        {
+          "file": "inputs/extracted/IMG_0032/inventory.json",
+          "line": 1
+        },
+        {
+          "file": "results/thumbs/IMG_0032/decode.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C28",
+      "status": "已验证数值",
+      "claim": "未clamp时dL/dcode=(ln2/A)*(L+B/G)；高信号10bit为.0114323EV/LSB，近黑的EV条件数发散。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "thumb_artifacts.py",
+          "line": 24
+        },
+        {
+          "file": "results/thumb-artifacts/summary.json",
+          "line": 1
+        }
+      ],
+      "method": "analytic derivative, evaluated with declared constants"
+    },
+    {
+      "id": "C29",
+      "status": "已验证数值",
+      "claim": "±半decodedRGB LSB抖动、去块、平滑及块/过冲代理统计已完成五张；这些是敏感性而非pristine codec残差。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/thumb-artifacts/summary.json",
+          "line": 1
+        },
+        {
+          "file": "results/thumb-artifacts/errors.csv",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C30",
+      "status": "假设",
+      "claim": "若相机使用该CI分段encoder，则toe区域反解应与全指数有系统偏差；反事实实验已量化，但相机producer未证实。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/toe-counterfactual.json",
+          "line": 1
+        },
+        {
+          "file": "scripts/toe_counterfactual.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C31",
+      "status": "待实机",
+      "claim": "真正HEVC残差与相机toe需要编码前的thumbnail缓冲；测试输入、捕获和判定见D2。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "id": "C32",
+      "status": "已验证数值",
+      "claim": "连续semanticTone可在固定S条件下按分段仿射反解A；固定A时反解S须输出plateau与端点区间。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "inverse.py",
+          "line": 57
+        },
+        {
+          "file": "results/semantic-inverse-synthetic.json",
+          "line": 1
+        },
+        {
+          "file": "results/validation-summary.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C33",
+      "status": "已验证静态",
+      "claim": "6个未知RGB(A,S)映到3个输出不足以唯一恢复；LTM=1时正值区输出丢失S，GTC端点之外场景亮度没有有限无先验上界。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0010.ll",
+          "line": 6035
+        },
+        {
+          "file": "inverse.py",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "id": "C34",
+      "status": "已验证数值",
+      "claim": "完整NumPy consumer的条件Newton逆解在4096像素子集仍超1e-3；失败没有从预先定义的eligible mask剔除。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/inverse/IMG_2600-discovery-4096.json",
+          "line": 1
+        },
+        {
+          "file": "inverse.py",
+          "line": 111
+        }
+      ],
+      "acceptance": false
+    },
+    {
+      "id": "C35",
+      "status": "runner",
+      "claim": "完整native roundtrip尚未通过；R2给出固定外部上下文的GPU重放逆解方案。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "id": "C36",
+      "status": "已验证数值",
+      "claim": "五张2048×1536场景EXR由native key1去风格细节和native LinearThumbnail锚点生成，写读float32 RGB逐位核对，P3 D65，无nit标定。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "scene.py",
+          "line": 31
+        },
+        {
+          "file": "results/scene/IMG_2600-balanced/scene.json",
+          "line": 1
+        }
+      ],
+      "scope": "relative approximation; not unique ISP inverse; maximum edge 2048"
+    },
+    {
+      "id": "C37",
+      "status": "已验证数值",
+      "claim": "插值gain后另施加非负RGB面积约束，五张锚点Y平均误差约3e-8EV；原始未平衡误差一并保留。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "scene.py",
+          "line": 44
+        },
+        {
+          "file": "results/validation-summary.json",
+          "line": 1
+        }
+      ],
+      "tradeoff": "Can introduce cell-boundary discontinuities"
+    },
+    {
+      "id": "C38",
+      "status": "已验证数值",
+      "claim": "8bit gain量化、HEVC编码增量及二者联合误差分列；near-black使用1e-6 Y floor，不将大EV极值隐藏。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "gainmap_carrier.py",
+          "line": 79
+        },
+        {
+          "file": "results/carriers-final/IMG_2600.json",
+          "line": 1
+        },
+        {
+          "file": "errors.csv",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C39",
+      "status": "已验证数值",
+      "claim": "五个carrier保留所有原始SDR主图编码子项和色彩几何属性，libheif全图解码最大差0。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/carriers-final/IMG_2600.json",
+          "line": 1
+        },
+        {
+          "file": "results/carriers-final/IMG_0032.json",
+          "line": 1
+        },
+        {
+          "file": "gainmap_carrier.py",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "id": "C40",
+      "status": "已验证数值",
+      "claim": "五张最终carrier经ImageIO全分辨率SDR比较，max abs=0；HDR展开误差独立报告。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runner/full_sdr_compare.m",
+          "line": 1
+        },
+        {
+          "file": "runner/run-carriers.py",
+          "line": 1
+        },
+        {
+          "file": "results/validation-summary.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C41",
+      "status": "待实机",
+      "claim": "RAW EV验证需要Mac上的IMG_2679/IMG_2408配对，当前没有RAW；旧rollout数值不充当当前验证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "id": "C42",
+      "status": "待实机",
+      "claim": "macOS消费端不证明iOS CameraColorProcessing生产顺序和局部统计；见D1。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "id": "C43",
+      "status": "待实机",
+      "claim": "与Photos UI再编辑等价需要真实测试图库和编辑recipe；直接框架调用尚不证明UI等价。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "id": "C44",
+      "status": "已验证数值",
+      "claim": "reverse初始nil processor来自Paravirtual residency-set资源缓存初始化失败；仅在探针进程禁用可选residency caching后运行成功。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runs/39056078429/artifacts/vm-native-text/native/IMG_2600/unified.log",
+          "line": 1
+        },
+        {
+          "file": "runs/39073825646/artifacts/vm-native-text/native/IMG_2600/runtime-override.txt",
+          "line": 1
+        },
+        {
+          "file": "evidence/static-targets/CMImaging.asm",
+          "line": 1,
+          "symbol": "+[CMIMetalResourceCache _enableResidencySets]:",
+          "address": "0x000000023338ab4c",
+          "original_line": 70467
+        }
+      ]
+    },
+    {
+      "id": "C45",
+      "status": "已验证静态",
+      "claim": "CoreImage _flexMap 的完整源码为 gainLog2=(max-min)*signedPow(gm,invGamma)+min，gainLin=exp2(scale*gainLog2)，输出gainLin*(im+kIn)-kOut。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/gainmap-static/_flexMap.cikernel",
+          "line": 5
+        },
+        {
+          "file": "evidence/gainmap-static/_flexMap.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C46",
+      "status": "已验证数值",
+      "claim": "五张提供全thumbnail分辨率clamp与近黑mask、半decodedRGB LSB条件上下界、clamp前无先验无限区间；不是HEVC残差界。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "scripts/build_information_bounds.py",
+          "line": 1
+        },
+        {
+          "file": "results/information-bounds/IMG_2600.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "C47",
+      "status": "已验证数值",
+      "claim": "五张key1的二次基函数系数确有非零项；配置enum linearSystemOrder=1不能凭字段名解读为只存在一阶项。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "results/key1-basis-statistics.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39052427081/artifacts/vm-native-text/air/0170.ll",
+          "line": 2815
+        }
+      ]
+    },
+    {
+      "id": "C48",
+      "status": "已验证数值",
+      "claim": "实际tmap有理数下，原尺寸SDR先应用log gain再缩放的CI图在五张复现ImageIO HDR：max abs≤2.8611e-6、PSNR≥136dB；三张大图能区分顺序，两张留出图三个图等价。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "runner/gain_order_probe.m",
+          "line": 1
+        },
+        {
+          "file": "results/gain-order-exact.json",
+          "line": 1
+        },
+        {
+          "file": "runs/39076980947/artifacts/vm-native-text/native/gain-order/IMG_2600/tmap-parameters.json",
+          "line": 1
+        }
+      ],
+      "run_id": "39076980947"
+    }
+  ]
+}
