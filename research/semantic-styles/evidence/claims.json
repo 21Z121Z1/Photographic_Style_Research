@@ -66,7 +66,7 @@
   ],
   "semantic_generated_utc": "2026-10-18T14:41:36.409237+00:00",
   "semantic_acceptance_complete": false,
-  "updated_utc": "2026-10-18T19:09:15.123098+00:00",
+  "updated_utc": "2026-10-18T19:30:51.618246+00:00",
   "semantic_acceptance": {
     "A_phase_complete": false,
     "original_mask_coverage": 0.9508717854817709,
@@ -77,7 +77,32 @@
     "camera_face_body_inverse_calibrated": false,
     "camera_texture_inverse_verified": false,
     "scene_RAW_EV": "待实机",
-    "old_acceptance_unchanged": true
+    "old_acceptance_unchanged": true,
+    "studio_final_units_tested_condition_roundtrip_pass": true,
+    "studio_complete_chain_pass": false,
+    "studio_tested_conditions": {
+      "UnderEye": {
+        "run_id": "39155124218",
+        "brightnessMix": 0.5,
+        "max_relative": 0.0009587727836333215
+      },
+      "SkinSmooth": {
+        "run_id": "39158119190",
+        "diagnostic_strengths": [
+          0.5,
+          1
+        ],
+        "max_relative": 0.0009940357852882703
+      },
+      "Mattify": {
+        "run_id": "39158599009",
+        "diagnostic_strengths": [
+          0.5,
+          1
+        ],
+        "max_relative": 0.001
+      }
+    }
   },
   "claims": [
     {
@@ -454,7 +479,7 @@
       "id": "SEM-18",
       "category": "semantic/skin/remaining-native-inverse",
       "status": "runner",
-      "claim": "Further fixed-context SkinSmooth/Mattify nonzero native units and certified skin feasible-set bounds can run on macOS. Current skin candidate still fails1e-3; no threshold relaxation, no renewal of historical bit-exact search.",
+      "claim": "Certified skin feasible-set bounds remain runner work; S8 skin estimate91/205/296 failures unchanged. Studio final-unit native tests are now available separately in S11/S13; original-camera full-chain inverse not established.",
       "os_build": "26A434",
       "evidence": [
         {
@@ -627,6 +652,85 @@
         }
       ],
       "run_id": "39156641912"
+    },
+    {
+      "id": "SEM-26",
+      "category": "semantic/texture",
+      "status": "已验证静态",
+      "claim": "SkinSmooth AIR0150 requires explicit imageblock memory, not a UseImageBlocks=false option. Mattify AIR0067 requires constants0/16; its full helper logic is separate from output imageblock selection.",
+      "os_build": "26A434",
+      "run_id": "39158119190",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/texture-bindings-s11.txt",
+          "line": 2,
+          "sha256": "76dabce3cbb777557d695aaaffc8e6d1a428b148416301294d7f96606ad94db0"
+        }
+      ],
+      "complete_camera_inverse_verified": false
+    },
+    {
+      "id": "SEM-27",
+      "category": "semantic/texture",
+      "status": "已验证数值",
+      "claim": "S11 native SkinSmooth final unit with real primary/legacy skin/person and artificial fixed blur/stats: strength.5/1 changes4260/4517 half RGB components. Native roundtrip max relative .0009905894/.0009940358 coverage94.68282%, failures0. Original-input error remains40/203 pixels>1e-3. Not full smoothing undo.",
+      "os_build": "26A434",
+      "run_id": "39158119190",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39158119190/selected/out/analysis/results.json",
+          "line": 4,
+          "sha256": "8f6d98b102b49b212fc4e09b3b63562e59cf33a724dc2274b1e659b76ed44097"
+        },
+        {
+          "file": "semantic-20261018/runs/39158119190/selected/out/native.json",
+          "line": 124,
+          "sha256": "a6f957ac18b33af40bedc4f7d8f8a272b78b7afc4c10adcd0b22d7f01f2e49c6"
+        }
+      ],
+      "complete_camera_inverse_verified": false
+    },
+    {
+      "id": "SEM-28",
+      "category": "semantic/texture",
+      "status": "已验证数值",
+      "claim": "S12 no-photo matrix: Mattify imageblock=false fails4/4 and true compiles4/4, across thumbnail flags and two pipeline APIs. Does not imply runner lacks Metal.",
+      "os_build": "26A434",
+      "run_id": "39158417428",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39158417428/text/t0-b1-d0.json",
+          "line": 10,
+          "sha256": "b3b4b98c290c0b2ffe5adce61b5704325cad4fdb717174f7ee87ebcc76f35a54"
+        },
+        {
+          "file": "semantic-20261018/runs/39158417428/text/t0-b0-d0.json",
+          "line": 8,
+          "sha256": "ddf091671354312f33fda0934031b5691ee71f9333029b143d3f8cd2291b56f8"
+        }
+      ],
+      "complete_camera_inverse_verified": false
+    },
+    {
+      "id": "SEM-29",
+      "category": "semantic/texture",
+      "status": "已验证数值",
+      "claim": "S13 full thumbnail=false Mattify native imageblock path, final unit only: strength.5/1 changes5181/5695 half RGB components; native roundtrip max relative exactly1e-3 coverage94.68282%, failures0. Original-input error186/343 pixels>1e-3, explicit artificial upstream context.",
+      "os_build": "26A434",
+      "run_id": "39158599009",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39158599009/selected/out/analysis/results.json",
+          "line": 4,
+          "sha256": "3494764191aba6e93478c463af1306f810f0b4bbf97b2494deb1f2f517eb429f"
+        },
+        {
+          "file": "semantic-20261018/runs/39158599009/selected/out/native.json",
+          "line": 16,
+          "sha256": "5fa30f14b05ecb22d52502a5b7dae922805e9a4eeb3a3e530ce7de23a407f3fb"
+        }
+      ],
+      "complete_camera_inverse_verified": false
     }
   ]
 }

@@ -26,3 +26,16 @@ S4–S9每次均为macOS27.0.1/26A434，runner image xcode-27-arm64 20261012.026
 - S9 branch `research/vm-native-20261019-private-s9`，cipher `0a17d1cc3e5fe180ac707a1b5866293ceee94e180d2632e3fe4b4e074ee12d98`，manifest `f56c2a77825653fb99b359e96f16ed014188affaf9a4d3a365294f99a17e8428`。
 
 S5原始archive保持不动；显示alias污染结果用S6替代。S7存储float残差阈值6点差异详见S9审计，91/205/296新参数中和失败不受该记账差异影响。临时S5/S6遗留和本轮S7/S8/S9 secret/release/tag/branch已按transport-cleanup-20261019.json及private/s5-transport/cleanup-20261019.json清理并远端复核。仅持久研究分支保留源码。
+
+<!-- SEMANTIC-TEXTURE-S10-S13 -->
+
+## 后续纹理单位 S10–S13
+
+|run/phase|commit|artifact|结论|ZIP SHA|
+|---|---|---|---|---|
+|[39157857745](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39157857745) / S10|edefae3ae228a861321ce8284c72646a8bcd02e9|12146704857, 277121B|failure；SkinSmooth未分配imageblock输出全零；Mattify编译失败，分析空mask异常|`2789f9b97351dcc7270f26cf54a3610b14649489f4382b31eeae56aae16c3432`|
+|[39158119190](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39158119190) / S11|994e44b7a9a4f20a8b468c9c26ddb693bcd7173f|12147383684, 1393763B|SkinSmooth非零控制/条件往返2配置通过；Mattify pipeline仍失败|`af869e5bd7f3870526ddcff50ef03edce7bed804570c803a6072b2cce2425d3f`|
+|[39158417428](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39158417428) / S12|ba7f90a5f751aa6343149e173dd4f399a2761c1f|12147947104, 5271B|无照片编译矩阵8组：imageblock true4/4成功，false4/4失败|`298bdfc4f825681a3e9eb15946befd1c70cf6fee27e8d1be84865f4d218a1af0`|
+|[39158599009](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39158599009) / S13|4aaed774e0b1f09127e47fe6944f4bf201221546|12147748302, 1414247B|只跑Mattify，两个非零配置原生往返恰1e-3通过；非camera undo|`d2bdc995d6f6adbf2df7761456f90d89d6c4d2014c8f26f82668894fa9649bf9`|
+
+每次镜像xcode-27-arm64 20261012.0260.1 /Provisioner20261006.597，实际26A434，retention1天。branch/job日志API/cipher/manifest SHA见texture-run-provenance-20261019.json。S12公开文本无原生manifest，单独记录CRC和entry SHA；其余GPG/manifest SHA0失败。追加临时资源均按transport-cleanup-texture-20261019.json清理，源码保留持久研究分支。

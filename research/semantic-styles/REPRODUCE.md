@@ -29,3 +29,7 @@ python3 research/semantic-styles/run_semantic_s9.py  # 保存数组诊断，无�
 归档使用新的目录：先API查询size/空间，再流式下载密文ZIP；本地bounded archive工具仅GPG流→tar逐文件hash，原始f16/f32缓冲不展开。只在新的归档目录执行`archive_semantic_bounded.py <run-id> --materialize-limit <bytes>`，已有decrypt.log/archive-audit存在就拒绝。保留原包、记录cipher与manifest SHA，并核对manifest所有文件。完成后删除本次临时secret/release/tag/branch、复核API不在，再删除自己生成的本次口令文件。不能删除其他分支、历史输出或旧归档。
 
 固定显示：OCIO2.6 cg-config-v2.2.0_aces-v1.3_ocio-v2.4，Linear P3-D65→sRGB-Display /ACES1.0 SDR Video，0EV；np.array(copy=True)后才调用OCIO，每次前后输入SHA必须相同。S5污染的人脸/人身metrics/NPZ作废，数值引用S6，皮肤新估计引用S8/S9。PREVIEWS.md只留本地；公开分支无人物预览。
+
+<!-- SEMANTIC-TEXTURE-S10-S13 -->
+
+S10–S13扩展入口：texture_units_s10.m / run_semantic_s10.py；S11 commit994e44b为SkinSmooth正确imageblock分配，S13 commit4aaed77为Mattify UseImageBlocks=true、thumbnail=false并设置SEMANTIC_UNIT_ONLY=Mattify跳过已完成SkinSmooth。S12 mattify_compile_s12.m只编译不处理照片。两个私密run仍使用单archive session临时secret，已清理；不可直接再次dispatch。图像数值仅runner，结果audit仍用本地scope。原生往返与原输入误差分开，不把0有效mask计成功。

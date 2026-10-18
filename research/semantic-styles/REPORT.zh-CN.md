@@ -92,9 +92,9 @@ S4 单一 llvmlite wheel 导出61/61相关 AIR 文本；未上传 Apple metallib
 
 提供明确先验RGB∈[0,1.25]时，保守half/FTZ区间在该有效mask内排除原输入的像素0，最大宽.0130410；这不是scene/camera无先验上界。mix1有49个plateau像素（全图.0249227%），有效94.65892%，区间可扩到整个先验box。原输入可能的负P3及相机真实域不能沿用这一box；接口默认box仅属本受控单位实验，未认证实际相机逆向。
 
-**已验证静态（SEM-23），可交给 macOS runner 的条件重放尚未完成**：SkinSmooth AIR0151:207–239 最终形式为 `Y=(1−a−b)X+b(X−B+S)+aS`，其中S为此前saturate过的重建项，B是另一blur采样，a/b由mask²、统计和亮度相关函数生成；可写成`(1−a)X+(a+b)S−bB`。冻结这些项时可条件反解，但a/b及上游平滑项不是已识别的原拍摄常量；仅凭最后图无法恢复被抹掉的纹理。
+**已验证静态（SEM-23），条件重放见S11/S13补表**：SkinSmooth AIR0151:207–239 最终形式为 `Y=(1−a−b)X+b(X−B+S)+aS`，其中S为此前saturate过的重建项，B是另一blur采样，a/b由mask²、统计和亮度相关函数生成；可写成`(1−a)X+(a+b)S−bB`。冻结这些项时可条件反解，但a/b及上游平滑项不是已识别的原拍摄常量；仅凭最后图无法恢复被抹掉的纹理。
 
-Mattify AIR0067:100–227/232起函数包括 mask归一化blurred color、与averageColor混合、HSL亮度/饱和度编辑、region blend、纹理addback及editingStrength门控，不是只乘skin×gain。一般含min/clamp和依赖X的addback，不能套UnderEye仿射逆。完整逐算子 native 非零/条件逆仍属runner工作；原始人脸统计不可由字段名或一张Face ROI补齐。原拍摄Studio上下文、前后对照及缺失纹理的恢复仍待实机，不把普通编译/接口失败归为实机限制。
+Mattify AIR0067:100–227/232起函数包括 mask归一化blurred color、与averageColor混合、HSL亮度/饱和度编辑、region blend、纹理addback及editingStrength门控，不是只乘skin×gain。一般含min/clamp和依赖X的addback，不能套UnderEye仿射逆。最终单位非零/条件逆见S11/S13；完整上游链的原生反解尚未验证；原始人脸统计不可由字段名或一张Face ROI补齐。原拍摄Studio上下文、前后对照及缺失纹理的恢复仍待实机，不把普通编译/接口失败归为实机限制。
 
 ### 预览污染纠正、独立交付与后续
 
@@ -104,7 +104,7 @@ Mattify AIR0067:100–227/232起函数包括 mask归一化blurred color、与ave
 
 本轮额外写入预算100MB、剩余磁盘不低于4GB；只在macOS runner做图像计算。本地Python均用scripts/local-python-scope.sh；原件、历史归档、冻结模型、两个未跟踪consumer-goto-v8文件保持不变。临时传输资源在结果校验后清理，准确复核记录见transport-cleanup-20261019.json；永久源码仅提交研究分支，不动master/PR/merge。
 
-下一步的可执行边界：皮肤逆解剩余失败与低秩/歧义分别保留mask，完整误差上界尚缺；SkinSmooth/Mattify在固定人工上下文下的非零native单位探针可继续交runner。真实相机WithoutFaceBoost曲线重算、Studio原始person stats/眼部上下文及匹配RAW的精度由实机计划提供输入、捕获项和判据，不将其伪装成已完成。RAW仍需Mac上的IMG_2679/IMG_2408配对组。
+下一步的可执行边界：皮肤逆解剩余失败与低秩/歧义分别保留mask，完整误差上界尚缺；SkinSmooth/Mattify固定人工上下文下的最终单位已由S11/S13补上，完整上游链仍缺原始统计。真实相机WithoutFaceBoost曲线重算、Studio原始person stats/眼部上下文及匹配RAW的精度由实机计划提供输入、捕获项和判据，不将其伪装成已完成。RAW仍需Mac上的IMG_2679/IMG_2408配对组。
 
 
 ### S9 补表：剩余误差、边缘与量化歧义（已验证数值，SEM-25）
@@ -120,3 +120,28 @@ run39156641912仅审计S5/S8保存数组，无新逆解搜索。matte边缘定�
 三项失败像素与h=.004数值低秩的交集都是0。剩余失败主要集中边缘，但并非全由matte边缘或已证歧义解释：联合296个失败中263个在边缘，28个同时是已观察到的非唯一点。不要将未知原因归因过度。失败/近黑/边缘/观察到非唯一/低有限差分秩/搜索边界mask已加密保存，完整上界仍缺。
 
 阈值审计同时保留两种定义：S5存储float32 residual转float64比较有70387个失败；从原生half像素重新以float64计算有70381个。差6个恰在float32(0.001)，该float值略大于实数0.001；未改门槛。S8/S9参数中和的91/205/296个失败来自half像素重新算出的float64误差。旧存储值统计与新重算值不混用，原归档不改。
+
+<!-- SEMANTIC-TEXTURE-S10-S13 -->
+
+### S10–S13 补充：SkinSmooth / Mattify 非零原生条件逆（已验证数值）
+
+S10 run39157857745 的SkinSmooth缺imageblock分配，输出全零，分析因空mask报错；Mattify另有pipeline编译失败，全部作废为单位精度证据，原包保留。S11按AIR0150:18、360–383、723的强制imageblock数据读写，显式分配16×16（2048B），SkinSmooth非零单位测试跑通。这里不是可以用function constant关闭的imageblock路径；此前UnderEye的false模式不能照搬。
+
+Mattify在S11设置required constant0/16后仍编译失败。S12不含照片的8组编译矩阵核实：constant0=thumbnail true/false、两个pipeline API各试一次，imageblock=false的4组全部失败，true的4组全部成功；constant0/16确实required，type=bool。不能据false失败推断runner没有Metal或归入待实机。S13保持thumbnail=false（非thumbnail分支；并未逐项验证所有子项），用imageblock=true及16×16分配，**只跑未完成Mattify**，没有重复已完成SkinSmooth。
+
+输入是同一IMG_2810的S5 consumer主纹理与旧skin matte与新2026 person matte，512×384；不是已恢复的原拍摄Studio中间图。上下文显式人工固定：5×5 box blur、gfA=.5/gfB=.1、face stats/instance及precomputed masks；它们不是Apple上游算法的拟合或缺失统计真值。SkinSmooth只变pores/degrunge目标slider，Mattify只变editingStrength，其他输入固定。强度0两算子均与输入逐位0差。原生逆以输出为种子，固定上下文24次有上限的残差迭代，原输入仅作对照，不作逆解种子；没有新的half lattice搜索。
+
+|原生最终单位/强度|改变half RGB分量|原生往返max relative|有效覆盖|与已知原输入max relative/超1e-3像素|
+|---|---:|---:|---:|---:|
+|SkinSmooth / 0.5|4260|0.0009905894007|94.682821%|0.00201409869 / 40|
+|SkinSmooth / 1|4517|0.0009940357853|94.682821%|0.00265251989 / 203|
+|Mattify / 0.5|5181|0.001|94.682821%|0.00223964166 / 186|
+|Mattify / 1|5695|0.001|94.682821%|0.00294637596 / 343|
+
+四个非零配置的原生往返均≤原1e-3门槛，失败0；Mattify两个配置恰为1e-3，无额外余量。原生往返max abs均.00048828125；PSNR分别106.633/106.226、101.231/101.345dB。**往返通过不代表恢复原输入**：原输入误差及失败像素照表保留，不能据此宣称唯一逆或camera精度。此处没有独立连续float forward精度认证，也不替代旧acceptance门槛。源输入SHA `6e2290dce8eb7fd4d076f4af33468dbddc77e7171cfb542f639a9fba6b2e3b85`；metallib SHA沿用16a8a119…。
+
+S11/S13各5次预览均输入SHA不变，仍用固定ACES1.0 SDR Video。密文内保存原生delta/逆解delta/往返delta与mask（参照不可变S5主图），原始临时buffer另存SHA；没有向git放人物图或NPZ。预览索引已补SkinSmooth/Mattify独立applied/conditional-inverse。完整Studio的上游统计、blur/眼部处理、原始person上下文仍缺：这次只认证两个最终单位的人工固定上下文，不认证原拍摄的完整去平滑或去Mattify。
+
+S10/S11/S13密文均GPG及全文件manifest校验0失败；S12仅公开无照片的文本，ZIP/各entry SHA及CRC留档，没有伪称它带原生manifest。四次run的artifact/commit/branch/镜像/SHA见texture-run-provenance-20261019.json。临时session secret、S10/S11/S13私密分支及S12编译分支清理复核记录见transport-cleanup-texture-20261019.json。
+
+**A阶段仍未完成**：这轮可执行的三个最终纹理单位已有非零原生条件结果；皮肤语义联合逆的296个失败及未认证完整区间不变，原拍摄的人脸提亮与Studio统计仍待匹配实机上下文。GTM/LTM、Apple Log、冻结模型、原SDR均未修改。
