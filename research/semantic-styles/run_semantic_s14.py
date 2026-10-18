@@ -70,3 +70,5 @@ if run(flags+[GEN/'semantic_consumer_s14.m','-o',exe],'build-s14')==0:
 for name in ['generated-sha256.json','generated-source-sha256.json']:
     if (GEN/name).exists(): shutil.copy2(GEN/name,O/name)
 print('S14 finite-domain audit finished. All private output encrypted; no global-hull certificate assumed.')
+assert all(s['returncode']==0 for s in status), 'Probe subprocess failed; inspect encrypted logs'
+assert (O/'analysis/s14-analysis.json').exists(), 'No validated finite-set result; inspect native context/checkpoints'

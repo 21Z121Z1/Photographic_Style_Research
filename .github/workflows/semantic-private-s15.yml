@@ -1,0 +1,77 @@
+name: semantic-private-s15
+on:
+  push:
+    branches: ['research/vm-native-20261019-private-s15']
+  workflow_dispatch:
+jobs:
+  native-private:
+    runs-on: xcode-27
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare encrypted transport
+        env:
+          INPUT_KEY: ${{ secrets.SEMANTIC_S14_INPUT_KEY }}
+        run: |
+          set -euo pipefail
+          command -v gpg >/dev/null || brew install gnupg
+          W="$RUNNER_TEMP/semantic-s14"; mkdir -m 700 "$W"
+          echo "W=$W" >> "$GITHUB_ENV"
+          export GNUPGHOME="$W/gnupg"; mkdir -m 700 "$GNUPGHOME"
+          printf '%s' "$INPUT_KEY" > "$W/input-key"; chmod 600 "$W/input-key"
+          gh api -H 'Accept: application/octet-stream' repos/21Z121Z1/Photographic_Style_Research/releases/assets/654329649 > "$W/input.gpg"
+          printf '%s  %s\n' '4e8d8a4e644a727cf47bc06ff490bb640b5d1bebbad9c9fe85aaebbbfdb6130a' "$W/input.gpg" | shasum -a 256 -c -
+          gpg --batch --pinentry-mode loopback --passphrase-file "$W/input-key" --output "$W/IMG_2810.HEIC" --decrypt "$W/input.gpg" > "$W/decrypt.log" 2>&1
+          rm -f "$W/input-key" "$W/input.gpg"
+          python3 -m pip install --quiet numpy pillow opencolorio==2.6.0 > "$W/dependencies.log" 2>&1
+      - name: Controlled native semantic tests
+        env:
+          S5_ARCHIVE_SESSION: ${{ secrets.SEMANTIC_S14_S5_SESSION }}
+          S8_ARCHIVE_SESSION: ${{ secrets.SEMANTIC_S14_S8_SESSION }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$W/out"
+          python3 research/semantic-styles/run_semantic_s14.py > "$W/driver.log" 2>&1
+      - name: Encrypt all private outputs
+        if: always()
+        run: |
+          set -euo pipefail
+          test -n "${W:-}"
+          export GNUPGHOME="$W/gnupg"
+          mkdir -p encrypted "$W/out"
+          cp "$W/decrypt.log" "$W/dependencies.log" "$W/out/" 2>/dev/null || true
+          cp "$W/driver.log" "$W/out/" 2>/dev/null || true
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          root=pathlib.Path(os.environ['W'])/'out'
+          rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  h=hashlib.sha256()
+                  with p.open('rb') as f:
+                      for b in iter(lambda:f.read(1048576),b''):h.update(b)
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':h.hexdigest()})
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','files':rows},indent=2)+'\n')
+          PY
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/key-import.log" 2>&1
+          tar -C "$W" -czf - out | gpg --batch --trust-model always --recipient 28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA --encrypt --output encrypted/semantic-s15.tar.gz.gpg
+          shasum -a 256 encrypted/semantic-s15.tar.gz.gpg > encrypted/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-s15-encrypted
+          path: encrypted/
+          retention-days: 1
+      - name: Remove runner plaintext
+        if: always()
+        run: |
+          test -n "${W:-}" && rm -rf -- "$W"
