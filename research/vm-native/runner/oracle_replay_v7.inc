@@ -1,0 +1,147 @@
+// V2 preserves the actual Apple pipeline state. No Apple binary is serialized.
+#import <simd/simd.h>
+static NSData *V2ReadTexture(id<MTLCommandQueue>q,id<MTLTexture>t){
+ NSUInteger stride=(t.width*8+255)&~255;id<MTLBuffer>b=[q.device newBufferWithLength:stride*t.height options:MTLResourceStorageModeShared];
+ id<MTLCommandBuffer>cb=[q commandBuffer];id<MTLBlitCommandEncoder>e=[cb blitCommandEncoder];[e copyFromTexture:t sourceSlice:0 sourceLevel:0 sourceOrigin:MTLOriginMake(0,0,0)sourceSize:MTLSizeMake(t.width,t.height,1)toBuffer:b destinationOffset:0 destinationBytesPerRow:stride destinationBytesPerImage:stride*t.height];[e endEncoding];[cb commit];[cb waitUntilCompleted];if(cb.error)@throw[NSException exceptionWithName:@"V2Read" reason:cb.error.description userInfo:nil];
+ NSMutableData*d=[NSMutableData dataWithLength:t.width*t.height*8];for(NSUInteger y=0;y<t.height;y++)memcpy((char*)d.mutableBytes+y*t.width*8,(char*)b.contents+y*stride,t.width*8);return d;
+}
+static NSDictionary *V2Metrics(NSData*a,NSData*b){const __fp16*x=a.bytes,*y=b.bytes;NSUInteger n=a.length/8;double maximum=0,squared=0,rel=0;uint64_t bits=0;for(NSUInteger i=0;i<n;i++)for(int c=0;c<3;c++){NSUInteger k=i*4+c;double d=fabs((double)x[k]-(double)y[k]);maximum=fmax(maximum,d);rel=fmax(rel,d/fmax(fabs((double)y[k]),1e-6));squared+=d*d;if(memcmp(x+k,y+k,2))bits++;}return @{@"pixels":@(n),@"half_differing_components":@(bits),@"max_abs":@(maximum),@"max_relative":@(rel),@"psnr_peak1_db":squared?@(-10*log10(squared/(n*3))):@"inf"};}
+static NSDictionary *V2BufferSnapshots(NSDictionary*call,id<MTLCommandQueue>q){NSMutableDictionary*r=[NSMutableDictionary new];for(NSString*k in call[@"buffers"]){NSDictionary*row=call[@"buffers"][k];id<MTLBuffer>b=row[@"buffer"];NSUInteger off=[row[@"offset"]unsignedIntegerValue],len=b.length-off;if(len>1000000)@throw[NSException exceptionWithName:@"V2Buffer" reason:@"Oversize binding" userInfo:nil];if(b.contents)r[k]=[NSData dataWithBytes:(char*)b.contents+off length:len];else{id<MTLBuffer>copy=[q.device newBufferWithLength:len options:MTLResourceStorageModeShared];id<MTLCommandBuffer>cb=[q commandBuffer];id<MTLBlitCommandEncoder>blit=[cb blitCommandEncoder];[blit copyFromBuffer:b sourceOffset:off toBuffer:copy destinationOffset:0 size:len];[blit endEncoding];[cb commit];[cb waitUntilCompleted];r[k]=[NSData dataWithBytes:copy.contents length:len];}}return r;}
+static NSData *V2Evaluate(id<MTLCommandQueue>q,NSDictionary*call,NSDictionary*snap,id<MTLComputePipelineState>ps,id<MTLTexture>input,id<MTLBuffer>debug){
+ id<MTLTexture>ref=call[@"textures"][@"13"];MTLTextureDescriptor*td=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:ref.pixelFormat width:ref.width height:ref.height mipmapped:NO];td.storageMode=MTLStorageModePrivate;td.usage=MTLTextureUsageShaderRead|MTLTextureUsageShaderWrite;id<MTLTexture>out=[q.device newTextureWithDescriptor:td];
+ id<MTLCommandBuffer>cb=[q commandBuffer];id<MTLComputeCommandEncoder>enc=[cb computeCommandEncoder];[enc setComputePipelineState:ps];
+ for(NSString*k in call[@"textures"])[enc setTexture:[k isEqualToString:@"13"]?out:([k isEqualToString:@"0"]&&input?input:call[@"textures"][k]) atIndex:k.integerValue];
+ for(NSString*k in call[@"bytes"]){NSData*d=call[@"bytes"][k];[enc setBytes:d.bytes length:d.length atIndex:k.integerValue];}
+ for(NSString*k in snap){NSData*d=snap[k];id<MTLBuffer>b=[q.device newBufferWithBytes:d.bytes length:d.length options:MTLResourceStorageModeShared];[enc setBuffer:b offset:0 atIndex:k.integerValue];}
+ if(call[@"imageblock"])[enc setImageblockWidth:[call[@"imageblock"][0]unsignedIntegerValue]height:[call[@"imageblock"][1]unsignedIntegerValue]];for(NSString*k in call[@"threadgroup_memory"])[enc setThreadgroupMemoryLength:[call[@"threadgroup_memory"][k]unsignedIntegerValue]atIndex:k.integerValue];if(debug)[enc setBuffer:debug offset:0 atIndex:30];NSArray*g=call[@"grid"],*z=call[@"group"];NSUInteger gx=[z[0]unsignedIntegerValue],gy=[z[1]unsignedIntegerValue];if(gx*gy>ps.maxTotalThreadsPerThreadgroup){gx=16;gy=16;}
+ MTLSize grid=MTLSizeMake([g[0]unsignedIntegerValue],[g[1]unsignedIntegerValue],1),group=MTLSizeMake(gx,gy,1);if([call[@"dispatch"]isEqualToString:@"groups"])[enc dispatchThreadgroups:grid threadsPerThreadgroup:group];else[enc dispatchThreads:grid threadsPerThreadgroup:group];[enc endEncoding];[cb commit];[cb waitUntilCompleted];if(cb.error)@throw[NSException exceptionWithName:@"V2Evaluate" reason:cb.error.description userInfo:nil];return V2ReadTexture(q,out);
+}
+static float R3Loss(const __fp16*f,const __fp16*t,NSUInteger i,float*maximum){float sq=0,m=0;for(int c=0;c<3;c++){float e=((float)f[i*4+c]-t[i*4+c])/fmaxf(fabsf(t[i*4+c]),1e-6f);sq+=e*e;m=fmaxf(m,fabsf(e));}if(maximum)*maximum=m;return sq;}
+// Generic RGB half-lattice search. Input RGB is a recovery, never original RGB.
+// AIR 0010 SSRRenderROI fields 3..11 control the nine spatial sampling maps.
+static void V7PointPolish(id<MTLCommandQueue>q,NSDictionary*call,NSDictionary*snap,id<MTLComputePipelineState>ps,id<MTLTexture>input,
+                         float*bestX,float*best,float*bestSq,const BOOL*eligible,NSUInteger n,const __fp16*target,NSString*dir) {
+ NSUInteger width=input.width,height=input.height,total=width*height;
+ if(n!=total)@throw[NSException exceptionWithName:@"V6PointScope" reason:@"Point batching is currently validated only on complete dispatches" userInfo:nil];
+ NSMutableArray*controls=[NSMutableArray new],*progress=[NSMutableArray new];
+ NSMutableData*full=[NSMutableData dataWithLength:total*8];__fp16*fp=full.mutableBytes;
+ for(NSUInteger i=0;i<n;i++){for(int c=0;c<3;c++)fp[i*4+c]=(__fp16)bestX[i*3+c];fp[i*4+3]=1;}
+ [input replaceRegion:MTLRegionMake2D(0,0,width,height)mipmapLevel:0 withBytes:full.bytes bytesPerRow:width*8];
+ NSData*base=V2Evaluate(q,call,snap,ps,input,nil);const __fp16*baseY=base.bytes;
+ NSData*originalROI=call[@"bytes"][@"5"];
+ if(originalROI.length!=176)@throw[NSException exceptionWithName:@"V6ROI" reason:@"Unexpected SSRRenderROI layout" userInfo:nil];
+ NSMutableData*batch=[NSMutableData dataWithLength:total*8];__fp16*bp=batch.mutableBytes;
+
+ for(NSUInteger point=0;point<n;point++)if(eligible[point]&&best[point]>1e-3){@autoreleasepool{
+  NSMutableData*roi=[originalROI mutableCopy];float*maps=(float*)((char*)roi.mutableBytes+16);
+  float px=(float)(point%width)+.5f,py=(float)(point/width)+.5f;
+  for(int field=1;field<9;field++){float*m=maps+field*4;float u=fmaf(m[0],px,m[2]),v=fmaf(m[1],py,m[3]);m[0]=m[1]=0;m[2]=u;m[3]=v;}
+  maps[0]=1.f/(float)width;maps[1]=1.f/(float)height;maps[2]=maps[3]=0;
+  uint16_t*shape=(uint16_t*)roi.mutableBytes;shape[4]=(uint16_t)width;shape[5]=(uint16_t)height;
+  uint16_t*origin=(uint16_t*)((char*)roi.mutableBytes+160);origin[0]=origin[1]=0;
+  NSMutableDictionary*batchCall=[call mutableCopy],*bindings=[call[@"bytes"]mutableCopy];bindings[@"5"]=roi;batchCall[@"bytes"]=bindings;
+  for(NSUInteger i=0;i<total;i++){for(int c=0;c<3;c++)bp[i*4+c]=(__fp16)bestX[point*3+c];bp[i*4+3]=1;}
+  [input replaceRegion:MTLRegionMake2D(0,0,width,height)mipmapLevel:0 withBytes:batch.bytes bytesPerRow:width*8];
+  NSData*control=V2Evaluate(q,batchCall,snap,ps,input,nil);const __fp16*cy=control.bytes;uint64_t mismatch=0;double maxAbs=0;
+  for(NSUInteger i=0;i<total;i++)for(int c=0;c<3;c++){mismatch+=memcmp(cy+i*4+c,baseY+point*4+c,2)!=0;maxAbs=fmax(maxAbs,fabs((double)cy[i*4+c]-baseY[point*4+c]));}
+  [controls addObject:@{@"point":@(point),@"pixels":@(total),@"half_differing_components":@(mismatch),@"max_abs":@(maxAbs),@"control_input":@"Current independently recovered RGB repeated; original input is not used"}];
+  [[NSJSONSerialization dataWithJSONObject:controls options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-point-batch-controls.json"]atomically:YES];
+  if(mismatch)@throw[NSException exceptionWithName:@"V6PointControl" reason:@"Fixed-context batch differs from original-coordinate replay; candidate search is not accepted" userInfo:nil];
+  float initial=best[point];NSUInteger queries=0;
+  int radii[]={16,48,127};
+  for(NSUInteger phase=0;phase<3&&best[point]>1e-3;phase++){@autoreleasepool{
+   int radius=radii[phase],side=radius*2+1;NSUInteger combinations=(NSUInteger)side*side;
+   if(combinations*2>total)@throw[NSException exceptionWithName:@"V7Capacity"reason:@"Two blue-bound searches do not fit the batch"userInfo:nil];
+   uint16_t center[3];for(int c=0;c<3;c++){__fp16 h=(__fp16)bestX[point*3+c];memcpy(center+c,&h,2);}
+   int*lowerLo=malloc(combinations*sizeof(int)),*lowerHi=malloc(combinations*sizeof(int)),*upperLo=malloc(combinations*sizeof(int)),*upperHi=malloc(combinations*sizeof(int));
+   for(NSUInteger j=0;j<combinations;j++){lowerLo[j]=upperLo[j]=1;lowerHi[j]=upperHi[j]=0x3d00;}
+   float lowerTarget=(float)target[point*4+2]*(1.f-.001f),upperTarget=(float)target[point*4+2]*(1.f+.001f);
+   // B monotonicity is only a search heuristic. These bounds are never reported
+   // as certified inverse intervals; all candidates are scored on all RGB.
+   for(int iteration=0;iteration<14;iteration++){@autoreleasepool{
+    for(NSUInteger j=0;j<combinations*2;j++){NSUInteger rg=j%combinations;int dr=(int)(rg/(NSUInteger)side)-radius,dg=(int)(rg%(NSUInteger)side)-radius;int lo=j<combinations?lowerLo[rg]:upperLo[rg],hi=j<combinations?lowerHi[rg]:upperHi[rg];int codes[]={MAX(1,MIN(0x3d00,(int)center[0]+dr)),MAX(1,MIN(0x3d00,(int)center[1]+dg)),(lo+hi)/2};for(int c=0;c<3;c++){uint16_t bits=(uint16_t)codes[c];memcpy(bp+j*4+c,&bits,2);}bp[j*4+3]=1;}
+    for(NSUInteger j=combinations*2;j<total;j++)memcpy(bp+j*4,bp,8);
+    [input replaceRegion:MTLRegionMake2D(0,0,width,height)mipmapLevel:0 withBytes:batch.bytes bytesPerRow:width*8];NSData*y=V2Evaluate(q,batchCall,snap,ps,input,nil);const __fp16*yp=y.bytes;queries+=combinations*2;
+    for(NSUInteger rg=0;rg<combinations;rg++){int mid=(lowerLo[rg]+lowerHi[rg])/2;if((float)yp[rg*4+2]<lowerTarget)lowerLo[rg]=MIN(mid+1,lowerHi[rg]);else lowerHi[rg]=mid;mid=(upperLo[rg]+upperHi[rg])/2;if((float)yp[(rg+combinations)*4+2]<=upperTarget)upperLo[rg]=MIN(mid+1,upperHi[rg]);else upperHi[rg]=mid;}
+   }}
+   NSUInteger samples=MIN((NSUInteger)129,total/combinations),count=combinations*samples;
+   for(NSUInteger rg=0;rg<combinations;rg++){int dr=(int)(rg/(NSUInteger)side)-radius,dg=(int)(rg%(NSUInteger)side)-radius;int low=lowerLo[rg],high=MAX(low,upperLo[rg]-1),length=high-low+1;
+    for(NSUInteger k=0;k<samples;k++){NSUInteger j=rg*samples+k;int blue;if((NSUInteger)length<=samples)blue=low+(int)(k%(NSUInteger)length);else if(k==0)blue=MAX(low,MIN(high,(int)center[2]));else blue=low+(int)llround((double)(high-low)*(double)(k-1)/(double)MAX((NSUInteger)1,samples-2));int codes[]={MAX(1,MIN(0x3d00,(int)center[0]+dr)),MAX(1,MIN(0x3d00,(int)center[1]+dg)),MAX(1,MIN(0x3d00,blue))};for(int c=0;c<3;c++){uint16_t bits=(uint16_t)codes[c];memcpy(bp+j*4+c,&bits,2);}bp[j*4+3]=1;}
+   }
+   for(NSUInteger j=count;j<total;j++)memcpy(bp+j*4,bp,8);
+   [input replaceRegion:MTLRegionMake2D(0,0,width,height)mipmapLevel:0 withBytes:batch.bytes bytesPerRow:width*8];NSData*y=V2Evaluate(q,batchCall,snap,ps,input,nil);const __fp16*yp=y.bytes;queries+=count;
+   for(NSUInteger j=0;j<count;j++){float sq=0,maximum=0;for(int c=0;c<3;c++){float e=((float)yp[j*4+c]-target[point*4+c])/fmaxf(fabsf(target[point*4+c]),1e-6f);sq+=e*e;maximum=fmaxf(maximum,fabsf(e));}if(maximum<best[point]||(maximum==best[point]&&sq<bestSq[point])){best[point]=maximum;bestSq[point]=sq;for(int c=0;c<3;c++)bestX[point*3+c]=bp[j*4+c];}}
+   free(lowerLo);free(lowerHi);free(upperLo);free(upperHi);
+  }}
+  [progress addObject:@{@"point":@(point),@"initial_max_relative":@(initial),@"final_max_relative":@(best[point]),@"queries":@(queries),@"passed":@(best[point]<=1e-3)}];
+  [[NSJSONSerialization dataWithJSONObject:progress options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-point-search.json"]atomically:YES];
+ }}
+}
+
+static void V2Inverse(id<MTLCommandQueue>q,NSDictionary*call,NSDictionary*snap,NSData*reference,NSString*dir){
+ NSUInteger limit=[NSProcessInfo.processInfo.environment[@"VM_EXACT_INVERSE_LIMIT"]integerValue];if(!limit)return;id<MTLTexture>source=call[@"textures"][@"0"];NSUInteger total=source.width*source.height,n=MIN(limit,total);NSMutableData*work=[V2ReadTexture(q,source)mutableCopy];__fp16*pixels=work.mutableBytes;const __fp16*target=reference.bytes;
+ MTLTextureDescriptor*td=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatRGBA16Float width:source.width height:source.height mipmapped:NO];td.storageMode=MTLStorageModeShared;td.usage=MTLTextureUsageShaderRead;id<MTLTexture>input=[q.device newTextureWithDescriptor:td];id<MTLComputePipelineState>ps=call[@"pipeline_object"];
+ 
+ // Controls use original input as an oracle baseline, never as inverse seeds.
+ [input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height) mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];
+ NSData*copyReplay=V2Evaluate(q,call,snap,ps,input,nil);NSDictionary*copyMetric=V2Metrics(copyReplay,reference);
+ [[NSJSONSerialization dataWithJSONObject:copyMetric options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-input-copy-control.json"]atomically:YES];
+ if([copyMetric[@"half_differing_components"]unsignedLongLongValue])@throw[NSException exceptionWithName:@"InverseCopyControl" reason:@"Copied original texture changes the pipeline output" userInfo:nil];
+ NSMutableArray*footprints=[NSMutableArray new];NSUInteger probes[]={MIN((NSUInteger)1386,total-1),MIN((NSUInteger)4066,total-1),total/2};
+ for(int probe=0;probe<3;probe++)for(int channel=0;channel<3;channel++){@autoreleasepool{
+  NSUInteger point=probes[probe];__fp16 old=pixels[point*4+channel];pixels[point*4+channel]=(__fp16)((float)old+.02f);
+  [input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height)mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];NSData*changed=V2Evaluate(q,call,snap,ps,input,nil);const __fp16*y=changed.bytes;uint64_t count=0,outside=0;NSUInteger minx=source.width,miny=source.height,maxx=0,maxy=0;NSMutableArray*first=[NSMutableArray new];
+  for(NSUInteger k=0;k<total;k++){BOOL diff=NO;for(int c=0;c<3;c++)diff|=memcmp(y+k*4+c,target+k*4+c,2)!=0;if(diff){count++;outside+=k!=point;minx=MIN(minx,k%source.width);maxx=MAX(maxx,k%source.width);miny=MIN(miny,k/source.width);maxy=MAX(maxy,k/source.width);if(first.count<16)[first addObject:@(k)];}}
+  [footprints addObject:@{@"point":@(point),@"channel":@(channel),@"perturbation":@.02,@"different_pixels":@(count),@"different_outside_input_pixel":@(outside),@"bbox":@[@(minx),@(miny),@(maxx),@(maxy)],@"first_indices":first}];pixels[point*4+channel]=old;
+ }}
+ [[NSJSONSerialization dataWithJSONObject:footprints options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-spatial-footprints.json"]atomically:YES];
+ if(n<total){NSMutableDictionary*shortCall=[call mutableCopy];NSArray*g=call[@"grid"],*group=call[@"group"];NSUInteger rows=(n+source.width-1)/source.width;BOOL groups=[call[@"dispatch"]isEqualToString:@"groups"];NSUInteger height=groups?(rows+[group[1]unsignedIntegerValue]-1)/[group[1]unsignedIntegerValue]:rows;shortCall[@"grid"]=@[g[0],@(height),g[2]];
+  [input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height)mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];NSData*y=V2Evaluate(q,shortCall,snap,ps,input,nil);NSDictionary*m=V2Metrics([y subdataWithRange:NSMakeRange(0,n*8)],[reference subdataWithRange:NSMakeRange(0,n*8)]);NSMutableDictionary*proof=[m mutableCopy];proof[@"grid"]=shortCall[@"grid"];proof[@"scope"]=@"Prefix dispatch versus full original dispatch, compared only on the same first n pixels; no new output ROI transform";
+  [[NSJSONSerialization dataWithJSONObject:proof options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-prefix-control.json"]atomically:YES];if([m[@"half_differing_components"]unsignedLongLongValue]==0)call=shortCall;
+ }
+
+ float*x=malloc(n*3*4),*v=malloc(n*3*4),*jac=malloc(n*9*4),*delta=malloc(n*3*4),*lambda=malloc(n*4),*merit=malloc(n*4),*best=malloc(n*4),*bestSq=malloc(n*4),*bestX=malloc(n*3*4);BOOL*eligible=calloc(n,sizeof(BOOL));NSUInteger eligibleN=0;
+ for(NSUInteger i=0;i<n;i++){eligible[i]=YES;best[i]=INFINITY;bestSq[i]=INFINITY;for(int c=0;c<3;c++)if(!isfinite(target[i*4+c])||target[i*4+c]<=1.f/255)eligible[i]=NO;eligibleN+=eligible[i];}
+ NSData*(^evaluate)(const float*)=^NSData*(const float*a){for(NSUInteger i=0;i<n;i++)for(int c=0;c<3;c++)pixels[i*4+c]=(__fp16)a[i*3+c];[input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height)mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];return V2Evaluate(q,call,snap,ps,input,nil);};
+ void(^remember)(const float*,const __fp16*)=^(const float*a,const __fp16*f){for(NSUInteger i=0;i<n;i++){float maximum=0,sq=R3Loss(f,target,i,&maximum);if(maximum<best[i]||(maximum==best[i]&&sq<bestSq[i])){best[i]=maximum;bestSq[i]=sq;memcpy(bestX+i*3,a+i*3,12);}}};
+ NSMutableArray*steps=[NSMutableArray new];const float low=0x1p-20f,high=1.25f; NSString*seedPath=NSProcessInfo.processInfo.environment[@"VM_INVERSE_SEED_PATH"]; NSData*savedSeed=seedPath?[NSData dataWithContentsOfFile:seedPath]:nil; if(savedSeed&&savedSeed.length!=n*12)@throw[NSException exceptionWithName:@"SeedShape" reason:@"Own previous recovery has wrong shape" userInfo:nil]; const float*saved=savedSeed.bytes;
+ if(saved){memcpy(x,saved,n*12);NSData*y=evaluate(x);remember(x,y.bytes);}
+ for(int seed=0;seed<(saved?0:3);seed++){
+  float factors[]={1,.5f,2};for(NSUInteger i=0;i<n;i++){lambda[i]=1e-4f;for(int c=0;c<3;c++)x[i*3+c]=fminf(high,fmaxf(low,saved?saved[i*3+c]:target[i*4+c]*factors[seed]));}
+  for(int iteration=0;iteration<48;iteration++){@autoreleasepool{
+   NSData*base=evaluate(x);const __fp16*f=base.bytes;remember(x,f);NSUInteger failed=0;float maximum=0;for(NSUInteger i=0;i<n;i++){merit[i]=R3Loss(f,target,i,NULL);if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}}[steps addObject:@{@"seed":@(seed),@"iteration":@(iteration),@"failed_eligible":@(failed),@"best_max_relative":@(maximum)}];if(!failed)break;
+   float eps=iteration<12?.008f:iteration<24?.004f:iteration<36?.002f:.001f;for(int c=0;c<3;c++){@autoreleasepool{
+    memcpy(v,x,n*12);for(NSUInteger i=0;i<n;i++)v[i*3+c]=fminf(high,x[i*3+c]*exp2f(eps));NSData*plus=evaluate(v);
+    memcpy(v,x,n*12);for(NSUInteger i=0;i<n;i++)v[i*3+c]=fmaxf(low,x[i*3+c]*exp2f(-eps));NSData*minus=evaluate(v);const __fp16*pf=plus.bytes,*mf=minus.bytes;
+    for(NSUInteger i=0;i<n;i++){float upper=fminf(high,x[i*3+c]*exp2f(eps)),lower=fmaxf(low,x[i*3+c]*exp2f(-eps)),den=fmaxf(log2f(upper/lower),1e-7f);for(int k=0;k<3;k++)jac[i*9+c*3+k]=((float)pf[i*4+k]-mf[i*4+k])/(den*fmaxf(fabsf(target[i*4+k]),1e-6f));}
+   }}
+   for(NSUInteger i=0;i<n;i++){
+    simd_float3 a={jac[i*9],jac[i*9+1],jac[i*9+2]},b={jac[i*9+3],jac[i*9+4],jac[i*9+5]},c={jac[i*9+6],jac[i*9+7],jac[i*9+8]},r;
+    for(int k=0;k<3;k++)r[k]=((float)target[i*4+k]-f[i*4+k])/fmaxf(fabsf(target[i*4+k]),1e-6f);
+    simd_float3 A={simd_dot(a,a)+lambda[i],simd_dot(a,b),simd_dot(a,c)},B={simd_dot(a,b),simd_dot(b,b)+lambda[i],simd_dot(b,c)},C={simd_dot(a,c),simd_dot(b,c),simd_dot(c,c)+lambda[i]},rhs={simd_dot(a,r),simd_dot(b,r),simd_dot(c,r)};float det=simd_dot(A,simd_cross(B,C));simd_float3 d={0,0,0};if(isfinite(det)&&fabsf(det)>1e-20f)d=(simd_float3){simd_dot(simd_cross(B,C),rhs)/det,simd_dot(simd_cross(C,A),rhs)/det,simd_dot(simd_cross(A,B),rhs)/det};for(int k=0;k<3;k++)delta[i*3+k]=eligible[i]&&best[i]>1e-3?fminf(1,fmaxf(-1,d[k])):0;
+   }
+   float*initial=malloc(n*12);memcpy(initial,x,n*12);BOOL*improved=calloc(n,sizeof(BOOL));
+   for(int ls=0;ls<4;ls++){@autoreleasepool{float scale=ldexpf(1,-ls);for(NSUInteger i=0;i<n*3;i++)v[i]=fminf(high,fmaxf(low,initial[i]*exp2f(scale*delta[i])));NSData*y=evaluate(v);const __fp16*yp=y.bytes;remember(v,yp);for(NSUInteger i=0;i<n;i++){float sq=R3Loss(yp,target,i,NULL);if(sq<merit[i]){merit[i]=sq;improved[i]=YES;memcpy(x+i*3,v+i*3,12);}}}}
+   for(NSUInteger i=0;i<n;i++)lambda[i]=fminf(1e4f,fmaxf(1e-8f,lambda[i]*(improved[i]?.25f:8.f)));free(initial);free(improved);
+  }}
+ }
+ memcpy(x,bestX,n*12);NSMutableArray*polish=[NSMutableArray new];
+ V7PointPolish(q,call,snap,ps,input,bestX,best,bestSq,eligible,n,target,dir);
+
+ memcpy(x,bestX,n*12);NSData*last=evaluate(x);const __fp16*lf=last.bytes;NSMutableData*mask=[NSMutableData dataWithLength:n];NSUInteger failed=0;float maximum=0;for(NSUInteger i=0;i<n;i++){R3Loss(lf,target,i,best+i);((uint8_t*)mask.mutableBytes)[i]=eligible[i];if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}}
+ [last writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-roundtrip.f16"]atomically:YES];
+ [[NSData dataWithBytes:x length:n*12]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-rgb.f32"]atomically:YES];[[NSData dataWithBytes:best length:n*4]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-relative.f32"]atomically:YES];[mask writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-eligible.u8"]atomically:YES];NSDictionary*r=@{@"pixels":@(n),@"full_frame":@(n==total),@"input_shape":@[@(source.height),@(source.width),@4],@"mask_coverage":@((double)eligibleN/n),@"failed_eligible_pixels":@(failed),@"max_relative_error_in_mask":@(maximum),@"native_forward_verified":@YES,@"solver":@"V7: own previous recovery; contiguous R/G half-code grids with native B-band bisection as a proposal heuristic, then full retained-Apple-pipeline verification; all failures retained",@"steps":steps,@"original_input_used_as_solver_seed":@NO,@"own_previous_recovery_seed":@(saved!=NULL),@"eligible_mask_is_predefined_not_certified_invertibility":@YES,@"scope":@"Fixed captured external context. Every eligible failure retained; 4096-pixel development subset is not a full-frame gate."};[[NSJSONSerialization dataWithJSONObject:r options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse.json"]atomically:YES];
+ free(x);free(v);free(jac);free(delta);free(lambda);free(merit);free(best);free(bestSq);free(bestX);free(eligible);
+}
+static void OracleReplayV2(id renderer,NSString*dir,NSDictionary*call){
+ id<MTLCommandQueue>q=[renderer metalCommandQueue];id<MTLComputePipelineState>original=call[@"pipeline_object"];if(!original)@throw[NSException exceptionWithName:@"V2Pipeline" reason:@"No retained original pipeline" userInfo:nil];NSDictionary*snap=V2BufferSnapshots(call,q);NSData*ref=V2ReadTexture(q,call[@"textures"][@"13"]);NSData*replay=V2Evaluate(q,call,snap,original,nil,nil);[replay writeToFile:[dir stringByAppendingPathComponent:@"original-pipeline-replay.f16"]atomically:YES];NSMutableDictionary*result=[V2Metrics(replay,ref)mutableCopy];result[@"max_threads"]=@(original.maxTotalThreadsPerThreadgroup);result[@"pipeline_description"]=original.description;result[@"imageblock_memory_32x32"]=@([original imageblockMemoryLengthForDimensions:MTLSizeMake(32,32,1)]);result[@"static_threadgroup_memory"]=@(original.staticThreadgroupMemoryLength);result[@"captured_imageblock"]=call[@"imageblock"]?:NSNull.null;result[@"scope"]=@"Actual retained Apple compute pipeline; captured bindings and post-dispatch buffers";[[NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"original-pipeline-replay.json"]atomically:YES];
+ if([result[@"half_differing_components"]unsignedLongLongValue]==0)V2Inverse(q,call,snap,ref,dir);
+ // Independently load the installed Apple library and its documented function constants.
+ NSError *libraryError=nil;id<MTLLibrary>nativeLibrary=[q.device newLibraryWithURL:[NSURL fileURLWithPath:@"/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources/default.metallib"]error:&libraryError];NSMutableArray*direct=[NSMutableArray new];
+ for(int version=0;version<3;version++){@autoreleasepool{MTLFunctionConstantValues*fc=[MTLFunctionConstantValues new];BOOL imageBlock=NO;[fc setConstantValue:&imageBlock type:MTLDataTypeBool atIndex:0];[fc setConstantValue:&version type:MTLDataTypeInt atIndex:1];NSError*error=nil;id<MTLFunction>f=[nativeLibrary newFunctionWithName:@"renderFinalAdjustments" constantValues:fc error:&error];id<MTLComputePipelineState>ps=f?[q.device newComputePipelineStateWithFunction:f error:&error]:nil;if(!ps){[direct addObject:@{@"srl_version":@(version),@"error":error.description?:libraryError.description?:@"nil"}];continue;}NSData*y=V2Evaluate(q,call,snap,ps,nil,nil);NSMutableDictionary*m=[V2Metrics(y,ref)mutableCopy];m[@"srl_version"]=@(version);m[@"use_imageblock"]=@NO;m[@"max_threads"]=@(ps.maxTotalThreadsPerThreadgroup);[direct addObject:m];if(version==0)[y writeToFile:[dir stringByAppendingPathComponent:@"direct-library-v0.f16"]atomically:YES];if([m[@"half_differing_components"]unsignedLongLongValue]==0&&![result[@"half_differing_components"]isEqual:@0]){NSMutableDictionary*c=[call mutableCopy];c[@"pipeline_object"]=ps;V2Inverse(q,c,snap,ref,dir);}}}
+ [[NSJSONSerialization dataWithJSONObject:direct options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"direct-library.json"]atomically:YES];
+ NSString*reassembled=NSProcessInfo.processInfo.environment[@"VM_REASSEMBLED_AIR_LIBRARY"];if(reassembled){NSError*e=nil;id<MTLLibrary>l=[q.device newLibraryWithFile:reassembled error:&e];MTLFunctionConstantValues*fc=[MTLFunctionConstantValues new];BOOL use=NO;int version=0;[fc setConstantValue:&use type:MTLDataTypeBool atIndex:0];[fc setConstantValue:&version type:MTLDataTypeInt atIndex:1];id<MTLFunction>f=l?[l newFunctionWithName:@"renderFinalAdjustments" constantValues:fc error:&e]:nil;id<MTLComputePipelineState>p=f?[q.device newComputePipelineStateWithFunction:f error:&e]:nil;NSDictionary*j;if(p){NSData*y=V2Evaluate(q,call,snap,p,nil,nil);[y writeToFile:[dir stringByAppendingPathComponent:@"air-reassembled-output.f16"]atomically:YES];j=V2Metrics(y,ref);}else j=@{@"error":e.description?:@"nil reassembled pipeline"};[[NSJSONSerialization dataWithJSONObject:j options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"air-reassembled.json"]atomically:YES];}
+ if([NSProcessInfo.processInfo.environment[@"VM_SKIP_MSL"]boolValue])return;NSString*path=NSProcessInfo.processInfo.environment[@"VM_CONSUMER_MSL"];if(!path)return;NSString*source=[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];NSMutableArray*comparisons=[NSMutableArray new];
+ for(NSNumber*fast in @[@YES,@NO]){MTLCompileOptions*o=[MTLCompileOptions new];o.fastMathEnabled=fast.boolValue;NSError*error=nil;id<MTLLibrary>lib=[q.device newLibraryWithSource:source options:o error:&error];if(!lib){[comparisons addObject:@{@"fast_math":fast,@"error":error.description?:@"compile nil"}];continue;}id<MTLComputePipelineState>ps=[q.device newComputePipelineStateWithFunction:[lib newFunctionWithName:@"f1"]error:&error];if(!ps){[comparisons addObject:@{@"fast_math":fast,@"error":error.description?:@"pipeline nil"}];continue;}id<MTLBuffer>debug=[q.device newBufferWithLength:512*17*16 options:MTLResourceStorageModeShared];NSData*output=V2Evaluate(q,call,snap,ps,nil,debug);NSString*stem=fast.boolValue?@"model-fast":@"model-safe";[output writeToFile:[dir stringByAppendingPathComponent:[stem stringByAppendingString:@".f16"]]atomically:YES];[[NSData dataWithBytes:debug.contents length:debug.length]writeToFile:[dir stringByAppendingPathComponent:[stem stringByAppendingString:@"-checkpoints.f32"]]atomically:YES];NSMutableDictionary*m=[V2Metrics(output,ref)mutableCopy];m[@"fast_math"]=fast;m[@"max_threads"]=@(ps.maxTotalThreadsPerThreadgroup);[comparisons addObject:m];}
+ [[NSJSONSerialization dataWithJSONObject:comparisons options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"model-precision-v2.json"]atomically:YES];
+}

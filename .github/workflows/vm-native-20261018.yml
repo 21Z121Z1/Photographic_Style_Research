@@ -36,11 +36,11 @@ jobs:
         run: |
           brew install llvm > out/brew-llvm.log 2>&1
           python3 research/vm-native/runner/extract_air.py out/air > out/air-extraction.log 2>&1
-      - name: Acceptance v6 native point batches and precision controls
+      - name: V7 native inverse repair and MSL observation control
         if: always()
         shell: bash
         run: |
-          python3 research/vm-native/runner/run-acceptance-v6.py > out/guided-v3.log 2>&1
+          python3 research/vm-native/runner/run-repair-v7.py > out/guided-v3.log 2>&1
       - name: Seal text evidence
         if: always()
         shell: bash
