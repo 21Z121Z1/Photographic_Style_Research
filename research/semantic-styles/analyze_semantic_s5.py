@@ -4,7 +4,7 @@ All images, masks and reconstructible outputs remain in the encrypted archive.
 No curve, matte, statistics, or GTM/LTM parameter is fitted to these results.
 """
 from pathlib import Path
-import json,hashlib,sys
+import json,hashlib,sys,os
 import numpy as np
 from PIL import Image
 import PyOpenColorIO as ocio
@@ -12,7 +12,9 @@ import semantic_skin_model as skin
 O=Path(sys.argv[1]);cfg=ocio.Config.CreateFromBuiltinConfig('cg-config-v2.2.0_aces-v1.3_ocio-v2.4')
 proc=cfg.getProcessor('Linear P3-D65','sRGB - Display','ACES 1.0 - SDR Video',ocio.TRANSFORM_DIR_FORWARD).getDefaultCPUProcessor()
 DISPLAY={'config':'cg-config-v2.2.0_aces-v1.3_ocio-v2.4','config_sha256':hashlib.sha256(cfg.serialize().encode()).hexdigest(),'source':'Linear P3-D65','view':'ACES 1.0 - SDR Video','display':'sRGB - Display','exposure_ev':0,'orientation':'irot3: np.rot90(k=3), 90 degrees clockwise'}
-rows=[]
+rows=[];preview_integrity=[]
+reuse_path=O/'analysis-s5.json'
+reuse={r['case']:r for r in json.loads(reuse_path.read_text())['cases']} if os.environ.get('SEMANTIC_REUSE_NUMERIC_ANALYSIS') and reuse_path.exists() else {}
 def save_json(p,x):
  def clean(v):
   if isinstance(v,float) and not np.isfinite(v):return None
@@ -23,7 +25,10 @@ def save_json(p,x):
 def image(p,dtype='f2',shape=(384,512,4)):
  return np.fromfile(p,dtype=dtype).reshape(shape).astype('f4')
 def preview(x,p):
- a=np.ascontiguousarray(x[...,:3],dtype='f4');proc.apply(ocio.PackedImageDesc(a,a.shape[1],a.shape[0],3));Image.fromarray(np.rot90(np.round(np.clip(a,0,1)*255).astype('u1'),3)).save(p)
+ before=hashlib.sha256(x.tobytes()).hexdigest()
+ a=np.array(x[...,:3],dtype='f4',order='C',copy=True);proc.apply(ocio.PackedImageDesc(a,a.shape[1],a.shape[0],3));Image.fromarray(np.rot90(np.round(np.clip(a,0,1)*255).astype('u1'),3)).save(p)
+ after=hashlib.sha256(x.tobytes()).hexdigest();assert before==after
+ preview_integrity.append({'file':str(p.relative_to(O)),'input_sha256_before':before,'input_sha256_after':after})
 def lum(a):return np.sum(a[...,:3]*np.array([.22897456,.69173852,.07928691],dtype='f4'),axis=-1)
 def compare(a,b,scope,region=None):
  a=a[...,:3];b=b[...,:3];v=np.isfinite(a).all(-1)&np.isfinite(b).all(-1)&(np.min(a,axis=-1)>1/255)&(np.min(b,axis=-1)>1/255)
@@ -67,7 +72,10 @@ for case in sorted(O.glob('consumer-*')):
    row['gain_map_scope']='Positive linear P3 ratio between controlled native outputs; not a camera-ground-truth gain map.'
   else:row['preview_native_ablation_status']='Not emitted: texture13 color-space control failed'
  sp=s/'model-skin-stage.f32'
- if sp.exists():
+ if case.name in reuse:
+  for k in ['skin_continuous_forward','skin_continuous_inverse']:
+   if k in reuse[case.name]:row[k]=reuse[case.name][k]
+ elif sp.exists():
   stages=np.fromfile(sp,'f4').reshape(384,512,3,4);x=stages[:,:,0,:3];y=stages[:,:,1,:3];w=stages[:,:,2,0];guide=stages[:,:,2,1]
   params=np.fromfile(s/'buffer-1.bin','f4');t9=float(params[148]);t10=float(params[149]);f=skin.forward(x,w,guide,t9,t10);row['skin_continuous_forward']=compare(f,y,'Continuous AIR-derived skin operator versus half MSL stage; model observations, not native internal captures')
   recovered=np.empty_like(x);valid=np.zeros(w.shape,bool);singular=np.zeros(w.shape,bool)
@@ -88,3 +96,4 @@ if p.exists() and (s/'faceSkinMatte.f16').exists():
    est.append({'operator':op,'fraction_of_log2j':fraction,**estimate_metrics(x,y,w,amp)})
  save_json(out/'estimates.json',{'status':'hypothesis with real-image numerical validation of direction, neutrality, smoothness and chosen-transform self-consistency','j':j,'masks':'faceSkinMatte for face; personMatte*(1-faceSkinMatte) for body; fixed nonnegative 5-tap binomial and smoothstep','matte_smoother_is_apple_proven':False,'body_amplitude_identified':False,'display':DISPLAY,'rows':est})
 save_json(O/'analysis-s5.json',{'os_build':'26A434','display':DISPLAY,'cases':rows,'camera_ground_truth_available':False})
+save_json(O/'preview-integrity.json',{'checks':preview_integrity,'failed':sum(r['input_sha256_before']!=r['input_sha256_after'] for r in preview_integrity)})
