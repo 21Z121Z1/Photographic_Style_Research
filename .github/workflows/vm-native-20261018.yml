@@ -41,13 +41,13 @@ jobs:
         run: |
           brew install llvm > out/brew-llvm.log 2>&1
           python3 research/vm-native/runner/extract_air.py out/air > out/air-extraction.log 2>&1
-      - name: V9 isolate tone helper contraction and smoothSat precision
+      - name: V10 separate positive tone operators and freeze arithmetic candidates
         if: always()
         shell: bash
         run: |
-          python3 -m pip install numpy==2.5.4 > out/pip-numpy-v9.log 2>&1
-          python3 -m pip freeze > out/python-packages-v9.txt
-          python3 research/vm-native/runner/run-precision-v9.py | tee out/precision-v9.log
+          python3 -m pip install numpy==2.5.4 > out/pip-numpy-v10.log 2>&1
+          python3 -m pip freeze > out/python-packages-v10.txt
+          python3 research/vm-native/runner/run-precision-v10.py | tee out/precision-v10.log
       - name: Seal text evidence
         if: always()
         shell: bash
