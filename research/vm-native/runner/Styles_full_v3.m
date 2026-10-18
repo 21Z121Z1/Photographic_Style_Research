@@ -91,8 +91,22 @@ static CIImage *Canvas(CIImage *image, CGSize size) {
 static NSDictionary *Render(CIImage *image, CIContext *context, CGColorSpaceRef space, NSString *path) {
  CGRect extent=image.extent;size_t w=llround(extent.size.width),h=llround(extent.size.height);Require(w&&h&&w*h<=100000000,@"Invalid geometry");image=Canvas(image,CGSizeMake(w,h));
  BOOL large=w*h>1000000;if(!large){NSMutableData*raw=[NSMutableData dataWithLength:w*h*16];[context render:image toBitmap:raw.mutableBytes rowBytes:w*16 bounds:CGRectMake(0,0,w,h)format:kCIFormatRGBAf colorSpace:space];[raw writeToFile:path atomically:YES];return @{@"width":@(w),@"height":@(h),@"shape":@[@(h),@(w),@4],@"dtype":@"<f4",@"file":path.lastPathComponent};}
- NSString*file=[[path stringByDeletingPathExtension]stringByAppendingString:@".f16.zlib"];FILE*f=fopen(file.fileSystemRepresentation,"wb");Require(f!=NULL,@"Cannot create compressed pixels");z_stream z={0};Require(deflateInit(&z,6)==Z_OK,@"zlib initializer failed");unsigned char compressed[65536];NSUInteger rows=128;double minimum=INFINITY,maximum=-INFINITY;NSUInteger nonfinite=0;for(NSUInteger y=0;y<h;y+=rows){@autoreleasepool{NSUInteger n=MIN(rows,h-y);NSMutableData*tile=[NSMutableData dataWithLength:w*n*8];[context render:image toBitmap:tile.mutableBytes rowBytes:w*8 bounds:CGRectMake(0,y,w,n)format:kCIFormatRGBAh colorSpace:space];const __fp16*p=tile.bytes;for(NSUInteger i=0;i<w*n;i++)for(int c=0;c<3;c++){float v=p[i*4+c];nonfinite+=!isfinite(v);minimum=fmin(minimum,v);maximum=fmax(maximum,v);}z.next_in=tile.mutableBytes;z.avail_in=(uInt)tile.length;do{z.next_out=compressed;z.avail_out=sizeof(compressed);Require(deflate(&z,Z_NO_FLUSH)==Z_OK,@"zlib streaming failure");fwrite(compressed,1,sizeof(compressed)-z.avail_out,f);}while(z.avail_in||!z.avail_out);}}
- int status;do{z.next_out=compressed;z.avail_out=sizeof(compressed);status=deflate(&z,Z_FINISH);fwrite(compressed,1,sizeof(compressed)-z.avail_out,f);}while(status==Z_OK);Require(status==Z_STREAM_END,@"zlib finish failure");deflateEnd(&z);fclose(f);Require(!nonfinite,@"Nonfinite full-resolution native output");return @{@"width":@(w),@"height":@(h),@"shape":@[@(h),@(w),@4],@"dtype":@"<f2",@"compression":@"zlib",@"file":file.lastPathComponent,@"uncompressed_bytes":@(w*h*8),@"render_tile_rows":@(rows),@"minimum":@(minimum),@"maximum":@(maximum),@"nonfinite":@(nonfinite),@"scope":@"Native whole CIImage evaluated in scanline tiles; geometry remains full frame"};
+ NSMutableData *full=[NSMutableData dataWithLength:w*h*16];
+ [context render:image toBitmap:full.mutableBytes rowBytes:w*16 bounds:CGRectMake(0,0,w,h) format:kCIFormatRGBAf colorSpace:space];
+ NSString*file=[[path stringByDeletingPathExtension]stringByAppendingString:@".f16.zlib"];
+ FILE*f=fopen(file.fileSystemRepresentation,"wb");Require(f!=NULL,@"Cannot create compressed pixels");
+ z_stream z={0};Require(deflateInit(&z,6)==Z_OK,@"zlib initializer failed");unsigned char compressed[65536];
+ NSUInteger rows=128;double minimum=INFINITY,maximum=-INFINITY;NSUInteger nonfinite=0;
+ for(NSUInteger y=0;y<h;y+=rows){@autoreleasepool{
+  NSUInteger n=MIN(rows,h-y);NSMutableData*tile=[NSMutableData dataWithLength:w*n*8];
+  const float *src=(const float*)full.bytes+y*w*4;__fp16*dst=tile.mutableBytes;
+  for(NSUInteger i=0;i<w*n*4;i++){dst[i]=(__fp16)src[i];if(i%4<3){float v=src[i];nonfinite+=!isfinite(v);minimum=fmin(minimum,v);maximum=fmax(maximum,v);}}
+  z.next_in=tile.mutableBytes;z.avail_in=(uInt)tile.length;
+  do{z.next_out=compressed;z.avail_out=sizeof(compressed);Require(deflate(&z,Z_NO_FLUSH)==Z_OK,@"zlib streaming failure");fwrite(compressed,1,sizeof(compressed)-z.avail_out,f);}while(z.avail_in||!z.avail_out);
+ }}
+ int status;do{z.next_out=compressed;z.avail_out=sizeof(compressed);status=deflate(&z,Z_FINISH);fwrite(compressed,1,sizeof(compressed)-z.avail_out,f);}while(status==Z_OK);
+ Require(status==Z_STREAM_END,@"zlib finish failure");deflateEnd(&z);fclose(f);Require(!nonfinite,@"Nonfinite full-resolution native output");
+ return @{@"width":@(w),@"height":@(h),@"shape":@[@(h),@(w),@4],@"dtype":@"<f2",@"compression":@"zlib",@"file":file.lastPathComponent,@"uncompressed_bytes":@(w*h*8),@"storage_chunk_rows":@(rows),@"minimum":@(minimum),@"maximum":@(maximum),@"nonfinite":@(nonfinite),@"render_format":@"kCIFormatRGBAf",@"storage_cast":@"CPU float32 to IEEE binary16 round-to-nearest",@"row_order":@"Core Image whole-image bitmap order; no ROI concatenation",@"scope":@"One native whole-image float render; only compression and storage conversion are chunked"};
 }
 
 static void NativeAssertion(id self,SEL cmd,id assertion){fprintf(stderr,"%s\n",[NSThread callStackSymbols].description.UTF8String);@throw [NSException exceptionWithName:@"NativeAssertion" reason:[assertion description] userInfo:nil];}
