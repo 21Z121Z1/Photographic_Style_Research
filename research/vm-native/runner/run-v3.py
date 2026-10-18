@@ -8,4 +8,5 @@ def run(args,log):
  rows.append({'args':[str(x)for x in args],'returncode':rc,'log':str(log.relative_to(root))});return rc
 if run(['clang','-fobjc-arc','-O1','-framework','Foundation','-framework','Metal',src/'guided_oracle_v3.m','-o','/tmp/guided-v3'],out/'build.log')==0:
  for fixture in sorted((root/'research/vm-native/fixtures-v3').iterdir()):run(['/tmp/guided-v3',fixture,out/fixture.name],out/(fixture.name+'.log'))
+subprocess.run(['log','show','--last','2m','--style','compact','--predicate','process == "guided-v3"'],stdout=(out/'unified.log').open('w'),stderr=subprocess.STDOUT,timeout=60)
 (out/'status.json').write_text(json.dumps(rows,indent=2)+'\n');sys.exit(1 if any(x['returncode']!=0 for x in rows)else 0)
