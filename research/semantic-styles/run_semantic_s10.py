@@ -49,6 +49,7 @@ cfg=ocio.Config.CreateFromBuiltinConfig('cg-config-v2.2.0_aces-v1.3_ocio-v2.4');
 def preview(a,name):
  before=hashlib.sha256(a.tobytes()).hexdigest();z=np.array(a[...,:3],dtype='f4',copy=True,order='C');proc.apply(ocio.PackedImageDesc(z,512,384,3));im=Image.fromarray(np.rot90(np.round(np.clip(z,0,1)*255).astype('u1'),3));im.thumbnail((512,512));im.save(out/(name+'-ACES.png'));after=hashlib.sha256(a.tobytes()).hexdigest();assert before==after;checks.append({'image':name,'before':before,'after':after})
 def metric(a,b,valid):
+ if not valid.any():return {'pixels':0,'coverage':0.,'accepted':False,'reason':'Empty valid mask; zero/bad native output is not an accepted inverse'}
  d=abs(a-b);r=np.max(d/np.maximum(abs(b),1e-12),-1);lum=lambda z:z@np.array([.22897456,.69173852,.07928691]);q=valid&(lum(a)>0)&(lum(b)>0);ev=np.log2(lum(a)[q]/lum(b)[q]);return {'pixels':int(valid.sum()),'coverage':float(valid.mean()),'max_abs':float(d[valid].max()),'max_relative':float(r[valid].max()),'failed_gt_1e3':int(np.count_nonzero(valid&(r>.001))),'psnr_db':float(-10*np.log10(np.mean(d[valid]**2))) if d[valid].any() else 'inf','EV_MAE':float(abs(ev).mean()) if ev.size else None}
 original=x[...,:3].astype('f8');preview(original,'reference')
 for a in facts['rows']:
