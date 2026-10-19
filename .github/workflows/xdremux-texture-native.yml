@@ -118,8 +118,16 @@ jobs:
         run: |
           set -euo pipefail
           cargo build --locked --manifest-path xdremux/Cargo.toml -p xdremux-heif --examples 2>&1 | tee evidence/research-clients-build.log
+          cargo build --locked --manifest-path xdremux/Cargo.toml -p xdremux-engine
+          rustc --edition=2021 -D warnings research/xdremux-texture-native/semantic_control.rs \
+            --extern xdremux_engine=xdremux/target/debug/libxdremux_engine.rlib \
+            -L dependency=xdremux/target/debug/deps -o "$RUNNER_TEMP/texture-semantic-control"
           xdremux/target/debug/examples/texture_synthetic_inputs "$RUNNER_TEMP/xdremux-analytic-inputs"
           cp "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" evidence/input-manifest.json
+          "$RUNNER_TEMP/texture-semantic-control" \
+            "$RUNNER_TEMP/xdremux-analytic-inputs/landscape-hdr-edge.rgba32f" \
+            "$RUNNER_TEMP/xdremux-analytic-inputs/landscape-hdr-edge-sdr.rgba32f" \
+            384 256 "$RUNNER_TEMP/texture-diagnostic-semantic.plist" | tee evidence/semantic-control.txt
       - name: Encode and independently read synthetic JPEG HEIC SDR HDR and orientation
         shell: bash
         run: |
@@ -134,7 +142,8 @@ jobs:
           python3 research/xdremux-texture-native/run_bloom_matrix.py \
             "$RUNNER_TEMP/xdremux-texture-native-probe" "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" \
             "$RUNNER_TEMP/texture-buffer-facts" "$RUNNER_TEMP/xdremux-bloom-matrix" \
-            "$GITHUB_WORKSPACE/evidence/bloom" 2>&1 | tee evidence/bloom-driver.log
+            "$GITHUB_WORKSPACE/evidence/bloom" "$RUNNER_TEMP/texture-diagnostic-semantic.plist" \
+            2>&1 | tee evidence/bloom-driver.log
       - name: Build the actual XDRemux product and narrow Apple adapter
         if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[product-regression]') }}
         shell: bash

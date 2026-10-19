@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 
-probe, manifest, metrics, work, evidence = map(Path,sys.argv[1:])
+probe, manifest, metrics, work, evidence, semantic_control = map(Path,sys.argv[1:])
 work.mkdir(parents=True,exist_ok=False)
 evidence.mkdir(parents=True,exist_ok=True)
 rows=[]
@@ -20,7 +20,8 @@ for strength in ['0','0.5','1']:
     name='intensity'+strength
     native=work/name
     public=evidence/name;public.mkdir()
-    args=[str(probe),str(native),'--render-bloom',str(manifest),strength]
+    args=[str(probe),str(native),'--render-bloom',str(manifest),strength,
+          '--semantic-control',str(semantic_control)]
     try:
         p=subprocess.run(args,capture_output=True,text=True,timeout=120)
         code,stdout,stderr=p.returncode,p.stdout,p.stderr

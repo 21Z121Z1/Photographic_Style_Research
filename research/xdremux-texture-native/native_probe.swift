@@ -266,7 +266,20 @@ if let index = CommandLine.arguments.firstIndex(of: "--render-bloom"), index + 2
         report["input_count"] = 1
         report["before_apply"] = true
         try checkpoint()
-        let arguments: [String: Any] = ["usage": 1, "intensity": intensity, "grainIntensity": 0, "textureStyleProperties": properties, "isVideo": false, "effectDescriptors": [descriptor], "extents": [CIVector(cgRect: rect)]]
+        var arguments: [String: Any] = ["usage": 1, "intensity": intensity, "grainIntensity": 0, "textureStyleProperties": properties, "isVideo": false, "effectDescriptors": [descriptor], "extents": [CIVector(cgRect: rect)]]
+        if let controlIndex = CommandLine.arguments.firstIndex(of: "--semantic-control"), controlIndex+1 < CommandLine.arguments.count {
+            let bytes = try Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[controlIndex+1]))
+            let semanticSelector = "semanticStylePropertiesFromImageMetadata:error:"
+            guard let cls = NSClassFromString("_NUSemanticStyleProperties"), let method = signature(cls, semanticSelector, ["@", "o^@"], "@") else { throw NSError(domain: "ProbeSemanticABI", code: 77) }
+            typealias F = @convention(c) (AnyObject, Selector, AnyObject?, UnsafeMutablePointer<NSError?>) -> Unmanaged<AnyObject>?
+            var semanticError: NSError?
+            guard let semantic = unsafeBitCast(method_getImplementation(method), to: F.self)(cls, NSSelectorFromString(semanticSelector), bytes as NSData, &semanticError)?.takeUnretainedValue() else { throw semanticError ?? NSError(domain: "ProbeSemantic", code: 1) }
+            arguments["semanticStyleProperties"] = semantic
+            report["diagnostic_semantic_argument"] = safe(semantic)
+            report["diagnostic_semantic_plist_sha256"] = sha(bytes)
+            report["semantic_context_is_original_camera_information"] = false
+            try checkpoint()
+        }
         progress("native Bloom apply intensity=\(intensity)")
         let result: CIImage? = try kernel.apply(withExtent: rect, inputs: [image], arguments: arguments)
         guard let result else { throw NSError(domain: "ProbeNativeApplyNil", code: 1) }
