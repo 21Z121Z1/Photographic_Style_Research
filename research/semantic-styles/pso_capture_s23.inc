@@ -1,3 +1,6 @@
+#if __has_include(<ptrauth.h>)
+#include <ptrauth.h>
+#endif
 // S23 augments S22 observations without changing frozen/original source files.
 static NSMutableDictionary*S23Functions,*S23OriginalIMPs;
 static NSMutableSet*S23Classes;
@@ -20,10 +23,10 @@ static void S23Begin(id renderer){MTLCaptureManager*m=MTLCaptureManager.sharedCa
 static void S23End(void){if([S23Capture[@"started"]boolValue]){[MTLCaptureManager.sharedCaptureManager stopCapture];S23Capture[@"stopped"]=@YES;}}
 static void S23SamplerControls(id<MTLCommandQueue>q){
  NSString*src=@"#include <metal_stdlib>\nusing namespace metal;\n"
- @"kernel void norm_linear(texture2d<half,access::sample>t[[texture(0)]],constant float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){constexpr sampler s(coord::normalized,address::clamp_to_edge,filter::linear);o[i]=t.sample(s,u[i]);}\n"
- @"kernel void norm_nearest(texture2d<half,access::sample>t[[texture(0)]],constant float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){constexpr sampler s(coord::normalized,address::clamp_to_edge,filter::nearest);o[i]=t.sample(s,u[i]);}\n"
- @"kernel void pixel_linear(texture2d<half,access::sample>t[[texture(0)]],constant float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){constexpr sampler s(coord::pixel,address::clamp_to_edge,filter::linear);o[i]=t.sample(s,u[i]);}\n"
- @"kernel void runtime_linear(texture2d<half,access::sample>t[[texture(0)]],sampler s[[sampler(0)]],constant float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){o[i]=t.sample(s,u[i]);}\n";
+ @"kernel void norm_linear(texture2d<half,access::sample>t[[texture(0)]],device const float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){constexpr sampler s(coord::normalized,address::clamp_to_edge,filter::linear);o[i]=t.sample(s,u[i]);}\n"
+ @"kernel void norm_nearest(texture2d<half,access::sample>t[[texture(0)]],device const float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){constexpr sampler s(coord::normalized,address::clamp_to_edge,filter::nearest);o[i]=t.sample(s,u[i]);}\n"
+ @"kernel void pixel_linear(texture2d<half,access::sample>t[[texture(0)]],device const float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){constexpr sampler s(coord::pixel,address::clamp_to_edge,filter::linear);o[i]=t.sample(s,u[i]);}\n"
+ @"kernel void runtime_linear(texture2d<half,access::sample>t[[texture(0)]],sampler s[[sampler(0)]],device const float2*u[[buffer(0)]],device half4*o[[buffer(1)]],uint i[[thread_position_in_grid]]){o[i]=t.sample(s,u[i]);}\n";
  MTLCompileOptions*o=[MTLCompileOptions new];o.fastMathEnabled=YES;NSError*e=nil;id<MTLLibrary>l=[q.device newLibraryWithSource:src options:o error:&e];NSMutableDictionary*r=[@{@"source_sha256":Digest([src dataUsingEncoding:NSUTF8StringEncoding]),@"compile_options":S22Options(o),@"library_created":@(l!=nil),@"error":e.description?:@"",@"scope":@"Own explicit sampler controls. Equality of AIR sampler literals identifies declared state; numeric controls do not prove original full-program or all-domain equivalence."}mutableCopy];
  if(!l){Put(r,[SOut stringByAppendingPathComponent:@"s23-samplers.json"]);return;}
  NSString*root=[NSProcessInfo.processInfo.environment[@"W"]stringByAppendingPathComponent:@"backend"];[src writeToFile:[root stringByAppendingPathComponent:@"sampler-runtime-controls.metal"]atomically:YES encoding:NSUTF8StringEncoding error:NULL];
@@ -37,7 +40,11 @@ static void S23SamplerControls(id<MTLCommandQueue>q){
  r[@"centers_tested"]=@(count);r[@"unique_finite_half_patterns_in_texture"]=@63488;r[@"nonfinite_patterns_replaced_by_zero"]=@2048;r[@"additional_finite_coordinates"]=@(extra);r[@"const_vs_runtime_half_differences"]=@(diff);r[@"const_vs_runtime_both_finite_differences"]=@(finiteDiff);r[@"center_finite_input_components"]=@(finiteRead);r[@"center_finite_input_bit_differences"]=@(readDiff);r[@"center_finite_input_nonfinite_output"]=@(finiteToNonfinite);r[@"archive_functions"]=archiveFunctions;r[@"archive_saved"]=@(ar?[ar serializeToURL:[NSURL fileURLWithPath:[root stringByAppendingPathComponent:@"sampler-runtime.binary.metallib"]]error:&e]:NO);r[@"archive_save_error"]=e.description?:@"";Put(r,[SOut stringByAppendingPathComponent:@"s23-samplers.json"]);
 }
 __attribute__((noinline)) static void S23LldbCheckpoint(void){asm volatile("");}
-static void S23Extra(id renderer,NSDictionary*call){NSDictionary*rec=S22PipelineRecords[S22Ptr(call[@"pipeline_object"])];id<MTLFunction>fn=rec[@"function_object"]?:[rec[@"descriptor_object"]computeFunction];Put(@{@"capture":S23Capture?:@{},@"function_object":S22Ptr(fn),@"function_creation":S23Functions[S22Ptr(fn)]?:@{@"observed":@NO},@"all_target_function_events":[[S23Functions allValues]filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary*x,id bindings){return [x[@"name"]containsString:@"renderFinalAdjustments"];}]]},[SOut stringByAppendingPathComponent:@"s23-original-extra.json"]);S23SamplerControls([renderer metalCommandQueue]);S23LldbCheckpoint();}
+static void S23Extra(id renderer,NSDictionary*call){NSMutableArray*addresses=[NSMutableArray new];Class pc=object_getClass(call[@"pipeline_object"]);unsigned int nc=0;Method*ml=class_copyMethodList(pc,&nc);for(unsigned int mi=0;mi<nc;mi++){IMP imp=method_getImplementation(ml[mi]);void*addr=(void*)imp;
+#if __has_feature(ptrauth_calls)
+addr=ptrauth_strip(imp,ptrauth_key_function_pointer);
+#endif
+Dl_info info={0};dladdr(addr,&info);[addresses addObject:@{@"selector":NSStringFromSelector(method_getName(ml[mi])),@"address":[NSString stringWithFormat:@"%p",addr],@"image":info.dli_fname?@(info.dli_fname):@"",@"runtime_symbol":info.dli_sname?@(info.dli_sname):@""}];}free(ml);NSDictionary*rec=S22PipelineRecords[S22Ptr(call[@"pipeline_object"])];id<MTLFunction>fn=rec[@"function_object"]?:[rec[@"descriptor_object"]computeFunction];Put(@{@"pipeline_method_addresses":addresses,@"capture":S23Capture?:@{},@"function_object":S22Ptr(fn),@"function_creation":S23Functions[S22Ptr(fn)]?:@{@"observed":@NO},@"all_target_function_events":[[S23Functions allValues]filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary*x,id bindings){return [x[@"name"]containsString:@"renderFinalAdjustments"];}]]},[SOut stringByAppendingPathComponent:@"s23-original-extra.json"]);S23SamplerControls([renderer metalCommandQueue]);S23LldbCheckpoint();}
 #define Probe S22OriginalProbe
 #include "semantic_s22.inc"
 #undef Probe

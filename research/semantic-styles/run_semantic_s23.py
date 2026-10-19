@@ -46,14 +46,15 @@ old=R/'research/vm-native/runner';exe=W/'semantic-s23';flags=['clang','-fobjc-ar
 run(flags+[source,'-o',exe],'build-s23')
 os.environ.update({'XD_TONE_MAX_EDGE':'512','XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':'0.35','S22_PRIOR':str(W/'s5/out/consumer-toneP035/semantic'),'MTL_CAPTURE_ENABLED':'1'})
 case=W/'probe/consumer';case.parent.mkdir();lldb=['xcrun','lldb','--batch','-o','breakpoint set -n S23LldbCheckpoint','-o','run']
-for name in ['-[AppleParavirtComputePipelineState initWithDevice:pipelineStateDescriptor:computeVariant:errorMessage:]','-[AppleParavirtComputePipelineState parseReply:]','-[AppleParavirtComputePipelineState getComputePipelineStateInfo:]']:lldb+=['-o','disassemble -n '+repr(name)]
-lldb+=['-o','image list -u','-o','continue','-k','thread backtrace all','--',exe,photo,res,case]
-run(lldb,'native-s23',1200)
-native=case/'semantic';assert (native/'s23-original-extra.json').exists() and (native/'s23-samplers.json').exists(),'No validated original-PSO metadata'
+lldb+=['-o',"script exec(open("+repr(str(SRC/'lldb_backend_s23.py'))+").read())",'-k','thread backtrace all','--',exe,photo,res,case]
+native_rc=run(lldb,'native-s23',1200,required=False)
+native=case/'semantic'
 (O/'native').mkdir()
 for name in ['creation-events.json','s22-context.json','s22-results.json','exception.json','s23-original-extra.json','s23-samplers.json']:
  p=native/name
  if p.exists():shutil.copyfile(p,O/'native'/name)
+assert native_rc==0,'LLDB native probe failed; copied checkpoint diagnostics preserved'
+assert (native/'s23-original-extra.json').exists() and (native/'s23-samplers.json').exists(),'No validated original-PSO metadata'
 # The archive can contain Apple binary code. NEVER put it or a GPU capture in O.
 run([sys.executable,SRC/'inspect_backend_s23.py',W/'backend',O/'backend-text'],'inspect-backend',600,required=False)
 (O/'generated-source-sha256.json').write_text(json.dumps({p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [SRC/'semantic_consumer_s5.m',source,SRC/'pso_capture_s22.inc',SRC/'semantic_s22.inc',SRC/'pso_capture_s23.inc']},indent=2)+'\n')

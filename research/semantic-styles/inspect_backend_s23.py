@@ -57,7 +57,7 @@ if llvm:
  if p.exists() and p.read_bytes().startswith(b'BC\xc0\xde'):
   raw=p.read_bytes();ir=str(llvm.parse_bitcode(raw));(O/'sampler-controls-raw.ll').write_text(ir);report['air'].append({'container':p.name,'text_file':'sampler-controls-raw.ll','raw_sha256':hashlib.sha256(raw).hexdigest(),'classification':'own explicit sampler helper AIR'})
 if (B/'original.gputrace').exists():report['capture_files']=[{'path':str(p.relative_to(B)),'size':p.stat().st_size} for p in sorted((B/'original.gputrace').rglob('*')) if p.is_file()]
-if archive.exists():cmd(['file',archive],'archive-file-kind');cmd(['xcrun','llvm-objdump','--all-headers',archive],'archive-object-headers',required=False) if False else None
+if archive.exists():cmd(['file',archive],'archive-file-kind');cmd(['xcrun','llvm-objdump','--macho','--universal-headers',archive],'archive-universal-headers')
 if (B/'extracted').exists():report['metal_source_extracted_file_metadata']=[{'path':str(p.relative_to(B)),'size':p.stat().st_size} for p in sorted((B/'extracted').rglob('*')) if p.is_file()]
 # No opaque/base64 code, binary archive, AIR bitcode or gputrace is published.
 report['global_interval_certified']=False
