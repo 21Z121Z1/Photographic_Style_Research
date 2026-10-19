@@ -1,0 +1,43 @@
+{
+  "run_id": "39161360493",
+  "artifact_id": 12148797876,
+  "source_evidence": [
+    {
+      "file": "semantic-20261018/runs/39161360493/selected/out/status.json",
+      "line": 10,
+      "sha256": "3d8ad6eaa01874cd9dbc5e35295ee6f3c6540e8be333244cf43280454265b438"
+    },
+    {
+      "file": "semantic-20261018/runs/39161360493/selected/out/build-s14.log",
+      "line": 9,
+      "sha256": "f54b92f4faf66019f6eb22fdf119202223e8f3b5a80077e2953781a8fbfc56b6"
+    }
+  ],
+  "status": [
+    {
+      "operation": "generate-base",
+      "returncode": 0
+    },
+    {
+      "operation": "generate-s14",
+      "returncode": 0
+    },
+    {
+      "operation": "build-s14",
+      "returncode": 1
+    }
+  ],
+  "compiler_errors": [
+    {
+      "source_line": 9,
+      "diagnostic": "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/semantic-styles/semantic_s14.inc:44:266: error: expression is not assignable"
+    },
+    {
+      "source_line": 12,
+      "diagnostic": "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/semantic-styles/semantic_s14.inc:44:268: error: expected ';' in 'for' statement specifier"
+    }
+  ],
+  "valid_pixel_result": false,
+  "workflow_conclusion": "success",
+  "replacement_run_id": "39161546771"
+}

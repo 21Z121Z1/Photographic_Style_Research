@@ -1,0 +1,381 @@
+{
+  "os_build": "26A434",
+  "threshold_unchanged": 0.001,
+  "points_requested": 47,
+  "local_sets_completely_enumerated": true,
+  "global_hull_certified": false,
+  "source_original_used_by_estimator": false,
+  "unique_root_or_camera_truth_claimed": false,
+  "independent_set_exact_roots_points": 296,
+  "new_full_roundtrip": {
+    "pixels": 186949,
+    "coverage": 0.9508717854817709,
+    "max_abs": 0.54638671875,
+    "max_relative": 1.8869741510390268,
+    "failed_gt_1e3_float64": 67378,
+    "psnr_db": 47.50193192882178,
+    "ev_mae": 0.001249787827083444,
+    "ev_max_abs": 0.7338872927288298
+  },
+  "original_S8_full_roundtrip": {
+    "pixels": 186949,
+    "coverage": 0.9508717854817709,
+    "max_abs": 0.54638671875,
+    "max_relative": 1.8869741510390268,
+    "failed_gt_1e3_float64": 67531,
+    "psnr_db": 47.5018879639265,
+    "ev_mae": 0.0012507738826944355,
+    "ev_max_abs": 0.7338872927288298
+  },
+  "trials": [
+    {
+      "operator": "skin-color",
+      "S8_residual": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.001953125,
+        "max_relative": 0.0040858018386108275,
+        "failed_gt_1e3_float64": 91,
+        "psnr_db": 94.68847132384167,
+        "ev_mae": 1.063940728443177e-06,
+        "ev_max_abs": 0.0033525699432962134
+      },
+      "S15_interval_baseline": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.00146484375,
+        "max_relative": 0.003169572107765452,
+        "failed_gt_1e3_float64": 11,
+        "psnr_db": 99.5518800893129,
+        "ev_mae": 4.4200618006746447e-07,
+        "ev_max_abs": 0.0025571784559325276
+      },
+      "new_best_root_residual": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.00146484375,
+        "max_relative": 0.0027149321266968325,
+        "failed_gt_1e3_float64": 13,
+        "psnr_db": 99.3118569894784,
+        "ev_mae": 4.3752848786073703e-07,
+        "ev_max_abs": 0.00262581990119594
+      },
+      "local_harmonic_interval_estimate": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.0009765625,
+        "max_relative": 0.0013556258472661334,
+        "failed_gt_1e3_float64": 6,
+        "psnr_db": 100.32311792631255,
+        "ev_mae": 3.9201941426765974e-07,
+        "ev_max_abs": 0.0013135194915236067
+      },
+      "new_estimate_on_original_failed_points": {
+        "pixels": 91,
+        "coverage": 0.0004628499348958333,
+        "max_abs": 0.0007331679753820319,
+        "max_relative": 0.0013556258472661334,
+        "failed_gt_1e3_float64": 6,
+        "psnr_db": 77.3930492590715,
+        "ev_mae": 0.00010185367809747807,
+        "ev_max_abs": 0.0013135194915236067
+      },
+      "outside_skin_footprint_max_change": 0.0,
+      "old_failures": 91,
+      "original_failed_with_global_minimax_impossibility_witness": 6,
+      "all_requested_with_global_minimax_impossibility_witness": 6,
+      "old_failed_with_estimator_set_ambiguity_above_threshold": 6,
+      "old_failed_without_exact_independent_local_root": 0,
+      "old_failed_with_exact_local_root_but_not_proven_impossible": 85,
+      "old_failed_on_matte_edge": 82,
+      "remaining_failed_on_matte_edge": 6,
+      "remaining_failed_interior": 0
+    },
+    {
+      "operator": "skin-brightness",
+      "S8_residual": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.0009765625,
+        "max_relative": 0.006788866259334691,
+        "failed_gt_1e3_float64": 205,
+        "psnr_db": 103.31997481687084,
+        "ev_mae": 1.8113658619793891e-06,
+        "ev_max_abs": 0.003462578237922854
+      },
+      "S15_interval_baseline": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.00048828125,
+        "max_relative": 0.0065420560747663555,
+        "failed_gt_1e3_float64": 35,
+        "psnr_db": 110.05094526221322,
+        "ev_mae": 6.350309044290061e-07,
+        "ev_max_abs": 0.003218998877989308
+      },
+      "new_best_root_residual": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.000732421875,
+        "max_relative": 0.005235602094240838,
+        "failed_gt_1e3_float64": 50,
+        "psnr_db": 108.0874400371224,
+        "ev_mae": 6.987645013253935e-07,
+        "ev_max_abs": 0.003018956709896653
+      },
+      "local_harmonic_interval_estimate": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.0003667109979517691,
+        "max_relative": 0.003260363297624629,
+        "failed_gt_1e3_float64": 27,
+        "psnr_db": 111.09329176883506,
+        "ev_mae": 5.717623994811705e-07,
+        "ev_max_abs": 0.0015102923925226323
+      },
+      "new_estimate_on_original_failed_points": {
+        "pixels": 205,
+        "coverage": 0.0010426839192708333,
+        "max_abs": 0.0003667109979517691,
+        "max_relative": 0.003260363297624629,
+        "failed_gt_1e3_float64": 27,
+        "psnr_db": 85.00848802315869,
+        "ev_mae": 0.000143372718946133,
+        "ev_max_abs": 0.0015102923925226323
+      },
+      "outside_skin_footprint_max_change": 0.0,
+      "old_failures": 205,
+      "original_failed_with_global_minimax_impossibility_witness": 29,
+      "all_requested_with_global_minimax_impossibility_witness": 29,
+      "old_failed_with_estimator_set_ambiguity_above_threshold": 29,
+      "old_failed_without_exact_independent_local_root": 0,
+      "old_failed_with_exact_local_root_but_not_proven_impossible": 176,
+      "old_failed_on_matte_edge": 181,
+      "remaining_failed_on_matte_edge": 25,
+      "remaining_failed_interior": 2
+    },
+    {
+      "operator": "skin-both",
+      "S8_residual": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.001953125,
+        "max_relative": 0.006788866259334691,
+        "failed_gt_1e3_float64": 296,
+        "psnr_db": 94.1307111206168,
+        "ev_mae": 2.875306590422566e-06,
+        "ev_max_abs": 0.003462578237922854
+      },
+      "S15_interval_baseline": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.00146484375,
+        "max_relative": 0.0065420560747663555,
+        "failed_gt_1e3_float64": 46,
+        "psnr_db": 99.18102593863837,
+        "ev_mae": 1.0770370844964707e-06,
+        "ev_max_abs": 0.003218998877989308
+      },
+      "new_best_root_residual": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.00146484375,
+        "max_relative": 0.005235602094240838,
+        "failed_gt_1e3_float64": 63,
+        "psnr_db": 98.77121062110908,
+        "ev_mae": 1.1362929891861303e-06,
+        "ev_max_abs": 0.003018956709896653
+      },
+      "local_harmonic_interval_estimate": {
+        "pixels": 186949,
+        "coverage": 0.9508717854817709,
+        "max_abs": 0.0009765625,
+        "max_relative": 0.003260363297624629,
+        "failed_gt_1e3_float64": 33,
+        "psnr_db": 99.97382852155121,
+        "ev_mae": 9.637818137488303e-07,
+        "ev_max_abs": 0.0015102923925226323
+      },
+      "new_estimate_on_original_failed_points": {
+        "pixels": 296,
+        "coverage": 0.0015055338541666667,
+        "max_abs": 0.0007331679753820319,
+        "max_relative": 0.003260363297624629,
+        "failed_gt_1e3_float64": 33,
+        "psnr_db": 81.08511266146476,
+        "ev_mae": 0.0001306084192257695,
+        "ev_max_abs": 0.0015102923925226323
+      },
+      "outside_skin_footprint_max_change": 0.0,
+      "old_failures": 296,
+      "original_failed_with_global_minimax_impossibility_witness": 35,
+      "all_requested_with_global_minimax_impossibility_witness": 35,
+      "old_failed_with_estimator_set_ambiguity_above_threshold": 35,
+      "old_failed_without_exact_independent_local_root": 0,
+      "old_failed_with_exact_local_root_but_not_proven_impossible": 261,
+      "old_failed_on_matte_edge": 263,
+      "remaining_failed_on_matte_edge": 31,
+      "remaining_failed_interior": 2
+    }
+  ],
+  "face_body_additional_sensitivity": [
+    {
+      "operator": "face-only",
+      "fraction_of_log2j_chosen_not_inferred": 0.25,
+      "amplitude_ev": 0.033606580055231525,
+      "support_pixels": 852,
+      "support_edge_gradient_ev_p99": 0.012622247450053692,
+      "support_edge_gradient_ev_max": 0.015870949253439903,
+      "support_laplacian_ev_p99": 0.01194805558770895,
+      "chromaticity_max_abs": 1.1102230246251565e-16,
+      "background_max_abs": 0.0,
+      "budget_overshoot_pixels": 0,
+      "roundtrip": {
+        "pixels": 186158,
+        "coverage": 0.9468485514322916,
+        "max_abs": 5.359801136251008e-08,
+        "max_relative": 8.032088772646102e-08,
+        "failed_gt_1e3_float64": 0,
+        "psnr_db": 185.0649343972666,
+        "ev_mae": 1.4961667082073587e-10,
+        "ev_max_abs": 1.158785417378326e-07
+      },
+      "camera_accuracy": null
+    },
+    {
+      "operator": "face-only",
+      "fraction_of_log2j_chosen_not_inferred": 0.75,
+      "amplitude_ev": 0.10081974016569457,
+      "support_pixels": 852,
+      "support_edge_gradient_ev_p99": 0.0378667376935482,
+      "support_edge_gradient_ev_max": 0.04761284217238426,
+      "support_laplacian_ev_p99": 0.03584417700767517,
+      "chromaticity_max_abs": 3.469446951953614e-18,
+      "background_max_abs": 0.0,
+      "budget_overshoot_pixels": 0,
+      "roundtrip": {
+        "pixels": 186158,
+        "coverage": 0.9468485514322916,
+        "max_abs": 5.6216876487269474e-08,
+        "max_relative": 8.523103651756785e-08,
+        "failed_gt_1e3_float64": 0,
+        "psnr_db": 185.41084141717917,
+        "ev_mae": 1.5133629074045826e-10,
+        "ev_max_abs": 1.2296239869725894e-07
+      },
+      "camera_accuracy": null
+    },
+    {
+      "operator": "body-only",
+      "fraction_of_log2j_chosen_not_inferred": 0.25,
+      "amplitude_ev": 0.033606580055231525,
+      "support_pixels": 7864,
+      "support_edge_gradient_ev_p99": 0.015488898381590843,
+      "support_edge_gradient_ev_max": 0.017474737018346786,
+      "support_laplacian_ev_p99": 0.012417971156537533,
+      "chromaticity_max_abs": 1.1102230246251565e-16,
+      "background_max_abs": 0.0,
+      "budget_overshoot_pixels": 0,
+      "roundtrip": {
+        "pixels": 186158,
+        "coverage": 0.9468485514322916,
+        "max_abs": 8.025156550406365e-08,
+        "max_relative": 8.78761454555171e-08,
+        "failed_gt_1e3_float64": 0,
+        "psnr_db": 171.70016642477367,
+        "ev_mae": 2.1424163451490074e-09,
+        "ev_max_abs": 1.2677847339336085e-07
+      },
+      "camera_accuracy": null
+    },
+    {
+      "operator": "body-only",
+      "fraction_of_log2j_chosen_not_inferred": 0.75,
+      "amplitude_ev": 0.10081974016569457,
+      "support_pixels": 7864,
+      "support_edge_gradient_ev_p99": 0.04646668955683708,
+      "support_edge_gradient_ev_max": 0.05242420732975006,
+      "support_laplacian_ev_p99": 0.03725389391183853,
+      "chromaticity_max_abs": 1.1102230246251565e-16,
+      "background_max_abs": 0.0,
+      "budget_overshoot_pixels": 0,
+      "roundtrip": {
+        "pixels": 186158,
+        "coverage": 0.9468485514322916,
+        "max_abs": 6.951561615231583e-08,
+        "max_relative": 8.862002694365583e-08,
+        "failed_gt_1e3_float64": 0,
+        "psnr_db": 171.4833233985561,
+        "ev_mae": 2.2215201660553387e-09,
+        "ev_max_abs": 1.278516787971632e-07
+      },
+      "camera_accuracy": null
+    }
+  ],
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "view": "ACES 1.0 - SDR Video",
+    "source": "Linear P3-D65",
+    "exposure_ev": 0
+  },
+  "preview_integrity": [
+    {
+      "image": "reference",
+      "before": "fec76a7f37b990504784c8004c1b0b3ab1677f3a15e6fdaca0f5bcfa68953e8f",
+      "after": "fec76a7f37b990504784c8004c1b0b3ab1677f3a15e6fdaca0f5bcfa68953e8f",
+      "unchanged": true
+    },
+    {
+      "image": "skin-color-interval-estimate",
+      "before": "fd5b0ad21d89bdb4758cc5ae76da2977cc99d5d5a5566f3671b05b0a173c8b1e",
+      "after": "fd5b0ad21d89bdb4758cc5ae76da2977cc99d5d5a5566f3671b05b0a173c8b1e",
+      "unchanged": true
+    },
+    {
+      "image": "skin-color-best-root-residual",
+      "before": "98603ed9125778ab7634872402a7d11bb0fe25405d8420abde7a352f5115a7e6",
+      "after": "98603ed9125778ab7634872402a7d11bb0fe25405d8420abde7a352f5115a7e6",
+      "unchanged": true
+    },
+    {
+      "image": "skin-brightness-interval-estimate",
+      "before": "a57136c3606ebf3944742547d0a2f6f51839d9540ed0d7be41bda2126ec26931",
+      "after": "a57136c3606ebf3944742547d0a2f6f51839d9540ed0d7be41bda2126ec26931",
+      "unchanged": true
+    },
+    {
+      "image": "skin-brightness-best-root-residual",
+      "before": "cd30a4d8c54fb90844a1a837a37487c1137b0e86e632474a73134f280483f970",
+      "after": "cd30a4d8c54fb90844a1a837a37487c1137b0e86e632474a73134f280483f970",
+      "unchanged": true
+    },
+    {
+      "image": "skin-both-interval-estimate",
+      "before": "3a4b7ca40b7c110289ff56336295cafebf8831cadafa875cc504afef24def7ab",
+      "after": "3a4b7ca40b7c110289ff56336295cafebf8831cadafa875cc504afef24def7ab",
+      "unchanged": true
+    },
+    {
+      "image": "skin-both-best-root-residual",
+      "before": "375f8c2a9ffb79b8d63fa20a8482b140e86a7e73fb8e147036ff51582a3dfc68",
+      "after": "375f8c2a9ffb79b8d63fa20a8482b140e86a7e73fb8e147036ff51582a3dfc68",
+      "unchanged": true
+    }
+  ],
+  "classifications": {
+    "matte_edge": "Correlation only; no causal blanket assignment.",
+    "half_nonuniqueness": "Exact native witness pairs; global impossibility lower bounds where > threshold. No proof all ambiguity comes solely from rounding.",
+    "forward_model_missing_operator": "Native original PSO used, so no emulated forward operator omitted; inverse domain and root-selection remain incomplete.",
+    "parameter_identification": "Controlled consumer theta9/10 known. Original baked camera parameters/Studio statistics remain unknown."
+  },
+  "source": {
+    "file": "semantic-20261018/runs/39162035138/selected/out/analysis/s16-analysis.json",
+    "sha256": "8c78eb955c29c8ab42aeef9cf3e3b9a36cfb66470f086db3d05cbec44d6c4bbc",
+    "run_id": "39162035138",
+    "artifact_id": 12148908479
+  },
+  "enumerated_candidates": 5567573,
+  "new_local_radius_half_codes": 24,
+  "targeted_diagnostic_failure_set_selected_using_prior_oracle_error": true
+}

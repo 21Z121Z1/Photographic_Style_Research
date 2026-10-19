@@ -1,7 +1,7 @@
 <!-- SEMANTIC-20261018 -->
 ## 2026-10-18–19 人物/皮肤语义阶段：SEMANTIC-20261018
 
-**A 阶段尚未完成。** 独立 consumer 皮肤参数已得到非零原生对照，逆向候选及人脸/人身保守估计已有真实样张数值和分开预览；皮肤联合候选仍有像素超过原 `1e-3` 门槛，完整 Studio 上游上下文及原拍摄 counterfactual 尚缺。旧 `acceptance_complete=false` 保留；不再追旧 NumPy/MSL bit-exact，也不以高 PSNR 替代最大误差门槛。
+**A 阶段尚未完成。** 独立 consumer 皮肤参数已得到非零原生对照，逆向候选及人脸/人身保守估计已有真实样张数值和分开预览；皮肤联合候选仍有33像素超过原 `1e-3` 门槛（S16/S17，已证非唯一；全域紧区间尚缺），完整 Studio 上游上下文及原拍摄 counterfactual 尚缺。旧 `acceptance_complete=false` 保留；不再追旧 NumPy/MSL bit-exact，也不以高 PSNR 替代最大误差门槛。
 
 ### 证据与适用范围
 
@@ -100,7 +100,7 @@ Mattify AIR0067:100–227/232起函数包括 mask归一化blurred color、与ave
 
 **已验证数值（SEM-24）**：S5 preview 对 C-contiguous候选RGB使用ascontiguousarray，OCIO原地修改同一数组，污染随后的人脸/人身指标及保存的RGB候选。S5这些指标/NPZ全部作废，原归档不改。S6只在runner解密副本后用`np.array(...,copy=True)`重算；20/20次预览前后input SHA相同。S7/S8预览亦检查输入不变；原生S5参数干预和独立连续单位模型指标没有被该显示alias污染。orientation文字在S2/S4错误，实际np.rot90(k=3)是90°顺时针，符合irot3；更正仅写errata，不改归档。
 
-预览统一 OCIO2.6 `cg-config-v2.2.0_aces-v1.3_ocio-v2.4`，Linear P3-D65→sRGB Display /ACES1.0 SDR Video，0EV，无逐图曝光拟合；配置SHA `5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440`。本地预览索引见 [PREVIEWS.md](REPRODUCE.md)，含reference、仅皮肤色彩、仅皮肤亮度、两者、人脸/人身 .5×/1×及受控眼下条件逆。它们未明文提交/上传。HDR gain候选保存在私密NPZ，GTM、LTM、语义三部分不合并；没有新建已认证24MP scene输出或203nit标定，原SDR文件未写入。
+预览统一 OCIO2.6 `cg-config-v2.2.0_aces-v1.3_ocio-v2.4`，Linear P3-D65→sRGB Display /ACES1.0 SDR Video，0EV，无逐图曝光拟合；配置SHA `5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440`。本地预览索引见本地私密PREVIEWS.md（不上传），含reference、仅皮肤色彩、仅皮肤亮度、两者、人脸/人身 .5×/1×及受控眼下条件逆。它们未明文提交/上传。HDR gain候选保存在私密NPZ，GTM、LTM、语义三部分不合并；没有新建已认证24MP scene输出或203nit标定，原SDR文件未写入。
 
 本轮额外写入预算100MB、剩余磁盘不低于4GB；只在macOS runner做图像计算。本地Python均用scripts/local-python-scope.sh；原件、历史归档、冻结模型、两个未跟踪consumer-goto-v8文件保持不变。临时传输资源在结果校验后清理，准确复核记录见transport-cleanup-20261019.json；永久源码仅提交研究分支，不动master/PR/merge。
 
@@ -145,3 +145,54 @@ S11/S13各5次预览均输入SHA不变，仍用固定ACES1.0 SDR Video。密文�
 S10/S11/S13密文均GPG及全文件manifest校验0失败；S12仅公开无照片的文本，ZIP/各entry SHA及CRC留档，没有伪称它带原生manifest。四次run的artifact/commit/branch/镜像/SHA见texture-run-provenance-20261019.json。临时session secret、S10/S11/S13私密分支及S12编译分支清理复核记录见transport-cleanup-texture-20261019.json。
 
 **A阶段仍未完成**：这轮可执行的三个最终纹理单位已有非零原生条件结果；皮肤语义联合逆的296个失败及未认证完整区间不变，原拍摄的人脸提亮与Studio统计仍待匹配实机上下文。GTM/LTM、Apple Log、冻结模型、原SDR均未修改。
+
+
+<!-- SEMANTIC-S14-S18-20261019 -->
+
+### S14–S18：33 点的非唯一性、全域外包络与 j 的下游界
+
+**当前判定：A 阶段尚未完成，原验收门槛不变。** S14–S17 中断收尾已完成，S14 两份 producer-j 文本证据已审阅并以 `c05f1f1` 提交；S18 新证据/探针在 `bdfa477`。下述数字来自同一张 IMG_2810 的 512×384 受控 consumer 实验；不是新增独立留出照片、全分辨率去风格或原相机无风格真值。证据索引新增 SEM-30–44，逐项有文件行号、SHA、run/artifact/build。
+
+公开可复核的聚合结果：[S15](evidence/s15-aggregate.json)、[S16](evidence/s16-aggregate.json)、[S17](evidence/s17-aggregate.json)、[S18](evidence/s18-aggregate.json)；它们记录不可变来源SHA，未附逐点坐标或RGB。最终只读审计见 [final-audit-s18-20261019.json](evidence/final-audit-s18-20261019.json)：15份归档、48次预览输入SHA、7份冻结/原件文件、50条证据引用通过一致性核验；这项证据审计通过不等于数值验收通过。
+
+**已验证数值（SEM-30/31）**：S15 原 Apple PSO 的空间残差类干预没有影响其他类；采样基逐点对照及四个 pipeline（原始/只中和色彩/只中和亮度/两者中和）的 packed 控制均0差。仅 SSRParams 592/596 对应目标参数中和，参数缓冲其余字节0变化，c/d、GTC、guide、统计和全部 matte 保持。packed 查询把辅助 ROI 映射回原点，因此不能说查询期间 ROI 字节也完全相同；最终全帧回放恢复原 ROI。S17 实际主图映射 `[1/512,1/384,0,0]`、输出原点0，SSR 首个 u32=1；不凭字段名扩展其意义。
+
+S15 围绕 S8 独立种子枚举 half 码：最佳种子±8（三维17³）与三个种子±1；另有原输入±4的诊断立方体，**不供估计器选根**。296点共1,694,008次查询，独立可行前像281点。S16仅扩展47点至±24，新增5,567,573次查询，296点均找到原生F的精确前像。估计用独立可行输出的逐通道调和中点 `2ab/(a+b)`（正通道下局部相对 minimax）；原输入只作oracle/诊断。失败 ROI 的选取依赖前轮oracle误差，故这是定向诊断，不能冒充冻结后的留出验证。
+
+**已验证数值（SEM-32/34）**：在原186949有效像素（95.08717855%）上，阈值仍为最大相对误差≤1e-3，PSNR peak=1。
+
+|单独逆向的目标|S8 / S15 / S16 超阈值像素|S16 max relative|S16 PSNR|S17 float32 导出超阈值 / max relative|
+|---|---:|---:|---:|---:|
+|仅皮肤色彩|91 / 11 / 6|.00135562585|100.32312dB|6 / .00135558806|
+|仅皮肤亮度|205 / 35 / 27|.00326036330|111.09329dB|27 / .00326041819|
+|两项皮肤|296 / 46 / 33|.00326036330|99.97383dB|33 / .00326041819|
+
+三项皮肤足迹外改变max abs=0。S17只审核保存数组，没有新增原生执行。原296点的已选前像 `F(xhat)=Y` max abs/relative均0，但只覆盖整图0.150553%；全原有效mask仍有67378点完整F往返>1e-3，maxrelative=1.886974151，**完整原生往返未通过**。找到前像不等于确定了唯一 `F0(x)`。
+
+**已验证数值（SEM-33）**：原生相同Y对应不同F0的见证，色彩/亮度/两项在296点中分别17/63/80点；其中6/29/35点有正通道端点 `a<b` 使 `(b−a)/(b+a)>1e-3`。对任意一个点估计值，这就是对两个同观测前像的最坏相对误差下界。剩余6/27/33个失败全部落在各自见证集合，失败但无见证的点=0。联合33点中31点位于matte边缘、2点在内部；固定matte和空间解耦控制排除了“改错matte”这个笼统解释，但边缘关联不是根因证明。不能把每次碰撞都归为某一内部half舍入、clamp或fold；其精确内部位置仍未识别。使用原生PSO也不能归因于遗漏了NumPy前向算子。
+
+误差EV场的matte边缘梯度p99/max（EV/512网格像素）分别：色彩 `.000578868882/.001501469109`，亮度 `.000848706591/.002477127146`，两项 `.000929260378/.002477127146`。这些是误差/边缘代理，没有新设感知阈值。S15与S16的11/11、7/7预览输入SHA前后不变；S5污染指标继续作废，历史归档不改。
+
+**已验证静态/数值（SEM-35/36），全域紧区间可交给macOS runner（SEM-37）**：非唯一性证明不能唯一恢复到任意精度，**不代表无法计算集合上界**。S15/S16只穷举声明的局部立方体；其F0端点提供全域歧义下界，不提供未搜索区域的上界。AIR0010:680–732 在颜色矩阵、scale与curvedFromLinear后写half4，没有已证通用末端[0,1] clamp。S18在26A434原生遍历65536个half码，63488有限、2048非有限，有限幅度最大65504，最小正值含subnormal为2^-24，MTLPixelFormatRGBA16Float=115。
+
+因此只在 **F0有限** 条件下给33点每个RGB通道的格式外包络 `[-65504,65504]`；Inf/NaN全域可达性仍unknown，不能从验收mask悄悄删掉。再额外假设F0每个RGB通道严格正，线性P3正系数luma才有 `[2^-24,65504]`，33点的 `log2(Yluma/F0luma)` 格式外包络合计范围约 `[-20.9970,+23.3241]EV`。这是极宽的**存储格式条件界**，不是皮肤真实幅度、scene区间或人脸提亮界。逐点外包络JSON/CSV保留密文及本地私密记录，不公开坐标/RGB。
+
+全有限half RGB码组合为255,902,741,430,272/点，partial查询尚未证明其余输入无根。旧solver box[-.02,1.25]不能当作camera先验；也不能仅以组合数大就宣称数学上做不到。可用的紧上界仍需覆盖完整声明域的保守区间/有限域证书，含纹理、fast数学和非有限路径；当前 `tight_global_hull_certified=false`。原1e-3门槛与mask不变，不把33点移除来报通过。
+
+**已验证静态（SEM-38/39）**：S14把N追到一个明确driver分支的直方图尺寸乘积/比值，尚未证明全部别名写入或本帧分支，不命名为平均亮度或已知物理面积。`j=281/256` 时内部权重上限增量实数界为 `β=25/128=.1953125`；RN-float32条件保守余量2^-23，未抓真实iOS FPCR。这是权重，单位不是EV。
+
+S18继续沿数据流：
+
+1. `LTCGridCalcAlgo 0x256baa9dc..0x256baaa78` 对工作向量做 `V(w)=(1−w)B+wT`，vector块分开乘加、scalar尾部FMA。只改变w且B/T固定时，实数界 `|ΔV[k]|≤β|T[k]−B[k]|`；向量并非最终像素。
+2. T在 `0x27994b2d0`，是可写 `__DATA_DIRTY.__common`。`generateSpatialLTC 0x256ba3808..3818` 把当帧input+0x7210复制进去；driver `0x256bab6b0..6d0` 经selected-face histogram的 `computeGlobalHistogram` 填充该输入。cache静态129个0属于zerofill，不能冒充运行时target。ROI权重的几何衰减也没有绑定到文件faceSkin matte。
+3. `0x256baac40..5c` 把变后的向量作栈参数传给allocateTone，callee在 `0x256ba15b8` 读取。`0x256ba19e8..1a44` 与另一运行时向量取max，`0x256ba1a5c..1a94` 与约束做dot、min、除法，再有scaleToFitRange/interpolation。函数还读直方图分位及调参；不能跳过这些处理而把向量增量直接当RGB gain。摘录保留原文件行号/地址，并核对cache指令字节。
+
+**已验证数值（SEM-40）**：S18 run39177763111/artifact12155061915重放这156B ARM循环，90组合成B/T/w/count，声明float32计算与Unicorn逐分量0差；与实数仿射式最大差1.2759119272e-7（只限测试范围）。这不是原生iOS整曲线或像素oracle。native只做half格式枚举，Metal仍可用；不重启旧consumer bit-exact工作。
+
+**假设（SEM-41），数值性质已验证（SEM-42）**：face/body另补.25/.75×log2j预算，即.0336065801/.1008197402EV。face支持852像素，body7864；背景max0、预算过冲0、scalar-float64色度差≤1.11e-16，正值mask94.68485514%自洽往返maxrelative≤8.862002694e-8。face边缘梯度p99/max分别 `.01262225/.01587095` 与 `.03786674/.04761284`；body为 `.01548890/.01747474` 与 `.04646669/.05242421`，EV/512网格像素。这些预算、matte与平滑器仍是工程假设，没给“无断层”的新验收门槛，也没验证Apple幅度。人与皮肤、GTM、LTM继续独立输出，LinearThumbnail保持Apple Log，固定ACES预览见本地索引。
+
+把β换成最终像素EV仍**待实机解决（SEM-43）**：缺同帧N、B/T、人脸直方图、allocateTone约束/tuning与分支、输出局部/global曲线及ISP应用域。仅为说明为什么权重不等于EV，假设像素也按 `(1−w)P0+wT` 混合且w0=0，则 `P0=(P−wT)/(1−w)`；取w=β，T/P=2、4、5时最大校正分别约.4011、1.8791、5.1015EV，T/P≥5.12时正逆值下界可到0，EV无有限上界。**该像素混合不是已还原的Apple算法，这些例子不是已证物理可行相机前像**，不拿它们给IMG_2810定幅。OPPO类base+gain缺无风格真值同样不能校准。实机必须冻结同帧原统计，只切换j/WithoutFaceBoost，分开捕获global/local曲线和像素后才能给实际EV区间；完整Studio逐人上下文和RAW对照仍单列。
+
+**已验证数值（SEM-44）**：S14–S18五份ZIP/GPG/全manifest SHA均已核对。S14的C编译错误由旧脚本容错掩盖，workflow虽success但没有有效新像素结果，S15才补上；S17纯保存数组审计。临时6个secret、draft release及5条private分支，在PR全状态/其他advertised refs/源码可达性核对后清理，远端复核不存在。永久源码只在research分支。原始provenance的历史字段 `native_precision_valid` 不是门槛状态，S17更不能据其true宣称做过原生执行；公开新provenance改用明确execution_scope/acceptance_pass=false，原记录不覆盖。
+
+下一步保留两个独立问题：runner可做完整consumer可行集的紧外包络认证；匹配相机环境需抓实际j/WithoutFaceBoost曲线、运行时统计与应用像素。当前没有可用的全域紧上界或校准人脸EV，**不宣布A阶段完成**。Studio人工冻结上下文的最终单位往返结果保持已验证；完整相机纹理与RAW精度继续按NATIVE_TODO，不伪造真值。

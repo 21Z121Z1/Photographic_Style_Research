@@ -22,7 +22,41 @@
     "semantic/face-exposure/producer",
     "semantic/texture",
     "semantic/skin-color",
-    "semantic/key1"
+    "semantic/key1",
+    "semantic/texture/context",
+    "semantic/texture/tuning",
+    "semantic/skin-color/consumer",
+    "semantic/texture/native",
+    "semantic/skin-color/inverse-candidate",
+    "semantic/camera-ground-truth",
+    "semantic/skin-color-and-brightness/consumer",
+    "semantic/skin/unit-model",
+    "semantic/skin/inverse-diagnosis",
+    "semantic/skin/inverse-estimator",
+    "semantic/face-exposure/producer-instruction-replay",
+    "semantic/face-body-exposure/estimate",
+    "semantic/skin/remaining-native-inverse",
+    "semantic/skin/quantization-identifiability",
+    "semantic/texture/missing-context",
+    "semantic/texture/under-eye-finalmix",
+    "semantic/texture/under-eye-conditional-inverse",
+    "semantic/texture/smooth-mattify",
+    "semantic/preview/alias-correction",
+    "semantic/skin/edges-and-threshold-audit",
+    "semantic/skin/native-controls",
+    "semantic/skin/finite-feasible-sets",
+    "semantic/skin/nonuniqueness-witness",
+    "semantic/skin/export-edges-and-roundtrip",
+    "semantic/skin/output-domain",
+    "semantic/skin/global-representation-envelope",
+    "semantic/skin/global-feasible-hull",
+    "semantic/face-exposure/internal-cap",
+    "semantic/face-exposure/downstream-dataflow",
+    "semantic/face-exposure/instruction-replay",
+    "semantic/face-body-exposure/amplitude",
+    "semantic/face-body-exposure/candidate-properties",
+    "semantic/face-exposure/native-missing-context",
+    "semantic/evidence/transport-integrity"
   ],
   "incremental_claim_ids": [
     "V3-G01",
@@ -64,9 +98,9 @@
   "failed_gates_at_bit_exact_closeout": [
     "numpy_half_bit_exact"
   ],
-  "semantic_generated_utc": "2026-10-18T14:41:36.409237+00:00",
+  "semantic_generated_utc": "2026-10-18T23:55:45.976812+00:00",
   "semantic_acceptance_complete": false,
-  "updated_utc": "2026-10-18T19:30:51.618246+00:00",
+  "updated_utc": "2026-10-18T23:55:45.976812+00:00",
   "semantic_acceptance": {
     "A_phase_complete": false,
     "original_mask_coverage": 0.9508717854817709,
@@ -102,7 +136,15 @@
         ],
         "max_relative": 0.001
       }
-    }
+    },
+    "skin_current_failures": {
+      "skin-color": 6,
+      "skin-brightness": 27,
+      "skin-both": 33
+    },
+    "skin_global_tight_hull_certified": false,
+    "skin_nonfinite_reachability": "unknown",
+    "full_native_roundtrip_pass": false
   },
   "claims": [
     {
@@ -479,24 +521,24 @@
       "id": "SEM-18",
       "category": "semantic/skin/remaining-native-inverse",
       "status": "runner",
-      "claim": "Certified skin feasible-set bounds remain runner work; S8 skin estimate91/205/296 failures unchanged. Studio final-unit native tests are now available separately in S11/S13; original-camera full-chain inverse not established.",
+      "claim": "Certified global skin feasible-set bounds remain runner work. Current S16/S17 color/brightness/both failures6/27/33; every remaining failure has a native nonuniqueness witness, but tight global hull/nonfinite reachability not certified. Full native roundtrip still fails. No gate relaxation.",
       "os_build": "26A434",
       "evidence": [
         {
-          "file": "semantic-20261018/runs/39156000731/selected/out/analysis/s8-analysis.json",
-          "line": 90,
-          "sha256": "e9e7e0539112b2f6da307e1256e1f1dc6d661e2588df3b1bb8e0b39161294c14",
-          "json_pointer": "/trials"
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
         },
         {
-          "file": "semantic-20261018/runs/39156641912/selected/out/diagnostics/s9-diagnostics.json",
-          "line": 14,
-          "sha256": "8545d5fdb0ba076e5fa53b217f6329ea1d85a8b3966f9c3179d4128f3b1603d7",
-          "json_pointer": "/rows"
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 18,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/skin33"
         }
       ],
       "acceptance_pass": false,
-      "run_id": "39156641912"
+      "run_id": "39177763111"
     },
     {
       "id": "SEM-19",
@@ -731,6 +773,632 @@
         }
       ],
       "complete_camera_inverse_verified": false
+    },
+    {
+      "id": "SEM-30",
+      "category": "semantic/skin/native-controls",
+      "status": "已验证数值",
+      "claim": "S15/S16 original native PSO: context mismatches0; only SSRParams592/596 neutralized, other parameter bytes unchanged. Packed sampler per-point four-pipeline controls0, off-diagonal spatial coupling0. Packed auxiliary ROI maps intentionally remapped, not byte-identical to full-frame ROI; final replay restores captured maps. c/d/GTC/guides/statistics/all mattes retained.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/native/s14-context.json",
+          "line": 2,
+          "sha256": "9f512d56efe3f900d12c311448d5c9541be4b918ea1aa0d9572f56e8f88b1a16",
+          "json_pointer": "/context_mismatches"
+        },
+        {
+          "file": "semantic-20261018/runs/39162035138/selected/out/native/s16-context.json",
+          "line": 16,
+          "sha256": "acda83f2957088f336332f04a4fa327984d8d0eb3286dc02079f46f116458ece",
+          "json_pointer": "/parameter_interventions"
+        },
+        {
+          "file": "repo/research/semantic-styles/semantic_s14.inc",
+          "line": 33,
+          "sha256": "462bf16107aea70cbb8b4f5c26993e60dd35573bacbc2ec75045288773e7dc5b"
+        },
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        }
+      ],
+      "runs": [
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S16",
+          "run_id": "39162035138",
+          "artifact_id": 12148908479,
+          "commit": "9e172f6555695ea3938738fc694ebc67cd5be578",
+          "zip_sha256": "fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1",
+          "cipher_sha256": "054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2",
+          "manifest_sha256": "54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11"
+        },
+        {
+          "phase": "S17",
+          "run_id": "39162555357",
+          "artifact_id": 12149258316,
+          "commit": "fa9ddf6ae9c7dda5622dae3dd2ed51d148b8e4a4",
+          "zip_sha256": "ce03b63fa5d35757f228d95d71fd6b13e8592d0d472eb9add70f9389df002c47",
+          "cipher_sha256": "ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26",
+          "manifest_sha256": "5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5"
+        }
+      ]
+    },
+    {
+      "id": "SEM-31",
+      "category": "semantic/skin/finite-feasible-sets",
+      "status": "已验证数值",
+      "claim": "S15 independent half-code cubes +/-8 about S8 best and +/-1 about three S8 seeds; separate truth +/-4 cube is diagnostic only. S16 expands47 points to +/-24. Independent exact native F preimage281/296 ->296/296. Original input not estimator seed/selection; ROI failure-set selection uses prior oracle errors, so this is targeted diagnosis, not held-out generalization. Local sets completely enumerated; global hull not certified.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/analysis/s14-analysis.json",
+          "line": 30,
+          "sha256": "3743d6e1af82a08ea8ce90406035be7c79b800f6cf6d6e08a72f6a46c7590af8",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "semantic-20261018/runs/39162035138/selected/out/analysis/s16-analysis.json",
+          "line": 36,
+          "sha256": "8c78eb955c29c8ab42aeef9cf3e3b9a36cfb66470f086db3d05cbec44d6c4bbc",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "repo/research/semantic-styles/analyze_semantic_s16.py",
+          "line": 94,
+          "sha256": "b630bbbb18bcf035fefa2e875d738737ace1743ae725c34628e8d4e57067e6dc"
+        },
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        }
+      ],
+      "global_hull_certified": false,
+      "source_original_used_by_estimator": false,
+      "runs": [
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S16",
+          "run_id": "39162035138",
+          "artifact_id": 12148908479,
+          "commit": "9e172f6555695ea3938738fc694ebc67cd5be578",
+          "zip_sha256": "fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1",
+          "cipher_sha256": "054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2",
+          "manifest_sha256": "54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11"
+        },
+        {
+          "phase": "S17",
+          "run_id": "39162555357",
+          "artifact_id": 12149258316,
+          "commit": "fa9ddf6ae9c7dda5622dae3dd2ed51d148b8e4a4",
+          "zip_sha256": "ce03b63fa5d35757f228d95d71fd6b13e8592d0d472eb9add70f9389df002c47",
+          "cipher_sha256": "ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26",
+          "manifest_sha256": "5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5"
+        }
+      ]
+    },
+    {
+      "id": "SEM-32",
+      "category": "semantic/skin/inverse-estimator",
+      "status": "已验证数值",
+      "claim": "Local feasible-output channel harmonic midpoint: color/brightness/both failures S8 91/205/296 -> S15 11/35/46 -> S16 6/27/33. S16 both maxrelative.0032603632976 PSNR99.97382852dB; mask186949 pixels/95.08717855% and threshold.001 unchanged; outside footprint max0. Conditional consumer counterfactual, not camera truth.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/analysis/s14-analysis.json",
+          "line": 30,
+          "sha256": "3743d6e1af82a08ea8ce90406035be7c79b800f6cf6d6e08a72f6a46c7590af8",
+          "json_pointer": "/trials"
+        },
+        {
+          "file": "semantic-20261018/runs/39162035138/selected/out/analysis/s16-analysis.json",
+          "line": 36,
+          "sha256": "8c78eb955c29c8ab42aeef9cf3e3b9a36cfb66470f086db3d05cbec44d6c4bbc",
+          "json_pointer": "/trials"
+        }
+      ],
+      "acceptance_pass": false,
+      "threshold_max_relative": 0.001,
+      "runs": [
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S16",
+          "run_id": "39162035138",
+          "artifact_id": 12148908479,
+          "commit": "9e172f6555695ea3938738fc694ebc67cd5be578",
+          "zip_sha256": "fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1",
+          "cipher_sha256": "054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2",
+          "manifest_sha256": "54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11"
+        }
+      ]
+    },
+    {
+      "id": "SEM-33",
+      "category": "semantic/skin/nonuniqueness-witness",
+      "status": "已验证数值",
+      "claim": "S17 saved native outputs prove same-F_Y/different-F0 witnesses: color/brightness/both17/63/80 of296;6/29/35 have positive-channel minimax lower bound(b-a)/(b+a)>.001. All remaining6/27/33 failures lie in those witness sets, none without a witness. This rules out a uniform point estimator over the demonstrated alternatives; not a tight global upper interval and not proof every collision is internal half rounding.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "repo/research/semantic-styles/audit_semantic_s17.py",
+          "line": 49,
+          "sha256": "f374ed6157ab95f03ad589b0659dc87a193986a9796449d28f45e4266d16c082"
+        }
+      ],
+      "global_upper_bound_certified": false,
+      "runs": [
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S16",
+          "run_id": "39162035138",
+          "artifact_id": 12148908479,
+          "commit": "9e172f6555695ea3938738fc694ebc67cd5be578",
+          "zip_sha256": "fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1",
+          "cipher_sha256": "054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2",
+          "manifest_sha256": "54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11"
+        },
+        {
+          "phase": "S17",
+          "run_id": "39162555357",
+          "artifact_id": 12149258316,
+          "commit": "fa9ddf6ae9c7dda5622dae3dd2ed51d148b8e4a4",
+          "zip_sha256": "ce03b63fa5d35757f228d95d71fd6b13e8592d0d472eb9add70f9389df002c47",
+          "cipher_sha256": "ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26",
+          "manifest_sha256": "5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5"
+        }
+      ]
+    },
+    {
+      "id": "SEM-34",
+      "category": "semantic/skin/export-edges-and-roundtrip",
+      "status": "已验证数值",
+      "claim": "S17 float32 export retains6/27/33 failures. Joint31/33 are matte-edge,2 interior (association only); joint error-EV edge gradient p99 .000929260378/max .002477127146. Exact F roundtrip on targeted296 maxrelative0 (whole-image coverage.150553%); full original eligible186949 still67378 failures/maxrelative1.886974151. No full-native acceptance.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 14,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/exact_full_F_roundtrip_on_296"
+        }
+      ],
+      "acceptance_pass": false,
+      "runs": [
+        {
+          "phase": "S17",
+          "run_id": "39162555357",
+          "artifact_id": 12149258316,
+          "commit": "fa9ddf6ae9c7dda5622dae3dd2ed51d148b8e4a4",
+          "zip_sha256": "ce03b63fa5d35757f228d95d71fd6b13e8592d0d472eb9add70f9389df002c47",
+          "cipher_sha256": "ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26",
+          "manifest_sha256": "5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5"
+        }
+      ]
+    },
+    {
+      "id": "SEM-35",
+      "category": "semantic/skin/output-domain",
+      "status": "已验证静态",
+      "claim": "AIR0010 ends with color matrix/scale, curvedFromLinear and half4 texture write; no universal terminal [0,1] clamp is established. Captured texture is RGBA16Float. Solver box[-.02,1.25] is not a proved camera/output prior.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 732,
+          "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+          "symbol": "applySemanticStyle output; AIR0010:680..732"
+        },
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        }
+      ]
+    },
+    {
+      "id": "SEM-36",
+      "category": "semantic/skin/global-representation-envelope",
+      "status": "已验证数值",
+      "claim": "S18 native Float16 enumeration:63488 finite patterns,2048 Inf/NaN patterns,maxabs65504,min positive2^-24. Conditional on finite F0, RGB lies[-65504,65504]; nonfinite reachability unknown. For33 points, extra assumption every RGB channel positive gives broad luma EV outer envelope[-20.9970273511,23.3241261596]. Representation-only envelope, not camera/skin physical interval or tight F(x)=Y-conditioned hull.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/native-format.json",
+          "line": 1,
+          "sha256": "79b35bdf09208dbd2177f6dfbc449d431a905493549cf970f98dfd5ce8923ba4"
+        },
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 18,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/skin33"
+        }
+      ],
+      "tight_global_hull_certified": false,
+      "nonfinite_reachability": "unknown",
+      "runs": [
+        {
+          "phase": "S18",
+          "run_id": "39177763111",
+          "artifact_id": 12155061915,
+          "commit": "bdfa47739f285e8fbf7a26692179fc20b166e154",
+          "zip_sha256": "1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95",
+          "cipher_sha256": "449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247",
+          "manifest_sha256": "de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6"
+        }
+      ]
+    },
+    {
+      "id": "SEM-37",
+      "category": "semantic/skin/global-feasible-hull",
+      "status": "runner",
+      "claim": "A useful certified global inverse hull remains open: partial finite cubes leave untested domains, total finite half RGB bit-pattern cube255902741430272 per point. Need conservative whole-code interval/finite-domain coverage proof including texture math and Inf/NaN branches. Nonuniqueness limits point recovery but does not make a set upper bound mathematically impossible. Do not shrink mask or treat solver box as prior.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 18,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/skin33"
+        },
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        }
+      ],
+      "acceptance_pass": false,
+      "runs": [
+        {
+          "phase": "S18",
+          "run_id": "39177763111",
+          "artifact_id": 12155061915,
+          "commit": "bdfa47739f285e8fbf7a26692179fc20b166e154",
+          "zip_sha256": "1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95",
+          "cipher_sha256": "449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247",
+          "manifest_sha256": "de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6"
+        }
+      ]
+    },
+    {
+      "id": "SEM-38",
+      "category": "semantic/face-exposure/internal-cap",
+      "status": "已验证静态",
+      "claim": "One explicit driver branch derives N from histogram-dimension products; no established average-luma or sample-specific N. For j281/256 and finite nonnegative N, internal cap/weight increment in real arithmetic is0..25/128; conditional RN-f32 cap allowance+2^-23, not captured iOS FPCR. Weight support comes from ROI/rect computation, not a proved faceSkin file-matte binding. This is not an EV bound.",
+      "os_build": "iOS27.0/24A446 iPhone12,1 cache, user-provided provenance; sample hardware/build mismatch",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/producer-j-bound-s14.md",
+          "line": 32,
+          "sha256": "e917a44fc3c9623dbef1357617f2d243681e5a57bac19955b8421fe1374cf049"
+        },
+        {
+          "file": "semantic-20261018/static/producer-j-flow-s14.txt",
+          "line": 235,
+          "sha256": "1a21c85935e3e10331e10ce5bd3b94710a7fc97c9d05cf0119fb7b20f35bbdcd",
+          "address": "0x256bab6b0..0x256bab6dc;0x256bab908..0x256bab924",
+          "symbol": "LTMDriverV2::Process"
+        }
+      ]
+    },
+    {
+      "id": "SEM-39",
+      "category": "semantic/face-exposure/downstream-dataflow",
+      "status": "已验证静态",
+      "claim": "LTCGridCalcAlgo0x256baa9dc..aaa78 mixes working vector V=(1-w)B+wT. T at0x27994b2d0 is mutable __DATA_DIRTY.__common, runtime writer generateSpatialLTC copies current input+7210 populated through selected-face-histogram computeGlobalHistogram. Static zeros are not frame data. V is stack-passed to allocateTone, consumed by max, dot/min/division with runtime constraints; no verified final-pixel gain or ISP application domain. Conditional fixed-vector real bound |DeltaV[k]|<=.1953125|T[k]-B[k]|.",
+      "os_build": "iOS27.0/24A446 iPhone12,1 cache, user-provided provenance; sample hardware/build mismatch",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 152,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256baa9dc..0x256baaa78",
+          "symbol": "LTCGridCalcAlgo"
+        },
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 123,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256ba3808..0x256ba3818;0x256bab6b0..0x256bab6d0",
+          "symbol": "generateSpatialLTC / LTMDriverV2::Process"
+        },
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 194,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256baac40..0x256baac5c;0x256ba15b8;0x256ba19e8..0x256ba1a94",
+          "symbol": "LTCGridCalcAlgo -> allocateTone"
+        }
+      ]
+    },
+    {
+      "id": "SEM-40",
+      "category": "semantic/face-exposure/instruction-replay",
+      "status": "已验证数值",
+      "claim": "S18 replays156 exact ARM bytes on90 synthetic vector/weight cases (Unicorn FPCR0): declared f32 implementation differs0 components; real-affine approximation maxerror1.2759119272e-7 in tested range. Vector separate mul/add and scalar-tail FMA preserved. Short-block simulation, not native iOS curve/pixel capture; does not calibrate final EV.",
+      "os_build": "iOS27.0/24A446 iPhone12,1 cache, user-provided provenance; sample hardware/build mismatch; synthetic replay on macOS26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 32,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/j_downstream"
+        },
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 152,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256baa9dc..0x256baaa78",
+          "symbol": "LTCGridCalcAlgo"
+        }
+      ],
+      "runs": [
+        {
+          "phase": "S18",
+          "run_id": "39177763111",
+          "artifact_id": 12155061915,
+          "commit": "bdfa47739f285e8fbf7a26692179fc20b166e154",
+          "zip_sha256": "1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95",
+          "cipher_sha256": "449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247",
+          "manifest_sha256": "de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6"
+        }
+      ]
+    },
+    {
+      "id": "SEM-41",
+      "category": "semantic/face-body-exposure/amplitude",
+      "status": "假设",
+      "claim": "Chosen .25/.5/.75/1*log2(j) scalar RGB gains remain sensitivity budgets. Pixel-mixture demonstration P0=(P-wT)/(1-w) is explicitly hypothetical: final EV depends on unknown T/P and may have no finite upper as inverse lower hits0; this is not the Apple allocateTone/pixel model or proof all synthetic alternatives are physically feasible. Apple actual face/body amplitude and file-matte binding remain unidentified.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/producer-j-bound-s14.md",
+          "line": 32,
+          "sha256": "e917a44fc3c9623dbef1357617f2d243681e5a57bac19955b8421fe1374cf049"
+        },
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 46,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/explicit_pixel_mixture_hypothesis_only"
+        },
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/analysis/s14-analysis.json",
+          "line": 30,
+          "sha256": "3743d6e1af82a08ea8ce90406035be7c79b800f6cf6d6e08a72f6a46c7590af8",
+          "json_pointer": "/trials"
+        }
+      ],
+      "camera_inverse_verified": false,
+      "runs": [
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S18",
+          "run_id": "39177763111",
+          "artifact_id": 12155061915,
+          "commit": "bdfa47739f285e8fbf7a26692179fc20b166e154",
+          "zip_sha256": "1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95",
+          "cipher_sha256": "449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247",
+          "manifest_sha256": "de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6"
+        }
+      ]
+    },
+    {
+      "id": "SEM-42",
+      "category": "semantic/face-body-exposure/candidate-properties",
+      "status": "已验证数值",
+      "claim": "S15 .25/.75 budgets .0336065800552/.100819740166EV on real IMG_2810: face852/body7864 support pixels; background0/overshoot0; scalar-f64 chromaticity<=1.11e-16; self-roundtrip maxrelative<=8.862002694e-8 at94.68485514% positive mask. Support-edge gradients measured separately; no new perceptual pass threshold or camera accuracy claimed. Preview11/11(S15),7/7(S16) input SHAs unchanged.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/analysis/s14-analysis.json",
+          "line": 191,
+          "sha256": "3743d6e1af82a08ea8ce90406035be7c79b800f6cf6d6e08a72f6a46c7590af8",
+          "json_pointer": "/face_body_additional_sensitivity"
+        },
+        {
+          "file": "semantic-20261018/runs/39162035138/selected/out/analysis/s16-analysis.json",
+          "line": 227,
+          "sha256": "8c78eb955c29c8ab42aeef9cf3e3b9a36cfb66470f086db3d05cbec44d6c4bbc",
+          "json_pointer": "/face_body_additional_sensitivity"
+        }
+      ],
+      "camera_accuracy": null,
+      "runs": [
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S16",
+          "run_id": "39162035138",
+          "artifact_id": 12148908479,
+          "commit": "9e172f6555695ea3938738fc694ebc67cd5be578",
+          "zip_sha256": "fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1",
+          "cipher_sha256": "054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2",
+          "manifest_sha256": "54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11"
+        }
+      ]
+    },
+    {
+      "id": "SEM-43",
+      "category": "semantic/face-exposure/native-missing-context",
+      "status": "待实机",
+      "claim": "Need sample-matching firmware and same-frame histograms/actual N, B/T vectors, allocation constraints/tuning/branch, generated local/global curves and pixel application before/after changing only j/WithoutFaceBoost. Without these, internal weight cap cannot be converted into a justified finite pixel-EV interval. Studio original people stats and paired RAW remain separate device tasks.",
+      "os_build": "iOS27.0/24A446 iPhone12,1 cache, user-provided provenance; sample hardware/build mismatch",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 123,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256ba3808..0x256ba3818;0x256bab6b0..0x256bab6d0",
+          "symbol": "generateSpatialLTC / LTMDriverV2::Process"
+        },
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 194,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256baac40..0x256baac5c;0x256ba15b8;0x256ba19e8..0x256ba1a94",
+          "symbol": "LTCGridCalcAlgo -> allocateTone"
+        },
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 32,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/j_downstream"
+        }
+      ],
+      "camera_face_body_inverse_calibrated": false
+    },
+    {
+      "id": "SEM-44",
+      "category": "semantic/evidence/transport-integrity",
+      "status": "已验证数值",
+      "claim": "S14-S18 ciphertext ZIP/GPG/full-manifest hashes verified; green S14 workflow had native compile failure and supplies no valid pixel result. S17 is saved-array only. Temporary five S14-S17 secrets plus S18 session secret, draft release/tag and five private branches removed after all-state PR/ref/reachability checks. Source commits retained on persistent research branch; no plaintext people files uploaded.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/semantic-styles/evidence/skin-bounds-run-provenance-20261019.json",
+          "line": 1,
+          "sha256": "82d889a66fd1999c4e30fa6d5b2ec60b51cdca493d3cde1a652d049fc555c5ee"
+        },
+        {
+          "file": "semantic-20261018/transport-preflight-s14-s17-20261019.json",
+          "line": 1,
+          "sha256": "4fb562733fc21f2b5f81442462b65556e4043f87670e6ad68763444b3ddc686b"
+        },
+        {
+          "file": "semantic-20261018/transport-cleanup-s14-s17-20261019.json",
+          "line": 1,
+          "sha256": "26dd5d8c3f47243fadc8c84b59861e71fc1efa988c4e5feec569120e342ca2d0"
+        },
+        {
+          "file": "semantic-20261018/transport-cleanup-s18-20261019.json",
+          "line": 1,
+          "sha256": "f64643f59760a083b98b1270138e0bb91d985b32a297feaca6a377fd8003fe75"
+        },
+        {
+          "file": "semantic-20261018/runs/39161360493/selected/out/status.json",
+          "line": 10,
+          "sha256": "3d8ad6eaa01874cd9dbc5e35295ee6f3c6540e8be333244cf43280454265b438"
+        },
+        {
+          "file": "semantic-20261018/runs/39161360493/selected/out/build-s14.log",
+          "line": 9,
+          "sha256": "f54b92f4faf66019f6eb22fdf119202223e8f3b5a80077e2953781a8fbfc56b6"
+        }
+      ],
+      "runs": [
+        {
+          "phase": "S14",
+          "run_id": "39161360493",
+          "artifact_id": 12148797876,
+          "commit": "737ea70710cd001798503c710f27039db67bfeec",
+          "zip_sha256": "3a8f06a15b936f8646a89e079264d18a8addd1dca2d8804fd7bdcb463a056351",
+          "cipher_sha256": "c6e59389698b0770c0aca4c9fd7266cd2076606f9e945d5ccf5e43c2891b2511",
+          "manifest_sha256": "c48f88d983cb2f8a79c4c00a82c35ad1ceec91acb3937ddd1a95fc86b6e78ef1"
+        },
+        {
+          "phase": "S15",
+          "run_id": "39161546771",
+          "artifact_id": 12149132073,
+          "commit": "bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf",
+          "zip_sha256": "62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e",
+          "cipher_sha256": "28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64",
+          "manifest_sha256": "356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6"
+        },
+        {
+          "phase": "S16",
+          "run_id": "39162035138",
+          "artifact_id": 12148908479,
+          "commit": "9e172f6555695ea3938738fc694ebc67cd5be578",
+          "zip_sha256": "fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1",
+          "cipher_sha256": "054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2",
+          "manifest_sha256": "54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11"
+        },
+        {
+          "phase": "S17",
+          "run_id": "39162555357",
+          "artifact_id": 12149258316,
+          "commit": "fa9ddf6ae9c7dda5622dae3dd2ed51d148b8e4a4",
+          "zip_sha256": "ce03b63fa5d35757f228d95d71fd6b13e8592d0d472eb9add70f9389df002c47",
+          "cipher_sha256": "ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26",
+          "manifest_sha256": "5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5"
+        },
+        {
+          "phase": "S18",
+          "run_id": "39177763111",
+          "artifact_id": 12155061915,
+          "commit": "bdfa47739f285e8fbf7a26692179fc20b166e154",
+          "zip_sha256": "1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95",
+          "cipher_sha256": "449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247",
+          "manifest_sha256": "de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6"
+        }
+      ]
     }
   ]
 }

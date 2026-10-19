@@ -39,3 +39,28 @@ S5原始archive保持不动；显示alias污染结果用S6替代。S7存储float
 |[39158599009](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39158599009) / S13|4aaed774e0b1f09127e47fe6944f4bf201221546|12147748302, 1414247B|只跑Mattify，两个非零配置原生往返恰1e-3通过；非camera undo|`d2bdc995d6f6adbf2df7761456f90d89d6c4d2014c8f26f82668894fa9649bf9`|
 
 每次镜像xcode-27-arm64 20261012.0260.1 /Provisioner20261006.597，实际26A434，retention1天。branch/job日志API/cipher/manifest SHA见texture-run-provenance-20261019.json。S12公开文本无原生manifest，单独记录CRC和entry SHA；其余GPG/manifest SHA0失败。追加临时资源均按transport-cleanup-texture-20261019.json清理，源码保留持久研究分支。
+
+
+<!-- SEMANTIC-S14-S18-20261019 -->
+
+### S14–S18 原始运行、归档与清理
+
+|phase / run|source commit|临时分支后缀 / artifact / bytes|实际执行和结论|ZIP SHA256|
+|---|---|---|---|---|
+|S14 / [39161360493](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39161360493)|`737ea70710cd001798503c710f27039db67bfeec`|`20261019-private-s14` / 12148797876 / 10768|Native compile failed; no valid new pixel result, regardless of green workflow|`3a8f06a15b936f8646a89e079264d18a8addd1dca2d8804fd7bdcb463a056351`|
+|S15 / [39161546771](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39161546771)|`bdb9a16156a9e6deb9a7c0bfaa5f09438cb646bf`|`20261019-private-s15` / 12149132073 / 19946398|Original native PSO finite local-set enumeration; not global hull or acceptance|`62220cce6b4c7aeddf3d0e5eee4152056d0af8438f28936dc2792f068242a20e`|
+|S16 / [39162035138](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39162035138)|`9e172f6555695ea3938738fc694ebc67cd5be578`|`20261019-private-s16` / 12148908479 / 12693355|Original native PSO expanded finite local-set enumeration; not global hull or acceptance|`fcf71036c8d9c3d00cefd417c6a98d9e2ae0525c2c6e26a0fc79c2e08f944ab1`|
+|S17 / [39162555357](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39162555357)|`fa9ddf6ae9c7dda5622dae3dd2ed51d148b8e4a4`|`20261019-private-s17` / 12149258316 / 41500|Saved-array audit only; no new native execution/search|`ce03b63fa5d35757f228d95d71fd6b13e8592d0d472eb9add70f9389df002c47`|
+|S18 / [39177763111](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39177763111)|`bdfa47739f285e8fbf7a26692179fc20b166e154`|`20261019-private-s18` / 12155061915 / 10768|Native Float16 format enumeration plus synthetic Unicorn ARM block replay; not native iOS pixels|`1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95`|
+
+全部临时分支全名以 `research/vm-native-` 开头。macOS27.0.1(26A434)、xcode-27-arm6420261012.0260.1、Provisioner20261006.597、retention1天。S18 ARM代码来源24A446，与样张固件/硬件不一致；Unicorn不是iOS原生。S14 workflow success不等于probe成功，S17不调用新native。各cipher/manifest/job-log SHA及逐项执行范围见 `skin-bounds-run-provenance-20261019.json`；原始本地 `skin-interval-run-provenance-20261019.json` 与 `bounds-run-provenance-s18-20261019.json` 不覆盖。
+
+S15联合46失败，S16/S17联合33失败/PSNR99.97383dB；6/27/33各残余都有非唯一性见证，原门槛仍未通过。S18没有新pixel solver，仅格式外包络和90组合成ARM循环重放。所有ZIP/GPG/manifest完整，公开证据仅文本/聚合数字，人物图/matte/逐点RGB留密文和本地。
+
+S14–17 preflight确认PR全状态0、其他advertised ref0、源码可达持久分支；5个旧secret、release416667456及4分支清理。release已删除而tag本来不存在导致初次CLI退出1；API确认404/空refs后恢复清理，不复删归档。S18的单archive secret与第5条private分支也已清理，无新增release/原件上传。准确结果见两份transport-cleanup与preflight JSON；本轮原始archive文件未删除/替换。
+
+- S14：cipher `c6e59389698b0770c0aca4c9fd7266cd2076606f9e945d5ccf5e43c2891b2511`；manifest `c48f88d983cb2f8a79c4c00a82c35ad1ceec91acb3937ddd1a95fc86b6e78ef1`；14文件/9004B完整流式验证。
+- S15：cipher `28f19411932046a89b7b7cb0b4472349c5d6633ec6fbc732352fa8995ec02f64`；manifest `356911d529d401dcf8e78c782b070e7d40a36fb63e9882693a07173d80f10dc6`；54文件/80799467B完整流式验证。
+- S16：cipher `054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2`；manifest `54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11`；51文件/16664434B完整流式验证。
+- S17：cipher `ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26`；manifest `5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5`；16文件/619210B完整流式验证。
+- S18：cipher `449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247`；manifest `de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6`；12文件/62457B完整流式验证。

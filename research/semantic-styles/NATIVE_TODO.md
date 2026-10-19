@@ -41,3 +41,14 @@ Mac上的IMG_2679/IMG_2408配对组用于RAW EV精度。GTM、LTM、人脸/人�
 <!-- SEMANTIC-TEXTURE-S10-S13 -->
 
 S11 SkinSmooth / S13 Mattify各两个非零配置的原生往返通过1e-3，覆盖94.68282%；原输入误差仍有40/203与186/343个像素>1e-3。完整原拍摄Studio仍缺上游逐人stats与中间图，保持待实机计划；不再把已跑通的最终单位列为未执行。剩余runner方向是皮肤可行集合/区间与完整链的人工上下文诊断，不重启旧bit-exact。
+
+
+<!-- SEMANTIC-S14-S18-20261019 -->
+
+### S18 后的紧区间与幅度计划（覆盖前文历史“下一步”）
+
+**可交给macOS runner：完整consumer可行集外包络认证。** S15/S16已完成声明的局部half码集合与原PSO查询；S17证明剩余33个联合失败全部有同观测/异F0见证。无需重复已有±8/±24集合，不重启旧NumPy/MSL精度拟合。输入为S5固定纹理/参数、S15/S16加密记录与S17逐点分类的只读副本。入口audit_semantic_s17.py、audit_semantic_s18.py、原AIR0010和native PSO。先按完整有限half域与非有限路径定义问题；以保守区间、可证明分支排除或完整离散覆盖给出 `F(x)=Y` 的每通道F0上/下界，保存覆盖证书和未决盒。fast数学/采样语义无可认证界时明确标未决，不以稠密采样或局部最小值替代。RGBA16Float有限输出[-65504,65504]只是粗外包络，Inf/NaN可达性未知。非唯一性不阻止求集合上界，但阻止保证唯一点恢复；不删原mask的失败点、不把solverbox当camera先验。判定：所有声明域已覆盖/安全排除、原oracle落在界内、区间宽和非有限未决逐点报告；原1e-3点门槛独立保留false，不能因改成交付区间而写true。
+
+**待实机解决：j从内部权重到最终EV。** 需要与IMG_2810匹配机型/build的可调用相机诊断环境。先对新固件核对UUID/SHA、符号/指令，以下地址只指24A446参考：driver+0xa910/+0xa92c的N/j写入、LTCGridCalcAlgo0x256baa9dc、generateSpatialLTC0x256ba3808、allocateTone0x256ba15b8及0x256ba19e8..1a94。同一冻结帧副本上抓N/HITHStat及尺寸、faceRect/ROI权重、input+7210→运行时0x27994b2d0的T、混合前B/后V、allocateTone全部约束向量/分配budget/tuning和分支、输入输出曲线；不要读取zerofill0当T。分别只改j实际值→1/WithoutFaceBoost，捕获global/local曲线、c/d/GTC、实际ISP应用前后RGB及color domain/clip/plateau。原分支先重建基准，half逐位/float原门槛后，逐像素在可逆mask给 `log2(Y_with/Y_without)`、RGB/luma与face/body/背景EV区间，记录未知/clip而非强行正值。判定支持哪个file matte必须实测对齐ROI/权重，不能由名称认定faceSkin。CPU ARM短块90例只验证工作向量，不代替本项。
+
+**待实机解决：原Studio与RAW。** 原逐人stats/眼部editedTex/instance/blur等没有由S11/S13人工上下文恢复；继续按上文完整单项中和方案捕获，完整链与最终单位验收分开。RAW仍需Mac IMG_2679/IMG_2408配对组；GTM、LTM、皮肤、人脸、人身和纹理独立输出同一固定ACES预览，不能用无RAW本张认定scene精度。Metal在runner可用，不增加无GPU借口。

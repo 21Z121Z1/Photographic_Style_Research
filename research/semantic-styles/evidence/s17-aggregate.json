@@ -1,0 +1,175 @@
+{
+  "source": {
+    "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+    "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+    "run_id": "39162555357",
+    "artifact_id": 12149258316
+  },
+  "result": {
+    "os_build": "26A434",
+    "no_new_native_search": true,
+    "source_runs": [
+      39139035394,
+      39161546771,
+      39162035138
+    ],
+    "original_eligible_pixels": 186949,
+    "original_coverage": 0.9508717854817709,
+    "threshold_unchanged": 0.001,
+    "original_296_points": 296,
+    "independent_exact_preimage_found_at_all_296": true,
+    "exact_full_F_roundtrip_on_296": {
+      "pixels": 296,
+      "coverage": 0.0015055338541666667,
+      "max_abs": 0.0,
+      "max_relative": 0.0,
+      "failed_gt_1e3_float64": 0,
+      "psnr_db": "inf"
+    },
+    "full_native_roundtrip_all_eligible_still": {
+      "pixels": 186949,
+      "coverage": 0.9508717854817709,
+      "max_abs": 0.54638671875,
+      "max_relative": 1.8869741510390268,
+      "failed_gt_1e3_float64": 67378,
+      "psnr_db": 47.50193192882178
+    },
+    "rows": [
+      {
+        "operator": "skin-color",
+        "S16_f64_reconstruction": {
+          "pixels": 186949,
+          "coverage": 0.9508717854817709,
+          "max_abs": 0.0009765625,
+          "max_relative": 0.0013556258472661334,
+          "failed_gt_1e3_float64": 6,
+          "psnr_db": 100.32311792631255
+        },
+        "S16_export_f32": {
+          "pixels": 186949,
+          "coverage": 0.9508717854817709,
+          "max_abs": 0.0009765625,
+          "max_relative": 0.001355588058540724,
+          "failed_gt_1e3_float64": 6,
+          "psnr_db": 100.32311086215485
+        },
+        "remaining_failed": 6,
+        "remaining_failed_with_impossibility_witness": 6,
+        "remaining_failed_without_impossibility_witness": 0,
+        "all_296_with_impossibility_witness": 6,
+        "all_296_with_some_output_nonuniqueness": 17,
+        "all_296_without_observed_nonuniqueness": 279,
+        "oracle_outside_independent_local_hull": 0,
+        "remaining_failed_with_oracle_outside_local_hull": 0,
+        "remaining_failed_on_matte_edge": 6,
+        "remaining_failed_interior": 0,
+        "outside_skin_footprint_max_change": 0.0,
+        "error_ev_gradient_on_matte_edge_p99": 0.0005788688820297872,
+        "error_ev_gradient_on_matte_edge_max": 0.00150146910920709,
+        "max_possible_lower_bound_from_witnesses": 0.0013556258472661546
+      },
+      {
+        "operator": "skin-brightness",
+        "S16_f64_reconstruction": {
+          "pixels": 186949,
+          "coverage": 0.9508717854817709,
+          "max_abs": 0.0003667109979517691,
+          "max_relative": 0.003260363297624629,
+          "failed_gt_1e3_float64": 27,
+          "psnr_db": 111.09329176883506
+        },
+        "S16_export_f32": {
+          "pixels": 186949,
+          "coverage": 0.9508717854817709,
+          "max_abs": 0.0003667175769805908,
+          "max_relative": 0.003260418187792056,
+          "failed_gt_1e3_float64": 27,
+          "psnr_db": 111.09328404415164
+        },
+        "remaining_failed": 27,
+        "remaining_failed_with_impossibility_witness": 27,
+        "remaining_failed_without_impossibility_witness": 0,
+        "all_296_with_impossibility_witness": 29,
+        "all_296_with_some_output_nonuniqueness": 63,
+        "all_296_without_observed_nonuniqueness": 233,
+        "oracle_outside_independent_local_hull": 0,
+        "remaining_failed_with_oracle_outside_local_hull": 0,
+        "remaining_failed_on_matte_edge": 25,
+        "remaining_failed_interior": 2,
+        "outside_skin_footprint_max_change": 0.0,
+        "error_ev_gradient_on_matte_edge_p99": 0.000848706591299995,
+        "error_ev_gradient_on_matte_edge_max": 0.00247712714584678,
+        "max_possible_lower_bound_from_witnesses": 0.0032603632976245926
+      },
+      {
+        "operator": "skin-both",
+        "S16_f64_reconstruction": {
+          "pixels": 186949,
+          "coverage": 0.9508717854817709,
+          "max_abs": 0.0009765625,
+          "max_relative": 0.003260363297624629,
+          "failed_gt_1e3_float64": 33,
+          "psnr_db": 99.97382852155121
+        },
+        "S16_export_f32": {
+          "pixels": 186949,
+          "coverage": 0.9508717854817709,
+          "max_abs": 0.0009765625,
+          "max_relative": 0.003260418187792056,
+          "failed_gt_1e3_float64": 33,
+          "psnr_db": 99.97382140634967
+        },
+        "remaining_failed": 33,
+        "remaining_failed_with_impossibility_witness": 33,
+        "remaining_failed_without_impossibility_witness": 0,
+        "all_296_with_impossibility_witness": 35,
+        "all_296_with_some_output_nonuniqueness": 80,
+        "all_296_without_observed_nonuniqueness": 216,
+        "oracle_outside_independent_local_hull": 0,
+        "remaining_failed_with_oracle_outside_local_hull": 0,
+        "remaining_failed_on_matte_edge": 31,
+        "remaining_failed_interior": 2,
+        "outside_skin_footprint_max_change": 0.0,
+        "error_ev_gradient_on_matte_edge_p99": 0.0009292603775556852,
+        "error_ev_gradient_on_matte_edge_max": 0.00247712714584678,
+        "max_possible_lower_bound_from_witnesses": 0.0032603632976245926
+      }
+    ],
+    "original_input_seen_among_independent_candidates": 235,
+    "unique_independent_roots_min": 1,
+    "unique_independent_roots_max": 1055,
+    "captured_primary_input_map": [
+      0.001953125,
+      0.0026041667442768812,
+      0.0,
+      0.0
+    ],
+    "output_origin": [
+      0,
+      0
+    ],
+    "captured_SSR_cast_u32": 1,
+    "preview_integrity": [
+      {
+        "phase": "S15",
+        "checks": 11,
+        "failed": 0,
+        "manifest_and_inputs_checked": true
+      },
+      {
+        "phase": "S16",
+        "checks": 7,
+        "failed": 0,
+        "manifest_and_inputs_checked": true
+      }
+    ],
+    "global_hull_certified": false,
+    "analysis_domain": "Union of all declared S15 cubes and S16 cubes for refined47. Exact native feasible roots, both independent and diagnostic. Does not certify absent roots outside these finite domains.",
+    "classification_limits": {
+      "parameter_identification": "theta9/10 and other consumer parameters fixed and known; original capture decomposition not identified.",
+      "matte_edge": "Association only, fixed mattes and zero spatial coupling control; cannot call all edge failures matte errors.",
+      "quantization": "Original native half-valued map demonstrably many-to-one; which internal rounding/clamp/fold produces each collision is not established.",
+      "model_omission": "Original native PSO used. These failures do not establish an omitted forward operator; inverse root selection/domain is still incomplete."
+    }
+  }
+}

@@ -1,0 +1,973 @@
+{
+  "source": {
+    "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+    "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+    "run_id": "39177763111",
+    "artifact_id": 12155061915
+  },
+  "result": {
+    "os_build_native_format": "26A434",
+    "producer_code_build": "24A446 user-provided provenance; not sample-matching firmware",
+    "source_run": 39162555357,
+    "new_native_pixel_search": false,
+    "old_precision_gates_modified": false,
+    "native_half_format": {
+      "excludes_nonfinite_from_global_feasibility": false,
+      "finite_half_bit_patterns": 63488,
+      "largest_finite_half_abs": 65504,
+      "metal": "Apple Paravirtual device",
+      "nonfinite_half_bit_patterns": 2048,
+      "os": "Version 27.0.1 (Build 26A434)",
+      "RGBA16Float_enum": 115,
+      "smallest_positive_half_including_subnormal": 5.960464477539063e-08
+    },
+    "finite_input_pattern_cube_count": 255902741430272,
+    "skin33": {
+      "points": 33,
+      "all_have_impossibility_witness": true,
+      "finite_output_storage_outer": [
+        -65504.0,
+        65504.0
+      ],
+      "tight_global_hull_certified": false,
+      "nonfinite_reachability": "unknown",
+      "conditional_positive_RGB_EV_envelope_min": -20.99702735107151,
+      "conditional_positive_RGB_EV_envelope_max": 23.324126159585507,
+      "changes_to_original_acceptance_mask": 0,
+      "threshold": 0.001
+    },
+    "j_downstream": {
+      "instruction_start": "0x256baa9dc",
+      "instruction_end": "0x256baaa78",
+      "instruction_sha256": "976941084ccff08e4642f7ac25c0d74d831e23165983e4560baee22292e99fde",
+      "synthetic_cases": 90,
+      "different_f32_components": 0,
+      "max_real_affine_rounding_error": 1.2759119272232056e-07,
+      "verified_formula": "Working vector V(w)=(1-w)*B+w*T. Original ARM loop uses separate mul/add in vector chunks and FMA in scalar tail. Not a final pixel gain.",
+      "real_affine_weight_change_bound": "|DeltaV[k]| <= 0.1953125*|T[k]-B[k]| for Delta w in[0,0.1953125], all other vectors fixed.",
+      "runtime_target_buffer": "0x27994b2d0 is mutable __common, populated from selected face histogram; static zeros are not a captured frame.",
+      "downstream_break": "allocateTone consumes the changed vector alongside histograms, tuning and other constraints; quantile/division, max/min, scaleToFitRange and interpolation follow. No certified final-pixel Lipschitz bound from j alone.",
+      "final_pixel_EV_interval_identified": false,
+      "actual_face_matting_identified": false
+    },
+    "explicit_pixel_mixture_hypothesis_only": [
+      {
+        "T_over_observed_assumed": 0.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": null,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 0.25,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": null,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 0.5,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": null,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 1.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": 0.0,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 2.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": 0.40109830832097,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 4.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": 1.8791456051256141,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 5.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": 5.1015380264620624,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": false,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 5.12,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": null,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": true,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 8.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": null,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": true,
+        "actual_Apple_pixel_mapping_verified": false
+      },
+      {
+        "T_over_observed_assumed": 16.0,
+        "w0_assumed": 0.0,
+        "delta_weight_bound": 0.1953125,
+        "hypothesized_inverse_formula": "P0=(P-beta*T)/(1-beta) at maximum weight",
+        "maximum_EV_if_brightening_and_positive": null,
+        "finite_upper_lost_at_nonpositive_inverse_lower_bound": true,
+        "actual_Apple_pixel_mapping_verified": false
+      }
+    ],
+    "case_rows": [
+      {
+        "count": 1,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.02789473533630371,
+        "real_affine_max_abs_rounding_error": 3.2410025663232034e-08
+      },
+      {
+        "count": 1,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.1242600679397583,
+        "real_affine_max_abs_rounding_error": 2.8405338525772095e-08
+      },
+      {
+        "count": 1,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0604710578918457,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.0937449932098389,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 1,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0535854697227478,
+        "real_affine_max_abs_rounding_error": 2.682209010451686e-08
+      },
+      {
+        "count": 3,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.288918137550354,
+        "real_affine_max_abs_rounding_error": 4.6100467443466187e-08
+      },
+      {
+        "count": 3,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.48004698753356934,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 3,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.0709865093231201,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 3,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 8,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 8,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 8,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.04583317041397095,
+        "real_affine_max_abs_rounding_error": 7.748603825241673e-08
+      },
+      {
+        "count": 8,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 1.1102230246251565e-16
+      },
+      {
+        "count": 8,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.21710431575775146,
+        "real_affine_max_abs_rounding_error": 5.494803190231323e-08
+      },
+      {
+        "count": 8,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 8,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.7234107255935669,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 8,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 8,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.4932928085327148,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 8,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 9,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 9,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 9,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.07211124897003174,
+        "real_affine_max_abs_rounding_error": 5.81145286338014e-08
+      },
+      {
+        "count": 9,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 2.9802322387695312e-08,
+        "real_affine_max_abs_rounding_error": 2.9802322387695312e-08
+      },
+      {
+        "count": 9,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.3003002405166626,
+        "real_affine_max_abs_rounding_error": 7.450580596923828e-08
+      },
+      {
+        "count": 9,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 9,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.492561936378479,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 9,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 9,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.6412997245788574,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 9,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 16,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 16,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 16,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.08577227592468262,
+        "real_affine_max_abs_rounding_error": 6.258487705856908e-08
+      },
+      {
+        "count": 16,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928932873665e-07
+      },
+      {
+        "count": 16,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.3201693296432495,
+        "real_affine_max_abs_rounding_error": 7.729977369308472e-08
+      },
+      {
+        "count": 16,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 16,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.9650179147720337,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 16,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 16,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.242539882659912,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 16,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 17,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 17,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 17,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.06028878688812256,
+        "real_affine_max_abs_rounding_error": 9.462237349211478e-08
+      },
+      {
+        "count": 17,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 2.220446049250313e-16
+      },
+      {
+        "count": 17,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.2762012481689453,
+        "real_affine_max_abs_rounding_error": 4.7497451305389404e-08
+      },
+      {
+        "count": 17,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 17,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.8850633502006531,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 17,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 17,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.5564013719558716,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 17,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 32,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 32,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 32,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0839318037033081,
+        "real_affine_max_abs_rounding_error": 1.0728836064011205e-07
+      },
+      {
+        "count": 32,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 32,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.3778856694698334,
+        "real_affine_max_abs_rounding_error": 7.171183824539185e-08
+      },
+      {
+        "count": 32,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 32,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.8579674959182739,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 32,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 32,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.5206655263900757,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 32,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 65,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 65,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 65,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0867241621017456,
+        "real_affine_max_abs_rounding_error": 1.043081283569336e-07
+      },
+      {
+        "count": 65,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 65,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.35050204396247864,
+        "real_affine_max_abs_rounding_error": 1.2759119272232056e-07
+      },
+      {
+        "count": 65,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 65,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.9438040256500244,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 65,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 65,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.8385363817214966,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 65,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 129,
+        "weight": 0.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 129,
+        "weight": 0.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 129,
+        "weight": 0.05,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.09526312351226807,
+        "real_affine_max_abs_rounding_error": 1.221895218339597e-07
+      },
+      {
+        "count": 129,
+        "weight": 0.05,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 129,
+        "weight": 0.1953125,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.37764549255371094,
+        "real_affine_max_abs_rounding_error": 9.639188647270203e-08
+      },
+      {
+        "count": 129,
+        "weight": 0.1953125,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.1920928955078125e-07,
+        "real_affine_max_abs_rounding_error": 1.1920928955078125e-07
+      },
+      {
+        "count": 129,
+        "weight": 0.5,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.9484198689460754,
+        "real_affine_max_abs_rounding_error": 5.960464477539063e-08
+      },
+      {
+        "count": 129,
+        "weight": 0.5,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 129,
+        "weight": 1.0,
+        "same_vectors": false,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 1.8132432699203491,
+        "real_affine_max_abs_rounding_error": 0.0
+      },
+      {
+        "count": 129,
+        "weight": 1.0,
+        "same_vectors": true,
+        "ARM_vs_declared_f32_max_abs": 0.0,
+        "different_f32_components": 0,
+        "output_change_max_abs": 0.0,
+        "real_affine_max_abs_rounding_error": 0.0
+      }
+    ],
+    "preview_reused_without_changes": [
+      {
+        "phase": "S15",
+        "checks": 11,
+        "failed": 0,
+        "manifest_and_inputs_checked": true
+      },
+      {
+        "phase": "S16",
+        "checks": 7,
+        "failed": 0,
+        "manifest_and_inputs_checked": true
+      }
+    ],
+    "scope": "Representation-only outer bounds and a short producer ARM block replay. No claim of global tight inverse hull or real-camera amplitude."
+  }
+}

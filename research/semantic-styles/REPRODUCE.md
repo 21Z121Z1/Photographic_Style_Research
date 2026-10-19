@@ -33,3 +33,38 @@ python3 research/semantic-styles/run_semantic_s9.py  # 保存数组诊断，无�
 <!-- SEMANTIC-TEXTURE-S10-S13 -->
 
 S10–S13扩展入口：texture_units_s10.m / run_semantic_s10.py；S11 commit994e44b为SkinSmooth正确imageblock分配，S13 commit4aaed77为Mattify UseImageBlocks=true、thumbnail=false并设置SEMANTIC_UNIT_ONLY=Mattify跳过已完成SkinSmooth。S12 mattify_compile_s12.m只编译不处理照片。两个私密run仍使用单archive session临时secret，已清理；不可直接再次dispatch。图像数值仅runner，结果audit仍用本地scope。原生往返与原输入误差分开，不把0有效mask计成功。
+
+
+<!-- SEMANTIC-S14-S18-20261019 -->
+
+### S14–S18 复现与只读审计
+
+本地仅文本/哈希；所有旧归档保持原样，已存在的open('x')证据不覆盖：
+
+```bash
+cd ~/work/styles-gtm-ltm
+./scripts/local-python-scope.sh -I semantic-20261018/scripts/audit_semantic_evidence.py
+sha256sum semantic-20261018/static/producer-j-{bound-s14.md,flow-s14.txt,downstream-s18.json,downstream-s18.txt}
+git -C repo log -3 --oneline research/vm-native-20261018
+```
+
+S15代码沿用S14名字，正确编译修复在bdb9a16；S14/737ea70的失败归档不能算有效像素。S16/9e172f6只扩大47点的独立集合，S17/fa9ddf6是保存数组审计，S18/bdfa477为格式/短块重放。完整source commit/run/artifact/cipher/manifest SHA见runs和provenance，不靠已删除的临时ref取源。
+
+下面只在macOS runner已解密到全新临时副本后执行；S5/S15/S16/S17变量均指相应归档根目录，W为新临时工作目录。不要在892MB VM运行，也不默认重复已完成实验。
+
+```bash
+# GitHub xcode-27 / macOS26A434；S17依赖numpy、Pillow。
+mkdir -p "$W/out"
+# 仅复现保存数组审计。
+python3 research/semantic-styles/audit_semantic_s17.py \
+  "$S5/out/consumer-toneP035/semantic" "$S15/out" "$S16/out" "$W/out/diagnostics"
+# S18 runner环境：numpy + unicorn==2.1.4，clang使用当前SDK。
+clang -O2 -fobjc-arc research/semantic-styles/probe_s18.m \
+  -framework Foundation -framework Metal -o "$W/probe_s18"
+"$W/probe_s18" > "$W/out/native-format.json"
+python3 research/semantic-styles/audit_semantic_s18.py "$S17/out" "$W/out/analysis"
+```
+
+S15/S16完整native重放入口为run_semantic_s14.py / run_semantic_s16.py，域与诊断/估计种子分离由semantic_s14.inc固定，不能拿原输入选根。每点packed控制的ROI映射不同于full frame，必须保留basis/四pipeline对照及恢复ROI步骤。S18只读取不可变S17，预览沿用S15/S16已校验结果，不再改像素。
+
+旧临时secret/release/5条分支已清理，不能直接dispatch原workflow期待旧输入有效。需要复现时新建限定push的研究临时分支，轮换单archive session secret、只传GPG密文，核对assetID和源归档SHA，结果retention-days1。终态立即下载到新目录，GPG+全manifest验证后查PR/ref/源码可达性再清理临时资源。归档审计已存在则只读，不覆盖open('x')历史文件。公开聚合provenance不用历史native_precision_valid字段作验收；execution_scope明确S17仅数组审计、S18非iOS原生，acceptance_pass=false。
