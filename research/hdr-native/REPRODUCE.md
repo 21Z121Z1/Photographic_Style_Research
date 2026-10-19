@@ -45,3 +45,6 @@ S47复现：实际source d657f306cdff1c0652f4538ddb5ed303d46d2d99，workflow hdr
 输入artifact只有1天，过期后须使用保存的准确ZIP/密文恢复到新artifact，并在新研究分支的workflow下载层解包到W/S42.zip；保留上述原ZIP/cipher SHA和原mother EXR SHA，切勿把新Zip/新母版当同一输入。当前未获全套本地存储许可，故缺该输入时不能宣称可离线逐像素重放；可按S42固定源/版本重建并先比较EXR SHA，有差异须标新证据。不得直接盲跑已过期ID。
 
 新增只读验证：在旧S29..S32、S36host与S42photo-suite命令上加 `--display-suite <analysis-s47.json> --out <NEW-receipt.json>`，得到display_intent_progress；metadata验证本地仍用scripts/local-python-scope.sh。旧validate.py、原门槛和mask不改，extra observations不翻转总验收。S47完整H/logmap为临时计算产物，不把密文预览称为完整HDR文件。
+
+
+S47已注册workflow ID为389472623。输入artifact仍有效且正确的临时HDR_S47_S42_SESSION已准备时，命令为 `gh workflow run 389472623 --ref research/vm-native-20261018`。先按100MB写入/4GB剩余/大下载规则复核，并确认无其它在跑任务。正确setup源保存在 `hdr-native-20261019/finalization-scripts-s33-s47/setup_hdr_s47_session.py`；复制到新实验命名空间，替换输出目录常量并先建立父目录，保留原s45完整校验收据路径；不要覆盖已有s47目录/receipt。早期失败版本仅用于审计。用完执行 `gh secret delete HDR_S47_S42_SESSION -R 21Z121Z1/Photographic_Style_Research` 并核对secret为空。过期输入必须按上文恢复，不能仅换ID后忽略SHA。

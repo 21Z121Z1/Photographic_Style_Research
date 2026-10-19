@@ -11,3 +11,5 @@
 预览固定ACES1.0 SDR Video/0EV；原生不同headroom可看候选contact，实际HDR屏幕另验。S42/S47预览只密文传输且已流式GPG/manifest全成员核验。完整S42密文约1.25GB未全套本地保存，额外存储许可待答；其2600密文只做过无持久文件的完整SHA/GPG校验。S47未另归档完整新H/logmap，只保留可再计算配方/输入SHA/指标/密文预览。
 
 临时secret均已删除、无release；研究临时分支在exact source保留和引用检查后清理。source/run/artifact/SHA见run-provenance-s33-s35、s37-s41、s42至s47及各receipt；验证evidence/validation-through-s47.json。master和原件/冻结文件保持。
+
+收尾已完成：15条远端/16条本地本阶段临时分支已在源码保留和引用审查后清理；secret、release、在跑/排队run均为空。审计见final-audit-s33-s47.json。

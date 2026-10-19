@@ -58,3 +58,6 @@ ZIP `618b87b2ceb734829e47f9c32ecd54c5479edd1970de0c1129d75b0eaace60a9` / manifes
 |S47|research/vm-native-20261019-hdr-s47|d657f306cdff1c0652f4538ddb5ed303d46d2d99|39264474802|12192990470 text /12192990472 encrypted previews|26A434/20261012.0260.1|One unchanged24MP master, independent exposure/HDR,10native equations pass;zerooffset scoped pass;common offset relative/h1fail|
 
 Text ZIP `cb50ff395ff71f6b4b52d8d7f5fc7706965993e66734bd398514473bf712bcdb`/manifest `caa31e04df8c3bab2b0c9a93e8129825ec9705b4950604e43ff53dc8b2d471ef`; previewZIP `3fd3f2025b3696a5893318949c71f4ff7f7828840bdb8ca87eb29f46ecc65fb7`/cipher `806135785421f6fa5080e49a4c7a88ee2282666a67d2a4972158f13bc7ead8f8` verified. Source commit is distinct from final documentation commit.
+
+
+S33–S47收尾审计：所有实际source commit已fast-forward保留在research/vm-native-20261018@c12f2aa。确认15条临时分支无PR head/base或外来ref指向后删除，local16条含最终临时文档分支亦删除；secret/release/活动run均为空。既有PR#1（其它研究head→本研究base）仅记录，未通过API创建/关闭/操作。7份受保护文件、原始171条claims及文档/CSV历史前缀SHA不变；旧workflow没有修改或删除，15个新增workflow所有artifact保留1天。最终A阶段及总验收仍false，目标active。详见final-audit-s33-s47与transport-cleanup-s33-s47。
