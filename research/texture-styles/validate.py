@@ -33,6 +33,10 @@ def check_inventory(data):
     assert m["representative_effect_orders"]["Standard"][0]==[]
     assert m["representative_effect_orders"]["Filmic"][0]==["Diffusion","Glow"]
     assert m["effect_occurrence_counts"]["FilmGrain"]==95
+    assert m["observed_distinct_effect_orders"]==9
+    assert m["diffusion_gaussian_blur_sigma_observed_min"]==6.26
+    assert m["diffusion_gaussian_blur_sigma_observed_max"]==62.05
+    assert m["other_parameters_observed_ranges"]["SkinSmoothingStandalone.pores"]==[0.075,1.35]
     assert m["effects_used_for_processing_domain"] is None
     assert m["global_local_ltm_order"] is None
     assert m["linear_or_log_domain"] is None
