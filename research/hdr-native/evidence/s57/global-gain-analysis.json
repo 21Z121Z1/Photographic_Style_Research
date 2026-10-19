@@ -1,0 +1,137 @@
+{
+  "cases": [
+    {
+      "id": "mean-align",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1091567616,
+      "reference_bits": 1091567617,
+      "out_of_contract_probe_only": false,
+      "max_abs": 9.5367431640625e-07,
+      "relative_error": 1.0596380170569932e-07
+    },
+    {
+      "id": "exposure-two",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1083179008,
+      "reference_bits": 1083179009,
+      "out_of_contract_probe_only": false,
+      "max_abs": 4.76837158203125e-07,
+      "relative_error": 1.0596380170569932e-07
+    },
+    {
+      "id": "both-means-ten",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1091567616,
+      "reference_bits": 1091567616,
+      "out_of_contract_probe_only": false,
+      "max_abs": 0.0,
+      "relative_error": 0.0
+    },
+    {
+      "id": "exposure-half",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1099956224,
+      "reference_bits": 1099956225,
+      "out_of_contract_probe_only": false,
+      "max_abs": 1.9073486328125e-06,
+      "relative_error": 1.0596380170569932e-07
+    },
+    {
+      "id": "nontrivial",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1079334229,
+      "reference_bits": 1079334229,
+      "out_of_contract_probe_only": false,
+      "max_abs": 0.0,
+      "relative_error": 0.0
+    },
+    {
+      "id": "small-positive-denominator",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1199570944,
+      "reference_bits": 1199570944,
+      "out_of_contract_probe_only": false,
+      "max_abs": 0.0,
+      "relative_error": 0.0
+    },
+    {
+      "id": "equal-means",
+      "declared_positive_finite_domain": true,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 1065353216,
+      "reference_bits": 1065353216,
+      "out_of_contract_probe_only": false,
+      "max_abs": 0.0,
+      "relative_error": 0.0
+    },
+    {
+      "id": "zero-numerator",
+      "declared_positive_finite_domain": false,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 0,
+      "reference_bits": 0,
+      "out_of_contract_probe_only": true,
+      "max_abs": 0.0,
+      "relative_error": 0.0
+    },
+    {
+      "id": "zero-over-zero",
+      "declared_positive_finite_domain": false,
+      "reference_finite": false,
+      "native_finite": 0,
+      "native_bits": 2143289344,
+      "reference_bits": 2143289344,
+      "out_of_contract_probe_only": true
+    },
+    {
+      "id": "positive-over-zero",
+      "declared_positive_finite_domain": false,
+      "reference_finite": false,
+      "native_finite": 0,
+      "native_bits": 2139095040,
+      "reference_bits": 2139095040,
+      "out_of_contract_probe_only": true
+    },
+    {
+      "id": "zero-exposure",
+      "declared_positive_finite_domain": false,
+      "reference_finite": false,
+      "native_finite": 0,
+      "native_bits": 2139095040,
+      "reference_bits": 2139095040,
+      "out_of_contract_probe_only": true
+    },
+    {
+      "id": "negative-linear-mean",
+      "declared_positive_finite_domain": false,
+      "reference_finite": true,
+      "native_finite": 1,
+      "native_bits": 3209481421,
+      "reference_bits": 3209481421,
+      "out_of_contract_probe_only": true,
+      "max_abs": 0.0,
+      "relative_error": 0.0
+    }
+  ],
+  "positive_finite_cases": 7,
+  "finite_domain_max_abs": 1.9073486328125e-06,
+  "finite_domain_max_relative": 1.0596380170569932e-07,
+  "original_fast_math_pipeline": true,
+  "synthetic_dispatch_only": true,
+  "not_physical_exposure_calibration": true,
+  "invalid_domain_probes_are_not_contract_proof": true
+}

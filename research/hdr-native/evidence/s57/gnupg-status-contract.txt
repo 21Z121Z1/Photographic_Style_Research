@@ -5,18 +5,18 @@ sha256=59b666dbb14c43bba6a64f4277abc8fd4135c2132f12bcddbe7fa13aec3a911b
 568:     MDC method.  This will be emitted even if the decryption fails.
 569:     For an AEAD algorithm AEAD_ALGO is not 0.  GPGSM currently does
 570:     not print such a status.
-571: 
+571:
 572: *** DECRYPTION_FAILED
 573:     The symmetric decryption failed - one reason could be a wrong
 574:     passphrase for a symmetrical encrypted message.
-575: 
+575:
 576: *** DECRYPTION_OKAY
 577:     The decryption process succeeded.  This means, that either the
 578:     correct secret key has been used or the correct passphrase for a
 579:     symmetric encrypted message was given.  The program itself may
 580:     return an errorcode because it may not be possible to verify a
 581:     signature for some reasons.
-582: 
+582:
 583: *** SESSION_KEY <algo>:<hexdigits>
 584:     The session key used to decrypt the message.  This message will
 585:     only be emitted if the option --show-session-key is used.  The

@@ -88,3 +88,12 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 6. 全部原始像素/可重建数据只在私有临时目录，GPG加密后才上传；临时secret/release/分支用后清理。没有无风格真值的base+gain-only样张继续只报条件反事实和幅度敏感性，不把预算当Apple EV。
 
 VM/runner仍能推进：metadata序列化/调用者换绑、c/d生成连接、原PSO的C01-C05全域合同、可读高精度HDR载体与原SDR ImageIO max0。只能实机：匹配机型同帧生产曲线与统计/应用域、Studio原统计、2679/2408 RAW、真实HDR headroom观看。S54的CPU量化界不替代这些项；33点紧外包络仍未认证，原mask与门槛不改。
+
+
+### S55–S59 后的分离测试清单（未通过门槛不变）
+
+**可交给 macOS runner：** 用同一份加密原图/Apple Log LinearThumbnail，至少5张且2张在完整配方冻结后才参与验证，调用真正计算 global/local stats 的原 host 分支。捕获是否沿用输入 c/d、prepare/config flags、transfer/CCM/VE/SRL、ROI/grid、stats 全部10640B、params672B、GTC及scalar17/18前后纹理；记录原PSO/UUID/dispatch/sampler和每输入SHA。先不改变任何上下文，核对实测M_A/M_T与S58候选、输出与文件c/d的逐码关系；不能以候选回填零stats冒充捕获。再分别仅改global或local参数，GTC、guides、c/d、stats、其他matte保持各自指定的固定外部上下文。half仍逐位、float仍maxabs1e-5及图像PSNR60、逆仍可逆mask内1e-3；S59只验证编码桶，不替代这些。继续静态追实际写文件字段的绑定/格式和33皮肤点C01–C05；前述任务均未转成“等Mac文件”。
+
+**待实机解决：** 在IMG_2810匹配OS build/UUID上按evidence/s54/producer-paired-capture-plan.json重定址，而非搬用24A446绝对地址。同帧冻结输入/N、B/T/V、人脸直方图、allocateTone约束/knots、应用域，分别抓only-j、原WithoutFaceBoost（还改driver554/558）和四组global/local表的原float与packed记录；重放G_A/L_A、G_B/L_A、G_A/L_B、G_B/L_B，判定像素EV、交互、clamp/plateau区间及原误差门槛。β=.1953125不换算假像素EV。RAW2679/2408、Studio原统计与实际HDR屏幕/中间headroom另按原计划；相对母版与显示渲染继续独立验收。
+
+本阶段没有新图像预览或RAW误差；此前固定ACES显示预览不变。独立HDR渲染/封装/SDR max0门槛不因代码本成功而通过。A与acceptance_complete仍false。

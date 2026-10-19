@@ -3,6 +3,11 @@ on:
   push:
     branches: ['research/vm-native-20261020-hdr-s59']
   workflow_dispatch:
+    inputs:
+      input_asset_id:
+        description: 'New temporary asset ID for the exact archived encrypted input'
+        required: true
+        type: string
 jobs:
   native-candidate-scale-compatibility:
     runs-on: xcode-27
@@ -33,9 +38,14 @@ jobs:
       - name: Download encrypted scalar maps only
         env:
           GH_TOKEN: ${{ github.token }}
+          SCALAR_INPUT_ASSET_ID: ${{ inputs.input_asset_id }}
         run: |
           set -euo pipefail
-          S55_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s56.json'))['asset_id'])")
+          S55_ASSET="${SCALAR_INPUT_ASSET_ID:-}"
+          if test -z "$S55_ASSET"; then
+            S55_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s56.json'))['asset_id'])")
+          fi
+          [[ "$S55_ASSET" =~ ^[0-9]+$ ]]
           S55_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${S55_ASSET} --jq .size)
           [[ "$S55_BYTES" =~ ^[0-9]+$ ]] && (( S55_BYTES < 100000 ))
           gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${S55_ASSET} -H 'Accept: application/octet-stream' > "$W/input-maps.gpg"

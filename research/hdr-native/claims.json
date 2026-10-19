@@ -1080,6 +1080,207 @@
           "address": "0x256b86e30"
         }
       ]
+    },
+    {
+      "id": "HDR-55",
+      "category": "local/scalar-map-generation",
+      "status": "已验证静态",
+      "claim": "macOS original histogram AIR中 scalar17/18 分别用 hist0/hist7 p50，而非 hist5或person桶；d生成含GTC。M/half/常数和空间统计是条件编码，不是log Gain Map；SRLfalse局限和camera字段绑定未知保留。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s55/local-histogram-source.ll",
+          "line": 352,
+          "sha256": "e5b8b8d09dd04ca5f27c9f1a3a32d485cc26c690c4e28f365d574190cb003cac"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s55/local-histogram-source.ll",
+          "line": 693,
+          "sha256": "e5b8b8d09dd04ca5f27c9f1a3a32d485cc26c690c4e28f365d574190cb003cac"
+        },
+        {
+          "file": "repo/research/hdr-native/lightmap_model_s55.py",
+          "line": 16,
+          "sha256": "aa405ecdfb7faa421840545b0feb9cded88b1a79de2317b49aab8d9077df38d4"
+        }
+      ]
+    },
+    {
+      "id": "HDR-56",
+      "category": "local/scalar-map-tail",
+      "status": "已验证数值",
+      "claim": "S55 prepare2无statsPSO、0行，失败保留；原编译bit0证据后S56 prepare1在原host PSO的269个合成控制中编码尾部half差异0。p50来自native，不等于独立预测完整统计。后续密钥解析失败不否定已保存合成结果，亦未产生真实图数值。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s56/prepare-mask-source.txt",
+          "line": 1,
+          "sha256": "930e68e79969678380ef43e7eba3fadf9599bf83c31e0064fb0853573f36b81f",
+          "address": "0x23336dc78"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s56/tail-summary.json",
+          "line": 1,
+          "sha256": "4228fa63e77509c67c8657ef9d040fb9e297db61a9f7bef5dd6dd556b00e21a2"
+        },
+        {
+          "run_id": "39307765465",
+          "artifact_id": "12214666602",
+          "commit": "8444b7230277b3b41c9f5ab6a4d60753566e0a74",
+          "ZIP_sha256": "e6cf5c1833d1f163e649d76c67a53a5501d7b37c71ccd3779ec49834f8327b1b",
+          "OS_build": "26A434"
+        },
+        {
+          "run_id": "39308719398",
+          "artifact_id": "12214318554",
+          "commit": "7b7b4725b26187e16ac0b8809a67d311e0ce681b",
+          "ZIP_sha256": "f2674fa102e47d3115efcb7ee3ff11553f5e1b84de6775d15ec2a2f9a7d7c046",
+          "OS_build": "26A434"
+        }
+      ]
+    },
+    {
+      "id": "HDR-57",
+      "category": "global/statistical-base-gain",
+      "status": "已验证静态",
+      "claim": "原imageReduction使用RGB通道min/max和half等权均值/ROI归约，updateBaseGainWithStats写g=avg_main/(baselineExposure*avg_linear)，fast float、无本kernel内guard/clamp。是条件图像统计对齐，不是nits或已识别物理曝光。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s57/imageReduction.ll",
+          "line": 100,
+          "sha256": "d38c5970fe04f6f4c1bfc7b191b4e25eae321f9c12e2ca403db708ce95f39a58"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s57/updateBaseGainWithStats.ll",
+          "line": 20,
+          "sha256": "4bac4231540c243978f00cdac5a0fff827fa1e694b28d5a4d5ca1430b51b15ce"
+        }
+      ]
+    },
+    {
+      "id": "HDR-58",
+      "category": "global/statistical-base-gain-native",
+      "status": "已验证数值",
+      "claim": "S57原PSO的7个正有限控制maxabs1.9073486328125e-6、maxrelative1.0596380170569932e-7，只有g四字节改变；另5边界诊断不是非有限合同。未作图像PSNR或全consumer/物理曝光认证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s57/global-gain-analysis.json",
+          "line": 1,
+          "sha256": "6d811c6c9472121ef26cdfa4e3254ce1352c587e1935f06831ae79f5f301af1b"
+        },
+        {
+          "run_id": "39310642611",
+          "artifact_id": "12215755870",
+          "commit": "a32e06cd88e11e904cbb865a4c78c2eb82e428b9",
+          "ZIP_sha256": "a8c81bcc8d638e4cf8262a36733f5b6d4ea98c91eac7732c823bacb3e27ef8d1",
+          "OS_build": "26A434"
+        }
+      ]
+    },
+    {
+      "id": "HDR-59",
+      "category": "local/captured-consumer-context",
+      "status": "已验证数值",
+      "claim": "S57完整9.2会话前缀解密/明文SHA通过；IMG2600/4/8 c/d存在但捕获consumer两个生成max均0，不能当同帧camera stats，也没有做不满足域的codebook兼容判定。原归档未改、无私有archive key上传。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s57/consumer-stats-context.json",
+          "line": 1,
+          "sha256": "243aa8ac32221f53cda45c5f616d829f2d81e20c692ed5f7a2b6ef5bab8fb908"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s57/session-transport-check.json",
+          "line": 1,
+          "sha256": "527e18b0682fec8d6b1873d81a5f70a90130c4948576fa7a9fe8e0a710491f4f"
+        },
+        {
+          "run_id": "39310642611",
+          "artifact_id": "12215755870",
+          "commit": "a32e06cd88e11e904cbb865a4c78c2eb82e428b9",
+          "ZIP_sha256": "a8c81bcc8d638e4cf8262a36733f5b6d4ea98c91eac7732c823bacb3e27ef8d1",
+          "OS_build": "26A434"
+        }
+      ]
+    },
+    {
+      "id": "HDR-60",
+      "category": "local/conditional-normalizer-inference",
+      "status": "已验证数值",
+      "claim": "S58完整31,743正有限half M×256桶的有序参考枚举，六张c/d各一个共同M解释1024码；完整位集保留，且包含全部538个既有native分量。不是native全fast域或camera身份的证书，不是33点全域紧外包络。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s58/conditional-normalizers.json",
+          "line": 1,
+          "sha256": "502b0676113c537a92ef832e48cd9f3a9b5307761ce9c8f7d2ba9ef55b03bc2e"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s58/analysis.json",
+          "line": 1,
+          "sha256": "e0d3b80a949a5f713a07a2f2919cdec93ecfeaf71d0f025095134405da7dbd12"
+        },
+        {
+          "run_id": "39311415530",
+          "artifact_id": "12215329062",
+          "commit": "f79823d63c260057a50e9d72dbadf0f4f873d902",
+          "ZIP_sha256": "b4620d02316402bdace6149b2fa67c696f38a15c4c750c49d728ad3c9d72a7c0",
+          "OS_build": "26A434"
+        }
+      ]
+    },
+    {
+      "id": "HDR-61",
+      "category": "local/native-candidate-codebooks",
+      "status": "已验证数值",
+      "claim": "S59原host PSO的768个新合成控制覆盖六候选M各256桶，1,536 half尾部分量差0；六真实辅助图6144码均有唯一native桶，输入/context SHA不变。是同样本候选兼容，不是留出验证、拍摄端绑定或逐像素scene恢复；全M原生唯一性仍未证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s59/native-compatibility.json",
+          "line": 1,
+          "sha256": "6b08f818d50ba27d6296aa34ff07c1772ba7f2668a17e87a14de51b0935bbb30"
+        },
+        {
+          "file": "repo/research/hdr-native/candidate-scales-s59.json",
+          "line": 1,
+          "sha256": "6dfb56920b4fd16d22b7efec53aea2bc8d9fccf6642d9fbd6ab0470a54a98caa"
+        },
+        {
+          "run_id": "39312021801",
+          "artifact_id": "12215314906",
+          "commit": "1c2b41bbaea560241bb986e52477b8c342467add",
+          "ZIP_sha256": "2e7b91f55186ae0e7e8130f75f0ce60b1f149ecc9cd20dab31ae5078f9e4762b",
+          "OS_build": "26A434"
+        }
+      ]
+    },
+    {
+      "id": "HDR-62",
+      "category": "global-local/remaining-binding-and-inverse",
+      "status": "runner",
+      "claim": "仍可在runner捕获完整stats生产host、ROI/grid/CCM/SRL、scalar17/18与文件c/d绑定、验证候选M及原PSO全域合同；不能把这些转为实机等待。匹配相机同帧曲线/j/RAW/Studio/屏幕另列待实机；global/local/semantic逆分开，旧mask和1e-3不变，A与acceptance仍false。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s59/archive-provenance.json",
+          "line": 1,
+          "sha256": "26c12cb6d72807bb3d6a59f67a6b3490e3092688b9e23c86d8a050833461da44"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s59/analysis.json",
+          "line": 1,
+          "sha256": "00b923384a94a789fe4f250b8232343f47c612537438b50d36d1e82012db7e2f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s54/producer-paired-capture-plan.json",
+          "line": 1,
+          "sha256": "50477be1839cd83e818cce4325c66d183d0200272cf2ec3211f9ef41bd4fc3ca"
+        }
+      ]
     }
-  ]
+  ],
+  "updated_utc": "2026-10-19T19:50:09.527146+00:00"
 }

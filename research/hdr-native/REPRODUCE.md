@@ -82,3 +82,34 @@ gh run download <run-id> -n hdr-s54-producer-record-evidence -D <new-private-evi
 已有归档无需重跑：`hdr-native-20261019/runs/39300758676/`与`39301402089/`。两ZIP已验SHA与逐项manifest。实际driver入口为`research/hdr-native/run_hdr_s54.py`；依赖unicorn2.1.4，clang只编译标量原生指令探针。原iOS量化指令仅128B文本fixture，完整Apple二进制没有上传。
 
 拿到设备实际516B global记录后，使用`producer_curve_record_s54.decode_global_record(raw)`取得各节点条件前像；不要把局部grid或文件key3直接塞入这个接口。它不估计GTM/LTM像素EV。配对捕获步骤见NATIVE_TODO与producer-paired-capture-plan.json。VM只解析小文本并始终用`scripts/local-python-scope.sh -I -B ...`；冻结原validate.py不变，S54成功不修改总验收。
+
+
+### S55–S59 增量复现（不重跑旧图像实验）
+
+在~/work/styles-gtm-ltm执行，仅做归档字节/JSON检查，必须使用内存scope；输出换成不存在的新路径：
+
+```bash
+scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_scalar_metadata.py \
+  --root "$PWD" --out /tmp/scalar-metadata-new-receipt.json
+```
+
+索引为hdr-native-20261019/archive-provenance-s55-s59.json；完整SHA见同名public evidence。S55/S56失败及source按runs.md保留。S56原269组仅复用、未在S57–59重跑。新validate只验证已声明的子算子和归档，输出A/acceptance_complete=false。
+
+需要重新执行时只在macOS runner上按S57→S58→S59单个run派发；已有归档先验证，不因artifact过期重复所有上游。S57将从仓库已验证纯合成JSON的39,083B ZIP复用旧S56。成功workflow新增input_asset_id，历史执行source不因此改写。先确认没有自有run在执行、临时secret名不存在，再将private-transport-s55/scalar-maps-input.json.gpg的**完全相同11863字节密文**上传新draft；SHA必须9cd2baa4b339afe35ef19bf1784597a7a0cc7d5b4ed0ea0aac2df4ad0a265ee0，不上传照片、解密明文或archive私钥。
+
+提取临时会话密钥的本地步骤也通过scope；gpg输出必须进subprocess.PIPE，完整正则为rb"session key:.*?([0-9]+(?:\.[0-9]+)?:[0-9A-Fa-f]{32,})"，取整段9.2:HEX，只经stdin给`gh secret set HDR_S55_INPUT_SESSION -R 21Z121Z1/Photographic_Style_Research`，不写磁盘、不打印。先用私有keyring解密核对transport-input-s56.json的明文SHA/size，再以空keyring和override-session-key-fd复验；返回码0+DECRYPTION_OKAY+精确SHA同时要求。完整已执行代码在本轮finalization-scripts归档中的fix_s55_session.py，原open('x')保护不可盲目原地重跑。
+
+```bash
+gh release create "$SCALAR_OWN_TAG" \
+  hdr-native-20261019/private-transport-s55/scalar-maps-input.json.gpg \
+  --draft --target research/vm-native-20261018 \
+  --title 'Temporary encrypted scalar metadata replay' --notes 'Encrypted input only; remove after verification'
+# 用 gh api repos/21Z121Z1/Photographic_Style_Research/releases 列表找到自己的draft ID，再查其assets取得新ID。
+# 不用draft的releases/tags查询404来断定不存在。
+gh workflow run hdr-native-s59.yml -R 21Z121Z1/Photographic_Style_Research \
+  --ref research/vm-native-20261018 -f input_asset_id="$SCALAR_OWN_ASSET_ID"
+# 先等待本run终止，失败先 gh run view <id> --log-failed。
+gh run download <id> -R 21Z121Z1/Photographic_Style_Research -D <new-empty-directory>
+```
+
+立即流式SHA并按manifest核对所有成员；只接收文本/密文、小包，并继续检查100MB累计和根4GB/>1GB许可。然后删除自己的专用secret、草稿release及可能生成的tag，先查PR/ref引用；dispatch在keeper无需新临时分支。原归档/历史输出不替换；只清理自己临时数据。不要复用本轮已经删除的asset id。完整相机绑定/33点/场景/编码验收按NATIVE_TODO，不能用本子算子receipt宣布全绿。

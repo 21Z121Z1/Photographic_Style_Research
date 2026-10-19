@@ -3,6 +3,11 @@ on:
   push:
     branches: ['research/vm-native-20261020-hdr-s57']
   workflow_dispatch:
+    inputs:
+      input_asset_id:
+        description: 'New temporary asset ID for the exact archived encrypted input'
+        required: true
+        type: string
 jobs:
   scalar-map-context-and-global-gain:
     runs-on: xcode-27
@@ -34,20 +39,19 @@ jobs:
       - name: Download encrypted scalar maps only
         env:
           GH_TOKEN: ${{ github.token }}
+          SCALAR_INPUT_ASSET_ID: ${{ inputs.input_asset_id }}
         run: |
           set -euo pipefail
-          S55_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s56.json'))['asset_id'])")
+          S55_ASSET="${SCALAR_INPUT_ASSET_ID:-}"
+          if test -z "$S55_ASSET"; then
+            S55_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s56.json'))['asset_id'])")
+          fi
+          [[ "$S55_ASSET" =~ ^[0-9]+$ ]]
           S55_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${S55_ASSET} --jq .size)
           [[ "$S55_BYTES" =~ ^[0-9]+$ ]] && (( S55_BYTES < 100000 ))
           gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${S55_ASSET} -H 'Accept: application/octet-stream' > "$W/input-maps.gpg"
-      - name: Reuse verified S56 native captures without repeating its dispatches
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          S57_OLD_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12214318554 --jq .size_in_bytes)
-          [[ "$S57_OLD_BYTES" =~ ^[0-9]+$ ]] && (( S57_OLD_BYTES < 100000 ))
-          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12214318554/zip > "$W/s56-evidence.zip"
+      - name: Reuse archived S56 synthetic text only
+        run: cp research/hdr-native/evidence/s56/native-text-artifact.zip "$W/s56-evidence.zip"
       - name: Complete real-map context and test separate original global PSO
         env:
           HDR_S55_INPUT_SESSION: ${{ secrets.HDR_S55_INPUT_SESSION }}

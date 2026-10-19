@@ -279,3 +279,45 @@ S53 run39300758676/source d54796021c2155bb329140e0e44f63287ac7e211 失败于非�
 S54受体补证（已验证静态）：`0x256b86dac–db4`读取GOT槽0x271529a50；只读解码到class0x27994a090、class_ro0x27f060558及name="LTMMetadataWriterV2"。见`evidence/s54/writer-class-binding.json`，从而补上selector调用的具体静态receiver；没有声称捕获真实运行时对象或IMG_2810同帧路径。
 
 S53–S54收尾完成：两个源commit已保存在推送的research/vm-native-20261018@98d8cd675f3bcc89c663728b4ebaccaf41115620；全部PR/远端ref核查后仅删除两条自建临时分支，本轮无secret/release。原master与旧208条claims/7个原件冻结SHA保持，自己的临时脚本校验归档后清理。保守累计写入上界96,843,500B（含500KB后续审计清理预留），仍受100MB总额约束，根剩余>4GB；125MB许可待答复，未写完整EXR。A与acceptance_complete继续false，目标active。详见transport-cleanup-s53-s54和integrity-review-s53-s54。
+
+
+### SEMANTIC-20261018 / HDR-S55–S59：标量 c/d 的生成约束与 global 归一化
+
+**已验证静态（HDR-55/57，macOS 26A434）。** 新证据来自 CMImaging UUID `3CCD434E-B1E0-3F14-8EF6-E29D58379BE8`、metallib SHA `16a8a119e3e0ae1649d32b2bbc8ea9136cb757a8d1f3eb451025821901edff11`。`evidence/s55/local-histogram-source.ll` SHA `e5b8b8d09dd04ca5f27c9f1a3a32d485cc26c690c4e28f365d574190cb003cac`；新增 AIR0/1 文本由 S55 导出，分别对应 `imageReduction` / `updateBaseGainWithStats`，不是新的相机执行。**此处拆的是 macOS 重建/编辑端能生成的标量 light maps；文件 c/d 的拍摄端序列化与最终 ISP 应用尚未同帧绑定。** iOS 24A446 / iPhone12,1 仍只是参考，不能代替 IMG_2810 的匹配实现。
+
+在 SRL-before-stats=false 的已测分支中，令 A 为主图 transfer 解码、可选 VE 和 half CCM 后的 RGB；X 为线性缩略图 half CCM 后乘 half(baseGain)；E 为 half(baselineExposure)。T 是每通道 `GTC(min(half(E·X),1))`。统计量 M_A 为 ltmBasic.max；M_T 为 `linBasic.max·baseGain` 经 float→half、乘 half(E)、clamp1、同一 GTC 取样后的 half 标量。这里的 min/max 是 RGB 通道极值，avg 源于每像素 half RGB 等权均值和 ROI/计数的层级 half 归约，**不是 nits，也不能把它直接当场景亮度**（`evidence/s57/imageReduction.ll:100`、`:242`）。
+
+`calculateLocalHistogramStats_all` 对 A/M_A、X/half(linMax·baseGain)、T/M_T 分别构造 histogram0、5、7。每个样本先 half 等权 dot，再 half×256、round、转整型和 clamp[0,255]（AIR:352–382）；选累计计数严格越过 floor(0.5N) 的桶。写槽17 lightMapTexture 使用 hist0 的 p50；写槽18 linearLightMapTexture 使用 **hist7** 的 p50，**不是 hist5 或 person 的 hist1**（AIR:693–731、:1117）。所以第二张图的生成已经包含 GTC，不能先反 GTC 后把原 c/d 当作无关的局部增益。SRL=false 时这两个未加权直方图的原子加数为1，person/skin 另有加权桶；不能把这一结论外推 SRL=true 或整个 consumer 的语义不变性。
+
+两个标量编码尾部的冻结顺序参考为：
+
+```
+p = RN32(k * float32_bits(0x3b808081)), k in 0..255
+t = half(RN32(RN32(RN32(M * a) * p) + b))
+code = half(RN32(RN32(float32(t) + 1.2f) * 0.29412f))
+a = float32_bits(0x401c3d8f), b = float32_bits(0xbf87ede0)
+```
+
+它保留 half 中间量与源常数，不是拟合的 log Gain Map。在正常非空 ROI、正有限 M 的 k=0 情况，输出为 `0.040740966796875`（halfbits10551）。`lightmap_model_s55.py:16` 实现条件编码和全部256桶逆集合；它输入的 p50 来自原生或声明的桶，不独立预测完整图像的统计。空 ROI 的 sentinel、非有限/负输入及完整 fast-math 合同未认证。
+
+**已验证数值（HDR-56）。** S55 因 prepare mask2 没有原 stats PSO 而失败：原编译支路 `0x23336dc78` 检查 bit0，CFString `0x27b947a88` 绑定该 histogram kernel，保存到 self+0x4d8（`evidence/s56/prepare-mask-source.txt`）。S56 改为有静态依据的 mask1，直接取原 host-retained PSO；269个合成控制的 c/d 编码尾部全部 half 逐位一致，max abs0、非有限0，输入/外部上下文 SHA 均不变。它仍是 transfer0/identity CCM/SRLfalse 的手工 dispatch，不是完整原 host 或相机。S56 后续失败于临时会话密钥解析：完整 `9.2:HEX` 被旧正则截成 `2:HEX`，未得到真实图数值结论。S57 以完整前缀修正；空 keyring 正确解密、SHA/size 均匹配，篡改副本非零退出。始终同时检查返回码、状态和明文 SHA，不能仅凭 DECRYPTION_OKAY；未上传私有 archive key。
+
+**global 单列（HDR-57/58）。** `updateBaseGainWithStats` 原 AIR:20–33、buffer indices1/3、params+24/+28 和 stats+10636/+10624 给出：`g = fast_float(avg_main / (E * avg_linear))`，只写 g。它是两路已处理图的统计对齐，不能自动解释为物理曝光逆。S57 的原 host PSO 对7个正有限控制，与有序 float32 参考 max abs=`1.9073486328125e-6`、max relative=`1.0596380170569932e-7`；除 g 四字节外参数与 stats 未变。另5个边界/非正诊断含当前 VM 的 NaN/Inf 观测，不构成非有限合同；这里只通过标量控制的 abs 子门槛，没有图像 PSNR 或全管线通过结论。
+
+**真实 c/d 与缺失尺度（已验证数值，HDR-59/60/61）。** S57 解密读取 IMG_2600/2604/2608 的旧 consumer 捕获：六张32×32 half 图存在，但两项生成统计 max 都是0。不能拿这份零缓冲冒充拍摄时统计。S58 转而在冻结有序参考中完整枚举31,743个正有限 half 尺度 M、每个256桶；六张图分别只有一个 M 能同时解释全部1,024码。每组的3968B位集及摘要保留于 `evidence/s58/conditional-normalizers.json`，不是对原生所有 fast 输入的认证。
+
+|样张|c 的条件候选 M|d 的条件候选 M|各图兼容码|
+|---|---:|---:|---:|
+|IMG_2600|1.0078125|1|1024/1024|
+|IMG_2604|0.94677734375|0.7666015625|1024/1024|
+|IMG_2608|0.97998046875|0.927734375|1024/1024|
+
+S59 随后在这六个候选尺度上用**原 PSO**运行768个新的合成控制，逐图实测全部256桶；参考尾部1,536个 half 分量差异0，原图、线性图、GTC、person/skin、params/stats SHA 不变。六个原生代码本对真实6,144个辅助图样本码全部兼容，并各自只有一个桶，未覆盖0、桶歧义0（`evidence/s59/native-compatibility.json`）。尺度由同一批码推断，**不是留出验证**；原生只确认这六个尺度的兼容性，未把其余全部尺度都执行，所以“尺度唯一”仍限有序参考域。没有把候选尺度回填零 stats 并称为实测。
+
+**信息界与分离策略（runner / 待实机，HDR-62）。** 唯一桶不是唯一场景像素：256桶、局部中位数、GTC clamp、half 和空间汇总会丢失分布/空间/RGB 信息；guided filter 也不能恢复被汇总掉的 RAW 细节。当前没有从代码本推出逐像素 scene EV 界。global 曲线/曝光/全局色彩的逆、local 的 c/d/guides/局部分支的逆、人物皮肤与 Studio 处理继续分别保存上下文、mask、区间和结果。改变 GTC 后重新求统计/guide 会同时改变 local；把 UI tone 改负、直接 d/c 或简单抵消 baseGain 不能充当物理 local 逆。
+
+runner 还能推进：同一原图上捕获真正计算 stats 的 host 分支、ROI/grid/CCM/SRL 与 scalar17/18全图，核对候选 M、文件字段与原生输出的实际绑定；继续审计33皮肤点 C01–C05 的原 PSO 全域合同。实机仍需匹配 IMG_2810 build/UUID 的同帧 j-only 与实际 WithoutFaceBoost 曲线、N、B/T/V、人脸直方图、allocateTone 约束和应用域，以及 IMG_2679/IMG_2408 RAW/Studio 原统计/实际 HDR 屏幕。β=.1953125 仍不是像素 EV。
+
+本轮0张新照片像素渲染，仅3组真实辅助元数据；没有替代 ≥5张完整前向/两张冻结后留出、完整原生往返或编码后 SDR max0 验收。LinearThumbnail 保持 Apple Log，原件/冻结模型和33点 mask不改，旧 NumPy/half 拟合不恢复，原1e-3门槛不放宽。**A_phase_complete=false，acceptance_complete=false，goal active。** 新记录加到根 errors.csv 和 `evidence/s59/errors-delta.csv`；旧公开 errors.csv 保持历史原样。
+
+五次 run 的 source commit、artifact、完整 SHA 和 image 见 `evidence/s59/archive-provenance.json` / runs.md，均26A434/image20261012.0260.1，artifact retention1天且全已落地。S55/S56 的失败归档保留，S59首个0字节下载失败也保留收据，未重跑计算。临时 secret、draft/tag、五条临时分支在源码推送 keeper 后经 PR/ref 审查清理；所有源码 commit 仍可达，master 未动。100MB累计预算不重置，125MB完整EXR许可仍待显式答复，未写完整EXR。

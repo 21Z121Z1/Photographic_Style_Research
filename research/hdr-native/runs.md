@@ -97,3 +97,18 @@ S48–S52收尾完成：5条自建临时远端/本地分支在远端源码保留
 S53失败于sNaN/qNaN合并预期，未记为成功；S54用checkpoint和原生ARM asm区分两路，131070个边界探针差0、12特殊例匹配。无照片/secret/release，原模型/mask/门槛未变。源码保留到研究keeper，完成引用核查后仅删除两条自建临时源分支。A与总验收false，目标active；125MB许可仍待答复。
 
 S53–S54收尾完成：两个源commit已保存在推送的research/vm-native-20261018@98d8cd675f3bcc89c663728b4ebaccaf41115620；全部PR/远端ref核查后仅删除两条自建临时分支，本轮无secret/release。原master与旧208条claims/7个原件冻结SHA保持，自己的临时脚本校验归档后清理。保守累计写入上界96,843,500B（含500KB后续审计清理预留），仍受100MB总额约束，根剩余>4GB；125MB许可待答复，未写完整EXR。A与acceptance_complete继续false，目标active。详见transport-cleanup-s53-s54和integrity-review-s53-s54。
+
+
+### S55–S59（2026-10-20，全部source已保存在keeper）
+
+均xcode-27 / macOS26A434 / image20261012.0260.1，retention-days:1；全ZIP、manifest及所有成员SHA已验证并落地。运行分支为research/vm-native-20261020-hdr-sNN，已清理；原source commit仍可达。
+
+|阶段|source commit|run / artifact|结论|
+|---|---|---|---|
+|S55|8444b7230277b3b41c9f5ab6a4d60753566e0a74|[39307765465](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39307765465) / 12214666602|失败：prepare2无statsPSO，0行；AIR0/1导出成功|
+|S56|7b7b4725b26187e16ac0b8809a67d311e0ce681b|[39308719398](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39308719398) / 12214318554|失败：269组原生tail全部逐位一致，随后密钥解析失败；无真实图数值|
+|S57|a32e06cd88e11e904cbb865a4c78c2eb82e428b9|[39310642611](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39310642611) / 12215755870|成功：修正传输，global7有效/5诊断；3 consumer生成stats为0|
+|S58|f79823d63c260057a50e9d72dbadf0f4f873d902|[39311415530](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39311415530) / 12215329062|成功：六图各一个有序参考尺度；不是native全域证书|
+|S59|1c2b41bbaea560241bb986e52477b8c342467add|[39312021801](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39312021801) / 12215314906|成功：768新原生控制，六组256桶；6144真实辅助码均唯一兼容|
+
+完整ZIP字节/SHA和manifest SHA：repo/research/hdr-native/evidence/s59/archive-provenance.json。S59首次下载0字节失败，收据保留；只重试下载，没有重跑计算。实际执行source SHA不以最终文档commit替换。源码keeper在清理时为1c2b41bbaea560241bb986e52477b8c342467add；五分支/专用secret HDR_S55_INPUT_SESSION/draft417638134及tag均核实清理，PR1/其他任务/master保持。
