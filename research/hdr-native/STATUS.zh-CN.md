@@ -1,11 +1,13 @@
-# 当前目标状态（S42）
+# 当前目标状态（S47）
 
-目标active，A阶段和总acceptance_complete=false。GTM、LTM、语义/人物/纹理逆向分开；相对场景母版与独立HDR显示渲染/承载分开。
+目标active。A阶段尚未完成，总acceptance_complete=false。HDR制作/承载与物理scene恢复分别验收，global/local/人物/皮肤/纹理独立，原门槛/mask/Apple Log不改，不重启旧bit-exact拟合。
 
-已验证数值：原RGB map host在五张原尺寸照片完成r1/eps.001上采样（区别于c/d scalar eps.05），含两张本新配方冻结后留出；十份EXR实际保存重读分量差0；25次未编码原生headroom公式maxabs 5.60320626897e-07、PSNR最低148.357935dB；保存map自洽maxrelative 6.60515477177e-07。固定ACES预览输入SHA不变，预览密文已GPG/manifest验证。
+已验证数值：S42五张原尺寸原host RGB guided（r1/eps.001），两张本配方留出；10EXR实际存读一致，25未编码headroom公式通过。S47复用IMG2600母版做独立显示曝光+3.718534EV与全局滚降，母版/原件SHA不变；10个原生公式maxabs 4.7088888806e-06 /PSNR最低132.827092dB。零offset承载coverage97.7627%，该区native目标maxrelative 1.56001707439e-06；公共offset100%数学覆盖但relative 0.0253673864137、h1差5.96e-8，未过。两种mask都不替代原逆mask。
 
-尚未通过：原生锚点均值误差0.0095–0.3309EV，近黑极值更大；旧2048+面积约束基线尚缺，不能称消除边缘伪像。给定GTC的global-only与local-only投影是有边界的候选，不证明拍摄端完整逆。0EV显示下候选偏暗，独立显示曝光仍需设计。新HEIF编码后目标1e-3/PSNR60与全尺寸SDR ImageIO max0未过；S43正在隔离AV1编码候选，不重复源照片投影。旧NumPy half不一致如实保留，不继续追拟合。
+未完成：新显示配方仍仅1开发照片；新编码HEIF目标/全尺寸原ImageIO SDR max0、旧2048+面积约束对照和锚点近零/阈值分类仍需runner。33皮肤点全域tight hull/C01-C05可继续静态/runner，不归成全只能实机。S42相对母版仍是假设，global-only给定GTC并不等于真实相机GTM恢复，语义/纹理残留不冒充清除。
 
-只靠实机/额外原始证据：匹配同帧j/WithoutFaceBoost曲线、N/B/T/hist/allocateTone域、原Studio统计、RAW2679/2408、实际HDR屏幕。33点全域tight hull未认证，原mask不动。完整5图EXR/GainMap密文约1.25GB尚未本地下载，受100MB写入和4GB底线限制；指标与预览已归档，额外存储许可待答。
+只能实机补证：同帧j/WithoutFaceBoost曲线/统计/应用域、原Studio统计、RAW2679/2408、HDR屏幕/观看环境及PhotosUI。参照NATIVE_TODO执行方案。
 
-具体source commit、run/artifact/SHA见run-provenance-s42.json，验证见evidence/validation-through-s42.json；master和冻结模型未改。
+预览固定ACES1.0 SDR Video/0EV；原生不同headroom可看候选contact，实际HDR屏幕另验。S42/S47预览只密文传输且已流式GPG/manifest全成员核验。完整S42密文约1.25GB未全套本地保存，额外存储许可待答；其2600密文只做过无持久文件的完整SHA/GPG校验。S47未另归档完整新H/logmap，只保留可再计算配方/输入SHA/指标/密文预览。
+
+临时secret均已删除、无release；研究临时分支在exact source保留和引用检查后清理。source/run/artifact/SHA见run-provenance-s33-s35、s37-s41、s42至s47及各receipt；验证evidence/validation-through-s47.json。master和原件/冻结文件保持。

@@ -38,3 +38,10 @@ S42复现：source5ab81cf3d4b1253455dc4cd6efa1bf7e4cab75bc，workflow hdr-native
 S43复现source8b0e656，workflow hdr-native-s43.yml；输入artifact12178164564、ZIP SHA1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c，单个固定合成fixture。workflow_dispatch通过inputs传入新的同SHA归档ID；过期后须恢复准确模板，不盲目重试。brew实际版本/header SHA记录，不凭API名称证明native兼容。
 
 S44失败sourcee6138d0；不要直接重试相同导出/解密方式。新S45用同一冻结显示数学、单密文SESSION_KEY（GnuPG官方DETAILS合同），secret仅存在一次run，值不落盘/不进日志，任务后删除。失败前置GPG rc与状态事件名须先持久化到text，再解释图像/数值结果。
+
+
+S47复现：实际source d657f306cdff1c0652f4538ddb5ed303d46d2d99，workflow hdr-native-s47.yml / xcode-27 /26A434。原S42输入artifact12188060302的ZIP SHA897065d3ea71e3068f2af8ee98ef8745065b923c6692f0366d98cd1b3069d621，内cipher SHAd1c3d9beabec857f972f897a7ef91f0fbee8df8d9ab270c7f97949235ae30c86。会话保留完整algorithm.mode:hex（本案9.2），不能截为2:hex；通过fd传入，值不得写日志/文件。`setup_hdr_s47_session.py`为正确本地有界提取脚本，必须MemoryHigh300M/Max400M wrapper；其它早期setup/probe仅失败取证，不照抄重试。任务后删除secret并核对空列表。
+
+输入artifact只有1天，过期后须使用保存的准确ZIP/密文恢复到新artifact，并在新研究分支的workflow下载层解包到W/S42.zip；保留上述原ZIP/cipher SHA和原mother EXR SHA，切勿把新Zip/新母版当同一输入。当前未获全套本地存储许可，故缺该输入时不能宣称可离线逐像素重放；可按S42固定源/版本重建并先比较EXR SHA，有差异须标新证据。不得直接盲跑已过期ID。
+
+新增只读验证：在旧S29..S32、S36host与S42photo-suite命令上加 `--display-suite <analysis-s47.json> --out <NEW-receipt.json>`，得到display_intent_progress；metadata验证本地仍用scripts/local-python-scope.sh。旧validate.py、原门槛和mask不改，extra observations不翻转总验收。S47完整H/logmap为临时计算产物，不把密文预览称为完整HDR文件。

@@ -48,3 +48,12 @@ SDR/HDR分量为正且offset为0时，单map在中间headroom生成`S^(1-w)*H^w`
 `LTMMetadataWriterV2._addLTMCurvesToMetadata`把output+0x18504/+0x18908的257节点分别clamp[0,1]、乘常量、向下取整、存u16；局部曲线为12×16格、节点数由调用者65/129选择，打包也有clamp/floor和方向重排。已有汇编证据见`evidence/producer-statistics-path.txt`与source receipt。这进一步说明：生产曲线、文件消费端c/d和最终ISP的像素应用必须逐边连接，不能拿结构字段名当c/d是整条LTM可逆增益的证明。没有同帧实际曲线/统计/应用域，j的β=.1953125不能变成样张像素EV界。
 
 每个原生run一次只排一个、artifact保留1天；原件/冻结模型不改，含人物的输入输出继续加密传输。大图计算只在macOS runner，VM上的Python用400MB scope。所有本阶段总验收仍为false。
+
+
+## 原生 RGB 投影与独立显示意图（S42/S47）
+
+实际RGB map是小格T/A再由原host的r1/eps.001、全分辨率RGBA guide上采样；与c/d scalar r1/eps.05分开。原host的近黑阈值、half和输入域会影响锚点，不意味着调用Apple就得到了scene真值。S42给出五图的global-only条件假设、local-only曲线保留投影、both母版候选与固定ACES诊断；旧2048+面积约束比较尚缺。
+
+`render_intent_s44.py`只定义母版之后的全局显示尺度与亮度滚降；S47的run_hdr_s47.py复用输入母版，不修改scene或任何语义参数。目标HDR先定义，再生成RGB logmap。offset0在正比值区有高精度原生证明；公共offset覆盖signed输入但近零消减未过门槛，明确保留失败。
+
+`hdr_display_progress.py`从analysis/freeze SHA检查独立显示/承载观察；`validate_hdr.py --display-suite`另列结果。25个五图未编码headroom（S42）与10个单图新显示headroom（S47）都不代替新编码HEIF的五图验收，更不证明GTM/LTM或人物/皮肤/纹理已完整撤销。

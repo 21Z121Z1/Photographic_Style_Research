@@ -33,3 +33,12 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 - 可交给macOS runner：逐区定位原create-kernel 1/255阈值、采样、half和锚点误差；与原2048双线性+2x2面积约束比较同画布边缘/锚点，保留原参数不凭感觉调eps。S42不含该旧基线对照。
 - 可交给macOS runner：独立冻结显示曝光策略与中间headroom效果，重用已存母版，禁止暗中改场景候选/旧mask；编码候选须再验全尺寸原SDR ImageIO max0及RGB目标1e-3/PSNR60。S43先以固定合成目标隔离AV1原生码值。
 - 待实机解决：真实拍摄global/local曲线/应用域与33点合同、j像素EV原始统计、Studio原统计、RAW2679/2408和实际HDR屏幕，沿用既有可执行方案；S42的自洽性不补造这些证据。
+
+
+### S47 后的分类与可执行下一步
+
+- 可交给macOS runner：复用S42母版（勿重跑已验证guiding）完成冻结显示配方五图/两张该配方输出留出；现S47只有IMG2600开发图。先按下载/配额规则处理约1.25GB原密文批次及归档期限。每张捕获固定ACES预览、完整headroom、源SHA、近零/负值mask与端点误差。高PSNR不代替1e-3；原SDR完整ImageIO编码max0另验。
+- 可交给macOS runner：S47公共offset失败，捕获最坏分量坐标及S/H/o/logmap/原生输出，分别统计logmap存储、exp2/offset消减、原生运算误差；按同一全图目标/原门槛审查表示方式，不删除近零像素求通过。可先用合成近零/跨零输入定位，不重复真实照片完整ISP源准备。
+- 可交给macOS runner：旧2048双线性+2x2面积约束对照、原create-kernel近黑阈值/可选main-thumbnail/sampler域与新RGB投影误差；两类guided eps.001/.05保持各自实际上下文，不凭感觉调平滑。只对新问题补实验，旧30scalar oracles不重做。
+- 分类勘误：33皮肤点的完整consumer声明域合同与全域tight hull仍是“可交给macOS runner/静态继续研究”的未闭环项，不能整体归入只能实机。S42尾部曾把它与相机域混写，此处明确分开。停止旧NumPy bit-exact拟合，保留C01-C05、原mask、非唯一证书与1e-3。
+- 待实机解决：匹配同帧j/WithoutFaceBoost曲线、N、B/T、人脸hist、allocateTone constraints及真实应用域；原Studio统计；RAW2679/2408；真实HDR屏幕/环境/PhotosUI。沿用各自既有可执行测试，beta.1953125仍不是像素EV，S47显示曝光不得替代该缺失值。

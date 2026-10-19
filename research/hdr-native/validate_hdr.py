@@ -8,9 +8,10 @@ from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from hdr_operator_progress import operator_progress
+from hdr_display_progress import display_progress
 def sha(path):
  with Path(path).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
-def validate(s29_path,s30_path=None,s31_path=None,s32_path=None,*,rgb_host=None,photo_suite=None):
+def validate(s29_path,s30_path=None,s31_path=None,s32_path=None,*,rgb_host=None,photo_suite=None,display_suite=None):
  s29=json.loads(Path(s29_path).read_text());s30=json.loads(Path(s30_path).read_text()) if s30_path else None
  observations=[h['reference_vs_native'] for r in s29['rows'] for h in r.get('headrooms',[])]
  assert len(observations)==35 and s29['os_build']=='26A434'
@@ -56,9 +57,10 @@ def validate(s29_path,s30_path=None,s31_path=None,s32_path=None,*,rgb_host=None,
  status['acceptance_complete']=status['HDR_native_target_accepted'] and status['scene_referred_accepted'] and status['legacy_acceptance_complete']
  status['goal_status']='active'
  if rgb_host or photo_suite:status['operator_progress']=operator_progress(rgb_host=rgb_host,photo_suite=photo_suite)
+ if display_suite:status['display_intent_progress']=display_progress(display_suite)
  return status
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--s29',required=True,type=Path);p.add_argument('--s30',type=Path);p.add_argument('--s31',type=Path);p.add_argument('--s32',type=Path);p.add_argument('--rgb-host',type=Path);p.add_argument('--photo-suite',type=Path);p.add_argument('--out',required=True,type=Path);a=p.parse_args();r=validate(a.s29,a.s30,a.s31,a.s32,rgb_host=a.rgb_host,photo_suite=a.photo_suite)
+ p=argparse.ArgumentParser();p.add_argument('--s29',required=True,type=Path);p.add_argument('--s30',type=Path);p.add_argument('--s31',type=Path);p.add_argument('--s32',type=Path);p.add_argument('--rgb-host',type=Path);p.add_argument('--photo-suite',type=Path);p.add_argument('--display-suite',type=Path);p.add_argument('--out',required=True,type=Path);a=p.parse_args();r=validate(a.s29,a.s30,a.s31,a.s32,rgb_host=a.rgb_host,photo_suite=a.photo_suite,display_suite=a.display_suite)
  # Never replace a historical receipt.
  with a.out.open('x') as f:json.dump(r,f,ensure_ascii=False,indent=2);f.write('\n')
  print(json.dumps({'acceptance_complete':r['acceptance_complete'],'goal_status':r['goal_status'],'headroom':r['HDR_render_transport']['native_headroom_equation_synthetic_35']},ensure_ascii=False))

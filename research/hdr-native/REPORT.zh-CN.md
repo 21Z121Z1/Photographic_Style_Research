@@ -133,3 +133,25 @@ S44临时secret HDR_S44_ARCHIVE_SUBKEY已删除、列表核对为空，无releas
 
 
 **S46失败与小型对照（已验证数值，HDR-35）：** run39262796015/source3f876035d17f6b2fb93fb834d343661492ef949c/artifact12192760214。脱敏GPG返回2/DECRYPTION_FAILED，未做图像计算。706B空密文对照确证会话字段为带AEAD模式的9.2:hex；原regex截成2:hex，fd解密失败，而保留完整payload返回0、明文逐字节相同。S47仅修该传输格式与标签，不改S44显示数学。临时HDR_S46_S42_SESSION删除后空列表已核对，无release。既存S44解密失败的私有stderr仍缺，不回填成相同原因。
+
+
+### HDR-S47：独立显示渲染完成一张原尺寸实拍；offset 失败照实保留
+
+**已验证静态，HDR-36；显示意图自身为工程选择。** `render_intent_s44.py`定义母版之后的全局显示尺度：在固定中心采样网格的正亮度域计算`k=2^median(log2(Y_SDR/Y_M))`，再以`H=kM*8/(8+max(Y(kM),0))`作独立HDR目标。正亮度域`dY_H/dY_M=64k/(8+kY_M)^2>0`，共享RGB标量保持色度；没有新空间邻域操作，不能据此证明母版无原有光晕或已逆相机local。8为相对亮度滚降参数，不是全RGB硬上限，也不是203nit。Apple Log和相对母版不改；这一步是显示曝光/意图，不是GTM物理逆解或相机j幅度。
+
+**已验证数值，HDR-37。** run39264474802/sourced657f306cdff1c0652f4538ddb5ed303d46d2d99/xcode-27/26A434/image20261012.0260.1。重用S42 IMG2600的5712×4284 half-P3母版，输入EXR SHA69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634；没有重算既有key1、Apple Log或guided。显示曝光3.718534360EV（k=13.164076042，统计677174点），原件/原SDR/母版EXR及pixels前后SHA相同。正Y域float32 RGB/Y色度差最大3.13367019444e-07，只是数值诊断，不借此认证scene。该新显示配方仅1张开发照片，不能把旧S42五图/2留出重复计为本新显示目标验证。
+
+两个offset变体各5档headroom1/1.25/2/4/8，共10个原生未编码公式对照，maxabs≤4.7088888806e-06、PSNR≥132.827091506dB，原float门槛通过。各自的目标承载结果须另外验收：
+
+|变体|可表示比值覆盖率|保存f32 logmap maxrelative|原生h8对目标maxrelative|原生h8 PSNR|原生h1对原SDR maxdiff|
+|---|---|---|---|---|---|
+|offset0|97.762716%|3.30480318222e-07|1.56001707439e-06|129.734769|0|
+|公共offset 0.0307447053492|100%|0.00252261043998|0.0253673864137|134.842219|5.96046447754e-08|
+
+**已验证数值，HDR-38/39。** offset0在原已定义比值区内通过，full目标maxabs7.62939453125e-06；承载mask与全部原逆解/33点mask分离。公共offset令`S+o,H+o>0`后可保留signed RGB，全图数学比值可定义，但float32存储及原生近零分量相对误差未过1e-3，h1也非像素0差，故不能拿覆盖率100%或高PSNR代替通过。最坏relative点参考RGB分量`abs(H)≤maxabs/maxrel=0.000263161529768`；这定位到近零分量，**不是整像素亮度或所有失败点的逐类归因**，坐标未捕获。误差与offset加减及log/exp的消减敏感性相容，进一步数值定位可交runner；不缩目标、不改旧mask、不放宽门槛。
+
+**显示与物理逆解分开。** 中间headroom（给定公共o）是`(S+o)^(1-w)*(H+o)^w-o`，并不自动等于Apple UI某个tone；各global/local/semantic控制仍在制作阶段独立。给定GTC的global-only、保留曲线的local-only和语义反事实依旧沿既有边界，不把这次全局显示曝光称为相机GTM恢复，也不把母版残留semantic/纹理清除视为完成。
+
+10张PNG全部只加密上传，GPG/manifest逐项验证；本地仅展开contact。所有显示均固定OCIO cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / LinearP3-D65 → sRGB Display / ACES1.0 SDR Video /0EV，9次预览前后输入SHA相同。native中间headroom预览从全图结果固定中心采样，不是实际HDR屏幕照片。指标artifact12192990470 ZIP SHAcb50ff395ff71f6b4b52d8d7f5fc7706965993e66734bd398514473bf712bcdb，manifest SHAcaa31e04df8c3bab2b0c9a93e8129825ec9705b4950604e43ff53dc8b2d471ef；预览artifact12192990472 ZIP SHA3fd3f2025b3696a5893318949c71f4ff7f7828840bdb8ca87eb29f46ecc65fb7，cipher SHA806135785421f6fa5080e49a4c7a88ee2282666a67d2a4972158f13bc7ead8f8。输入大密文在runner完整SHA/GPG/GOODMDC/gzip1f8b先验证，GPG2.5.24，只有一次性session，无归档私钥。HDR_S47_S42_SESSION已删除并核对空列表，无release；临时分支待exact source保留后清理。
+
+本次原尺寸H和logmap只用于计算与原生对照，**没有另行归档完整新像素文件**；保留配方、原母版引用、摘要和密文预览。原S42全套EXR/GainMap密文约1.25GB仍受100MB写入/4GB底线约束，仅2600密文做过流式SHA/GPG验证而未保留；不能称全套本地归档。原SDR未重新编码，但尚未生成新HEIF，**新编码ImageIO全尺寸SDR max0、编码目标和5图独立HDR渲染验收仍未闭环**。A_phase_complete=false，acceptance_complete=false。

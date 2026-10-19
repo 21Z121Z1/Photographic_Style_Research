@@ -54,3 +54,7 @@ ZIP `50a57237ace2cf0770d8ed43d8c387883ca496ad14f010ea34ee50a42418ec2f` / manifes
 |S46|research/vm-native-20261019-hdr-s46|3f876035d17f6b2fb93fb834d343661492ef949c|39262796015|12192760214|26A434/20261012.0260.1|AEAD identifier truncated; small empty-cipher control locates error;0newimages|
 
 ZIP `618b87b2ceb734829e47f9c32ecd54c5479edd1970de0c1129d75b0eaace60a9` / manifest `117052052970e656140aa16c95b1397fb4312faa95021a01e80318ad53e70cfb` verified; secret removed.
+
+|S47|research/vm-native-20261019-hdr-s47|d657f306cdff1c0652f4538ddb5ed303d46d2d99|39264474802|12192990470 text /12192990472 encrypted previews|26A434/20261012.0260.1|One unchanged24MP master, independent exposure/HDR,10native equations pass;zerooffset scoped pass;common offset relative/h1fail|
+
+Text ZIP `cb50ff395ff71f6b4b52d8d7f5fc7706965993e66734bd398514473bf712bcdb`/manifest `caa31e04df8c3bab2b0c9a93e8129825ec9705b4950604e43ff53dc8b2d471ef`; previewZIP `3fd3f2025b3696a5893318949c71f4ff7f7828840bdb8ca87eb29f46ecc65fb7`/cipher `806135785421f6fa5080e49a4c7a88ee2282666a67d2a4972158f13bc7ead8f8` verified. Source commit is distinct from final documentation commit.

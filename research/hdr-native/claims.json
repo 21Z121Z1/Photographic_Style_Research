@@ -641,6 +641,82 @@
           "sha256": "a18aa143c85067e0908cd7cad4bbc30920418ca77f9e0931758a7ff586ccdfe1"
         }
       ]
+    },
+    {
+      "id": "HDR-36",
+      "category": "display/independent-global-intent",
+      "status": "已验证静态",
+      "claim": "新显示意图与母版/物理逆解分开：在固定采样网格上以SDR与M的正亮度log比值中位数定义一个全局显示尺度k，H=kM*8/(8+max(Y(kM),0))。Y_M>=0时Y_H=8kY_M/(8+kY_M)，导数64k/(8+kY_M)^2>0，逐像素共享RGB标量保持色度、无空间邻域算子；这不消除母版已有光晕或证明scene正确。8是相对亮度滚降参数，不是203nit标定或所有RGB分量的硬上限。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/render_intent_s44.py",
+          "line": 12,
+          "sha256": "d257a6f96b056caf3a6d7f9645c93bd361a12f44eaca0bc0fc35a82fe280c69f"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39264474802/selected/freeze.json",
+          "line": 1,
+          "sha256": "0a8f068f7a2502e8f65d8cba981dfa570c8192728191a8723fe554fb686b9b29"
+        }
+      ]
+    },
+    {
+      "id": "HDR-37",
+      "category": "display/real-full-size-intent-replay",
+      "status": "已验证数值",
+      "claim": "S47只重用S42 IMG2600 5712x4284母版EXR，未重算key1/Apple Log/guided。全局显示曝光3.71853436023EV(k=13.1640760424)为工程意图，不是相机曝光。母版EXR/pixels、原SDR和原件前后SHA不变，全部预览SHA不变；正Y域float32色度RGB/Y最大差3.13367019444e-07。零offset/公共offset x五档headroom共10次原生未编码公式对照maxabs4.7088888806e-06/PSNR最低132.827092dB通过原float门槛。这里只1开发照片，不能计为新显示配方5图/2留出通过。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39264474802/selected/analysis-s47.json",
+          "line": 1,
+          "sha256": "06d71336f63903d98709f676e728f587ac4f586b74adfed77ca484b25bb621ac"
+        },
+        {
+          "file": "hdr-native-20261019/validation-through-s47.json",
+          "line": 1,
+          "sha256": "ba57636da3bbd3889f9722d377d59d0c2db5fbc3c1f9cb0f797f2022922f5992"
+        }
+      ]
+    },
+    {
+      "id": "HDR-38",
+      "category": "transport/zero-offset-defined-region",
+      "status": "已验证数值",
+      "claim": "S47零offset已定义比值区域覆盖97.7627162%（23922740/24470208像素），保存float32 logmap重读maxrelative3.30480318222e-07；原生full-strength对给定HDR目标maxrelative1.56001707439e-06、maxabs7.62939453125e-06、PSNR129.734769dB，区内通过原门槛。原生未编码h1 max0；这是承载mask，不替代任何原逆解/33点mask，也不是新HEIF的ImageIO SDR max0或未知scene精度。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39264474802/selected/analysis-s47.json",
+          "line": 1,
+          "sha256": "06d71336f63903d98709f676e728f587ac4f586b74adfed77ca484b25bb621ac"
+        },
+        {
+          "file": "hdr-native-20261019/validation-through-s47.json",
+          "line": 1,
+          "sha256": "ba57636da3bbd3889f9722d377d59d0c2db5fbc3c1f9cb0f797f2022922f5992"
+        }
+      ]
+    },
+    {
+      "id": "HDR-39",
+      "category": "transport/common-offset-failure",
+      "status": "已验证数值",
+      "claim": "S47公共offset=0.0307447053492令移位比值覆盖全图，保留负RGB但非原生成器的负值clamp约定；保存logmapmaxrelative0.00252261043998，原生full目标maxrelative0.0253673864137，均未过1e-3；h1原生像素maxdiff5.96046447754e-08非0。最大相对误差处的参考RGB分量绝对值由maxabs/maxrel界定<= 0.000263161529768（不是像素亮度判定），与近零分量消减敏感性相容；无最坏坐标/逐类计数，不能替所有失败点分类。无新编码载体，不能宣布HDR总验收。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39264474802/selected/analysis-s47.json",
+          "line": 1,
+          "sha256": "06d71336f63903d98709f676e728f587ac4f586b74adfed77ca484b25bb621ac"
+        },
+        {
+          "file": "hdr-native-20261019/validation-through-s47.json",
+          "line": 1,
+          "sha256": "ba57636da3bbd3889f9722d377d59d0c2db5fbc3c1f9cb0f797f2022922f5992"
+        }
+      ]
     }
   ]
 }
