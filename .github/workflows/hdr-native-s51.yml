@@ -1,0 +1,80 @@
+name: hdr-native-s51
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s51']
+  workflow_dispatch:
+jobs:
+  frozen-four-photo-HDR-intent:
+    runs-on: xcode-27
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare private sequential workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s51"; mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/encrypted"
+          mkdir -m 700 "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          export GNUPGHOME="$W/gnupg"
+          echo "GNUPGHOME=$GNUPGHOME" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/out/public-key-import.log" 2>&1
+          python3 -m pip install --quiet 'numpy==2.3.4' OpenEXR opencolorio pillow > "$W/out/dependencies.log" 2>&1
+      - name: Reuse original masters for frozen independent display
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HDR_S51_IMG_2604_SESSION: ${{ secrets.HDR_S51_IMG_2604_SESSION }}
+          HDR_S51_IMG_2608_SESSION: ${{ secrets.HDR_S51_IMG_2608_SESSION }}
+          HDR_S51_IMG_0032_SESSION: ${{ secrets.HDR_S51_IMG_0032_SESSION }}
+          HDR_S51_IMG_0033_SESSION: ${{ secrets.HDR_S51_IMG_0033_SESSION }}
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s51.py > "$W/out/driver.log" 2>&1
+      - name: Seal aggregate evidence only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<3000000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':False,'photos_used':True,'public_output_scope':'Aggregate text only; contact previews encrypted; no photographed arrays or Apple binary','whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s51-aggregate-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s51-private-contacts
+          path: ${{ env.W }}/encrypted/previews.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Remove only own transient copies and public keyring
+        if: always()
+        run: |
+          test -n "${W:-}"
+          gpgconf --homedir "$W/gnupg" --kill gpg-agent || true
+          rm -rf -- "$W"

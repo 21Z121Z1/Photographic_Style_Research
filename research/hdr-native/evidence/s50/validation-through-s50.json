@@ -1,0 +1,370 @@
+{
+  "legacy_acceptance_complete": false,
+  "HDR_render_transport": {
+    "native_headroom_equation_synthetic_35": {
+      "pass": true,
+      "status": "已验证数值",
+      "max_abs": 1.9637265280536553e-06,
+      "min_PSNR_peak1_db": 131.73982617691473
+    },
+    "automatic_writer_preserves_original_SDR": {
+      "pass": false,
+      "status": "已验证数值",
+      "scope": "Measured writer failure; not a promise from its successful return code"
+    },
+    "five_photos_full_resolution_two_post_freeze_holdouts": {
+      "pass": false,
+      "status": "可交给macOS runner",
+      "photos_in_new_S29_S30_suite": 0,
+      "required": 5,
+      "holdouts_required": 2
+    },
+    "new_target_original_SDR_ImageIO_full_max0": {
+      "pass": false,
+      "status": "可交给macOS runner",
+      "scope": "Old carriers retain their earlier passes; this new target has no new lossless-splice native receipt"
+    },
+    "new_target_encoded_RGB_relative_1e3": {
+      "pass": false,
+      "status": "可交给macOS runner",
+      "scope": "Synthetic codec failures are retained; no threshold or mask change"
+    },
+    "actual_HDR_screen_and_viewing_environment": {
+      "pass": false,
+      "status": "待实机解决"
+    },
+    "explicit_RGB_unencoded_native_synthetic": {
+      "pass": true,
+      "status": "已验证数值",
+      "native_comparisons": 70,
+      "required_comparisons": 70,
+      "successful_writer_cases": 0,
+      "total_writer_requests": 10
+    },
+    "preserved_SDR_synthetic_direct_ISO_8_10bit": {
+      "pass": true,
+      "status": "已验证数值",
+      "cases": 10,
+      "scope": "Synthetic256x128 direct gain items; not the five full-size photographs"
+    },
+    "explicit_ISO_synthetic_target": {
+      "pass": false,
+      "status": "已验证数值",
+      "native_readback_success": 10,
+      "requests": 15,
+      "scope": "Failure retained: native code-domain mismatch and twelve-bit nil; no inverse conclusion"
+    },
+    "matrix_diagnosis": {
+      "pass": false,
+      "status": "已验证数值",
+      "scope": "Single fixture diagnosis cannot pass target acceptance",
+      "cases": [
+        {
+          "matrix": 1,
+          "bits": 8,
+          "native_returncode": 0,
+          "native_aux_code_max_abs": 0.007490220256880176,
+          "target_relative_max": 0.022992088941984706,
+          "headroom_comparisons": 7
+        },
+        {
+          "matrix": 1,
+          "bits": 10,
+          "native_returncode": 0,
+          "native_aux_code_max_abs": 0.0019070285273203869,
+          "target_relative_max": 0.005647225218517165,
+          "headroom_comparisons": 7
+        },
+        {
+          "matrix": 1,
+          "bits": 12,
+          "native_returncode": 5,
+          "native_aux_code_max_abs": null,
+          "target_relative_max": null,
+          "headroom_comparisons": 0
+        },
+        {
+          "matrix": 6,
+          "bits": 8,
+          "native_returncode": 0,
+          "native_aux_code_max_abs": 0.00731475867477116,
+          "target_relative_max": 0.020610088443077365,
+          "headroom_comparisons": 7
+        },
+        {
+          "matrix": 6,
+          "bits": 10,
+          "native_returncode": 0,
+          "native_aux_code_max_abs": 0.0017941373883804124,
+          "target_relative_max": 0.005331253818467697,
+          "headroom_comparisons": 7
+        },
+        {
+          "matrix": 6,
+          "bits": 12,
+          "native_returncode": 5,
+          "native_aux_code_max_abs": null,
+          "target_relative_max": null,
+          "headroom_comparisons": 0
+        }
+      ]
+    }
+  },
+  "physical_scene_recovery": {
+    "global_only_local_only_separate": {
+      "pass": false,
+      "status": "可交给macOS runner",
+      "scope": "Conditional curve sets / known-input counterfactuals available; actual full capture factorization not certified"
+    },
+    "skin_33_global_tight_hulls": {
+      "pass": false,
+      "status": "可交给macOS runner",
+      "scope": "Original C01-C05 contracts and mask unchanged; no local sweep substituted for a proof"
+    },
+    "same_frame_camera_j_curves_and_pixel_EV": {
+      "pass": false,
+      "status": "待实机解决"
+    },
+    "Studio_original_stats": {
+      "pass": false,
+      "status": "待实机解决"
+    },
+    "paired_RAW_EV_IMG_2679_IMG_2408": {
+      "pass": false,
+      "status": "待实机解决"
+    }
+  },
+  "scope": "Independent goal progress; synthetic transport checks do not certify an inverse, scene radiance, five-photo suite or original-SDR preservation",
+  "old_precision_thresholds": {
+    "max_abs": 1e-05,
+    "PSNR_peak1_db_min": 60,
+    "inverse_or_transport_relative_max": 0.001
+  },
+  "evidence": {
+    "S29": {
+      "path": "/home/Z121Z121/work/styles-gtm-ltm/hdr-native-20261019/runs/39234705515/selected/analysis-s29.json",
+      "sha256": "8e6913321ceb1189af3e159454ea31d4260989ad4dbcc619b57830f80496b464"
+    },
+    "S30": {
+      "path": "/home/Z121Z121/work/styles-gtm-ltm/hdr-native-20261019/runs/39235294224/selected/analysis-s30.json",
+      "sha256": "a40fe15f91699d6b292df801e20f529157503a946c4d74cc4ac03bfc9ddfa1c8"
+    },
+    "S31": {
+      "path": "/home/Z121Z121/work/styles-gtm-ltm/hdr-native-20261019/runs/39236923652/selected/analysis-s31.json",
+      "sha256": "2a6e199e444c57e63ce696535f448e17b47c5ed30475fa14d3e8553212bdc045"
+    },
+    "S32": {
+      "path": "/home/Z121Z121/work/styles-gtm-ltm/hdr-native-20261019/runs/39237510689/selected/analysis-s32.json",
+      "sha256": "d6c7c8efba18bbe7d268f184a8abdc222253ef64efe4c50e1dbe7e5126fa2c09"
+    }
+  },
+  "HDR_native_target_accepted": false,
+  "scene_referred_accepted": false,
+  "acceptance_complete": false,
+  "goal_status": "active",
+  "operator_progress": {
+    "scope": "New operator/representation observations. They do not replace or turn green the legacy precision, encoded target, 33-point hull or physical-scene gates.",
+    "legacy_masks_or_thresholds_changed": false,
+    "observations": {
+      "original_RGB_host_synthetic_qualified": {
+        "pass": true,
+        "status": "已验证数值",
+        "cases": 3,
+        "scope": "Original PSO, creation plus actual radius1 epsilon.001 RGB guided on synthetic fixed inputs"
+      },
+      "frozen_NumPy_RGB_half_bit_exact": {
+        "pass": false,
+        "status": "已验证数值",
+        "max_abs": 0.0009765625,
+        "different_half_components": 23029,
+        "disposition": "Report current precision; no precision refitting or gate relaxation"
+      },
+      "original_RGB_full_resolution_operator_photos": {
+        "pass": true,
+        "status": "已验证数值",
+        "photos": 5,
+        "scope": "Actual full-image native RGB guided participation, not a camera inverse; accepted recipe output count separately"
+      },
+      "five_full_resolution_recipe_two_new_recipe_holdouts": {
+        "pass": true,
+        "status": "已验证数值",
+        "photos": 5,
+        "holdouts": 2,
+        "holdout_scope": "These two photos were used in older scalar-guide studies; withheld from this new RGB-map recipe until this immutable source was frozen. No photograph tunes this recipe."
+      },
+      "original_and_preview_input_integrity": {
+        "pass": true,
+        "status": "已验证数值",
+        "scope": "Fixed ACES display on copied arrays, originals/source arrays hash unchanged"
+      },
+      "EXR_storage_actual_save_reopen": {
+        "pass": true,
+        "status": "已验证数值",
+        "files": 10,
+        "scope": "Half relativeP3 candidate and float32 unitless log2 RGB map. Storage fidelity only; no physical-scene certification"
+      },
+      "real_full_size_native_unencoded_headrooms": {
+        "pass": true,
+        "status": "已验证数值",
+        "comparisons": 25,
+        "max_abs": 5.603206268967043e-07,
+        "scope": "Supplied-pair native application only, no new encoded carrier"
+      },
+      "real_supplied_pair_saved_float32_map_relative": {
+        "pass": true,
+        "status": "已验证数值",
+        "scope": "Representation mask distinct from all inverse masks; saved-map self-consistency is not reconstruction of the unknown scene"
+      },
+      "new_encoded_HDR_and_original_SDR_ImageIO_full_max0": {
+        "pass": false,
+        "status": "可交给macOS runner",
+        "scope": "This suite emits EXR/sidecar candidates, not a new encoded HEIF; source hashes and unencoded headroom1 cannot satisfy encoded ImageIO max0"
+      },
+      "producer_global_local_and_RAW_physical": {
+        "pass": false,
+        "status": "待实机解决",
+        "scope": "Matched camera curves/statistics, original Studio stats and paired2679/2408 RAW remain required. Global-only supplied-GTC projection stays a hypothesis."
+      }
+    },
+    "evidence": {
+      "rgb_host": {
+        "path": "/home/Z121Z121/work/styles-gtm-ltm/hdr-native-20261019/runs/39246456413/selected/analysis-s36.json",
+        "sha256": "2b4c2fb1017b91a2d7a29e725b18346c35e85995c57dbbbc546dfb6622617936"
+      },
+      "photo_suite": {
+        "path": "/home/Z121Z121/work/styles-gtm-ltm/hdr-native-20261019/runs/39254061338/selected/analysis-s42.json",
+        "sha256": "b1f36638a2eedbd09cbf585c703e6c3bc75d09d4b771f42fce5e7f1a15e2ad13",
+        "formula_freeze_sha256": "c05933c2da4255ea9ef0bcdb3e9e320339a8de13257a4abca5480ac0a1ce5d7b"
+      }
+    }
+  },
+  "display_intent_progress": {
+    "scope": "One development photograph5712x4284, reused S42 mother; fixed display intent, no new camera/global/local/semantic inverse, encoded carrier or five-photo display claim",
+    "original_thresholds_and_inverse_masks_unchanged": true,
+    "master_and_preview_integrity": {
+      "pass": true,
+      "status": "已验证数值"
+    },
+    "full_native_unencoded_formula": {
+      "pass": true,
+      "status": "已验证数值",
+      "comparisons": 10,
+      "max_abs": 4.7088888806001705e-06,
+      "min_PSNR_peak1_db": 132.82709150641782
+    },
+    "display_exposure_intent": {
+      "display_exposure_EV": 3.71853436023081,
+      "scale": 13.164076042436493,
+      "statistic_pixels": 677174,
+      "sample_pixels": 679728,
+      "scope": "One global display scale from fixed sample-grid median, not a scene exposure or white-level measurement",
+      "status": "假设",
+      "physical_exposure_measurement": false
+    },
+    "chromaticity_diagnostic": {
+      "status": "已验证数值",
+      "max_abs_normalized_RGB_over_Y": 3.133670194443994e-07,
+      "acceptance_threshold_invented": false
+    },
+    "variants": [
+      {
+        "tag": "zero-offset",
+        "status": "已验证数值",
+        "carrier_representation_coverage": 0.9776271619759015,
+        "positive_shifted_ratio_pixels": 23922740,
+        "all_pixels": 24470208,
+        "original_inverse_mask_replaced": false,
+        "defined_target_relative_and_PSNR_gate": true,
+        "saved_f32_map_max_relative": 3.304803182217716e-07,
+        "native_endpoint_max_abs": 7.62939453125e-06,
+        "native_endpoint_max_relative": 1.5600170743868791e-06,
+        "native_endpoint_PSNR_peak1_db": 129.7347689074559,
+        "relative_denominator_floor": 1e-06,
+        "unencoded_native_h1_original_SDR_max_abs": 0,
+        "unencoded_native_h1_max0": true,
+        "encoded_ImageIO_SDR_max0_certified": false
+      },
+      {
+        "tag": "common-positive-offset",
+        "status": "已验证数值",
+        "carrier_representation_coverage": 1.0,
+        "positive_shifted_ratio_pixels": 24470208,
+        "all_pixels": 24470208,
+        "original_inverse_mask_replaced": false,
+        "defined_target_relative_and_PSNR_gate": false,
+        "saved_f32_map_max_relative": 0.0025226104399811433,
+        "native_endpoint_max_abs": 6.67572021484375e-06,
+        "native_endpoint_max_relative": 0.025367386413677195,
+        "native_endpoint_PSNR_peak1_db": 134.84221944340374,
+        "relative_denominator_floor": 1e-06,
+        "unencoded_native_h1_original_SDR_max_abs": 5.960464477539063e-08,
+        "unencoded_native_h1_max0": false,
+        "encoded_ImageIO_SDR_max0_certified": false
+      }
+    ],
+    "evidence": {
+      "analysis_sha256": "06d71336f63903d98709f676e728f587ac4f586b74adfed77ca484b25bb621ac",
+      "freeze_sha256": "0a8f068f7a2502e8f65d8cba981dfa570c8192728191a8723fe554fb686b9b29"
+    },
+    "new_five_photo_display_suite_accepted": false,
+    "new_encoded_native_carrier_accepted": false,
+    "scene_inverse_accepted": false,
+    "acceptance_complete": false
+  },
+  "paired_upsampling_S49": {
+    "completed": true,
+    "status": "已验证数值",
+    "one_development_photo": true,
+    "source_SHA_unchanged": true,
+    "same_GPU_half_anchor": true,
+    "rows": [
+      {
+        "variant": "legacy2048",
+        "anchor_MAE_EV": 0.03587141094649454,
+        "anchor_p99_EV": 0.3560152227712153,
+        "anchor_max_EV": 4.015174533617235,
+        "joint_edge_gradient_ratio_median": 0.2060544730408414,
+        "joint_edge_gradient_ratio_p95": 0.45403534357144026,
+        "joint_edge_gain_curvature_mean_EV": 1.1677671930543676,
+        "joint_edge_gain_slope_reversal_fraction": 0.16248550173979123,
+        "edge_gradient_samples": 50067,
+        "negative_components": 0,
+        "nonfinite_components": 0
+      },
+      {
+        "variant": "nativeRGB",
+        "anchor_MAE_EV": 0.3496061956225757,
+        "anchor_p99_EV": 3.6335542662295697,
+        "anchor_max_EV": 15.190388940887795,
+        "joint_edge_gradient_ratio_median": 0.8136424440011362,
+        "joint_edge_gradient_ratio_p95": 1.0741222237106434,
+        "joint_edge_gain_curvature_mean_EV": 0.4286922098985136,
+        "joint_edge_gain_slope_reversal_fraction": 0.2038192916849978,
+        "edge_gradient_samples": 50067,
+        "negative_components": 44,
+        "nonfinite_components": 0
+      }
+    ],
+    "quality_gate_pass": false,
+    "gate_note": "Mixed tradeoff, no new quality threshold invented and no physical inverse proof",
+    "evidence": {
+      "file": "repo/research/hdr-native/evidence/s48-s49/analysis-s49.json",
+      "line": 1,
+      "sha256": "384c6e367453a26a35d99a6a6f7528738c73723119067c5f08a99d99dc60a9bc"
+    }
+  },
+  "A_phase_complete": false,
+  "finite_offset_collision_S50": {
+    "status": "已验证数值",
+    "certificate_valid": true,
+    "minimax_relative_lower_bound": 0.0010999983146575687,
+    "native_collision_confirmed": true,
+    "guaranteed_relative_1e3_over_declared_nearzero_domain": false,
+    "scope": "Finite representation impossibility counterexample, not whole native consumer domain or photo attribution",
+    "evidence": {
+      "file": "repo/research/hdr-native/evidence/s50/finite-collision-certificate.json",
+      "line": 1,
+      "sha256": "a7571d01802aaaf483374bb6960d8a5aae53e6cae136b028820c20bf26a2655a"
+    }
+  }
+}

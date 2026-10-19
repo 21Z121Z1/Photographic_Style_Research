@@ -51,3 +51,6 @@ S47已注册workflow ID为389472623。输入artifact仍有效且正确的临时H
 
 
 S48/S49源码与复现（新计算仅runner）：S48失败先读 `gh run view 39270202659 --log-failed`；S49源码固定9ab3060，见run_hdr_s49.py与hdr-native-s49.yml。先SHA/GPG验证S42 IMG2600单一密文和50MB legacy密文，再核对anchor-compatibility.json，运行 `python3 research/hdr-native/run_hdr_s49.py`（仅macOS26A434/Metal，环境W、S49_S42_SESSION、S49_LEGACY_PASS由临时secret提供，不在命令行/日志写值）。同一原legacy曝光，旧baseline_ops_s48.py源码出处见baseline-source-s48.json。S49的临时release/secret已删除，重放须新建自己的密文传输与secret并在终止后清理；不得把已清理的asset id当可用永久输入。已有源文件/归档只读，所有本机Python经scripts/local-python-scope.sh，勿在VM重算图像。
+
+
+S50（仅合成常量，macOS runner）：固定source4e3c56c，执行 `python3 research/hdr-native/run_hdr_s50.py`；workflow hdr-native-s50.yml。证书为finite-collision-certificate.json，原生对照analysis-s50.json；无需原片/secret/下载输入，所有像素仅在runner临时区，artifact只有文本。新本机验证仅解析证书/校验SHA，必须经scripts/local-python-scope.sh，不在VM执行该native/数值脚本。原1e-3及floor1e-6不改；S50不复现真实照片或33点合同。

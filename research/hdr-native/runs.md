@@ -67,3 +67,8 @@ S33–S47收尾审计：所有实际source commit已fast-forward保留在researc
 |S49|research/vm-native-20261019-hdr-s49|9ab3060ff6780f0dd0e154f5036a6243503c6659|39275948343|12196823572 /12196673747 encrypted previews|26A434/20261012.0260.1|paired same-half-anchor full-size comparison, old/new outputs unchanged; tradeoff retained, no acceptance pass|
 
 S49 text ZIP eed057a6b471e1f3db1db31c0ee717ea1a59aeaf924df607358e9d50a3529de4, manifest ad64dec9de23cbad3510ef7018baf08f3efc4c8e2322499ce9857a46acb964aa; preview ZIP c042530fe896c90f77130d30adae2056b59256b36b5f40485a3dfa90a55568a3, cipher ba43a2654a764ca9757824e4ea0452f3c8c677c2199e22139360d26152990f6d, 9PNG verified/one localcontact. Secrets/draft/tag cleared; source branches preserved pending final keeper/ref audit. Artifact retention1天。
+
+
+|S50|research/vm-native-20261019-hdr-s50|4e3c56c829ac09fe17cb1e7fa20bd1cc5e671af2|39280458478|12200760926|26A434/20261012.0260.1|finite common-offset collision certified; native positive controls; original relative gate retained|
+
+ZIP 60c09dafd81a2c9e07f780097d94d05866c4c1dee5e7ab3cc84f885e4c48b5ed, manifest fc9b2758ccc903cc31a4f46382b3e815a7b0f41696b45bfc23eceaac7074147b; native full job log archived. Control-plane queued discrepancy and later completed/success are in evidence/s50/terminal-state.json. No temporary secrets/release.

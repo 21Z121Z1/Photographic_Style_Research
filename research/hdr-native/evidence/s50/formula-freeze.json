@@ -1,0 +1,31 @@
+{
+  "scope": "Finite synthetic collision of target HDR values after float32 logmap and normalized texture; not a full-domain shader interval or real-photo counterfactual",
+  "os_build": "26A434",
+  "source": 0.125,
+  "offset": 0.03125,
+  "log_min": -8,
+  "log_max": 8,
+  "target_grid": "10001 float32 values linearly spanning 1e-7 through 6e-7; group by both float32 log2 map and normalized code bits, choose first disjoint original-gate target intervals before native output",
+  "native_headrooms": [
+    1,
+    1.25,
+    2,
+    4,
+    8
+  ],
+  "unchanged_gate": {
+    "relative_max": 0.001,
+    "relative_denominator_floor": 1e-06,
+    "linear_max_abs": 1e-05,
+    "PSNR_peak1_db_min": 60
+  },
+  "no_fit_to_native_output": true,
+  "source_sha256": {
+    "run_hdr_s50.py": "e85593c2045eef141c27b6a8640f4017660a899ad6f3029bfdda6de27b8c5d16",
+    "offset_collision_s50.m": "313c823dbc1435dc36a0edbe0c62ebb9dc1d66e39f63c863afc13d6fefdaac6b",
+    "hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f"
+  },
+  "photos_used": false,
+  "original_masks_changed": false,
+  "original_frozen_files_changed": false
+}

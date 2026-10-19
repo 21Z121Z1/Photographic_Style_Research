@@ -179,3 +179,16 @@ S33–S47收尾审计：所有实际source commit已fast-forward保留在researc
 同一原SDR全分辨率参考、共同有限正亮度诊断区24317242像素，其中边缘800096、固定抽样梯度50067点。该选择仅用于新诊断，**不修改逆解/33点/承载mask**。更清楚的纹理与更大的锚点误差并存；曲率降低但反转比例增加，不能宣布全部边缘伪像改善或直接替换已冻结基线。原RGB map的中心采样/乘法比值+guided不具有旧2×2面积约束（原AIR/调用链见HDR-14/15），面积守恒是旧工程约束；两种结果也都没有RAW真值。此处只证明GPU half锚点相同，未证明历史float32参考相同，且诊断参考/算术与S42原表不同，新表不覆写历史表。
 
 9张PNG采用同一固定OCIO cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / LinearP3-D65→sRGB Display / ACES1.0 SDR Video，显示尺度13.164076042436493沿用S47，不标定nit。8份预览输入和原件/SDR/legacy/master前后SHA全部相同；密文逐项GPG/SHA验证，本地仅展开contact。它们不是实际HDR屏幕证据。指标artifact12196823572 ZIP SHAeed057a6b471e1f3db1db31c0ee717ea1a59aeaf924df607358e9d50a3529de4、manifest SHAad64dec9de23cbad3510ef7018baf08f3efc4c8e2322499ce9857a46acb964aa；密文预览artifact12196673747 ZIP SHAc042530fe896c90f77130d30adae2056b59256b36b5f40485a3dfa90a55568a3、cipher SHAba43a2654a764ca9757824e4ea0452f3c8c677c2199e22139360d26152990f6d。文件与行号见claims HDR-40～42及repo/research/hdr-native/evidence/s48-s49。仅1张开发照片，未增加5图/2留出验收，A与总验收仍false。
+
+
+### HDR-S50：公共 offset 的信息损失与原生算术分开
+
+**已验证数值，HDR-43。** source4e3c56c829ac09fe17cb1e7fa20bd1cc5e671af2/run39280458478/26A434/image20261012.0260.1。合成S=0.125、o=0.03125、log范围[-8,8]，目标H1=1.0000000116860974e-7（bits33d6bf95）与H2=1.0219999779792488e-7（bits33db790b）写成相同float32 log=-2.3219234943389893（bitsc0149a65）和归一化纹理0.35487979650497437（bits3eb5b2ce）。源/metadata相同，两个原1e-3目标允许区间不相交；使用精确有理数证书，任意单值重建均有：
+
+`max(error1/d1,error2/d2) >= (H2-H1)/(d1+d2) = 0.0010999983146575687 > 0.001`，其中`di=max(abs(Hi),1e-6)`沿用原定义。
+
+这是**有限输入碰撞**，无需假定fast pow精度或编译重结合行为，信息在float32记录里已经合并；不据此宣布33皮肤点完整consumer域或所有实际照片的全域区间证明。目标网格/分组/首个不交区间的选择规则在取得原生输出前冻结，不拟合硬件结果，不改门槛或mask。
+
+**已验证数值，HDR-44。** 原生CI五档headroom1/1.25/2/4/8的两份公共offset输入纹理与metadata SHA相同，全部输出SHA也相同；h8输出1.0291114449501038e-7。对H1/H2的maxrelative分别0.0029111433264/0.00071114669709，前者失败，尽管maxabs2.9111433264e-9、PSNR170.718728dB。对已存code的double公式，原生h8另有1.90516565718e-9绝对误差；这与记录碰撞是两层不同问题。零offset控制H1/H2使用不同gain code，原生目标maxrelative2.13162820728e-8/1.42108547152e-8，均通过这两个有限输入。此实验**没有图像codec**，不把它归为8-bit Gain Map传输误差；也不把o=.03125例子冒充S47真实o=.0307447053492全部失败点的归因。
+
+证据artifact12200760926 ZIP SHA60c09dafd81a2c9e07f780097d94d05866c4c1dee5e7ab3cc84f885e4c48b5ed，manifest SHAfc9b2758ccc903cc31a4f46382b3e815a7b0f41696b45bfc23eceaac7074147b，所有成员已校验，完整原生日志SHA8e3dc5882dfc2c286d39aa6f040df2e3ba5bf081e81c1675f2e9f8ae67663f96。接口此前持续queued而日志/结果已结束，取消命令返回“已完成”，随后裸run端点已确认completed/success（updated_at=2026-10-19T16:14:48Z）；不猜服务状态矛盾的原因。无secret/release或含人物输入。既有总验收与A阶段仍false。

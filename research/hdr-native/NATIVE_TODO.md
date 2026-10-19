@@ -50,3 +50,10 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 - 可交给macOS runner：对已存母版/低分辨率锚点分区统计中心采样与面积残差、近黑阈值/half/guide边界；若需重放原create-kernel，固定原参数与非目标纹理，只为新归因捕获，不重做旧30scalar oracle或11种否定组合。S49未证明无光晕/振铃，未取得新RAW。
 - 可交给macOS runner：公共offset近零目标的float32 logmap/归一化编码是否非单射，用同一原生输入、不同目标的有限碰撞证书区分信息丢失和算术误差；不移除近零像素、不改1e-3。
 - 待实机解决：同帧j/WithoutFaceBoost/N/B/T/hist/allocateTone/application domain、原Studio统计、RAW2679/2408和实际HDR屏幕按既有方案；本轮无新实机证据。33皮肤点C01-C05仍属静态/runner可推进的未认证边界，停止旧bit-exact拟合，原mask/阈值保留。
+
+
+### S50 后：近零 Gain Map 表示边界
+
+- 已验证数值：有限float32 logmap/normalized-code碰撞及原生五档同输入同输出已经归档，禁止把高PSNR替代1e-3。该近零域的统一保证不能靠更精确执行已丢失信息的相同code解决；不是原始33皮肤点tight hull。
+- 可交给macOS runner：S47真实最坏坐标、S/H/o/logmap/归一化值/原生输出仍需分项捕获；S50合成o=.03125不替代实际o=.0307447053492归因。零offset在域内通过不赋予符号不匹配/零分母像素可逆性，不缩mask。
+- 可交给macOS runner：已准备S51四张既存母版的冻结S44/S47显示配方，合计922251766B仅runner下载；新预览contact加密，VM100MB累计限额不重置。需先等仓库其他研究分支排队run结束，再设置本批四个一次性session secrets与push触发。原始SDR编码max0、新HDR codec目标、实际屏幕和RAW门槛均独立保留。

@@ -789,6 +789,54 @@
           "sha256": "8416a1f6c1417dca4b3a22cf6cbdeba1bea78ec68925dc735d58bc707b513568"
         }
       ]
+    },
+    {
+      "id": "HDR-43",
+      "category": "transport/finite-information-loss-certificate",
+      "status": "已验证数值",
+      "claim": "S50给出有限碰撞证书：S=.125,o=.03125，两个float32目标1.0000000116860974e-7与1.0219999779792488e-7在同一float32 logmap c0149a65及归一化纹理3eb5b2ce中不可区分，源/元数据相同。以原分母floor1e-6和1e-3门槛构造的允许区间不相交，任意单值解码的minimax relative下界0.0010999983146575687。此证书不依赖pow误差合同；只是否定这类表示对整个所声明近零域的统一保证，不是33点全域tight hull或所有真实照片失败归因。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s50/finite-collision-certificate.json",
+          "line": 1,
+          "sha256": "a7571d01802aaaf483374bb6960d8a5aae53e6cae136b028820c20bf26a2655a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s50/formula-freeze.json",
+          "line": 1,
+          "sha256": "66f8aba7c1edc39c7ad691cef32ef4111df6c3814c9a0fadcee62dae613e449b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-44",
+      "category": "transport/native-collision-and-zero-offset-control",
+      "status": "已验证数值",
+      "claim": "S50原生CI五档headroom中公共offset两案的输入纹理/metadata SHA及输出SHA全部相同，h8均为1.0291114449501038e-7；低/高目标maxrelative0.0029111433264/0.00071114669709，低案失败但maxabs仅2.9111433264e-9、PSNR170.718728dB。零offset两控制的目标maxrelative2.13162820728e-8/1.42108547152e-8，均通过该有限目标门槛。没有HEIF编码、RAW或真实场景输入，不能消除S47具体最坏像素归因的缺口。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s50/analysis-s50.json",
+          "line": 1,
+          "sha256": "479669a6806e1803521c39e869c58eedf005198808b3f9281936645d4d196ff4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s50/native.json",
+          "line": 1,
+          "sha256": "fef78a327dc09aaa0e932131fc1835279f9b7f22155ab96dddbaee4433d6960e"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s50/native-job-complete.log",
+          "line": 1,
+          "sha256": "8e3dc5882dfc2c286d39aa6f040df2e3ba5bf081e81c1675f2e9f8ae67663f96"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s50/terminal-state.json",
+          "line": 1,
+          "sha256": "a120537c0c0c0120483f852318c85e96b3151c103346ca41d506f516bb70d634"
+        }
+      ]
     }
   ]
 }

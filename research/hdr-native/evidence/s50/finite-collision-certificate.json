@@ -1,0 +1,43 @@
+{
+  "targets": [
+    {
+      "float32": 1.0000000116860974e-07,
+      "target_bits": "33d6bf95",
+      "stored_log2_float32": -2.3219234943389893,
+      "stored_log2_bits": "c0149a65",
+      "normalized_code_float32": 0.35487979650497437,
+      "normalized_code_bits": "3eb5b2ce"
+    },
+    {
+      "float32": 1.0219999779792488e-07,
+      "target_bits": "33db790b",
+      "stored_log2_float32": -2.3219234943389893,
+      "stored_log2_bits": "c0149a65",
+      "normalized_code_float32": 0.35487979650497437,
+      "normalized_code_bits": "3eb5b2ce"
+    }
+  ],
+  "source": 0.125,
+  "common_offset": 0.03125,
+  "same_float32_logmap": true,
+  "same_native_normalized_texture_code": true,
+  "target_gate_intervals": [
+    [
+      "539007275565283152170163757303053/5444517870735015415413993718908291383296",
+      "549896311306753182734915908221683/5444517870735015415413993718908291383296"
+    ],
+    [
+      "550985196529146215028751777318157/5444517870735015415413993718908291383296",
+      "561874232270616245593503928236787/5444517870735015415413993718908291383296"
+    ]
+  ],
+  "target_gate_intervals_disjoint": true,
+  "minimax_relative_lower_bound_exact": "5194595172352/4722366482869645",
+  "minimax_relative_lower_bound": 0.0010999983146575687,
+  "original_relative_gate": 0.001,
+  "proof": "For identical source, metadata and stored gain, any single-valued reconstruction returns one value. Disjoint allowed target intervals imply at least one target fails the unchanged gate; lower bound=(H2-H1)/(d1+d2). This does not require a pow/fast-math error contract.",
+  "full_domain_consumer_certified": false,
+  "skin_33_tight_hulls_certified": false,
+  "native_observation_pending": false,
+  "native_identical_input_and_output_SHA": true
+}
