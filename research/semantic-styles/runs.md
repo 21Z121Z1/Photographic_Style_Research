@@ -81,3 +81,13 @@ S14–17 preflight确认PR全状态0、其他advertised ref0、源码可达持�
 - S20 ZIP：`d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7`；cipher：`5ad6308e5c01456fa24481211d49ab64eb9025c79f99ab7ca466c384ddafde5a`；manifest：`a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602`。
 
 原生iOS未执行；S19外部powf与PAC/stack hooks有清单。S20“完整”只指整个已捕获512×384 dispatch，不是原件24MP。所有源码已保留research/vm-native-20261018，master/PR未动。
+
+
+<!-- SEMANTIC-S21-20261019 -->
+
+### S21
+
+- run[39202621951](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39202621951)，job117898628743；branch research/vm-native-20261019-s21，commit5d69b9fbec9a44dd69da245d368bc699d7abef4c。artifact12164730390，3573B；retention-days1，已即时归档并核验ZIP/CRC/全manifest。ZIP SHA752241187e3048e812c6d7dd26420af03fccedb1a450486c4ea7b4e1d2c040b7，manifest SHA46cb506f9cadef628e5735987d5489b97114fe12ee9a8e709379bbaa75f8c7db。
+- 26A434，xcode-27-arm64 20261012.0260.1，Provisioner20261006.597，Apple Paravirtual device/air64_v27。AppleFamily4/5 reported true。仅设备能力和自编译重结合示例，无人物输入、无secret/release、未运行原consumer逆解。safe0/12、relaxed/fast9/12与顺序RN不同，正.25示例两精度均为0→.25。
+- 规范审查和AIR清单是VM上的受限内存文本任务，不是额外native run。MSL4.1/2026-06-04 PDF SHA41538b30d2f1140a5b2a0c84ce0a9f7b67bf0c707e224cfea0bfe5a44aa26cf5；最小事实、页码和提取脚本留存，临时PDF/解析器已清理。C01–C05未满足，因此未启动虚假的全域认证。40 helper/61intrinsic/970site均为语法上可达计数。
+- native源码已快进并推送持久research/vm-native-20261018，然后检查PR head/base全状态与其他refs，删除S21临时分支。master未变；A和原数值门槛仍false。精确provenance与cleanup见同名JSON，GPG标记为false，因为artifact纯公开合成文本。

@@ -1,0 +1,57 @@
+{
+  "source": {
+    "url": "https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf",
+    "sha256": "41538b30d2f1140a5b2a0c84ce0a9f7b67bf0c707e224cfea0bfe5a44aa26cf5",
+    "size_bytes": 14564497,
+    "version": "4.1",
+    "publication_date": "2026-06-04",
+    "pdf_pages": 383
+  },
+  "parser": {
+    "package": "pypdf",
+    "version": "6.21.1",
+    "page_text_only": true,
+    "full_pdf_or_sections_uploaded": false
+  },
+  "facts": {
+    "half_atan2_max_ulp": 1,
+    "half_atan2_pages": [
+      373,
+      374
+    ],
+    "half_table_hardware_condition": "Apple GPU Family4 or later (reported device support checked separately)",
+    "half_pow_or_powr_numeric_row_in_Table8_3": false,
+    "pow_half_overload_exists_in_Table6_4": true,
+    "explicit_fast_precise_namespaces_described_for": "single precision only",
+    "fp32_fast_pow_description": "exp2(y*log2(x)); apply log2/exp2 bounds and domain conditions, not one constant ULP for the whole shader",
+    "fp32_fast_pow_pages": [
+      371,
+      372
+    ],
+    "half_pow_reviewed_pages": [
+      205,
+      208,
+      373,
+      374
+    ],
+    "arithmetic_rounding_allowed": [
+      "ties-to-even",
+      "toward-zero"
+    ],
+    "arithmetic_subnormal_FTZ_allowed": true,
+    "float_to_half_conversion": "ties-to-even; generated half subnormals not flushed by this conversion",
+    "half_to_float_conversion": "lossless",
+    "fast_reassociation_and_contraction_allowed": true,
+    "fast_nonfinite_handling": "undefined; a zero divisor can invalidate a fast program",
+    "texture_coordinates_must_be_finite": true,
+    "per_primitive_ULP_is_not_whole_program_error_contract": true,
+    "scope": "These are checked language-level facts, not a certified implementation of AIR intrinsics or a global inverse bound."
+  },
+  "missing_conditions": [
+    "A bounded half pow/powr implementation or a proof eliminating every relevant occurrence",
+    "An enclosure of the actual lowered program/allowed rewrites",
+    "All feasible F and F0 paths satisfy domain safety, including finite sample coordinates",
+    "Sound texture footprint/value enclosure and whole declared-domain coverage"
+  ],
+  "original_gates_changed": false
+}

@@ -65,3 +65,19 @@ S11 SkinSmooth / S13 Mattify各两个非零配置的原生往返通过1e-3，覆
 **待实机解决：把j接到真实像素EV。** 输入须为匹配iPhone18Pro/iOS27.0.1的同一冻结帧。先按UUID/SHA重定址，不照抄24A446地址。抓完整compute input/meta/tuning、N、ROI/faceRect/hist、B/T/V、allocateTone全部约束/显示budget、分支bool、knots、with-j输出曲线及像素应用前后RGB。仅在副本将j实际值改1或启用WithoutFaceBoost；原路径先精确重建，GTM/local/semantic各算子独立对照，记录j是否间接改变global曲线。24A446参考：0x256ba11e4 allocateTone；0x256ba13fc..1400读取tuning+0xc到w28；0x256ba1ffc判断插值/copy；0x256ba2030..2104仅插值分支末端clamp。实际C_with/C_without与应用坐标取得后，才调用semantic_curve_inverse.inverse_curve_pair，逐段验证native pixel forward和区间覆盖、plateau/近黑/clamp/越界；标量曲线不代替CCM/key1/空间混合。没有完整曲线就维持预算假设，不用S19节点EV范围充当样张像素界。
 
 **待实机解决：原Studio/RAW/UI。** 保留前述原逐人stats/instance/眼部editedTex/blur/tuning的逐项中和方案，不能用合成stats替代原相机。UnderEye/SkinSmooth/Mattify最终单位的已知上下文往返与完整原拍摄去处理分开。RAW仍需Mac IMG_2679/IMG_2408的HEIC+配对RAW；只允许预约定全局曝光对齐，GTM/LTM/人物皮肤分开报EV、覆盖与边缘，203nit不标定。Photos UI仍需实际图库对照。
+
+
+<!-- SEMANTIC-S21-20261019 -->
+
+### S21 后：全域认证条件与同帧相机提亮捕获
+
+**可交给runner；与实机数据缺口分开。** C01–C05及其当前false见consumer-contract-audit-s21.json。输入使用已加密的S5/S17/S20副本、同26A434 metallib/PSO/function constants/ROI与逐字节相同的固定上下文。优先取得原pipeline对应的lowered程序文本/执行语义；若用MTLBinaryArchive辅助，只在runner暂存，上传反汇编文本与SHA/标识，整份Apple二进制仍须另行获准。必须证明所导出的程序就是原retained PSO，独立编译helper、改safe/关FTZ或替换oracle不够。对半精度pow、重写、取倒数/FMA、RN/RTZ/FTZ、纹理格式/有限坐标和footprint逐项建立包络。原生有限域全覆盖也可作替代路径；不把已有百万级局部查询当全域证书。判定：保留原mask和1e-3，全部声明域覆盖且未决盒0、每个排除有证据，才签发紧上界；宽区间如实交付。S20非唯一下界不因补上上界而消失。
+
+**待实机：j → 曲线 → 像素EV，执行协议。**
+
+1. 使用能观测CameraColorProcessing的匹配iPhone18Pro/iOS27.0.1测试宿主；先记录实际OS build、UUID、text基址/SHA并重定址LTMDriverV2::Process、LTCGridCalcAlgo、allocateTone及-[LTMCurvesComputeV2 compute]，不直接使用24A446地址。捕获同一冻结RAW/ISP输入帧及原mattes、AE/曝光和所有compute输入；记录真实分配长度，不能按合成实验的128点/任意结构大小猜。
+2. 原路径A完整捕获driver j（参考24A446 driver+0x24→computeInput+0xa92c）、N、ROI/faceRect/HITHStat、原face/global histogram、B/T/V/count、完整tuning、allocateTone约束/分支/budget/knots、global/local输出曲线和c/d/GTC。参考24A446可写common T在0x27994b2d0，来自当帧input+0x7210；匹配版本须重新核对。记录allocateTone入口参数寄存器/栈和调用者给定数组长度，按这些真实长度抓缓冲。
+3. 用同一份冻结输入的副本运行B：只将实际j设1，其余compute输入字节/数组内容保持。每次恢复所有可写common/cache（含T），先做A→A重复验证输入/输出SHA不变，再做A→B→A。运行C：原WithoutFaceBoost路径；比较其输入和B，若除j还有变化，分别报告，不能把C自动等同B。上游统计重新计算仍须来自同一冻结帧。
+4. 捕获三路生产曲线以及实际ISP应用前后RGB/纹理、色彩空间/transfer、GTM/LTM/semantic顺序和全部clamp。c/d/GTC是生产输出时允许随j重算，逐项记录变化；这不改变consumer参数隔离实验冻结c/d/GTC/guides/统计/mattes的规则。若global和local都受影响，固定其他语义项，交叉组合两套global/local上下文作四个对照，单列各自作用与非交换交互，不把两项混成一步。
+5. 实际C_with/C_without与曲线坐标已确认后，按native实现误差合同调用semantic_curve_inverse；RGB/矩阵/key1/空间混合另按真实顺序重放。只有经同一native颜色变换得到的线性P3像素才用于EV：正值luma上log2(Y_with/Y_without)，零/plateau/clamp给区间和unknown。原节点比值不能直接称像素EV。判定按原half/float前向门槛及可逆mask往返maxrelative≤1e-3，报告mask覆盖，不以拟合曝光或缩mask过关。
+6. 人脸/人身分别评估真实native增益的背景变化、EV梯度/光晕/振铃、色度、断层及往返；原文件faceSkin/person与生产faceROI权重的绑定必须从原调用抓取确认。预览统一现有固定ACES1.0 SDR Video、0EV，显示操作只处理副本并检查输入前后SHA。没有实际曲线时保留预算假设，不标Apple精度。Studio原始people/eye/blur/instance/tuning与RAW IMG_2679/IMG_2408继续沿前述独立测试计划；RAW不做203nit标定。

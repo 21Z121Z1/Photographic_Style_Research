@@ -93,3 +93,39 @@ python3 research/semantic-styles/test_semantic_curve_inverse_s20.py "$W/out/curv
 S19输入完全合成，无需人物文件；脚本记录外部hooks，不称原生iOS。S20真实整幅证书入口run_semantic_s20.py→semantic_s20.inc→analyze_semantic_s20.py；依赖同一S5/S17不可变归档和原件副本，只改变target参数/指定输入替代。原始传输secret/release已删，不能直接dispatch历史workflow。若复现，创建新限定push的研究分支和新workflow，轮换单archive session secret；原件AES256密文临时release或已授权加密输入，输出GPG到既有公钥。禁止上传私钥/人物明文。先核对build26A434；终态立即下载到新目录，GPG+全manifest校验后查PR/ref/源码可达性再清理。run原分支source commit在runs.md；S19仅注释纠正不改变数值代码。
 
 semantic_curve_inverse.py只收实际已知的单调标量curve pair与knots，返回输入/中和输出区间、plateau、endpoint、近黑与保证mask；完整含混点以NaN候选+区间交付。研究用minimax_estimate不是认证像素。2^-22只对应本次归一化二进制knots的原ARM插值误差合同，不能随意套到完整half消费端/相机空间。实际相机曲线未知时拒绝用S19合成曲线替换。GTM/LTM/人物语义分开，Apple Log与冻结模型不改。
+
+
+<!-- SEMANTIC-S21-20261019 -->
+
+### S21 复现（文本审查与无照片native探针）
+
+本轮结果已完成，下列命令用于复核，不默认重复运行。规范最小事实见msl-spec-check-s21.json；URL内容若变化，脚本按预期SHA拒绝自动采用新版本。
+
+```bash
+cd ~/work/styles-gtm-ltm
+# 新建临时目录；14,564,497B官方PDF，加小型pypdf包，无人物数据。
+styles_s21_tmp=$(mktemp -d /tmp/styles-s21-reproduce.XXXXXX)
+systemd-run --user --scope -p MemoryHigh=300M -p MemoryMax=400M \
+  uv pip install --target "$styles_s21_tmp/parser" --no-cache pypdf==6.21.1
+curl --fail --location --max-filesize 15000000 \
+  https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf \
+  -o "$styles_s21_tmp/spec.pdf"
+./scripts/local-python-scope.sh -I repo/research/semantic-styles/read_msl_contract_s21.py \
+  "$styles_s21_tmp/spec.pdf" "$styles_s21_tmp/spec-facts.json" \
+  --parser-dir "$styles_s21_tmp/parser"
+./scripts/local-python-scope.sh -I repo/research/semantic-styles/audit_consumer_contract_s21.py \
+  repo/research/vm-native/model-v10/0010.ll "$styles_s21_tmp/spec-facts.json" \
+  semantic-20261018/runs/39202621951/text/capabilities.json "$styles_s21_tmp/contract-audit.json"
+```
+
+审计输出REFUSED_MISSING_CONTRACT_AND_COVERAGE是当前正确结果。它不是interval solver，不能因脚本退出0就称global认证通过。full-domain/全consumer门槛独立保留false。
+
+native部分只在xcode-27/26A434 runner的新输出目录执行：
+
+```bash
+clang -O2 -fobjc-arc research/semantic-styles/semantic_contract_s21.m \
+  -framework Foundation -framework Metal -o "$RUNNER_TEMP/semantic-contract-s21"
+"$RUNNER_TEMP/semantic-contract-s21" "$RUNNER_TEMP/s21-new-output"
+```
+
+历史临时分支已删除，源码在持久研究分支。若重新排队，使用新研究分支/新限定push workflow，一次一个run，upload-artifact保留1天并立即下载校验。此probe没有照片/secret/release需求；不需要解密旧人物档。完整consumer区间若后续实现，必须保留原PSO和固定上下文，不以safe重编译、helper逐值对照或局部查询替代原生全域证书。

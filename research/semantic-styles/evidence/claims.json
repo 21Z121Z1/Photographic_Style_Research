@@ -65,7 +65,13 @@
     "semantic/skin/exact-relative-impossibility",
     "semantic/face-exposure/consumer-nonzero-tone",
     "semantic/face-body-exposure/calibration-boundary",
-    "semantic/acceptance/evidence-boundary"
+    "semantic/acceptance/evidence-boundary",
+    "semantic/numerical-contract/spec",
+    "semantic/numerical-contract/AIR",
+    "semantic/numerical-contract/native-device",
+    "semantic/numerical-contract/reassociation",
+    "semantic/numerical-contract/global-certificate",
+    "semantic/face-body-exposure/remaining-data"
   ],
   "incremental_claim_ids": [
     "V3-G01",
@@ -109,7 +115,7 @@
   ],
   "semantic_generated_utc": "2026-10-19T01:44:08.848451+00:00",
   "semantic_acceptance_complete": false,
-  "updated_utc": "2026-10-19T01:44:08.848451+00:00",
+  "updated_utc": "2026-10-19T05:18:08.767064+00:00",
   "semantic_acceptance": {
     "A_phase_complete": false,
     "original_mask_coverage": 0.9508717854817709,
@@ -161,6 +167,16 @@
     "full_original_resolution_semantic_validation": false,
     "semantic_photos": [
       "IMG_2810"
+    ],
+    "s21_numeric_contract_audit_complete": true,
+    "s21_half_hardware_precondition_reported": true,
+    "s21_full_domain_certificate_pass": false,
+    "s21_missing_conditions": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05"
     ]
   },
   "semantic_analysis_closure": {
@@ -178,7 +194,20 @@
     ],
     "nonfinite_alternatives": "unknown; do not assign finite error bound",
     "actual_camera_amplitude": "requires matched original curves/statistics",
-    "A_phase_complete": false
+    "A_phase_complete": false,
+    "S21": {
+      "contract_audit": "complete; certification refused",
+      "native_half_hardware_condition": "reported satisfied",
+      "global_tight_hull": "not certified",
+      "remaining_conditions": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "camera_amplitude": "no new calibration data"
+    }
   },
   "claims": [
     {
@@ -1845,6 +1874,206 @@
           "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
         }
       ]
+    },
+    {
+      "id": "SEM-56",
+      "category": "semantic/numerical-contract/spec",
+      "status": "已验证静态",
+      "claim": "Official MSL4.1 PDF SHA41538b30...,383 pages: section6.6/Table6.4 provides half pow/powr overloads, but Table8.3 pp373-374 has no numeric ULP row for either. Half atan2 has1ULP subject to AppleFamily4. FP32 fast pow is described via exp2(y*log2(x)), with component/domain bounds. Single-precision tables/namespaces cannot silently supply a half intrinsic or whole-program bound.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s21/msl-spec-check-s21.json",
+          "line": 16,
+          "sha256": "8800491c987204c2042a0d08b4aa3acd62bec01570b3d1167560eefb113d03aa",
+          "json_pointer": "/facts"
+        }
+      ],
+      "source_url": "https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf",
+      "source_sha256": "41538b30d2f1140a5b2a0c84ce0a9f7b67bf0c707e224cfea0bfe5a44aa26cf5"
+    },
+    {
+      "id": "SEM-57",
+      "category": "semantic/numerical-contract/AIR",
+      "status": "已验证静态",
+      "claim": "Original AIR0010 is MSL4.1/SDK27.0 with fast_math_enable and denorms_disable. renderSkinAdjustments contains half pow at4381 and selectiveColorFilter at2241; top function attribute no-infs=false does not cancel per-op fast flags or helper attributes. Syntactic reachable superset:40 helpers,61 intrinsic kinds,970 sites; this is not captured-path coverage. Relevant dead/constant cases require a specialization proof before omitting their numeric contract.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 6394,
+          "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+          "symbol": "renderFinalAdjustments AIR module",
+          "address": "AIR0010:6391..6394"
+        },
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 4381,
+          "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+          "symbol": "renderSkinAdjustments",
+          "address": "AIR0010:4381"
+        },
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 2241,
+          "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+          "symbol": "selectiveColorFilter",
+          "address": "AIR0010:2241"
+        },
+        {
+          "file": "semantic-20261018/s21/consumer-contract-audit-s21.json",
+          "line": 4087,
+          "sha256": "183f6d2ad84441436498fa1de024152679bc96cf603cb89559200a7f2f6c7920",
+          "json_pointer": "/failure_conditions"
+        }
+      ]
+    },
+    {
+      "id": "SEM-58",
+      "category": "semantic/numerical-contract/native-device",
+      "status": "已验证数值",
+      "claim": "S21 on26A434 reports AppleFamily1-5 true,6-10 false; Common1-3 and Mac1-2 true. architectureair64_v27, default mathMode2/fast and FP32-functions0/fast. Therefore AppleFamily4 half-table hardware precondition is reported satisfied; lack of this capability is not the blocker. Original metallib SHA matches16a8a119..., original consumer not rerun or modified.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39202621951/text/capabilities.json",
+          "line": 8,
+          "sha256": "b175fc304c10909c536a598fd9a4dff737caca6b76983fda483ad1f19048a1d0",
+          "json_pointer": "/families"
+        },
+        {
+          "file": "semantic-20261018/s21/s21-run-provenance-20261019.json",
+          "line": 2,
+          "sha256": "2352f05ad02bf70085f4766cb12ab38de619d2b51d80c34c85470d763e129678"
+        }
+      ],
+      "run_id": "39202621951",
+      "artifact_id": "12164730390",
+      "commit": "5d69b9fbec9a44dd69da245d368bc699d7abef4c",
+      "zip_sha256": "752241187e3048e812c6d7dd26420af03fccedb1a450486c4ea7b4e1d2c040b7"
+    },
+    {
+      "id": "SEM-59",
+      "category": "semantic/numerical-contract/reassociation",
+      "status": "已验证数值",
+      "claim": "Own synthetic kernel only: for a=.25, (a+2^24)-2^24 in float and (a+2^11)-2^11 in half give0 with safe and.25 with relaxed/fast (FP32-functions precise in all three).9/12 components differ from ordered-RN reference in each optimized mode,0/12 in safe. For positive.25 both source-ordered RN and RTZ give0; a per-instruction-only enclosure can miss native output. This does not identify the lowering or cause of any particular skin33 point.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39202621951/text/reassociation.json",
+          "line": 5,
+          "sha256": "81afc47dd2cdc63cb84bf87cce93a573a15237a27ba28fd2888d2d7a44b389e4",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "repo/research/semantic-styles/semantic_contract_s21.m",
+          "line": 20,
+          "sha256": "c46b25e482c9a8c94f3fb85a5f594bc4fe001594fb007795a01f6d846066391f"
+        },
+        {
+          "file": "semantic-20261018/s21/msl-spec-check-s21.json",
+          "line": 16,
+          "sha256": "8800491c987204c2042a0d08b4aa3acd62bec01570b3d1167560eefb113d03aa",
+          "json_pointer": "/facts"
+        }
+      ],
+      "run_id": "39202621951",
+      "artifact_id": "12164730390",
+      "commit": "5d69b9fbec9a44dd69da245d368bc699d7abef4c",
+      "zip_sha256": "752241187e3048e812c6d7dd26420af03fccedb1a450486c4ea7b4e1d2c040b7"
+    },
+    {
+      "id": "SEM-60",
+      "category": "semantic/numerical-contract/global-certificate",
+      "status": "runner",
+      "claim": "S21 refuses to issue a tight full-consumer certificate: C01 relevant half-pow bound/elimination, C02 actual-lowering or allowed-rewrite enclosure, C03 all feasible F/F0 domain safety/nonfinite paths, C04 texture/spatial enclosure and C05 full domain coverage are unproved. The audit is not an interval interpreter and pruned no boxes. No new global tight upper bound for33 points; finite-format conditional outer remains[-65504,65504], nonfinite alternatives unknown. This is not a proof that future native finite-domain/backend certification is impossible.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s21/consumer-contract-audit-s21.json",
+          "line": 4087,
+          "sha256": "183f6d2ad84441436498fa1de024152679bc96cf603cb89559200a7f2f6c7920",
+          "json_pointer": "/failure_conditions"
+        },
+        {
+          "file": "repo/research/semantic-styles/audit_consumer_contract_s21.py",
+          "line": 3,
+          "sha256": "1baa3d128244a6ad474d1d2337b256fc6a43f44a198d7a037c6b176d4f630c80"
+        },
+        {
+          "file": "semantic-20261018/s21/msl-spec-check-s21.json",
+          "line": 16,
+          "sha256": "8800491c987204c2042a0d08b4aa3acd62bec01570b3d1167560eefb113d03aa",
+          "json_pointer": "/facts"
+        },
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/analysis/s20-certificate-summary.json",
+          "line": 4,
+          "sha256": "b7d1568d4e910849d3646ac56a76dcc6e99c69412b795e7032deefb613dc831a",
+          "json_pointer": "/rows"
+        }
+      ],
+      "global_tight_hull_certified": false,
+      "threshold_unchanged": 0.001,
+      "original_mask_changed": false
+    },
+    {
+      "id": "SEM-61",
+      "category": "semantic/face-body-exposure/remaining-data",
+      "status": "待实机",
+      "claim": "S21 supplies no missing producer frame statistics or curves and cannot calibrate j into IMG_2810 pixel EV. beta25/128 is an internal weight-cap increment. Existing face/body budget previews remain hypotheses. Need matched iPhone18Pro/iOS27.0.1 frozen frame, N/B/T/V/face histogram/allocation constraints, actual j and WithoutFaceBoost curves and native pixel application domain; compare directj1 versus WithoutFaceBoost, reset mutable common T before each replay, and report any global/local interactions separately.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 123,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256ba3808..0x256ba3818;0x256bab6b0..0x256bab6d0",
+          "symbol": "generateSpatialLTC / LTMDriverV2::Process"
+        },
+        {
+          "file": "semantic-20261018/runs/39183348891/text/allocation/allocation-results.json",
+          "line": 4,
+          "sha256": "57949b511f34fd7764ece18a35fdd1277605d19cd51960ff7a007ac4a7ca2fb7",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/s21/msl-spec-check-s21.json",
+          "line": 16,
+          "sha256": "8800491c987204c2042a0d08b4aa3acd62bec01570b3d1167560eefb113d03aa",
+          "json_pointer": "/facts"
+        },
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/native/s20-results.json",
+          "line": 14,
+          "sha256": "f43910454c5cb0ff7bcc7745d7ad1ae7e72d6e66fc4620e37445c17ba68c7a62",
+          "json_pointer": "/j_only_at_nonzero_tone"
+        }
+      ],
+      "camera_face_EV_identified": false
+    },
+    {
+      "id": "SEM-62",
+      "category": "semantic/evidence/transport-integrity",
+      "status": "已验证数值",
+      "claim": "S21 artifact12164730390 is3573B public non-photo text; ZIP digest/CRC/full manifest verified,6 files including manifest. Native source retained on persistent research branch before temporarybranch deletion; PR head/base all states and other refs checked. No secret/release created. Temporary S21 PDF/parser/text extracts removed after minimal source SHA/page facts and reproducible scripts retained. Old archives/originals untouched.",
+      "os_build": "26A434; source AIR MSL4.1, specification4.1/2026-06-04",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s21/s21-run-provenance-20261019.json",
+          "line": 2,
+          "sha256": "2352f05ad02bf70085f4766cb12ab38de619d2b51d80c34c85470d763e129678"
+        },
+        {
+          "file": "semantic-20261018/s21/cleanup-s21-20261019.json",
+          "line": 2,
+          "sha256": "ee75e21b2fe4d3adb75021741dc71933aa286291b1f0cb62f4cfd97f8c8365b8"
+        }
+      ],
+      "run_id": "39202621951",
+      "artifact_id": "12164730390",
+      "commit": "5d69b9fbec9a44dd69da245d368bc699d7abef4c",
+      "zip_sha256": "752241187e3048e812c6d7dd26420af03fccedb1a450486c4ea7b4e1d2c040b7"
     }
   ]
 }

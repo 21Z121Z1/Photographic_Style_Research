@@ -248,3 +248,41 @@ S18继续沿数据流：
 最终只读审计：[final-audit-s20-20261019.json](evidence/final-audit-s20-20261019.json)。17份归档、48次预览输入SHA、7份冻结/原件文件、65条证据引用通过；新增847条S19/S20指标（合成/真实严格区分）。远端临时secret/release/分支均不存在，最近12个run均结束。此审计不改变数值门槛或A未完成状态。
 
 S20 CSV元数据勘误：三条整幅half差异计数的单位改为half_components、n=589824；6/29/35是另一项见证像素计数。数值仍全为0，门槛/mask不变。当前CSV SHA与增量审计见[final-audit-s20-v2-20261019.json](evidence/final-audit-s20-v2-20261019.json)，上一审计保留。
+
+
+<!-- SEMANTIC-S21-20261019 -->
+
+### S21：数值合同审查完成；全域紧外包络仍未认证
+
+**结论：A阶段尚未完成，原1e-3、186949有效mask与6/27/33失败数保持。** 本轮解决的是“能否仅凭MSL规范对原consumer签发保守紧区间”的前提问题，结论为目前不能。没有把局部对照提升为全域证明，也没有启动带缺失算子合同的区间剪枝。S20的70个精确歧义证书继续有效；本轮不再选根或优化旧bit-exact模型。
+
+**已验证静态（SEM-56/57）**：官方[MSL4.1规范](https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf)，日期2026-06-04，383页，14,564,497B，SHA `41538b30d2f1140a5b2a0c84ce0a9f7b67bf0c707e224cfea0bfe5a44aa26cf5`。§6.6/Table6.4（205/208页）有half pow/powr重载；Table8.3（373–374页）却未给两者数值ULP项。不能给AIR half pow套“1ULP”，也不能用FP32 precise/fast的界填补。FP32 fast pow可按log2/exp2的分段合同建条件包络；仍需证明输入域和组合误差。half atan2的1ULP及其他表项有AppleFamily4前提。算术还要包含RN/RTZ与FTZ；转换规则§8.6单列，不能把float→half转换的RNE/保留生成subnormal与算术FTZ混为一谈。
+
+AIR0010:6391–6394标明Metal4.1、fast_math_enable和denorms_disable；renderSkinAdjustments:4381与selectiveColorFilter:2241存在half pow。后者即便本上下文LUT全零，AIR仍有运行时幂调用；若要以常量/死支移除，须交付保持原后端行为的特化证书。顶层attribute中no-infs=false不消除逐指令fast标志及内部helper属性。脚本得到40个语法可达helper、61种intrinsic、970调用点；这是所有语法分支的上包集合，**不是本帧实际执行覆盖**。
+
+**已验证数值（SEM-58/59）**：run[39202621951](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39202621951) / artifact12164730390，26A434，xcode-27-arm64 20261012.0260.1。Paravirtual Metal报告AppleFamily1–5支持、6–10不支持，architecture=air64_v27；因此half表的Family4前提已满足，不能把这项列为“runner没有真GPU所以做不了”。metallib SHA仍为16a8a119…；本轮只查询其存在性，没有重跑原consumer。
+
+自编译无照片示例为`(a+2^24)−2^24`（float）与`(half(a)+2^11)−2^11`（half）。a=.25时safe原生输出0，relaxed/fast均输出.25；这三个模式的FP32函数精度均设precise。12个显式合成输入中，relaxed/fast各有9个结果与顺序RN不同，safe为0。正a=.25时，按源码顺序的RN和RTZ都给0；单纯对每条AIR运算加舍入界而固定原顺序，会漏包允许的重结合结果。**这只是规范允许行为的原生例子，不是原consumer编译后代码，不用于声称33点的具体根因已经定位到重结合或pow。**
+
+**可交给macOS runner，当前拒绝认证（SEM-60）**：审计文件[consumer-contract-audit-s21.json](evidence/consumer-contract-audit-s21.json)逐项列出条件。
+
+|条件|目前缺口|可推进方式|
+|---|---|---|
+|C01 half pow/powr|已检查章节没有所需精度项；实际特化消除证明亦缺|取得相关原后端实现的保守合同，或证明捕获配置下相关调用已消除；独立helper sweep不自动等价于原内联PSO|
+|C02 lowered program|重结合、跨语句FMA、reciprocal、RN/RTZ、FTZ未形成原程序包络|导出同build/同function constants/同原PSO的后端文本并建语义，或覆盖所有允许重写；不能换safe重编译后称其为原consumer|
+|C03 全域定义性|尚未排除全部F(x)=Y前像在F/F0的零分母、pow域、overflow、非有限纹理坐标等路径|每条排除附可覆盖的域/分支证书；未知路径保留unknown；S19人工上下文异常不是本图已证可行根|
+|C04 纹理/空间|转换、采样footprint/边缘/LOD、变量主图邻居尚无全域包络|原ROI/bindings冻结，S14基与九类空间控制作回归；将它们升级为全值域证明，或显式纳入邻居变量|
+|C05 域覆盖|局部cube并非全部halfRGB，完整覆盖证书不存在|明确声明域，分支定界未决盒保留；原生有限域穷举可作替代，但部分查询不能排除未查询根|
+
+这份脚本是前提审计，**不是区间解释器**；没有剪掉任何盒，也没有产出新的33点tight hull。有限F0的格式外包络[-65504,65504]保持；非有限替代未排除时，数值误差仍unknown/unbounded，原mask不缩减。它不证明数学上永远不能算集合上界。S20已证任何全域可行集至少包含分离的见证端点，因此即使后续算出更紧集合，也不会恢复对所有同观测前像的统一1e-3点保证。
+
+**假设 / 待实机（SEM-52/61）**：S21没有取得同帧曲线或统计，不能进一步把β=.1953125定为IMG_2810像素EV。人脸/人身仍分别使用已有显式预算候选及固定ACES预览；它们的平滑性、色度与自洽数值不代表Apple幅度。必须抓匹配硬件/build下实际j、直接j=1与WithoutFaceBoost三路，保存N/B/T/V、人脸直方图、分配约束/knots与应用前后RGB；每次重放恢复可写common T，比较WithoutFaceBoost是否还改变其他输入。允许生产端输出c/d/GTC随重算变化，但要追踪来源；consumer隔离皮肤参数时仍冻结这些上下文。GTM、LTM、语义分开报告，像素EV在已确认的线性P3应用结果计算，不使用S19合成节点EV冒充样张界。
+
+**已验证数值（SEM-62）**：3573B ZIP `752241187e3048e812c6d7dd26420af03fccedb1a450486c4ea7b4e1d2c040b7`，CRC和6文件全manifest通过。没有人物输入、secret或release；源码保留研究分支后，检查PR head/base全部状态、其他refs再清理S21临时分支。官方PDF及本轮临时解析器/全文片段已清理，保留URL/SHA/页码、最小事实和复现脚本。原件、历史归档、冻结模型及consumer-goto-v8不变。详见[s21-run-provenance](evidence/s21-run-provenance-20261019.json)和[cleanup-s21](evidence/cleanup-s21-20261019.json)。
+
+下一步分开：**VM/runner可继续**原PSO后端文本/合同与覆盖证书研究；具备C01–C04后才运行全域认证，C05有未决盒即不通过。**只能实机取得**的是匹配拍摄帧的j/WithoutFaceBoost曲线与统计、原Studio上下文、RAW配对及Photos UI；执行方案见NATIVE_TODO新增项。A_phase_complete与acceptance_complete继续false。
+
+
+S21待认证域沿用全有限half主图RGB输入，c/d、GTC、guides、统计、mattes及ROI为原捕获上下文；若未证明变量主图的采样邻居可排除，则它们也须纳入域。该域不是已证相机先验，原mask不随新域改变；本轮没有裁剪此域或给出其tight hull。
+
+最终只读审计见[final-audit-s21-20261019.json](evidence/final-audit-s21-20261019.json)：18份归档、48次预览SHA、7份冻结/原件、76条证据引用通过；19条S21无照片指标与真实样张统计分开，数值验收仍false。

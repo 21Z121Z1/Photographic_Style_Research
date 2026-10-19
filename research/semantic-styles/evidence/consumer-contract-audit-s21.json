@@ -1,0 +1,4122 @@
+{
+  "os_build": "26A434",
+  "source_air": {
+    "file": "repo/research/vm-native/model-v10/0010.ll",
+    "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+    "language_version": "Metal4.1",
+    "metadata_lines": [
+      6374,
+      6375,
+      6376,
+      6391,
+      6392,
+      6393,
+      6394
+    ]
+  },
+  "spec_notes_sha256": "8800491c987204c2042a0d08b4aa3acd62bec01570b3d1167560eefb113d03aa",
+  "capability_sha256": "b175fc304c10909c536a598fd9a4dff737caca6b76983fda483ad1f19048a1d0",
+  "scope": "Syntactic reachable superset and certification prerequisites only. No pixel inference, interval pruning or full-domain certification was performed.",
+  "entry": "renderFinalAdjustments",
+  "reachable_helpers_count": 40,
+  "intrinsic_call_sites": 970,
+  "intrinsic_kinds": 61,
+  "fast_instruction_counts": {
+    "fadd": 571,
+    "fdiv": 76,
+    "fmul": 1027,
+    "fsub": 157,
+    "fcmp": 162,
+    "fneg": 28
+  },
+  "intrinsics": {
+    "air.all.v2i1": [
+      {
+        "line": 718,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.atan2.f16": [
+      {
+        "line": 4540,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5467,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3492,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2993,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3006,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5908,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1133,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2689,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2060,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 3983,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1024,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2873,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2639,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 4123,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 644,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.clamp.f16": [
+      {
+        "line": 1664,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1781,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4891,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 2498,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 2507,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5351,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5368,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5084,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3505,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4364,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 3037,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3045,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3112,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3121,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3190,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 1251,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2072,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2112,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2150,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2246,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5204,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5218,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4473,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4479,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3801,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3857,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3872,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3910,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4029,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1031,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2902,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3660,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3674,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3690,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4151,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3329,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3339,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3378,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3393,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      }
+    ],
+    "air.clamp.v3f16": [
+      {
+        "line": 1819,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4921,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 5382,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5112,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5232,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5010,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      }
+    ],
+    "air.convert.f.f16.s.i32": [
+      {
+        "line": 1773,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      }
+    ],
+    "air.convert.f.f16.u.i32": [
+      {
+        "line": 5978,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      }
+    ],
+    "air.convert.f.v2f32.u.v2i16": [
+      {
+        "line": 58,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.convert.f.v3f16.f.v3f32": [
+      {
+        "line": 4531,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 4578,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5458,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5526,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3483,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3568,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2984,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3081,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3230,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5899,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5965,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1118,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2680,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2766,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2051,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2227,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 3974,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1015,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2813,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2844,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2630,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 1900,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1957,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 2014,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3619,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3766,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4111,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4211,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3281,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3373,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3429,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 245,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 248,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 251,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 339,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 342,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 345,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 635,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 685,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 688,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 691,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.convert.f.v3f32.f.v3f16": [
+      {
+        "line": 4510,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 4558,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5437,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5506,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3462,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3548,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2963,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3061,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3210,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5878,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5945,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1097,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2659,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2746,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2030,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2207,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 3953,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 994,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2792,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2823,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2609,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 1879,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1936,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1993,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3598,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3746,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4090,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4191,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3260,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3353,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3409,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 614,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.convert.u.i1.f.f32": [
+      {
+        "line": 3516,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3140,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3154,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 2881,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1854,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1911,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1968,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      }
+    ],
+    "air.cos.f16": [
+      {
+        "line": 4552,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5500,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3540,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3180,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5939,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2154,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2346,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2443,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2916,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2596,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 4185,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.dot.v2f16": [
+      {
+        "line": 2493,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 4546,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 3520,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 1245,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2066,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2897,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4113,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.dot.v2f32": [
+      {
+        "line": 4134,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4140,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4146,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.dot.v3f16": [
+      {
+        "line": 1669,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 4914,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 5342,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5067,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4817,
+        "function": "_Z13smartContrastDv3_DhDhDh"
+      },
+      {
+        "line": 1468,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 4295,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4333,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 1698,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5706,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5771,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5539,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5195,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4975,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5001,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4396,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4459,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3869,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3895,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3896,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3898,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4020,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1313,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1398,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 923,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 924,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 950,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 957,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1611,
+        "function": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 4219,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4224,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 534,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.exp.f16": [
+      {
+        "line": 1217,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1230,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1240,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2719,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2727,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2735,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 4007,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2649,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      }
+    ],
+    "air.exp.v3f16": [
+      {
+        "line": 6174,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.fabs.f16": [
+      {
+        "line": 5491,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 6238,
+        "function": "_Z16applySemanticSRLDv3_DhfDh"
+      },
+      {
+        "line": 6298,
+        "function": "_Z16applySemanticSRLDv3_DhfDh"
+      },
+      {
+        "line": 4350,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 5930,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5828,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1029,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2339,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2436,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2589,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 165,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fabs.v3f16": [
+      {
+        "line": 3454,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3570,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4377,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3878,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3887,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3935,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3944,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 915,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 929,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 942,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 962,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2815,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1871,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1928,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1985,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3590,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3768,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3252,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3431,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 776,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 783,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 795,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 807,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 819,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 853,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6126,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6133,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6145,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6157,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6169,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6200,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.fast_clamp.f32": [
+      {
+        "line": 3528,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3149,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3163,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 2889,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 129,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_exp.f32": [
+      {
+        "line": 5483,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5922,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1150,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1159,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1175,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1184,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1200,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1209,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2166,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2174,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2183,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 4242,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.fast_fabs.f32": [
+      {
+        "line": 3525,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3146,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3160,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5592,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5613,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5626,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5640,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5653,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5684,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5697,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5762,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5800,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5836,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5851,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4602,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4615,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4636,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4649,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4662,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4685,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4698,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4728,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4743,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4778,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4787,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4387,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4452,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 2290,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2381,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2410,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2848,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2855,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2886,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2933,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2946,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2558,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 674,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_fabs.v3f32": [
+      {
+        "line": 4520,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 4567,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5447,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5515,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3472,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3557,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2973,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3070,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3219,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5888,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5954,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1107,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2669,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2755,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2040,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2216,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 3963,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1004,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2802,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2833,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2619,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 1889,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1946,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 2003,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3608,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3755,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4100,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4200,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3270,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3361,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3418,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 624,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_fmax.f32": [
+      {
+        "line": 5169,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3819,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3825,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3831,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3839,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3993,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4244,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 134,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 466,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 472,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_fmin.f32": [
+      {
+        "line": 4492,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3818,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3824,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3830,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3992,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4023,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4160,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4172,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 511,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_pow.f32": [
+      {
+        "line": 3843,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4037,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 219,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_pow.v3f32": [
+      {
+        "line": 4521,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 4568,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5448,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5516,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3473,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3558,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2974,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3071,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3220,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5889,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5955,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1108,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2670,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2756,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2041,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2217,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 3964,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1005,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2803,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2834,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2620,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 1890,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1947,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 2004,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3609,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3756,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4101,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4201,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3271,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3362,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3419,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 625,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fast_saturate.f32": [
+      {
+        "line": 4009,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4051,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4064,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      }
+    ],
+    "air.fast_sqrt.f32": [
+      {
+        "line": 5013,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4135,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4141,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4147,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.fmax.f16": [
+      {
+        "line": 1659,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1660,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 5345,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5494,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4334,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4343,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 5933,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1120,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1122,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1124,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2708,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2710,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2712,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 5784,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5198,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5283,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5284,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5293,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5295,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4469,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4470,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3807,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 226,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 227,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fmax.v3f16": [
+      {
+        "line": 1648,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1809,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 1831,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4916,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 4964,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 2481,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5383,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5426,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5065,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5155,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4870,
+        "function": "_Z13smartContrastDv3_DhDhDh"
+      },
+      {
+        "line": 1466,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 1526,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 4548,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5472,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3510,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3174,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5913,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1696,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1739,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1744,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 2701,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 5660,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5704,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5749,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5754,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5769,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5788,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4705,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5569,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2145,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5233,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5273,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5003,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5055,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4394,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4439,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4444,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4002,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4011,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1330,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1353,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1356,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1375,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1396,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1441,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1446,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1627,
+        "function": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 3679,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4235,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3381,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 552,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fmax3.f16": [
+      {
+        "line": 1535,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 1545,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 5665,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4710,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1361,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1380,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 4149,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.fmin.f16": [
+      {
+        "line": 2495,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 2504,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5328,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5188,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5280,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5282,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5296,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5297,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3833,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      }
+    ],
+    "air.fmin.v3f16": [
+      {
+        "line": 1647,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1811,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4918,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 2480,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5385,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5064,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1465,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 4550,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5474,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3512,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3176,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5915,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1695,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 2703,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 5659,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5703,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5768,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4704,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5571,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2147,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5235,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5005,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4393,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4004,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1355,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1374,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1395,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 5988,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6033,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6044,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6084,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 3681,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4237,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3383,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 393,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 405,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.fmin3.f16": [
+      {
+        "line": 1770,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 1534,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 1546,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 4294,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      }
+    ],
+    "air.fmod.f16": [
+      {
+        "line": 3518,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3143,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3157,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 2883,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      }
+    ],
+    "air.get_width_texture_2d": [
+      {
+        "line": 1771,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 5977,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      }
+    ],
+    "air.imageblock_data": [
+      {
+        "line": 711,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.is_null_texture_2d": [
+      {
+        "line": 81,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 98,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 109,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 360,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 364,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.log.v3f16": [
+      {
+        "line": 820,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 827,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.log2.f16": [
+      {
+        "line": 201,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.log2.v3f16": [
+      {
+        "line": 837,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.min.u.v2i16": [
+      {
+        "line": 725,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.mix.f16": [
+      {
+        "line": 1784,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 1812,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4904,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 5322,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5485,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3544,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3546,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4296,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4337,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4338,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 3182,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3186,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5924,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2100,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2101,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2102,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2121,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2131,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2136,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2137,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2140,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2143,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2144,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2151,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2236,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2237,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2238,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5177,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3806,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3862,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3899,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 925,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 958,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4184,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3407,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 429,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 430,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 431,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 514,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 515,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 676,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.mix.f32": [
+      {
+        "line": 6283,
+        "function": "_Z16applySemanticSRLDv3_DhfDh"
+      },
+      {
+        "line": 301,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 309,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 320,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 326,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.mix.v2f16": [
+      {
+        "line": 2518,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 2530,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 2700,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2741,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2190,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2194,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2198,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      }
+    ],
+    "air.mix.v3f16": [
+      {
+        "line": 1677,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1802,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 1817,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 1818,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4962,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 4963,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 2536,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5363,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5424,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5425,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5101,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5106,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5107,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5111,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5153,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5154,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4863,
+        "function": "_Z13smartContrastDv3_DhDhDh"
+      },
+      {
+        "line": 4869,
+        "function": "_Z13smartContrastDv3_DhDhDh"
+      },
+      {
+        "line": 4884,
+        "function": "_Z13smartContrastDv3_DhDhDh"
+      },
+      {
+        "line": 1519,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 1525,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 5529,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3582,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4314,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4327,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4370,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 3233,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5968,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1737,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1738,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1745,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1751,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 2768,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 5747,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5748,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5755,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4599,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4811,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5574,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5581,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2203,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2206,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2255,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5214,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5271,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5272,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5006,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5009,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5053,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5054,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4437,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4438,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4445,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4496,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4503,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3851,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3868,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3908,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3914,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3933,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3952,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3989,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4015,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4018,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4048,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4055,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4058,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4068,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1046,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 1052,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 1329,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1352,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1439,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1440,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1447,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1450,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 2473,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 1626,
+        "function": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 1637,
+        "function": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 6019,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6032,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6036,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6072,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6083,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6087,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6091,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 3780,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3783,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4256,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3443,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3446,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 392,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 396,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 404,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 408,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 412,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 485,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 488,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 551,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 561,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 576,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 582,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 585,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 663,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.pow.f16": [
+      {
+        "line": 2519,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5083,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4818,
+        "function": "_Z13smartContrastDv3_DhDhDh"
+      },
+      {
+        "line": 4297,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 5666,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4711,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5544,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5547,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5550,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4980,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5000,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4034,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1362,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1381,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 202,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 231,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.pow.v3f16": [
+      {
+        "line": 1673,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1766,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 1820,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4920,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 2483,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 2544,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5087,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3456,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3574,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4288,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 4315,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 5787,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 2241,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 4993,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4381,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3864,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3880,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3889,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3939,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3948,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4035,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4044,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 917,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 933,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 944,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 966,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2817,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1875,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1932,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1989,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3592,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3772,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4218,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3254,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3435,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 777,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 785,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 797,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 809,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6127,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6137,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6149,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6161,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6203,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.powr.v3f16": [
+      {
+        "line": 6185,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.sample_texture_2d.v4f16": [
+      {
+        "line": 1778,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 2078,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2082,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2086,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2090,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5995,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6004,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6013,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6050,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6059,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 6068,
+        "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment"
+      },
+      {
+        "line": 66,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 91,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 102,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 113,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 272,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 275,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 335,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 380,
+        "function": "renderFinalAdjustments"
+      },
+      {
+        "line": 383,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.saturate.f16": [
+      {
+        "line": 4045,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      }
+    ],
+    "air.saturate.v3f16": [
+      {
+        "line": 1649,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1678,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 1765,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh"
+      },
+      {
+        "line": 4913,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 4966,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 2482,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh"
+      },
+      {
+        "line": 5341,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5428,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5066,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1467,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 4509,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 4579,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5436,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5530,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3452,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2962,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5877,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5969,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1697,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 2658,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2769,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 5661,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5673,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5705,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5770,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4706,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 4718,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5538,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5582,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2029,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2256,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5165,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5275,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4974,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4395,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3789,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3790,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3850,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3852,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3932,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4043,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 4069,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1357,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1369,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1376,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1388,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1397,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 3588,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4080,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4212,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4257,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3250,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      }
+    ],
+    "air.sign.f16": [
+      {
+        "line": 3514,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3138,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3152,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 2879,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      }
+    ],
+    "air.sign.v3f16": [
+      {
+        "line": 3453,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3569,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4376,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3877,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3886,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3934,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3943,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 914,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 928,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 941,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 961,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2814,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1870,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1927,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1984,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3589,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3767,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3251,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3430,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 775,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 782,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 794,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 806,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 818,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 852,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6125,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6132,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6144,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6156,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6168,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6199,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.sign.v3f32": [
+      {
+        "line": 4519,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 4566,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5446,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5514,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3471,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3556,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 2972,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3069,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3218,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5887,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5953,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1106,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 2668,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2754,
+        "function": "_Z18whiteBalanceFilterDv3_DhN5metal6matrixIDhLi3ELi3EvEES_Dv4_Dh"
+      },
+      {
+        "line": 2039,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2215,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 3962,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1003,
+        "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+      },
+      {
+        "line": 2801,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2832,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2618,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 1888,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 1945,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 2002,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh"
+      },
+      {
+        "line": 3607,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3754,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4099,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4199,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3269,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3363,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3417,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 623,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.sin.f16": [
+      {
+        "line": 4555,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5503,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3542,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3184,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5942,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 2157,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2348,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2445,
+        "function": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh"
+      },
+      {
+        "line": 2921,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 2598,
+        "function": "_Z29whiteBalanceFilterAdjustmentsDv3_DhN5metal6matrixIDhLi3ELi3EvEERU9MTLdevice18SSRCastAdjustmentsDhDh"
+      },
+      {
+        "line": 4188,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      }
+    ],
+    "air.sqrt.f16": [
+      {
+        "line": 1670,
+        "function": "_Z10airyFilterDv3_DhDh"
+      },
+      {
+        "line": 4915,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 4919,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 5343,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5108,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5119,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1469,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 4547,
+        "function": "_Z15smoothSatFilterDv3_DhDh"
+      },
+      {
+        "line": 5489,
+        "function": "_Z15underToneFilterDv3_DhDhDh"
+      },
+      {
+        "line": 3502,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 3521,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh"
+      },
+      {
+        "line": 4335,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh"
+      },
+      {
+        "line": 3014,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3028,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3085,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 3108,
+        "function": "_Z16skinWarmthFilterDv3_DhDhDhS_DhDh"
+      },
+      {
+        "line": 5928,
+        "function": "_Z16underGrassFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1246,
+        "function": "_Z17protectMaskFilterDv3_DhS_S_S_b"
+      },
+      {
+        "line": 1699,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 1705,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5707,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5713,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 2067,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2242,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 2250,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh"
+      },
+      {
+        "line": 5196,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5017,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4397,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 4403,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 1399,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 1405,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 2898,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 3625,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3644,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3670,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 4114,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 4150,
+        "function": "_Z7RichSatDv3_DhDhDhDh"
+      },
+      {
+        "line": 3287,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3306,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3325,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      },
+      {
+        "line": 3384,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh"
+      }
+    ],
+    "air.sqrt.v3f16": [
+      {
+        "line": 4928,
+        "function": "_Z12highlightNegDv3_DhDhDh"
+      },
+      {
+        "line": 5390,
+        "function": "_Z13ShadowsFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5118,
+        "function": "_Z13lightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 1485,
+        "function": "_Z14contrastFilterDv3_DhDh"
+      },
+      {
+        "line": 1704,
+        "function": "_Z17starkBWAdjustmentDv3_DhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5712,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE"
+      },
+      {
+        "line": 5240,
+        "function": "_Z21ShadowsNegativeFilterDv3_DhDhDh"
+      },
+      {
+        "line": 5016,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh"
+      },
+      {
+        "line": 4402,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh"
+      },
+      {
+        "line": 3915,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats"
+      },
+      {
+        "line": 1404,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+      },
+      {
+        "line": 824,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      },
+      {
+        "line": 6190,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_"
+      }
+    ],
+    "air.wg.barrier": [
+      {
+        "line": 716,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.write_imageblock_slice_to_texture_2d.i16.v4f16": [
+      {
+        "line": 726,
+        "function": "renderFinalAdjustments"
+      }
+    ],
+    "air.write_texture_2d.i16.v4f16": [
+      {
+        "line": 732,
+        "function": "renderFinalAdjustments"
+      }
+    ]
+  },
+  "categories": {
+    "half_pow_missing_numeric_row": {
+      "intrinsics": [
+        "air.pow.v3f16",
+        "air.pow.f16",
+        "air.powr.v3f16"
+      ],
+      "status": "unsupported_for_tight_certification",
+      "note": "Table8.3 does not list these operations. Constant folding/dead-branch removal requires its own proof; not all syntactic occurrences are active in captured context."
+    },
+    "fp32_fast_pow": {
+      "intrinsics": [
+        "air.fast_pow.v3f32",
+        "air.fast_pow.f32"
+      ],
+      "status": "conditional_contract",
+      "note": "Positive-domain log2/exp2 envelope exists; no whole-consumer enclosure or domain proof implemented."
+    },
+    "half_atan2_sqrt_trig": {
+      "intrinsics": [
+        "air.sqrt.f16",
+        "air.sqrt.v3f16",
+        "air.atan2.f16",
+        "air.cos.f16",
+        "air.sin.f16"
+      ],
+      "status": "hardware_precondition_reported",
+      "note": "Individual Table8.3 contracts do not freeze rewriting, rounding mode or intermediate FTZ."
+    },
+    "mix_dot_and_basic_arithmetic": {
+      "intrinsics": [
+        "air.dot.v3f16",
+        "air.mix.v3f16",
+        "air.mix.f16",
+        "air.dot.v2f16",
+        "air.mix.v2f16",
+        "air.mix.f32",
+        "air.dot.v2f32"
+      ],
+      "status": "lowering_enclosure_missing",
+      "note": "Do not assign a one-ULP contract to a multi-operation shader or silently assume the listed AIR order survives."
+    },
+    "texture_samples": {
+      "intrinsics": [
+        "air.sample_texture_2d.v4f16"
+      ],
+      "status": "sound_value_footprint_enclosure_missing",
+      "note": "Must include format conversion, finite coordinates, edge/LOD/footprint and variable main-image neighbors unless independently excluded."
+    }
+  },
+  "native_half_hardware_gate_reported": true,
+  "failure_conditions": [
+    {
+      "id": "C01",
+      "condition": "Bound every relevant half pow/powr, or prove it absent/constant under captured bindings",
+      "met": false
+    },
+    {
+      "id": "C02",
+      "condition": "Sound actual-backend or allowed-rewrite enclosure, including rounding/FTZ/reciprocal/FMA",
+      "met": false
+    },
+    {
+      "id": "C03",
+      "condition": "Prove all feasible F/F0 paths avoid undefined operations, or include their full uncertainty",
+      "met": false
+    },
+    {
+      "id": "C04",
+      "condition": "Sound texture and spatial-dependency enclosure on all admitted values",
+      "met": false
+    },
+    {
+      "id": "C05",
+      "condition": "Cover the complete declared domain; no unexamined boxes/branches treated as impossible",
+      "met": false
+    }
+  ],
+  "certification_decision": "REFUSED_MISSING_CONTRACT_AND_COVERAGE",
+  "whole_consumer_global_tight_hull_certified": false,
+  "remaining_skin33_global_interval": "No new tight interval; finite-format conditional outer remains[-65504,65504], nonfinite alternatives unknown.",
+  "per_pixel_3D_reduction_globally_certified": false,
+  "original_acceptance_mask_changed": false,
+  "threshold_max_relative": 0.001,
+  "A_phase_complete": false,
+  "not_a_proof_of_mathematical_impossibility": "A fixed native finite-domain enumeration or a future sound backend/domain proof could still bound the set. Existing ambiguity witnesses already refute a uniform1e-3 point guarantee."
+}
