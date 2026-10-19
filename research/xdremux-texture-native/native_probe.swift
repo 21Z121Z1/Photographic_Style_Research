@@ -94,8 +94,9 @@ var count: UInt32 = 0
 // Filter class names through the public C ABI before bridging matching types.
 typealias CopyClasses = @convention(c) (UnsafeMutablePointer<UInt32>) -> UnsafeMutablePointer<UnsafeRawPointer>?
 typealias ClassName = @convention(c) (UnsafeRawPointer) -> UnsafePointer<CChar>
-let copyClasses = unsafeBitCast(dlsym(RTLD_DEFAULT, "objc_copyClassList")!, to: CopyClasses.self)
-let className = unsafeBitCast(dlsym(RTLD_DEFAULT, "class_getName")!, to: ClassName.self)
+let runtimeSymbols = dlopen("/usr/lib/libobjc.A.dylib", RTLD_NOW | RTLD_LOCAL)!
+let copyClasses = unsafeBitCast(dlsym(runtimeSymbols, "objc_copyClassList")!, to: CopyClasses.self)
+let className = unsafeBitCast(dlsym(runtimeSymbols, "class_getName")!, to: ClassName.self)
 let classes = copyClasses(&count)!
 var rows: [[String: Any]] = []
 for i in 0..<Int(count) {
