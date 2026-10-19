@@ -19,6 +19,10 @@
       {
         "path": "binaries/RendererTuningWithTextureStyles.plist",
         "sha256": "95e5fd470b8bc84cc5fc8ffb028d3f5aea61769e69464ba9f9e402745a1b4e72"
+      },
+      {
+        "path": "metal-analysis/CMImaging_kernels.txt",
+        "sha256": "a1d723e1a32585876f4e798c2ace814e2e5d82cb977ce4ede907373b72f9822f"
       }
     ],
     "limitations": "No camera photos, user-private original files, Apple binary blobs or image arrays included in this commit."
@@ -173,7 +177,23 @@
         0.25,
         1
       ]
-    }
+    },
+    "static_native_kernel_identifiers": [
+      "Diffusion::GenerateDiffusion",
+      "Bloom::GenerateBloom",
+      "Halation::Halation",
+      "CMITextureStylesFilmGrain::GrainBlend",
+      "CMITextureStylesFilter::Guided",
+      "CMITextureStylesFilter::SelfGuided",
+      "CMITextureStylesFilter::WeightedGuided",
+      "CMITextureStylesGaussianGuidedFilterV3::guided_lr_2d",
+      "CMITextureStylesGaussianGuidedFilterV3::upsample_apply_to_mr",
+      "CMITextureStylesFastGaussian::gaussian_h",
+      "CMITextureStylesFastGaussian::gaussian_v",
+      "CMITextureStylesSkinSmoothenStandalone::finalBlendingKernelInPlace",
+      "CMITextureStylesMattify::ApplyRegionAddbackAndEditingStrength"
+    ],
+    "static_kernel_identifiers_semantics": "Named Apple metallib entrypoints present in user-supplied offline symbols inventory; does not prove invoked by any particular preset or establish computational formula."
   },
   "smartstyle_mapping": {
     "count": 16,
