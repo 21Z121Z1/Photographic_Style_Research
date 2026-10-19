@@ -38,6 +38,18 @@ jobs:
           test -s "$W/native/native.json"
           python3 research/texture-styles/native_units_s24.py audit \
             "$W/input" "$W/native" s24/native-summary.json | tee s24/validate.log
+      - name: Enforce original 1e-3 all-valid-component roundtrip requirement
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          d=json.load(open("s24/native-summary.json"))
+          assert d["metric_threshold"]==0.001
+          failures=[(r["operator"],r["strength"],r["roundtrip"]["components_over_1e_3"])
+                    for r in d["rows"] if r["strength"]>0 and r["roundtrip"]["components_over_1e_3"]>0]
+          print("strict_roundtrip_failed_cases=",failures,flush=True)
+          if failures:sys.exit("STRICT_NATIVE_INVERSE_GATE_FAILED")
+          PY
       - name: Record public text-only evidence, no raw float buffers
         if: always()
         shell: bash
