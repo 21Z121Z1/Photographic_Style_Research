@@ -1,0 +1,47 @@
+name: hdr-native-s67
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s67']
+  workflow_dispatch:
+jobs:
+  synthetic-stats-geometry:
+    runs-on: xcode-27
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare synthetic workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s67"; mkdir -m 700 "$W"; mkdir "$W/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          python3 -m pip install --quiet --only-binary=:all: llvmlite > "$W/out/dependencies.log" 2>&1
+      - name: Run original synthetic stats host and export AIR text
+        run: |
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s67.py > "$W/out/driver.log" 2>&1
+      - name: Manifest
+        if: always()
+        run: |
+          python3 - <<'PY2'
+          import os,pathlib,json,hashlib
+          o=pathlib.Path(os.environ['W'])/'out'
+          rows=[{'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}for p in sorted(o.iterdir())if p.is_file()]
+          (o/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','image_version':os.environ.get('ImageVersion'),'photos':0,'files':rows},separators=(',',':'))+'\n')
+          PY2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s67-synthetic-and-AIR
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove own workspace
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"
