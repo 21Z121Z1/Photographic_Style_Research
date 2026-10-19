@@ -1,0 +1,72 @@
+name: hdr-native-s33
+on:
+  push:
+    branches: ['research/vm-native-20261019-hdr-s33']
+  workflow_dispatch:
+    inputs:
+      s32_artifact_id:
+        description: 'Upstream synthetic S32 artifact id'
+        required: true
+        default: '12180330582'
+      s32_sha256:
+        description: 'Exact upstream artifact SHA-256'
+        required: true
+        default: '907be588e641ba3ec55a6aa5e0cf6ba9eca5bceae9e602c3f3b3010f2b3ed8bb'
+jobs:
+  decode-layers:
+    runs-on: xcode-27
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      S32_ARTIFACT_ID: ${{ github.event.inputs.s32_artifact_id || '12180330582' }}
+      S32_ARCHIVE_SHA256: ${{ github.event.inputs.s32_sha256 || '907be588e641ba3ec55a6aa5e0cf6ba9eca5bceae9e602c3f3b3010f2b3ed8bb' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare existing synthetic files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s33"; mkdir -m 700 "$W"
+          echo "W=$W" >> "$GITHUB_ENV"
+          mkdir "$W/out"
+          sw_vers > "$W/out/host.txt"
+          [[ "$S32_ARTIFACT_ID" =~ ^[0-9]+$ ]]
+          [[ "$S32_ARCHIVE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          HDR_UPSTREAM_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S32_ARTIFACT_ID} --jq .size_in_bytes)
+          [[ "$HDR_UPSTREAM_BYTES" =~ ^[0-9]+$ ]] && (( HDR_UPSTREAM_BYTES < 40000000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S32_ARTIFACT_ID}/zip > "$W/S32.zip"
+      - name: Compare provider Quartz CPU and CI software Metal layers
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'numpy==2.3.4'
+          python3 research/hdr-native/run_hdr_s33.py > "$W/out/driver.log" 2>&1
+      - name: Seal synthetic-only evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt','.f32','.u16','.bin','.heic'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<50_000_000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':True,'photos_used':False,'whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s33-synthetic-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove own runner temporary data
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"
