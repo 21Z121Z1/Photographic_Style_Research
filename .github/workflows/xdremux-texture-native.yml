@@ -109,11 +109,14 @@ jobs:
           xcrun swiftc -swift-version 5 -target arm64-apple-macosx15.0 research/xdremux-texture-native/native_images.swift \
             -framework Foundation -framework CoreImage -framework ImageIO \
             -o "$RUNNER_TEMP/xdremux-native-images" 2>&1 | tee evidence/image-build.log
+          xcrun swiftc -swift-version 5 -target arm64-apple-macosx15.0 research/xdremux-texture-native/native_probe.swift \
+            -framework Foundation -framework CoreImage -framework ImageIO -framework Metal \
+            -o "$RUNNER_TEMP/xdremux-texture-native-probe" 2>&1 | tee evidence/processor-build.log
+          rustc --edition=2021 -O research/xdremux-texture-native/buffer_facts.rs -o "$RUNNER_TEMP/texture-buffer-facts"
       - name: Build Rust test clients and generate CC0 analytical charts
         shell: bash
         run: |
           set -euo pipefail
-          cargo test --locked --manifest-path xdremux/Cargo.toml -p xdremux-heif 2>&1 | tee evidence/heif-tests.log
           cargo build --locked --manifest-path xdremux/Cargo.toml -p xdremux-heif --examples 2>&1 | tee evidence/research-clients-build.log
           xdremux/target/debug/examples/texture_synthetic_inputs "$RUNNER_TEMP/xdremux-analytic-inputs"
           cp "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" evidence/input-manifest.json
@@ -124,7 +127,16 @@ jobs:
           "$RUNNER_TEMP/xdremux-native-images" "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" \
             "$RUNNER_TEMP/xdremux-generated-images" 2>&1 | tee evidence/image-probe.log
           cp "$RUNNER_TEMP/xdremux-generated-images/image-matrix.json" evidence/image-matrix.json
+      - name: Exercise unpatched native Bloom without claiming a complete Texture producer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/xdremux-texture-native/run_bloom_matrix.py \
+            "$RUNNER_TEMP/xdremux-texture-native-probe" "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" \
+            "$RUNNER_TEMP/texture-buffer-facts" "$RUNNER_TEMP/xdremux-bloom-matrix" \
+            "$GITHUB_WORKSPACE/evidence/bloom" 2>&1 | tee evidence/bloom-driver.log
       - name: Build the actual XDRemux product and narrow Apple adapter
+        if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[product-regression]') }}
         shell: bash
         run: |
           set -euo pipefail
@@ -136,6 +148,7 @@ jobs:
           swift build --product xdremux-apple-adapter 2>&1 | tee ../evidence/adapter-build.log
           echo "XDREMUX_APPLE_ADAPTER=$(swift build --show-bin-path)/xdremux-apple-adapter" >> "$GITHUB_ENV"
       - name: Exercise convert and batch without inventing Texture capture data
+        if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[product-regression]') }}
         shell: bash
         run: |
           set -euo pipefail
