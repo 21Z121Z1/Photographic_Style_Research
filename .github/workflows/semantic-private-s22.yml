@@ -1,0 +1,86 @@
+name: semantic-private-s22
+on:
+  push:
+    branches: ['research/vm-native-20261019-private-s22']
+  workflow_dispatch:
+jobs:
+  original-pso:
+    runs-on: xcode-27
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare temporary encrypted transport
+        run: |
+          set -euo pipefail
+          command -v gpg >/dev/null || brew install gnupg
+          W="$RUNNER_TEMP/semantic-s22"; mkdir -m 700 "$W"
+          echo "W=$W" >> "$GITHUB_ENV"
+          mkdir -m 700 "$W/gnupg"
+          python3 -m pip install --quiet numpy pillow pillow-heif llvmlite > "$W/dependencies.log" 2>&1
+      - name: Decrypt authorized input only in temporary runner storage
+        env:
+          S22_INPUT_KEY: ${{ secrets.SEMANTIC_S22_INPUT_KEY }}
+        run: |
+          set -euo pipefail
+          export GNUPGHOME="$W/gnupg"
+          gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/655374513 -H 'Accept: application/octet-stream' > "$W/input.gpg"
+          python3 - <<'PY'
+          import os,pathlib,hashlib,subprocess
+          w=pathlib.Path(os.environ['W']);cipher=w/'input.gpg'
+          with cipher.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()=='f93ee7a3db7f60a4fc82d9fae1a0e6fa448fa3bfe44c4a4b49f16bdc27d9f867'
+          key=w/'input-key';key.write_text(os.environ['S22_INPUT_KEY']);key.chmod(0o600)
+          with (w/'decrypt.log').open('w') as log:
+              subprocess.run(['gpg','--batch','--pinentry-mode','loopback','--passphrase-file',str(key),'--output',str(w/'IMG_2810.HEIC'),'--decrypt',str(cipher)],stdout=log,stderr=subprocess.STDOUT,check=True)
+          key.unlink()
+          PY
+      - name: Observe original retained consumer PSO and inspect backend text
+        env:
+          S5_ARCHIVE_SESSION: ${{ secrets.SEMANTIC_S22_S5_SESSION }}
+        run: |
+          set -euo pipefail
+          export GNUPGHOME="$W/gnupg"
+          mkdir -p "$W/out"
+          python3 research/semantic-styles/run_semantic_s22.py > "$W/driver.log" 2>&1
+      - name: Encrypt whitelisted text outputs
+        if: always()
+        run: |
+          set -euo pipefail
+          test -n "${W:-}"
+          export GNUPGHOME="$W/gnupg"
+          mkdir -p encrypted "$W/out"
+          cp "$W/decrypt.log" "$W/dependencies.log" "$W/out/" 2>/dev/null || true
+          cp "$W/driver.log" "$W/out/" 2>/dev/null || true
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          allowed={'.json','.log','.ll','.txt','.md','.asm'}
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in allowed, 'Non-text output rejected'
+                  with p.open('rb') as f:h=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':h})
+          assert sum(r['size'] for r in rows)<30_000_000,'Text budget exceeded'
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','only_text_uploaded':True,'files':rows},indent=2)+'\n')
+          PY
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/key-import.log" 2>&1
+          tar -C "$W" -czf - out | gpg --batch --trust-model always --recipient 28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA --encrypt --output encrypted/semantic-s22.tar.gz.gpg
+          shasum -a 256 encrypted/semantic-s22.tar.gz.gpg > encrypted/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-s22-encrypted
+          path: encrypted/
+          retention-days: 1
+      - name: Remove own runner plaintext including Apple archives
+        if: always()
+        run: |
+          test -n "${W:-}" && rm -rf -- "$W"
