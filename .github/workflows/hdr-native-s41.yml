@@ -1,0 +1,54 @@
+name: hdr-native-s41
+on:
+  push:
+    branches: ['research/vm-native-20261019-hdr-s41']
+  workflow_dispatch:
+jobs:
+  geometry-resource-diagnosis:
+    runs-on: xcode-27
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare synthetic geometry control
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s41"; mkdir -m 700 "$W"; mkdir "$W/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+      - name: Original host geometry diagnostics with complete error capture
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 -m pip install --quiet 'numpy==2.3.4'
+          python3 research/hdr-native/run_hdr_s41.py > "$W/out/driver.log" 2>&1
+      - name: Seal aggregate synthetic-only text
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out'; rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<5_000_000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':True,'photos_used':False,'whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s41-synthetic-text
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove own runner temporary data
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"
