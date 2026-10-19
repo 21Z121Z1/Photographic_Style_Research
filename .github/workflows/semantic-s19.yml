@@ -1,0 +1,54 @@
+name: semantic-s19-domain-allocation
+on:
+  push:
+    branches: ['research/vm-native-20261019-s19']
+  workflow_dispatch:
+jobs:
+  domain-allocation:
+    runs-on: xcode-27
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare public synthetic tests
+        run: |
+          set -euo pipefail
+          test "$(sw_vers -buildVersion)" = 26A434
+          mkdir -p s19/allocation s19/native
+          sw_vers > s19/os.txt
+          python3 -m pip install --quiet numpy unicorn==2.1.4 > s19/dependencies.log 2>&1
+      - name: Replay allocation on declared synthetic statistics
+        run: |
+          python3 research/semantic-styles/producer_allocate_s19.py s19/allocation > s19/allocation-driver.log 2>&1
+      - name: Native finite-half domain controls without photos
+        if: always()
+        run: |
+          set -euo pipefail
+          clang -O2 -fobjc-arc research/semantic-styles/domain_native_s19.m -framework Foundation -framework Metal -o "$RUNNER_TEMP/domain-s19" > s19/native-build.log 2>&1
+          "$RUNNER_TEMP/domain-s19" research/semantic-styles/evidence/scalar-context-s19.json s19/native > s19/native-driver.log 2>&1
+      - name: Manifest
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import pathlib,hashlib,json,os
+          p=pathlib.Path('s19');p.mkdir(exist_ok=True)
+          files=[]
+          for f in sorted(p.rglob('*')):
+            if f.is_file() and f.name!='manifest.json':
+              with f.open('rb') as src:h=hashlib.file_digest(src,'sha256').hexdigest()
+              files.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':h})
+          (p/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','all_inputs_synthetic':True,'actual_photo_used':False,'files':files},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-s19-synthetic-text
+          path: s19/
+          retention-days: 1
