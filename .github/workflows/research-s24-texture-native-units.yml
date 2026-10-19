@@ -1,0 +1,70 @@
+name: research-s24-texture-native-units
+on:
+  push:
+    branches: ['research/gpt-styles-20261019']
+  workflow_dispatch:
+jobs:
+  original-texture-final-units:
+    runs-on: xcode-27
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify native runner build
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(sw_vers -buildVersion)" = 26A434
+          mkdir -p s24
+          sw_vers > s24/host.txt
+      - name: Generate analytic synthetic half chart in runner temporary directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/psr-texture-s24"
+          echo "W=$W" >> "$GITHUB_ENV"
+          mkdir -m 700 "$W"
+          python3 research/texture-styles/native_units_s24.py generate "$W/input" | tee s24/generator.log
+      - name: Compile and execute original Apple SkinSmooth and Mattify final units
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$W/native"
+          clang -O2 -fobjc-arc research/semantic-styles/texture_units_s10.m \
+            -framework Foundation -framework Metal \
+            -o "$W/texture-unit-probe" > s24/build.log 2>&1
+          "$W/texture-unit-probe" "$W/input" "$W/native" > s24/probe.log 2>&1
+          test -s "$W/native/native.json"
+          python3 research/texture-styles/native_units_s24.py audit \
+            "$W/input" "$W/native" s24/native-summary.json | tee s24/validate.log
+      - name: Record public text-only evidence, no raw float buffers
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          root=pathlib.Path("s24");root.mkdir(exist_ok=True)
+          rows=[]
+          for p in sorted(root.iterdir()):
+              assert p.is_file() and p.suffix in {".json",".txt",".log"}, "Non-text artifact refused"
+              with p.open("rb") as f:digest=hashlib.file_digest(f,"sha256").hexdigest()
+              rows.append({"path":p.name,"size":p.stat().st_size,"sha256":digest})
+          (root/"manifest.json").write_text(json.dumps({
+              "run_id":os.environ["GITHUB_RUN_ID"],"head_sha":os.environ["GITHUB_SHA"],
+              "photos_used":False,"analytic_fake_mattes_only":True,"files":rows
+          },indent=2)+"\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: texture-s24-native-units-text
+          path: s24/
+          retention-days: 1
+      - name: Delete synthetic runner buffers
+        if: always()
+        shell: bash
+        run: |
+          if [ -d "$RUNNER_TEMP/psr-texture-s24" ]; then
+            rm -rf -- "$RUNNER_TEMP/psr-texture-s24"
+          fi
