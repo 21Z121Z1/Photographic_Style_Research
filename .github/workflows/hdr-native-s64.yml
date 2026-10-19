@@ -1,0 +1,67 @@
+name: hdr-native-s64
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s64']
+  workflow_dispatch:
+jobs:
+  captured-stats-geometry-and-color:
+    runs-on: xcode-27
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare bounded private replay
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/stats-s64"; mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/gnupg"; chmod 700 "$W/private" "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          python3 -m pip install --quiet --only-binary=:all: 'numpy==2.3.4' > "$W/out/dependencies.log" 2>&1
+      - name: Download existing encrypted captures only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          S64_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12221727679 --jq .size_in_bytes)
+          [[ "$S64_BYTES" =~ ^[0-9]+$ ]] && (( S64_BYTES < 100000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12221727679/zip > "$W/S63.zip"
+      - name: Reuse captured small maps and inspect colour fields
+        env:
+          HDR_S64_S63_SESSION: ${{ secrets.HDR_S64_S63_SESSION }}
+        run: python3 research/hdr-native/analyze_stats_s64.py > "$W/out/driver.log" 2>&1
+      - name: Seal aggregate text only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt'}
+                  with p.open('rb')as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':p.name,'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size']for x in rows)<90000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'spatial_outputs_public':False,'native_image_regeneration':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s64-captured-stats-diagnostics
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove only own private replay
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"
