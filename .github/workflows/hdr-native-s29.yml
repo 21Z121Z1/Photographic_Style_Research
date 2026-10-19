@@ -1,0 +1,53 @@
+name: hdr-native-s29
+on:
+  push:
+    branches: ['research/vm-native-20261019-hdr-s29']
+  workflow_dispatch:
+jobs:
+  headroom-contract:
+    runs-on: xcode-27
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare isolated synthetic probe
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s29"; mkdir -m 700 "$W"
+          echo "W=$W" >> "$GITHUB_ENV"
+          mkdir "$W/out"
+          sw_vers > "$W/out/host.txt"
+      - name: Run original Core Image dual rendition and headroom APIs
+        run: |
+          set -euo pipefail
+          python3 research/hdr-native/run_hdr_s29.py > "$W/out/driver.log" 2>&1
+      - name: Seal synthetic evidence manifest
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt','.f32','.heic','.xml'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<40_000_000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':True,'photos_used':False,'whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s29-synthetic-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove own runner temporary data
+        if: always()
+        run: |
+          test -n "${W:-}" && rm -rf -- "$W"
