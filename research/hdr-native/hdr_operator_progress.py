@@ -1,0 +1,28 @@
+"""Additional observations, deliberately separate from unchanged legacy gates."""
+from pathlib import Path
+import json,hashlib
+def _load(p):return json.loads(Path(p).read_text())
+def _sha(p):
+ with Path(p).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+def operator_progress(*,rgb_host=None,photo_suite=None):
+ out={'scope':'New operator/representation observations. They do not replace or turn green the legacy precision, encoded target, 33-point hull or physical-scene gates.','legacy_masks_or_thresholds_changed':False,'observations':{},'evidence':{}}
+ if rgb_host:
+  d=_load(rgb_host);assert d['os_build']=='26A434';rows=d['rows'];qualified=len(rows)==3 and all(r['native_returncode']==0 and r['native'].get('host_preconditions_verified') and r['native'].get('dispatch_count')==7 and len(r['native']['guided_calls'])==2 and all(c['radius']==1 and abs(c['epsilon']-.001)<1e-9 for c in r['native']['guided_calls']) and all(m['half_different_components']==0 for m in r['small_map_vs_immutable_S34_imageblock'].values()) for r in rows)
+  out['observations']['original_RGB_host_synthetic_qualified']={'pass':qualified,'status':'已验证数值','cases':len(rows),'scope':'Original PSO, creation plus actual radius1 epsilon.001 RGB guided on synthetic fixed inputs'}
+  samples=[m for r in rows for m in r['frozen_numpy_guided_vs_original_host'].values()];out['observations']['frozen_NumPy_RGB_half_bit_exact']={'pass':qualified and all(m['half_different_components']==0 for m in samples),'status':'已验证数值','max_abs':max(m['max_abs'] for m in samples),'different_half_components':sum(m['half_different_components'] for m in samples),'disposition':'Report current precision; no precision refitting or gate relaxation'}
+  out['evidence']['rgb_host']={'path':str(rgb_host),'sha256':_sha(rgb_host)}
+ if photo_suite:
+  d=_load(photo_suite);assert d['os_build']=='26A434';fp=Path(photo_suite).parent/'formula-freeze.json';freeze=_load(fp);assert _sha(fp)==d['formula_freeze_sha256'];expected={p['id']:p for p in freeze['photos']};rows=d['rows'];done=[r for r in rows if r.get('completed')];ids=[r['photo'] for r in done];held=[r for r in done if r['role']=='new-recipe-holdout'];frozen=all(r['photo'] in expected and r.get('original_photo_sha256_after')==expected[r['photo']]['source_sha256'] for r in done)
+  projections=[r for r in rows if len(r.get('map_variants',[]))==2 and all(m['dispatches']==7 and len(m['guided_calls'])==2 and m['params_unchanged'] and m['source_texture_unchanged'] and all(c['radius']==1 and abs(c['epsilon']-.001)<1e-9 and c['guide_size']==r['shape'][:2] for c in m['guided_calls']) for m in r['map_variants'])]
+  out['observations']['original_RGB_full_resolution_operator_photos']={'pass':len(projections)==5,'status':'已验证数值' if projections else '可交给macOS runner','photos':len(projections),'scope':'Actual full-image native RGB guided participation, not a camera inverse; accepted recipe output count separately'}
+  out['observations']['five_full_resolution_recipe_two_new_recipe_holdouts']={'pass':len(done)==5 and len(set(ids))==5 and len(held)>=2 and frozen,'status':'已验证数值' if done else '可交给macOS runner','photos':len(done),'holdouts':len(held),'holdout_scope':freeze['holdout_scope']}
+  integrity=len(done)==5 and all(r['source_SHA_before_previews']==r['source_SHA_after_previews'] and len(r['preview_checks'])>=6 and all(x['input_before_sha256']==x['input_after_sha256'] for x in r['preview_checks']) for r in done)
+  out['observations']['original_and_preview_input_integrity']={'pass':integrity and frozen,'status':'已验证数值' if done else '可交给macOS runner','scope':'Fixed ACES display on copied arrays, originals/source arrays hash unchanged'}
+  reopened=[x for r in done for x in r['EXRs']];out['observations']['EXR_storage_actual_save_reopen']={'pass':len(reopened)==10 and all(x['readback_different_storage_components']==0 for x in reopened),'status':'已验证数值' if reopened else '可交给macOS runner','files':len(reopened),'scope':'Half relativeP3 candidate and float32 unitless log2 RGB map. Storage fidelity only; no physical-scene certification'}
+  native=[x for r in done for x in r.get('native_headroom',{}).get('headrooms',[])];gate=len(native)==25 and all(x['nonfinite_components']==0 and x['formula_max_abs']<=1e-5 and (x['formula_PSNR_peak1_db']=='inf' or x['formula_PSNR_peak1_db']>=60) for x in native)
+  out['observations']['real_full_size_native_unencoded_headrooms']={'pass':gate,'status':'已验证数值' if native else '可交给macOS runner','comparisons':len(native),'max_abs':max((x['formula_max_abs'] for x in native),default=None),'scope':'Supplied-pair native application only, no new encoded carrier'}
+  out['observations']['real_supplied_pair_saved_float32_map_relative']={'pass':len(done)==5 and all(r['actual_saved_float32_log_gain_reconstruction']['max_relative']<=1e-3 for r in done),'status':'已验证数值' if done else '可交给macOS runner','scope':'Representation mask distinct from all inverse masks; saved-map self-consistency is not reconstruction of the unknown scene'}
+  out['observations']['new_encoded_HDR_and_original_SDR_ImageIO_full_max0']={'pass':False,'status':'可交给macOS runner','scope':'This suite emits EXR/sidecar candidates, not a new encoded HEIF; source hashes and unencoded headroom1 cannot satisfy encoded ImageIO max0'}
+  out['observations']['producer_global_local_and_RAW_physical']={'pass':False,'status':'待实机解决','scope':'Matched camera curves/statistics, original Studio stats and paired2679/2408 RAW remain required. Global-only supplied-GTC projection stays a hypothesis.'}
+  out['evidence']['photo_suite']={'path':str(photo_suite),'sha256':_sha(photo_suite),'formula_freeze_sha256':_sha(fp)}
+ return out

@@ -1,0 +1,75 @@
+{
+  "os_build": "26A434",
+  "source_sha256": {
+    "research/hdr-native/source_s37.m": "116d40c05a8d03ffbb6546db96f4753be63ab3a5bd472a72d84a3ea835340b0f",
+    "research/hdr-native/ltm_materialize_s37.m": "6ff140f4fb4a511d588bff41ec4fac7d1890ebcc96a225fd570c39dc8cb21bb2",
+    "research/hdr-native/unencoded_s37.m": "402b0f56b15693278379e18336b9037e541a40f432915ce1cfe9fb3725acd660",
+    "research/hdr-native/run_hdr_s37.py": "0a1fa51fd4f9bd843ac3723d623ec00c065e3f15bd013856809592667922b82a",
+    "research/hdr-native/guided_reference_v3.py": "d4a5f435a993ff29aa223c744e616cd398cc6d22a350d86bf1b8d4bee52699ed",
+    "research/hdr-native/render_contract.py": "ae8ced70fa5aee280b202f50f47be6773014b5cf3875fa1ff82bd7e9ad05bf7b",
+    "research/vm-native/runner/Styles_full_v3.m": "e4e1bfca83e719382c52157951d48fb9b89507309fbb3c931359409570538773",
+    "research/vm-native/runner/encoder_capture_v2.inc": "90d8d37bcd520c96b2c184fde0cf6edc916a2f257aeb3b5affefae0ae12c25af",
+    "research/vm-native/runner/guided_oracle_v3.m": "8a2cf9e33943525cf4c8a5435eff112b505ed0990671eb14b1822ed9df75244f"
+  },
+  "photos": [
+    {
+      "id": "IMG_2600",
+      "role": "development",
+      "source_sha256": "63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0"
+    },
+    {
+      "id": "IMG_2604",
+      "role": "development",
+      "source_sha256": "71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e"
+    },
+    {
+      "id": "IMG_2608",
+      "role": "development",
+      "source_sha256": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a"
+    },
+    {
+      "id": "IMG_0032",
+      "role": "new-recipe-holdout",
+      "source_sha256": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a"
+    },
+    {
+      "id": "IMG_0033",
+      "role": "new-recipe-holdout",
+      "source_sha256": "c2f18ab9b1349377d2e23aaa7610bb5115f28f95c4d88ce6a789d6550e1213a0"
+    }
+  ],
+  "holdout_scope": "These two photos were used in older scalar-guide studies; withheld from this new RGB-map recipe until this immutable source was frozen. No photograph tunes this recipe.",
+  "native_rgb_map": {
+    "host": "original prepareToProcess:2 + _processLTMGainMap",
+    "radius": 1,
+    "epsilon": 0.0010000000474974513,
+    "guide": "full-resolution native inverse-key1 source in linearP3, four half lanes",
+    "SRL_before_stats": false,
+    "transfer": 0,
+    "CCM": "identity as in previous controlled captured input space",
+    "inputImageThumbnailTexture": "nil: original host samples full inputImageTexture at linear-grid centers"
+  },
+  "exposure_policy": "E=2^-max(0,ceil(log2(max positive native thumbnail RGB))); power of two, shared both branches; prevent create-kernel upperclip then undo E for relative master",
+  "local_only_candidate": "A * nativeGF(GTC(min(E*X,1))/sample(A)); retains supplied curve, unknown equivalence to baked producer",
+  "global_only_candidate": "supplied GTC^-1(A)/E on strict finite interior only; hypothetical producer order/domain, never certified full global inverse",
+  "both_candidate": "half(A * nativeGF(min(E*X,1)/sample(A))/E), RGB guide epsilon .001; no area renormalization, no log-gain filtering",
+  "HDR_render": "Separate intent: H=scene_candidate * 8/(8+P3_Y(scene_candidate)); relative units, no nit calibration",
+  "transport": "Actual saved/reopened float32 log2 RGB EXR sidecar, offset0, positive-component mask separately reported; native unencoded headrooms1,1.25,2,4,8; no HEIF encoding pass inferred",
+  "precision_gates_unchanged": {
+    "half": "bit-exact when declared",
+    "float_max_abs": 1e-05,
+    "PSNR_peak1_db_min": 60,
+    "relative_max": 0.001
+  },
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0,
+    "orientation": "Original stored canvas, transform from native metadata for previews only"
+  },
+  "scope": "Full-size conditional master/render candidates; physical scene/semantic/33point gates unchanged",
+  "acceptance_complete": false
+}

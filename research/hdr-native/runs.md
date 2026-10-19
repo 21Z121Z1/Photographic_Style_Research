@@ -23,3 +23,14 @@ S29–S32收尾：全部实际执行commit已在研究分支research/vm-native-2
 S33 workflow成功仅为诊断完成；12bit目标失败。S34成功不能替代guided前置条件，small map对照有效、host full oracle不合格。S35因eps预期错误失败，实际捕获RGBeps.001；读失败日志后才准备S36。没有新人物输入或整份Apple二进制上传，没有secret/release；临时分支待源commit保留及引用检查后统一清理。
 
 S36：branch research/vm-native-20261019-hdr-s36 source 5364da810b66eb7f71992d4ec9a35360686a1b17，run39246456413，artifact12183985709（3983408B），ZIP SHA 0bee8e0a3a950e98b503cca3ffc805d8927311ade3fc86105870245c2464a2cb，26A434/image20261012.0260.1。原RGBhost oracle三例合格，冻结NumPy half仍false；retention1天，归档全员SHA通过。
+
+
+### HDR-S37–S41 运行记录
+
+- S37: research/vm-native-20261019-hdr-s37，source d4e9fe76f07d1a5c465496617a60c8ce6049585d，run 39249246604，artifact 12184577945（6167B），ZIP SHA a3edf0ee53573b32872d99759c047664e458595e0028bf20861866dfdd52bc63；26A434/image20261012.0260.1，retention1天，全部manifest成员已校验。
+- S38: research/vm-native-20261019-hdr-s38，source 10f7588b821769803f9a684e35815d8b2f1b2973，run 39249843977，artifact 12184589250（9814B），ZIP SHA 938994dede4296ea717bc88b7a1962944a6f332c311a14ce3dfefba64bcdfaa9；26A434/image20261012.0260.1，retention1天，全部manifest成员已校验。
+- S39: research/vm-native-20261019-hdr-s39，source 0ace58770f40d3fa7b57b3aad4eaa9873a2d1c5e，run 39251392813，artifact 12185253044（2855B），ZIP SHA 196e3eb360bfc4d9f8fb30f0aa40423ca1676a49fb99096ab472e2d63a366aaa；26A434/image20261012.0260.1，retention1天，全部manifest成员已校验。
+- S40: research/vm-native-20261019-hdr-s40，source 90ecd44003fd5e0ad35e5812ee960c9fb5ea6db8，run 39252096517，artifact 12185683191（32438B），ZIP SHA a4648af370c5e99ea5c21010a64bb8a18d39574c9af02b9ebfebb05fe8eacdc3；26A434/image20261012.0260.1，retention1天，全部manifest成员已校验。
+- S41: research/vm-native-20261019-hdr-s41，source 4807ebb68bc88d78bd8c9082607d43f1f6b15763，run 39253046695，artifact 12186850154（48910B），ZIP SHA 89dd0e3150c46b39feb949c8883e8374fb1d4a00d6d016f984dddbedcd6e2dbc；26A434/image20261012.0260.1，retention1天，全部manifest成员已校验。
+
+S37/S39为编译失败；S38源准备完成但候选失败，密文预览只含空manifest；S40作业成功只表示诊断完成（大尺寸原host未通过）；S41容量干预全部四例完成且小图四份读回SHA相同，不是五张照片通过。

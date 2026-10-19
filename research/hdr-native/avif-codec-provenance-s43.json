@@ -1,0 +1,12 @@
+{
+  "scope": "New synthetic codec candidate only; no Apple inverse changes, no mixed-codec format conformance claim",
+  "source_library_API": "https://github.com/AOMediaCodec/libavif/blob/main/include/avif/avif.h",
+  "header_version_policy": "Record and hash actual installed header and brew package on runner",
+  "splice_derived_from": "iso_splice.py",
+  "immutable_original_splice_sha256": "2fc2caf76a466c9504bb5589ee8464c57bb073b0c73c4ceb0f7982f6d7d2fb29",
+  "modifications": [
+    "New av01 gain item validation, av01 infe type and av1C property",
+    "Original primary coded bytes, properties and ftyp retained and checked"
+  ],
+  "hypothesis": "AV1 twelve-bit code readback may avoid tested HEVC twelve-bit provider failure; must measure original ImageIO and native aux independently"
+}

@@ -26,3 +26,8 @@ S33源码decode_layers_s33.m把provider、Quartz、CI软件/Metal分开；S34原
 归档（全本地Python受scope限制；已存在目录不能重复运行覆盖）：`scripts/local-python-scope.sh -I hdr-native-20261019/finalization-scripts/archive_hdr_s29.py <new-run-id> <new-artifact-id>`。脚本先核尺寸<40MB及剩余空间，流式ZIP SHA对GitHub digest，再核manifest全部成员；VM只展开文本，不执行图像计算。无人物像素的合成artifact不用临时secret；实际照片结果仍用密文+授权的临时传输资源并清理。
 
 S36入口run_hdr_s36.py / ltm_materialize_s36.m，读取同一S34 ZIP（SHA44d5c139665cf9e13cbb851e6a8df6f08d1ff55e69def8ff941cd1e30019c88a）。workflow hdr-native-s36.yml只运行host，期待实际RGB epsilon.001、两guided/七dispatch；失败时先看日志及checkpoint，不能退回无参与的compile-only host。执行source5364da8；run39246456413，artifact12183985709。
+
+
+S37–S41复现：完整source/run/artifact/ZIP SHA见hdr-native-20261019/run-provenance-s37-s41.json。S37/S38原workflow保持历史失败；S39/S40入口run_hdr_s39.py/run_hdr_s40.py只用合成尺寸诊断，S41入口run_hdr_s41.py比对默认144MiB和原指定初始化器自供2GiB native pool。每个新实验使用新research/vm-native-<date>-hdr-sNN及push过滤，不改旧workflow。所有图片计算只在xcode-27/26A434 runner；本地只用内存scope审计汇总/密文。
+
+合成artifact归档用既有archive_hdr_s29.py，实际照片汇总用新archive_hdr_aggregate.py（仅允许.json/.log/.txt），密文预览用archive_hdr_previews.py流式GPG/manifest核对并限量展开。两份新脚本将保存在本轮finalization-scripts。S38预览858B、ZIP SHA491e7fd2cacef89c94d9b2df503d17599c8d5a87f60c4db61963a4d22cff266b，GPG0/PNG0；不得将空归档说成已出图。S42配方与S37一致，仅补S41资源条件、增强失败诊断及避免重复基础设施失败。

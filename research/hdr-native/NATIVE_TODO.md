@@ -20,3 +20,10 @@
 **可交给macOS runner / R-CODEC-PROVIDER**：仅现有12bit文件的provider为nil已确认。下一步需原生可读的更高精度编码/profile或其他合法RGB gain-item codec；固定目标/码值对照并核对provider/原SDRmax0/全图及中间headroom。10bit当前3.5EV码程未过1e-3和PSNR60，不能靠缩码程、改mask或误差门槛宣布原目标通过。实际不支持的型号/codec不能从Paravirt两个文件外推。
 
 S36更新：R-RGB-HOST的三组合成原host参与和读回已验证（run39246456413）；实际RGB eps.001。R-RGB-FULL及物理inverse原门槛保留，尚未完成。
+
+
+### S40–S41资源边界更新
+
+R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图的默认144MiB池容量前置条件（S40/S41），小图输出SHA一致。下一轮S42不改变图像公式，必须保留所有非零退出的native.json/checkpoint，检查真实全尺寸两guided、eps.001、source/params SHA、EXR存储重读及Gain Map传输分开门槛。此条件不是Metal不可用，不归入待实机。
+
+真实Photos调用者所供资源预算可在runner原PISemanticStyleFilter调用时hook initWithMetalContext:/FigMetalAllocatorDescriptor.setMemSize:/setWireMemory:捕获，保持原方法返回，记录PSO和资源描述；用同输入小图/大图读回对照，不从属性名推断配置。相机曲线/Studio/RAW与真实HDR观看清单保持原样。

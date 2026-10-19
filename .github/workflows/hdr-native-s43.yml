@@ -1,0 +1,75 @@
+name: hdr-native-s43
+on:
+  push:
+    branches: ['research/vm-native-20261019-hdr-s43']
+  workflow_dispatch:
+    inputs:
+      s29_artifact_id:
+        description: 'Retained original synthetic template artifact'
+        required: true
+        default: '12178164564'
+      s29_sha256:
+        description: 'Exact upstream ZIP SHA-256'
+        required: true
+        default: '1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c'
+jobs:
+  AV1-code-readback:
+    runs-on: xcode-27
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      S29_ARTIFACT_ID: ${{ github.event.inputs.s29_artifact_id || '12178164564' }}
+      S29_ARCHIVE_SHA256: ${{ github.event.inputs.s29_sha256 || '1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare bounded existing synthetic input and libavif
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s43"; mkdir -m 700 "$W"
+          mkdir "$W/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          [[ "$S29_ARTIFACT_ID" =~ ^[0-9]+$ ]]
+          [[ "$S29_ARCHIVE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          HDR_UPSTREAM_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S29_ARTIFACT_ID} --jq .size_in_bytes)
+          [[ "$HDR_UPSTREAM_BYTES" =~ ^[0-9]+$ ]] && (( HDR_UPSTREAM_BYTES < 10000000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S29_ARTIFACT_ID}/zip > "$W/S29.zip"
+          brew install libavif pkg-config > "$W/out/brew.log" 2>&1
+          python3 -m pip install --quiet 'numpy==2.3.4'
+      - name: Original ImageIO provider and native ISO auxiliary comparisons
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s43.py > "$W/out/driver.log" 2>&1
+      - name: Seal synthetic evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt','.f32','.u16','.bin','.heic','.avif','.xml'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<50000000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':True,'photos_used':False,'whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s43-synthetic-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove only own temporary data
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"

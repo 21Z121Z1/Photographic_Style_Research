@@ -356,6 +356,101 @@
           "sha256": "f274ebc72ecea5d11b68a460291fe914ea3b26ec9952f7f3c45e3459602cf8fe"
         }
       ]
+    },
+    {
+      "id": "HDR-21",
+      "category": "hdr/full-source-only",
+      "status": "已验证数值",
+      "claim": "S38完成五张照片的原件尺寸源准备（3张5712x4284、2张4032x3024），包括既有native key1依赖、原Apple Log/原GTC、float32 SDR分母。之后map步骤全部exit5，无候选EXR或PNG，不能计五图完成、逆解精度或SDR编码max0。实际exception未保存，不能用后续合成错误码补写该遗失细节。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39249843977/selected/analysis-s38.json",
+          "line": 1,
+          "sha256": "b701abbfd8e0ce7cede3fd763fa9983846677b5760c059238e009a00c63692fe"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39249843977/private-previews/archive-receipt.json",
+          "line": 1,
+          "sha256": "79312d191b21a0f205ca7f674cdfd68b1439895f195fcd26e19ce1ef099c3b27"
+        }
+      ]
+    },
+    {
+      "id": "HDR-22",
+      "category": "local/allocator-geometry-boundary",
+      "status": "已验证数值",
+      "claim": "S40相同受控合成场景：原optional-queue初始化器使用type2、150994944B(144MiB)池；1280x960正常并产生非零全图RGBmap，4032x3024与5712x4284在任何guided调用前返回-73465。该错误是本合成上下文的实测，不自动成为S38丢失的exception。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39252096517/selected/analysis-s40.json",
+          "line": 1,
+          "sha256": "f266ebd37cc68e85018e050adbccf58f898d2e18c6ae1f2e29e39ebf3d0f688a"
+        }
+      ]
+    },
+    {
+      "id": "HDR-23",
+      "category": "local/native-pool-intervention",
+      "status": "已验证数值",
+      "claim": "S41通过原initWithMetalContext指定初始化器供应2GiB type2 FigMetalAllocator，原host建管线方法、安装函数、图像参数/r1/eps.001保持；4032x3024和5712x4284均完成两guided/七dispatch并取得全图非零读回。1280x960默认池与大池两张small/两张full SHA全相同。该控制验证了本机容量前置条件，未识别真实Photos调用的池预算，也不是全域算术等价证明。 这里使用原框架函数和建管线方法，不声明跨进程PSO对象或底层编译产物的字节身份。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39253046695/selected/analysis-s41.json",
+          "line": 1,
+          "sha256": "776bbc339a65bb8bfdfa71569771b909066ae33cb821297af4407c07e2dbab2d"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39253046695/selected/small_pool_capacity_control.json",
+          "line": 1,
+          "sha256": "b36e47387e1ef301fea11db879b8e433aa59989b34e061450596122dcdd85507"
+        },
+        {
+          "file": "hdr-native-20261019/s41/allocator-init-excerpt.txt",
+          "line": 1,
+          "sha256": "0c6c5f84a7274a1be800d1accd7836ee30696056c6a11f846ae6ae92cfa94b2b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-24",
+      "category": "local/native-descriptor-contract",
+      "status": "已验证数值",
+      "claim": "S41原构造器setter捕获：主池memSize150994944、wireMemorytrue、allowFallbackfalse、autoUseSubAllocatorsfalse、resourceOptions512；shared-access池46080B。测试自供池除主memSize改2147483648和描述label外其余这些设置相同。原先不能把wireMemory1推断成allowFallback1。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39253046695/selected/analysis-s41.json",
+          "line": 1,
+          "sha256": "776bbc339a65bb8bfdfa71569771b909066ae33cb821297af4407c07e2dbab2d"
+        }
+      ]
+    },
+    {
+      "id": "HDR-25",
+      "category": "hdr/failure-provenance",
+      "status": "已验证数值",
+      "claim": "S37读像素前因读回选择注释吞闭括号编译失败；S38实际源准备完成但遗漏非零map的native.json，现有明细不能补造；S39诊断变量重名在图像生成前编译失败，S40修复并保留native状态。S38预览GPG/manifest验证通过且PNG数0；无新明文照片/Apple二进制上传，无新secret/release。S42仅补已验证资源条件与诊断，不修改冻结数学配方或旧门槛。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/run-provenance-s37-s41.json",
+          "line": 1,
+          "sha256": "7af06aeefca40a01701c174ce3c5c658571cf72d5b1d58d2239a0a4cfe617e6c"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39249246604/selected/map-build.log",
+          "line": 1,
+          "sha256": "a6abb12fe90432118072c25b859208ec9a15e41e2854c822e133b45ba8c6499f"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39251392813/selected/build.log",
+          "line": 1,
+          "sha256": "b9674310393e9279515190c387eebc25d560a39e217869df7078363829073db7"
+        }
+      ]
     }
   ]
 }
