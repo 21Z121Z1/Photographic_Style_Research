@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/run_hdr_s44.py", line 31, in <module>
+    with tarfile.open(fileobj=p.stdout,mode='r|gz') as tar:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tarfile.py", line 1866, in open
+    stream = _Stream(name, filemode, comptype, fileobj, bufsize,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tarfile.py", line 377, in __init__
+    self._init_read_gz()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tarfile.py", line 484, in _init_read_gz
+    raise ReadError("not a gzip file")
+tarfile.ReadError: not a gzip file

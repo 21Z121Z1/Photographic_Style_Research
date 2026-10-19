@@ -36,3 +36,5 @@ S37–S41复现：完整source/run/artifact/ZIP SHA见hdr-native-20261019/run-pr
 S42复现：source5ab81cf3d4b1253455dc4cd6efa1bf7e4cab75bc，workflow hdr-native-s42.yml、xcode-27/26A434，S41_HEAP_BYTES=2147483648。保持run_hdr_s42.py冻结配方及source_s37.m依赖SHA；不重新拟合。`validate_hdr.py --s29 <analysis-s29> --s30 <analysis-s30> --s31 <analysis-s31> --s32 <analysis-s32> --rgb-host <analysis-s36> --photo-suite <analysis-s42> --out <NEW-output.json>` 只读metadata，本地仍须scripts/local-python-scope.sh。额外operator_progress与原验收门槛分栏，不能从新观察通过推成总通过。完整命令/归档scripts在本阶段finalization目录保留，旧archive不覆盖。
 
 S43复现source8b0e656，workflow hdr-native-s43.yml；输入artifact12178164564、ZIP SHA1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c，单个固定合成fixture。workflow_dispatch通过inputs传入新的同SHA归档ID；过期后须恢复准确模板，不盲目重试。brew实际版本/header SHA记录，不凭API名称证明native兼容。
+
+S44失败sourcee6138d0；不要直接重试相同导出/解密方式。新S45用同一冻结显示数学、单密文SESSION_KEY（GnuPG官方DETAILS合同），secret仅存在一次run，值不落盘/不进日志，任务后删除。失败前置GPG rc与状态事件名须先持久化到text，再解释图像/数值结果。

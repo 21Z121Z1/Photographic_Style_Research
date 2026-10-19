@@ -42,3 +42,7 @@ S42 text ZIP `17bc8b897f51d04779f8a6b3543ccbbc980dc247d25e235059895f01ffeef0f9` 
 |S43|research/vm-native-20261019-hdr-s43|8b0e656fedbf75dc6bcb2a86e846e71bc318def7|39256675682|12187639046|26A434/20261012.0260.1|AV1 provider4/4, mixed-gain aux0/4; failure retained|
 
 ZIP SHA `8884bf17ec4b09323c947962926abb01e13b185217778595ac8275681211478a`; manifest `abfa67ebae914dd923020ab5c03d32b3badb4a4a8c3ef2076a9736f8ad105f8d`; all members verified.
+
+|S44|research/vm-native-20261019-hdr-s44|e6138d042336fdcf2d2bc5ccb4e758455c7339a6|39259341766|12190285705|26A434/20261012.0260.1|GPG/gzip prerequisite failed, zero new images; secret removed, exact cause not inferred|
+
+ZIP `8d9b49f19960bd9b7bb9ed13a95ec4fddb106857a92d498c7b92035da1d90e31` / manifest `44fda22697d45c96f5018c5eace974003c8fcdf6435df11b7214249560597872` verified; immutable driver.log retained.

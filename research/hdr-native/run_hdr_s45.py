@@ -1,0 +1,84 @@
+"""Reuse one encrypted S42 master: separate display intent and gain offsets."""
+from pathlib import Path
+import os,sys,subprocess,json,hashlib,zipfile,tarfile,threading,shutil,math,platform
+import numpy as np
+import OpenEXR,Imath,PyOpenColorIO as ocio
+from PIL import Image,ImageDraw
+from render_intent_s44 import Y,exposure_intent,hdr_intent,supplied_pair_log
+R=Path.cwd();D=R/'research/hdr-native';W=Path(os.environ['W']);O=W/'out';PRIVATE=W/'private';CASE=W/'case';CASE.mkdir();ROWS=32
+PHOTO=R/'research/vm-native/samples/IMG_2600.HEIC';SOURCE_SHA='63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0';ZIP_SHA='897065d3ea71e3068f2af8ee98ef8745065b923c6692f0366d98cd1b3069d621';CIPHER_SHA='d1c3d9beabec857f972f897a7ef91f0fbee8df8d9ab270c7f97949235ae30c86';EXR_SHA='69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634'
+def sha(p):
+ with Path(p).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+def save(p,v):p.write_text(json.dumps(v,indent=2,allow_nan=False)+'\n')
+def command(args,log,timeout=1200):
+ with log.open('w') as f:r=subprocess.run([str(x) for x in args],stdout=f,stderr=subprocess.STDOUT,timeout=timeout)
+ if r.returncode:raise RuntimeError(f'{Path(str(args[0])).name} return{r.returncode}; see {log.name}')
+assert sys.platform=='darwin' and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434';assert sha(PHOTO)==SOURCE_SHA;assert sha(W/'S42.zip')==ZIP_SHA
+cfg=ocio.Config.CreateFromBuiltinConfig('cg-config-v2.2.0_aces-v1.3_ocio-v2.4');cpu=cfg.getProcessor('Linear P3-D65','sRGB - Display','ACES 1.0 - SDR Video',ocio.TRANSFORM_DIR_FORWARD).getDefaultCPUProcessor();display={'config':'cg-config-v2.2.0_aces-v1.3_ocio-v2.4','config_sha256':hashlib.sha256(cfg.serialize().encode()).hexdigest(),'source':'Linear P3-D65','display':'sRGB - Display','view':'ACES 1.0 - SDR Video','exposure_ev':0}
+freeze={'os_build':'26A434','source_sha256':{str(p):sha(p) for p in [D/x for x in ['run_hdr_s45.py','render_intent_s44.py','read_sdr_s44.m','unencoded_s44.m','hdr_headroom_s29.m']]},'upstream':{'run_id':'39254061338','artifact_id':'12188060302','ZIP_sha256':ZIP_SHA,'cipher_sha256':CIPHER_SHA,'master_EXR_sha256':EXR_SHA},'sample':'IMG_2600 development case, not a new holdout','master_immutable':'Reuse S42 half linearP3 candidate; no key1, thumbnail, guided filter or camera re-evaluation','display_exposure_policy':'One scalar k=exp2(median(log2(Y_SDR/Y_M))) on fixed center-sampled grid up to1024x768, finite positive luma only; explicitly display intent, not physical calibration','render':'H=k*M*8/(8+max(P3_Y(k*M),0)), shared RGB scalar, no spatial/semantic operation','offset_policy':'Compare offset0 versus common o=nextafter(float32(max(0,-min_component(SDR,H))+2^-16),+inf), same offset on both sides/all channels. Custom signed RGB ratio; not native generator negative-clamp behavior. Never change an inverse mask','gain':'Store/reopen float32 log2((H+o)/(S+o)); unrepresentable pixels counted separately; no encoded HEIF','headrooms':[1,1.25,2,4,8],'unchanged_gates':{'float_linear_abs':1e-5,'PSNR_db_min':60,'relative_max':1e-3,'SDR_max_abs':0},'relative_denominator_floor':1e-6,'display':display,'scope':'Independent display prototype and supplied-pair representation only, no scene/semantic or new five-photo claim'}
+save(O/'freeze.json',freeze);freeze_sha=sha(O/'freeze.json');failed=[];member_facts=[]
+with zipfile.ZipFile(W/'S42.zip') as z:
+ assert z.namelist()==['IMG_2600-full.tar.gz.gpg']
+ with z.open(z.namelist()[0]) as f:assert hashlib.file_digest(f,'sha256').hexdigest()==CIPHER_SHA
+ # Scope the temporary secret to this one cipher; no archive private key.
+ session=os.environ.pop('S45_S42_SESSION').encode();assert b':' in session and len(session)<200
+ readfd,writefd=os.pipe();plaintext=CASE/'upstream.tar.gz';pipe_error=None
+ with (W/'secure/decrypt.log').open('w') as err,plaintext.open('xb') as output:
+  p=subprocess.Popen(['gpg','--batch','--override-session-key-fd',str(readfd),'--status-fd','2','--decrypt'],pass_fds=(readfd,),stdin=subprocess.PIPE,stdout=output,stderr=err)
+  os.close(readfd);os.write(writefd,session+b'\n');os.close(writefd);del session
+  try:
+   with z.open(z.namelist()[0]) as f:shutil.copyfileobj(f,p.stdin,1<<16)
+  except BrokenPipeError:pipe_error='Cipher pipe closed before EOF'
+  finally:
+   try:p.stdin.close()
+   except BrokenPipeError:pipe_error='Cipher pipe closed before EOF'
+  rc=p.wait(timeout=120)
+ private_stderr=(W/'secure/decrypt.log').read_text(errors='replace');events=[line.split()[1] for line in private_stderr.splitlines() if line.startswith('[GNUPG:] ') and len(line.split())>1];del private_stderr
+ with plaintext.open('rb') as f:magic=f.read(2)
+ save(O/'decrypt-status.json',{'GPG_returncode':rc,'status_event_names_only':events,'pipe_error':pipe_error,'plaintext_bytes':plaintext.stat().st_size,'gzip_magic':magic.hex(),'archive_private_key_supplied':False,'raw_private_stderr_uploaded':False})
+ assert rc==0 and not pipe_error and magic==b'\x1f\x8b','GPG/gzip prerequisite failed; inspect sanitized decrypt-status.json'
+ with tarfile.open(plaintext,'r:gz') as tar:
+  for m in tar:
+   if not m.isfile():continue
+   rel=Path(m.name);assert rel.parts[0]=='full' and '..' not in rel.parts and not rel.is_absolute();assert m.size<400_000_000;h=hashlib.sha256();output=(CASE/'master.exr').open('xb') if rel.name=='scene_candidate_linear_P3.exr' else None
+   with tar.extractfile(m) as f:
+    while data:=f.read(1<<20):h.update(data);output.write(data) if output else None
+   if output:output.close()
+   member_facts.append({'path':str(rel),'size':m.size,'sha256':h.hexdigest(),'materialized':output is not None})
+assert {Path(x['path']).name for x in member_facts}=={'scene_candidate_linear_P3.exr','log2_RGB_gain.exr','positive_pair_mask.npy','meaning.json'};assert sha(CASE/'master.exr')==EXR_SHA;assert next(x['sha256'] for x in member_facts if x['path'].endswith('/log2_RGB_gain.exr'))=='b846859e6e5bcdc82921c4038aa7863c96dacc27245020953eff0bb6f10f0014';save(O/'upstream-verified.json',{'upstream':freeze['upstream'],'GPG_returncode':rc,'members':member_facts,'private_key_uploaded_in_artifact':False,'session_only_transport':True})
+flags=['clang','-O2','-fobjc-arc','-framework','Foundation','-framework','CoreImage','-framework','ImageIO','-framework','Metal','-framework','CoreGraphics']
+for name,file in [('source','read_sdr_s44.m'),('headroom','unencoded_s44.m')]:command(flags+[D/file,'-o',W/name],O/(name+'-build.log'))
+command([W/'source',PHOTO,CASE],O/'source.log');facts=json.loads((CASE/'source.json').read_text());assert facts['original_file_sha256']==SOURCE_SHA and (facts['width'],facts['height'])==(5712,4284);save(O/'source-facts.json',facts);h,w=facts['height'],facts['width'];s=np.memmap(CASE/'original-sdr.f32',dtype='<f4',mode='r',shape=(h,w,4));master=np.memmap(CASE/'master.f16',dtype='<f2',mode='w+',shape=(h,w,3));exr=OpenEXR.InputFile(str(CASE/'master.exr'));pt=Imath.PixelType(Imath.PixelType.HALF)
+for c,name in enumerate('RGB'):
+ for top in range(0,h,ROWS):stop=min(h,top+ROWS);master[top:stop,:,c]=np.frombuffer(exr.channel(name,pt,top,stop-1),dtype='<f2').reshape(stop-top,w)
+exr.close();master.flush();initial={'master_EXR':sha(CASE/'master.exr'),'master_pixels':sha(CASE/'master.f16'),'original_SDR':sha(CASE/'original-sdr.f32'),'original_photo':sha(PHOTO)};dx=math.ceil(w/1024);dy=math.ceil(h/768);xs=np.arange(dx//2,w,dx);ys=np.arange(dy//2,h,dy);intent=exposure_intent(master[ys[:,None],xs[None,:]],s[ys[:,None],xs[None,:],:3]);target=np.memmap(CASE/'HDR.f32',dtype='<f4',mode='w+',shape=(h,w,3));minimum=0.;nnegative=0;nonfinite=0;chroma_error=0.;positive=0
+for top in range(0,h,ROWS):
+ stop=min(h,top+ROWS);v=master[top:stop].astype('f8');b=s[top:stop,:,:3].astype('f8');H=hdr_intent(v,intent['scale']);target[top:stop]=H.astype('f4');minimum=min(minimum,float(b.min()),float(H.min()));nnegative+=int((H<0).sum());nonfinite+=int((~np.isfinite(H)).sum());valid=np.isfinite(v).all(-1)&(v@Y>0);a=v[valid];z=target[top:stop][valid].astype('f8');positive+=len(a)
+ if len(a):chroma_error=max(chroma_error,float(abs(z/(z@Y)[:,None]-a/(a@Y)[:,None]).max()))
+target.flush();common=float(np.nextafter(np.float32(max(0,-minimum)+2**-16),np.float32(np.inf)));report={'os_build':'26A434','image_version':os.environ.get('ImageVersion'),'freeze_sha256':freeze_sha,'scope':freeze['scope'],'photo':'IMG_2600','shape':[h,w,3],'display':display,'display_intent':intent,'target_nonfinite_components':nonfinite,'target_negative_components':nnegative,'render_chromaticity_max_abs':chroma_error,'render_chromaticity_pixels':positive,'common_offset':common,'source_input_before':initial,'variants':[],'acceptance_complete':False,'A_phase_complete':False,'physical_scene_verified':False,'encoded_carrier_verified':False};save(O/'analysis-s45.json',report)
+pw,ph=640,480;px=np.floor((np.arange(pw)+.5)*w/pw).astype(int);py=np.floor((np.arange(ph)+.5)*h/ph).astype(int);preview_images=[];preview_checks=[]
+def preview(name,v):
+ before=hashlib.sha256(np.ascontiguousarray(v).tobytes()).hexdigest();x=np.array(v[...,:3],dtype='f4',order='C',copy=True);x[~np.isfinite(x)]=0;cpu.apply(ocio.PackedImageDesc(x,pw,ph,3));im=Image.fromarray(np.rint(np.clip(x,0,1)*255).astype('u1'));im.save(PRIVATE/(name+'.png'));after=hashlib.sha256(np.ascontiguousarray(v).tobytes()).hexdigest();assert before==after;preview_checks.append({'name':name,'input_before_SHA256':before,'input_after_SHA256':after});copy=im.copy();copy.thumbnail((320,240));preview_images.append((name,copy))
+ms=master[py[:,None],px[None,:]];ss=s[py[:,None],px[None,:],:3];preview('original-SDR',ss);preview('relative-master-unchanged-0EV',ms);preview('display-exposure-on-master',ms*intent['scale']);preview('independent-HDR-target',target[py[:,None],px[None,:]])
+def metadata(lo,hi,off):
+ channel=''.join(f'<rdf:li rdf:parseType="Resource"><HDRToneMap:GainMapMin>{lo:.17g}</HDRToneMap:GainMapMin><HDRToneMap:GainMapMax>{hi:.17g}</HDRToneMap:GainMapMax><HDRToneMap:Gamma>1</HDRToneMap:Gamma><HDRToneMap:BaseOffset>{off:.17g}</HDRToneMap:BaseOffset><HDRToneMap:AlternateOffset>{off:.17g}</HDRToneMap:AlternateOffset></rdf:li>' for _ in range(3));return '<?xpacket begin="\ufeff"?><x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description xmlns:HDRToneMap="http://ns.apple.com/HDRToneMap/1.0/"><HDRToneMap:Version>1</HDRToneMap:Version><HDRToneMap:BaseHeadroom>0</HDRToneMap:BaseHeadroom><HDRToneMap:AlternateHeadroom>3</HDRToneMap:AlternateHeadroom><HDRToneMap:ChannelMetadata><rdf:Seq>'+channel+'</rdf:Seq></HDRToneMap:ChannelMetadata><HDRToneMap:BaseColorIsWorkingColor>True</HDRToneMap:BaseColorIsWorkingColor></rdf:Description></rdf:RDF></x:xmpmeta><?xpacket end="w"?>'
+for tag,off in [('zero-offset',0.),('common-positive-offset',common)]:
+ dest=CASE/tag;dest.mkdir();lg=np.memmap(dest/'log2-gain.f32',dtype='<f4',mode='w+',shape=(h,w,3));mask=np.memmap(dest/'valid.u8',dtype='u1',mode='w+',shape=(h,w));lo=0.;hi=0.;valid_count=0
+ for top in range(0,h,ROWS):
+  stop=min(h,top+ROWS);g,good=supplied_pair_log(s[top:stop,:,:3],target[top:stop],off);lg[top:stop]=g.astype('f4');mask[top:stop]=good;valid_count+=int(good.sum());lo=min(lo,float(g.min()));hi=max(hi,float(g.max()))
+ lg.flush();mask.flush();del lg;lg=np.memmap(dest/'log2-gain.f32',dtype='<f4',mode='r',shape=(h,w,3));maxrel=0.;maxabs=0.;squares=0.;comp=0
+ for top in range(0,h,ROWS):
+  stop=min(h,top+ROWS);good=mask[top:stop].astype(bool);rebuilt=(s[top:stop,:,:3].astype('f8')+off)*np.exp2(lg[top:stop].astype('f8'))-off;ref=target[top:stop].astype('f8');err=abs(rebuilt-ref)[good]
+  if err.size:maxabs=max(maxabs,float(err.max()));maxrel=max(maxrel,float((err/np.maximum(abs(ref[good]),1e-6)).max()));squares+=float(np.sum(err**2));comp+=err.size
+ high=max(math.ceil(hi*16)/16,math.floor(lo*16)/16+1/16);low=math.floor(lo*16)/16;save(dest/'headroom.json',{'width':w,'height':h,'common_offset':off,'gain_min_EV':low,'gain_max_EV':high,'source_file':str(CASE/'original-sdr.f32'),'gain_file':str(dest/'log2-gain.f32'),'mask_file':str(dest/'valid.u8'),'target_file':str(CASE/'HDR.f32')});(dest/'headroom.xml').write_text(metadata(low,high,off));command([W/'headroom',dest,O/(tag+'-native.json')],O/(tag+'-native.log'));native=json.loads((O/(tag+'-native.json')).read_text());variant={'tag':tag,'common_offset':off,'valid_pixels':valid_count,'all_pixels':h*w,'coverage':valid_count/(h*w),'gain_min_EV':low,'gain_max_EV':high,'actual_saved_reopened_f32_log_gain':{'max_abs':maxabs,'max_relative':maxrel,'PSNR_peak1_db':-10*math.log10(squares/comp) if squares else 'inf','components':comp},'native':native};report['variants'].append(variant)
+ if off:
+  for x in native['headrooms']:
+   v=np.fromfile(dest/x['preview_file'],dtype='<f4').reshape(ph,pw,4);preview('native-commonOffset-h'+str(x['headroom']),v)
+ report['preview_input_checks']=preview_checks;save(O/'analysis-s45.json',report);del lg,mask;shutil.rmtree(dest)
+cols=3;rows=math.ceil(len(preview_images)/cols);sheet=Image.new('RGB',(cols*320,rows*268),'white');draw=ImageDraw.Draw(sheet)
+for n,(name,im) in enumerate(preview_images):x=(n%cols)*320;y=(n//cols)*268;sheet.paste(im,(x,y));draw.text((x+2,y+244),name,fill='black')
+sheet.save(PRIVATE/'contact.private.png');after={'master_EXR':sha(CASE/'master.exr'),'master_pixels':sha(CASE/'master.f16'),'original_SDR':sha(CASE/'original-sdr.f32'),'original_photo':sha(PHOTO)};assert after==initial;report['source_input_after']=after;report['preview_input_checks']=preview_checks;report['original_inverse_masks_changed']=False;report['completed']=True;save(O/'analysis-s45.json',report);assert sha(O/'freeze.json')==freeze_sha
+save(PRIVATE/'meaning.json',{'scope':freeze['scope'],'display':display,'exposure_intent':intent,'same_source_master_SHA256':EXR_SHA,'full_pixels_reuploaded':False,'display_target_reproducible_from':'Original SDR + retained S42 master with this frozen display recipe; no new full array archive promised'})
+files=[{'path':str(p.relative_to(PRIVATE)),'size':p.stat().st_size,'sha256':sha(p)} for p in sorted(PRIVATE.rglob('*')) if p.is_file()];save(PRIVATE/'manifest.json',{'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','people_results_encrypted':True,'files':files})
+with tarfile.open(W/'previews.tar.gz','w:gz') as t:t.add(PRIVATE,arcname='out')
+command(['gpg','--batch','--trust-model','always','--recipient','28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA','--encrypt','--output',W/'encrypted/previews.tar.gz.gpg',W/'previews.tar.gz'],O/'preview-encrypt.log');p=W/'encrypted/previews.tar.gz.gpg';save(O/'encrypted-inventory.json',{'files':[{'file':p.name,'size':p.stat().st_size,'sha256':sha(p)}],'plaintext_uploaded':False,'temporary_secret':'HDR_S45_S42_SESSION','cleanup_required_after_run':True});print(json.dumps({'completed':True,'display_exposure_EV':intent['display_exposure_EV'],'unchanged_master':True,'acceptance_complete':False}))

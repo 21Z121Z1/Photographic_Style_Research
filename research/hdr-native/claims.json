@@ -579,6 +579,30 @@
           "sha256": "08b13a39315c6679d7bb4dd210b6652e04c9c15cfd8ba5c04d9533beb4b0a0fc"
         }
       ]
+    },
+    {
+      "id": "HDR-33",
+      "category": "hdr/display-bootstrap-failure",
+      "status": "已验证数值",
+      "claim": "S44在GPG输出的第一次gzip/tar读取前置条件失败，未完成新HDR/native像素计算或预览。没有保存原GPG返回码/私有stderr，不能补造具体解密原因，也不能称加密子钥不存在；本地同一完整密文ZIP/cipher SHA验证及GPG DECRYPTION_OKAY/GOODMDC随后通过。photos_used标签为workflow输入意图，不计实际新照片验收。临时HDR_S44_ARCHIVE_SUBKEY已删除，未创建release。S45只改为单密文session传输并保留经过脱敏的GPG状态，显示数学保持。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39259341766/selected/driver.log",
+          "line": 1,
+          "sha256": "a8e58446f5fdb732a9648f5e833166a31c4c45df6dfccf6d74222544e4677d37"
+        },
+        {
+          "file": "hdr-native-20261019/s45/session-stream-receipt.json",
+          "line": 1,
+          "sha256": "cbc21a0bf991d6442deb214eb16b2b80f1bb13533b2e3e9ba2c571c8d0a753bd"
+        },
+        {
+          "file": "hdr-native-20261019/s44/transport-cleanup.json",
+          "line": 1,
+          "sha256": "68004dd2a244ba7a8ad13deb27d50b4e31ac3689bf68a8bb6c761e2c30877252"
+        }
+      ]
     }
   ]
 }
