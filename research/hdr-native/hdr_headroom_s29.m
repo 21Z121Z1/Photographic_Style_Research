@@ -18,22 +18,25 @@ int main(int argc,char**argv){@autoreleasepool{if(argc!=2)return 2;NSString*root
  id<MTLDevice>dev=MTLCreateSystemDefaultDevice();Need(dev!=nil,@"Metal unavailable");report[@"device"]=dev.name;
  CGColorSpaceRef linear=CGColorSpaceCreateWithName(kCGColorSpaceExtendedLinearDisplayP3);CGColorSpaceRef display=CGColorSpaceCreateWithName(kCGColorSpaceDisplayP3);
  CIContext*ctx=[CIContext contextWithMTLDevice:dev options:@{kCIContextWorkingColorSpace:(__bridge id)linear,kCIContextOutputColorSpace:(__bridge id)linear,kCIContextWorkingFormat:@(kCIFormatRGBAf),kCIContextCacheIntermediates:@NO}];
- const NSUInteger w=256,h=128;NSMutableArray*cases=[NSMutableArray new];NSArray*names=@[@"flat-neutral",@"gray-expansion",@"rgb-opposing",@"edge-reversal",@"nearblack-highlight"];
+ const NSUInteger w=256,h=128;NSMutableArray*cases=[NSMutableArray new];NSArray*names=@[@"flat-neutral",@"gray-expansion",@"rgb-opposing",@"edge-reversal",@"nearblack-highlight",@"flat-HDR",@"edge-HDR"];
  for(NSUInteger test=0;test<names.count;test++){@autoreleasepool{
   NSString*dir=[root stringByAppendingPathComponent:names[test]];[[NSFileManager defaultManager]createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:NULL];NSMutableDictionary*row=[@{@"case":names[test],@"width":@(w),@"height":@(h)}mutableCopy];
-  @try{NSMutableData*base=[NSMutableData dataWithLength:w*h*16],*target=[NSMutableData dataWithLength:w*h*16];float*s=base.mutableBytes,*t=target.mutableBytes;
+  @try{NSMutableData*base=[NSMutableData dataWithLength:w*h*16],*target=[NSMutableData dataWithLength:w*h*16];float*s=base.mutableBytes,*t=target.mutableBytes;double peak=0;
    for(NSUInteger y=0;y<h;y++)for(NSUInteger x=0;x<w;x++){double u=(x+.5)/w,v=(y+.5)/h;for(int c=0;c<3;c++){double a=.18,e=2;
     if(test==1){a=.002+.8*u;e=3*u;}
     if(test==2){a=.04+.7*(c==0?u:c==1?v:1-u);e=c==0?3*u:c==1?-.5+2*v:2*(1-u);}
     if(test==3){a=x<w/2?.08:.65;e=x<w/2?1.5:-.25;}
     if(test==4){a=x<8?0:x<16?1e-6:x<24?1e-4:pow(u,3);e=3*pow(u,.25);}
-    s[(y*w+x)*4+c]=a;t[(y*w+x)*4+c]=a*exp2(e);}
+    if(test==5){a=.18;e=3;}
+    if(test==6){a=x<w/2?.08:.65;e=x<w/2?2:1;}
+    s[(y*w+x)*4+c]=a;t[(y*w+x)*4+c]=a*exp2(e);peak=fmax(peak,t[(y*w+x)*4+c]);}
     s[(y*w+x)*4+3]=t[(y*w+x)*4+3]=1;
    }
    CIImage*S=[CIImage imageWithBitmapData:base bytesPerRow:w*16 size:CGSizeMake(w,h)format:kCIFormatRGBAf colorSpace:linear];CIImage*H=[CIImage imageWithBitmapData:target bytesPerRow:w*16 size:CGSizeMake(w,h)format:kCIFormatRGBAf colorSpace:linear];
    Bin(base,[dir stringByAppendingPathComponent:@"source-sdr.f32"],w,h);Bin(target,[dir stringByAppendingPathComponent:@"target-hdr.f32"],w,h);
    NSURL*file=[NSURL fileURLWithPath:[dir stringByAppendingPathComponent:@"dual.heic"]];NSError*error=nil;BOOL ok=[ctx writeHEIFRepresentationOfImage:S toURL:file format:kCIFormatRGBA8 colorSpace:display options:@{kCIImageRepresentationHDRImage:H,kCIImageRepresentationHDRGainMapAsRGB:@YES,(__bridge NSString*)kCGImageDestinationLossyCompressionQuality:@1}error:&error];Need(ok,error.description?:@"Dual writer failed");row[@"carrier_sha256"]=SHA([NSData dataWithContentsOfURL:file]);
-   CIImage*decoded=[CIImage imageWithContentsOfURL:file options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@NO}];CIImage*full=[CIImage imageWithContentsOfURL:file options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@YES}];CIImage*gain=[CIImage imageWithContentsOfURL:file options:@{kCIImageApplyOrientationProperty:@NO,kCIImageAuxiliaryHDRGainMap:@YES}];Need(decoded&&full&&gain,@"Native decoded SDR/HDR/gain nil");
+   CIImage*decoded=[CIImage imageWithContentsOfURL:file options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@NO}];CIImage*full=[CIImage imageWithContentsOfURL:file options:@{kCIImageApplyOrientationProperty:@NO,kCIImageExpandToHDR:@YES}];CIImage*gain=[CIImage imageWithContentsOfURL:file options:@{kCIImageApplyOrientationProperty:@NO,kCIImageAuxiliaryHDRGainMap:@YES}];row[@"decoded_present"]=@(decoded!=nil);row[@"expanded_present"]=@(full!=nil);row[@"gain_present"]=@(gain!=nil);row[@"supplied_target_peak"]=@(peak);Need(decoded&&full,@"Native decoded SDR/HDR nil");
+   if(!gain){Need(test==0||test==3,@"Unexpected missing gain map for above-white target");row[@"boundary_observation"]=@"Gain map not returned for this unchanged below-white synthetic target; no universal writer rule inferred";row[@"success"]=@YES;row[@"gain_contract_verified"]=@NO;JSON(row,[dir stringByAppendingPathComponent:@"case.json"]);[cases addObject:row];report[@"cases"]=cases;JSON(report,[root stringByAppendingPathComponent:@"native-results.json"]);continue;}
    row[@"content_headroom"]=@(full.contentHeadroom);row[@"base_headroom"]=@(decoded.contentHeadroom);row[@"gain_extent"]=@[@(gain.extent.origin.x),@(gain.extent.origin.y),@(gain.extent.size.width),@(gain.extent.size.height)];row[@"gain_properties"]=Safe(gain.properties);
    CGImageSourceRef src=CGImageSourceCreateWithURL((__bridge CFURLRef)file,NULL);Need(src!=NULL,@"ImageIO source nil");NSDictionary*aux=CFBridgingRelease(CGImageSourceCopyAuxiliaryDataInfoAtIndex(src,0,kCGImageAuxiliaryDataTypeISOGainMap));row[@"ISO_aux"]=Safe(aux);id metadata=aux[(__bridge NSString*)kCGImageAuxiliaryDataInfoMetadata];if(metadata){NSData*xmp=CFBridgingRelease(CGImageMetadataCreateXMPData((__bridge CGImageMetadataRef)metadata,NULL));if(xmp){[xmp writeToFile:[dir stringByAppendingPathComponent:@"ISO-metadata.xml"]atomically:YES];row[@"ISO_metadata_XMP"]=@"ISO-metadata.xml";}}CFRelease(src);
    NSData*decodedBase=Render(ctx,decoded,linear,w,h),*decodedFull=Render(ctx,full,linear,w,h);Bin(decodedBase,[dir stringByAppendingPathComponent:@"decoded-sdr.f32"],w,h);Bin(decodedFull,[dir stringByAppendingPathComponent:@"decoded-hdr.f32"],w,h);row[@"base_codec_difference"]=Diff(decodedBase,base);row[@"native_HDR_vs_target"]=Diff(decodedFull,target);

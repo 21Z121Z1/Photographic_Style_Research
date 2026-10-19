@@ -26,6 +26,7 @@ jobs:
       - name: Run original Core Image dual rendition and headroom APIs
         run: |
           set -euo pipefail
+          python3 -m pip install --quiet 'numpy==2.3.4'
           python3 research/hdr-native/run_hdr_s29.py > "$W/out/driver.log" 2>&1
       - name: Seal synthetic evidence manifest
         if: always()
