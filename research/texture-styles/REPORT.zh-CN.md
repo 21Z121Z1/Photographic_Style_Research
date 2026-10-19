@@ -34,6 +34,10 @@
 
 独立的 [run 39216211111](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39216211111)，job `117940553876`，artifact `12169811617`，执行纯 Python 解析后的清单约束与三个程序生成的 192×128 灰阶预览：源图、**3×3 box blur 替代**、**确定性噪声替代**。ZIP SHA `db5195764bbb4d8fede1564fa8c027f11287724df52228bdbabca3fa11a7d283`，manifest 所有六个文件逐个匹配。**这些图不代表 Apple 的 Diffusion、FilmGrain 核或相机原生滤波结果**。展示源有意无人物、不含设备照片。
 
+### 原生内核命名线索（静态证据，尚不等于真实调用链）
+
+本地资料包 `metal-analysis/CMImaging_kernels.txt`（8038B，SHA-256 `a1d723e1a32585876f4e798c2ace814e2e5d82cb977ce4ede907373b72f9822f`）还出现 `CMITextureStylesFilter::Guided/SelfGuided/WeightedGuided`、`CMITextureStylesGaussianGuidedFilterV3::guided_lr_2d/upsample_apply_to_mr`、`CMITextureStylesFastGaussian::gaussian_h/gaussian_v`，以及 `Diffusion::GenerateDiffusion`、`Bloom::GenerateBloom`、`Halation::Halation`、`CMITextureStylesFilmGrain::GrainBlend`。**已验证的是符号存在**，没有从这些名字直接推出 Apple 的卷积系数、滤波半径或它们在完整 Texture pipeline 中确实执行；尤其不能由 `guided` 一词直接证明你的 HDR 路线与 Apple 同算法。下一步要用 impulse/step/flat 合成输入捕获中间纹理和实际 kernel launch。
+
 ### 对 XDRemux 的约束
 
 在 `21Z121Z1/XDRemux` 的 `research/texture-style`，`crates/xdremux-heif/src/texture_styles.rs` 和 `research/texture-style/README.md` 明确写着仍属探针：将一个 2019 `semanticskinmatte` 复制映射为十二个不同的 2026 语义角色，固定 `iPhone19,2`／拍摄属性，以及在缺失 Apple MakerNote 时生成伪造标志。可测试 Photos 的**容器准入**，不能升级为对原始产地、语义或图像处理的产品真值。此 PR 不修改 XDRemux，也不生成正式 Texture Styles 元数据。
