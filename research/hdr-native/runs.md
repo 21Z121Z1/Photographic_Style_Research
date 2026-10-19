@@ -34,3 +34,11 @@ S36：branch research/vm-native-20261019-hdr-s36 source 5364da810b66eb7f71992d4e
 - S41: research/vm-native-20261019-hdr-s41，source 4807ebb68bc88d78bd8c9082607d43f1f6b15763，run 39253046695，artifact 12186850154（48910B），ZIP SHA 89dd0e3150c46b39feb949c8883e8374fb1d4a00d6d016f984dddbedcd6e2dbc；26A434/image20261012.0260.1，retention1天，全部manifest成员已校验。
 
 S37/S39为编译失败；S38源准备完成但候选失败，密文预览只含空manifest；S40作业成功只表示诊断完成（大尺寸原host未通过）；S41容量干预全部四例完成且小图四份读回SHA相同，不是五张照片通过。
+
+|S42|research/vm-native-20261019-hdr-s42|5ab81cf3d4b1253455dc4cd6efa1bf7e4cab75bc|39254061338|12187592176 text /12187257542 encrypted preview|26A434 /20261012.0260.1|5 original-size photos,2 new-recipe holdouts;10EXR storage exact,25 unencoded native headrooms pass; anchor/physical/encoded gates remain|
+
+S42 text ZIP `17bc8b897f51d04779f8a6b3543ccbbc980dc247d25e235059895f01ffeef0f9` / manifest `8c378bbce6b411b3ec708ad99fd0b54a707061d173bf75f273c28ef8f3a7fb0a`; preview ZIP `5243842ad5fc34096354b6df4a7d240d39c240b5d5ee7e209832648ffd70d802` verified GPG/all members,5localcontacts. Full ciphertexts not yet locally archived under current quota. Details: run-provenance-s42.json.
+
+|S43|research/vm-native-20261019-hdr-s43|8b0e656fedbf75dc6bcb2a86e846e71bc318def7|39256675682|12187639046|26A434/20261012.0260.1|AV1 provider4/4, mixed-gain aux0/4; failure retained|
+
+ZIP SHA `8884bf17ec4b09323c947962926abb01e13b185217778595ac8275681211478a`; manifest `abfa67ebae914dd923020ab5c03d32b3badb4a4a8c3ef2076a9736f8ad105f8d`; all members verified.

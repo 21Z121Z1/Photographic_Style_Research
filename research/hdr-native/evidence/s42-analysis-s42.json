@@ -1,0 +1,1951 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "formula_freeze_sha256": "c05933c2da4255ea9ef0bcdb3e9e320339a8de13257a4abca5480ac0a1ce5d7b",
+  "rows": [
+    {
+      "photo": "IMG_2600",
+      "role": "development",
+      "scope": "New full-size conditional RGB-map recipe, not a verified camera global/local/semantic inverse",
+      "completed": true,
+      "source_facts": {
+        "gtc_native": {
+          "dtype": "<f4",
+          "file": "gtc_native.f32",
+          "height": 1,
+          "shape": [
+            1,
+            256,
+            4
+          ],
+          "width": 256
+        },
+        "linear_native": {
+          "dtype": "<f4",
+          "file": "linear_native.f32",
+          "height": 768,
+          "shape": [
+            768,
+            1024,
+            4
+          ],
+          "width": 1024
+        },
+        "native_properties": {
+          "baseGain": 2.590243339538574,
+          "baselineExposure": 4.892307758331299
+        },
+        "original_sdr_float32": {
+          "dtype": "<f4",
+          "file": "original_sdr_exact.f32",
+          "shape": [
+            4284,
+            5712,
+            4
+          ]
+        },
+        "os_build": "26A434",
+        "scope": "Frozen native key1 inverse-style source plus unchanged native Apple Log; not full camera/semantic inverse. Exact SDR is an unencoded denominator, no carrier comparison yet."
+      },
+      "orientation": 1,
+      "shape": [
+        4284,
+        5712,
+        3
+      ],
+      "thumbnail_float32_to_native_half_max_abs": 0.00011923909187316895,
+      "relative_exposure_E": 1.0,
+      "native_linear_thumbnail_peak": 0.34326171875,
+      "map_variants": [
+        {
+          "tag": "both-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x10522b2e0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x75e0c1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x75e0c60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x75e1048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x75e10b5380>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105225e40> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105225e40> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "4d816eca1c24e7e8b287f7a260fdbed361d8ae9099f3721c94ffe71248cf0c4f",
+          "small_bg_sha256": "564cfa3530c506eed6887709f11fa01ddd4bba8215cf733d4e9c66f7e3e46a80",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 44,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 12.6534423828125,
+          "gain_laplacian_max_EV": 10.152463912963867
+        },
+        {
+          "tag": "local-only-GTC-retained-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x104f2fa00> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x76eec1c5a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x76eec60e80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x76ef048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x76ef0b5380>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x104f2dba0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x104f2dba0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "002658e2a2d3a4d2cb8b7299aa31277e8a3fa575d51997938d3d7fdeba8ee91d",
+          "small_bg_sha256": "e07a7109095eaae08b186bc547203d2254a9379e4e3f9e74e1e7f851334e816a",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 772,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 12.203873634338379,
+          "gain_laplacian_max_EV": 30.20205307006836
+        }
+      ],
+      "native_RGB_anchor": {
+        "positive_anchor_pixels": 785390,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.3308821925578208,
+        "p99_abs_EV": 3.402471127358746,
+        "max_abs_EV": 14.715423349444984,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "same_Apple_small_q_bilinear_anchor": {
+        "positive_anchor_pixels": 785390,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.32947363695512216,
+        "p99_abs_EV": 3.5316013307035887,
+        "max_abs_EV": 15.265066006522483,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "anchor_reference": "Native Apple Log float32 output before GPU half storage cast",
+      "old_2048_bilinear_area_comparison_complete": false,
+      "masks": {
+        "near_black_source_pixels": 1568520,
+        "nonfinite_master_pixels": 0,
+        "negative_master_components": 44,
+        "negative_SDR_components": 546865,
+        "negative_HDR_target_components": 44,
+        "source_zero_component_pixels": 0,
+        "positive_ratio_pixels": 23922740,
+        "all_pixels": 24470208
+      },
+      "global_only_conditional_masks": {
+        "curve_low_clamp_components": 41590,
+        "curve_high_clamp_components": 11222,
+        "curve_plateau_components": 0,
+        "nonfinite_components": 0,
+        "valid_components": 73357812
+      },
+      "global_only_inverse_scope": "Hypothesis of supplied monotone GTC application; no native fast-math envelope or full producer domain proof; endpoint/flat outputs omitted, no camera EV confidence interval claimed",
+      "actual_saved_float32_log_gain_reconstruction": {
+        "max_abs": 1.8855281169738447e-08,
+        "max_relative": 6.350098964011888e-07,
+        "positive_pixels": 23922740,
+        "scope": "Actual file reopen of a supplied pair, not an inverse metric"
+      },
+      "EXRs": [
+        {
+          "path": "scene_candidate_linear_P3.exr",
+          "size": 84559349,
+          "sha256": "69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634",
+          "readback_different_storage_components": 0,
+          "dtype": "<f2",
+          "unit": "relative linearP3; scene candidate only"
+        },
+        {
+          "path": "log2_RGB_gain.exr",
+          "size": 242501063,
+          "sha256": "b846859e6e5bcdc82921c4038aa7863c96dacc27245020953eff0bb6f10f0014",
+          "readback_different_storage_components": 0,
+          "dtype": "<f4",
+          "unit": "log2 RGB ratio (EV), no color-space tag"
+        }
+      ],
+      "encrypted_full": {
+        "file": "IMG_2600-full.tar.gz.gpg",
+        "size": 327492343,
+        "sha256": "d1c3d9beabec857f972f897a7ef91f0fbee8df8d9ab270c7f97949235ae30c86"
+      },
+      "preview_checks": [
+        {
+          "file": "SDR.png",
+          "input_before_sha256": "fc57b8f9a9ba6c16821ceb3406615a38aa8389d3ed9b0c0186c1ca808b23cf67",
+          "input_after_sha256": "fc57b8f9a9ba6c16821ceb3406615a38aa8389d3ed9b0c0186c1ca808b23cf67",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "inverse-key1.png",
+          "input_before_sha256": "5832cf316a137895dd996c3ad1c1060ec0feb885b8a13633587e0c2b8c4ad4a4",
+          "input_after_sha256": "5832cf316a137895dd996c3ad1c1060ec0feb885b8a13633587e0c2b8c4ad4a4",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "global-only-hypothesis.png",
+          "input_before_sha256": "3a2563b8bf7c0dc17478d18272fcd905c92a850a52e8220bd75a8587711101e3",
+          "input_after_sha256": "3a2563b8bf7c0dc17478d18272fcd905c92a850a52e8220bd75a8587711101e3",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "both-candidate.png",
+          "input_before_sha256": "55200234c83c9197a53e9fb1d3dc4b3a13250acf3e31f7d49d88f4b2829a18cf",
+          "input_after_sha256": "55200234c83c9197a53e9fb1d3dc4b3a13250acf3e31f7d49d88f4b2829a18cf",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "local-only-GTC-retained-candidate.png",
+          "input_before_sha256": "cfc6b0713c1ff8dcaf06a90aa3051b679bb2e53bf09ee75d18ec45ade64fc8a7",
+          "input_after_sha256": "cfc6b0713c1ff8dcaf06a90aa3051b679bb2e53bf09ee75d18ec45ade64fc8a7",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "independent-HDR-render.png",
+          "input_before_sha256": "34e3e652df1967ff105aa3c9a3b4396e41af4ad97aefb14754a2308f6b543914",
+          "input_after_sha256": "34e3e652df1967ff105aa3c9a3b4396e41af4ad97aefb14754a2308f6b543914",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        }
+      ],
+      "source_SHA_after_previews": {
+        "main": "af1619bacb73b6aabbff3627e832e181ed3449e627fc2c2de874a5d8ba20ec55",
+        "SDR_float32": "1f8cd21a4278d466042cefb6c1adf35fb4ed0f3acfbfd425153d8bd32a4f2a66",
+        "thumbnail": "2d8ee1596d8f2d1f79a870a288ca398a445883f8499ef9bb9bee8d0fcca6f0a0"
+      },
+      "source_SHA_before_previews": {
+        "main": "af1619bacb73b6aabbff3627e832e181ed3449e627fc2c2de874a5d8ba20ec55",
+        "SDR_float32": "1f8cd21a4278d466042cefb6c1adf35fb4ed0f3acfbfd425153d8bd32a4f2a66",
+        "thumbnail": "2d8ee1596d8f2d1f79a870a288ca398a445883f8499ef9bb9bee8d0fcca6f0a0"
+      },
+      "native_headroom": {
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 0,
+            "defined_target_max_relative": 0,
+            "defined_target_PSNR_peak1_db": "inf",
+            "formula_max_abs": 0,
+            "formula_max_relative": 0,
+            "formula_PSNR_peak1_db": "inf",
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71768220,
+            "scale": 0,
+            "unencoded_SDR_h1_max_abs": 0
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 2.3857806574767437e-07,
+            "defined_target_max_relative": 3.313791927318607e-07,
+            "defined_target_PSNR_peak1_db": 149.16208227175926,
+            "formula_max_abs": 1.9236651283005557e-07,
+            "formula_max_relative": 2.817159257732977e-07,
+            "formula_PSNR_peak1_db": 150.1411126293267,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71768220,
+            "scale": 0.10730936496245412,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 3.3484140304906873e-07,
+            "defined_target_max_relative": 6.859825580289177e-07,
+            "defined_target_PSNR_peak1_db": 146.41690326079436,
+            "formula_max_abs": 2.4023694067398793e-07,
+            "formula_max_relative": 5.473875012865963e-07,
+            "formula_PSNR_peak1_db": 148.35793456224218,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71768220,
+            "scale": 0.3333333333333333,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 5.774181286444247e-07,
+            "defined_target_max_relative": 1.2046958853221009e-06,
+            "defined_target_PSNR_peak1_db": 147.58356556713875,
+            "formula_max_abs": 3.4277218718958835e-07,
+            "formula_max_relative": 9.188570637337797e-07,
+            "formula_PSNR_peak1_db": 150.11598394131204,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71768220,
+            "scale": 0.6666666666666666,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 7.721988015685355e-07,
+            "defined_target_max_relative": 1.5344896146601452e-06,
+            "defined_target_PSNR_peak1_db": 150.8037519617876,
+            "formula_max_abs": 5.603206268967043e-07,
+            "formula_max_relative": 9.945587001770414e-07,
+            "formula_PSNR_peak1_db": 153.83001340502565,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71768220,
+            "scale": 1,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 4284,
+        "photos_used": true,
+        "scope": "Original CI imageByApplyingGainMap on supplied full-resolution RGB pair; no encoded carrier, no inverse accuracy",
+        "success": true,
+        "width": 5712
+      },
+      "original_photo_sha256_after": "63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0",
+      "actual_encoded_carrier_pass": false,
+      "physical_scene_inverse_verified": false
+    },
+    {
+      "photo": "IMG_2604",
+      "role": "development",
+      "scope": "New full-size conditional RGB-map recipe, not a verified camera global/local/semantic inverse",
+      "completed": true,
+      "source_facts": {
+        "gtc_native": {
+          "dtype": "<f4",
+          "file": "gtc_native.f32",
+          "height": 1,
+          "shape": [
+            1,
+            256,
+            4
+          ],
+          "width": 256
+        },
+        "linear_native": {
+          "dtype": "<f4",
+          "file": "linear_native.f32",
+          "height": 768,
+          "shape": [
+            768,
+            1024,
+            4
+          ],
+          "width": 1024
+        },
+        "native_properties": {
+          "baseGain": 2.5538296699523926,
+          "baselineExposure": 5.692307472229004
+        },
+        "original_sdr_float32": {
+          "dtype": "<f4",
+          "file": "original_sdr_exact.f32",
+          "shape": [
+            4284,
+            5712,
+            4
+          ]
+        },
+        "os_build": "26A434",
+        "scope": "Frozen native key1 inverse-style source plus unchanged native Apple Log; not full camera/semantic inverse. Exact SDR is an unencoded denominator, no carrier comparison yet."
+      },
+      "orientation": 1,
+      "shape": [
+        4284,
+        5712,
+        3
+      ],
+      "thumbnail_float32_to_native_half_max_abs": 1.52587890625e-05,
+      "relative_exposure_E": 1.0,
+      "native_linear_thumbnail_peak": 0.05084228515625,
+      "map_variants": [
+        {
+          "tag": "both-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x10294f2b0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7beec1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7beec60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7bef048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x7bef0b5380>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102949a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102949a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "319fbe1f3c2491e231066f3db61772b03c0aa3e5317fef532f953982a28ad332",
+          "small_bg_sha256": "7cd564bc46c64aea4fbc0042f881802689dac1e246b36bc994a2e7144abbdb92",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 8.187228202819824,
+          "gain_laplacian_max_EV": 7.469688415527344
+        },
+        {
+          "tag": "local-only-GTC-retained-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x102b239f0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x779ac1c5a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x779ac60e80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x779b048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x779b0b5380>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102b1db50> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102b1db50> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "1f19c16f6d1577553caeeedeaac55840c32113442e88a550b760fcc759dec51e",
+          "small_bg_sha256": "47a94afeaabbec553092c567ee0613647c928a7258dc6ef40680b65c4caae768",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 6.741466522216797,
+          "gain_laplacian_max_EV": 9.357551574707031
+        }
+      ],
+      "native_RGB_anchor": {
+        "positive_anchor_pixels": 786422,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.13766733841368822,
+        "p99_abs_EV": 1.07455098829795,
+        "max_abs_EV": 13.555623708439231,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "same_Apple_small_q_bilinear_anchor": {
+        "positive_anchor_pixels": 786422,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.13625348096557402,
+        "p99_abs_EV": 1.0764040127083698,
+        "max_abs_EV": 13.972114571037146,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "anchor_reference": "Native Apple Log float32 output before GPU half storage cast",
+      "old_2048_bilinear_area_comparison_complete": false,
+      "masks": {
+        "near_black_source_pixels": 1064713,
+        "nonfinite_master_pixels": 0,
+        "negative_master_components": 0,
+        "negative_SDR_components": 479478,
+        "negative_HDR_target_components": 0,
+        "source_zero_component_pixels": 0,
+        "positive_ratio_pixels": 23997013,
+        "all_pixels": 24470208
+      },
+      "global_only_conditional_masks": {
+        "curve_low_clamp_components": 36567,
+        "curve_high_clamp_components": 6,
+        "curve_plateau_components": 0,
+        "nonfinite_components": 0,
+        "valid_components": 73374051
+      },
+      "global_only_inverse_scope": "Hypothesis of supplied monotone GTC application; no native fast-math envelope or full producer domain proof; endpoint/flat outputs omitted, no camera EV confidence interval claimed",
+      "actual_saved_float32_log_gain_reconstruction": {
+        "max_abs": 1.0588706356173816e-08,
+        "max_relative": 6.605154771772892e-07,
+        "positive_pixels": 23997013,
+        "scope": "Actual file reopen of a supplied pair, not an inverse metric"
+      },
+      "EXRs": [
+        {
+          "path": "scene_candidate_linear_P3.exr",
+          "size": 65765522,
+          "sha256": "63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264",
+          "readback_different_storage_components": 0,
+          "dtype": "<f2",
+          "unit": "relative linearP3; scene candidate only"
+        },
+        {
+          "path": "log2_RGB_gain.exr",
+          "size": 204204238,
+          "sha256": "4c386f9f9ac8162d172f28ca8d2ef638a21f2dec69dd159d213be2af4ac2617b",
+          "readback_different_storage_components": 0,
+          "dtype": "<f4",
+          "unit": "log2 RGB ratio (EV), no color-space tag"
+        }
+      ],
+      "encrypted_full": {
+        "file": "IMG_2604-full.tar.gz.gpg",
+        "size": 270254564,
+        "sha256": "987fc1b665ebfa8c8bdf3b81957e60496b2ee9b05658276be1f2d295af18cf7c"
+      },
+      "preview_checks": [
+        {
+          "file": "SDR.png",
+          "input_before_sha256": "d4c72c9c6cc820d59f827328519ff59fa76506fd9670723b35dc103693ac0453",
+          "input_after_sha256": "d4c72c9c6cc820d59f827328519ff59fa76506fd9670723b35dc103693ac0453",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "inverse-key1.png",
+          "input_before_sha256": "c5f06a9d7bdc49003a69e50339e3a578dc4cdb2d898389e6d5320befdcb1c09e",
+          "input_after_sha256": "c5f06a9d7bdc49003a69e50339e3a578dc4cdb2d898389e6d5320befdcb1c09e",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "global-only-hypothesis.png",
+          "input_before_sha256": "788375f792d81becd8d400f8f4e14a7c4bb9c6db9b48f069449c13bba8f318c0",
+          "input_after_sha256": "788375f792d81becd8d400f8f4e14a7c4bb9c6db9b48f069449c13bba8f318c0",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "both-candidate.png",
+          "input_before_sha256": "a20fb74be0336de85967beb62c3815263c426839f7b3a4346ca92f2cfb56393c",
+          "input_after_sha256": "a20fb74be0336de85967beb62c3815263c426839f7b3a4346ca92f2cfb56393c",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "local-only-GTC-retained-candidate.png",
+          "input_before_sha256": "458e5581390a4de07bfaee66fd7a35ffebb818282a85a111a667f3e5258b08c3",
+          "input_after_sha256": "458e5581390a4de07bfaee66fd7a35ffebb818282a85a111a667f3e5258b08c3",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "independent-HDR-render.png",
+          "input_before_sha256": "ae4d3ba24b1aa4a8a8c57447b0f70c7a3d1079625e18577e8a7639d745d20c8e",
+          "input_after_sha256": "ae4d3ba24b1aa4a8a8c57447b0f70c7a3d1079625e18577e8a7639d745d20c8e",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        }
+      ],
+      "source_SHA_after_previews": {
+        "main": "4db7007b582df60a08883258b10d71c80f6d7beef0391926ec675f158608c596",
+        "SDR_float32": "716a386b33422e1f301112c9b845777ded0f2e9a51ab6c6c5e5e91b8058ed4a7",
+        "thumbnail": "a38147aab84534c52a5bca46a2605aa1480b2e121809b839cffe42549b76ed0f"
+      },
+      "source_SHA_before_previews": {
+        "main": "4db7007b582df60a08883258b10d71c80f6d7beef0391926ec675f158608c596",
+        "SDR_float32": "716a386b33422e1f301112c9b845777ded0f2e9a51ab6c6c5e5e91b8058ed4a7",
+        "thumbnail": "a38147aab84534c52a5bca46a2605aa1480b2e121809b839cffe42549b76ed0f"
+      },
+      "native_headroom": {
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 0,
+            "defined_target_max_relative": 0,
+            "defined_target_PSNR_peak1_db": "inf",
+            "formula_max_abs": 0,
+            "formula_max_relative": 0,
+            "formula_PSNR_peak1_db": "inf",
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71991039,
+            "scale": 0,
+            "unencoded_SDR_h1_max_abs": 0
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 1.6178712802794593e-07,
+            "defined_target_max_relative": 2.996798198224211e-07,
+            "defined_target_PSNR_peak1_db": 150.14049756761074,
+            "formula_max_abs": 1.3880332205840062e-07,
+            "formula_max_relative": 2.6912291525251487e-07,
+            "formula_PSNR_peak1_db": 151.0017382022368,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71991039,
+            "scale": 0.10730936496245412,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 2.0052650073765221e-07,
+            "defined_target_max_relative": 6.154420728041553e-07,
+            "defined_target_PSNR_peak1_db": 149.36222825295,
+            "formula_max_abs": 1.2847438635166242e-07,
+            "formula_max_relative": 4.441037609771128e-07,
+            "formula_PSNR_peak1_db": 151.3466076681751,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71991039,
+            "scale": 0.3333333333333333,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 2.0851621074235993e-07,
+            "defined_target_max_relative": 1.0233820155631173e-06,
+            "defined_target_PSNR_peak1_db": 153.67580689064786,
+            "formula_max_abs": 1.266707025382452e-07,
+            "formula_max_relative": 6.987573618926281e-07,
+            "formula_PSNR_peak1_db": 156.97121136209577,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71991039,
+            "scale": 0.6666666666666666,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 1.5905591119191875e-07,
+            "defined_target_max_relative": 1.354860407574201e-06,
+            "defined_target_PSNR_peak1_db": 160.0439362754609,
+            "formula_max_abs": 9.375692885948972e-08,
+            "formula_max_relative": 8.680816398670165e-07,
+            "formula_PSNR_peak1_db": 165.30656032296181,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71991039,
+            "scale": 1,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 4284,
+        "photos_used": true,
+        "scope": "Original CI imageByApplyingGainMap on supplied full-resolution RGB pair; no encoded carrier, no inverse accuracy",
+        "success": true,
+        "width": 5712
+      },
+      "original_photo_sha256_after": "71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e",
+      "actual_encoded_carrier_pass": false,
+      "physical_scene_inverse_verified": false
+    },
+    {
+      "photo": "IMG_2608",
+      "role": "development",
+      "scope": "New full-size conditional RGB-map recipe, not a verified camera global/local/semantic inverse",
+      "completed": true,
+      "source_facts": {
+        "gtc_native": {
+          "dtype": "<f4",
+          "file": "gtc_native.f32",
+          "height": 1,
+          "shape": [
+            1,
+            256,
+            4
+          ],
+          "width": 256
+        },
+        "linear_native": {
+          "dtype": "<f4",
+          "file": "linear_native.f32",
+          "height": 768,
+          "shape": [
+            768,
+            1024,
+            4
+          ],
+          "width": 1024
+        },
+        "native_properties": {
+          "baseGain": 2.0890464782714844,
+          "baselineExposure": 4
+        },
+        "original_sdr_float32": {
+          "dtype": "<f4",
+          "file": "original_sdr_exact.f32",
+          "shape": [
+            4284,
+            5712,
+            4
+          ]
+        },
+        "os_build": "26A434",
+        "scope": "Frozen native key1 inverse-style source plus unchanged native Apple Log; not full camera/semantic inverse. Exact SDR is an unencoded denominator, no carrier comparison yet."
+      },
+      "orientation": 1,
+      "shape": [
+        4284,
+        5712,
+        3
+      ],
+      "thumbnail_float32_to_native_half_max_abs": 3.0502676963806152e-05,
+      "relative_exposure_E": 1.0,
+      "native_linear_thumbnail_peak": 0.10894775390625,
+      "map_variants": [
+        {
+          "tag": "both-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x10330f2d0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7542c1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7542c60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7543048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x75430b5280>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x103309e30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x103309e30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "d1505dc5870d2f7a03645e84e19b4a89cc085280e0ccd3cfca22795a8dd62797",
+          "small_bg_sha256": "c98b1d4b0ee06cdd5680392518613029b870a28a4ee1efb1a87e21af5c2c3762",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 8.935317993164062,
+          "gain_laplacian_max_EV": 7.085639953613281
+        },
+        {
+          "tag": "local-only-GTC-retained-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x1056e7a20> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7af6c1c5a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7af6c60e80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7af7048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x7af70b5280>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x1056e5520> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x1056e5520> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                4284,
+                5712
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                4284,
+                5712
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "955888dc7789b4479064df645c10bf31abe90cd9f52bf927715fe8a51fe7e040",
+          "small_bg_sha256": "aa1396de51420d1132066056655fd7900083e4c7ddb69e076cdea134154198b9",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 6.988685607910156,
+          "gain_laplacian_max_EV": 9.455322265625
+        }
+      ],
+      "native_RGB_anchor": {
+        "positive_anchor_pixels": 785870,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.2043365785759026,
+        "p99_abs_EV": 1.7489779373949814,
+        "max_abs_EV": 12.872201744513712,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "same_Apple_small_q_bilinear_anchor": {
+        "positive_anchor_pixels": 785870,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.1987879764148638,
+        "p99_abs_EV": 1.78179574956159,
+        "max_abs_EV": 13.2826932965966,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "anchor_reference": "Native Apple Log float32 output before GPU half storage cast",
+      "old_2048_bilinear_area_comparison_complete": false,
+      "masks": {
+        "near_black_source_pixels": 1626377,
+        "nonfinite_master_pixels": 0,
+        "negative_master_components": 0,
+        "negative_SDR_components": 647750,
+        "negative_HDR_target_components": 0,
+        "source_zero_component_pixels": 0,
+        "positive_ratio_pixels": 23810670,
+        "all_pixels": 24470208
+      },
+      "global_only_conditional_masks": {
+        "curve_low_clamp_components": 97932,
+        "curve_high_clamp_components": 0,
+        "curve_plateau_components": 0,
+        "nonfinite_components": 0,
+        "valid_components": 73312692
+      },
+      "global_only_inverse_scope": "Hypothesis of supplied monotone GTC application; no native fast-math envelope or full producer domain proof; endpoint/flat outputs omitted, no camera EV confidence interval claimed",
+      "actual_saved_float32_log_gain_reconstruction": {
+        "max_abs": 1.100094271233587e-08,
+        "max_relative": 6.51976975325536e-07,
+        "positive_pixels": 23810670,
+        "scope": "Actual file reopen of a supplied pair, not an inverse metric"
+      },
+      "EXRs": [
+        {
+          "path": "scene_candidate_linear_P3.exr",
+          "size": 84216124,
+          "sha256": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+          "readback_different_storage_components": 0,
+          "dtype": "<f2",
+          "unit": "relative linearP3; scene candidate only"
+        },
+        {
+          "path": "log2_RGB_gain.exr",
+          "size": 258288911,
+          "sha256": "50dcf5f49e6d4f31d29e82d3fd62695fcf33fb9f7224f974c77fbd73a1da5605",
+          "readback_different_storage_components": 0,
+          "dtype": "<f4",
+          "unit": "log2 RGB ratio (EV), no color-space tag"
+        }
+      ],
+      "encrypted_full": {
+        "file": "IMG_2608-full.tar.gz.gpg",
+        "size": 343006781,
+        "sha256": "7de8966aef3d9b91410973241b01db53199d6ce0c1ba5d2231e36b8d6a1ef230"
+      },
+      "preview_checks": [
+        {
+          "file": "SDR.png",
+          "input_before_sha256": "2ffcd1c61c4c736d6207e918e37c1f407eb7cb76503363806c4b20b674168f59",
+          "input_after_sha256": "2ffcd1c61c4c736d6207e918e37c1f407eb7cb76503363806c4b20b674168f59",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "inverse-key1.png",
+          "input_before_sha256": "47c0f2720f486d7966c3d4b60fe5cb09c77adb54c2cb5b4a1194c5022ecc3ec4",
+          "input_after_sha256": "47c0f2720f486d7966c3d4b60fe5cb09c77adb54c2cb5b4a1194c5022ecc3ec4",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "global-only-hypothesis.png",
+          "input_before_sha256": "d389428b31be7ecd2b8a7d78b80a5ef7e2756733c4bf4f388457c14001575a45",
+          "input_after_sha256": "d389428b31be7ecd2b8a7d78b80a5ef7e2756733c4bf4f388457c14001575a45",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "both-candidate.png",
+          "input_before_sha256": "0adab98d137b018a350dbb87fbbd5e6c5f86f293387a018b22b7e6284f7b20b3",
+          "input_after_sha256": "0adab98d137b018a350dbb87fbbd5e6c5f86f293387a018b22b7e6284f7b20b3",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "local-only-GTC-retained-candidate.png",
+          "input_before_sha256": "8f806dfe17a5a3c42bf429c5f2b8922fa9180b464fccc5284bd1c160e3631c01",
+          "input_after_sha256": "8f806dfe17a5a3c42bf429c5f2b8922fa9180b464fccc5284bd1c160e3631c01",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "independent-HDR-render.png",
+          "input_before_sha256": "9ce83d77ca25c15cbee2824d3f937cb0115dbcaa86f668b5d76996bb9c5636d0",
+          "input_after_sha256": "9ce83d77ca25c15cbee2824d3f937cb0115dbcaa86f668b5d76996bb9c5636d0",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        }
+      ],
+      "source_SHA_after_previews": {
+        "main": "7bd8bc42588781d47f778a448a2d6246909f9ee320eee1ca55b6d7188d2d305d",
+        "SDR_float32": "ec2aa73bee081757cb2bbb21b49ab0ace475958dd6ddf9c61ddf47e49b60dbf0",
+        "thumbnail": "40909075388e5098f005b383e8a9462982cd1e1191c9e6aea9b24bcad54e0d4a"
+      },
+      "source_SHA_before_previews": {
+        "main": "7bd8bc42588781d47f778a448a2d6246909f9ee320eee1ca55b6d7188d2d305d",
+        "SDR_float32": "ec2aa73bee081757cb2bbb21b49ab0ace475958dd6ddf9c61ddf47e49b60dbf0",
+        "thumbnail": "40909075388e5098f005b383e8a9462982cd1e1191c9e6aea9b24bcad54e0d4a"
+      },
+      "native_headroom": {
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 0,
+            "defined_target_max_relative": 0,
+            "defined_target_PSNR_peak1_db": "inf",
+            "formula_max_abs": 0,
+            "formula_max_relative": 0,
+            "formula_PSNR_peak1_db": "inf",
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71432010,
+            "scale": 0,
+            "unencoded_SDR_h1_max_abs": 0
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 1.9707070841867846e-07,
+            "defined_target_max_relative": 3.0142959823482733e-07,
+            "defined_target_PSNR_peak1_db": 150.3368028434142,
+            "formula_max_abs": 1.5361419447579294e-07,
+            "formula_max_relative": 2.637451646111905e-07,
+            "formula_PSNR_peak1_db": 151.2670015437146,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71432010,
+            "scale": 0.10730936496245412,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 2.2083207901202329e-07,
+            "defined_target_max_relative": 6.198507894077768e-07,
+            "defined_target_PSNR_peak1_db": 148.32678543926386,
+            "formula_max_abs": 1.445650257836384e-07,
+            "formula_max_relative": 4.435703719155854e-07,
+            "formula_PSNR_peak1_db": 150.46275470547383,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71432010,
+            "scale": 0.3333333333333333,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 1.8106207003154573e-07,
+            "defined_target_max_relative": 1.051917698636795e-06,
+            "defined_target_PSNR_peak1_db": 150.51740299184178,
+            "formula_max_abs": 1.0541421807674922e-07,
+            "formula_max_relative": 7.205773911866391e-07,
+            "formula_PSNR_peak1_db": 154.04328335581602,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71432010,
+            "scale": 0.6666666666666666,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "defined_target_max_abs": 1.4617252301618588e-07,
+            "defined_target_max_relative": 1.4484932305872314e-06,
+            "defined_target_PSNR_peak1_db": 154.68115676864124,
+            "formula_max_abs": 1.0246568418748048e-07,
+            "formula_max_relative": 8.680708338764257e-07,
+            "formula_PSNR_peak1_db": 160.1498480821573,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "positive_pair_components": 71432010,
+            "scale": 1,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 4284,
+        "photos_used": true,
+        "scope": "Original CI imageByApplyingGainMap on supplied full-resolution RGB pair; no encoded carrier, no inverse accuracy",
+        "success": true,
+        "width": 5712
+      },
+      "original_photo_sha256_after": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a",
+      "actual_encoded_carrier_pass": false,
+      "physical_scene_inverse_verified": false
+    },
+    {
+      "photo": "IMG_0032",
+      "role": "new-recipe-holdout",
+      "scope": "New full-size conditional RGB-map recipe, not a verified camera global/local/semantic inverse",
+      "completed": true,
+      "source_facts": {
+        "gtc_native": {
+          "dtype": "<f4",
+          "file": "gtc_native.f32",
+          "height": 1,
+          "shape": [
+            1,
+            256,
+            4
+          ],
+          "width": 256
+        },
+        "linear_native": {
+          "dtype": "<f4",
+          "file": "linear_native.f32",
+          "height": 768,
+          "shape": [
+            768,
+            1024,
+            4
+          ],
+          "width": 1024
+        },
+        "native_properties": {
+          "baseGain": 0.54296875,
+          "baselineExposure": 4.015384674072266
+        },
+        "original_sdr_float32": {
+          "dtype": "<f4",
+          "file": "original_sdr_exact.f32",
+          "shape": [
+            3024,
+            4032,
+            4
+          ]
+        },
+        "os_build": "26A434",
+        "scope": "Frozen native key1 inverse-style source plus unchanged native Apple Log; not full camera/semantic inverse. Exact SDR is an unencoded denominator, no carrier comparison yet."
+      },
+      "orientation": 6,
+      "shape": [
+        3024,
+        4032,
+        3
+      ],
+      "thumbnail_float32_to_native_half_max_abs": 0.0002440810203552246,
+      "relative_exposure_E": 1.0,
+      "native_linear_thumbnail_peak": 0.8466796875,
+      "map_variants": [
+        {
+          "tag": "both-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x102f072b0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7996c1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7996c60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7997048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x79970b5200>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102f01a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102f01a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "917327860a5b197824dac40367cb6acf2531cbe550c76f2449465aa5d78f250a",
+          "small_bg_sha256": "2565e0bb9b329daf121ddf9ad44843f1f5d8a527274e201255b802db591d4f3f",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 10.071020126342773,
+          "gain_laplacian_max_EV": 22.041976928710938
+        },
+        {
+          "tag": "local-only-GTC-retained-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x104c03550> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7c96c1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7c96c60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7c97048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x7c970b5300>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x104c01350> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x104c01350> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "217e28b0b819f1fd5a7ca84d9382b98ff92688e116230c0beb9c4260522ebe91",
+          "small_bg_sha256": "7dbbb1d4062a4525eca22d1a2a5b1e3a91b9e9c048d5ddba09f202bfdb67996c",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 10.691162109375,
+          "gain_laplacian_max_EV": 20.944862365722656
+        }
+      ],
+      "native_RGB_anchor": {
+        "positive_anchor_pixels": 786432,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.009531612272901079,
+        "p99_abs_EV": 0.046146153340881735,
+        "max_abs_EV": 3.5619417110678366,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "same_Apple_small_q_bilinear_anchor": {
+        "positive_anchor_pixels": 786432,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.008312996396601257,
+        "p99_abs_EV": 0.03506432032487704,
+        "max_abs_EV": 3.5573400758436833,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "anchor_reference": "Native Apple Log float32 output before GPU half storage cast",
+      "old_2048_bilinear_area_comparison_complete": false,
+      "masks": {
+        "near_black_source_pixels": 15327,
+        "nonfinite_master_pixels": 0,
+        "negative_master_components": 0,
+        "negative_SDR_components": 0,
+        "negative_HDR_target_components": 0,
+        "source_zero_component_pixels": 0,
+        "positive_ratio_pixels": 12184978,
+        "all_pixels": 12192768
+      },
+      "global_only_conditional_masks": {
+        "curve_low_clamp_components": 0,
+        "curve_high_clamp_components": 947,
+        "curve_plateau_components": 0,
+        "nonfinite_components": 0,
+        "valid_components": 36577357
+      },
+      "global_only_inverse_scope": "Hypothesis of supplied monotone GTC application; no native fast-math envelope or full producer domain proof; endpoint/flat outputs omitted, no camera EV confidence interval claimed",
+      "actual_saved_float32_log_gain_reconstruction": {
+        "max_abs": 1.8909370791408975e-08,
+        "max_relative": 3.3018654098608666e-07,
+        "positive_pixels": 12184978,
+        "scope": "Actual file reopen of a supplied pair, not an inverse metric"
+      },
+      "EXRs": [
+        {
+          "path": "scene_candidate_linear_P3.exr",
+          "size": 27791119,
+          "sha256": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+          "readback_different_storage_components": 0,
+          "dtype": "<f2",
+          "unit": "relative linearP3; scene candidate only"
+        },
+        {
+          "path": "log2_RGB_gain.exr",
+          "size": 126080387,
+          "sha256": "3a421d369fd108ae91e320b5ae5d2b4ed20f38d16d5b8b2a2fc2bad3774396e8",
+          "readback_different_storage_components": 0,
+          "dtype": "<f4",
+          "unit": "log2 RGB ratio (EV), no color-space tag"
+        }
+      ],
+      "encrypted_full": {
+        "file": "IMG_0032-full.tar.gz.gpg",
+        "size": 153945984,
+        "sha256": "757af22e93e6c8db257b924023f69c913f4a398d8a651f14b1f9d396af24b1a6"
+      },
+      "preview_checks": [
+        {
+          "file": "SDR.png",
+          "input_before_sha256": "02b9697c32c36213d51415c02ad773693c39f87dccfb79492eb9defa772e2195",
+          "input_after_sha256": "02b9697c32c36213d51415c02ad773693c39f87dccfb79492eb9defa772e2195",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "inverse-key1.png",
+          "input_before_sha256": "e1c98f8f8b7d744e88f7d8644fd947032723129d81c9f566d88a511796071092",
+          "input_after_sha256": "e1c98f8f8b7d744e88f7d8644fd947032723129d81c9f566d88a511796071092",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "global-only-hypothesis.png",
+          "input_before_sha256": "fb32a89294471515226a22ed53ddd9f20bba7f810475bdb6d713324e0290ac3e",
+          "input_after_sha256": "fb32a89294471515226a22ed53ddd9f20bba7f810475bdb6d713324e0290ac3e",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "both-candidate.png",
+          "input_before_sha256": "b245815246c07ec5dcb54576a1f2c50f18a0e4c04f2329e999ca7ff99f45bf53",
+          "input_after_sha256": "b245815246c07ec5dcb54576a1f2c50f18a0e4c04f2329e999ca7ff99f45bf53",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "local-only-GTC-retained-candidate.png",
+          "input_before_sha256": "a75c875e04caacdfc6a0797e1295ca356cd2988cd707591d9793d5c97d6a993e",
+          "input_after_sha256": "a75c875e04caacdfc6a0797e1295ca356cd2988cd707591d9793d5c97d6a993e",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "independent-HDR-render.png",
+          "input_before_sha256": "8e35c1b5f6a940d90cb65d06dc05e2025e5755245a2b50ad89c27d753e951d01",
+          "input_after_sha256": "8e35c1b5f6a940d90cb65d06dc05e2025e5755245a2b50ad89c27d753e951d01",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        }
+      ],
+      "source_SHA_after_previews": {
+        "main": "4ee0b71a396006644b7a6263ea5aa6fff6e92fbe07440e96cc2a1c90b03235ec",
+        "SDR_float32": "91a7cc791d223b7dcaabc3ed51e1aa92abbf51d77721c90d11e9994012ff1090",
+        "thumbnail": "c6ceb6d6c2cfc0455de388c0b7840affc5a10d0ee979c59a99352018f0e594a7"
+      },
+      "source_SHA_before_previews": {
+        "main": "4ee0b71a396006644b7a6263ea5aa6fff6e92fbe07440e96cc2a1c90b03235ec",
+        "SDR_float32": "91a7cc791d223b7dcaabc3ed51e1aa92abbf51d77721c90d11e9994012ff1090",
+        "thumbnail": "c6ceb6d6c2cfc0455de388c0b7840affc5a10d0ee979c59a99352018f0e594a7"
+      },
+      "native_headroom": {
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 0,
+            "defined_target_max_relative": 0,
+            "defined_target_PSNR_peak1_db": "inf",
+            "formula_max_abs": 0,
+            "formula_max_relative": 0,
+            "formula_PSNR_peak1_db": "inf",
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36554934,
+            "scale": 0,
+            "unencoded_SDR_h1_max_abs": 0
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 1.9520938554506984e-07,
+            "defined_target_max_relative": 2.7546084189537326e-07,
+            "defined_target_PSNR_peak1_db": 151.73305048692814,
+            "formula_max_abs": 1.7285821951595892e-07,
+            "formula_max_relative": 2.565893562710694e-07,
+            "formula_PSNR_peak1_db": 152.13667715194111,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36554934,
+            "scale": 0.10730936496245412,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 3.0506307258093557e-07,
+            "defined_target_max_relative": 4.630336498733992e-07,
+            "defined_target_PSNR_peak1_db": 148.74855299882782,
+            "formula_max_abs": 2.2973654278946043e-07,
+            "formula_max_relative": 3.8558295043953095e-07,
+            "formula_PSNR_peak1_db": 150.2698405324902,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36554934,
+            "scale": 0.3333333333333333,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 4.4957535461076503e-07,
+            "defined_target_max_relative": 7.927141034729413e-07,
+            "defined_target_PSNR_peak1_db": 146.28880476643502,
+            "formula_max_abs": 2.979466866559477e-07,
+            "formula_max_relative": 6.473061147939283e-07,
+            "formula_PSNR_peak1_db": 148.4780021284107,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36554934,
+            "scale": 0.6666666666666666,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 5.933782777356456e-07,
+            "defined_target_max_relative": 1.0803824977696997e-06,
+            "defined_target_PSNR_peak1_db": 145.66808760738806,
+            "formula_max_abs": 3.574037684694886e-07,
+            "formula_max_relative": 7.647764460522618e-07,
+            "formula_PSNR_peak1_db": 148.38209612374294,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36554934,
+            "scale": 1,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 3024,
+        "photos_used": true,
+        "scope": "Original CI imageByApplyingGainMap on supplied full-resolution RGB pair; no encoded carrier, no inverse accuracy",
+        "success": true,
+        "width": 4032
+      },
+      "original_photo_sha256_after": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+      "actual_encoded_carrier_pass": false,
+      "physical_scene_inverse_verified": false
+    },
+    {
+      "photo": "IMG_0033",
+      "role": "new-recipe-holdout",
+      "scope": "New full-size conditional RGB-map recipe, not a verified camera global/local/semantic inverse",
+      "completed": true,
+      "source_facts": {
+        "gtc_native": {
+          "dtype": "<f4",
+          "file": "gtc_native.f32",
+          "height": 1,
+          "shape": [
+            1,
+            256,
+            4
+          ],
+          "width": 256
+        },
+        "linear_native": {
+          "dtype": "<f4",
+          "file": "linear_native.f32",
+          "height": 768,
+          "shape": [
+            768,
+            1024,
+            4
+          ],
+          "width": 1024
+        },
+        "native_properties": {
+          "baseGain": 0.54095458984375,
+          "baselineExposure": 4.015384674072266
+        },
+        "original_sdr_float32": {
+          "dtype": "<f4",
+          "file": "original_sdr_exact.f32",
+          "shape": [
+            3024,
+            4032,
+            4
+          ]
+        },
+        "os_build": "26A434",
+        "scope": "Frozen native key1 inverse-style source plus unchanged native Apple Log; not full camera/semantic inverse. Exact SDR is an unencoded denominator, no carrier comparison yet."
+      },
+      "orientation": 6,
+      "shape": [
+        3024,
+        4032,
+        3
+      ],
+      "thumbnail_float32_to_native_half_max_abs": 0.00024175643920898438,
+      "relative_exposure_E": 1.0,
+      "native_linear_thumbnail_peak": 0.58935546875,
+      "map_variants": [
+        {
+          "tag": "both-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x10114f2d0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x753ac1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x753ac60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x753b048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x753b0b5280>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x101149a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x101149a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "793bf28512335b7da8199afcc1fef3d4568db41cadd9a900b523a16cd2a2be8f",
+          "small_bg_sha256": "cd90a7eaf570a0985f44fc26d3e0359c5f7de8c0e303925ae9441674f8b5b39d",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 11.874216079711914,
+          "gain_laplacian_max_EV": 21.322010040283203
+        },
+        {
+          "tag": "local-only-GTC-retained-candidate",
+          "native_supplied_heap_bytes": 2147483648,
+          "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+          "allocation_state": {
+            "allocatedSize": "[<FigMetalAllocator 0x1009a3550> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+            "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7ce6c1c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7ce6c60dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7ce7048600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+            "allocatorType": 2,
+            "context": "<FigMetalContext: 0x7ce70b5300>",
+            "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x1009a13b0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+            "memSize": 2147483648,
+            "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x1009a13b0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+            "useLiveMetalAllocations": false
+          },
+          "radius": 1,
+          "epsilon": 0.0010000000474974513,
+          "guided_calls": [
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            },
+            {
+              "epsilon": 0.0010000000474974513,
+              "guide_format": 115,
+              "guide_size": [
+                3024,
+                4032
+              ],
+              "input_size": [
+                768,
+                1024
+              ],
+              "output_size": [
+                3024,
+                4032
+              ],
+              "radius": 1
+            }
+          ],
+          "dispatches": 7,
+          "source_texture_unchanged": true,
+          "params_unchanged": true,
+          "full_bg_fg_SHA_equal": true,
+          "full_bg_sha256": "e8d610c42996b5df780df374bc16e37be8247e9f080f7875c13835a55caa63bf",
+          "small_bg_sha256": "df87094ad356681fd68b775667567a64d15fff5b2c72b4b5fa6c0ba6f3356a33",
+          "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+          "candidate_negative_components": 0,
+          "candidate_nonfinite_components": 0,
+          "gain_gradient_max_EV": 11.794415473937988,
+          "gain_laplacian_max_EV": 21.286846160888672
+        }
+      ],
+      "native_RGB_anchor": {
+        "positive_anchor_pixels": 786099,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.020794927453735172,
+        "p99_abs_EV": 0.05939442363288527,
+        "max_abs_EV": 27.147115214352183,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "same_Apple_small_q_bilinear_anchor": {
+        "positive_anchor_pixels": 785918,
+        "all_anchor_pixels": 786432,
+        "mean_abs_EV": 0.015975486747093755,
+        "p99_abs_EV": 0.044608411390646474,
+        "max_abs_EV": 9.801786370834046,
+        "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+      },
+      "anchor_reference": "Native Apple Log float32 output before GPU half storage cast",
+      "old_2048_bilinear_area_comparison_complete": false,
+      "masks": {
+        "near_black_source_pixels": 48686,
+        "nonfinite_master_pixels": 0,
+        "negative_master_components": 0,
+        "negative_SDR_components": 0,
+        "negative_HDR_target_components": 0,
+        "source_zero_component_pixels": 0,
+        "positive_ratio_pixels": 12163721,
+        "all_pixels": 12192768
+      },
+      "global_only_conditional_masks": {
+        "curve_low_clamp_components": 0,
+        "curve_high_clamp_components": 667,
+        "curve_plateau_components": 0,
+        "nonfinite_components": 0,
+        "valid_components": 36577637
+      },
+      "global_only_inverse_scope": "Hypothesis of supplied monotone GTC application; no native fast-math envelope or full producer domain proof; endpoint/flat outputs omitted, no camera EV confidence interval claimed",
+      "actual_saved_float32_log_gain_reconstruction": {
+        "max_abs": 2.0255067567642726e-08,
+        "max_relative": 3.3039064284023893e-07,
+        "positive_pixels": 12163721,
+        "scope": "Actual file reopen of a supplied pair, not an inverse metric"
+      },
+      "EXRs": [
+        {
+          "path": "scene_candidate_linear_P3.exr",
+          "size": 28312619,
+          "sha256": "7d488706655324c2ae278281cad21f980f71aaf03e2a536dd7aa8eb512bcf89d",
+          "readback_different_storage_components": 0,
+          "dtype": "<f2",
+          "unit": "relative linearP3; scene candidate only"
+        },
+        {
+          "path": "log2_RGB_gain.exr",
+          "size": 126658514,
+          "sha256": "adde10223370f9f50ec33791018613587d6905da4c2431740a32d3c683234c9e",
+          "readback_different_storage_components": 0,
+          "dtype": "<f4",
+          "unit": "log2 RGB ratio (EV), no color-space tag"
+        }
+      ],
+      "encrypted_full": {
+        "file": "IMG_0033-full.tar.gz.gpg",
+        "size": 155043789,
+        "sha256": "854aba785123b96650c10b1b6b7edcf662c8c788ec7d6eec2cc47fc20398dd8c"
+      },
+      "preview_checks": [
+        {
+          "file": "SDR.png",
+          "input_before_sha256": "c4f53ab423c86902dee9167088a9d9f38ca23e7373a68cad79468d52f51db3b8",
+          "input_after_sha256": "c4f53ab423c86902dee9167088a9d9f38ca23e7373a68cad79468d52f51db3b8",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "inverse-key1.png",
+          "input_before_sha256": "6174125ba198ffcb24c24e78096c7c5806e819416c1f3066b4670d79742828bb",
+          "input_after_sha256": "6174125ba198ffcb24c24e78096c7c5806e819416c1f3066b4670d79742828bb",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "global-only-hypothesis.png",
+          "input_before_sha256": "c34290000a3928bcb9de05b83d50baafe086a247b082c498623a2e2e155cf5f6",
+          "input_after_sha256": "c34290000a3928bcb9de05b83d50baafe086a247b082c498623a2e2e155cf5f6",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "both-candidate.png",
+          "input_before_sha256": "0dbb0b995cd6bb1b9ed33bed43524ad5927fd0fa6e21bf2f3e068889b08dc368",
+          "input_after_sha256": "0dbb0b995cd6bb1b9ed33bed43524ad5927fd0fa6e21bf2f3e068889b08dc368",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "local-only-GTC-retained-candidate.png",
+          "input_before_sha256": "b897a0bc70e8ab49ae2394acb128fe4435775a6954519a3938e191bbf80f951e",
+          "input_after_sha256": "b897a0bc70e8ab49ae2394acb128fe4435775a6954519a3938e191bbf80f951e",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        },
+        {
+          "file": "independent-HDR-render.png",
+          "input_before_sha256": "3ce14c40ef9d1fbb796c89351f033bcd83f63a819a1cb5245340c89ac14cfd11",
+          "input_after_sha256": "3ce14c40ef9d1fbb796c89351f033bcd83f63a819a1cb5245340c89ac14cfd11",
+          "source_unchanged": true,
+          "nonfinite_preview_replacement": "black for display only; masks retained separately"
+        }
+      ],
+      "source_SHA_after_previews": {
+        "main": "1ae8e86745a33881705ce58d19f34b268e33919cc9c1456564d53f3ab2a493d6",
+        "SDR_float32": "734baaa5e1ec949e24adaf2528b646566ba06cd18c5be49f31d85052f9b625c5",
+        "thumbnail": "3517ed8d3832aa46949f8bd71b9f182892e92241a86ce7cad4c4956ef9877674"
+      },
+      "source_SHA_before_previews": {
+        "main": "1ae8e86745a33881705ce58d19f34b268e33919cc9c1456564d53f3ab2a493d6",
+        "SDR_float32": "734baaa5e1ec949e24adaf2528b646566ba06cd18c5be49f31d85052f9b625c5",
+        "thumbnail": "3517ed8d3832aa46949f8bd71b9f182892e92241a86ce7cad4c4956ef9877674"
+      },
+      "native_headroom": {
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 0,
+            "defined_target_max_relative": 0,
+            "defined_target_PSNR_peak1_db": "inf",
+            "formula_max_abs": 0,
+            "formula_max_relative": 0,
+            "formula_PSNR_peak1_db": "inf",
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36491163,
+            "scale": 0,
+            "unencoded_SDR_h1_max_abs": 0
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 1.8576714055917876e-07,
+            "defined_target_max_relative": 2.9815394845302735e-07,
+            "defined_target_PSNR_peak1_db": 151.9645213490389,
+            "formula_max_abs": 1.7149484843326235e-07,
+            "formula_max_relative": 2.707950615327387e-07,
+            "formula_PSNR_peak1_db": 152.43815431845493,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36491163,
+            "scale": 0.10730936496245412,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 2.8880999680680475e-07,
+            "defined_target_max_relative": 4.892771452832034e-07,
+            "defined_target_PSNR_peak1_db": 148.90842258523656,
+            "formula_max_abs": 2.1293202145944434e-07,
+            "formula_max_relative": 4.004469939459732e-07,
+            "formula_PSNR_peak1_db": 150.4297368482106,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36491163,
+            "scale": 0.3333333333333333,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 3.9774501403577744e-07,
+            "defined_target_max_relative": 8.223189902380171e-07,
+            "defined_target_PSNR_peak1_db": 147.37327061684152,
+            "formula_max_abs": 2.777593360869801e-07,
+            "formula_max_relative": 6.510184500827799e-07,
+            "formula_PSNR_peak1_db": 149.65168168298578,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36491163,
+            "scale": 0.6666666666666666,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 36578304,
+            "defined_target_max_abs": 4.229257434262834e-07,
+            "defined_target_max_relative": 1.1042639829788225e-06,
+            "defined_target_PSNR_peak1_db": 147.67351586046766,
+            "formula_max_abs": 2.86917326119962e-07,
+            "formula_max_relative": 7.681447024381043e-07,
+            "formula_PSNR_peak1_db": 150.62847002675196,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "positive_pair_components": 36491163,
+            "scale": 1,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 3024,
+        "photos_used": true,
+        "scope": "Original CI imageByApplyingGainMap on supplied full-resolution RGB pair; no encoded carrier, no inverse accuracy",
+        "success": true,
+        "width": 4032
+      },
+      "original_photo_sha256_after": "c2f18ab9b1349377d2e23aaa7610bb5115f28f95c4d88ce6a789d6550e1213a0",
+      "actual_encoded_carrier_pass": false,
+      "physical_scene_inverse_verified": false
+    }
+  ],
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0,
+    "orientation": "Original stored canvas, transform from native metadata for previews only"
+  },
+  "native_full_size_completed": 5,
+  "A_phase_complete": false,
+  "physical_scene_recovery_complete": false,
+  "encoded_HDR_target_accepted": false,
+  "acceptance_complete": false
+}

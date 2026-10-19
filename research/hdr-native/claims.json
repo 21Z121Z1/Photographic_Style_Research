@@ -451,6 +451,134 @@
           "sha256": "b9674310393e9279515190c387eebc25d560a39e217869df7078363829073db7"
         }
       ]
+    },
+    {
+      "id": "HDR-26",
+      "category": "local/original-RGB-full-photo-operator",
+      "status": "已验证数值",
+      "claim": "S42在26A434上实际完成5张原件分辨率：3张5712x4284、2张4032x3024，每张2个受控变体均原host创建small RGB map并执行2次CMIGuidedFilter（r1/eps.001、RGBA16全分辨率input guide）/7dispatch，参数/源纹理hash不变，bg/fg map一致；使用S41供应2GiB池。0032/0033是本新RGB配方冻结后留出，曾参与更旧scalar实验，不能称完全未见照片。此为原算子参与证明，不是拍摄端全逆或底层PSO编译产物字节身份认证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/analysis-s42.json",
+          "line": 1,
+          "sha256": "b1f36638a2eedbd09cbf585c703e6c3bc75d09d4b771f42fce5e7f1a15e2ad13"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/formula-freeze.json",
+          "line": 1,
+          "sha256": "c05933c2da4255ea9ef0bcdb3e9e320339a8de13257a4abca5480ac0a1ce5d7b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-27",
+      "category": "transport/real-unencoded-storage-headroom",
+      "status": "已验证数值",
+      "claim": "S42真实五图的half P3候选EXR与float32 unitless log2 RGB map EXR共10份实际保存重读，存储分量差0；正比值mask内保存map重建maxrelative最大6.60515477177e-07。原CI未编码应用5张x5headroom（1/1.25/2/4/8）共25次，公式maxabs最大5.60320626897e-07，PSNR最小148.357935dB；h1对所供原SDR float32分母maxabs0。这不是新编码HEIF的ImageIO max0，也不是未知scene真值的逆解精度。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/analysis-s42.json",
+          "line": 1,
+          "sha256": "b1f36638a2eedbd09cbf585c703e6c3bc75d09d4b771f42fce5e7f1a15e2ad13"
+        },
+        {
+          "file": "hdr-native-20261019/validation-through-s42.json",
+          "line": 1,
+          "sha256": "2ed14669aaf34b27d1576bd1d2bcb983c25b5ae4b77c5d3689bd084102852885"
+        }
+      ]
+    },
+    {
+      "id": "HDR-28",
+      "category": "scene-candidate/anchor-and-edge-failure",
+      "status": "已验证数值",
+      "claim": "S42投影候选相对原native Apple Log float32锚点的面积均值误差：2600 .330882EV、2604 .137667EV、2608 .204337EV、0032 .009532EV、0033 .020795EV；极值3.56至27.15EV且近黑区域仍损失。当前native q阈值/采样/half与候选域尚未逐区分解；gain梯度和Laplacian仅诊断，不能据最大值证明无光晕/振铃。对照是相同Apple small q双线性，不是原2048双线性+2x2面积约束，旧基线比较仍缺。新母版质量未通过，不缩mask、不放宽1e-3，不追旧bit-exact拟合。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/analysis-s42.json",
+          "line": 1,
+          "sha256": "b1f36638a2eedbd09cbf585c703e6c3bc75d09d4b771f42fce5e7f1a15e2ad13"
+        }
+      ]
+    },
+    {
+      "id": "HDR-29",
+      "category": "preview/input-integrity",
+      "status": "已验证数值",
+      "claim": "S42六路分离预览统一OCIO cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / LinearP3-D65 -> sRGB Display / ACES1.0 SDR Video /0EV，30次显示前后数组SHA及5张源main/SDR/thumbnail文件SHA相同；35PNG仅加密上传并流式GPG/manifest逐项验证，本地只展开5张contact。relative母版未作曝光标定且0EV候选明显偏暗，固定ACES不代替最终HDR曝光设计或屏幕验证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/analysis-s42.json",
+          "line": 1,
+          "sha256": "b1f36638a2eedbd09cbf585c703e6c3bc75d09d4b771f42fce5e7f1a15e2ad13"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39254061338/private-previews/archive-receipt.json",
+          "line": 1,
+          "sha256": "f976adf43f81bf50e4e88cb95f6ac7b3ab5506032828801b46771c6816c457e6"
+        }
+      ]
+    },
+    {
+      "id": "HDR-30",
+      "category": "global-local/physical-identifiability",
+      "status": "假设",
+      "claim": "S42 global-only为给定GTC在A上作用的条件逆投影，端点/平坦观察mask单列；local-only保留给定GTC，both为给定Apple Log锚点的原生RGB投影。它们不证明真实拍摄端global/local因子分解，也没有独立撤销人物/皮肤/纹理。相对scene候选到HDR显示图仍需独立全局显示曝光/渲染意图；未知绝对尺度不能通过把beta、baseGain字段或观感当scene证据来填补。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/analysis-s42.json",
+          "line": 1,
+          "sha256": "b1f36638a2eedbd09cbf585c703e6c3bc75d09d4b771f42fce5e7f1a15e2ad13"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39254061338/selected/formula-freeze.json",
+          "line": 1,
+          "sha256": "c05933c2da4255ea9ef0bcdb3e9e320339a8de13257a4abca5480ac0a1ce5d7b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-31",
+      "category": "transport/AV1-standalone-provider",
+      "status": "已验证数值",
+      "claim": "S43四个AV1 4:4:4 gain-code文件（matrix0/6 x10/12bit）在26A434均有ImageIO provider；matrix0的libavif lossless integer decode完全相同，但CI URL/CG读回仍有约.00173至.00191代码偏差，Quartz CPU再包装更接近。12bit AV1的provider成功只区分本组HEVC12失败，不能据此宣称所有12bit或设备兼容。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39256675682/selected/analysis-s43.json",
+          "line": 1,
+          "sha256": "a5600ac18c0365aca94186d565658fbce0858295cf50cf5d48b487570c7be919"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39256675682/selected/library-version.json",
+          "line": 1,
+          "sha256": "f6810c16efeedf859354f6491ef15819b7c4f8a7185e66c4fa94aab67d779ae9"
+        }
+      ]
+    },
+    {
+      "id": "HDR-32",
+      "category": "transport/AV1-mixed-container-boundary",
+      "status": "已验证数值",
+      "claim": "S43保持原HEVC primary coded bytes/props/ftyp，实验性替换av01 gain item与av1C property；4个组合CGImageSourceCopyAuxiliaryDataInfo及CI gain均nil，原生compare exit5/ISO native input nil。未认证mixed-codec格式合规或所有AV1 gain-map不支持。预定3.5EV范围10bit的理想半LSB上界.00118644已超过原1e-3；12bit理想量化maxrelative .000293977/PSNR71.116但原生aux失败，不能把理论量化当成功。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39256675682/selected/analysis-s43.json",
+          "line": 1,
+          "sha256": "a5600ac18c0365aca94186d565658fbce0858295cf50cf5d48b487570c7be919"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39256675682/selected/freeze.json",
+          "line": 1,
+          "sha256": "08b13a39315c6679d7bb4dd210b6652e04c9c15cfd8ba5c04d9533beb4b0a0fc"
+        }
+      ]
     }
   ]
 }

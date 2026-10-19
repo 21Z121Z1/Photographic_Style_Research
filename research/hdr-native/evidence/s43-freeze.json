@@ -1,0 +1,39 @@
+{
+  "os_build": "26A434",
+  "scope": "Fixed synthetic RGB target only, AV1 native provider and mixed-item transport experiment; no format-conformance or physical/photographic inverse claim",
+  "source_sha256": {
+    "research/hdr-native/run_hdr_s43.py": "fdda66e5f3ab8092eb23eb45410f9d67fbf845d9e961cbc08a3ce414c8d4b67b",
+    "research/hdr-native/avif_codec_s43.c": "bed1c797405f2df78bef67f622ae3f4b6aa9fb7e84f49702bbd40174db9a4abb",
+    "research/hdr-native/iso_splice_av1_s43.py": "ec4556de69c607e8c72773049a1ecc44f05b45cc362ff260fd08c05250a8f55f",
+    "research/hdr-native/iso_splice.py": "2fc2caf76a466c9504bb5589ee8464c57bb073b0c73c4ceb0f7982f6d7d2fb29",
+    "research/hdr-native/decode_layers_s33.m": "a58810e6a3d0e22c38fe01e7ac198a1f58c7c367e66a3a4166d89dc1a99798d4",
+    "research/hdr-native/iso_oracle_s31.m": "afe936b7e677b4499e5604cb70422cae81f80d0c0e4c96763bd1a5ec29a8c7d3",
+    "research/hdr-native/hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f",
+    "research/hdr-native/render_contract.py": "ae8ced70fa5aee280b202f50f47be6773014b5cf3875fa1ff82bd7e9ad05bf7b"
+  },
+  "upstream_artifact_id": "12178164564",
+  "upstream_SHA256": "1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c",
+  "fixed_target": "Same S31 rgb-opposing EV=[3u,-.5+2v,2(1-u)], full original source SDR from retained S29 carrier",
+  "gain_range_EV": [
+    -0.5,
+    3.0
+  ],
+  "bits": [
+    10,
+    12
+  ],
+  "matrices": [
+    0,
+    6
+  ],
+  "range": "full",
+  "encoder": "AOM lossless, one active thread, 4:4:4",
+  "header": "Actual installed libavif header SHA retained, public API used without native-output fit",
+  "ftyp_policy": "Preserve original HEVC-base container ftyp, never mislabel primary as AV1; mixed codec native compatibility must be measured",
+  "original_thresholds_unchanged": {
+    "linear_abs": 1e-05,
+    "PSNR_db": 60,
+    "target_relative": 0.001
+  },
+  "all_inverse_masks_unchanged": true
+}

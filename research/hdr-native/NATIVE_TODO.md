@@ -27,3 +27,9 @@ S36更新：R-RGB-HOST的三组合成原host参与和读回已验证（run392464
 R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图的默认144MiB池容量前置条件（S40/S41），小图输出SHA一致。下一轮S42不改变图像公式，必须保留所有非零退出的native.json/checkpoint，检查真实全尺寸两guided、eps.001、source/params SHA、EXR存储重读及Gain Map传输分开门槛。此条件不是Metal不可用，不归入待实机。
 
 真实Photos调用者所供资源预算可在runner原PISemanticStyleFilter调用时hook initWithMetalContext:/FigMetalAllocatorDescriptor.setMemSize:/setWireMemory:捕获，保持原方法返回，记录PSO和资源描述；用同输入小图/大图读回对照，不从属性名推断配置。相机曲线/Studio/RAW与真实HDR观看清单保持原样。
+
+
+### S42 后续（分类分开）
+- 可交给macOS runner：逐区定位原create-kernel 1/255阈值、采样、half和锚点误差；与原2048双线性+2x2面积约束比较同画布边缘/锚点，保留原参数不凭感觉调eps。S42不含该旧基线对照。
+- 可交给macOS runner：独立冻结显示曝光策略与中间headroom效果，重用已存母版，禁止暗中改场景候选/旧mask；编码候选须再验全尺寸原SDR ImageIO max0及RGB目标1e-3/PSNR60。S43先以固定合成目标隔离AV1原生码值。
+- 待实机解决：真实拍摄global/local曲线/应用域与33点合同、j像素EV原始统计、Studio原统计、RAW2679/2408和实际HDR屏幕，沿用既有可执行方案；S42的自洽性不补造这些证据。

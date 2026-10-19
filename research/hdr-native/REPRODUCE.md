@@ -31,3 +31,8 @@ S36入口run_hdr_s36.py / ltm_materialize_s36.m，读取同一S34 ZIP（SHA44d5c
 S37–S41复现：完整source/run/artifact/ZIP SHA见hdr-native-20261019/run-provenance-s37-s41.json。S37/S38原workflow保持历史失败；S39/S40入口run_hdr_s39.py/run_hdr_s40.py只用合成尺寸诊断，S41入口run_hdr_s41.py比对默认144MiB和原指定初始化器自供2GiB native pool。每个新实验使用新research/vm-native-<date>-hdr-sNN及push过滤，不改旧workflow。所有图片计算只在xcode-27/26A434 runner；本地只用内存scope审计汇总/密文。
 
 合成artifact归档用既有archive_hdr_s29.py，实际照片汇总用新archive_hdr_aggregate.py（仅允许.json/.log/.txt），密文预览用archive_hdr_previews.py流式GPG/manifest核对并限量展开。两份新脚本将保存在本轮finalization-scripts。S38预览858B、ZIP SHA491e7fd2cacef89c94d9b2df503d17599c8d5a87f60c4db61963a4d22cff266b，GPG0/PNG0；不得将空归档说成已出图。S42配方与S37一致，仅补S41资源条件、增强失败诊断及避免重复基础设施失败。
+
+
+S42复现：source5ab81cf3d4b1253455dc4cd6efa1bf7e4cab75bc，workflow hdr-native-s42.yml、xcode-27/26A434，S41_HEAP_BYTES=2147483648。保持run_hdr_s42.py冻结配方及source_s37.m依赖SHA；不重新拟合。`validate_hdr.py --s29 <analysis-s29> --s30 <analysis-s30> --s31 <analysis-s31> --s32 <analysis-s32> --rgb-host <analysis-s36> --photo-suite <analysis-s42> --out <NEW-output.json>` 只读metadata，本地仍须scripts/local-python-scope.sh。额外operator_progress与原验收门槛分栏，不能从新观察通过推成总通过。完整命令/归档scripts在本阶段finalization目录保留，旧archive不覆盖。
+
+S43复现source8b0e656，workflow hdr-native-s43.yml；输入artifact12178164564、ZIP SHA1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c，单个固定合成fixture。workflow_dispatch通过inputs传入新的同SHA归档ID；过期后须恢复准确模板，不盲目重试。brew实际版本/header SHA记录，不凭API名称证明native兼容。
