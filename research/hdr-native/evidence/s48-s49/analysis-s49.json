@@ -1,0 +1,117 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "freeze_sha256": "86cf7ec75d35ceeb80759ff7518d8857b7bf77e7148de9e40a56271c68c9f3a1",
+  "photo": "IMG_2600",
+  "shape": [
+    4284,
+    5712,
+    3
+  ],
+  "rows": [
+    {
+      "variant": "legacy2048",
+      "anchor_MAE_EV": 0.03587141094649454,
+      "anchor_p99_EV": 0.3560152227712153,
+      "anchor_max_EV": 4.015174533617235,
+      "joint_edge_gradient_ratio_median": 0.2060544730408414,
+      "joint_edge_gradient_ratio_p95": 0.45403534357144026,
+      "joint_edge_gain_curvature_mean_EV": 1.1677671930543676,
+      "joint_edge_gain_slope_reversal_fraction": 0.16248550173979123,
+      "edge_gradient_samples": 50067,
+      "negative_components": 0,
+      "nonfinite_components": 0
+    },
+    {
+      "variant": "nativeRGB",
+      "anchor_MAE_EV": 0.3496061956225757,
+      "anchor_p99_EV": 3.6335542662295697,
+      "anchor_max_EV": 15.190388940887795,
+      "joint_edge_gradient_ratio_median": 0.8136424440011362,
+      "joint_edge_gradient_ratio_p95": 1.0741222237106434,
+      "joint_edge_gain_curvature_mean_EV": 0.4286922098985136,
+      "joint_edge_gain_slope_reversal_fraction": 0.2038192916849978,
+      "edge_gradient_samples": 50067,
+      "negative_components": 44,
+      "nonfinite_components": 0
+    }
+  ],
+  "same_GPU_half_anchor": true,
+  "legacy_exposure_EV": 4.979845792404184,
+  "joint_valid_pixels": 24317242,
+  "joint_edge_pixels": 800096,
+  "source_edge_threshold_EV_per_pixel": 1.7545063187960006,
+  "edge_pair_difference_p99_EV": 7.045270240440099,
+  "far_pair_difference_p99_EV": 1.7903758620858723,
+  "proxy_scope": "Paired edge-gradient transfer, gain curvature and sign reversals, edge/far pair difference. These are proxies without pristine scene truth. All negative/nonfinite components and area-anchor errors reported separately.",
+  "comparison_mask_scope": "New common diagnostic region, no inverse/33-point/transport acceptance mask modified",
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0,
+    "common_scene_display_scale": 13.164076042436493
+  },
+  "inputs_before": {
+    "legacy_scene": "1e95d9dc12d368681ff5340f83d1c45035928519f5364fb73ada90d86ddf11aa",
+    "master": "69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634",
+    "SDR": "1f8cd21a4278d466042cefb6c1adf35fb4ed0f3acfbfd425153d8bd32a4f2a66",
+    "photo": "63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0"
+  },
+  "acceptance_complete": false,
+  "A_phase_complete": false,
+  "physical_scene_verified": false,
+  "native_guided_recomputed": false,
+  "legacy_scene_recomputed": false,
+  "inputs_after": {
+    "legacy_scene": "1e95d9dc12d368681ff5340f83d1c45035928519f5364fb73ada90d86ddf11aa",
+    "master": "69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634",
+    "SDR": "1f8cd21a4278d466042cefb6c1adf35fb4ed0f3acfbfd425153d8bd32a4f2a66",
+    "photo": "63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0"
+  },
+  "preview_input_checks": [
+    {
+      "name": "legacy2048-overview",
+      "input_before_sha256": "48e0df6eae13a068c7e7443391238b5b4c5e4c96d20df9ea49ee1e5db0722f9d",
+      "input_after_sha256": "48e0df6eae13a068c7e7443391238b5b4c5e4c96d20df9ea49ee1e5db0722f9d"
+    },
+    {
+      "name": "nativeRGB-overview",
+      "input_before_sha256": "d79cd666edc9d0ba9787f26c55f49c2df731cd1962c39d9332e5a4d545d1ab46",
+      "input_after_sha256": "d79cd666edc9d0ba9787f26c55f49c2df731cd1962c39d9332e5a4d545d1ab46"
+    },
+    {
+      "name": "ROI0-legacy",
+      "input_before_sha256": "c7e1d0c590ab0aa4a019478b3661681b4f135dfe884677e4ac1a5845d4cc840c",
+      "input_after_sha256": "c7e1d0c590ab0aa4a019478b3661681b4f135dfe884677e4ac1a5845d4cc840c"
+    },
+    {
+      "name": "ROI0-nativeRGB",
+      "input_before_sha256": "8513a704b4373912c0af53955356046c2a517910e509811a3af12d32bd9f312e",
+      "input_after_sha256": "8513a704b4373912c0af53955356046c2a517910e509811a3af12d32bd9f312e"
+    },
+    {
+      "name": "ROI1-legacy",
+      "input_before_sha256": "06f469c1837888f4a580bd9ae823a7ce25f64f7d9ef6f15db2ba30cf3dbabe89",
+      "input_after_sha256": "06f469c1837888f4a580bd9ae823a7ce25f64f7d9ef6f15db2ba30cf3dbabe89"
+    },
+    {
+      "name": "ROI1-nativeRGB",
+      "input_before_sha256": "2c7a8675baa24309957cb6f54eec7694751a4cf7ed7d0d0830a8a1a3c4ce33f1",
+      "input_after_sha256": "2c7a8675baa24309957cb6f54eec7694751a4cf7ed7d0d0830a8a1a3c4ce33f1"
+    },
+    {
+      "name": "ROI2-legacy",
+      "input_before_sha256": "312fd8831f8e2bc27da88d4ca69cd7e4afc4fa488e882538055691dde42d65ab",
+      "input_after_sha256": "312fd8831f8e2bc27da88d4ca69cd7e4afc4fa488e882538055691dde42d65ab"
+    },
+    {
+      "name": "ROI2-nativeRGB",
+      "input_before_sha256": "8c1d5046cef37f784447b31d8144093e98ce2bbc28d9e9fb122ef208ea3f04e3",
+      "input_after_sha256": "8c1d5046cef37f784447b31d8144093e98ce2bbc28d9e9fb122ef208ea3f04e3"
+    }
+  ],
+  "completed": true
+}

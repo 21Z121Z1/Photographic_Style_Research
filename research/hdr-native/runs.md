@@ -61,3 +61,9 @@ Text ZIP `cb50ff395ff71f6b4b52d8d7f5fc7706965993e66734bd398514473bf712bcdb`/mani
 
 
 S33–S47收尾审计：所有实际source commit已fast-forward保留在research/vm-native-20261018@c12f2aa。确认15条临时分支无PR head/base或外来ref指向后删除，local16条含最终临时文档分支亦删除；secret/release/活动run均为空。既有PR#1（其它研究head→本研究base）仅记录，未通过API创建/关闭/操作。7份受保护文件、原始171条claims及文档/CSV历史前缀SHA不变；旧workflow没有修改或删除，15个新增workflow所有artifact保留1天。最终A阶段及总验收仍false，目标active。详见final-audit-s33-s47与transport-cleanup-s33-s47。
+
+
+|S48|research/vm-native-20261019-hdr-s48|7d3918575afb852e3be048f5f54da313db517797|39270202659|12195995208|26A434/20261012.0260.1|draft asset403; no driver; ZIPa3c506339e5bb05d301d875b207ee0fffd6ecdbcd65ebcb0ba49b47357aebbee|
+|S49|research/vm-native-20261019-hdr-s49|9ab3060ff6780f0dd0e154f5036a6243503c6659|39275948343|12196823572 /12196673747 encrypted previews|26A434/20261012.0260.1|paired same-half-anchor full-size comparison, old/new outputs unchanged; tradeoff retained, no acceptance pass|
+
+S49 text ZIP eed057a6b471e1f3db1db31c0ee717ea1a59aeaf924df607358e9d50a3529de4, manifest ad64dec9de23cbad3510ef7018baf08f3efc4c8e2322499ce9857a46acb964aa; preview ZIP c042530fe896c90f77130d30adae2056b59256b36b5f40485a3dfa90a55568a3, cipher ba43a2654a764ca9757824e4ea0452f3c8c677c2199e22139360d26152990f6d, 9PNG verified/one localcontact. Secrets/draft/tag cleared; source branches preserved pending final keeper/ref audit. Artifact retention1天。

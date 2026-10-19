@@ -717,6 +717,78 @@
           "sha256": "ba57636da3bbd3889f9722d377d59d0c2db5fbc3c1f9cb0f797f2022922f5992"
         }
       ]
+    },
+    {
+      "id": "HDR-40",
+      "category": "transport/draft-permission-control",
+      "status": "已验证数值",
+      "claim": "S48在读取临时密文draft asset元数据时HTTP403，driver未执行；S49仅改变传输标签、job contents权限和checkout凭证持留/自有draft清理，图像计算反向规范化源码相同。S49原输入SHA/GPG及全部前置检查通过、计算完成，两个secret/release/tag均已核对清除。该运行事实不证明通用GitHub授权规则或scene恢复。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/s48-log-failed.txt",
+          "line": 1,
+          "sha256": "b5382b21c74207c483b8cb3e794d4b590bf472510662a61951033ffac1e1fad4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/s49-archive-receipt.json",
+          "line": 1,
+          "sha256": "b9a2aa4dd1304c68243ca70f52e96cd330a4444fbb237126b8261f9aff7dc762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/s49-cleanup-confirmed.json",
+          "line": 1,
+          "sha256": "110fd2047205efafedd75aebeb1d809ba91c1b3bf5af16ef18644d1ac6093de5"
+        }
+      ]
+    },
+    {
+      "id": "HDR-41",
+      "category": "local/paired-full-resolution-edge-diagnostics",
+      "status": "已验证数值",
+      "claim": "S49重用冻结2048 scene与S42 IMG2600全尺寸half-P3母版，不重算key1/guided。旧native float32锚点转half SHA与S42 GPU输入相同；按原legacy曝光31.5560733803统一单位，共同原SDR参考、同一诊断选择下800096边缘像素/50067梯度样本。梯度中位比legacy0.206054473/native0.813642444；gain曲率均值1.167767193/0.428692210EV，斜率反转比例0.162485502/0.203819292。代理指标有利有弊，不是无光晕/无振铃或真实场景证明。原mask未改。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/analysis-s49.json",
+          "line": 1,
+          "sha256": "384c6e367453a26a35d99a6a6f7528738c73723119067c5f08a99d99dc60a9bc"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/anchor-compatibility.json",
+          "line": 1,
+          "sha256": "8416a1f6c1417dca4b3a22cf6cbdeba1bea78ec68925dc735d58bc707b513568"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/freeze.json",
+          "line": 1,
+          "sha256": "86cf7ec75d35ceeb80759ff7518d8857b7bf77e7148de9e40a56271c68c9f3a1"
+        }
+      ]
+    },
+    {
+      "id": "HDR-42",
+      "category": "local/paired-anchor-drift-and-display-boundary",
+      "status": "已验证数值",
+      "claim": "同一旧float32锚点与旧面积算法下，legacy/full nativeRGB锚点MAE0.03587141095/0.34960619562EV，p99 0.35601522277/3.63355426623EV；native有44个负分量、两者非有限均0。逐位相同的是GPU half锚点，未证明两条历史float32参考逐位相同；这组新指标不替换S42原表。Apple RGB map原host不强制面积守恒，不能把更锐或调用Apple算子当作物理逆LTM。原件/母版/SDR/legacy以及8个预览输入前后SHA相同，9PNG密文/GPG/逐项SHA验证，只本地展开contact。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/analysis-s49.json",
+          "line": 1,
+          "sha256": "384c6e367453a26a35d99a6a6f7528738c73723119067c5f08a99d99dc60a9bc"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/s49-preview-receipt.json",
+          "line": 1,
+          "sha256": "15cfbce0d3c1f301d906eaa9ff19f70b87d9e72ded7faa3904aea4f246312ffb"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s48-s49/anchor-compatibility.json",
+          "line": 1,
+          "sha256": "8416a1f6c1417dca4b3a22cf6cbdeba1bea78ec68925dc735d58bc707b513568"
+        }
+      ]
     }
   ]
 }

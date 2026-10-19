@@ -158,3 +158,24 @@ S44临时secret HDR_S44_ARCHIVE_SUBKEY已删除、列表核对为空，无releas
 
 
 S33–S47收尾审计：所有实际source commit已fast-forward保留在research/vm-native-20261018@c12f2aa。确认15条临时分支无PR head/base或外来ref指向后删除，local16条含最终临时文档分支亦删除；secret/release/活动run均为空。既有PR#1（其它研究head→本研究base）仅记录，未通过API创建/关闭/操作。7份受保护文件、原始171条claims及文档/CSV历史前缀SHA不变；旧workflow没有修改或删除，15个新增workflow所有artifact保留1天。最终A阶段及总验收仍false，目标active。详见final-audit-s33-s47与transport-cleanup-s33-s47。
+
+
+### HDR-S48/S49：旧面积约束与原生 RGB guided 投影的配对比较
+
+**已验证数值，HDR-40。** S48 source7d3918575afb852e3be048f5f54da313db517797/run39270202659在draft密文asset元数据读取HTTP403，尚未执行driver。S49 source9ab3060ff6780f0dd0e154f5036a6243503c6659/run39275948343只修正传输权限与自有draft清理，图像计算公式未改，26A434/image20261012.0260.1。GitHub官方草稿可见性说明见[REST releases](https://docs.github.com/en/rest/releases/releases?apiVersion=latest#list-releases)；“403→成功”是本次具体原生作业事实，非全部token的合同。临时两secret/draft/tag均空；S48失败记录和659B artifact原样保留。
+
+**已验证数值，HDR-41/42。** 重用既有IMG2600 1536×2048冻结scene，按旧版本实际RGB双线性投到4284×5712；另一侧重用S42完整half-P3母版EXR SHA69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634，未重算key1或guided。旧float32 LinearThumbnail转half的SHA与S42 GPU锚点2d8ee1596d8f2d1f79a870a288ca398a445883f8499ef9bb9bee8d0fcca6f0a0相同。原legacy曝光4.979845792404184EV/因子31.55607338026331只统一单位，没有重新拟合曝光。仍保留Apple Log，不修改旧scene/冻结模型。
+
+|共同诊断|旧2048双线性+2×2面积约束|原生RGB guided投影|
+|---|---:|---:|
+|锚点MAE EV|0.03587141095|0.34960619562|
+|锚点p99 EV|0.35601522277|3.63355426623|
+|锚点max EV|4.01517453362|15.19038894089|
+|边缘梯度保留中位比|0.2060544730|0.8136424440|
+|边缘gain曲率均值 EV|1.1677671931|0.4286922099|
+|边缘gain斜率反转比例|0.1624855017|0.2038192917|
+|负RGB分量 / 非有限分量|0 / 0|44 / 0|
+
+同一原SDR全分辨率参考、共同有限正亮度诊断区24317242像素，其中边缘800096、固定抽样梯度50067点。该选择仅用于新诊断，**不修改逆解/33点/承载mask**。更清楚的纹理与更大的锚点误差并存；曲率降低但反转比例增加，不能宣布全部边缘伪像改善或直接替换已冻结基线。原RGB map的中心采样/乘法比值+guided不具有旧2×2面积约束（原AIR/调用链见HDR-14/15），面积守恒是旧工程约束；两种结果也都没有RAW真值。此处只证明GPU half锚点相同，未证明历史float32参考相同，且诊断参考/算术与S42原表不同，新表不覆写历史表。
+
+9张PNG采用同一固定OCIO cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / LinearP3-D65→sRGB Display / ACES1.0 SDR Video，显示尺度13.164076042436493沿用S47，不标定nit。8份预览输入和原件/SDR/legacy/master前后SHA全部相同；密文逐项GPG/SHA验证，本地仅展开contact。它们不是实际HDR屏幕证据。指标artifact12196823572 ZIP SHAeed057a6b471e1f3db1db31c0ee717ea1a59aeaf924df607358e9d50a3529de4、manifest SHAad64dec9de23cbad3510ef7018baf08f3efc4c8e2322499ce9857a46acb964aa；密文预览artifact12196673747 ZIP SHAc042530fe896c90f77130d30adae2056b59256b36b5f40485a3dfa90a55568a3、cipher SHAba43a2654a764ca9757824e4ea0452f3c8c677c2199e22139360d26152990f6d。文件与行号见claims HDR-40～42及repo/research/hdr-native/evidence/s48-s49。仅1张开发照片，未增加5图/2留出验收，A与总验收仍false。

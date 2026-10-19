@@ -48,3 +48,6 @@ S47复现：实际source d657f306cdff1c0652f4538ddb5ed303d46d2d99，workflow hdr
 
 
 S47已注册workflow ID为389472623。输入artifact仍有效且正确的临时HDR_S47_S42_SESSION已准备时，命令为 `gh workflow run 389472623 --ref research/vm-native-20261018`。先按100MB写入/4GB剩余/大下载规则复核，并确认无其它在跑任务。正确setup源保存在 `hdr-native-20261019/finalization-scripts-s33-s47/setup_hdr_s47_session.py`；复制到新实验命名空间，替换输出目录常量并先建立父目录，保留原s45完整校验收据路径；不要覆盖已有s47目录/receipt。早期失败版本仅用于审计。用完执行 `gh secret delete HDR_S47_S42_SESSION -R 21Z121Z1/Photographic_Style_Research` 并核对secret为空。过期输入必须按上文恢复，不能仅换ID后忽略SHA。
+
+
+S48/S49源码与复现（新计算仅runner）：S48失败先读 `gh run view 39270202659 --log-failed`；S49源码固定9ab3060，见run_hdr_s49.py与hdr-native-s49.yml。先SHA/GPG验证S42 IMG2600单一密文和50MB legacy密文，再核对anchor-compatibility.json，运行 `python3 research/hdr-native/run_hdr_s49.py`（仅macOS26A434/Metal，环境W、S49_S42_SESSION、S49_LEGACY_PASS由临时secret提供，不在命令行/日志写值）。同一原legacy曝光，旧baseline_ops_s48.py源码出处见baseline-source-s48.json。S49的临时release/secret已删除，重放须新建自己的密文传输与secret并在终止后清理；不得把已清理的asset id当可用永久输入。已有源文件/归档只读，所有本机Python经scripts/local-python-scope.sh，勿在VM重算图像。

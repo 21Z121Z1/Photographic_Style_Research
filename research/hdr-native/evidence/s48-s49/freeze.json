@@ -1,0 +1,96 @@
+{
+  "os_build": "26A434",
+  "source_sha256": {
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/run_hdr_s49.py": "1c6dd264275b609dcbcf81e4eb381bbae84ba484cec6eb87e9ac587cf6f2a62a",
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/baseline_ops_s48.py": "273095550438979f36fc600b621ca5c198b516875d76532ad1bca042a4a6d3f0",
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/read_sdr_s44.m": "eb2cd0cd31c775e65d6c9ae2e5d0e6bf57d33d652e230d8bc3f3af59ac70628b"
+  },
+  "upstream": {
+    "run_id": "39254061338",
+    "artifact_id": "12188060302",
+    "ZIP_sha256": "897065d3ea71e3068f2af8ee98ef8745065b923c6692f0366d98cd1b3069d621",
+    "cipher_sha256": "d1c3d9beabec857f972f897a7ef91f0fbee8df8d9ab270c7f97949235ae30c86",
+    "master_EXR_sha256": "69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634"
+  },
+  "legacy_input": {
+    "release_id": 417434279,
+    "release_tag": "hdr-private-s49-20261019",
+    "asset_id": 656601020,
+    "asset_name": "legacy-s49.tar.gpg",
+    "cipher_size": 50382607,
+    "cipher_sha256": "a0d311dd8815c80828b2d511c675f9f7cd00061dbcb583edd6449ba99cbd5a0f",
+    "manifest_sha256": "65871cb6ff8242f44d2d4209b3d6ebc0c014d8c6d8bd61b81c3193633bfd530a",
+    "input_files": [
+      {
+        "path": "legacy_scene.npy",
+        "original_path": "/home/Z121Z121/work/styles-gtm-ltm/results/scene/IMG_2600-balanced/scene.npy",
+        "size": 37748864,
+        "sha256": "1e95d9dc12d368681ff5340f83d1c45035928519f5364fb73ada90d86ddf11aa"
+      },
+      {
+        "path": "native_linear.f32",
+        "original_path": "/home/Z121Z121/work/styles-gtm-ltm/runs/39073825646/artifacts/vm-native-text/native/IMG_2600/thumbnail/native_linear.f32",
+        "size": 12582912,
+        "sha256": "a8ca61c214f0575b2d162362445cc210855a9a5c5ca7dda9218aee9640319a74"
+      },
+      {
+        "path": "legacy_scene.json",
+        "original_path": "/home/Z121Z121/work/styles-gtm-ltm/results/scene/IMG_2600-balanced/scene.json",
+        "size": 1267,
+        "sha256": "1a479b1411ceec546c685a3ad4f524ac4e12380609482477f0252df4b7312b24"
+      },
+      {
+        "path": "thumbnail-facts.json",
+        "original_path": "/home/Z121Z121/work/styles-gtm-ltm/runs/39073825646/artifacts/vm-native-text/native/IMG_2600/thumbnail/facts.json",
+        "size": 814,
+        "sha256": "e33967ebfae5abdc32273589765aee662008f87924b40e4af2fb8421fda3e23e"
+      },
+      {
+        "path": "previous-comparison.json",
+        "original_path": "/home/Z121Z121/work/styles-gtm-ltm/iterations/20261018-v3/results/scene-comparison/IMG_2600.json",
+        "size": 9126,
+        "sha256": "48ee60c9b4e492362a65bca05160e25e29217447ecb3e20a863ff2e1a7e0c2a0"
+      }
+    ],
+    "scope": "Existing readonly legacy output transported in memory only; no local bulk file and no plaintext upload",
+    "temporary_secret": "HDR_S49_LEGACY_PASS",
+    "cleanup_required_after_run": true,
+    "local_RSS_peak_KiB": 195252
+  },
+  "comparison": "Existing frozen2048 RGB output bilinear-upsampled, versus immutable S42 nativeRGB projection. No key1 or guided recomputation. Same original full-resolution SDR edge reference for both.",
+  "units": "Multiply S42 relative M by the original stored legacy exposure factor, no exposure fitting; identical final display conversion K/legacyFactor on both.",
+  "edge_selection": "Joint finite/nonnegative luma domain of both outputs and original SDR Y>1e-4, source central gradient above fixed sparse-neighbor p95. Diagnostic selection only, no original inverse mask or acceptance gate changed.",
+  "metrics": "Paired edge-gradient transfer, gain curvature and sign reversals, edge/far pair difference. These are proxies without pristine scene truth. All negative/nonfinite components and area-anchor errors reported separately.",
+  "reference_scope": "New paired SDR-reference metric, not interchangeable with older u-reference metrics; frozen legacy file is exact but previous scalar rows are context only.",
+  "ROIs": [
+    [
+      1600,
+      1800,
+      256,
+      256
+    ],
+    [
+      4000,
+      1100,
+      256,
+      256
+    ],
+    [
+      2800,
+      3400,
+      256,
+      256
+    ]
+  ],
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0,
+    "common_scene_display_scale": 13.164076042436493
+  },
+  "precision_thresholds_unchanged": true,
+  "scope": "One development photograph, not new five-photo suite, native whole-consumer inverse, RAW or physical scene proof"
+}

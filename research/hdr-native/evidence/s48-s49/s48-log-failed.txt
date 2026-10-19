@@ -1,0 +1,24 @@
+paired-upsample-comparison	Reuse exact encrypted S42 master	﻿2026-10-19T14:34:53.1394530Z ##[group]Run set -euo pipefail
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1395550Z [36;1mset -euo pipefail[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1396960Z [36;1mHDR_UPSTREAM_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12188060302 --jq .size_in_bytes)[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1398750Z [36;1m[[ "$HDR_UPSTREAM_BYTES" =~ ^[0-9]+$ ]] && (( HDR_UPSTREAM_BYTES < 400000000 ))[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1400350Z [36;1mgh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12188060302/zip > "$W/S42.zip"[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1402620Z [36;1mHDR_LEGACY_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s48.json'))['asset_id'])")[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1404740Z [36;1mHDR_LEGACY_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${HDR_LEGACY_ASSET} --jq .size)[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1406510Z [36;1m[[ "$HDR_LEGACY_BYTES" =~ ^[0-9]+$ ]] && (( HDR_LEGACY_BYTES < 100000000 ))[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1408380Z [36;1mgh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${HDR_LEGACY_ASSET} -H 'Accept: application/octet-stream' > "$W/legacy.tar.gpg"[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1410600Z [36;1mpython3 -m pip install --quiet 'numpy==2.3.4' OpenEXR opencolorio pillow > "$W/out/dependencies.log" 2>&1[0m
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1448260Z shell: /bin/bash -e {0}
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1449020Z env:
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1449630Z   OPENBLAS_NUM_THREADS: 1
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1450670Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1452050Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1453310Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1454490Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1455720Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1456750Z   W: /Users/runner/work/_temp/hdr-s48
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1457610Z   GNUPGHOME: /Users/runner/work/_temp/hdr-s48/gnupg
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1464700Z   GH_TOKEN: ***
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:53.1465340Z ##[endgroup]
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:58.1776510Z gh: Resource not accessible by integration (HTTP 403)
+paired-upsample-comparison	Reuse exact encrypted S42 master	2026-10-19T14:34:58.1885420Z ##[error]Process completed with exit code 1.

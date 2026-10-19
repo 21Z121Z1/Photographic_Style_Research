@@ -42,3 +42,11 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 - 可交给macOS runner：旧2048双线性+2x2面积约束对照、原create-kernel近黑阈值/可选main-thumbnail/sampler域与新RGB投影误差；两类guided eps.001/.05保持各自实际上下文，不凭感觉调平滑。只对新问题补实验，旧30scalar oracles不重做。
 - 分类勘误：33皮肤点的完整consumer声明域合同与全域tight hull仍是“可交给macOS runner/静态继续研究”的未闭环项，不能整体归入只能实机。S42尾部曾把它与相机域混写，此处明确分开。停止旧NumPy bit-exact拟合，保留C01-C05、原mask、非唯一证书与1e-3。
 - 待实机解决：匹配同帧j/WithoutFaceBoost曲线、N、B/T、人脸hist、allocateTone constraints及真实应用域；原Studio统计；RAW2679/2408；真实HDR屏幕/环境/PhotosUI。沿用各自既有可执行测试，beta.1953125仍不是像素EV，S47显示曝光不得替代该缺失值。
+
+
+### S49 后：分清插值、面积与真实逆LTM
+
+- 已验证数值：旧2048面积约束/原生RGB结果已做同画布、同GPU half锚点配对；见HDR-41/42，不再重复该基线。更清晰不能替代scene恢复，锚点漂移尚大。
+- 可交给macOS runner：对已存母版/低分辨率锚点分区统计中心采样与面积残差、近黑阈值/half/guide边界；若需重放原create-kernel，固定原参数与非目标纹理，只为新归因捕获，不重做旧30scalar oracle或11种否定组合。S49未证明无光晕/振铃，未取得新RAW。
+- 可交给macOS runner：公共offset近零目标的float32 logmap/归一化编码是否非单射，用同一原生输入、不同目标的有限碰撞证书区分信息丢失和算术误差；不移除近零像素、不改1e-3。
+- 待实机解决：同帧j/WithoutFaceBoost/N/B/T/hist/allocateTone/application domain、原Studio统计、RAW2679/2408和实际HDR屏幕按既有方案；本轮无新实机证据。33皮肤点C01-C05仍属静态/runner可推进的未认证边界，停止旧bit-exact拟合，原mask/阈值保留。
