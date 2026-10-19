@@ -1,0 +1,387 @@
+{
+  "source_os_build": "24A446",
+  "source_device": "iPhone12,1",
+  "source_matches_IMG2810": false,
+  "CameraColorProcessing_UUID": "0A211E15-50CA-373B-AD9A-F9E3283C68F4",
+  "CMImaging_UUID": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+  "quantizer": {
+    "start": "0x256b8cc68",
+    "end_exclusive": "0x256b8cce8",
+    "instruction_hex": "f30700f9080080d229208052ea0316aa49250078eb0317aa692500782c6340918c11149100102e1e01e4006f2d634091ee010090c89943bdad212491827968bc4278201e4268211e4208281e4240251e42b8a15e4279287ca27968bc4278201e4268211e4208281e4240251e42b8a15e6279287c08050091290500f101feff54",
+    "sha256": "5cdaf66647e129c68ee9fc25f0cd946399b3a014c1bc50e91d61787c82224e44",
+    "scale_address": "0x256bc8398",
+    "scale_hex": "00ff7f47"
+  },
+  "groups": [
+    {
+      "curves_type": 0,
+      "keys": {
+        "local": "LTMLookUpTables",
+        "global_ltm": "GlobalLTMLookUpTable",
+        "global_tone": "GlobalToneCurveLookUpTable"
+      },
+      "selection_address": "0x256b8cf3c",
+      "source_offsets": {
+        "global_ltm": "0x18504",
+        "global_tone": "0x18908"
+      },
+      "global_records_format": {
+        "header_uint16": 257,
+        "payload_uint16_nodes": 257,
+        "byte_count": 516,
+        "endian": "little"
+      },
+      "local_grid_record_decoded_or_replayed_in_S53": false
+    },
+    {
+      "curves_type": 1,
+      "keys": {
+        "local": "LTMLookUpTables_HLG",
+        "global_ltm": "GlobalLTMLookUpTable_HLG",
+        "global_tone": "GlobalToneCurveLookUpTable_HLG"
+      },
+      "selection_address": "0x256b8cefc",
+      "source_offsets": {
+        "global_ltm": "0x18504",
+        "global_tone": "0x18908"
+      },
+      "global_records_format": {
+        "header_uint16": 257,
+        "payload_uint16_nodes": 257,
+        "byte_count": 516,
+        "endian": "little"
+      },
+      "local_grid_record_decoded_or_replayed_in_S53": false
+    },
+    {
+      "curves_type": 2,
+      "keys": {
+        "local": "LTMLookUpTablesWithoutFaceBoost",
+        "global_ltm": "GlobalLTMLookUpTableWithoutFaceBoost",
+        "global_tone": "GlobalToneCurveLookUpTableWithoutFaceBoost"
+      },
+      "selection_address": "0x256b8cec0",
+      "source_offsets": {
+        "global_ltm": "0x18504",
+        "global_tone": "0x18908"
+      },
+      "global_records_format": {
+        "header_uint16": 257,
+        "payload_uint16_nodes": 257,
+        "byte_count": 516,
+        "endian": "little"
+      },
+      "local_grid_record_decoded_or_replayed_in_S53": false
+    },
+    {
+      "curves_type": 3,
+      "keys": {
+        "local": "LTMLookUpTables_HLGWithoutFaceBoost",
+        "global_ltm": "GlobalLTMLookUpTable_HLGWithoutFaceBoost",
+        "global_tone": "GlobalToneCurveLookUpTable_HLGWithoutFaceBoost"
+      },
+      "selection_address": "0x256b8ce8c",
+      "source_offsets": {
+        "global_ltm": "0x18504",
+        "global_tone": "0x18908"
+      },
+      "global_records_format": {
+        "header_uint16": 257,
+        "payload_uint16_nodes": 257,
+        "byte_count": 516,
+        "endian": "little"
+      },
+      "local_grid_record_decoded_or_replayed_in_S53": false
+    }
+  ],
+  "checked_literal_references": [
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50595,
+      "address": "0x256b8ce90",
+      "target": "0x27f05d5b0",
+      "text": "LTMLookUpTables_HLGWithoutFaceBoost",
+      "straight_line_address_proof": [
+        "0x256b8ce8c",
+        "0x256b8ce90"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50600,
+      "address": "0x256b8cea4",
+      "target": "0x27f05d5d0",
+      "text": "GlobalLTMLookUpTable_HLGWithoutFaceBoost",
+      "straight_line_address_proof": [
+        "0x256b8cea0",
+        "0x256b8cea4"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50605,
+      "address": "0x256b8ceb8",
+      "target": "0x27f05d5f0",
+      "text": "GlobalToneCurveLookUpTable_HLGWithoutFaceBoost",
+      "straight_line_address_proof": [
+        "0x256b8ceb4",
+        "0x256b8ceb8"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50609,
+      "address": "0x256b8cec8",
+      "target": "0x27efe2410",
+      "text": "LTMLookUpTablesWithoutFaceBoost",
+      "straight_line_address_proof": [
+        "0x256b8cec0",
+        "0x256b8cec4",
+        "0x256b8cec8"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50615,
+      "address": "0x256b8cee0",
+      "target": "0x27efe2450",
+      "text": "GlobalLTMLookUpTableWithoutFaceBoost",
+      "straight_line_address_proof": [
+        "0x256b8ced8",
+        "0x256b8cedc",
+        "0x256b8cee0"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50624,
+      "address": "0x256b8cf04",
+      "target": "0x27efe2310",
+      "text": "LTMLookUpTables_HLG",
+      "straight_line_address_proof": [
+        "0x256b8cefc",
+        "0x256b8cf00",
+        "0x256b8cf04"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50631,
+      "address": "0x256b8cf20",
+      "target": "0x27efe2350",
+      "text": "GlobalLTMLookUpTable_HLG",
+      "straight_line_address_proof": [
+        "0x256b8cf18",
+        "0x256b8cf1c",
+        "0x256b8cf20"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50640,
+      "address": "0x256b8cf44",
+      "target": "0x27efe4090",
+      "text": "LTMLookUpTables",
+      "straight_line_address_proof": [
+        "0x256b8cf3c",
+        "0x256b8cf40",
+        "0x256b8cf44"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50646,
+      "address": "0x256b8cf5c",
+      "target": "0x27efe40b0",
+      "text": "GlobalLTMLookUpTable",
+      "straight_line_address_proof": [
+        "0x256b8cf54",
+        "0x256b8cf58",
+        "0x256b8cf5c"
+      ]
+    },
+    {
+      "module": "CameraColorProcessing",
+      "source_annotated_line": 50652,
+      "address": "0x256b8cf74",
+      "target": "0x27efe3ed0",
+      "text": "GlobalToneCurveLookUpTable",
+      "straight_line_address_proof": [
+        "0x256b8cf6c",
+        "0x256b8cf70",
+        "0x256b8cf74"
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "source_annotated_line": 121984,
+      "address": "0x1d476c238",
+      "target": "0x1ec3d4530",
+      "text": "CVImageBufferTransferFunction",
+      "straight_line_address_proof": [
+        "0x1d476c230",
+        "0x1d476c234",
+        "0x1d476c238"
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "source_annotated_line": 121991,
+      "address": "0x1d476c254",
+      "target": "0x1ec3d44b0",
+      "text": "CVImageBufferColorPrimaries",
+      "straight_line_address_proof": [
+        "0x1d476c24c",
+        "0x1d476c250",
+        "0x1d476c254"
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "source_annotated_line": 121997,
+      "address": "0x1d476c26c",
+      "target": "0x1ec3d4390",
+      "text": "ITU_R_709_2",
+      "straight_line_address_proof": [
+        "0x1d476c264",
+        "0x1d476c268",
+        "0x1d476c26c"
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "source_annotated_line": 122003,
+      "address": "0x1d476c284",
+      "target": "0x1ec3d4390",
+      "text": "ITU_R_709_2",
+      "straight_line_address_proof": [
+        "0x1d476c27c",
+        "0x1d476c280",
+        "0x1d476c284"
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "source_annotated_line": 122012,
+      "address": "0x1d476c2a8",
+      "target": "0x1ec3d45d0",
+      "text": "ITU_R_2100_HLG",
+      "straight_line_address_proof": [
+        "0x1d476c2a0",
+        "0x1d476c2a4",
+        "0x1d476c2a8"
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "source_annotated_line": 122026,
+      "address": "0x1d476c2e0",
+      "target": "0x27efe3ed0",
+      "text": "GlobalToneCurveLookUpTable",
+      "straight_line_address_proof": [
+        "0x1d476c2d8",
+        "0x1d476c2dc",
+        "0x1d476c2e0"
+      ]
+    }
+  ],
+  "source_text": [
+    {
+      "path": "iterations/20261018-v3/evidence/ios/CameraColorProcessing.literals-checked.asm",
+      "sha256": "a6aec09128b32b75d24797930cfc31a8a9f7a6c3ee9e59fe163cc400a8851bd2",
+      "size": 5235711
+    },
+    {
+      "path": "iterations/20261018-v3/evidence/ios/CMImaging.literals-checked.asm",
+      "sha256": "73c4710d73369a9168b83f2042e876618df42118d923e240f4dc167938526d4c",
+      "size": 25938167
+    }
+  ],
+  "selected_instruction_verification": [
+    {
+      "module": "CameraColorProcessing",
+      "selected_instructions_checked_against_readonly_cache": 240,
+      "ranges": [
+        {
+          "start": "0x256b86db8",
+          "end_exclusive": "0x256b86ef0",
+          "sha256": "0bec94ace4749027b9efe2eb2db042e390f64b0d80b37f3492e9d8fa868f544c"
+        },
+        {
+          "start": "0x256b8c9c4",
+          "end_exclusive": "0x256b8c9fc",
+          "sha256": "9c5e2485e61ac574c915171ac9809d07b757ab4a83985859b093df323b8459ed"
+        },
+        {
+          "start": "0x256b8cb14",
+          "end_exclusive": "0x256b8cb84",
+          "sha256": "8c279ad787d1f257a9f7beca34627210fd122459185042b3d4dd0d83a9fab8fc"
+        },
+        {
+          "start": "0x256b8cc68",
+          "end_exclusive": "0x256b8cce8",
+          "sha256": "5cdaf66647e129c68ee9fc25f0cd946399b3a014c1bc50e91d61787c82224e44"
+        },
+        {
+          "start": "0x256b8ce24",
+          "end_exclusive": "0x256b8cf84",
+          "sha256": "7adba531e8b891469fd912d42b7d4b5bb020038c5adbcfa09f7064326bf5feb5"
+        }
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "selected_instructions_checked_against_readonly_cache": 270,
+      "ranges": [
+        {
+          "start": "0x1d4732ca0",
+          "end_exclusive": "0x1d4732d14",
+          "sha256": "d313853a23ac724e424d71f3bb709292bf2d75874e50c3c70350d29a1533da02"
+        },
+        {
+          "start": "0x1d476c224",
+          "end_exclusive": "0x1d476c3fc",
+          "sha256": "d10da4dbdccd760d9409766f4b923f13ad7d9463d47667f29513f1195765fd06"
+        },
+        {
+          "start": "0x1d476c580",
+          "end_exclusive": "0x1d476c6e0",
+          "sha256": "756a792045bb4d9bae55921c6cc48e9533b27ad057c1fe7f37bfbc76e66b92b2"
+        },
+        {
+          "start": "0x1d47336d4",
+          "end_exclusive": "0x1d4733760",
+          "sha256": "d1cc60181f85eeba702dd6c3e79538e5f98db23b95af8428f72c55f9852345c6"
+        }
+      ]
+    }
+  ],
+  "cache_source_size_mtime_unchanged": true,
+  "whole_binary_uploaded": false,
+  "not_proven": [
+    "matching camera j curves/FPCR/application domain",
+    "file key3/c/d serialization binding",
+    "full consumer C01-C05 or 33 point global hull",
+    "physical scene recovery"
+  ],
+  "imported_global_tone_keys": [
+    {
+      "GOT_slot": "0x270168b18",
+      "imported_variable": "0x271507ae8",
+      "CFString": "0x27efe3ed0",
+      "text": "GlobalToneCurveLookUpTable"
+    },
+    {
+      "GOT_slot": "0x2701683c8",
+      "imported_variable": "0x2715073b8",
+      "CFString": "0x27efe2330",
+      "text": "GlobalToneCurveLookUpTable_HLG"
+    },
+    {
+      "GOT_slot": "0x2701683c0",
+      "imported_variable": "0x2715073f8",
+      "CFString": "0x27efe2430",
+      "text": "GlobalToneCurveLookUpTableWithoutFaceBoost"
+    }
+  ]
+}

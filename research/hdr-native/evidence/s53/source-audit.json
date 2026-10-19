@@ -1,0 +1,113 @@
+{
+  "source_build": "24A446",
+  "source_device": "iPhone12,1",
+  "modules": [
+    {
+      "module": "CameraColorProcessing",
+      "binary_sha256": "974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e",
+      "binary_size": 772056
+    },
+    {
+      "module": "CMImaging",
+      "binary_sha256": "b8f3c04f3f9ee000c328357156b38aecc3ca06d5292e47421966094a58fa1832",
+      "binary_size": 3868376
+    }
+  ],
+  "cache_files_readonly": true,
+  "all_opened_cache_size_mtime_unchanged": true,
+  "selected_instruction_verification": [
+    {
+      "module": "CameraColorProcessing",
+      "selected_instructions_checked_against_readonly_cache": 240,
+      "ranges": [
+        {
+          "start": "0x256b86db8",
+          "end_exclusive": "0x256b86ef0",
+          "sha256": "0bec94ace4749027b9efe2eb2db042e390f64b0d80b37f3492e9d8fa868f544c"
+        },
+        {
+          "start": "0x256b8c9c4",
+          "end_exclusive": "0x256b8c9fc",
+          "sha256": "9c5e2485e61ac574c915171ac9809d07b757ab4a83985859b093df323b8459ed"
+        },
+        {
+          "start": "0x256b8cb14",
+          "end_exclusive": "0x256b8cb84",
+          "sha256": "8c279ad787d1f257a9f7beca34627210fd122459185042b3d4dd0d83a9fab8fc"
+        },
+        {
+          "start": "0x256b8cc68",
+          "end_exclusive": "0x256b8cce8",
+          "sha256": "5cdaf66647e129c68ee9fc25f0cd946399b3a014c1bc50e91d61787c82224e44"
+        },
+        {
+          "start": "0x256b8ce24",
+          "end_exclusive": "0x256b8cf84",
+          "sha256": "7adba531e8b891469fd912d42b7d4b5bb020038c5adbcfa09f7064326bf5feb5"
+        }
+      ]
+    },
+    {
+      "module": "CMImaging",
+      "selected_instructions_checked_against_readonly_cache": 270,
+      "ranges": [
+        {
+          "start": "0x1d4732ca0",
+          "end_exclusive": "0x1d4732d14",
+          "sha256": "d313853a23ac724e424d71f3bb709292bf2d75874e50c3c70350d29a1533da02"
+        },
+        {
+          "start": "0x1d476c224",
+          "end_exclusive": "0x1d476c3fc",
+          "sha256": "d10da4dbdccd760d9409766f4b923f13ad7d9463d47667f29513f1195765fd06"
+        },
+        {
+          "start": "0x1d476c580",
+          "end_exclusive": "0x1d476c6e0",
+          "sha256": "756a792045bb4d9bae55921c6cc48e9533b27ad057c1fe7f37bfbc76e66b92b2"
+        },
+        {
+          "start": "0x1d47336d4",
+          "end_exclusive": "0x1d4733760",
+          "sha256": "d1cc60181f85eeba702dd6c3e79538e5f98db23b95af8428f72c55f9852345c6"
+        }
+      ]
+    }
+  ],
+  "source_text": [
+    {
+      "path": "iterations/20261018-v3/evidence/ios/CameraColorProcessing.literals-checked.asm",
+      "sha256": "a6aec09128b32b75d24797930cfc31a8a9f7a6c3ee9e59fe163cc400a8851bd2",
+      "size": 5235711
+    },
+    {
+      "path": "iterations/20261018-v3/evidence/ios/CMImaging.literals-checked.asm",
+      "sha256": "73c4710d73369a9168b83f2042e876618df42118d923e240f4dc167938526d4c",
+      "size": 25938167
+    }
+  ],
+  "literal_count_checked": 16,
+  "cached_reader_sha256": "bdc8e09faaf018288e49f2c323c42743dd7d34685df57ca96ca9667e9754fb33",
+  "fixture_sha256": "ce7add3f38a9fd7634f73a9c0a9b2bd1ce850070058ebe7fe2d5992d8d83b3ac",
+  "excerpt_sha256": "ee53697b4b12a5bb421ad9e2d918469dd529d8bfec06f24afda924887f635281",
+  "imported_global_tone_keys": [
+    {
+      "GOT_slot": "0x270168b18",
+      "imported_variable": "0x271507ae8",
+      "CFString": "0x27efe3ed0",
+      "text": "GlobalToneCurveLookUpTable"
+    },
+    {
+      "GOT_slot": "0x2701683c8",
+      "imported_variable": "0x2715073b8",
+      "CFString": "0x27efe2330",
+      "text": "GlobalToneCurveLookUpTable_HLG"
+    },
+    {
+      "GOT_slot": "0x2701683c0",
+      "imported_variable": "0x2715073f8",
+      "CFString": "0x27efe2430",
+      "text": "GlobalToneCurveLookUpTableWithoutFaceBoost"
+    }
+  ]
+}

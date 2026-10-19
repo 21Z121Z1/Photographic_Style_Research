@@ -1,0 +1,512 @@
+### CameraColorProcessing: iterations/20261018-v3/evidence/ios/CameraColorProcessing.literals-checked.asm
+44105: 0x256b86db8:  65 16 40 f9   ldr	x5, [x19, #0x28]
+44106: 0x256b86dbc:  62 02 16 8b   add	x2, x19, x22
+44107: 0x256b86dc0:  50 ca 54 94   bl	0x2580b9700 ; CALL createLTMMetadataFromLTMOutput:statistics:driverInputMetadata:geometryData:
+44108: 0x256b86dc4:  ef e6 55 94   bl	0x258100980
+44109: 0x256b86dc8:  f4 03 00 aa   mov	x20, x0
+44110: 0x256b86dcc:  20 0b 00 b4   cbz	x0, 0x256b86f30
+44111: 0x256b86dd0:  68 86 40 39   ldrb	w8, [x19, #0x21]
+44112: 0x256b86dd4:  1f 05 00 71   cmp	w8, #0x1
+44113: 0x256b86dd8:  41 02 00 54   b.ne	0x256b86e20
+44114: 0x256b86ddc:  08 e1 97 52   mov	w8, #0xbf08
+44115: 0x256b86de0:  68 02 08 8b   add	x8, x19, x8
+44116: 0x256b86de4:  29 00 80 52   mov	w9, #0x1
+44117: 0x256b86de8:  09 01 00 b9   str	w9, [x8]
+44118: 0x256b86dec:  60 06 40 f9   ldr	x0, [x19, #0x8]
+44119: 0x256b86df0:  62 02 01 91   add	x2, x19, #0x40
+44120: 0x256b86df4:  63 02 15 8b   add	x3, x19, x21
+44121: 0x256b86df8:  64 02 16 8b   add	x4, x19, x22
+44122: 0x256b86dfc:  0d ca 54 94   bl	0x2580b9630 ; CALL computeLTM:withMetadata:to:
+44123: 0x256b86e00:  c0 09 00 35   cbnz	w0, 0x256b86f38
+44124: 0x256b86e04:  e0 2a 45 f9   ldr	x0, [x23, #0xa50]
+44125: 0x256b86e08:  66 16 43 a9   ldp	x6, x5, [x19, #0x30]
+44126: 0x256b86e0c:  67 16 40 f9   ldr	x7, [x19, #0x28]
+44127: 0x256b86e10:  64 02 16 8b   add	x4, x19, x22
+44128: 0x256b86e14:  e2 03 14 aa   mov	x2, x20
+44129: 0x256b86e18:  23 00 80 52   mov	w3, #0x1
+44130: 0x256b86e1c:  6d c9 54 94   bl	0x2580b93d0 ; CALL addLTMMetadataTo:curvesType:fromLTMOutput:statistics:driverInputMetadata:geometryData:
+44131: 0x256b86e20:  68 8a 40 39   ldrb	w8, [x19, #0x22]
+44132: 0x256b86e24:  1f 05 00 71   cmp	w8, #0x1
+44133: 0x256b86e28:  01 03 00 54   b.ne	0x256b86e88
+44134: 0x256b86e2c:  63 0a 43 a9   ldp	x3, x2, [x19, #0x30]
+44135: 0x256b86e30:  68 50 15 39   strb	w8, [x3, #0x554]
+44136: 0x256b86e34:  08 f0 a7 52   mov	w8, #0x3f800000
+44137: 0x256b86e38:  68 24 00 b9   str	w8, [x3, #0x24]
+44138: 0x256b86e3c:  7f 58 05 b9   str	wzr, [x3, #0x558]
+44139: 0x256b86e40:  60 0a 40 f9   ldr	x0, [x19, #0x10]
+44140: 0x256b86e44:  64 02 01 91   add	x4, x19, #0x40
+44141: 0x256b86e48:  65 02 15 8b   add	x5, x19, x21
+44142: 0x256b86e4c:  fd c9 54 94   bl	0x2580b9640 ; CALL computeLtmComputeInput:withMetadata:to:computeInputMetadata:
+44143: 0x256b86e50:  a0 07 00 35   cbnz	w0, 0x256b86f44
+44144: 0x256b86e54:  60 06 40 f9   ldr	x0, [x19, #0x8]
+44145: 0x256b86e58:  62 02 01 91   add	x2, x19, #0x40
+44146: 0x256b86e5c:  63 02 15 8b   add	x3, x19, x21
+44147: 0x256b86e60:  64 02 16 8b   add	x4, x19, x22
+44148: 0x256b86e64:  f3 c9 54 94   bl	0x2580b9630 ; CALL computeLTM:withMetadata:to:
+44149: 0x256b86e68:  a0 07 00 35   cbnz	w0, 0x256b86f5c
+44150: 0x256b86e6c:  e0 2a 45 f9   ldr	x0, [x23, #0xa50]
+44151: 0x256b86e70:  66 16 43 a9   ldp	x6, x5, [x19, #0x30]
+44152: 0x256b86e74:  67 16 40 f9   ldr	x7, [x19, #0x28]
+44153: 0x256b86e78:  64 02 16 8b   add	x4, x19, x22
+44154: 0x256b86e7c:  e2 03 14 aa   mov	x2, x20
+44155: 0x256b86e80:  43 00 80 52   mov	w3, #0x2
+44156: 0x256b86e84:  53 c9 54 94   bl	0x2580b93d0 ; CALL addLTMMetadataTo:curvesType:fromLTMOutput:statistics:driverInputMetadata:geometryData:
+44157: 0x256b86e88:  68 8e 40 39   ldrb	w8, [x19, #0x23]
+44158: 0x256b86e8c:  1f 05 00 71   cmp	w8, #0x1
+44159: 0x256b86e90:  01 03 00 54   b.ne	0x256b86ef0
+44160: 0x256b86e94:  63 0a 43 a9   ldp	x3, x2, [x19, #0x30]
+44161: 0x256b86e98:  68 50 15 39   strb	w8, [x3, #0x554]
+44162: 0x256b86e9c:  09 f0 a7 52   mov	w9, #0x3f800000
+44163: 0x256b86ea0:  69 24 00 b9   str	w9, [x3, #0x24]
+44164: 0x256b86ea4:  68 58 05 b9   str	w8, [x3, #0x558]
+44165: 0x256b86ea8:  60 0a 40 f9   ldr	x0, [x19, #0x10]
+44166: 0x256b86eac:  64 02 01 91   add	x4, x19, #0x40
+44167: 0x256b86eb0:  65 02 15 8b   add	x5, x19, x21
+44168: 0x256b86eb4:  e3 c9 54 94   bl	0x2580b9640 ; CALL computeLtmComputeInput:withMetadata:to:computeInputMetadata:
+44169: 0x256b86eb8:  c0 04 00 35   cbnz	w0, 0x256b86f50
+44170: 0x256b86ebc:  60 06 40 f9   ldr	x0, [x19, #0x8]
+44171: 0x256b86ec0:  62 02 01 91   add	x2, x19, #0x40
+44172: 0x256b86ec4:  63 02 15 8b   add	x3, x19, x21
+44173: 0x256b86ec8:  64 02 16 8b   add	x4, x19, x22
+44174: 0x256b86ecc:  d9 c9 54 94   bl	0x2580b9630 ; CALL computeLTM:withMetadata:to:
+44175: 0x256b86ed0:  c0 04 00 35   cbnz	w0, 0x256b86f68
+44176: 0x256b86ed4:  e0 2a 45 f9   ldr	x0, [x23, #0xa50]
+44177: 0x256b86ed8:  66 16 43 a9   ldp	x6, x5, [x19, #0x30]
+44178: 0x256b86edc:  67 16 40 f9   ldr	x7, [x19, #0x28]
+44179: 0x256b86ee0:  64 02 16 8b   add	x4, x19, x22
+44180: 0x256b86ee4:  e2 03 14 aa   mov	x2, x20
+44181: 0x256b86ee8:  63 00 80 52   mov	w3, #0x3
+44182: 0x256b86eec:  39 c9 54 94   bl	0x2580b93d0 ; CALL addLTMMetadataTo:curvesType:fromLTMOutput:statistics:driverInputMetadata:geometryData:
+50280: 0x256b8c9c4:  e8 3e 40 79   ldrh	w8, [x23, #0x1e]
+50281: 0x256b8c9c8:  1f 11 01 71   cmp	w8, #0x44
+50282: 0x256b8c9cc:  28 10 80 52   mov	w8, #0x81
+50283: 0x256b8c9d0:  29 08 80 52   mov	w9, #0x41
+50284: 0x256b8c9d4:  39 01 88 1a   csel	w25, w9, w8, eq
+50285: 0x256b8c9d8:  a7 92 55 39   ldrb	w7, [x21, #0x564]
+50286: 0x256b8c9dc:  f9 03 00 b9   str	w25, [sp]
+50287: 0x256b8c9e0:  e0 03 16 aa   mov	x0, x22
+50288: 0x256b8c9e4:  e2 03 14 aa   mov	x2, x20
+50289: 0x256b8c9e8:  03 00 80 52   mov	w3, #0
+50290: 0x256b8c9ec:  e4 03 18 aa   mov	x4, x24
+50291: 0x256b8c9f0:  e5 03 17 aa   mov	x5, x23
+50292: 0x256b8c9f4:  e6 03 13 aa   mov	x6, x19
+50293: 0x256b8c9f8:  f6 b1 54 94   bl	0x2580b91d0 ; CALL _addLTMCurvesToMetadata:curvesType:fromOutput:statistics:geometryData:isSIFR:ltcNumNodes:
+50368: 0x256b8cb14:  f3 03 07 aa   mov	x19, x7
+50369: 0x256b8cb18:  f4 03 05 aa   mov	x20, x5
+50370: 0x256b8cb1c:  f5 03 04 aa   mov	x21, x4
+50371: 0x256b8cb20:  f6 03 03 aa   mov	x22, x3
+50372: 0x256b8cb24:  f7 03 00 aa   mov	x23, x0
+50373: 0x256b8cb28:  a8 3c 40 79   ldrh	w8, [x5, #0x1e]
+50374: 0x256b8cb2c:  1f 11 01 71   cmp	w8, #0x44
+50375: 0x256b8cb30:  28 10 80 52   mov	w8, #0x81
+50376: 0x256b8cb34:  29 08 80 52   mov	w9, #0x41
+50377: 0x256b8cb38:  38 01 88 1a   csel	w24, w9, w8, eq
+50378: 0x256b8cb3c:  d9 90 55 39   ldrb	w25, [x6, #0x564]
+50379: 0x256b8cb40:  fc cf 55 94   bl	0x258100b30
+50380: 0x256b8cb44:  e2 03 00 aa   mov	x2, x0
+50381: 0x256b8cb48:  e0 07 00 f9   str	x0, [sp, #0x8]
+50382: 0x256b8cb4c:  f8 03 00 b9   str	w24, [sp]
+50383: 0x256b8cb50:  e0 03 17 aa   mov	x0, x23
+50384: 0x256b8cb54:  e3 03 16 aa   mov	x3, x22
+50385: 0x256b8cb58:  e4 03 15 aa   mov	x4, x21
+50386: 0x256b8cb5c:  e5 03 14 aa   mov	x5, x20
+50387: 0x256b8cb60:  e6 03 13 aa   mov	x6, x19
+50388: 0x256b8cb64:  e7 03 19 aa   mov	x7, x25
+50389: 0x256b8cb68:  9a b1 54 94   bl	0x2580b91d0 ; CALL _addLTMCurvesToMetadata:curvesType:fromOutput:statistics:geometryData:isSIFR:ltcNumNodes:
+50390: 0x256b8cb6c:  e0 03 17 aa   mov	x0, x23
+50391: 0x256b8cb70:  e2 07 40 f9   ldr	x2, [sp, #0x8]
+50392: 0x256b8cb74:  e3 03 16 aa   mov	x3, x22
+50393: 0x256b8cb78:  e4 03 15 aa   mov	x4, x21
+50394: 0x256b8cb7c:  e5 03 18 aa   mov	x5, x24
+50395: 0x256b8cb80:  7c b1 54 94   bl	0x2580b9170 ; CALL _addAverageLTMToMetadata:curvesType:fromOutput:ltcNumNodes:
+50457: 0x256b8cc68:  f3 07 00 f9   str	x19, [sp, #0x8]
+50458: 0x256b8cc6c:  08 00 80 d2   mov	x8, #0
+50459: 0x256b8cc70:  29 20 80 52   mov	w9, #0x101
+50460: 0x256b8cc74:  ea 03 16 aa   mov	x10, x22
+50461: 0x256b8cc78:  49 25 00 78   strh	w9, [x10], #0x2
+50462: 0x256b8cc7c:  eb 03 17 aa   mov	x11, x23
+50463: 0x256b8cc80:  69 25 00 78   strh	w9, [x11], #0x2
+50464: 0x256b8cc84:  2c 63 40 91   add	x12, x25, #0x18, lsl #0xc
+50465: 0x256b8cc88:  8c 11 14 91   add	x12, x12, #0x504
+50466: 0x256b8cc8c:  00 10 2e 1e   fmov	s0, #1.00000000
+50467: 0x256b8cc90:  01 e4 00 6f   movi	v1.2d, #0
+50468: 0x256b8cc94:  2d 63 40 91   add	x13, x25, #0x18, lsl #0xc
+50469: 0x256b8cc98:  ee 01 00 90   adrp	x14, 0x256bc8000
+50470: 0x256b8cc9c:  c8 99 43 bd   ldr	s8, [x14, #0x398]
+50471: 0x256b8cca0:  ad 21 24 91   add	x13, x13, #0x908
+50472: 0x256b8cca4:  82 79 68 bc   ldr	s2, [x12, x8, lsl #0x2]
+50473: 0x256b8cca8:  42 78 20 1e   fminnm	s2, s2, s0
+50474: 0x256b8ccac:  42 68 21 1e   fmaxnm	s2, s2, s1
+50475: 0x256b8ccb0:  42 08 28 1e   fmul	s2, s2, s8
+50476: 0x256b8ccb4:  42 40 25 1e   frintm	s2, s2
+50477: 0x256b8ccb8:  42 b8 a1 5e   fcvtzs	s2, s2
+50478: 0x256b8ccbc:  42 79 28 7c   str	h2, [x10, x8, lsl #0x1]
+50479: 0x256b8ccc0:  a2 79 68 bc   ldr	s2, [x13, x8, lsl #0x2]
+50480: 0x256b8ccc4:  42 78 20 1e   fminnm	s2, s2, s0
+50481: 0x256b8ccc8:  42 68 21 1e   fmaxnm	s2, s2, s1
+50482: 0x256b8cccc:  42 08 28 1e   fmul	s2, s2, s8
+50483: 0x256b8ccd0:  42 40 25 1e   frintm	s2, s2
+50484: 0x256b8ccd4:  42 b8 a1 5e   fcvtzs	s2, s2
+50485: 0x256b8ccd8:  62 79 28 7c   str	h2, [x11, x8, lsl #0x1]
+50486: 0x256b8ccdc:  08 05 00 91   add	x8, x8, #0x1
+50487: 0x256b8cce0:  29 05 00 f1   subs	x9, x9, #0x1
+50488: 0x256b8cce4:  01 fe ff 54   b.ne	0x256b8cca4
+50568: 0x256b8ce24:  d3 ac 0c f0   adrp	x19, 0x270127000
+50569: 0x256b8ce28:  60 c6 40 f9   ldr	x0, [x19, #0x188]
+50570: 0x256b8ce2c:  e2 03 15 aa   mov	x2, x21
+50571: 0x256b8ce30:  e3 03 1a aa   mov	x3, x26
+50572: 0x256b8ce34:  6f df 51 94   bl	0x258004bf0 ; CALL dataWithBytes:length:
+50573: 0x256b8ce38:  d2 ce 55 94   bl	0x258100980
+50574: 0x256b8ce3c:  f9 03 00 aa   mov	x25, x0
+50575: 0x256b8ce40:  60 c6 40 f9   ldr	x0, [x19, #0x188]
+50576: 0x256b8ce44:  e2 03 16 aa   mov	x2, x22
+50577: 0x256b8ce48:  83 40 80 52   mov	w3, #0x204
+50578: 0x256b8ce4c:  69 df 51 94   bl	0x258004bf0 ; CALL dataWithBytes:length:
+50579: 0x256b8ce50:  cc ce 55 94   bl	0x258100980
+50580: 0x256b8ce54:  fa 03 00 aa   mov	x26, x0
+50581: 0x256b8ce58:  60 c6 40 f9   ldr	x0, [x19, #0x188]
+50582: 0x256b8ce5c:  e2 03 17 aa   mov	x2, x23
+50583: 0x256b8ce60:  83 40 80 52   mov	w3, #0x204
+50584: 0x256b8ce64:  63 df 51 94   bl	0x258004bf0 ; CALL dataWithBytes:length:
+50585: 0x256b8ce68:  c6 ce 55 94   bl	0x258100980
+50586: 0x256b8ce6c:  fb 03 00 aa   mov	x27, x0
+50587: 0x256b8ce70:  1f 07 00 71   cmp	w24, #0x1
+50588: 0x256b8ce74:  40 04 00 54   b.eq	0x256b8cefc
+50589: 0x256b8ce78:  1f 0b 00 71   cmp	w24, #0x2
+50590: 0x256b8ce7c:  f3 07 40 f9   ldr	x19, [sp, #0x8]
+50591: 0x256b8ce80:  00 02 00 54   b.eq	0x256b8cec0
+50592: 0x256b8ce84:  1f 0f 00 71   cmp	w24, #0x3
+50593: 0x256b8ce88:  a1 05 00 54   b.ne	0x256b8cf3c
+50594: 0x256b8ce8c:  83 26 14 b0   adrp	x3, 0x27f05d000
+50595: 0x256b8ce90:  63 c0 16 91   add	x3, x3, #0x5b0 ; CHECKED_LITERAL "LTMLookUpTables_HLGWithoutFaceBoost"
+50596: 0x256b8ce94:  e0 03 13 aa   mov	x0, x19
+50597: 0x256b8ce98:  e2 03 19 aa   mov	x2, x25
+50598: 0x256b8ce9c:  dd da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50599: 0x256b8cea0:  83 26 14 b0   adrp	x3, 0x27f05d000
+50600: 0x256b8cea4:  63 40 17 91   add	x3, x3, #0x5d0 ; CHECKED_LITERAL "GlobalLTMLookUpTable_HLGWithoutFaceBoost"
+50601: 0x256b8cea8:  e0 03 13 aa   mov	x0, x19
+50602: 0x256b8ceac:  e2 03 1a aa   mov	x2, x26
+50603: 0x256b8ceb0:  d8 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50604: 0x256b8ceb4:  83 26 14 b0   adrp	x3, 0x27f05d000
+50605: 0x256b8ceb8:  63 c0 17 91   add	x3, x3, #0x5f0 ; CHECKED_LITERAL "GlobalToneCurveLookUpTable_HLGWithoutFaceBoost"
+50606: 0x256b8cebc:  2f 00 00 14   b	0x256b8cf78
+50607: 0x256b8cec0:  e8 ae 0c 90   adrp	x8, 0x270168000
+50608: 0x256b8cec4:  08 f5 41 f9   ldr	x8, [x8, #0x3e8]
+50609: 0x256b8cec8:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "LTMLookUpTablesWithoutFaceBoost"
+50610: 0x256b8cecc:  e0 03 13 aa   mov	x0, x19
+50611: 0x256b8ced0:  e2 03 19 aa   mov	x2, x25
+50612: 0x256b8ced4:  cf da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50613: 0x256b8ced8:  e8 ae 0c 90   adrp	x8, 0x270168000
+50614: 0x256b8cedc:  08 d9 41 f9   ldr	x8, [x8, #0x3b0]
+50615: 0x256b8cee0:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "GlobalLTMLookUpTableWithoutFaceBoost"
+50616: 0x256b8cee4:  e0 03 13 aa   mov	x0, x19
+50617: 0x256b8cee8:  e2 03 1a aa   mov	x2, x26
+50618: 0x256b8ceec:  c9 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50619: 0x256b8cef0:  e8 ae 0c 90   adrp	x8, 0x270168000
+50620: 0x256b8cef4:  08 e1 41 f9   ldr	x8, [x8, #0x3c0]
+50621: 0x256b8cef8:  1f 00 00 14   b	0x256b8cf74
+50622: 0x256b8cefc:  e8 ae 0c 90   adrp	x8, 0x270168000
+50623: 0x256b8cf00:  08 f9 41 f9   ldr	x8, [x8, #0x3f0]
+50624: 0x256b8cf04:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "LTMLookUpTables_HLG"
+50625: 0x256b8cf08:  f3 07 40 f9   ldr	x19, [sp, #0x8]
+50626: 0x256b8cf0c:  e0 03 13 aa   mov	x0, x19
+50627: 0x256b8cf10:  e2 03 19 aa   mov	x2, x25
+50628: 0x256b8cf14:  bf da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50629: 0x256b8cf18:  e8 ae 0c 90   adrp	x8, 0x270168000
+50630: 0x256b8cf1c:  08 dd 41 f9   ldr	x8, [x8, #0x3b8]
+50631: 0x256b8cf20:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "GlobalLTMLookUpTable_HLG"
+50632: 0x256b8cf24:  e0 03 13 aa   mov	x0, x19
+50633: 0x256b8cf28:  e2 03 1a aa   mov	x2, x26
+50634: 0x256b8cf2c:  b9 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50635: 0x256b8cf30:  e8 ae 0c 90   adrp	x8, 0x270168000
+50636: 0x256b8cf34:  08 e5 41 f9   ldr	x8, [x8, #0x3c8]
+50637: 0x256b8cf38:  0f 00 00 14   b	0x256b8cf74
+50638: 0x256b8cf3c:  e8 ae 0c 90   adrp	x8, 0x270168000
+50639: 0x256b8cf40:  08 01 46 f9   ldr	x8, [x8, #0xc00]
+50640: 0x256b8cf44:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "LTMLookUpTables"
+50641: 0x256b8cf48:  e0 03 13 aa   mov	x0, x19
+50642: 0x256b8cf4c:  e2 03 19 aa   mov	x2, x25
+50643: 0x256b8cf50:  b0 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50644: 0x256b8cf54:  e8 ae 0c 90   adrp	x8, 0x270168000
+50645: 0x256b8cf58:  08 7d 45 f9   ldr	x8, [x8, #0xaf8]
+50646: 0x256b8cf5c:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "GlobalLTMLookUpTable"
+50647: 0x256b8cf60:  e0 03 13 aa   mov	x0, x19
+50648: 0x256b8cf64:  e2 03 1a aa   mov	x2, x26
+50649: 0x256b8cf68:  aa da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50650: 0x256b8cf6c:  e8 ae 0c 90   adrp	x8, 0x270168000
+50651: 0x256b8cf70:  08 8d 45 f9   ldr	x8, [x8, #0xb18]
+50652: 0x256b8cf74:  03 01 40 f9   ldr	x3, [x8] ; CHECKED_LITERAL "GlobalToneCurveLookUpTable"
+50653: 0x256b8cf78:  e0 03 13 aa   mov	x0, x19
+50654: 0x256b8cf7c:  e2 03 1b aa   mov	x2, x27
+50655: 0x256b8cf80:  a4 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+### CMImaging: iterations/20261018-v3/evidence/ios/CMImaging.literals-checked.asm
+57457: 0x1d4732ca0:  e3 f3 00 91   add	x3, sp, #0x3c
+57458: 0x1d4732ca4:  e4 e3 00 91   add	x4, sp, #0x38
+57459: 0x1d4732ca8:  06 10 e5 94   bl	0x1d8076cc0 ; CALL computeLinearImageExposureWithMetadata:outputBaseGain:outputBaselineExposure:
+57460: 0x1d4732cac:  c0 13 00 35   cbnz	w0, 0x1d4732f24
+57461: 0x1d4732cb0:  e0 42 45 f9   ldr	x0, [x23, #0xa80]
+57462: 0x1d4732cb4:  62 1e 40 f9   ldr	x2, [x19, #0x38]
+57463: 0x1d4732cb8:  fe 0f e5 94   bl	0x1d8076cb0 ; CALL computeLinearImageEncodingGainWithMetadata:
+57464: 0x1d4732cbc:  08 1c a0 4e   mov	v8.16b, v0.16b
+57465: 0x1d4732cc0:  e0 03 13 aa   mov	x0, x19
+57466: 0x1d4732cc4:  df 0a e5 94   bl	0x1d8075840 ; CALL _createGlobalToneCurveTexture
+57467: 0x1d4732cc8:  40 13 00 35   cbnz	w0, 0x1d4732f30
+57468: 0x1d4732ccc:  e0 03 13 aa   mov	x0, x19
+57469: 0x1d4732cd0:  6c 0a e5 94   bl	0x1d8075680 ; CALL _calculateROIShift
+57470: 0x1d4732cd4:  40 13 00 35   cbnz	w0, 0x1d4732f3c
+57471: 0x1d4732cd8:  89 02 63 9e   ucvtf	d9, x20
+57472: 0x1d4732cdc:  ca 02 63 9e   ucvtf	d10, x22
+57473: 0x1d4732ce0:  62 42 40 f9   ldr	x2, [x19, #0x80]
+57474: 0x1d4732ce4:  60 4a 40 f9   ldr	x0, [x19, #0x90]
+57475: 0x1d4732ce8:  9a 1e e5 94   bl	0x1d807a750 ; CALL setInputGlobalToneCurveTexture:
+57476: 0x1d4732cec:  e0 3f 40 bd   ldr	s0, [sp, #0x3c]
+57477: 0x1d4732cf0:  60 4a 40 f9   ldr	x0, [x19, #0x90]
+57478: 0x1d4732cf4:  d7 1e e5 94   bl	0x1d807a850 ; CALL setInputLinearBaseGain:
+57479: 0x1d4732cf8:  e0 3b 40 bd   ldr	s0, [sp, #0x38]
+57480: 0x1d4732cfc:  60 4a 40 f9   ldr	x0, [x19, #0x90]
+57481: 0x1d4732d00:  38 1c e5 94   bl	0x1d8079de0 ; CALL setBaselineExposure:
+57482: 0x1d4732d04:  60 4a 40 f9   ldr	x0, [x19, #0x90]
+57483: 0x1d4732d08:  00 1d a8 4e   mov	v0.16b, v8.16b
+57484: 0x1d4732d0c:  d5 1e e5 94   bl	0x1d807a860 ; CALL setInputLinearEncodingGain:
+57485: 0x1d4732d10:  62 a6 40 b9   ldr	w2, [x19, #0xa4]
+58118: 0x1d47336d4:  3f 0a e5 94   bl	0x1d8075fd0 ; CALL _runImageReductionAndUpdateBaseGain:
+58119: 0x1d47336d8:  00 11 00 35   cbnz	w0, 0x1d47338f8
+58120: 0x1d47336dc:  62 12 40 f9   ldr	x2, [x19, #0x20]
+58121: 0x1d47336e0:  63 1a 40 f9   ldr	x3, [x19, #0x30]
+58122: 0x1d47336e4:  64 16 45 a9   ldp	x4, x5, [x19, #0x50]
+58123: 0x1d47336e8:  e0 03 13 aa   mov	x0, x19
+58124: 0x1d47336ec:  dd 07 e5 94   bl	0x1d8075660 ; CALL _calculateHistogramStatsWithImageTexture:linearImageTexture:personMaskTexture:skinMaskTexture:
+58125: 0x1d47336f0:  a0 10 00 35   cbnz	w0, 0x1d4733904
+58126: 0x1d47336f4:  68 8a 42 b9   ldr	w8, [x19, #0x288]
+58127: 0x1d47336f8:  e8 02 08 36   tbz	w8, #0x1, 0x1d4733754
+58128: 0x1d47336fc:  e0 03 13 aa   mov	x0, x19
+58129: 0x1d4733700:  a4 0a e5 94   bl	0x1d8076190 ; CALL _updateRenderPipelineConfigForInputs
+58130: 0x1d4733704:  a0 0c 00 35   cbnz	w0, 0x1d4733898
+58131: 0x1d4733708:  e0 03 13 aa   mov	x0, x19
+58132: 0x1d473370c:  c1 07 e5 94   bl	0x1d8075610 ; CALL _calculateDynamicRenderParameters
+58133: 0x1d4733710:  a0 0c 00 35   cbnz	w0, 0x1d47338a4
+58134: 0x1d4733714:  e0 03 13 aa   mov	x0, x19
+58135: 0x1d4733718:  52 08 e5 94   bl	0x1d8075860 ; CALL _createGuideImage
+58136: 0x1d473371c:  a0 0c 00 35   cbnz	w0, 0x1d47338b0
+58137: 0x1d4733720:  e0 03 13 aa   mov	x0, x19
+58138: 0x1d4733724:  b7 09 e5 94   bl	0x1d8075e00 ; CALL _processSegmentationMasks
+58139: 0x1d4733728:  a0 0c 00 35   cbnz	w0, 0x1d47338bc
+58140: 0x1d473372c:  e0 03 13 aa   mov	x0, x19
+58141: 0x1d4733730:  b0 09 e5 94   bl	0x1d8075df0 ; CALL _processLTMGainMap
+58142: 0x1d4733734:  00 0d 00 35   cbnz	w0, 0x1d47338d4
+58143: 0x1d4733738:  e0 03 13 aa   mov	x0, x19
+58144: 0x1d473373c:  9d 0a e5 94   bl	0x1d80761b0 ; CALL _upsampleLightMap
+58145: 0x1d4733740:  00 0d 00 35   cbnz	w0, 0x1d47338e0
+58146: 0x1d4733744:  e0 03 13 aa   mov	x0, x19
+58147: 0x1d4733748:  6a 07 e5 94   bl	0x1d80754f0 ; CALL _applyFinalRendering
+58148: 0x1d473374c:  00 0d 00 35   cbnz	w0, 0x1d47338ec
+58149: 0x1d4733750:  68 8a 42 b9   ldr	w8, [x19, #0x288]
+58150: 0x1d4733754:  88 00 10 36   tbz	w8, #0x2, 0x1d4733764
+58151: 0x1d4733758:  e0 03 13 aa   mov	x0, x19
+58152: 0x1d473375c:  95 08 e5 94   bl	0x1d80759b0 ; CALL _encodeLinear
+121979: 0x1d476c224:  f3 03 00 91   mov	x19, sp
+121980: 0x1d476c228:  f5 03 00 aa   mov	x21, x0
+121981: 0x1d476c22c:  00 0c 40 f9   ldr	x0, [x0, #0x18]
+121982: 0x1d476c230:  88 cd 05 d0   adrp	x8, 0x1e011e000
+121983: 0x1d476c234:  08 39 44 f9   ldr	x8, [x8, #0x870]
+121984: 0x1d476c238:  01 01 40 f9   ldr	x1, [x8] ; CHECKED_LITERAL "CVImageBufferTransferFunction"
+121985: 0x1d476c23c:  02 00 80 d2   mov	x2, #0
+121986: 0x1d476c240:  d4 60 e5 94   bl	0x1d80c4590
+121987: 0x1d476c244:  f4 03 00 aa   mov	x20, x0
+121988: 0x1d476c248:  a0 0e 40 f9   ldr	x0, [x21, #0x18]
+121989: 0x1d476c24c:  88 cd 05 d0   adrp	x8, 0x1e011e000
+121990: 0x1d476c250:  08 95 43 f9   ldr	x8, [x8, #0x728]
+121991: 0x1d476c254:  01 01 40 f9   ldr	x1, [x8] ; CHECKED_LITERAL "CVImageBufferColorPrimaries"
+121992: 0x1d476c258:  02 00 80 d2   mov	x2, #0
+121993: 0x1d476c25c:  cd 60 e5 94   bl	0x1d80c4590
+121994: 0x1d476c260:  f6 03 00 aa   mov	x22, x0
+121995: 0x1d476c264:  88 cd 05 d0   adrp	x8, 0x1e011e000
+121996: 0x1d476c268:  08 45 44 f9   ldr	x8, [x8, #0x888]
+121997: 0x1d476c26c:  01 01 40 f9   ldr	x1, [x8] ; CHECKED_LITERAL "ITU_R_709_2"
+121998: 0x1d476c270:  e0 03 14 aa   mov	x0, x20
+121999: 0x1d476c274:  63 61 e5 94   bl	0x1d80c4800
+122000: 0x1d476c278:  40 01 00 34   cbz	w0, 0x1d476c2a0
+122001: 0x1d476c27c:  88 cd 05 d0   adrp	x8, 0x1e011e000
+122002: 0x1d476c280:  08 a5 43 f9   ldr	x8, [x8, #0x748]
+122003: 0x1d476c284:  01 01 40 f9   ldr	x1, [x8] ; CHECKED_LITERAL "ITU_R_709_2"
+122004: 0x1d476c288:  e0 03 16 aa   mov	x0, x22
+122005: 0x1d476c28c:  5d 61 e5 94   bl	0x1d80c4800
+122006: 0x1d476c290:  80 00 00 34   cbz	w0, 0x1d476c2a0
+122007: 0x1d476c294:  17 00 80 52   mov	w23, #0
+122008: 0x1d476c298:  54 01 00 b5   cbnz	x20, 0x1d476c2c0
+122009: 0x1d476c29c:  0b 00 00 14   b	0x1d476c2c8
+122010: 0x1d476c2a0:  88 cd 05 d0   adrp	x8, 0x1e011e000
+122011: 0x1d476c2a4:  08 41 44 f9   ldr	x8, [x8, #0x880]
+122012: 0x1d476c2a8:  01 01 40 f9   ldr	x1, [x8] ; CHECKED_LITERAL "ITU_R_2100_HLG"
+122013: 0x1d476c2ac:  e0 03 14 aa   mov	x0, x20
+122014: 0x1d476c2b0:  54 61 e5 94   bl	0x1d80c4800
+122015: 0x1d476c2b4:  1f 00 00 71   cmp	w0, #0
+122016: 0x1d476c2b8:  f7 07 9f 1a   cset	w23, ne
+122017: 0x1d476c2bc:  74 00 00 b4   cbz	x20, 0x1d476c2c8
+122018: 0x1d476c2c0:  e0 03 14 aa   mov	x0, x20
+122019: 0x1d476c2c4:  f3 f6 e4 94   bl	0x1d80a9e90
+122020: 0x1d476c2c8:  76 00 00 b4   cbz	x22, 0x1d476c2d4
+122021: 0x1d476c2cc:  e0 03 16 aa   mov	x0, x22
+122022: 0x1d476c2d0:  f0 f6 e4 94   bl	0x1d80a9e90
+122023: 0x1d476c2d4:  a0 1a 40 f9   ldr	x0, [x21, #0x30]
+122024: 0x1d476c2d8:  e8 ce 05 d0   adrp	x8, 0x1e014a000
+122025: 0x1d476c2dc:  08 51 44 f9   ldr	x8, [x8, #0x8a0]
+122026: 0x1d476c2e0:  02 01 40 f9   ldr	x2, [x8] ; CHECKED_LITERAL "GlobalToneCurveLookUpTable"
+122027: 0x1d476c2e4:  5b 83 e2 94   bl	0x1d800d050 ; CALL objectForKeyedSubscript:
+122028: 0x1d476c2e8:  86 f2 e4 94   bl	0x1d80a8d00
+122029: 0x1d476c2ec:  f4 03 00 aa   mov	x20, x0
+122030: 0x1d476c2f0:  f8 f2 e4 94   bl	0x1d80a8ed0
+122031: 0x1d476c2f4:  bf 55 e2 94   bl	0x1d80019f0 ; CALL bytes
+122032: 0x1d476c2f8:  40 21 00 b4   cbz	x0, 0x1d476c720
+122033: 0x1d476c2fc:  f6 03 00 aa   mov	x22, x0
+122034: 0x1d476c300:  1a 00 40 79   ldrh	w26, [x0]
+122035: 0x1d476c304:  5f 03 01 71   cmp	w26, #0x40
+122036: 0x1d476c308:  09 21 00 54   b.ls	0x1d476c728
+122037: 0x1d476c30c:  5b 07 00 51   sub	w27, w26, #0x1
+122038: 0x1d476c310:  7f 03 04 71   cmp	w27, #0x100
+122039: 0x1d476c314:  41 07 00 54   b.ne	0x1d476c3fc
+122040: 0x1d476c318:  18 00 80 d2   mov	x24, #0
+122041: 0x1d476c31c:  c0 02 44 7d   ldr	h0, [x22, #0x200]
+122042: 0x1d476c320:  09 d8 61 7e   ucvtf	d9, d0
+122043: 0x1d476c324:  19 20 80 52   mov	w25, #0x100
+122044: 0x1d476c328:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122045: 0x1d476c32c:  00 f9 44 fd   ldr	d0, [x8, #0x9f0]
+122046: 0x1d476c330:  60 0a 00 fd   str	d0, [x19, #0x10]
+122047: 0x1d476c334:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122048: 0x1d476c338:  0d fd 44 fd   ldr	d13, [x8, #0x9f8]
+122049: 0x1d476c33c:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122050: 0x1d476c340:  0e 01 45 fd   ldr	d14, [x8, #0xa00]
+122051: 0x1d476c344:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122052: 0x1d476c348:  0b 05 45 fd   ldr	d11, [x8, #0xa08]
+122053: 0x1d476c34c:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122054: 0x1d476c350:  0f 11 45 fd   ldr	d15, [x8, #0xa20]
+122055: 0x1d476c354:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122056: 0x1d476c358:  0a 09 45 fd   ldr	d10, [x8, #0xa10]
+122057: 0x1d476c35c:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122058: 0x1d476c360:  0c 0d 45 fd   ldr	d12, [x8, #0xa18]
+122059: 0x1d476c364:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122060: 0x1d476c368:  08 31 4a bd   ldr	s8, [x8, #0xa30]
+122061: 0x1d476c36c:  7a 22 01 91   add	x26, x19, #0x48
+122062: 0x1d476c370:  1b 07 00 91   add	x27, x24, #0x1
+122063: 0x1d476c374:  c0 7a 7b 7c   ldr	h0, [x22, x27, lsl #0x1]
+122064: 0x1d476c378:  00 d8 61 7e   ucvtf	d0, d0
+122065: 0x1d476c37c:  00 18 69 1e   fdiv	d0, d0, d9
+122066: 0x1d476c380:  f7 00 00 34   cbz	w23, 0x1d476c39c
+122067: 0x1d476c384:  01 10 6c 1e   fmov	d1, #0.50000000
+122068: 0x1d476c388:  00 20 61 1e   fcmp	d0, d1
+122069: 0x1d476c38c:  05 01 00 54   b.pl	0x1d476c3ac
+122070: 0x1d476c390:  00 08 60 1e   fmul	d0, d0, d0
+122071: 0x1d476c394:  01 10 61 1e   fmov	d1, #3.00000000
+122072: 0x1d476c398:  0b 00 00 14   b	0x1d476c3c4
+122073: 0x1d476c39c:  00 20 6b 1e   fcmp	d0, d11
+122074: 0x1d476c3a0:  65 01 00 54   b.pl	0x1d476c3cc
+122075: 0x1d476c3a4:  00 18 6f 1e   fdiv	d0, d0, d15
+122076: 0x1d476c3a8:  0f 00 00 14   b	0x1d476c3e4
+122077: 0x1d476c3ac:  61 0a 40 fd   ldr	d1, [x19, #0x10]
+122078: 0x1d476c3b0:  00 28 61 1e   fadd	d0, d0, d1
+122079: 0x1d476c3b4:  00 18 6d 1e   fdiv	d0, d0, d13
+122080: 0x1d476c3b8:  0e 25 e5 94   bl	0x1d80b57f0
+122081: 0x1d476c3bc:  00 28 6e 1e   fadd	d0, d0, d14
+122082: 0x1d476c3c0:  01 10 65 1e   fmov	d1, #12.00000000
+122083: 0x1d476c3c4:  00 18 61 1e   fdiv	d0, d0, d1
+122084: 0x1d476c3c8:  07 00 00 14   b	0x1d476c3e4
+122085: 0x1d476c3cc:  00 28 6a 1e   fadd	d0, d0, d10
+122086: 0x1d476c3d0:  00 18 6c 1e   fdiv	d0, d0, d12
+122087: 0x1d476c3d4:  00 40 62 1e   fcvt	s0, d0
+122088: 0x1d476c3d8:  01 1d a8 4e   mov	v1.16b, v8.16b
+122089: 0x1d476c3dc:  d9 25 e5 94   bl	0x1d80b5b40
+122090: 0x1d476c3e0:  00 c0 22 1e   fcvt	d0, s0
+122091: 0x1d476c3e4:  00 c0 63 1e   fcvt	h0, d0
+122092: 0x1d476c3e8:  40 7b 38 7c   str	h0, [x26, x24, lsl #0x1]
+122093: 0x1d476c3ec:  f8 03 1b aa   mov	x24, x27
+122094: 0x1d476c3f0:  39 07 00 f1   subs	x25, x25, #0x1
+122095: 0x1d476c3f4:  e1 fb ff 54   b.ne	0x1d476c370
+122096: 0x1d476c3f8:  62 00 00 14   b	0x1d476c580
+122194: 0x1d476c580:  a0 42 40 f9   ldr	x0, [x21, #0x80]
+122195: 0x1d476c584:  60 00 00 b4   cbz	x0, 0x1d476c590
+122196: 0x1d476c588:  16 00 80 d2   mov	x22, #0
+122197: 0x1d476c58c:  49 00 00 14   b	0x1d476c6b0
+122198: 0x1d476c590:  a0 06 40 f9   ldr	x0, [x21, #0x8]
+122199: 0x1d476c594:  8b 27 e4 94   bl	0x1d80763c0 ; CALL allocator
+122200: 0x1d476c598:  da f1 e4 94   bl	0x1d80a8d00
+122201: 0x1d476c59c:  f7 03 00 aa   mov	x23, x0
+122202: 0x1d476c5a0:  64 33 e4 94   bl	0x1d8079330 ; CALL newTextureDescriptor
+122203: 0x1d476c5a4:  f6 03 00 aa   mov	x22, x0
+122204: 0x1d476c5a8:  26 f2 e4 94   bl	0x1d80a8e40
+122205: 0x1d476c5ac:  56 0c 00 b4   cbz	x22, 0x1d476c734
+122206: 0x1d476c5b0:  a2 5e 0d b0   adrp	x2, 0x1ef341000
+122207: 0x1d476c5b4:  42 e0 39 91   add	x2, x2, #0xe78 ; CHECKED_LITERAL "SmartStyle_GTCTexture_"
+122208: 0x1d476c5b8:  e0 03 16 aa   mov	x0, x22
+122209: 0x1d476c5bc:  01 60 e2 94   bl	0x1d80045c0 ; CALL setLabel:
+122210: 0x1d476c5c0:  e0 03 16 aa   mov	x0, x22
+122211: 0x1d476c5c4:  db 2a e4 94   bl	0x1d8077130 ; CALL desc
+122212: 0x1d476c5c8:  ce f1 e4 94   bl	0x1d80a8d00
+122213: 0x1d476c5cc:  f7 03 00 aa   mov	x23, x0
+122214: 0x1d476c5d0:  42 00 80 52   mov	w2, #0x2
+122215: 0x1d476c5d4:  eb 3c e4 94   bl	0x1d807b980 ; CALL setTextureType:
+122216: 0x1d476c5d8:  1a f2 e4 94   bl	0x1d80a8e40
+122217: 0x1d476c5dc:  e0 03 16 aa   mov	x0, x22
+122218: 0x1d476c5e0:  d4 2a e4 94   bl	0x1d8077130 ; CALL desc
+122219: 0x1d476c5e4:  c7 f1 e4 94   bl	0x1d80a8d00
+122220: 0x1d476c5e8:  f7 03 00 aa   mov	x23, x0
+122221: 0x1d476c5ec:  22 03 80 52   mov	w2, #0x19
+122222: 0x1d476c5f0:  bc 3b e4 94   bl	0x1d807b4e0 ; CALL setPixelFormat:
+122223: 0x1d476c5f4:  13 f2 e4 94   bl	0x1d80a8e40
+122224: 0x1d476c5f8:  e0 03 16 aa   mov	x0, x22
+122225: 0x1d476c5fc:  cd 2a e4 94   bl	0x1d8077130 ; CALL desc
+122226: 0x1d476c600:  c0 f1 e4 94   bl	0x1d80a8d00
+122227: 0x1d476c604:  f7 03 00 aa   mov	x23, x0
+122228: 0x1d476c608:  02 20 80 52   mov	w2, #0x100
+122229: 0x1d476c60c:  4d 66 e3 94   bl	0x1d8045f40 ; CALL setWidth:
+122230: 0x1d476c610:  0c f2 e4 94   bl	0x1d80a8e40
+122231: 0x1d476c614:  e0 03 16 aa   mov	x0, x22
+122232: 0x1d476c618:  c6 2a e4 94   bl	0x1d8077130 ; CALL desc
+122233: 0x1d476c61c:  b9 f1 e4 94   bl	0x1d80a8d00
+122234: 0x1d476c620:  f7 03 00 aa   mov	x23, x0
+122235: 0x1d476c624:  22 00 80 52   mov	w2, #0x1
+122236: 0x1d476c628:  12 60 e3 94   bl	0x1d8044670 ; CALL setHeight:
+122237: 0x1d476c62c:  05 f2 e4 94   bl	0x1d80a8e40
+122238: 0x1d476c630:  e0 03 16 aa   mov	x0, x22
+122239: 0x1d476c634:  bf 2a e4 94   bl	0x1d8077130 ; CALL desc
+122240: 0x1d476c638:  b2 f1 e4 94   bl	0x1d80a8d00
+122241: 0x1d476c63c:  f7 03 00 aa   mov	x23, x0
+122242: 0x1d476c640:  22 00 80 52   mov	w2, #0x1
+122243: 0x1d476c644:  c7 36 e4 94   bl	0x1d807a160 ; CALL setDepth:
+122244: 0x1d476c648:  fe f1 e4 94   bl	0x1d80a8e40
+122245: 0x1d476c64c:  e0 03 16 aa   mov	x0, x22
+122246: 0x1d476c650:  b8 2a e4 94   bl	0x1d8077130 ; CALL desc
+122247: 0x1d476c654:  ab f1 e4 94   bl	0x1d80a8d00
+122248: 0x1d476c658:  f7 03 00 aa   mov	x23, x0
+122249: 0x1d476c65c:  e2 00 80 52   mov	w2, #0x7
+122250: 0x1d476c660:  04 3d e4 94   bl	0x1d807ba70 ; CALL setUsage:
+122251: 0x1d476c664:  f7 f1 e4 94   bl	0x1d80a8e40
+122252: 0x1d476c668:  a0 06 40 f9   ldr	x0, [x21, #0x8]
+122253: 0x1d476c66c:  bd 2a e4 94   bl	0x1d8077160 ; CALL device
+122254: 0x1d476c670:  a4 f1 e4 94   bl	0x1d80a8d00
+122255: 0x1d476c674:  f7 03 00 aa   mov	x23, x0
+122256: 0x1d476c678:  e0 03 16 aa   mov	x0, x22
+122257: 0x1d476c67c:  ad 2a e4 94   bl	0x1d8077130 ; CALL desc
+122258: 0x1d476c680:  a0 f1 e4 94   bl	0x1d80a8d00
+122259: 0x1d476c684:  f8 03 00 aa   mov	x24, x0
+122260: 0x1d476c688:  e0 03 17 aa   mov	x0, x23
+122261: 0x1d476c68c:  e2 03 18 aa   mov	x2, x24
+122262: 0x1d476c690:  30 33 e4 94   bl	0x1d8079350 ; CALL newTextureWithDescriptor:
+122263: 0x1d476c694:  a8 42 40 f9   ldr	x8, [x21, #0x80]
+122264: 0x1d476c698:  a0 42 00 f9   str	x0, [x21, #0x80]
+122265: 0x1d476c69c:  01 f2 e4 94   bl	0x1d80a8ea0
+122266: 0x1d476c6a0:  ec f1 e4 94   bl	0x1d80a8e50
+122267: 0x1d476c6a4:  e7 f1 e4 94   bl	0x1d80a8e40
+122268: 0x1d476c6a8:  a0 42 40 f9   ldr	x0, [x21, #0x80]
+122269: 0x1d476c6ac:  a0 04 00 b4   cbz	x0, 0x1d476c740
+122270: 0x1d476c6b0:  7f fe 01 a9   stp	xzr, xzr, [x19, #0x18]
+122271: 0x1d476c6b4:  7f 16 00 f9   str	xzr, [x19, #0x28]
+122272: 0x1d476c6b8:  e8 0d 00 90   adrp	x8, 0x1d4928000
+122273: 0x1d476c6bc:  00 91 c2 3d   ldr	q0, [x8, #0xa40]
+122274: 0x1d476c6c0:  60 02 83 3c   stur	q0, [x19, #0x30]
+122275: 0x1d476c6c4:  28 00 80 52   mov	w8, #0x1
+122276: 0x1d476c6c8:  68 22 00 f9   str	x8, [x19, #0x40]
+122277: 0x1d476c6cc:  62 62 00 91   add	x2, x19, #0x18
+122278: 0x1d476c6d0:  64 22 01 91   add	x4, x19, #0x48
+122279: 0x1d476c6d4:  03 00 80 d2   mov	x3, #0
+122280: 0x1d476c6d8:  05 40 80 52   mov	w5, #0x200
+122281: 0x1d476c6dc:  e5 34 e4 94   bl	0x1d8079a70 ; CALL replaceRegion:mipmapLevel:withBytes:bytesPerRow:

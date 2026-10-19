@@ -1,0 +1,55 @@
+name: hdr-native-s53
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s53']
+  workflow_dispatch:
+jobs:
+  producer-curve-record-contract:
+    runs-on: xcode-27
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare text-only scalar replay
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s53"; mkdir -m 700 "$W"
+          mkdir "$W/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          python3 -m pip install --quiet 'unicorn==2.1.4' > "$W/out/dependencies.log" 2>&1
+      - name: Check original writer instructions and conditional record intervals
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s53.py > "$W/out/driver.log" 2>&1
+      - name: Seal text evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<500000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'source_build':'24A446','native_iOS_execution':False,'synthetic_only':True,'photos_used':False,'public_output_scope':'Text-only scalar quantizer replay; no photograph or full Apple binary','files':rows},indent=2)+chr(10))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s53-producer-record-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove only own temporary files
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"
