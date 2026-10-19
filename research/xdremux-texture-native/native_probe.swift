@@ -15,6 +15,7 @@ func writeJSON(_ value: Any, _ url: URL) throws {
     print("TEXTURE_JSON_BEGIN \(url.deletingLastPathComponent().lastPathComponent)/\(url.lastPathComponent)")
     print(String(data: bytes, encoding: .utf8)!)
     print("TEXTURE_JSON_END \(url.deletingLastPathComponent().lastPathComponent)/\(url.lastPathComponent)")
+    fflush(stdout)
 }
 func methodInfo(_ cls: AnyClass, _ meta: Bool) -> [[String: Any]] {
     var count: UInt32 = 0

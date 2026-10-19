@@ -30,6 +30,13 @@ for strength in ['0','0.5','1']:
     (public/'native.stderr.log').write_text(stderr)
     print('BLOOM_NATIVE_PROCESS',name,'exit_code='+str(code),flush=True)
     print(stderr,end='',flush=True)
+    # Keep native assertion messages visible without replaying checkpoint JSON
+    # under ambiguous names. Do not replace Apple's assertion implementation.
+    in_json=False
+    for line in stdout.splitlines():
+        if line.startswith('TEXTURE_JSON_BEGIN '): in_json=True
+        elif line.startswith('TEXTURE_JSON_END '): in_json=False
+        elif not in_json: print('BLOOM_NATIVE_STDOUT '+line,flush=True)
     row={'intensity':float(strength),'native_process_exit':code,'render_completed':False}
     report=native/'render-bloom.json'
     if report.exists():
@@ -41,6 +48,21 @@ for strength in ['0','0.5','1']:
         row['metrics']=json.loads((public/'metrics.json').read_text())
         echo(public/'metrics.json',name+'/metrics.json')
     rows.append(row)
+    if code < 0 and strength == '0.5':
+        # Launch only our public synthetic-input process. A debugger refusal is
+        # evidence of a diagnostic limit; do not alter security policy or retry
+        # with elevated privileges. No breakpoints or Apple code changes.
+        debug=['xcrun','lldb','--batch','-o','run','-o','thread backtrace all','--',*args]
+        try:
+            d=subprocess.run(debug,capture_output=True,text=True,timeout=90)
+            diagnostic={'command':debug,'debugger_exit':d.returncode,
+                        'stdout':d.stdout,'stderr':d.stderr,
+                        'scope':'diagnostic child launch only; debugger exit is not render success'}
+        except subprocess.TimeoutExpired:
+            diagnostic={'command':debug,'debugger_exit':124,'scope':'diagnostic timed out; no security-policy changes'}
+        path=public/'native-diagnostic.json'
+        path.write_text(json.dumps(diagnostic,indent=2)+'\n')
+        echo(path,name+'/native-diagnostic.json')
 if all(r['render_completed'] for r in rows):
     path=evidence/'parameter-response.json'
     subprocess.run([str(metrics),str(work/'intensity0/rendered.rgba32f'),str(work/'intensity1/rendered.rgba32f'),str(path)],check=True)
