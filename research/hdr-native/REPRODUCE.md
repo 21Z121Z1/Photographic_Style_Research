@@ -57,3 +57,10 @@ S50（仅合成常量，macOS runner）：固定source4e3c56c，执行 `python3 
 
 
 S51 native源码ae2f422（workflow hdr-native-s51.yml，driver run_hdr_s51.py，derive_display_s51.py，inputs-s51.json）。只有输入绑定/联系表布局改变，原S47数学前缀可逆还原；依赖SHA写入suite-freeze.json。四份GPG session仅内存提取并临时secret传入，runner逐份完整ZIP/cipher/GPG/EXR SHA验证，结束立即删secret。既有artifact会过期，复现前核对id/expiry，不将已清理secret当永久输入；不要在VM运行图像driver。只读本机复核：`scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_display_s51.py --s47 hdr-native-20261019/runs/39264474802/selected/analysis-s47.json --s51 hdr-native-20261019/runs/39289319764/selected/analysis-s51.json --library repo/research/hdr-native --out <一个新的json路径>`。相对路径从工作根目录执行，输出exclusive-create，不覆写历史JSON。
+
+
+S52只在runner执行`python3 research/hdr-native/run_hdr_s52.py`（source1e2924b；workflow hdr-native-s52.yml，复用offset_collision_s50.m）。纯合成常量，无输入照片或secret。原结果analysis-s52.json含每档输出与三种host-offset模型残差；不要将h8通过代替h1或编码检查。
+
+可选精确母版字节落地：`stream_verified_master.py --work-root <工作根> --photo IMG_0032 --output <工作根>/hdr-native-20261019/scene-candidates/IMG_0032/relative_linear_P3.native_S42.exr --receipt <新的receipt.json> --phase-cap-bytes <用户明确许可的字节数> --authorization-note <许可依据>`，外层必须`scripts/local-python-scope.sh -I -B`。默认100MB，当前不会容纳该EXR；没有新许可不提高cap。不保存153MB ZIP/cipher/tar，只流式SHA/GPG并复制一个EXR，最终原子no-clobber，所有原件/历史文件只读；失败只清理本次创建的partial。
+
+本阶段编排/传输/收尾源码已按SHA保留在hdr-native-20261019/finalization-scripts-s48-s52。原数据与历史exclusive-create receipt不覆盖；复现请使用新的命名空间。单个完整EXR仅在收到新的写入额度许可后使用stream_verified_master.py流式复制，100MB默认值仍有效。

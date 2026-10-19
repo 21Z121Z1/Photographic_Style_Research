@@ -66,3 +66,11 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 - 可交给macOS runner/静态：native投影保边但锚点漂移，原local生产与consumer、global与semantic的真实逆解不可混同；33点完整声明域C01-C05/紧区间仍未认证。停止旧NumPy bit-exact拟合。
 - 待实机解决：同帧j/WithoutFaceBoost/N/B/T/hist/allocateTone/application-domain、Studio生产统计、配对RAW2679/2408、真实HDR显示/环境与PhotosUI，沿用既有可执行计划。本轮没有这些真值。
 - 存储边界：原S42完整母版/sidecar密文仍受原artifact一天期限与当前100MB累计许可限制，未宣称整批已在VM落地；不把新日期或自动续轮当配额重置。
+
+
+### S52 后：offset 合同已检查，不再重复同组对照
+
+- 已验证数值：独立B/A的4组合成×5headroom合同，固定offset模型匹配，h8通过/h1身份失败；不把这一末端改进推广成完整承载方案，不因此重跑五图或降低门槛。
+- 可交给macOS runner/静态：继续原生产/消费端global、local、semantic分别的可识别域与区间；native保边投影锚点残差、33点C01-C05完整合同仍未认证。真实HDR编码/完整ImageIO SDR max0与所有原算子门槛未通过，不以新显示公式通过替代。
+- 本地交付约束：用户100MB累计上限仍有效。已提125MB小方案，只流式取一份27.79MB原EXR；未答复不得写，完整母版不宣称已在VM落地。`stream_verified_master.py`通过原ZIP/cipher/GPG/member SHA核验，只复制字节；本机Python仍须内存scope。
+- 待实机：同帧j/WithoutFaceBoost/N/B/T/hist/allocateTone/application域、Studio原统计、RAW2679/2408、真实HDR屏幕与PhotosUI；沿用既有执行清单。A阶段尚未完成。

@@ -904,6 +904,49 @@
           "sha256": "7c5d4f143501d12162e0b4f7e9ef63a15f3cb621a1cdb3d6539e47342074fcc4"
         }
       ]
+    },
+    {
+      "id": "HDR-48",
+      "category": "transport/native-independent-offset-contract",
+      "status": "已验证数值",
+      "claim": "S52在26A434原生CI/Family4的四组合成正/负输入及五档headroom中，结果符合固定两端offset模型，最大abs5.75647646911e-9；两个随headroom混合offset候选的差约.0312。测试支持(S+B)*exp2(w*L)-A，h1实数模型=S+B-A，不能假定API自动fade offsets。只限这些有限输入，不是完整consumer/纹理/fast/nonfinite域证书。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s52/analysis-s52.json",
+          "line": 1,
+          "sha256": "0be499cc969cb0e39388ce1a6858256422de6ca7e9bce3b1b01d21cadb1027ae"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s52/formula-freeze.json",
+          "line": 1,
+          "sha256": "c50c9bd33f5e374894bfc93879dba73c394f8d277024b7cfcb1b9aae07b94716"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s52/archive-receipt.json",
+          "line": 1,
+          "sha256": "22e33f02bceacbe95aa086118f612ba1bb4df7d5c8499f1cfb7708ca499ee249"
+        }
+      ]
+    },
+    {
+      "id": "HDR-49",
+      "category": "transport/unequal-offset-complete-solution-rejected",
+      "status": "已验证数值",
+      "claim": "S52四个独立offset案例的h8目标均通过原1e-3/1e-5/PSNR60门槛；h1原SDR差分别.03125/.0312347412109375/.0312347412109375/.031219482421875，全部非0。它说明改善末端精度不等于保持低headroom身份；未改五图HDR目标/公式/原mask，不以此宣称全图承载完成。未编码CI h1失败不等同于修改容器primary的SDR；本实验没有生成编码载体或真实照片。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s52/analysis-s52.json",
+          "line": 1,
+          "sha256": "0be499cc969cb0e39388ce1a6858256422de6ca7e9bce3b1b01d21cadb1027ae"
+        },
+        {
+          "file": "repo/research/hdr-native/run_hdr_s52.py",
+          "line": 1,
+          "sha256": "5e38c6dee09b6dd19e1c091ca061ad6a2cc75447542732d80f90d7a92122becb"
+        }
+      ]
     }
   ]
 }

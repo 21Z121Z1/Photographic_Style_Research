@@ -77,3 +77,11 @@ ZIP 60c09dafd81a2c9e07f780097d94d05866c4c1dee5e7ab3cc84f885e4c48b5ed, manifest f
 |S51|research/vm-native-20261020-hdr-s51|ae2f422b8e09878bed18826f83142fb1d2ba983a|39289319764|12205456068 /12204689131 encrypted contacts|26A434/20261012.0260.1|4 new display outputs +S47=5 images,2 formula holdouts,50 unencoded float comparisons pass;three full commonoffset targets fail|
 
 Text ZIP ff88e6f6ab2fc2c6739402e3766560a0a5fe348df9285c340b86ec8fcefdda6a /manifest 41269ca41258e94956b22451f9361a488e8b13bd9f3e6f37d0fd6d654d4afe88; preview ZIP 4c15f1b07fdbc685f4cb40f1048d7ae00d8d4218713b2b12647b3682adeb77e2 /cipher aec13a3f2f5d40976212618f2667f9b0a4907354ab45fe345f49df2f5f95aa01. Full SHA/GPG/member checks done,45 preview-input checks total unchanged. Four temporary sessions deleted, no release/private archive key. One run of this HDR goal at a time; independent other-branch runs only observed, never altered.
+
+
+|S52|research/vm-native-20261020-hdr-s52|1e2924bd17cc47e45b1c8a6753be77e288cbd004|39293130622|12207396048|26A434/20261012.0260.1|4x5 finite offset contract, h8allpass/h1allfail; no photo rerun|
+
+ZIP b34024a807f1d71516a2861de6c0e2badb7414d6c4925ab501499c5713c69d31/manifest 5a37390e3a25d3a214a0cd1ebb94b6a7cada724ef1bc69856b0d210a1c03755a; every member verified, no secret/release. Overall success means the probe completed, not a complete target/inverse pass.
+
+
+S48–S52 科学检查完成：五张原尺寸/两张显示配方留出/50次原生float公式通过；原scene/语义逆解与完整HDR目标/编码仍未通过，A阶段与acceptance_complete仍false。原33点mask及C01-C05、旧NumPy/half失败不改，不继续旧bit-exact拟合。完整EXR的125MB小归档许可待显式答复，当前100MB累计上限不重置；本地只保留证据和密文预览，未假称完整母版落地。源码将保存在research/vm-native-20261018，随后仅清理本阶段自建临时分支，master/原件/旧工作流不动。

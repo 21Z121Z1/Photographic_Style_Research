@@ -217,3 +217,26 @@ zerooffset全部在自己的承载定义域通过，未编码h1全图max0；没�
 预览固定OCIO cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / LinearP3-D65→sRGB Display / ACES1.0 SDR Video /0EV；使用原始像素网格，未按EXIF旋转，全部面板方向相同。只加密上传4张联系表（每张含SDR/M/独立H及5档原生headroom），不是实际HDR屏幕照片。指标artifact12205456068 ZIP SHAff88e6f6ab2fc2c6739402e3766560a0a5fe348df9285c340b86ec8fcefdda6a、manifest SHA41269ca41258e94956b22451f9361a488e8b13bd9f3e6f37d0fd6d654d4afe88；预览artifact12204689131 ZIP SHA4c15f1b07fdbc685f4cb40f1048d7ae00d8d4218713b2b12647b3682adeb77e2、cipher SHAaec13a3f2f5d40976212618f2667f9b0a4907354ab45fe345f49df2f5f95aa01，GPG与全部成员SHA已验证。四项session secret已删除；未创建release、未传归档私钥、未改其他研究任务的分支/run。串行限制按本HDR任务执行，前文全仓库等待要求是本代理过严的调度解释，此处更正，科学门槛无变化。
 
 只读验证器`repo/research/hdr-native/validate_display_s51.py`输出五图协议完成与原float公式通过；`acceptance_complete=false`、`A_phase_complete=false`。旧root validate.py、冻结模型、原件与历史证据未改；只有HDR显示公式的五图/2留出子项闭环。
+
+
+### HDR-S52：分别设置两端 offset 能改善 HDR 端点，未保持 h1 身份
+
+**已验证数值，HDR-48/49。** source1e2924bd17cc47e45b1c8a6753be77e288cbd004/run39293130622/26A434/image20261012.0260.1。只做四组合成常量×五档headroom，复用原生CI测试入口，没有重算任何真实照片。固定两端offset模型的最大abs5.756476469109817e-9，两个假定随headroom混合offset的候选差约0.0312。所测行为符合`(S+B)*2^(wL)-A`。这也与[Android Ultra HDR参考显示公式](https://developer.android.com/media/platform/hdr-image-format#use-the-gain-map-to-create-the-adapted-hdr-rendition)中的独立输入/输出offset结构相容；Android文档不作为Apple API实现或ISO容器合规证明。
+
+令w=0，实数模型为`S+B-A`，故B=A是这一模型保持h1身份的必要条件；有限精度下仍可能有加减消减误差（S47/S51）。S52降低A后，全部h8端点通过原门槛，全部h1身份失败：
+
+|合成案例|h1原SDR差|h8目标relative|h8目标通过|
+|---|---:|---:|---|
+|positive-alt0|0.03125|3.5527136788e-08|是|
+|positive-small-alt|0.0312347412109375|1.44240175359e-06|是|
+|negative-source|0.0312347412109375|5.58793557259e-07|是|
+|negative-target|0.031219482421875|1.72803997702e-06|是|
+
+因此不把不等offset当完整解决方案，不改五图目标或mask，不继续对既有照片作无目的精度拟合。本实验的未编码CI h1身份与“新容器primary decoded SDR max0”是不同检查；没有生成新容器，后者仍未认证。全部结论只覆盖有限合成输入，不充当33点完整consumer域的证明。原GTM/LTM/语义逆向边界不因承载层参数检查而改变。
+
+artifact12207396048 ZIP SHAb34024a807f1d71516a2861de6c0e2badb7414d6c4925ab501499c5713c69d31、manifest SHA5a37390e3a25d3a214a0cd1ebb94b6a7cada724ef1bc69856b0d210a1c03755a，全部成员已验证；无secret/release/真实照片输入，retention1天。A阶段与总验收仍false。
+
+**存储交付待许可。** 五张完整S42母版密文尚未全部本地归档。当前提出更小方案：流式读取IMG0032既存153946146B密文ZIP，仅落地27791119B的原母版EXR（SHA9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012），不保存整包。写入预计使本阶段累计约124MB，已询问将用户100MB上限改125MB，尚未把未答复当许可；旧300MB整包方案由此更小选项替代。准备好的`stream_verified_master.py`默认仍按100MB检查，只有显式新许可才能提高cap。候选原字节在runner已完整GPG/EXR SHA验证；本机脚本仅字节流校验/复制，不解码图像。该EXR仍是相对线性P3候选，物理RAW及未认证global/local/semantic边界继续保留。
+
+
+S48–S52 科学检查完成：五张原尺寸/两张显示配方留出/50次原生float公式通过；原scene/语义逆解与完整HDR目标/编码仍未通过，A阶段与acceptance_complete仍false。原33点mask及C01-C05、旧NumPy/half失败不改，不继续旧bit-exact拟合。完整EXR的125MB小归档许可待显式答复，当前100MB累计上限不重置；本地只保留证据和密文预览，未假称完整母版落地。源码将保存在research/vm-native-20261018，随后仅清理本阶段自建临时分支，master/原件/旧工作流不动。

@@ -1,0 +1,81 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "synthetic_only": true,
+  "photos_used": false,
+  "cases": [
+    {
+      "id": "positive-alt0",
+      "source": 0.125,
+      "target": 1.0000000116860974e-07,
+      "base_offset": 0.03125,
+      "alternate_offset": 0.0,
+      "gain_min": -32.0,
+      "gain_max": 8.0,
+      "stored_logmap": -20.575424194335938,
+      "gain_code": 0.28561440110206604
+    },
+    {
+      "id": "positive-small-alt",
+      "source": 0.125,
+      "target": 1.0000000116860974e-07,
+      "base_offset": 0.03125,
+      "alternate_offset": 1.52587890625e-05,
+      "gain_min": -32.0,
+      "gain_max": 8.0,
+      "stored_logmap": -13.312503814697266,
+      "gain_code": 0.46718740463256836
+    },
+    {
+      "id": "negative-source",
+      "source": -0.001953125,
+      "target": 0.009999999776482582,
+      "base_offset": 0.03125,
+      "alternate_offset": 1.52587890625e-05,
+      "gain_min": -32.0,
+      "gain_max": 8.0,
+      "stored_logmap": -1.5485471487045288,
+      "gain_code": 0.7612863183021545
+    },
+    {
+      "id": "negative-target",
+      "source": 0.125,
+      "target": -9.999999747378752e-06,
+      "base_offset": 0.03125,
+      "alternate_offset": 3.0517578125e-05,
+      "gain_min": -32.0,
+      "gain_max": 8.0,
+      "stored_logmap": -12.894707679748535,
+      "gain_code": 0.4776323139667511
+    }
+  ],
+  "headrooms": [
+    1,
+    1.25,
+    2,
+    4,
+    8
+  ],
+  "original_gates": {
+    "linear_max_abs": 1e-05,
+    "relative_max": 0.001,
+    "relative_floor": 1e-06,
+    "PSNR_peak1_min_db": 60,
+    "SDR_max_abs": 0
+  },
+  "primary_reference": "https://developer.android.com/media/platform/hdr-image-format#use_the_gain_map_to_create_the_adapted_hdr_rendition",
+  "primary_reference_scope": "Independent nonnegative SDR/HDR offsets appear in Ultra HDR reference math. This is not an Apple API conformance claim; original CI is tested separately.",
+  "math_prediction": "With fixed offsets, h1=S+B-A. B=A is necessary for exact real-arithmetic h1 identity; finite arithmetic can still differ. Native Apple may choose other host handling, which is what this probe measures.",
+  "comparison_candidates": [
+    "fixed_offsets",
+    "blend_output_offset",
+    "scale_both_offsets"
+  ],
+  "source_sha256": {
+    "run_hdr_s52.py": "5e38c6dee09b6dd19e1c091ca061ad6a2cc75447542732d80f90d7a92122becb",
+    "offset_collision_s50.m": "313c823dbc1435dc36a0edbe0c62ebb9dc1d66e39f63c863afc13d6fefdaac6b",
+    "hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f"
+  },
+  "no_real_photos_or_old_inverse_fit": true,
+  "full_domain_consumer_proof": false
+}
