@@ -1,0 +1,68 @@
+name: tone-private-s28
+on:
+  push:
+    branches: ['research/vm-native-20261019-private-s28']
+  workflow_dispatch:
+jobs:
+  serialized-map-and-spatial-curve:
+    runs-on: xcode-27
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare encrypted-copy validation
+        run: |
+          set -euo pipefail
+          command -v gpg >/dev/null || brew install gnupg
+          W="$RUNNER_TEMP/tone-s28"; mkdir -m 700 "$W"
+          echo "W=$W" >> "$GITHUB_ENV"
+          mkdir -m 700 "$W/gnupg"
+          python3 -m pip install --quiet numpy > "$W/dependencies.log" 2>&1
+      - name: Validate existing serialized map and conditional spatial inverse
+        env:
+          S27_ARCHIVE_SESSION: ${{ secrets.SEMANTIC_S28_S27_SESSION }}
+        run: |
+          set -euo pipefail
+          export GNUPGHOME="$W/gnupg"
+          mkdir -p "$W/out"
+          python3 research/semantic-styles/validate_tone_s28.py > "$W/driver.log" 2>&1
+      - name: Encrypt small numerical outputs
+        if: always()
+        run: |
+          set -euo pipefail
+          test -n "${W:-}"
+          export GNUPGHOME="$W/gnupg"
+          mkdir -p encrypted "$W/out"
+          cp "$W/dependencies.log" "$W/driver.log" "$W/out/" 2>/dev/null || true
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log'}
+                  with p.open('rb') as f:h=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':h})
+          assert sum(r['size'] for r in rows)<2_000_000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'runner_image':os.environ.get('ImageOS'),'runner_image_version':os.environ.get('ImageVersion'),'files':rows,'only_text_uploaded':True,'new_native_capture':False},indent=2)+'\n')
+          PY
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/key-import.log" 2>&1
+          tar -C "$W" -czf - out | gpg --batch --trust-model always --recipient 28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA --encrypt --output encrypted/tone-s28.tar.gz.gpg
+          shasum -a 256 encrypted/tone-s28.tar.gz.gpg > encrypted/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tone-s28-encrypted
+          path: encrypted/
+          retention-days: 1
+      - name: Remove own runner plaintext
+        if: always()
+        run: |
+          test -n "${W:-}" && rm -rf -- "$W"
