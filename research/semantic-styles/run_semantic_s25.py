@@ -44,12 +44,13 @@ source=GEN/'semantic_consumer_s25.m';source.write_text(text)
 old=R/'research/vm-native/runner';exe=W/'semantic-s25';flags=['clang','-fobjc-arc','-O2','-I'+str(old),'-I'+str(GEN),'-I'+str(SRC),'-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-framework','CoreGraphics','-Wl,-undefined,dynamic_lookup']
 run(flags+[source,'-o',exe],'build-s25')
 os.environ.update({'XD_TONE_MAX_EDGE':'512','XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':'0.35','S22_PRIOR':str(W/'s5/out/consumer-toneP035/semantic')})
-case=W/'probe/consumer';case.parent.mkdir();run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','--',exe,photo,res,case],'native-s25',1200)
+case=W/'probe/consumer';case.parent.mkdir();native_rc=run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','--',exe,photo,res,case],'native-s25',1200,required=False)
 native=case/'semantic';assert (native/'s22-results.json').exists(),'No validated original-PSO metadata'
 (O/'native').mkdir()
 for name in ['creation-events.json','s22-context.json','s22-results.json','exception.json','s25-original-variant.json']:
  p=native/name
  if p.exists():shutil.copyfile(p,O/'native'/name)
+assert native_rc==0,'Native failed; preserved available metadata/checkpoints'
 # The archive can contain Apple binary code. NEVER put it or a GPU capture in O.
 run([sys.executable,SRC/'inspect_variant_s25.py',W/'backend',O/'variant-text'],'inspect-backend',600,required=False)
 assert (native/'s25-original-variant.json').exists(),'No original initializer record'
