@@ -97,3 +97,10 @@ VM/runner仍能推进：metadata序列化/调用者换绑、c/d生成连接、�
 **待实机解决：** 在IMG_2810匹配OS build/UUID上按evidence/s54/producer-paired-capture-plan.json重定址，而非搬用24A446绝对地址。同帧冻结输入/N、B/T/V、人脸直方图、allocateTone约束/knots、应用域，分别抓only-j、原WithoutFaceBoost（还改driver554/558）和四组global/local表的原float与packed记录；重放G_A/L_A、G_B/L_A、G_A/L_B、G_B/L_B，判定像素EV、交互、clamp/plateau区间及原误差门槛。β=.1953125不换算假像素EV。RAW2679/2408、Studio原统计与实际HDR屏幕/中间headroom另按原计划；相对母版与显示渲染继续独立验收。
 
 本阶段没有新图像预览或RAW误差；此前固定ACES显示预览不变。独立HDR渲染/封装/SDR max0门槛不因代码本成功而通过。A与acceptance_complete仍false。
+
+
+### S60–S64 后（global / local / semantic 分开，未认证）
+
+- 已验证数值：五图原stats host/45 dispatch已捕获，默认分支不更新gain；c/d的9279/10240 half码不匹配。S64颜色/D4检查不解释差异。不要重复整批stats或把默认style重算当文件生产结果。
+- 可交给macOS runner/静态：追NeutrinoCore/PhotoImaging到CMI生成分支实际输入、style/processing type、ROI与c/d文件写入者；原文件只读。先捕获同一输入的默认A→A，再在绑定明确的调用者只改目标global或local字段，其他GTC/guides/stats/mattes与SHA冻结；比对原half/float1e-5+PSNR60与可逆mask内1e-3，记录plateau/clamp/near-black区间，不把候选M回填作实测。33皮肤点C01–C05、原生完整往返、封装后ImageIO SDR max0仍可runner推进，不能归为等实机。
+- 待实机：匹配IMG_2810 build/UUID、同帧j-only/WithoutFaceBoost四组曲线及N/B/T/V/face histogram/allocateTone约束与应用域，按evidence/s54/producer-paired-capture-plan.json第1–6步执行；冻结其他字节、抓原float/packed记录/实际像素四组合，报告EV区间和交互。原Studio统计、RAW2679/2408、实际HDR显示与中间headroom方案沿用，β仍不换算假EV。

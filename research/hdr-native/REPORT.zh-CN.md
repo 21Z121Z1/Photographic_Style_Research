@@ -321,3 +321,32 @@ runner 还能推进：同一原图上捕获真正计算 stats 的 host 分支、
 本轮0张新照片像素渲染，仅3组真实辅助元数据；没有替代 ≥5张完整前向/两张冻结后留出、完整原生往返或编码后 SDR max0 验收。LinearThumbnail 保持 Apple Log，原件/冻结模型和33点 mask不改，旧 NumPy/half 拟合不恢复，原1e-3门槛不放宽。**A_phase_complete=false，acceptance_complete=false，goal active。** 新记录加到根 errors.csv 和 `evidence/s59/errors-delta.csv`；旧公开 errors.csv 保持历史原样。
 
 五次 run 的 source commit、artifact、完整 SHA 和 image 见 `evidence/s59/archive-provenance.json` / runs.md，均26A434/image20261012.0260.1，artifact retention1天且全已落地。S55/S56 的失败归档保留，S59首个0字节下载失败也保留收据，未重跑计算。临时 secret、draft/tag、五条临时分支在源码推送 keeper 后经 PR/ref 审查清理；所有源码 commit 仍可达，master 未动。100MB累计预算不重置，125MB完整EXR许可仍待显式答复，未写完整EXR。
+
+
+### SEMANTIC-20261018 / HDR-S60–S64：完整统计 host、global 分支条件与 c/d 不匹配
+
+**已验证静态，HDR-63（26A434）。** CMImaging UUID `3CCD434E-B1E0-3F14-8EF6-E29D58379BE8`，沿用S55–S59源SHA。`process`在0x23336aa8c/aa98读取variant与常量、0x23336abbc–abc8比较指针并把bool传给优化stub0x23804cdf0；原生ADRP+ADD解码确认selector为`_runImageReductionAndUpdateBaseGain:`（ABI i20@0:8B16）。0x23336bd9c在false时跳过update PSO。metadata:28444把0x270933900列为`(__DATA_CONST,__const) external _CMISmartStyleTuningParameterVariant_DigitalFlash`，不是GOT；旧evidence/s60/source-provenance.json的reference_GOT误名保留，新analysis.json勘误。S57均值对齐公式因此有分支条件，不是通用曝光逆，更不是物理EV标定。
+
+**已验证数值，HDR-64/65。** S62实际失败于`_populateStaticRenderParametersFromTuning:inputStatisticsByStatsKey:`（0x23336e8ec）返回−12780，inputStyle=nil、0 dispatch。S63调用原void helper `_checkAndCreateInputStyle`先创建默认CMISmartStyleV1；没有拟合tone/color/gain。statsComputationRect使用0x23336c224–c24c给出的归一化全幅(0,0,1,1)，各输入mapped rect仍按各纹理尺寸。未按猜测CGRect调用私有SSRRenderROI*参数。observer仅按运行时ABI记录，原PSO未替换；VM原有residency-set兼容开关继续显式记录。
+
+S63在五张原始像素网格（含两张本新stats算子的冻结后留出0032/33；它们曾参加其他研究）执行完整原host，每张9 dispatch：5×imageReduction、localHistogram、globalHistogram、sumPersonAndSkinCounts、globalStats。全部输入SHA不变，actual/supplied queue一致，SRL=0；DefaultParameters分支bool=false，没有updateBaseGain PSO，gain/曝光逐值等于输入元数据。捕获10640B stats、672B params、320B颜色转换、176B ROI及两张32×32 half图，空间数据仅加密保存。**这是逆key1/P3/Apple Log重建域的默认style上下文，不是匹配原相机style或拍摄生产路径。**
+
+**已验证数值，HDR-66；local原门槛失败。** 生成c/d与文件原图共10240个half码中9279不同，最大绝对差0.707275390625：
+
+|样张|c不同码/1024|c max abs|d不同码/1024|d max abs|
+|---|---:|---:|---:|---:|
+|IMG_0032|1020|0.51385498046875|984|0.61376953125|
+|IMG_0033|1016|0.56219482421875|1016|0.6783447265625|
+|IMG_2600|977|0.5936279296875|718|0.707275390625|
+|IMG_2604|1014|0.311279296875|914|0.19732666015625|
+|IMG_2608|994|0.49993896484375|626|0.501861572265625|
+
+不能把这次“host成功运行”当作完整前向/拍摄端local逆已通过。S58条件M和S59桶兼容性仍保留原条件；不得回填候选M来掩盖这里的实测差异。
+
+**已验证数值，HDR-67。** S64复用S63小型密文捕获，0次照片/统计原生重算。三张与39055408205历史consumer的颜色管理320B逐字节相同（transfer原枚举0/0/3/0、CCM identity、VE byte0，语义枚举名未据字段猜定）。固定8种旋转/翻转诊断，开发3图的联合MAE之和identity=0.12457743287086487、次小flip_x=0.5381505787372589；先冻结identity再评估0032/33，仍非half一致。权威坐标、原mask和门槛完全不变。这只排除了所测D4候选改善开发集总体误差、及所比三图320B颜色载荷差异；不能排除采样/ROI或真正相机输入域差异，不能升级成相机绑定证明。
+
+**失败与归档边界。** S60原host −12780/0 dispatch之后输出GPG失败：同一setup步骤只写GITHUB_ENV，公钥导入了另一个homedir；其私有原始失败捕获未保住，只有公开摘要/日志，不能伪称完整落地。S61先修显式keyring并做传输preflight，但在照片前因嵌套main宏重定义编译失败。S62修入口/归一化ROI、保持原失败源码，按checkpoint确定nil style；S63补原helper后通过上述host执行。S62/S63密文、解密返回码/状态/压缩明文及全部成员SHA均验证；S64只发布聚合文本。五个run source/branch/artifact/ZIP/manifest SHA见evidence/s64/archive-provenance.json，均26A434/image20261012.0260.1、retention1天，完整ZIP已落地。S63 ZIP83390B、S64 ZIP6376B，ZIP内密文不重复解包落盘。
+
+**可交给macOS runner，HDR-68。** 下一步沿实际生产/编辑调用者查输入域和文件c/d序列化绑定，固定已有统计/guide/GTC/matte，先解释实测差异，再分别验证global与local反事实。已有三图颜色载荷或八种D4结果不再无理由重复；33皮肤点全域C01–C05、完整原生往返与编码后ImageIO SDR max0继续未认证。人物/皮肤、Studio与GTM/LTM继续分别输出；旧NumPy/BG/atan2 half拟合不恢复。
+
+**待实机解决。** 匹配IMG_2810 build/UUID的同帧j-only和WithoutFaceBoost、N、B/T/V、人脸直方图、allocateTone约束/knots与应用域仍按s54捕获计划；β=0.1953125不是像素EV。RAW2679/2408、Studio原统计和真实HDR headroom观看仍待实机。原33点mask、half/float/PSNR/1e-3门槛不改，LinearThumbnail仍Apple Log；这轮无新预览，旧固定ACES预览不变。**A_phase_complete=false，acceptance_complete=false，goal active。** 原100MB累计限制不重置，125MB完整EXR许可未收到，不写完整EXR。

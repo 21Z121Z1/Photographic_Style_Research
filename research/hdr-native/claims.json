@@ -1281,6 +1281,145 @@
         }
       ]
     }
+  ,
+    {
+      "id": "HDR-63",
+      "category": "global/mean-alignment-branch",
+      "status": "已验证静态",
+      "claim": "26A434原process比较DigitalFlash常量指针后调用_runImageReductionAndUpdateBaseGain:；0x23336bd9c在false时跳过更新。0x270933900是外部NSString常量槽，不是GOT；原记录误名以新勘误保留。不能把S57均值公式当所有global曝光的通用逆。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s64/analysis.json",
+          "line": 1,
+          "sha256": "8799d48813f82ab025b866aa1b2351c5f55d674539b25418f43e4ce484358133"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s64/archive-provenance.json",
+          "line": 1,
+          "sha256": "65f12ef6c4be0154d7926d2d7b9b77b112de16c04be88dd2e0ccdefe386345ca"
+        }
+      ],
+      "run_ids": [
+        "39051942415",
+        "39324317293"
+      ]
+    },
+    {
+      "id": "HDR-64",
+      "category": "host/required-context-and-ROI",
+      "status": "已验证数值",
+      "claim": "S62在populateStatic阶段返回-12780，inputStyle=nil且0 dispatch；S63只补原_checkAndCreateInputStyle(v16@0:8)默认CMISmartStyleV1后全5图stats host成功。statsComputationRect归一化全幅[0,0,1,1]来自0x23336c224-c24c；未猜测CGRect私有ABI。默认style不是原相机style身份。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s64/analysis.json",
+          "line": 1,
+          "sha256": "8799d48813f82ab025b866aa1b2351c5f55d674539b25418f43e4ce484358133"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s64/archive-provenance.json",
+          "line": 1,
+          "sha256": "65f12ef6c4be0154d7926d2d7b9b77b112de16c04be88dd2e0ccdefe386345ca"
+        }
+      ],
+      "run_ids": [
+        "39323282982",
+        "39324317293"
+      ]
+    },
+    {
+      "id": "HDR-65",
+      "category": "global/default-branch-capture",
+      "status": "已验证数值",
+      "claim": "S63五图DefaultParameters/SRL0，每图9次原PSO dispatch，reduction bool=false，无updateBaseGain PSO，gain/曝光与元数据完全相同、所有输入SHA不变。只认证重建域默认上下文，不认证拍摄端曝光或scene EV。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s64/analysis.json",
+          "line": 1,
+          "sha256": "8799d48813f82ab025b866aa1b2351c5f55d674539b25418f43e4ce484358133"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s64/archive-provenance.json",
+          "line": 1,
+          "sha256": "65f12ef6c4be0154d7926d2d7b9b77b112de16c04be88dd2e0ccdefe386345ca"
+        }
+      ],
+      "run_ids": [
+        "39324317293",
+        "39326316262"
+      ]
+    },
+    {
+      "id": "HDR-66",
+      "category": "local/file-map-binding-failure",
+      "status": "已验证数值",
+      "claim": "S63五张原尺寸输入共10240个c/d half码中9279不同，最大绝对差0.707275390625；原half门槛失败。0032/33是本新stats算子的冻结后留出，曾参与其他研究；不是完整前向五图通过。不能用重算图替代文件图并称已逆拍摄端local。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s64/analysis.json",
+          "line": 1,
+          "sha256": "8799d48813f82ab025b866aa1b2351c5f55d674539b25418f43e4ce484358133"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s64/archive-provenance.json",
+          "line": 1,
+          "sha256": "65f12ef6c4be0154d7926d2d7b9b77b112de16c04be88dd2e0ccdefe386345ca"
+        }
+      ],
+      "run_ids": [
+        "39324317293",
+        "39326316262"
+      ]
+    },
+    {
+      "id": "HDR-67",
+      "category": "local/domain-diagnostics",
+      "status": "已验证数值",
+      "claim": "S64仅复用S63捕获，原生照片/统计重算0次；三张历史consumer颜色管理320B全相同。固定8种D4诊断在开发3图选择identity，冻结后评估另2图；全部仍非half一致，未更改权威geometry/mask/门槛。该诊断不证明原始相机色彩/坐标绑定。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s64/analysis.json",
+          "line": 1,
+          "sha256": "8799d48813f82ab025b866aa1b2351c5f55d674539b25418f43e4ce484358133"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s64/archive-provenance.json",
+          "line": 1,
+          "sha256": "65f12ef6c4be0154d7926d2d7b9b77b112de16c04be88dd2e0ccdefe386345ca"
+        }
+      ],
+      "run_ids": [
+        "39324317293",
+        "39326316262"
+      ]
+    },
+    {
+      "id": "HDR-68",
+      "category": "global-local-semantic/remaining-tests",
+      "status": "runner",
+      "claim": "继续静态/runner绑定生产端输入域、ROI/采样/统计与c/d序列化；先解释差异再改逆解，不拟合候选M冒充实测。33皮肤点全域合同及原生完整往返、编码ImageIO SDR max0仍未通过。j同帧曲线/统计、RAW2679/2408、Studio原统计和真实HDR观看另属待实机；不把runner工作归为实机等待。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s64/analysis.json",
+          "line": 1,
+          "sha256": "8799d48813f82ab025b866aa1b2351c5f55d674539b25418f43e4ce484358133"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s64/archive-provenance.json",
+          "line": 1,
+          "sha256": "65f12ef6c4be0154d7926d2d7b9b77b112de16c04be88dd2e0ccdefe386345ca"
+        }
+      ],
+      "run_ids": [
+        "39324317293",
+        "39326316262"
+      ]
+    }
   ],
   "updated_utc": "2026-10-19T19:50:09.527146+00:00"
 }

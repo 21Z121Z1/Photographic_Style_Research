@@ -112,3 +112,14 @@ S53–S54收尾完成：两个源commit已保存在推送的research/vm-native-2
 |S59|1c2b41bbaea560241bb986e52477b8c342467add|[39312021801](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39312021801) / 12215314906|成功：768新原生控制，六组256桶；6144真实辅助码均唯一兼容|
 
 完整ZIP字节/SHA和manifest SHA：repo/research/hdr-native/evidence/s59/archive-provenance.json。S59首次下载0字节失败，收据保留；只重试下载，没有重跑计算。实际执行source SHA不以最终文档commit替换。源码keeper在清理时为1c2b41bbaea560241bb986e52477b8c342467add；五分支/专用secret HDR_S55_INPUT_SESSION/draft417638134及tag均核实清理，PR1/其他任务/master保持。
+
+
+### S60–S64：原host统计与捕获复用（26A434 / image20261012.0260.1）
+
+- S60: branch `research/vm-native-20261020-hdr-s60` / source `c55b2f516b5652eef4250bf79b779381f9fc9769` / run 39320900991 / artifact 12220345855 / failure / ZIP 5007B SHA `f29a20659b0eb9a0a3e36b36a2bc225bfa5252d1e2f2bcc4fbef959fa675c01a` / manifest `013c0881aa287e92a12a931265cc465ba69b17aca07dd5d2a6fc0c42444dbbce`。
+- S61: branch `research/vm-native-20261020-hdr-s61` / source `7a7d2f04e3c29b0d0a4ed306aad343ea1e25a995` / run 39322265009 / artifact 12220567156 / failure / ZIP 4182B SHA `bd4a9bed42b53a2a607ee1fc096eb45c200f5cb8da81884e03564236bdebb047` / manifest `9c76190222449bd1284ba4b362ba28d56efde9b8c73bdcfe28acabfc8a03712c`。
+- S62: branch `research/vm-native-20261020-hdr-s62` / source `2496f73203dd3a9ccfde51f7a2062592cb90dbee` / run 39323282982 / artifact 12219998681 / failure / ZIP 11111B SHA `76e9285d18c74a0d63afcef54010c1212593d19de0c91be86bd7bb9463a74fc1` / manifest `8390ee7210a9cb1ab9b1e85ccd57a369dd86a21abeabd74aaa73fabccf217262`。
+- S63: branch `research/vm-native-20261020-hdr-s63` / source `be2f2605c7a14ff0366adef87738c8c3122c0f3b` / run 39324317293 / artifact 12221727679 / success / ZIP 83390B SHA `77d121caf0eb5a095107fc412a215c6da5946ac0ab94b008a55575da7a4ae153` / manifest `529983ee50e96ea4bc56ec7aa5116b8dfaed5d117aba879dda2bb8fbc171f30e`。
+- S64: branch `research/vm-native-20261020-hdr-s64` / source `857e664d412ec947f88211041f354629f55886fb` / run 39326316262 / artifact 12222715223 / success / ZIP 6376B SHA `80046a73b095e4ac0480be96566f67e7c5bac06d7ccbd4f48995bc10d26491be` / manifest `38a472b4f939d6704537365b15ff275bd722e1581e208dc1920fd4c365e5c8b6`。
+
+S60输出keyring失败且私有失败原始数据未保存；S61照片前编译失败；S62首图populateStatic −12780/style nil；S63五图45 dispatch成功但文件map half门槛失败；S64只复用密文/无原生图像重算。全部artifact retention1天且ZIP逐成员已校验归档，S62/S63 GPG验证；不修改历史失败记录。源码保存在研究keeper后再核查PR/ref并清理本轮临时分支和HDR_S64_S63_SESSION；清理结果以最终receipt为准。A与总验收false。

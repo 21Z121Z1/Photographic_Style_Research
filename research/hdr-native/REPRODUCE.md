@@ -113,3 +113,19 @@ gh run download <id> -R 21Z121Z1/Photographic_Style_Research -D <new-empty-direc
 ```
 
 立即流式SHA并按manifest核对所有成员；只接收文本/密文、小包，并继续检查100MB累计和根4GB/>1GB许可。然后删除自己的专用secret、草稿release及可能生成的tag，先查PR/ref引用；dispatch在keeper无需新临时分支。原归档/历史输出不替换；只清理自己临时数据。不要复用本轮已经删除的asset id。完整相机绑定/33点/场景/编码验收按NATIVE_TODO，不能用本子算子receipt宣布全绿。
+
+
+### S60–S64 复现与只读归档验证
+
+本机仅小型证据审查（强制内存scope，无图像计算）：
+
+```bash
+cd ~/work/styles-gtm-ltm/repo
+../scripts/local-python-scope.sh -I -B research/hdr-native/validate_stats_s64.py --archive-root ../hdr-native-20261019
+```
+
+输出应为5个host/45 dispatch、9279不同码、file_map_half_gate_passed=false、A/acceptance=false。源码入口为run_hdr_s63.py（从冻结S60派生的改动逐一断言，原native reverse-key1/AppleLog和原PSO）及analyze_stats_s64.py（只读取S63捕获；原source SHA/公式freeze在ZIP中）。不要本机执行这两个重型脚本。
+
+需要重新采集时，创建新的research/vm-native-<date>临时分支，checkout对应source并复制相应workflow为新文件、修改push分支过滤；push触发，每次只一个run，xcode-27且硬核对26A434。S63 workflow本身含显式public-key homedir、照片前加密preflight、retention1与私有临时目录清理。先读日志再处理失败；不重复S60–62已知故障。
+
+S64重放须从本地完整S63 ZIP验证后临时提供到runner（旧artifact过期不得假设仍可下载），核对ZIP SHA77d121caf0eb5a095107fc412a215c6da5946ac0ab94b008a55575da7a4ae153；仅用该密文的临时session secret，不能传archive私钥。脚本里的artifact ID是历史来源，重放须显式更新已核验的传输入口，不能把旧ID新跑失败误作科学失败。空间数据始终加密，立即下载文本/密文并核对manifest及GPG/明文成员SHA，再按PR/引用审查清理自建secret/分支/release。没有新的样张明文上传。各run完整source/artifact/SHA见evidence/s64/archive-provenance.json。
