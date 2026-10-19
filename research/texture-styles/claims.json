@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "generated_date": "2026-10-19",
+  "stage": "B",
+  "baseline": {
+    "PSR": "21Z121Z1/Photographic_Style_Research@6b0b948287b49c8f2df65c0462b9d590beefc978",
+    "XDRemux": "21Z121Z1/XDRemux@research/texture-style",
+    "source_inventory": "research/texture-styles/evidence/source-inventory.json"
+  },
+  "os_build": "26A434",
+  "status_values": [
+    "已验证·静态",
+    "已验证·runner CPU",
+    "已验证·runner 原生",
+    "推断",
+    "需要真机",
+    "未验证"
+  ],
+  "acceptance": {
+    "source_inventory_verified": true,
+    "native_original_final_unit_execution": true,
+    "synthetic_previews_generated": true,
+    "original_native_full_pipeline_verified": false,
+    "original_pipeline_linear_or_log_identified": false,
+    "GTM_LTM_compose_order_identified": false,
+    "actual_filter_kernels_identified": false,
+    "studio_person_native_ground_truth": false,
+    "native_unit_strict_1e_3_roundtrip_pass": false,
+    "camera_texture_inverse_identified": false,
+    "iOS_Photos_texture_admission_verified_in_this_work": false,
+    "fully_reversible_certified": false,
+    "fully_nonreversible_proof": false,
+    "B_phase_complete": false,
+    "threshold_max_relative": 0.001,
+    "no_person_media_uploaded": true,
+    "fixture_type": "purely synthetic"
+  },
+  "claims": [
+    {
+      "id": "TX-01",
+      "status": "已验证·静态",
+      "category": "parameter-space",
+      "claim": "Source TextureStyleTuning.plist has 4 model IDs, 5 ports, 3 capture modes, 5 presets, and 285 existing model-port-mode-preset combinations; EffectOrder has nine distinct lists.",
+      "evidence": [
+        {
+          "file": "research/texture-styles/evidence/source-inventory.json",
+          "json_pointer": "/texture_model",
+          "source_sha256": "9a0963e5a58aaa8c8c7fb42ccb75a254a9e1012ba594135b991ed8e1f191d31e"
+        }
+      ]
+    },
+    {
+      "id": "TX-02",
+      "status": "已验证·静态",
+      "category": "filter-names-and-tuning",
+      "claim": "Tuning names Diffusion,Glow,Bloom,Mattify,SkinSmoothingStandalone,FilmGrain,UnderEyeBrightening,Halation; Diffusion.gaussianBlurSigma ranges 6.26 to 62.05 among tuning entries; this is a key value, not verified physical convolution sigma in pixels.",
+      "evidence": [
+        {
+          "file": "research/texture-styles/evidence/source-inventory.json",
+          "json_pointer": "/texture_model"
+        }
+      ],
+      "true_implementation_kernel_identified": false
+    },
+    {
+      "id": "TX-03",
+      "status": "已验证·静态",
+      "category": "preset-effect-order",
+      "claim": "The EffectOrder list varies by preset and context and can include Diffusion -> Glow, or UnderEyeBrightening -> SkinSmoothingStandalone -> Mattify -> FilmGrain. This is tuning list ordering, not proven actual GPU scheduling or location relative to GTM/LTM.",
+      "evidence": [
+        {
+          "file": "research/texture-styles/evidence/source-inventory.json",
+          "json_pointer": "/texture_model/representative_effect_orders"
+        }
+      ],
+      "full_pipeline_order_identified": false
+    },
+    {
+      "id": "TX-04",
+      "status": "已验证·静态",
+      "category": "smartstyle-mapping",
+      "claim": "SmartStyleToTextureStyleMapping has 16 cast-to-texture mappings with Preset,Intensity,Grain. RendererTuningWithTextureStyles also stores default ColorBias,ToneBias,CastIntensity; metadata does not establish where either effect is applied to pixels.",
+      "evidence": [
+        {
+          "file": "research/texture-styles/evidence/source-inventory.json",
+          "json_pointer": "/smartstyle_mapping"
+        }
+      ]
+    },
+    {
+      "id": "TX-05",
+      "status": "已验证·runner CPU",
+      "category": "previews-and-integrity",
+      "claim": "S23 native macOS runner validates the static inventory then creates 192x128 synthetic grey charts with an illustrative box blur and seeded noise, not Apple's kernels. Public artifact 12169811617 59880B; zip SHA db5195..., all six files match hashes.",
+      "run_id": "39216211111",
+      "job_id": "117940553876",
+      "artifact_id": "12169811617",
+      "zip_sha256": "db5195764bbb4d8fede1564fa8c027f11287724df52228bdbabca3fa11a7d283",
+      "evidence": [
+        {
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39216211111"
+        },
+        {
+          "file": "research/texture-styles/validate.py"
+        }
+      ],
+      "apple_texture_kernel_invoked": false
+    },
+    {
+      "id": "TX-06",
+      "status": "已验证·runner 原生",
+      "category": "native-final-units",
+      "claim": "S24 on macOS build26A434 executes original Apple SkinSmooth and Mattify final MSL kernels with 512x384 synthetic RGB and fake masks using inherited S10 bindings. 589824 RGB half-components per case, strengths 0,.5,1. Native forward modifies 574643/576893 RGB components in SkinSmooth .5/1, 575406/582518 in Mattify .5/1; at zero both identity. This is not complete Apple texture pipeline.",
+      "run_id": "39217101424",
+      "job_id": "117943403883",
+      "artifact_id": "12169639182",
+      "zip_sha256": "ab9de4856a2f0e3da331447e01e9319a48183cbc28dffe6c50e593ea80cd29f6",
+      "evidence": [
+        {
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39217101424"
+        },
+        {
+          "file": "research/texture-styles/native_units_s24.py"
+        },
+        {
+          "file": "research/semantic-styles/texture_units_s10.m"
+        }
+      ],
+      "complete_native_pipeline": false
+    },
+    {
+      "id": "TX-07",
+      "status": "已验证·runner 原生",
+      "category": "roundtrip-strict-failure",
+      "claim": "S24 strict 1e-3 component acceptance gate fails as it should on candidate inverse: SkinSmooth .5 57, SkinSmooth1 525, Mattify1 144 RGB components exceed threshold; Mattify .5 zero. Source roundtrip uses up to 24 iterations. This rejects this candidate, not uniqueness across all feasible inputs. Run39217407757 is red at explicit validation step, but native execution and public text archive steps pass.",
+      "run_id": "39217407757",
+      "job_id": "117944406077",
+      "artifact_id": "12169649400",
+      "zip_sha256": "918c50a5d5b3e608d83390ee4ff3a2a53915696a7ccf7eb1b04baf3f3cc411d2",
+      "evidence": [
+        {
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39217407757",
+          "step": "Enforce original 1e-3 all-valid-component roundtrip requirement"
+        },
+        {
+          "file": ".github/workflows/research-s24-texture-native-units.yml"
+        }
+      ],
+      "strict_pass": false,
+      "mathematical_noninvertibility_proven": false
+    },
+    {
+      "id": "TX-08",
+      "status": "未验证",
+      "category": "domain-and-compositing",
+      "claim": "The experiment's output CI context uses extended linear Display P3 but does not prove inner Texture kernels operate in Linear, Log or before/after LTM or GTM. Need original whole pipeline and intermediate captures with same data, finite sampler footprints, color spaces and fully stable producer controls.",
+      "evidence": [
+        {
+          "file": "research/semantic-styles/semantic_texture_s2.m",
+          "scope": "controlled experimental CI context only"
+        },
+        {
+          "file": "research/texture-styles/NATIVE_TODO.md",
+          "scope": "planned capture"
+        }
+      ],
+      "processing_domain_known": false
+    },
+    {
+      "id": "TX-09",
+      "status": "未验证",
+      "category": "reversibility",
+      "claim": "Native residual inverse fails at the unrelaxed tolerance for three tested operator/strength groups. This cannot prove full original Texture pipeline is one-to-one or many-to-one. A collision with two different accepted full input frames and identical full outputs, or a proven complete inverse domain, is needed.",
+      "evidence": [
+        {
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39217407757"
+        }
+      ],
+      "original_invertibility_identified": false
+    },
+    {
+      "id": "TX-10",
+      "status": "需要真机",
+      "category": "production-provenance-and-photos",
+      "claim": "XDRemux research/texture-style currently maps one 2019 semantic skin matte as twelve 2026 roles and injects sample iPhone19,2/MakerNote metadata when unbacked. Structural or Photos admission tests do not prove texture effects reflect the original producer or full editability. Requires producer-backed roles and iOS on-device positive/negative cases.",
+      "evidence": [
+        {
+          "url": "https://github.com/21Z121Z1/XDRemux/blob/research/texture-style/research/texture-style/README.md"
+        }
+      ],
+      "prod_ready": false
+    }
+  ]
+}
