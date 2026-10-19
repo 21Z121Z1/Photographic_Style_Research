@@ -1,0 +1,29 @@
+{
+  "scope": "Three synthetic RGB-LTM materialization cases; no re-fit of frozen consumer",
+  "source_sha256": {
+    "research/hdr-native/ltm_materialize_s34.m": "bb8fd5b39162732220c7e4286b15bd7413631362eea0d57284570e38a4066686",
+    "research/hdr-native/run_hdr_s34.py": "c4338e88f507182a29d8347384903bf803b65279a407083bfde809c570165b22",
+    "research/hdr-native/guided_reference_v3.py": "d4a5f435a993ff29aa223c744e616cd398cc6d22a350d86bf1b8d4bee52699ed",
+    "research/vm-native/runner/guided_oracle_v3.m": "8a2cf9e33943525cf4c8a5435eff112b505ed0990671eb14b1822ed9df75244f",
+    "research/vm-native/runner/encoder_capture_v2.inc": "90d8d37bcd520c96b2c184fde0cf6edc916a2f257aeb3b5affefae0ae12c25af"
+  },
+  "native_library": {
+    "path": "/System/Library/PrivateFrameworks/CMImaging.framework/Versions/A/Resources/default.metallib",
+    "sha256": "16a8a119e3e0ae1649d32b2bbc8ea9136cb757a8d1f3eb451025821901edff11"
+  },
+  "guided_source": "Unmodified iterations/20261018-v3/guided.py copied under a distinct research name",
+  "matrix": "Four identity float3x3 matrices; input transfer=0 as in previous captured context",
+  "cases": [
+    "identity-2x",
+    "gtc-4x",
+    "edges-5p5x"
+  ],
+  "modes": [
+    "host",
+    "direct-plain",
+    "direct-imageblock"
+  ],
+  "half_differences": "Report without fitting; original half-bit gate unchanged",
+  "true_photographs": 0,
+  "acceptance_complete": false
+}

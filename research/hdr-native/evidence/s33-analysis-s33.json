@@ -1,0 +1,3443 @@
+{
+  "os_build": "26A434",
+  "scope": "Original ImageIO/Quartz/CI decode layers on existing synthetic files only; no inverse/scene/photograph certification",
+  "rows": [
+    {
+      "matrix": 6,
+      "bits": 8,
+      "immediate_cache": 0,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 5,
+          "bitmap_info": 5,
+          "bits_per_component": 8,
+          "bits_per_pixel": 32,
+          "bytes_per_row": 1024,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x1047310b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 1,
+        "CI_outputs": {
+          "aux-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "aux-Metal.f32",
+            "image_present": 1
+          },
+          "aux-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "aux-software.f32",
+            "image_present": 1
+          },
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "ad3507fac404cbc5df1e4a66028ee5c70f57ec783759794330325f37569bb024",
+              "zero_bytes": 68135
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "ad3507fac404cbc5df1e4a66028ee5c70f57ec783759794330325f37569bb024",
+              "zero_bytes": 68135
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "8faf136d05aade0057ad74783892c58ba02cc212292e970ff7fe365f3af2419a",
+              "zero_bytes": 66944
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "8faf136d05aade0057ad74783892c58ba02cc212292e970ff7fe365f3af2419a",
+              "zero_bytes": 66944
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "ad3507fac404cbc5df1e4a66028ee5c70f57ec783759794330325f37569bb024",
+            "zero_bytes": 68135
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "a368661764a44cab4f8658cc2551ad784d8508cd09e9226dd87edbb487515cb3",
+            "zero_bytes": 248
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": false,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x76af0590e0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x76af134b40> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x76aee01cc0> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x76aee020c0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x76aee01ce0> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x76aee020a0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x76aee01e40> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x76aee01f20> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "ISO_aux_present": 1,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider": {
+          "byte_max": 255,
+          "byte_min": 0,
+          "bytes": 131072,
+          "sha256": "39458a3d62aabb63b0ed50a4cec0ea3a7e862834c71fc7e2cd780905e1b4a86a",
+          "zero_bytes": 124
+        },
+        "provider_present": 1,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "aux-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "aux-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.00784313678741455,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882579925181126,
+            "luma_EV_MAE": 0.008647628785664068,
+            "luma_EV_max": 0.067551885874106,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.00784313678741455,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.00784313678741455,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882579925181126,
+            "luma_EV_MAE": 0.008647628785664068,
+            "luma_EV_max": 0.067551885874106,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.00784313678741455,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5647059078328311,
+          "pixel_min": 0.003921568859368563,
+          "pixel_max": 1.0
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5647059078328311,
+          "pixel_min": 0.003921568859368563,
+          "pixel_max": 1.0
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.00784313678741455,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882579925181126,
+            "luma_EV_MAE": 0.008647628785664068,
+            "luma_EV_max": 0.067551885874106,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.00784313678741455,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007843166940352475,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882538106992925,
+            "luma_EV_MAE": 0.008647688748617084,
+            "luma_EV_max": 0.06755193285409336,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007843166940352475,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__aux-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 6,
+      "bits": 8,
+      "immediate_cache": 1,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 5,
+          "bitmap_info": 5,
+          "bits_per_component": 8,
+          "bits_per_pixel": 32,
+          "bytes_per_row": 1024,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x100a8d0b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 1,
+        "CI_outputs": {
+          "aux-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "aux-Metal.f32",
+            "image_present": 1
+          },
+          "aux-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "aux-software.f32",
+            "image_present": 1
+          },
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "ad3507fac404cbc5df1e4a66028ee5c70f57ec783759794330325f37569bb024",
+              "zero_bytes": 68135
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "ad3507fac404cbc5df1e4a66028ee5c70f57ec783759794330325f37569bb024",
+              "zero_bytes": 68135
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "8faf136d05aade0057ad74783892c58ba02cc212292e970ff7fe365f3af2419a",
+              "zero_bytes": 66944
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "8faf136d05aade0057ad74783892c58ba02cc212292e970ff7fe365f3af2419a",
+              "zero_bytes": 66944
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b8e25a1b921c7b16b0df84a9026ff6587c7c3ee70a3506f7b33b0f69d6cdecac",
+              "zero_bytes": 67092
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "ad3507fac404cbc5df1e4a66028ee5c70f57ec783759794330325f37569bb024",
+            "zero_bytes": 68135
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "a368661764a44cab4f8658cc2551ad784d8508cd09e9226dd87edbb487515cb3",
+            "zero_bytes": 248
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": true,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x78450590e0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7845134b40> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7844e01d80> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7844e01c60> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7844e01e40> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7844e01a80> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7844e01f80> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7844e01b00> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "ISO_aux_present": 1,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider": {
+          "byte_max": 255,
+          "byte_min": 0,
+          "bytes": 131072,
+          "sha256": "39458a3d62aabb63b0ed50a4cec0ea3a7e862834c71fc7e2cd780905e1b4a86a",
+          "zero_bytes": 124
+        },
+        "provider_present": 1,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "aux-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "aux-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.00784313678741455,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882579925181126,
+            "luma_EV_MAE": 0.008647628785664068,
+            "luma_EV_max": 0.067551885874106,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.00784313678741455,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.00784313678741455,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882579925181126,
+            "luma_EV_MAE": 0.008647628785664068,
+            "luma_EV_max": 0.067551885874106,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.00784313678741455,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5647059078328311,
+          "pixel_min": 0.003921568859368563,
+          "pixel_max": 1.0
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5647059078328311,
+          "pixel_min": 0.003921568859368563,
+          "pixel_max": 1.0
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007314741611480713,
+            "max_relative": 1.0354999566585783,
+            "PSNR_peak1_db": 53.40319868927117,
+            "luma_EV_MAE": 0.0045874186290412655,
+            "luma_EV_max": 0.031545191632806655,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007314741611480713,
+          "vertical_flip_max_abs_diagnostic": 0.5687666922167409,
+          "pixel_min": -0.0001392155245412141,
+          "pixel_max": 1.0067349672317505
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.00784313678741455,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882579925181126,
+            "luma_EV_MAE": 0.008647628785664068,
+            "luma_EV_max": 0.067551885874106,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.00784313678741455,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.007843166940352475,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 50.882538106992925,
+            "luma_EV_MAE": 0.008647688748617084,
+            "luma_EV_max": 0.06755193285409336,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.007843166940352475,
+          "vertical_flip_max_abs_diagnostic": 0.5686274766921997,
+          "pixel_min": 0.0,
+          "pixel_max": 1.0
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__aux-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 6,
+      "bits": 10,
+      "immediate_cache": 0,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 6,
+          "bitmap_info": 204806,
+          "bits_per_component": 10,
+          "bits_per_pixel": 32,
+          "bytes_per_row": 1024,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x100dd10b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 1,
+        "CI_outputs": {
+          "aux-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "aux-Metal.f32",
+            "image_present": 1
+          },
+          "aux-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "aux-software.f32",
+            "image_present": 1
+          },
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "120264bedd8235076f73fa6c2e5f200dd84e28d01364ddc05073e5293c300f95",
+              "zero_bytes": 67050
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "120264bedd8235076f73fa6c2e5f200dd84e28d01364ddc05073e5293c300f95",
+              "zero_bytes": 67050
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "82054ac4f14403c3778133485381c71aca81c23ec9f871137eae479f226fb19a",
+              "zero_bytes": 66432
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "82054ac4f14403c3778133485381c71aca81c23ec9f871137eae479f226fb19a",
+              "zero_bytes": 66432
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "120264bedd8235076f73fa6c2e5f200dd84e28d01364ddc05073e5293c300f95",
+            "zero_bytes": 67050
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "e006b441af5daede48682b102f949d7386492e12afba7de8f44d020b9c20a45c",
+            "zero_bytes": 273
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": false,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x74a7059080> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x74a7134b40> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x74a6e1dd20> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x74a6e1de20> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x74a6e1e160> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x74a6e1df20> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x74a6e1dc00> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x74a6e1e0a0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "ISO_aux_present": 1,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 10,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider": {
+          "byte_max": 255,
+          "byte_min": 0,
+          "bytes": 131072,
+          "sha256": "f6745698c0ce64119f9310277ba5dee177adb81d2e48b8872375e97731d2e33e",
+          "zero_bytes": 346
+        },
+        "provider_present": 1,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "aux-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "aux-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851306676864624,
+            "max_relative": 0.5004806588408357,
+            "PSNR_peak1_db": 65.03360135389866,
+            "luma_EV_MAE": 0.0010739368533479862,
+            "luma_EV_max": 0.01189023313709306,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851306676864624,
+          "vertical_flip_max_abs_diagnostic": 0.5679389219731092,
+          "pixel_min": 0.0009765774011611938,
+          "pixel_max": 0.9990234375
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851306676864624,
+            "max_relative": 0.5004806588408357,
+            "PSNR_peak1_db": 65.03360135389866,
+            "luma_EV_MAE": 0.0010739368533479862,
+            "luma_EV_max": 0.01189023313709306,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851306676864624,
+          "vertical_flip_max_abs_diagnostic": 0.5679389219731092,
+          "pixel_min": 0.0009765774011611938,
+          "pixel_max": 0.9990234375
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5669599156826735,
+          "pixel_min": 0.0019550342112779617,
+          "pixel_max": 0.9980449676513672
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5669599156826735,
+          "pixel_min": 0.0019550342112779617,
+          "pixel_max": 0.9980449676513672
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851306676864624,
+            "max_relative": 0.5004806588408357,
+            "PSNR_peak1_db": 65.03360135389866,
+            "luma_EV_MAE": 0.0010739368533479862,
+            "luma_EV_max": 0.01189023313709306,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851306676864624,
+          "vertical_flip_max_abs_diagnostic": 0.5679389219731092,
+          "pixel_min": 0.0009765774011611938,
+          "pixel_max": 0.9990234375
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851287736348524,
+            "max_relative": 0.5004806587245323,
+            "PSNR_peak1_db": 65.03360264320375,
+            "luma_EV_MAE": 0.0010739379101926277,
+            "luma_EV_max": 0.01189027019498635,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851287736348524,
+          "vertical_flip_max_abs_diagnostic": 0.56793891558654,
+          "pixel_min": 0.000976577401388571,
+          "pixel_max": 0.9990234225986114
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__aux-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 6,
+      "bits": 10,
+      "immediate_cache": 1,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 6,
+          "bitmap_info": 204806,
+          "bits_per_component": 10,
+          "bits_per_pixel": 32,
+          "bytes_per_row": 1024,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x104ac90b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 1,
+        "CI_outputs": {
+          "aux-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "aux-Metal.f32",
+            "image_present": 1
+          },
+          "aux-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "aux-software.f32",
+            "image_present": 1
+          },
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "120264bedd8235076f73fa6c2e5f200dd84e28d01364ddc05073e5293c300f95",
+              "zero_bytes": 67050
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "120264bedd8235076f73fa6c2e5f200dd84e28d01364ddc05073e5293c300f95",
+              "zero_bytes": 67050
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "82054ac4f14403c3778133485381c71aca81c23ec9f871137eae479f226fb19a",
+              "zero_bytes": 66432
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "82054ac4f14403c3778133485381c71aca81c23ec9f871137eae479f226fb19a",
+              "zero_bytes": 66432
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "4b4745329418d73fd23219bbffe515ed0816df2f6123938eb36518f91be76143",
+              "zero_bytes": 66981
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "120264bedd8235076f73fa6c2e5f200dd84e28d01364ddc05073e5293c300f95",
+            "zero_bytes": 67050
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 255,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "e006b441af5daede48682b102f949d7386492e12afba7de8f44d020b9c20a45c",
+            "zero_bytes": 273
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": true,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x7791059080> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7791134b40> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7790e1e080> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7790e1df40> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7790e1db00> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7790e1e000> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7790e1dca0> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7790e1e160> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "ISO_aux_present": 1,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 10,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider": {
+          "byte_max": 255,
+          "byte_min": 0,
+          "bytes": 131072,
+          "sha256": "f6745698c0ce64119f9310277ba5dee177adb81d2e48b8872375e97731d2e33e",
+          "zero_bytes": 346
+        },
+        "provider_present": 1,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "aux-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "aux-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851306676864624,
+            "max_relative": 0.5004806588408357,
+            "PSNR_peak1_db": 65.03360135389866,
+            "luma_EV_MAE": 0.0010739368533479862,
+            "luma_EV_max": 0.01189023313709306,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851306676864624,
+          "vertical_flip_max_abs_diagnostic": 0.5679389219731092,
+          "pixel_min": 0.0009765774011611938,
+          "pixel_max": 0.9990234375
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851306676864624,
+            "max_relative": 0.5004806588408357,
+            "PSNR_peak1_db": 65.03360135389866,
+            "luma_EV_MAE": 0.0010739368533479862,
+            "luma_EV_max": 0.01189023313709306,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851306676864624,
+          "vertical_flip_max_abs_diagnostic": 0.5679389219731092,
+          "pixel_min": 0.0009765774011611938,
+          "pixel_max": 0.9990234375
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5669599156826735,
+          "pixel_min": 0.0019550342112779617,
+          "pixel_max": 0.9980449676513672
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5669599156826735,
+          "pixel_min": 0.0019550342112779617,
+          "pixel_max": 0.9980449676513672
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0017941594123840332,
+            "max_relative": 0.5000010718358691,
+            "PSNR_peak1_db": 65.48043494946741,
+            "luma_EV_MAE": 0.0011424628217551998,
+            "luma_EV_max": 0.008566233447364156,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0017941594123840332,
+          "vertical_flip_max_abs_diagnostic": 0.5679374348837882,
+          "pixel_min": 0.000977515010163188,
+          "pixel_max": 0.999750018119812
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851306676864624,
+            "max_relative": 0.5004806588408357,
+            "PSNR_peak1_db": 65.03360135389866,
+            "luma_EV_MAE": 0.0010739368533479862,
+            "luma_EV_max": 0.01189023313709306,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851306676864624,
+          "vertical_flip_max_abs_diagnostic": 0.5679389219731092,
+          "pixel_min": 0.0009765774011611938,
+          "pixel_max": 0.9990234375
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0009851287736348524,
+            "max_relative": 0.5004806587245323,
+            "PSNR_peak1_db": 65.03360264320375,
+            "luma_EV_MAE": 0.0010739379101926277,
+            "luma_EV_max": 0.01189027019498635,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0009851287736348524,
+          "vertical_flip_max_abs_diagnostic": 0.56793891558654,
+          "pixel_min": 0.000976577401388571,
+          "pixel_max": 0.9990234225986114
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__aux-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 6,
+      "bits": 12,
+      "immediate_cache": 0,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 5,
+          "bitmap_info": 4101,
+          "bits_per_component": 16,
+          "bits_per_pixel": 64,
+          "bytes_per_row": 2048,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x104b5d0b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 0,
+        "CI_outputs": {
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+            "zero_bytes": 524288
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+            "zero_bytes": 262144
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": false,
+        "ISO_aux": null,
+        "ISO_aux_present": 0,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 12,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider_present": 0,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 6,
+      "bits": 12,
+      "immediate_cache": 1,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 5,
+          "bitmap_info": 4101,
+          "bits_per_component": 16,
+          "bits_per_pixel": 64,
+          "bytes_per_row": 2048,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x1051d10b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 0,
+        "CI_outputs": {
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+            "zero_bytes": 524288
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+            "zero_bytes": 262144
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": true,
+        "ISO_aux": null,
+        "ISO_aux_present": 0,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 12,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider_present": 0,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 1,
+      "bits": 12,
+      "immediate_cache": 0,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 5,
+          "bitmap_info": 4101,
+          "bits_per_component": 16,
+          "bits_per_pixel": 64,
+          "bytes_per_row": 2048,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x10314d0b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 0,
+        "CI_outputs": {
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+            "zero_bytes": 524288
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+            "zero_bytes": 262144
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": false,
+        "ISO_aux": null,
+        "ISO_aux_present": 0,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 12,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider_present": 0,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    },
+    {
+      "matrix": 1,
+      "bits": 12,
+      "immediate_cache": 1,
+      "native_returncode": 0,
+      "native": {
+        "carrier_properties": {
+          "{Exif}": {
+            "PixelXDimension": 256,
+            "PixelYDimension": 128
+          },
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 8,
+          "HasAlpha": true,
+          "Headroom": 8,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "Display P3"
+        },
+        "CGImage": {
+          "alpha_info": 5,
+          "bitmap_info": 4101,
+          "bits_per_component": 16,
+          "bits_per_pixel": 64,
+          "bytes_per_row": 2048,
+          "color_space": {
+            "components": 3,
+            "description": "<CGColorSpace 0x1056890b0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1)",
+            "model": 1
+          },
+          "height": 128,
+          "width": 256
+        },
+        "CI_aux_present": 0,
+        "CI_outputs": {
+          "CGImage-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-Metal.f32",
+            "image_present": 1
+          },
+          "CGImage-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "CGImage-software.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-Metal": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-Metal.f32",
+            "image_present": 1
+          },
+          "CPU-bitmap-software": {
+            "bytes_info": {
+              "byte_max": 0,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+              "zero_bytes": 524288
+            },
+            "context_present": 1,
+            "file": "CPU-bitmap-software.f32",
+            "image_present": 1
+          },
+          "expected-f32-Metal": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-Metal.f32",
+            "image_present": 1
+          },
+          "expected-f32-software": {
+            "bytes_info": {
+              "byte_max": 255,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "b7409b73544f1a9703618f77f6cf906d1b33cdc44023a99b0f46010629cba818",
+              "zero_bytes": 66176
+            },
+            "context_present": 1,
+            "file": "expected-f32-software.f32",
+            "image_present": 1
+          },
+          "URL-Metal": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-Metal.f32",
+            "image_present": 1
+          },
+          "URL-software": {
+            "bytes_info": {
+              "byte_max": 128,
+              "byte_min": 0,
+              "bytes": 524288,
+              "sha256": "63d229891c8438f7fdfdf1e2fe97ce9332017858a305b0769cc14db09caf4c65",
+              "zero_bytes": 458752
+            },
+            "context_present": 1,
+            "file": "URL-software.f32",
+            "image_present": 1
+          }
+        },
+        "cpu_float": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 524288,
+            "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+            "zero_bytes": 524288
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 8449,
+          "destination_bits": 32,
+          "dtype": "<f4",
+          "file": "cpu-context.f32",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "cpu_uint16": {
+          "bytes_info": {
+            "byte_max": 0,
+            "byte_min": 0,
+            "bytes": 262144,
+            "sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+            "zero_bytes": 262144
+          },
+          "context_created": 1,
+          "destination_bitmap_info": 4097,
+          "destination_bits": 16,
+          "dtype": "<u2",
+          "file": "cpu-context.u16",
+          "shape": [
+            128,
+            256,
+            4
+          ],
+          "source_color_space_reused": true
+        },
+        "device": "Apple Paravirtual device",
+        "image_status_after_provider": 0,
+        "immediate_cache": true,
+        "ISO_aux": null,
+        "ISO_aux_present": 0,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "properties": {
+          "{TIFF}": {
+            "Orientation": 1,
+            "TileLength": 128,
+            "TileWidth": 256
+          },
+          "ColorModel": "RGB",
+          "Depth": 12,
+          "Headroom": 1,
+          "Orientation": 1,
+          "PixelHeight": 128,
+          "PixelWidth": 256,
+          "PrimaryImage": true,
+          "ProfileName": "sRGB IEC61966-2.1"
+        },
+        "provider_present": 0,
+        "source_status_after_provider": 0,
+        "source_status_before": 0,
+        "success": true,
+        "synthetic_only": true
+      },
+      "comparisons": {
+        "CGImage-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CGImage-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-bitmap-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "expected-f32-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "expected-f32-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.0,
+          "vertical_flip_max_abs_diagnostic": 0.5670329926069826,
+          "pixel_min": 0.002197802299633622,
+          "pixel_max": 0.9982905983924866
+        },
+        "URL-Metal": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "URL-software": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-f32": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        },
+        "CPU-u16": {
+          "vs_expected_integer_rgb": {
+            "max_abs": 0.9982905983924866,
+            "max_relative": 1.0,
+            "PSNR_peak1_db": 6.274079141362847,
+            "luma_EV_MAE": 18.373215999655102,
+            "luma_EV_max": 19.273589681048172,
+            "nonpositive_luma_pixels": 32768,
+            "gate": false
+          },
+          "nonfinite_pixels": 0,
+          "max_abs": 0.9982905983924866,
+          "vertical_flip_max_abs_diagnostic": 0.9982905983924866,
+          "pixel_min": 0.0,
+          "pixel_max": 0.0
+        }
+      },
+      "explicit_pairwise_readback_comparison": {
+        "URL-Metal__URL-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CGImage-Metal__CGImage-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "URL-Metal__CGImage-Metal": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        },
+        "CPU-bitmap-Metal__CPU-bitmap-software": {
+          "max_abs": 0.0,
+          "nonfinite_components": 0,
+          "different_float32_components": 0
+        }
+      }
+    }
+  ],
+  "acceptance_complete": false
+}

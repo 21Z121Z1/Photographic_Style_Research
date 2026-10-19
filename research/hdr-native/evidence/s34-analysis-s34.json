@@ -1,0 +1,4466 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "scope": "Original RGB LTM creation and RGB guided materialization branch only; synthetic controlled context, SRL false, transfer0",
+  "rows": [
+    {
+      "case": "identity-2x",
+      "main_shape": [
+        128,
+        128,
+        4
+      ],
+      "linear_shape": [
+        64,
+        64,
+        4
+      ],
+      "parameters": {
+        "linearBaseGain": 1.0,
+        "bgExposureGain": 0.5,
+        "fgExposureGain": 1.5,
+        "GTC": 0.0
+      },
+      "modes": {
+        "host": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "compile_status": 0,
+            "config_status": 0,
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 1,
+            "guided_ABI": "i60@0:8@16@24@32@40Q48f56",
+            "guided_calls": [],
+            "imageblock_pipeline": "<AppleParavirtComputePipelineState: 0x7ce4d2c380>\n    label = <none> \n    device = <AppleParavirtDevice: 0x105554b80>\n        name = Apple Paravirtual device",
+            "ivars": {
+              "_baselineExposure": {
+                "offset": 1464,
+                "type": "f"
+              },
+              "_bgLTMGainMapTexture": {
+                "offset": 568,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_brightnessValue": {
+                "offset": 1488,
+                "type": "@\"NSNumber\""
+              },
+              "_cameraInfoByPortType": {
+                "offset": 1528,
+                "type": "@\"NSDictionary\""
+              },
+              "_cmiGuidedFilter": {
+                "offset": 16,
+                "type": "@\"CMIGuidedFilter\""
+              },
+              "_colorManagement": {
+                "offset": 128,
+                "type": "{?=\"inputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputLinearImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputMasks\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"outputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}}"
+              },
+              "_copyStats": {
+                "offset": 1368,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createGuidePipelineStateUsingImageBlock": {
+                "offset": 1280,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createGuidePipelineStateWithoutImageBlock": {
+                "offset": 1272,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createLTMGainMapPipelineStateUsingImageBlock": {
+                "offset": 1288,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createLTMGainMapPipelineStateWithoutImageBlock": {
+                "offset": 1296,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_cubicSplineToneCurveTexture": {
+                "offset": 624,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_encodeLinearPipelineState": {
+                "offset": 1360,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_faceBasedGlobalExposureBoostRatio": {
+                "offset": 1472,
+                "type": "f"
+              },
+              "_fakeLinearStatsBuffer": {
+                "offset": 1448,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_fgbgMatteTexture": {
+                "offset": 584,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_fgLTMGainMapTexture": {
+                "offset": 576,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_globalHistogramPipelineState": {
+                "offset": 1248,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_globalStatsPipelineState": {
+                "offset": 1264,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_guideTexture": {
+                "offset": 488,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_hueSatLumLUTPipelineState": {
+                "offset": 1344,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_hueSatLumLUTTexByCastTypeForVariant": {
+                "offset": 1416,
+                "type": "@\"NSDictionary\""
+              },
+              "_imageReduction": {
+                "offset": 1224,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_inputBgLTMGainMapTextureMappedRegion": {
+                "offset": 792,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputFgLTMGainMapTextureMappedRegion": {
+                "offset": 824,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputGainMapTexture": {
+                "offset": 104,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputGlobalToneCurveTexture": {
+                "offset": 616,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputImageTexture": {
+                "offset": 32,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputImageTextureMappedRegion": {
+                "offset": 728,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputImageThumbnailTexture": {
+                "offset": 40,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLightMapTexture": {
+                "offset": 552,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLightMapTextureMappedRegion": {
+                "offset": 856,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputLinearBaseGain": {
+                "offset": 1460,
+                "type": "f"
+              },
+              "_inputLinearEncodingGain": {
+                "offset": 1468,
+                "type": "f"
+              },
+              "_inputLinearImageChromaTexture": {
+                "offset": 64,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageLumaTexture": {
+                "offset": 56,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageTexture": {
+                "offset": 48,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageTextureMappedRegion": {
+                "offset": 760,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputLinearLightMapTexture": {
+                "offset": 560,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearLightMapTextureMappedRegion": {
+                "offset": 888,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputPersonMaskTexture": {
+                "offset": 80,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputPersonMaskTextureMappedRegion": {
+                "offset": 920,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSkinMaskTexture": {
+                "offset": 88,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSkinMaskTextureMappedRegion": {
+                "offset": 952,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSkyMaskTexture": {
+                "offset": 96,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSkyMaskTextureMappedRegion": {
+                "offset": 984,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSmallLightMapTexture": {
+                "offset": 520,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSmallLinearLightMapTexture": {
+                "offset": 528,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSRLCoefficientsBuf": {
+                "offset": 1424,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_inputSRLCurveParameter": {
+                "offset": 1432,
+                "type": "f"
+              },
+              "_inputStatisticsByStatsKey": {
+                "offset": 640,
+                "type": "@\"NSDictionary\""
+              },
+              "_inputStatisticsByStatsType": {
+                "offset": 632,
+                "type": "@\"NSDictionary\""
+              },
+              "_inputStyle": {
+                "offset": 24,
+                "type": "@\"CMISmartStyleV1\""
+              },
+              "_instanceLabel": {
+                "offset": 1480,
+                "type": "@\"NSString\""
+              },
+              "_internalTuningParams": {
+                "offset": 608,
+                "type": "@\"SmartStyleRendererPlist\""
+              },
+              "_linearGuideTexture": {
+                "offset": 496,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_linearStatsBuf": {
+                "offset": 480,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_localHistogramStatsAll": {
+                "offset": 1240,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_logicalImageSize": {
+                "offset": 680,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToBgLTMGainMapScale": {
+                "offset": 1112,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToFgLTMGainMapScale": {
+                "offset": 1128,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputImageScale": {
+                "offset": 1080,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLightMapScale": {
+                "offset": 1144,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLinearImageScale": {
+                "offset": 1096,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLinearLightMapScale": {
+                "offset": 1160,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputPersonMaskScale": {
+                "offset": 1176,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputSkinMaskScale": {
+                "offset": 1192,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputSkyMaskScale": {
+                "offset": 1208,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_mainAllocatorLock": {
+                "offset": 460,
+                "type": "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+              },
+              "_metalContext": {
+                "offset": 8,
+                "type": "@\"FigMetalContext\""
+              },
+              "_outputCodedLinearMetadata": {
+                "offset": 1520,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputCodedLinearTexture": {
+                "offset": 1512,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputGainMapTexture": {
+                "offset": 112,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputImageStatistics": {
+                "offset": 1496,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputImageStatisticsExtended": {
+                "offset": 1504,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputImageTexture": {
+                "offset": 72,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputImageTextureMappedRegion": {
+                "offset": 1016,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_outputSmallLightMapTexture": {
+                "offset": 536,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputSmallLinearLightMapTexture": {
+                "offset": 544,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_paramsBuf": {
+                "offset": 464,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_personMasksValidHint": {
+                "offset": 1476,
+                "type": "f"
+              },
+              "_processingType": {
+                "offset": 648,
+                "type": "i"
+              },
+              "_renderingParamsFromStatsPipelineState": {
+                "offset": 1352,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_renderRegionRect": {
+                "offset": 696,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_renderSmartStylePipelineStateUsingImageBlock": {
+                "offset": 1304,
+                "type": "[2@\"<MTLComputePipelineState>\"]"
+              },
+              "_renderSmartStylePipelineStateWithoutImageBlock": {
+                "offset": 1320,
+                "type": "[2@\"<MTLComputePipelineState>\"]"
+              },
+              "_sceneType": {
+                "offset": 664,
+                "type": "@\"NSString\""
+              },
+              "_semanticStyleSceneType": {
+                "offset": 672,
+                "type": "i"
+              },
+              "_sharedAccessAllocator": {
+                "offset": 448,
+                "type": "@\"FigMetalAllocator\""
+              },
+              "_sharedAccessAllocatorLock": {
+                "offset": 456,
+                "type": "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+              },
+              "_sharedEvent": {
+                "offset": 1384,
+                "type": "@\"<MTLSharedEvent>\""
+              },
+              "_sharedEventListener": {
+                "offset": 1376,
+                "type": "@\"MTLSharedEventListener\""
+              },
+              "_sharedEventSignal": {
+                "offset": 1392,
+                "type": "Q"
+              },
+              "_shouldCreateLTMGainMap": {
+                "offset": 1401,
+                "type": "B"
+              },
+              "_shouldUpsampleInputPersonMask": {
+                "offset": 1400,
+                "type": "B"
+              },
+              "_skinMatteTexture": {
+                "offset": 592,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_skyMatteTexture": {
+                "offset": 600,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_smallLightMapTexture": {
+                "offset": 504,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_smallLinearLightMapTexture": {
+                "offset": 512,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_srlSemanticKind": {
+                "offset": 1440,
+                "type": "i"
+              },
+              "_statsBuf": {
+                "offset": 472,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_statsComputationRect": {
+                "offset": 1048,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_sumPersonAndSkinCounts": {
+                "offset": 1256,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_texturesToPurge": {
+                "offset": 1408,
+                "type": "@\"NSMutableSet\""
+              },
+              "_tuningParameters": {
+                "offset": 1536,
+                "type": "@\"NSDictionary\""
+              },
+              "_tuningParameterVariant": {
+                "offset": 656,
+                "type": "@\"NSString\""
+              },
+              "_updateBaseGainWithStats": {
+                "offset": 1232,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_useFaceBasedGlobalExposureBoostRatio": {
+                "offset": 1436,
+                "type": "B"
+              },
+              "_useLiveMetalAllocations": {
+                "offset": 1456,
+                "type": "B"
+              },
+              "_useSemanticSRL": {
+                "offset": 1437,
+                "type": "B"
+              },
+              "_useSemanticSRLByDefault": {
+                "offset": 1457,
+                "type": "B"
+              },
+              "_YCbCrToRGBColorConversionPipelineState": {
+                "offset": 1336,
+                "type": "@\"<MTLComputePipelineState>\""
+              }
+            },
+            "mode": "host",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "31f104d609e40defd17a09f4f34baa8e6e0093750401c8a7cae21539cb539a04",
+            "params_SHA_before": "31f104d609e40defd17a09f4f34baa8e6e0093750401c8a7cae21539cb539a04",
+            "plain_pipeline": "<AppleParavirtComputePipelineState: 0x7ce4d2c540>\n    label = <none> \n    device = <AppleParavirtDevice: 0x105554b80>\n        name = Apple Paravirtual device",
+            "process_status": 0,
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "should_create_LTM_maps": 1,
+            "srl_flag_offset_0x59d": 0,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "e83d3aaef330a1bdb0c7f1e45b0a3f01ec406c7f4aa4d4c79a4e279ac9b9819c",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "d92905dff519cdb4d01021024b7bec5d576700143be2b257f9ecd267da8d31d0",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "cc9b9b146a463795303234b035a33d0b153077bc6ce8d1f5d5247010a95c9d4c",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.39697265625,
+              "psnr_peak1_db": 9.285001543529916,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 48768,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 1.19140625,
+              "psnr_peak1_db": -0.25739692965005495,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 48768,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.431396484375,
+              "psnr_peak1_db": 9.272814612309004,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 48000,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 1.294921875,
+              "psnr_peak1_db": -0.2695787497164448,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 48000,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0,
+                "mean_abs_gradient_y": 0.0,
+                "max_abs_gradient": 0.0,
+                "edge_jump_mean": 0.0,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 0,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.0029189192403958537,
+                "mean_abs_gradient_y": 0.00016033743310162402,
+                "max_abs_gradient": 0.1751708984375,
+                "edge_jump_mean": 0.0601983856736568,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.46142578125,
+                "psnr_peak1_db": 9.259238918800577,
+                "max_relative_ref_gt_1e-6": 1.0,
+                "half_different_components": 11904,
+                "positive_pair_components": 0,
+                "max_abs_EV_positive": null,
+                "rms_EV_positive": null
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0,
+                "mean_abs_gradient_y": 0.0,
+                "max_abs_gradient": 0.0,
+                "edge_jump_mean": 0.0,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 0,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.008792767061649031,
+                "mean_abs_gradient_y": 0.00046383614928077835,
+                "max_abs_gradient": 0.525390625,
+                "edge_jump_mean": 0.18067541289747807,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 1.384765625,
+                "psnr_peak1_db": -0.28310092115088237,
+                "max_relative_ref_gt_1e-6": 1.0,
+                "half_different_components": 11904,
+                "positive_pair_components": 0,
+                "max_abs_EV_positive": null,
+                "rms_EV_positive": null
+              }
+            }
+          },
+          "params_unchanged": true
+        },
+        "direct-plain": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 7,
+            "function_constants": {
+              "useImageBlock": false,
+              "useSrlBeforeStats": false
+            },
+            "function_name": "createLTMGainMap",
+            "guided_scope": "Frozen guided_oracle_v3 GDirect: original installed three kernels, radius1 epsilon.05; class allocator fallback is kept explicit",
+            "mode": "direct-plain",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "31f104d609e40defd17a09f4f34baa8e6e0093750401c8a7cae21539cb539a04",
+            "params_SHA_before": "31f104d609e40defd17a09f4f34baa8e6e0093750401c8a7cae21539cb539a04",
+            "PSO_scope": "Original metallib function, research-created PSO; original host creation identity is asserted only for successful host mode",
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "99a5b7683b166298fb015ae13b69724c56e536c1c3da57796900d9f817e3c39a",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "e83d3aaef330a1bdb0c7f1e45b0a3f01ec406c7f4aa4d4c79a4e279ac9b9819c",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "ded358357c2aed7f1e06eb3ba65b4fc8db5444830a46c3da108d2cea840ff77f",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "d92905dff519cdb4d01021024b7bec5d576700143be2b257f9ecd267da8d31d0",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "cc9b9b146a463795303234b035a33d0b153077bc6ce8d1f5d5247010a95c9d4c",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-1-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "b9ac2391aa90631b54428fff0bfbffecdcc449dc8cc6adaa00e0431496d85e61",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-1-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "e8f98af96311c2af6e8198a8aba47ac433094cb5dd93181efd55b8ee37030514",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-2-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "6c433daf7e5509d555b56d539cd385fb46e0663299111c877fadacc800d45bf2",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-2-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "1c410fdb75c91fa92354d070761533b6a075bbec925becda76ee4ace71a727e6",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-4-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "3942f24f888f0f40fc6572307867430e56a8b4f8b1436b7fa919b89849c11156",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-4-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "0f8480fdec3cd356fca68104ae3f7d3d12ea22a16320a5efc45d88a7f05094bd",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-5-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "95e39c4b72d2d25ce52dfd11c6484ed66df9f400fd5a50cf374fed39fc05ee45",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-5-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "647ca6b604441f0ef812fbc04bb7e4f4db53e4823d9db2dc3eb46bee95acbf3d",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 48768,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 48768,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.048583984375,
+              "psnr_peak1_db": 43.11534118304934,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 3375,
+              "positive_pair_components": 48000,
+              "max_abs_EV_positive": 0.5291975760527889,
+              "rms_EV_positive": 0.04418403967122999
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.14599609375,
+              "psnr_peak1_db": 33.57446120842405,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 3335,
+              "positive_pair_components": 48000,
+              "max_abs_EV_positive": 0.5288620265592683,
+              "rms_EV_positive": 0.04417506743882371
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.002852552519069882,
+                "mean_abs_gradient_y": 9.57428939699188e-05,
+                "max_abs_gradient": 0.16094970703125,
+                "edge_jump_mean": 0.040821490371436404,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48768,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.0029189192403958537,
+                "mean_abs_gradient_y": 0.00016033743310162402,
+                "max_abs_gradient": 0.1751708984375,
+                "edge_jump_mean": 0.0601983856736568,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.1024169921875,
+                "psnr_peak1_db": 36.685890721638906,
+                "max_relative_ref_gt_1e-6": 0.4632799558255108,
+                "half_different_components": 1121,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.549205813387756,
+                "rms_EV_positive": 0.050696602642800306
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0085920799435593,
+                "mean_abs_gradient_y": 0.00027169580534687195,
+                "max_abs_gradient": 0.481689453125,
+                "edge_jump_mean": 0.12259671395285088,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48768,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.008792767061649031,
+                "mean_abs_gradient_y": 0.00046383614928077835,
+                "max_abs_gradient": 0.525390625,
+                "edge_jump_mean": 0.18067541289747807,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.3076171875,
+                "psnr_peak1_db": 27.143625983342737,
+                "max_relative_ref_gt_1e-6": 0.46357615894039733,
+                "half_different_components": 1220,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.5494978200663526,
+                "rms_EV_positive": 0.050688473997424766
+              }
+            }
+          },
+          "params_unchanged": true
+        },
+        "direct-imageblock": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 7,
+            "function_constants": {
+              "useImageBlock": true,
+              "useSrlBeforeStats": false
+            },
+            "function_name": "createLTMGainMap",
+            "guided_scope": "Frozen guided_oracle_v3 GDirect: original installed three kernels, radius1 epsilon.05; class allocator fallback is kept explicit",
+            "mode": "direct-imageblock",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "31f104d609e40defd17a09f4f34baa8e6e0093750401c8a7cae21539cb539a04",
+            "params_SHA_before": "31f104d609e40defd17a09f4f34baa8e6e0093750401c8a7cae21539cb539a04",
+            "PSO_scope": "Original metallib function, research-created PSO; original host creation identity is asserted only for successful host mode",
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "99a5b7683b166298fb015ae13b69724c56e536c1c3da57796900d9f817e3c39a",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "e83d3aaef330a1bdb0c7f1e45b0a3f01ec406c7f4aa4d4c79a4e279ac9b9819c",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "ded358357c2aed7f1e06eb3ba65b4fc8db5444830a46c3da108d2cea840ff77f",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "d92905dff519cdb4d01021024b7bec5d576700143be2b257f9ecd267da8d31d0",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "cc9b9b146a463795303234b035a33d0b153077bc6ce8d1f5d5247010a95c9d4c",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-1-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "b9ac2391aa90631b54428fff0bfbffecdcc449dc8cc6adaa00e0431496d85e61",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-1-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "e8f98af96311c2af6e8198a8aba47ac433094cb5dd93181efd55b8ee37030514",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-2-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "6c433daf7e5509d555b56d539cd385fb46e0663299111c877fadacc800d45bf2",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-2-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "1c410fdb75c91fa92354d070761533b6a075bbec925becda76ee4ace71a727e6",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-4-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "3942f24f888f0f40fc6572307867430e56a8b4f8b1436b7fa919b89849c11156",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-4-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "0f8480fdec3cd356fca68104ae3f7d3d12ea22a16320a5efc45d88a7f05094bd",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-5-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "95e39c4b72d2d25ce52dfd11c6484ed66df9f400fd5a50cf374fed39fc05ee45",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              },
+              "stage-5-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "647ca6b604441f0ef812fbc04bb7e4f4db53e4823d9db2dc3eb46bee95acbf3d",
+                "shape": [
+                  128,
+                  128,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 48768,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0,
+              "psnr_peak1_db": "inf",
+              "max_relative_ref_gt_1e-6": 0.0,
+              "half_different_components": 0,
+              "positive_pair_components": 48768,
+              "max_abs_EV_positive": 0.0,
+              "rms_EV_positive": 0.0
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.048583984375,
+              "psnr_peak1_db": 43.11534118304934,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 3375,
+              "positive_pair_components": 48000,
+              "max_abs_EV_positive": 0.5291975760527889,
+              "rms_EV_positive": 0.04418403967122999
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.14599609375,
+              "psnr_peak1_db": 33.57446120842405,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 3335,
+              "positive_pair_components": 48000,
+              "max_abs_EV_positive": 0.5288620265592683,
+              "rms_EV_positive": 0.04417506743882371
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.002852552519069882,
+                "mean_abs_gradient_y": 9.57428939699188e-05,
+                "max_abs_gradient": 0.16094970703125,
+                "edge_jump_mean": 0.040821490371436404,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48768,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.0029189192403958537,
+                "mean_abs_gradient_y": 0.00016033743310162402,
+                "max_abs_gradient": 0.1751708984375,
+                "edge_jump_mean": 0.0601983856736568,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.1024169921875,
+                "psnr_peak1_db": 36.685890721638906,
+                "max_relative_ref_gt_1e-6": 0.4632799558255108,
+                "half_different_components": 1121,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.549205813387756,
+                "rms_EV_positive": 0.050696602642800306
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0085920799435593,
+                "mean_abs_gradient_y": 0.00027169580534687195,
+                "max_abs_gradient": 0.481689453125,
+                "edge_jump_mean": 0.12259671395285088,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48768,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.008792767061649031,
+                "mean_abs_gradient_y": 0.00046383614928077835,
+                "max_abs_gradient": 0.525390625,
+                "edge_jump_mean": 0.18067541289747807,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 48000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.3076171875,
+                "psnr_peak1_db": 27.143625983342737,
+                "max_relative_ref_gt_1e-6": 0.46357615894039733,
+                "half_different_components": 1220,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.5494978200663526,
+                "rms_EV_positive": 0.050688473997424766
+              }
+            }
+          },
+          "params_unchanged": true
+        }
+      },
+      "native_mode_comparison": {
+        "host__direct-imageblock": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.39697265625,
+            "psnr_peak1_db": 9.285001543529916,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 48768,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 1.19140625,
+            "psnr_peak1_db": -0.25739692965005495,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 48768,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          }
+        },
+        "host__direct-plain": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.39697265625,
+            "psnr_peak1_db": 9.285001543529916,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 48768,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 1.19140625,
+            "psnr_peak1_db": -0.25739692965005495,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 48768,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          }
+        },
+        "direct-plain__direct-imageblock": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 48768,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 48768,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          }
+        }
+      }
+    },
+    {
+      "case": "gtc-4x",
+      "main_shape": [
+        192,
+        256,
+        4
+      ],
+      "linear_shape": [
+        64,
+        64,
+        4
+      ],
+      "parameters": {
+        "linearBaseGain": 1.5,
+        "bgExposureGain": 0.75,
+        "fgExposureGain": 1.25,
+        "GTC": 1.0
+      },
+      "modes": {
+        "host": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "compile_status": 0,
+            "config_status": 0,
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 1,
+            "guided_ABI": "i60@0:8@16@24@32@40Q48f56",
+            "guided_calls": [],
+            "imageblock_pipeline": "<AppleParavirtComputePipelineState: 0x7a90d0c380>\n    label = <none> \n    device = <AppleParavirtDevice: 0x104878910>\n        name = Apple Paravirtual device",
+            "ivars": {
+              "_baselineExposure": {
+                "offset": 1464,
+                "type": "f"
+              },
+              "_bgLTMGainMapTexture": {
+                "offset": 568,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_brightnessValue": {
+                "offset": 1488,
+                "type": "@\"NSNumber\""
+              },
+              "_cameraInfoByPortType": {
+                "offset": 1528,
+                "type": "@\"NSDictionary\""
+              },
+              "_cmiGuidedFilter": {
+                "offset": 16,
+                "type": "@\"CMIGuidedFilter\""
+              },
+              "_colorManagement": {
+                "offset": 128,
+                "type": "{?=\"inputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputLinearImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputMasks\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"outputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}}"
+              },
+              "_copyStats": {
+                "offset": 1368,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createGuidePipelineStateUsingImageBlock": {
+                "offset": 1280,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createGuidePipelineStateWithoutImageBlock": {
+                "offset": 1272,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createLTMGainMapPipelineStateUsingImageBlock": {
+                "offset": 1288,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createLTMGainMapPipelineStateWithoutImageBlock": {
+                "offset": 1296,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_cubicSplineToneCurveTexture": {
+                "offset": 624,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_encodeLinearPipelineState": {
+                "offset": 1360,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_faceBasedGlobalExposureBoostRatio": {
+                "offset": 1472,
+                "type": "f"
+              },
+              "_fakeLinearStatsBuffer": {
+                "offset": 1448,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_fgbgMatteTexture": {
+                "offset": 584,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_fgLTMGainMapTexture": {
+                "offset": 576,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_globalHistogramPipelineState": {
+                "offset": 1248,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_globalStatsPipelineState": {
+                "offset": 1264,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_guideTexture": {
+                "offset": 488,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_hueSatLumLUTPipelineState": {
+                "offset": 1344,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_hueSatLumLUTTexByCastTypeForVariant": {
+                "offset": 1416,
+                "type": "@\"NSDictionary\""
+              },
+              "_imageReduction": {
+                "offset": 1224,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_inputBgLTMGainMapTextureMappedRegion": {
+                "offset": 792,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputFgLTMGainMapTextureMappedRegion": {
+                "offset": 824,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputGainMapTexture": {
+                "offset": 104,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputGlobalToneCurveTexture": {
+                "offset": 616,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputImageTexture": {
+                "offset": 32,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputImageTextureMappedRegion": {
+                "offset": 728,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputImageThumbnailTexture": {
+                "offset": 40,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLightMapTexture": {
+                "offset": 552,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLightMapTextureMappedRegion": {
+                "offset": 856,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputLinearBaseGain": {
+                "offset": 1460,
+                "type": "f"
+              },
+              "_inputLinearEncodingGain": {
+                "offset": 1468,
+                "type": "f"
+              },
+              "_inputLinearImageChromaTexture": {
+                "offset": 64,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageLumaTexture": {
+                "offset": 56,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageTexture": {
+                "offset": 48,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageTextureMappedRegion": {
+                "offset": 760,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputLinearLightMapTexture": {
+                "offset": 560,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearLightMapTextureMappedRegion": {
+                "offset": 888,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputPersonMaskTexture": {
+                "offset": 80,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputPersonMaskTextureMappedRegion": {
+                "offset": 920,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSkinMaskTexture": {
+                "offset": 88,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSkinMaskTextureMappedRegion": {
+                "offset": 952,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSkyMaskTexture": {
+                "offset": 96,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSkyMaskTextureMappedRegion": {
+                "offset": 984,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSmallLightMapTexture": {
+                "offset": 520,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSmallLinearLightMapTexture": {
+                "offset": 528,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSRLCoefficientsBuf": {
+                "offset": 1424,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_inputSRLCurveParameter": {
+                "offset": 1432,
+                "type": "f"
+              },
+              "_inputStatisticsByStatsKey": {
+                "offset": 640,
+                "type": "@\"NSDictionary\""
+              },
+              "_inputStatisticsByStatsType": {
+                "offset": 632,
+                "type": "@\"NSDictionary\""
+              },
+              "_inputStyle": {
+                "offset": 24,
+                "type": "@\"CMISmartStyleV1\""
+              },
+              "_instanceLabel": {
+                "offset": 1480,
+                "type": "@\"NSString\""
+              },
+              "_internalTuningParams": {
+                "offset": 608,
+                "type": "@\"SmartStyleRendererPlist\""
+              },
+              "_linearGuideTexture": {
+                "offset": 496,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_linearStatsBuf": {
+                "offset": 480,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_localHistogramStatsAll": {
+                "offset": 1240,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_logicalImageSize": {
+                "offset": 680,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToBgLTMGainMapScale": {
+                "offset": 1112,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToFgLTMGainMapScale": {
+                "offset": 1128,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputImageScale": {
+                "offset": 1080,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLightMapScale": {
+                "offset": 1144,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLinearImageScale": {
+                "offset": 1096,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLinearLightMapScale": {
+                "offset": 1160,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputPersonMaskScale": {
+                "offset": 1176,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputSkinMaskScale": {
+                "offset": 1192,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputSkyMaskScale": {
+                "offset": 1208,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_mainAllocatorLock": {
+                "offset": 460,
+                "type": "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+              },
+              "_metalContext": {
+                "offset": 8,
+                "type": "@\"FigMetalContext\""
+              },
+              "_outputCodedLinearMetadata": {
+                "offset": 1520,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputCodedLinearTexture": {
+                "offset": 1512,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputGainMapTexture": {
+                "offset": 112,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputImageStatistics": {
+                "offset": 1496,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputImageStatisticsExtended": {
+                "offset": 1504,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputImageTexture": {
+                "offset": 72,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputImageTextureMappedRegion": {
+                "offset": 1016,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_outputSmallLightMapTexture": {
+                "offset": 536,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputSmallLinearLightMapTexture": {
+                "offset": 544,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_paramsBuf": {
+                "offset": 464,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_personMasksValidHint": {
+                "offset": 1476,
+                "type": "f"
+              },
+              "_processingType": {
+                "offset": 648,
+                "type": "i"
+              },
+              "_renderingParamsFromStatsPipelineState": {
+                "offset": 1352,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_renderRegionRect": {
+                "offset": 696,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_renderSmartStylePipelineStateUsingImageBlock": {
+                "offset": 1304,
+                "type": "[2@\"<MTLComputePipelineState>\"]"
+              },
+              "_renderSmartStylePipelineStateWithoutImageBlock": {
+                "offset": 1320,
+                "type": "[2@\"<MTLComputePipelineState>\"]"
+              },
+              "_sceneType": {
+                "offset": 664,
+                "type": "@\"NSString\""
+              },
+              "_semanticStyleSceneType": {
+                "offset": 672,
+                "type": "i"
+              },
+              "_sharedAccessAllocator": {
+                "offset": 448,
+                "type": "@\"FigMetalAllocator\""
+              },
+              "_sharedAccessAllocatorLock": {
+                "offset": 456,
+                "type": "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+              },
+              "_sharedEvent": {
+                "offset": 1384,
+                "type": "@\"<MTLSharedEvent>\""
+              },
+              "_sharedEventListener": {
+                "offset": 1376,
+                "type": "@\"MTLSharedEventListener\""
+              },
+              "_sharedEventSignal": {
+                "offset": 1392,
+                "type": "Q"
+              },
+              "_shouldCreateLTMGainMap": {
+                "offset": 1401,
+                "type": "B"
+              },
+              "_shouldUpsampleInputPersonMask": {
+                "offset": 1400,
+                "type": "B"
+              },
+              "_skinMatteTexture": {
+                "offset": 592,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_skyMatteTexture": {
+                "offset": 600,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_smallLightMapTexture": {
+                "offset": 504,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_smallLinearLightMapTexture": {
+                "offset": 512,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_srlSemanticKind": {
+                "offset": 1440,
+                "type": "i"
+              },
+              "_statsBuf": {
+                "offset": 472,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_statsComputationRect": {
+                "offset": 1048,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_sumPersonAndSkinCounts": {
+                "offset": 1256,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_texturesToPurge": {
+                "offset": 1408,
+                "type": "@\"NSMutableSet\""
+              },
+              "_tuningParameters": {
+                "offset": 1536,
+                "type": "@\"NSDictionary\""
+              },
+              "_tuningParameterVariant": {
+                "offset": 656,
+                "type": "@\"NSString\""
+              },
+              "_updateBaseGainWithStats": {
+                "offset": 1232,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_useFaceBasedGlobalExposureBoostRatio": {
+                "offset": 1436,
+                "type": "B"
+              },
+              "_useLiveMetalAllocations": {
+                "offset": 1456,
+                "type": "B"
+              },
+              "_useSemanticSRL": {
+                "offset": 1437,
+                "type": "B"
+              },
+              "_useSemanticSRLByDefault": {
+                "offset": 1457,
+                "type": "B"
+              },
+              "_YCbCrToRGBColorConversionPipelineState": {
+                "offset": 1336,
+                "type": "@\"<MTLComputePipelineState>\""
+              }
+            },
+            "mode": "host",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "79bb4c67875bd26b7e71335bb6ad06a430ce79299950244df888a2e68ff020dc",
+            "params_SHA_before": "79bb4c67875bd26b7e71335bb6ad06a430ce79299950244df888a2e68ff020dc",
+            "plain_pipeline": "<AppleParavirtComputePipelineState: 0x7a90d0c540>\n    label = <none> \n    device = <AppleParavirtDevice: 0x104878910>\n        name = Apple Paravirtual device",
+            "process_status": 0,
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "should_create_LTM_maps": 1,
+            "srl_flag_offset_0x59d": 0,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "a6619f482fee91a315f76cdcd8705d39b6ce11077c435ccc696142e130c27762",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "1ee2c8da8eb216bd8c831a685275d657d76729ec493945c53dfaa5656bcb3513",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "a6619f482fee91a315f76cdcd8705d39b6ce11077c435ccc696142e130c27762",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "3a17baefd6e36ef891e3c7d705f367687bd9e2a0b6ca38f0a4c9775ec31ecfc6",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "e71aad62b88c25a381a12c5195dafb90d6d9319551a05e34ec401053f9eee3f3",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.00048828125,
+              "psnr_peak1_db": 78.43974420441056,
+              "max_relative_ref_gt_1e-6": 0.001564945226917058,
+              "half_different_components": 4125,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.002255973940367956,
+              "rms_EV_positive": 0.0007115910421404451
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 69.29552041886359,
+              "max_relative_ref_gt_1e-6": 0.0017953321364452424,
+              "half_different_components": 5078,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0025877944891557914,
+              "rms_EV_positive": 0.0007631489054991558
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.48779296875,
+              "psnr_peak1_db": 11.414564184972992,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 145152,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 1.1630859375,
+              "psnr_peak1_db": 3.8715797533992906,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 145152,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.48779296875,
+              "psnr_peak1_db": 11.411063309308423,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 144000,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 1.1630859375,
+              "psnr_peak1_db": 3.8681860297153365,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 144000,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0,
+                "mean_abs_gradient_y": 0.0,
+                "max_abs_gradient": 0.0,
+                "edge_jump_mean": 0.0,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 0,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.0017544422274321512,
+                "mean_abs_gradient_y": 0.0006566448153417564,
+                "max_abs_gradient": 0.090179443359375,
+                "edge_jump_mean": 0.02411253555961277,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 144000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.48779296875,
+                "psnr_peak1_db": 11.401377235155996,
+                "max_relative_ref_gt_1e-6": 1.0,
+                "half_different_components": 11904,
+                "positive_pair_components": 0,
+                "max_abs_EV_positive": null,
+                "rms_EV_positive": null
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0,
+                "mean_abs_gradient_y": 0.0,
+                "max_abs_gradient": 0.0,
+                "edge_jump_mean": 0.0,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 0,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.004181104755609384,
+                "mean_abs_gradient_y": 0.0015659430576244575,
+                "max_abs_gradient": 0.21484375,
+                "edge_jump_mean": 0.057474925233634684,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 144000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 1.1630859375,
+                "psnr_peak1_db": 3.8584270138958807,
+                "max_relative_ref_gt_1e-6": 1.0,
+                "half_different_components": 11904,
+                "positive_pair_components": 0,
+                "max_abs_EV_positive": null,
+                "rms_EV_positive": null
+              }
+            }
+          },
+          "params_unchanged": true
+        },
+        "direct-plain": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 7,
+            "function_constants": {
+              "useImageBlock": false,
+              "useSrlBeforeStats": false
+            },
+            "function_name": "createLTMGainMap",
+            "guided_scope": "Frozen guided_oracle_v3 GDirect: original installed three kernels, radius1 epsilon.05; class allocator fallback is kept explicit",
+            "mode": "direct-plain",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "79bb4c67875bd26b7e71335bb6ad06a430ce79299950244df888a2e68ff020dc",
+            "params_SHA_before": "79bb4c67875bd26b7e71335bb6ad06a430ce79299950244df888a2e68ff020dc",
+            "PSO_scope": "Original metallib function, research-created PSO; original host creation identity is asserted only for successful host mode",
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "8eaf694428faaf02fac9cdf35000ce0229b8281ca5da3ff0b23d099714e329be",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "afd7089e4e74a9c57584c274e5e71ea622ec08130356c4dcbf21d5c923006e92",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "d4d44c58ec5680ba1292394a6b6567eaa4a1952a4fce32c9987fd28cd105d898",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "63467da846a11559e75d294be52781e4925c1b8cbe9bf7988dbbbb9fcf394654",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "e71aad62b88c25a381a12c5195dafb90d6d9319551a05e34ec401053f9eee3f3",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-1-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "6692514479748e3f31013d8ff2979daae68ce0f0b4e128abe537ca3f260cff5f",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-1-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "c7275cf196d033c0501d77c3453f59d33326b8aa38826cbb821cf15c26ecf011",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-2-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "a9a1794b46765c2550cba3bb2084a5527527510914b304f8f738946e23c98922",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-2-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "6990c2631c5968d0c82aec6f40f4d69b03ebd35a57f4bd59c47780ee3c0632fb",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-4-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "ceed6cd92d05b6de710bfdd3148f0c6671a8f5a593a75d773971162919b3acf8",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-4-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "abc51329d77a89f1fc31e31ee0105f57bfe7a2faa6d430bf608b235b2f2105f9",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-5-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "fc0e7e95c8b1a1e3c1de64099a93255220908ef9389015bba3ac322498247a7e",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-5-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "813291916f6ed090166178b2bf2f25dd00c791c0e2cca94e44227a4485e5b206",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0006103515625,
+              "psnr_peak1_db": 74.64593602948965,
+              "max_relative_ref_gt_1e-6": 0.0030845157310302285,
+              "half_different_components": 5641,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0044568927657467495,
+              "rms_EV_positive": 0.001031125733069814
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.001953125,
+              "psnr_peak1_db": 64.46124876225934,
+              "max_relative_ref_gt_1e-6": 0.0024916943521594683,
+              "half_different_components": 6875,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.003599241054067935,
+              "rms_EV_positive": 0.0012184877091945842
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.000244140625,
+              "psnr_peak1_db": 85.54874770587077,
+              "max_relative_ref_gt_1e-6": 0.0013386880856760374,
+              "half_different_components": 13916,
+              "positive_pair_components": 145152,
+              "max_abs_EV_positive": 0.0019300270983995693,
+              "rms_EV_positive": 0.0003248769518108718
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.00048828125,
+              "psnr_peak1_db": 86.01652232072608,
+              "max_relative_ref_gt_1e-6": 0.0009233610341643582,
+              "half_different_components": 4921,
+              "positive_pair_components": 145152,
+              "max_abs_EV_positive": 0.001331513745544379,
+              "rms_EV_positive": 0.0001707978482394134
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.059326171875,
+              "psnr_peak1_db": 52.9177076841491,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 26578,
+              "positive_pair_components": 144000,
+              "max_abs_EV_positive": 0.6739361305434324,
+              "rms_EV_positive": 0.03957349135279843
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.14111328125,
+              "psnr_peak1_db": 45.37110222567895,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 18921,
+              "positive_pair_components": 144000,
+              "max_abs_EV_positive": 0.6743947677303412,
+              "rms_EV_positive": 0.03960689697714259
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.001732685571142791,
+                "mean_abs_gradient_y": 0.0006328403306101005,
+                "max_abs_gradient": 0.119384765625,
+                "edge_jump_mean": 0.025454849702458718,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 145152,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.0017557175330866397,
+                "mean_abs_gradient_y": 0.0006565424576271683,
+                "max_abs_gradient": 0.090179443359375,
+                "edge_jump_mean": 0.024131791913256862,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 144000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.078857421875,
+                "psnr_peak1_db": 44.65053728945027,
+                "max_relative_ref_gt_1e-6": 0.5448201825013419,
+                "half_different_components": 2859,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.6274389177986602,
+                "rms_EV_positive": 0.03184117344940256
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.004128948951338891,
+                "mean_abs_gradient_y": 0.0015095107868495828,
+                "max_abs_gradient": 0.284912109375,
+                "edge_jump_mean": 0.060631878532826436,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 145152,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.004184168564208453,
+                "mean_abs_gradient_y": 0.0015659497670478223,
+                "max_abs_gradient": 0.21484375,
+                "edge_jump_mean": 0.05748693493829257,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 144000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.1884765625,
+                "psnr_peak1_db": 37.106994733954664,
+                "max_relative_ref_gt_1e-6": 0.5464382326420198,
+                "half_different_components": 2176,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.6289492108984648,
+                "rms_EV_positive": 0.03181895894121984
+              }
+            }
+          },
+          "params_unchanged": true
+        },
+        "direct-imageblock": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 7,
+            "function_constants": {
+              "useImageBlock": true,
+              "useSrlBeforeStats": false
+            },
+            "function_name": "createLTMGainMap",
+            "guided_scope": "Frozen guided_oracle_v3 GDirect: original installed three kernels, radius1 epsilon.05; class allocator fallback is kept explicit",
+            "mode": "direct-imageblock",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "79bb4c67875bd26b7e71335bb6ad06a430ce79299950244df888a2e68ff020dc",
+            "params_SHA_before": "79bb4c67875bd26b7e71335bb6ad06a430ce79299950244df888a2e68ff020dc",
+            "PSO_scope": "Original metallib function, research-created PSO; original host creation identity is asserted only for successful host mode",
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "edd2cbdb18b807d40d4218ed4b10a12f540d68102528c7faf65ece3a92ff13ba",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "1ee2c8da8eb216bd8c831a685275d657d76729ec493945c53dfaa5656bcb3513",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "7df87ef29c35051a3e390e1ebed00d3cf3fe582f5ae2065fecfdcd643e918f70",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "3a17baefd6e36ef891e3c7d705f367687bd9e2a0b6ca38f0a4c9775ec31ecfc6",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "e71aad62b88c25a381a12c5195dafb90d6d9319551a05e34ec401053f9eee3f3",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-1-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "377f6f6ac19ea626d430b2056247fe2963ffb4ca0324a969a577896da320463e",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-1-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "db064de73358a6d16c49c6b28a1d56519fb9a6d7af4b83428e934e1e210a8154",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-2-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "b13bd577ad3d2538a88bb4cd57f1257ee1a650e5d9ab7f261945098cb18feeeb",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-2-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "8a0fa9386d1201dd22dea47e79075a4cb0cd41ab92f61bcc26c66d74d47bd093",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-4-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "0e5fa68dae7cbd875987388969499f09750dc5870b0162074ba2191fb161677c",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-4-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "27bc4556a60eee65f77ac00a5123e4cb5c892bdea8aed3d4f63fd66bc49e3745",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-5-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "b2e4b68923d1ec42409a29f946dac9eb23f6eb4b7a6d45c4c21133a61a68b682",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              },
+              "stage-5-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "ae0e5f94ae686565f93074a2289be30f068af50d788bdc3dbde1e0a72458c9c7",
+                "shape": [
+                  192,
+                  256,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.00048828125,
+              "psnr_peak1_db": 78.43974420441056,
+              "max_relative_ref_gt_1e-6": 0.001564945226917058,
+              "half_different_components": 4125,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.002255973940367956,
+              "rms_EV_positive": 0.0007115910421404451
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 69.29552041886359,
+              "max_relative_ref_gt_1e-6": 0.0017953321364452424,
+              "half_different_components": 5078,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0025877944891557914,
+              "rms_EV_positive": 0.0007631489054991558
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.000244140625,
+              "psnr_peak1_db": 85.44047522300178,
+              "max_relative_ref_gt_1e-6": 0.0009587727708533077,
+              "half_different_components": 13214,
+              "positive_pair_components": 145152,
+              "max_abs_EV_positive": 0.0013825540501188254,
+              "rms_EV_positive": 0.00029778424590042474
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 78.08792839969286,
+              "max_relative_ref_gt_1e-6": 0.000975609756097561,
+              "half_different_components": 9427,
+              "positive_pair_components": 145152,
+              "max_abs_EV_positive": 0.0014068212142456505,
+              "rms_EV_positive": 0.0002414516289217144
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.059326171875,
+              "psnr_peak1_db": 52.92080985218806,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 29046,
+              "positive_pair_components": 144000,
+              "max_abs_EV_positive": 0.6739361305434324,
+              "rms_EV_positive": 0.03957972733540341
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.14111328125,
+              "psnr_peak1_db": 45.376195364256056,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 25085,
+              "positive_pair_components": 144000,
+              "max_abs_EV_positive": 0.674590403123322,
+              "rms_EV_positive": 0.03961146707362764
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0017326687415960308,
+                "mean_abs_gradient_y": 0.0006328532293464917,
+                "max_abs_gradient": 0.119384765625,
+                "edge_jump_mean": 0.025463253093536614,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 145152,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.0017544422274321512,
+                "mean_abs_gradient_y": 0.0006566448153417564,
+                "max_abs_gradient": 0.090179443359375,
+                "edge_jump_mean": 0.02411253555961277,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 144000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.078857421875,
+                "psnr_peak1_db": 44.65818804268962,
+                "max_relative_ref_gt_1e-6": 0.5439914163090128,
+                "half_different_components": 3721,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.6266647320860177,
+                "rms_EV_positive": 0.03182093097986207
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.004127206573818764,
+                "mean_abs_gradient_y": 0.001509659843971176,
+                "max_abs_gradient": 0.284912109375,
+                "edge_jump_mean": 0.06057795393825773,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 145152,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.004181104755609384,
+                "mean_abs_gradient_y": 0.0015659430576244575,
+                "max_abs_gradient": 0.21484375,
+                "edge_jump_mean": 0.057474925233634684,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 144000,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.1884765625,
+                "psnr_peak1_db": 37.124199846400515,
+                "max_relative_ref_gt_1e-6": 0.5459459459459459,
+                "half_different_components": 2823,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.6284898762620773,
+                "rms_EV_positive": 0.031760517487648555
+              }
+            }
+          },
+          "params_unchanged": true
+        }
+      },
+      "native_mode_comparison": {
+        "host__direct-imageblock": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.48779296875,
+            "psnr_peak1_db": 11.415074847277207,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 145152,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 1.1630859375,
+            "psnr_peak1_db": 3.8720360330365478,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 145152,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          }
+        },
+        "host__direct-plain": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.00048828125,
+            "psnr_peak1_db": 76.71409002528472,
+            "max_relative_ref_gt_1e-6": 0.0021082220660576245,
+            "half_different_components": 2692,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.003044732134438026,
+            "rms_EV_positive": 0.0008211176119724535
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.001953125,
+            "psnr_peak1_db": 66.40085462917811,
+            "max_relative_ref_gt_1e-6": 0.002497918401332223,
+            "half_different_components": 3697,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.003599241054068046,
+            "rms_EV_positive": 0.0010174914366840597
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.48779296875,
+            "psnr_peak1_db": 11.41502674643677,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 145152,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 1.1630859375,
+            "psnr_peak1_db": 3.8719486003172636,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 145152,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          }
+        },
+        "direct-plain__direct-imageblock": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.00048828125,
+            "psnr_peak1_db": 76.71409002528472,
+            "max_relative_ref_gt_1e-6": 0.002112676056338028,
+            "half_different_components": 2692,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0030447321344381417,
+            "rms_EV_positive": 0.0008211176119724538
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.001953125,
+            "psnr_peak1_db": 66.40085462917811,
+            "max_relative_ref_gt_1e-6": 0.0024916943521594683,
+            "half_different_components": 3697,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.003599241054067935,
+            "rms_EV_positive": 0.0010174914366840643
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.00048828125,
+            "psnr_peak1_db": 79.11560429343672,
+            "max_relative_ref_gt_1e-6": 0.002377179080824089,
+            "half_different_components": 36704,
+            "positive_pair_components": 145152,
+            "max_abs_EV_positive": 0.0034254745991233737,
+            "rms_EV_positive": 0.0006855545491363083
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.001953125,
+            "psnr_peak1_db": 67.7756686180811,
+            "max_relative_ref_gt_1e-6": 0.0024958402662229617,
+            "half_different_components": 48551,
+            "positive_pair_components": 145152,
+            "max_abs_EV_positive": 0.0036052372969618174,
+            "rms_EV_positive": 0.000869573871325869
+          }
+        }
+      }
+    },
+    {
+      "case": "edges-5p5x",
+      "main_shape": [
+        256,
+        352,
+        4
+      ],
+      "linear_shape": [
+        64,
+        64,
+        4
+      ],
+      "parameters": {
+        "linearBaseGain": 2.0,
+        "bgExposureGain": 0.75,
+        "fgExposureGain": 1.25,
+        "GTC": 0.5
+      },
+      "modes": {
+        "host": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "compile_status": 0,
+            "config_status": 0,
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 1,
+            "guided_ABI": "i60@0:8@16@24@32@40Q48f56",
+            "guided_calls": [],
+            "imageblock_pipeline": "<AppleParavirtComputePipelineState: 0x78b2d10380>\n    label = <none> \n    device = <AppleParavirtDevice: 0x10326bd80>\n        name = Apple Paravirtual device",
+            "ivars": {
+              "_baselineExposure": {
+                "offset": 1464,
+                "type": "f"
+              },
+              "_bgLTMGainMapTexture": {
+                "offset": 568,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_brightnessValue": {
+                "offset": 1488,
+                "type": "@\"NSNumber\""
+              },
+              "_cameraInfoByPortType": {
+                "offset": 1528,
+                "type": "@\"NSDictionary\""
+              },
+              "_cmiGuidedFilter": {
+                "offset": 16,
+                "type": "@\"CMIGuidedFilter\""
+              },
+              "_colorManagement": {
+                "offset": 128,
+                "type": "{?=\"inputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputLinearImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputMasks\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"outputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}}"
+              },
+              "_copyStats": {
+                "offset": 1368,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createGuidePipelineStateUsingImageBlock": {
+                "offset": 1280,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createGuidePipelineStateWithoutImageBlock": {
+                "offset": 1272,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createLTMGainMapPipelineStateUsingImageBlock": {
+                "offset": 1288,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_createLTMGainMapPipelineStateWithoutImageBlock": {
+                "offset": 1296,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_cubicSplineToneCurveTexture": {
+                "offset": 624,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_encodeLinearPipelineState": {
+                "offset": 1360,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_faceBasedGlobalExposureBoostRatio": {
+                "offset": 1472,
+                "type": "f"
+              },
+              "_fakeLinearStatsBuffer": {
+                "offset": 1448,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_fgbgMatteTexture": {
+                "offset": 584,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_fgLTMGainMapTexture": {
+                "offset": 576,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_globalHistogramPipelineState": {
+                "offset": 1248,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_globalStatsPipelineState": {
+                "offset": 1264,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_guideTexture": {
+                "offset": 488,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_hueSatLumLUTPipelineState": {
+                "offset": 1344,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_hueSatLumLUTTexByCastTypeForVariant": {
+                "offset": 1416,
+                "type": "@\"NSDictionary\""
+              },
+              "_imageReduction": {
+                "offset": 1224,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_inputBgLTMGainMapTextureMappedRegion": {
+                "offset": 792,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputFgLTMGainMapTextureMappedRegion": {
+                "offset": 824,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputGainMapTexture": {
+                "offset": 104,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputGlobalToneCurveTexture": {
+                "offset": 616,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputImageTexture": {
+                "offset": 32,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputImageTextureMappedRegion": {
+                "offset": 728,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputImageThumbnailTexture": {
+                "offset": 40,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLightMapTexture": {
+                "offset": 552,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLightMapTextureMappedRegion": {
+                "offset": 856,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputLinearBaseGain": {
+                "offset": 1460,
+                "type": "f"
+              },
+              "_inputLinearEncodingGain": {
+                "offset": 1468,
+                "type": "f"
+              },
+              "_inputLinearImageChromaTexture": {
+                "offset": 64,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageLumaTexture": {
+                "offset": 56,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageTexture": {
+                "offset": 48,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearImageTextureMappedRegion": {
+                "offset": 760,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputLinearLightMapTexture": {
+                "offset": 560,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputLinearLightMapTextureMappedRegion": {
+                "offset": 888,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputPersonMaskTexture": {
+                "offset": 80,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputPersonMaskTextureMappedRegion": {
+                "offset": 920,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSkinMaskTexture": {
+                "offset": 88,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSkinMaskTextureMappedRegion": {
+                "offset": 952,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSkyMaskTexture": {
+                "offset": 96,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSkyMaskTextureMappedRegion": {
+                "offset": 984,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_inputSmallLightMapTexture": {
+                "offset": 520,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSmallLinearLightMapTexture": {
+                "offset": 528,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_inputSRLCoefficientsBuf": {
+                "offset": 1424,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_inputSRLCurveParameter": {
+                "offset": 1432,
+                "type": "f"
+              },
+              "_inputStatisticsByStatsKey": {
+                "offset": 640,
+                "type": "@\"NSDictionary\""
+              },
+              "_inputStatisticsByStatsType": {
+                "offset": 632,
+                "type": "@\"NSDictionary\""
+              },
+              "_inputStyle": {
+                "offset": 24,
+                "type": "@\"CMISmartStyleV1\""
+              },
+              "_instanceLabel": {
+                "offset": 1480,
+                "type": "@\"NSString\""
+              },
+              "_internalTuningParams": {
+                "offset": 608,
+                "type": "@\"SmartStyleRendererPlist\""
+              },
+              "_linearGuideTexture": {
+                "offset": 496,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_linearStatsBuf": {
+                "offset": 480,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_localHistogramStatsAll": {
+                "offset": 1240,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_logicalImageSize": {
+                "offset": 680,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToBgLTMGainMapScale": {
+                "offset": 1112,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToFgLTMGainMapScale": {
+                "offset": 1128,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputImageScale": {
+                "offset": 1080,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLightMapScale": {
+                "offset": 1144,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLinearImageScale": {
+                "offset": 1096,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputLinearLightMapScale": {
+                "offset": 1160,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputPersonMaskScale": {
+                "offset": 1176,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputSkinMaskScale": {
+                "offset": 1192,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_logicalImageToInputSkyMaskScale": {
+                "offset": 1208,
+                "type": "{CGSize=\"width\"d\"height\"d}"
+              },
+              "_mainAllocatorLock": {
+                "offset": 460,
+                "type": "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+              },
+              "_metalContext": {
+                "offset": 8,
+                "type": "@\"FigMetalContext\""
+              },
+              "_outputCodedLinearMetadata": {
+                "offset": 1520,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputCodedLinearTexture": {
+                "offset": 1512,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputGainMapTexture": {
+                "offset": 112,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputImageStatistics": {
+                "offset": 1496,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputImageStatisticsExtended": {
+                "offset": 1504,
+                "type": "@\"NSMutableDictionary\""
+              },
+              "_outputImageTexture": {
+                "offset": 72,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputImageTextureMappedRegion": {
+                "offset": 1016,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_outputSmallLightMapTexture": {
+                "offset": 536,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_outputSmallLinearLightMapTexture": {
+                "offset": 544,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_paramsBuf": {
+                "offset": 464,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_personMasksValidHint": {
+                "offset": 1476,
+                "type": "f"
+              },
+              "_processingType": {
+                "offset": 648,
+                "type": "i"
+              },
+              "_renderingParamsFromStatsPipelineState": {
+                "offset": 1352,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_renderRegionRect": {
+                "offset": 696,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_renderSmartStylePipelineStateUsingImageBlock": {
+                "offset": 1304,
+                "type": "[2@\"<MTLComputePipelineState>\"]"
+              },
+              "_renderSmartStylePipelineStateWithoutImageBlock": {
+                "offset": 1320,
+                "type": "[2@\"<MTLComputePipelineState>\"]"
+              },
+              "_sceneType": {
+                "offset": 664,
+                "type": "@\"NSString\""
+              },
+              "_semanticStyleSceneType": {
+                "offset": 672,
+                "type": "i"
+              },
+              "_sharedAccessAllocator": {
+                "offset": 448,
+                "type": "@\"FigMetalAllocator\""
+              },
+              "_sharedAccessAllocatorLock": {
+                "offset": 456,
+                "type": "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+              },
+              "_sharedEvent": {
+                "offset": 1384,
+                "type": "@\"<MTLSharedEvent>\""
+              },
+              "_sharedEventListener": {
+                "offset": 1376,
+                "type": "@\"MTLSharedEventListener\""
+              },
+              "_sharedEventSignal": {
+                "offset": 1392,
+                "type": "Q"
+              },
+              "_shouldCreateLTMGainMap": {
+                "offset": 1401,
+                "type": "B"
+              },
+              "_shouldUpsampleInputPersonMask": {
+                "offset": 1400,
+                "type": "B"
+              },
+              "_skinMatteTexture": {
+                "offset": 592,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_skyMatteTexture": {
+                "offset": 600,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_smallLightMapTexture": {
+                "offset": 504,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_smallLinearLightMapTexture": {
+                "offset": 512,
+                "type": "@\"<MTLTexture>\""
+              },
+              "_srlSemanticKind": {
+                "offset": 1440,
+                "type": "i"
+              },
+              "_statsBuf": {
+                "offset": 472,
+                "type": "@\"<MTLBuffer>\""
+              },
+              "_statsComputationRect": {
+                "offset": 1048,
+                "type": "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+              },
+              "_sumPersonAndSkinCounts": {
+                "offset": 1256,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_texturesToPurge": {
+                "offset": 1408,
+                "type": "@\"NSMutableSet\""
+              },
+              "_tuningParameters": {
+                "offset": 1536,
+                "type": "@\"NSDictionary\""
+              },
+              "_tuningParameterVariant": {
+                "offset": 656,
+                "type": "@\"NSString\""
+              },
+              "_updateBaseGainWithStats": {
+                "offset": 1232,
+                "type": "@\"<MTLComputePipelineState>\""
+              },
+              "_useFaceBasedGlobalExposureBoostRatio": {
+                "offset": 1436,
+                "type": "B"
+              },
+              "_useLiveMetalAllocations": {
+                "offset": 1456,
+                "type": "B"
+              },
+              "_useSemanticSRL": {
+                "offset": 1437,
+                "type": "B"
+              },
+              "_useSemanticSRLByDefault": {
+                "offset": 1457,
+                "type": "B"
+              },
+              "_YCbCrToRGBColorConversionPipelineState": {
+                "offset": 1336,
+                "type": "@\"<MTLComputePipelineState>\""
+              }
+            },
+            "mode": "host",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "bada407763522210b53df7b4e7a0f05e28a825351c19ae42ddad85d9b3147384",
+            "params_SHA_before": "bada407763522210b53df7b4e7a0f05e28a825351c19ae42ddad85d9b3147384",
+            "plain_pipeline": "<AppleParavirtComputePipelineState: 0x78b2d10540>\n    label = <none> \n    device = <AppleParavirtDevice: 0x10326bd80>\n        name = Apple Paravirtual device",
+            "process_status": 0,
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "should_create_LTM_maps": 1,
+            "srl_flag_offset_0x59d": 0,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "25b3bdbb0b645439198ec8d2a16b44c6558be73b4cd28f1e64070484abd2da19",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "40144b6e1cf4a41e2b36d17ff44797dcfe1bbec8601be93513d3d2821d093de7",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "25b3bdbb0b645439198ec8d2a16b44c6558be73b4cd28f1e64070484abd2da19",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "082e6ab6dbec2429045b8c3d052c118206451b12084abb6eb6986310b5f28b4e",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "4a18eb8024f6108681b0e4d2ab635a05322a27255c2b46da573f924a47cec153",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 73.89301834608702,
+              "max_relative_ref_gt_1e-6": 0.0012610340479192938,
+              "half_different_components": 1539,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0018181414389794005,
+              "rms_EV_positive": 0.0003796088429386531
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.001953125,
+              "psnr_peak1_db": 69.44614207886642,
+              "max_relative_ref_gt_1e-6": 0.0012738853503184713,
+              "half_different_components": 1280,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.001838999663781139,
+              "rms_EV_positive": 0.00035246667817743864
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.92236328125,
+              "psnr_peak1_db": 2.814424638212307,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 265728,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 1.748046875,
+              "psnr_peak1_db": -2.5898582653134623,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 265728,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.9482421875,
+              "psnr_peak1_db": 2.8122287239291097,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 264192,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 1.82421875,
+              "psnr_peak1_db": -2.592064596499287,
+              "max_relative_ref_gt_1e-6": null,
+              "half_different_components": 264192,
+              "positive_pair_components": 0,
+              "max_abs_EV_positive": null,
+              "rms_EV_positive": null
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0,
+                "mean_abs_gradient_y": 0.0,
+                "max_abs_gradient": 0.0,
+                "edge_jump_mean": 0.0,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 0,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.002584383132224522,
+                "mean_abs_gradient_y": 0.00046667171530403415,
+                "max_abs_gradient": 0.1502685546875,
+                "edge_jump_mean": 0.04471428479114971,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 264192,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.978515625,
+                "psnr_peak1_db": 2.801697644417045,
+                "max_relative_ref_gt_1e-6": 1.0,
+                "half_different_components": 11904,
+                "positive_pair_components": 0,
+                "max_abs_EV_positive": null,
+                "rms_EV_positive": null
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.0,
+                "mean_abs_gradient_y": 0.0,
+                "max_abs_gradient": 0.0,
+                "edge_jump_mean": 0.0,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 0,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.005169153892756188,
+                "mean_abs_gradient_y": 0.0010657560379109918,
+                "max_abs_gradient": 0.28955078125,
+                "edge_jump_mean": 0.08457251360240901,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 264192,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 1.884765625,
+                "psnr_peak1_db": -2.60250020327378,
+                "max_relative_ref_gt_1e-6": 1.0,
+                "half_different_components": 11904,
+                "positive_pair_components": 0,
+                "max_abs_EV_positive": null,
+                "rms_EV_positive": null
+              }
+            }
+          },
+          "params_unchanged": true
+        },
+        "direct-plain": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 7,
+            "function_constants": {
+              "useImageBlock": false,
+              "useSrlBeforeStats": false
+            },
+            "function_name": "createLTMGainMap",
+            "guided_scope": "Frozen guided_oracle_v3 GDirect: original installed three kernels, radius1 epsilon.05; class allocator fallback is kept explicit",
+            "mode": "direct-plain",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "bada407763522210b53df7b4e7a0f05e28a825351c19ae42ddad85d9b3147384",
+            "params_SHA_before": "bada407763522210b53df7b4e7a0f05e28a825351c19ae42ddad85d9b3147384",
+            "PSO_scope": "Original metallib function, research-created PSO; original host creation identity is asserted only for successful host mode",
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "46373398ec47e9ac0b644d0e9ca859ee3a3c2d0a0b0a47d957a50651609c3201",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "40144b6e1cf4a41e2b36d17ff44797dcfe1bbec8601be93513d3d2821d093de7",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "20fa71e08e31e237b87f94115b4d60a0f85e542a9419bd3c72489da363b5952d",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "082e6ab6dbec2429045b8c3d052c118206451b12084abb6eb6986310b5f28b4e",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "4a18eb8024f6108681b0e4d2ab635a05322a27255c2b46da573f924a47cec153",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-1-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "bdcb773aee402fad37eeeab96cf9d6493486de9ba38dd2f515835a3aa17ba098",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-1-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "15e0f8a668a944d9679fe5fdd430a69c1407255c1a530e19394db0603b18c9c0",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-2-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "ccd0c0a28682c72d71cf8b1161ebfe40d07b7c3dbee6015ba65ab286ae86d073",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-2-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "780abfb31ae6e6c6c3206d6fad55f101615035174dbc3a6f2de707804ca7dcf0",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-4-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "88ad3c315a80bd9993e48ebf819ecc7c83088147f17a5b6c346d04964e67df8b",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-4-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "d5846ddfc950723a9b839540378108e7da536dd0a74a75c79bff0ec10b1fd3b5",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-5-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "bf1d8ad9343c518fbf2cddb6cde2152c37f687f1653b17bcd15deb9a8da5ab83",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-5-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "dfeaa5ef296a45687cc3e70b3b89ce3b43d567bfc4810454f4df9d5a7e0ce89d",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 73.89301834608702,
+              "max_relative_ref_gt_1e-6": 0.0012610340479192938,
+              "half_different_components": 1539,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0018181414389794005,
+              "rms_EV_positive": 0.0003796088429386531
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.001953125,
+              "psnr_peak1_db": 69.44614207886642,
+              "max_relative_ref_gt_1e-6": 0.0012738853503184713,
+              "half_different_components": 1280,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.001838999663781139,
+              "rms_EV_positive": 0.00035246667817743864
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.00048828125,
+              "psnr_peak1_db": 85.09589325064569,
+              "max_relative_ref_gt_1e-6": 0.0009380863039399625,
+              "half_different_components": 3512,
+              "positive_pair_components": 265728,
+              "max_abs_EV_positive": 0.0013527380652489606,
+              "rms_EV_positive": 0.00012188258888747163
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 77.93366365890024,
+              "max_relative_ref_gt_1e-6": 0.0009727626459143969,
+              "half_different_components": 4568,
+              "positive_pair_components": 265728,
+              "max_abs_EV_positive": 0.0014027177000903918,
+              "rms_EV_positive": 0.00015767807951077797
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.069580078125,
+              "psnr_peak1_db": 47.55710745451629,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 20467,
+              "positive_pair_components": 264192,
+              "max_abs_EV_positive": 1.2521713162630843,
+              "rms_EV_positive": 0.06806176116679394
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.13427734375,
+              "psnr_peak1_db": 42.13984538569103,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 21806,
+              "positive_pair_components": 264192,
+              "max_abs_EV_positive": 1.2525066939298828,
+              "rms_EV_positive": 0.06806567250410632
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.00256721518318198,
+                "mean_abs_gradient_y": 0.00044112337251823005,
+                "max_abs_gradient": 0.212890625,
+                "edge_jump_mean": 0.051845452724358976,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 265728,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.002584383132224522,
+                "mean_abs_gradient_y": 0.00046667171530403415,
+                "max_abs_gradient": 0.1502685546875,
+                "edge_jump_mean": 0.04471428479114971,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 264192,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.119384765625,
+                "psnr_peak1_db": 38.53507724121612,
+                "max_relative_ref_gt_1e-6": 0.281196089706728,
+                "half_different_components": 1285,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.35749130003344465,
+                "rms_EV_positive": 0.020082780205594942
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.005127195845528772,
+                "mean_abs_gradient_y": 0.0010147650894917553,
+                "max_abs_gradient": 0.41015625,
+                "edge_jump_mean": 0.09821339142628205,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 265728,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.005169153892756188,
+                "mean_abs_gradient_y": 0.0010657560379109918,
+                "max_abs_gradient": 0.28955078125,
+                "edge_jump_mean": 0.08457251360240901,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 264192,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.22998046875,
+                "psnr_peak1_db": 33.1322288687837,
+                "max_relative_ref_gt_1e-6": 0.2967171717171717,
+                "half_different_components": 1414,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.3748638462385855,
+                "rms_EV_positive": 0.020441053818081745
+              }
+            }
+          },
+          "params_unchanged": true
+        },
+        "direct-imageblock": {
+          "native_returncode": 0,
+          "native": {
+            "color_SHA": "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+            "device": "Apple Paravirtual device",
+            "dispatch_count": 7,
+            "function_constants": {
+              "useImageBlock": true,
+              "useSrlBeforeStats": false
+            },
+            "function_name": "createLTMGainMap",
+            "guided_scope": "Frozen guided_oracle_v3 GDirect: original installed three kernels, radius1 epsilon.05; class allocator fallback is kept explicit",
+            "mode": "direct-imageblock",
+            "os": "Version 27.0.1 (Build 26A434)",
+            "params_SHA_after": "bada407763522210b53df7b4e7a0f05e28a825351c19ae42ddad85d9b3147384",
+            "params_SHA_before": "bada407763522210b53df7b4e7a0f05e28a825351c19ae42ddad85d9b3147384",
+            "PSO_scope": "Original metallib function, research-created PSO; original host creation identity is asserted only for successful host mode",
+            "runtime_override": "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+            "scene_inverse_verified": false,
+            "success": true,
+            "supports_Apple4": true,
+            "synthetic_only": true,
+            "textures": {
+              "bg-full": {
+                "dtype": "<f2",
+                "file": "bg-full.f16",
+                "pixel_format": 115,
+                "sha256": "46373398ec47e9ac0b644d0e9ca859ee3a3c2d0a0b0a47d957a50651609c3201",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "bg-small": {
+                "dtype": "<f2",
+                "file": "bg-small.f16",
+                "pixel_format": 115,
+                "sha256": "40144b6e1cf4a41e2b36d17ff44797dcfe1bbec8601be93513d3d2821d093de7",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "fg-full": {
+                "dtype": "<f2",
+                "file": "fg-full.f16",
+                "pixel_format": 115,
+                "sha256": "20fa71e08e31e237b87f94115b4d60a0f85e542a9419bd3c72489da363b5952d",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "fg-small": {
+                "dtype": "<f2",
+                "file": "fg-small.f16",
+                "pixel_format": 115,
+                "sha256": "082e6ab6dbec2429045b8c3d052c118206451b12084abb6eb6986310b5f28b4e",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "gtc": {
+                "dtype": "<f2",
+                "file": "gtc.f16",
+                "pixel_format": 25,
+                "sha256": "ecd55dbf358f40c988a53639184fb454bc08f30c11a718c542f1c5d4f16273f6",
+                "shape": [
+                  1,
+                  256,
+                  1
+                ]
+              },
+              "linear": {
+                "dtype": "<f2",
+                "file": "linear.f16",
+                "pixel_format": 115,
+                "sha256": "0fc8038ef5e3d2e14f71aed8d6ed31bdd34b922d8c6fa101a4c8d43bc8e603fd",
+                "shape": [
+                  64,
+                  64,
+                  4
+                ]
+              },
+              "main": {
+                "dtype": "<f2",
+                "file": "main.f16",
+                "pixel_format": 115,
+                "sha256": "4a18eb8024f6108681b0e4d2ab635a05322a27255c2b46da573f924a47cec153",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-1-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "bdcb773aee402fad37eeeab96cf9d6493486de9ba38dd2f515835a3aa17ba098",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-1-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-1-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "15e0f8a668a944d9679fe5fdd430a69c1407255c1a530e19394db0603b18c9c0",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-2-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "ccd0c0a28682c72d71cf8b1161ebfe40d07b7c3dbee6015ba65ab286ae86d073",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-2-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-2-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "780abfb31ae6e6c6c3206d6fad55f101615035174dbc3a6f2de707804ca7dcf0",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-4-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "88ad3c315a80bd9993e48ebf819ecc7c83088147f17a5b6c346d04964e67df8b",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-4-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-4-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "d5846ddfc950723a9b839540378108e7da536dd0a74a75c79bff0ec10b1fd3b5",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-5-slot-2": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-2.f16",
+                "pixel_format": 115,
+                "sha256": "bf1d8ad9343c518fbf2cddb6cde2152c37f687f1653b17bcd15deb9a8da5ab83",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              },
+              "stage-5-slot-3": {
+                "dtype": "<f2",
+                "file": "stage-5-slot-3.f16",
+                "pixel_format": 115,
+                "sha256": "dfeaa5ef296a45687cc3e70b3b89ce3b43d567bfc4810454f4df9d5a7e0ce89d",
+                "shape": [
+                  256,
+                  352,
+                  4
+                ]
+              }
+            }
+          },
+          "small_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 73.89301834608702,
+              "max_relative_ref_gt_1e-6": 0.0012610340479192938,
+              "half_different_components": 1539,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.0018181414389794005,
+              "rms_EV_positive": 0.0003796088429386531
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.001953125,
+              "psnr_peak1_db": 69.44614207886642,
+              "max_relative_ref_gt_1e-6": 0.0012738853503184713,
+              "half_different_components": 1280,
+              "positive_pair_components": 11904,
+              "max_abs_EV_positive": 0.001838999663781139,
+              "rms_EV_positive": 0.00035246667817743864
+            }
+          },
+          "guided_reference_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.00048828125,
+              "psnr_peak1_db": 85.09589325064569,
+              "max_relative_ref_gt_1e-6": 0.0009380863039399625,
+              "half_different_components": 3512,
+              "positive_pair_components": 265728,
+              "max_abs_EV_positive": 0.0013527380652489606,
+              "rms_EV_positive": 0.00012188258888747163
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.0009765625,
+              "psnr_peak1_db": 77.93366365890024,
+              "max_relative_ref_gt_1e-6": 0.0009727626459143969,
+              "half_different_components": 4568,
+              "positive_pair_components": 265728,
+              "max_abs_EV_positive": 0.0014027177000903918,
+              "rms_EV_positive": 0.00015767807951077797
+            }
+          },
+          "bilinear_comparison": {
+            "bg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.069580078125,
+              "psnr_peak1_db": 47.55710745451629,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 20467,
+              "positive_pair_components": 264192,
+              "max_abs_EV_positive": 1.2521713162630843,
+              "rms_EV_positive": 0.06806176116679394
+            },
+            "fg": {
+              "nonfinite_components": 0,
+              "max_abs": 0.13427734375,
+              "psnr_peak1_db": 42.13984538569103,
+              "max_relative_ref_gt_1e-6": 1.0,
+              "half_different_components": 21806,
+              "positive_pair_components": 264192,
+              "max_abs_EV_positive": 1.2525066939298828,
+              "rms_EV_positive": 0.06806567250410632
+            }
+          },
+          "edge_diagnostics": {
+            "bg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.00256721518318198,
+                "mean_abs_gradient_y": 0.00044112337251823005,
+                "max_abs_gradient": 0.212890625,
+                "edge_jump_mean": 0.051845452724358976,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 265728,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.002584383132224522,
+                "mean_abs_gradient_y": 0.00046667171530403415,
+                "max_abs_gradient": 0.1502685546875,
+                "edge_jump_mean": 0.04471428479114971,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 264192,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.119384765625,
+                "psnr_peak1_db": 38.53507724121612,
+                "max_relative_ref_gt_1e-6": 0.281196089706728,
+                "half_different_components": 1285,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.35749130003344465,
+                "rms_EV_positive": 0.020082780205594942
+              }
+            },
+            "fg": {
+              "native_guided": {
+                "mean_abs_gradient_x": 0.005127195845528772,
+                "mean_abs_gradient_y": 0.0010147650894917553,
+                "max_abs_gradient": 0.41015625,
+                "edge_jump_mean": 0.09821339142628205,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 265728,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "bilinear": {
+                "mean_abs_gradient_x": 0.005169153892756188,
+                "mean_abs_gradient_y": 0.0010657560379109918,
+                "max_abs_gradient": 0.28955078125,
+                "edge_jump_mean": 0.08457251360240901,
+                "below_small_global_min_components": 0,
+                "above_small_global_max_components": 0,
+                "positive_components": 264192,
+                "interpretation": "Diagnostics against the same synthetic field; gradients alone do not certify fewer halos or physical recovery"
+              },
+              "center_sample_anchor": {
+                "nonfinite_components": 0,
+                "max_abs": 0.22998046875,
+                "psnr_peak1_db": 33.1322288687837,
+                "max_relative_ref_gt_1e-6": 0.2967171717171717,
+                "half_different_components": 1414,
+                "positive_pair_components": 11904,
+                "max_abs_EV_positive": 0.3748638462385855,
+                "rms_EV_positive": 0.020441053818081745
+              }
+            }
+          },
+          "params_unchanged": true
+        }
+      },
+      "native_mode_comparison": {
+        "host__direct-imageblock": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.92236328125,
+            "psnr_peak1_db": 2.8144962334716843,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 265728,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 1.748046875,
+            "psnr_peak1_db": -2.5897653188982366,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 265728,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          }
+        },
+        "host__direct-plain": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.92236328125,
+            "psnr_peak1_db": 2.8144962334716843,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 265728,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 1.748046875,
+            "psnr_peak1_db": -2.5897653188982366,
+            "max_relative_ref_gt_1e-6": 1.0,
+            "half_different_components": 265728,
+            "positive_pair_components": 0,
+            "max_abs_EV_positive": null,
+            "rms_EV_positive": null
+          }
+        },
+        "direct-plain__direct-imageblock": {
+          "bg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-small": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 11904,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "bg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 265728,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          },
+          "fg-full": {
+            "nonfinite_components": 0,
+            "max_abs": 0.0,
+            "psnr_peak1_db": "inf",
+            "max_relative_ref_gt_1e-6": 0.0,
+            "half_different_components": 0,
+            "positive_pair_components": 265728,
+            "max_abs_EV_positive": 0.0,
+            "rms_EV_positive": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "true_photographs": 0,
+  "global_inverse_complete": false,
+  "local_inverse_complete": false,
+  "acceptance_complete": false
+}

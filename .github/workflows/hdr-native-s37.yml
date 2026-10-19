@@ -1,0 +1,108 @@
+name: hdr-native-s37
+on:
+  push:
+    branches: ['research/vm-native-20261019-hdr-s37']
+  workflow_dispatch:
+jobs:
+  full-photo-candidates:
+    runs-on: xcode-27
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      VM_DISABLE_RESIDENCY_SETS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare encrypted full-size candidate experiment
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s37"; mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/encrypted"; mkdir -m 700 "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          df -k / > "$W/out/disk-before.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          gpg --homedir "$W/gnupg" --batch --import research/semantic-styles/archive-public.asc > "$W/out/key-import.log" 2>&1
+          python3 -m pip install --quiet 'numpy==2.3.4' pillow opencolorio OpenEXR > "$W/out/dependencies.log" 2>&1
+      - name: Original RGB LTM operator on five full-size photos
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s37.py > "$W/out/driver.log" 2>&1
+      - name: Seal aggregate text and encrypted inventories
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out'; rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<5_000_000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':False,'photos_used':True,'public_output_scope':'Aggregate text only; all reconstructible arrays, EXRs and previews are encrypted separately','whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-aggregate-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-private-previews
+          path: ${{ env.W }}/encrypted/previews.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-IMG_2600-full-encrypted
+          path: ${{ env.W }}/encrypted/IMG_2600-full.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-IMG_2604-full-encrypted
+          path: ${{ env.W }}/encrypted/IMG_2604-full.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-IMG_2608-full-encrypted
+          path: ${{ env.W }}/encrypted/IMG_2608-full.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-IMG_0032-full-encrypted
+          path: ${{ env.W }}/encrypted/IMG_0032-full.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s37-IMG_0033-full-encrypted
+          path: ${{ env.W }}/encrypted/IMG_0033-full.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Remove only this job temporary plaintext and ciphertext
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"

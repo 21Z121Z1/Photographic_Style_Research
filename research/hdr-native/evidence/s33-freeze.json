@@ -1,0 +1,34 @@
+{
+  "scope": "Existing synthetic S32 provider/CPU/GPU decode decomposition, no new encoding or photo",
+  "upstream_sha256": "907be588e641ba3ec55a6aa5e0cf6ba9eca5bceae9e602c3f3b3010f2b3ed8bb",
+  "source_sha256": {
+    "run_hdr_s33.py": "9ee005e5dea739247c71c4b840d75bc608d70d242fb009aed47dd0c83841dd26",
+    "decode_layers_s33.m": "a58810e6a3d0e22c38fe01e7ac198a1f58c7c367e66a3a4166d89dc1a99798d4",
+    "hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f"
+  },
+  "cases": [
+    [
+      6,
+      8
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      1,
+      12
+    ]
+  ],
+  "cache_modes": [
+    0,
+    1
+  ],
+  "working": "No CI color management; CPU CGContext uses original CGImage color space to avoid a new CMS transform",
+  "row_order": "Direct comparison and vertical-flip diagnostic separately; no best-score selection",
+  "all_old_gates_masks_unchanged": true
+}
