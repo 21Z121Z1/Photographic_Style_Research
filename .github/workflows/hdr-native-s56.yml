@@ -1,0 +1,71 @@
+name: hdr-native-s56
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s56']
+  workflow_dispatch:
+jobs:
+  scalar-light-map-production:
+    runs-on: xcode-27
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare bounded private workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s56"; mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/secure" "$W/gnupg"
+          chmod 700 "$W/private" "$W/secure" "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          python3 -m pip install --quiet --only-binary=:all: 'numpy==2.3.4' > "$W/out/dependencies.log" 2>&1
+      - name: Download encrypted scalar maps only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          S55_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s56.json'))['asset_id'])")
+          S55_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${S55_ASSET} --jq .size)
+          [[ "$S55_BYTES" =~ ^[0-9]+$ ]] && (( S55_BYTES < 100000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${S55_ASSET} -H 'Accept: application/octet-stream' > "$W/input-maps.gpg"
+      - name: Test original histogram PSO and conditional scalar-map decoder
+        env:
+          HDR_S55_INPUT_SESSION: ${{ secrets.HDR_S55_INPUT_SESSION }}
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s56.py > "$W/out/driver.log" 2>&1
+      - name: Seal public aggregate text only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt','.ll'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<700000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'source_scope':'original macOS scalar-map PSO on synthetic inputs; encrypted real scalar-map compatibility only','public_spatial_real_data':False,'whole_Apple_binary_uploaded':False,'files':rows},indent=2)+chr(10))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s56-scalar-map-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove only own runner private and temporary data
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"
