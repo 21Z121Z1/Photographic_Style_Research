@@ -1,0 +1,42 @@
+name: semantic-s21-numerical-contract
+on:
+  push:
+    branches: ['research/vm-native-20261019-s21']
+  workflow_dispatch:
+jobs:
+  contract:
+    runs-on: xcode-27
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify build and compile public probe
+        run: |
+          set -euo pipefail
+          test "$(sw_vers -buildVersion)" = 26A434
+          mkdir s21
+          sw_vers > s21/os.txt
+          clang -O2 -fobjc-arc research/semantic-styles/semantic_contract_s21.m -framework Foundation -framework Metal -o "$RUNNER_TEMP/semantic-contract-s21" > s21/build.log 2>&1
+      - name: Qualify device contract and reassociation
+        run: |
+          "$RUNNER_TEMP/semantic-contract-s21" s21 > s21/probe.log 2>&1
+      - name: Text manifest
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import pathlib,hashlib,json,os
+          p=pathlib.Path('s21');p.mkdir(exist_ok=True)
+          files=[]
+          for f in sorted(p.rglob('*')):
+            if f.is_file() and f.name!='manifest.json':
+              with f.open('rb') as src:h=hashlib.file_digest(src,'sha256').hexdigest()
+              files.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':h})
+          (p/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','photos_used':False,'files':files},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-s21-public-text
+          path: s21/
+          retention-days: 1
