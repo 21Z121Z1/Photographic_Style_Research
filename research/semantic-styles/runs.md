@@ -112,3 +112,17 @@ S14–17 preflight确认PR全状态0、其他advertised ref0、源码可达持�
 9次均26A434、xcode-27-arm64 20261012.0260.1、Provisioner20261006.597，retention-days1；立即下载，所有ZIP/GPG/全manifest通过。5次成功只涉及同一IMG_2810捕获的512×384；不是5张照片。实际运行源码以各commit为准。完整ZIP/cipher/manifest/log SHA与每次runner清理结果见run-provenance-s22-s26-20261019.json。
 
 九份ZIP合计465709B；原capture、Apple整份二进制与人物像素明文未上传。source保留在持久研究分支（清理时62bb7ab），PR/refs检查后删除S22–S26临时分支、2个secret、release416945146。本地密文归档/原件保留，master=ce25aa34fe3dac8541730971d6957401fca3e1dc未变。原全域紧区间和A验收仍false。
+
+
+<!-- SEMANTIC-S27-S28-20261019 -->
+
+### S27–S28 曲线与局部 tone
+
+|run / branch / commit|artifact|结论|
+|---|---|---|
+|[39227962537](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39227962537) / research/vm-native-20261019-private-s27 / e24b329e3b4bd02518bf119c702f4d23742dce35|12176180324 / 20335666B|原保留PSO8项参数隔离；两种UI参数复位对实际S5捕获0差；local-neutral与整UI复位不同；合成曲线图及ACES私密预览|
+|[39228892493](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39228892493) / research/vm-native-20261019-private-s28 / b3e5ef8d7cff90f31a4e0c8f072db8658559c833|12175437434 / 10755B|只读S27副本；保存后float32 map maxrel2.0647e-8；8bit量化.001194139超1e-3；4224合成曲线逆区间0漏包；无新原生捕获|
+
+均26A434 / xcode-27-arm64 20261012.0260.1 / Provisioner20261006.597，retention-days=1，已立即下载并核对ZIP、GPG和全部manifest。S27 ZIP SHA92dc95ce0a1193c72a55f149d8dd4bda3dd9c1ce202cfb32bc7ae83b209fedaf，S28 ZIP SHAd164ac02e830c0222ab4cecb809acec3d1fb15dbd480866188795daab4a94ba2；cipher/manifest/log完整SHA见run-provenance-s27-s28.json。单张512×384的counterfactual不算原inverse或scene验收。
+
+两个exact commit保留在research/vm-native-20261018后，PR head/base全状态与其他refs均无引用，清理3个本轮secret、草稿release417095262及S27/S28 private分支；两job always明文清理成功，master ce25aa34fe3dac8541730971d6957401fca3e1dc未变。S27准备期API按tag查询draft返回404，查release list确认已完整建立后续跑，只有一次S27 run。S28复用密文artifact，不再上传照片。原件/旧归档保持，人物明文从未提交/上传。

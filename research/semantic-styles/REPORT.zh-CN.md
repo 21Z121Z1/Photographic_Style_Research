@@ -330,3 +330,59 @@ S25/S26回到未启用capture的原路径，原PSO构造参数与保留对象匹
 
 
 最终完整性审计见[final-audit-s26-20261019.json](evidence/final-audit-s26-20261019.json)：27份归档、48次已有预览SHA检查、7份冻结/原件、11份历史文本前缀和91条证据引用通过；新增10条claim、68条指标。audit_pass=true仅表示证据审计通过，inverse/global certificate、A_phase_complete和acceptance_complete仍为false。
+
+
+<!-- SEMANTIC-S27-S28-20261019 -->
+
+### S27–S28：提亮曲线、Styles tone 与独立 LTM 逆调整
+
+**结论：可以沿苹果已识别的局部算子构造条件逆/参数重定向；直接设置相反 tone 不等价。拍摄端人脸提亮的真实曲线仍缺同帧统计，不能用 tone 中和冒充恢复 scene。A 阶段尚未完成，原1e-3、mask和未通过状态全部保留。** 本节为 SEMANTIC-20261018 增量，不重跑旧 bit-exact 搜索，也未触碰冻结模型、Apple Log 或两份 consumer-goto-v8 未跟踪文件。
+
+**已验证数值，SEM-73/74：tone 是一套联动参数。** 同一 IMG_2810 的原捕获中，semanticTone `(bgLTM, fgLTM, bgExposure, fgExposure, GTC_mix, bgHR, fgHR)` 为：
+
+|UI tone|bg/fg LTM|bg/fg exposure|GTC mix|bg/fg HR|
+|---|---|---|---|---|
+|0|1 / 1|4.138462 / 4.138462|1|1 / 1|
+|+.35|.790000 / .624692|4.138462 / 2.512260|.65|1 / 1|
+|−.35|.855539 / 1|4.573000 / 4.138462|1|.895 / 1|
+
+从+.35到0共34个4B字段变化；到−.35为37个，包含BG/FG、haze及皮肤相关字段。S27复用原Apple保留PSO，把参数换为既有tone0/负tone值，分别与S5实际UI捕获的589824个RGB half分量 **0差**，RGBA字节也完全相同。其余纹理/缓冲/bytes均保持，原PSO hydration为0差；参数改变不能被称为只去LTM。证据：`tone-params-s27.json:1`、`tone-retarget-s27.aggregate.json:1`，原AIR `0010.ll:426,5976`，run39227962537 / artifact12176180324。
+
+**已验证数值，SEM-74/75：只恢复消费端局部混合量的原生对照。** 只把params+620/+624的bgLTM/fgLTM向1移动；GTC混合量、GTC纹理、曝光、c/d、guides、统计、各matte及皮肤参数均保持。只改一个背景或人物字段也分别输出。8项干预每项的目标参数以外变化字节=0，12份可读纹理在全部试验后SHA仍等于原捕获；原主图SHA未变。
+
+|原生参数对照|允许字段数|相对+.35输出的亮度EV中位数|亮度EV范围|
+|---|---:|---:|---:|
+|local-neutral|2|+0.120105|[-0.106692, +0.679563]|
+|local-half-neutral|2|+0.061659|[-0.053512, +0.383569]|
+|background-local-neutral|1|+0.116481|[-0.106692, +0.377322]|
+|person-local-neutral|1|+0.000000|[-0.006127, +0.678068]|
+|gtc-weight-only-reset|1|-0.018898|[-0.442758, +0.008236]|
+|semantic-tone-reset|7|+0.120105|[-0.106692, +0.679563]|
+|ui-tone-reset|34|-0.328682|[-0.975556, +0.585433]|
+|opposite-ui-tone|37|-0.319311|[-1.311509, +0.363886]|
+
+EV在原+.35正值mask与目标正值交集上统计；local-neutral为186949/196608像素、95.08717855%，UI reset为186763像素，**这是比值可表示域，未用于缩小旧验收mask**。local-neutral人物区域中位数+.396107EV、背景+.118228EV；它甚至让本图更亮，不能当成已去除人脸提亮。local-neutral的校正场梯度p99/max=.132478/.482739EV每512网格像素，Laplacian p99=.309887EV；只是边缘代理，未据此宣称无光晕或设新阈值。数据是已知输入的参数反事实oracle，**不是由最终Y成功反推出原输入**；不是5712×4284全分辨率或新留出照片验收。
+
+**已验证静态（条件代数），SEM-78：按施加方式逆，但要换回正确分支。** 在固定anchor/GTC/曝光、A≥half(1/255)、HR=1的连续单分支中：
+
+```text
+Z = min(A, l*A + (1-l)*T),  0<l<=1
+若 Z<T: A=Z
+若 Z>=T: A=T+(Z-T)/l
+```
+
+因此逆曲线亮部斜率是1/l；不能简单设置−tone。即使把原shader的l外推到1/l，保留原min仍会裁掉需要上抬的分支。l=0的plateau、近黑、GTC/输入clamp应返回整个可行区间。背景/人物T不同时，先按实际m混合前向分段曲线，再对合成曲线求逆，不能混合两条曲线的逆值。完整PSO中l还通过 `q=mix(mix(d,c,l_b),mix(d,c,l_f),m)` 影响后续BG/FG/skin，故上式只反解该连续分量；最终Y的参数重定向仍需 `F_target(set_inverse(F_applied)(Y))`，连同全部后续算子/歧义传播。GTM、LTM、语义三条逆向保持独立；没有把key1整体改称LTM。
+
+**已验证数值（模型条件），SEM-79：新增 `spatial_curve_retarget.py`。** 输入为已知共同knots、with/without成对曲线、固定非负空间权重、应用坐标及显式实现误差界。先精确有理数混合曲线，再全曲线区间反解；plateau/端点输出区间，非有限观察明确拒绝，满足精确1/1000最坏相对误差才给candidate。float16/32 observation cell选项只是调用者声明的RN存储模型，未认证原PSO舍入合同。S28在33种**合成权重**×128输入共4224查询区间漏包0、候选超阈值0；这些33种权重与未通过的33个皮肤点无关。小型11组标量检查包含平坦段[.25,.75]、端点与非有限拒绝。反例：50/50混合、真值x=.5时y=.375；正确逆=.5，先各自求逆再混合=.4791667，误差4.16667%。这只闭环声明的标量模型，`full_consumer_domain_certified=false`。
+
+**已验证数值（条件图示），SEM-77；实际曲线待实机，SEM-80。** 新图 `evidence/brightening-and-local-curves-s27.png` 三栏依次展示：S19原ARM allocator在合成uniform/dark/.25预算下的with/without曲线；`C_without(set_inverse(C_with)(y))`；固定T=.12时的Styles局部连续分支。图中β=25/128来自已知j内部权重预算，曲线来自合成统计，不是IMG_2810真实曲线或像素EV。图不含人物像素。单独去提亮应在已识别应用域用实际成对曲线；若空间应用是固定曲线插值，先得到C_p再反解。只有实际应用为线性luma比例时，才可用 `gain_p=Y_without/Y_with` 等比缩放RGB以保色度；若实际为每通道曲线/CCM，需按该链反解，不能预设同一灰度gain。j不是直接gain，不能默认除j。当前保守face/body预算与matte仍是**假设（SEM-81）**，不由本图定幅。
+
+**已验证数值，SEM-76：Gain Map承载与逆解精度分开。** local-neutral native反事实的RGB比值可用RGB Gain Map记录；用亮度比值缩放RGB时，相对原生反事实的最大RGB相对差达18.5866%，故该完整consumer对照不是纯无色偏灰度增益。S28只读S27副本验证实际保存的float32 log2 RGB map：maxrelative=2.064713117e-08、maxabs=9.696719594e-09、PSNR=180.426785dB；覆盖仍186949像素。这是**输出比值表示自洽**，没有估计精度或原生完整逆往返含义。S27未存储float64比值的约2.2e-16仅是算术恒等，不能冒充保存后指标。
+
+单独8-bit逐通道均匀log2-gain量化：luma EV MAE=0.0005503993531、maxEV=0.001531142565，maxrelative=0.001194139255 **超过1e-3**，PSNR=70.685009dB。三通道每½LSB上界为[.001490304,.001555620,.001721795]EV；不含LinearThumbnail压缩、HEIF编码/元数据及原相机误差。相同range若用9-bit均匀log量化，实数理论相对上界约0.00059573841，这里只给量化代数界，未宣称HEIF传输验收。原SDR载体未重编码，不新增decoded-SDR零差结论。
+
+**失败假设/证据边界，SEM-82。** 另存“把+.35最终输出直接塞回−.35输入”的as-is诊断，与tone0的PSNR20.9107dB。但本次texture0对CI decoded primary的严格像素控制maxabs=.000968456、half化后=.0009765625，未通过控制，故不把该顺序实验当成同域逆解证据。tone联动、原参数反事实及条件代数是上述判断的有效依据。未重跑旧精度拟合，C01–C05及原33点全域紧外包络仍未认证、原完整逆/scene验收不改。
+
+**已验证数值，SEM-83：复现与隐私。** S27 run39227962537 / artifact12176180324（20335666B），ZIP SHA `92dc95ce0a1193c72a55f149d8dd4bda3dd9c1ce202cfb32bc7ae83b209fedaf`；S28 run39228892493 / artifact12175437434（10755B），ZIP SHA `d164ac02e830c0222ab4cecb809acec3d1fb15dbd480866188795daab4a94ba2`。均26A434 / xcode-27-arm6420261012.0260.1；ZIP/GPG/53+8文件manifest和runner明文清理步骤通过。S28仅对副本数值验证，没重拍/重抓native。人物输出只在密文artifact及本地private预览，10次预览输入SHA前后不变、固定ACES1.0 SDR Video/P3-D65→sRGB/0EV。来源commit保留到持久研究分支后，检查PR head/base全状态与refs，清掉3个secret、草稿release417095262及2条private分支，master未变。临时准备的draft-tag查询返回404，已用release列表核实完整资源并从断点续跑；未重复上传或排队。
+
+后续：**runner可推进**独立LTM参数重定向的更多照片/全尺寸、固定上下文的集合输出及C01–C05覆盖证明；**待实机**匹配iPhone18Pro/iOS27.0.1同帧j/j1/WithoutFaceBoost的曲线、N/B/T/hist与应用域，原Studio统计及RAW2679/2408。GTC-weight-only和UI reset不冒充物理global/local分解；实际拍摄端曲线取得并通过原门槛后，才可用本次条件曲线工具给scene相关结论。

@@ -96,3 +96,16 @@ S11 SkinSmooth / S13 Mattify各两个非零配置的原生往返通过1e-3，覆
 **可交给macOS runner，R-SEM-C03/C04/C05。** 前提满足后才运行证明器。声明域是完整有限half主图RGB（alpha与全部外部上下文固定），除非已有全值域空间独立证明，变量邻居一起纳入；F(X)=原完整Y，投影F0(X)。输出逐点有向舍入上下界、非有限/未定义/未决分支和域覆盖证书。需要证明所有被排除盒不含可行根；原1e-3、186949 mask保持，缺一盒即不通过。已认证的仅是格式条件范围和既有非唯一性下界。S24所有有限码中心采样通过不证明所有texel组合或原384高归一化坐标的全域精度。测试oracle在界内是必要回归，仍不能替代覆盖。
 
 **待实机，D-CAM/D-STUDIO/D-RAW/UI。** 沿用前文可执行方案。必须使用匹配iPhone18Pro/iOS27.0.1实际build的同一冻结帧，分别原j、仅j=1、WithoutFaceBoost，记录N、B/T、face hist/ROI、allocateTone约束/曲线、GTC/c/d重算和应用前后RGB，逐次恢复可写公共T，识别应用域后算EV。不能以27.0/24A446地址或β预算当样张像素界。原Studio需真实逐人stats/instance/blur/editedTex等，RAW需IMG_2679/IMG_2408配对；Photos UI需真实图库。三阶段逆向独立，Apple Log与固定ACES保持。A仍因可推进的全域认证缺口未完成，不是单因RAW。
+
+
+<!-- SEMANTIC-S27-S28-20261019 -->
+
+### S27–S28 后：把曲线重定向接到真实提亮与 LTM
+
+**可交给macOS runner（R-CURVE/R-LTM）：** S27只改变原PSO params+620/+624得local-neutral，param636单独对照GTC权重，整UI reset另列。对更多照片与原尺寸捕获分别保留原输入/全部c/d/GTC/guides/mattes/stats/ROI；每个干预列allowed offsets并比对其余参数字节/纹理SHA。参考`tone_retarget_s27.inc`。已知原输入仅作反事实oracle，不作逆解种子；若从Y反解，须继续传播原33点的集合/未认证状态，不能拿native重渲染称inverse成功。五照片/≥2冻结后留出、原half/float/1e-3与全图mask门槛不变，当前一张512×384不满足。全域合同C01–C05仍是runner问题，不归成“没有GPU”。
+
+**待实机（D-PAIR-CURVE）：** 在已列匹配iPhone18Pro/iOS27.0.1的A→A、A→B→A冻结帧方案中，原j、仅j=1、WithoutFaceBoost分别导出每格with/without曲线、实际knots/长度/布局、真实空间插值/引导权重、curve coordinate、曲线前后RGB。保留N、face hist/ROI、B/T/V、allocateTone全部constraints/budget/tuning、c/d/GTC变化及global曲线；每次恢复公共T。逐算子验证它究竟混合曲线节点、输出gain还是已处理RGB，权重是否依赖被反解的输入；未通过不得调用固定权重模型冒充相机。j改变global时，单列global曲线反事实，不用任意重分配成local。
+
+输入前后在实际域先重建原曲线前向，按原half逐位/float maxabs1e-5且PSNR60dB门槛核验。确认固定非负曲线混合时，调用`spatial_curve_retarget.retarget_curve_point`，先混合前向曲线再求整个逆区间。给出实现误差合同与observation storage；float16 RN cell只是声明模型，不能套成原PSO合同。plateau/clamp/近黑/非有限分别标mask/区间，绝不夹成一个RGB答案。只有实际线性luma应用已被验证才用标量gain缩放RGB；逐通道/CCM按真实链反解。分别输出语义去提亮、local-only、global-only，再组合；不标定203nit、不改Apple Log。RAW精度仍需IMG_2679/IMG_2408。
+
+**已验证数值的工程边界：** S28的4224是合成标量查询，33种权重与33皮肤点无关；不认证完整consumer纹理/fast/nonfinite域。float32保存Gain Map表示通过1e-3，8bit均匀log量化maxrelative=.001194139失败，后者不含HEIF或thumbnail误差。不得用float64未存储比值的机器精度当传输误差。固定ACES预览从副本生成，输入SHA前后不变；人物预览继续只用加密传输。本轮只重置tone输入的.0009765625 source pixel控制未通过，as-is顺序对照不作同域inverse验收。Studio完整原统计/实图库UI/RAW方案沿用，不以新曲线示意图结案。

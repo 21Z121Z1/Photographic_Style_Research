@@ -1,0 +1,869 @@
+{
+  "scope": "S27 original retained PSO parameter counterfactuals on one known input. S28 copies only: serialized gain-map and conditional scalar curve tests. No camera inverse, no full consumer certification.",
+  "os_build": "26A434",
+  "run_id": "39227962537",
+  "artifact_id": "12176180324",
+  "width": 512,
+  "height": 384,
+  "native_hydration": {
+    "half_differing_components": 0,
+    "max_abs": 0,
+    "max_relative": 0,
+    "pixels": 196608,
+    "psnr_peak1_db": "inf"
+  },
+  "context_mismatches": [],
+  "source_unchanged": true,
+  "fixed_texture_SHA_after_trials": {
+    "0": "6e2290dce8eb7fd4d076f4af33468dbddc77e7171cfb542f639a9fba6b2e3b85",
+    "1": "388a5e8327fccdb0aaffaa31240b7f478971bb72b05eda744ed346ffc89808b9",
+    "2": "46b5d5a43d7b47c846aed30348ec87c83ada475fae70527c9ea85a56db6c40b0",
+    "5": "a1cfd9255658ba46ed53c91c9afb488fb2d8790eefab910e96579ae56f53480f",
+    "6": "6f665591e0022452c76d3cc80c434502699ecd0ee456e1f26bbc1ca3f785e76a",
+    "7": "aed7ef0846fe0594acf4b8489fdf11421469207de7d91975c01d490a3490c6bb",
+    "10": "8d6e39dc221122f66765ca1ddfd17185a7119c8de502f9e84b7f8599d5cb6f39",
+    "11": "5b7d8570d16b6099de18c9b613852f42bfadb1e65bb9e4c5727346048a86785e",
+    "12": "cf4493b1e7b7ea8ad78161f848d5d022ea31d717a25a715a6ea3a707abc94d2f",
+    "13": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+    "21": "e88dcdbdc569d045437703b20569fc9914525b4f95cb6197995614a6ff83c0e3",
+    "22": "46e2096b907947368d310929303a04005b39c4a278e3a7de2225c355b4522694"
+  },
+  "rows": [
+    {
+      "operator": "local-neutral",
+      "native": {
+        "after_sha256": "e8195546656eedc9733c71fa27cdfdee57259e1f79e667f3817b4160ced7c821",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 584825,
+          "max_abs": 0.19677734375,
+          "max_relative": 0.8871224165341812,
+          "pixels": 196608,
+          "psnr_peak1_db": 29.427055161525885
+        },
+        "operator": "local-neutral",
+        "target_fields": [
+          {
+            "after": 1,
+            "before": 0.7900000214576721,
+            "offset": 620
+          },
+          {
+            "after": 1,
+            "before": 0.6246921420097351,
+            "offset": 624
+          }
+        ]
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.19677734375,
+      "change_luma_EV_median": 0.12010539001052803,
+      "change_luma_EV_min": -0.10669240278334824,
+      "change_luma_EV_max": 0.6795633241462979,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": 0.3961066595011453,
+          "min_EV": 0.05369966887544376,
+          "max_EV": 0.6795633241462979
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": 0.11822766001618872,
+          "min_EV": -0.10669240278334824,
+          "max_EV": 0.3773215078195307
+        }
+      },
+      "correction_gradient_EV_p99": 0.13247831922157732,
+      "correction_gradient_EV_max": 0.48273876006409466,
+      "correction_laplacian_EV_p99": 0.30988730825834304,
+      "RGB_gain_representation_max_relative": 2.161346724745552e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 0.1858658709411754,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "local-half-neutral",
+      "native": {
+        "after_sha256": "99e974f52e0eea879b18a5688b0cb41507d6ab04058813319042264bed314d98",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 579524,
+          "max_abs": 0.1005859375,
+          "max_relative": 0.7814845704753962,
+          "pixels": 196608,
+          "psnr_peak1_db": 35.28745796812565
+        },
+        "operator": "local-half-neutral",
+        "target_fields": [
+          {
+            "after": 0.8949999809265137,
+            "before": 0.7900000214576721,
+            "offset": 620
+          },
+          {
+            "after": 0.8123461008071899,
+            "before": 0.6246921420097351,
+            "offset": 624
+          }
+        ]
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.1005859375,
+      "change_luma_EV_median": 0.06165881878477692,
+      "change_luma_EV_min": -0.0535123303875658,
+      "change_luma_EV_max": 0.3835691974104068,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": 0.22103916253429184,
+          "min_EV": 0.02425377958151411,
+          "max_EV": 0.3835691974104068
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": 0.06066047656746781,
+          "min_EV": -0.0535123303875658,
+          "max_EV": 0.1983388239948047
+        }
+      },
+      "correction_gradient_EV_p99": 0.06998010166753606,
+      "correction_gradient_EV_max": 0.27717605059864786,
+      "correction_laplacian_EV_p99": 0.16540431518758067,
+      "RGB_gain_representation_max_relative": 2.161346724745552e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 0.13267257002733446,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "background-local-neutral",
+      "native": {
+        "after_sha256": "ad0655b5b8289be060ba2e4f94ddab5fa4481a258e29033b40bb627ef594732a",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 571988,
+          "max_abs": 0.130859375,
+          "max_relative": 0.55,
+          "pixels": 196608,
+          "psnr_peak1_db": 30.593487314573654
+        },
+        "operator": "background-local-neutral",
+        "target_fields": [
+          {
+            "after": 1,
+            "before": 0.7900000214576721,
+            "offset": 620
+          }
+        ]
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.130859375,
+      "change_luma_EV_median": 0.1164806057036515,
+      "change_luma_EV_min": -0.10669240278334824,
+      "change_luma_EV_max": 0.3773215078195307,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": 0.0,
+          "min_EV": -0.011870639095174098,
+          "max_EV": 0.15741992491071546
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": 0.11822325352600412,
+          "min_EV": -0.10669240278334824,
+          "max_EV": 0.3773215078195307
+        }
+      },
+      "correction_gradient_EV_p99": 0.12618086881836416,
+      "correction_gradient_EV_max": 0.4447997192696955,
+      "correction_laplacian_EV_p99": 0.29992474992127566,
+      "RGB_gain_representation_max_relative": 2.161346724745552e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 0.17145346360067037,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "person-local-neutral",
+      "native": {
+        "after_sha256": "76a8770d42758a42a90937ed111e4e65182e277bb52c5730fc59555c296e8c16",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 18775,
+          "max_abs": 0.19677734375,
+          "max_relative": 0.8553259141494436,
+          "pixels": 196608,
+          "psnr_peak1_db": 35.79286718727476
+        },
+        "operator": "person-local-neutral",
+        "target_fields": [
+          {
+            "after": 1,
+            "before": 0.6246921420097351,
+            "offset": 624
+          }
+        ]
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.19677734375,
+      "change_luma_EV_median": 0.0,
+      "change_luma_EV_min": -0.0061265500154481815,
+      "change_luma_EV_max": 0.6780680715246925,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": 0.39515054244845044,
+          "min_EV": 0.06013041282294314,
+          "max_EV": 0.6780680715246925
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": 0.0,
+          "min_EV": -0.0061265500154481815,
+          "max_EV": 0.011372176087965468
+        }
+      },
+      "correction_gradient_EV_p99": 0.01868738410711597,
+      "correction_gradient_EV_max": 0.522482947061451,
+      "correction_laplacian_EV_p99": 0.05937961545008146,
+      "RGB_gain_representation_max_relative": 2.1053118096595562e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 0.17274891501531445,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "gtc-weight-only-reset",
+      "native": {
+        "after_sha256": "5b8a055e9b90fbde436e0beec4fb7048e44a5605bce5cbc8e1d0004faa7ae6f5",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 514513,
+          "max_abs": 0.015380859375,
+          "max_relative": 0.32761310452418096,
+          "pixels": 196608,
+          "psnr_peak1_db": 46.5158340636151
+        },
+        "operator": "gtc-weight-only-reset",
+        "target_fields": [
+          {
+            "after": 1,
+            "before": 0.6499999761581421,
+            "offset": 636
+          }
+        ]
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.015380859375,
+      "change_luma_EV_median": -0.018897534962660813,
+      "change_luma_EV_min": -0.4427579900212232,
+      "change_luma_EV_max": 0.008236420900548644,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": -0.03690504328376016,
+          "min_EV": -0.4427579900212232,
+          "max_EV": -0.0039112239533420625
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": -0.01837233691232399,
+          "min_EV": -0.3217089642452211,
+          "max_EV": 0.008236420900548644
+        }
+      },
+      "correction_gradient_EV_p99": 0.06686538439673842,
+      "correction_gradient_EV_max": 0.33342269567405197,
+      "correction_laplacian_EV_p99": 0.14421092081996822,
+      "RGB_gain_representation_max_relative": 2.161346724745552e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 0.15206242436629408,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "semantic-tone-reset",
+      "native": {
+        "after_sha256": "08e0c67773f0a2b337005d6dd594540afd92c9ed8d1ecbcdba5194fad66c27e2",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 584825,
+          "max_abs": 0.19677734375,
+          "max_relative": 0.8871224165341812,
+          "pixels": 196608,
+          "psnr_peak1_db": 29.427055161525885
+        },
+        "operator": "semantic-tone-reset",
+        "target_fields": [
+          {
+            "after": 1,
+            "before": 0.7900000214576721,
+            "offset": 620
+          },
+          {
+            "after": 1,
+            "before": 0.6246921420097351,
+            "offset": 624
+          },
+          {
+            "after": 4.138461589813232,
+            "before": 4.138461589813232,
+            "offset": 628
+          },
+          {
+            "after": 4.138461589813232,
+            "before": 2.5122599601745605,
+            "offset": 632
+          },
+          {
+            "after": 1,
+            "before": 0.6499999761581421,
+            "offset": 636
+          },
+          {
+            "after": 1,
+            "before": 1,
+            "offset": 640
+          },
+          {
+            "after": 1,
+            "before": 1,
+            "offset": 644
+          }
+        ]
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.19677734375,
+      "change_luma_EV_median": 0.12010539001052803,
+      "change_luma_EV_min": -0.10669240278334824,
+      "change_luma_EV_max": 0.6795633241462979,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": 0.3961066595011453,
+          "min_EV": 0.05369966887544376,
+          "max_EV": 0.6795633241462979
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": 0.11822766001618872,
+          "min_EV": -0.10669240278334824,
+          "max_EV": 0.3773215078195307
+        }
+      },
+      "correction_gradient_EV_p99": 0.13247831922157732,
+      "correction_gradient_EV_max": 0.48273876006409466,
+      "correction_laplacian_EV_p99": 0.30988730825834304,
+      "RGB_gain_representation_max_relative": 2.161346724745552e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 0.1858658709411754,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "ui-tone-reset",
+      "native": {
+        "after_sha256": "c67fa922a3ed79405400906d9af185ab8de85375e0b6bacf199fce02e5b2e288",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 589818,
+          "max_abs": 0.34375,
+          "max_relative": 2.3592417061611375,
+          "pixels": 196608,
+          "psnr_peak1_db": 22.5198462297865
+        },
+        "matches_actual_UI_capture_RGBA": true,
+        "operator": "ui-tone-reset",
+        "target_fields": [
+          {
+            "after": 0,
+            "before": 0.3499999940395355,
+            "offset": 8
+          },
+          {
+            "after": 0,
+            "before": 1.401298464324817e-45,
+            "offset": 452
+          },
+          {
+            "after": 0,
+            "before": -0.17499999701976776,
+            "offset": 456
+          },
+          {
+            "after": 0,
+            "before": 109.81485748291016,
+            "offset": 460
+          },
+          {
+            "after": 0,
+            "before": 114.20469665527344,
+            "offset": 464
+          },
+          {
+            "after": 0,
+            "before": -0.039815355092287064,
+            "offset": 468
+          },
+          {
+            "after": 0,
+            "before": -0.09555758535861969,
+            "offset": 472
+          },
+          {
+            "after": 0,
+            "before": 0.9544961452484131,
+            "offset": 476
+          },
+          {
+            "after": 0,
+            "before": 0.10465896129608154,
+            "offset": 480
+          },
+          {
+            "after": 0,
+            "before": -0.03185258060693741,
+            "offset": 484
+          },
+          {
+            "after": 0,
+            "before": 0.3262717127799988,
+            "offset": 488
+          },
+          {
+            "after": 0.10000000149011612,
+            "before": 0.014885641634464264,
+            "offset": 492
+          },
+          {
+            "after": 0,
+            "before": 0.14185726642608643,
+            "offset": 504
+          },
+          {
+            "after": 0,
+            "before": -0.0993000864982605,
+            "offset": 508
+          },
+          {
+            "after": 0,
+            "before": -0.07092863321304321,
+            "offset": 512
+          },
+          {
+            "after": 0,
+            "before": 0.24825021624565125,
+            "offset": 524
+          },
+          {
+            "after": 0,
+            "before": 0.25534307956695557,
+            "offset": 528
+          },
+          {
+            "after": 1,
+            "before": 0.9645357131958008,
+            "offset": 532
+          },
+          {
+            "after": 0.20000000298023224,
+            "before": 0.1615000069141388,
+            "offset": 556
+          },
+          {
+            "after": 0,
+            "before": 0.08749999850988388,
+            "offset": 560
+          },
+          {
+            "after": 0,
+            "before": 0.22752073407173157,
+            "offset": 564
+          },
+          {
+            "after": 0,
+            "before": 0.45504146814346313,
+            "offset": 568
+          },
+          {
+            "after": 0,
+            "before": 0.22752073407173157,
+            "offset": 572
+          },
+          {
+            "after": 1,
+            "before": 1.0437500476837158,
+            "offset": 576
+          },
+          {
+            "after": 0,
+            "before": 0.1574999988079071,
+            "offset": 580
+          },
+          {
+            "after": 0,
+            "before": 0.08749999850988388,
+            "offset": 584
+          },
+          {
+            "after": 0,
+            "before": 0.503125011920929,
+            "offset": 592
+          },
+          {
+            "after": 0,
+            "before": -0.22238825261592865,
+            "offset": 596
+          },
+          {
+            "after": 0,
+            "before": 0.14000000059604645,
+            "offset": 600
+          },
+          {
+            "after": 0,
+            "before": -0.17499999701976776,
+            "offset": 616
+          },
+          {
+            "after": 1,
+            "before": 0.7900000214576721,
+            "offset": 620
+          },
+          {
+            "after": 1,
+            "before": 0.6246921420097351,
+            "offset": 624
+          },
+          {
+            "after": 4.138461589813232,
+            "before": 2.5122599601745605,
+            "offset": 632
+          },
+          {
+            "after": 1,
+            "before": 0.6499999761581421,
+            "offset": 636
+          }
+        ],
+        "vs_actual_UI_capture_S5": {
+          "half_differing_components": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "pixels": 196608,
+          "psnr_peak1_db": "inf"
+        }
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186763,
+      "representation_coverage": 0.9499257405598959,
+      "all_pixel_max_abs_change": 0.34375,
+      "change_luma_EV_median": -0.3286815177931775,
+      "change_luma_EV_min": -0.9755562488511592,
+      "change_luma_EV_max": 0.5854326133134227,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": -0.32105964700863704,
+          "min_EV": -0.7439802428901554,
+          "max_EV": 0.5327021213766803
+        },
+        "background": {
+          "pixels": 180913,
+          "median_EV": -0.3288229073907758,
+          "min_EV": -0.9755562488511592,
+          "max_EV": 0.5854326133134227
+        }
+      },
+      "correction_gradient_EV_p99": 0.22745747996688515,
+      "correction_gradient_EV_max": 0.9286369010341042,
+      "correction_laplacian_EV_p99": 0.5435397637648265,
+      "RGB_gain_representation_max_relative": 7.61295788314393e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 34102.897129185585,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    },
+    {
+      "operator": "opposite-ui-tone",
+      "native": {
+        "after_sha256": "2f9b73967456458f34597afd42d52357e6e36d65f759c61e642921cdee3c540b",
+        "before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+        "changed_bytes_outside_target": 0,
+        "difference_from_reference": {
+          "half_differing_components": 589782,
+          "max_abs": 0.29296875,
+          "max_relative": 1.324170616113744,
+          "pixels": 196608,
+          "psnr_peak1_db": 23.177538342509678
+        },
+        "matches_actual_UI_capture_RGBA": true,
+        "operator": "opposite-ui-tone",
+        "target_fields": [
+          {
+            "after": -0.3499999940395355,
+            "before": 0.3499999940395355,
+            "offset": 8
+          },
+          {
+            "after": 0,
+            "before": 1.401298464324817e-45,
+            "offset": 452
+          },
+          {
+            "after": 0,
+            "before": -0.17499999701976776,
+            "offset": 456
+          },
+          {
+            "after": 0,
+            "before": 109.81485748291016,
+            "offset": 460
+          },
+          {
+            "after": 0,
+            "before": 114.20469665527344,
+            "offset": 464
+          },
+          {
+            "after": 0,
+            "before": -0.039815355092287064,
+            "offset": 468
+          },
+          {
+            "after": 0,
+            "before": -0.09555758535861969,
+            "offset": 472
+          },
+          {
+            "after": 0,
+            "before": 0.9544961452484131,
+            "offset": 476
+          },
+          {
+            "after": 0,
+            "before": 0.10465896129608154,
+            "offset": 480
+          },
+          {
+            "after": 0,
+            "before": -0.03185258060693741,
+            "offset": 484
+          },
+          {
+            "after": 0.08330640941858292,
+            "before": 0.3262717127799988,
+            "offset": 488
+          },
+          {
+            "after": 0.1567429006099701,
+            "before": 0.014885641634464264,
+            "offset": 492
+          },
+          {
+            "after": -0.14185726642608643,
+            "before": 0,
+            "offset": 500
+          },
+          {
+            "after": 0,
+            "before": 0.14185726642608643,
+            "offset": 504
+          },
+          {
+            "after": 0,
+            "before": -0.0993000864982605,
+            "offset": 508
+          },
+          {
+            "after": 0,
+            "before": -0.07092863321304321,
+            "offset": 512
+          },
+          {
+            "after": 0,
+            "before": 0.24825021624565125,
+            "offset": 524
+          },
+          {
+            "after": 0.11348581314086914,
+            "before": 0.25534307956695557,
+            "offset": 528
+          },
+          {
+            "after": 1,
+            "before": 0.9645357131958008,
+            "offset": 532
+          },
+          {
+            "after": 0,
+            "before": 0.1615000069141388,
+            "offset": 556
+          },
+          {
+            "after": 0,
+            "before": 0.08749999850988388,
+            "offset": 560
+          },
+          {
+            "after": 0,
+            "before": 0.22752073407173157,
+            "offset": 564
+          },
+          {
+            "after": 0,
+            "before": 0.45504146814346313,
+            "offset": 568
+          },
+          {
+            "after": 0.08284902572631836,
+            "before": 0.22752073407173157,
+            "offset": 572
+          },
+          {
+            "after": 1,
+            "before": 1.0437500476837158,
+            "offset": 576
+          },
+          {
+            "after": -0.1742052137851715,
+            "before": 0.1574999988079071,
+            "offset": 580
+          },
+          {
+            "after": 0.06968208402395248,
+            "before": 0.08749999850988388,
+            "offset": 584
+          },
+          {
+            "after": 0,
+            "before": 0.503125011920929,
+            "offset": 592
+          },
+          {
+            "after": 0,
+            "before": -0.22238825261592865,
+            "offset": 596
+          },
+          {
+            "after": 0,
+            "before": 0.14000000059604645,
+            "offset": 600
+          },
+          {
+            "after": 0.3942561447620392,
+            "before": -0.17499999701976776,
+            "offset": 616
+          },
+          {
+            "after": 0.8555392622947693,
+            "before": 0.7900000214576721,
+            "offset": 620
+          },
+          {
+            "after": 1,
+            "before": 0.6246921420097351,
+            "offset": 624
+          },
+          {
+            "after": 4.572999954223633,
+            "before": 4.138461589813232,
+            "offset": 628
+          },
+          {
+            "after": 4.138461589813232,
+            "before": 2.5122599601745605,
+            "offset": 632
+          },
+          {
+            "after": 1,
+            "before": 0.6499999761581421,
+            "offset": 636
+          },
+          {
+            "after": 0.8949999809265137,
+            "before": 1,
+            "offset": 640
+          }
+        ],
+        "vs_actual_UI_capture_S5": {
+          "half_differing_components": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "pixels": 196608,
+          "psnr_peak1_db": "inf"
+        }
+      },
+      "reference_eligible_pixels": 186949,
+      "representation_positive_pixels": 186949,
+      "representation_coverage": 0.9508717854817709,
+      "all_pixel_max_abs_change": 0.29296875,
+      "change_luma_EV_median": -0.319311399775868,
+      "change_luma_EV_min": -1.3115091291648364,
+      "change_luma_EV_max": 0.3638862000562954,
+      "regions": {
+        "person": {
+          "pixels": 5230,
+          "median_EV": -0.31164968381935826,
+          "min_EV": -0.8362629293625637,
+          "max_EV": 0.17158154719611857
+        },
+        "background": {
+          "pixels": 181099,
+          "median_EV": -0.31938194303956996,
+          "min_EV": -1.3115091291648364,
+          "max_EV": 0.3638862000562954
+        }
+      },
+      "correction_gradient_EV_p99": 0.25830311514271437,
+      "correction_gradient_EV_max": 1.0676434216612436,
+      "correction_laplacian_EV_p99": 0.5319847993801007,
+      "RGB_gain_representation_max_relative": 2.630117703218416e-16,
+      "scalar_gain_max_relative_vs_RGB_counterfactual": 4.103444973870737,
+      "inverse_accuracy_measured": false,
+      "camera_inverse_verified": false
+    }
+  ],
+  "preview_sha_checks": 10,
+  "preview_sha_failures": 0,
+  "native_output_vs_CI_P3_max_abs": 0.0,
+  "source_vs_decoded_primary_max_abs": 0.0009684562683105469,
+  "source_vs_half_decoded_primary_max_abs": 0.0009765625,
+  "naive_composition_same_space_verified": false,
+  "naive_composition_vs_UI_zero": {
+    "half_differing_components": 589766,
+    "max_abs": 0.3857421875,
+    "max_relative": 19210.8154296875,
+    "pixels": 196608,
+    "psnr_peak1_db": 20.91070316630764
+  },
+  "naive_composition_usage": "As-is pipeline diagnostic only. Strict source-vs-decoded-P3 pixel control failed; not a certified inverse comparison. UI parameter asymmetry and isolated native counterfactuals supply the actual evidence.",
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0,
+    "orientation": "irot3: clockwise 90 degrees"
+  },
+  "private_previews_committed_or_uploaded_plaintext": false,
+  "actual_camera_brightening_curve_available": false,
+  "old_acceptance_gate_modified": false,
+  "acceptance_complete": false
+}

@@ -115,7 +115,7 @@
   ],
   "semantic_generated_utc": "2026-10-19T08:24:35.814366+00:00",
   "semantic_acceptance_complete": false,
-  "updated_utc": "2026-10-19T08:24:35.814366+00:00",
+  "updated_utc": "2026-10-19T09:26:13.788854+00:00",
   "semantic_acceptance": {
     "A_phase_complete": false,
     "original_mask_coverage": 0.9508717854817709,
@@ -2340,6 +2340,235 @@
           "sha256": "e1685233a963ad3f4446081fe7572ba381ddff9d3edf570993b89bff248f8ec3"
         }
       ]
+    },
+    {
+      "id": "SEM-73",
+      "category": "semantic/tone-curve",
+      "status": "已验证数值",
+      "claim": "IMG_2810 UI tone0/+0.35/-0.35 changes coupled parameter sets, not an antisymmetric local-gain control. Positive semantic bg/fg LTM=.79/.624692 and GTCmix=.65; negative=.855539/1 and GTCmix1. Positive-to-zero changes34 fields, positive-to-negative37.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/tone-params-s27.json",
+          "line": 1,
+          "sha256": "bd2a633fcf16e333d9791a03b4b4c92fda367d4b55eae3330adfb386fef8e27d"
+        },
+        {
+          "file": "semantic-20261018/s27/tone-retarget-s27.aggregate.json",
+          "line": 1,
+          "sha256": "be1b5e90e01f58a27fe3ff528b9a0e775903380d4976fff0428164f5dbd4dd19"
+        }
+      ]
+    },
+    {
+      "id": "SEM-74",
+      "category": "semantic/tone-curve",
+      "status": "已验证数值",
+      "claim": "S27 original retained PSO hydration and immutable S5 context match0. Eight interventions have zero parameter bytes changed outside declared targets and all12 readable texture SHA unchanged. Only+620/+624 change for local-neutral. Whole-UI parameter resets match the actual S5 zero/negative-tone RGBA outputs byte-exact. Known-source counterfactuals, not recovered-input inversion.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/tone-retarget-s27.aggregate.json",
+          "line": 1,
+          "sha256": "be1b5e90e01f58a27fe3ff528b9a0e775903380d4976fff0428164f5dbd4dd19"
+        },
+        {
+          "file": "repo/research/semantic-styles/tone_retarget_s27.inc",
+          "line": 1,
+          "sha256": "1a85fa66123a9b48c27b62a87de1beda5e07ee31c1d6ed742638c2d11073de57"
+        }
+      ]
+    },
+    {
+      "id": "SEM-75",
+      "category": "semantic/tone-curve",
+      "status": "已验证数值",
+      "claim": "On one512x384 IMG_2810 fixed context, local-neutral luma median+0.120105EV(range-.106692..+.679563) versus full UI reset-.328682EV. Local ratio mask186949 pixels/95.08717855%; it is not a changed inverse acceptance mask. Edge metrics are diagnostics, not halo/ringing acceptance. Not actual camera face-boost removal.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/tone-retarget-s27.aggregate.json",
+          "line": 1,
+          "sha256": "be1b5e90e01f58a27fe3ff528b9a0e775903380d4976fff0428164f5dbd4dd19"
+        }
+      ]
+    },
+    {
+      "id": "SEM-76",
+      "category": "semantic/tone-curve",
+      "status": "已验证数值",
+      "claim": "S28 checks the S27 serialized float32 RGB ratio map on copies: maxrelative2.0647131e-8. Luma-only ratio differs from native local-neutral RGB by maxrelative.1858659. Uniform8bit log gain maxrelative.001194139 fails1e-3; errors are representation/quantization only, not camera inverse or HEIF/thumbnail transfer accuracy.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39228892493/selected/out/serialized-map-validation.json",
+          "line": 1,
+          "sha256": "b8b5065fbd16feef415c0b65b2d116d6f5ff8951b45a98c85724e38d81164fdf"
+        },
+        {
+          "file": "semantic-20261018/s27/tone-retarget-s27.aggregate.json",
+          "line": 1,
+          "sha256": "be1b5e90e01f58a27fe3ff528b9a0e775903380d4976fff0428164f5dbd4dd19"
+        },
+        {
+          "file": "semantic-20261018/s27/quantization-bound-s28.json",
+          "line": 1,
+          "sha256": "ab02ae544fd256d2dd2057ae25c89d357dafd6379e92083ea039b8cd386adf39"
+        }
+      ]
+    },
+    {
+      "id": "SEM-77",
+      "category": "semantic/tone-curve",
+      "status": "已验证数值",
+      "claim": "Synthetic scientific figure reuses S19 original ARM allocateTone curve outputs with uniform/dark/.25 context and beta25/128. It visualizes conditional C_without o set_inverse(C_with), not IMG_2810 actual camera curve, spatial weights, domain or j-to-EV amplitude. No photo pixels in this figure.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/figure-provenance-s27.json",
+          "line": 1,
+          "sha256": "385d6751617f5a3560b4278493d975f2b9c568130ec5fbf03d4c33c27c5deb10"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/brightening-and-local-curves-s27.png",
+          "line": 1,
+          "sha256": "892e291652abbcd207b3326fee3dde5be55c84b4467c7b7a559ff755f72eb8f6"
+        }
+      ]
+    },
+    {
+      "id": "SEM-78",
+      "category": "semantic/tone-curve",
+      "status": "已验证静态",
+      "claim": "For fixedT,HR1,A>=threshold and0<l<=1, continuous local branch Z=min(A,l*A+(1-l)*T) has inverse A=Z belowT, T+(Z-T)/l aboveT. Negative UI tone is not this inverse, and keeping forward min with reciprocal l clips the needed expansion. Mix fixed spatial forward curves before set inversion; full PSO retarget remains F_target o set_inverse(F_applied).",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 5976,
+          "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1"
+        },
+        {
+          "file": "repo/research/semantic-styles/spatial_curve_retarget.py",
+          "line": 1,
+          "sha256": "dbcbb416776ee55ddfd326a68a675b28924f8e3d754f3c4e27338dbf2e3d925b"
+        }
+      ]
+    },
+    {
+      "id": "SEM-79",
+      "category": "semantic/tone-curve",
+      "status": "已验证数值",
+      "claim": "Exact rational conditional scalar spatial inverse:4224 synthetic queries(33weights x128inputs) with zero interval misses/candidate violations; these33weights are unrelated to33skin pixels. Plateau returns[.25,.75] and no1e-3 point candidate. Blend-separate-inverses counterexample gives.4791667 versus correct.5. This does not certify native full consumer/fast/texture/nonfinite domain.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39228892493/selected/out/spatial-field-validation.json",
+          "line": 1,
+          "sha256": "c399201a30f2684bdd41c182bc8fc959452d044cc42ebfac57d4fe8721d0039d"
+        },
+        {
+          "file": "semantic-20261018/runs/39228892493/selected/out/scalar-tests/spatial-curve-scalar-tests.json",
+          "line": 1,
+          "sha256": "0629865e3caf4dfd9b406566400422e3e9e409df1f488ceb7b3d49950c21fe30"
+        }
+      ]
+    },
+    {
+      "id": "SEM-80",
+      "category": "semantic/camera-brightening-curve",
+      "status": "待实机",
+      "claim": "Actual j/j1/WithoutFaceBoost same-frame paired curves, N/B/T/face histogram, allocation constraints and spatial/application domain remain missing on matched iPhone18Pro/iOS27.0.1. Need per-operator native forward controls before assigning physical EV or using scalar-luma versus per-channel curve inversion; do not treat synthetic beta curve or OPPO base+gain as a no-style truth.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 1,
+          "sha256": "422aeb0ff1c875c04e1407265ac473cc03620e86579a6895a40ad2ca4976ec2d"
+        }
+      ]
+    },
+    {
+      "id": "SEM-81",
+      "category": "semantic/brightening-estimate",
+      "status": "假设",
+      "claim": "Conservative face/body gain budgets/matte assignment remain engineering hypotheses. If the actual operator is fixed scalar curve blending in a confirmed linear-luma space, a conditional neutral/applied luma ratio can preserve chromaticity; actual camera space, weights and amplitude have not been identified.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/figure-provenance-s27.json",
+          "line": 1,
+          "sha256": "385d6751617f5a3560b4278493d975f2b9c568130ec5fbf03d4c33c27c5deb10"
+        },
+        {
+          "file": "repo/research/semantic-styles/spatial_curve_retarget.py",
+          "line": 1,
+          "sha256": "dbcbb416776ee55ddfd326a68a675b28924f8e3d754f3c4e27338dbf2e3d925b"
+        }
+      ]
+    },
+    {
+      "id": "SEM-82",
+      "category": "semantic/acceptance-boundary",
+      "status": "runner",
+      "claim": "No new complete inverse/global hull certificate. Original33skin tight hull and C01-C05 remain unproved; one-photo native retarget controls and4224synthetic queries do not satisfy five-photo/full-resolution inverse gates. As-is negative-after-positive diagnostic has unpassed source pixel control and is not used as same-domain inverse evidence.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/tone-retarget-s27.aggregate.json",
+          "line": 1,
+          "sha256": "be1b5e90e01f58a27fe3ff528b9a0e775903380d4976fff0428164f5dbd4dd19"
+        },
+        {
+          "file": "semantic-20261018/runs/39228892493/selected/out/spatial-field-validation.json",
+          "line": 1,
+          "sha256": "c399201a30f2684bdd41c182bc8fc959452d044cc42ebfac57d4fe8721d0039d"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/consumer-contract-audit-s24.json",
+          "line": 1,
+          "sha256": "a91e29c97738d196ae1a8726614edc91660b0f86ccf9abcb50e2c45dde8e147d"
+        }
+      ]
+    },
+    {
+      "id": "SEM-83",
+      "category": "semantic/tone-transport",
+      "status": "已验证数值",
+      "claim": "Both runs archived with ZIP/GPG/full manifest and runner plaintext cleanup. After exact source commits preserved remotely, PR head/base all states and refs checked:3own secrets,1draftrelease,2privatebranches deleted; master unchanged. All10preview source SHA stable, fixedACES. No plaintext people or whole Apple binaries uploaded; originals/history retained.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s27/run-provenance-s27-s28.json",
+          "line": 1,
+          "sha256": "95c6dee4f023b5df8bb0cf17062405d2855ccb81a73d4e07b651b4c2f61a5fc3"
+        },
+        {
+          "file": "semantic-20261018/s27/transport-cleanup-s27-s28.json",
+          "line": 1,
+          "sha256": "5c5381371ea41c609e2be43e9320b268f110038a68265faf90cb95b07d384b06"
+        },
+        {
+          "file": "semantic-20261018/s27/tone-retarget-s27.aggregate.json",
+          "line": 1,
+          "sha256": "be1b5e90e01f58a27fe3ff528b9a0e775903380d4976fff0428164f5dbd4dd19"
+        }
+      ]
     }
-  ]
+  ],
+  "tone_curve_followup": {
+    "native_runs": [
+      "39227962537"
+    ],
+    "copy_validation_runs": [
+      "39228892493"
+    ],
+    "same_source_UI_reset_byte_exact": true,
+    "actual_camera_brightening_curve_identified": false,
+    "conditional_curve_model_only": true,
+    "acceptance_complete": false,
+    "old_gates_modified": false,
+    "float32_saved_ratio_max_relative": 2.0647131171539605e-08,
+    "eight_bit_uniform_log_within_1e3": false
+  }
 }

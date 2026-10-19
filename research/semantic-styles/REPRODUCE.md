@@ -150,3 +150,26 @@ cd ~/work/styles-gtm-ltm
 输入需重新在本地把原IMG_2810加密，创建临时secret和草稿release，更新workflow中的asset ID与cipher SHA；旧release/secret已删除，不能直接拿旧ID派发。archive output公钥仍为28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA，私钥绝不上runner。S5 ZIP应保持SHA55f845778415b22276bc92e166416e60a29df6ce559df8f3fd71f6f5911d12fc；如果artifact12140624073已过期，使用本地runs/39139035394/artifact.zip中的同一密文ZIP上传为新的临时release asset，仅把driver的download URI改为该asset并保留ZIP SHA检查，临时session secret从本地GPG流式取得。不要上传展开的S5/person原图或整份Apple程序二进制。
 
 每次完成立刻下载到新的runs/<id>/artifact.zip，并用已有`semantic-20261018/scripts/archive_semantic_bounded.py <id> --materialize-limit 12000000`（外层scope）流式检查GPG/manifest。所有结果包括失败都不可覆盖。workflow的W/out只允许文本后再GPG；capture/程序blob必须留W/backend并由always清理。对新private分支检查PR head/base全状态、其他refs、源码已达持久研究分支后，删除新secret/release/分支。本轮准备/归档/清理实际脚本另存在s22-s26/finalization-scripts供审阅。
+
+
+<!-- SEMANTIC-S27-S28-20261019 -->
+
+### S27–S28 曲线/局部tone复现
+
+本地只做轻量精确标量及只读证据审计；输出必须选不存在目录。原生/照片数值一律runner：
+
+```bash
+cd ~/work/styles-gtm-ltm
+./scripts/local-python-scope.sh -I repo/research/semantic-styles/test_spatial_curve_retarget_s27.py "$PWD/semantic-20261018/scalar-replay-new"
+./scripts/local-python-scope.sh -I repo/research/semantic-styles/audit_tone_s27_s28.py "$PWD"
+```
+
+标量检查期望11组通过，包含“先合成再反解”反例与plateau。审计通过只表示证据一致，原A/acceptance仍false。原先S26审计是该时点快照，有固定claims行数；新审计验证本轮增量及旧claims/文件前缀，不重复旧图像计算。
+
+仅在确有新实验时重跑：使用新research/vm-native-<date>-private-sNN和新的workflow push过滤，不碰旧分支/workflow、不force-push，artifact retention-days1。S27入口`run_tone_s27.py`/`tone_retarget_s27.inc`，只改allowed params字段；它调用旧FrozenFilterMain保持Apple Log。S28入口`validate_tone_s28.py`，只读取S27密文副本，不重新抓native。脚本内run/artifact ID和SHA均是当次来源，不能不更新就复用已清理资源。
+
+S27照片输入须用新AES256密文、新临时secret/草稿release，更新asset ID/cipher SHA。S5原ZIP SHA55f845778415b22276bc92e166416e60a29df6ce559df8f3fd71f6f5911d12fc；S27 ZIP SHA92dc95ce0a1193c72a55f149d8dd4bda3dd9c1ce202cfb32bc7ae83b209fedaf。若artifact已过期，从本地不可变artifact.zip上传**同一密文ZIP**到新临时asset，改下载URI但保留ZIP SHA。session-key仅由本地GPG流式导出并经stdin设新secret，不写argv/log、不传输出私钥。S27 out中只放批准的像素/预览和文本再整体GPG；完整Apple二进制/capture不准加入。
+
+runner数值命令在授权W/临时输入准备后运行：`python3 research/semantic-styles/run_tone_s27.py`；S28须W和S27_ARCHIVE_SESSION，`python3 research/semantic-styles/validate_tone_s28.py`。单独科学图（无人物像素）可在runner运行`python3 research/semantic-styles/plot_brightening_s27.py "$W/figure-new"`，使用已经提交的S19合成allocator曲线，不重跑ARM实验。
+
+下载到新的runs/<id>/artifact.zip后，外层scope运行`semantic-20261018/scripts/archive_semantic_bounded.py <id> --materialize-limit 18000000`验证GPG/SHA/manifest。run完成、归档通过、源commit保留到持久研究分支，核对PR head/base全状态和全部refs后删新secret/release/private分支。完整本轮实际准备、断点续跑、归档、清理脚本保存在本地semantic-20261018/s27/finalization-scripts，旧原件/归档不覆盖。真人ACES预览本地索引见s27/PREVIEWS.md，不在公开仓库放图。
