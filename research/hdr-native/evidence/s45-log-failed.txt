@@ -1,0 +1,17 @@
+independent-display-intent	Import output public key only	﻿2026-10-19T13:40:14.2746310Z ##[group]Run set -euo pipefail
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2746930Z [36;1mset -euo pipefail[0m
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2747570Z [36;1mgpg --batch --import research/semantic-styles/archive-public.asc > "$W/secure/key-import.log" 2>&1[0m
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2748100Z [36;1mgpg --dump-options | rg -x -- '--override-session-key-fd'[0m
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2793320Z shell: /bin/bash -e {0}
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2793590Z env:
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2793780Z   OPENBLAS_NUM_THREADS: 1
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2794150Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2794830Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2795350Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2795780Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2796150Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2796470Z   W: /Users/runner/work/_temp/hdr-s45
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2797110Z   GNUPGHOME: /Users/runner/work/_temp/hdr-s45/gnupg
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.2797380Z ##[endgroup]
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.5122810Z /Users/runner/work/_temp/f8715a81-f418-4335-8fb6-4aa65148180e.sh: line 3: rg: command not found
+independent-display-intent	Import output public key only	2026-10-19T13:40:14.5162930Z ##[error]Process completed with exit code 127.

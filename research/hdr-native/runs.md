@@ -46,3 +46,7 @@ ZIP SHA `8884bf17ec4b09323c947962926abb01e13b185217778595ac8275681211478a`; mani
 |S44|research/vm-native-20261019-hdr-s44|e6138d042336fdcf2d2bc5ccb4e758455c7339a6|39259341766|12190285705|26A434/20261012.0260.1|GPG/gzip prerequisite failed, zero new images; secret removed, exact cause not inferred|
 
 ZIP `8d9b49f19960bd9b7bb9ed13a95ec4fddb106857a92d498c7b92035da1d90e31` / manifest `44fda22697d45c96f5018c5eace974003c8fcdf6435df11b7214249560597872` verified; immutable driver.log retained.
+
+|S45|research/vm-native-20261019-hdr-s45|24d618dd7467fce33452d9bc012891b8ade40389|39262070080|12190163508|26A434/20261012.0260.1|missing-rg preflight exit127; zero new images; secret removed|
+
+ZIP `50a57237ace2cf0770d8ed43d8c387883ca496ad14f010ea34ee50a42418ec2f` / manifest `4b9b6ba029122012d364f65abb0251e533adf896694fe6b6dbfa24bf2a6d37ef` verified; log-failed archived before fix.

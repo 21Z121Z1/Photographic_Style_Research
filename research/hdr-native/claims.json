@@ -603,6 +603,25 @@
           "sha256": "68004dd2a244ba7a8ad13deb27d50b4e31ac3689bf68a8bb6c761e2c30877252"
         }
       ]
+    },
+    {
+      "id": "HDR-34",
+      "category": "hdr/runner-environment-boundary",
+      "status": "已验证数值",
+      "claim": "S45在pubkey import之后检查GPG选项时因runner未安装rg而exit127，发生于大输入下载及图像计算之前；原生/显示新输出0，不能计新目标通过。S46只以Python membership替换该环境检查并更新一次性session标签，S44显示数学依赖保持。临时HDR_S45_S42_SESSION已删除并核对空列表。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/s45/log-failed.txt",
+          "line": 1,
+          "sha256": "ab455aaeba9b7242cb1d62f195bda970b01d8190be66f6d00ede154f30c80255"
+        },
+        {
+          "file": "hdr-native-20261019/run-provenance-s45.json",
+          "line": 1,
+          "sha256": "7cab0d60cad8e04844777a722b236bd59cf34eb74ca84c2894e5b7d2df70a6cf"
+        }
+      ]
     }
   ]
 }
