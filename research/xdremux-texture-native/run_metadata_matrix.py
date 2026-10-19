@@ -8,12 +8,14 @@ import sys
 binary, output = sys.argv[1], Path(sys.argv[2])
 output.mkdir(parents=True, exist_ok=True)
 rows = []
-for name in ['inventory', 'requirements-1', 'requirements-2', 'requirements-3', 'synthetic-standard-control', 'synthetic-studio-control',
+for name in ['inventory', 'settings', 'processor-preflight', 'requirements-1', 'requirements-2', 'requirements-3', 'synthetic-standard-control', 'synthetic-studio-control',
              'missing-hardware', 'unsupported-version', 'empty-dictionary']:
     directory = output / name
     command = [binary, str(directory), '--inventory'] if name == 'inventory' else [binary, str(directory), '--case', name]
     if name.startswith('requirements-'):
         command = [binary, str(directory), '--requirements', name.rsplit('-',1)[1]]
+    if name in ['settings','processor-preflight']:
+        command = [binary,str(directory),'--'+name]
     print('NATIVE_PROCESS_BEGIN', name, flush=True)
     try:
         p = subprocess.run(command, capture_output=True, text=True, timeout=60)

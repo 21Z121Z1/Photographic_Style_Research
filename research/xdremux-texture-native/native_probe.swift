@@ -58,6 +58,18 @@ func scalar0(_ target: AnyObject, _ name: String) -> Any? {
         typealias F = @convention(c) (AnyObject, Selector) -> UInt64
         return unsafeBitCast(method_getImplementation(m), to: F.self)(target, NSSelectorFromString(name))
     }
+    if let m = signature(target, name, [], "q") {
+        typealias F = @convention(c) (AnyObject, Selector) -> Int64
+        return unsafeBitCast(method_getImplementation(m), to: F.self)(target, NSSelectorFromString(name))
+    }
+    if let m = signature(target, name, [], "f") {
+        typealias F = @convention(c) (AnyObject, Selector) -> Float
+        return unsafeBitCast(method_getImplementation(m), to: F.self)(target, NSSelectorFromString(name))
+    }
+    if let m = signature(target, name, [], "d") {
+        typealias F = @convention(c) (AnyObject, Selector) -> Double
+        return unsafeBitCast(method_getImplementation(m), to: F.self)(target, NSSelectorFromString(name))
+    }
     return nil
 }
 func safe(_ value: Any?, _ depth: Int = 0) -> Any {
@@ -67,10 +79,11 @@ func safe(_ value: Any?, _ depth: Int = 0) -> Any {
     if let value = value as? String { return value }
     if let value = value as? NSNumber { return value }
     if let array = value as? [Any] { return array.map { safe($0, depth + 1) } }
+    if let set = value as? Set<String> { return set.sorted() }
     if let dict = value as? [String: Any] { return dict.mapValues { safe($0, depth + 1) } }
     let object = value as AnyObject
     var result: [String: Any] = ["class": String(describing: type(of: object))]
-    for key in ["preset", "captureType", "captureMode", "portType", "hardwareModel", "peopleDataVersion", "textureStylePeopleDataVersion", "filmGrainSeed", "persons", "personData", "requiresPersonData", "requiresLinearThumbnail", "imageMetadata", "dictionaryRepresentation"] {
+    for key in ["preset", "intensity", "grain", "version", "numberOfPersons", "personInstances", "captureType", "captureMode", "portType", "hardwareModel", "peopleDataVersion", "textureStylePeopleDataVersion", "filmGrainSeed", "persons", "personData", "requiresPersonData", "requiredChannelNames", "optionalChannelNames", "imageMetadata", "dictionaryRepresentation"] {
         if let v = object0(object, key) { result[key] = safe(v, depth + 1) }
         else if let v = scalar0(object, key) { result[key] = v }
     }
@@ -87,7 +100,7 @@ for name in ["NeutrinoCore", "PhotoImaging", "CMImaging", "CMCapture"] {
     let handle = dlopen(path, RTLD_NOW | RTLD_LOCAL)
     frameworks.append(["path": path, "loaded": handle != nil, "error": handle != nil ? "" : String(cString: dlerror())])
 }
-let shouldInventory = selectedCase == nil && !CommandLine.arguments.contains("--requirements")
+let shouldInventory = selectedCase == nil && !CommandLine.arguments.contains("--requirements") && !CommandLine.arguments.contains("--settings") && !CommandLine.arguments.contains("--processor-preflight")
 if shouldInventory {
 progress("copy raw Objective-C class list")
 var count: UInt32 = 0
@@ -123,10 +136,58 @@ if let pipeline = NSClassFromString("PITextureStylePipelineProcessor") {
         defaults[preset] = safe(object1(pipeline, "defaultTextureStyleDictionaryForPreset:", preset as NSString))
     }
     defaults["inputNames"] = safe(object0(pipeline, "inputNames"))
+    defaults["isAvailable"] = scalar0(pipeline, "isAvailable") ?? NSNull()
+    defaults["isAvailableForTesting"] = scalar0(pipeline, "isAvailableForTesting") ?? NSNull()
+    defaults["testing_override_used"] = false
+    for key in ["bloomConfiguration", "diffusionConfiguration", "filmGrainConfiguration", "glowConfiguration", "halationConfiguration"] {
+        defaults[key] = safe(object0(pipeline, key))
+    }
 }
+if let processor = NSClassFromString("CMITextureStylesProcessor") { defaults["processorAPIVersion"] = scalar0(processor, "APIVersion") ?? NSNull() }
+if let person = NSClassFromString("CMITextureStylesPersonInputData") { defaults["personMetadataFormatVersion"] = scalar0(person, "metadataFormatVersion") ?? NSNull() }
 try writeJSON(defaults, output.appendingPathComponent("defaults.json"))
 }
 if CommandLine.arguments.contains("--inventory") { exit(0) }
+
+if CommandLine.arguments.contains("--settings") {
+    var rows: [[String: Any]] = []
+    for name in ["FigCaptureTextureStyle", "AVCaptureTextureStyle"] {
+        for preset in ["Standard", "Filmic", "Glowy", "Soft", "Studio"] {
+            for intensity: Float in [0, 0.5, 1] {
+                var row: [String: Any] = ["factory": name, "preset_input": preset, "intensity_input": intensity, "grain_input": Float(0.25), "image_input": false, "capture_metadata_computation": false]
+                let selector = "styleWithPreset:intensity:grain:"
+                if let cls = NSClassFromString(name), let m = signature(cls, selector, ["@", "f", "f"], "@") {
+                    typealias F = @convention(c) (AnyObject, Selector, AnyObject?, Float, Float) -> Unmanaged<AnyObject>?
+                    let style = unsafeBitCast(method_getImplementation(m), to: F.self)(cls, NSSelectorFromString(selector), preset as NSString, intensity, 0.25)?.takeUnretainedValue()
+                    row["native_style"] = safe(style)
+                } else { row["unsupported"] = true }
+                rows.append(row)
+            }
+        }
+    }
+    try writeJSON(rows, output.appendingPathComponent("settings.json")); exit(0)
+}
+
+if CommandLine.arguments.contains("--processor-preflight") {
+    var result: [String: Any] = ["scope": "default native processor initialization/prewarm only, no image or person context supplied", "input_images_supplied": false, "apple_implementation_patched": false]
+    if let cls = NSClassFromString("CMITextureStylesProcessor") {
+        result["APIVersion"] = scalar0(cls, "APIVersion") ?? NSNull()
+        progress("native processor init")
+        if let processor = object0(cls, "new") {
+            result["initialized"] = true
+            for selector in ["setup", "prewarm"] {
+                guard let m = signature(processor, selector, [], "i") else { result[selector] = "unsupported-ABI"; continue }
+                typealias F = @convention(c) (AnyObject, Selector) -> Int32
+                progress("native processor \(selector)")
+                let status = unsafeBitCast(method_getImplementation(m), to: F.self)(processor, NSSelectorFromString(selector))
+                result[selector] = status
+                if status != 0 { break }
+            }
+            result["supportsExternalMemoryResource"] = scalar0(processor, "supportsExternalMemoryResource") ?? NSNull()
+        } else { result["initialized"] = false }
+    } else { result["unsupported"] = "CMITextureStylesProcessor class unavailable" }
+    try writeJSON(result, output.appendingPathComponent("processor-preflight.json")); exit(0)
+}
 
 if let index = CommandLine.arguments.firstIndex(of: "--requirements"), index + 1 < CommandLine.arguments.count {
     let effect = UInt64(CommandLine.arguments[index + 1])!
@@ -152,17 +213,23 @@ for (name, dictionary) in [("synthetic-standard-control", base), ("synthetic-stu
     var row: [String: Any] = ["case": name, "input": dictionary, "input_sha256": sha(data), "scope": "metadata-only diagnostic, never camera provenance or Photos admission"]
     let selector = "textureStylePropertiesFromImageMetadata:auxImageMetadata:error:"
     progress("metadata consumer \(name)")
-    if let cls = NSClassFromString("_NUTextureStyleProperties"), let m = signature(cls, selector, ["@", "@", "^@"], "@") {
+    let consumerClass = NSClassFromString("_NUTextureStyleProperties")
+    row["consumer_class_available"] = consumerClass != nil
+    if let cls = consumerClass, let method = class_getClassMethod(cls, NSSelectorFromString(selector)) {
+        row["consumer_encoding"] = String(cString: method_getTypeEncoding(method)!)
+    }
+    if let cls = consumerClass, let m = signature(cls, selector, ["@", "@", "o^@"], "@") {
         typealias F = @convention(c) (AnyObject, Selector, AnyObject?, AnyObject?, UnsafeMutablePointer<NSError?>) -> Unmanaged<AnyObject>?
         var error: NSError?
         let properties = unsafeBitCast(method_getImplementation(m), to: F.self)(cls, NSSelectorFromString(selector), data as NSData, NSDictionary(), &error)?.takeUnretainedValue()
+        row["native_consumer_called"] = true
         row["native_returned_object"] = properties != nil
         row["properties"] = safe(properties)
         row["error"] = error.map { ["domain": $0.domain, "code": $0.code, "description": $0.localizedDescription] as [String: Any] } ?? [:]
         if let properties, let kernel = NSClassFromString("PITextureStyleProcessorKernel") {
             row["person_input_data"] = safe(object1(kernel, "personInputDataFromStillProperties:", properties))
         }
-    } else { row["unsupported"] = selector }
+    } else { row["unsupported"] = selector; row["unsupported_reason"] = consumerClass == nil ? "class_unavailable" : "selector_or_ABI_mismatch" }
     cases.append(row)
     try writeJSON(cases, output.appendingPathComponent("metadata-cases.json"))
 }
