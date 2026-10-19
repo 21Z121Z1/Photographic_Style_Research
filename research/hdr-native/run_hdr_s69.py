@@ -12,7 +12,11 @@ a='@"check_status":@(r)}mutableCopy]';assert s.count(a)==1;s=s.replace(a,'@"chec
 a='@"inputLinearImageTextureMappedRegion"]';assert s.count(a)==1;s=s.replace(a,'@"inputLinearImageTextureMappedRegion",@"outputImageTextureMappedRegion",@"inputPersonMaskTextureMappedRegion",@"inputSkinMaskTextureMappedRegion",@"inputSkyMaskTextureMappedRegion",@"logicalImageToInputSkinMaskScale",@"logicalImageToInputSkyMaskScale"]')
 a='[bindings addObject:b];';assert s.count(a)==1;s=s.replace(a,'b[@"wrapper_person_crop"]=[[wrapper valueForKey:@"inputPersonMaskCropRect"]description];'+a)
 a='out[@"completed"]=@YES;';assert s.count(a)==1;s=s.replace(a,'BOOL valid=YES;for(NSDictionary*b in bindings)valid=valid&&[b[@"check_status"]intValue]==0;out[@"original_stats_ROI_checks_passed"]=@(valid);'+a)
+# S69b + original assertion 0x2334d68e4: output is mandatory for the nonempty input/output intersection.
+a='main=PB(w,h,NO),linear=';assert s.count(a)==1;s=s.replace(a,'main=PB(w,h,NO),output=PB(w,h,NO),linear=')
+a='SetPB(wrapper,@"setInputPixelBuffer:",main);';assert s.count(a)==1;s=s.replace(a,a+'SetPB(wrapper,@"setOutputPixelBuffer:",output);')
+a='CVPixelBufferRelease(main);';assert s.count(a)==1;s=s.replace(a,a+'CVPixelBufferRelease(output);')
 target=W/'probe-s69.m';target.write_text(s)
-(O/'derivation-s69.json').write_text(json.dumps({'parent':'probe_bindings_s68.m','parent_sha256':hashlib.sha256((D/'probe_bindings_s68.m').read_bytes()).hexdigest(),'derived_sha256':hashlib.sha256(s.encode()).hexdigest(),'only_change':'Exact prepare ABI plus diagnostic class/mapped-region capture for both CPU contexts; nonzero ROI checks remain failed; no PSO/math/input changes','S68_failure_run':39338027870,'S68_ZIP_sha256':'d201b6cacef83c5bbc7ba922f82fba84008e06f94d5e5c801630ecfa95109ce5'},separators=(',',':'))+'\n')
+(O/'derivation-s69.json').write_text(json.dumps({'parent':'probe_bindings_s68.m','parent_sha256':hashlib.sha256((D/'probe_bindings_s68.m').read_bytes()).hexdigest(),'derived_sha256':hashlib.sha256(s.encode()).hexdigest(),'only_change':'Exact prepare ABI and missing mandatory same-size output buffer; record all nonzero ROI checks; capture CPU bindings only, no image operator math changes','S68_failure_run':39338027870,'S68_ZIP_sha256':'d201b6cacef83c5bbc7ba922f82fba84008e06f94d5e5c801630ecfa95109ce5'},separators=(',',':'))+'\n')
 body=(D/'run_hdr_s68.py').read_text();body=body.replace("str(D/'probe_bindings_s68.m'),'-o'","str(target),'-o'").replace("D/'run_hdr_s68.py'","D/'run_hdr_s69.py'")
 exec(compile(body,'run_hdr_s68_derived_for_s69.py','exec'))
