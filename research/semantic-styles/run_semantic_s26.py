@@ -40,6 +40,9 @@ GEN=W/'generated';GEN.mkdir();run([sys.executable,SRC/'generate_semantic_s5.py',
 text=(SRC/'semantic_consumer_s5.m').read_text();a=text.index('static void Probe(');b=text.index('static int Process(',a);text=text[:a]+'#include "pso_capture_s22.inc"\n#include "pso_pointer_contract_s26.inc"\n'+text[b:]
 text=text.replace('ECInstall();m=class_getInstanceMethod','ECInstall();S22Install();S25Install();m=class_getInstanceMethod')
 assert 'S22Install();' in text
+base_source=(SRC/'pso_original_variant_s25.inc').read_text();assert base_source.count('static void Probe(id renderer')==1
+base_source=base_source.replace('static void Probe(id renderer','static void S26BaseProbe(id renderer')
+(GEN/'s25-base-for-s26.inc').write_text(base_source)
 source=GEN/'semantic_consumer_s26.m';source.write_text(text)
 old=R/'research/vm-native/runner';exe=W/'semantic-s26';flags=['clang','-fobjc-arc','-O2','-I'+str(old),'-I'+str(GEN),'-I'+str(SRC),'-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-framework','CoreGraphics','-Wl,-undefined,dynamic_lookup']
 run(flags+[source,'-o',exe],'build-s26')
@@ -54,5 +57,5 @@ assert native_rc==0,'Native failed; preserved available metadata/checkpoints'
 # The archive can contain Apple binary code. NEVER put it or a GPU capture in O.
 run([sys.executable,SRC/'inspect_variant_s25.py',W/'backend',O/'variant-text'],'inspect-backend',600,required=False)
 assert (native/'s26-pointer-contract.json').exists() and (native/'s25-original-variant.json').exists(),'No original initializer record'
-(O/'generated-source-sha256.json').write_text(json.dumps({p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [SRC/'semantic_consumer_s5.m',source,SRC/'pso_capture_s22.inc',SRC/'semantic_s22.inc',SRC/'pso_original_variant_s25.inc',SRC/'pso_pointer_contract_s26.inc']},indent=2)+'\n')
+(O/'generated-source-sha256.json').write_text(json.dumps({p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [SRC/'semantic_consumer_s5.m',source,SRC/'pso_capture_s22.inc',SRC/'semantic_s22.inc',SRC/'pso_original_variant_s25.inc',SRC/'pso_pointer_contract_s26.inc',GEN/'s25-base-for-s26.inc']},indent=2)+'\n')
 print('S22 original PSO observation finished. Only whitelisted metadata/text is archived, encrypted.')
