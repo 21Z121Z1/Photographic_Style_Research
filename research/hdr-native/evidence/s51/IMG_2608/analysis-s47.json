@@ -1,0 +1,351 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "freeze_sha256": "7c441c369a6b981d3f3a29ed25bfd0069fc746eeb84eb1b638a4231e47f8fa96",
+  "scope": "Independent display prototype and supplied-pair representation only, no scene/semantic or new five-photo claim",
+  "photo": "IMG_2608",
+  "shape": [
+    4284,
+    5712,
+    3
+  ],
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0
+  },
+  "display_intent": {
+    "display_exposure_EV": 3.6761973994696815,
+    "scale": 12.783379653557867,
+    "statistic_pixels": 678517,
+    "sample_pixels": 679728,
+    "scope": "One global display scale from fixed sample-grid median, not a scene exposure or white-level measurement"
+  },
+  "target_nonfinite_components": 0,
+  "target_negative_components": 0,
+  "render_chromaticity_max_abs": 2.7364378496486097e-07,
+  "render_chromaticity_pixels": 24445136,
+  "common_offset": 0.01594485528767109,
+  "source_input_before": {
+    "master_EXR": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+    "master_pixels": "33bbecc50e685a962cc082a45c61fd19e49e5723c24a45b1c13b2dbe64fbeea3",
+    "original_SDR": "ec2aa73bee081757cb2bbb21b49ab0ace475958dd6ddf9c61ddf47e49b60dbf0",
+    "original_photo": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a"
+  },
+  "variants": [
+    {
+      "tag": "zero-offset",
+      "common_offset": 0.0,
+      "valid_pixels": 23810670,
+      "all_pixels": 24470208,
+      "coverage": 0.9730473071581573,
+      "gain_min_EV": -14.375,
+      "gain_max_EV": 14.8125,
+      "actual_saved_reopened_f32_log_gain": {
+        "max_abs": 1.1178733339001212e-07,
+        "max_relative": 3.3051105027212385e-07,
+        "PSNR_peak1_db": 171.08747701004634,
+        "components": 71432010
+      },
+      "native": {
+        "common_offset": 0,
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 0,
+            "formula_max_relative": 0,
+            "formula_PSNR_peak1_db": "inf",
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-1.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": 0
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 2.1185655674216264e-07,
+            "formula_max_relative": 2.6233045782539116e-07,
+            "formula_PSNR_peak1_db": 149.31111522649763,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-1.25.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0.10730936496245412,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 2.9374908416812673e-07,
+            "formula_max_relative": 3.9809080913977956e-07,
+            "formula_PSNR_peak1_db": 147.35711868225903,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-2.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0.3333333333333333,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 4.289599067064387e-07,
+            "formula_max_relative": 7.176288116206498e-07,
+            "formula_PSNR_peak1_db": 143.02223585671786,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-4.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0.6666666666666666,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 8.658986234699739e-07,
+            "formula_max_relative": 7.738638530148806e-07,
+            "formula_PSNR_peak1_db": 139.75523756581725,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-8.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 1,
+            "target_endpoint_components": 71432010,
+            "target_endpoint_max_abs": 1.3113021850585938e-06,
+            "target_endpoint_max_relative": 1.3632593223342775e-06,
+            "target_endpoint_PSNR_peak1_db": 134.43966535810523,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 4284,
+        "photos_used": true,
+        "scope": "Supplied-pair native unencoded application with declared common offsets; no encoded carrier or scene inverse claim",
+        "success": true,
+        "width": 5712
+      }
+    },
+    {
+      "tag": "common-positive-offset",
+      "common_offset": 0.01594485528767109,
+      "valid_pixels": 24470208,
+      "all_pixels": 24470208,
+      "coverage": 1.0,
+      "gain_min_EV": -3.1875,
+      "gain_max_EV": 10.3125,
+      "actual_saved_reopened_f32_log_gain": {
+        "max_abs": 1.0493407631706475e-07,
+        "max_relative": 0.00122141142339105,
+        "PSNR_peak1_db": 171.08208503292246,
+        "components": 73410624
+      },
+      "native": {
+        "common_offset": 0.01594485528767109,
+        "device": "Apple Paravirtual device",
+        "headrooms": [
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 5.960464477539063e-08,
+            "formula_max_relative": 0.0009185328053717967,
+            "formula_PSNR_peak1_db": 174.4617689302042,
+            "headroom": 1,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-1.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": 5.960464477539063e-08
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 2.0587921856218827e-07,
+            "formula_max_relative": 0.0032301722277029953,
+            "formula_PSNR_peak1_db": 147.76348843987088,
+            "headroom": 1.25,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-1.25.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0.10730936496245412,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 2.420637668087977e-07,
+            "formula_max_relative": 0.003069871769321826,
+            "formula_PSNR_peak1_db": 148.30936407126399,
+            "headroom": 2,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-2.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0.3333333333333333,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 2.7427689808234845e-07,
+            "formula_max_relative": 0.003331932233832853,
+            "formula_PSNR_peak1_db": 147.57520105445164,
+            "headroom": 4,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-4.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 0.6666666666666666,
+            "target_endpoint_components": 0,
+            "target_endpoint_max_abs": null,
+            "target_endpoint_max_relative": null,
+            "target_endpoint_PSNR_peak1_db": null,
+            "unencoded_SDR_h1_max_abs": null
+          },
+          {
+            "all_components": 73410624,
+            "formula_max_abs": 3.0446185084187505e-07,
+            "formula_max_relative": 0.004062070669562482,
+            "formula_PSNR_peak1_db": 148.08447489772468,
+            "headroom": 8,
+            "nonfinite_components": 0,
+            "preview_file": "native-headroom-8.f32",
+            "preview_shape": [
+              480,
+              640,
+              4
+            ],
+            "scale": 1,
+            "target_endpoint_components": 73410624,
+            "target_endpoint_max_abs": 3.5762786865234375e-07,
+            "target_endpoint_max_relative": 0.005102073430407472,
+            "target_endpoint_PSNR_peak1_db": 145.2498105405498,
+            "unencoded_SDR_h1_max_abs": null
+          }
+        ],
+        "height": 4284,
+        "photos_used": true,
+        "scope": "Supplied-pair native unencoded application with declared common offsets; no encoded carrier or scene inverse claim",
+        "success": true,
+        "width": 5712
+      }
+    }
+  ],
+  "acceptance_complete": false,
+  "A_phase_complete": false,
+  "physical_scene_verified": false,
+  "encoded_carrier_verified": false,
+  "preview_input_checks": [
+    {
+      "name": "original-SDR",
+      "input_before_SHA256": "8c0c95dc4aaa81228085403f028677fc80c0ab355ef907058bf33d45836b0745",
+      "input_after_SHA256": "8c0c95dc4aaa81228085403f028677fc80c0ab355ef907058bf33d45836b0745"
+    },
+    {
+      "name": "relative-master-unchanged-0EV",
+      "input_before_SHA256": "1aeefde06456defe3449507965e7e196ebbff90e2b361005f1363c6667f5213b",
+      "input_after_SHA256": "1aeefde06456defe3449507965e7e196ebbff90e2b361005f1363c6667f5213b"
+    },
+    {
+      "name": "display-exposure-on-master",
+      "input_before_SHA256": "b9de8100c7d9dcbc141789c0741fe2b3a38ccf38dcb50abcecd502f6fa73a4dd",
+      "input_after_SHA256": "b9de8100c7d9dcbc141789c0741fe2b3a38ccf38dcb50abcecd502f6fa73a4dd"
+    },
+    {
+      "name": "independent-HDR-target",
+      "input_before_SHA256": "34fb3d3cb9dbb2ef055d0478d0ba516a4ed5a1b84eab5acb177daaacd8eca487",
+      "input_after_SHA256": "34fb3d3cb9dbb2ef055d0478d0ba516a4ed5a1b84eab5acb177daaacd8eca487"
+    },
+    {
+      "name": "native-commonOffset-h1",
+      "input_before_SHA256": "bf55f999559767af0ce31be2535310f39e33ba973d8178617aa1d50092c31fef",
+      "input_after_SHA256": "bf55f999559767af0ce31be2535310f39e33ba973d8178617aa1d50092c31fef"
+    },
+    {
+      "name": "native-commonOffset-h1.25",
+      "input_before_SHA256": "28daea1d9e29e6b3314b37733743b78c8cfcdf89a0001a6c9c7f1be2c35ae237",
+      "input_after_SHA256": "28daea1d9e29e6b3314b37733743b78c8cfcdf89a0001a6c9c7f1be2c35ae237"
+    },
+    {
+      "name": "native-commonOffset-h2",
+      "input_before_SHA256": "a881a693970b847d748be0312398978b04bba70e9ba505a407d8b0f9d5264465",
+      "input_after_SHA256": "a881a693970b847d748be0312398978b04bba70e9ba505a407d8b0f9d5264465"
+    },
+    {
+      "name": "native-commonOffset-h4",
+      "input_before_SHA256": "a8d2a17ced1d289a19c56e11adca770adeac30fce9448758561ba6aedbf4ff63",
+      "input_after_SHA256": "a8d2a17ced1d289a19c56e11adca770adeac30fce9448758561ba6aedbf4ff63"
+    },
+    {
+      "name": "native-commonOffset-h8",
+      "input_before_SHA256": "ff1009ca46e4f204a2431203f126a193c81e7022f2129ade886b77b02a351d8b",
+      "input_after_SHA256": "ff1009ca46e4f204a2431203f126a193c81e7022f2129ade886b77b02a351d8b"
+    }
+  ],
+  "source_input_after": {
+    "master_EXR": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+    "master_pixels": "33bbecc50e685a962cc082a45c61fd19e49e5723c24a45b1c13b2dbe64fbeea3",
+    "original_SDR": "ec2aa73bee081757cb2bbb21b49ab0ace475958dd6ddf9c61ddf47e49b60dbf0",
+    "original_photo": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a"
+  },
+  "original_inverse_masks_changed": false,
+  "completed": true
+}

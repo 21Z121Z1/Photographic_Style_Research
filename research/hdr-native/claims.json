@@ -837,6 +837,73 @@
           "sha256": "a120537c0c0c0120483f852318c85e96b3151c103346ca41d506f516bb70d634"
         }
       ]
+    },
+    {
+      "id": "HDR-45",
+      "category": "display/five-full-size-frozen-formula-suite",
+      "status": "已验证数值",
+      "claim": "S51重用S42剩余四张母版，加S47形成五张原尺寸独立显示公式验证：3x5712x4284、2x4032x3024，两张仅对冻结S44/S47显示配方输出留出（旧scalar/RGB研究曾使用）。45次预览输入SHA和各原件/SDR/master前后SHA相同；源绑定/联系表布局替换逆还原后等于原S47数学前缀。50次原生未编码CI headroom公式比较maxabs4.7088888806e-6、PSNR最低132.827091506dB，通过原float门槛。不是五张真实拍摄端consumer逆解或编码载体验收。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s51/validation-display-five-s51.json",
+          "line": 1,
+          "sha256": "7c5d4f143501d12162e0b4f7e9ef63a15f3cb621a1cdb3d6539e47342074fcc4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s51/suite-freeze.json",
+          "line": 1,
+          "sha256": "77ea616a4fcaa7133dca68fa44fd6f0309b1e02305ffe0a35d5caa1cfd27b7df"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s51/derivation-preflight.json",
+          "line": 1,
+          "sha256": "8d170f29d6a0725b835acd5e8791eef419b658da80baf775f68838e47469015e"
+        }
+      ]
+    },
+    {
+      "id": "HDR-46",
+      "category": "transport/five-photo-domain-and-endpoint-boundaries",
+      "status": "已验证数值",
+      "claim": "五图zerooffset在已定义承载区内通过目标门槛，覆盖97.3047307%-99.9361097%，最大native endpoint relative1.56001707439e-6，未编码h1全图max0；不是原逆解mask或新文件ImageIO max0。公共offset覆盖100%，2600/2604/2608的native endpoint relative .0253673864/.00443671144/.00510207343仍失败；留出0032/0033为6.71688312609e-6/6.36485222166e-6，端点通过。公共offset全部h1非0（2.98e-8至5.96e-8）；未生成新HEIF，编码与物理scene门槛仍未通过。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s51/validation-display-five-s51.json",
+          "line": 1,
+          "sha256": "7c5d4f143501d12162e0b4f7e9ef63a15f3cb621a1cdb3d6539e47342074fcc4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s51/analysis-s51.json",
+          "line": 1,
+          "sha256": "a8ec703b407acd830b9146d4da5a407e7b59e2923874e2aec89d89f966572233"
+        }
+      ]
+    },
+    {
+      "id": "HDR-47",
+      "category": "display/declared-creative-policy-and-physical-boundary",
+      "status": "假设",
+      "claim": "独立HDR意图沿用冻结曝光中位数k与H=kM*8/(8+max(Y(kM),0))，共享RGB标量；k是显示工程选择，8是相对亮度rolloff参数，不是RGB硬clamp/nit/j像素EV。M仍是native thumbnail projection候选，未证明撤回拍摄端全部global/local/semantic。该显示策略供HDR意图对照，不因数值承载通过而成为相机场景真值或真实屏幕验证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/render_intent_s44.py",
+          "line": 1,
+          "sha256": "d257a6f96b056caf3a6d7f9645c93bd361a12f44eaca0bc0fc35a82fe280c69f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s51/suite-freeze.json",
+          "line": 1,
+          "sha256": "77ea616a4fcaa7133dca68fa44fd6f0309b1e02305ffe0a35d5caa1cfd27b7df"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s51/validation-display-five-s51.json",
+          "line": 1,
+          "sha256": "7c5d4f143501d12162e0b4f7e9ef63a15f3cb621a1cdb3d6539e47342074fcc4"
+        }
+      ]
     }
   ]
 }

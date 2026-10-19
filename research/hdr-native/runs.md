@@ -72,3 +72,8 @@ S49 text ZIP eed057a6b471e1f3db1db31c0ee717ea1a59aeaf924df607358e9d50a3529de4, m
 |S50|research/vm-native-20261019-hdr-s50|4e3c56c829ac09fe17cb1e7fa20bd1cc5e671af2|39280458478|12200760926|26A434/20261012.0260.1|finite common-offset collision certified; native positive controls; original relative gate retained|
 
 ZIP 60c09dafd81a2c9e07f780097d94d05866c4c1dee5e7ab3cc84f885e4c48b5ed, manifest fc9b2758ccc903cc31a4f46382b3e815a7b0f41696b45bfc23eceaac7074147b; native full job log archived. Control-plane queued discrepancy and later completed/success are in evidence/s50/terminal-state.json. No temporary secrets/release.
+
+
+|S51|research/vm-native-20261020-hdr-s51|ae2f422b8e09878bed18826f83142fb1d2ba983a|39289319764|12205456068 /12204689131 encrypted contacts|26A434/20261012.0260.1|4 new display outputs +S47=5 images,2 formula holdouts,50 unencoded float comparisons pass;three full commonoffset targets fail|
+
+Text ZIP ff88e6f6ab2fc2c6739402e3766560a0a5fe348df9285c340b86ec8fcefdda6a /manifest 41269ca41258e94956b22451f9361a488e8b13bd9f3e6f37d0fd6d654d4afe88; preview ZIP 4c15f1b07fdbc685f4cb40f1048d7ae00d8d4218713b2b12647b3682adeb77e2 /cipher aec13a3f2f5d40976212618f2667f9b0a4907354ab45fe345f49df2f5f95aa01. Full SHA/GPG/member checks done,45 preview-input checks total unchanged. Four temporary sessions deleted, no release/private archive key. One run of this HDR goal at a time; independent other-branch runs only observed, never altered.

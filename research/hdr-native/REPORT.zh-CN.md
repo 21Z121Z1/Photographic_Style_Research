@@ -192,3 +192,28 @@ S33–S47收尾审计：所有实际source commit已fast-forward保留在researc
 **已验证数值，HDR-44。** 原生CI五档headroom1/1.25/2/4/8的两份公共offset输入纹理与metadata SHA相同，全部输出SHA也相同；h8输出1.0291114449501038e-7。对H1/H2的maxrelative分别0.0029111433264/0.00071114669709，前者失败，尽管maxabs2.9111433264e-9、PSNR170.718728dB。对已存code的double公式，原生h8另有1.90516565718e-9绝对误差；这与记录碰撞是两层不同问题。零offset控制H1/H2使用不同gain code，原生目标maxrelative2.13162820728e-8/1.42108547152e-8，均通过这两个有限输入。此实验**没有图像codec**，不把它归为8-bit Gain Map传输误差；也不把o=.03125例子冒充S47真实o=.0307447053492全部失败点的归因。
 
 证据artifact12200760926 ZIP SHA60c09dafd81a2c9e07f780097d94d05866c4c1dee5e7ab3cc84f885e4c48b5ed，manifest SHAfc9b2758ccc903cc31a4f46382b3e815a7b0f41696b45bfc23eceaac7074147b，所有成员已校验，完整原生日志SHA8e3dc5882dfc2c286d39aa6f040df2e3ba5bf081e81c1675f2e9f8ae67663f96。接口此前持续queued而日志/结果已结束，取消命令返回“已完成”，随后裸run端点已确认completed/success（updated_at=2026-10-19T16:14:48Z）；不猜服务状态矛盾的原因。无secret/release或含人物输入。既有总验收与A阶段仍false。
+
+
+### HDR-S51：独立显示配方五张原尺寸、两张配方留出闭环；完整目标仍未通过
+
+**已验证数值，HDR-45。** sourceae2f422b8e09878bed18826f83142fb1d2ba983a/run39289319764，26A434/image20261012.0260.1。只在runner依次读取既存S42四份密文（总922251766B），每份完整ZIP/cipher SHA、GPG和EXR成员验证后才处理像素；没有重算key1、Apple Log、guided或任何旧scene。与S47合成3张5712×4284、2张4032×3024。两张留出限于冻结S44/S47独立显示配方，旧scalar/RGB研究曾看过它们，不宣称从未见过的照片。逐项源绑定与联系表布局的逆替换恢复原数学前缀，5份依赖SHA完全相同。
+
+50次原生未编码CI公式对照（5图×2offset×5headroom），maxabs4.7088888806001705e-6、PSNR最低132.82709150641782dB，通过原float maxabs1e-5/PSNR60门槛。45份预览输入、原件/SDR/master前后SHA相同；全5图曝光来自同一固定网格中位数规则，无逐照片手调。
+
+**已验证数值，HDR-46。** 各照片的已定义承载域与全图目标分开：
+
+|照片 / 角色|显示曝光 EV|zero覆盖率|zero原生端点relative|公共offset原生端点relative|公共offset已存logmap relative|
+|---|---:|---:|---:|---:|---:|
+|IMG_2600 / development|3.718534360|97.7627162%|1.560017074e-06|0.02536738641|0.00252261044|
+|IMG_2604 / development|4.353422260|98.0662404%|1.33693813e-06|0.004436711443|0.001148625054|
+|IMG_2608 / development|3.676197399|97.3047307%|1.363259322e-06|0.00510207343|0.001221411423|
+|IMG_0032 / display-formula-holdout|1.199509741|99.9361097%|1.154897184e-06|6.716883126e-06|5.013617085e-06|
+|IMG_0033 / display-formula-holdout|1.475500357|99.7617686%|1.184494621e-06|6.364852222e-06|4.853326042e-06|
+
+zerooffset全部在自己的承载定义域通过，未编码h1全图max0；没有用承载mask替换逆解/33点mask。公共offset全图coverage100%，前三张目标仍未过1e-3，后两张留出端点通过；全部公共offset的未编码h1 maxabs在2.98023223877e-8～5.96046447754e-8之间，仍非0。**没有新HEIF/ISO编码载体**，源文件未动不代替“新载体完整ImageIO SDR max0”。未编码公式通过也不代替新编码Gain Map的目标误差通过。
+
+**假设/工程选择，HDR-47。** 独立显示渲染仍是`H=kM*8/(8+max(Y(kM),0))`，M为原母版候选；显示k与8不标定场景曝光/nit，不把它们当j提亮EV。全5图正Y域RGB/Y色度差最大3.34155283e-7只是float32诊断。GTM、LTM、人物/皮肤及纹理逆向原有边界继续独立保留：五图验证的是此显示/未编码公式，**不是对拍摄端未知生产曲线或scene-referred母版的五图物理认证**。33点C01-C05未认证、同帧j/Studio统计、RAW2679/2408与真实HDR屏幕项目不因本轮通过而改变。
+
+预览固定OCIO cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / LinearP3-D65→sRGB Display / ACES1.0 SDR Video /0EV；使用原始像素网格，未按EXIF旋转，全部面板方向相同。只加密上传4张联系表（每张含SDR/M/独立H及5档原生headroom），不是实际HDR屏幕照片。指标artifact12205456068 ZIP SHAff88e6f6ab2fc2c6739402e3766560a0a5fe348df9285c340b86ec8fcefdda6a、manifest SHA41269ca41258e94956b22451f9361a488e8b13bd9f3e6f37d0fd6d654d4afe88；预览artifact12204689131 ZIP SHA4c15f1b07fdbc685f4cb40f1048d7ae00d8d4218713b2b12647b3682adeb77e2、cipher SHAaec13a3f2f5d40976212618f2667f9b0a4907354ab45fe345f49df2f5f95aa01，GPG与全部成员SHA已验证。四项session secret已删除；未创建release、未传归档私钥、未改其他研究任务的分支/run。串行限制按本HDR任务执行，前文全仓库等待要求是本代理过严的调度解释，此处更正，科学门槛无变化。
+
+只读验证器`repo/research/hdr-native/validate_display_s51.py`输出五图协议完成与原float公式通过；`acceptance_complete=false`、`A_phase_complete=false`。旧root validate.py、冻结模型、原件与历史证据未改；只有HDR显示公式的五图/2留出子项闭环。

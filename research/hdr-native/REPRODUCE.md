@@ -54,3 +54,6 @@ S48/S49源码与复现（新计算仅runner）：S48失败先读 `gh run view 39
 
 
 S50（仅合成常量，macOS runner）：固定source4e3c56c，执行 `python3 research/hdr-native/run_hdr_s50.py`；workflow hdr-native-s50.yml。证书为finite-collision-certificate.json，原生对照analysis-s50.json；无需原片/secret/下载输入，所有像素仅在runner临时区，artifact只有文本。新本机验证仅解析证书/校验SHA，必须经scripts/local-python-scope.sh，不在VM执行该native/数值脚本。原1e-3及floor1e-6不改；S50不复现真实照片或33点合同。
+
+
+S51 native源码ae2f422（workflow hdr-native-s51.yml，driver run_hdr_s51.py，derive_display_s51.py，inputs-s51.json）。只有输入绑定/联系表布局改变，原S47数学前缀可逆还原；依赖SHA写入suite-freeze.json。四份GPG session仅内存提取并临时secret传入，runner逐份完整ZIP/cipher/GPG/EXR SHA验证，结束立即删secret。既有artifact会过期，复现前核对id/expiry，不将已清理secret当永久输入；不要在VM运行图像driver。只读本机复核：`scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_display_s51.py --s47 hdr-native-20261019/runs/39264474802/selected/analysis-s47.json --s51 hdr-native-20261019/runs/39289319764/selected/analysis-s51.json --library repo/research/hdr-native --out <一个新的json路径>`。相对路径从工作根目录执行，输出exclusive-create，不覆写历史JSON。

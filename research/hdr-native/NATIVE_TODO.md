@@ -57,3 +57,12 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 - 已验证数值：有限float32 logmap/normalized-code碰撞及原生五档同输入同输出已经归档，禁止把高PSNR替代1e-3。该近零域的统一保证不能靠更精确执行已丢失信息的相同code解决；不是原始33皮肤点tight hull。
 - 可交给macOS runner：S47真实最坏坐标、S/H/o/logmap/归一化值/原生输出仍需分项捕获；S50合成o=.03125不替代实际o=.0307447053492归因。零offset在域内通过不赋予符号不匹配/零分母像素可逆性，不缩mask。
 - 可交给macOS runner：已准备S51四张既存母版的冻结S44/S47显示配方，合计922251766B仅runner下载；新预览contact加密，VM100MB累计限额不重置。需先等仓库其他研究分支排队run结束，再设置本批四个一次性session secrets与push触发。原始SDR编码max0、新HDR codec目标、实际屏幕和RAW门槛均独立保留。
+
+
+### S51 后：已完成项与仍可推进项
+
+- 已验证数值：冻结独立显示公式的五图/2配方留出、50个原生未编码对照已完成；不要重复此整批或旧key1/guided。zero域内和公共offset全图结果见HDR-45/46，失败点/旧mask不删。
+- 可交给macOS runner：在纯合成输入上单独检验BaseOffset与AlternateOffset不同的原生行为，捕获h1身份和h1.25/2/4/8端点，固定HDR目标。它是新的表示合同问题；若h1不成立，不把降低AlternateOffset当完整方案，不进行无目的精度拟合或重跑五图。实际3图最坏点归因仍需坐标/字段捕获，S50有限碰撞不替代它。
+- 可交给macOS runner/静态：native投影保边但锚点漂移，原local生产与consumer、global与semantic的真实逆解不可混同；33点完整声明域C01-C05/紧区间仍未认证。停止旧NumPy bit-exact拟合。
+- 待实机解决：同帧j/WithoutFaceBoost/N/B/T/hist/allocateTone/application-domain、Studio生产统计、配对RAW2679/2408、真实HDR显示/环境与PhotosUI，沿用既有可执行计划。本轮没有这些真值。
+- 存储边界：原S42完整母版/sidecar密文仍受原artifact一天期限与当前100MB累计许可限制，未宣称整批已在VM落地；不把新日期或自动续轮当配额重置。
