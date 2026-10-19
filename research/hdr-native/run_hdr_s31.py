@@ -4,6 +4,7 @@ Synthetic only. No inverse/scene/photographic accuracy is inferred.
 """
 from pathlib import Path
 import os,subprocess,json,hashlib,math,sys,zipfile,io,xml.etree.ElementTree as ET
+sys.path.insert(0,str(Path('.').resolve()))
 import numpy as np
 import pillow_heif
 from PIL import Image
