@@ -91,3 +91,14 @@ S14–17 preflight确认PR全状态0、其他advertised ref0、源码可达持�
 - 26A434，xcode-27-arm64 20261012.0260.1，Provisioner20261006.597，Apple Paravirtual device/air64_v27。AppleFamily4/5 reported true。仅设备能力和自编译重结合示例，无人物输入、无secret/release、未运行原consumer逆解。safe0/12、relaxed/fast9/12与顺序RN不同，正.25示例两精度均为0→.25。
 - 规范审查和AIR清单是VM上的受限内存文本任务，不是额外native run。MSL4.1/2026-06-04 PDF SHA41538b30d2f1140a5b2a0c84ce0a9f7b67bf0c707e224cfea0bfe5a44aa26cf5；最小事实、页码和提取脚本留存，临时PDF/解析器已清理。C01–C05未满足，因此未启动虚假的全域认证。40 helper/61intrinsic/970site均为语法上可达计数。
 - native源码已快进并推送持久research/vm-native-20261018，然后检查PR head/base全状态与其他refs，删除S21临时分支。master未变；A和原数值门槛仍false。精确provenance与cleanup见同名JSON，GPG标记为false，因为artifact纯公开合成文本。
+
+
+<!-- GPT-S22-RUNS -->
+### 新工作分支研究：S22（2026-10-19）
+
+|性质|run ID / job ID|commit|结果|artifact / 产物校验|
+|---|---|---|---|---|
+|S22 首次链接失败|[39215535885](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215535885) / 117938391059|`659ba9a72f9b04e6bb5151dff8b37528a16e4bfd`|**failure**，macOS clang 报 `ld: framework 'CommonCrypto' not found`，原生探针未执行|12169267088 仅失败文本；不作数值证据|
+|S22 修正并验证|[39215654333](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215654333) / 117938769775|`e1094ecd616895150f4cb40c02bf9e0e29ce9208`|**success**，build26A434，Apple `renderFinalAdjustments` PSO 实际创建，自编译 safe/relaxed/fast pow、消去、RGBA16F 采样器测试通过|12169227331，3497B，ZIP sha256 `f959d26467fc11c13e9308b598c073b9ba2f5b8607845f254cd1739b0e107a46`；7 文件 + manifest 全哈希核对成功，纯文本，retention-days1|
+
+注意：原始 Apple PSO 的 mode 未被覆盖，自编译数值实验不能替代 S21 C01–C05 全域可行集认证，S20 70份歧义证书仍在，A 验收未通过。所有新增工件位于 `research/gpt-styles-20261019` / [draft PR #1](https://github.com/21Z121Z1/Photographic_Style_Research/pull/1)，不修改 master。
