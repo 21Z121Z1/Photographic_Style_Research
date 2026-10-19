@@ -1,0 +1,59 @@
+name: XDRemux isolated Texture native research
+on:
+  push:
+    branches: [research/xdremux-texture-native-20261019]
+    paths:
+      - research/xdremux-texture-native/**
+      - .github/workflows/xdremux-texture-native.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: xdremux-texture-native-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: xcode-27
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: research/xdremux-texture-native
+      - name: Record exact environment and compile native API probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          sw_vers > evidence/os.txt
+          xcodebuild -version > evidence/xcode.txt
+          xcrun --sdk macosx --show-sdk-version > evidence/sdk.txt
+          xcrun swiftc --version > evidence/swift.txt
+          git rev-parse HEAD > evidence/head.txt
+          xcrun swiftc -swift-version 5 research/xdremux-texture-native/native_probe.swift \
+            -framework Foundation -framework CoreImage -framework ImageIO -framework Metal \
+            -o "$RUNNER_TEMP/xdremux-texture-native-probe" 2>&1 | tee evidence/build.log
+      - name: Execute unpatched native Texture metadata consumer
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/xdremux-texture-native-probe" evidence 2>&1 | tee evidence/probe.log
+      - name: Bind text evidence to source and run
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          p=pathlib.Path('evidence');p.mkdir(exist_ok=True)
+          rows=[]
+          for f in sorted(p.iterdir()):
+              assert f.is_file() and f.suffix in {'.json','.txt','.log'}
+              rows.append({'path':f.name,'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
+          (p/'manifest.json').write_text(json.dumps({'head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'photos_used':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xdremux-texture-native-text
+          path: evidence/
+          retention-days: 1
