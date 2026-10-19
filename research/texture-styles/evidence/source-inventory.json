@@ -151,7 +151,29 @@
     "effects_used_for_processing_domain": null,
     "global_local_ltm_order": null,
     "linear_or_log_domain": null,
-    "reversible_original_texture_pipeline": null
+    "reversible_original_texture_pipeline": null,
+    "observed_distinct_effect_orders": 9,
+    "diffusion_gaussian_blur_sigma_observed_min": 6.26,
+    "diffusion_gaussian_blur_sigma_observed_max": 62.05,
+    "diffusion_sigma_scope": "values of key gaussianBlurSigma in Diffusion tuning across supplied model/port/capture/preset combinations; physical pixel-radius interpretation is not established",
+    "other_parameters_observed_ranges": {
+      "Bloom.strength": [
+        0.21,
+        0.7
+      ],
+      "SkinSmoothingStandalone.pores": [
+        0.075,
+        1.35
+      ],
+      "SkinSmoothingStandalone.gFContrast": [
+        0.04,
+        0.24
+      ],
+      "FilmGrain.strength": [
+        0.25,
+        1
+      ]
+    }
   },
   "smartstyle_mapping": {
     "count": 16,
@@ -174,7 +196,13 @@
       "WarmAuthentic": "Filmic"
     },
     "only_static_configuration": true,
-    "note": "Maps SmartStyle casts to default Texture presets/intensity/grain; does not identify pixel application order."
+    "note": "Maps SmartStyle casts to default Texture presets/intensity/grain; does not identify pixel application order.",
+    "renderer_default_user_bias_keys": [
+      "CastIntensity",
+      "ColorBias",
+      "ToneBias"
+    ],
+    "renderer_tuning_differs_from_texture_procedure": true
   },
   "xdremux_research_base": {
     "branch": "21Z121Z1/XDRemux@research/texture-style",
