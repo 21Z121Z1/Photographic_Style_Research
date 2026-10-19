@@ -123,3 +123,6 @@ S53–S54收尾完成：两个源commit已保存在推送的research/vm-native-2
 - S64: branch `research/vm-native-20261020-hdr-s64` / source `857e664d412ec947f88211041f354629f55886fb` / run 39326316262 / artifact 12222715223 / success / ZIP 6376B SHA `80046a73b095e4ac0480be96566f67e7c5bac06d7ccbd4f48995bc10d26491be` / manifest `38a472b4f939d6704537365b15ff275bd722e1581e208dc1920fd4c365e5c8b6`。
 
 S60输出keyring失败且私有失败原始数据未保存；S61照片前编译失败；S62首图populateStatic −12780/style nil；S63五图45 dispatch成功但文件map half门槛失败；S64只复用密文/无原生图像重算。全部artifact retention1天且ZIP逐成员已校验归档，S62/S63 GPG验证；不修改历史失败记录。源码保存在研究keeper后再核查PR/ref并清理本轮临时分支和HDR_S64_S63_SESSION；清理结果以最终receipt为准。A与总验收false。
+
+
+S60–S64收尾：源码/指标先普通push至research/vm-native-20261018@689034a284bc9fa714667872d9473baf161ad523，再经全部PR/ref与run终态核查，删除本轮5条临时分支和HDR_S64_S63_SESSION；无release增删，原master/现有PR/8份原件冻结SHA不变。见evidence/s64/closure.json及本地transport-cleanup-s60-s64.json。累计100MB许可不重置；旧Git预算按未压缩对象上界记账，本轮以可核对的最终loose对象实存字节调账，原账/全部历史归档保留，未扩大许可。A与总验收仍false。

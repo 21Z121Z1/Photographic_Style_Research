@@ -350,3 +350,6 @@ S63在五张原始像素网格（含两张本新stats算子的冻结后留出003
 **可交给macOS runner，HDR-68。** 下一步沿实际生产/编辑调用者查输入域和文件c/d序列化绑定，固定已有统计/guide/GTC/matte，先解释实测差异，再分别验证global与local反事实。已有三图颜色载荷或八种D4结果不再无理由重复；33皮肤点全域C01–C05、完整原生往返与编码后ImageIO SDR max0继续未认证。人物/皮肤、Studio与GTM/LTM继续分别输出；旧NumPy/BG/atan2 half拟合不恢复。
 
 **待实机解决。** 匹配IMG_2810 build/UUID的同帧j-only和WithoutFaceBoost、N、B/T/V、人脸直方图、allocateTone约束/knots与应用域仍按s54捕获计划；β=0.1953125不是像素EV。RAW2679/2408、Studio原统计和真实HDR headroom观看仍待实机。原33点mask、half/float/PSNR/1e-3门槛不改，LinearThumbnail仍Apple Log；这轮无新预览，旧固定ACES预览不变。**A_phase_complete=false，acceptance_complete=false，goal active。** 原100MB累计限制不重置，125MB完整EXR许可未收到，不写完整EXR。
+
+
+S60–S64收尾：源码/指标先普通push至research/vm-native-20261018@689034a284bc9fa714667872d9473baf161ad523，再经全部PR/ref与run终态核查，删除本轮5条临时分支和HDR_S64_S63_SESSION；无release增删，原master/现有PR/8份原件冻结SHA不变。见evidence/s64/closure.json及本地transport-cleanup-s60-s64.json。累计100MB许可不重置；旧Git预算按未压缩对象上界记账，本轮以可核对的最终loose对象实存字节调账，原账/全部历史归档保留，未扩大许可。A与总验收仍false。
