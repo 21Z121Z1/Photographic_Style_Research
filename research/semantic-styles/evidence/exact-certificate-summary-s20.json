@@ -1,0 +1,65 @@
+{
+  "source": {
+    "file": "semantic-20261018/runs/39184820567/selected/out/analysis/s20-certificate-summary.json",
+    "sha256": "b7d1568d4e910849d3646ac56a76dcc6e99c69412b795e7032deefb613dc831a"
+  },
+  "capture_shape_if_real_photo": [
+    384,
+    512,
+    4
+  ],
+  "original_full_resolution_tested": false,
+  "result": {
+    "source_build": "26A434",
+    "scope": "Full observed images exactly equal for two original-native preimages; different native neutralized outputs. Exact rational success-interval contradiction, not floating threshold tuning.",
+    "rows": [
+      {
+        "operator": "skin-color",
+        "certified_points": 6,
+        "full_frame_observation_half_mismatches": 0,
+        "empty_intersection_of_allowed_1e3_estimates": 6,
+        "exact_rational_lower_bound_min": 0.0010186757215619694,
+        "exact_rational_lower_bound_max": 0.0013556258472661546,
+        "minimum_disjoint_interval_gap": 2.685546875e-05,
+        "threshold_changed": false,
+        "point_recovery_guarantee_possible": false
+      },
+      {
+        "operator": "skin-brightness",
+        "certified_points": 29,
+        "full_frame_observation_half_mismatches": 0,
+        "empty_intersection_of_allowed_1e3_estimates": 29,
+        "exact_rational_lower_bound_min": 0.0010256410256410256,
+        "exact_rational_lower_bound_max": 0.0032603632976245926,
+        "minimum_disjoint_interval_gap": 2.685546875e-06,
+        "threshold_changed": false,
+        "point_recovery_guarantee_possible": false
+      },
+      {
+        "operator": "skin-both",
+        "certified_points": 35,
+        "full_frame_observation_half_mismatches": 0,
+        "empty_intersection_of_allowed_1e3_estimates": 35,
+        "exact_rational_lower_bound_min": 0.0010186757215619694,
+        "exact_rational_lower_bound_max": 0.0032603632976245926,
+        "minimum_disjoint_interval_gap": 2.685546875e-06,
+        "threshold_changed": false,
+        "point_recovery_guarantee_possible": false
+      }
+    ],
+    "certificate_count": 70,
+    "strict_threshold": [
+      1,
+      1000
+    ],
+    "old_acceptance_gate_pass": false,
+    "point_inverse_guarantee_over_same_observation_alternatives": false,
+    "global_tight_hull_certified": false,
+    "unconditional_unknown_or_nonfinite_interval": [
+      "-inf",
+      "+inf"
+    ],
+    "actual_original_frame_can_be_guessed_correctly": true,
+    "warning": "Impossibility is a uniform guarantee over feasible alternatives. It does not prove no estimator can happen to match this fixed original. No original-camera amplitude is inferred."
+  }
+}

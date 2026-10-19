@@ -56,7 +56,16 @@
     "semantic/face-body-exposure/amplitude",
     "semantic/face-body-exposure/candidate-properties",
     "semantic/face-exposure/native-missing-context",
-    "semantic/evidence/transport-integrity"
+    "semantic/evidence/transport-integrity",
+    "semantic/skin/downstream-specialization",
+    "semantic/skin/global-domain-test",
+    "semantic/face-exposure/allocator-replay",
+    "semantic/curve/conditional-set-inverse",
+    "semantic/skin/full-frame-ambiguity",
+    "semantic/skin/exact-relative-impossibility",
+    "semantic/face-exposure/consumer-nonzero-tone",
+    "semantic/face-body-exposure/calibration-boundary",
+    "semantic/acceptance/evidence-boundary"
   ],
   "incremental_claim_ids": [
     "V3-G01",
@@ -98,9 +107,9 @@
   "failed_gates_at_bit_exact_closeout": [
     "numpy_half_bit_exact"
   ],
-  "semantic_generated_utc": "2026-10-18T23:55:45.976812+00:00",
+  "semantic_generated_utc": "2026-10-19T01:44:08.848451+00:00",
   "semantic_acceptance_complete": false,
-  "updated_utc": "2026-10-18T23:55:45.976812+00:00",
+  "updated_utc": "2026-10-19T01:44:08.848451+00:00",
   "semantic_acceptance": {
     "A_phase_complete": false,
     "original_mask_coverage": 0.9508717854817709,
@@ -144,7 +153,32 @@
     },
     "skin_global_tight_hull_certified": false,
     "skin_nonfinite_reachability": "unknown",
-    "full_native_roundtrip_pass": false
+    "full_native_roundtrip_pass": false,
+    "full_frame_ambiguity_verified": true,
+    "uniform_point_recovery_guarantee_refuted": true,
+    "conditional_supplied_curve_inverse_verified": true,
+    "actual_camera_curve_pair_available": false,
+    "full_original_resolution_semantic_validation": false,
+    "semantic_photos": [
+      "IMG_2810"
+    ]
+  },
+  "semantic_analysis_closure": {
+    "skin_failure_cause": "full-native observation nonuniqueness, exact rational certificate",
+    "fixed_reference_failures": [
+      6,
+      27,
+      33
+    ],
+    "uniform_point_guarantee": "refuted",
+    "tight_global_consumer_hull": "not certified; runner research remains",
+    "finite_output_outer": [
+      -65504,
+      65504
+    ],
+    "nonfinite_alternatives": "unknown; do not assign finite error bound",
+    "actual_camera_amplitude": "requires matched original curves/statistics",
+    "A_phase_complete": false
   },
   "claims": [
     {
@@ -521,13 +555,19 @@
       "id": "SEM-18",
       "category": "semantic/skin/remaining-native-inverse",
       "status": "runner",
-      "claim": "Certified global skin feasible-set bounds remain runner work. Current S16/S17 color/brightness/both failures6/27/33; every remaining failure has a native nonuniqueness witness, but tight global hull/nonfinite reachability not certified. Full native roundtrip still fails. No gate relaxation.",
+      "claim": "S20 full-frame exact native witnesses refute uniform1e-3 point guarantees at6/29/35 operator-pixel cases; remaining fixed-reference failures6/27/33. Tight global level-set upper hull still not certified (runner research), and old full-native gate still false. Do not refit/erase ambiguity to imply uniqueness.",
       "os_build": "26A434",
       "evidence": [
         {
-          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
-          "line": 30,
-          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "file": "semantic-20261018/runs/39184820567/selected/out/native/s20-results.json",
+          "line": 27,
+          "sha256": "f43910454c5cb0ff7bcc7745d7ad1ae7e72d6e66fc4620e37445c17ba68c7a62",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/analysis/s20-certificate-summary.json",
+          "line": 4,
+          "sha256": "b7d1568d4e910849d3646ac56a76dcc6e99c69412b795e7032deefb613dc831a",
           "json_pointer": "/rows"
         },
         {
@@ -538,7 +578,7 @@
         }
       ],
       "acceptance_pass": false,
-      "run_id": "39177763111"
+      "run_id": "39184820567"
     },
     {
       "id": "SEM-19",
@@ -1397,6 +1437,412 @@
           "zip_sha256": "1d6985fb15d3a4076d173def3383d7feb48d11f89a7599ddad2f7124f63f7b95",
           "cipher_sha256": "449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247",
           "manifest_sha256": "de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6"
+        }
+      ]
+    },
+    {
+      "id": "SEM-45",
+      "category": "semantic/skin/downstream-specialization",
+      "status": "已验证静态",
+      "claim": "Captured output color matrix identity, transfer0 and gain-compensation1 do not make the whole skin downstream identity. renderSelectiveColorAdjustments always calls selectiveColorFilter, which does saturated color-space roundtrip plus exterior addback even with zero adjustments/zero LUT. texture22 SHA equals23040 zero bytes. Tight full-consumer intervals cannot silently skip this stage.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/semantic-styles/evidence/scalar-context-s19.json",
+          "line": 513,
+          "sha256": "154e1dea89ab2330ae35c99c137464140c3fd0e68c615085447fee66f614f914",
+          "json_pointer": "/conversions"
+        },
+        {
+          "file": "repo/research/vm-native/model-v10/0010.ll",
+          "line": 2256,
+          "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+          "symbol": "selectiveColorFilter",
+          "address": "AIR0010:2048..2259; call506"
+        },
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/native/s14-context.json",
+          "line": 2,
+          "sha256": "9f512d56efe3f900d12c311448d5c9541be4b918ea1aa0d9572f56e8f88b1a16",
+          "json_pointer": "/context_mismatches"
+        }
+      ]
+    },
+    {
+      "id": "SEM-46",
+      "category": "semantic/skin/global-domain-test",
+      "status": "已验证数值",
+      "claim": "S19 original renderFinalAdjustments on72 synthetic configurations (6 input families x3 skin mattes x4 theta variants), srl0:63488 finite scalar input patterns each. Grayscale family has808 nonfinite-output pixels from finite RGB inputs per configuration; interior controls have0. Not the full RGB cube, not original-photo context or proof of nonfinite roots conditioned on IMG_2810 observedY. Thus finite texture input alone is not a universal finite-output contract.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39183348891/text/native/native-domain.json",
+          "line": 13,
+          "sha256": "c23d77e888126765a5b459f3b3c0897cb132cab987171628ef0e945e6bb795eb",
+          "json_pointer": "/rows"
+        }
+      ],
+      "full_RGB_cube_enumerated": false,
+      "original_photo_context_used": false,
+      "runs": [
+        {
+          "phase": "S19",
+          "run_id": "39183348891",
+          "artifact_id": 12157286597,
+          "commit": "a5c6f65a682b4130c4e489d01099a1922765edb1",
+          "zip_sha256": "db5a00222bf017798bf45cf064b854ad1655f5f0ce2103d37763f8c92a3c8dc5",
+          "manifest_sha256": "44f71ba0f523c7c17fa230c5606a553aedcaf2613819e6b7b0671d5b244cf291"
+        }
+      ]
+    },
+    {
+      "id": "SEM-47",
+      "category": "semantic/face-exposure/allocator-replay",
+      "status": "已验证数值",
+      "claim": "S19 replays original allocateTone plus3 helpers with synthetic histograms/vectors/tuning and explicit PAC/stack-probe/memcpy/bzero/powf hooks.36 cases finite/monotone in[0,1],24 changed, maxcurve delta.1524309218. Node ratios range-.35587775..2.02712982EV and are NOT physical pixel EV. Samej does not set a context-independent curve amplitude/direction. No real-camera calibration claimed.",
+      "os_build": "24A446 code replayed with explicit hooks on macOS26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39183348891/text/allocation/allocation-results.json",
+          "line": 4,
+          "sha256": "57949b511f34fd7764ece18a35fdd1277605d19cd51960ff7a007ac4a7ca2fb7",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/producer-allocation-s19.txt",
+          "line": 514,
+          "sha256": "673d89683eb8523b5ff0ba356dc3a0ff47cd8fece2073ba24b784b299f9fd8a1",
+          "symbol": "allocateTone",
+          "address": "0x256ba19e8..0x256ba1d7c"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/producer-allocation-s19.txt",
+          "line": 893,
+          "sha256": "673d89683eb8523b5ff0ba356dc3a0ff47cd8fece2073ba24b784b299f9fd8a1",
+          "symbol": "allocateTone",
+          "address": "0x256ba1ffc..0x256ba2104; copy branch0x256ba2050..2060"
+        }
+      ],
+      "camera_amplitude_identified": false,
+      "runs": [
+        {
+          "phase": "S19",
+          "run_id": "39183348891",
+          "artifact_id": 12157286597,
+          "commit": "a5c6f65a682b4130c4e489d01099a1922765edb1",
+          "zip_sha256": "db5a00222bf017798bf45cf064b854ad1655f5f0ce2103d37763f8c92a3c8dc5",
+          "manifest_sha256": "44f71ba0f523c7c17fa230c5606a553aedcaf2613819e6b7b0671d5b244cf291"
+        }
+      ]
+    },
+    {
+      "id": "SEM-48",
+      "category": "semantic/curve/conditional-set-inverse",
+      "status": "已验证数值",
+      "claim": "New inverse_curve_pair inverts supplied monotone scalar curve pairs globally over their declared knot/edge-clamp model, using exact rational tables/cells and outward final bounds. Original ARM interpolate oracle:36 synthetic curve pairs x643 queries=23148 observations, input/neutral interval misses0, maxrelative4.98659347e-7 on guaranteed1e-3 outputs; minimum coverage96.11197512%. Plateau has interval and withholds point candidate. E=2^-22 is normalized dyadic-interpolate implementation envelope, not relaxed acceptance. Actual camera curve pair/application domain still missing.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/curve/conditional-curve-inverse.json",
+          "line": 18,
+          "sha256": "cfe422f2de06522d04c740b0692ae36f63ebff6a4c43d2e13cf5e2b59f4ea535",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "repo/research/semantic-styles/semantic_curve_inverse.py",
+          "line": 29,
+          "sha256": "c33da290c53b8464ca4f1e637a962591999cfbf2719ff09eb669e9a5fd764de7"
+        }
+      ],
+      "camera_inverse_verified": false,
+      "whole_consumer_global_hull_certified": false,
+      "runs": [
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
+        }
+      ]
+    },
+    {
+      "id": "SEM-49",
+      "category": "semantic/skin/full-frame-ambiguity",
+      "status": "已验证数值",
+      "claim": "S20 fresh native512x384 context matches S5, including every fixed texture/buffer/ROI. Two source alternatives per operator yield identical entire observed native images (and originalY), but neutralized outputs differ18/68/86 half RGB components for color/brightness/both. Only theta592/596 neutralized, other parameter bytes0 changes. Witness groups6/29/35; full original5712x4284 image not tested.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/native/s20-results.json",
+          "line": 27,
+          "sha256": "f43910454c5cb0ff7bcc7745d7ad1ae7e72d6e66fc4620e37445c17ba68c7a62",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/s20-run-provenance-20261019.json",
+          "line": 1,
+          "sha256": "f7dc5718cb9c81946aa6cd890ccc0327dd7df3623024eba23da947f4e504276b"
+        }
+      ],
+      "capture_shape": [
+        384,
+        512,
+        4
+      ],
+      "original_resolution_tested": false,
+      "runs": [
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
+        }
+      ]
+    },
+    {
+      "id": "SEM-50",
+      "category": "semantic/skin/exact-relative-impossibility",
+      "status": "已验证数值",
+      "claim": "70 operator-pixel certificates (6/29/35, not70 independent photos or necessarily distinct pixels): exact dyadic half values give b*(999/1000)>a*(1001/1000). Allowed1e-3 point-success intervals are disjoint; joint minimax lower bound up to.0032603632976. All remaining33 joint failures are in35 witnessed points. This refutes a UNIFORM point guarantee over same-observation alternatives; does not prove no estimator can luckily match this fixed original. Tight global feasible-set upper hull still not certified.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/analysis/s20-certificate-summary.json",
+          "line": 4,
+          "sha256": "b7d1568d4e910849d3646ac56a76dcc6e99c69412b795e7032deefb613dc831a",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "repo/research/semantic-styles/analyze_semantic_s20.py",
+          "line": 17,
+          "sha256": "45c1831142617d6c4d7185549b9eafd5abd79dc0fcf138774c538f818f8e6b5a"
+        },
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        }
+      ],
+      "threshold": [
+        1,
+        1000
+      ],
+      "acceptance_pass": false,
+      "global_tight_hull_certified": false,
+      "runs": [
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
+        }
+      ]
+    },
+    {
+      "id": "SEM-51",
+      "category": "semantic/face-exposure/consumer-nonzero-tone",
+      "status": "已验证数值",
+      "claim": "S20 retained original native consumer at tone+.35, changing only SSRParams+664 j1.09765625->1 gives0 half RGB differences on196608 pixels. c/d/GTC/guides/statistics/all mattes unchanged. This is consumer-buffer intervention, not a fresh complete producer recompute or removal of baked face boost.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/native/s20-results.json",
+          "line": 14,
+          "sha256": "f43910454c5cb0ff7bcc7745d7ad1ae7e72d6e66fc4620e37445c17ba68c7a62",
+          "json_pointer": "/j_only_at_nonzero_tone"
+        },
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/native/s20-results.json",
+          "line": 27,
+          "sha256": "f43910454c5cb0ff7bcc7745d7ad1ae7e72d6e66fc4620e37445c17ba68c7a62",
+          "json_pointer": "/rows"
+        }
+      ],
+      "runs": [
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
+        }
+      ]
+    },
+    {
+      "id": "SEM-52",
+      "category": "semantic/face-body-exposure/calibration-boundary",
+      "status": "假设",
+      "claim": "Existing separate .25/.5/.75/1log2j face/body scalar-gain previews remain sensitivity budgets; measured smoothness/background/chromaticity/self-roundtrip do not validate Apple removal amplitude or matte binding. S19 synthetic node ratios must not be reported as IMG_2810 pixel-EV bounds. Conditional curve substitution C_without(C_with^-1(y)) needs matched curves and confirmed coordinate/application domain.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39183348891/text/allocation/allocation-results.json",
+          "line": 4,
+          "sha256": "57949b511f34fd7764ece18a35fdd1277605d19cd51960ff7a007ac4a7ca2fb7",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "repo/research/semantic-styles/semantic_curve_inverse.py",
+          "line": 29,
+          "sha256": "c33da290c53b8464ca4f1e637a962591999cfbf2719ff09eb669e9a5fd764de7"
+        },
+        {
+          "file": "semantic-20261018/runs/39161546771/selected/out/analysis/s14-analysis.json",
+          "line": 30,
+          "sha256": "3743d6e1af82a08ea8ce90406035be7c79b800f6cf6d6e08a72f6a46c7590af8",
+          "json_pointer": "/trials"
+        }
+      ],
+      "camera_amplitude_identified": false,
+      "runs": [
+        {
+          "phase": "S19",
+          "run_id": "39183348891",
+          "artifact_id": 12157286597,
+          "commit": "a5c6f65a682b4130c4e489d01099a1922765edb1",
+          "zip_sha256": "db5a00222bf017798bf45cf064b854ad1655f5f0ce2103d37763f8c92a3c8dc5",
+          "manifest_sha256": "44f71ba0f523c7c17fa230c5606a553aedcaf2613819e6b7b0671d5b244cf291"
+        },
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
+        }
+      ]
+    },
+    {
+      "id": "SEM-53",
+      "category": "semantic/camera-ground-truth",
+      "status": "待实机",
+      "claim": "Need sample-matching iOS producer frame statistics/actual curves and application buffers with only j/WithoutFaceBoost toggled, original Studio people/eye/blur context, and paired RAW. Existing iPhone12,1/24A446 cache differs from iPhone18Pro/27.0.1 sample. A successful supplied-curve unit inverse is not scene-linear P3 or full camera semantic undo.",
+      "os_build": "24A446 static reference; sample iOS27.0.1 hardware/build mismatch",
+      "evidence": [
+        {
+          "file": "semantic-20261018/static/producer-j-downstream-s18.txt",
+          "line": 123,
+          "sha256": "dbbe64a73a6bae93319435e07f2a10d24f2f2f01c59b894172deed61170f989c",
+          "address": "0x256ba3808..0x256ba3818;0x256bab6b0..0x256bab6d0",
+          "symbol": "generateSpatialLTC / LTMDriverV2::Process"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/producer-allocation-s19.txt",
+          "line": 893,
+          "sha256": "673d89683eb8523b5ff0ba356dc3a0ff47cd8fece2073ba24b784b299f9fd8a1",
+          "symbol": "allocateTone",
+          "address": "0x256ba1ffc..0x256ba2104; copy branch0x256ba2050..2060"
+        },
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/curve/conditional-curve-inverse.json",
+          "line": 18,
+          "sha256": "cfe422f2de06522d04c740b0692ae36f63ebff6a4c43d2e13cf5e2b59f4ea535",
+          "json_pointer": "/rows"
+        }
+      ],
+      "camera_inverse_verified": false
+    },
+    {
+      "id": "SEM-54",
+      "category": "semantic/evidence/transport-integrity",
+      "status": "已验证数值",
+      "claim": "S19 public synthetic text ZIP/CRC/full manifest verified; S20 GPG/full manifest55 files28401260B verified, only89708B metadata materialized. S19 temporary branch and S20 three secrets/draft release/private branch removed after PR/ref/source checks. Originals/frozen models/old archives retained; no plaintext people uploaded.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s19-run-provenance-20261019.json",
+          "line": 1,
+          "sha256": "4ed7954758304863b9f2ffe7d1f0bea436815846528a335e694ee96c18eb795d"
+        },
+        {
+          "file": "semantic-20261018/s20-run-provenance-20261019.json",
+          "line": 1,
+          "sha256": "f7dc5718cb9c81946aa6cd890ccc0327dd7df3623024eba23da947f4e504276b"
+        },
+        {
+          "file": "semantic-20261018/transport-cleanup-s20-20261019.json",
+          "line": 1,
+          "sha256": "7efed6eda94fb66220976eaf1e91f5ea1120f14157e5a2f72c6740f41da43dc0"
+        }
+      ],
+      "runs": [
+        {
+          "phase": "S19",
+          "run_id": "39183348891",
+          "artifact_id": 12157286597,
+          "commit": "a5c6f65a682b4130c4e489d01099a1922765edb1",
+          "zip_sha256": "db5a00222bf017798bf45cf064b854ad1655f5f0ce2103d37763f8c92a3c8dc5",
+          "manifest_sha256": "44f71ba0f523c7c17fa230c5606a553aedcaf2613819e6b7b0671d5b244cf291"
+        },
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
+        }
+      ]
+    },
+    {
+      "id": "SEM-55",
+      "category": "semantic/acceptance/evidence-boundary",
+      "status": "runner",
+      "claim": "A_phase_complete and original acceptance remainfalse; skin color/brightness/both6/27/33 failures on unchanged186949 mask. Uniform point guarantee has a native exact counterexample, so no more point fitting is justified as a uniqueness proof. Useful full-consumer global upper hull remains uncertified runner research: require explicit admissible domain and backend numeric semantics. Representation outer bound alone is broad; nonfinite alternatives remain unknown, not silently removed.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39162555357/selected/out/diagnostics/s17-audit.json",
+          "line": 30,
+          "sha256": "3db68dba49d79fd7e2799e6428b0b5b51615161b179b9ef21801199d873afea5",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39177763111/selected/out/analysis/s18-bounds.json",
+          "line": 18,
+          "sha256": "49e9703b03a55b00c60664bb9623e0dbd620618847e1cadf78033bacc2f79d42",
+          "json_pointer": "/skin33"
+        },
+        {
+          "file": "semantic-20261018/runs/39183348891/text/native/native-domain.json",
+          "line": 13,
+          "sha256": "c23d77e888126765a5b459f3b3c0897cb132cab987171628ef0e945e6bb795eb",
+          "json_pointer": "/rows"
+        },
+        {
+          "file": "semantic-20261018/runs/39184820567/selected/out/analysis/s20-certificate-summary.json",
+          "line": 4,
+          "sha256": "b7d1568d4e910849d3646ac56a76dcc6e99c69412b795e7032deefb613dc831a",
+          "json_pointer": "/rows"
+        }
+      ],
+      "A_phase_complete": false,
+      "acceptance_pass": false,
+      "runs": [
+        {
+          "phase": "S19",
+          "run_id": "39183348891",
+          "artifact_id": 12157286597,
+          "commit": "a5c6f65a682b4130c4e489d01099a1922765edb1",
+          "zip_sha256": "db5a00222bf017798bf45cf064b854ad1655f5f0ce2103d37763f8c92a3c8dc5",
+          "manifest_sha256": "44f71ba0f523c7c17fa230c5606a553aedcaf2613819e6b7b0671d5b244cf291"
+        },
+        {
+          "phase": "S20",
+          "run_id": "39184820567",
+          "artifact_id": 12157941077,
+          "commit": "100ad285a571634c62e5d15b7e2c5c5617f5a609",
+          "zip_sha256": "d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7",
+          "manifest_sha256": "a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602"
         }
       ]
     }

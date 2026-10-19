@@ -68,3 +68,28 @@ python3 research/semantic-styles/audit_semantic_s18.py "$S17/out" "$W/out/analys
 S15/S16完整native重放入口为run_semantic_s14.py / run_semantic_s16.py，域与诊断/估计种子分离由semantic_s14.inc固定，不能拿原输入选根。每点packed控制的ROI映射不同于full frame，必须保留basis/四pipeline对照及恢复ROI步骤。S18只读取不可变S17，预览沿用S15/S16已校验结果，不再改像素。
 
 旧临时secret/release/5条分支已清理，不能直接dispatch原workflow期待旧输入有效。需要复现时新建限定push的研究临时分支，轮换单archive session secret、只传GPG密文，核对assetID和源归档SHA，结果retention-days1。终态立即下载到新目录，GPG+全manifest验证后查PR/ref/源码可达性再清理临时资源。归档审计已存在则只读，不覆盖open('x')历史文件。公开聚合provenance不用历史native_precision_valid字段作验收；execution_scope明确S17仅数组审计、S18非iOS原生，acceptance_pass=false。
+
+
+<!-- SEMANTIC-S19-S20-20261019 -->
+
+### S19–S20 复现入口与信息界
+
+```bash
+# 本地仅小型只读审计；任何Python都在该scope内。
+cd ~/work/styles-gtm-ltm
+./scripts/local-python-scope.sh -I semantic-20261018/scripts/audit_semantic_evidence.py
+```
+
+以下只在xcode-27 runner、全新临时目录执行；不默认重跑完成项：
+
+```bash
+python3 research/semantic-styles/producer_allocate_s19.py "$W/out/allocation"
+clang -O2 -fobjc-arc research/semantic-styles/domain_native_s19.m \
+  -framework Foundation -framework Metal -o "$W/domain-s19"
+"$W/domain-s19" research/semantic-styles/evidence/scalar-context-s19.json "$W/out/native-domain"
+python3 research/semantic-styles/test_semantic_curve_inverse_s20.py "$W/out/curve"
+```
+
+S19输入完全合成，无需人物文件；脚本记录外部hooks，不称原生iOS。S20真实整幅证书入口run_semantic_s20.py→semantic_s20.inc→analyze_semantic_s20.py；依赖同一S5/S17不可变归档和原件副本，只改变target参数/指定输入替代。原始传输secret/release已删，不能直接dispatch历史workflow。若复现，创建新限定push的研究分支和新workflow，轮换单archive session secret；原件AES256密文临时release或已授权加密输入，输出GPG到既有公钥。禁止上传私钥/人物明文。先核对build26A434；终态立即下载到新目录，GPG+全manifest校验后查PR/ref/源码可达性再清理。run原分支source commit在runs.md；S19仅注释纠正不改变数值代码。
+
+semantic_curve_inverse.py只收实际已知的单调标量curve pair与knots，返回输入/中和输出区间、plateau、endpoint、近黑与保证mask；完整含混点以NaN候选+区间交付。研究用minimax_estimate不是认证像素。2^-22只对应本次归一化二进制knots的原ARM插值误差合同，不能随意套到完整half消费端/相机空间。实际相机曲线未知时拒绝用S19合成曲线替换。GTM/LTM/人物语义分开，Apple Log与冻结模型不改。

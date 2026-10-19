@@ -52,6 +52,18 @@
     {
       "claim_scope": "S15/S16",
       "correction": "Finite local half-code cubes certify only declared sets, not global hull; ROI failure-set selection uses prior oracle error, not held-out validation. Packed auxiliary ROI maps are remapped, final full-frame maps restored."
+    },
+    {
+      "run_id": "39183348891",
+      "correction": "The pre-call x28 clear does not set smoothing iterations: allocateTone0x256ba1400 overwrites w28 from tuning+0xc (zero in synthetic cases). Corrected source comment only; numerical code and immutable run untouched."
+    },
+    {
+      "scope": "S18 metric photo column",
+      "correction": "semantic_bounds_s18_j_working_vector rows use IMG_2810 only as j-context source; their90 cases are synthetic ARM inputs, never90 real photos. S19/S20 synthetic rows explicitly use SYNTHETIC labels."
+    },
+    {
+      "scope": "S20 CSV metadata",
+      "correction": "Three full_frame_observation_half_mismatches rows use half_components and n=589824 for whole-frame RGB comparison; witness certificate counts remain6/29/35 in their separate metrics. Values remain0. No numerical result/threshold/mask changed. final-audit-s20-v2 records the corrected CSV SHA; earlier audit is retained."
     }
   ]
 }

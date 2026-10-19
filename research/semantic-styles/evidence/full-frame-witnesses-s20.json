@@ -1,0 +1,121 @@
+{
+  "source": {
+    "file": "semantic-20261018/runs/39184820567/selected/out/native/s20-results.json",
+    "sha256": "f43910454c5cb0ff7bcc7745d7ad1ae7e72d6e66fc4620e37445c17ba68c7a62"
+  },
+  "capture_shape_if_real_photo": [
+    384,
+    512,
+    4
+  ],
+  "original_full_resolution_tested": false,
+  "result": {
+    "context_mismatches": [],
+    "device": "Apple Paravirtual device",
+    "fresh_vs_S5": {
+      "half_differing_components": 0,
+      "max_abs": 0,
+      "max_relative": 0,
+      "pixels": 196608,
+      "psnr_peak1_db": "inf"
+    },
+    "full_frame_witness_replay_pass": true,
+    "j_only_at_nonzero_tone": {
+      "after": 1,
+      "before": 1.09765625,
+      "native_difference": {
+        "half_differing_components": 0,
+        "max_abs": 0,
+        "max_relative": 0,
+        "pixels": 196608,
+        "psnr_peak1_db": "inf"
+      },
+      "parameter_offset": 664
+    },
+    "os": "Version 27.0.1 (Build 26A434)",
+    "rows": [
+      {
+        "both_observed_vs_original_half_mismatches": 0,
+        "mutation": {
+          "changed_bytes_outside_target": 0,
+          "changes": [
+            {
+              "after": 0,
+              "before": 0.503125011920929,
+              "offset": 592,
+              "SSRFG_field": 9
+            }
+          ],
+          "params_after_sha256": "f33bbfb089ec0cd792f4894d003480798c1125fcef9c19d9e15cc31b9f84fae9",
+          "params_before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f"
+        },
+        "neutral_A_sha256": "0cfa15e893b8a6622d74e0d68e141d5c83f0d7ea5271d72d1e3b0687f5f96fe1",
+        "neutral_B_sha256": "fdcaebb5c602dcd3ec4cd3326a128bf0618bdc3d8a4557084945424cedc08d50",
+        "neutral_half_components_different": 18,
+        "observed_A_sha256": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+        "observed_B_sha256": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+        "operator": "skin-color",
+        "same_observed_half_mismatches": 0,
+        "same_observed_outside_selected_mismatches": 0,
+        "witness_pixels": 6
+      },
+      {
+        "both_observed_vs_original_half_mismatches": 0,
+        "mutation": {
+          "changed_bytes_outside_target": 0,
+          "changes": [
+            {
+              "after": 0,
+              "before": -0.22238825261592865,
+              "offset": 596,
+              "SSRFG_field": 10
+            }
+          ],
+          "params_after_sha256": "77674744636fad3d5d7f0353c7f447a81458fb2195b6bafdb6bc3374e7316038",
+          "params_before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f"
+        },
+        "neutral_A_sha256": "94366a3c71ecc5985cf9674596886448725d13251a1449fa5d38f7eea4393d37",
+        "neutral_B_sha256": "5af227267ce11cd1f596cf0f5bc3c288384d834eb82c554418ca6cf1d2e8b389",
+        "neutral_half_components_different": 68,
+        "observed_A_sha256": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+        "observed_B_sha256": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+        "operator": "skin-brightness",
+        "same_observed_half_mismatches": 0,
+        "same_observed_outside_selected_mismatches": 0,
+        "witness_pixels": 29
+      },
+      {
+        "both_observed_vs_original_half_mismatches": 0,
+        "mutation": {
+          "changed_bytes_outside_target": 0,
+          "changes": [
+            {
+              "after": 0,
+              "before": 0.503125011920929,
+              "offset": 592,
+              "SSRFG_field": 9
+            },
+            {
+              "after": 0,
+              "before": -0.22238825261592865,
+              "offset": 596,
+              "SSRFG_field": 10
+            }
+          ],
+          "params_after_sha256": "8b36227d444c6e7caf3c96910dfc95aaa155fb4e49b7f2b608dc49ab1cec6e6d",
+          "params_before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f"
+        },
+        "neutral_A_sha256": "51b2b6607dd7a0cbda81388b1d0b8cb7d9e510d1cdfe955db12ecf25e10e6250",
+        "neutral_B_sha256": "2c45c26bb5650fbcafe26bff436a723ebb20435faf555133a2bd8e105e03e4a3",
+        "neutral_half_components_different": 86,
+        "observed_A_sha256": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+        "observed_B_sha256": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+        "operator": "skin-both",
+        "same_observed_half_mismatches": 0,
+        "same_observed_outside_selected_mismatches": 0,
+        "witness_pixels": 35
+      }
+    ],
+    "scope": "Full-frame original native PSO witness replay. Only texture0 differs between alternatives. theta592/596 alone change for each neutralized output. No new inverse fit."
+  }
+}

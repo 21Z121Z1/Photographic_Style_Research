@@ -100,7 +100,7 @@ Mattify AIR0067:100–227/232起函数包括 mask归一化blurred color、与ave
 
 **已验证数值（SEM-24）**：S5 preview 对 C-contiguous候选RGB使用ascontiguousarray，OCIO原地修改同一数组，污染随后的人脸/人身指标及保存的RGB候选。S5这些指标/NPZ全部作废，原归档不改。S6只在runner解密副本后用`np.array(...,copy=True)`重算；20/20次预览前后input SHA相同。S7/S8预览亦检查输入不变；原生S5参数干预和独立连续单位模型指标没有被该显示alias污染。orientation文字在S2/S4错误，实际np.rot90(k=3)是90°顺时针，符合irot3；更正仅写errata，不改归档。
 
-预览统一 OCIO2.6 `cg-config-v2.2.0_aces-v1.3_ocio-v2.4`，Linear P3-D65→sRGB Display /ACES1.0 SDR Video，0EV，无逐图曝光拟合；配置SHA `5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440`。本地预览索引见本地私密PREVIEWS.md（不上传），含reference、仅皮肤色彩、仅皮肤亮度、两者、人脸/人身 .5×/1×及受控眼下条件逆。它们未明文提交/上传。HDR gain候选保存在私密NPZ，GTM、LTM、语义三部分不合并；没有新建已认证24MP scene输出或203nit标定，原SDR文件未写入。
+预览统一 OCIO2.6 `cg-config-v2.2.0_aces-v1.3_ocio-v2.4`，Linear P3-D65→sRGB Display /ACES1.0 SDR Video，0EV，无逐图曝光拟合；配置SHA `5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440`。本地预览索引见 本地私密PREVIEWS.md（不上传），含reference、仅皮肤色彩、仅皮肤亮度、两者、人脸/人身 .5×/1×及受控眼下条件逆。它们未明文提交/上传。HDR gain候选保存在私密NPZ，GTM、LTM、语义三部分不合并；没有新建已认证24MP scene输出或203nit标定，原SDR文件未写入。
 
 本轮额外写入预算100MB、剩余磁盘不低于4GB；只在macOS runner做图像计算。本地Python均用scripts/local-python-scope.sh；原件、历史归档、冻结模型、两个未跟踪consumer-goto-v8文件保持不变。临时传输资源在结果校验后清理，准确复核记录见transport-cleanup-20261019.json；永久源码仅提交研究分支，不动master/PR/merge。
 
@@ -196,3 +196,55 @@ S18继续沿数据流：
 **已验证数值（SEM-44）**：S14–S18五份ZIP/GPG/全manifest SHA均已核对。S14的C编译错误由旧脚本容错掩盖，workflow虽success但没有有效新像素结果，S15才补上；S17纯保存数组审计。临时6个secret、draft release及5条private分支，在PR全状态/其他advertised refs/源码可达性核对后清理，远端复核不存在。永久源码只在research分支。原始provenance的历史字段 `native_precision_valid` 不是门槛状态，S17更不能据其true宣称做过原生执行；公开新provenance改用明确execution_scope/acceptance_pass=false，原记录不覆盖。
 
 下一步保留两个独立问题：runner可做完整consumer可行集的紧外包络认证；匹配相机环境需抓实际j/WithoutFaceBoost曲线、运行时统计与应用像素。当前没有可用的全域紧上界或校准人脸EV，**不宣布A阶段完成**。Studio人工冻结上下文的最终单位往返结果保持已验证；完整相机纹理与RAW精度继续按NATIVE_TODO，不伪造真值。
+
+
+<!-- SEMANTIC-S19-S20-20261019 -->
+
+### S19–S20：完整捕获画面的歧义证书与条件曲线逆解
+
+**判定：皮肤残余失败的可识别性原因已闭环，A 阶段和原验收仍不能标完成。** S20排除了“只在packed查询成立”和“float阈值比较”的疑问；它证明未知输入的唯一点恢复不能对所有同观测前像作1e-3保证。固定这张原输入仍可能被某个估计器碰巧猜中，因此不能反过来说这张测试图数学上不可能得0失败。当前6/27/33失败、原186949有效mask/95.08718%及1e-3门槛全部保留。已知曲线的条件逆有新可复现实现；原相机曲线/统计未取得，完整consumer全域紧上界也未认证。此处“完整画面”指**原捕获512×384**，不是5712×4284原件全分辨率；没有新增留出照片。
+
+**已验证数值（SEM-49/50）**：run39184820567 / artifact12157941077在26A434重新捕获原Apple PSO，上下文与不可变S5的每份texture/buffer/ROI匹配，基准589824个RGB half分量0差。按S17见证分别构造两幅输入，其他像素保持原输入；只中和592/596的目标参数，参数外改变字节0。
+
+|单独目标|见证像素（operator-pixel）|整幅观察F(A)与F(B)差异|中和后F0的不同half RGB分量|精确minimax下界范围|
+|---|---:|---:|---:|---:|
+|皮肤色彩|6|0|18|.00101867572–.00135562585|
+|皮肤亮度|29|0|68|.00102564103–.00326036330|
+|两项皮肤|35|0|86|.00101867572–.00326036330|
+
+这三组不是70张照片，也不能相加当70个独立像素。全部观察输出SHA相同，且逐位等于原S5的整幅输出；完整画面提供的信息也不能区分这些替代输入。将原生half数精确转成二进制有理数，对每个见证端点a<b检查 `b×999/1000 > a×1001/1000`：70/70成立，两个允许点估计的成功区间没有交集，最小间隙为2.685546875e-6（输出线性值）。这不是调整float比较口径；原阈值就是精确1/1000。剩余33个联合失败全部有该证书，详见S20聚合结果、私密逐点证书和S17分类mask。
+
+归因边界保持明确：受控theta已知，不能把这些点称为“参数尚未求准”；matte固定，31边缘/2内部是位置关联，不能统称matte错误；原生F/F0用于比较，没有替代前向缺算子的借口；已证half值映射多对一，但具体碰撞来自哪个内部舍入、clamp或连续fold仍未逐项定位。点估计的非唯一性下界不能冒充完整可行集上界，也不证明原拍摄语义分解已识别。
+
+**已验证静态（SEM-45）**：S19按992B参数特化确认末端颜色矩阵恒等、transfer0、gain-compensation1；但这不代表皮肤下游恒等。AIR0010:506无条件调用renderSelectiveColorAdjustments；该函数即使三个adjustment=0、texture22全零，仍经selectiveColorFilter的色彩往返、saturate及区间外分量回加（2048–2259）。texture22为360×4 RGBA32Float，SHA `46e2096b907947368d310929303a04005b39c4a278e3a7de2225c355b4522694`，与23040个0字节相符。不能跳过它作原生全域区间证明。未修改冻结的forward/NumPy/MSL模型。
+
+**已验证数值（SEM-46）**：S19 run39183348891 / artifact12157286597直接运行原renderFinalAdjustments，6种合成输入族×3个skin matte×4个目标参数配置，共72组。函数常量为useSrlVersion0/useImageBlockfalse，stats/guides/其他纹理是明确人工上下文，没有使用照片。每组包含全部65536种scalar half码，其中63488个有限输入；灰阶族每组有808个有限RGB输入产生非有限输出，正常内部区间控制均无非有限输出。这个结果不证明它们是本样张F(x)=Y的可行根，也不是完整RGB立方体穷举；但否定了“所有有限纹理输入必有有限输出”的通用假定。matte0下同样存在，不能归咎于皮肤单元。
+
+所以全域信息界仍分两层：若F0有限，RGBA16Float的通道外包络是[-65504,65504]；未经合法输入域/后端语义认证，不排除非有限替代，数值误差上界标unknown/unbounded，不能缩减原验收mask。全域tight hull仍为false；完整的保守集合上界在数学上不因非唯一性而不可能，只是本项目还没认证。MSL fast优化可采用有限性及重结合假定，[Apple WWDC说明](https://developer.apple.com/videos/play/wwdc2021/10148/)和[LLVM fast flags规范](https://llvm.org/docs/LangRef.html#fast-math-flags)提供语义背景；这里不把LLVM当前版本直接当作Apple私有后端的完整证明。真实后端的反例来自上述原生run。
+
+**已验证静态/数值（SEM-47）**：生产链继续从工作向量V推进到完整allocateTone及smoothHistogramMiddle、scaleToFitRange、interpolate，1704条指令/原字节核对见producer-allocation-s19文本。S19用明确合成直方图、B/T向量、约束、显示budget及tuning重放；PAC/栈探测跳过、bzero/memcpy、runner libSystem powf均记录为外部hook，**不是原生iOS整链**，也不是样张原统计。36组均有限且单调，范围[0,1]；24组发生变化，最大曲线节点绝对差.1524309218。节点比值约[-.35588,+2.02713]EV只描述这些合成表，**不得当作IMG_2810的像素EV区间**。
+
+确切下游顺序是工作向量与分配向量取max、dot/预算归一化、scaleToFitRange、累计曲线，再按分支插值或复制。`0x256ba1ffc`的插值分支在`0x256ba2030..2104`作min1/max0/首节点0；`0x256ba2050`的直接copy分支绕过这一末端clamp，不能泛化成所有分支同样截断。S19的合成设置选copy分支，观察到[0,1]不构成所有输入的通用证明。j的0～.1953125内部权重增量仍不能单独定最终EV；工作向量、分配约束、分支与实际像素应用域必须一起取得。
+
+**已验证数值（SEM-51）**：S20在tone+.35保留全部外部上下文，只将SSRParams+664的j从1.09765625改成1，196608像素/589824个RGB half分量0差。它补上非零tone的consumer-buffer控制；没有因此重跑或宣称完成相机WithoutFaceBoost曲线重算。
+
+**已验证静态/数值（SEM-48）**：新`semantic_curve_inverse.py::inverse_curve_pair`实现给定单调标量曲线的条件替换：
+
+`I = C_with^-1(quantization_cell(y) ± E)`，`output_set = C_without(I) ± E`。
+
+它在声明的全部knot/edge-clamp模型上反求区间，而非只找一根；表值、量化cell、插值及相对误差判据用精确有理数计算，最终端点向外舍入。plateau和端点clamp给输入区间/无穷端点；无法保证1e-3时`candidate=NaN`，另存研究用minimax_estimate，不强填唯一值。global、local、semantic必须分开调用；本原语没有识别实际相机RGB空间、色彩矩阵、key1或空间曲线混合。
+
+用S19的36对**合成**曲线，每对643个查询，经原ARM interpolate函数作oracle，共23148观测：输入区间漏包0、中和输出区间漏包0，保证区间上的候选maxrelative=4.98659347e-7，单例最小保证覆盖96.11197512%。专门plateau测试返回[.5,.75]的多值区间并拒给唯一候选。测试的E=2^-22是归一化、均匀二进制knots插值的实现误差外包络，覆盖query offset的精确缩放、curve difference及FMA；**不是把像素验收1e-3放宽**。这只通过了给定曲线的条件单位测试，没有替代原consumer186949-mask验收。实际C_with/C_without及其应用坐标未取得，不能拿合成表直接处理照片或宣称scene-referred。
+
+**假设（SEM-52）**：现有face/body .25/.5/.75/1×log2j预览保持显式预算，背景/色度/平滑代理/自洽往返的性质沿用已验证数字。候选按定义压暗matte区域，不等于已验证撤销Apple真实提亮；S19也显示不同人工统计的节点变化可有不同方向。body幅度和file faceSkin绑定都未由j识别，不给Apple幅度误差。已有ACES预览不重算、不明文上传，见本地PREVIEWS索引；没有新增已认证24MP语义逆图。
+
+**待实机解决（SEM-53）**：需要匹配IMG_2810硬件/build的同帧原统计、实际with/without-face曲线及应用前后缓冲，才能将条件曲线逆接到像素并校准EV。原Studio逐人/眼部/blur上下文、RAW IMG_2679/IMG_2408和Photos UI另按清单捕获。24A446 iPhone12,1静态代码与iPhone18Pro/27.0.1样张不一致；不能拿人工stats补作原统计。**仍可交给runner（SEM-55）**的是限定且证明合法输入域后的全consumer集合紧外包络；它未完成，也不改变70个原生歧义证书的保证下界。
+
+**已验证数值（SEM-54）**：S19公开合成文本ZIP CRC/全manifest与S20密文GPG/全manifest均0失败。S20共55文件/28,401,260B完整流式校验，只展开89,708B小型证据，未展开原始像素。S19临时分支、S20三项secret/草稿release/private分支均在PR全状态、其他引用、源码可达性核对后清理；原件、旧归档、两个consumer-goto-v8及冻结模型保持。S19初版“预清零x28就设了smoothing iterations”的注释更正：0x256ba1400会从tuning+0xc重写w28，本合成tuning该值为0；仅注释纠正，数值代码和历史结果不改。
+
+当前停止继续选根的理由是原生可识别性证书，不是PSNR足够高。**A阶段仍不能宣告完成，acceptance_complete=false保留**：实际相机语义幅度/完整去效果未验证，原点恢复门槛未通过，实用全域紧上界未认证。后续任何更强结论必须增加真实曲线/统计、明确先验或完整数值认证；不能靠重复相同观测产生缺失信息。
+
+
+最终只读审计：[final-audit-s20-20261019.json](evidence/final-audit-s20-20261019.json)。17份归档、48次预览输入SHA、7份冻结/原件文件、65条证据引用通过；新增847条S19/S20指标（合成/真实严格区分）。远端临时secret/release/分支均不存在，最近12个run均结束。此审计不改变数值门槛或A未完成状态。
+
+S20 CSV元数据勘误：三条整幅half差异计数的单位改为half_components、n=589824；6/29/35是另一项见证像素计数。数值仍全为0，门槛/mask不变。当前CSV SHA与增量审计见[final-audit-s20-v2-20261019.json](evidence/final-audit-s20-v2-20261019.json)，上一审计保留。

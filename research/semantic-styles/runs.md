@@ -64,3 +64,20 @@ S14–17 preflight确认PR全状态0、其他advertised ref0、源码可达持�
 - S16：cipher `054329e24b9ba811c8d543db59762eb24be1ea3c0f6324abc2e560f0de8025e2`；manifest `54b6affe6ab73b19961082d1507495522bf824f5708037710e33c0c797498f11`；51文件/16664434B完整流式验证。
 - S17：cipher `ade750958abca1ad9f2db4c23e091aadebc479c703d915ee18649d947f999e26`；manifest `5c2b5ed208673214330f821e7abb597c164bc2ba03aa97ecf6f9a81f862b82b5`；16文件/619210B完整流式验证。
 - S18：cipher `449b6e1d6a4e84c33524c9cd441da50e7a0f317e16a877bda4279bef3e70e247`；manifest `de36035de24791b4b9edbbc3f555c19d2d0dde16e347e13e7700899edbd8c3f6`；12文件/62457B完整流式验证。
+
+
+<!-- SEMANTIC-S19-S20-20261019 -->
+
+### S19–S20
+
+|phase/run|branch / commit|artifact|实际执行|结论|
+|---|---|---|---|---|
+|S19 / [39183348891](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39183348891)|research/vm-native-20261019-s19 / a5c6f65a682b4130c4e489d01099a1922765edb1|12157286597，38046B|原consumer合成域72配置；allocateTone+3helper原ARM重放36组|全部正常内部控制有限，灰阶大范围有限输入有808异常/配置；24组曲线非零。无照片/secret/release。|
+|S20 / [39184820567](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39184820567)|research/vm-native-20261019-private-s20 / 100ad285a571634c62e5d15b7e2c5c5617f5a609|12157941077，18778529B|原512×384 retained PSO整幅见证；精确有理数审计；条件曲线逆|整幅同Y/异F0，70/70证书；非零tone j控制0差；23148条件曲线观测区间0漏包。原A/点门槛仍false。|
+
+两次均26A434，xcode-27-arm64镜像20261012.0260.1，Provisioner20261006.597，retention-days1。S19是公开合成文本，未伪称GPG；S20全密文，55文件28401260B验证、仅89708B小型证据展开。精确branch/commit/ZIP/cipher/manifest/log SHA见s19-run-provenance、s20-run-provenance和cleanup-s20。S19分支已清理；S20三个secret、release416811688及private分支已清理。草稿release按tag读取404后经认证list定位到原有唯一草稿，没有重复创建或上传。
+
+- S19 ZIP：`db5a00222bf017798bf45cf064b854ad1655f5f0ce2103d37763f8c92a3c8dc5`。
+- S20 ZIP：`d7bd0a79aad12a7a17899df87a9ffc86690811cfe2e12fbcac4472eba87805d7`；cipher：`5ad6308e5c01456fa24481211d49ab64eb9025c79f99ab7ca466c384ddafde5a`；manifest：`a011597ccc7ea1db05f72c0f4c562dfc441b346c4e2fe33e625c21c75fa38602`。
+
+原生iOS未执行；S19外部powf与PAC/stack hooks有清单。S20“完整”只指整个已捕获512×384 dispatch，不是原件24MP。所有源码已保留research/vm-native-20261018，master/PR未动。

@@ -62,7 +62,7 @@ def replay(hist,vector,dx,n=128,tone_budget=1.,constraint=.01,shape_power=1.):
  sp=0x500f0000;u.mem_write(sp,struct.pack('<4Q3B',V,DX,0,0,0,0,0))
  for reg,value in zip([UC_ARM64_REG_X0,UC_ARM64_REG_X1,UC_ARM64_REG_X2,UC_ARM64_REG_X3,UC_ARM64_REG_X4,UC_ARM64_REG_X5,UC_ARM64_REG_X6,UC_ARM64_REG_X7],[OBJ,OUTPTR,0,HIST,TUNE,DISP,FRAME,BASE]):u.reg_write(reg,value)
  for reg,value in zip([UC_ARM64_REG_S0,UC_ARM64_REG_S1,UC_ARM64_REG_S2],[0.,1.,float(n)]):u.reg_write(reg,fbits(value))
- u.reg_write(UC_ARM64_REG_X28,0)  # Explicitly zero smoothing iterations carried by this optimized code path.
+ u.reg_write(UC_ARM64_REG_X28,0)  # Clear incoming register state;0x256ba1400 overwrites w28 from tuning+0xc (zero in these synthetic cases).
  u.reg_write(UC_ARM64_REG_SP,sp);u.reg_write(UC_ARM64_REG_LR,0x40000000)
  u.emu_start(0x256ba11e4,0x40000004,count=2_000_000)
  assert u.reg_read(UC_ARM64_REG_PC)==0x40000000,'Instruction count exhausted'

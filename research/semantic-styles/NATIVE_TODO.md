@@ -52,3 +52,16 @@ S11 SkinSmooth / S13 Mattify各两个非零配置的原生往返通过1e-3，覆
 **待实机解决：j从内部权重到最终EV。** 需要与IMG_2810匹配机型/build的可调用相机诊断环境。先对新固件核对UUID/SHA、符号/指令，以下地址只指24A446参考：driver+0xa910/+0xa92c的N/j写入、LTCGridCalcAlgo0x256baa9dc、generateSpatialLTC0x256ba3808、allocateTone0x256ba15b8及0x256ba19e8..1a94。同一冻结帧副本上抓N/HITHStat及尺寸、faceRect/ROI权重、input+7210→运行时0x27994b2d0的T、混合前B/后V、allocateTone全部约束向量/分配budget/tuning和分支、输入输出曲线；不要读取zerofill0当T。分别只改j实际值→1/WithoutFaceBoost，捕获global/local曲线、c/d/GTC、实际ISP应用前后RGB及color domain/clip/plateau。原分支先重建基准，half逐位/float原门槛后，逐像素在可逆mask给 `log2(Y_with/Y_without)`、RGB/luma与face/body/背景EV区间，记录未知/clip而非强行正值。判定支持哪个file matte必须实测对齐ROI/权重，不能由名称认定faceSkin。CPU ARM短块90例只验证工作向量，不代替本项。
 
 **待实机解决：原Studio与RAW。** 原逐人stats/眼部editedTex/instance/blur等没有由S11/S13人工上下文恢复；继续按上文完整单项中和方案捕获，完整链与最终单位验收分开。RAW仍需Mac IMG_2679/IMG_2408配对组；GTM、LTM、皮肤、人脸、人身和纹理独立输出同一固定ACES预览，不能用无RAW本张认定scene精度。Metal在runner可用，不增加无GPU借口。
+
+
+<!-- SEMANTIC-S19-S20-20261019 -->
+
+### S20 后的证据闭环与仍缺条件
+
+已完成，不重复：完整原捕获512×384的F(A)=F(B)=原Y逐位0差，F0不同，6/29/35共70个operator-pixel精确有理数证书；非零tone只改consumer j仍0差；给定曲线的区间逆经23148个原ARM插值观测0漏包。原33个联合失败不能再仅记成“需要更强点求解器”。不能把不能保证与碰巧匹配本张原输入混为一谈。
+
+**可交给macOS runner，尚未完成：全consumer集合紧外包络。** 不重复±8/±24或再拟合半精度参数。先声明并证明输入域合法性（解码/原key1/CI转换及有限中间态），保存相应证书。S19用原shader在人工srl0上下文证实有限输入可能非有限输出，但没有证明这些异常是本张正值Y的可行根。不能将其直接变成全图irreversible mask。若按完整half域作level-set认证，须包含原后端/fast函数/纹理数学的保守语义与非有限路径，分支排除要有覆盖证书；未决盒保留unknown。区间过宽应如实给出，不报告tight。现有[-65504,65504]只在F0有限条件下成立，非有限候选未排除时不给有限误差保证。这个认证工作仍可在runner研究，不伪装成只有实机能做，也不让它改写已证非唯一下界或原验收mask。
+
+**待实机解决：把j接到真实像素EV。** 输入须为匹配iPhone18Pro/iOS27.0.1的同一冻结帧。先按UUID/SHA重定址，不照抄24A446地址。抓完整compute input/meta/tuning、N、ROI/faceRect/hist、B/T/V、allocateTone全部约束/显示budget、分支bool、knots、with-j输出曲线及像素应用前后RGB。仅在副本将j实际值改1或启用WithoutFaceBoost；原路径先精确重建，GTM/local/semantic各算子独立对照，记录j是否间接改变global曲线。24A446参考：0x256ba11e4 allocateTone；0x256ba13fc..1400读取tuning+0xc到w28；0x256ba1ffc判断插值/copy；0x256ba2030..2104仅插值分支末端clamp。实际C_with/C_without与应用坐标取得后，才调用semantic_curve_inverse.inverse_curve_pair，逐段验证native pixel forward和区间覆盖、plateau/近黑/clamp/越界；标量曲线不代替CCM/key1/空间混合。没有完整曲线就维持预算假设，不用S19节点EV范围充当样张像素界。
+
+**待实机解决：原Studio/RAW/UI。** 保留前述原逐人stats/instance/眼部editedTex/blur/tuning的逐项中和方案，不能用合成stats替代原相机。UnderEye/SkinSmooth/Mattify最终单位的已知上下文往返与完整原拍摄去处理分开。RAW仍需Mac IMG_2679/IMG_2408的HEIC+配对RAW；只允许预约定全局曝光对齐，GTM/LTM/人物皮肤分开报EV、覆盖与边缘，203nit不标定。Photos UI仍需实际图库对照。
