@@ -11,6 +11,9 @@ func sha(_ data: Data) -> String { SHA256.hash(data: data).map { String(format: 
 func writeJSON(_ value: Any, _ url: URL) throws {
     let bytes = try JSONSerialization.data(withJSONObject: value, options: [.prettyPrinted, .sortedKeys, .fragmentsAllowed])
     try (bytes + Data([10])).write(to: url)
+    print("TEXTURE_JSON_BEGIN \(url.deletingLastPathComponent().lastPathComponent)/\(url.lastPathComponent)")
+    print(String(data: bytes, encoding: .utf8)!)
+    print("TEXTURE_JSON_END \(url.deletingLastPathComponent().lastPathComponent)/\(url.lastPathComponent)")
 }
 func methodInfo(_ cls: AnyClass, _ meta: Bool) -> [[String: Any]] {
     var count: UInt32 = 0
@@ -25,7 +28,7 @@ func signature(_ target: AnyObject, _ name: String, _ args: [String], _ ret: Str
     let sel = NSSelectorFromString(name)
     guard let cls = object_getClass(target), let method = class_getInstanceMethod(cls, sel),
           method_getNumberOfArguments(method) == UInt32(args.count + 2) else { return nil }
-    guard let rt = method_copyReturnType(method) else { return nil }
+    let rt = method_copyReturnType(method)
     defer { free(rt) }
     guard String(cString: rt) == ret else { return nil }
     for (i, expected) in args.enumerated() {
@@ -74,6 +77,7 @@ func safe(_ value: Any?, _ depth: Int = 0) -> Any {
 }
 
 let output = URL(fileURLWithPath: CommandLine.arguments[1], isDirectory: true)
+let selectedCase = CommandLine.arguments.count > 3 && CommandLine.arguments[2] == "--case" ? CommandLine.arguments[3] : nil
 try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
 var frameworks: [[String: Any]] = []
 for name in ["NeutrinoCore", "PhotoImaging", "CMImaging", "CMCapture"] {
@@ -85,13 +89,15 @@ var count: UInt32 = 0
 let classes = objc_copyClassList(&count)!
 var rows: [[String: Any]] = []
 for i in 0..<Int(count) {
-    let cls = classes[i], name = NSStringFromClass(cls)
+    let cls: AnyClass = classes[i]
+    let name = NSStringFromClass(cls)
     if name.contains("TextureStyle") || name == "_NUSemanticStyleProperties" {
         rows.append(["class": name, "instance_size": class_getInstanceSize(cls),
                      "instance_methods": methodInfo(cls, false), "class_methods": methodInfo(cls, true)])
     }
 }
-free(classes)
+// objc_copyClassList imports an autoreleasing pointer in Swift. This short
+// process retains its single class-list allocation until exit.
 let device = MTLCreateSystemDefaultDevice()
 try writeJSON(["schema": "xdremux-texture-runtime-v1", "os": ProcessInfo.processInfo.operatingSystemVersionString,
                "device": device?.name ?? "unavailable", "frameworks": frameworks,
@@ -106,6 +112,7 @@ if let pipeline = NSClassFromString("PITextureStylePipelineProcessor") {
     defaults["inputNames"] = safe(object0(pipeline, "inputNames"))
 }
 try writeJSON(defaults, output.appendingPathComponent("defaults.json"))
+if CommandLine.arguments.contains("--inventory") { exit(0) }
 
 var cases: [[String: Any]] = []
 let base: [String: Any] = ["Preset": "Standard", "CaptureType": "LF", "CaptureMode": "Still", "PortType": "PortTypeBack", "HardwareModel": "iPhone19,2", "TextureStylePeopleDataVersion": 3, "FilmGrainSeed": 0]
@@ -113,6 +120,7 @@ var studio = base; studio["Preset"] = "Studio"
 var missingHardware = base; missingHardware.removeValue(forKey: "HardwareModel")
 var badVersion = base; badVersion["TextureStylePeopleDataVersion"] = 999
 for (name, dictionary) in [("synthetic-standard-control", base), ("synthetic-studio-control", studio), ("missing-hardware", missingHardware), ("unsupported-version", badVersion), ("empty-dictionary", [:])] {
+    if let selectedCase, name != selectedCase { continue }
     let data = try PropertyListSerialization.data(fromPropertyList: dictionary, format: .binary, options: 0)
     var row: [String: Any] = ["case": name, "input": dictionary, "input_sha256": sha(data), "scope": "metadata-only diagnostic, never camera provenance or Photos admission"]
     let selector = "textureStylePropertiesFromImageMetadata:auxImageMetadata:error:"
