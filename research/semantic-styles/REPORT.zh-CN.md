@@ -286,3 +286,18 @@ AIR0010:6391–6394标明Metal4.1、fast_math_enable和denorms_disable；renderS
 S21待认证域沿用全有限half主图RGB输入，c/d、GTC、guides、统计、mattes及ROI为原捕获上下文；若未证明变量主图的采样邻居可排除，则它们也须纳入域。该域不是已证相机先验，原mask不随新域改变；本轮没有裁剪此域或给出其tight hull。
 
 最终只读审计见[final-audit-s21-20261019.json](evidence/final-audit-s21-20261019.json)：18份归档、48次预览SHA、7份冻结/原件、76条证据引用通过；19条S21无照片指标与真实样张统计分开，数值验收仍false。
+
+
+<!-- GPT-S22-20261019 -->
+
+### S22：原 PSO 建立、half pow、编译模式和采样器的无照片原生复核
+
+本段保留 S21 已冻结的 `C01–C05` 条件及原有验收失败状态。新增的 S22 macOS 执行结果**仅证明该 runner 上相应实例的运行事实**，不由此宣告全域皮肤逆解、原 consumer 低层编译控制或相机曝光幅度。
+
+- **runner 原生（SEM-63）**：首轮 [run 39215535885](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215535885) 在链接阶段失败（`ld: framework 'CommonCrypto' not found`），没有执行原生探针。移除多余 `-framework CommonCrypto` 后，commit `e1094ecd616895150f4cb40c02bf9e0e29ce9208` 对应的 [run 39215654333](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215654333) / job `117938769775` 全部步骤成功，OS build `26A434`、`xcode-27-arm64`。创建原 `default.metallib` 的 `renderFinalAdjustments` pipeline 成功，function constants `useImageBlock=false` 与 `useSrlVersion=0`，`maxTotalThreadsPerThreadgroup=1024`；metallib SHA-256 为 `16a8a119e3e0ae1649d32b2bbc8ea9136cb757a8d1f3eb451025821901edff11`。这次**没有原 consumer 像素 dispatch 或对 Apple metallib 的三模式重编译**。
+- **runner 原生（SEM-64）**：独立自编译 MSL 测试在 `safe`、`relaxed`、`fast` 三种 `MTLMathMode` 下执行 half/float `pow`、消去重结合及 2×2 RGBA16Float synthetic sampler 测试，`MTLMathFloatingPointFunctionsPrecise` 对三模式一致。以 `x=1.5,y=.5` 为例：half pow `1.224609375`、float pow `1.2247447967529297`；输入 `a=.25` 时 `(a+2^24)-2^24` 的 safe 为 `0`、relaxed/fast 为 `.25`，采样器 `linear` 中心结果 RG 为 `[.5,.5]`。这些是**自编译合成内核的本 runner 观测**，与 S21 允许重结合的结论一致，但原始 Apple PSO 的 half pow 精度与重结合策略不能直接转移。
+- **runner 原生与产物完整性（SEM-65）**：原生输出、模型资格与隐私门槛由 `research/semantic-styles/validate.py` 检查并作为 Actions 必须成功的 step。artifact `12169227331` 名 `semantic-s22-public-synthetic-text`，3497B，ZIP SHA `f959d26467fc11c13e9308b598c073b9ba2f5b8607845f254cd1739b0e107a46`，7 个文本条目及 manifest 逐项 SHA-256 一致；`retention-days:1`。没有原始图片、人像、RAW、mattes 或私有像素。没有原生结果就不能改变 `A_phase_complete=false`。
+
+**33点逆解与亮度状态：** S20 的 70 份精确有理数非唯一证书仍有效，但原输入域包括全部有限 half 主图 RGB、可能变量邻域、冻结外部 bindings 的全局 tight hull 仍无法认证；S22 没有缩小该域，也未完成 C01–C05。只能说“在固定原生观测下不存在统一 `1e-3` 的唯一点估计保证”，不能说全体可行值的极值已经确定。人脸提亮的 `j=1.09765625` 到内部权重最多 `+0.1953125` 仍是已验证的链路事实，**0.034/0.101 EV 均为假设，不是相机标定**。GTM、LTM 继续分别报告，LinearThumbnail 的 Apple Log 常数及合法编码码值范围没有改动。
+
+后续需要 C01–C04 的实际下沉程序合同，再做 C05 的全域外包络；同一拍摄帧的 `j=actual/j=1/WithoutFaceBoost` 三路曲线、相机真实统计、Studio 人物上下文、匹配 RAW 和全分辨率像素则必须真机采集。见 `NATIVE_TODO.md` 的 S22 复现与采集方案。
