@@ -91,3 +91,24 @@ S14–17 preflight确认PR全状态0、其他advertised ref0、源码可达持�
 - 26A434，xcode-27-arm64 20261012.0260.1，Provisioner20261006.597，Apple Paravirtual device/air64_v27。AppleFamily4/5 reported true。仅设备能力和自编译重结合示例，无人物输入、无secret/release、未运行原consumer逆解。safe0/12、relaxed/fast9/12与顺序RN不同，正.25示例两精度均为0→.25。
 - 规范审查和AIR清单是VM上的受限内存文本任务，不是额外native run。MSL4.1/2026-06-04 PDF SHA41538b30d2f1140a5b2a0c84ce0a9f7b67bf0c707e224cfea0bfe5a44aa26cf5；最小事实、页码和提取脚本留存，临时PDF/解析器已清理。C01–C05未满足，因此未启动虚假的全域认证。40 helper/61intrinsic/970site均为语法上可达计数。
 - native源码已快进并推送持久research/vm-native-20261018，然后检查PR head/base全状态与其他refs，删除S21临时分支。master未变；A和原数值门槛仍false。精确provenance与cleanup见同名JSON，GPG标记为false，因为artifact纯公开合成文本。
+
+
+<!-- SEMANTIC-S22-S26-20261019 -->
+
+### S22–S26 原 PSO 编译/采样证据
+
+|phase / run|branch / commit|artifact（B）|结论|
+|---|---|---|---|
+|S22 / [39215197180](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215197180)|research/vm-native-20261019-private-s22 / cb984528f985032cb48529507f3c01bd991bd7fb|12169616126（82483）|原创建调用/保留PSO匹配，S5与hydration0差；archive重建对象另计|
+|S23a / [39216068165](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39216068165)|research/vm-native-20261019-private-s23 / 55c0ae69182659f4b672e923543283df7494873b|12169309229（10766）|原生到checkpoint，LLDB按名查私有符号失败；无已归档像素结果|
+|S23b / [39216507072](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39216507072)|research/vm-native-20261019-private-s23 / d688faf3b4da1dff1a98a260d3ab174e33fb20c5|12170145198（102966）|capture成功；原上下文0差，norm sampler控制0差，2051位差待分类|
+|S24a / [39217385722](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39217385722)|research/vm-native-20261019-private-s24 / 2b2bc214a9c7a69f028513e4e2a7b1d0e9ac8d38|12170152241（10765）|新增探针少objc/message.h，编译失败，未跑原生|
+|S24b / [39217875904](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39217875904)|research/vm-native-20261019-private-s24 / 24c4f1c772de2dc1bc089e28a1400b85606456aa|12169389875（174677）|两sampler编码匹配；2051全是±0；捕获原库SHA一致、原基底PSO地址反汇编|
+|S25a / [39218846920](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39218846920)|research/vm-native-20261019-private-s25 / e66bda334c3dd243d67ba5e52c6eb03c7dd58f6c|12170388961（10768）|探针ObjC数字字面量语法错误，未跑原生|
+|S25b / [39219372520](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39219372520)|research/vm-native-20261019-private-s25 / 5e0640271e11dc9f9c3e7dac3c6e125746bb6380|12170358839（31257）|未启用capture，原构造variant/存储字段匹配；无NSData代码候选|
+|S26a / [39219927450](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39219927450)|research/vm-native-20261019-private-s26 / cb1ca8de6ea351d8545f604f178ca9aec84ee29e|12171143334（10769）|嵌套Probe宏入口冲突，编译失败，未跑原生|
+|S26b / [39220375752](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39220375752)|research/vm-native-20261019-private-s26 / 62bb7ab23f347ac6eaa1de908a28ce5aca7127f4|12170919542（31258）|原inputInfo=null/0；读取primitive实值与loaded UUID；未得最终ISA|
+
+9次均26A434、xcode-27-arm64 20261012.0260.1、Provisioner20261006.597，retention-days1；立即下载，所有ZIP/GPG/全manifest通过。5次成功只涉及同一IMG_2810捕获的512×384；不是5张照片。实际运行源码以各commit为准。完整ZIP/cipher/manifest/log SHA与每次runner清理结果见run-provenance-s22-s26-20261019.json。
+
+九份ZIP合计465709B；原capture、Apple整份二进制与人物像素明文未上传。source保留在持久研究分支（清理时62bb7ab），PR/refs检查后删除S22–S26临时分支、2个secret、release416945146。本地密文归档/原件保留，master=ce25aa34fe3dac8541730971d6957401fca3e1dc未变。原全域紧区间和A验收仍false。

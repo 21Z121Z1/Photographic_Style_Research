@@ -81,3 +81,18 @@ S11 SkinSmooth / S13 Mattify各两个非零配置的原生往返通过1e-3，覆
 4. 捕获三路生产曲线以及实际ISP应用前后RGB/纹理、色彩空间/transfer、GTM/LTM/semantic顺序和全部clamp。c/d/GTC是生产输出时允许随j重算，逐项记录变化；这不改变consumer参数隔离实验冻结c/d/GTC/guides/统计/mattes的规则。若global和local都受影响，固定其他语义项，交叉组合两套global/local上下文作四个对照，单列各自作用与非交换交互，不把两项混成一步。
 5. 实际C_with/C_without与曲线坐标已确认后，按native实现误差合同调用semantic_curve_inverse；RGB/矩阵/key1/空间混合另按真实顺序重放。只有经同一native颜色变换得到的线性P3像素才用于EV：正值luma上log2(Y_with/Y_without)，零/plateau/clamp给区间和unknown。原节点比值不能直接称像素EV。判定按原half/float前向门槛及可逆mask往返maxrelative≤1e-3，报告mask覆盖，不以拟合曝光或缩mask过关。
 6. 人脸/人身分别评估真实native增益的背景变化、EV梯度/光晕/振铃、色度、断层及往返；原文件faceSkin/person与生产faceROI权重的绑定必须从原调用抓取确认。预览统一现有固定ACES1.0 SDR Video、0EV，显示操作只处理副本并检查输入前后SHA。没有实际曲线时保留预算假设，不标Apple精度。Studio原始people/eye/blur/instance/tuning与RAW IMG_2679/IMG_2408继续沿前述独立测试计划；RAW不做203nit标定。
+
+
+<!-- SEMANTIC-S22-S26-20261019 -->
+
+### S22–S26 后续：原 PSO 全域认证仍是 runner 工作
+
+**可交给macOS runner，R-PSO-C01/C02。** 输入保持S5 IMG_2810 512×384/tone+.35及全部外部纹理/参数不变，使用S20/S24私有33点映射；先以原CMImaging创建并保留的PSO取得同帧0差。S22原创建调用、S24 sampler/原库SHA和S26 actual constructor证据已完成，不重复S21玩具重结合或旧局部cube/拟合。代码入口`pso_capture_s22.inc`、`pso_capture_s24.inc`、`pso_original_variant_s25.inc`、`pso_pointer_contract_s26.inc`及各driver。
+
+下一步要解码的是AppleParavirtFunctionVariant的functionRef→实际程序映射（S26该次ref=123，仅该run有效）、descriptorBuffer以及capture的store0/编译流；已确认_inputInfo为null/0，不能把不存在的buffer当机器码。先根据运行时类型/已核对ABI确定长度与身份，private getter单项隔离、逐checkpoint和原生堆栈；禁止猜指针长度。程序/库引用需UUID/SHA/build和原PSO匹配。仅保留文本，原capture含人物纹理，原二进制也不得上传。MetalToolchain目前缺失，若需下载先估算；>1GB先问，不盲装。已有GPU和capture，不能归为无GPU。
+
+判据：取得实际最终实现或覆盖全部许可重写的保守语义，包括有关half pow、FMA/reassociation/reciprocal、近似函数、RN/RTZ/FTZ与纹理规则。`constant_record_complete`只是setter表存在，需补齐copy/default证据或使用原MTLFunction/PSO身份，不把缺index1叫已验证默认0；两个raw枚举0也不能直接命名数学行为。重建archive/独立helper/同帧0差不能代替原最终程序等价性。
+
+**可交给macOS runner，R-SEM-C03/C04/C05。** 前提满足后才运行证明器。声明域是完整有限half主图RGB（alpha与全部外部上下文固定），除非已有全值域空间独立证明，变量邻居一起纳入；F(X)=原完整Y，投影F0(X)。输出逐点有向舍入上下界、非有限/未定义/未决分支和域覆盖证书。需要证明所有被排除盒不含可行根；原1e-3、186949 mask保持，缺一盒即不通过。已认证的仅是格式条件范围和既有非唯一性下界。S24所有有限码中心采样通过不证明所有texel组合或原384高归一化坐标的全域精度。测试oracle在界内是必要回归，仍不能替代覆盖。
+
+**待实机，D-CAM/D-STUDIO/D-RAW/UI。** 沿用前文可执行方案。必须使用匹配iPhone18Pro/iOS27.0.1实际build的同一冻结帧，分别原j、仅j=1、WithoutFaceBoost，记录N、B/T、face hist/ROI、allocateTone约束/曲线、GTC/c/d重算和应用前后RGB，逐次恢复可写公共T，识别应用域后算EV。不能以27.0/24A446地址或β预算当样张像素界。原Studio需真实逐人stats/instance/blur/editedTex等，RAW需IMG_2679/IMG_2408配对；Photos UI需真实图库。三阶段逆向独立，Apple Log与固定ACES保持。A仍因可推进的全域认证缺口未完成，不是单因RAW。

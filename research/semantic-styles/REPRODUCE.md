@@ -129,3 +129,24 @@ clang -O2 -fobjc-arc research/semantic-styles/semantic_contract_s21.m \
 ```
 
 历史临时分支已删除，源码在持久研究分支。若重新排队，使用新研究分支/新限定push workflow，一次一个run，upload-artifact保留1天并立即下载校验。此probe没有照片/secret/release需求；不需要解密旧人物档。完整consumer区间若后续实现，必须保留原PSO和固定上下文，不以safe重编译、helper逐值对照或局部查询替代原生全域证书。
+
+
+<!-- SEMANTIC-S22-S26-20261019 -->
+
+### S22–S26 复现入口（默认只审计已有文本）
+
+本地仅低内存文本/JSON/流式哈希，所有Python包scope；大图/原生一律runner。现有归档不覆盖，输出选新目录：
+
+```bash
+cd ~/work/styles-gtm-ltm
+./scripts/local-python-scope.sh -I repo/research/semantic-styles/audit_original_pso_s24.py   "$PWD" 39217875904 "$PWD/semantic-20261018/replay-s24-new"
+./scripts/local-python-scope.sh -I repo/research/semantic-styles/audit_pso_evidence_s26.py "$PWD"
+```
+
+第一条期望输出certified_tight_points=0、uncertified_points=33、A=false；它是前提审计，不是全域solver。指向S24是因为该run包含全部8个声明控制及捕获解析；S26实际variant/UUID附加证据在s22-s26。第二条合并审计会调用未改动的原只读审计，不必再单独重复运行原脚本。脚本成功不代表1e-3逆解通过。
+
+如必须重新执行原生：新建research/vm-native-<date>-private-sNN分支，复制本轮相应workflow并把push过滤改为该新分支，retention-days=1，一次一个run。`run_semantic_s22.py`记录原创建；S24补capture、samplers、原对象反汇编；S25补非capture原构造；S26限长读取_inputInfo和primitive/UUID。它们会调用原FrozenFilterMain路径，未开启SEMANTIC_RUN_INVERSE，不用于选根。
+
+输入需重新在本地把原IMG_2810加密，创建临时secret和草稿release，更新workflow中的asset ID与cipher SHA；旧release/secret已删除，不能直接拿旧ID派发。archive output公钥仍为28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA，私钥绝不上runner。S5 ZIP应保持SHA55f845778415b22276bc92e166416e60a29df6ce559df8f3fd71f6f5911d12fc；如果artifact12140624073已过期，使用本地runs/39139035394/artifact.zip中的同一密文ZIP上传为新的临时release asset，仅把driver的download URI改为该asset并保留ZIP SHA检查，临时session secret从本地GPG流式取得。不要上传展开的S5/person原图或整份Apple程序二进制。
+
+每次完成立刻下载到新的runs/<id>/artifact.zip，并用已有`semantic-20261018/scripts/archive_semantic_bounded.py <id> --materialize-limit 12000000`（外层scope）流式检查GPG/manifest。所有结果包括失败都不可覆盖。workflow的W/out只允许文本后再GPG；capture/程序blob必须留W/backend并由always清理。对新private分支检查PR head/base全状态、其他refs、源码已达持久研究分支后，删除新secret/release/分支。本轮准备/归档/清理实际脚本另存在s22-s26/finalization-scripts供审阅。

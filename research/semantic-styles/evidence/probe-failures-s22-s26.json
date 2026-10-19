@@ -1,0 +1,94 @@
+[
+  {
+    "phase": "S23a",
+    "run_id": "39216068165",
+    "commit": "55c0ae69182659f4b672e923543283df7494873b",
+    "evidence": {
+      "file": "semantic-20261018/runs/39216068165/selected/out/native-s23.log",
+      "line": 2,
+      "sha256": "88b7498ed7b606125996ec49c700a98cbd2105d3c068d07022de64a6a9246b5d"
+    },
+    "errors": [
+      {
+        "line": 25,
+        "text": "error: Unable to find symbol with name '-[AppleParavirtComputePipelineState initWithDevice:pipelineStateDescriptor:computeVariant:errorMessage:]'."
+      }
+    ],
+    "classification": "Probe/collection failure, not an inverse accuracy measurement"
+  },
+  {
+    "phase": "S24a",
+    "run_id": "39217385722",
+    "commit": "2b2bc214a9c7a69f028513e4e2a7b1d0e9ac8d38",
+    "evidence": {
+      "file": "semantic-20261018/runs/39217385722/selected/out/build-s24.log",
+      "line": 2,
+      "sha256": "1590a8e5d1a15e50c30cff7777f18110e2c1e771eee15cd9e812a542a82f3cfa"
+    },
+    "errors": [
+      {
+        "line": 2,
+        "text": "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/semantic-styles/pso_capture_s24.inc:2:325: error: call to undeclared library function 'objc_msgSend' with type 'id (id, SEL, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]"
+      },
+      {
+        "line": 7,
+        "text": "   36 |  MTLCompileOptions*o=[MTLCompileOptions new];o.fastMathEnabled=YES;NSError*e=nil;id<MTLLibrary>l=[q.device newLibraryWithSource:src options:o error:&e];NSMutableDictionary*r=[@{@\"source_sha256\":Digest([src dataUsingEncoding:NSUTF8StringEncoding]),@\"compile_options\":S22Options(o),@\"library_created\":@(l!=nil),@\"error\":e.description?:@\"\",@\"scope\":@\"Own explicit sampler controls. Equality of A"
+      },
+      {
+        "line": 15,
+        "text": "   21 |     pd.binaryArchives=@[a];error=nil;MTLComputePipelineReflection*rf=nil;id<MTLComputePipelineState>recreated=[q.device newComputePipelineStateWithDescriptor:pd options:MTLPipelineOptionFailOnBinaryArchiveMiss|MTLPipelineOptionArgumentInfo reflection:&rf error:&error];ar[@\"archive_hit_pipeline_created\"]=@(recreated!=nil);ar[@\"archive_hit_error\"]=error.description?:@\"\";"
+      }
+    ],
+    "classification": "Probe/collection failure, not an inverse accuracy measurement"
+  },
+  {
+    "phase": "S25a",
+    "run_id": "39218846920",
+    "commit": "e66bda334c3dd243d67ba5e52c6eb03c7dd58f6c",
+    "evidence": {
+      "file": "semantic-20261018/runs/39218846920/selected/out/build-s25.log",
+      "line": 2,
+      "sha256": "5e3e31d0b87b42475e9ae14b4ddfdebb7183807b2e237e02394d7321bbb19300"
+    },
+    "errors": [
+      {
+        "line": 2,
+        "text": "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/semantic-styles/pso_original_variant_s25.inc:8:120: error: invalid suffix '_000_000' on integer constant"
+      },
+      {
+        "line": 3,
+        "text": "    8 |  if([x isKindOfClass:NSData.class]){NSData*d=x;r[@\"length\"]=@(d.length);r[@\"sha256\"]=Digest(d);if(d.length&&d.length<30_000_000){NSString*n=[NSString stringWithFormat:@\"%@-%@.bin\",stem,Digest(d)];NSString*b=[NSProcessInfo.processInfo.environment[@\"W\"]stringByAppendingPathComponent:@\"backend\"];[[NSFileManager defaultManager]createDirectoryAtPath:b withIntermediateDirectories:YES attributes:"
+      },
+      {
+        "line": 8,
+        "text": "   21 |     pd.binaryArchives=@[a];error=nil;MTLComputePipelineReflection*rf=nil;id<MTLComputePipelineState>recreated=[q.device newComputePipelineStateWithDescriptor:pd options:MTLPipelineOptionFailOnBinaryArchiveMiss|MTLPipelineOptionArgumentInfo reflection:&rf error:&error];ar[@\"archive_hit_pipeline_created\"]=@(recreated!=nil);ar[@\"archive_hit_error\"]=error.description?:@\"\";"
+      }
+    ],
+    "classification": "Probe/collection failure, not an inverse accuracy measurement"
+  },
+  {
+    "phase": "S26a",
+    "run_id": "39219927450",
+    "commit": "cb1ca8de6ea351d8545f604f178ca9aec84ee29e",
+    "evidence": {
+      "file": "semantic-20261018/runs/39219927450/selected/out/build-s26.log",
+      "line": 2,
+      "sha256": "1b6cf1590ce199a3c9ac2fbff67762457eb8b34e46f270feb3d408cd7e001778"
+    },
+    "errors": [
+      {
+        "line": 13,
+        "text": "   21 |     pd.binaryArchives=@[a];error=nil;MTLComputePipelineReflection*rf=nil;id<MTLComputePipelineState>recreated=[q.device newComputePipelineStateWithDescriptor:pd options:MTLPipelineOptionFailOnBinaryArchiveMiss|MTLPipelineOptionArgumentInfo reflection:&rf error:&error];ar[@\"archive_hit_pipeline_created\"]=@(recreated!=nil);ar[@\"archive_hit_error\"]=error.description?:@\"\";"
+      },
+      {
+        "line": 40,
+        "text": "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/semantic-styles/pso_pointer_contract_s26.inc:8:13: error: redefinition of 'Probe'"
+      },
+      {
+        "line": 47,
+        "text": "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/semantic-styles/pso_pointer_contract_s26.inc:8:50: error: call to undeclared function 'S26BaseProbe'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]"
+      }
+    ],
+    "classification": "Probe/collection failure, not an inverse accuracy measurement"
+  }
+]

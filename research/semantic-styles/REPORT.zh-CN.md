@@ -286,3 +286,47 @@ AIR0010:6391–6394标明Metal4.1、fast_math_enable和denorms_disable；renderS
 S21待认证域沿用全有限half主图RGB输入，c/d、GTC、guides、统计、mattes及ROI为原捕获上下文；若未证明变量主图的采样邻居可排除，则它们也须纳入域。该域不是已证相机先验，原mask不随新域改变；本轮没有裁剪此域或给出其tight hull。
 
 最终只读审计见[final-audit-s21-20261019.json](evidence/final-audit-s21-20261019.json)：18份归档、48次预览SHA、7份冻结/原件、76条证据引用通过；19条S21无照片指标与真实样张统计分开，数值验收仍false。
+
+
+<!-- SEMANTIC-S22-S26-20261019 -->
+
+### S22–S26：原 PSO 创建链和采样行为已补；33 点全域紧区间仍拒绝认证
+
+**A 阶段尚未完成。** 本轮是原管线编译/采样的证据补充，不是新的逆解拟合。适用范围为 IMG_2810 原冻结的 **512×384、tone=+0.35** consumer 上下文，1张照片、5次成功运行；不是五张照片或原件全分辨率验证。原 `1e-3`、186949像素mask（95.08717855%）、皮肤6/27/33失败和完整逆往返67378失败均保留。GTM、LTM、语义逆向继续分开；Apple Log及原固定ACES预览没有改动。
+
+**已验证数值：原管线确实创建了被保留的 PSO。** S22 run[39215197180](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215197180) 捕获 `newComputePipelineStateWithDescriptor:options:reflection:error:`，返回对象与 dispatch 的 PSO 指针相同。原API options=0；这不是“关闭fast-math”的开关。调用栈为 CMImaging `-[FigMetalContext computePipelineStateFor:constants:additionalPipelineOptions:reflection:] +668`（本run地址0x245b79250）→ `_compileMetalShadersForProcessingType: +1232` → PhotoImaging `PISemanticStyleRenderer prepareProcessor`。未开启capture时类为AppleParavirtComputePipelineState；capture时是Capture wrapper，S24已解到同一基底类。
+
+五次通过的原捕获上下文、纹理/缓冲/bytes对照均0差；保留PSO hydration与原S5输出RGB **589824个half分量0差**。用原descriptor和原MTLFunction构建archive后，以FailOnBinaryArchiveMiss选项创建成功，重建对象与保留对象不同，当前帧RGB仍0差。**这些是前向重放/收集控制，不是 inverse→forward 验收通过。** 详见[original-pso-summary-s26.json](evidence/original-pso-summary-s26.json)的epochs和[original-native-s22.json](evidence/original-native-s22.json)。
+
+**已验证静态：原编译声明与重建表示；原最终实现尚缺。** 原precompiled AIR及重建archive AIR均保留 `fast_math_enable`、`denorms_disable`、逐指令fast；重建表示有61处half pow/powr语法调用，含内联后的skin路径，**不是61处本帧活动调用**。重建AIR SHA为`08c83b323327b365d0521f9b75bb963d7cf9dc4034318c08fa3f646774f6beb5`，target变为air64-apple-macosx15.0.0；它不是从原保留PSO读出的最终机器码。不能用重建表示、同帧0差或S21自编译示例证明原PSO具体采用了何种重结合/FMA/reciprocal/近似函数、RN/RTZ/FTZ。
+
+原pipeline加载precompiled library，没有观察到其生产时的MTLCompileOptions；**原mathMode数值仍未识别**，不得拿CoreImage source kernel或本轮sampler helper的mathMode=2替代。LLVM的[fast标志规则](https://llvm.org/docs/LangRef.html#fast-math-flags)允许相应变换，具体原后端仍需独立证据。S23/S24的`constant_record_complete`仅表示setter快照表存在，不代表copy/default/所有setter完整覆盖；所选函数快照明确记到index0=false、index2=false，缺index1不能推成“已观察到默认0”。重建所持MTLFunction是原对象，这与通过快照重造全部常量是两件事。
+
+**已验证静态：两个constexpr sampler按同一archive路径逐位对照。** 重建AIR:23的`0x807bff0000088a49`与显式`coord::pixel,address::clamp_to_edge,filter::linear`控制核一致；AIR:24的`0x807bff0000080a49`与normalized/clamp-to-edge/linear一致。主图、matte、guide使用后者；GTC读取使用pixel状态（AIR:458/467/476等）。它们不是dispatch中动态绑定的sampler，原dispatch的该表为空。[两个控制核AIR](evidence/sampler-norm_linear-s24.ll)与[原函数archive AIR](evidence/original-function-archive-s22.ll)保留精确编码；没有凭0x8000猜过滤或寻址位。
+
+**已验证数值：half采样控制。** S24 run[39217875904](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39217875904) 在256×256合成RGBA16Float纹理中覆盖全部63488种有限half码（其余2048种非有限码替为0），65536个中心坐标加64个额外有限坐标。constexpr与runtime sampler **262400个half分量0差**；中心262144分量中2051个位差全部为±0，其他位差0、有限输入转非有限输出0。这里只证明这张确定纹理/这些坐标的行为；没有证明全部texel邻居组合、原512×384坐标舍入/footprint、原程序所有LUT坐标或非有限路径。[native-sampler-s24.json](evidence/native-sampler-s24.json)
+
+**已验证数值/静态：原库来源和实际variant；可交runner：最终后端。** GPUTraceDocument实际支持并成功start/stop。捕获引用的CMImaging metallib SHA与原基线逐字相同：`16a8a119e3e0ae1649d32b2bbc8ea9136cb757a8d1f3eb451025821901edff11`。只导出选中的LLVM文本、headers和元数据；原始capture/纹理/Apple二进制均未上传。离线metal命令报缺MetalToolchain；没有下载安装大型组件，sampler控制通过运行时编译完成。
+
+S25/S26回到未启用capture的原路径，原PSO构造参数与保留对象匹配；实际variant为AppleParavirtFunctionVariant，包含functionRef/descriptorBuffer/ContainerFunction。S26 run[39220375752](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39220375752)按已声明ABI读取到`_inputInfo=null`、size=0，没有从这一路取得代码blob；source-fast→relaxed workaround字段实值0、texture-write-rounding原始枚举0，**均不足以命名GPU算术舍入或推断原precompiled mathMode**。guest对象及已识别capture容器未给出可认证的最终ISA；descriptorBuffer和capture store0的映射仍未解码，这不证明以后无法取得代码。[native-pointer-s26.json](evidence/native-pointer-s26.json)附loaded Mach-O UUID：CMImaging=3ccd434e-b1e0-3f14-8ef6-e29d58379be8，PhotoImaging=5f17e1db-a15e-38c7-9bec-e081688b62e5，NeutrinoCore=5e0b3f6b-554e-3373-a411-4a4d1cf0a057。三框架只有dyld加载映像，磁盘二进制SHA未取得；不伪填。Paravirtual插件UUID/disk SHA亦在该文件；统一OS为26A434。
+
+**可交给macOS runner，当前拒绝认证：**
+
+|条件|新增证据|仍缺的合同/证明|
+|---|---|---|
+|C01 half pow|原函数重建表示仍见half调用；原variant已检查|相关原最终实现的保守数值合同，或在完整声明域的消除/常量证书；MSL half表缺行不能用FP32或独立helper填补|
+|C02 编译后程序|原创建descriptor/对象、capture、原variant、空inputInfo已记录|原PSO最终程序与身份匹配，或覆盖所有许可重写的保守解释；含FMA/reciprocal/approx/RN/RTZ/FTZ，不能把archive重编译当成原机器码|
+|C03 非有限/定义域|采样控制输入有限，当前帧重放有限|所有F(x)=Y可行前像中F/F0的除零、pow域、overflow、派生纹理坐标和非有限路径覆盖；未决不得剪掉|
+|C04 纹理/空间|两个声明状态已匹配、全部有限half码中心控制|原纹理格式转换、坐标/滤波精度、边界/LOD、全部变量邻居组合的保守包络；空间独立性未全域证明|
+|C05 覆盖|原33点逐点未认证记录已生成|完整有限half主图RGB域及未排除邻居的覆盖/排除证书；本轮没有全域穷举或区间剪枝|
+
+[consumer-contract-audit-s24.json](evidence/consumer-contract-audit-s24.json)是**前提审计，不是interval solver**；S26补充的实际对象证据见summary。待证明域包含主图任意有限half RGB赋值（alpha和c/d、GTC、guides、mattes、统计、ROI固定），未证独立的邻居也属变量；约束为完整捕获F(X)=原Y，投影各点F0。没有增加相机有效域先验。
+
+33点全部保留tight lower/upper=null、nonfinite unknown和原mask；只有“F0有限”条件下的格式范围[-65504,65504]，不能称紧区间或有限误差上界。[逐点记录](evidence/skin33-uncertified-outer-s24.json)使用不含坐标的case_id，私有映射在`semantic-20261018/s22-s24/skin33-private-crosswalk-s24.json`。原S20同观测/异中和输出及精确有理数证书仍有效；编译合同缺口不是33个失败成因的新证明，也不推翻已证非唯一性。
+
+**待实机 / 假设不变：** 本轮没有同帧相机统计或关闭提亮的曲线，β=25/128仍不是像素EV。face/body敏感性候选继续是假设；相机j/WithoutFaceBoost、N/B/T/人脸直方图/allocateTone约束/应用域、原Studio上游stats、RAW2679/2408和Photos UI按NATIVE_TODO执行。VM/runner还能推进的是原后端/descriptorBuffer或capture流映射与C01–C05认证，不能把这些软件缺口归为“无GPU、只能实机”。
+
+本轮9个run（5成功、4探针/收集失败）及对应artifact/ZIP/cipher/manifest SHA详见[run-provenance](evidence/run-provenance-s22-s26-20261019.json)与runs.md；失败日志均先归档再修正，失败不计为像素验证。2个临时secret、1个草稿release和5条本轮private分支已在源码保留、PR head/base全状态及其他refs检查后删除。[cleanup](evidence/transport-cleanup-s22-s26-20261019.json)确认master未变，所有旧归档/原件保留。本轮新增文档/源码/小型证据，冻结模型未改，A与完整验收继续false。
+
+
+最终完整性审计见[final-audit-s26-20261019.json](evidence/final-audit-s26-20261019.json)：27份归档、48次已有预览SHA检查、7份冻结/原件、11份历史文本前缀和91条证据引用通过；新增10条claim、68条指标。audit_pass=true仅表示证据审计通过，inverse/global certificate、A_phase_complete和acceptance_complete仍为false。

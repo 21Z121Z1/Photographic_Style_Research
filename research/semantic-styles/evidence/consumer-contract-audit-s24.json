@@ -1,0 +1,1064 @@
+{
+  "phase": "S22-S24",
+  "os_build": "26A434",
+  "native_runs": [
+    "39215197180",
+    "39216068165",
+    "39216507072",
+    "39217875904"
+  ],
+  "matched_original_creation": {
+    "api": "newComputePipelineStateWithDescriptor:options:reflection:error:",
+    "options": 0,
+    "descriptor": {
+      "binary_archive_count": 0,
+      "buffers_mutability": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "function": {
+        "class": "_MTLFunctionInternal",
+        "function_constant_definitions": [],
+        "name": "renderFinalAdjustments",
+        "type": 3
+      },
+      "label": "",
+      "maxTotalThreadsPerThreadgroup": 0,
+      "provided": true,
+      "requiredThreadsPerThreadgroup": "{length = 24, bytes = 0x000000000000000000000000000000000000000000000000}",
+      "shaderValidation": 0,
+      "supportIndirectCommandBuffers": false,
+      "threadGroupSizeIsMultipleOfThreadExecutionWidth": false
+    },
+    "callstack": [
+      "1   semantic-s22                        0x0000000100006a40 S22Desc + 168",
+      "2   CMImaging                           0x0000000245b79250 -[FigMetalContext computePipelineStateFor:constants:additionalPipelineOptions:reflection:] + 668",
+      "3   CMImaging                           0x0000000245b3209c -[CMISmartStyleMetalRendererV1 _compileMetalShadersForProcessingType:] + 1232",
+      "4   CMImaging                           0x0000000245b2e764 -[CMISmartStyleMetalRendererV1 prepareToProcess:] + 28",
+      "5   PhotoImaging                        0x00000001de6b54a4 -[PISemanticStyleRenderer prepareProcessor] + 608",
+      "6   PhotoImaging                        0x00000001de6b516c +[PISemanticStyleRenderer usingSharedSemanticStyleRendererWithMetalCommandQueue:processingType:useStyleEngine:perform:] + 272",
+      "7   PhotoImaging                        0x00000001de6b3b30 +[PISemanticStyleProcessor processWithInputs:arguments:output:error:] + 988",
+      "8   CoreImage                           0x00000001a0dda76c __75+[CIImageProcessorKernel applyWithExtent:inputs:arguments:tileRects:error:]_block_invoke.219 + 1544",
+      "9   CoreImage                           0x00000001a0f91c14 _ZNK2CI13ProcessorNode6renderEPNS_8TileTaskEPNS_7ContextERKNSt3__16vectorIPKNS_14intermediate_tENS5_9allocatorIS9_EEEESE_PKNS_17RenderDestinationERK6CGRecti + 1740",
+      "10  CoreImage                           0x00000001a0f3b27c _ZN2CI7Context21render_processor_nodeEPKNS_17RenderDestinationEPNS_8TileTaskERKNS_9parentROIEP11__IOSurfacePU21objcproto10MTLTexture11objc_object + 2032",
+      "11  CoreImage                           0x00000001a0f34424 _ZN2CI12MetalContext11render_nodeEPKNS_17RenderDestinationEPNS_8TileTaskERKNS_9parentROIERK6CGRectPPU21objcproto10MTLTexture11objc_objectPP10__CVBufferPP11__IOSurfacem + 1456",
+      "12  CoreImage                           0x00000001a0f35e58 _ZN2CI12MetalContext24render_intermediate_nodeEPNS_8TileTaskERKNS_9parentROIEPNS_14intermediate_tEbU13block_pointerFvvE + 940",
+      "13  CoreImage                           0x00000001a0f39678 _ZN2CI7Context16recursive_renderEPKNS_17RenderDestinationEPNS_8TileTaskERKNS_6roiKeyEPKNS_4NodeEb + 3268",
+      "14  CoreImage                           0x00000001a0f39804 _ZN2CI7Context16recursive_renderEPKNS_17RenderDestinationEPNS_8TileTaskERKNS_6roiKeyEPKNS_4NodeEb + 3664",
+      "15  CoreImage                           0x00000001a0f39804 _ZN2CI7Context16recursive_renderEPKNS_17RenderDestinationEPNS_8TileTaskERKNS_6roiKeyEPKNS_4NodeEb + 3664",
+      "16  CoreImage                           0x00000001a0f3a838 _ZN2CI7Context6renderEPNS_11ProgramNodeERK6CGRectPKNS_17RenderDestinationE + 184",
+      "17  CoreImage                           0x00000001a0faf040 ___ZN2CI22image_render_to_bitmapEPNS_7ContextEPNS_5ImageE6CGRectP12CGColorSpacePNS_6BitmapEPKNS_17RenderDestinationE_block_invoke + 652",
+      "18  CoreImage                           0x00000001a0fb2178 _ZN2CIL14recursive_tileEPNS_10RenderTaskEPNS_7ContextEPKNS_17RenderDestinationEPKcNS_14GraphWithDepthERK6CGRectNS_11PixelFormatERKNS_19output_swizzle_infoEU13block_pointerFPNS_8TileTaskEPNS_11ProgramNodeESA_E + 2380",
+      "19  CoreImage                           0x00000001a0fad10c _ZN2CIL15tile_node_graphEPNS_7ContextEPKNS_17RenderDestinationEPKcNS_14GraphWithDepthERK6CGRectNS_11PixelFormatERKNS_19output_swizzle_infoEU13block_pointerFPNS_8TileTaskEPNS_11ProgramNodeES8_E + 428",
+      "20  CoreImage                           0x00000001a0fae96c _ZN2CI22image_render_to_bitmapEPNS_7ContextEPNS_5ImageE6CGRectP12CGColorSpacePNS_6BitmapEPKNS_17RenderDestinationE + 1200",
+      "21  CoreImage                           0x00000001a0ca48ac _ZNK2CI14RenderToBitmap6renderEPNS_5ImageEPNS_7ContextE + 320",
+      "22  CoreImage                           0x00000001a0ca46dc -[CIRenderDestination _render:withContext:] + 1072",
+      "23  CoreImage                           0x00000001a0ca3df8 -[CIContext(CIRenderDestination) _startTaskToRender:toDestination:forPrepareRender:forClear:error:] + 2524"
+    ]
+  },
+  "original_native_result": {
+    "file": "semantic-20261018/runs/39215197180/selected/out/native/s22-results.json",
+    "sha256": "7cf3c98bb0a1a2bcf14a72b8e4650c2bcf290367b53451bf1315ec52ffb5688b",
+    "line": 2
+  },
+  "capture_native_result": {
+    "file": "semantic-20261018/runs/39217875904/selected/out/native/s22-results.json",
+    "sha256": "25e936bf893aebedce77f39566776fbee83e381396aac64060d36d0ce1abbd6d",
+    "line": 2
+  },
+  "original_AIR": {
+    "file": "repo/research/vm-native/model-v10/0010.ll",
+    "sha256": "9ce57aea2bcc11021cf04ce4b44f57ac83270b0722283c7860436c3ec4d523c1",
+    "line": 30
+  },
+  "original_PSO_function_archive_AIR": {
+    "file": "semantic-20261018/runs/39215197180/selected/out/backend-text/original-derived.binary-001.ll",
+    "sha256": "08c83b323327b365d0521f9b75bb963d7cf9dc4034318c08fa3f646774f6beb5",
+    "line": 23
+  },
+  "post_specialization_AIR": {
+    "half_pow_sites": [
+      {
+        "line": 137,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 147,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 159,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 171,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 195,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.powr.v3f16"
+      },
+      {
+        "line": 213,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 226,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 255,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 636,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 756,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 991,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 994,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 997,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1100,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1312,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1367,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1495,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1625,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1632,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1650,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1782,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1798,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1807,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1857,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1866,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1950,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1951,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1960,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2024,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2072,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2249,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2311,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2427,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2468,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2649,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3283,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3340,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3397,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3641,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3929,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 3948,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 4114,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4130,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4143,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4165,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4227,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4235,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4247,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4259,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4786,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4840,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4883,
+        "function": "_Z10airyFilterDv3_DhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5013,
+        "function": "_Z13lightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5017,
+        "function": "_Z13lightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5102,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5115,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5122,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5347,
+        "function": "_Z7RichSatDv3_DhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5605,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5641,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5666,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh",
+        "intrinsic": "air.pow.v3f16"
+      }
+    ],
+    "samplers": {
+      "@__air_sampler_state": {
+        "value_u64": 9258273834455829065,
+        "value_hex": "807bff0000088a49",
+        "line": 23
+      },
+      "@__air_sampler_state.3": {
+        "value_u64": 9258273834455796297,
+        "value_hex": "807bff0000080a49",
+        "line": 24
+      }
+    },
+    "fast_instruction_counts": {
+      "fadd": 548,
+      "fmul": 977,
+      "fcmp": 146,
+      "fdiv": 64,
+      "fsub": 140
+    },
+    "explicit_fma_intrinsics": 0,
+    "compile_fast_math_enable": true,
+    "compile_denorms_disable": true
+  },
+  "original_pre_specialization_summary": {
+    "half_pow_sites": [
+      {
+        "line": 202,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 231,
+        "function": "renderFinalAdjustments",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 777,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 785,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 797,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 809,
+        "function": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 917,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 933,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 944,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 966,
+        "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1362,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1381,
+        "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 1673,
+        "function": "_Z10airyFilterDv3_DhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1766,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1820,
+        "function": "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1875,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1932,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 1989,
+        "function": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2241,
+        "function": "_Z20selectiveColorFilterDv3_DhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDv2_DhS5_S5_S_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2483,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2519,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 2544,
+        "function": "_Z12warmthFilterDv3_DhS_Dv4_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 2817,
+        "function": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3254,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3435,
+        "function": "_Z8deYellowDv3_DhDhDhS_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3456,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3574,
+        "function": "_Z16deRedNeutralOnlyDv3_DhDhDhS_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3592,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3772,
+        "function": "_Z5deRedDv3_DhDhDhS_Dh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3864,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3880,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3889,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3939,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 3948,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4034,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 4035,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4044,
+        "function": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4218,
+        "function": "_Z7RichSatDv3_DhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4288,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4297,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 4315,
+        "function": "_Z16highlightRecoverDv3_DhDhDhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4381,
+        "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4711,
+        "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 4818,
+        "function": "_Z13smartContrastDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 4920,
+        "function": "_Z12highlightNegDv3_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 4980,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 4993,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5000,
+        "function": "_Z21negativeLightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5083,
+        "function": "_Z13lightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5087,
+        "function": "_Z13lightenFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 5544,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5547,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5550,
+        "function": "_Z19tonalContrastFilterDv3_DhDhDh",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5666,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+        "intrinsic": "air.pow.f16"
+      },
+      {
+        "line": 5787,
+        "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 6127,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 6137,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 6149,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 6161,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      },
+      {
+        "line": 6185,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.powr.v3f16"
+      },
+      {
+        "line": 6203,
+        "function": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+        "intrinsic": "air.pow.v3f16"
+      }
+    ],
+    "samplers": {
+      "@__air_sampler_state": {
+        "value_u64": 34901797601053257,
+        "value_hex": "007bff0000088a49",
+        "line": 30
+      },
+      "@__air_sampler_state.3": {
+        "value_u64": 34901797601020489,
+        "value_hex": "007bff0000080a49",
+        "line": 31
+      }
+    },
+    "fast_instruction_counts": {
+      "fadd": 571,
+      "fmul": 1027,
+      "fcmp": 162,
+      "fdiv": 76,
+      "fsub": 157
+    },
+    "explicit_fma_intrinsics": 0,
+    "compile_fast_math_enable": true,
+    "compile_denorms_disable": true
+  },
+  "actual_function_creation": {
+    "api": "newFunctionWithDescriptor:error:",
+    "constant_record_complete": 1,
+    "constants": {
+      "index:0": {
+        "hex": "{length = 1, bytes = 0x00}",
+        "size": 1,
+        "type": 53
+      },
+      "index:2": {
+        "hex": "{length = 1, bytes = 0x00}",
+        "size": 1,
+        "type": 53
+      }
+    },
+    "name": "renderFinalAdjustments",
+    "options": 0,
+    "returned_function_object": "0x74ef4c8930"
+  },
+  "actual_function_constant_limit": "Only observed explicit setters/copies are recorded. Do not interpret a missing index as an observed default. A non-specialized or archive-folded branch is not an MTLMathMode observation.",
+  "sampler_literal_matches": {
+    "@__air_sampler_state": {
+      "encoded": {
+        "value_u64": 9258273834455829065,
+        "value_hex": "807bff0000088a49",
+        "line": 23
+      },
+      "matching_own_explicit_declarations": [
+        "pixel_linear"
+      ]
+    },
+    "@__air_sampler_state.3": {
+      "encoded": {
+        "value_u64": 9258273834455796297,
+        "value_hex": "807bff0000080a49",
+        "line": 24
+      },
+      "matching_own_explicit_declarations": [
+        "norm_linear"
+      ]
+    }
+  },
+  "own_sampler_sources": {
+    "norm_nearest": {
+      "samplers": {
+        "@__air_sampler_state.1": {
+          "value_u64": 9258273834455793737,
+          "value_hex": "807bff0000080049",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-001.ll",
+        "sha256": "a82baf792413abb09bf63bd5d4cb0042334e241b359ba400303be63582785e98",
+        "line": 1
+      }
+    },
+    "norm_zero": {
+      "samplers": {
+        "@__air_sampler_state.6": {
+          "value_u64": 9258273834455796224,
+          "value_hex": "807bff0000080a00",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-002.ll",
+        "sha256": "d75493afed90d995343b21d92e29d1fc0994c65fdc8107557ba26bdc660bee1c",
+        "line": 1
+      }
+    },
+    "norm_mip_nearest": {
+      "samplers": {
+        "@__air_sampler_state.4": {
+          "value_u64": 9258273834455804489,
+          "value_hex": "807bff0000082a49",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-003.ll",
+        "sha256": "bc19f4b9ee0221e0a76734ee8e4405c2a40b358db2b87137e7001a030654278e",
+        "line": 1
+      }
+    },
+    "runtime_linear": {
+      "samplers": {},
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-004.ll",
+        "sha256": "23cf7eed0c6336869bcc2794487e74d4963ff32498003335b157d42361441cf3",
+        "line": 1
+      }
+    },
+    "norm_mip_linear": {
+      "samplers": {
+        "@__air_sampler_state.3": {
+          "value_u64": 9258273834455812681,
+          "value_hex": "807bff0000084a49",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-005.ll",
+        "sha256": "277b59f19e36eb2eaf5c57ba99fef3d5e79c9a8fc60fa7e281d886720e99030c",
+        "line": 1
+      }
+    },
+    "norm_linear": {
+      "samplers": {
+        "@__air_sampler_state": {
+          "value_u64": 9258273834455796297,
+          "value_hex": "807bff0000080a49",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-006.ll",
+        "sha256": "fd16a95ae98c79192e1a34dbff1ed01fe7121061d3a3676c55af078906999a7c",
+        "line": 1
+      }
+    },
+    "pixel_linear": {
+      "samplers": {
+        "@__air_sampler_state.2": {
+          "value_u64": 9258273834455829065,
+          "value_hex": "807bff0000088a49",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-007.ll",
+        "sha256": "ec82ec2a74528e3a5b050b641e7ec042151906204a1dda38fdaa27e5f3d48b54",
+        "line": 1
+      }
+    },
+    "norm_repeat": {
+      "samplers": {
+        "@__air_sampler_state.5": {
+          "value_u64": 9258273834455796370,
+          "value_hex": "807bff0000080a92",
+          "line": 4
+        }
+      },
+      "file": {
+        "file": "semantic-20261018/runs/39217875904/selected/out/backend-text/sampler-runtime.binary-008.ll",
+        "sha256": "fa903c2004c989de90d3853f8c25e6db8d369621f1faa560fe69f118a9bb921d",
+        "line": 1
+      }
+    }
+  },
+  "sampler_native_control": {
+    "additional_finite_coordinates": 64,
+    "archive_functions": [
+      {
+        "added": true,
+        "error": "",
+        "name": "norm_linear"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "norm_nearest"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "pixel_linear"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "norm_mip_linear"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "norm_mip_nearest"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "norm_repeat"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "norm_zero"
+      },
+      {
+        "added": true,
+        "error": "",
+        "name": "runtime_linear"
+      }
+    ],
+    "archive_save_error": "",
+    "archive_saved": 1,
+    "center_finite_input_bit_differences": 2051,
+    "center_finite_input_components": 262144,
+    "center_finite_input_nonfinite_output": 0,
+    "center_other_bit_differences": 0,
+    "center_signed_zero_only_bit_differences": 2051,
+    "centers_tested": 65536,
+    "compile_options": {
+      "allowReferencingUndefinedSymbols": false,
+      "class": "MTLCompileOptionsInternal",
+      "compileSymbolVisibility": 0,
+      "enableLogging": false,
+      "fastMathEnabled": true,
+      "languageVersion": 262145,
+      "mathFloatingPointFunctions": 0,
+      "mathMode": 2,
+      "maxTotalThreadsPerThreadgroup": 0,
+      "optimizationLevel": 0,
+      "preserveInvariance": false,
+      "provided": true
+    },
+    "const_vs_runtime_both_finite_differences": 0,
+    "const_vs_runtime_half_differences": 0,
+    "error": "",
+    "library_created": 1,
+    "nonfinite_patterns_replaced_by_zero": 2048,
+    "runtime_descriptor": {
+      "compareFunction": 0,
+      "lodMaxClamp": 3.4028234663852886e+38,
+      "lodMinClamp": 0,
+      "magFilter": 1,
+      "maxAnisotropy": 1,
+      "minFilter": 1,
+      "mipFilter": 0,
+      "normalizedCoordinates": true,
+      "rAddressMode": 0,
+      "sAddressMode": 0,
+      "tAddressMode": 0
+    },
+    "scope": "Own explicit sampler controls. Equality of AIR sampler literals identifies declared state; numeric controls do not prove original full-program or all-domain equivalence.",
+    "source_sha256": "38e3b8e65a3c589610986ebce75bfa93c51450d2e0c0c8e2b8311b57861358bb",
+    "unique_finite_half_patterns_in_texture": 63488
+  },
+  "GPU_capture": {
+    "already_capturing": false,
+    "GPUTraceDocument_supported": true,
+    "start_error": "",
+    "started": true,
+    "stopped": true
+  },
+  "capture_inspection": {
+    "file": "semantic-20261018/runs/39217875904/selected/out/capture-text/capture-inspection.json",
+    "sha256": "6d91c698b0f6f29d3eb1d6d67ead3484836227b94dd40d48a8a04ad2bd329ecc",
+    "line": 2
+  },
+  "original_math_mode_claim": "Precompiled original: AIR fast-math/denorm flags and per-instruction fast observed. No original MTLCompileOptions mathMode numeric value observed; PSO descriptor carries no source compile options. Do not borrow the helper or CI source compileOptions.",
+  "archive_reconstruction_limit": "Copy of observed descriptor and exact original MTLFunction; recreated PSO is a distinct object. FailOnBinaryArchiveMiss API succeeded and captured-frame outputs match; no all-domain backend equivalence certificate.",
+  "failure_conditions": [
+    {
+      "id": "C01",
+      "met": false,
+      "missing": "Numerical/bit semantics for remaining half pow/powr in the actual final original PSO, or an all-admitted-input elimination certificate. Post-specialization AIR still contains calls; generic MSL table has no required half-pow numerical row. Independent helpers are not an inlined-original certificate."
+    },
+    {
+      "id": "C02",
+      "met": false,
+      "missing": "Authenticated final original PSO backend implementation / sound allowed-rewrite enclosure (reassociation, contraction/FMA, reciprocal/approximation, RN/RTZ/FTZ). Archive AIR and matching one-frame outputs do not identify final machine operations. Capture containers/streams examined here have no decoded and authenticated final ISA."
+    },
+    {
+      "id": "C03",
+      "met": false,
+      "missing": "Coverage proof for all feasible F/F0 paths including divisors, pow domains, overflow, nonfinite intermediate values and derived texture coordinates. No finite output/error guarantee for unresolved paths; no new mask exclusions."
+    },
+    {
+      "id": "C04",
+      "met": false,
+      "missing": "Global enclosure for sample coordinates/LOD, format conversion, filter rounding and every admitted texel/neighbor combination in the original full program. Matching sampler declaration and center-pattern tests are partial evidence only; no per-pixel spatial independence theorem."
+    },
+    {
+      "id": "C05",
+      "met": false,
+      "missing": "Complete declared-domain coverage or a proof-producing branch/exclusion certificate. No full enumeration occurred. Unexamined values/neighbor assignments remain unresolved, not excluded."
+    }
+  ],
+  "certification_decision": "REFUSED_MISSING_ORIGINAL_BACKEND_CONTRACT_AND_FULL_DOMAIN_COVERAGE",
+  "whole_consumer_global_tight_hull_certified": false,
+  "certified_tight_points": 0,
+  "uncertified_points": 33,
+  "original_acceptance_mask_changed": false,
+  "original_mask_pixels": 186949,
+  "threshold_max_relative": 0.001,
+  "remaining_skin_failures": [
+    6,
+    27,
+    33
+  ],
+  "new_inverse_fitting_or_new_preview": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

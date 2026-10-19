@@ -113,9 +113,9 @@
   "failed_gates_at_bit_exact_closeout": [
     "numpy_half_bit_exact"
   ],
-  "semantic_generated_utc": "2026-10-19T01:44:08.848451+00:00",
+  "semantic_generated_utc": "2026-10-19T08:24:35.814366+00:00",
   "semantic_acceptance_complete": false,
-  "updated_utc": "2026-10-19T05:18:08.767064+00:00",
+  "updated_utc": "2026-10-19T08:24:35.814366+00:00",
   "semantic_acceptance": {
     "A_phase_complete": false,
     "original_mask_coverage": 0.9508717854817709,
@@ -177,7 +177,14 @@
       "C03",
       "C04",
       "C05"
-    ]
+    ],
+    "s22_s26_original_creation_observed": true,
+    "s24_sampler_declarations_identified": true,
+    "s26_actual_variant_inspected": true,
+    "s26_final_original_backend_authenticated": false,
+    "s26_full_domain_certificate_pass": false,
+    "s26_certified_tight_skin_points": 0,
+    "s26_uncertified_skin_points": 33
   },
   "semantic_analysis_closure": {
     "skin_failure_cause": "full-native observation nonuniqueness, exact rational certificate",
@@ -207,6 +214,12 @@
         "C05"
       ],
       "camera_amplitude": "no new calibration data"
+    },
+    "S22_S26": {
+      "original_creation_and_sampler_evidence": "verified within stated native/static scopes",
+      "original_final_backend": "not authenticated; inputInfo null/0, descriptor/capture mapping open",
+      "full_domain_hull": "not certified; C01-C05 unproved",
+      "A_phase_complete": false
     }
   },
   "claims": [
@@ -2074,6 +2087,259 @@
       "artifact_id": "12164730390",
       "commit": "5d69b9fbec9a44dd69da245d368bc699d7abef4c",
       "zip_sha256": "752241187e3048e812c6d7dd26420af03fccedb1a450486c4ea7b4e1d2c040b7"
+    },
+    {
+      "id": "SEM-63",
+      "category": "semantic/original-pso/creation",
+      "status": "已验证数值",
+      "claim": "Original CMImaging FigMetalContext descriptor creation is correlated by returned-object identity to retained renderFinalAdjustments PSO within S22. API options0 is not a source fast-math switch. Default descriptor/source compile settings are not guessed. Actual callstack+offsets retained.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39215197180/selected/out/native/s22-results.json",
+          "line": 250,
+          "sha256": "7cf3c98bb0a1a2bcf14a72b8e4650c2bcf290367b53451bf1315ec52ffb5688b"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ],
+      "run_ids": [
+        "39215197180"
+      ]
+    },
+    {
+      "id": "SEM-64",
+      "category": "semantic/original-pso/parity-controls",
+      "status": "已验证数值",
+      "claim": "Five successful original-path epochs of one IMG_2810 512x384/tone+.35 context: S5 context and retained hydration0 differing RGB half components, recreated archive PSO versus original0 for589824 components. Recreated object differs. Forward replay controls are not inverse roundtrip or five-photo validation.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/run-provenance-s22-s26-20261019.json",
+          "line": 3,
+          "sha256": "6f9c9273e9813856b52cd97294c6b529e094e8ffa4e9d6cf2b245e957bdac463"
+        }
+      ],
+      "run_ids": [
+        "39215197180",
+        "39216507072",
+        "39217875904",
+        "39219372520",
+        "39220375752"
+      ]
+    },
+    {
+      "id": "SEM-65",
+      "category": "semantic/original-pso/compiler-contract-boundary",
+      "status": "已验证静态",
+      "claim": "Precompiled source/archive AIR has fast-math/denorm flags and per-op fast; reconstruction AIR has61 syntactic half pow/powr sites, not captured active-path coverage. Original final lowering/half-pow semantics remain unauthenticated. No observed original MTLCompileOptions mathMode number; own helper/CI options cannot supply it. Setter-map presence is not complete constant/default/copy coverage.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/semantic-styles/evidence/original-function-archive-s22.ll",
+          "line": 23,
+          "sha256": "08c83b323327b365d0521f9b75bb963d7cf9dc4034318c08fa3f646774f6beb5"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ]
+    },
+    {
+      "id": "SEM-66",
+      "category": "semantic/original-pso/constexpr-sampler-identification",
+      "status": "已验证静态",
+      "claim": "In the same archive path, original-function AIR sampler807bff0000088a49 matches explicit pixel/clamp-to-edge/linear and807bff0000080a49 matches normalized/clamp-to-edge/linear. Main/matte/guide use normalized; GTC reads pixel state. No guessed bit-field interpretation or full sampling precision theorem.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/semantic-styles/evidence/original-function-archive-s22.ll",
+          "line": 23,
+          "sha256": "08c83b323327b365d0521f9b75bb963d7cf9dc4034318c08fa3f646774f6beb5"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/sampler-norm_linear-s24.ll",
+          "line": 4,
+          "sha256": "fd16a95ae98c79192e1a34dbff1ed01fe7121061d3a3676c55af078906999a7c"
+        },
+        {
+          "file": "repo/research/semantic-styles/evidence/sampler-pixel_linear-s24.ll",
+          "line": 4,
+          "sha256": "ec82ec2a74528e3a5b050b641e7ec042151906204a1dda38fdaa27e5f3d48b54"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ]
+    },
+    {
+      "id": "SEM-67",
+      "category": "semantic/original-pso/half-sampler-controls",
+      "status": "已验证数值",
+      "claim": "Own256x256 RGBA16F texture covers63488 distinct finite half patterns;2048 nonfinite patterns replaced by0.65536 centers+64 finite coords,262400 constexpr/runtime half components identical.262144 center components:2051 sign-of-zero bit differences,0 other differences,0 finite-to-nonfinite. Not all neighbor/value combinations or original384-height coordinates.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39217875904/selected/out/native/s23-samplers.json",
+          "line": 51,
+          "sha256": "d042a9ecf115c3fb509fb972804ee46fdd145cad78d70e080b926aa47f830f88"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ],
+      "run_ids": [
+        "39217875904"
+      ]
+    },
+    {
+      "id": "SEM-68",
+      "category": "semantic/original-pso/binary-build-provenance",
+      "status": "已验证数值",
+      "claim": "GPU capture succeeds on runner. Captured referenced CMImaging metallib SHA16a8a119e3e0ae1649d32b2bbc8ea9136cb757a8d1f3eb451025821901edff11 equals baseline. Loaded CMI/PhotoImaging/Neutrino UUID and PV plugin SHA recorded; framework disk binaries absent, no invented SHA. Only selected text exported, not whole library or capture.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39217875904/selected/out/capture-text/capture-inspection.json",
+          "line": 173,
+          "sha256": "6d91c698b0f6f29d3eb1d6d67ead3484836227b94dd40d48a8a04ad2bd329ecc",
+          "json_pointer": "/consumer_AIR"
+        },
+        {
+          "file": "semantic-20261018/runs/39220375752/selected/out/native/s26-pointer-contract.json",
+          "line": 11,
+          "sha256": "e06b91f8e4e26e33b5e221b19399c88adfa0406631b716825ca2d25885481059"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ],
+      "run_ids": [
+        "39217875904",
+        "39220375752"
+      ]
+    },
+    {
+      "id": "SEM-69",
+      "category": "semantic/original-pso/actual-constructor-variant",
+      "status": "已验证数值",
+      "claim": "Uncaptured original base-PSO initializer matched. AppleParavirtFunctionVariant carries functionRef/descriptorBuffer; declared inputInfo pointer null,size0, no readable code payload via this path. Raw source-fast-to-relaxed workaround0 and texture-write-rounding code0 do not identify precompiled mathMode or RN/RTZ/FTZ. No authenticated final ISA retrieved; other descriptor/capture mappings remain open.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/runs/39220375752/selected/out/native/s25-original-variant.json",
+          "line": 19,
+          "sha256": "55c1411882d49d2701e9f29d3dbfcf7e97f38a48a86176ac2b9955bc9e20d05c"
+        },
+        {
+          "file": "semantic-20261018/runs/39220375752/selected/out/native/s26-pointer-contract.json",
+          "line": 11,
+          "sha256": "e06b91f8e4e26e33b5e221b19399c88adfa0406631b716825ca2d25885481059"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ],
+      "run_ids": [
+        "39219372520",
+        "39220375752"
+      ]
+    },
+    {
+      "id": "SEM-70",
+      "category": "semantic/original-pso/global-certification-refused",
+      "status": "runner",
+      "claim": "C01 actual relevant half-pow contract/elimination, C02 final-program identity/rewrite semantics, C03 all feasible nonfinite/domain paths, C04 full texture/spatial enclosure, C05 complete admitted-domain coverage remain unproved.33 per-point tight bounds null, nonfinite unknown; conditional finite storage[-65504,65504] is not tight or finite error bound. No new inverse fitting/pruning, old1e-3/186949mask and6/27/33 failures retained. This is not proof global set bounds are mathematically impossible.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s22-s24/consumer-contract-audit-s24.json",
+          "line": 1022,
+          "sha256": "a91e29c97738d196ae1a8726614edc91660b0f86ccf9abcb50e2c45dde8e147d",
+          "json_pointer": "/failure_conditions"
+        },
+        {
+          "file": "semantic-20261018/s22-s24/skin33-uncertified-outer-s24.json",
+          "line": 5,
+          "sha256": "e0296f6827781f655e768e1d9fd31164279eff2b905833b870d987134218afa7",
+          "json_pointer": "/points"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ]
+    },
+    {
+      "id": "SEM-71",
+      "category": "semantic/original-pso/physical-boundary",
+      "status": "待实机",
+      "claim": "No new matched camera frame statistics/curves. beta25/128 remains an internal cap budget, face/body amplitudes remain hypotheses. Need matched j/j1/WithoutFaceBoost,N/B/T/face histogram,allocation constraints,curves,application-domain capture; original Studio stats, RAW2679/2408 and real-library UI remain physical. Backend/coverage research remains runner, not mislabeled no-GPU.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "NATIVE_TODO.md",
+          "line": 184,
+          "sha256": "edd44adb4ebf40aed849a86403d03a7ed37c48bbced2f6ca2efdf1be3a65228d"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/original-pso-summary-s26.json",
+          "line": 12,
+          "sha256": "9570bc3644519e2af47d0cb983219779518bb2b65edda989a4fa359d84de58ed",
+          "json_pointer": "/epochs"
+        }
+      ]
+    },
+    {
+      "id": "SEM-72",
+      "category": "semantic/original-pso/transport-and-failures",
+      "status": "已验证数值",
+      "claim": "Nine runs(5success/4probe-collection failures) archived with ZIP/GPG/full manifest and runner cleanup checks. After source retained remotely, PR head/base all states and refs checked,2temporary secrets,1draft release,5own branches removed; master unchanged. Old archives/originals retained. No plaintext people/whole Apple binary/raw capture/private output key uploaded. Failures are not pixel validations.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "semantic-20261018/s22-s26/run-provenance-s22-s26-20261019.json",
+          "line": 3,
+          "sha256": "6f9c9273e9813856b52cd97294c6b529e094e8ffa4e9d6cf2b245e957bdac463"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/transport-cleanup-s22-s26-20261019.json",
+          "line": 3,
+          "sha256": "58f69ff7c525bea748208baf416fefba37c3e3bc11d9d8a55eb172cd5550cbbe"
+        },
+        {
+          "file": "semantic-20261018/s22-s26/probe-failures-s22-s26.json",
+          "line": 3,
+          "sha256": "e1685233a963ad3f4446081fe7572ba381ddff9d3edf570993b89bff248f8ec3"
+        }
+      ]
     }
   ]
 }
