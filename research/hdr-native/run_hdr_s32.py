@@ -11,12 +11,14 @@ W=Path(os.environ['W']);O=W/'out';O.mkdir(exist_ok=True);D=Path('research/hdr-na
 def sha(p):
  with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'
-assert sha(up)=='f4d90ac39646f813aae1bba6044167e1e2af03a8aab3c4d1575f337f8b918cdd'
+upstream_sha=os.environ.get('S31_ARCHIVE_SHA256','f4d90ac39646f813aae1bba6044167e1e2af03a8aab3c4d1575f337f8b918cdd');assert len(upstream_sha)==64 and sha(up)==upstream_sha
+(O/'upstream-archive.json').write_text(json.dumps({'sha256':upstream_sha,'artifact_id':os.environ.get('S31_ARTIFACT_ID'),'parent_stage':'s31'},indent=2)+'\n')
 (O/'freeze.json').write_text(json.dumps({'scope':'Readback operator diagnosis; no inverse, scene or five-photo claim','source_sha256':{p.name:sha(p) for p in [D/'run_hdr_s32.py',D/'raw_gain_s32.m',D/'iso_oracle_s31.m',D/'iso_splice.py']},'matrices':[1,6],'bits':[8,10,12],'gain_min_EV':-.5,'gain_max_EV':3,'gamma':1,'offset':0,'capacity_log2':3,'old_thresholds_unchanged':True,'comparison_rule':'Direct storage-order code comparison; flipped-array diagnostic reported separately and never silently selected'},indent=2)+'\n')
 flags=['clang','-O2','-fobjc-arc','-framework','Foundation','-framework','CoreImage','-framework','ImageIO','-framework','Metal','-framework','CoreGraphics']
 for name,source in [('oracle','iso_oracle_s31.m'),('raw','raw_gain_s32.m')]:
  with (O/(name+'-build.log')).open('w') as f:subprocess.run(flags+[str(D/source),'-o',str(W/name)],stdout=f,stderr=subprocess.STDOUT,check=True)
 with zipfile.ZipFile(up) as z:
+ manifest=json.loads(z.read('manifest.json'));assert manifest['synthetic_only'] and manifest['photos_used'] is False and manifest['os_build']=='26A434'
  template=O/'template.heic';template.write_bytes(z.read('rgb-opposing/template.heic'));b=z.read('rgb-opposing/source/original-sdr.f32')
 base=np.frombuffer(b,dtype='<f4').reshape(128,256,4)[...,:3].astype('f8');h,w=base.shape[:2];u=np.broadcast_to((np.arange(w)+.5)/w,(h,w));v=np.broadcast_to(((np.arange(h)+.5)/h)[:,None],(h,w));ev=np.stack([3*u,-.5+2*v,2*(1-u)],-1);code=(ev+.5)/3.5;target=(base*np.exp2(ev)).astype('f4').astype('f8');rows=[];pillow_heif.options.DECODE_THREADS=1
 for matrix in [1,6]:

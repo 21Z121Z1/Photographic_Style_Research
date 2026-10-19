@@ -20,9 +20,11 @@ freeze={'os_build':'26A434','source_files':{p.name:sha(p) for p in [D/'run_hdr_s
 (O/'formula-freeze.json').write_text(json.dumps(freeze,indent=2)+'\n')
 (O/'versions.json').write_text(json.dumps({'numpy':np.__version__,'pillow_heif':pillow_heif.__version__,'libheif':pillow_heif.libheif_version(),'encoder_info':getattr(pillow_heif,'libheif_info',lambda:{})()},indent=2,default=str)+'\n')
 with (O/'build.log').open('w') as log:subprocess.run(['clang','-O2','-fobjc-arc','-framework','Foundation','-framework','CoreImage','-framework','ImageIO','-framework','Metal','-framework','CoreGraphics',str(D/'iso_oracle_s31.m'),'-o',str(W/'oracle')],stdout=log,stderr=subprocess.STDOUT,check=True)
-up=W/'S29.zip';assert sha(up)=='1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c'
+up=W/'S29.zip';upstream_sha=os.environ.get('S29_ARCHIVE_SHA256','1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c');assert len(upstream_sha)==64 and sha(up)==upstream_sha
+(O/'upstream-archive.json').write_text(json.dumps({'sha256':upstream_sha,'artifact_id':os.environ.get('S29_ARTIFACT_ID'),'parent_stage':'s29'},indent=2)+'\n')
 pillow_heif.options.DECODE_THREADS=1;rows=[]
 with zipfile.ZipFile(up) as z:
+ manifest=json.loads(z.read('manifest.json'));assert manifest['synthetic_only'] and manifest['photos_used'] is False and manifest['os_build']=='26A434'
  for name in ['gray-expansion','rgb-opposing','nearblack-highlight','flat-HDR','edge-HDR']:
   p=O/name;p.mkdir();template=p/'template.heic';template.write_bytes(z.read('native/'+name+'/dual.heic'));inp=p/'source';inp.mkdir()
   with (inp/'native.log').open('w') as f:subprocess.run([W/'oracle',template,inp,'inspect'],stdout=f,stderr=subprocess.STDOUT,check=True)

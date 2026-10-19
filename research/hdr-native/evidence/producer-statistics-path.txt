@@ -1,0 +1,393 @@
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:5332-5368 ---
+5332: 0x256b62434:  80 22 07 f9   str	x0, [x20, #0xe40]
+5333: 0x256b62438:  a2 79 56 94   bl	0x258100ac0
+5334: 0x256b6243c:  88 22 47 f9   ldr	x8, [x20, #0xe40]
+5335: 0x256b62440:  a8 03 00 b4   cbz	x8, 0x256b624b4
+5336: 0x256b62444:  60 06 40 f9   ldr	x0, [x19, #0x8]
+5337: 0x256b62448:  c2 27 14 f0   adrp	x2, 0x27f05d000
+5338: 0x256b6244c:  42 40 3e 91   add	x2, x2, #0xf90
+5339: 0x256b62450:  03 00 80 d2   mov	x3, #0
+5340: 0x256b62454:  7f b0 53 94   bl	0x25804e650 ; CALL computePipelineStateFor:constants:
+5341: 0x256b62458:  4a 79 56 94   bl	0x258100980
+5342: 0x256b6245c:  88 26 47 f9   ldr	x8, [x20, #0xe48]
+5343: 0x256b62460:  80 26 07 f9   str	x0, [x20, #0xe48]
+5344: 0x256b62464:  97 79 56 94   bl	0x258100ac0
+5345: 0x256b62468:  88 26 47 f9   ldr	x8, [x20, #0xe48]
+5346: 0x256b6246c:  c8 02 00 b4   cbz	x8, 0x256b624c4
+5347: 0x256b62470:  13 00 80 52   mov	w19, #0
+5348: 0x256b62474:  e0 03 13 aa   mov	x0, x19
+5349: 0x256b62478:  fd 7b 41 a9   ldp	fp, lr, [sp, #0x10]
+5350: 0x256b6247c:  f4 4f c2 a8   ldp	x20, x19, [sp], #0x20
+5351: 0x256b62480:  ff 0f 5f d6   retab
+5352: 0x256b62484:  13 a1 9b 52   mov	w19, #0xdd08
+5353: 0x256b62488:  d3 ff bf 72   movk	w19, #0xfffe, lsl #0x10
+5354: 0x256b6248c:  35 72 01 94   bl	0x256bbed60 ; CALL -[LTMProcessor createShaders:].cold.5
+5355: 0x256b62490:  f9 ff ff 17   b	0x256b62474
+5356: 0x256b62494:  13 a1 9b 52   mov	w19, #0xdd08
+5357: 0x256b62498:  d3 ff bf 72   movk	w19, #0xfffe, lsl #0x10
+5358: 0x256b6249c:  09 72 01 94   bl	0x256bbecc0 ; CALL -[LTMProcessor createShaders:].cold.4
+5359: 0x256b624a0:  f5 ff ff 17   b	0x256b62474
+5360: 0x256b624a4:  13 a1 9b 52   mov	w19, #0xdd08
+5361: 0x256b624a8:  d3 ff bf 72   movk	w19, #0xfffe, lsl #0x10
+5362: 0x256b624ac:  dd 71 01 94   bl	0x256bbec20 ; CALL -[LTMProcessor createShaders:].cold.3
+5363: 0x256b624b0:  f1 ff ff 17   b	0x256b62474
+5364: 0x256b624b4:  13 a1 9b 52   mov	w19, #0xdd08
+5365: 0x256b624b8:  d3 ff bf 72   movk	w19, #0xfffe, lsl #0x10
+5366: 0x256b624bc:  b1 71 01 94   bl	0x256bbeb80 ; CALL -[LTMProcessor createShaders:].cold.2
+5367: 0x256b624c0:  ed ff ff 17   b	0x256b62474
+5368: 0x256b624c4:  13 a1 9b 52   mov	w19, #0xdd08
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:7500-7564 ---
+7500: 0x256b64484:  00 dc 22 2e   fmul	v0.2s, v0.2s, v2.2s
+7501: 0x256b64488:  68 3b c9 79   ldrsh	w8, [x27, #0x49c]
+7502: 0x256b6448c:  01 d1 02 1e   scvtf	s1, w8, #0xc
+7503: 0x256b64490:  20 04 14 6e   mov	v0.s[2], v1.s[0]
+7504: 0x256b64494:  68 3f c9 79   ldrsh	w8, [x27, #0x49e]
+7505: 0x256b64498:  01 d1 02 1e   scvtf	s1, w8, #0xc
+7506: 0x256b6449c:  68 43 c9 79   ldrsh	w8, [x27, #0x4a0]
+7507: 0x256b644a0:  03 d1 02 1e   scvtf	s3, w8, #0xc
+7508: 0x256b644a4:  68 47 c9 79   ldrsh	w8, [x27, #0x4a2]
+7509: 0x256b644a8:  04 d1 02 1e   scvtf	s4, w8, #0xc
+7510: 0x256b644ac:  61 04 0c 6e   mov	v1.s[1], v3.s[0]
+7511: 0x256b644b0:  81 04 14 6e   mov	v1.s[2], v4.s[0]
+7512: 0x256b644b4:  63 a7 44 bd   ldr	s3, [x27, #0x4a4]
+7513: 0x256b644b8:  63 a4 10 0f   sxtl	v3.4s, v3.4h
+7514: 0x256b644bc:  63 d8 21 0e   scvtf	v3.2s, v3.2s
+7515: 0x256b644c0:  62 dc 22 2e   fmul	v2.2s, v3.2s, v2.2s
+7516: 0x256b644c4:  68 53 c9 79   ldrsh	w8, [x27, #0x4a8]
+7517: 0x256b644c8:  03 d1 02 1e   scvtf	s3, w8, #0xc
+7518: 0x256b644cc:  62 04 14 6e   mov	v2.s[2], v3.s[0]
+7519: 0x256b644d0:  e0 03 1b aa   mov	x0, x27
+7520: 0x256b644d4:  e2 03 15 aa   mov	x2, x21
+7521: 0x256b644d8:  62 53 55 94   bl	0x2580b9260 ; CALL _applyGlobalCCM:globalCCM:
+7522: 0x256b644dc:  29 71 56 94   bl	0x258100980
+7523: 0x256b644e0:  f5 03 00 aa   mov	x21, x0
+7524: 0x256b644e4:  60 58 00 b4   cbz	x0, 0x256b64ff0
+7525: 0x256b644e8:  a0 63 02 d1   sub	x0, fp, #0x98
+7526: 0x256b644ec:  29 70 57 94   bl	0x258140590
+7527: 0x256b644f0:  a0 63 02 d1   sub	x0, fp, #0x98
+7528: 0x256b644f4:  e1 03 15 aa   mov	x1, x21
+7529: 0x256b644f8:  be 71 56 94   bl	0x258100bf0
+7530: 0x256b644fc:  51 71 56 94   bl	0x258100a40
+7531: 0x256b64500:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+7532: 0x256b64504:  33 55 55 94   bl	0x2580b99d0 ; CALL hazeEstimation
+7533: 0x256b64508:  1e 71 56 94   bl	0x258100980
+7534: 0x256b6450c:  f5 03 00 aa   mov	x21, x0
+7535: 0x256b64510:  4c 71 56 94   bl	0x258100a40
+7536: 0x256b64514:  75 05 00 b4   cbz	x21, 0x256b645c0
+7537: 0x256b64518:  15 00 80 d2   mov	x21, #0
+7538: 0x256b6451c:  00 e4 00 6f   movi	v0.2d, #0
+7539: 0x256b64520:  e0 0f 80 3d   str	q0, [sp, #0x30]
+7540: 0x256b64524:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+7541: 0x256b64528:  2a 55 55 94   bl	0x2580b99d0 ; CALL hazeEstimation
+7542: 0x256b6452c:  15 71 56 94   bl	0x258100980
+7543: 0x256b64530:  f6 03 00 aa   mov	x22, x0
+7544: 0x256b64534:  e2 03 15 aa   mov	x2, x21
+7545: 0x256b64538:  16 7b 52 94   bl	0x258003190 ; CALL objectAtIndexedSubscript:
+7546: 0x256b6453c:  11 71 56 94   bl	0x258100980
+7547: 0x256b64540:  f7 03 00 aa   mov	x23, x0
+7548: 0x256b64544:  3b 79 52 94   bl	0x258002a30 ; CALL floatValue
+7549: 0x256b64548:  e1 0f c0 3d   ldr	q1, [sp, #0x30]
+7550: 0x256b6454c:  e1 13 80 3d   str	q1, [sp, #0x40]
+7551: 0x256b64550:  e8 03 01 91   add	x8, sp, #0x40
+7552: 0x256b64554:  a8 06 7e b3   bfi	x8, x21, #0x2, #0x2
+7553: 0x256b64558:  00 01 00 bd   str	s0, [x8]
+7554: 0x256b6455c:  e0 13 c0 3d   ldr	q0, [sp, #0x40]
+7555: 0x256b64560:  e0 0f 80 3d   str	q0, [sp, #0x30]
+7556: 0x256b64564:  3f 71 56 94   bl	0x258100a60
+7557: 0x256b64568:  3a 71 56 94   bl	0x258100a50
+7558: 0x256b6456c:  b5 06 00 91   add	x21, x21, #0x1
+7559: 0x256b64570:  bf 0e 00 f1   cmp	x21, #0x3
+7560: 0x256b64574:  81 fd ff 54   b.ne	0x256b64524
+7561: 0x256b64578:  28 00 80 52   mov	w8, #0x1
+7562: 0x256b6457c:  68 1f 16 39   strb	w8, [x27, #0x587]
+7563: 0x256b64580:  e0 0f c0 3d   ldr	q0, [sp, #0x30]
+7564: 0x256b64584:  60 67 81 3d   str	q0, [x27, #0x590]
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:7745-7770 ---
+7745: 0x256b64858:  7a 54 55 94   bl	0x2580b9a40 ; CALL inMetaData
+7746: 0x256b6485c:  49 70 56 94   bl	0x258100980
+7747: 0x256b64860:  f6 03 00 aa   mov	x22, x0
+7748: 0x256b64864:  28 b0 0c 90   adrp	x8, 0x270168000
+7749: 0x256b64868:  08 cd 44 f9   ldr	x8, [x8, #0x998]
+7750: 0x256b6486c:  02 01 40 f9   ldr	x2, [x8]
+7751: 0x256b64870:  54 7a 52 94   bl	0x2580031c0 ; CALL objectForKeyedSubscript:
+7752: 0x256b64874:  43 70 56 94   bl	0x258100980
+7753: 0x256b64878:  f5 03 00 aa   mov	x21, x0
+7754: 0x256b6487c:  75 70 56 94   bl	0x258100a50
+7755: 0x256b64880:  95 11 00 b4   cbz	x21, 0x256b64ab0
+7756: 0x256b64884:  28 b0 0c 90   adrp	x8, 0x270168000
+7757: 0x256b64888:  08 fd 42 f9   ldr	x8, [x8, #0x5f8]
+7758: 0x256b6488c:  02 01 40 f9   ldr	x2, [x8]
+7759: 0x256b64890:  e0 03 15 aa   mov	x0, x21
+7760: 0x256b64894:  4b 7a 52 94   bl	0x2580031c0 ; CALL objectForKeyedSubscript:
+7761: 0x256b64898:  3a 70 56 94   bl	0x258100980
+7762: 0x256b6489c:  f7 03 00 aa   mov	x23, x0
+7763: 0x256b648a0:  28 b0 0c 90   adrp	x8, 0x270168000
+7764: 0x256b648a4:  08 09 43 f9   ldr	x8, [x8, #0x610]
+7765: 0x256b648a8:  02 01 40 f9   ldr	x2, [x8]
+7766: 0x256b648ac:  45 7a 52 94   bl	0x2580031c0 ; CALL objectForKeyedSubscript:
+7767: 0x256b648b0:  34 70 56 94   bl	0x258100980
+7768: 0x256b648b4:  f6 03 00 aa   mov	x22, x0
+7769: 0x256b648b8:  6a 70 56 94   bl	0x258100a60
+7770: 0x256b648bc:  96 0f 00 b4   cbz	x22, 0x256b64aac
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:8058-8150 ---
+8058: 0x256b64d3c:  6d 51 55 94   bl	0x2580b92f0 ; CALL _isOptimized:
+8059: 0x256b64d40:  f5 03 00 aa   mov	x21, x0
+8060: 0x256b64d44:  b3 83 56 f8   ldur	x19, [fp, #-0x98]
+8061: 0x256b64d48:  97 2a 47 f9   ldr	x23, [x20, #0xe50]
+8062: 0x256b64d4c:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8063: 0x256b64d50:  ac 52 55 94   bl	0x2580b9800 ; CALL enableAntiAliasing
+8064: 0x256b64d54:  f8 03 00 aa   mov	x24, x0
+8065: 0x256b64d58:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8066: 0x256b64d5c:  d5 51 55 94   bl	0x2580b94b0 ; CALL calcGlobalHistOnROI
+8067: 0x256b64d60:  e7 03 00 aa   mov	x7, x0
+8068: 0x256b64d64:  76 c3 25 91   add	x22, x27, #0x970
+8069: 0x256b64d68:  f6 03 00 f9   str	x22, [sp]
+8070: 0x256b64d6c:  64 83 00 91   add	x4, x27, #0x20
+8071: 0x256b64d70:  e0 03 1c aa   mov	x0, x28
+8072: 0x256b64d74:  e2 03 13 aa   mov	x2, x19
+8073: 0x256b64d78:  e3 03 17 aa   mov	x3, x23
+8074: 0x256b64d7c:  e5 03 15 aa   mov	x5, x21
+8075: 0x256b64d80:  e6 03 18 aa   mov	x6, x24
+8076: 0x256b64d84:  2b 55 55 94   bl	0x2580ba230 ; CALL startCalculateHITHStatistics:ltmGeometry:inputDriverMetadata:optimized:enableAntiAliasing:calcGlobalHistOnROI:outputProcHITHStat:
+8077: 0x256b64d88:  60 0f 00 35   cbnz	w0, 0x256b64f74
+8078: 0x256b64d8c:  28 4e 0d b0   adrp	x8, 0x271529000
+8079: 0x256b64d90:  08 c1 28 91   add	x8, x8, #0xa30
+8080: 0x256b64d94:  89 aa 79 39   ldrb	w9, [x20, #0xe6a]
+8081: 0x256b64d98:  2a 4e 0d b0   adrp	x10, 0x271529000
+8082: 0x256b64d9c:  4a a1 28 91   add	x10, x10, #0xa28
+8083: 0x256b64da0:  3f 01 00 71   cmp	w9, #0
+8084: 0x256b64da4:  08 11 8a 9a   csel	x8, x8, x10, ne
+8085: 0x256b64da8:  00 01 40 f9   ldr	x0, [x8]
+8086: 0x256b64dac:  e5 6e 56 94   bl	0x258100940
+8087: 0x256b64db0:  f3 03 00 aa   mov	x19, x0
+8088: 0x256b64db4:  97 2a 47 f9   ldr	x23, [x20, #0xe50]
+8089: 0x256b64db8:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8090: 0x256b64dbc:  71 52 55 94   bl	0x2580b9780 ; CALL digitalFlash
+8091: 0x256b64dc0:  f8 03 00 aa   mov	x24, x0
+8092: 0x256b64dc4:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8093: 0x256b64dc8:  0e 52 55 94   bl	0x2580b9600 ; CALL computeHDRCurves
+8094: 0x256b64dcc:  f9 03 00 aa   mov	x25, x0
+8095: 0x256b64dd0:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8096: 0x256b64dd4:  03 52 55 94   bl	0x2580b95e0 ; CALL computeCurvesWoFaceBoost
+8097: 0x256b64dd8:  fa 03 00 aa   mov	x26, x0
+8098: 0x256b64ddc:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8099: 0x256b64de0:  0c 52 55 94   bl	0x2580b9610 ; CALL computeHDRCurvesWoFaceBoost
+8100: 0x256b64de4:  e0 0b 00 39   strb	w0, [sp, #0x2]
+8101: 0x256b64de8:  fa 07 00 39   strb	w26, [sp, #0x1]
+8102: 0x256b64dec:  62 83 00 91   add	x2, x27, #0x20
+8103: 0x256b64df0:  f9 03 00 39   strb	w25, [sp]
+8104: 0x256b64df4:  e0 03 13 aa   mov	x0, x19
+8105: 0x256b64df8:  e3 03 16 aa   mov	x3, x22
+8106: 0x256b64dfc:  e4 03 17 aa   mov	x4, x23
+8107: 0x256b64e00:  fb 03 1c aa   mov	x27, x28
+8108: 0x256b64e04:  e5 03 1c aa   mov	x5, x28
+8109: 0x256b64e08:  e6 03 15 aa   mov	x6, x21
+8110: 0x256b64e0c:  e7 03 18 aa   mov	x7, x24
+8111: 0x256b64e10:  1c 53 55 94   bl	0x2580b9a80 ; CALL initWith:HITH:geometryData:statsObj:optimized:digitalFlash:computeHDRCurves:computeCurvesWoFaceBoost:computeHDRCurvesWoFaceBoost:
+8112: 0x256b64e14:  f8 03 00 aa   mov	x24, x0
+8113: 0x256b64e18:  c0 0b 00 b4   cbz	x0, 0x256b64f90
+8114: 0x256b64e1c:  e0 03 18 aa   mov	x0, x24
+8115: 0x256b64e20:  ec 51 55 94   bl	0x2580b95d0 ; CALL compute
+8116: 0x256b64e24:  d7 6e 56 94   bl	0x258100980
+8117: 0x256b64e28:  f7 03 00 aa   mov	x23, x0
+8118: 0x256b64e2c:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8119: 0x256b64e30:  04 53 55 94   bl	0x2580b9a40 ; CALL inMetaData
+8120: 0x256b64e34:  d3 6e 56 94   bl	0x258100980
+8121: 0x256b64e38:  f3 03 00 aa   mov	x19, x0
+8122: 0x256b64e3c:  a1 78 52 94   bl	0x2580030c0 ; CALL mutableCopy
+8123: 0x256b64e40:  f6 03 00 aa   mov	x22, x0
+8124: 0x256b64e44:  f7 6e 56 94   bl	0x258100a20
+8125: 0x256b64e48:  e0 03 16 aa   mov	x0, x22
+8126: 0x256b64e4c:  e2 03 17 aa   mov	x2, x23
+8127: 0x256b64e50:  24 9a 52 94   bl	0x25800b6e0 ; CALL addEntriesFromDictionary:
+8128: 0x256b64e54:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8129: 0x256b64e58:  e2 03 16 aa   mov	x2, x22
+8130: 0x256b64e5c:  7d 54 55 94   bl	0x2580ba050 ; CALL setOutMetaData:
+8131: 0x256b64e60:  39 ae 0c 90   adrp	x25, 0x270128000
+8132: 0x256b64e64:  39 07 43 f9   ldr	x25, [x25, #0x608]
+8133: 0x256b64e68:  28 03 40 b9   ldr	w8, [x25]
+8134: 0x256b64e6c:  1f 05 00 71   cmp	w8, #0x1
+8135: 0x256b64e70:  3a 21 82 52   mov	w26, #0x1109
+8136: 0x256b64e74:  3a 20 a6 72   movk	w26, #0x3101, lsl #0x10
+8137: 0x256b64e78:  e1 00 00 54   b.ne	0x256b64e94
+8138: 0x256b64e7c:  40 47 00 11   add	w0, w26, #0x11
+8139: 0x256b64e80:  01 00 80 d2   mov	x1, #0
+8140: 0x256b64e84:  02 00 80 d2   mov	x2, #0
+8141: 0x256b64e88:  03 00 80 d2   mov	x3, #0
+8142: 0x256b64e8c:  04 00 80 d2   mov	x4, #0
+8143: 0x256b64e90:  2c a9 56 94   bl	0x25810f340
+8144: 0x256b64e94:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+8145: 0x256b64e98:  76 53 55 94   bl	0x2580b9c70 ; CALL outMetaData
+8146: 0x256b64e9c:  b9 6e 56 94   bl	0x258100980
+8147: 0x256b64ea0:  f3 03 00 aa   mov	x19, x0
+8148: 0x256b64ea4:  df 6e 56 94   bl	0x258100a20
+8149: 0x256b64ea8:  fc 03 1b aa   mov	x28, x27
+8150: 0x256b64eac:  93 08 00 b4   cbz	x19, 0x256b64fbc
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:50460-50490 ---
+50460: 0x256b8cc74:  ea 03 16 aa   mov	x10, x22
+50461: 0x256b8cc78:  49 25 00 78   strh	w9, [x10], #0x2
+50462: 0x256b8cc7c:  eb 03 17 aa   mov	x11, x23
+50463: 0x256b8cc80:  69 25 00 78   strh	w9, [x11], #0x2
+50464: 0x256b8cc84:  2c 63 40 91   add	x12, x25, #0x18, lsl #0xc
+50465: 0x256b8cc88:  8c 11 14 91   add	x12, x12, #0x504
+50466: 0x256b8cc8c:  00 10 2e 1e   fmov	s0, #1.00000000
+50467: 0x256b8cc90:  01 e4 00 6f   movi	v1.2d, #0
+50468: 0x256b8cc94:  2d 63 40 91   add	x13, x25, #0x18, lsl #0xc
+50469: 0x256b8cc98:  ee 01 00 90   adrp	x14, 0x256bc8000
+50470: 0x256b8cc9c:  c8 99 43 bd   ldr	s8, [x14, #0x398]
+50471: 0x256b8cca0:  ad 21 24 91   add	x13, x13, #0x908
+50472: 0x256b8cca4:  82 79 68 bc   ldr	s2, [x12, x8, lsl #0x2]
+50473: 0x256b8cca8:  42 78 20 1e   fminnm	s2, s2, s0
+50474: 0x256b8ccac:  42 68 21 1e   fmaxnm	s2, s2, s1
+50475: 0x256b8ccb0:  42 08 28 1e   fmul	s2, s2, s8
+50476: 0x256b8ccb4:  42 40 25 1e   frintm	s2, s2
+50477: 0x256b8ccb8:  42 b8 a1 5e   fcvtzs	s2, s2
+50478: 0x256b8ccbc:  42 79 28 7c   str	h2, [x10, x8, lsl #0x1]
+50479: 0x256b8ccc0:  a2 79 68 bc   ldr	s2, [x13, x8, lsl #0x2]
+50480: 0x256b8ccc4:  42 78 20 1e   fminnm	s2, s2, s0
+50481: 0x256b8ccc8:  42 68 21 1e   fmaxnm	s2, s2, s1
+50482: 0x256b8cccc:  42 08 28 1e   fmul	s2, s2, s8
+50483: 0x256b8ccd0:  42 40 25 1e   frintm	s2, s2
+50484: 0x256b8ccd4:  42 b8 a1 5e   fcvtzs	s2, s2
+50485: 0x256b8ccd8:  62 79 28 7c   str	h2, [x11, x8, lsl #0x1]
+50486: 0x256b8ccdc:  08 05 00 91   add	x8, x8, #0x1
+50487: 0x256b8cce0:  29 05 00 f1   subs	x9, x9, #0x1
+50488: 0x256b8cce4:  01 fe ff 54   b.ne	0x256b8cca4
+50489: 0x256b8cce8:  73 d3 43 39   ldrb	w19, [x27, #0xf4]
+50490: 0x256b8ccec:  7f 02 00 71   cmp	w19, #0
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:50527-50577 ---
+50527: 0x256b8cd80:  08 00 80 52   mov	w8, #0
+50528: 0x256b8cd84:  09 00 80 52   mov	w9, #0
+50529: 0x256b8cd88:  20 09 20 1e   fmul	s0, s9, s0
+50530: 0x256b8cd8c:  00 08 2a 1e   fmul	s0, s0, s10
+50531: 0x256b8cd90:  00 b8 a1 5e   fcvtzs	s0, s0
+50532: 0x256b8cd94:  a0 2a 00 7d   str	h0, [x21, #0x14]
+50533: 0x256b8cd98:  bc 2e 00 79   strh	w28, [x21, #0x16]
+50534: 0x256b8cd9c:  aa 62 00 91   add	x10, x21, #0x18
+50535: 0x256b8cda0:  8b 6f 1c 53   lsl	w11, w28, #0x4
+50536: 0x256b8cda4:  00 10 2e 1e   fmov	s0, #1.00000000
+50537: 0x256b8cda8:  01 e4 00 6f   movi	v1.2d, #0
+50538: 0x256b8cdac:  0c 00 80 52   mov	w12, #0
+50539: 0x256b8cdb0:  2d 7d 1b 1b   mul	w13, w9, w27
+50540: 0x256b8cdb4:  ee 03 08 aa   mov	x14, x8
+50541: 0x256b8cdb8:  7c 02 00 34   cbz	w28, 0x256b8ce04
+50542: 0x256b8cdbc:  8f 25 1b 1b   madd	w15, w12, w27, w9
+50543: 0x256b8cdc0:  90 01 0d 0b   add	w16, w12, w13
+50544: 0x256b8cdc4:  7f 02 00 71   cmp	w19, #0
+50545: 0x256b8cdc8:  ef 11 90 1a   csel	w15, w15, w16, ne
+50546: 0x256b8cdcc:  ef 7d 1c 1b   mul	w15, w15, w28
+50547: 0x256b8cdd0:  f0 03 1c aa   mov	x16, x28
+50548: 0x256b8cdd4:  f1 03 0e aa   mov	x17, x14
+50549: 0x256b8cdd8:  22 db 71 bc   ldr	s2, [x25, w17, sxtw #0x2]
+50550: 0x256b8cddc:  42 78 20 1e   fminnm	s2, s2, s0
+50551: 0x256b8cde0:  42 68 21 1e   fmaxnm	s2, s2, s1
+50552: 0x256b8cde4:  42 08 28 1e   fmul	s2, s2, s8
+50553: 0x256b8cde8:  42 40 25 1e   frintm	s2, s2
+50554: 0x256b8cdec:  42 b8 a1 5e   fcvtzs	s2, s2
+50555: 0x256b8cdf0:  42 d9 2f 7c   str	h2, [x10, w15, sxtw #0x1]
+50556: 0x256b8cdf4:  ef 05 00 11   add	w15, w15, #0x1
+50557: 0x256b8cdf8:  31 06 00 11   add	w17, w17, #0x1
+50558: 0x256b8cdfc:  10 06 00 f1   subs	x16, x16, #0x1
+50559: 0x256b8ce00:  c1 fe ff 54   b.ne	0x256b8cdd8
+50560: 0x256b8ce04:  8c 05 00 11   add	w12, w12, #0x1
+50561: 0x256b8ce08:  ce 01 1c 0b   add	w14, w14, w28
+50562: 0x256b8ce0c:  9f 41 00 71   cmp	w12, #0x10
+50563: 0x256b8ce10:  41 fd ff 54   b.ne	0x256b8cdb8
+50564: 0x256b8ce14:  29 05 00 11   add	w9, w9, #0x1
+50565: 0x256b8ce18:  08 01 0b 0b   add	w8, w8, w11
+50566: 0x256b8ce1c:  3f 31 00 71   cmp	w9, #0xc
+50567: 0x256b8ce20:  61 fc ff 54   b.ne	0x256b8cdac
+50568: 0x256b8ce24:  d3 ac 0c f0   adrp	x19, 0x270127000
+50569: 0x256b8ce28:  60 c6 40 f9   ldr	x0, [x19, #0x188]
+50570: 0x256b8ce2c:  e2 03 15 aa   mov	x2, x21
+50571: 0x256b8ce30:  e3 03 1a aa   mov	x3, x26
+50572: 0x256b8ce34:  6f df 51 94   bl	0x258004bf0 ; CALL dataWithBytes:length:
+50573: 0x256b8ce38:  d2 ce 55 94   bl	0x258100980
+50574: 0x256b8ce3c:  f9 03 00 aa   mov	x25, x0
+50575: 0x256b8ce40:  60 c6 40 f9   ldr	x0, [x19, #0x188]
+50576: 0x256b8ce44:  e2 03 16 aa   mov	x2, x22
+50577: 0x256b8ce48:  83 40 80 52   mov	w3, #0x204
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:50600-50660 ---
+50600: 0x256b8cea4:  63 40 17 91   add	x3, x3, #0x5d0
+50601: 0x256b8cea8:  e0 03 13 aa   mov	x0, x19
+50602: 0x256b8ceac:  e2 03 1a aa   mov	x2, x26
+50603: 0x256b8ceb0:  d8 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50604: 0x256b8ceb4:  83 26 14 b0   adrp	x3, 0x27f05d000
+50605: 0x256b8ceb8:  63 c0 17 91   add	x3, x3, #0x5f0
+50606: 0x256b8cebc:  2f 00 00 14   b	0x256b8cf78
+50607: 0x256b8cec0:  e8 ae 0c 90   adrp	x8, 0x270168000
+50608: 0x256b8cec4:  08 f5 41 f9   ldr	x8, [x8, #0x3e8]
+50609: 0x256b8cec8:  03 01 40 f9   ldr	x3, [x8]
+50610: 0x256b8cecc:  e0 03 13 aa   mov	x0, x19
+50611: 0x256b8ced0:  e2 03 19 aa   mov	x2, x25
+50612: 0x256b8ced4:  cf da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50613: 0x256b8ced8:  e8 ae 0c 90   adrp	x8, 0x270168000
+50614: 0x256b8cedc:  08 d9 41 f9   ldr	x8, [x8, #0x3b0]
+50615: 0x256b8cee0:  03 01 40 f9   ldr	x3, [x8]
+50616: 0x256b8cee4:  e0 03 13 aa   mov	x0, x19
+50617: 0x256b8cee8:  e2 03 1a aa   mov	x2, x26
+50618: 0x256b8ceec:  c9 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50619: 0x256b8cef0:  e8 ae 0c 90   adrp	x8, 0x270168000
+50620: 0x256b8cef4:  08 e1 41 f9   ldr	x8, [x8, #0x3c0]
+50621: 0x256b8cef8:  1f 00 00 14   b	0x256b8cf74
+50622: 0x256b8cefc:  e8 ae 0c 90   adrp	x8, 0x270168000
+50623: 0x256b8cf00:  08 f9 41 f9   ldr	x8, [x8, #0x3f0]
+50624: 0x256b8cf04:  03 01 40 f9   ldr	x3, [x8]
+50625: 0x256b8cf08:  f3 07 40 f9   ldr	x19, [sp, #0x8]
+50626: 0x256b8cf0c:  e0 03 13 aa   mov	x0, x19
+50627: 0x256b8cf10:  e2 03 19 aa   mov	x2, x25
+50628: 0x256b8cf14:  bf da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50629: 0x256b8cf18:  e8 ae 0c 90   adrp	x8, 0x270168000
+50630: 0x256b8cf1c:  08 dd 41 f9   ldr	x8, [x8, #0x3b8]
+50631: 0x256b8cf20:  03 01 40 f9   ldr	x3, [x8]
+50632: 0x256b8cf24:  e0 03 13 aa   mov	x0, x19
+50633: 0x256b8cf28:  e2 03 1a aa   mov	x2, x26
+50634: 0x256b8cf2c:  b9 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50635: 0x256b8cf30:  e8 ae 0c 90   adrp	x8, 0x270168000
+50636: 0x256b8cf34:  08 e5 41 f9   ldr	x8, [x8, #0x3c8]
+50637: 0x256b8cf38:  0f 00 00 14   b	0x256b8cf74
+50638: 0x256b8cf3c:  e8 ae 0c 90   adrp	x8, 0x270168000
+50639: 0x256b8cf40:  08 01 46 f9   ldr	x8, [x8, #0xc00]
+50640: 0x256b8cf44:  03 01 40 f9   ldr	x3, [x8]
+50641: 0x256b8cf48:  e0 03 13 aa   mov	x0, x19
+50642: 0x256b8cf4c:  e2 03 19 aa   mov	x2, x25
+50643: 0x256b8cf50:  b0 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50644: 0x256b8cf54:  e8 ae 0c 90   adrp	x8, 0x270168000
+50645: 0x256b8cf58:  08 7d 45 f9   ldr	x8, [x8, #0xaf8]
+50646: 0x256b8cf5c:  03 01 40 f9   ldr	x3, [x8]
+50647: 0x256b8cf60:  e0 03 13 aa   mov	x0, x19
+50648: 0x256b8cf64:  e2 03 1a aa   mov	x2, x26
+50649: 0x256b8cf68:  aa da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50650: 0x256b8cf6c:  e8 ae 0c 90   adrp	x8, 0x270168000
+50651: 0x256b8cf70:  08 8d 45 f9   ldr	x8, [x8, #0xb18]
+50652: 0x256b8cf74:  03 01 40 f9   ldr	x3, [x8]
+50653: 0x256b8cf78:  e0 03 13 aa   mov	x0, x19
+50654: 0x256b8cf7c:  e2 03 1b aa   mov	x2, x27
+50655: 0x256b8cf80:  a4 da 51 94   bl	0x258003a10 ; CALL setObject:forKeyedSubscript:
+50656: 0x256b8cf84:  e0 03 16 aa   mov	x0, x22
+50657: 0x256b8cf88:  52 ce 55 94   bl	0x2581008d0
+50658: 0x256b8cf8c:  e0 03 17 aa   mov	x0, x23
+50659: 0x256b8cf90:  50 ce 55 94   bl	0x2581008d0
+50660: 0x256b8cf94:  e0 03 15 aa   mov	x0, x21
+--- iterations/20261018-v3/evidence/ios/CameraColorProcessing.annotated.asm:7560-7580 ---
+7560: 0x256b64574:  81 fd ff 54   b.ne	0x256b64524
+7561: 0x256b64578:  28 00 80 52   mov	w8, #0x1
+7562: 0x256b6457c:  68 1f 16 39   strb	w8, [x27, #0x587]
+7563: 0x256b64580:  e0 0f c0 3d   ldr	q0, [sp, #0x30]
+7564: 0x256b64584:  60 67 81 3d   str	q0, [x27, #0x590]
+7565: 0x256b64588:  88 a2 79 39   ldrb	w8, [x20, #0xe68]
+7566: 0x256b6458c:  e8 13 00 36   tbz	w8, #0, 0x256b64808
+7567: 0x256b64590:  a2 83 56 f8   ldur	x2, [fp, #-0x98]
+7568: 0x256b64594:  e0 03 1b aa   mov	x0, x27
+7569: 0x256b64598:  52 53 55 94   bl	0x2580b92e0 ; CALL _dehaze:hazeValues:
+7570: 0x256b6459c:  f9 70 56 94   bl	0x258100980
+7571: 0x256b645a0:  c0 53 00 b4   cbz	x0, 0x256b65018
+7572: 0x256b645a4:  f5 03 00 aa   mov	x21, x0
+7573: 0x256b645a8:  a0 63 02 d1   sub	x0, fp, #0x98
+7574: 0x256b645ac:  f9 6f 57 94   bl	0x258140590
+7575: 0x256b645b0:  a8 83 56 f8   ldur	x8, [fp, #-0x98]
+7576: 0x256b645b4:  b5 83 16 f8   stur	x21, [fp, #-0x98]
+7577: 0x256b645b8:  42 71 56 94   bl	0x258100ac0
+7578: 0x256b645bc:  93 00 00 14   b	0x256b64808
+7579: 0x256b645c0:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+7580: 0x256b645c4:  7f 54 55 94   bl	0x2580b97c0 ; CALL doHazeEstimation

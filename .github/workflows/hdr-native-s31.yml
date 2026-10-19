@@ -3,6 +3,15 @@ on:
   push:
     branches: ['research/vm-native-20261019-hdr-s31']
   workflow_dispatch:
+    inputs:
+      s29_artifact_id:
+        description: 'Fresh upstream synthetic artifact id; run upstream again after expiry'
+        required: true
+        default: '12178164564'
+      s29_sha256:
+        description: 'Exact upstream artifact ZIP SHA-256'
+        required: true
+        default: '1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c'
 jobs:
   preserve-sdr-rgb-iso:
     runs-on: xcode-27
@@ -12,6 +21,8 @@ jobs:
       actions: read
     env:
       OPENBLAS_NUM_THREADS: '1'
+      S29_ARTIFACT_ID: ${{ github.event.inputs.s29_artifact_id || '12178164564' }}
+      S29_ARCHIVE_SHA256: ${{ github.event.inputs.s29_sha256 || '1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,8 +37,12 @@ jobs:
           echo "W=$W" >> "$GITHUB_ENV"
           mkdir "$W/out"
           sw_vers > "$W/out/host.txt"
-          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12178164564/zip > "$W/S29.zip"
-          echo '1183b4878cbdf6c8c5aa7c2dac6f4332c2575f959398bd28299fcc87d4f8c81c  '"$W/S29.zip" | shasum -a 256 -c -
+          [[ "$S29_ARTIFACT_ID" =~ ^[0-9]+$ ]]
+          [[ "$S29_ARCHIVE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          HDR_UPSTREAM_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S29_ARTIFACT_ID} --jq .size_in_bytes)
+          [[ "$HDR_UPSTREAM_BYTES" =~ ^[0-9]+$ ]] && (( HDR_UPSTREAM_BYTES < 40000000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S29_ARTIFACT_ID}/zip > "$W/S29.zip"
+          echo "$S29_ARCHIVE_SHA256  $W/S29.zip" | shasum -a 256 -c -
       - name: Explicit 8 10 12-bit RGB ISO maps and original SDR oracle
         run: |
           set -euo pipefail

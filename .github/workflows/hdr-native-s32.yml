@@ -3,6 +3,15 @@ on:
   push:
     branches: ['research/vm-native-20261019-hdr-s32']
   workflow_dispatch:
+    inputs:
+      s31_artifact_id:
+        description: 'Fresh upstream synthetic artifact id; run upstream again after expiry'
+        required: true
+        default: '12178638557'
+      s31_sha256:
+        description: 'Exact upstream artifact ZIP SHA-256'
+        required: true
+        default: 'f4d90ac39646f813aae1bba6044167e1e2af03a8aab3c4d1575f337f8b918cdd'
 jobs:
   matrix-readback:
     runs-on: xcode-27
@@ -12,6 +21,8 @@ jobs:
       actions: read
     env:
       OPENBLAS_NUM_THREADS: '1'
+      S31_ARTIFACT_ID: ${{ github.event.inputs.s31_artifact_id || '12178638557' }}
+      S31_ARCHIVE_SHA256: ${{ github.event.inputs.s31_sha256 || 'f4d90ac39646f813aae1bba6044167e1e2af03a8aab3c4d1575f337f8b918cdd' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,7 +37,11 @@ jobs:
           echo "W=$W" >> "$GITHUB_ENV"
           mkdir "$W/out"
           sw_vers > "$W/out/host.txt"
-          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12178638557/zip > "$W/S31.zip"
+          [[ "$S31_ARTIFACT_ID" =~ ^[0-9]+$ ]]
+          [[ "$S31_ARCHIVE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          HDR_UPSTREAM_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S31_ARTIFACT_ID} --jq .size_in_bytes)
+          [[ "$HDR_UPSTREAM_BYTES" =~ ^[0-9]+$ ]] && (( HDR_UPSTREAM_BYTES < 40000000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/${S31_ARTIFACT_ID}/zip > "$W/S31.zip"
       - name: Compare actual YUV matrix and bit-depth paths
         run: |
           set -euo pipefail

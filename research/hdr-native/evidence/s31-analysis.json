@@ -1,0 +1,2238 @@
+{
+  "os_build": "26A434",
+  "scope": "5synthetic pairs, not5photos or physical scene recovery",
+  "formula_freeze_sha256": "fa2cff7f465793fe07bad4f3c44da233ee83772241307f89e8c07d2894796a79",
+  "rows": [
+    {
+      "case": "gray-expansion",
+      "bits": 8,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 112,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 8,
+        "bit_depth_chroma": 8,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "39acf16bcf4ea78d07cfe811ac892e4f543c2d81e57f6e224fb81615202f260b",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7cfcd6c3c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7cfcd94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7cfcd944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7cfcd94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7cfcd94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7cfcd94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7cfcd94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x7cfd0a80c0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7cfcd6c500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7cfcd94560> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7cfcd94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7cfcd94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7cfcd945c0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7cfcd945a0> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7cfcd945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "666f5abf9207f343c3a997899f92cddb108a820c9d09d4491872032c8c3ecc78",
+        "SDR_sha_original": "666f5abf9207f343c3a997899f92cddb108a820c9d09d4491872032c8c3ecc78",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.025908470153808594,
+        "max_relative": 0.004730907117990605,
+        "PSNR_peak1_db": 43.253257572529556,
+        "luma_EV_MAE": 0.003437834163513814,
+        "luma_EV_max": 0.006839775546285676,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 48.453608989715576,
+        "max_relative": 7.5801316411278,
+        "PSNR_peak1_db": -18.632035426147933,
+        "luma_EV_MAE": 0.3381473206836344,
+        "luma_EV_max": 1.0882128831402387,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 48.479517459869385,
+        "max_relative": 7.615049706573663,
+        "PSNR_peak1_db": -18.63220453979012,
+        "luma_EV_MAE": 0.3381710928728757,
+        "luma_EV_max": 1.0940722210655562,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.8859999179840088,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.559786846350164e-07,
+            "max_relative": 1.83447586929413e-07,
+            "PSNR_peak1_db": 148.25933585990737,
+            "luma_EV_MAE": 7.660369367148337e-08,
+            "luma_EV_max": 2.0025016800490502e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 2.329963788572087e-07,
+            "max_relative": 1.8342899117395925e-07,
+            "PSNR_peak1_db": 146.02414761817113,
+            "luma_EV_MAE": 7.692141999007743e-08,
+            "luma_EV_max": 2.1994750325989433e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 3.4798851178408086e-07,
+            "max_relative": 1.7339556994379682e-07,
+            "PSNR_peak1_db": 144.17550236411256,
+            "luma_EV_MAE": 5.290031261673857e-08,
+            "luma_EV_max": 1.506252130204338e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 1.1686138554622971e-06,
+            "max_relative": 2.1803053438888445e-07,
+            "PSNR_peak1_db": 135.03669623317836,
+            "luma_EV_MAE": 4.5450190301205195e-08,
+            "luma_EV_max": 1.5291486187316676e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 2.6338023513261533e-06,
+            "max_relative": 2.39652370441053e-07,
+            "PSNR_peak1_db": 129.95187882942014,
+            "luma_EV_MAE": 5.098559092191512e-08,
+            "luma_EV_max": 2.1034026258418792e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 1.0401049387098737e-05,
+            "max_relative": 2.2355206097717413e-07,
+            "PSNR_peak1_db": 119.26841033308659,
+            "luma_EV_MAE": 5.3198229444499724e-08,
+            "luma_EV_max": 2.0984154266231233e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": false
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "gray-expansion",
+      "bits": 10,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 111,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 10,
+        "bit_depth_chroma": 10,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "73cf1af2ca24d0ecf712efc219b815b706d5ad440b485df388a9a770a26f4d08",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x76f6d903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x76f6d94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x76f6d944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x76f6d94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x76f6d94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x76f6d94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x76f6d94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x76f70a4000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x76f6d90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x76f6d94540> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x76f6d94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x76f6d94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x76f6d945a0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x76f6d94580> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x76f6d945c0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "666f5abf9207f343c3a997899f92cddb108a820c9d09d4491872032c8c3ecc78",
+        "SDR_sha_original": "666f5abf9207f343c3a997899f92cddb108a820c9d09d4491872032c8c3ecc78",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.006423539958778868,
+        "max_relative": 0.0011810501899261164,
+        "PSNR_peak1_db": 55.3144263228984,
+        "luma_EV_MAE": 0.0008544926476393823,
+        "luma_EV_max": 0.001704902237898007,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 47.76705047084239,
+        "max_relative": 7.50825262491735,
+        "PSNR_peak1_db": -18.634147771588285,
+        "luma_EV_MAE": 0.33659593408571237,
+        "luma_EV_max": 1.0793275099045638,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 47.76271295547485,
+        "max_relative": 7.502455724272194,
+        "PSNR_peak1_db": -18.63407295205218,
+        "luma_EV_MAE": 0.3365978283112879,
+        "luma_EV_max": 1.0783442280840358,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.882532240824732,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.4296677197656038e-07,
+            "max_relative": 1.7365683084739116e-07,
+            "PSNR_peak1_db": 149.31358619478914,
+            "luma_EV_MAE": 7.33421586420447e-08,
+            "luma_EV_max": 1.983185642363978e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 2.1142572292909279e-07,
+            "max_relative": 1.8922835588155607e-07,
+            "PSNR_peak1_db": 145.973767653889,
+            "luma_EV_MAE": 8.066699902069223e-08,
+            "luma_EV_max": 1.8782751490337585e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 4.1473600331798366e-07,
+            "max_relative": 1.8904005543186935e-07,
+            "PSNR_peak1_db": 144.95151484947786,
+            "luma_EV_MAE": 4.7061746294212275e-08,
+            "luma_EV_max": 1.720837266451745e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 1.271730183383113e-06,
+            "max_relative": 2.043961514347246e-07,
+            "PSNR_peak1_db": 135.78591948971012,
+            "luma_EV_MAE": 4.497643605526081e-08,
+            "luma_EV_max": 1.6069885427503666e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 2.1974989543593892e-06,
+            "max_relative": 2.544156029236676e-07,
+            "PSNR_peak1_db": 130.82599393533494,
+            "luma_EV_MAE": 4.8121263659927034e-08,
+            "luma_EV_max": 1.7313482404764732e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 8.420317342938688e-06,
+            "max_relative": 2.397927029699727e-07,
+            "PSNR_peak1_db": 119.62451062887462,
+            "luma_EV_MAE": 5.452278464650637e-08,
+            "luma_EV_max": 2.5272512125218653e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "gray-expansion",
+      "bits": 12,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 113,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 12,
+        "bit_depth_chroma": 12,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "f86688f9ff4f0b2e5c064350474f3ed3716b2865d5e7398c8c3a8292334d73a5",
+      "native_returncode": 5,
+      "native": {
+        "device": "Apple Paravirtual device",
+        "exception": "ISO native input nil",
+        "height": 128,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "success": false,
+        "width": 256
+      }
+    },
+    {
+      "case": "rgb-opposing",
+      "bits": 8,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 112,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 8,
+        "bit_depth_chroma": 8,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "d1aa527c23f89b978d2fba80e22f0627a30a6f46333c3a999b3c16e5144625e5",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x74a4d8c3c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x74a4d94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x74a4d944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x74a4d94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x74a4d94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x74a4d94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x74a4d94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x74a50a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x74a4d8c500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x74a4d94580> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x74a4d94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x74a4d94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x74a4d945a0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x74a4d94560> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x74a4d945c0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "260d7c23daf872353ec56c4c58c1d5b6d3c1852827becceca98b8bf3a02288de",
+        "SDR_sha_original": "260d7c23daf872353ec56c4c58c1d5b6d3c1852827becceca98b8bf3a02288de",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.024166584014892578,
+        "max_relative": 0.004746912815756042,
+        "PSNR_peak1_db": 47.03491051298656,
+        "luma_EV_MAE": 0.0024664188250916896,
+        "luma_EV_max": 0.006766501778275912,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 5.4518513679504395,
+        "max_relative": 0.9234501521871783,
+        "PSNR_peak1_db": 4.180310010390972,
+        "luma_EV_MAE": 0.4226554676151929,
+        "luma_EV_max": 1.5337047846661438,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 5.475780487060547,
+        "max_relative": 0.931277974320231,
+        "PSNR_peak1_db": 4.179710659334394,
+        "luma_EV_MAE": 0.4226556727330541,
+        "luma_EV_max": 1.536887920140105,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.7760269132314944,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.5217623838825745e-07,
+            "max_relative": 2.025637503860606e-07,
+            "PSNR_peak1_db": 149.79147637273581,
+            "luma_EV_MAE": 7.528679563828267e-08,
+            "luma_EV_max": 2.4439910903363175e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 2.202231059733606e-07,
+            "max_relative": 2.0529700140933168e-07,
+            "PSNR_peak1_db": 148.85362998178886,
+            "luma_EV_MAE": 7.722619171311254e-08,
+            "luma_EV_max": 2.4853420177654076e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 2.661139575366178e-07,
+            "max_relative": 2.3349587841812267e-07,
+            "PSNR_peak1_db": 149.81419347628207,
+            "luma_EV_MAE": 5.9512246112136226e-08,
+            "luma_EV_max": 2.127779298923551e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 6.21300769942934e-07,
+            "max_relative": 2.607125612762261e-07,
+            "PSNR_peak1_db": 147.3324091788421,
+            "luma_EV_MAE": 5.5368534106973705e-08,
+            "luma_EV_max": 2.3326730788706785e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 9.294859943942413e-07,
+            "max_relative": 2.753324960530657e-07,
+            "PSNR_peak1_db": 144.5987305622619,
+            "luma_EV_MAE": 5.337504165286503e-08,
+            "luma_EV_max": 2.528923640745353e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 2.1236212361941398e-06,
+            "max_relative": 2.7332205633238214e-07,
+            "PSNR_peak1_db": 139.39882408031912,
+            "luma_EV_MAE": 5.358558712118679e-08,
+            "luma_EV_max": 2.8855150969262773e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "rgb-opposing",
+      "bits": 10,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 111,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 10,
+        "bit_depth_chroma": 10,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "44d4204d5fab66e9ae199e6405ecc5262cae80343673404ff1737cd2a8daa7a2",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x762cd8c3c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x762cd94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x762cd944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x762cd94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x762cd94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x762cd94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x762cd94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x762d0a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x762cd8c500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x762cd94540> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x762cd94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x762cd94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x762cd94560> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x762cd945a0> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x762cd945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "260d7c23daf872353ec56c4c58c1d5b6d3c1852827becceca98b8bf3a02288de",
+        "SDR_sha_original": "260d7c23daf872353ec56c4c58c1d5b6d3c1852827becceca98b8bf3a02288de",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.005991219692936589,
+        "max_relative": 0.0011838172600800335,
+        "PSNR_peak1_db": 59.058608083308926,
+        "luma_EV_MAE": 0.0006169705572688715,
+        "luma_EV_max": 0.0016838746587566498,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 5.412320600702263,
+        "max_relative": 0.9211127587936039,
+        "PSNR_peak1_db": 4.18731632346372,
+        "luma_EV_MAE": 0.4218388041023381,
+        "luma_EV_max": 1.5351350507737243,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 5.4083147048950195,
+        "max_relative": 0.9198039210597851,
+        "PSNR_peak1_db": 4.187331777028399,
+        "luma_EV_MAE": 0.4218449267541079,
+        "luma_EV_max": 1.5345984536740378,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.7745971261930605,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.5122944563294993e-07,
+            "max_relative": 2.117893437183099e-07,
+            "PSNR_peak1_db": 149.7675875810647,
+            "luma_EV_MAE": 7.531426897155979e-08,
+            "luma_EV_max": 2.6899579146575416e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 2.1695845275893078e-07,
+            "max_relative": 2.0643429901892068e-07,
+            "PSNR_peak1_db": 148.87990882011593,
+            "luma_EV_MAE": 7.675022166838607e-08,
+            "luma_EV_max": 2.523632677034832e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 2.6772134487096366e-07,
+            "max_relative": 2.434079024470211e-07,
+            "PSNR_peak1_db": 149.783441329988,
+            "luma_EV_MAE": 5.946156187857106e-08,
+            "luma_EV_max": 2.250000124328219e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 6.038450557355191e-07,
+            "max_relative": 2.600505492334544e-07,
+            "PSNR_peak1_db": 147.3512800273897,
+            "luma_EV_MAE": 5.505766093804789e-08,
+            "luma_EV_max": 2.2794103395735732e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 1.113838994371008e-06,
+            "max_relative": 2.87986489400795e-07,
+            "PSNR_peak1_db": 144.45092004188962,
+            "luma_EV_MAE": 5.363452813815969e-08,
+            "luma_EV_max": 2.3282024313420212e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 2.1088308130856603e-06,
+            "max_relative": 2.692900711913389e-07,
+            "PSNR_peak1_db": 139.47489816270712,
+            "luma_EV_MAE": 5.3324476185742746e-08,
+            "luma_EV_max": 2.562470840136014e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "rgb-opposing",
+      "bits": 12,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 113,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 12,
+        "bit_depth_chroma": 12,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "2b8539004c33d1cea34f49311b6bb42ba548ca69b1e5d6f9324d5ff60a1d9050",
+      "native_returncode": 5,
+      "native": {
+        "device": "Apple Paravirtual device",
+        "exception": "ISO native input nil",
+        "height": 128,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "success": false,
+        "width": 256
+      }
+    },
+    {
+      "case": "nearblack-highlight",
+      "bits": 8,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 112,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 8,
+        "bit_depth_chroma": 8,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "4893d71ae6652c1a7d1f75bfe0fbdf1edf4d34f6bdf0729d67d0ef4ea2574dce",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x74ccd903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x74ccd94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x74ccd944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x74ccd94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x74ccd94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x74ccd94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x74ccd94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x74cd0a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x74ccd90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x74ccd94580> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x74ccd94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x74ccd94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x74ccd94540> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x74ccd945a0> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x74ccd945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "6f10a55c4f5f5c3757f4e9727d2ad17b03b92a4b575aa471e847c7c94e40fdc7",
+        "SDR_sha_original": "6f10a55c4f5f5c3757f4e9727d2ad17b03b92a4b575aa471e847c7c94e40fdc7",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.034155607908456176,
+        "max_relative": 0.004762443344255602,
+        "PSNR_peak1_db": 42.16179984266166,
+        "luma_EV_MAE": 0.003115800933807121,
+        "luma_EV_max": 0.006854444368429442,
+        "nonpositive_luma_pixels": 3072,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 60.10794258117676,
+        "max_relative": 7.580131335913934,
+        "PSNR_peak1_db": -22.215691288555853,
+        "luma_EV_MAE": 0.5091375381082112,
+        "luma_EV_max": 1.088212904965099,
+        "nonpositive_luma_pixels": 3072,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 60.11599588394165,
+        "max_relative": 7.606364243091695,
+        "PSNR_peak1_db": -22.215854943793087,
+        "luma_EV_MAE": 0.5093798824150583,
+        "luma_EV_max": 1.0926170990575685,
+        "nonpositive_luma_pixels": 3072,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.8859999179840088,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.3532537423976976e-07,
+            "max_relative": 1.8845185573962057e-07,
+            "PSNR_peak1_db": 150.7166195529307,
+            "luma_EV_MAE": 7.018238670687266e-08,
+            "luma_EV_max": 2.0237385624460124e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 2.1818561024566918e-07,
+            "max_relative": 1.7900046962478808e-07,
+            "PSNR_peak1_db": 147.06111504643027,
+            "luma_EV_MAE": 6.82731933194143e-08,
+            "luma_EV_max": 1.7830997547658865e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 3.7641268235688585e-07,
+            "max_relative": 1.8240624601957717e-07,
+            "PSNR_peak1_db": 143.0166101359711,
+            "luma_EV_MAE": 3.4328441844578523e-08,
+            "luma_EV_max": 1.2660227373913124e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 1.3424082254687164e-06,
+            "max_relative": 2.2393247914876425e-07,
+            "PSNR_peak1_db": 133.96625967499128,
+            "luma_EV_MAE": 4.4645147968719756e-08,
+            "luma_EV_max": 1.5907509161927839e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 2.139348662666407e-06,
+            "max_relative": 2.5800845205296064e-07,
+            "PSNR_peak1_db": 128.2157413159085,
+            "luma_EV_MAE": 5.935861016935235e-08,
+            "luma_EV_max": 2.330694860939181e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 1.0595312446071148e-05,
+            "max_relative": 2.345447356015847e-07,
+            "PSNR_peak1_db": 116.27804102859542,
+            "luma_EV_MAE": 6.763076604514937e-08,
+            "luma_EV_max": 2.562035142271525e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": false
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "nearblack-highlight",
+      "bits": 10,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 111,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 10,
+        "bit_depth_chroma": 10,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "54feb57cf03c5767c4bb886d1d577fb6e7bd3f6bb448e7998834a46d4a1e9a83",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7602d903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7602d94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7602d944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7602d94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7602d94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7602d94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7602d94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x76030a8120> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7602d90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7602d94560> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7602d94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7602d94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7602d94540> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7602d94520> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7602d945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "6f10a55c4f5f5c3757f4e9727d2ad17b03b92a4b575aa471e847c7c94e40fdc7",
+        "SDR_sha_original": "6f10a55c4f5f5c3757f4e9727d2ad17b03b92a4b575aa471e847c7c94e40fdc7",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.0084326085958768,
+        "max_relative": 0.001175221776659397,
+        "PSNR_peak1_db": 54.86331797852493,
+        "luma_EV_MAE": 0.0007623893919718065,
+        "luma_EV_max": 0.001694491122611559,
+        "nonpositive_luma_pixels": 3072,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 60.10794258117676,
+        "max_relative": 7.580131335913934,
+        "PSNR_peak1_db": -22.2186218617278,
+        "luma_EV_MAE": 0.5099235044968241,
+        "luma_EV_max": 1.0882128224362024,
+        "nonpositive_luma_pixels": 3072,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 60.11599588394165,
+        "max_relative": 7.588854099857128,
+        "PSNR_peak1_db": -22.218781616407384,
+        "luma_EV_MAE": 0.5099313184906634,
+        "luma_EV_max": 1.089678755226875,
+        "nonpositive_luma_pixels": 3072,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.8859999179840088,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.3946337551473675e-07,
+            "max_relative": 1.8367486966662592e-07,
+            "PSNR_peak1_db": 150.17667262045836,
+            "luma_EV_MAE": 6.548036747436846e-08,
+            "luma_EV_max": 1.9504836051054114e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 3.052347983256709e-07,
+            "max_relative": 1.844548375535867e-07,
+            "PSNR_peak1_db": 146.2631792475296,
+            "luma_EV_MAE": 7.037779444093832e-08,
+            "luma_EV_max": 2.060327120952077e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 4.828027413417146e-07,
+            "max_relative": 1.5938076457205488e-07,
+            "PSNR_peak1_db": 143.50195291166807,
+            "luma_EV_MAE": 3.566689801792478e-08,
+            "luma_EV_max": 1.615197703457409e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 1.3424082254687164e-06,
+            "max_relative": 2.3003223569095382e-07,
+            "PSNR_peak1_db": 133.640643877051,
+            "luma_EV_MAE": 4.365074527999017e-08,
+            "luma_EV_max": 1.6711282246201403e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 4.059249540944165e-06,
+            "max_relative": 2.578635541490569e-07,
+            "PSNR_peak1_db": 127.25223772269365,
+            "luma_EV_MAE": 5.028556709404253e-08,
+            "luma_EV_max": 2.3280220191373524e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 1.087010956979384e-05,
+            "max_relative": 2.3372586858741648e-07,
+            "PSNR_peak1_db": 116.37088632237634,
+            "luma_EV_MAE": 6.10226393033042e-08,
+            "luma_EV_max": 2.6753829770709526e-07,
+            "nonpositive_luma_pixels": 3072,
+            "gate": false
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "nearblack-highlight",
+      "bits": 12,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 113,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 12,
+        "bit_depth_chroma": 12,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "a0a4c10301c6f81c593f10ce88595280cf9274729ac8bc9951a227ffd948ca16",
+      "native_returncode": 5,
+      "native": {
+        "device": "Apple Paravirtual device",
+        "exception": "ISO native input nil",
+        "height": 128,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "success": false,
+        "width": 256
+      }
+    },
+    {
+      "case": "flat-HDR",
+      "bits": 8,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 112,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 8,
+        "bit_depth_chroma": 8,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "f2ca2fb81640aa09418594126ec813228eac23686ba69450745214e5ce30eab3",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7a24d903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7a24d94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7a24d944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7a24d94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7a24d94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7a24d94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7a24d94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x7a250a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7a24d90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7a24d94560> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7a24d94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7a24d94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7a24d945c0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7a24d945a0> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7a24d945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "458e329448dab205577a5df1c32751139480e18123a1357a4fd5eef2870c1ef6",
+        "SDR_sha_original": "458e329448dab205577a5df1c32751139480e18123a1357a4fd5eef2870c1ef6",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.0,
+        "max_relative": 0.0,
+        "PSNR_peak1_db": "inf",
+        "luma_EV_MAE": 0.0,
+        "luma_EV_max": 0.0,
+        "nonpositive_luma_pixels": 0,
+        "gate": true
+      },
+      "codec_native_additional": {
+        "max_abs": 10.987951159477234,
+        "max_relative": 7.5801312297299885,
+        "PSNR_peak1_db": -17.37611995051487,
+        "luma_EV_MAE": 1.0882128634499768,
+        "luma_EV_max": 1.0882128634499768,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 10.987951159477234,
+        "max_relative": 7.5801312297299885,
+        "PSNR_peak1_db": -17.37611995051487,
+        "luma_EV_MAE": 1.0882128634499768,
+        "luma_EV_max": 1.0882128634499768,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.8859999179840088,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 1.8875846663490847e-08,
+            "max_relative": 6.943688226971192e-08,
+            "PSNR_peak1_db": 158.76945541632833,
+            "luma_EV_MAE": 3.085073892521274e-08,
+            "luma_EV_max": 3.0850738925212744e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 1.8094556519798743e-08,
+            "max_relative": 4.3781134215649575e-08,
+            "PSNR_peak1_db": 157.79723885262953,
+            "luma_EV_MAE": 2.3165637519397652e-08,
+            "luma_EV_max": 2.3165637519397652e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 3.043534457791708e-08,
+            "max_relative": 6.944136009570624e-08,
+            "PSNR_peak1_db": 153.63128133567503,
+            "luma_EV_MAE": 6.853215346745324e-08,
+            "luma_EV_max": 6.853215346745324e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 1.470804011916016e-07,
+            "max_relative": 8.839322712180201e-08,
+            "PSNR_peak1_db": 140.70677234225386,
+            "luma_EV_MAE": 1.8025544263263606e-08,
+            "luma_EV_max": 1.8025544263263606e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 2.0352209384455477e-07,
+            "max_relative": 8.13154125791789e-08,
+            "PSNR_peak1_db": 138.29909422001418,
+            "luma_EV_MAE": 3.332855960819095e-08,
+            "luma_EV_max": 3.332855960819096e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 9.804776501809442e-07,
+            "max_relative": 1.2348684300408308e-07,
+            "PSNR_peak1_db": 124.94138670525203,
+            "luma_EV_MAE": 1.0982451299718226e-07,
+            "luma_EV_max": 1.0982451299718229e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "flat-HDR",
+      "bits": 10,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 111,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 10,
+        "bit_depth_chroma": 10,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "7b2bbebba0be3c07ebb0d70f38a3de08b08b375baf9659e2e2a459079ceb361e",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7940d903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7940d94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7940d944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7940d94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7940d94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7940d94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7940d94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x79410a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7940d90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7940d94540> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7940d94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7940d94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7940d94580> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7940d945a0> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7940d945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "458e329448dab205577a5df1c32751139480e18123a1357a4fd5eef2870c1ef6",
+        "SDR_sha_original": "458e329448dab205577a5df1c32751139480e18123a1357a4fd5eef2870c1ef6",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.0,
+        "max_relative": 0.0,
+        "PSNR_peak1_db": "inf",
+        "luma_EV_MAE": 0.0,
+        "luma_EV_max": 0.0,
+        "nonpositive_luma_pixels": 0,
+        "gate": true
+      },
+      "codec_native_additional": {
+        "max_abs": 10.987951159477234,
+        "max_relative": 7.5801312297299885,
+        "PSNR_peak1_db": -17.37611995547877,
+        "luma_EV_MAE": 1.0882128344990039,
+        "luma_EV_max": 1.088212834499004,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 10.987951159477234,
+        "max_relative": 7.5801312297299885,
+        "PSNR_peak1_db": -17.37611995547877,
+        "luma_EV_MAE": 1.0882128344990039,
+        "luma_EV_max": 1.088212834499004,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.8859999179840088,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 2.6593021562604235e-08,
+            "max_relative": 1.3475123748931299e-07,
+            "PSNR_peak1_db": 154.33587863610137,
+            "luma_EV_MAE": 1.5139552873815467e-07,
+            "luma_EV_max": 1.5139552873815464e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 1.8094556519798743e-08,
+            "max_relative": 6.179863314352464e-08,
+            "PSNR_peak1_db": 156.62843358973947,
+            "luma_EV_MAE": 5.670516931929238e-08,
+            "luma_EV_max": 5.670516931929237e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 3.043534457791708e-08,
+            "max_relative": 8.43181557303941e-08,
+            "PSNR_peak1_db": 153.22452102281522,
+            "luma_EV_MAE": 7.804970707284144e-08,
+            "luma_EV_max": 7.804970707284144e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 1.470804011916016e-07,
+            "max_relative": 1.2002056115124619e-07,
+            "PSNR_peak1_db": 140.62213645338028,
+            "luma_EV_MAE": 4.218693276976834e-09,
+            "luma_EV_max": 4.218693276976835e-09,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 2.0352209384455477e-07,
+            "max_relative": 1.1257098300645147e-07,
+            "PSNR_peak1_db": 138.2432040825537,
+            "luma_EV_MAE": 2.8135738595595012e-08,
+            "luma_EV_max": 2.8135738595595012e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 9.804776501809442e-07,
+            "max_relative": 1.2348684300408308e-07,
+            "PSNR_peak1_db": 124.93270949140744,
+            "luma_EV_MAE": 1.1997345523484335e-07,
+            "luma_EV_max": 1.1997345523484335e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "flat-HDR",
+      "bits": 12,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 113,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 12,
+        "bit_depth_chroma": 12,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "e78edc2e116827d53b35f2e7803854a0bddaf5a0ae5cafef53d196db0c68c5d4",
+      "native_returncode": 5,
+      "native": {
+        "device": "Apple Paravirtual device",
+        "exception": "ISO native input nil",
+        "height": 128,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "success": false,
+        "width": 256
+      }
+    },
+    {
+      "case": "edge-HDR",
+      "bits": 8,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 112,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 8,
+        "bit_depth_chroma": 8,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "b32d201936613cf073318bee9cc33fbf7abe1ea6a29373817395352b7a6c336e",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7c8ed903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7c8ed94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7c8ed944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7c8ed94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7c8ed94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7c8ed94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7c8ed94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x7c8f0a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 875836518,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x7c8ed90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x7c8ed94540> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x7c8ed94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x7c8ed94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x7c8ed945a0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x7c8ed94520> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x7c8ed945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "8fd8082f4dca161610a589e8b4e2927825423456550232a706000ead0e64e355",
+        "SDR_sha_original": "8fd8082f4dca161610a589e8b4e2927825423456550232a706000ead0e64e355",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.0035371794080960584,
+        "max_relative": 0.002714533211090633,
+        "PSNR_peak1_db": 51.97152722385547,
+        "luma_EV_MAE": 0.002941176470588509,
+        "luma_EV_max": 0.0039215686274513585,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 0.4795120586643335,
+        "max_relative": 1.4941279518143522,
+        "PSNR_peak1_db": 9.634455946922532,
+        "luma_EV_MAE": 0.10004712462507839,
+        "luma_EV_max": 0.10194798789706135,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 0.4790755808353424,
+        "max_relative": 1.4907404548049044,
+        "PSNR_peak1_db": 9.620592034705641,
+        "luma_EV_MAE": 0.09710594815448992,
+        "luma_EV_max": 0.09802641926961009,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.3767244390412873,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 3.383211688579024e-08,
+            "max_relative": 4.991223572512237e-08,
+            "PSNR_peak1_db": 155.25221905415492,
+            "luma_EV_MAE": 3.433432034324031e-08,
+            "luma_EV_max": 4.383672936650616e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 9.40092782508728e-08,
+            "max_relative": 1.325309256158697e-07,
+            "PSNR_peak1_db": 148.07553794562838,
+            "luma_EV_MAE": 2.5238445675941024e-08,
+            "luma_EV_max": 2.7110501823923463e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 3.6592910146460156e-08,
+            "max_relative": 1.0090229721271011e-07,
+            "PSNR_peak1_db": 154.55479370741918,
+            "luma_EV_MAE": 6.399640433902634e-08,
+            "luma_EV_max": 9.298961542833627e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 9.911022003095127e-08,
+            "max_relative": 1.3735640342025768e-07,
+            "PSNR_peak1_db": 144.9454534419495,
+            "luma_EV_MAE": 6.258781566012411e-08,
+            "luma_EV_max": 7.114626259394389e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 5.0279140850761905e-08,
+            "max_relative": 6.396911742763534e-08,
+            "PSNR_peak1_db": 151.09716136680936,
+            "luma_EV_MAE": 3.6494506377391696e-08,
+            "luma_EV_max": 3.888241482978432e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 7.865518669714078e-08,
+            "max_relative": 1.1892544540552135e-07,
+            "PSNR_peak1_db": 147.79476005300663,
+            "luma_EV_MAE": 3.9573854609388425e-08,
+            "luma_EV_max": 4.31303088221869e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "edge-HDR",
+      "bits": 10,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 111,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 10,
+        "bit_depth_chroma": 10,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "d0c6860e5e16a01e389554642b87619e12bde9196931013d8165ba40aacb3021",
+      "native_returncode": 0,
+      "native": {
+        "content_headroom": 8,
+        "device": "Apple Paravirtual device",
+        "gain_properties": {
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x784ad903c0> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x784ad94400> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x784ad944a0> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x784ad94480> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x784ad94440> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x784ad94420> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x784ad94460> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "headrooms": [
+          {
+            "file": "headroom-1.f32",
+            "headroom": 1
+          },
+          {
+            "file": "headroom-1.25.f32",
+            "headroom": 1.25
+          },
+          {
+            "file": "headroom-1.5.f32",
+            "headroom": 1.5
+          },
+          {
+            "file": "headroom-2.f32",
+            "headroom": 2
+          },
+          {
+            "file": "headroom-3.f32",
+            "headroom": 3
+          },
+          {
+            "file": "headroom-4.f32",
+            "headroom": 4
+          },
+          {
+            "file": "headroom-8.f32",
+            "headroom": 8
+          }
+        ],
+        "height": 128,
+        "ISO_aux": {
+          "kCGImageAuxiliaryDataInfoColorSpace": "<CGColorSpace 0x784b0a8000> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; Display P3; SMPTE ST 2084 PQ)",
+          "kCGImageAuxiliaryDataInfoDataDescription": {
+            "BytesPerRow": 256,
+            "Height": 128,
+            "PixelFormat": 2019963956,
+            "Width": 256
+          },
+          "kCGImageAuxiliaryDataInfoMetadata": "<CGImageMetadata 0x784ad90500> (\n    HDRToneMap:Version = 1\n    HDRToneMap:BaseHeadroom = 0.000000\n    HDRToneMap:AlternateHeadroom = 3.000000\n    HDRToneMap:ChannelMetadata = (\n            \"<CGImageMetadataTag 0x784ad94580> HDRToneMap:[0] = {\\n    AlternateOffset = \\\"<CGImageMetadataTag 0x784ad94620> HDRToneMap:AlternateOffset = 0.000000\\\";\\n    BaseOffset = \\\"<CGImageMetadataTag 0x784ad94600> HDRToneMap:BaseOffset = 0.000000\\\";\\n    GainMapMax = \\\"<CGImageMetadataTag 0x784ad945a0> HDRToneMap:GainMapMax = 3.000000\\\";\\n    GainMapMin = \\\"<CGImageMetadataTag 0x784ad94560> HDRToneMap:GainMapMin = -0.500000\\\";\\n    Gamma = \\\"<CGImageMetadataTag 0x784ad945e0> HDRToneMap:Gamma = 1.000000\\\";\\n}\"\n        )\n    HDRToneMap:BaseColorIsWorkingColor = True\n)\n"
+        },
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "SDR_original_vs_carrier": {
+          "float_components_different": 0,
+          "max_abs": 0,
+          "max_relative": 0,
+          "nonfinite": 0,
+          "pixels": 32768,
+          "PSNR_peak1_db": "inf"
+        },
+        "SDR_sha_carrier": "8fd8082f4dca161610a589e8b4e2927825423456550232a706000ead0e64e355",
+        "SDR_sha_original": "8fd8082f4dca161610a589e8b4e2927825423456550232a706000ead0e64e355",
+        "success": true,
+        "width": 256
+      },
+      "quantization_only": {
+        "max_abs": 0.0013236779587622038,
+        "max_relative": 0.0010158285360432815,
+        "PSNR_peak1_db": 60.45861454910547,
+        "luma_EV_MAE": 0.0012218963831868049,
+        "luma_EV_max": 0.0014662756598241686,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "codec_native_additional": {
+        "max_abs": 0.48632836798579004,
+        "max_relative": 1.5122839520538813,
+        "PSNR_peak1_db": 9.674233804959863,
+        "luma_EV_MAE": 0.09959637509594887,
+        "luma_EV_max": 0.10140797164785181,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_HDR_vs_defined_target": {
+        "max_abs": 0.48654618859291077,
+        "max_relative": 1.5139867600888597,
+        "PSNR_peak1_db": 9.665658410556464,
+        "luma_EV_MAE": 0.09935199581931176,
+        "luma_EV_max": 0.10238548875440151,
+        "nonpositive_luma_pixels": 0,
+        "gate": false
+      },
+      "native_decoded_gain_vs_integer_code_max_abs": 0.37971416514873035,
+      "SDR_native_max_abs": 0.0,
+      "headrooms": [
+        {
+          "headroom": 1,
+          "reference_vs_native": {
+            "max_abs": 0.0,
+            "max_relative": 0.0,
+            "PSNR_peak1_db": "inf",
+            "luma_EV_MAE": 0.0,
+            "luma_EV_max": 0.0,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.25,
+          "reference_vs_native": {
+            "max_abs": 9.710528003914476e-08,
+            "max_relative": 1.356411592183073e-07,
+            "PSNR_peak1_db": 145.56956476578424,
+            "luma_EV_MAE": 1.4835770987608897e-07,
+            "luma_EV_max": 1.7319551636379809e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 1.5,
+          "reference_vs_native": {
+            "max_abs": 9.329490935350293e-08,
+            "max_relative": 1.5985337817776637e-07,
+            "PSNR_peak1_db": 147.36958925876544,
+            "luma_EV_MAE": 6.306907737723172e-08,
+            "luma_EV_max": 7.242315043226038e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 2,
+          "reference_vs_native": {
+            "max_abs": 8.37617709636973e-08,
+            "max_relative": 1.2303767183150224e-07,
+            "PSNR_peak1_db": 147.52674868987265,
+            "luma_EV_MAE": 1.032016314677913e-07,
+            "luma_EV_max": 1.1042829061407822e-07,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 3,
+          "reference_vs_native": {
+            "max_abs": 6.329969148843873e-08,
+            "max_relative": 6.109547579871086e-08,
+            "PSNR_peak1_db": 151.45400311802746,
+            "luma_EV_MAE": 4.1926564220729635e-08,
+            "luma_EV_max": 6.905575318419164e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 4,
+          "reference_vs_native": {
+            "max_abs": 5.17368529129314e-08,
+            "max_relative": 6.160241706213646e-08,
+            "PSNR_peak1_db": 151.70032300646116,
+            "luma_EV_MAE": 1.214166116512635e-08,
+            "luma_EV_max": 2.0939958948632406e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        },
+        {
+          "headroom": 8,
+          "reference_vs_native": {
+            "max_abs": 6.689366349732495e-08,
+            "max_relative": 4.8066471846381595e-08,
+            "PSNR_peak1_db": 150.3427153108424,
+            "luma_EV_MAE": 2.7232939030017918e-08,
+            "luma_EV_max": 4.672302063176505e-08,
+            "nonpositive_luma_pixels": 0,
+            "gate": true
+          }
+        }
+      ],
+      "encoded_target_gate": false
+    },
+    {
+      "case": "edge-HDR",
+      "bits": 12,
+      "encoder": "libheif/x265 lossless RGB matrix0 4:4:4",
+      "identity": {
+        "primary_item_id": 1,
+        "gain_item_id": 3,
+        "tmap_item_id": 4,
+        "primary_descendant_payloads_checked": 1,
+        "primary_coded_and_properties_identical": true
+      },
+      "gain_hvcC": {
+        "bytes": 113,
+        "configuration_version": 1,
+        "general_profile_space": 0,
+        "general_tier_flag": false,
+        "general_profile_idc": 4,
+        "general_level_idc": 255,
+        "chroma_format": 3,
+        "bit_depth_luma": 12,
+        "bit_depth_chroma": 12,
+        "num_temporal_layers": 1,
+        "nal_unit_arrays": 3
+      },
+      "carrier_sha256": "814bf07f7d88347eaab985b620972e8ca46eb2aed50e5a4dfd4ed47ae3a069b2",
+      "native_returncode": 5,
+      "native": {
+        "device": "Apple Paravirtual device",
+        "exception": "ISO native input nil",
+        "height": 128,
+        "os": "Version 27.0.1 (Build 26A434)",
+        "scope": "Native ISO carrier readback; original coded SDR preservation and transport only",
+        "success": false,
+        "width": 256
+      }
+    }
+  ],
+  "acceptance_complete": false
+}

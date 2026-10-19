@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "goal_status": "active",
+  "os_build": "26A434",
+  "producer_reference_build": "24A446",
+  "acceptance_complete": false,
+  "A_phase_complete": false,
+  "legacy_masks_or_thresholds_changed": false,
+  "claims": [
+    {
+      "id": "HDR-01",
+      "category": "hdr/goal",
+      "status": "runner",
+      "claim": "User-authorized independent HDR/scene goal active; transport and physical recovery are separate gates, no old threshold or mask changed.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/GOAL.zh-CN.md",
+          "line": 1,
+          "sha256": "e7b6a86060e41931493f0c3fd8d9231a0f2acd2b93fb8254d23525b56b14b437"
+        }
+      ]
+    },
+    {
+      "id": "HDR-02",
+      "category": "hdr/local-semantic-controls",
+      "status": "已验证静态",
+      "claim": "Known-input retarget entry changes only consumer local620/624 or skin592/596; source/frozen context required. Intermediate strength is our withdrawal policy, not calibrated Apple UI or observed-Y inverse.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/operator_recipe.py",
+          "line": 1,
+          "sha256": "8ae8a0fe67049c23f6889b4ce23edc28532d16c0872c3c747711f7fcc2591b9a"
+        }
+      ]
+    },
+    {
+      "id": "HDR-03",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "Original CoreImage headroom equation:35synthetic comparisons, maxabs1.9637265280536553e-06, minPSNR131.739826177dB, all original float gates pass. Not five photos/full-resolution resampling or actual screen tests.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39234705515/selected/analysis-s29.json",
+          "line": 1,
+          "sha256": "8e6913321ceb1189af3e159454ea31d4260989ad4dbcc619b57830f80496b464"
+        }
+      ]
+    },
+    {
+      "id": "HDR-04",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "Automatic dual-image writer reencodes SDR and misses two below-white synthetic gain maps. All five above-white writer targets fail strict reconstruction; distinct from the accurately reproduced application formula.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39234705515/selected/analysis-s29.json",
+          "line": 1,
+          "sha256": "8e6913321ceb1189af3e159454ea31d4260989ad4dbcc619b57830f80496b464"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39232934429/selected/native/native-results.json",
+          "line": 1,
+          "sha256": "a653ca9d62ec20384bbf3c38a2371be571db1f0fdcd517a8acb275ca46627683"
+        }
+      ]
+    },
+    {
+      "id": "HDR-05",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "Explicit supplied RGB ratios apply through original native API before encoding:70comparisons over5distinct synthetic pairs and duplicate format contexts, maxabs8.1034134158386451e-07, minPSNR133.494639842; full target maxrelative2.3736716142422828e-07. Representation only, not inverse accuracy.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39235294224/selected/analysis-s30.json",
+          "line": 1,
+          "sha256": "a40fe15f91699d6b292df801e20f529157503a946c4d74cc4ac03bfc9ddfa1c8"
+        }
+      ]
+    },
+    {
+      "id": "HDR-06",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "Explicit HDRGainMapImage writer emitted legacy Apple mono8 in these10requests; paired RGBA8/RGBAh files identical, no ISO metadata. This is a measured path limitation, not a universal claim about all API variants.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39235294224/selected/analysis-s30.json",
+          "line": 1,
+          "sha256": "a40fe15f91699d6b292df801e20f529157503a946c4d74cc4ac03bfc9ddfa1c8"
+        },
+        {
+          "file": "hdr-native-20261019/evidence/S30-container-inspection.json",
+          "line": 1,
+          "sha256": "0777da3c00e282cfaf6582bbe3b415e61a11aafeee4e0d5ae4d03c29814b9bab"
+        }
+      ]
+    },
+    {
+      "id": "HDR-07",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "Direct ISO splice preserves every coded primary descendant/property and original ImageIO SDR pixels on10synthetic8/10bit carriers, maxabs0. No real full-resolution new-target pass is claimed.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39236923652/selected/analysis-s31.json",
+          "line": 1,
+          "sha256": "2a6e199e444c57e63ce696535f448e17b47c5ed30475fa14d3e8553212bdc045"
+        },
+        {
+          "file": "repo/research/hdr-native/iso_splice.py",
+          "line": 1,
+          "sha256": "2fc2caf76a466c9504bb5589ee8464c57bb073b0c73c4ceb0f7982f6d7d2fb29"
+        }
+      ]
+    },
+    {
+      "id": "HDR-08",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "S31 matrix0 RGB-map readback is wrong in original auxiliary path;5generated12bit files return native nil.16/12bit support cannot be inferred from format request; original1e-3/float thresholds remain failed.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39236923652/selected/analysis-s31.json",
+          "line": 1,
+          "sha256": "2a6e199e444c57e63ce696535f448e17b47c5ed30475fa14d3e8553212bdc045"
+        }
+      ]
+    },
+    {
+      "id": "HDR-09",
+      "category": "hdr/transport",
+      "status": "已验证数值",
+      "claim": "S32 matrix1/6,8/10/12bit single synthetic fixture isolates primary and auxiliary decoder behavior; exact per-variant values are in evidence, no five-photo or global codec support inference.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39237510689/selected/analysis-s32.json",
+          "line": 1,
+          "sha256": "d6c7c8efba18bbe7d268f184a8abdc222253ef64efe4c50e1dbe7e5126fa2c09"
+        }
+      ]
+    },
+    {
+      "id": "HDR-10",
+      "category": "hdr/producer-boundary",
+      "status": "已验证静态",
+      "claim": "Reference iOS producer branch feeds optional signedQ12 globalCCM and dehaze preprocessing into HITH stats, then curve compute dictionary into outMetaData. This confirms stats/curve-production order, not the final full-resolution photo application or c/d equivalence.",
+      "os_build": "24A446",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/evidence/producer-statistics-path.txt",
+          "line": 1,
+          "sha256": "ea4d0877931f7c42638ff122efb3aa1e51f0923ae879f3a05f00e331beeda82d"
+        },
+        {
+          "file": "hdr-native-20261019/evidence/source-receipt.json",
+          "line": 1,
+          "sha256": "03db3d8e78e960a378bcba2e719251fe40a0615caf6b9203f5b8ab0308222304"
+        }
+      ]
+    },
+    {
+      "id": "HDR-11",
+      "category": "hdr/scene-boundary",
+      "status": "runner",
+      "claim": "New phase uses zero real photos. Five full-resolution photos with two post-freeze holdouts, new-target RGB codec gate, camera inversion/33point hull and true screen verification remain open. j beta is not pixelEV; matched curves/Studio/RAW remain physical TODOs.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/progress-summary.json",
+          "line": 1,
+          "sha256": "da0f683e83e3c57cc6e76be06015e4c46901890c807a9f0bbb68fa1b52d5965a"
+        }
+      ]
+    },
+    {
+      "id": "HDR-12",
+      "category": "hdr/headroom-policy",
+      "status": "已验证静态",
+      "claim": "For positive SDR/HDR components and offset0 the validated headroom equation gives S^(1-w)*H^w. A single map weight is RGB geometric interpolation, not a calibrated Apple UI tone or independent global/local/semantic control schedule; intermediate headroom needs its own validation.",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "evidence/gainmap-static/_flexMap.cikernel",
+          "line": 1,
+          "sha256": "688fec36f90f6f543e300bc7d46198526cfbcdf9519826ecf81f1485674b8496"
+        },
+        {
+          "file": "hdr-native-20261019/runs/39234705515/selected/analysis-s29.json",
+          "line": 1,
+          "sha256": "8e6913321ceb1189af3e159454ea31d4260989ad4dbcc619b57830f80496b464"
+        }
+      ]
+    }
+  ]
+}
