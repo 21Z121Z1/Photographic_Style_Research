@@ -1,0 +1,201 @@
+{
+  "schema": "psr-texture-source-inventory-v1",
+  "evidence_level": "static inspection of user-supplied archive, not Apple native execution",
+  "source": {
+    "user_attachment": "apple-photographic-styles-research_evidence.zip (local only; not uploaded to public GitHub)",
+    "files": [
+      {
+        "path": "binaries/TextureStyleTuning.plist",
+        "sha256": "9a0963e5a58aaa8c8c7fb42ccb75a254a9e1012ba594135b991ed8e1f191d31e"
+      },
+      {
+        "path": "tuning/TextureStyleTuning.plist",
+        "sha256": "2c42b15dafafab799e95657a56a17bdda41715297dbfb9fde321a1ad1aa52c2d"
+      },
+      {
+        "path": "binaries/SmartStyleToTextureStyleMapping.plist",
+        "sha256": "da6c19bc098d1fd51fc887d372e228c6bcc7893a04ad65d6b36ba02ee12b6404"
+      },
+      {
+        "path": "binaries/RendererTuningWithTextureStyles.plist",
+        "sha256": "95e5fd470b8bc84cc5fc8ffb028d3f5aea61769e69464ba9f9e402745a1b4e72"
+      }
+    ],
+    "limitations": "No camera photos, user-private original files, Apple binary blobs or image arrays included in this commit."
+  },
+  "texture_model": {
+    "device_ids": [
+      "iPhone19,2",
+      "iPhone19,3",
+      "iPhone19,4",
+      "iPhone19,7"
+    ],
+    "port_types": [
+      "PortTypeBack",
+      "PortTypeBackSuperWide",
+      "PortTypeBackTelephoto",
+      "PortTypeFront",
+      "PortTypeFrontSuperWide"
+    ],
+    "capture_modes": [
+      "LivePhoto",
+      "Preview",
+      "Still"
+    ],
+    "presets": [
+      "Filmic",
+      "Glowy",
+      "Soft",
+      "Standard",
+      "Studio"
+    ],
+    "observed_model_port_capture_preset_rows": 285,
+    "preset_counts": {
+      "Filmic": 57,
+      "Glowy": 57,
+      "Soft": 57,
+      "Standard": 57,
+      "Studio": 57
+    },
+    "effect_occurrence_counts": {
+      "SkinSmoothingStandalone": 190,
+      "Diffusion": 171,
+      "Glow": 171,
+      "Mattify": 171,
+      "Bloom": 133,
+      "FilmGrain": 95,
+      "UnderEyeBrightening": 57,
+      "Halation": 19,
+      "GlobalGrainSourcePreset": 19
+    },
+    "effect_parameter_key_counts": {
+      "Diffusion": 23,
+      "Glow": 14,
+      "Bloom": 6,
+      "Mattify": 2,
+      "SkinSmoothingStandalone": 34,
+      "FilmGrain": 22,
+      "Halation": 11,
+      "UnderEyeBrightening": 5
+    },
+    "representative_effect_orders": {
+      "Filmic": [
+        [
+          "Diffusion",
+          "Glow"
+        ],
+        [
+          "Halation",
+          "Diffusion",
+          "Bloom",
+          "Glow",
+          "FilmGrain"
+        ]
+      ],
+      "Glowy": [
+        [
+          "Mattify",
+          "Diffusion",
+          "Glow",
+          "Bloom",
+          "SkinSmoothingStandalone"
+        ],
+        [
+          "UnderEyeBrightening",
+          "SkinSmoothingStandalone",
+          "Mattify",
+          "Diffusion",
+          "Bloom",
+          "Glow",
+          "FilmGrain"
+        ]
+      ],
+      "Soft": [
+        [
+          "Mattify",
+          "Diffusion",
+          "Glow",
+          "Bloom",
+          "SkinSmoothingStandalone"
+        ],
+        [
+          "UnderEyeBrightening",
+          "SkinSmoothingStandalone",
+          "Mattify",
+          "Diffusion",
+          "Bloom",
+          "Glow",
+          "FilmGrain"
+        ]
+      ],
+      "Standard": [
+        [],
+        [
+          "SkinSmoothingStandalone",
+          "FilmGrain"
+        ]
+      ],
+      "Studio": [
+        [
+          "Mattify",
+          "SkinSmoothingStandalone"
+        ],
+        [
+          "UnderEyeBrightening",
+          "SkinSmoothingStandalone",
+          "Mattify",
+          "FilmGrain"
+        ]
+      ]
+    },
+    "effects_used_for_processing_domain": null,
+    "global_local_ltm_order": null,
+    "linear_or_log_domain": null,
+    "reversible_original_texture_pipeline": null
+  },
+  "smartstyle_mapping": {
+    "count": 16,
+    "presets_by_cast": {
+      "BlushWarm": "Soft",
+      "BrightPop": "Studio",
+      "CloudCover": "Filmic",
+      "Colorful": "Soft",
+      "Cool": "Studio",
+      "DreamyHues": "Soft",
+      "Earthy": "Filmic",
+      "GoldWarm": "Studio",
+      "LongGray": "Soft",
+      "Neutral": "Standard",
+      "NoFilter": "Standard",
+      "Standard": "Standard",
+      "StarkBW": "Filmic",
+      "TanWarm": "Soft",
+      "UrbanCool": "Filmic",
+      "WarmAuthentic": "Filmic"
+    },
+    "only_static_configuration": true,
+    "note": "Maps SmartStyle casts to default Texture presets/intensity/grain; does not identify pixel application order."
+  },
+  "xdremux_research_base": {
+    "branch": "21Z121Z1/XDRemux@research/texture-style",
+    "entry": "crates/xdremux-heif/src/texture_styles.rs",
+    "payload_contract": "scripts/research/texture_style_native_standard_contract.json",
+    "known_unverified_claims": [
+      "one legacy 2019 skin matte aliased to twelve distinct 2026 semantic roles",
+      "static iPhone19,2 and camera-origin metadata can be asserted without producer evidence",
+      "synthesized Apple MakerNote/PhotoIdentifier/tag84 when original source has none"
+    ],
+    "admission_not_product_conformance": true
+  },
+  "acceptance": {
+    "static_inventory_completed": true,
+    "native_texture_processing_order_verified": false,
+    "exact_filter_kernel_verified": false,
+    "true_linear_vs_log_verified": false,
+    "GTM_LTM_order_verified": false,
+    "native_texture_inverse_verified": false,
+    "photo_preview_source_allowed": false,
+    "synthetic_preview_only": true,
+    "no_apple_log_change": true
+  }
+}
