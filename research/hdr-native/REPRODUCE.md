@@ -64,3 +64,21 @@ S52只在runner执行`python3 research/hdr-native/run_hdr_s52.py`（source1e2924
 可选精确母版字节落地：`stream_verified_master.py --work-root <工作根> --photo IMG_0032 --output <工作根>/hdr-native-20261019/scene-candidates/IMG_0032/relative_linear_P3.native_S42.exr --receipt <新的receipt.json> --phase-cap-bytes <用户明确许可的字节数> --authorization-note <许可依据>`，外层必须`scripts/local-python-scope.sh -I -B`。默认100MB，当前不会容纳该EXR；没有新许可不提高cap。不保存153MB ZIP/cipher/tar，只流式SHA/GPG并复制一个EXR，最终原子no-clobber，所有原件/历史文件只读；失败只清理本次创建的partial。
 
 本阶段编排/传输/收尾源码已按SHA保留在hdr-native-20261019/finalization-scripts-s48-s52。原数据与历史exclusive-create receipt不覆盖；复现请使用新的命名空间。单个完整EXR仅在收到新的写入额度许可后使用stream_verified_master.py流式复制，100MB默认值仍有效。
+
+
+### S53–S54复现入口
+
+源码source：S53 d54796021c2155bb329140e0e44f63287ac7e211（失败归档保留）；S54 e7b1edf81675fd4b1bda93f20b25a5dfa949ec9e。macOS26A434/image20261012.0260.1上运行；不在VM执行ARM枚举。
+
+```bash
+# research分支，单个任务，artifact保留1天；先看前一run结果再启动。
+gh workflow run hdr-native-s54.yml --ref research/vm-native-20261018
+gh run view <run-id> --log-failed
+# 先查artifact大小、digest，再下载本次小型文本并校验manifest全部成员。
+gh api repos/21Z121Z1/Photographic_Style_Research/actions/runs/<run-id>/artifacts
+gh run download <run-id> -n hdr-s54-producer-record-evidence -D <new-private-evidence-dir>
+```
+
+已有归档无需重跑：`hdr-native-20261019/runs/39300758676/`与`39301402089/`。两ZIP已验SHA与逐项manifest。实际driver入口为`research/hdr-native/run_hdr_s54.py`；依赖unicorn2.1.4，clang只编译标量原生指令探针。原iOS量化指令仅128B文本fixture，完整Apple二进制没有上传。
+
+拿到设备实际516B global记录后，使用`producer_curve_record_s54.decode_global_record(raw)`取得各节点条件前像；不要把局部grid或文件key3直接塞入这个接口。它不估计GTM/LTM像素EV。配对捕获步骤见NATIVE_TODO与producer-paired-capture-plan.json。VM只解析小文本并始终用`scripts/local-python-scope.sh -I -B ...`；冻结原validate.py不变，S54成功不修改总验收。

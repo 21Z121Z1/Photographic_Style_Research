@@ -88,3 +88,10 @@ S48–S52 科学检查完成：五张原尺寸/两张显示配方留出/50次原
 
 
 S48–S52收尾完成：5条自建临时远端/本地分支在远端源码保留、PR及全部ref审查后清理；8项本阶段secret与2个draft/tag均不存在，5个自有run均终止。既有PR#1和其他研究任务未操作。原件/冻结7文件SHA与原始171claims/文档历史前缀保留；5个新增workflow的8次upload均retention1天。125MB单EXR许可仍待显式答复，当前100MB累计上限有效，未写完整EXR。A阶段和总验收false，goal active。
+
+
+### HDR-S53–S54：相机记录量化与归一化审计
+
+- research/vm-native-20261020-hdr-s53 / source `d54796021c2155bb329140e0e44f63287ac7e211` / [run39300758676](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39300758676) / artifact12211821267 (1176B), failure。26A434/image20261012.0260.1；参考源码24A446，非原生iOS执行。ZIP SHA `d1563d63c48a5f8c9c2183bb1b126f25be4d72988b76d048912d384767621db1`，manifest SHA `4ead090292745f5d255d6f8e28accb7dc558f170fd7eaebe09900f5d3cf75881`，所有成员验证，retention1。
+- research/vm-native-20261020-hdr-s54 / source `e7b1edf81675fd4b1bda93f20b25a5dfa949ec9e` / [run39301402089](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39301402089) / artifact12211902213 (5196B), success。26A434/image20261012.0260.1；参考源码24A446，非原生iOS执行。ZIP SHA `ff3c502e3f150088cb87e4530cfd634b6211f09cf0ab843cd654d5b2be35662e`，manifest SHA `ec26338865f2b663f812982f0b1c0991a8eff9dbd500fb18e876085e461eded9`，所有成员验证，retention1。
+S53失败于sNaN/qNaN合并预期，未记为成功；S54用checkpoint和原生ARM asm区分两路，131070个边界探针差0、12特殊例匹配。无照片/secret/release，原模型/mask/门槛未变。源码保留到研究keeper，完成引用核查后仅删除两条自建临时源分支。A与总验收false，目标active；125MB许可仍待答复。

@@ -243,3 +243,37 @@ S48–S52 科学检查完成：五张原尺寸/两张显示配方留出/50次原
 
 
 S48–S52收尾完成：5条自建临时远端/本地分支在远端源码保留、PR及全部ref审查后清理；8项本阶段secret与2个draft/tag均不存在，5个自有run均终止。既有PR#1和其他研究任务未操作。原件/冻结7文件SHA与原始171claims/文档历史前缀保留；5个新增workflow的8次upload均retention1天。125MB单EXR许可仍待显式答复，当前100MB累计上限有效，未写完整EXR。A阶段和总验收false，goal active。
+
+
+### HDR-S53–S54：相机曲线分组、记录逆区间和 GTC 的信息边界
+
+**已验证静态（HDR-50）。** 本节仅追 24A446 / iPhone12,1 参考代码，未把它当成 IMG_2810 的匹配生产实现。CameraColorProcessing UUID `0A211E15-50CA-373B-AD9A-F9E3283C68F4` / SHA `974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e`；CMImaging UUID `0A9BC064-A4BC-330E-861A-C70A637B14B3` / SHA `b8f3c04f3f9ee000c328357156b38aecc3ca06d5292e47421966094a58fa1832`。510条摘录指令逐条与只读cache核对，16条literal引用及3条global-tone GOT绑定另行核对；缓存只读，size/mtime未变，不声称对整份cache重做内容SHA。证据为 `evidence/s53/source-audit.json`、`curve-record-fixture.json`、`producer-curve-export-static.txt`（保留原行号/地址）。
+
+`LTMCurvesComputeV2.compute` 的三处 writer 调用 `0x256b86e1c/e84/eec` 选择 type1/2/3；`LTMMetadataWriterV2.create...` 在 `0x256b8c9e8` 选择 type0。writer `0x256b8ce70–cf80` 的控制流与实际CFString/GOT指针给出：
+
+|type|局部表键|global LTM键|global tone键|
+|---:|---|---|---|
+|0|LTMLookUpTables|GlobalLTMLookUpTable|GlobalToneCurveLookUpTable|
+|1|LTMLookUpTables_HLG|GlobalLTMLookUpTable_HLG|GlobalToneCurveLookUpTable_HLG|
+|2|LTMLookUpTablesWithoutFaceBoost|GlobalLTMLookUpTableWithoutFaceBoost|GlobalToneCurveLookUpTableWithoutFaceBoost|
+|3|LTMLookUpTables_HLGWithoutFaceBoost|GlobalLTMLookUpTable_HLGWithoutFaceBoost|GlobalToneCurveLookUpTable_HLGWithoutFaceBoost|
+
+两类global数据分别来自computeOutput+0x18504 / +0x18908，均是header=257、257个u16节点、总516B；局部grid另有格式，本次decoder不接受它。原WithoutFaceBoost分支不仅写j=1（driver+0x24），还写+0x554和+0x558（`0x256b86e30–e3c/e98–ea4`），故不能把整个API分支叫作“仅j干预”，更不能叫“只逆local”。全局/局部的实际应用角色仍须沿绑定判定，不能依据GlobalLTM字段名分类。
+
+**已验证数值（HDR-51/52），条件为binary32、RN-even、FPCR=0。** 新 `producer_curve_record_s54.py` 对记录节点保留前像区间，依据原标量链：
+
+```
+Q(x) = floor(RN32(FMAXNM(FMINNM(x,1),0) * 65535))
+```
+
+正数float32位序、正数乘法的单调性、floor和clamp给出每个u16码的离散前像；用整数位序二分定位边界。S54对全部65,535个跳变的前驱/首点，共131,070个探针（510份记录，含两类global输出）执行未改的 `0x256b8cc68–cce4` ARM指令，u16差异0。不是穷举完整consumer输入，也没有把此子算子证明升级为33点紧外包络。示例：code32767对应 `[0.49999237060546875,0.50000762939453125)` 的有限float32值；code0和65535分别包含clamp端的整个有限域尾部，不能返回唯一恢复值，更不能给出物理像素EV界。
+
+S53 run39300758676/source d54796021c2155bb329140e0e44f63287ac7e211 失败于非有限断言：初稿把sNaN/qNaN混为同一路；原失败源码/日志保留，不计完整通过。S54 run39301402089/source e7b1edf81675fd4b1bda93f20b25a5dfa949ec9e 增加逐指令检查点及原生ARM asm对照，12例全部一致。qNaN经FMINNM选择1→Q=65535；sNaN先quiet，再由FMAXNM选择0→Q=0，IOC=1。原生测试开始/强制FPCR均0，退出恢复浮点状态。这与[Arm官方FMINNM合同](https://documentation-service.arm.com/static/67e40f3398aa3c3b6eea6a85)一致。这里只认证这个CPU指令链，不推断Metal clamp/fast math或实际相机FPCR；全consumer的非有限路径义务保持。
+
+**已验证静态与数值（HDR-53），仅GTC读取子路径。** iOS `CMISmartStylePixelBufferRendererV1._createGlobalToneCurveTexture` 在 `0x1d476c2d4–2f4` 从输入字典取固定 `GlobalToneCurveLookUpTable`；header257分支在 `0x1d476c31c/370–3f4` 读取u16 words1..256，除以word256，再按输入CV transfer/primaries选择解码并存half。writer最后一个节点word257未被这一分支读取，读取端也未在该函数里自动选HLG/WithoutFaceBoost键；外围调用者是否换绑generic键仍缺证据。S54构造两份整数幅度相差2倍的记录，比值阶段完全相同；只改word257亦不改变此阶段。它说明“只拿归一化GTC纹理”不足以恢复记录幅度/被省略节点；完整元数据是否另存尺度必须继续查。这里没有捕获原生iOS纹理，没有证明文件key3的序列化绑定，也没有改变已冻结的key3 `inverse_sRGB(u16[1..256]/65535)` 样张结论。
+
+**local/语义边界（假设 / 待实机，HDR-54）。** 四组相机曲线与Styles文件c/d、key3及最终ISP应用的同帧连接尚未证明；对c/d作除法、把UI tone改负、或者把WithoutFaceBoost当纯local逆，均不能升级为物理反演。新 `evidence/s54/producer-paired-capture-plan.json` 给出参考writer入口/三处NSData复制/GTC读取拦截点、原float节点与打包记录、FPCR/FPSR和四组键的捕获要求。先匹配真实设备build/UUID并重新核对布局；**不把参考绝对地址移植到IMG_2810**。随后只j反事实与API WithoutFaceBoost分开，重放G_A/L_A、G_B/L_A、G_A/L_B、G_B/L_B，检查交互和每步原门槛。j的β=.1953125仍仅是内部权重界；没有同帧N、B/T/V、直方图、allocateTone约束/knots及应用域，不能变成样张EV。RAW、Studio原统计和实际HDR观看按原待实机清单保留。
+
+两个run均在26A434/image20261012.0260.1执行；主要是iOS原指令的静态重放，原生部分仅为macOS ARM标量指令，不是相机运行。S53 artifact12211821267（1176B）ZIP SHA `d1563d63c48a5f8c9c2183bb1b126f25be4d72988b76d048912d384767621db1`；S54 artifact12211902213（5196B）ZIP SHA `ff3c502e3f150088cb87e4530cfd634b6211f09cf0ab843cd654d5b2be35662e`，manifest SHA `ec26338865f2b663f812982f0b1c0991a8eff9dbd500fb18e876085e461eded9`。全部成员校验且只含文本；0张新照片、无secret/release，retention1天。独立HDR渲染/承载与scene物理恢复继续分别验收，旧NumPy/half不追拟合，1e-3/原mask不变；**A_phase_complete=false，acceptance_complete=false，goal active**。100MB累计上限不重置，125MB单EXR许可仍待答复，未写完整EXR。
+
+S54受体补证（已验证静态）：`0x256b86dac–db4`读取GOT槽0x271529a50；只读解码到class0x27994a090、class_ro0x27f060558及name="LTMMetadataWriterV2"。见`evidence/s54/writer-class-binding.json`，从而补上selector调用的具体静态receiver；没有声称捕获真实运行时对象或IMG_2810同帧路径。

@@ -74,3 +74,17 @@ R-RGB-FULL仍可交给macOS runner：已用原API2GiB type2池排除受控大图
 - 可交给macOS runner/静态：继续原生产/消费端global、local、semantic分别的可识别域与区间；native保边投影锚点残差、33点C01-C05完整合同仍未认证。真实HDR编码/完整ImageIO SDR max0与所有原算子门槛未通过，不以新显示公式通过替代。
 - 本地交付约束：用户100MB累计上限仍有效。已提125MB小方案，只流式取一份27.79MB原EXR；未答复不得写，完整母版不宣称已在VM落地。`stream_verified_master.py`通过原ZIP/cipher/GPG/member SHA核验，只复制字节；本机Python仍须内存scope。
 - 待实机：同帧j/WithoutFaceBoost/N/B/T/hist/allocateTone/application域、Studio原统计、RAW2679/2408、真实HDR屏幕与PhotosUI；沿用既有执行清单。A阶段尚未完成。
+
+
+### S53–S54：配对生产曲线的可执行捕获方案（待实机）
+
+机器清单：`research/hdr-native/evidence/s54/producer-paired-capture-plan.json`。新节点前像decoder仅适用于参考writer的516B global记录，未读取真正iOS输出；不把它当成完整相机逆。
+
+1. 在匹配IMG_2810的设备/系统上，保存`sw_vers`或iOS实际系统build、硬件型号、loaded Mach-O UUID及binary/source SHA。LLDB先用`image list -u -f CameraColorProcessing`和`image lookup -n '+[LTMMetadataWriterV2 _addLTMCurvesToMetadata:curvesType:fromOutput:statistics:geometryData:isSIFR:ltcNumNodes:]'`定位；若UUID/布局不同，先重拆，禁止照抄24A446绝对地址。参考UUID/地址仅用于对齐。
+2. 同一RAW/合成输入和同一HITH统计固定后做A→A。writer真入口读取`register read x2 x3 x4 x5 x6 x7 sp fpcr fpsr`：type=w3、output=x4，分别保存output+0x18504与+0x18908的1028B原float节点。例：在**已验证参考布局的真入口**用`memory read --binary --outfile <private>/global-tone.f32 -s 1 -c 1028 '$x4+0x18908'`。函数序言后sp不再是第九参数位置，不凭当前sp猜ltcNumNodes。
+3. 按symbol load address与函数内偏移设置三处before-call断点（参考0x256b8ce34/ce4c/ce64）。此时`x2`是字节指针、`x3`是长度；global两处必须516B，保存全部258个u16，不只存256half纹理。记录type0..3、字典/线程/帧标识、CV transfer/primaries、实际GTC generic键的SHA与word256、word257。CMI复制纹理前（参考0x1d476c6dc）另捕获x4的512B。断点只读，不改变原方法/返回。
+4. 做B-only-j：仅在已验证的j字段设1，输入其他字节/统计/ROI/全部matte不变；再单独执行C-WithoutFaceBoost，保存完整driver byte diff。参考C还写+0x554/+0x558，不等于B。每次恢复可写common T，保存N、B/T/V、face hist/ROI、allocateTone上下界/预算/knots、所有实际global/local曲线、baseGain/曝光的更新过程和应用前后RGB。
+5. 原分支先按原half/float/1e-3门槛重建。在已证明的实际像素应用层分别替换global、local两组操作，得到G_A/L_A、G_B/L_A、G_A/L_B、G_B/L_B，报告每步EV区间、coverage、plateau/近黑/clamp/nonfinite、边缘/色偏/断层、参数外SHA及A→B→A往返。不能依据字段名把GlobalLTM直接归成global；key3与c/d的序列化来源须逐边绑定。预览仍同一固定ACES，预览前后输入SHA相同。
+6. 全部原始像素/可重建数据只在私有临时目录，GPG加密后才上传；临时secret/release/分支用后清理。没有无风格真值的base+gain-only样张继续只报条件反事实和幅度敏感性，不把预算当Apple EV。
+
+VM/runner仍能推进：metadata序列化/调用者换绑、c/d生成连接、原PSO的C01-C05全域合同、可读高精度HDR载体与原SDR ImageIO max0。只能实机：匹配机型同帧生产曲线与统计/应用域、Studio原统计、2679/2408 RAW、真实HDR headroom观看。S54的CPU量化界不替代这些项；33点紧外包络仍未认证，原mask与门槛不改。

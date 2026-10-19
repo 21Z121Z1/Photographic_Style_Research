@@ -947,6 +947,139 @@
           "sha256": "5e38c6dee09b6dd19e1c091ca061ad6a2cc75447542732d80f90d7a92122becb"
         }
       ]
+    },
+    {
+      "id": "HDR-50",
+      "category": "global/producer-curve-export-groups",
+      "status": "已验证静态",
+      "claim": "24A446参考writer按curvesType0/1/2/3选择默认/HLG/WithoutFaceBoost/HLGWithoutFaceBoost三类表键；globalLTM/globalTone来自output+18504/+18908并各导出516B。510条选中指令、16literal及3global-tone GOT链与只读cache核对。不是IMG2810匹配生产实现或文件c/d/key3绑定。",
+      "os_build": "24A446",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s53/source-audit.json",
+          "line": 1,
+          "sha256": "2f164d2a1cc296280bb88b52cd80b658086ab9d1b1707450dec5e5ca1c483f43"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/producer-curve-export-static.txt",
+          "line": 1,
+          "sha256": "ee53697b4b12a5bb421ad9e2d918469dd529d8bfec06f24afda924887f635281",
+          "symbol": "+[LTMMetadataWriterV2 _addLTMCurvesToMetadata:curvesType:fromOutput:statistics:geometryData:isSIFR:ltcNumNodes:]",
+          "address": "0x256b8cbb4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s54/writer-class-binding.json",
+          "line": 1,
+          "sha256": "4f01e793318fdf25456d99c9dda93e54565f56bfd3bd56985ca9598814a68bfa",
+          "address": "0x256b86dac / GOT 0x271529a50"
+        }
+      ]
+    },
+    {
+      "id": "HDR-51",
+      "category": "global/conditional-quantizer-set-inverse",
+      "status": "已验证数值",
+      "claim": "S54在显式binary32 RN/FPCR0下，以正float位序和量化链单调性定位全部65535个uint16跳变，原ARM指令对两侧131070个探针/510记录差0。decoder返回该标量量化器的条件前像，clamp端不强求单值。不是原生iOS、全consumer或33点全域证明，原门槛与mask保持。",
+      "os_build": "24A446 source / 26A434 replay runner",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39301402089/selected/analysis-s54.json",
+          "line": 1,
+          "sha256": "4d1608af6a87035cea53d665dcbd04eb3298e9379ad33da54aeecad24639ec65",
+          "run_id": "39301402089",
+          "artifact_id": "12211902213"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/curve-record-fixture.json",
+          "line": 1,
+          "sha256": "ce7add3f38a9fd7634f73a9c0a9b2bd1ce850070058ebe7fe2d5992d8d83b3ac"
+        },
+        {
+          "file": "repo/research/hdr-native/producer_curve_record_s54.py",
+          "line": 1,
+          "sha256": "258271ec1e62919fb203eefadb4acd464af9e54363001bf45a53fef170b55f0d"
+        }
+      ]
+    },
+    {
+      "id": "HDR-52",
+      "category": "global/CPU-nonfinite-quantizer-contract",
+      "status": "已验证数值",
+      "claim": "S53非有限断言失败，原源码归档保留；S54原指令与macOS native ARM asm的12组特殊输入逐步一致。FPCR0下qNaN经minNM取1得到65535；sNaN先quiet再maxNM取0得到0、IOC1。该合同不外推Metal fast math、实际相机FPCR或完整consumer非有限路径。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39301402089/selected/analysis-s54.json",
+          "line": 1,
+          "sha256": "4d1608af6a87035cea53d665dcbd04eb3298e9379ad33da54aeecad24639ec65",
+          "run_id": "39301402089",
+          "artifact_id": "12211902213"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/curve-record-fixture.json",
+          "line": 1,
+          "sha256": "ce7add3f38a9fd7634f73a9c0a9b2bd1ce850070058ebe7fe2d5992d8d83b3ac"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/run/driver.log",
+          "line": 1,
+          "sha256": "67ef66dd25532e4968275fcc3a5b55d36a2575aae9a763d8117ad1093af02ba8",
+          "run_id": "39300758676",
+          "artifact_id": "12211821267"
+        },
+        {
+          "url": "https://documentation-service.arm.com/static/67e40f3398aa3c3b6eea6a85",
+          "scope": "Arm official FMINNM distinction between quiet and signaling NaN; numerical results also independently captured"
+        }
+      ]
+    },
+    {
+      "id": "HDR-53",
+      "category": "global/GTC-ratio-information-boundary",
+      "status": "已验证数值",
+      "claim": "24A446 iOS CMI header257读取支路固定查generic GlobalToneCurveLookUpTable，取words1..256/word256，word257未读。S54两份2倍幅度记录及尾节点干预在比值子阶段完全相同，说明单从这个归一化纹理缺幅度/尾节点约束。未做原生iOS纹理捕获，未证明file key3绑定或全部元数据不能补尺度，冻结key3样张公式不改。",
+      "os_build": "24A446 source / 26A434 scalar test",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39301402089/selected/analysis-s54.json",
+          "line": 1,
+          "sha256": "4d1608af6a87035cea53d665dcbd04eb3298e9379ad33da54aeecad24639ec65",
+          "run_id": "39301402089",
+          "artifact_id": "12211902213"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/curve-record-fixture.json",
+          "line": 1,
+          "sha256": "ce7add3f38a9fd7634f73a9c0a9b2bd1ce850070058ebe7fe2d5992d8d83b3ac"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/producer-curve-export-static.txt",
+          "line": 1,
+          "sha256": "ee53697b4b12a5bb421ad9e2d918469dd529d8bfec06f24afda924887f635281",
+          "symbol": "-[CMISmartStylePixelBufferRendererV1 _createGlobalToneCurveTexture]",
+          "address": "0x1d476c1f0"
+        }
+      ]
+    },
+    {
+      "id": "HDR-54",
+      "category": "local-and-semantic/same-frame-curve-application-capture",
+      "status": "待实机解决",
+      "claim": "IMG2810匹配build下仍缺only-j、实际WithoutFaceBoost的同帧global/local曲线/应用域。参考API分支还改driver+554/+558，不能等同only-j或仅去local。新捕获清单给出writer原float/packed表及CMI读取点，要求匹配UUID后重定址，做G_A/L_A、G_B/L_A、G_A/L_B、G_B/L_B；β=.1953125仍不是像素EV。metadata序列化/cd生成/PSO全域合同仍可在VM或runner继续，不全部归为实机。",
+      "os_build": "IMG2810 matched capture pending; 24A446 reference",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s54/producer-paired-capture-plan.json",
+          "line": 1,
+          "sha256": "50477be1839cd83e818cce4325c66d183d0200272cf2ec3211f9ef41bd4fc3ca"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s53/producer-curve-export-static.txt",
+          "line": 1,
+          "sha256": "ee53697b4b12a5bb421ad9e2d918469dd529d8bfec06f24afda924887f635281",
+          "address": "0x256b86e30"
+        }
+      ]
     }
   ]
 }

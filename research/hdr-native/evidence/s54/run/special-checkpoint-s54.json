@@ -1,0 +1,458 @@
+[
+  {
+    "input_bits": "ff800000",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "ff800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "ff800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "bf800000",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "bf800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "bf800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "80000000",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "80000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "80000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "00000000",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "00000001",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "00000001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "00000001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "0000ffff",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "3f800000",
+    "expected": 65535,
+    "arm_code": 65535,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "0000ffff",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "40000000",
+    "expected": 65535,
+    "arm_code": 65535,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "40000000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "0000ffff",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "7f800000",
+    "expected": 65535,
+    "arm_code": 65535,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "7f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "0000ffff",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "7fc00001",
+    "expected": 65535,
+    "arm_code": 65535,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "7fc00001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "0000ffff",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "ffc00001",
+    "expected": 65535,
+    "arm_code": 65535,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "ffc00001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "3f800000",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "477fff00",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "0000ffff",
+        "FPSR": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "7f800001",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "7f800001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "7fc00001",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      }
+    ],
+    "pass": true
+  },
+  {
+    "input_bits": "ff800001",
+    "expected": 0,
+    "arm_code": 0,
+    "stages": [
+      {
+        "next_instruction": "0x256b8cca8",
+        "S2_bits": "ff800001",
+        "FPSR": 0
+      },
+      {
+        "next_instruction": "0x256b8ccac",
+        "S2_bits": "ffc00001",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccb0",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccb4",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccb8",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      },
+      {
+        "next_instruction": "0x256b8ccbc",
+        "S2_bits": "00000000",
+        "FPSR": 1
+      }
+    ],
+    "pass": true
+  }
+]

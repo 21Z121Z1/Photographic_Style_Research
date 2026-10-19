@@ -1,0 +1,119 @@
+{
+  "status": "待实机解决",
+  "executed": false,
+  "reference_only": {
+    "build": "24A446",
+    "device": "iPhone12,1",
+    "module": "CameraColorProcessing",
+    "UUID": "0A211E15-50CA-373B-AD9A-F9E3283C68F4",
+    "binary_sha256": "974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e"
+  },
+  "actual_IMG2810_matching_layout_available": false,
+  "gates": [
+    "Match actual model/build/loaded UUID first; rederive offsets if different. Never transplant these addresses to IMG2810.",
+    "First reproduce original A->A, then A->B->A with same frozen raw/ISP input and statistics; restore writable common T each time.",
+    "Private local capture only; encrypt all photograph/reconstructible products before GitHub transfer."
+  ],
+  "hooks_reference": [
+    {
+      "symbol": "+[LTMMetadataWriterV2 _addLTMCurvesToMetadata:curvesType:fromOutput:statistics:geometryData:isSIFR:ltcNumNodes:]",
+      "entry": "0x256b8cbb4",
+      "capture": {
+        "dictionary": "x2",
+        "curvesType": "w3",
+        "computeOutput": "x4",
+        "statistics": "x5",
+        "geometry": "x6",
+        "isSIFR": "x7",
+        "ltcNumNodes": "stack argument at true entry; reject skipped prologue",
+        "floating_state": [
+          "FPCR",
+          "FPSR"
+        ]
+      },
+      "read_only_source_node_spans": [
+        {
+          "name": "globalLTM.f32",
+          "offset": "0x18504",
+          "bytes": 1028
+        },
+        {
+          "name": "globalTone.f32",
+          "offset": "0x18908",
+          "bytes": 1028
+        }
+      ]
+    },
+    {
+      "before_call": "0x256b8ce34",
+      "capture": "local packed record at x2 with length x3; do not infer its schema from the global decoder"
+    },
+    {
+      "before_call": "0x256b8ce4c",
+      "capture": "globalLTM packed record at x2, x3=516"
+    },
+    {
+      "before_call": "0x256b8ce64",
+      "capture": "globalTone packed record at x2, x3=516"
+    },
+    {
+      "module": "CMImaging",
+      "UUID": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "symbol": "-[CMISmartStylePixelBufferRendererV1 _createGlobalToneCurveTexture]",
+      "source_bytes_return": "0x1d476c2f8, x0 is bytes after generic-key lookup",
+      "before_texture_copy": "0x1d476c6dc, x4=256 half values, 512 bytes",
+      "capture": [
+        "actual metadata key set and generic-key record SHA",
+        "CV transfer function/color primaries",
+        "normalization divisor word256",
+        "zero-divisor/nonfinite path",
+        "inputLinearBaseGain/baselineExposure before and after reduction"
+      ]
+    }
+  ],
+  "counterfactuals": [
+    {
+      "case": "A-original",
+      "driver_mutation": "none"
+    },
+    {
+      "case": "B-only-j",
+      "driver_mutation": "only j=1 at validated field; other driver bytes/statistics/mattes frozen"
+    },
+    {
+      "case": "C-WithoutFaceBoost",
+      "driver_mutation": "actual API path; record complete byte diff. Reference path also sets +0x554 and +0x558, so do not label it B-only-j."
+    }
+  ],
+  "crossed_application": {
+    "require_first": "Trace actual source curves to pixel application, source domain, knot coordinates, precision/clamp and file c/d/key3 serialization.",
+    "cases": [
+      "G_A,L_A",
+      "G_B,L_A (global counterfactual only)",
+      "G_A,L_B (local counterfactual only)",
+      "G_B,L_B"
+    ],
+    "not_by_field_name": "Group actual application operators into G/L by binding and dataflow; GlobalLTM name alone does not decide its role.",
+    "outputs": [
+      "operator-local half/float buffers and shape/dtype",
+      "pixel EV intervals/plateau/nearblack/clamp/nonfinite masks",
+      "parameter-external SHA",
+      "fixed ACES previews without in-place input mutation"
+    ],
+    "original_gates": {
+      "relative": 0.001,
+      "linear_maxabs": 1e-05,
+      "PSNR_min_db": 60,
+      "half": "bit exact where originally required",
+      "original_masks_unchanged": true
+    }
+  },
+  "missing_for_EV": [
+    "same-frame N, B/T/V, face hist/ROI, allocateTone constraints/tuning/knots, paired actual curves, application domain and pixels"
+  ],
+  "unrelated_physical_TODO_preserved": [
+    "original Studio statistics",
+    "IMG_2679/IMG_2408 paired RAW",
+    "actual HDR display/headroom viewing"
+  ]
+}

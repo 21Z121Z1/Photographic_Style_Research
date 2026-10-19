@@ -1,0 +1,698 @@
+{
+  "status": "\u5df2\u9a8c\u8bc1\u6570\u503c",
+  "scope": "Scalar writer ARM instruction replay under explicit FPCR=0, not native iOS execution, full consumer, or scene recovery",
+  "runner_os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "source_os_build": "24A446",
+  "source_device": "iPhone12,1 reference; differs from IMG_2810",
+  "unicorn_version": "2.1.4",
+  "conditional_monotonic_proof": {
+    "contract": "nonnegative binary32 bit order; RN positive-scale multiply then floor; clamp extends endpoint sets",
+    "FPCR": 0,
+    "original_camera_FPCR_captured": false,
+    "uint16_transitions": 65535,
+    "original_ARM_boundary_probes": 131070,
+    "two_output_arrays": true,
+    "records_replayed": 510,
+    "different_uint16_components": 0,
+    "record_digest_sha256": "188b9f5443eb1c52c0aa3d1f9ca08acb1f81c5fbf784f4e97ff9a6657668fdfd",
+    "endpoints": [
+      {
+        "code": 0,
+        "lower_f32": null,
+        "upper_f32_exclusive": 1.5259021893143654e-05,
+        "lower_bits": null,
+        "upper_bits_exclusive": 931135616,
+        "lower_unbounded_by_clamp": true,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [
+          "negative_infinity",
+          "signaling_NaN_under_FPCR0"
+        ],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 1,
+        "lower_f32": 1.5259021893143654e-05,
+        "upper_f32_exclusive": 3.051804378628731e-05,
+        "lower_bits": 931135616,
+        "upper_bits_exclusive": 939524224,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 2,
+        "lower_f32": 3.051804378628731e-05,
+        "upper_f32_exclusive": 4.577706567943096e-05,
+        "lower_bits": 939524224,
+        "upper_bits_exclusive": 943718592,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 127,
+        "lower_f32": 0.001937895780429244,
+        "upper_f32_exclusive": 0.0019531548023223877,
+        "lower_bits": 989724926,
+        "upper_bits_exclusive": 989855872,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 32767,
+        "lower_f32": 0.49999237060546875,
+        "upper_f32_exclusive": 0.5000076293945312,
+        "lower_bits": 1056964352,
+        "upper_bits_exclusive": 1056964736,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 32768,
+        "lower_f32": 0.5000076293945312,
+        "upper_f32_exclusive": 0.5000228881835938,
+        "lower_bits": 1056964736,
+        "upper_bits_exclusive": 1056964992,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 65534,
+        "lower_f32": 0.9999847412109375,
+        "upper_f32_exclusive": 1.0,
+        "lower_bits": 1065352960,
+        "upper_bits_exclusive": 1065353216,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": false,
+        "special_inputs": [],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      },
+      {
+        "code": 65535,
+        "lower_f32": 1.0,
+        "upper_f32_exclusive": null,
+        "lower_bits": 1065353216,
+        "upper_bits_exclusive": null,
+        "lower_unbounded_by_clamp": false,
+        "upper_unbounded_by_clamp": true,
+        "special_inputs": [
+          "positive_infinity",
+          "quiet_NaN_under_FPCR0"
+        ],
+        "scope": "24A446 writer scalar quantizer, conditional FPCR=0; not full consumer proof"
+      }
+    ],
+    "not_global_consumer_certificate": true
+  },
+  "special_cases": [
+    {
+      "input_bits": "ff800000",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "ff800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "ff800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "bf800000",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "bf800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "bf800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "80000000",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "80000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "80000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "00000000",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "00000001",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "00000001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "00000001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "0000ffff",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "3f800000",
+      "expected": 65535,
+      "arm_code": 65535,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "0000ffff",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "40000000",
+      "expected": 65535,
+      "arm_code": 65535,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "40000000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "0000ffff",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "7f800000",
+      "expected": 65535,
+      "arm_code": 65535,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "7f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "0000ffff",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "7fc00001",
+      "expected": 65535,
+      "arm_code": 65535,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "7fc00001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "0000ffff",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "ffc00001",
+      "expected": 65535,
+      "arm_code": 65535,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "ffc00001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "3f800000",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "477fff00",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "0000ffff",
+          "FPSR": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "7f800001",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "7f800001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "7fc00001",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        }
+      ],
+      "pass": true
+    },
+    {
+      "input_bits": "ff800001",
+      "expected": 0,
+      "arm_code": 0,
+      "stages": [
+        {
+          "next_instruction": "0x256b8cca8",
+          "S2_bits": "ff800001",
+          "FPSR": 0
+        },
+        {
+          "next_instruction": "0x256b8ccac",
+          "S2_bits": "ffc00001",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccb0",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccb4",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccb8",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        },
+        {
+          "next_instruction": "0x256b8ccbc",
+          "S2_bits": "00000000",
+          "FPSR": 1
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "normalization_information_loss": {
+    "stage": "iOS 257-header CMI ratio stage, before transfer decode and half store",
+    "different_record_codes_same_ratios": true,
+    "divisor_word_index": 256,
+    "read_word_indices_inclusive": [
+      1,
+      256
+    ],
+    "last_writer_word257_unused_at_this_stage": true,
+    "zero_divisor_requires_nonfinite_path": true,
+    "records_sha256": [
+      "c653eb86894f04da2eb5a65f13254868a28742fe52cdc5c62cba24a89be2aaf0",
+      "b135b0d2301d4f813a9c344b990ef1ec290a1249eb75023b2dc897cd05f57a8e"
+    ],
+    "no_binding_proof_to_IMG2810_key3_or_camera_exposure": true
+  },
+  "fixture_sha256": "ce7add3f38a9fd7634f73a9c0a9b2bd1ce850070058ebe7fe2d5992d8d83b3ac",
+  "native_special_comparison": {
+    "native_AArch64": true,
+    "FPCR": 0,
+    "initial_FPCR": 0,
+    "rows": [
+      {
+        "input_bits": "ff800000",
+        "after_min_bits": "ff800000",
+        "after_max_bits": "00000000",
+        "code": 0,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "bf800000",
+        "after_min_bits": "bf800000",
+        "after_max_bits": "00000000",
+        "code": 0,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "80000000",
+        "after_min_bits": "80000000",
+        "after_max_bits": "00000000",
+        "code": 0,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "00000000",
+        "after_min_bits": "00000000",
+        "after_max_bits": "00000000",
+        "code": 0,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "00000001",
+        "after_min_bits": "00000001",
+        "after_max_bits": "00000001",
+        "code": 0,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "3f800000",
+        "after_min_bits": "3f800000",
+        "after_max_bits": "3f800000",
+        "code": 65535,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "40000000",
+        "after_min_bits": "3f800000",
+        "after_max_bits": "3f800000",
+        "code": 65535,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "7f800000",
+        "after_min_bits": "3f800000",
+        "after_max_bits": "3f800000",
+        "code": 65535,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "7fc00001",
+        "after_min_bits": "3f800000",
+        "after_max_bits": "3f800000",
+        "code": 65535,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "ffc00001",
+        "after_min_bits": "3f800000",
+        "after_max_bits": "3f800000",
+        "code": 65535,
+        "FPSR": 0
+      },
+      {
+        "input_bits": "7f800001",
+        "after_min_bits": "7fc00001",
+        "after_max_bits": "00000000",
+        "code": 0,
+        "FPSR": 1
+      },
+      {
+        "input_bits": "ff800001",
+        "after_min_bits": "ffc00001",
+        "after_max_bits": "00000000",
+        "code": 0,
+        "FPSR": 1
+      }
+    ]
+  },
+  "source_modules_sha256": {
+    "run_hdr_s53.py": "78c10da4d18d273180b0ab02b04999f68c3b6bd6bf1d1ca0735780535356482d",
+    "producer_curve_record_s54.py": "258271ec1e62919fb203eefadb4acd464af9e54363001bf45a53fef170b55f0d"
+  },
+  "photos_processed": 0,
+  "acceptance_complete": false,
+  "A_phase_complete": false,
+  "old_gates_or_masks_changed": false,
+  "S53_failure": {
+    "run_id": 39300758676,
+    "artifact_id": 12211821267,
+    "ZIP_SHA256": "d1563d63c48a5f8c9c2183bb1b126f25be4d72988b76d048912d384767621db1",
+    "cause": "S53 conflated signaling and quiet NaNs; no S53 successful complete replay claim"
+  },
+  "ARM_primary_contract": "https://documentation-service.arm.com/static/67e40f3398aa3c3b6eea6a85"
+}
