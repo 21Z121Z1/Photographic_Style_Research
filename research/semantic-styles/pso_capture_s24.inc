@@ -1,3 +1,4 @@
+#import <objc/message.h>
 // S24: unwrap the observed capture baseObject getter; no renderer parameters change.
 static id S24Base(id p,NSMutableArray*layers){for(int k=0;k<8&&p;k++){[layers addObject:@{@"class":NSStringFromClass(object_getClass(p)),@"pointer":S22Ptr(p)}];SEL sel=NSSelectorFromString(@"baseObject");if(![NSStringFromClass(object_getClass(p))hasPrefix:@"Capture"]||![p respondsToSelector:sel])break;id n=((id(*)(id,SEL))objc_msgSend)(p,sel);if(!n||n==p)break;p=n;}return p;}
 #if __has_include(<ptrauth.h>)
