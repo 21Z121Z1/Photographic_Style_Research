@@ -1,0 +1,13 @@
+CMImaging.disasm.txt:36083: 000000023336a258	ldr	x0, [x0, #0x18]
+CMImaging.disasm.txt:36084: 000000023336a25c	b	0x238098410
+CMImaging.disasm.txt:38150: 000000023336c224	ldr	d0, [x19, #0x418]
+CMImaging.disasm.txt:38151: 000000023336c228	ldr	d1, [x19, #0x420]
+CMImaging.disasm.txt:38152: 000000023336c22c	ldr	d2, [x19, #0x428]
+CMImaging.disasm.txt:38153: 000000023336c230	ldr	d3, [x19, #0x430]
+CMImaging.disasm.txt:38154: 000000023336c234	bl	0x2380c40b0
+CMImaging.disasm.txt:38155: 000000023336c238	cbz	w0, 0x23336c250
+CMImaging.disasm.txt:38156: 000000023336c23c	add	x8, x19, #0x418
+CMImaging.disasm.txt:38157: 000000023336c240	add	x9, x19, #0x428
+CMImaging.disasm.txt:38158: 000000023336c244	stp	xzr, xzr, [x8]
+CMImaging.disasm.txt:38159: 000000023336c248	fmov.2d	v0, #1.00000000
+CMImaging.disasm.txt:38160: 000000023336c24c	str	q0, [x9]
