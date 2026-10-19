@@ -81,3 +81,24 @@ S11 SkinSmooth / S13 Mattify各两个非零配置的原生往返通过1e-3，覆
 4. 捕获三路生产曲线以及实际ISP应用前后RGB/纹理、色彩空间/transfer、GTM/LTM/semantic顺序和全部clamp。c/d/GTC是生产输出时允许随j重算，逐项记录变化；这不改变consumer参数隔离实验冻结c/d/GTC/guides/统计/mattes的规则。若global和local都受影响，固定其他语义项，交叉组合两套global/local上下文作四个对照，单列各自作用与非交换交互，不把两项混成一步。
 5. 实际C_with/C_without与曲线坐标已确认后，按native实现误差合同调用semantic_curve_inverse；RGB/矩阵/key1/空间混合另按真实顺序重放。只有经同一native颜色变换得到的线性P3像素才用于EV：正值luma上log2(Y_with/Y_without)，零/plateau/clamp给区间和unknown。原节点比值不能直接称像素EV。判定按原half/float前向门槛及可逆mask往返maxrelative≤1e-3，报告mask覆盖，不以拟合曝光或缩mask过关。
 6. 人脸/人身分别评估真实native增益的背景变化、EV梯度/光晕/振铃、色度、断层及往返；原文件faceSkin/person与生产faceROI权重的绑定必须从原调用抓取确认。预览统一现有固定ACES1.0 SDR Video、0EV，显示操作只处理副本并检查输入前后SHA。没有实际曲线时保留预算假设，不标Apple精度。Studio原始people/eye/blur/instance/tuning与RAW IMG_2679/IMG_2408继续沿前述独立测试计划；RAW不做203nit标定。
+
+
+<!-- GPT-S22-DEVICE-PLAN -->
+
+### S22之后：runner 数值合同与必须实机的提亮验证
+
+**runner 项（不需要人像）**：`research/semantic-styles/semantic_numeric_s22.m` 与 `validate.py` 已在 macOS `26A434` 的 [run 39215654333](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39215654333) 成功执行。它们证明原 Apple PSO 可建立，并验证独立 synthetic kernel 的 half pow、safe/relaxed/fast 差别和 sampler 基础行为。尚缺的 runner 任务依次是：
+
+1. **C01 半精度 pow 真实边界**：从原 `renderFinalAdjustments` 特化的实编译后端取得可审核的 `pow/powr` 实际实现、或在保持原 PSO 和捕获配置时逐一证明调用不可达。仅对另编译 kernel 扫描多个参数不足以转移成原 PSO 的误差合同。
+2. **C02–C04 全域可定义性与纹理依赖**：逐语句处理 RN/RTZ、FTZ、FMA、重结合、reciprocal；同时认证原 `F`、`F0` 对所有合法前像不会进入无定义操作。冻结原 512×384 capture 的 function constants、stats、c/d/GTC、ROI、mattes 和 sampler，显示主图邻域 footprint；若无法排除，必须将邻域 RGB 作为额外变量。不得将 S22 自编译模式当原 PSO 的可改写证明。
+3. **C05 全部输入域证书**：保持 S21 的全有限 halfRGB 域及已证明必要的变量纹理域，用带可靠向外取整的区间/枚举或等效方法。保存每个目标像素 `[min,max]`、非有限可能性、未证盒数、条件与可复算证书；任何未决盒都令“tight hull certified”门槛红色。结果必须包含联合皮肤余下 33 点，不能靠旧70个已知多解见证确定上界。
+
+**实机项（无相机真实采集数据不能替代）**：为拍摄端脸部和身体提亮单独建立下面的可执行配对方案，推荐选同机型、同系统 build 的静止场景；人物、光线、焦距、WB、曝光、画面取景保持一致，关闭会导致场景漂移的自动变量，记录 capture/session/ISP 元数据但不要上传原件。
+
+1. 固定 RAW/JPEG/HEIC 可追溯的同一帧源，采集 **A=默认实际 j**、**B=固定其它输入后只将 j 置 1**、**C=WithoutFaceBoost 重新走完整 producer** 三条路径；确保 A/B 比较仅改变 j，A/C 显式记录 producer 重算了哪些 stats/曲线/coefficients。无法固定源时，用同一帧的私有重放和确定性输入代替两次手持拍摄。
+2. 每条路径在 producer 端保存 **N、B/T、工作向量 V、预算与约束、face/body matte、直方图、派生 `c/d/GTC`、曲线 knots/外插规则、色彩管理参数**，并记录恢复已修改 common T 的重放证据。至少导出应用前和应用后**线性 P3-D65 RGB**、A/B/C 的局部与全图差图；不要仅保存一张最后效果图。
+3. 各 ROI 同时给出脸部、身体、背景、边缘带的 `median/p05/p95/max |ΔEV|`，计算 `EV=log2(Y_after/Y_before)` 仅在两者正且高于明确噪声地板时有效；同时报告线性 RGB 通道比、色度漂移和 mask 边缘 halo/梯度，分别估算 face 与 body 的真实幅度。读取姿态、RGB 曝光、光源变化；单独用等灰中性基准排除自动曝光导致的伪差异。
+4. **Studio**：在相同原始帧/输出条件下固定逐人 personIDs、眼下 region、语义 mask、skin smooth/mattify/under-eye 参数，分别测关闭/开启单效果及组合结果；至少取零效果和多组非零 strength 对照，记录每个核的 inputs、输出、thread/imageblock 配置。消失的私有 matte 不得填零后冒称原相机条件。
+5. **RAW/full-res**：获取同帧 ProRAW/DNG（如设备允许）和 HEIC 的配对、LinearThumbnail/传递曲线依据，覆盖 512×384 以外的原分辨率和边缘 crop/orientation，分别测 GTM 与 LTM，再单独测人物语义与纹理；最终 Photos UI 的可编辑性作独立验收，不得由 macOS ImageIO decode 推断。
+
+**隐私与归档**：所有原件、RGB、RAW、人物/人身 matte、同帧完整元数据都视为私有。仅在额外明确授权并具备临时 secret 的方案时通过 GPG 加密传递到 runner；公开分支、issue、PR、Actions 日志和 artifact 只允许严格去标识的摘要/密文，`retention-days:1`。该轮结束立即撤销临时 secret、release、tag 和临时私有分支并记录 API 404 复核；本次 S22 未创建上述临时资源。
