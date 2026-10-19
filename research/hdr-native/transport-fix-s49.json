@@ -1,0 +1,14 @@
+{
+  "change": "Only S49 transport names, draft-read job contents permission, checkout credential persistence, and guarded own draft cleanup. Image math identical to S48.",
+  "old_run": "39270202659",
+  "old_source": "7d3918575afb852e3be048f5f54da313db517797",
+  "old_artifact": "12195995208",
+  "old_artifact_zip_sha256": "a3c506339e5bb05d301d875b207ee0fffd6ecdbcd65ebcb0ba49b47357aebbee",
+  "failure": "HTTP403 Resource not accessible by integration at encrypted draft asset metadata read; driver not executed.",
+  "permission_reason": "GitHub REST release documentation restricts draft listings to push-access users. Contents read was insufficient in S48; contents write is a tested candidate fix, not a scientific result.",
+  "primary_source": "https://docs.github.com/en/rest/releases/releases?apiVersion=latest#list-releases",
+  "math_changed": false,
+  "thresholds_changed": false,
+  "masks_changed": false,
+  "local_image_computation": false
+}

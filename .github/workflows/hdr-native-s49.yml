@@ -1,0 +1,109 @@
+name: hdr-native-s49
+on:
+  push:
+    branches: ['research/vm-native-20261019-hdr-s49']
+  workflow_dispatch:
+jobs:
+  paired-upsample-comparison:
+    runs-on: xcode-27
+    timeout-minutes: 40
+    permissions:
+      contents: write
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare private temporary workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s49"; mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/encrypted"
+          mkdir -m 700 "$W/gnupg" "$W/secure"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+      - name: Import output public key only
+        run: |
+          set -euo pipefail
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/secure/key-import.log" 2>&1
+          python3 -c "import subprocess; assert b'--override-session-key-fd' in subprocess.check_output(['gpg','--dump-options']).splitlines()"
+      - name: Reuse exact encrypted S42 master
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          HDR_UPSTREAM_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12188060302 --jq .size_in_bytes)
+          [[ "$HDR_UPSTREAM_BYTES" =~ ^[0-9]+$ ]] && (( HDR_UPSTREAM_BYTES < 400000000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/actions/artifacts/12188060302/zip > "$W/S42.zip"
+          HDR_LEGACY_ASSET=$(python3 -c "import json;print(json.load(open('research/hdr-native/transport-input-s49.json'))['asset_id'])")
+          HDR_LEGACY_BYTES=$(gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${HDR_LEGACY_ASSET} --jq .size)
+          [[ "$HDR_LEGACY_BYTES" =~ ^[0-9]+$ ]] && (( HDR_LEGACY_BYTES < 100000000 ))
+          gh api repos/21Z121Z1/Photographic_Style_Research/releases/assets/${HDR_LEGACY_ASSET} -H 'Accept: application/octet-stream' > "$W/legacy.tar.gpg"
+          python3 -m pip install --quiet 'numpy==2.3.4' OpenEXR opencolorio pillow > "$W/out/dependencies.log" 2>&1
+      - name: Compare existing frozen2048 and nativeRGB outputs
+        env:
+          S49_S42_SESSION: ${{ secrets.HDR_S49_S42_SESSION }}
+          S49_LEGACY_PASS: ${{ secrets.HDR_S49_LEGACY_PASS }}
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_hdr_s49.py > "$W/out/driver.log" 2>&1
+      - name: Remove this job's encrypted draft transport only
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json,pathlib,subprocess,os
+          repo='21Z121Z1/Photographic_Style_Research'
+          desc=json.load(open('research/hdr-native/transport-input-s49.json'))
+          assert desc['release_tag']=='hdr-private-s49-20261019'
+          release=json.loads(subprocess.check_output(['gh','api',f"repos/{repo}/releases/{desc['release_id']}"]))
+          assert release['id']==desc['release_id'] and release['tag_name']==desc['release_tag'] and release['draft']
+          assert release['target_commitish']=='research/vm-native-20261018'
+          assert [x['id'] for x in release['assets']]==[desc['asset_id']]
+          subprocess.run(['gh','api',f"repos/{repo}/releases/{desc['release_id']}",'--method','DELETE'],check=True)
+          (pathlib.Path(os.environ['W'])/'out/transport-release-cleanup.json').write_text(json.dumps({'release_id':desc['release_id'],'release_tag':desc['release_tag'],'deleted_after_own_id_and_asset_checks':True,'no_tag_created_or_deleted':True})+'\n')
+          PY
+      - name: Seal aggregate text only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt'}
+                  with p.open('rb') as f:d=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':d})
+          assert sum(x['size'] for x in rows)<3000000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':False,'photos_used':True,'public_output_scope':'Aggregate text only; all reconstructible arrays/previews encrypted, one-cipher temporary session key never uploaded','whole_Apple_binary_uploaded':False,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s49-aggregate-evidence
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s49-private-previews
+          path: ${{ env.W }}/encrypted/previews.tar.gz.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Remove only own temporary keys and plaintext
+        if: always()
+        run: |
+          test -n "${W:-}"
+          gpgconf --homedir "$W/gnupg" --kill gpg-agent || true
+          rm -rf -- "$W"
