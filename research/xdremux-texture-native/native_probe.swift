@@ -8,6 +8,7 @@ import CryptoKit
 import Darwin
 
 func sha(_ data: Data) -> String { SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined() }
+func progress(_ text: String) { fputs("PROBE_STAGE \(text)\n", stderr); fflush(stderr) }
 func writeJSON(_ value: Any, _ url: URL) throws {
     let bytes = try JSONSerialization.data(withJSONObject: value, options: [.prettyPrinted, .sortedKeys, .fragmentsAllowed])
     try (bytes + Data([10])).write(to: url)
@@ -81,23 +82,33 @@ let selectedCase = CommandLine.arguments.count > 3 && CommandLine.arguments[2] =
 try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
 var frameworks: [[String: Any]] = []
 for name in ["NeutrinoCore", "PhotoImaging", "CMImaging", "CMCapture"] {
+    progress("dlopen \(name)")
     let path = "/System/Library/PrivateFrameworks/\(name).framework/\(name)"
     let handle = dlopen(path, RTLD_NOW | RTLD_LOCAL)
     frameworks.append(["path": path, "loaded": handle != nil, "error": handle != nil ? "" : String(cString: dlerror())])
 }
+let shouldInventory = selectedCase == nil && !CommandLine.arguments.contains("--requirements")
+if shouldInventory {
+progress("copy raw Objective-C class list")
 var count: UInt32 = 0
-let classes = objc_copyClassList(&count)!
+// Filter class names through the public C ABI before bridging matching types.
+typealias CopyClasses = @convention(c) (UnsafeMutablePointer<UInt32>) -> UnsafeMutablePointer<UnsafeRawPointer>?
+typealias ClassName = @convention(c) (UnsafeRawPointer) -> UnsafePointer<CChar>
+let copyClasses = unsafeBitCast(dlsym(RTLD_DEFAULT, "objc_copyClassList")!, to: CopyClasses.self)
+let className = unsafeBitCast(dlsym(RTLD_DEFAULT, "class_getName")!, to: ClassName.self)
+let classes = copyClasses(&count)!
 var rows: [[String: Any]] = []
 for i in 0..<Int(count) {
-    let cls: AnyClass = classes[i]
-    let name = NSStringFromClass(cls)
+    let name = String(cString: className(classes[i]))
     if name.contains("TextureStyle") || name == "_NUSemanticStyleProperties" {
+        progress("inventory \(name)")
+        let cls = unsafeBitCast(classes[i], to: AnyClass.self)
         rows.append(["class": name, "instance_size": class_getInstanceSize(cls),
                      "instance_methods": methodInfo(cls, false), "class_methods": methodInfo(cls, true)])
     }
 }
-// objc_copyClassList imports an autoreleasing pointer in Swift. This short
-// process retains its single class-list allocation until exit.
+free(classes)
+progress("write runtime inventory")
 let device = MTLCreateSystemDefaultDevice()
 try writeJSON(["schema": "xdremux-texture-runtime-v1", "os": ProcessInfo.processInfo.operatingSystemVersionString,
                "device": device?.name ?? "unavailable", "frameworks": frameworks,
@@ -105,6 +116,7 @@ try writeJSON(["schema": "xdremux-texture-runtime-v1", "os": ProcessInfo.process
                "photos_used": false, "patches_to_apple_implementations": false], output.appendingPathComponent("runtime.json"))
 
 var defaults: [String: Any] = [:]
+progress("native default dictionaries")
 if let pipeline = NSClassFromString("PITextureStylePipelineProcessor") {
     for preset in ["Standard", "Studio", "Soft", "Filmic", "Glowy"] {
         defaults[preset] = safe(object1(pipeline, "defaultTextureStyleDictionaryForPreset:", preset as NSString))
@@ -112,7 +124,21 @@ if let pipeline = NSClassFromString("PITextureStylePipelineProcessor") {
     defaults["inputNames"] = safe(object0(pipeline, "inputNames"))
 }
 try writeJSON(defaults, output.appendingPathComponent("defaults.json"))
+}
 if CommandLine.arguments.contains("--inventory") { exit(0) }
+
+if let index = CommandLine.arguments.firstIndex(of: "--requirements"), index + 1 < CommandLine.arguments.count {
+    let effect = UInt64(CommandLine.arguments[index + 1])!
+    let selector = "inputConfigurationForEffectType:isVideo:"
+    var result: [String: Any] = ["effect_type": effect, "is_video": false, "selector": selector]
+    if let cls = NSClassFromString("PITextureStylePipelineProcessor"), let m = signature(cls, selector, ["Q", "B"], "@") {
+        typealias F = @convention(c) (AnyObject, Selector, UInt64, Bool) -> Unmanaged<AnyObject>?
+        progress("native effect requirements \(effect)")
+        let configuration = unsafeBitCast(method_getImplementation(m), to: F.self)(cls, NSSelectorFromString(selector), effect, false)?.takeUnretainedValue()
+        result["configuration"] = safe(configuration)
+    } else { result["unsupported"] = true }
+    try writeJSON(result, output.appendingPathComponent("requirements.json")); exit(0)
+}
 
 var cases: [[String: Any]] = []
 let base: [String: Any] = ["Preset": "Standard", "CaptureType": "LF", "CaptureMode": "Still", "PortType": "PortTypeBack", "HardwareModel": "iPhone19,2", "TextureStylePeopleDataVersion": 3, "FilmGrainSeed": 0]
@@ -124,6 +150,7 @@ for (name, dictionary) in [("synthetic-standard-control", base), ("synthetic-stu
     let data = try PropertyListSerialization.data(fromPropertyList: dictionary, format: .binary, options: 0)
     var row: [String: Any] = ["case": name, "input": dictionary, "input_sha256": sha(data), "scope": "metadata-only diagnostic, never camera provenance or Photos admission"]
     let selector = "textureStylePropertiesFromImageMetadata:auxImageMetadata:error:"
+    progress("metadata consumer \(name)")
     if let cls = NSClassFromString("_NUTextureStyleProperties"), let m = signature(cls, selector, ["@", "@", "^@"], "@") {
         typealias F = @convention(c) (AnyObject, Selector, AnyObject?, AnyObject?, UnsafeMutablePointer<NSError?>) -> Unmanaged<AnyObject>?
         var error: NSError?
