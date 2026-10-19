@@ -1,0 +1,103 @@
+Source26A434; old extraction39051942415. Partial ranges only, not whole-function proof.
+CMImaging.disasm.txt:36559: 000000023336a978	ldr	w8, [x19, #0x288]
+CMImaging.disasm.txt:36560: 000000023336a97c	cmp	w8, #0x4
+CMImaging.disasm.txt:36561: 000000023336a980	b.eq	0x23336aa40
+CMImaging.disasm.txt:36562: 000000023336a984	ldr	x8, [x19, #0x20]
+CMImaging.disasm.txt:36563: 000000023336a988	cbz	x8, 0x23336ad60
+CMImaging.disasm.txt:36564: 000000023336a98c	ldr	x8, [x19, #0x48]
+CMImaging.disasm.txt:36565: 000000023336a990	cbz	x8, 0x23336ad6c
+CMImaging.disasm.txt:36566: 000000023336a994	ldr	x8, [x19, #0x208]
+CMImaging.disasm.txt:36567: 000000023336a998	cmp	x8, #0x0
+CMImaging.disasm.txt:36568: 000000023336a99c	cset	w9, eq
+CMImaging.disasm.txt:36569: 000000023336a9a0	ldr	x10, [x19, #0x210]
+CMImaging.disasm.txt:36570: 000000023336a9a4	cmp	x10, #0x0
+CMImaging.disasm.txt:36571: 000000023336a9a8	cset	w10, eq
+CMImaging.disasm.txt:36572: 000000023336a9ac	cmp	w9, w10
+CMImaging.disasm.txt:36573: 000000023336a9b0	b.ne	0x23336ad34
+CMImaging.disasm.txt:36627: 000000023336aa88	ldr	w8, [x19, #0x288]
+CMImaging.disasm.txt:36628: 000000023336aa8c	ldr	x22, [x19, #0x290]
+CMImaging.disasm.txt:36629: 000000023336aa90	adrp	x9, 251337 ; 0x270933000
+CMImaging.disasm.txt:36630: 000000023336aa94	add	x9, x9, #0x900
+CMImaging.disasm.txt:36631: 000000023336aa98	ldr	x23, [x9]
+CMImaging.disasm.txt:36632: 000000023336aa9c	tbnz	w8, #0x0, 0x23336ab24
+CMImaging.disasm.txt:36633: 000000023336aaa0	cmp	w8, #0x4
+CMImaging.disasm.txt:36634: 000000023336aaa4	b.eq	0x23336abe8
+CMImaging.disasm.txt:36704: 000000023336abbc	cmp	x22, x23
+CMImaging.disasm.txt:36705: 000000023336abc0	cset	w2, eq
+CMImaging.disasm.txt:36706: 000000023336abc4	mov	x0, x19
+CMImaging.disasm.txt:36707: 000000023336abc8	bl	0x23804cdf0
+CMImaging.disasm.txt:36708: 000000023336abcc	cbnz	w0, 0x23336adf0
+CMImaging.disasm.txt:36709: 000000023336abd0	ldr	x2, [x19, #0x20]
+CMImaging.disasm.txt:36710: 000000023336abd4	ldr	x3, [x19, #0x30]
+CMImaging.disasm.txt:36711: 000000023336abd8	ldp	x4, x5, [x19, #0x50]
+CMImaging.disasm.txt:36712: 000000023336abdc	mov	x0, x19
+CMImaging.disasm.txt:36713: 000000023336abe0	bl	0x23804c4c0
+CMImaging.disasm.txt:36714: 000000023336abe4	cbnz	w0, 0x23336adfc
+CMImaging.disasm.txt:37807: 000000023336bcd0	mov	x21, x2
+CMImaging.disasm.txt:37808: 000000023336bcd4	mov	x20, x0
+CMImaging.disasm.txt:37809: 000000023336bcd8	ldr	x0, [x0, #0x8]
+CMImaging.disasm.txt:37810: 000000023336bcdc	bl	0x23803feb0
+CMImaging.disasm.txt:37811: 000000023336bce0	bl	0x238098370
+CMImaging.disasm.txt:37812: 000000023336bce4	mov	x19, x0
+CMImaging.disasm.txt:37813: 000000023336bce8	cbz	x0, 0x23336be44
+CMImaging.disasm.txt:37814: 000000023336bcec	ldr	x3, [x20, #0x20]
+CMImaging.disasm.txt:37815: 000000023336bcf0	ldr	x5, [x20, #0x1d8]
+CMImaging.disasm.txt:37836: 000000023336bd44	ldr	x3, [x20, #0x30]
+CMImaging.disasm.txt:37837: 000000023336bd48	ldr	x5, [x20, #0x1d8]
+CMImaging.disasm.txt:37838: 000000023336bd4c	ldr	d0, [x20, #0x2f8]
+CMImaging.disasm.txt:37839: 000000023336bd50	ldr	d1, [x20, #0x300]
+CMImaging.disasm.txt:37840: 000000023336bd54	ldr	d2, [x20, #0x308]
+CMImaging.disasm.txt:37841: 000000023336bd58	ldr	d3, [x20, #0x310]
+CMImaging.disasm.txt:37842: 000000023336bd5c	ldr	d4, [x20, #0x418]
+CMImaging.disasm.txt:37843: 000000023336bd60	ldr	d5, [x20, #0x420]
+CMImaging.disasm.txt:37844: 000000023336bd64	ldr	d6, [x20, #0x428]
+CMImaging.disasm.txt:37845: 000000023336bd68	ldr	d7, [x20, #0x430]
+CMImaging.disasm.txt:37846: 000000023336bd6c	ldp	q16, q17, [x20, #0xf0]
+CMImaging.disasm.txt:37847: 000000023336bd70	stp	q16, q17, [sp, #0x40]
+CMImaging.disasm.txt:37848: 000000023336bd74	ldr	q16, [x20, #0x110]
+CMImaging.disasm.txt:37849: 000000023336bd78	str	q16, [sp, #0x60]
+CMImaging.disasm.txt:37850: 000000023336bd7c	ldp	q17, q16, [x20, #0xd0]
+CMImaging.disasm.txt:37851: 000000023336bd80	stp	q17, q16, [sp, #0x20]
+CMImaging.disasm.txt:37852: 000000023336bd84	add	x4, sp, #0x20
+CMImaging.disasm.txt:37853: 000000023336bd88	mov	x0, x20
+CMImaging.disasm.txt:37854: 000000023336bd8c	mov	x2, x19
+CMImaging.disasm.txt:37855: 000000023336bd90	mov	w6, #0x2978
+CMImaging.disasm.txt:37856: 000000023336bd94	bl	0x23804c7b0
+CMImaging.disasm.txt:37857: 000000023336bd98	cbnz	w0, 0x23336be60
+CMImaging.disasm.txt:37858: 000000023336bd9c	cbz	w21, 0x23336be18
+CMImaging.disasm.txt:37859: 000000023336bda0	mov	x0, x19
+CMImaging.disasm.txt:37860: 000000023336bda4	bl	0x23803fee0
+CMImaging.disasm.txt:37861: 000000023336bda8	bl	0x238098370
+CMImaging.disasm.txt:37862: 000000023336bdac	mov	x21, x0
+CMImaging.disasm.txt:37863: 000000023336bdb0	ldr	x2, [x20, #0x4d0]
+CMImaging.disasm.txt:37864: 000000023336bdb4	bl	0x238040010
+CMImaging.disasm.txt:38212: 000000023336c31c	ldr	x0, [x19, #0x20]
+CMImaging.disasm.txt:38213: 000000023336c320	bl	0x23801e4c0
+CMImaging.disasm.txt:38214: 000000023336c324	ucvtf	s0, x0
+CMImaging.disasm.txt:38215: 000000023336c328	fmov	s8, #1.00000000
+CMImaging.disasm.txt:38216: 000000023336c32c	fdiv	s0, s8, s0
+CMImaging.disasm.txt:38217: 000000023336c330	fcvt	d9, s0
+CMImaging.disasm.txt:38218: 000000023336c334	ldr	x0, [x19, #0x20]
+CMImaging.disasm.txt:38219: 000000023336c338	bl	0x238010900
+CMImaging.disasm.txt:38220: 000000023336c33c	ucvtf	s0, x0
+CMImaging.disasm.txt:38221: 000000023336c340	fdiv	s0, s8, s0
+CMImaging.disasm.txt:38222: 000000023336c344	fcvt	d0, s0
+CMImaging.disasm.txt:38223: 000000023336c348	str	d9, [x19, #0x438]
+CMImaging.disasm.txt:38224: 000000023336c34c	str	d0, [x19, #0x440]
+CMImaging.disasm.txt:38427: 000000023336c670	mov	x19, x2
+CMImaging.disasm.txt:38428: 000000023336c674	mov	x20, x0
+CMImaging.disasm.txt:38429: 000000023336c678	add	x21, x0, #0x2a8
+CMImaging.disasm.txt:38430: 000000023336c67c	ldr	q0, [x21]
+CMImaging.disasm.txt:38431: 000000023336c680	fcvtzs.2d	v0, v0
+CMImaging.disasm.txt:38432: 000000023336c684	xtn.2s	v0, v0
+CMImaging.disasm.txt:38433: 000000023336c688	mov	s1, v0[1]
+CMImaging.disasm.txt:38434: 000000023336c68c	str	h0, [x2]
+CMImaging.disasm.txt:38435: 000000023336c690	str	h1, [x2, #0x2]
+CMImaging.disasm.txt:38436: 000000023336c694	ldr	q0, [x21, #0x10]
+CMImaging.disasm.txt:38437: 000000023336c698	ldr	q1, [x21, #0x30]
+CMImaging.disasm.txt:38438: 000000023336c69c	fsub.2d	v0, v0, v1
+CMImaging.metadata.txt:14081: 0x23336a8d8:  (__TEXT,__text) private	-[CMISmartStyleMetalRendererV1 process]
+CMImaging.metadata.txt:14091: 0x23336bcb8:  (__TEXT,__text) private	-[CMISmartStyleMetalRendererV1 _runImageReductionAndUpdateBaseGain:]
+CMImaging.metadata.txt:14095: 0x23336c654:  (__TEXT,__text) private	-[CMISmartStyleMetalRendererV1 _encodeRenderRegionForStats:]
+CMImaging.metadata.txt:14111: 0x23336e79c:  (__TEXT,__text) private	-[CMISmartStyleMetalRendererV1 _setupStatsAndRenderParamBuffer]
+CMImaging.metadata.txt:28444: 0x270933900:  (__DATA_CONST,__const) external	_CMISmartStyleTuningParameterVariant_DigitalFlash
