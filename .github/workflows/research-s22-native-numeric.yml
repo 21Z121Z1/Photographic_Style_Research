@@ -24,7 +24,7 @@ jobs:
         run: |
           set -euo pipefail
           clang -O2 -fobjc-arc research/semantic-styles/semantic_numeric_s22.m \
-            -framework Foundation -framework Metal -framework CommonCrypto \
+            -framework Foundation -framework Metal \
             -o "$RUNNER_TEMP/semantic-numeric-s22" 2>&1 | tee s22/build.log
           "$RUNNER_TEMP/semantic-numeric-s22" s22 2>&1 | tee s22/probe.log
       - name: Enforce native numerical and public-data acceptance gates
