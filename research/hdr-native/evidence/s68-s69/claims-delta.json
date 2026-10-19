@@ -1,0 +1,70 @@
+[
+  {
+    "id": "HDR-76",
+    "category": "global-local/context/native-wrapper",
+    "status": "已验证数值",
+    "claim": "26A434原PixelBuffer封装在补齐独立输出后，两种主图尺寸的原ROI检查均0；主图5712×4284、普通thumb512×384、linear1024×768分别保留。默认zero crop matte比例与显式crop场景尚需独立配准。原PSO线程上限1024/执行宽32；仅CPU绑定与属性，无像素算子验证。",
+    "os_build": "26A434",
+    "evidence": [
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/analysis.json",
+        "line": 1,
+        "sha256": "7b174bad70dd4245a8061742fbcad24cc52e30c3d9cf42e75f615e4e147cab7c"
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/provenance.json",
+        "line": 1,
+        "sha256": "87b2969feed6ed282de51a178dbbb810fe9bcacae04efb46f846a8d249b51a4c",
+        "run_id": 39341678257,
+        "artifact_id": 12228712359
+      }
+    ]
+  },
+  {
+    "id": "HDR-77",
+    "category": "global-local/statistics-geometry-contract",
+    "status": "已验证静态",
+    "claim": "原host采用Tx=min(ceil(W/32),TEW)、Ty=min(ceil(H/32),floor(maxThreads/Tx))并固定32×32组，globalHistogram逐tileBoundary读固定32×32数组。原ROI检查要求非空输入输出交集；检查0不证明统计grid/采样域及相机输入绑定正确。",
+    "os_build": "26A434",
+    "evidence": [
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/analysis.json",
+        "line": 1,
+        "sha256": "7b174bad70dd4245a8061742fbcad24cc52e30c3d9cf42e75f615e4e147cab7c"
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/provenance.json",
+        "line": 1,
+        "sha256": "87b2969feed6ed282de51a178dbbb810fe9bcacae04efb46f846a8d249b51a4c",
+        "run_id": 39341678257,
+        "artifact_id": 12228712359
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/source-notes.txt",
+        "line": 1,
+        "sha256": "d894723244d7344cab7913d6a5d41b2bae50983446fd0b5c730a989d6ba1e394"
+      }
+    ]
+  },
+  {
+    "id": "HDR-78",
+    "category": "semantic-local/remaining-matte-binding",
+    "status": "runner",
+    "claim": "下步用合成阶跃matte，冻结图像/GTC/params与其他matte，只改目标crop/映射；抓原_encodeRenderRegionForStats及原localHistogram计数，验证UV配准。原相机统计源/大小及33点全域合同、完整往返、编码SDRmax0继续待runner证据；同帧j四曲线与RAW/原Studio统计仍需实机。",
+    "os_build": "26A434",
+    "evidence": [
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/analysis.json",
+        "line": 1,
+        "sha256": "7b174bad70dd4245a8061742fbcad24cc52e30c3d9cf42e75f615e4e147cab7c"
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s68-s69/provenance.json",
+        "line": 1,
+        "sha256": "87b2969feed6ed282de51a178dbbb810fe9bcacae04efb46f846a8d249b51a4c",
+        "run_id": 39341678257,
+        "artifact_id": 12228712359
+      }
+    ]
+  }
+]

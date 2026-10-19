@@ -1,0 +1,141 @@
+{
+  "statuses": {
+    "original_threadgroup_geometry_and_output_intersection": "已验证静态",
+    "helper_table_PSO_properties_CPU_binding": "已验证数值",
+    "camera_production_statistics_source": "可交给macOS runner/参考固件静态继续追；未绑定",
+    "helper_thumbnail_is_LTM_stats_size": "假设，未采用"
+  },
+  "os_build": "26A434",
+  "CMI_UUID": "3CCD434E-B1E0-3F14-8EF6-E29D58379BE8",
+  "original_PSO_limits": {
+    "device": "Apple Paravirtual device",
+    "max_threads": 1024,
+    "thread_width": 32
+  },
+  "prepare_ABI": "i20@0:8I16",
+  "intermediate_style_sizes": [
+    {
+      "width": 256,
+      "height": 192,
+      "use_case": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "use_case": 1
+    },
+    {
+      "width": 256,
+      "height": 192,
+      "use_case": 2
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "use_case": 3
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "use_case": 4
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "use_case": 5
+    },
+    {
+      "width": 192,
+      "height": 256,
+      "use_case": 6
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "use_case": 7
+    },
+    {
+      "width": 256,
+      "height": 192,
+      "use_case": 8
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "use_case": 9
+    }
+  ],
+  "helper_scope": "style-engine intermediate only; not proof of LTM statistics source size",
+  "host_group_formula": "Tx=min(ceil(renderWidth/32), threadExecutionWidth); Ty=min(ceil(renderHeight/32), floor(maxThreads/Tx)); fixed32x32 groups",
+  "full_frame_tile_bounds": "X=floor(statsROIWidth/Tx), Y=floor(statsROIHeight/Ty), zero-origin full-frame context only",
+  "kernel_array_bounds": "[10][32][32][256]; no per-axis32 clamp in globalHistogram AIR",
+  "CPU_ROI_checks_latest": [
+    {
+      "width": 1024,
+      "height": 768,
+      "status": 0,
+      "class": "CMISmartStyleMetalRendererV1",
+      "IMP": "0x23336bedc",
+      "main": [
+        1024,
+        768,
+        115
+      ],
+      "ordinary_thumbnail": [
+        512,
+        384,
+        115
+      ],
+      "linear_thumbnail": [
+        1024,
+        768,
+        115
+      ],
+      "main_scale": "NSSize: {0.0009765625, 0.0013020833721384406}",
+      "linear_scale": "NSSize: {0.0009765625, 0.0013020833721384406}",
+      "person_scale": "NSSize: {0.03125, 0.041666667908430099}",
+      "person_crop": "NSRect: {{0, 0}, {0, 0}}"
+    },
+    {
+      "width": 5712,
+      "height": 4284,
+      "status": 0,
+      "class": "CMISmartStyleMetalRendererV1",
+      "IMP": "0x23336bedc",
+      "main": [
+        5712,
+        4284,
+        115
+      ],
+      "ordinary_thumbnail": [
+        512,
+        384,
+        115
+      ],
+      "linear_thumbnail": [
+        1024,
+        768,
+        115
+      ],
+      "main_scale": "NSSize: {0.00017507003212813288, 0.00023342670465353876}",
+      "linear_scale": "NSSize: {0.00017507003212813288, 0.00023342670465353876}",
+      "person_scale": "NSSize: {0.03125, 0.041666667908430099}",
+      "person_crop": "NSRect: {{0, 0}, {0, 0}}"
+    }
+  ],
+  "failure_history": [
+    "S68 guessed signed prepare argument, runtime actual unsignedI; no PSO property read past that guard",
+    "S69a/b omitted required output: status5; original cold2 assertion says nonempty input/output intersection required",
+    "S69c adds separate same-size output; both original checks0. Diagnostics success does not erase preceding failures."
+  ],
+  "no_automatic_input_downscale_in_tested_wrapper": true,
+  "default_zero_mask_crops_do_not_certify_real_matte_registration": true,
+  "no_images_or_stats_dispatched": true,
+  "original_pixel_forward_or_inverse_gate_passed_here": false,
+  "S63_large_stats_not_certified_camera_context": true,
+  "S65_conditional_codebook_facts_retained": true,
+  "S67_frozen_count_model_still_2_of_3": true,
+  "scene_and_HDR_display_gates_unchanged": true,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

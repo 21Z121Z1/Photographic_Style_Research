@@ -129,3 +129,6 @@ cd ~/work/styles-gtm-ltm/repo
 需要重新采集时，创建新的research/vm-native-<date>临时分支，checkout对应source并复制相应workflow为新文件、修改push分支过滤；push触发，每次只一个run，xcode-27且硬核对26A434。S63 workflow本身含显式public-key homedir、照片前加密preflight、retention1与私有临时目录清理。先读日志再处理失败；不重复S60–62已知故障。
 
 S64重放须从本地完整S63 ZIP验证后临时提供到runner（旧artifact过期不得假设仍可下载），核对ZIP SHA77d121caf0eb5a095107fc412a215c6da5946ac0ab94b008a55575da7a4ae153；仅用该密文的临时session secret，不能传archive私钥。脚本里的artifact ID是历史来源，重放须显式更新已核验的传输入口，不能把旧ID新跑失败误作科学失败。空间数据始终加密，立即下载文本/密文并核对manifest及GPG/明文成员SHA，再按PR/引用审查清理自建secret/分支/release。没有新的样张明文上传。各run完整source/artifact/SHA见evidence/s64/archive-provenance.json。
+
+
+S69复现：在新增日期研究分支复制s69 workflow并更新push filter，xcode-27硬核对26A434；export W=$RUNNER_TEMP/新的私有目录，mkdir -p "$W/out"；python3 research/hdr-native/run_hdr_s69.py。只做CPU绑定/原PSO属性，不调用process，不依赖Photos图库。retention1天、马上下载校验；失败先读日志。原始归档见hdr-native-20261019/runs/39338027870、39338223690、39339778014、39341678257。整数几何模块stats_geometry_s69.full_frame(w,h,32,1024)有明示前提，不作为图像验收。

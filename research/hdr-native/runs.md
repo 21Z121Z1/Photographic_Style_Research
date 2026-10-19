@@ -126,3 +126,11 @@ S60输出keyring失败且私有失败原始数据未保存；S61照片前编译�
 
 
 S60–S64收尾：源码/指标先普通push至research/vm-native-20261018@689034a284bc9fa714667872d9473baf161ad523，再经全部PR/ref与run终态核查，删除本轮5条临时分支和HDR_S64_S63_SESSION；无release增删，原master/现有PR/8份原件冻结SHA不变。见evidence/s64/closure.json及本地transport-cleanup-s60-s64.json。累计100MB许可不重置；旧Git预算按未压缩对象上界记账，本轮以可核对的最终loose对象实存字节调账，原账/全部历史归档保留，未扩大许可。A与总验收仍false。
+
+
+S68–S69（26A434/image20261012.0260.1，0照片/0图像dispatch）：
+- run39338027870/artifact12228355105；source643d5119cfaace229f2cfdda0177a68fc1aee682；failure；ZIP SHA d201b6cacef83c5bbc7ba922f82fba84008e06f94d5e5c801630ecfa95109ce5
+- run39338223690/artifact12227756202；source01d543703d57252f04f9f62cefbfa88b5975a8b7；failure；ZIP SHA 13d421b280eebe5970e1ecf1dcbd2662655768a6b89b66852d2d1763424de3ae
+- run39339778014/artifact12227399531；source1792940f83b6fe3c9f54085d184db47615f170a0；success-diagnostics-ROI-failed；ZIP SHA 1d0fd2e653d1369e9cd34b10b6abedf8bbada488f918ed2a13208afaa85ccd4c
+- run39341678257/artifact12228712359；source93c0b4adda0d86e02572d79a578c569854d42d52；success-CPU-ROI-0；ZIP SHA f8f458dd7842a06d8eff1c672498e324a460dfcd9973be08442c198eb89af236
+所有ZIP/成员SHA已验，3份派生C程序从各commit精确重建。S68/S69自建临时分支在确认无PR/他用ref且源已保存后清理，无secret/release；master与他人PR保持。细节evidence/s68-s69/provenance.json。

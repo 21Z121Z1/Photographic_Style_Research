@@ -395,3 +395,18 @@ LC_SYMTAB→常量槽→CFString字节核对了参考短键c/d、b=SubjectReligh
 **可交给runner，HDR-73。** 继续追生产输入域/ROI/统计到c/d的写文件调用者，以及headroom helper实际调用者与k字段合同；先证明实际分支再应用分离逆换算。33点C01–C05全域边界、完整native往返、编码后ImageIO SDR max0保持未认证。**待实机：** 匹配IMG2810同帧j/WithoutFaceBoost/N/B/T/V/face hist/allocateTone/应用域、Studio原统计、RAW2679/2408与真实HDR屏幕，沿用s54捕获清单。
 
 S65 run39329429383/source8053c0baa5aebf95afa80c168c0ba3677c9ca928/artifact12222729900；S66 run39330883147/source5b7131f9e0d5b0528bcd2375cc6370e7282d9f65/artifact12223619922，均26A434/image20261012.0260.1、retention1天，全部ZIP已逐成员校验落地。完整SHA见archive-provenance.json。S65复用输入密文且临时secret已清；S66无人物输入/secret/release。无新预览，旧固定ACES不变；Apple Log、原件/冻结文件、33点mask与half/float/1e-3门槛不改。**A_phase_complete=false，acceptance_complete=false，goal active。** 根REPORT/claims/errors/NATIVE_TODO/runs/REPRODUCE全部追加；公开aux文档增量见evidence/s66/reproduce-and-todo.md，历史CSV及aux文档保留。
+
+
+### SEMANTIC-20261018：S67–S69 统计域与原封装绑定
+
+**已验证静态/数值**：S67原globalHistogram使用固定32×32数组，globalStats以ROI面积归一化。恒灰1024×768的计数守恒、P50=.25；5712×4284与4032×3024的累计质量仅.221202/.323003，P50=0。冻结的1024-samples/cell模型仍只有2/3通过；按实际32×24/32×32线程组修正的模型三例吻合，仍为有条件数值模型。不能据S63异常全局分位数拟合拍摄端逆曲线；S65固定normalizer/桶码表的条件事实保留。S67必要原始AIR/统计已存选取tar.xz（非完整原ZIP），全部29原成员在内存校验。详见research/hdr-native/S67.json与归档内selection-provenance。
+
+S68–S69原生CPU检查：prepareToProcess:的实际ABI为i20@0:8I16；原PSO maxThreads=1024、threadExecutionWidth=32，设备Apple Paravirtual device/Family4。第一次因signed参数ABI检查失败；随后两次漏绑输出，ROI检查5，已由原cold2断言“输入/输出交集非空”定位；补独立同尺寸输出后，两个尺寸原检查均0（run39341678257/artifact12228712359，26A434/image20261012.0260.1）。成功job仅代表诊断完成，前面失败均保留。
+
+**已验证数值，仅CPU绑定**：封装保留原主图5712×4284、普通thumb512×384、linear1024×768，没有自动降统计输入尺寸。zero-crop默认matte比例为RN32(1/matteWidth)、RN32(1/matteHeight)；主图/linear采用RN32(1/mainWidth)、RN32(1/mainHeight)。实际matte配准须再验证crop/ROI，不能把默认比例当相机合同。style-engine中间尺寸usecase0–9为256×192、1024×768、256×192、1024×768、768×1024、768×1024、192×256、256²、256×192、256²；与LTM统计源等同仍属假设，未采用。
+
+**已验证静态**：原线程组公式Tx=min(ceil(renderW/32),TEW)，Ty=min(ceil(renderH/32),floor(maxThreads/Tx))；组数固定32×32。新stats_geometry_s69.py只核对这一整数几何，原始调用者/采样域及像素误差分别待证，未改冻结模型、mask或阈值。源地址、原AIR行号、4次run/artifact/SHA及原始JSON见research/hdr-native/evidence/s68-s69/。
+
+**可交给macOS runner**：下一步以阶跃person/skin matte只干预目标crop，抓原_encodeRenderRegionForStats和localHistogram计数；继续原调用者统计源与尺寸绑定，及33点全域区间/完整原生往返/编码SDR max0。**待实机**：匹配IMG2810的同帧j/WithoutFaceBoost四组曲线、N/B/T/V、face hist、allocateTone及应用域；RAW2679/2408、原Studio统计与实际HDR观看沿用原方案。没有新增物理EV或照片预览结论；GTM/LTM/语义独立，LinearThumbnail仍Apple Log，A与acceptance_complete继续false。
+
+资源许可：用户于2026-10-20明确批准125MB累计写入上限（文本/小型密文），旧100MB账不改写、根分区仍至少4GB空闲；完整EXR许可另列，>1GB下载仍需询问。

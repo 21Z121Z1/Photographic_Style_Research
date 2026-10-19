@@ -104,3 +104,6 @@ VM/runner仍能推进：metadata序列化/调用者换绑、c/d生成连接、�
 - 已验证数值：五图原stats host/45 dispatch已捕获，默认分支不更新gain；c/d的9279/10240 half码不匹配。S64颜色/D4检查不解释差异。不要重复整批stats或把默认style重算当文件生产结果。
 - 可交给macOS runner/静态：追NeutrinoCore/PhotoImaging到CMI生成分支实际输入、style/processing type、ROI与c/d文件写入者；原文件只读。先捕获同一输入的默认A→A，再在绑定明确的调用者只改目标global或local字段，其他GTC/guides/stats/mattes与SHA冻结；比对原half/float1e-5+PSNR60与可逆mask内1e-3，记录plateau/clamp/near-black区间，不把候选M回填作实测。33皮肤点C01–C05、原生完整往返、封装后ImageIO SDR max0仍可runner推进，不能归为等实机。
 - 待实机：匹配IMG_2810 build/UUID、同帧j-only/WithoutFaceBoost四组曲线及N/B/T/V/face histogram/allocateTone约束与应用域，按evidence/s54/producer-paired-capture-plan.json第1–6步执行；冻结其他字节、抓原float/packed记录/实际像素四组合，报告EV区间和交互。原Studio统计、RAW2679/2408、实际HDR显示与中间headroom方案沿用，β仍不换算假EV。
+
+
+S69之后（runner）：在原UUID/PSO下使用1024×768恒灰main/linear、32×24阶跃目标matte，固定GTC/params/其他matte及输出，分别测试zero crop/显式full-matte crop。以原_encodeRenderRegionForStats的176B、输入SHA、sampler与per-tile person/skin计数为oracle，先从AIR推导UV，再判定配准；不得按观感调smooth或据字段名选择比例。原调用者的实际stats源/ROI/尺寸和封装后SDR max0、33点全域合同仍可runner推进。CPU ROI检查0不是图像前向通过；S63大图全局统计不认证为相机上下文。实机j/WithoutFaceBoost四曲线和N/B/T/V/face hist/allocateTone/app域、RAW2679/2408/原Studio/HDR观看按原清单，β不换算假EV。
