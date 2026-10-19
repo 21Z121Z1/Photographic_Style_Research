@@ -353,3 +353,45 @@ S63在五张原始像素网格（含两张本新stats算子的冻结后留出003
 
 
 S60–S64收尾：源码/指标先普通push至research/vm-native-20261018@689034a284bc9fa714667872d9473baf161ad523，再经全部PR/ref与run终态核查，删除本轮5条临时分支和HDR_S64_S63_SESSION；无release增删，原master/现有PR/8份原件冻结SHA不变。见evidence/s64/closure.json及本地transport-cleanup-s60-s64.json。累计100MB许可不重置；旧Git预算按未压缩对象上界记账，本轮以可核对的最终loose对象实存字节调账，原账/全部历史归档保留，未扩大许可。A与总验收仍false。
+
+
+### SEMANTIC-20261018 / HDR-S65–S66：统计桶差异与独立 headroom 逆换算
+
+**已验证数值，HDR-69/70（26A434）。** S65复用S63的五张小型捕获与S56/S59原生码表，只对新实测尺度M=.9912109375补256个合成原PSO控制；参考编码尾部half差0。五张c图共5120码在各自实测M的256桶码表中都有唯一桶前像，无遗漏/歧义。这只是编码桶，不是唯一RGB、场景值或33点全域证书，照片像素/统计重算0次。
+
+在前三张文件M仍限S58有序参考唯一、S59原生兼容的条件下，分别解码文件桶k_f与重算桶k_n。令C_M(k)为观测原生码表：
+
+```
+C_Mn(kn)-C_Mf(kf)
+ = [C_Mn(kn)-C_Mf(kn)] + [C_Mf(kn)-C_Mf(kf)]
+ = [C_Mn(kn)-C_Mn(kf)] + [C_Mn(kf)-C_Mf(kf)]
+```
+
+两种顺序的加法恒等式残差均0；它们的项有交互，不能唯一归因到物理GTM/LTM。只把M改为文件条件候选、保留重算桶，仍有如下差异：
+
+|样张|不同桶/1024|桶差MAE|桶差最大值|仅改M后的码max abs|
+|---|---:|---:|---:|---:|
+|IMG_2600|914|14.62011719|211|0.5989990234375|
+|IMG_2604|977|9.00683594|109|0.29052734375|
+|IMG_2608|883|7.83105469|179|0.49407958984375|
+
+交互max abs分别.00494384765625/.016357421875/.0054931640625（map码单位，不是EV）。这排除了“该条件下只差一个normalizer”的解释；不能据此断定差异全由某一个物理局部算子造成。0032/33只查重算c码前像，未为它们另拟合文件M、未假称新留出逆解通过；d的桶分解没有执行。所有原c/d、GTC、guide和逆模型未改，诊断反事实未安装进scene路径。
+
+**已验证静态/数值，HDR-71/72。** 原CPU helper在0x2333c8994/0x2333c89fc调用castType（优化stub0x23804d660），比较外部LongGray常量槽0x270933880；仅命中该指针时处理HDR headroom比值r：
+
+```
+forward(r) = RN32(pow(double(RN32(r)), 0.644))
+inverse(r) = RN32(pow(double(RN32(r)), 1.5527950310559007))
+```
+
+原double常数分别位于0x233559bf8/c00，bits3fe49ba5e353f7cf/3ff8d83f9a3c6c20；其他cast分支identity。S66核对原IMP和f28@0:8@16f24 ABI，在Standard/LongGray、tone−1/0/+1与r=0,.25,.5,1,1.25,2,4,8,16,64共60例中，正/逆模型abs0，native往返max abs4.76837158203125e-7、正r max relative5.960464477539063e-8；所测tone不改变这两个helper输出，四个style字段不变。这里是CPU标量控制，没有图像PSNR、Metal像素或完整HDR/scene门槛通过的含义。isHDRGainMapHeadroomAdjusted:在0x2333c8a64只返回0，不能充当可靠的应用状态识别器。
+
+新global_headroom_s66.py按原常数/float→double→float顺序实现这对标量函数；实际还原入口要求显式已识别的applied_branch，未知状态拒绝执行。**它不逆GTC、RGB曝光、local、语义或j；不能因函数名而把它用于所有照片。** iOS24A446/iPhone12,1参考CMI UUID0A9BC064-A4BC-330E-861A-C70A637B14B3的同两入口0x1d476e878/e8e0及flag0x1d473bacc，54条指令与现存Mach-O、只读cache逐条一致，常数相同；这是参考版本，不是IMG2810匹配相机实现。
+
+LC_SYMTAB→常量槽→CFString字节核对了参考短键c/d、b=SubjectRelightingCurveParameter、j=FaceBasedGlobalExposureBoostRatio、k=HDRGainMapHeadRoomAdjustmentEnabled、l=OriginalInsteadOfReversibility。IMG2810原plist记录k=false；该观测不证明原生helper曾/未被调用，不能据此自动施加上述逆。j的β=.1953125仍仅内部权重界，仍没有新的像素EV界。常量键的命名绑定也不等于c/d生产或写文件调用链已绑定。
+
+**已验证静态，输入角色。** S66运行时ivars证实主图/普通主图thumbnail/LinearThumbnail纹理分别在self+20/+28/+30（十六进制）。process0x23336abd0–abe0把+20/+30传给原histogram selector；reduction也用这两路。另一个_processLTMGainMap分支0x2334d50d8–50fc可选+28、缺失回退+20，绑定texture0，+30绑定texture1。普通thumbnail和线性锚点不是同一输入；这段绑定不能证明相机实际选择及c/d序列化来源。原source、运行时selector字节、地址与全部SHA见evidence/s66下审计文件。
+
+**可交给runner，HDR-73。** 继续追生产输入域/ROI/统计到c/d的写文件调用者，以及headroom helper实际调用者与k字段合同；先证明实际分支再应用分离逆换算。33点C01–C05全域边界、完整native往返、编码后ImageIO SDR max0保持未认证。**待实机：** 匹配IMG2810同帧j/WithoutFaceBoost/N/B/T/V/face hist/allocateTone/应用域、Studio原统计、RAW2679/2408与真实HDR屏幕，沿用s54捕获清单。
+
+S65 run39329429383/source8053c0baa5aebf95afa80c168c0ba3677c9ca928/artifact12222729900；S66 run39330883147/source5b7131f9e0d5b0528bcd2375cc6370e7282d9f65/artifact12223619922，均26A434/image20261012.0260.1、retention1天，全部ZIP已逐成员校验落地。完整SHA见archive-provenance.json。S65复用输入密文且临时secret已清；S66无人物输入/secret/release。无新预览，旧固定ACES不变；Apple Log、原件/冻结文件、33点mask与half/float/1e-3门槛不改。**A_phase_complete=false，acceptance_complete=false，goal active。** 根REPORT/claims/errors/NATIVE_TODO/runs/REPRODUCE全部追加；公开aux文档增量见evidence/s66/reproduce-and-todo.md，历史CSV及aux文档保留。

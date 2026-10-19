@@ -1419,6 +1419,116 @@
         "39324317293",
         "39326316262"
       ]
+    },
+    {
+      "id": "HDR-69",
+      "category": "local/c-encoding-preimages",
+      "status": "已验证数值",
+      "claim": "S65仅补M=.9912109375的256个新原PSO控制、参考尾部half差0，复用S56 M1码表；S63五张c共5120码在各自实测M的256桶码表中均有唯一桶前像。它不是唯一RGB/scene前像；未重算照片或旧269/768控制。",
+      "os_build": "26A434",
+      "producer_reference_build": null,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s66/phase-analysis.json",
+          "line": 1,
+          "sha256": "62c3b739f9ffe9aa2a6d97be2370aa0efb6e9ee9645074d9606fd808d98cd159"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/archive-provenance.json",
+          "line": 1,
+          "sha256": "5d527c3800660061f2c787bf3a912adc3673b61d3b9c560f9352e3bce43f326b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-70",
+      "category": "local/normalizer-vs-histogram",
+      "status": "已验证数值",
+      "claim": "在S58/S59文件条件尺度下，2600/2604/2608分别914/977/883格的桶不同；只替换normalizer仍有相同数量码差，maxabs .598999/.290527/.494080。两种分解顺序残差0但交互max .00494385/.0163574/.00549316；不能把normalizer称GTM或反事实当scene逆。",
+      "os_build": "26A434",
+      "producer_reference_build": null,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s66/phase-analysis.json",
+          "line": 1,
+          "sha256": "62c3b739f9ffe9aa2a6d97be2370aa0efb6e9ee9645074d9606fd808d98cd159"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/archive-provenance.json",
+          "line": 1,
+          "sha256": "5d527c3800660061f2c787bf3a912adc3673b61d3b9c560f9352e3bce43f326b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-71",
+      "category": "global/scalar-headroom-helper",
+      "status": "已验证数值",
+      "claim": "原CPU入口0x2333c8994/89fc只在castType指针为LongGray时执行RN32(pow(double(RN32(r)),q))，q=.644/1.5527950310559007；其他分支identity。60标量/三tone，模型abs0，native往返maxrelative5.96046448e-8；不认证像素GTM/LTM、非有限全域或实际照片调用绑定。",
+      "os_build": "26A434",
+      "producer_reference_build": null,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s66/phase-analysis.json",
+          "line": 1,
+          "sha256": "62c3b739f9ffe9aa2a6d97be2370aa0efb6e9ee9645074d9606fd808d98cd159"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/archive-provenance.json",
+          "line": 1,
+          "sha256": "5d527c3800660061f2c787bf3a912adc3673b61d3b9c560f9352e3bce43f326b"
+        }
+      ]
+    },
+    {
+      "id": "HDR-72",
+      "category": "producer-reference/keys-and-bindings",
+      "status": "已验证静态",
+      "claim": "24A446参考CMI核对54条指令与只读cache、LC_SYMTAB及CFString：c/d为两张small map，b=SubjectRelighting，j=FaceBasedGlobalExposureBoostRatio，k=HDRGainMapHeadRoomAdjustmentEnabled，l=OriginalInsteadOfReversibility；同一headroom指数/flag返回0。IMG2810记录k=false只作元数据观测，不证明helper应用状态。26A434 runtime ivars20/28/30及优化selector确认统计用主图/linear图，另一个LTM分支可选普通thumbnail。",
+      "os_build": "26A434",
+      "producer_reference_build": "24A446",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s66/phase-analysis.json",
+          "line": 1,
+          "sha256": "62c3b739f9ffe9aa2a6d97be2370aa0efb6e9ee9645074d9606fd808d98cd159"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/archive-provenance.json",
+          "line": 1,
+          "sha256": "5d527c3800660061f2c787bf3a912adc3673b61d3b9c560f9352e3bce43f326b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/ios-reference-headroom-audit.json",
+          "line": 1,
+          "sha256": "d0ce9c187795fb48213ffc017c64c774957c7f969f9aaffc316b8a0bbc7512bf"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/headroom-and-input-source.txt",
+          "line": 1,
+          "sha256": "7872ed6465e7807c4afb5f45b8d2dda285aad7df875834df6ed94c9d14d9f1ee"
+        }
+      ]
+    },
+    {
+      "id": "HDR-73",
+      "category": "global-local-semantic/remaining-binding",
+      "status": "runner",
+      "claim": "继续生产输入域/统计/ROI和c/d写文件调用链、LongGray helper调用者与k标志合同；未知applied context时新global_headroom_s66.py拒绝自动还原。33皮肤点全域合同、完整native往返与编码ImageIO SDR max0仍可runner推进；同帧j曲线/N/B/T/V/直方图/allocateTone应用域、RAW2679/2408、Studio原统计/真实HDR观看另属待实机。",
+      "os_build": "26A434",
+      "producer_reference_build": null,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s66/phase-analysis.json",
+          "line": 1,
+          "sha256": "62c3b739f9ffe9aa2a6d97be2370aa0efb6e9ee9645074d9606fd808d98cd159"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s66/archive-provenance.json",
+          "line": 1,
+          "sha256": "5d527c3800660061f2c787bf3a912adc3673b61d3b9c560f9352e3bce43f326b"
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-19T19:50:09.527146+00:00"

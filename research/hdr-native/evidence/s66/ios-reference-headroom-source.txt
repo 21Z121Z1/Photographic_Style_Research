@@ -1,0 +1,55 @@
+24A446 reference only; instruction bytes matched existing Mach-O and read-only cache.
+67192: 0x1d473bacc:  00 00 80 52   mov	w0, #0
+67193: 0x1d473bad0:  c0 03 5f d6   ret
+124680: 0x1d476e878:  7f 23 03 d5   pacibsp
+124681: 0x1d476e87c:  e9 23 bd 6d   stp	d9, d8, [sp, #-0x30]!
+124682: 0x1d476e880:  f4 4f 01 a9   stp	x20, x19, [sp, #0x10]
+124683: 0x1d476e884:  fd 7b 02 a9   stp	fp, lr, [sp, #0x20]
+124684: 0x1d476e888:  fd 83 00 91   add	fp, sp, #0x20
+124685: 0x1d476e88c:  08 1c a0 4e   mov	v8.16b, v0.16b
+124686: 0x1d476e890:  e0 03 02 aa   mov	x0, x2
+124687: 0x1d476e894:  0f 20 e4 94   bl	0x1d80768d0 ; CALL castType
+124688: 0x1d476e898:  1a e9 e4 94   bl	0x1d80a8d00
+124689: 0x1d476e89c:  f3 03 00 aa   mov	x19, x0
+124690: 0x1d476e8a0:  28 b2 06 b0   adrp	x8, 0x1e1db3000
+124691: 0x1d476e8a4:  08 61 28 91   add	x8, x8, #0xa18
+124692: 0x1d476e8a8:  14 01 40 f9   ldr	x20, [x8]
+124693: 0x1d476e8ac:  55 e9 e4 94   bl	0x1d80a8e00
+124694: 0x1d476e8b0:  7f 02 14 eb   cmp	x19, x20
+124695: 0x1d476e8b4:  c1 00 00 54   b.ne	0x1d476e8cc
+124696: 0x1d476e8b8:  00 c1 22 1e   fcvt	d0, s8
+124697: 0x1d476e8bc:  c8 0d 00 d0   adrp	x8, 0x1d4928000
+124698: 0x1d476e8c0:  01 5d 45 fd   ldr	d1, [x8, #0xab8]
+124699: 0x1d476e8c4:  f7 13 e5 94   bl	0x1d80b38a0
+124700: 0x1d476e8c8:  08 40 62 1e   fcvt	s8, d0
+124701: 0x1d476e8cc:  00 1d a8 4e   mov	v0.16b, v8.16b
+124702: 0x1d476e8d0:  fd 7b 42 a9   ldp	fp, lr, [sp, #0x20]
+124703: 0x1d476e8d4:  f4 4f 41 a9   ldp	x20, x19, [sp, #0x10]
+124704: 0x1d476e8d8:  e9 23 c3 6c   ldp	d9, d8, [sp], #0x30
+124705: 0x1d476e8dc:  ff 0f 5f d6   retab
+124710: 0x1d476e8e0:  7f 23 03 d5   pacibsp
+124711: 0x1d476e8e4:  e9 23 bd 6d   stp	d9, d8, [sp, #-0x30]!
+124712: 0x1d476e8e8:  f4 4f 01 a9   stp	x20, x19, [sp, #0x10]
+124713: 0x1d476e8ec:  fd 7b 02 a9   stp	fp, lr, [sp, #0x20]
+124714: 0x1d476e8f0:  fd 83 00 91   add	fp, sp, #0x20
+124715: 0x1d476e8f4:  08 1c a0 4e   mov	v8.16b, v0.16b
+124716: 0x1d476e8f8:  e0 03 02 aa   mov	x0, x2
+124717: 0x1d476e8fc:  f5 1f e4 94   bl	0x1d80768d0 ; CALL castType
+124718: 0x1d476e900:  00 e9 e4 94   bl	0x1d80a8d00
+124719: 0x1d476e904:  f3 03 00 aa   mov	x19, x0
+124720: 0x1d476e908:  28 b2 06 b0   adrp	x8, 0x1e1db3000
+124721: 0x1d476e90c:  08 61 28 91   add	x8, x8, #0xa18
+124722: 0x1d476e910:  14 01 40 f9   ldr	x20, [x8]
+124723: 0x1d476e914:  3b e9 e4 94   bl	0x1d80a8e00
+124724: 0x1d476e918:  7f 02 14 eb   cmp	x19, x20
+124725: 0x1d476e91c:  c1 00 00 54   b.ne	0x1d476e934
+124726: 0x1d476e920:  00 c1 22 1e   fcvt	d0, s8
+124727: 0x1d476e924:  c8 0d 00 d0   adrp	x8, 0x1d4928000
+124728: 0x1d476e928:  01 61 45 fd   ldr	d1, [x8, #0xac0]
+124729: 0x1d476e92c:  dd 13 e5 94   bl	0x1d80b38a0
+124730: 0x1d476e930:  08 40 62 1e   fcvt	s8, d0
+124731: 0x1d476e934:  00 1d a8 4e   mov	v0.16b, v8.16b
+124732: 0x1d476e938:  fd 7b 42 a9   ldp	fp, lr, [sp, #0x20]
+124733: 0x1d476e93c:  f4 4f 41 a9   ldp	x20, x19, [sp, #0x10]
+124734: 0x1d476e940:  e9 23 c3 6c   ldp	d9, d8, [sp], #0x30
+124735: 0x1d476e944:  ff 0f 5f d6   retab
