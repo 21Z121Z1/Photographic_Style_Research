@@ -47,7 +47,9 @@ def check_inventory(data):
     assert data["acceptance"]["synthetic_preview_only"] is True
     assert data["acceptance"]["native_texture_processing_order_verified"] is False
     assert data["acceptance"]["no_apple_log_change"] is True
-    assert len(data["source"]["files"])==4
+    assert len(data["source"]["files"])==5
+    assert "CMITextureStylesFilter::Guided" in m["static_native_kernel_identifiers"]
+    assert "CMITextureStylesFastGaussian::gaussian_h" in m["static_native_kernel_identifiers"]
     assert all(len(row["sha256"])==64 for row in data["source"]["files"])
     return True
 
