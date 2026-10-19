@@ -1,0 +1,38 @@
+{
+  "cipher_sha256": "9cd2baa4b339afe35ef19bf1784597a7a0cc7d5b4ed0ea0aac2df4ad0a265ee0",
+  "correct_complete_algorithm_prefix": "9.2",
+  "old_parser_dropped_prefix": true,
+  "valid_empty_keyring_trial": {
+    "returncode": 0,
+    "events": [
+      "ENC_TO",
+      "BEGIN_DECRYPTION",
+      "DECRYPTION_INFO",
+      "PLAINTEXT",
+      "DECRYPTION_OKAY",
+      "GOODMDC",
+      "END_DECRYPTION"
+    ],
+    "plaintext_sha256_matches": true
+  },
+  "tampered_copy_trial": {
+    "returncode": 2,
+    "events": [
+      "ENC_TO",
+      "BEGIN_DECRYPTION",
+      "DECRYPTION_INFO",
+      "NODATA",
+      "DECRYPTION_OKAY",
+      "GOODMDC",
+      "END_DECRYPTION",
+      "NODATA",
+      "FAILURE"
+    ],
+    "plaintext_sha256_matches": false
+  },
+  "private_archive_key_exported": false,
+  "public_spatial_arrays": false,
+  "no_original_cipher_modified": true,
+  "old_S56_native_results_affected": false,
+  "temporary_secret_corrected": true
+}

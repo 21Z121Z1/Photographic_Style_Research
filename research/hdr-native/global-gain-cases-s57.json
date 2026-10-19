@@ -1,0 +1,90 @@
+{
+  "source": "original AIR updateBaseGainWithStats lines20-33, no fitted coefficients",
+  "cases": [
+    {
+      "id": "mean-align",
+      "avg_main": 0.18,
+      "avg_linear": 0.02,
+      "exposure": 1,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "exposure-two",
+      "avg_main": 0.18,
+      "avg_linear": 0.02,
+      "exposure": 2,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "both-means-ten",
+      "avg_main": 1.8,
+      "avg_linear": 0.2,
+      "exposure": 1,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "exposure-half",
+      "avg_main": 0.18,
+      "avg_linear": 0.02,
+      "exposure": 0.5,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "nontrivial",
+      "avg_main": 0.35,
+      "avg_linear": 0.07,
+      "exposure": 1.5,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "small-positive-denominator",
+      "avg_main": 0.125,
+      "avg_linear": 9.5367431640625e-07,
+      "exposure": 2,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "equal-means",
+      "avg_main": 0.3,
+      "avg_linear": 0.3,
+      "exposure": 1,
+      "domain": "positive_finite"
+    },
+    {
+      "id": "zero-numerator",
+      "avg_main": 0,
+      "avg_linear": 0.25,
+      "exposure": 1,
+      "domain": "nonnegative_finite_diagnostic"
+    },
+    {
+      "id": "zero-over-zero",
+      "avg_main": 0,
+      "avg_linear": 0,
+      "exposure": 1,
+      "domain": "outside_contract"
+    },
+    {
+      "id": "positive-over-zero",
+      "avg_main": 0.5,
+      "avg_linear": 0,
+      "exposure": 1,
+      "domain": "outside_contract"
+    },
+    {
+      "id": "zero-exposure",
+      "avg_main": 0.5,
+      "avg_linear": 0.25,
+      "exposure": 0,
+      "domain": "outside_contract"
+    },
+    {
+      "id": "negative-linear-mean",
+      "avg_main": 0.2,
+      "avg_linear": -0.25,
+      "exposure": 1,
+      "domain": "outside_contract"
+    }
+  ],
+  "not_iOS_camera_execution": true
+}

@@ -1,0 +1,30 @@
+Local GnuPG distributed primary documentation /usr/share/doc/gnupg/DETAILS.gz
+sha256=59b666dbb14c43bba6a64f4277abc8fd4135c2132f12bcddbe7fa13aec3a911b
+566: *** DECRYPTION_INFO <mdc_method> <sym_algo> [<aead_algo>]
+567:     Print information about the symmetric encryption algorithm and the
+568:     MDC method.  This will be emitted even if the decryption fails.
+569:     For an AEAD algorithm AEAD_ALGO is not 0.  GPGSM currently does
+570:     not print such a status.
+571: 
+572: *** DECRYPTION_FAILED
+573:     The symmetric decryption failed - one reason could be a wrong
+574:     passphrase for a symmetrical encrypted message.
+575: 
+576: *** DECRYPTION_OKAY
+577:     The decryption process succeeded.  This means, that either the
+578:     correct secret key has been used or the correct passphrase for a
+579:     symmetric encrypted message was given.  The program itself may
+580:     return an errorcode because it may not be possible to verify a
+581:     signature for some reasons.
+582: 
+583: *** SESSION_KEY <algo>:<hexdigits>
+584:     The session key used to decrypt the message.  This message will
+585:     only be emitted if the option --show-session-key is used.  The
+586:     format is suitable to be passed as value for the option
+587:     --override-session-key.  It is not an indication that the
+588:     decryption will or has succeeded.
+1219: *** GOODMDC
+1220:     This is not anymore needed. Checking the DECRYPTION_OKAY status is
+1221:     sufficient.
+1222: *** BADMDC
+1223:     This is not anymore needed.
