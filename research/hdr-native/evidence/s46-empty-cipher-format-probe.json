@@ -1,0 +1,23 @@
+{
+  "scope": "Empty archived706-byte preview cipher, no photograph computation",
+  "source_ZIP": "hdr-native-20261019/runs/39249843977/private-previews/artifact.zip",
+  "source_cipher_bytes": 706,
+  "source_cipher_sha256": "d67d6f6035ed5b9b2c2b01ffd356f698294d5b51e97c9f521a122cf03d80d84c",
+  "payload_length": 68,
+  "payload_character_class_only": "H.H:HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+  "actual_session_material_logged_or_saved": false,
+  "results": [
+    {
+      "variant": "raw-payload",
+      "returncode": 0,
+      "plaintext_equal": true,
+      "stderr_redacted": "gpg: DBG: seskey: 9.2:[HEX REDACTED]\n"
+    },
+    {
+      "variant": "regex-core",
+      "returncode": 2,
+      "plaintext_equal": false,
+      "stderr_redacted": "gpg: DBG: seskey: 2:[HEX REDACTED]\ngpg: decryption failed: Invalid cipher algorithm\n"
+    }
+  ]
+}

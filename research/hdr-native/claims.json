@@ -622,6 +622,25 @@
           "sha256": "7cab0d60cad8e04844777a722b236bd59cf34eb74ca84c2894e5b7d2df70a6cf"
         }
       ]
+    },
+    {
+      "id": "HDR-35",
+      "category": "hdr/AEAD-transport-diagnosis",
+      "status": "已验证数值",
+      "claim": "S46原始脱敏GPG状态为return2/DECRYPTION_FAILED，无新图像结果。以已归档706B空密文做独立小型对照：会话payload包含9.2算法/AEAD模式标识，完整payload经fd解密return0、明文逐字节相同；旧regex截成2:hex后return2/Invalid cipher algorithm。S47保留原payload，显示配方不变。该对照不冒充HDR或scene精度。临时HDR_S46_S42_SESSION已删除。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "hdr-native-20261019/runs/39262796015/selected/decrypt-status.json",
+          "line": 1,
+          "sha256": "f855150df83dd83fd9ee835f626c3e5e22b8e517ed58f8b5acbaa61ac494825a"
+        },
+        {
+          "file": "hdr-native-20261019/s46/gpg-format-probe.json",
+          "line": 1,
+          "sha256": "a18aa143c85067e0908cd7cad4bbc30920418ca77f9e0931758a7ff586ccdfe1"
+        }
+      ]
     }
   ]
 }

@@ -50,3 +50,7 @@ ZIP `8d9b49f19960bd9b7bb9ed13a95ec4fddb106857a92d498c7b92035da1d90e31` / manifes
 |S45|research/vm-native-20261019-hdr-s45|24d618dd7467fce33452d9bc012891b8ade40389|39262070080|12190163508|26A434/20261012.0260.1|missing-rg preflight exit127; zero new images; secret removed|
 
 ZIP `50a57237ace2cf0770d8ed43d8c387883ca496ad14f010ea34ee50a42418ec2f` / manifest `4b9b6ba029122012d364f65abb0251e533adf896694fe6b6dbfa24bf2a6d37ef` verified; log-failed archived before fix.
+
+|S46|research/vm-native-20261019-hdr-s46|3f876035d17f6b2fb93fb834d343661492ef949c|39262796015|12192760214|26A434/20261012.0260.1|AEAD identifier truncated; small empty-cipher control locates error;0newimages|
+
+ZIP `618b87b2ceb734829e47f9c32ecd54c5479edd1970de0c1129d75b0eaace60a9` / manifest `117052052970e656140aa16c95b1397fb4312faa95021a01e80318ad53e70cfb` verified; secret removed.
