@@ -53,11 +53,16 @@
       "id": "TX-02",
       "status": "已验证·静态",
       "category": "filter-names-and-tuning",
-      "claim": "Tuning names Diffusion,Glow,Bloom,Mattify,SkinSmoothingStandalone,FilmGrain,UnderEyeBrightening,Halation; Diffusion.gaussianBlurSigma ranges 6.26 to 62.05 among tuning entries; this is a key value, not verified physical convolution sigma in pixels.",
+      "claim": "Tuning names Diffusion,Glow,Bloom,Mattify,SkinSmoothingStandalone,FilmGrain,UnderEyeBrightening,Halation; Diffusion.gaussianBlurSigma ranges 6.26 to 62.05 among tuning entries; this is a key value, not verified physical convolution sigma in pixels. Source symbol inventory also names Guided/SelfGuided/WeightedGuided, GaussianGuidedFilterV3, FastGaussian horizontal/vertical and effect generators; names do not establish actual launch or filter coefficients.",
       "evidence": [
         {
           "file": "research/texture-styles/evidence/source-inventory.json",
           "json_pointer": "/texture_model"
+        },
+        {
+          "file": "research/texture-styles/evidence/source-inventory.json",
+          "json_pointer": "/texture_model/static_native_kernel_identifiers",
+          "source_sha256": "a1d723e1a32585876f4e798c2ace814e2e5d82cb977ce4ede907373b72f9822f"
         }
       ],
       "true_implementation_kernel_identified": false
