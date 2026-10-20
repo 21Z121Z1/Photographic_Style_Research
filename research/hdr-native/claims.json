@@ -4173,9 +4173,59 @@
           "sha256": "1303fe62714ea54a83372d44654e36079182f0de4ff1a245be06d23837278200"
         }
       ]
+    },
+    {
+      "id": "HDR-148",
+      "category": "semantic/fullframe-S96",
+      "status": "已验证静态",
+      "claim": "S96错误构建列表混入旧S95 translation unit，编译因缺其generated include停止；无native像素，不能评价资源容量或全图几何。下一版仅改driver构建输入并断言单一unit，保留冻结native/阈值。",
+      "os_build": "26A434",
+      "run_id": 39496980234,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s96/run/build.log",
+          "line": 1,
+          "sha256": "f552e39e2e44f0363f2a30040fc641041628fb64f6aa5dfa28e6b6f87cf0189b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s96/run/driver.log",
+          "line": 1,
+          "sha256": "ad4b31cf44ee69ae38a07731a76c4eea4a81ec9841c1bb430564f7fce105d22a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s96/phase-summary.json",
+          "line": 1,
+          "sha256": "323833bd098fccd65dff6666f3697e5395abc66c55973e1221807d39ee072d73"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s96/metric-scope-notes.json",
+          "line": 1,
+          "sha256": "c8404e990b8fd95e4e6b9d13f6961aa117b862df35f0f693b0ec5b9bea0f66a4"
+        }
+      ]
+    },
+    {
+      "id": "HDR-149",
+      "category": "semantic/fullframe-S96",
+      "status": "已验证数值",
+      "claim": "S96原ZIP直接日本并校验10 public、GPG1 private；仅666B小cipher头与hash摘要返回HK，无大cipher/ZIP回传；临时secret/release/tag/分支已清理。",
+      "os_build": "26A434",
+      "run_id": 39496980234,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s96/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "a3ca837575329902df6d7666de8df664fd3c38b4e41cb2f7661fccc1a2d5b071"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s96/closure.json",
+          "line": 1,
+          "sha256": "2f22d5fff58ecd3325623388516cb5f02bd6f237858cff320e8f3f621bf2efb2"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T20:33:54.673675+00:00",
+  "updated_utc": "2026-10-20T21:13:31.702925+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -6029,6 +6079,26 @@
     "complete_small_cipher_header_bytes": 9386,
     "large_cipher_body_backhaul_bytes": 0,
     "whole_ZIP_backhaul_bytes": 0,
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "semantic_fullframe_S96": {
+    "run_id": 39496980234,
+    "source_commit": "c735ecbbb000426d676eea20a575718f3fe2f8e0",
+    "conclusion": "failure",
+    "OS_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "stage": "probe compilation before native execution",
+    "cause": "Compiler argv mistakenly contained native .inc/.json binding inputs and the old S95 translation unit; the old unit requires a generated S95 include that is not created by S96.",
+    "pixel_operators_executed": false,
+    "resource_override_or_CI_owner_geometry_validated": false,
+    "public_members_verified": 10,
+    "private_members_verified": 1,
+    "cipher_header_bytes": 666,
+    "large_cipher_body_backhaul_bytes": 0,
+    "whole_ZIP_backhaul_bytes": 0,
+    "all_owned_transport_cleaned": true,
     "engineering_accepted": false,
     "A_phase_complete": false,
     "acceptance_complete": false

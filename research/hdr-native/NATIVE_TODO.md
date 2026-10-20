@@ -171,3 +171,6 @@ S95当前已有live run39488329547/job118854512641，先查询同一run和监看
 
 
 S95已终态failure并归档/清理，不再等待其旧queued marker。4个原CMI process均−12786、各4个前置dispatch，final0，CI整幅缓冲为黑，不能算成功。下一步runner：只读捕获guided实际返回/eps/r和allocator请求，以UUID+已证constructor callsite约束资源容量对照；512MiB等预算须运行前说明，不盲目4×2GiB。再抓PI output.region/ROI/输出尺寸，合法CI region拼成整幅，全像素对照native/CI并保留旧gate，未知padding不上传。当前allocator耗尽只是可检验假设；同帧相机/Studio/RAW/实屏仍按原实机清单。
+
+
+S96终态39496980234为编译失败，未执行native operator；资源容量/owner布局不能据它下结论。runner下一步：仅修复driver单一translation unit命令，复用S96 native observer/PSO/参数/旧阈值，先验证实际guided返回和allocator命中，再做完整owner覆盖/native-CI对照。实际相机j/WithoutFaceBoost同帧统计、Studio统计、配对RAW、实屏仍待实机。

@@ -817,3 +817,14 @@ headroom1显示对照有43个像素差1码，来自应用gain/有理数offset的
 **已验证数值（归档/清理与准确流量）。** public artifact12294729886/14380B/SHA d437a6675d1f375d24484b8e1e5d8bf697b1663e6f591921ca7f7c56f8c30811；private artifact12294879502/9536B/SHA9e0af37ad65d53db290e216fd6a16c24cbecea94f76b19b33112b43d9b673491。原ZIP直接日本，13 public及GPG/13 private成员和源码精确改写全验，私有manifest SHA0d20b893a54f58d3d4c872af67755f56d9c12bad88be8c0e2163b09c2eec354b。本次v3明确计入9386B完整小cipher（处于≤32KiB头内），请求483B、hash摘要2671B；完整ZIP回传0、大cipher body回传0，未重传旧大归档。终态/PR零引用/研究源保留后，secret/release/tag/临时分支已清理，见closure.json。旧S95-active/queued观察是历史时点，terminal记录已另增，不覆盖。
 
 A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。整幅实用语义逆估计、与global/local分开组合和跨照片仍可runner推进；相机同帧j四曲线/N/B/T/V/face histogram/allocateTone/application域、原Studio统计、配对RAW和实屏继续待实机。这里没有新的HDR效果或物理场景精度结论。
+
+
+### SEMANTIC-20261018 / S96：探针编译输入错误，尚未执行像素算子
+
+**已验证静态/数值。** run39496980234/sourcec735ecbbb000426d676eea20a575718f3fe2f8e0，macOS27.0.1/26A434、image20261012.0260.1，终态failure。run_semantic_s96.py:56误把observer/capture include、binding JSON及旧semantic_fullframe_s95.m一起传给clang；旧translation unit要求native_filter_probe_s95.m，而本run只生成S96 include，build.log:1–4报fatal include missing。driver在编译assert处停止，没有native-calls或像素结果。不能据此判断512MiB资源前提、PI owner矩形、整幅参照或语义效果通过/失败。下一版只改driver的构建输入及传输标识；复用冻结S96 native/TLS/observer源码，像素/采样/阈值不变，并在提交前用AST断言编译列表仅有一个.m translation unit。
+
+**已验证数值（归档/清理）。** public artifact12297668691/15258B/SHA a0ccf1c83bcd0155ab8d04031777bfaf74b296e92c6d14a3cc839f504b742ad3；private artifact12297814046/816B/SHA531c7d09ce75dc04a0653d5d5adc75f5cb90eb558d0ad2e418b18c0117f1a7d3。原ZIP直接GitHub→日本，10 public成员及GPG/1 private成员校验通过，private manifest SHA4dc2e7808aac750ec11d3f1c329d95d410eba16a096052b5ab6bae16d746da25。香港仅收到666B密文头（此次包含完整小cipher）、481B验证请求对应的1221B hash摘要；完整ZIP/大cipher body跨区回传0。终态、PR head/base零引用、研究源保留后，该run的secret/release/tag/private分支已清理。不得为补文档再下载旧大归档。
+
+**指标解释边界（静态审阅，尚无新像素值）。** S96继承的regular_tile_boundary_gradient统计的是全图512×384规则网格，实际subpatch从各CI owner内部重新起格，故不能把它称为所有实际接缝的平均误差。覆盖全部相邻像素的gradient_error_max在有限路径下仍是任意接缝子集最大误差的上界。后续逆估计应先由owner矩形和各局部网格声明真实接缝mask，再看输出；不修改冻结S96定义或借此改变门槛。详见metric-scope-notes.json。
+
+A_phase_complete=false、engineering_accepted=false、legacy acceptance_complete=false。没有新增99%场景恢复或完整语义逆解结论。既有global/local/semantic分离、Apple Log、mask及实机清单不变。

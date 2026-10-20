@@ -1,0 +1,20 @@
+{
+  "run_id": 39496980234,
+  "source_commit": "c735ecbbb000426d676eea20a575718f3fe2f8e0",
+  "conclusion": "failure",
+  "OS_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "stage": "probe compilation before native execution",
+  "cause": "Compiler argv mistakenly contained native .inc/.json binding inputs and the old S95 translation unit; the old unit requires a generated S95 include that is not created by S96.",
+  "pixel_operators_executed": false,
+  "resource_override_or_CI_owner_geometry_validated": false,
+  "public_members_verified": 10,
+  "private_members_verified": 1,
+  "cipher_header_bytes": 666,
+  "large_cipher_body_backhaul_bytes": 0,
+  "whole_ZIP_backhaul_bytes": 0,
+  "all_owned_transport_cleaned": true,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

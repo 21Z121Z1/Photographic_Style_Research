@@ -235,3 +235,6 @@ S95入口run_semantic_s95.py、semantic_fullframe_s95.m、inputs_s95.json、sema
 
 
 S95终态39488329547，先读已落地native-failed.log与evidence/s95/run/native.log、native-calls.json、native-execution.json：原native program rc0不能替代四次renderer process rc−12786。恢复入口无需再等旧queued状态。资源假设静态来源已保存allocator-and-guided-error-source.txt，原文本SHA/UUID/binary SHA及行范围在static-provenance.json；只复用已有文本，没有下载Apple binary。未来容量对照前记录实际请求与guided返回，再据真实PI output.region建全帧参照；不重跑旧S41合成组/旧30个scalar-guided实验，不做半码格点精度追逐。
+
+
+S96复现失败：在commit c735ecb检查research/hdr-native/run_semantic_s96.py:56与evidence/s96/run/build.log（无需下载密文）。clang输入误含旧S95 unit，缺generated native_filter_probe_s95.m；应只编译semantic_fullframe_s96.m，由它include已冻结S96派生native/observer/capture。修正版应单独冻结driver SHA和精确替换表，不改S96 source或把本run称为像素验证。原ZIP留日本，不重复回传。

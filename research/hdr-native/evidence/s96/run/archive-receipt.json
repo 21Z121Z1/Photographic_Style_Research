@@ -1,0 +1,165 @@
+{
+  "archived_at_UTC": "2026-10-20T21:11:10.034382+00:00",
+  "run_id": 39496980234,
+  "source_commit": "c735ecbbb000426d676eea20a575718f3fe2f8e0",
+  "branch": "research/vm-native-20261021-semantic-s96",
+  "conclusion": "failure",
+  "event": "push",
+  "attempt": 1,
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "artifacts": [
+    {
+      "name": "semantic-s96-encrypted-outputs",
+      "artifact_id": 12297814046,
+      "ZIP_bytes": 816,
+      "ZIP_sha256": "531c7d09ce75dc04a0653d5d5adc75f5cb90eb558d0ad2e418b18c0117f1a7d3",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39496980234/artifact-12297814046.zip",
+      "local_ZIP_copy": false
+    },
+    {
+      "name": "semantic-s96-aggregate",
+      "artifact_id": 12297668691,
+      "ZIP_bytes": 15258,
+      "ZIP_sha256": "a0ccf1c83bcd0155ab8d04031777bfaf74b296e92c6d14a3cc839f504b742ad3",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39496980234/artifact-12297668691.zip",
+      "local_ZIP_copy": false
+    }
+  ],
+  "all_public_manifest_members_SHA_verified": 10,
+  "source_hashes_match_commit": [
+    {
+      "path": "research/hdr-native/run_semantic_s96.py",
+      "sha256": "49753218e782f2378c24cbc6f0f34d4f1e1a1646856ce62ba5407a5c6746549a"
+    },
+    {
+      "path": "research/hdr-native/semantic_fullframe_s96.m",
+      "sha256": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0"
+    },
+    {
+      "path": "research/hdr-native/observer_prerequisites_s96.inc",
+      "sha256": "0b13e81677a4b1350a4ad4b8cd0f4f3fcdde7d3d275472001072c43c3eda23f8"
+    },
+    {
+      "path": "research/hdr-native/encoder_capture_s96.inc",
+      "sha256": "87ddbb06fcd9943e90e45b11657172b504e41493bfb2795274270c8f044f637a"
+    },
+    {
+      "path": "research/hdr-native/s96_observer_binding.json",
+      "sha256": "3a892a29512f85c8f1f625180564fa7d93c8c4660f7e23612303c691715a1626"
+    },
+    {
+      "path": "research/hdr-native/semantic_fullframe_s95.m",
+      "sha256": "6b7e90ef246df47e1f3a271c11cac5c0eee0770227914c3456124c13bf02aa42"
+    },
+    {
+      "path": "research/hdr-native/semantic_strength_s82.py",
+      "sha256": "34e40b0e4d67393844f6c962e7a70b2946c8e5dbf3bded1c04c4e73eea1fccb0"
+    },
+    {
+      "path": "research/vm-native/runner/native_filter_probe.m",
+      "sha256": "46d36788485e4c4e76dcd8db029980506fe0cf373b819219df3cd9a5e0a4fb4b"
+    },
+    {
+      "path": "research/vm-native/runner/encoder_capture_v2.inc",
+      "sha256": "90d8d37bcd520c96b2c184fde0cf6edc916a2f257aeb3b5affefae0ae12c25af"
+    },
+    {
+      "path": "research/vm-native/runner/replay_helpers_v7.inc",
+      "sha256": "5e0192adb23401056df2e0b2d74d32ce69121839235a6bbb8cd8be414c5732cc"
+    },
+    {
+      "path": "research/vm-native/runner/consumer-structured-v8.metal",
+      "sha256": "d242cb9c06b050aa35a5fb7a62f3da79120540668c8bc1c6665aa21f18433e6d"
+    }
+  ],
+  "private_stream_verifications": [
+    {
+      "protocol": "JP-local-GPG-v2",
+      "run_id": 39496980234,
+      "source_commit": "c735ecbbb000426d676eea20a575718f3fe2f8e0",
+      "os_build": "26A434",
+      "ZIP_bytes": 816,
+      "ZIP_sha256": "531c7d09ce75dc04a0653d5d5adc75f5cb90eb558d0ad2e418b18c0117f1a7d3",
+      "cipher_member": "results.tar.gz.gpg",
+      "cipher_bytes": 666,
+      "cipher_sha256": "d9509b511279f2ef05c0537626b1b19cfdf048da7f37a9587f7b9a4cef181de5",
+      "GPG_returncode": 0,
+      "event_names_only": [
+        "ENC_TO",
+        "BEGIN_DECRYPTION",
+        "DECRYPTION_INFO",
+        "PLAINTEXT",
+        "PLAINTEXT_LENGTH",
+        "DECRYPTION_OKAY",
+        "GOODMDC",
+        "END_DECRYPTION"
+      ],
+      "all_manifest_members_verified": 1,
+      "private_manifest_SHA256": "4dc2e7808aac750ec11d3f1c329d95d410eba16a096052b5ab6bae16d746da25",
+      "member_hashes_only": {
+        "fallback-intermediate-hashes.json": {
+          "size": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "manifest.json": {
+          "size": 324,
+          "sha256": "4dc2e7808aac750ec11d3f1c329d95d410eba16a096052b5ab6bae16d746da25"
+        }
+      },
+      "images_decoded_or_written": false,
+      "private_key_received": false,
+      "session_key_received_via_SSH_stdin_and_anonymous_fd": true,
+      "session_key_saved_or_logged": false,
+      "plaintext_members_saved": false,
+      "temporary_GNUPGHOME_removed": true,
+      "whole_cipher_or_ZIP_exported": false,
+      "remote_max_RSS_KiB": 17496,
+      "child_max_RSS_KiB": 17496,
+      "verification_traffic_payload": {
+        "HK_to_JP_verification_request_bytes": 481,
+        "JP_to_HK_encrypted_header_bytes": 666,
+        "JP_to_HK_hash_receipt_bytes": 1221,
+        "prefix_GPG_returncode": 0,
+        "prefix_only_is_not_authentication": true,
+        "encrypted_packet_length_reframed_for_key_extraction_only": true,
+        "header_contains_complete_small_cipher": true,
+        "complete_small_cipher_bytes_within_bounded_header": 666,
+        "whole_ZIP_backhaul_bytes": 0,
+        "large_cipher_body_backhaul_bytes": 0,
+        "new_GitHub_artifact_download_bytes": 0,
+        "counts_are_application_payload_exclude_SSH_overhead": true
+      },
+      "remote_helper_SHA256": "6345a517acb70148f2ab79f67f838106282b8f1ddeee9fd745c1ff807a58aca1",
+      "helper_code_upload_bytes": 0,
+      "helper_install_receipt_bytes": 94
+    }
+  ],
+  "Japan_download_receipt": {
+    "run_id": 39496980234,
+    "artifacts": [
+      {
+        "artifact_id": 12297814046,
+        "bytes": 816,
+        "sha256": "531c7d09ce75dc04a0653d5d5adc75f5cb90eb558d0ad2e418b18c0117f1a7d3",
+        "relative_path": "runs/39496980234/artifact-12297814046.zip"
+      },
+      {
+        "artifact_id": 12297668691,
+        "bytes": 15258,
+        "sha256": "a0ccf1c83bcd0155ab8d04031777bfaf74b296e92c6d14a3cc839f504b742ad3",
+        "relative_path": "runs/39496980234/artifact-12297668691.zip"
+      }
+    ],
+    "root_free_bytes": 62592950272,
+    "download_credential_received": false,
+    "signed_URL_saved": false
+  },
+  "original_ZIPs_preserved": true,
+  "VM_full_artifact_or_photo_plaintext_materialized": false,
+  "signed_URL_or_credential_saved": false
+}

@@ -1,0 +1,10 @@
+{
+  "phase": "S96",
+  "source_frozen_commit": "c735ecbbb000426d676eea20a575718f3fe2f8e0",
+  "metric_scope": "Static interpretation before new pixel outcomes; do not modify the frozen run",
+  "regular_grid_boundary_fields": "The inherited regular_tile_boundary_gradient fields sample global512x384 grid lines. Subpatch grids restart inside each actual CI owner, so these are not exact statistics of every actual owner/subpatch seam.",
+  "all_image_gradient_max": "luma gradient_error_max is measured over every horizontal and vertical adjacency of the assembled image, including actual CI and subpatch seams. It is a valid upper bound for the maximum on any seam subset when all compared components are finite.",
+  "do_not_claim": "Do not call the regular-grid mean an exact actual-seam mean. Do not rename p99 or pass fractions as percent scene recovery. Native references and geometry checks are not a full semantic inverse or baked-camera ground truth.",
+  "next_estimate_stage": "Declare actual seam masks from observed CI owner rectangles and local512x384 patch boundaries before inspecting inverse outputs; retain whole-image gradient metrics as well.",
+  "no_additional_image_computation_or_network": true
+}

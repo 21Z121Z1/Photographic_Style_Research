@@ -1,0 +1,74 @@
+{
+  "plan": {
+    "photo": "IMG_2810",
+    "source_sha256": "52ea41f0dd16590cef83abfd8093ccf8082994113e0c2cee86f90c42f7ab21c2",
+    "source_bytes": 2597713,
+    "cipher_sha256": "ea1399444a57a2b6d8670621f244b2a1756b18e78406eb3ee05785de79f0b91f",
+    "cipher_bytes": 2558570,
+    "input_asset_id": 660464240,
+    "release_id": 418869032,
+    "release_tag": "semantic-private-s96-20261021",
+    "temporary_branch": "research/vm-native-20261021-semantic-s96",
+    "secret_name": "SEMANTIC_S96_INPUT_SESSION",
+    "source_canvas": [
+      4284,
+      5712
+    ],
+    "patch_shape": [
+      384,
+      512
+    ],
+    "tone": 0.35,
+    "parameter_fields": [
+      9,
+      10
+    ],
+    "native_reference_operators": [
+      "original",
+      "skin-color",
+      "skin-brightness",
+      "skin-both"
+    ],
+    "new_inverse": false,
+    "original_frozen_models_changed": false,
+    "legacy_gates_changed": false,
+    "practical_patch_gate": {
+      "linear_max_abs": 0.00390625,
+      "PSNR_peak1_min_dB": 70,
+      "ACES_p99_pixel_Linf_codes": 1,
+      "ACES_max_codes": 4,
+      "nonfinite_RGB": 0
+    },
+    "gate_scope": "Native whole-versus-patch geometry only; not scene recovery/semantic inverse/whole engineering acceptance",
+    "source_context": "Original whole CI request; frozen native context per actual owner; no padding export; full original-pixel coverage and CI RGB check required",
+    "people_plaintext_uploaded": false,
+    "archive_policy": "Original ZIP+GPG/member verification Japan-local; v3 bounded HK header/hash and accurate small-cipher byte count",
+    "single_physical_framebuffer_required": false,
+    "CI_owner_regions_must_cover_all_pixels_once": true,
+    "capacity_test": {
+      "old_bytes": 150994944,
+      "new_bytes": 536870912,
+      "caller_offset_from_init": 300,
+      "CMI_UUID": "3CCD434E-B1E0-3F14-8EF6-E29D58379BE8",
+      "actual_cause_unverified": true
+    },
+    "observation": "Read-only guided original return/r/eps, allocator capacity, PI owner/input regions; thread-local capture, original returns preserved"
+  },
+  "source_SHA": {
+    "research/hdr-native/run_semantic_s96.py": "49753218e782f2378c24cbc6f0f34d4f1e1a1646856ce62ba5407a5c6746549a",
+    "research/hdr-native/semantic_fullframe_s96.m": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0",
+    "research/hdr-native/observer_prerequisites_s96.inc": "0b13e81677a4b1350a4ad4b8cd0f4f3fcdde7d3d275472001072c43c3eda23f8",
+    "research/hdr-native/encoder_capture_s96.inc": "87ddbb06fcd9943e90e45b11657172b504e41493bfb2795274270c8f044f637a",
+    "research/hdr-native/s96_observer_binding.json": "3a892a29512f85c8f1f625180564fa7d93c8c4660f7e23612303c691715a1626",
+    "research/hdr-native/semantic_fullframe_s95.m": "6b7e90ef246df47e1f3a271c11cac5c0eee0770227914c3456124c13bf02aa42",
+    "research/hdr-native/semantic_strength_s82.py": "34e40b0e4d67393844f6c962e7a70b2946c8e5dbf3bded1c04c4e73eea1fccb0",
+    "research/vm-native/runner/native_filter_probe.m": "46d36788485e4c4e76dcd8db029980506fe0cf373b819219df3cd9a5e0a4fb4b",
+    "research/vm-native/runner/encoder_capture_v2.inc": "90d8d37bcd520c96b2c184fde0cf6edc916a2f257aeb3b5affefae0ae12c25af",
+    "research/vm-native/runner/replay_helpers_v7.inc": "5e0192adb23401056df2e0b2d74d32ce69121839235a6bbb8cd8be414c5732cc",
+    "research/vm-native/runner/consumer-structured-v8.metal": "d242cb9c06b050aa35a5fb7a62f3da79120540668c8bc1c6665aa21f18433e6d"
+  },
+  "scope": "Original5712x4284 native consumer; real PI owner rectangles must cover all24470208 pixels once; no single physical framebuffer assumption; forward references only, no inverse",
+  "no_changes_to_frozen_models": true,
+  "old_gates_not_relabelled": true,
+  "engineering_accepted": false
+}

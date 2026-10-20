@@ -237,3 +237,6 @@ S95：source475e050dc0a4fd7fc30528c9bf9a65d875129596，research/vm-native-202610
 
 
 S95终态：[39488329547](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39488329547)，source475e050dc0a4fd7fc30528c9bf9a65d875129596，26A434/image20261012.0260.1，failure。4次原process−12786、16前置dispatch、目标final0；CI表面输出全黑不能验收。13 public与GPG/13 private、源改写绑定均已日本原地核验；本次secret/release/tag/分支已清理。v3小cipher头9386B、request483B、hash2671B，无ZIP/大cipher回传。
+
+
+S96 [39496980234](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39496980234)，sourcec735ecbbb000426d676eea20a575718f3fe2f8e0，26A434/image20261012.0260.1，failure于clang编译列表误入旧S95源码，尚无native像素。public12297668691/private12297814046已日本原地校验，10 public/GPG1 private；666B小cipher头、1221B摘要，大体积跨区回传0。临时secret/release/tag/分支已清理。
