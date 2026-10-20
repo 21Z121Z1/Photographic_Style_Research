@@ -8,7 +8,7 @@ permissions:
   contents: write
 concurrency:
   group: texture-product-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   fixtures:
     runs-on: xcode-27
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 21Z121Z1/XDRemux
-          ref: 3ff6e9ca7bbfe15a56e83aec90f5d0ebd1289369
+          ref: 1a52db02f3e54eeb511019abdafe54155d06a7a6
           path: product
           fetch-depth: 0
           persist-credentials: false
@@ -29,7 +29,7 @@ jobs:
         working-directory: product
         run: |
           mkdir -p "$RUNNER_TEMP/texture-product"
-          test "$(git rev-parse HEAD)" = 3ff6e9ca7bbfe15a56e83aec90f5d0ebd1289369
+          test "$(git rev-parse HEAD)" = 1a52db02f3e54eeb511019abdafe54155d06a7a6
           sw_vers > "$RUNNER_TEMP/texture-product/os.txt"
           xcodebuild -version > "$RUNNER_TEMP/texture-product/xcode.txt"
           set -o pipefail
@@ -38,6 +38,7 @@ jobs:
             sh "$RUNNER_TEMP/texture-rustup.sh" -y --profile minimal
             source "$HOME/.cargo/env"
           fi
+          rustup component add rustfmt clippy
           brew install libheif > "$RUNNER_TEMP/texture-product/brew.log" 2>&1
           export PKG_CONFIG_PATH="$(brew --prefix libheif)/lib/pkgconfig"
           swift build -c release --product xdremux-apple-adapter > "$RUNNER_TEMP/texture-product/swift-build.log" 2>&1
@@ -53,7 +54,10 @@ jobs:
               {'name':'public-contract-and-app-policy','kind':'regression','command':['python3','-m','unittest','tests.test_public_documentation','tests.test_app_architecture','tests.test_product_ownership','tests.test_performance_design','tests.test_rust_apple_semantic_policy','tests.validation.test_workflow_configuration'],'timeout_seconds':120},
               {'name':'shipping-app-build','kind':'integration','command':['bash','apps/macos/XDRemuxApp/scripts/build_and_run.sh','build'],'timeout_seconds':1800},
               {'name':'app-models','kind':'regression','command':['bash','apps/macos/XDRemuxApp/scripts/verify_model_tests.sh'],'timeout_seconds':1200},
+              {'name':'existing-styles-consumer','kind':'integration','command':['bash','scripts/apple/check_rust_style_consumer.sh'],'timeout_seconds':1800},
               {'name':'all-real-fixtures-and-public-entries','kind':'integration','command':['python3','scripts/apple/check_texture_styles.py','--release','--skip-build','--all-fixtures','--output',str(root/'fixtures')],'timeout_seconds':2400},
+              {'name':'observed-shipping-performance','kind':'functional','command':['python3','scripts/performance/benchmark_rust_product.py','--cli',str(Path.cwd()/'target/release/xdremux'),'--apple-adapter',subprocess.check_output(['swift','build','-c','release','--show-bin-path'],text=True).strip()+'/xdremux-apple-adapter','--warmup','1','--iterations','5','--output',str(root/'product-benchmark.json')],'timeout_seconds':1800},
+              {'name':'adapter-launch-count','kind':'functional','command':['python3','scripts/performance/characterize_apple_adapter_launches.py','--cli',str(Path.cwd()/'target/release/xdremux'),'--apple-adapter',subprocess.check_output(['swift','build','-c','release','--show-bin-path'],text=True).strip()+'/xdremux-apple-adapter','--output',str(root/'adapter-launches.json')],'timeout_seconds':600},
               {'name':'hdr-log-reference-preserved','kind':'integration','command':['cargo','test','--locked','-p','xdremux-runtime','--lib','real_styles_thumbnail_round_trips_hdr_log_through_videotoolbox','--','--nocapture'],'env':{'XDREMUX_APPLE_ADAPTER_TEST_EXECUTABLE':subprocess.check_output(['swift','build','-c','release','--show-bin-path'],text=True).strip()+'/xdremux-apple-adapter','XDREMUX_TEST_STYLES_OUTPUT':str(root/'hdr-reference')},'timeout_seconds':900},
           ]
           (root/'plan.json').write_text(json.dumps({'schema_version':1,'scope':'Photographic Styles plus inferred Texture; full HDR primary, all fixture stills, single/batch/app, feature reuse and atomic native failure','checks':checks},indent=2)+'\n')
@@ -78,7 +82,7 @@ jobs:
               for p in root.iterdir():
                   if p.is_file():z.write(p,p.name)
           for group in groups:
-              for directory in group.iterdir():
+              for directory in (group.iterdir() if group.name=='fixtures' else [group]):
                   if not directory.is_dir():continue
                   if directory.name=='native':
                       directories=list(directory.iterdir())
@@ -94,9 +98,29 @@ jobs:
                       assert path.stat().st_size<95*1024*1024
               result=group/'result.json'
               if result.exists():shutil.copyfile(result,output/'result.json')
+          matrix=root/'fixtures/result.json';receipt=root/'gate-receipt.json'
+          if matrix.exists() and receipt.exists():
+              result=json.loads(matrix.read_text());gate=json.loads(receipt.read_text())
+              if result.get('passed') and gate.get('passed'):
+                  bundle=output/('xdremux-styles-texture-imports-'+os.environ['GITHUB_RUN_ID']+'.zip')
+                  files={};cases=[]
+                  for row in result['cases']:
+                      if 'fixture' not in row:continue
+                      path=root/'fixtures'/row['output'];raw=path.read_bytes()
+                      assert hashlib.sha256(raw).hexdigest()==row['sha256']
+                      name=Path(row['fixture']).parent.name+'__'+Path(row['fixture']).stem+'.heic'
+                      files['photos/'+name]=raw;cases.append({**row,'import_file':'photos/'+name})
+                  manifest={'source_head':result['head'],'configuration':result['build_configuration'],'device_activation_for_new_HDR_outputs':'not tested','cases':cases}
+                  files['FILES.json']=(json.dumps(manifest,indent=2)+'\n').encode()
+                  files['GATE-RECEIPT.json']=receipt.read_bytes()
+                  files['README.zh-CN.txt']='XDRemux 摄影风格与纹理风格联合生成测试包。photos/ 是完整尺寸 HDR 产品输出。先导入 portrait-02（含三组人物统计）、portrait-01、hr-01 与 LHDR 样张。核对激活、控件响应、HDR、保存及重新打开。此前用户已确认 SDR 研究候选能激活；本包新 HDR 文件尚待设备测试。文件来源与 SHA 见 FILES.json。\n'.encode()
+                  files['SHA256SUMS.txt']=''.join(hashlib.sha256(raw).hexdigest()+'  '+name+'\n' for name,raw in sorted(files.items())).encode()
+                  with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as z:
+                      for name,raw in files.items():z.writestr(name,raw)
+                  assert bundle.stat().st_size<95*1024*1024
           for p in output.glob('*.zip'):
               manifests.append({'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-          report={'source_repository':'21Z121Z1/XDRemux','source_head':'3ff6e9ca7bbfe15a56e83aec90f5d0ebd1289369','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
+          report={'source_repository':'21Z121Z1/XDRemux','source_head':'1a52db02f3e54eeb511019abdafe54155d06a7a6','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
           (output/'DELIVERY.json').write_text(json.dumps(report,indent=2)+'\n')
           (output/'.gitattributes').write_text('*.zip binary\n')
           branch='research/texture-product-output-'+os.environ['GITHUB_RUN_ID']
