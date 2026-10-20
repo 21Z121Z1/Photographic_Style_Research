@@ -17,7 +17,8 @@ def project(source, uri, reference_key=None):
     properties, associations = iprp(source, children)
     matching = [item for item, values in associations.items() if any(properties[index-1][4:8] == b'auxC' and uri.encode() + b'\0' in properties[index-1] for index, _ in values)]
     if reference_key is not None:
-        matching = [item for item in matching if any(ref['type']=='cdsc' and item in ref['to'] and reference_key.encode() in payloads[ref['from']] for ref in refs)]
+        marker = ('<fsincMattes:InstanceMaskReferenceKey>' + reference_key + '</fsincMattes:InstanceMaskReferenceKey>').encode()
+        matching = [item for item in matching if any(ref['type']=='cdsc' and item in ref['to'] and marker in payloads[ref['from']] for ref in refs)]
     if len(matching) != 1: raise ValueError('missing or ambiguous final mask ' + uri)
     primary = matching[0]; selected = {primary}
     while True:

@@ -272,6 +272,11 @@ int main(int argc, char **argv) {
                 if (status.intValue != 0) break;
             }
             report[@"stage"] = @"finished";
+            BOOL operationsCompleted=YES;
+            for(NSString *stage in @[@"setup",@"prewarm",@"prepareToProcess:",@"calculateStats",@"process",@"finishProcessing"])
+                operationsCompleted &= report[stage]!=nil && [report[stage] intValue]==0;
+            report[@"native_statistics_operations_completed"]=@(operationsCompleted);
+            report[@"native_returned_empty_statistics"]=@(operationsCompleted && !nativeStats.count);
             if (nativeStats.count && [report[@"process"] intValue] == 0) {
                 id effectName = Call(NSClassFromString(@"CMITextureStylesProcessor"), @"effectTypeToEffectName:", @[report[@"native_effect_type"] ?: @3]);
                 report[@"native_effect_name"] = effectName;

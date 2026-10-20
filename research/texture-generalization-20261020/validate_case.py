@@ -43,21 +43,28 @@ def validate(root, head):
     for r in decode:
         assert (r['width'],r['height'])==(width,height) and sha('stored-'+r['role']+'.l8')==r['sha256']
     decode_by_role={r['role']:r for r in decode}
-    renders=[]
+    renders=[];effect_outcomes=[]
     for index,p in enumerate(people):
         stored=native_by_key[p['instance_reference_key']]
         assert stored['faceID']==p['native_person_without_stats']['faceID']
         assert len(stored['faceLandmarks'])==len(p['native_person_without_stats']['faceLandmarks'])>0
-        assert set(stored['imageStats'])==set(effects)
+        assert 'Mattify' in stored['imageStats'] and set(stored['imageStats'])<=set(effects)
         for effect,name in effects.items():
             generated=read(f'person-{index}/{name}-type1-Studio-EV0.json')
-            assert not generated.get('exception') and generated['statistics_generation_completed']
+            assert not generated.get('exception') and generated['native_statistics_operations_completed']
             assert all(generated[stage]==0 for stage in stages)
             assert generated['shared_context_geometry_used'] and not generated['person_before_stats'].get('imageStats')
             assert generated['actual_input_mask_textures']['instance']['sha256']==sha(p['instance_role']+'.l8')
             assert generated['actual_input_mask_textures']['skin']['sha256']==sha('semanticskinmattev2.l8')
-            assert generated['native_output_person_stats']==stored['imageStats'][effect]
-            json.dumps(stored['imageStats'][effect],allow_nan=False)
+            if generated['native_returned_empty_statistics']:
+                assert not generated['native_output_person_stats'] and effect not in stored['imageStats']
+                outcome='native returned empty statistics; group omitted'
+            else:
+                assert generated['statistics_generation_completed']
+                assert generated['native_output_person_stats']==stored['imageStats'][effect]
+                assert 'nonfinite_number' not in json.dumps(stored['imageStats'][effect],allow_nan=False)
+                outcome='measured native statistics round-tripped'
+            effect_outcomes.append({'person_index':index,'effect':effect,'outcome':outcome})
         replay=read(f'person-{index}/final-file-replay.json')
         assert not replay.get('exception') and replay['input_sha256']==sha('texture-candidate.heic')
         assert replay['provided_precomputed_image_stats_from_final_HEIC']
@@ -98,6 +105,7 @@ def validate(root, head):
             'dimensions':[width,height],'native_face_count':len(production['face_geometry']),
             'native_instance_count':production['instance_count'],'stored_person_count':len(people),
             'unmatched_faces':production['unmatched_faces'],'native_replay_renders':renders,
+            'native_effect_outcomes':effect_outcomes,
             'no_person_behavior':'empty measured context; no fabricated people or population statistics' if not people else None,
             'container_properties':len(properties),'population_counts':populations,
             'source_media_preserved':True,'output_profile':'new 8-bit SDR edit copy; HDR and motion not retained',

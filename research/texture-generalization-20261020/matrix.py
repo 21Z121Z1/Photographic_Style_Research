@@ -108,6 +108,7 @@ def main():
             require([build/'prepare',path,directory,limit],directory,'prepare')
             row['input']=json.loads((directory/'input.json').read_text())
             row['prepare_exit']=0
+            prepared[row['id']]=directory
             if row.get('expected_upright_pixels'):
                 row['orientation_pixels_match']=row['input']['working_native_pixels_sha256']==row['expected_upright_pixels']
                 assert row['orientation_pixels_match'],'orientation did not restore original upright pixels'

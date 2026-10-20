@@ -246,6 +246,8 @@ def main():
         person = stats['normalized_person_with_stats']
         for path in ['undereyebrighten-type1-Studio-EV0.json', 'skinsmoothstandalone-type1-Studio-EV0.json']:
             extra = json.loads((stats_root / path).read_text())
+            if extra.get('native_returned_empty_statistics') and extra.get('native_statistics_operations_completed'):
+                continue
             if not extra.get('statistics_generation_completed') or extra.get('exception'):
                 raise ValueError('native effect statistics did not finish: ' + path)
             person.setdefault('imageStats', {}).update(extra['normalized_person_with_stats']['imageStats'])

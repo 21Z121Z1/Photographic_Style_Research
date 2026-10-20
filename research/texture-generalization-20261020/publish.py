@@ -26,7 +26,7 @@ def main(evidence):
         target = output / (directory.name + '.zip')
         with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(directory.rglob('*')):
-                if not path.is_file() or path.suffix not in {'.json','.txt','.log','.heic','.png','.l8','.bplist'}:
+                if not path.is_file() or path.suffix not in {'.json','.txt','.log','.heic','.png','.l8','.bplist','.tiff','.rgba32f'}:
                     continue
                 raw = path.read_bytes(); name = str(path.relative_to(directory))
                 entries.append({'path':name,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})

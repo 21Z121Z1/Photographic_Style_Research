@@ -49,8 +49,10 @@ def main(root):
     assert hashlib.sha256(raw).hexdigest() == stats['linear_RGBA32f_for_derived_styles_sha256']
     rgba = array.array('f'); rgba.frombytes(raw)
     if sys.byteorder != 'little': rgba.byteswap()
-    assert len(rgba) == count * 4 and all(math.isfinite(v) and v >= 0 for v in rgba)
-    rgb = [tuple(rgba[i * 4:i * 4 + 3]) for i in range(count)]
+    assert len(rgba) == count * 4 and all(math.isfinite(v) for v in rgba)
+    negative_components = sum(v < 0 for i,v in enumerate(rgba) if i % 4 != 3)
+    minimum_native_component = min(rgba)
+    rgb = [tuple(max(0,v) for v in rgba[i * 4:i * 4 + 3]) for i in range(count)]
     encoded = [tuple(gamma(v) for v in pixel) for pixel in rgb]
     luma = lambda p: .22897456 * p[0] + .69173852 * p[1] + .07928691 * p[2]
     linear = [luma(p) for p in rgb]; tone = [luma(p) for p in encoded]; mapped = [gamma(v) for v in linear]
@@ -94,6 +96,8 @@ def main(root):
               'input_linear_p3_sha256': hashlib.sha256(raw).hexdigest(), 'metadata_sha256': hashlib.sha256(metadata).hexdigest(),
               'thumbnail_encoding': 'published Apple Log function applied to this image-derived linear P3',
               'tone_pipeline': 'new sRGB-transfer SDR identity edit, exposure 0, gains 1, no extra face boost',
+              'negative_native_components_clamped_in_new_SDR_context':negative_components,
+              'minimum_native_linear_component_before_clamp':minimum_native_component,
               'mask_population_statistics': distributions, 'population_counts':populations, 'empty_populations':'omitted, no invented statistics', 'people_and_skin_ratios': document['7']}
     (root / 'derived-styles.json').write_text(json.dumps(report, indent=2) + '\n')
 
