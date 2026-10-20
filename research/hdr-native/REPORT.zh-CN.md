@@ -451,3 +451,25 @@ S71坐标编码补充（已验证数值，HDR-82）：matte_roi_s71.py独立实�
 stats/xstats两个setter受block+0xc0==1分支保护（0x1cbef0128–0130）；本节尚未独立绑定该标志的来源，不把这两步当作无条件执行。这里只证明字典取值→实际setter的数据流。常量名不证明应用域、相机来源、j是RGB乘数或影调逆已完成；既有j干预consumer零差与相机β界仍按原范围解释。S72完整ZIP3657B，SHA `f8b4dba6e3fddc344ebeff071a8f480d9777aeea2134db8c444fdc04261dff98`，manifest及每成员SHA全部校验；原JSON、源码SHA、ABI、反汇编行与归档receipt见research/hdr-native/evidence/s72/。
 
 **可交给macOS runner（HDR-84）**：以显式extents和全帧/分块输出区域调用原ROI方法，进一步绑定实际consumer的matte采样；继续原统计源、33点C01–C05、完整往返与编码SDRmax0。**待实机**仍为匹配IMG2810的同帧j/WithoutFaceBoost四曲线及N/B/T/V、face hist、allocateTone/应用域，原Studio统计、2679/2408 RAW与HDR实屏。没有新增照片结果或预览；GTM/LTM/语义分离、Apple Log、冻结上下文和全部门槛保持。**A_phase_complete=false，acceptance_complete=false，goal active。**
+
+
+### SEMANTIC-20261018：S73 原 CI 请求 ROI 与实际 mapped-region 的分界
+
+**已验证静态（HDR-85）**：原PISemanticStyleProcessor ROI方法0x1cbef066c在index0返回outputRect、index6/7/8返回各自完整extent，其他有效索引调用NeutrinoCore的NUCGRectConvertFromRectToRect(...,false)。GOT/跳板地址0x1d01aa9b0实际目标0x1c5ba7884；另外4个导入精确绑定为NUPixelRectFromCGRect/Scale/ToCGRect和NURectFlipYOrigin。原生dladdr exact-address全为true，NeutrinoCore UUID5E0B3F6B-554E-3373-A411-4A4D1CF0A057与原提取binary SHA b42a15eab428fb24f355d19b00efc0e8599d37e7c672516f97c21ea76cb24419对应；PI仍为5F17E1DB-A15E-38C7-9BEC-E081688B62E5、26A434。
+
+**已验证数值（HDR-86）**：S73 run39353695210/artifact12234397335，source4a349173547b96e9b0994c57c98192d774b6b474，image20261012.0260.1。运行前冻结三种几何（整图、小数分块、带原点偏移）×9索引×useLightMap false/true，共54次原CPU调用/216个double分量：
+
+```
+index0: R0 = outputRect
+index6/7/8: Ri = full extent_i
+other supported i:
+Ri = (xi+(X-x0)*Wi/W0, yi+(Y-y0)*Hi/H0, Wout*Wi/W0, Hout*Hi/H0)
+```
+
+最大误差1.7763568394002505e-15（源坐标单位），通过此CPU几何控制预设1e-12门槛。consumer_roi_s73.py的后补独立实现重放同误差，非新增留出。所有原manifest成员SHA已验，完整ZIP5360B SHA `f23f633a0b760d8cac37a7b4a746f5eec71d2e3b5583f7bdeaa828d3b01889b7`；原始JSON、ABI、导入目标、汇编行/文件SHA、源代码SHA与复现输出在evidence/s73/。这54次均无照片/图像或PSO dispatch，不计入五张照片验收。
+
+**已验证静态，证据边界**：实际process callback(0x1cbeefc58)还将输入对象CGRect getter(0x1d0088a70，selector尚未在此探针解码)返回值依次交给PixelRectFromCGRect(policy0)、PixelRectScale(policy0)、ToCGRect、FlipYOrigin。PixelRect为四个signed-int64分量（RectT<long>、ToCGRect的scvtf）；policy0使用floor(min+C_a)/ceil(max+C_b)，常量槽0x1c5cf52a8/0x1c5cf5450尚未读数值。实际CI分配/取整和采样未在S73捕获；不能以请求ROI公式通过替代这些算子或C04全域。未把此实现覆盖冻结输入，也未凭函数名猜getter或常量。
+
+**可交给macOS runner（HDR-87）**：读原getter/常量，逐项复现整数取整/缩放及实际CI buffer的尺寸、mapped region、scale，再做完整像素对照。33皮肤点C01–C05紧外包络、完整原生往返、ImageIO封装SDRmax0继续未通过。**待实机**同帧j/WithoutFaceBoost、N/B/T/V、face hist/allocateTone/应用域、原Studio统计、2679/2408 RAW及真实HDR观看仍按既有计划。没有新HDR预览或物理EV；GTM/LTM/语义仍分离、LinearThumbnail为Apple Log，原件、mask、half/float/PSNR/1e-3门槛不改。**A_phase_complete=false，acceptance_complete=false，goal active。**
+
+125MB许可下的S67补档（已验证数值，仅完整性，HDR-88）：原run39335997594/artifact12226746912仍未过期，完整ZIP210521B现已追加落地，SHA b1b95a5df2ee252eec41153cdce6f88d521c36490fc5422bbacb734a208509f1，原manifest SHA 8efb2a7166222ef8054df2a569d4bd5b0fdbb5a5e67d5af2cd0754851417141c，29个payload成员SHA均验证。与原选取包记录为同一份原ZIP，旧selected-original-members.tar.xz保留且SHA不变；未重跑任何原生实验，也未改变S67冻结2/3或后补条件模型的结论。第一次补档读取器把历史bytes字段误当size，在写ZIP前报错；核对旧原manifest后修正，最终完整验证。见evidence/s72/full-s67-archive-supplement.json；此后补记录不改写早先“只保留必要成员”的历史事实。

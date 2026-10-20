@@ -1,0 +1,84 @@
+{
+  "classification_static": "已验证静态",
+  "classification_finite_ROI": "已验证数值",
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "PhotoImaging_UUID": "5F17E1DB-A15E-38C7-9BEC-E081688B62E5",
+  "NeutrinoCore_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+  "NeutrinoCore_archived_binary_SHA256": "b42a15eab428fb24f355d19b00efc0e8599d37e7c672516f97c21ea76cb24419",
+  "original_ROI_IMP": "0x1cbef066c",
+  "branches": "index0 returns requested outputRect;6/7/8 return full source extenti;other supported indices use NUCGRectConvertFromRectToRect(...,false)",
+  "finite_model": "Ri=(xi+(X-x0)*Wi/W0, yi+(Y-y0)*Hi/H0, Wout*Wi/W0,Hout*Hi/H0)",
+  "controls": 54,
+  "double_components": 216,
+  "max_abs_source_coordinate": 1.7763568394002505e-15,
+  "CPU_geometry_gate": 1e-12,
+  "formula_frozen_before_native": true,
+  "standalone_implementation_written_after_native_not_holdout": true,
+  "C_imports_exact_target_bindings": [
+    {
+      "query_unslid": "0x1d01aa9b0",
+      "target_unslid": "0x1c5ba7884",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+        "found": true,
+        "image": "/System/Library/PrivateFrameworks/NeutrinoCore.framework/Versions/A/NeutrinoCore",
+        "name": "NUCGRectConvertFromRectToRect"
+      }
+    },
+    {
+      "query_unslid": "0x1d01aac20",
+      "target_unslid": "0x1c59b581c",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+        "found": true,
+        "image": "/System/Library/PrivateFrameworks/NeutrinoCore.framework/Versions/A/NeutrinoCore",
+        "name": "NUPixelRectFromCGRect"
+      }
+    },
+    {
+      "query_unslid": "0x1d01aacb0",
+      "target_unslid": "0x1c5ba4b0c",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+        "found": true,
+        "image": "/System/Library/PrivateFrameworks/NeutrinoCore.framework/Versions/A/NeutrinoCore",
+        "name": "NUPixelRectScale"
+      }
+    },
+    {
+      "query_unslid": "0x1d01aace0",
+      "target_unslid": "0x1c59b575c",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+        "found": true,
+        "image": "/System/Library/PrivateFrameworks/NeutrinoCore.framework/Versions/A/NeutrinoCore",
+        "name": "NUPixelRectToCGRect"
+      }
+    },
+    {
+      "query_unslid": "0x1d01aad90",
+      "target_unslid": "0x1c5ba65d4",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+        "found": true,
+        "image": "/System/Library/PrivateFrameworks/NeutrinoCore.framework/Versions/A/NeutrinoCore",
+        "name": "NURectFlipYOrigin"
+      }
+    }
+  ],
+  "actual_callback_chain": "CGRect getter0x1d0088a70 (selector not yet decoded here) -> NUPixelRectFromCGRect(policy0) -> NUPixelRectScale(policy0) -> NUPixelRectToCGRect -> NURectFlipYOrigin",
+  "pixel_rect_type": "4 signed int64 components, proven by RectT<long> and scvtf in ToCGRect; actual integer rounding/CI allocation still separate",
+  "policy0_static": "setXYMinMax: floor(min+C_a), ceil(max+C_b); C_a loaded0x1c5cf52a8, C_b0x1c5cf5450; numeric constants not captured by S73",
+  "no_photos": true,
+  "no_image_dispatches": true,
+  "requested_ROI_not_actual_allocated_regions_or_sampling_proof": true,
+  "legacy_thresholds_and_masks_changed": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

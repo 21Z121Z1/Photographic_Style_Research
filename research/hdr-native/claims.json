@@ -1784,6 +1784,130 @@
           "artifact_id": 12232168720
         }
       ]
+    },
+    {
+      "id": "HDR-85",
+      "category": "semantic/original-requested-ROI-and-callback-callgraph",
+      "status": "已验证静态",
+      "claim": "原PI ROI方法的index0/6–8分支及NUCGRectConvertFromRectToRect flagfalse调用已核对；5个C导入GOT目标在原生进程精确绑定到匹配UUID/SHA参考NeutrinoCore。实际mapped-region回调另走signed-int64 PixelRect转换/Scale(policy0)/ToCGRect/FlipYOrigin，不能将请求ROI等同实际分配/采样。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s73/summary.json",
+          "line": 1,
+          "sha256": "108a16c64e990542e9e1c59399515ab896617c6e6fdfef36a96aa6b18450f556"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/NeutrinoCore-source.txt",
+          "line": 1,
+          "sha256": "a524a3b31cf824d98d3fab9bd6cd05f34a774fc6ff1de3fb2281b3fd2226a698"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "20fbf6f9e8d490099abf97ca9d90cf438ee4ed718a7020711c7241a019b91427",
+          "run_id": 39353695210,
+          "artifact_id": 12234397335
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/model-replay.json",
+          "line": 1,
+          "sha256": "66d4e6e86de6e35f647349edb0e87a4ecedd9f0b6de72a3b3a98d6ace1b3fbf1"
+        }
+      ]
+    },
+    {
+      "id": "HDR-86",
+      "category": "semantic/finite-original-CI-ROI-oracle",
+      "status": "已验证数值",
+      "claim": "S73三种extents/output几何×9索引×两种useLightMap共54原CPU控制、216double分量，与预冻结比例模型maxabs1.7763568394002505e-15 source-coordinate，小于独立CPU门槛1e-12。后补独立实现同误差，不计新增照片/留出，不代表图像像素或C04全域门槛通过。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s73/summary.json",
+          "line": 1,
+          "sha256": "108a16c64e990542e9e1c59399515ab896617c6e6fdfef36a96aa6b18450f556"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/NeutrinoCore-source.txt",
+          "line": 1,
+          "sha256": "a524a3b31cf824d98d3fab9bd6cd05f34a774fc6ff1de3fb2281b3fd2226a698"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "20fbf6f9e8d490099abf97ca9d90cf438ee4ed718a7020711c7241a019b91427",
+          "run_id": 39353695210,
+          "artifact_id": 12234397335
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/model-replay.json",
+          "line": 1,
+          "sha256": "66d4e6e86de6e35f647349edb0e87a4ecedd9f0b6de72a3b3a98d6ace1b3fbf1"
+        }
+      ]
+    },
+    {
+      "id": "HDR-87",
+      "category": "semantic/remaining-allocated-ROI-rounding-and-sampling",
+      "status": "runner",
+      "claim": "继续原回调CGRect getter、policy0常数/整数PixelRect缩放的原生oracle，以及实际CI输入buffer分配/尺寸/mapped-region/scale；捕获完整上下文后再接全分辨率目标算子。33点C01–C05全域、完整往返和封装SDRmax0仍未证；相机同帧j曲线/统计、原Studio、RAW和实屏仍需实机。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s73/summary.json",
+          "line": 1,
+          "sha256": "108a16c64e990542e9e1c59399515ab896617c6e6fdfef36a96aa6b18450f556"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/NeutrinoCore-source.txt",
+          "line": 1,
+          "sha256": "a524a3b31cf824d98d3fab9bd6cd05f34a774fc6ff1de3fb2281b3fd2226a698"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "20fbf6f9e8d490099abf97ca9d90cf438ee4ed718a7020711c7241a019b91427",
+          "run_id": 39353695210,
+          "artifact_id": 12234397335
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/model-replay.json",
+          "line": 1,
+          "sha256": "66d4e6e86de6e35f647349edb0e87a4ecedd9f0b6de72a3b3a98d6ace1b3fbf1"
+        }
+      ]
+    },
+    {
+      "id": "HDR-88",
+      "category": "research/original-archive-integrity-supplement",
+      "status": "已验证数值",
+      "claim": "125MB许可后补存原S67完整ZIP210521B，与首次流式审计/原选择provenance及原manifest相同SHA，29个payload成员全部校验，旧选取xz原SHA不变；0次原生实验重做。此为归档完整性补全，不改变冻结计数模型或任何图像/33点验收状态。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s72/full-s67-archive-supplement.json",
+          "line": 1,
+          "sha256": "3323886aa9b259a2465d473a4a83aab32fb1915337801a624a9ea1ff12316823",
+          "run_id": 39335997594,
+          "artifact_id": 12226746912
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-19T19:50:09.527146+00:00",

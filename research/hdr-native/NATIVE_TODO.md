@@ -111,3 +111,5 @@ S69之后（runner）：在原UUID/PSO下使用1024×768恒灰main/linear、32×
 - S71已完成有限阶跃matte原CPU ROI+原PSO计数验证：7组/14336格max0，见evidence/s70-s71；C04全声明域仍未证明。下一步原PhotoImaging调用点/参数常量/ABI取证，固定实际logical/render/crop和context后再验证真实consumer，不把默认wrapper比例强加于已有冻结输入。33点、完整往返、编码后ImageIO SDR max0仍可runner推进；相机同帧j四曲线/N/B/T/V/face hist/allocateTone/应用域、原Studio统计、RAW与屏幕仍按实机方案。
 
 - S72（evidence/s72）：原PI消费者26 selector/15常量/4 ABI已绑定；下一步可runner用显式extents和full/tile输出调用原ROI(IMP0x1cbef066c)，捕获mapped region/实际texture尺寸和scale，并保留非目标上下文SHA。不能把S71默认wrapper比例当真实consumer。33点全域/完整往返/编码SDRmax0继续未证；同帧相机j曲线/统计、RAW、原Studio统计与实屏沿用原实机方案。
+
+- S73之后的runner测试（HDR-87）：先核对原getter0x1d0088a70和NC UUID5E0B3F6B-554E-3373-A411-4A4D1CF0A057；读取double常量槽0x1c5cf52a8、0x1c5cf5450及其bits，不猜epsilon。按原ABI四个int64的PixelRect，从NUPixelRectFromCGRect→Scale(policy0)→ToCGRect→FlipYOrigin逐项保存输入/输出。输入含整数、±.25、小数边界及精确文件比例5712/1024=5.578125、4032/1024=3.9375、main/matte比例；只测有证正尺寸/正scale，未覆盖的非有限域继续列C04。判定：整数四分量逐位一致、有限double几何预冻结gate1e-12；这不是RGB线性1e-5/PSNR60和原1e-3像素gate的替代。随后用同一合成图、全帧/分块CI实际处理捕获getter返回CGRect、分配texture宽高、mapped region、scale和SHA；保留GTC/guides/c/d/统计/其他matte。未获实际分配证据前，S73仅请求ROI。
