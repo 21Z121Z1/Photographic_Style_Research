@@ -410,3 +410,24 @@ S68–S69原生CPU检查：prepareToProcess:的实际ABI为i20@0:8I16；原PSO m
 **可交给macOS runner**：下一步以阶跃person/skin matte只干预目标crop，抓原_encodeRenderRegionForStats和localHistogram计数；继续原调用者统计源与尺寸绑定，及33点全域区间/完整原生往返/编码SDR max0。**待实机**：匹配IMG2810的同帧j/WithoutFaceBoost四组曲线、N/B/T/V、face hist、allocateTone及应用域；RAW2679/2408、原Studio统计与实际HDR观看沿用原方案。没有新增物理EV或照片预览结论；GTM/LTM/语义独立，LinearThumbnail仍Apple Log，A与acceptance_complete继续false。
 
 资源许可：用户于2026-10-20明确批准125MB累计写入上限（文本/小型密文），旧100MB账不改写、根分区仍至少4GB空闲；完整EXR许可另列，>1GB下载仍需询问。
+
+
+### SEMANTIC-20261018：S70–S71 原 matte crop 与统计配准
+
+**已验证静态（HDR-79）**：26A434原 `_calculateROIShift`（0x2333bcf98–bff0）对每轴计算 `RN32((cropExtent/mainExtent)/maskExtent)`，mapped origin为负cropOrigin；原 `_encodeRenderRegionForStats:`（0x23336c654）在零原点全画布时给出 `bias=RN32(cropOrigin/maskExtent)`。零crop由原ROI检查补 `RN32(1/maskExtent)`。因此“默认零crop”和“显式完整matte crop”不等价，S60手工 `1/mainExtent` 与后者相容，尚未绑定实际相机/PI consumer。原AIR以主图像素中心生成坐标，person/skin取ROI112/128B的float4，half matte阈值为≥.25（evidence/s55/local-histogram-source.ll:75–99、255–273）。不得据字段名或默认wrapper比例替换冻结上下文。
+
+**已验证数值（HDR-80）**：S71 run39346448714/artifact12231437053，26A434/image20261012.0260.1；1024×768恒灰、32×24横向person/纵向skin阶跃，identity GTC、base/exposure1、SRL0。原CPU生成176B ROI，手工dispatch原host-retained localHistogram PSO（mask1，32×24线程、32×32组）。7组控制的14,336个计数单元与运行前冻结预测全部相同，max abs0；主图/linear/两matte/GTC/params/stats SHA与目标外ROI字节不变。
+
+|仅改变的crop|person总计数|skin总计数|每格max abs|
+|---|---:|---:|---:|
+|default|774144|774144|0|
+|person_full_matte_crop|399360|774144|0|
+|skin_full_matte_crop|774144|401408|0|
+|person_shifted_matte_crop|595968|774144|0|
+|skin_shifted_matte_crop|774144|598016|0|
+|person_logical_size_crop|774144|774144|0|
+|skin_logical_size_crop|774144|774144|0|
+
+**失败与范围**：S70误带历史mask2而未创建统计PSO，run39345177157/artifact12230252826返回3；这是S55/S56已解决的初始化问题，本轮保留失败归档，S71只依已有静态证据修为mask1。未新拟合曲线、未重做旧269例。两份ZIP共8582B全部成员SHA已校验，S71 ZIP SHA `0cf5bc0e6ffba46c7354e5bfccae3feb32bafd5772152888be2ede6e251114db`；manifest/source/完整原始JSON与复现见research/hdr-native/evidence/s70-s71/及validate_matte_roi_s70.py。只验证有限合成阶跃，不是全纹理/fast数学/非有限路径的C04合同，也不是新增7张照片或完整host/相机执行。没有新照片预览或物理EV结论，旧ACES预览保留。
+
+**可交给macOS runner（HDR-81）**：读原PhotoImaging消费端优化selector、参数常量及ABI，继续绑定真实consumer ROI和统计源；33皮肤点C01–C05紧外包络、完整原生往返、封装后全图ImageIO SDR max0保持未认证。**待实机**：匹配IMG2810同帧j/WithoutFaceBoost曲线、N/B/T/V、face hist、allocateTone与应用域，原Studio统计、2679/2408 RAW及实际HDR观看沿用原清单；β=.1953125仍不是像素EV。GTM/LTM/语义分开，Apple Log、原件、冻结文件、原mask及阈值均不改。**A_phase_complete=false，acceptance_complete=false。** 累计写入许可125MB，根分区至少4GB；无人物明文上传，无完整EXR写入。

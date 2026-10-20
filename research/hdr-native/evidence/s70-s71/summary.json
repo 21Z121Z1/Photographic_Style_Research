@@ -1,0 +1,147 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "status_static": "\u5df2\u9a8c\u8bc1\u9759\u6001",
+  "status_finite_native_counts": "\u5df2\u9a8c\u8bc1\u6570\u503c",
+  "scope": "Synthetic fullframe1024x768, zero render origin, masks32x24 step0/1; original CPU ROI and original retained localHistogram PSO, manual dispatch; no photo or full host/camera claim",
+  "crop_scale": "RN32((cropExtent/mainExtent)/maskExtent); zero/zero fallback RN32(1/maskExtent)",
+  "crop_bias": "RN32(cropOrigin/maskExtent) at zero fullframe render origin",
+  "input_pixel_centers": "(x+.5,y+.5); original AIR local source46",
+  "default_not_equivalent_to_explicit_full_matte_crop": true,
+  "native_cases": 7,
+  "compared_person_skin_cells": 14336,
+  "per_cell_max_abs": 0,
+  "frozen_predicted_totals_match": true,
+  "outside_target_ROI_bytes_unchanged": true,
+  "all_input_SHA_unchanged": true,
+  "S60_manual_mask_scale_scope": "1/mainExtent is compatible with explicit full-matte crop; does not prove original camera caller used it. Do not replace frozen context with default-wrapper scale.",
+  "failure": "S70 accidentally reused historical mask2, same issue already established S55/S56; no stats PSO. Preserved failure ZIP; S71 applies existing proven mask1 only, not new curve/bit fitting.",
+  "sampling_contract": "Only finite tested step masks; no all-domain C04 or fast/half/nonfinite certificate",
+  "rows": [
+    {
+      "id": "default",
+      "native_totals": [
+        774144,
+        774144
+      ],
+      "frozen_predicted_totals": [
+        774144,
+        774144
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        774144,
+        774144
+      ],
+      "frozen_totals_match": true
+    },
+    {
+      "id": "person_full_matte_crop",
+      "native_totals": [
+        399360,
+        774144
+      ],
+      "frozen_predicted_totals": [
+        399360,
+        774144
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        399360,
+        774144
+      ],
+      "frozen_totals_match": true
+    },
+    {
+      "id": "skin_full_matte_crop",
+      "native_totals": [
+        774144,
+        401408
+      ],
+      "frozen_predicted_totals": [
+        774144,
+        401408
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        774144,
+        401408
+      ],
+      "frozen_totals_match": true
+    },
+    {
+      "id": "person_shifted_matte_crop",
+      "native_totals": [
+        595968,
+        774144
+      ],
+      "frozen_predicted_totals": [
+        595968,
+        774144
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        595968,
+        774144
+      ],
+      "frozen_totals_match": true
+    },
+    {
+      "id": "skin_shifted_matte_crop",
+      "native_totals": [
+        774144,
+        598016
+      ],
+      "frozen_predicted_totals": [
+        774144,
+        598016
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        774144,
+        598016
+      ],
+      "frozen_totals_match": true
+    },
+    {
+      "id": "person_logical_size_crop",
+      "native_totals": [
+        774144,
+        774144
+      ],
+      "frozen_predicted_totals": [
+        774144,
+        774144
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        774144,
+        774144
+      ],
+      "frozen_totals_match": true
+    },
+    {
+      "id": "skin_logical_size_crop",
+      "native_totals": [
+        774144,
+        774144
+      ],
+      "frozen_predicted_totals": [
+        774144,
+        774144
+      ],
+      "per_cell_max_abs": 0,
+      "posthoc_actual_ROI_model_totals": [
+        774144,
+        774144
+      ],
+      "frozen_totals_match": true
+    }
+  ],
+  "physical_camera_statistics_binding_verified": false,
+  "new_real_photo_processing": false,
+  "new_preview": false,
+  "old_thresholds_or_mask_changed": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

@@ -132,3 +132,6 @@ S64重放须从本地完整S63 ZIP验证后临时提供到runner（旧artifact�
 
 
 S69复现：在新增日期研究分支复制s69 workflow并更新push filter，xcode-27硬核对26A434；export W=$RUNNER_TEMP/新的私有目录，mkdir -p "$W/out"；python3 research/hdr-native/run_hdr_s69.py。只做CPU绑定/原PSO属性，不调用process，不依赖Photos图库。retention1天、马上下载校验；失败先读日志。原始归档见hdr-native-20261019/runs/39338027870、39338223690、39339778014、39341678257。整数几何模块stats_geometry_s69.full_frame(w,h,32,1024)有明示前提，不作为图像验收。
+
+
+S70–S71: run `scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_matte_roi_s70.py hdr-native-20261019/runs/39346448714/artifact-12231437053.zip` from styles-gtm-ltm (VM 400MB cap). This verifies all original manifest members and finite step counts, never a global sampler certificate. Original failed parent:39345177157/artifact-12230252826.zip. Native reproduction: workflow hdr-native-s71.yml on an authorized new research branch/ref; no parallel run,26A434/retention1; source derivation SHA in original derivation-s71.json. Use mask1 per existing S56 static proof; do not edit archived S70.

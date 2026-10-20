@@ -1,0 +1,80 @@
+[
+  {
+    "id": "HDR-79",
+    "category": "semantic/matte-crop-coordinate-binding",
+    "status": "已验证静态",
+    "claim": "原PixelBuffer _calculateROIShift在0x2333bcf98–bff0把cropExtent/mainExtent/maskExtent先double运算再RN32并传scale；mapped origin取负cropOrigin，原_encodeRenderRegionForStats输出对应归一化UV偏置。zero-crop由原ROI检查补1/maskExtent。仅所述正尺寸/fullframe域，不能等同实际PISemanticStyleProcessor或相机调用者。",
+    "os_build": "26A434",
+    "evidence": [
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/summary.json",
+        "line": 1,
+        "sha256": "6f33595fce502067a3bec6d9a9d9f587d5419e0bc1d1b36219de06e4bae8d9df"
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/provenance.json",
+        "line": 1,
+        "sha256": "c9002b24c19d7e340b510ec0b68a516eb4e94bbfe7d948e32027cfea65ff2ea2",
+        "run_id": 39346448714,
+        "artifact_id": 12231437053
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/source-notes.txt",
+        "line": 1,
+        "sha256": "9ba16e7f2b77062e57752729a05e4ff8992bae113451eecee22b925573a5f1c6"
+      }
+    ]
+  },
+  {
+    "id": "HDR-80",
+    "category": "semantic/native-matte-registration-controls",
+    "status": "已验证数值",
+    "claim": "26A434原CPU ROI+原localHistogram PSO，7组阶跃person/skin crop控制共14336计数单元与冻结预测完全一致，max abs0；输入SHA及非目标ROI字节不变。默认/完整matte crop的人物计数774144/399360、皮肤774144/401408。这是有限合成计数验证，没有新真实照片逆解/half像素门槛通过，C04全域仍未证。",
+    "os_build": "26A434",
+    "evidence": [
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/summary.json",
+        "line": 1,
+        "sha256": "6f33595fce502067a3bec6d9a9d9f587d5419e0bc1d1b36219de06e4bae8d9df"
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/provenance.json",
+        "line": 1,
+        "sha256": "c9002b24c19d7e340b510ec0b68a516eb4e94bbfe7d948e32027cfea65ff2ea2",
+        "run_id": 39346448714,
+        "artifact_id": 12231437053
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/source-notes.txt",
+        "line": 1,
+        "sha256": "9ba16e7f2b77062e57752729a05e4ff8992bae113451eecee22b925573a5f1c6"
+      }
+    ]
+  },
+  {
+    "id": "HDR-81",
+    "category": "semantic-global-local/remaining-original-consumer-binding",
+    "status": "runner",
+    "claim": "S60手工1/mainExtent与原包装器显式完整matte crop兼容，尚不能认定是实际相机/消费端配准。继续查原PhotoImaging selector/CFString/ABI和实际处理上下文；33点C01–C05、完整原生往返、编码SDRmax0仍未认证。同帧j曲线/统计与应用域、原Studio统计、RAW及实际HDR观看继续待实机。",
+    "os_build": "26A434",
+    "evidence": [
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/summary.json",
+        "line": 1,
+        "sha256": "6f33595fce502067a3bec6d9a9d9f587d5419e0bc1d1b36219de06e4bae8d9df"
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/provenance.json",
+        "line": 1,
+        "sha256": "c9002b24c19d7e340b510ec0b68a516eb4e94bbfe7d948e32027cfea65ff2ea2",
+        "run_id": 39346448714,
+        "artifact_id": 12231437053
+      },
+      {
+        "file": "repo/research/hdr-native/evidence/s70-s71/source-notes.txt",
+        "line": 1,
+        "sha256": "9ba16e7f2b77062e57752729a05e4ff8992bae113451eecee22b925573a5f1c6"
+      }
+    ]
+  }
+]

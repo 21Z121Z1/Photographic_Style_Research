@@ -134,3 +134,8 @@ S68–S69（26A434/image20261012.0260.1，0照片/0图像dispatch）：
 - run39339778014/artifact12227399531；source1792940f83b6fe3c9f54085d184db47615f170a0；success-diagnostics-ROI-failed；ZIP SHA 1d0fd2e653d1369e9cd34b10b6abedf8bbada488f918ed2a13208afaa85ccd4c
 - run39341678257/artifact12228712359；source93c0b4adda0d86e02572d79a578c569854d42d52；success-CPU-ROI-0；ZIP SHA f8f458dd7842a06d8eff1c672498e324a460dfcd9973be08442c198eb89af236
 所有ZIP/成员SHA已验，3份派生C程序从各commit精确重建。S68/S69自建临时分支在确认无PR/他用ref且源已保存后清理，无secret/release；master与他人PR保持。细节evidence/s68-s69/provenance.json。
+
+
+S70–S71 (2026-10-20): no photos/secrets/releases, xcode-27 26A434/image20261012.0260.1, retention-days1.
+- source 07f5943a3cd0168c04aaf097f46d181818b4b885, research/vm-native-20261020-hdr-s70, run39345177157, artifact12230252826, ZIP2487B SHA256 23972244a31f790ae3edaf0b8868e4ff14fab667f4f29f2014ed6cdc35bf241a, manifest SHA256 a3af60772237b9620c145fbf925350e50f79bd0ab24f7bc3c433c9ea2a20837c; all members verified. Known mask2 initialization failure retained.
+- source 8cd1b82c44ddd681c4f936a04cf6ceccd6cd7696, research/vm-native-20261020-hdr-s71, run39346448714, artifact12231437053, ZIP6095B SHA256 0cf5bc0e6ffba46c7354e5bfccae3feb32bafd5772152888be2ede6e251114db, manifest SHA256 52fa016dd9535154804c918af3019c0efe4b5134779df9ddde997b282d1a694f; all members verified. 7 finite synthetic ROI/count cases,14336 cells max abs0; no full scene/inverse certificate.
