@@ -26,7 +26,7 @@ import hashlib,json,pathlib,subprocess,sys
 p=pathlib.Path(sys.argv[1]);input_path=p/'public-astronaut.png'
 assert hashlib.sha256(input_path.read_bytes()).hexdigest()=='88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5'
 rows=[]
-for mode in ['vision','fsinc']:
+for mode in ['vision','fsinc','VNGenerateHumanAttributesSegmentationRequest','VNGenerateFaceSegmentsRequest','VNGenerateGlassesSegmentationRequest']:
     with (p/(mode+'.stdout.log')).open('wb') as stdout,(p/(mode+'.stderr.log')).open('wb') as stderr:
         try:
             result=subprocess.run([str(p/'inference'),mode,str(input_path),str(p/(mode+'.json'))],stdout=stdout,stderr=stderr,timeout=180)
@@ -36,3 +36,19 @@ for mode in ['vision','fsinc']:
 (p/'inference-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
 rm "$TASK_OUT/inference" "$TASK_OUT/public-astronaut.png"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/stats_preflight.m" \
+    -framework Foundation -framework Metal -framework CoreVideo \
+    -o "$TASK_OUT/stats-preflight" 2>&1 | tee "$TASK_OUT/stats-build.log"
+python3 - "$TASK_OUT" <<'PY'
+import json,pathlib,subprocess,sys
+p=pathlib.Path(sys.argv[1]);rows=[]
+for name in ['CMITextureStylesMattify','CMITextureStylesUnderEyeBrighten','CMITextureStylesSkinSmoothStandalone']:
+    with (p/(name+'.stdout.log')).open('wb') as stdout,(p/(name+'.stderr.log')).open('wb') as stderr:
+        try:
+            result=subprocess.run([str(p/'stats-preflight'),name,str(p/(name+'.json'))],stdout=stdout,stderr=stderr,timeout=120)
+            status=result.returncode
+        except subprocess.TimeoutExpired:status='timeout120'
+    rows.append({'class':name,'exit':status})
+(p/'stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
+PY
+rm "$TASK_OUT/stats-preflight"

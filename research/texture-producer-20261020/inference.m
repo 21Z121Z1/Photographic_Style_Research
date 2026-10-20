@@ -123,6 +123,41 @@ int main(int argc, char **argv) {
                 }
                 report[@"instances"] = instances;
                 report[@"stage"] = @"vision-finished";
+            } else if ([mode hasPrefix:@"VNGenerate"]) {
+                Class requestClass = NSClassFromString(mode);
+                if (!requestClass || ![requestClass isSubclassOfClass:VNRequest.class])
+                    @throw [NSException exceptionWithName:@"SPIUnavailable" reason:mode userInfo:nil];
+                VNRequest *request = [requestClass new];
+                VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image orientation:orientation options:@{}];
+                NSError *error = nil;
+                report[@"stage"] = @"vision-private-request"; Write(report, output);
+                BOOL success = [handler performRequests:@[request] error:&error];
+                report[@"request_success"] = @(success); report[@"request_error"] = error.description ?: @"";
+                report[@"request_revision"] = @(request.revision);
+                NSMutableArray *results = [NSMutableArray new];
+                for (VNObservation *observation in request.results) {
+                    NSMutableDictionary *item = [@{@"class": NSStringFromClass([observation class]), @"confidence": @(observation.confidence)} mutableCopy];
+                    if ([observation isKindOfClass:VNPixelBufferObservation.class])
+                        item[@"pixel_buffer"] = BufferFacts(((VNPixelBufferObservation *)observation).pixelBuffer);
+                    NSMutableArray *properties = [NSMutableArray new];
+                    for (Class cls = [observation class]; cls && cls != VNObservation.class; cls = class_getSuperclass(cls)) {
+                        unsigned count = 0; objc_property_t *list = class_copyPropertyList(cls, &count);
+                        for (unsigned i = 0; i < count; i++) {
+                            NSString *key = @(property_getName(list[i]));
+                            [properties addObject:@{@"name": key, @"attributes": @(property_getAttributes(list[i]))}];
+                            @try {
+                                id value = [observation valueForKey:key];
+                                if ([value isKindOfClass:NSNumber.class] || [value isKindOfClass:NSString.class]) item[key] = value;
+                                else if ([value isKindOfClass:NSDictionary.class]) item[[key stringByAppendingString:@"_keys"]] = [value allKeys];
+                            } @catch (__unused NSException *ignored) {}
+                        }
+                        free(list);
+                    }
+                    item[@"runtime_properties"] = properties;
+                    [results addObject:item];
+                }
+                report[@"results"] = results;
+                report[@"stage"] = @"vision-private-finished";
             } else if ([mode isEqual:@"fsinc"]) {
                 void *handle = dlopen("/System/Library/PrivateFrameworks/ANSTKit.framework/ANSTKit", RTLD_NOW | RTLD_LOCAL);
                 if (!handle) @throw [NSException exceptionWithName:@"FrameworkUnavailable" reason:@(dlerror() ?: "ANSTKit") userInfo:nil];

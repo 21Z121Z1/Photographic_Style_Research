@@ -78,7 +78,10 @@ int main(int argc, char **argv) {
                 [name hasPrefix:@"PISemantic"] || [name hasPrefix:@"PIMatte"] ||
                 [name hasPrefix:@"_NUImage"] || [name hasPrefix:@"NUURL"] ||
                 [name hasPrefix:@"CMITS"] || [name hasPrefix:@"CMIImageTile"] ||
-                [name hasPrefix:@"CMIMetalResource"] || [name isEqual:@"FigMetalContext"] ||
+                [name hasPrefix:@"CMIMetalResource"] || [name hasPrefix:@"FigMetal"] ||
+                [name hasPrefix:@"CMIExternalMemory"] ||
+                [name hasPrefix:@"VNGenerate"] || [name containsString:@"HumanAttributes"] ||
+                [name containsString:@"FaceSegments"] || [name containsString:@"SegmentationObservation"] ||
                 [name containsString:@"CompositionController"] || [name hasPrefix:@"NUSource"] ||
                 fsinc || [name containsString:@"SmartStyleStatistics"]) {
                 [candidateNames addObject:name];
