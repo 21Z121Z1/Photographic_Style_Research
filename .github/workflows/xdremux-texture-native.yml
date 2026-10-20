@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 21Z121Z1/XDRemux
-          ref: b6b339162630dd9824474598f3248a0f3cd9e485
+          ref: 4720cd3a568f5646a13fbac3c3e755d125cf1a22
           path: product
           fetch-depth: 0
           persist-credentials: false
@@ -29,7 +29,7 @@ jobs:
         working-directory: product
         run: |
           mkdir -p "$RUNNER_TEMP/texture-product"
-          test "$(git rev-parse HEAD)" = b6b339162630dd9824474598f3248a0f3cd9e485
+          test "$(git rev-parse HEAD)" = 4720cd3a568f5646a13fbac3c3e755d125cf1a22
           sw_vers > "$RUNNER_TEMP/texture-product/os.txt"
           xcodebuild -version > "$RUNNER_TEMP/texture-product/xcode.txt"
           set -o pipefail
@@ -40,9 +40,26 @@ jobs:
           fi
           brew install libheif > "$RUNNER_TEMP/texture-product/brew.log" 2>&1
           export PKG_CONFIG_PATH="$(brew --prefix libheif)/lib/pkgconfig"
-          swift build --product xdremux-apple-adapter > "$RUNNER_TEMP/texture-product/swift-build.log" 2>&1
-          cargo build --locked -p xdremux-cli > "$RUNNER_TEMP/texture-product/rust-build.log" 2>&1
-          python3 scripts/apple/check_texture_styles.py --skip-build --all-fixtures --output "$RUNNER_TEMP/texture-product/fixtures" > "$RUNNER_TEMP/texture-product/check.log" 2>&1
+          swift build -c release --product xdremux-apple-adapter > "$RUNNER_TEMP/texture-product/swift-build.log" 2>&1
+          cargo build --release --locked -p xdremux-cli > "$RUNNER_TEMP/texture-product/rust-build.log" 2>&1
+          python3 - <<'PYPLAN'
+          from pathlib import Path
+          import json,os,subprocess
+          root=Path(os.environ['RUNNER_TEMP'])/'texture-product'
+          checks=[
+              {'name':'format','kind':'static','command':['cargo','fmt','--all','--','--check'],'timeout_seconds':120},
+              {'name':'targeted-rust-regressions','kind':'regression','command':['cargo','test','--locked','-p','xdremux-engine','-p','xdremux-heif','-p','xdremux-runtime','-p','xdremux-cli','--lib'],'timeout_seconds':900},
+              {'name':'targeted-clippy','kind':'static','command':['cargo','clippy','--locked','-p','xdremux-engine','-p','xdremux-heif','-p','xdremux-runtime','-p','xdremux-cli','--all-targets','--','-D','warnings'],'timeout_seconds':900},
+              {'name':'public-contract-and-app-policy','kind':'regression','command':['python3','-m','unittest','tests.test_public_documentation','tests.test_app_architecture','tests.test_product_ownership','tests.test_performance_design','tests.test_rust_apple_semantic_policy','tests.validation.test_workflow_configuration'],'timeout_seconds':120},
+              {'name':'shipping-app-build','kind':'integration','command':['bash','apps/macos/XDRemuxApp/scripts/build_and_run.sh','build'],'timeout_seconds':1800},
+              {'name':'app-models','kind':'regression','command':['bash','apps/macos/XDRemuxApp/scripts/verify_model_tests.sh'],'timeout_seconds':1200},
+              {'name':'all-real-fixtures-and-public-entries','kind':'integration','command':['python3','scripts/apple/check_texture_styles.py','--release','--skip-build','--all-fixtures','--output',str(root/'fixtures')],'timeout_seconds':2400},
+              {'name':'hdr-log-reference-preserved','kind':'integration','command':['cargo','test','--locked','-p','xdremux-runtime','--lib','real_styles_thumbnail_round_trips_hdr_log_through_videotoolbox','--','--nocapture'],'env':{'XDREMUX_APPLE_ADAPTER_TEST_EXECUTABLE':subprocess.check_output(['swift','build','-c','release','--show-bin-path'],text=True).strip()+'/xdremux-apple-adapter','XDREMUX_TEST_STYLES_OUTPUT':str(root/'hdr-reference')},'timeout_seconds':900},
+          ]
+          (root/'plan.json').write_text(json.dumps({'schema_version':1,'scope':'Photographic Styles plus inferred Texture; full HDR primary, all fixture stills, single/batch/app, feature reuse and atomic native failure','checks':checks},indent=2)+'\n')
+          PYPLAN
+          python3 scripts/ci/agent_completion_gate.py run --base 9838fd538cc86da5668e628e65d4f1777ca568bb --plan "$RUNNER_TEMP/texture-product/plan.json" > "$RUNNER_TEMP/texture-product/check.log" 2>&1
+          python3 scripts/ci/agent_completion_gate.py verify ".codex/verification-receipts/$(git rev-parse HEAD).json" > "$RUNNER_TEMP/texture-product/verify.log" 2>&1
       - name: Preserve fresh native product output and failure reports
         if: always()
         env:
@@ -52,6 +69,8 @@ jobs:
           from pathlib import Path
           import hashlib,json,os,shutil,subprocess,zipfile
           root=Path(os.environ['RUNNER_TEMP'])/'texture-product'
+          for receipt in (Path.cwd()/'product/.codex/verification-receipts').glob('*.json'):
+              shutil.copyfile(receipt,root/'gate-receipt.json')
           output=Path(os.environ['RUNNER_TEMP'])/'texture-product-publish';output.mkdir()
           manifests=[]
           groups=[p for p in root.iterdir() if p.is_dir()]
@@ -77,7 +96,7 @@ jobs:
               if result.exists():shutil.copyfile(result,output/'result.json')
           for p in output.glob('*.zip'):
               manifests.append({'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-          report={'source_repository':'21Z121Z1/XDRemux','source_head':'b6b339162630dd9824474598f3248a0f3cd9e485','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
+          report={'source_repository':'21Z121Z1/XDRemux','source_head':'4720cd3a568f5646a13fbac3c3e755d125cf1a22','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
           (output/'DELIVERY.json').write_text(json.dumps(report,indent=2)+'\n')
           (output/'.gitattributes').write_text('*.zip binary\n')
           branch='research/texture-product-output-'+os.environ['GITHUB_RUN_ID']
