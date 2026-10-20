@@ -1,0 +1,104 @@
+{
+  "base_commit": "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+  "base_revision": "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+  "builtins": {
+    "diff_check_passed": true,
+    "final_tracked_tree_clean": true,
+    "head_unchanged": true,
+    "initial_tracked_tree_clean": true
+  },
+  "changed_files": [
+    ".github/workflows/performance.yml",
+    "benchmarks/macos27-arm64-product-baseline.json"
+  ],
+  "checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+        "HEAD",
+        "--",
+        "crates",
+        "Sources",
+        "apps",
+        "Package.swift",
+        "Cargo.lock",
+        "Cargo.toml",
+        "scripts/apple",
+        "docs"
+      ],
+      "duration_seconds": 0.004,
+      "finished_at": "2026-10-20T09:45:19.635783+00:00",
+      "kind": "static",
+      "name": "native-verified-product-source-unchanged",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T09:45:19.631880+00:00",
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "timed_out": false,
+      "timeout_seconds": 30
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.test_performance_design",
+        "tests.test_performance_budget",
+        "tests.validation.test_workflow_configuration"
+      ],
+      "duration_seconds": 0.335,
+      "finished_at": "2026-10-20T09:45:19.970971+00:00",
+      "kind": "regression",
+      "name": "performance-and-workflow-contracts",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T09:45:19.635816+00:00",
+      "stderr_tail": ".........................\n----------------------------------------------------------------------\nRan 25 tests in 0.215s\n\nOK\n",
+      "stdout_tail": "",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/performance/check_performance_budget.py",
+        "--baseline",
+        "benchmarks/macos27-arm64-product-baseline.json",
+        "--benchmark",
+        "/workspace/texture-product-pass6/product-benchmark.json",
+        "--launches",
+        "/workspace/texture-product-pass6/adapter-launches.json",
+        "--expected-head",
+        "1a52db02f3e54eeb511019abdafe54155d06a7a6"
+      ],
+      "duration_seconds": 0.048,
+      "finished_at": "2026-10-20T09:45:20.019093+00:00",
+      "kind": "static",
+      "name": "recorded-performance-reference",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T09:45:19.971028+00:00",
+      "stderr_tail": "",
+      "stdout_tail": "product performance regression budget:\n  hdr-lhdr-mono400 median_wall_seconds: observed=1.411s reference=1.411s budget=1.905s\n  hdr-lhdr-mono400 p95_wall_seconds: observed=1.597s reference=1.597s budget=2.156s\n  hdr-lhdr-mono400 max_peak_rss_mib: observed=53.469MiB reference=53.469MiB budget=85.469MiB\n  hdr-uhdr-rgb444 median_wall_seconds: observed=6.897s reference=6.897s budget=9.310s\n  hdr-uhdr-rgb444 p95_wall_seconds: observed=6.939s reference=6.939s budget=9.368s\n  hdr-uhdr-rgb444 max_peak_rss_mib: observed=115.344MiB reference=115.344MiB budget=147.344MiB\n  oppo-compatible-lhdr-rgb420 median_wall_seconds: observed=1.512s reference=1.512s budget=2.041s\n  oppo-compatible-lhdr-rgb420 p95_wall_seconds: observed=1.572s reference=1.572s budget=2.122s\n  oppo-compatible-lhdr-rgb420 max_peak_rss_mib: observed=64.641MiB reference=64.641MiB budget=96.641MiB\n  oppo-compatible-uhdr-rgb420 median_wall_seconds: observed=5.946s reference=5.946s budget=8.028s\n  oppo-compatible-uhdr-rgb420 p95_wall_seconds: observed=6.235s reference=6.235s budget=8.417s\n  oppo-compatible-uhdr-rgb420 max_peak_rss_mib: observed=111.484MiB reference=111.484MiB budget=143.484MiB\n  motion-jpeg median_wall_seconds: observed=6.024s reference=6.024s budget=8.132s\n  motion-jpeg p95_wall_seconds: observed=6.449s reference=6.449s budget=8.706s\n  motion-jpeg max_peak_rss_mib: observed=313.953MiB reference=313.953MiB budget=392.441MiB\n  motion-heif median_wall_seconds: observed=0.098s reference=0.098s budget=0.348s\n  motion-heif p95_wall_seconds: observed=0.101s reference=0.101s budget=0.351s\n  motion-heif max_peak_rss_mib: observed=27.766MiB reference=27.766MiB budget=59.766MiB\n  batch-3 median_wall_seconds: observed=16.197s reference=16.197s budget=21.866s\n  batch-3 p95_wall_seconds: observed=16.754s reference=16.754s budget=22.618s\n  batch-3 max_peak_rss_mib: observed=249.000MiB reference=249.000MiB budget=311.250MiB\n  apple-portrait median_wall_seconds: observed=3.367s reference=3.367s budget=4.545s\n  apple-portrait p95_wall_seconds: observed=3.506s reference=3.506s budget=4.733s\n  apple-portrait max_peak_rss_mib: observed=896.688MiB reference=896.688MiB budget=1120.859MiB\n  apple-styles median_wall_seconds: observed=7.976s reference=7.976s budget=10.768s\n  apple-styles p95_wall_seconds: observed=8.150s reference=8.150s budget=11.003s\n  apple-styles max_peak_rss_mib: observed=1089.094MiB reference=1089.094MiB budget=1361.367MiB\nApple adapter structural launch budget:\n  apple-portrait: observed=1 max=1\n  apple-styles: observed=1 max=1\nperformance regression gate passed\n",
+      "timed_out": false,
+      "timeout_seconds": 120
+    }
+  ],
+  "diff_check_output": "",
+  "final_tracked_status": [],
+  "generated_at": "2026-10-20T09:45:20.026342+00:00",
+  "head_commit": "666246288791888813f53f81882c033714cda718",
+  "initial_tracked_status": [],
+  "passed": true,
+  "policy": {
+    "production_changed": false,
+    "source_changed": false
+  },
+  "repository": "/workspace/XDRemux-integration",
+  "schema_version": 1,
+  "scope": "Measured macOS 27 performance reference and CI routing; product source matches the native-verified revision"
+}
