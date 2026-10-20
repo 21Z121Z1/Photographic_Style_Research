@@ -69,6 +69,16 @@ def iprp(data, children):
 
 
 def make_iprp(properties, associations):
+    # Keep only referenced properties and share identical native descriptors.
+    # This preserves their meaning while avoiding decoder limits on ipco size.
+    used = {index for values in associations.values() for index, _ in values if index}
+    compact, by_bytes, mapping = [], {}, {0:0}
+    for old, raw in enumerate(properties, 1):
+        if old not in used: continue
+        if raw not in by_bytes: compact.append(raw); by_bytes[raw] = len(compact)
+        mapping[old] = by_bytes[raw]
+    properties = compact
+    associations = {item:[(mapping[index],flag) for index,flag in values] for item,values in associations.items()}
     body = len(associations).to_bytes(4, 'big')
     for item, values in associations.items():
         body += item.to_bytes(2, 'big') + bytes([len(values)])

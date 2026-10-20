@@ -385,6 +385,9 @@ int main(int argc, char **argv) {
                         WriteRowOrderPreview(renderedPixels,width,height,[replayRoot stringByAppendingPathComponent:@"final-working-mattify.png"]);
                     }
                     CIImage *preview = [CIImage imageWithMTLTexture:outputTexture options:@{kCIImageColorSpace: (__bridge id)working}];
+                    // The Metal working rows use top-left image coordinates;
+                    // CIImage's texture wrapper uses a lower-left image origin.
+                    preview = [preview imageByApplyingTransform:CGAffineTransformMake(1,0,0,-1,0,height)];
                     CGImageRef previewImage = [context createCGImage:preview fromRect:full format:kCIFormatRGBA8 colorSpace:srgb];
                     NSString *previewPath = [[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:replayRoot ? @"final-file-mattify-preview.heic" : @"mattify-native-preview.heic"];
                     CGImageDestinationRef previewOut = CGImageDestinationCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:previewPath], CFSTR("public.heic"), 1, NULL);

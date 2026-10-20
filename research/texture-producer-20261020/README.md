@@ -40,6 +40,8 @@ Ordinary Styles prerequisites describe a **new SDR identity-edit context**: meas
 
 One shared inferred geometry and full raw-mask context feeds the original statistics producers and writer. `project_final.py` copies the final carrier's encoded semantic and instance payloads into standalone decoder inputs. Original ImageIO decodes all fourteen scalar inputs. The replay uses those decoded masks, the final primary image and the person/statistics read back from that HEIC. Each effect binds its supported required/optional entries. Fresh Vision results are excluded from the replay inputs. The original native Mattify renderer must complete with finite pixels and a nonzero effect.
 
+Identical container properties are shared and unused descriptors removed; the verified container has 28 properties, below the decoder limit encountered in the compatibility check. The baked preview explicitly converts the Metal row origin to Core Image's image origin. Direct row-order PNGs permit independent orientation and appearance inspection.
+
 The current verified fixture is one 512×512 public NASA portrait with one detected face/person. This is not universal-input certification. Multiple-person matching, no-person production, broader orientations/resolutions, full PhotoImaging rendering, and device UI activation are not certified by this receipt.
 
 ## Reproduction and evidence

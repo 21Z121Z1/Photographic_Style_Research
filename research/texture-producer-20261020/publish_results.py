@@ -43,7 +43,7 @@ def main(evidence):
 文件 SHA、准确源码提交和工作流见 `DELIVERY.json` 与 `import/acceptance.json`；完整生成证据见 `evidence/`。
 '''
     command('git','switch','--orphan',branch)
-    (root/'.gitattributes').write_text('evidence/** -whitespace\n*.heic binary\n*.l8 binary\n*.bplist binary\n*.png binary\n')
+    (root/'.gitattributes').write_text('evidence/** -text -whitespace\n*.heic binary\n*.l8 binary\n*.bplist binary\n*.png binary\n')
     (root/'README.md').write_text(guide)
     (root/'DELIVERY.json').write_text(json.dumps(delivery,indent=2)+'\n')
     archive = root/'evidence'/('run'+run); archive.mkdir(parents=True)

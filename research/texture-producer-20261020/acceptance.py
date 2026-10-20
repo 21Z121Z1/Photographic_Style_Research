@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import plistlib
+from pack_carrier import parse, iprp
 
 
 def validate(root, head):
@@ -44,6 +45,8 @@ def validate(root, head):
     assert read('texture-no-people-control.heic.admission.json')['texture_person_count'] == 0
     assembly = read('texture-candidate.heic.assembly.json')
     assert assembly['image_and_auxiliary_payloads_byte_identical'] and len(assembly['native_encoded_masks']) == 16
+    encoded = (root/'texture-candidate.heic').read_bytes(); _,_,children,*_ = parse(encoded)
+    properties,_ = iprp(encoded,children); assert len(properties) <= 100
     assert read('final-mask-projections.json')['final_carrier_sha256'] == sha('texture-candidate.heic')
     for row in read('final-mask-decode.json')['rows']: assert row['sha256'] == sha('stored-'+row['role']+'.l8')
     replay = read('final-file-replay.json')
@@ -62,6 +65,7 @@ def validate(root, head):
             'cloud_production_and_final_file_replay_passed':True,'Photos_activation_proved':False,
             'verified_input_scope':'public NASA portrait, one detected face and instance; not a universal-input certification',
             'native_statistics_effects':sorted(person['imageStats']), 'final_file_person_count':candidate['texture_person_count'],
+            'final_container_property_count':len(properties),
             'native_editor_gate':{key:candidate[key] for key in ['PhotographicStyleV2','canRenderTextureStylesOnComposition','pipeline_isAvailable','platform_supportsSemanticStyleRendering']},
             'final_file_replay_rendered_pixels':replay['rendered_pixels'],
             'optional_protection_disabled':['ears','tattoo'], 'hand_request':production['hand_inference'],
