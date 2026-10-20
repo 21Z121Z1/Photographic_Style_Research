@@ -743,3 +743,38 @@ headroom1显示对照有43个像素差1码，来自应用gain/有理数offset的
 **已验证静态（日本归档与清理）。** aggregate artifact12290035513/31339B/SHA b189692f3fc9a511d8515d79d6d418271b95074cb2c1da17fc98c62121b40d3c；private artifact12289627351/50786968B/SHA6cbc5de765bd6546aeb9723b4540def21fa56e2c3b674345e4f97e5d436d0c8b。两份原ZIP直接日本runs/39477063576保存，provider digest、19个public成员、原/派生源码绑定及GPG/143个private成员全部核验，HK未下载完整ZIP或解码图像。终态、PR全状态head/base零引用和代码在研究分支保留确认后，本次secret/release/tag/临时branch均清理，见closure.json。
 
 **分类边界。** 两块原尺寸坐标ROI已验证数值；整幅、严格matte支持、求解器冷启动和更多真实样张仍可交runner。相机实际j/WithoutFaceBoost/N/B/T/V/人脸统计/allocateTone/应用域、Studio原统计、RAW和HDR屏幕仍待实机。Apple Log不变，GTM/LTM/semantic保持分开；A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。
+
+
+### SEMANTIC-20261018 / S93：原尺寸语义效果的背景/边缘验证与冷启动反证
+
+**已验证静态（冻结与范围）。** source e8b6d0c0cbca2be151d995295851cca3f04f6910；run39480275514 success，xcode-27/26A434/image20261012.0260.1。S93只新生成一份8个预声明输出缩放种子的include，选原生前向残差最小的初值后运行原24LM；旧S5/S91/S92、LM方程、[2^-20,1.25]边界、eligible与1e-3均不改，无half格点搜索，原输入/原生neutral oracle均未充当种子。S93-binding.json、S93-seed-binding.json和派生全文给出源码SHA与精确改写。仍是同一IMG_2810、tone=+0.35的两个预选512×384区域，主图5712×4284未缩小；不是整幅24MP验证，也不是相机已烘焙语义的无风格真值。
+
+**已验证数值（原生控制一致）。** 两ROI所有fixed_texture_bindings（含source、c/d guides、GTC、thumbnail、其他matte）与S92逐项SHA/shape/format完全相同。原生retained-PSO hydration依旧half零差；色彩/亮度试验仅改SSRFG9/10 offset592/596，目标外字节差0，前后可读纹理和缓冲SHA不变。GTM/LTM及纹理链不与语义逆变换混算，LinearThumbnail保持Apple Log。
+
+**已验证数值（冷启动未解决完整逆解）。**
+
+|ROI|S92→S93 eligible内>1e-3点|最大相对误差 S92→S93|mask覆盖率|真实输入eligible中超出旧搜索域|
+|---|---:|---:|---:|---:|
+|0|82905→83960|1.1411974430084229→0.48511019349098206|0.9631093343098959|0|
+|1|75984→76477|2.4658572673797607→0.7072815299034119|0.8174591064453125|447|
+
+最大残差下降，失败点数反而增加；不能把S93宣称为优于S92的全面修复，更不能宣布完整consumer往返通过。原texture0 copy-control仍half零差，说明这些捕获目标确有真实原生前像；ROI0真实eligible前像全在旧搜索域内，大失败不能被归为“信息已不可逆丢失”。ROI1有447个真实eligible像素含越界分量（最小负RGB），也不能用它解释其余大量失败。已排除“仅多几个曝光初值即可解决”的简单假设；尚有求解器/模型数值鲁棒性问题，具体成因未证，不伪称是matte边界或half舍入。按用户停止精度追逐的决定，保留这些失败作诊断，不继续穷举求解，也不修改旧验收。
+
+**已验证数值（实用半强度的独立效果）。** 仍用预先冻结的0/.5/1输出效果控制及固定ACES 1.0 SDR Video、Linear P3-D65→sRGB、0EV。误差比较对象是同上下文、仅关目标参数的原生反事实；99%分位不等于99%场景恢复。以下统计不以未受影响背景稀释：
+
+|ROI/算子|受影响eligible像素|p99 EV|最大EV|PSNR(peak=1) dB|matte边界p99 EV|
+|---|---:|---:|---:|---:|---:|
+|0/skin-color|15010|0.0014753247150475891|0.002422202784728692|84.15352192349263|0.0014763380239624475|
+|0/skin-brightness|5400|0.0015501930141540513|0.0020012257959694797|107.24039524023881|0.0015760669701343458|
+|0/skin-both|20410|0.0014948864422152039|0.002422202784728692|84.13223894549076|0.0015056128800189203|
+|1/skin-color|24270|0.0014725369735496133|0.0030263999911341226|82.47399008739414|0.0014740327201307017|
+|1/skin-brightness|31833|0.0013855655919181558|0.002573702205791232|101.16912026796548|0.0015548328322789174|
+|1/skin-both|56103|0.0014310738019606658|0.0030263999911341226|82.41573214524817|0.0015062683870646519|
+
+联合0.5的p99为0.001495/0.001431EV，最大0.002422/0.003026EV，PSNR84.13/82.42dB。3×3保守skin texture11支持集之外分别122846/46986像素；全部18个算子/强度组合中，估计校正和原生oracle在这些区域的最大变化均为0。这个支持集只作诊断，未用来门控输出、筛掉失败或改旧mask；结论仅适用于本次identity normalized affine上下文。边界联合p99约0.001506EV，梯度/Laplacian代理与色度差详见analysis.json和errors.csv，不能凭代理数值宣称已消除全部视觉光晕。18次预览前后输入SHA相同，两ROI原生输出与CI P3颜色域检查均合格。自选效果gain往返max≤2.98023224e-8仍只证明该控制的自洽；完整consumer逆解失败另行保留。
+
+**已验证静态（归档与隐私）。** public artifact12291323072/42557B/SHA 3bf0872a51df44b0b259d78ccc782b4db4a7cbeeb6bb935fc197d4ff6c258934；private artifact12290718438/50777786B/SHA bf68605a1cf80ea6165cec649e57aee0b9b805e88c4d06251e31f7a17157b556。原ZIP日本runs/39480275514保留，provider digest、21个public成员、派生/种子源码绑定及GPG/145个private成员全验。私有manifest SHA144fe10263e4f8cbc6d9fb860c0851432395e489dd139076d8542f60ba1345aa。PR全状态head/base零引用、终态及代码研究分支保留确认后，S93临时secret/release/tag/branch全清理，见closure.json。
+
+**已验证数值（用户要求减少跨区计费后的原地校验）。** 历史v1的完整cipher SSH回HK方式停止用于新run，旧receipt不改。storage/remote_artifact_store_v2.py在日本现存S93 ZIP上重做完整GPG/tar/hash认证，145成员SHA与旧receipt全同；无新artifact下载、无整包回传。HK仅收32KiB加密头，私钥留HK，归档专用session经SSH stdin/匿名fd到日本，回传19190B hash摘要、请求491B。初始头部直送GPG失败；诊断确认1KiB OpenPGP partial lengths后，只在本机缓存上去除分包长度并重封短包来取session。截断头无论GPG输出什么状态均不当作认证；完整认证只认日本端实际全cipher的GPG returncode0、DECRYPTION_OKAY/GOODMDC及全部manifest。初始排错合计约102081B数据payload（不含SSH命令/开销和其他API元数据），正常已安装工具的本例约52543B。日本helper/GPG峰值RSS34304/17488KiB，未解码图片或落地明文成员，临时GNUPGHOME已清理。工具不自动回退整包传输，遇未知头格式先诊断。证据transfer-local-verification.json、transfer-policy.json；此为传输验证，不增加图像样本数或场景精度证据。
+
+**分类与下一步。** 两个ROI的语义效果/支持集/固定预览已验证数值；整幅流式实用校正、更多照片与独立保留样本仍可交macOS runner。相机j权重上限β=0..0.1953125仍不能换成实际像素EV；相机同帧曲线/统计、Studio原统计、RAW配对和真实HDR屏幕只能待实机，预览幅度继续标“假设”。A_phase_complete=false、engineering_accepted=false、legacy acceptance_complete=false；本轮未重启bit-exact/33点全域紧区间追逐。

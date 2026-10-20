@@ -1,0 +1,95 @@
+{
+    attributes = "{\n    CIAttributeFilterCategories =     (\n    );\n    CIAttributeFilterDisplayName = PISemanticStyleFilter;\n    CIAttributeFilterName = PISemanticStyleFilter;\n    inputBaselineExposure =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = BaselineExposure;\n    };\n    inputCast =     {\n        CIAttributeClass = NSString;\n        CIAttributeDisplayName = Cast;\n    };\n    inputColorBias =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = ColorBias;\n    };\n    inputExtendedStatistics =     {\n        CIAttributeClass = NSDictionary;\n        CIAttributeDisplayName = ExtendedStatistics;\n    };\n    inputGainMapImage =     {\n        CIAttributeClass = CIImage;\n        CIAttributeDisplayName = GainMapImage;\n    };\n    inputImage =     {\n        CIAttributeClass = CIImage;\n        CIAttributeDisplayName = Image;\n        CIAttributeType = CIAttributeTypeImage;\n    };\n    inputIntensity =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDefault = 1;\n        CIAttributeDisplayName = Intensity;\n        CIAttributeIdentity = 0;\n        CIAttributeMin = 0;\n        CIAttributeSliderMax = 1;\n        CIAttributeSliderMin = 0;\n        CIAttributeType = CIAttributeTypeScalar;\n    };\n    inputLightMapData =     {\n        CIAttributeClass = NSData;\n        CIAttributeDisplayName = LightMapData;\n    };\n    inputLightMapHeight =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = LightMapHeight;\n    };\n    inputLightMapWidth =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = LightMapWidth;\n    };\n    inputLinearLightMapData =     {\n        CIAttributeClass = NSData;\n        CIAttributeDisplayName = LinearLightMapData;\n    };\n    inputLinearThumbnailImage =     {\n        CIAttributeClass = CIImage;\n        CIAttributeDisplayName = LinearThumbnailImage;\n    };\n    inputSRLCurveParameter =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = SRLCurveParameter;\n    };\n    inputSceneType =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = SceneType;\n    };\n    inputSkinMatteImage =     {\n        CIAttributeClass = CIImage;\n        CIAttributeDisplayName = SkinMatteImage;\n    };\n    inputSkyMatteImage =     {\n        CIAttributeClass = CIImage;\n        CIAttributeDisplayName = SkyMatteImage;\n    };\n    inputStatistics =     {\n        CIAttributeClass = NSDictionary;\n        CIAttributeDisplayName = Statistics;\n    };\n    inputSubjectMatteImage =     {\n        CIAttributeClass = CIImage;\n        CIAttributeDisplayName = SubjectMatteImage;\n    };\n    inputTRCData =     {\n        CIAttributeClass = NSData;\n        CIAttributeDisplayName = TRCData;\n    };\n    inputToneBias =     {\n        CIAttributeClass = NSNumber;\n        CIAttributeDisplayName = ToneBias;\n    };\n}";
+    defaults =     {
+        inputBaselineExposure = 0;
+        inputCast = nil;
+        inputColorBias = 0;
+        inputExtendedStatistics = nil;
+        inputGainMapImage = nil;
+        inputImage = nil;
+        inputIntensity = 1;
+        inputLightMapData = nil;
+        inputLightMapHeight = nil;
+        inputLightMapWidth = nil;
+        inputLinearLightMapData = nil;
+        inputLinearThumbnailImage = nil;
+        inputSRLCurveParameter = nil;
+        inputSceneType = nil;
+        inputSkinMatteImage = nil;
+        inputSkyMatteImage = nil;
+        inputStatistics = nil;
+        inputSubjectMatteImage = nil;
+        inputTRCData = nil;
+        inputToneBias = 0;
+    };
+    device = "Apple Paravirtual device";
+    "gtc_calls" =     (
+    );
+    "gtc_kernel" =     {
+        class = CIColorKernel;
+        description = "<CIColorKernel: gtc_rgb>";
+    };
+    "matte_sources" =     {
+        inputGainMapImage = "/Users/runner/work/_temp/semantic-s93/resources/inputGainMapImage.heic";
+        inputSkinMatteImage = "/Users/runner/work/_temp/semantic-s93/resources/inputSkinMatteImage.heic";
+        inputSkyMatteImage = "/Users/runner/work/_temp/semantic-s93/resources/inputSkyMatteImage.heic";
+        inputSubjectMatteImage = "/Users/runner/work/_temp/semantic-s93/resources/inputSubjectMatteImage.heic";
+    };
+    "native_curve_image" =     {
+        height = 1;
+        maximum = "0.996948";
+        mean = "0.1611817467902128";
+        minimum = 0;
+        nonfinite = 0;
+        width = 256;
+    };
+    "native_light_image" =     {
+        height = 32;
+        maximum = "0.5976562";
+        mean = "0.08037272095680237";
+        minimum = 0;
+        nonfinite = 0;
+        width = 32;
+    };
+    "native_linear_light_image" =     {
+        height = 32;
+        maximum = "0.7583008";
+        mean = "0.05574136972427368";
+        minimum = 0;
+        nonfinite = 0;
+        width = 32;
+    };
+    os = "Version 27.0.1 (Build 26A434)";
+    "primary_input" =     {
+        height = 384;
+        maximum = "1.185434";
+        mean = "0.1691965626844674";
+        minimum = "-0.005278613";
+        nonfinite = 0;
+        width = 512;
+    };
+    "thumbnail_input" =     {
+        height = 768;
+        maximum = "1.043945";
+        mean = "0.02667399490012181";
+        minimum = "-0.0006020274";
+        nonfinite = 0;
+        width = 1024;
+    };
+    "thumbnail_mode" = "native-stage-mirror";
+    "tone_bias" = "0.35";
+    trials =     (
+                {
+            output =             {
+                height = 384;
+                maximum = "1.239258";
+                mean = "0.2212477881706339";
+                minimum = "-0.0001828671";
+                nonfinite = 0;
+                width = 512;
+            };
+            "use_style_engine" = 0;
+        }
+    );
+    "unscaled_input_extent" = "{{0, 0}, {5712, 4284}}";
+}

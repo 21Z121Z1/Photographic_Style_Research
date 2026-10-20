@@ -1,0 +1,66 @@
+static float R3Loss(const __fp16*f,const __fp16*t,NSUInteger i,float*maximum){float sq=0,m=0;for(int c=0;c<3;c++){float e=((float)f[i*4+c]-t[i*4+c])/fmaxf(fabsf(t[i*4+c]),1e-6f);sq+=e*e;m=fmaxf(m,fabsf(e));}if(maximum)*maximum=m;return sq;}
+static void SemanticInverse(id<MTLCommandQueue>q,NSDictionary*call,NSDictionary*snap,NSData*reference,NSString*dir){
+ NSUInteger limit=[NSProcessInfo.processInfo.environment[@"VM_EXACT_INVERSE_LIMIT"]integerValue];if(!limit)return;id<MTLTexture>source=call[@"textures"][@"0"];NSUInteger total=source.width*source.height,n=MIN(limit,total);NSMutableData*work=[V2ReadTexture(q,source)mutableCopy];__fp16*pixels=work.mutableBytes;const __fp16*target=reference.bytes;
+ MTLTextureDescriptor*td=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatRGBA16Float width:source.width height:source.height mipmapped:NO];td.storageMode=MTLStorageModeShared;td.usage=MTLTextureUsageShaderRead;id<MTLTexture>input=[q.device newTextureWithDescriptor:td];id<MTLComputePipelineState>ps=call[@"pipeline_object"];
+ 
+ // Controls use original input as an oracle baseline, never as inverse seeds.
+ [input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height) mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];
+ NSData*copyReplay=V2Evaluate(q,call,snap,ps,input,nil);NSDictionary*copyMetric=V2Metrics(copyReplay,reference);
+ [[NSJSONSerialization dataWithJSONObject:copyMetric options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-input-copy-control.json"]atomically:YES];
+ if([copyMetric[@"half_differing_components"]unsignedLongLongValue])@throw[NSException exceptionWithName:@"InverseCopyControl" reason:@"Copied original texture changes the pipeline output" userInfo:nil];
+ NSMutableArray*footprints=[NSMutableArray new];NSUInteger probes[]={MIN((NSUInteger)1386,total-1),MIN((NSUInteger)4066,total-1),total/2};
+ for(int probe=0;probe<3;probe++)for(int channel=0;channel<3;channel++){@autoreleasepool{
+  NSUInteger point=probes[probe];__fp16 old=pixels[point*4+channel];pixels[point*4+channel]=(__fp16)((float)old+.02f);
+  [input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height)mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];NSData*changed=V2Evaluate(q,call,snap,ps,input,nil);const __fp16*y=changed.bytes;uint64_t count=0,outside=0;NSUInteger minx=source.width,miny=source.height,maxx=0,maxy=0;NSMutableArray*first=[NSMutableArray new];
+  for(NSUInteger k=0;k<total;k++){BOOL diff=NO;for(int c=0;c<3;c++)diff|=memcmp(y+k*4+c,target+k*4+c,2)!=0;if(diff){count++;outside+=k!=point;minx=MIN(minx,k%source.width);maxx=MAX(maxx,k%source.width);miny=MIN(miny,k/source.width);maxy=MAX(maxy,k/source.width);if(first.count<16)[first addObject:@(k)];}}
+  [footprints addObject:@{@"point":@(point),@"channel":@(channel),@"perturbation":@.02,@"different_pixels":@(count),@"different_outside_input_pixel":@(outside),@"bbox":@[@(minx),@(miny),@(maxx),@(maxy)],@"first_indices":first}];pixels[point*4+channel]=old;
+ }}
+ [[NSJSONSerialization dataWithJSONObject:footprints options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-spatial-footprints.json"]atomically:YES];
+ if(n<total){NSMutableDictionary*shortCall=[call mutableCopy];NSArray*g=call[@"grid"],*group=call[@"group"];NSUInteger rows=(n+source.width-1)/source.width;BOOL groups=[call[@"dispatch"]isEqualToString:@"groups"];NSUInteger height=groups?(rows+[group[1]unsignedIntegerValue]-1)/[group[1]unsignedIntegerValue]:rows;shortCall[@"grid"]=@[g[0],@(height),g[2]];
+  [input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height)mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];NSData*y=V2Evaluate(q,shortCall,snap,ps,input,nil);NSDictionary*m=V2Metrics([y subdataWithRange:NSMakeRange(0,n*8)],[reference subdataWithRange:NSMakeRange(0,n*8)]);NSMutableDictionary*proof=[m mutableCopy];proof[@"grid"]=shortCall[@"grid"];proof[@"scope"]=@"Prefix dispatch versus full original dispatch, compared only on the same first n pixels; no new output ROI transform";
+  [[NSJSONSerialization dataWithJSONObject:proof options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"inverse-prefix-control.json"]atomically:YES];if([m[@"half_differing_components"]unsignedLongLongValue]==0)call=shortCall;
+ }
+
+ float*x=malloc(n*3*4),*v=malloc(n*3*4),*jac=malloc(n*9*4),*delta=malloc(n*3*4),*lambda=malloc(n*4),*merit=malloc(n*4),*best=malloc(n*4),*bestSq=malloc(n*4),*bestX=malloc(n*3*4);BOOL*eligible=calloc(n,sizeof(BOOL));NSUInteger eligibleN=0;
+ for(NSUInteger i=0;i<n;i++){eligible[i]=YES;best[i]=INFINITY;bestSq[i]=INFINITY;for(int c=0;c<3;c++)if(!isfinite(target[i*4+c])||target[i*4+c]<=1.f/255)eligible[i]=NO;eligibleN+=eligible[i];}
+ NSData*(^evaluate)(const float*)=^NSData*(const float*a){for(NSUInteger i=0;i<n;i++)for(int c=0;c<3;c++)pixels[i*4+c]=(__fp16)a[i*3+c];[input replaceRegion:MTLRegionMake2D(0,0,input.width,input.height)mipmapLevel:0 withBytes:work.bytes bytesPerRow:input.width*8];return V2Evaluate(q,call,snap,ps,input,nil);};
+ void(^remember)(const float*,const __fp16*)=^(const float*a,const __fp16*f){for(NSUInteger i=0;i<n;i++){float maximum=0,sq=R3Loss(f,target,i,&maximum);if(maximum<best[i]||(maximum==best[i]&&sq<bestSq[i])){best[i]=maximum;bestSq[i]=sq;memcpy(bestX+i*3,a+i*3,12);}}};
+ NSMutableArray*steps=[NSMutableArray new];const float low=0x1p-20f,high=1.25f; NSString*seedPath=NSProcessInfo.processInfo.environment[@"VM_INVERSE_SEED_PATH"]; NSData*savedSeed=seedPath?[NSData dataWithContentsOfFile:seedPath]:nil; if(savedSeed&&savedSeed.length!=n*12)@throw[NSException exceptionWithName:@"SeedShape" reason:@"Own previous recovery has wrong shape" userInfo:nil]; const float*saved=savedSeed.bytes;
+ if(saved){memcpy(x,saved,n*12);NSData*y=evaluate(x);remember(x,y.bytes);}
+
+ NSMutableArray*coldRows=[NSMutableArray new];const float coldScales[]={2,1,.5f,.25f,.125f,.0625f,.03125f,.015625f};
+ if(!saved)for(NSUInteger ci=0;ci<8;ci++){@autoreleasepool{
+  for(NSUInteger i=0;i<n;i++)for(int c=0;c<3;c++)x[i*3+c]=fminf(high,fmaxf(low,(float)target[i*4+c]*coldScales[ci]));
+  NSData*y=evaluate(x);remember(x,y.bytes);NSUInteger failed=0;float maximum=0;
+  for(NSUInteger i=0;i<n;i++)if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}
+  [coldRows addObject:@{@"output_scale":@(coldScales[ci]),@"best_failed_eligible":@(failed),@"best_max_relative":@(maximum)}];
+ }}
+ NSMutableData*coarseStorage=[NSMutableData dataWithBytes:bestX length:n*12];const float*coarseSeed=coarseStorage.bytes;
+ [[NSJSONSerialization dataWithJSONObject:@{@"method":@"Eight predeclared output-derived powers-of-two seeds, choose native forward residual per pixel, then unchanged24LM. No original input/original neutral oracle is a seed.",@"steps":coldRows,@"lower":@(low),@"upper":@(high),@"legacy_mask_and_1e3_threshold_unchanged":@YES,@"half_lattice_search":@NO}options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-cold-start.json"]atomically:YES];
+ for(int seed=0;seed<(saved?0:1);seed++){
+  float factors[]={1,.5f,2};for(NSUInteger i=0;i<n;i++){lambda[i]=1e-4f;for(int c=0;c<3;c++)x[i*3+c]=fminf(high,fmaxf(low,saved?saved[i*3+c]:coarseSeed[i*3+c]));}
+  for(int iteration=0;iteration<24;iteration++){@autoreleasepool{
+   NSData*base=evaluate(x);const __fp16*f=base.bytes;remember(x,f);NSUInteger failed=0;float maximum=0;for(NSUInteger i=0;i<n;i++){merit[i]=R3Loss(f,target,i,NULL);if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}}[steps addObject:@{@"seed":@(seed),@"iteration":@(iteration),@"failed_eligible":@(failed),@"best_max_relative":@(maximum)}];if(!failed)break;
+   float eps=iteration<12?.008f:iteration<24?.004f:iteration<36?.002f:.001f;for(int c=0;c<3;c++){@autoreleasepool{
+    memcpy(v,x,n*12);for(NSUInteger i=0;i<n;i++)v[i*3+c]=fminf(high,x[i*3+c]*exp2f(eps));NSData*plus=evaluate(v);
+    memcpy(v,x,n*12);for(NSUInteger i=0;i<n;i++)v[i*3+c]=fmaxf(low,x[i*3+c]*exp2f(-eps));NSData*minus=evaluate(v);const __fp16*pf=plus.bytes,*mf=minus.bytes;
+    for(NSUInteger i=0;i<n;i++){float upper=fminf(high,x[i*3+c]*exp2f(eps)),lower=fmaxf(low,x[i*3+c]*exp2f(-eps)),den=fmaxf(log2f(upper/lower),1e-7f);for(int k=0;k<3;k++)jac[i*9+c*3+k]=((float)pf[i*4+k]-mf[i*4+k])/(den*fmaxf(fabsf(target[i*4+k]),1e-6f));}
+   }}
+   for(NSUInteger i=0;i<n;i++){
+    simd_float3 a={jac[i*9],jac[i*9+1],jac[i*9+2]},b={jac[i*9+3],jac[i*9+4],jac[i*9+5]},c={jac[i*9+6],jac[i*9+7],jac[i*9+8]},r;
+    for(int k=0;k<3;k++)r[k]=((float)target[i*4+k]-f[i*4+k])/fmaxf(fabsf(target[i*4+k]),1e-6f);
+    simd_float3 A={simd_dot(a,a)+lambda[i],simd_dot(a,b),simd_dot(a,c)},B={simd_dot(a,b),simd_dot(b,b)+lambda[i],simd_dot(b,c)},C={simd_dot(a,c),simd_dot(b,c),simd_dot(c,c)+lambda[i]},rhs={simd_dot(a,r),simd_dot(b,r),simd_dot(c,r)};float det=simd_dot(A,simd_cross(B,C));simd_float3 d={0,0,0};if(isfinite(det)&&fabsf(det)>1e-20f)d=(simd_float3){simd_dot(simd_cross(B,C),rhs)/det,simd_dot(simd_cross(C,A),rhs)/det,simd_dot(simd_cross(A,B),rhs)/det};for(int k=0;k<3;k++)delta[i*3+k]=eligible[i]&&best[i]>1e-3?fminf(1,fmaxf(-1,d[k])):0;
+   }
+   float*initial=malloc(n*12);memcpy(initial,x,n*12);BOOL*improved=calloc(n,sizeof(BOOL));
+   for(int ls=0;ls<4;ls++){@autoreleasepool{float scale=ldexpf(1,-ls);for(NSUInteger i=0;i<n*3;i++)v[i]=fminf(high,fmaxf(low,initial[i]*exp2f(scale*delta[i])));NSData*y=evaluate(v);const __fp16*yp=y.bytes;remember(v,yp);for(NSUInteger i=0;i<n;i++){float sq=R3Loss(yp,target,i,NULL);if(sq<merit[i]){merit[i]=sq;improved[i]=YES;memcpy(x+i*3,v+i*3,12);}}}}
+   for(NSUInteger i=0;i<n;i++)lambda[i]=fminf(1e4f,fmaxf(1e-8f,lambda[i]*(improved[i]?.25f:8.f)));free(initial);free(improved);
+  }}
+ }
+ memcpy(x,bestX,n*12);NSMutableArray*polish=[NSMutableArray new];
+ // No half-code lattice search: this stage records remaining residuals.
+
+ memcpy(x,bestX,n*12);NSData*last=evaluate(x);const __fp16*lf=last.bytes;NSMutableData*mask=[NSMutableData dataWithLength:n];NSUInteger failed=0;float maximum=0;for(NSUInteger i=0;i<n;i++){R3Loss(lf,target,i,best+i);((uint8_t*)mask.mutableBytes)[i]=eligible[i];if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}}
+ [last writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-roundtrip.f16"]atomically:YES];
+ [[NSData dataWithBytes:x length:n*12]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-rgb.f32"]atomically:YES];[[NSData dataWithBytes:best length:n*4]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-relative.f32"]atomically:YES];[mask writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-eligible.u8"]atomically:YES];NSDictionary*r=@{@"pixels":@(n),@"full_frame":@(n==total),@"input_shape":@[@(source.height),@(source.width),@4],@"mask_coverage":@((double)eligibleN/n),@"failed_eligible_pixels":@(failed),@"max_relative_error_in_mask":@(maximum),@"native_forward_verified":@YES,@"solver":@"S93: eight coarse output-derived powers-of-two starts then unchanged24LM, native Apple oracle; no lattice search; all failures retained",@"steps":steps,@"original_input_used_as_solver_seed":@NO,@"own_previous_recovery_seed":@(saved!=NULL),@"eligible_mask_is_predefined_not_certified_invertibility":@YES,@"scope":@"Fixed captured external context. Every eligible failure retained; 4096-pixel development subset is not a full-frame gate."};[[NSJSONSerialization dataWithJSONObject:r options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse.json"]atomically:YES];
+ free(x);free(v);free(jac);free(delta);free(lambda);free(merit);free(best);free(bestSq);free(bestX);free(eligible);
+}

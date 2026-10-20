@@ -1,0 +1,232 @@
+"""Native semantic controls in unscaled-image ROIs, with fixed external context.
+
+All photo processing runs on the macOS runner. ROI selection uses only the
+unchanged stored skin matte before any inverse error is inspected. This is not
+a full-frame gate or an identification of baked capture-time skin parameters.
+"""
+from pathlib import Path
+import hashlib, json, os, subprocess, sys, tarfile
+import numpy as np
+from PIL import Image, ImageDraw
+import PyOpenColorIO as ocio
+
+R = Path.cwd(); D = R / 'research/hdr-native'; W = Path(os.environ['W'])
+O = W / 'out'; PRIVATE = W / 'private'; ENC = W / 'encrypted'
+S = R / 'research/semantic-styles'; OLD = R / 'research/vm-native/runner'
+PLAN = json.loads((D / 'inputs_s93.json').read_text())
+sys.path.insert(0, str(R)); sys.path.insert(0, str(R / 'research/vm-native')); sys.path.insert(0, str(D))
+from extract_inputs import extract
+from tools.heif_dump import parse_heif
+from heif_standalone import standalone
+from semantic_strength_s82 import apply
+
+def sha(p):
+    with Path(p).open('rb') as f: return hashlib.file_digest(f, 'sha256').hexdigest()
+def save(p, value): p.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
+def command(args, log, env=None, timeout=900):
+    with log.open('w') as f:
+        return subprocess.run(list(map(str, args)), stdout=f, stderr=subprocess.STDOUT, env=dict(os.environ, **(env or {})), timeout=timeout).returncode
+assert subprocess.check_output(['sw_vers', '-buildVersion'], text=True).strip() == '26A434'
+freeze = {'plan': PLAN, 'source_SHA': {str(p.relative_to(R)): sha(p) for p in [Path(__file__).resolve(), D/'semantic_strength_s82.py', S/'semantic_consumer_s5.m', S/'generate_semantic_s5.py', OLD/'native_filter_probe.m', OLD/'replay_helpers_v7.inc', OLD/'oracle_replay_v7.inc']}, 'scope': 'Unscaled5712x4284 source; two preselected512x384 CI render requests. Not full-frame acceptance.', 'solver': 'Unchanged S5 one output-derived seed/24LM; no lattice or oracle-error selected patches', 'global_local_texture_unchanged': True, 'LinearThumbnail_Apple_Log_unchanged': True, 'legacy_mask_or_threshold_changed': False, 'engineering_accepted': False}
+save(O/'freeze.json', freeze)
+cipher = W/'input.gpg'; photo = W/'IMG_2810.HEIC'
+assert command(['gh','api','-H','Accept: application/octet-stream', f"repos/21Z121Z1/Photographic_Style_Research/releases/assets/{PLAN['input_asset_id']}"], cipher) == 0
+assert cipher.stat().st_size == PLAN['cipher_bytes'] and sha(cipher) == PLAN['cipher_sha256']
+key = os.environ.pop('SEMANTIC_S93_INPUT_SESSION').encode(); readfd, writefd = os.pipe()
+with (W/'input-decrypt.log').open('wb') as log:
+    p = subprocess.Popen(['gpg','--batch','--override-session-key-fd',str(readfd),'--status-fd','2','--output',str(photo),'--decrypt',str(cipher)], pass_fds=(readfd,), stdout=log, stderr=log)
+    os.close(readfd); os.write(writefd, key+b'\n'); os.close(writefd); del key
+    assert p.wait(timeout=120) == 0
+assert photo.stat().st_size == PLAN['source_bytes'] and sha(photo) == PLAN['source_sha256']
+os.environ.pop('GH_TOKEN', None); cipher.unlink()
+RES = W/'resources'; extract(photo, RES); data = photo.read_bytes(); h = parse_heif(data)
+for target, suffix in {'inputSubjectMatteImage':'semanticpersonmatte','inputSkinMatteImage':'semanticskinmatte','inputSkyMatteImage':'semanticskymatte','inputGainMapImage':'hdrgainmap','faceSkinMatte':'semanticfaceskinmatte'}.items():
+    matches = [i for i in h['items'].values() if i.get('aux_type','').endswith(suffix)]
+    assert len(matches) == 1, (target, len(matches))
+    (RES/(target+'.heic')).write_bytes(standalone(data, matches[0]['item_id']))
+del data
+GEN = W/'generated'; GEN.mkdir()
+# Use the same native no-orientation, unmanaged matte interpretation as the
+# consumer. A coordinate ramp determines bitmap row direction before selecting
+# a ROI; no flip is fitted from inverse/output errors.
+matte_source = r'''#import <Foundation/Foundation.h>
+#import <CoreImage/CoreImage.h>
+#import <Metal/Metal.h>
+int main(int argc,char**argv){@autoreleasepool{
+ if(argc!=4)return 2;id<MTLDevice>d=MTLCreateSystemDefaultDevice();if(!d)return 3;
+ CIContext*c=[CIContext contextWithMTLDevice:d options:@{kCIContextWorkingColorSpace:NSNull.null,kCIContextOutputColorSpace:NSNull.null}];
+ CIImage*i=[CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:@(argv[1])] options:@{kCIImageApplyOrientationProperty:@NO,kCIImageColorSpace:NSNull.null}];
+ CGRect r=i.extent;NSUInteger w=llround(r.size.width),h=llround(r.size.height);if(!i||w*h>4000000)return 4;
+ NSMutableData*b=[NSMutableData dataWithLength:w*h*4];[c render:i toBitmap:b.mutableBytes rowBytes:w*4 bounds:r format:kCIFormatRf colorSpace:NULL];[b writeToFile:@(argv[2])atomically:YES];
+ CIFilter*f=[CIFilter filterWithName:@"CILinearGradient" withInputParameters:@{@"inputPoint0":[CIVector vectorWithX:0 Y:0],@"inputPoint1":[CIVector vectorWithX:0 Y:2],@"inputColor0":[CIColor colorWithRed:0 green:0 blue:0 alpha:1],@"inputColor1":[CIColor colorWithRed:1 green:1 blue:1 alpha:1]}];
+ float ramp[4]={0};[c render:f.outputImage toBitmap:ramp rowBytes:8 bounds:CGRectMake(0,0,2,2)format:kCIFormatRf colorSpace:NULL];
+ NSDictionary*j=@{@"shape":@[@(h),@(w)],@"extent":NSStringFromRect(NSRectFromCGRect(r)),@"ramp_row0":@(ramp[0]),@"ramp_row1":@(ramp[2]),@"row0_lower_CI_y":@(ramp[0]<ramp[2])};
+ [[NSJSONSerialization dataWithJSONObject:j options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:@(argv[3])atomically:YES];return 0;}}
+'''
+(GEN/'matte_coordinates_s91.m').write_text(matte_source)
+assert command(['clang','-fobjc-arc','-O2','-framework','Foundation','-framework','CoreImage','-framework','Metal',GEN/'matte_coordinates_s91.m','-o',W/'matte-coordinates'],O/'matte-build.log')==0
+assert command([W/'matte-coordinates',RES/'inputSkinMatteImage.heic',PRIVATE/'selection-matte.f32',O/'bitmap-coordinate-calibration.json'],O/'matte-decode.log')==0
+cal=json.loads((O/'bitmap-coordinate-calibration.json').read_text())
+assert abs(cal['ramp_row0']-cal['ramp_row1'])>.1
+mat_arr=np.fromfile(PRIVATE/'selection-matte.f32','<f4').reshape(cal['shape']).astype('f8')
+mat_arr /= max(float(mat_arr.max()), 1)
+yy, xx = np.indices(mat_arr.shape); weight = mat_arr.sum(); assert weight > 0
+center = (float((yy*mat_arr).sum()/weight), float((xx*mat_arr).sum()/weight))
+edge = np.argwhere((mat_arr>0)&(mat_arr<1)); assert len(edge)>0
+choices = [center, edge[len(edge)//2]]; rois = []
+for y,x in choices:
+    yci=(y+.5)/mat_arr.shape[0]*4284 if cal['row0_lower_CI_y'] else (1-(y+.5)/mat_arr.shape[0])*4284
+    px = int(round((x+.5)/mat_arr.shape[1]*5712-256)); py = int(round(4284-yci-192))
+    px = max(0,min(5712-512,px))//4*4; py = max(0,min(4284-384,py))//4*4
+    rois.append({'stored_top_left_xywh':[px,py,512,384], 'CI_bottom_left_xywh':[px,4284-py-384,512,384]})
+save(PRIVATE/'ROI-selection.json', {'selection':'Unchanged legacy skin matte weighted centroid and median transition pixel; before native controls/inverse error', 'matte_shape':list(mat_arr.shape), 'rois':rois, 'source_canvas':[4284,5712]})
+assert command([sys.executable,S/'generate_semantic_s5.py',GEN],O/'generate.log') == 0
+
+# Derive a new include. The old S5/V7 include, bounds, eligible mask, LM
+# equations, 24 iterations and finite differences remain unchanged.
+old_inc=(GEN/'semantic_inverse_s5.inc').read_text()
+coarse_block=r"""
+ NSMutableArray*coldRows=[NSMutableArray new];const float coldScales[]={2,1,.5f,.25f,.125f,.0625f,.03125f,.015625f};
+ if(!saved)for(NSUInteger ci=0;ci<8;ci++){@autoreleasepool{
+  for(NSUInteger i=0;i<n;i++)for(int c=0;c<3;c++)x[i*3+c]=fminf(high,fmaxf(low,(float)target[i*4+c]*coldScales[ci]));
+  NSData*y=evaluate(x);remember(x,y.bytes);NSUInteger failed=0;float maximum=0;
+  for(NSUInteger i=0;i<n;i++)if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}
+  [coldRows addObject:@{@"output_scale":@(coldScales[ci]),@"best_failed_eligible":@(failed),@"best_max_relative":@(maximum)}];
+ }}
+ NSMutableData*coarseStorage=[NSMutableData dataWithBytes:bestX length:n*12];const float*coarseSeed=coarseStorage.bytes;
+ [[NSJSONSerialization dataWithJSONObject:@{@"method":@"Eight predeclared output-derived powers-of-two seeds, choose native forward residual per pixel, then unchanged24LM. No original input/original neutral oracle is a seed.",@"steps":coldRows,@"lower":@(low),@"upper":@(high),@"legacy_mask_and_1e3_threshold_unchanged":@YES,@"half_lattice_search":@NO}options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@"native-inverse-cold-start.json"]atomically:YES];
+"""
+anchor=' for(int seed=0;seed<(saved?0:1);seed++){'
+init='saved?saved[i*3+c]:target[i*4+c]*factors[seed]'
+assert old_inc.count(anchor)==1 and old_inc.count(init)==1
+new_inc=old_inc.replace(anchor,coarse_block+anchor).replace(init,'saved?saved[i*3+c]:coarseSeed[i*3+c]')
+label='S5: one output-derived seed, 24 bounded log-RGB LM iterations, native Apple oracle; no lattice search; all failures retained'
+assert new_inc.count(label)==1
+new_inc=new_inc.replace(label,'S93: eight coarse output-derived powers-of-two starts then unchanged24LM, native Apple oracle; no lattice search; all failures retained')
+(GEN/'semantic_inverse_s93.inc').write_text(new_inc)
+(O/'S93-inverse-include.txt').write_text(new_inc)
+save(O/'S93-seed-binding.json',{'old_generated_include_SHA256':hashlib.sha256(old_inc.encode()).hexdigest(),'new_generated_include_SHA256':hashlib.sha256(new_inc.encode()).hexdigest(),'scales':[2,1,.5,.25,.125,.0625,.03125,.015625],'original_include_unchanged':True,'new_include':'semantic_inverse_s93.inc','original_input_used_as_seed':False,'neutral_oracle_used_for_seed_selection':False,'LM_equations_iterations_bounds_mask_unchanged':True,'half_lattice_search':False})
+
+
+# Only derive diagnostic copies. Preserve the old consumer and all shaders.
+source = (OLD/'native_filter_probe.m').read_text()
+needle = '    NSUInteger w=llround(r.size.width),h=llround(r.size.height);'
+assert source.count(needle)==1
+source = source.replace(needle, '''    if(r.size.width*r.size.height>2000000) {
+        NSArray *a=[NSProcessInfo.processInfo.environment[@"SEMANTIC_S91_CI_ROI"] componentsSeparatedByString:@","];
+        if(a.count!=4) @throw [NSException exceptionWithName:@"ROI" reason:@"Four CI coordinates required" userInfo:nil];
+        r=CGRectIntersection(r,CGRectMake([a[0] doubleValue],[a[1] doubleValue],[a[2] doubleValue],[a[3] doubleValue]));
+        if(CGRectIsEmpty(r)) @throw [NSException exceptionWithName:@"ROI" reason:@"Empty ROI" userInfo:nil];
+    }
+''' + needle)
+source = source.replace('for(NSNumber *engine in @[@NO,@YES])','for(NSNumber *engine in @[@NO])')
+source = source.replace('facts[@"primary_input"]=Render(image,', 'facts[@"unscaled_input_extent"]=Extent(image.extent);\n        facts[@"primary_input"]=Render(image,')
+(GEN/'native_filter_probe_s91.m').write_text(source)
+native = (S/'semantic_consumer_s5.m').read_text().replace('#include "native_filter_probe.m"','#include "native_filter_probe_s91.m"')
+needle = ' id<MTLCommandQueue>q=[renderer metalCommandQueue];id<MTLComputePipelineState>native=call[@"pipeline_object"];'
+assert native.count(needle)==1
+native = native.replace(needle, ''' id<MTLTexture>guard=call[@"textures"][@"13"];
+ if(guard.width*guard.height>2000000){Put(@{@"stop_reason":@"Final allocation exceeds bounded ROI; no pixel inverse or counterfactual executed",@"output_shape":@[@(guard.height),@(guard.width)]},[SOut stringByAppendingPathComponent:@"results.json"]);return;}
+''' + needle)
+# Gate the old shape-dependent solver before calling it. Never reinterpret an
+# output tile as an equal-shape original input if native geometry differs.
+needle = 'if([NSProcessInfo.processInfo.environment[@"SEMANTIC_RUN_INVERSE"]boolValue])'
+assert native.count(needle)==1
+native = native.replace(needle, 'if([NSProcessInfo.processInfo.environment[@"SEMANTIC_RUN_INVERSE"]boolValue] && ((id<MTLTexture>)call[@"textures"][@"0"]).width==ot.width && ((id<MTLTexture>)call[@"textures"][@"0"]).height==ot.height && ((id<MTLTexture>)call[@"textures"][@"0"]).pixelFormat==MTLPixelFormatRGBA16Float && ot.width*ot.height<=196608)')
+start = native.index(' // Real auxiliary mattes for direction-only face/body removal estimates.')
+native = native[:start] + ' return rc;}}\n'
+# This fresh probe keeps every original texture/buffer immutable. Hash after
+# all parameter trials, stage observations and solver evaluations as well.
+needle = '\n}\nstatic int Process('
+assert native.count(needle)==1
+native = native.replace(needle, '''
+ NSMutableDictionary *after=[NSMutableDictionary new];BOOL same=YES;
+ for(NSString*k in bindings){NSData*d=ReadTexture(q,call[@"textures"][k]);NSString*h=Digest(d);after[k]=h;same&=[h isEqual:bindings[k][@"sha256"]];}
+ NSDictionary*bs=V2BufferSnapshots(call,q);for(NSString*k in snap)same&=[snap[k]isEqual:bs[k]];
+ f[@"texture_and_buffer_SHA_unchanged_after_trials"]=@(same);f[@"texture_SHA_after"]=after;
+ f[@"full_resolution_source_ROI_only"]=@YES;Put(f,[SOut stringByAppendingPathComponent:@"results.json"]);
+ if(!same)@throw[NSException exceptionWithName:@"ContextMutation"reason:@"Original input/context changed"userInfo:nil];
+}
+static int Process(''')
+native=native.replace('#include "semantic_inverse_s5.inc"','#include "semantic_inverse_s93.inc"')
+(GEN/'semantic_consumer_s91.m').write_text(native)
+save(O/'derived-source-SHA.json', {p.name:sha(p) for p in GEN.iterdir() if p.is_file()})
+flags = ['clang','-fobjc-arc','-O2','-I'+str(OLD),'-I'+str(GEN),'-framework','Foundation','-framework','CoreImage','-framework','CoreMedia','-framework','ImageIO','-framework','Metal','-Wl,-undefined,dynamic_lookup']
+exe = W/'semantic-s91'; assert command(flags+[GEN/'semantic_consumer_s91.m','-o',exe],O/'build.log')==0
+cfg=ocio.Config.CreateFromBuiltinConfig('cg-config-v2.2.0_aces-v1.3_ocio-v2.4')
+cpu=cfg.getProcessor('Linear P3-D65','sRGB - Display','ACES 1.0 - SDR Video',ocio.TRANSFORM_DIR_FORWARD).getDefaultCPUProcessor()
+rows=[];preview_checks=[];cards=[];Y=np.array([.228974564,.691738522,.079286914])
+def stats(v):
+    v=np.asarray(v,'f8');v=v[np.isfinite(v)]
+    return {'n':int(v.size),'p50':float(np.median(v)) if v.size else None,'p99':float(np.quantile(v,.99)) if v.size else None,'max':float(v.max()) if v.size else None}
+def image(path,dtype='<f2'):
+    meta=json.loads(Path(str(path)+'.json').read_text());return np.fromfile(path,dtype).reshape(meta['shape'])[...,:3].astype('f4')
+def preview(a,label):
+    before=hashlib.sha256(a.tobytes()).hexdigest();x=np.array(a,'f4',order='C',copy=True)
+    cpu.apply(ocio.PackedImageDesc(x,x.shape[1],x.shape[0],3))
+    after=hashlib.sha256(a.tobytes()).hexdigest();assert before==after;preview_checks.append({'label':label,'before':before,'after':after})
+    out=Image.fromarray(np.rot90(np.rint(np.clip(x,0,1)*255).astype('u1'),3));out.thumbnail((288,384));return out
+for index,roi in enumerate(rois):
+    folder=PRIVATE/f'ROI{index}';env={'XD_TONE_MAX_EDGE':'5712','XD_TONE_THUMB_MODE':'native-stage-mirror','XD_TONE_BIAS':'.35','SEMANTIC_STAGE_MSL':str(GEN/'semantic_stage_s5.metal'),'SEMANTIC_RUN_INVERSE':'1','VM_EXACT_INVERSE_LIMIT':'196608','SEMANTIC_S91_CI_ROI':','.join(map(str,roi['CI_bottom_left_xywh']))}
+    rc=command([exe,photo,RES,folder],O/f'ROI{index}-native.log',env,timeout=1100)
+    row={'ROI_index':index,'native_process_returncode':rc,'full_frame_gate':False,'source_unscaled':True}
+    results=folder/'semantic/results.json'
+    if not results.exists():
+        row['no_native_result']=True;rows.append(row);continue
+    result=json.loads(results.read_text());row['native_results']=result
+    if 'native_hydration' not in result:
+        rows.append(row);continue
+    assert result['native_hydration']['half_differing_components']==0
+    assert all(r['changed_bytes_outside_target']==0 for r in result['trials'])
+    assert result.get('texture_and_buffer_SHA_unchanged_after_trials') is True
+    p=folder/'semantic';base=image(p/'native.f16');shape=base.shape[:2]
+    ci=image(folder/'renderer.f32','<f4');qualified=ci.shape==base.shape and float(np.max(abs(ci-base)))<=1e-5
+    row['native_vs_CI_P3_preview_qualified']=qualified
+    row['native_output_shape']=list(shape);row['operator_metrics']=[]
+    if not (p/'native-inverse-roundtrip.f16').exists():
+        row['inverse_available']=False;rows.append(row);continue
+    row['inverse_available']=True;row['inverse']=json.loads((p/'native-inverse.json').read_text());row['cold_start']=json.loads((p/'native-inverse-cold-start.json').read_text());rt=np.fromfile(p/'native-inverse-roundtrip.f16','<f2').reshape(*shape,4)[...,:3].astype('f4')
+    eligible=np.fromfile(p/'native-inverse-eligible.u8','u1').reshape(shape).astype(bool)
+
+    true_input=image(p/'texture-0.bin')
+    outside=np.any((true_input<2**-20)|(true_input>1.25),axis=-1)
+    row['held_out_original_input_domain']={'min':float(true_input.min()),'max':float(true_input.max()),'eligible_outside_old_search_domain':int((eligible&outside).sum()),'total_outside_old_search_domain':int(outside.sum()),'not_used_as_solver_seed':True}
+    mt=json.loads((p/'texture-11.bin.json').read_text());assert mt['shape'][:2]==list(shape)
+    matte=np.fromfile(p/'texture-11.bin','<f2').reshape(mt['shape'])[...,0].astype('f8')
+    pad=np.pad(matte,1,mode='edge');mx=np.maximum.reduce([pad[y:y+shape[0],x:x+shape[1]]for y in range(3)for x in range(3)]);mn=np.minimum.reduce([pad[y:y+shape[0],x:x+shape[1]]for y in range(3)for x in range(3)])
+    support=mx>0;boundary=(mx-mn)>1/255
+    row['matte_3x3_diagnostic']={'support_pixels':int(support.sum()),'outside_pixels':int((~support).sum()),'boundary_pixels':int(boundary.sum()),'not_a_new_legacy_mask':True,'not_used_to_gate_output':True,'scope':'Conservative3x3 support on native texture11 with the S92/S93 identity normalized affine; diagnostic, not full-domain certification'}
+
+    for op in ['skin-color','skin-brightness','skin-both']:
+        neutral=image(p/(op+'-removed-estimate.f16'));oracle=image(p/(op+'-removed-oracle.f16'));affected=np.any(oracle!=base,axis=-1)
+        shots=[]
+        for strength in [0,.5,1]:
+            q=apply(base,rt,neutral,strength);expected=apply(base,base,oracle,strength);a=q['rgb'];b=expected['rgb'];m=eligible&affected
+            ya=a@Y;yb=b@Y;good=m&(ya>0)&(yb>0);err=np.max(abs(a.astype('f8')-b)/np.maximum(abs(b),1e-6),-1)
+            ca=a/np.maximum(np.sum(a,axis=-1,keepdims=True),1e-12);cb=b/np.maximum(np.sum(b,axis=-1,keepdims=True),1e-12)
+            luminance_difference=ya-yb
+            gx=np.diff(luminance_difference,axis=1);gy=np.diff(luminance_difference,axis=0)
+            lap=luminance_difference[1:-1,2:]+luminance_difference[1:-1,:-2]+luminance_difference[2:,1:-1]+luminance_difference[:-2,1:-1]-4*luminance_difference[1:-1,1:-1]
+            r={'operator':op,'strength':strength,'pixels':int(np.prod(shape)),'native_affected_eligible':int(m.sum()),'relative_error_affected_eligible':stats(err[m]),'EV_error_affected_eligible':stats(abs(np.log2(ya[good]/yb[good]))),'EV_excluded_affected_eligible':int((m&~good).sum()),'old_gt_1e3_pixels':int((m&(err>1e-3)).sum()),'ratio_invalid':int((~q['ratio_valid']).sum()),'max_abs':float(np.max(abs(a-b))),'chosen_transform_roundtrip_max_abs':float(np.max(abs((a.astype('f8')*np.exp2(-q['log2_gain'])).astype('f4')-base))),'chromaticity_max_abs_vs_oracle':float(np.max(abs(ca-cb)[eligible]))if eligible.any()else None,'luma_gradient_error':stats(np.r_[abs(gx).ravel(),abs(gy).ravel()]),'luma_laplacian_error':stats(abs(lap)),'native_unchanged_pixels':int((~affected).sum()),'max_change_on_native_unchanged_pixels':float(np.max(abs(a-base)[~affected]))if (~affected).any()else None}
+            
+            r['outside_matte_3x3_max_change']=float(np.max(abs(a-base)[~support]))if (~support).any()else None
+            r['outside_matte_3x3_native_oracle_max_change']=float(np.max(abs(oracle-base)[~support]))if (~support).any()else None
+            r['matte_boundary_eligible_EV']=stats(abs(np.log2(ya[good&boundary]/yb[good&boundary])))
+            r['PSNR_peak1_dB']='inf'if not np.any(a!=b)else float(-10*np.log10(np.mean((a.astype('f8')-b)**2)))
+
+            row['operator_metrics'].append(r)
+            np.savez_compressed(folder/f'{op}-{strength}.npz',rgb=a,ratio_valid=q['ratio_valid'],log2_gain=q['log2_gain'])
+            if qualified:shots.append(preview(a,f'ROI{index}/{op}/{strength}'))
+        if shots:cards.append((f'ROI{index}/{op}',shots))
+    rows.append(row);save(O/'analysis-checkpoint.json',{'rows':rows,'full_frame_gate':False})
+if cards:
+    sheet=Image.new('RGB',(3*288,len(cards)*408),'white');draw=ImageDraw.Draw(sheet)
+    for i,(label,shots) in enumerate(cards):
+        for j,im in enumerate(shots):sheet.paste(im,(j*288,i*408));draw.text((j*288+3,i*408+386),f'{label} {j*50}%',fill='black')
+    sheet.save(PRIVATE/'semantic-native-scale-contact.png')
+save(O/'analysis.json',{'os_build':'26A434','image_version':os.environ.get('ImageVersion'),'source_canvas':[4284,5712],'photo_count':1,'full_original_frame_verified':False,'ROIs_preselected_from_unchanged_matte':True,'rows':rows,'preview_input_SHA_checks':preview_checks,'display':{'view':'ACES 1.0 - SDR Video','source':'Linear P3-D65','display':'sRGB - Display','exposure_EV':0,'config_SHA256':hashlib.sha256(cfg.serialize().encode()).hexdigest()},'legacy_thresholds_or_masks_changed':False,'face_body_actual_EV_identified':False,'engineering_accepted':False,'A_phase_complete':False,'acceptance_complete':False})
+save(PRIVATE/'manifest.json',{'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','files':[{'path':str(p.relative_to(PRIVATE)),'size':p.stat().st_size,'sha256':sha(p)}for p in sorted(PRIVATE.rglob('*'))if p.is_file()]})
+with tarfile.open(W/'private.tar.gz','w:gz') as tar:tar.add(PRIVATE,arcname='out')
+assert command(['gpg','--batch','--trust-model','always','--recipient','28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA','--output',ENC/'results.tar.gz.gpg','--encrypt',W/'private.tar.gz'],O/'encrypt.log')==0
+save(O/'encrypted-inventory.json',{'file':'results.tar.gz.gpg','bytes':(ENC/'results.tar.gz.gpg').stat().st_size,'sha256':sha(ENC/'results.tar.gz.gpg'),'plaintext_uploaded':False})
+print(json.dumps({'completed_ROIs':len(rows),'inverse_ROIs':sum(r.get('inverse_available',False)for r in rows),'full_frame_gate':False,'A_phase_complete':False}))

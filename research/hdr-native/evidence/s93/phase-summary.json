@@ -1,0 +1,367 @@
+{
+  "run_id": 39480275514,
+  "source_commit": "e8b6d0c0cbca2be151d995295851cca3f04f6910",
+  "OS_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "source_canvas": [
+    4284,
+    5712
+  ],
+  "validated_ROIs": 2,
+  "ROI_shape": [
+    384,
+    512
+  ],
+  "unique_full_frame_coverage_not_claimed": true,
+  "native_bindings_identical_to_S92": true,
+  "inverse_comparison": [
+    {
+      "ROI": 0,
+      "S92_failed_eligible": 82905,
+      "S93_failed_eligible": 83960,
+      "S92_max_relative": 1.1411974430084229,
+      "S93_max_relative": 0.48511019349098206,
+      "mask_coverage": 0.9631093343098959,
+      "held_out_original_input_domain": {
+        "min": -0.0046539306640625,
+        "max": 1.0576171875,
+        "eligible_outside_old_search_domain": 0,
+        "total_outside_old_search_domain": 881,
+        "not_used_as_solver_seed": true
+      },
+      "matte_3x3_diagnostic": {
+        "support_pixels": 73762,
+        "outside_pixels": 122846,
+        "boundary_pixels": 51478,
+        "not_a_new_legacy_mask": true,
+        "not_used_to_gate_output": true,
+        "scope": "Conservative3x3 support on native texture11 with the S92/S93 identity normalized affine; diagnostic, not full-domain certification"
+      }
+    },
+    {
+      "ROI": 1,
+      "S92_failed_eligible": 75984,
+      "S93_failed_eligible": 76477,
+      "S92_max_relative": 2.4658572673797607,
+      "S93_max_relative": 0.7072815299034119,
+      "mask_coverage": 0.8174591064453125,
+      "held_out_original_input_domain": {
+        "min": -0.005275726318359375,
+        "max": 1.1845703125,
+        "eligible_outside_old_search_domain": 447,
+        "total_outside_old_search_domain": 9953,
+        "not_used_as_solver_seed": true
+      },
+      "matte_3x3_diagnostic": {
+        "support_pixels": 149622,
+        "outside_pixels": 46986,
+        "boundary_pixels": 89966,
+        "not_a_new_legacy_mask": true,
+        "not_used_to_gate_output": true,
+        "scope": "Conservative3x3 support on native texture11 with the S92/S93 identity normalized affine; diagnostic, not full-domain certification"
+      }
+    }
+  ],
+  "cold_start_not_a_dominating_fix": true,
+  "half_strength": [
+    {
+      "ROI": 0,
+      "operator": "skin-color",
+      "strength": 0.5,
+      "pixels": 196608,
+      "native_affected_eligible": 15010,
+      "relative_error_affected_eligible": {
+        "n": 15010,
+        "p50": 0.00033490103356475533,
+        "p99": 0.0013834021881001096,
+        "max": 0.001937979221160991
+      },
+      "EV_error_affected_eligible": {
+        "n": 15010,
+        "p50": 6.53374118989622e-05,
+        "p99": 0.0014753247150475891,
+        "max": 0.002422202784728692
+      },
+      "EV_excluded_affected_eligible": 0,
+      "old_gt_1e3_pixels": 1420,
+      "ratio_invalid": 3,
+      "max_abs": 0.0012205243110656738,
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "chromaticity_max_abs_vs_oracle": 0.0004738271236419678,
+      "luma_gradient_error": {
+        "n": 392320,
+        "p50": 0.0,
+        "p99": 0.00045903437462669174,
+        "max": 0.0015403760716666826
+      },
+      "luma_laplacian_error": {
+        "n": 194820,
+        "p50": 0.0,
+        "p99": 0.001406443469011268,
+        "max": 0.004825490104512387
+      },
+      "native_unchanged_pixels": 181598,
+      "max_change_on_native_unchanged_pixels": 0.0007319450378417969,
+      "outside_matte_3x3_max_change": 0.0,
+      "outside_matte_3x3_native_oracle_max_change": 0.0,
+      "matte_boundary_eligible_EV": {
+        "n": 10756,
+        "p50": 8.21125253374599e-05,
+        "p99": 0.0014763380239624475,
+        "max": 0.002422202784728692
+      },
+      "PSNR_peak1_dB": 84.15352192349263
+    },
+    {
+      "ROI": 0,
+      "operator": "skin-brightness",
+      "strength": 0.5,
+      "pixels": 196608,
+      "native_affected_eligible": 5400,
+      "relative_error_affected_eligible": {
+        "n": 5400,
+        "p50": 0.0,
+        "p99": 0.00208987581902459,
+        "max": 0.004589331678774306
+      },
+      "EV_error_affected_eligible": {
+        "n": 5400,
+        "p50": 0.0,
+        "p99": 0.0015501930141540513,
+        "max": 0.0020012257959694797
+      },
+      "EV_excluded_affected_eligible": 0,
+      "old_gt_1e3_pixels": 501,
+      "ratio_invalid": 3,
+      "max_abs": 0.0003052353858947754,
+      "chosen_transform_roundtrip_max_abs": 1.4901161193847656e-08,
+      "chromaticity_max_abs_vs_oracle": 0.0005393624305725098,
+      "luma_gradient_error": {
+        "n": 392320,
+        "p50": 0.0,
+        "p99": 1.1832601351769581e-05,
+        "max": 0.00020671473220248981
+      },
+      "luma_laplacian_error": {
+        "n": 194820,
+        "p50": 0.0,
+        "p99": 5.382106165614221e-05,
+        "max": 0.0005055065706496553
+      },
+      "native_unchanged_pixels": 190915,
+      "max_change_on_native_unchanged_pixels": 9.161233901977539e-05,
+      "outside_matte_3x3_max_change": 0.0,
+      "outside_matte_3x3_native_oracle_max_change": 0.0,
+      "matte_boundary_eligible_EV": {
+        "n": 3860,
+        "p50": 0.0,
+        "p99": 0.0015760669701343458,
+        "max": 0.0020012257959694797
+      },
+      "PSNR_peak1_dB": 107.24039524023881
+    },
+    {
+      "ROI": 0,
+      "operator": "skin-both",
+      "strength": 0.5,
+      "pixels": 196608,
+      "native_affected_eligible": 20410,
+      "relative_error_affected_eligible": {
+        "n": 20410,
+        "p50": 0.0002944642903169617,
+        "p99": 0.001594474024472115,
+        "max": 0.004589331678774306
+      },
+      "EV_error_affected_eligible": {
+        "n": 20410,
+        "p50": 3.028283954989723e-05,
+        "p99": 0.0014948864422152039,
+        "max": 0.002422202784728692
+      },
+      "EV_excluded_affected_eligible": 0,
+      "old_gt_1e3_pixels": 1921,
+      "ratio_invalid": 3,
+      "max_abs": 0.0012205243110656738,
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "chromaticity_max_abs_vs_oracle": 0.0005393624305725098,
+      "luma_gradient_error": {
+        "n": 392320,
+        "p50": 0.0,
+        "p99": 0.00045903437462669174,
+        "max": 0.0015403760716666826
+      },
+      "luma_laplacian_error": {
+        "n": 194820,
+        "p50": 0.0,
+        "p99": 0.001406443469011268,
+        "max": 0.004825490104512387
+      },
+      "native_unchanged_pixels": 175905,
+      "max_change_on_native_unchanged_pixels": 0.0007319450378417969,
+      "outside_matte_3x3_max_change": 0.0,
+      "outside_matte_3x3_native_oracle_max_change": 0.0,
+      "matte_boundary_eligible_EV": {
+        "n": 14616,
+        "p50": 4.58994104313762e-05,
+        "p99": 0.0015056128800189203,
+        "max": 0.002422202784728692
+      },
+      "PSNR_peak1_dB": 84.13223894549076
+    },
+    {
+      "ROI": 1,
+      "operator": "skin-color",
+      "strength": 0.5,
+      "pixels": 196608,
+      "native_affected_eligible": 24270,
+      "relative_error_affected_eligible": {
+        "n": 24270,
+        "p50": 0.00031486232822284144,
+        "p99": 0.0016453509523100417,
+        "max": 0.0059985066348706845
+      },
+      "EV_error_affected_eligible": {
+        "n": 24270,
+        "p50": 4.013486068398348e-05,
+        "p99": 0.0014725369735496133,
+        "max": 0.0030263999911341226
+      },
+      "EV_excluded_affected_eligible": 0,
+      "old_gt_1e3_pixels": 2350,
+      "ratio_invalid": 1902,
+      "max_abs": 0.0020475387573242188,
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "chromaticity_max_abs_vs_oracle": 0.000834345817565918,
+      "luma_gradient_error": {
+        "n": 392320,
+        "p50": 0.0,
+        "p99": 0.00048582537931723176,
+        "max": 0.0016307597624374282
+      },
+      "luma_laplacian_error": {
+        "n": 194820,
+        "p50": 0.0,
+        "p99": 0.0016503097814005018,
+        "max": 0.005341845251536359
+      },
+      "native_unchanged_pixels": 172338,
+      "max_change_on_native_unchanged_pixels": 0.0014657974243164062,
+      "outside_matte_3x3_max_change": 0.0,
+      "outside_matte_3x3_native_oracle_max_change": 0.0,
+      "matte_boundary_eligible_EV": {
+        "n": 19532,
+        "p50": 5.609420904637339e-05,
+        "p99": 0.0014740327201307017,
+        "max": 0.0030263999911341226
+      },
+      "PSNR_peak1_dB": 82.47399008739414
+    },
+    {
+      "ROI": 1,
+      "operator": "skin-brightness",
+      "strength": 0.5,
+      "pixels": 196608,
+      "native_affected_eligible": 31833,
+      "relative_error_affected_eligible": {
+        "n": 31833,
+        "p50": 0.0002508797793287192,
+        "p99": 0.0017848732989682726,
+        "max": 0.014030349091924101
+      },
+      "EV_error_affected_eligible": {
+        "n": 31833,
+        "p50": 1.5415438481861027e-05,
+        "p99": 0.0013855655919181558,
+        "max": 0.002573702205791232
+      },
+      "EV_excluded_affected_eligible": 0,
+      "old_gt_1e3_pixels": 1736,
+      "ratio_invalid": 1979,
+      "max_abs": 0.0011412985622882843,
+      "chosen_transform_roundtrip_max_abs": 7.450580596923828e-09,
+      "chromaticity_max_abs_vs_oracle": 0.0005599856376647949,
+      "luma_gradient_error": {
+        "n": 392320,
+        "p50": 0.0,
+        "p99": 3.751929025672912e-05,
+        "max": 0.0005380638330219692
+      },
+      "luma_laplacian_error": {
+        "n": 194820,
+        "p50": 0.0,
+        "p99": 9.28588374476357e-05,
+        "max": 0.0017724308330835173
+      },
+      "native_unchanged_pixels": 151187,
+      "max_change_on_native_unchanged_pixels": 0.0004884600639343262,
+      "outside_matte_3x3_max_change": 0.0,
+      "outside_matte_3x3_native_oracle_max_change": 0.0,
+      "matte_boundary_eligible_EV": {
+        "n": 9542,
+        "p50": 1.6013916852060084e-05,
+        "p99": 0.0015548328322789174,
+        "max": 0.002573702205791232
+      },
+      "PSNR_peak1_dB": 101.16912026796548
+    },
+    {
+      "ROI": 1,
+      "operator": "skin-both",
+      "strength": 0.5,
+      "pixels": 196608,
+      "native_affected_eligible": 56103,
+      "relative_error_affected_eligible": {
+        "n": 56103,
+        "p50": 0.0002732215596211292,
+        "p99": 0.001723179581425004,
+        "max": 0.014030349091924101
+      },
+      "EV_error_affected_eligible": {
+        "n": 56103,
+        "p50": 2.078449372864075e-05,
+        "p99": 0.0014310738019606658,
+        "max": 0.0030263999911341226
+      },
+      "EV_excluded_affected_eligible": 0,
+      "old_gt_1e3_pixels": 4086,
+      "ratio_invalid": 1979,
+      "max_abs": 0.0020475387573242188,
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "chromaticity_max_abs_vs_oracle": 0.000834345817565918,
+      "luma_gradient_error": {
+        "n": 392320,
+        "p50": 0.0,
+        "p99": 0.0004859425564833175,
+        "max": 0.0016307597624374282
+      },
+      "luma_laplacian_error": {
+        "n": 194820,
+        "p50": 0.0,
+        "p99": 0.0016508121274838047,
+        "max": 0.005341845251536359
+      },
+      "native_unchanged_pixels": 126917,
+      "max_change_on_native_unchanged_pixels": 0.0014657974243164062,
+      "outside_matte_3x3_max_change": 0.0,
+      "outside_matte_3x3_native_oracle_max_change": 0.0,
+      "matte_boundary_eligible_EV": {
+        "n": 29074,
+        "p50": 3.263630463200956e-05,
+        "p99": 0.0015062683870646519,
+        "max": 0.0030263999911341226
+      },
+      "PSNR_peak1_dB": 82.41573214524817
+    }
+  ],
+  "strict_3x3_outside_change_max_all_18_variants": 0,
+  "preview_SHA_checks": 18,
+  "all_preview_inputs_SHA_unchanged": true,
+  "legacy_threshold_and_masks_unchanged": true,
+  "no_half_lattice_search": true,
+  "face_body_actual_EV_identified": false,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false,
+  "next_runner": "Do not resume precision hunting. Original-frame streaming practical semantic correction, separate native reference and held-out-photo validation remain possible. Test effect quality rather than claim full consumer inverse success.",
+  "device_only": "Actual same-frame j/WithoutFaceBoost/N/B/T/V/histograms/allocateTone/application domain; original Studio statistics; paired RAW and real HDR display."
+}

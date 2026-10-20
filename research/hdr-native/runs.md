@@ -225,3 +225,6 @@ S91：[39474288686](https://github.com/21Z121Z1/Photographic_Style_Research/acti
 
 
 S92：[39477063576](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39477063576)，source13780b9b6bca8bf5a5ac6dcb846696664055f6bc，research/vm-native-20261021-semantic-s92，26A434/image20261012.0260.1，success。两个原尺寸ROI控制完成、目标外参数差0/纹理SHA不变/18次预览SHA不变。半强度联合p99约0.001495/0.001434EV；完整consumer仍82905/75984失败，旧门槛未过。原ZIP日本落盘，19 public及GPG/143 private成员已验，派生源码绑定已验；本次secret/release/tag/branch已清理。
+
+
+S93：[39480275514](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39480275514)，source e8b6d0c0cbca2be151d995295851cca3f04f6910，research/vm-native-20261021-semantic-s93，xcode-27/26A434/image20261012.0260.1，success。两原尺寸ROI，目标外参数差0/输入SHA同S92/18预览输入SHA不变；半强度联合p99 EV0.001495/0.001431、3×3支持外变化0；完整consumer仍83960/76477失败，旧门槛未过。21 public及GPG/145 private成员/源码绑定已核验，原ZIP日本保留，临时secret/release/tag/branch已清理。后续transport-v2同日本既存ZIP原地重验全成员SHA相同，整包跨区0、新下载0，非新native run；见evidence/s93/transfer-local-verification.json。

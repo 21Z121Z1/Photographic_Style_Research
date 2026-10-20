@@ -1,0 +1,21 @@
+{
+  "created_at_UTC": "2026-10-20T19:28:29.730699+00:00",
+  "storage_alias": "Japan",
+  "new_artifacts": "GitHub to Japan directly using short-lived URL; digest there; never backhaul full ZIP/cipher for verification",
+  "existing_archives": "Do not retransmit or redownload; inspect/hash locally at existing location",
+  "private_verification": "HK receives <=32768-byte encrypted header, extracts only that archive session key using local private key; key via SSH stdin and anonymous GPG fd to Japan; authenticated full GPG/tar/member verification stays Japan; hash-only receipt",
+  "private_key_must_stay_on_HK": true,
+  "session_key_saved_or_logged": false,
+  "header_is_not_authentication": true,
+  "unsupported_header_format": "Stop and diagnose using cached bounded header; no automatic whole-file fallback",
+  "heavy_image_compute": "GitHub macOS runner only",
+  "old_archives_and_receipts_preserved": true,
+  "historical_v1_archivers": "Preserve as past reproduction only; do not reuse their full stream verification for new runs",
+  "test_evidence": "repo/research/hdr-native/evidence/s93/transfer-local-verification.json",
+  "measured_protocol_data_payload_including_two_initial_failed_header_attempts_bytes": 102081,
+  "traffic_count_excludes_SSH_commands_overhead_and_other_metadata_API": true,
+  "normal_existing_tool_expected_payload_example_bytes": 52543,
+  "whole_cipher_or_ZIP_backhaul_after_rule_bytes": 0,
+  "new_artifact_redownload_after_rule_bytes": 0,
+  "user_requested_cross_region_traffic_minimization": true
+}

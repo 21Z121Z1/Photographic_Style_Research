@@ -1,0 +1,60 @@
+{
+  "original_source": "research/hdr-native/run_semantic_s91.py",
+  "original_source_SHA256": "58d3f1f6480a5ec44e37d0837c5e944b5c771f6f6b516cb8e2dbf07e6b9670f1",
+  "derived_source_SHA256": "545e1cf7dd62ad1381ed77d9126ce7219e9f5b17d8d14f5a158b10196de93246",
+  "wrapper_source_SHA256": "8314bf422955a188f770ec2655c909cd99a696a8eee0ef612a873f9c36add4dd",
+  "exact_replacements": [
+    {
+      "old": "inputs_s91.json",
+      "new": "inputs_s93.json",
+      "count": 1
+    },
+    {
+      "old": "SEMANTIC_S91_INPUT_SESSION",
+      "new": "SEMANTIC_S93_INPUT_SESSION",
+      "count": 1
+    },
+    {
+      "old": "[call[@\"textures\"][@\"0\"] width]",
+      "new": "((id<MTLTexture>)call[@\"textures\"][@\"0\"]).width",
+      "count": 1
+    },
+    {
+      "old": "[call[@\"textures\"][@\"0\"] height]",
+      "new": "((id<MTLTexture>)call[@\"textures\"][@\"0\"]).height",
+      "count": 1
+    },
+    {
+      "old": "[call[@\"textures\"][@\"0\"] pixelFormat]",
+      "new": "((id<MTLTexture>)call[@\"textures\"][@\"0\"]).pixelFormat",
+      "count": 1
+    },
+    {
+      "old": "assert command([sys.executable,S/'generate_semantic_s5.py',GEN],O/'generate.log') == 0",
+      "new": "assert command([sys.executable,S/'generate_semantic_s5.py',GEN],O/'generate.log') == 0\n\n# Derive a new include. The old S5/V7 include, bounds, eligible mask, LM\n# equations, 24 iterations and finite differences remain unchanged.\nold_inc=(GEN/'semantic_inverse_s5.inc').read_text()\ncoarse_block=r\"\"\"\n NSMutableArray*coldRows=[NSMutableArray new];const float coldScales[]={2,1,.5f,.25f,.125f,.0625f,.03125f,.015625f};\n if(!saved)for(NSUInteger ci=0;ci<8;ci++){@autoreleasepool{\n  for(NSUInteger i=0;i<n;i++)for(int c=0;c<3;c++)x[i*3+c]=fminf(high,fmaxf(low,(float)target[i*4+c]*coldScales[ci]));\n  NSData*y=evaluate(x);remember(x,y.bytes);NSUInteger failed=0;float maximum=0;\n  for(NSUInteger i=0;i<n;i++)if(eligible[i]){failed+=best[i]>1e-3;maximum=fmaxf(maximum,best[i]);}\n  [coldRows addObject:@{@\"output_scale\":@(coldScales[ci]),@\"best_failed_eligible\":@(failed),@\"best_max_relative\":@(maximum)}];\n }}\n NSMutableData*coarseStorage=[NSMutableData dataWithBytes:bestX length:n*12];const float*coarseSeed=coarseStorage.bytes;\n [[NSJSONSerialization dataWithJSONObject:@{@\"method\":@\"Eight predeclared output-derived powers-of-two seeds, choose native forward residual per pixel, then unchanged24LM. No original input/original neutral oracle is a seed.\",@\"steps\":coldRows,@\"lower\":@(low),@\"upper\":@(high),@\"legacy_mask_and_1e3_threshold_unchanged\":@YES,@\"half_lattice_search\":@NO}options:NSJSONWritingPrettyPrinted error:NULL]writeToFile:[dir stringByAppendingPathComponent:@\"native-inverse-cold-start.json\"]atomically:YES];\n\"\"\"\nanchor=' for(int seed=0;seed<(saved?0:1);seed++){'\ninit='saved?saved[i*3+c]:target[i*4+c]*factors[seed]'\nassert old_inc.count(anchor)==1 and old_inc.count(init)==1\nnew_inc=old_inc.replace(anchor,coarse_block+anchor).replace(init,'saved?saved[i*3+c]:coarseSeed[i*3+c]')\nlabel='S5: one output-derived seed, 24 bounded log-RGB LM iterations, native Apple oracle; no lattice search; all failures retained'\nassert new_inc.count(label)==1\nnew_inc=new_inc.replace(label,'S93: eight coarse output-derived powers-of-two starts then unchanged24LM, native Apple oracle; no lattice search; all failures retained')\n(GEN/'semantic_inverse_s93.inc').write_text(new_inc)\n(O/'S93-inverse-include.txt').write_text(new_inc)\nsave(O/'S93-seed-binding.json',{'old_generated_include_SHA256':hashlib.sha256(old_inc.encode()).hexdigest(),'new_generated_include_SHA256':hashlib.sha256(new_inc.encode()).hexdigest(),'scales':[2,1,.5,.25,.125,.0625,.03125,.015625],'original_include_unchanged':True,'new_include':'semantic_inverse_s93.inc','original_input_used_as_seed':False,'neutral_oracle_used_for_seed_selection':False,'LM_equations_iterations_bounds_mask_unchanged':True,'half_lattice_search':False})\n",
+      "count": 1
+    },
+    {
+      "old": "(GEN/'semantic_consumer_s91.m').write_text(native)",
+      "new": "native=native.replace('#include \"semantic_inverse_s5.inc\"','#include \"semantic_inverse_s93.inc\"')\n(GEN/'semantic_consumer_s91.m').write_text(native)",
+      "count": 1
+    },
+    {
+      "old": "row['inverse_available']=True;row['inverse']=json.loads((p/'native-inverse.json').read_text());rt=",
+      "new": "row['inverse_available']=True;row['inverse']=json.loads((p/'native-inverse.json').read_text());row['cold_start']=json.loads((p/'native-inverse-cold-start.json').read_text());rt=",
+      "count": 1
+    },
+    {
+      "old": "eligible=np.fromfile(p/'native-inverse-eligible.u8','u1').reshape(shape).astype(bool)",
+      "new": "eligible=np.fromfile(p/'native-inverse-eligible.u8','u1').reshape(shape).astype(bool)\n\n    true_input=image(p/'texture-0.bin')\n    outside=np.any((true_input<2**-20)|(true_input>1.25),axis=-1)\n    row['held_out_original_input_domain']={'min':float(true_input.min()),'max':float(true_input.max()),'eligible_outside_old_search_domain':int((eligible&outside).sum()),'total_outside_old_search_domain':int(outside.sum()),'not_used_as_solver_seed':True}\n    mt=json.loads((p/'texture-11.bin.json').read_text());assert mt['shape'][:2]==list(shape)\n    matte=np.fromfile(p/'texture-11.bin','<f2').reshape(mt['shape'])[...,0].astype('f8')\n    pad=np.pad(matte,1,mode='edge');mx=np.maximum.reduce([pad[y:y+shape[0],x:x+shape[1]]for y in range(3)for x in range(3)]);mn=np.minimum.reduce([pad[y:y+shape[0],x:x+shape[1]]for y in range(3)for x in range(3)])\n    support=mx>0;boundary=(mx-mn)>1/255\n    row['matte_3x3_diagnostic']={'support_pixels':int(support.sum()),'outside_pixels':int((~support).sum()),'boundary_pixels':int(boundary.sum()),'not_a_new_legacy_mask':True,'not_used_to_gate_output':True,'scope':'Conservative3x3 support on native texture11 with the S92/S93 identity normalized affine; diagnostic, not full-domain certification'}\n",
+      "count": 1
+    },
+    {
+      "old": "row['operator_metrics'].append(r)",
+      "new": "\n            r['outside_matte_3x3_max_change']=float(np.max(abs(a-base)[~support]))if (~support).any()else None\n            r['outside_matte_3x3_native_oracle_max_change']=float(np.max(abs(oracle-base)[~support]))if (~support).any()else None\n            r['matte_boundary_eligible_EV']=stats(abs(np.log2(ya[good&boundary]/yb[good&boundary])))\n            r['PSNR_peak1_dB']='inf'if not np.any(a!=b)else float(-10*np.log10(np.mean((a.astype('f8')-b)**2)))\n\n            row['operator_metrics'].append(r)",
+      "count": 1
+    }
+  ],
+  "change_scope": "Explicit Metal type/transport bindings, new coarse-seed include and extra held-aside domain/matte diagnostics. Original S5/V7/structured model and S82 effect interpolation remain unchanged.",
+  "precision_research": false
+}
