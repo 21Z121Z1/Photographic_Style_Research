@@ -5,6 +5,22 @@ int main(int argc, char **argv) {
         if (argc != 3) return 64;
         NSMutableDictionary *report = [@{@"schema": @"texture-native-admission-v1", @"input_sha256": SHA([NSData dataWithContentsOfFile:@(argv[1])]), @"photos_UI_tested": @NO, @"capabilities_injected": @NO} mutableCopy];
         @try {
+            CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:@(argv[1])], NULL);
+            CGImageRef decoded = imageSource ? CGImageSourceCreateImageAtIndex(imageSource, 0, NULL) : NULL;
+            report[@"ImageIO_decoded"] = @(decoded != NULL);
+            if (decoded) { report[@"decoded_width"] = @(CGImageGetWidth(decoded)); report[@"decoded_height"] = @(CGImageGetHeight(decoded)); CGImageRelease(decoded); }
+            if (imageSource) {
+                CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
+                report[@"ImageIO_properties"] = imageProperties ? JSONCompatible((__bridge id)imageProperties) : @{};
+                if (imageProperties) CFRelease(imageProperties);
+                NSMutableDictionary *auxiliary = [NSMutableDictionary new];
+                for (NSString *role in @[@"semanticpersonmatte", @"semanticskinmattev2", @"semanticfaceskinmatte", @"semanticteethmattev2", @"semanticglassesmattev2", @"semantichairmatte"]) {
+                    CFDictionaryRef aux = CGImageSourceCopyAuxiliaryDataInfoAtIndex(imageSource, 0, (__bridge CFStringRef)[@"tag:apple.com,2026:photo:aux:" stringByAppendingString:role]);
+                    auxiliary[role] = @{@"available": @(aux != NULL), @"facts": aux ? JSONCompatible((__bridge id)aux) : @{}};
+                    if (aux) CFRelease(aux);
+                }
+                report[@"ImageIO_auxiliary"] = auxiliary; CFRelease(imageSource);
+            }
             dlopen("/System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore", RTLD_NOW | RTLD_LOCAL);
             dlopen("/System/Library/PrivateFrameworks/PhotoImaging.framework/PhotoImaging", RTLD_NOW | RTLD_LOCAL);
             id source = Call(NSClassFromString(@"NUSourceDefinition"), @"imageSourceDefinitionWithURL:options:", @[[NSURL fileURLWithPath:@(argv[1])], @{}]);
@@ -22,6 +38,7 @@ int main(int argc, char **argv) {
                 for (NSString *key in @[@"imageProperties", @"properties", @"textureStyleProperties", @"metadata", @"rawProperties"])
                     if ([media respondsToSelector:NSSelectorFromString(key)]) {
                         id value = Call(media, key, @[]); report[key] = JSONCompatible(value);
+                        if ([key isEqual:@"metadata"] && [value respondsToSelector:NSSelectorFromString(@"cgImageProperties")]) report[@"native_cgImageProperties"] = JSONCompatible(Call(value, @"cgImageProperties", @[]));
                         if ([key isEqual:@"properties"] || [key isEqual:@"imageProperties"]) {
                             if ([value respondsToSelector:NSSelectorFromString(@"textureStyleProperties")]) {
                                 id texture = Call(value, @"textureStyleProperties", @[]);
@@ -31,9 +48,11 @@ int main(int argc, char **argv) {
                         }
                     }
             }
-            id schema = Call(NSClassFromString(@"PICompositionController"), @"photosSchema", @[]);
-            id composition = Call([NSClassFromString(@"NUComposition") alloc], @"initWithCompositionSchema:", @[schema]);
-            Call(composition, @"setObject:forKeyedSubscript:", @[source, @"source"]);
+            id nativeSource = Make(@"NUSource"); Call(nativeSource, @"setDefinition:", @[source]);
+            // The observed predicate only reads composition["source"]. Supply
+            // that lookup contract with a real NUSource and its file definition.
+            id composition = @{@"source": nativeSource};
+            report[@"predicate_argument"] = @"composition source lookup backed by an actual NUSource; no capability overrides";
             report[@"canRenderTextureStylesOnComposition"] = Call(NSClassFromString(@"PITextureStyleAutoCalculator"), @"canRenderTextureStylesOnComposition:", @[composition]);
         } @catch (NSException *exception) { report[@"exception"] = @{@"name": exception.name, @"reason": exception.reason ?: @""}; }
         Write(report, @(argv[2])); return 0;

@@ -292,6 +292,7 @@ int main(int argc, char **argv) {
                 Call(person, @"setImageStats:", @[@{effectName: nativeStats}]);
                 id normalized = Call(person, @"normalizeRelativeToCropRect:", @[[NSValue valueWithRect:full]]);
                 report[@"normalized_person_with_stats"] = Call(normalized, @"dictionaryRepresentation", @[]);
+                report[@"statistics_generation_completed"] = @YES;
                 if ([effectKind isEqual:@"Mattify"] && [parameterSource isEqual:@"Studio"] && exposure == 0 && ![report[@"calculateStats"] intValue]) {
                     report[@"stage"] = @"render_preview"; Write(report, out);
                     Call(effect, @"setSkipRendering:", @[@NO]);

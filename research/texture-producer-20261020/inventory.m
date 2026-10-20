@@ -77,13 +77,14 @@ int main(int argc, char **argv) {
                 [name hasPrefix:@"NURender"] || [name hasPrefix:@"NUImage"] ||
                 [name hasPrefix:@"PISemantic"] || [name hasPrefix:@"PIMatte"] ||
                 [name hasPrefix:@"_NUImage"] || [name hasPrefix:@"NUURL"] ||
+                [name isEqual:@"NUAssetLoader"] || [name hasPrefix:@"_NUCGImage"] || [name isEqual:@"_NUImageAsset"] ||
                 [name hasPrefix:@"CMITS"] || [name hasPrefix:@"CMIImageTile"] ||
                 [name hasPrefix:@"CMIMetalResource"] || [name hasPrefix:@"FigMetal"] ||
                 [name hasPrefix:@"CMIExternalMemory"] ||
                 [name hasPrefix:@"VNGenerate"] || [name containsString:@"HumanAttributes"] ||
                 [name containsString:@"FaceSegments"] || [name containsString:@"SegmentationObservation"] ||
                 [name containsString:@"CompositionController"] || [name hasPrefix:@"NUSource"] ||
-                fsinc || [name containsString:@"SmartStyleStatistics"]) {
+                fsinc || [name containsString:@"SmartStyle"]) {
                 [candidateNames addObject:name];
                 for (Class cls = classes[i]; cls && cls != NSObject.class; cls = class_getSuperclass(cls))
                     [selected addObject:@(class_getName(cls))];

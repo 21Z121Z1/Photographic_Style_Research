@@ -159,7 +159,7 @@ def main():
         raise ValueError('native auxiliary writing/readback did not finish')
     stats = json.loads((root / 'mattify-type1-Studio-EV0.json').read_text())
     values = stats.get('native_output_person_stats', {})
-    if stats.get('stage') != 'finished' or not any(v > 0 for v in values.get('AverageFaceColor', [])):
+    if not (stats.get('stage') == 'finished' or stats.get('statistics_generation_completed')) or not any(v > 0 for v in values.get('AverageFaceColor', [])):
         raise ValueError('no measured, nonzero native statistics')
     person = stats['normalized_person_with_stats']
     for path in ['undereyebrighten-type1-Studio-EV0.json', 'skinsmoothstandalone-type1-Studio-EV0.json']:

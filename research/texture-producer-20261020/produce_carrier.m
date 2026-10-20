@@ -44,9 +44,12 @@ int main(int argc, char **argv) {
             VNRequest *glasses = [NSClassFromString(@"VNGenerateGlassesSegmentationRequest") new];
             VNGeneratePersonInstanceMaskRequest *instances = [VNGeneratePersonInstanceMaskRequest new];
             VNDetectFaceLandmarksRequest *faces = [VNDetectFaceLandmarksRequest new];
+            VNRequest *faceSegments = [NSClassFromString(@"VNGenerateFaceSegmentsRequest") new];
             NSError *error = nil;
-            if (![handler performRequests:@[attributes, glasses, instances, faces] error:&error])
+            if (![handler performRequests:@[attributes, glasses, instances, faceSegments] error:&error])
                 @throw [NSException exceptionWithName:@"Inference" reason:error.description userInfo:nil];
+            faces.inputFaceObservations = (NSArray<VNFaceObservation *> *)faceSegments.results;
+            if (![handler performRequests:@[faces] error:&error]) @throw [NSException exceptionWithName:@"Inference" reason:error.description userInfo:nil];
             NSMutableDictionary *masks = [NSMutableDictionary new];
             NSDictionary *features = @{@"human_attribute_skin": @"semanticskinmattev2", @"human_attribute_hair": @"semantichairmatte", @"human_attribute_teeth": @"semanticteethmattev2"};
             for (VNPixelBufferObservation *observation in attributes.results) {
