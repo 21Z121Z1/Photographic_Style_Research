@@ -1,0 +1,88 @@
+name: hdr-native-s101
+on:
+  push:
+    branches: ['research/vm-native-20261021-hdr-s101']
+  workflow_dispatch:
+jobs:
+  independent-HDR-carrier:
+    runs-on: xcode-27
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      VM_DISABLE_RESIDENCY_SETS: '1'
+      S41_HEAP_BYTES: '2147483648'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare private workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s101"
+          mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/encrypted" "$W/secure"
+          mkdir -m 700 "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          export GNUPGHOME="$W/gnupg"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/out/key-import.log" 2>&1
+          python3 -m pip install --quiet 'numpy==2.3.4' 'pillow-heif==1.3.0' 'opencolorio==2.6.0' 'OpenEXR==3.5.2' pillow > "$W/out/dependencies.log" 2>&1
+      - name: Retain five full frozen masters, separated candidates and HDR carriers
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          trap '
+          cp "$W/case/source-exception.json" "$W/out/source-exception.json" 2>/dev/null || true
+          cp "$W/case/native/native.json" "$W/out/native-checkpoint.json" 2>/dev/null || true
+          ' EXIT
+          python3 research/hdr-native/run_hdr_s101.py > "$W/out/driver.log" 2>&1
+      - name: Seal any remaining private outputs after failure
+        if: always()
+        run: |
+          python3 research/hdr-native/seal_partial_s101.py > "$W/out/fallback-seal.log" 2>&1
+      - name: Stage verified text only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess,shutil
+          w=pathlib.Path(os.environ['W']);p=w/'out';rows=[]
+          for f in sorted(p.rglob('*')):
+              if f.is_file() and f!=p/'manifest.json':
+                  assert f.suffix in {'.json','.log','.txt'}
+                  rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
+          assert sum(x['size'] for x in rows)<2000000
+          target=w/'public';target.mkdir()
+          for row in rows:
+              src=p/row['path'];dst=target/row['path'];dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dst)
+          (target/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'public_scope':'Whitelisted aggregate text only; all image data encrypted','files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s101-aggregate
+          path: ${{ env.W }}/public/
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s101-encrypted-outputs
+          path: ${{ env.W }}/encrypted/*.gpg
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Remove only own transient copies
+        if: always()
+        run: |
+          test -n "${W:-}"
+          gpgconf --homedir "$W/gnupg" --kill gpg-agent || true
+          rm -rf -- "$W"

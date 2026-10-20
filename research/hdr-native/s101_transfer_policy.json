@@ -1,0 +1,17 @@
+{
+  "scope": "One new full-file delivery run S101, no historical large archives fetched or recopied",
+  "authorization": "User explicitly lifted resource restrictions and authorized storing research data on Japan VM, then required avoiding repeated HK/Japan cross-region transfers",
+  "superseded_resource_limits": ["100MB cumulative write limit", "4GB HK free-space floor", "1GB automatic-download cap for this new Japan-direct archive"],
+  "new_archive_aggregate_guard_bytes": 3000000000,
+  "guard_behavior": "Read actual GitHub artifact sizes before download; stop for review above the guard. No chunking or multiple runs to evade a size guard.",
+  "destination": "Japan research archive runs/<run_id>/artifact-<artifact_id>.zip",
+  "large_transfer_route": "GitHub signed artifact endpoint directly to Japan once; preserve original provider SHA-verified ZIPs",
+  "prohibited_backhaul": "No full ZIP or large encrypted/plaintext image body from Japan to HK",
+  "HK_receives": "Small public evidence, at most32KiB encrypted header per cipher, hash-only GPG verification receipts; SSH/base64 overhead separately acknowledged",
+  "verification": "GPG authentication and every tar member hash on Japan, no image decode or plaintext member files",
+  "private_key": "Stays on HK; archive-specific session key through SSH stdin and anonymous FD only",
+  "memory": "HK Python400MB scope; heavy image work macOS runner only; Japan streaming verifier400MB RLIMIT",
+  "input_upload": "None; all five originals already in repository. No new secret or release required.",
+  "output_privacy": "All image outputs encrypted, safe staged public text only, retention-days1",
+  "source_preservation": "Originals, frozen models, historical outputs, master and protected untracked files remain unchanged"
+}

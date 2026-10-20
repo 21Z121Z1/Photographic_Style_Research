@@ -1,0 +1,382 @@
+{
+  "source_before_probe": "a9ea47e7fcaff34f79b57d64ea5da09f62a5064a",
+  "protected8_unchanged": true,
+  "source_preflight": {
+    "metadata_only_on_HK": true,
+    "original_S42_AST_restored_without_one_IO_hook": {
+      "inserted_IO_calls": 1,
+      "removing_IO_calls_restores_original_AST": true,
+      "original_AST_SHA256": "9028e46fc475868ef7aea5c03f06c9051072c2982ddb534caedb35098f4c7108",
+      "new_AST_SHA256": "c191fdc06d343ea971dc13f8b081ff9f0429c4859169e9dbdc31209b839ec82f",
+      "pixel_expressions_modified": false
+    },
+    "S89_actual_new_file_validation_nodes_unmodified": {
+      "display": {
+        "AST_SHA256": "0f056c97f1efbddcd830ffbe7bc90d225e6e537918d3a14fff35fe5335fde654",
+        "lines": [
+          41,
+          41
+        ],
+        "original_nodes_unmodified": true
+      },
+      "actual_file_validation": {
+        "AST_SHA256": "b395ffebd7dbdfbabdaa64e67d9a836c17f42c9cb8cd668f43fa059352eedc5f",
+        "lines": [
+          64,
+          84
+        ],
+        "original_nodes_unmodified": true
+      }
+    },
+    "five_case_bindings": [
+      {
+        "photo": "IMG_2600",
+        "driver_before_extra_IO_SHA256": "417d6973670e8584261d3c90ec51356c71c1c2b6268d279ae2c0ed202d5a7183",
+        "original_derivation": {
+          "driver": {
+            "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+            "derived_sha256": "417d6973670e8584261d3c90ec51356c71c1c2b6268d279ae2c0ed202d5a7183",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+                "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+                "count": 1
+              },
+              {
+                "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+                "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+                "count": 1
+              },
+              {
+                "old": "D/'rebuild_master_s88.py'",
+                "new": "Path(os.environ['HDR_S89_REBUILD'])",
+                "count": 1
+              },
+              {
+                "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+                "new": "[(PRIVATE,'contacts',300000)]",
+                "count": 1
+              },
+              {
+                "old": "IMG_0032",
+                "new": "IMG_2600",
+                "count": 5
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "rebuild": {
+            "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+            "derived_sha256": "dc26de7c430f274d6c061e5f196ad037258574e8e7a110faaaf96ed77cd89e28",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "IMG_0032",
+                "new": "IMG_2600",
+                "count": 2
+              },
+              {
+                "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+                "new": "69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634",
+                "count": 1
+              },
+              {
+                "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+                "new": "63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0",
+                "count": 1
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+        },
+        "extra_IO_matches": 2
+      },
+      {
+        "photo": "IMG_2604",
+        "driver_before_extra_IO_SHA256": "b9e8c3f92d5bcd05ff0a4295c31074013f2152398fe58ee6d17e3a4e67028504",
+        "original_derivation": {
+          "driver": {
+            "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+            "derived_sha256": "b9e8c3f92d5bcd05ff0a4295c31074013f2152398fe58ee6d17e3a4e67028504",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+                "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+                "count": 1
+              },
+              {
+                "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+                "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+                "count": 1
+              },
+              {
+                "old": "D/'rebuild_master_s88.py'",
+                "new": "Path(os.environ['HDR_S89_REBUILD'])",
+                "count": 1
+              },
+              {
+                "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+                "new": "[(PRIVATE,'contacts',300000)]",
+                "count": 1
+              },
+              {
+                "old": "IMG_0032",
+                "new": "IMG_2604",
+                "count": 5
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "rebuild": {
+            "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+            "derived_sha256": "ff202401d3c6792e13c2c8ac6b3e55e6c50bb75cbb10d4dfe4e16d50bed4e244",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "IMG_0032",
+                "new": "IMG_2604",
+                "count": 2
+              },
+              {
+                "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+                "new": "63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264",
+                "count": 1
+              },
+              {
+                "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+                "new": "71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e",
+                "count": 1
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+        },
+        "extra_IO_matches": 2
+      },
+      {
+        "photo": "IMG_0032",
+        "driver_before_extra_IO_SHA256": "d8239c0d79ebd8c85d22031c34a52f31dae1d00690cc5672bc7b71a4251d5efa",
+        "original_derivation": {
+          "driver": {
+            "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+            "derived_sha256": "d8239c0d79ebd8c85d22031c34a52f31dae1d00690cc5672bc7b71a4251d5efa",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+                "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+                "count": 1
+              },
+              {
+                "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+                "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+                "count": 1
+              },
+              {
+                "old": "D/'rebuild_master_s88.py'",
+                "new": "Path(os.environ['HDR_S89_REBUILD'])",
+                "count": 1
+              },
+              {
+                "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+                "new": "[(PRIVATE,'contacts',300000)]",
+                "count": 1
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "rebuild": {
+            "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+            "derived_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [],
+            "pixel_math_changed": false
+          },
+          "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+        },
+        "extra_IO_matches": 2
+      },
+      {
+        "photo": "IMG_2608",
+        "driver_before_extra_IO_SHA256": "8f136d977e1a63aa0ef408d6b6d650ff52f6441838d288c44702c50d781afbbb",
+        "original_derivation": {
+          "driver": {
+            "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+            "derived_sha256": "8f136d977e1a63aa0ef408d6b6d650ff52f6441838d288c44702c50d781afbbb",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+                "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+                "count": 1
+              },
+              {
+                "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+                "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+                "count": 1
+              },
+              {
+                "old": "D/'rebuild_master_s88.py'",
+                "new": "Path(os.environ['HDR_S89_REBUILD'])",
+                "count": 1
+              },
+              {
+                "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+                "new": "[(PRIVATE,'contacts',300000)]",
+                "count": 1
+              },
+              {
+                "old": "IMG_0032",
+                "new": "IMG_2608",
+                "count": 5
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "rebuild": {
+            "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+            "derived_sha256": "5f53a1010925e184b177d40a104261892ece2ba161c471f0be08db3fb5da85c6",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "IMG_0032",
+                "new": "IMG_2608",
+                "count": 2
+              },
+              {
+                "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+                "new": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+                "count": 1
+              },
+              {
+                "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+                "new": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a",
+                "count": 1
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+        },
+        "extra_IO_matches": 2
+      },
+      {
+        "photo": "IMG_0033",
+        "driver_before_extra_IO_SHA256": "a6ae99c3122572e06c6da3eec4b6b3d9ae5a8b45a3dc0f14bf886177f963074e",
+        "original_derivation": {
+          "driver": {
+            "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+            "derived_sha256": "a6ae99c3122572e06c6da3eec4b6b3d9ae5a8b45a3dc0f14bf886177f963074e",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+                "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+                "count": 1
+              },
+              {
+                "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+                "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+                "count": 1
+              },
+              {
+                "old": "D/'rebuild_master_s88.py'",
+                "new": "Path(os.environ['HDR_S89_REBUILD'])",
+                "count": 1
+              },
+              {
+                "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+                "new": "[(PRIVATE,'contacts',300000)]",
+                "count": 1
+              },
+              {
+                "old": "IMG_0032",
+                "new": "IMG_0033",
+                "count": 5
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "rebuild": {
+            "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+            "derived_sha256": "3dfe7711acff21b79ba2bda31af0ba096c3cd5091e118b0a052951fb6735950f",
+            "inverse_substitutions_equal_original": true,
+            "swaps": [
+              {
+                "old": "IMG_0032",
+                "new": "IMG_0033",
+                "count": 2
+              },
+              {
+                "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+                "new": "7d488706655324c2ae278281cad21f980f71aaf03e2a536dd7aa8eb512bcf89d",
+                "count": 1
+              },
+              {
+                "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+                "new": "c2f18ab9b1349377d2e23aaa7610bb5115f28f95c4d88ce6a789d6550e1213a0",
+                "count": 1
+              }
+            ],
+            "pixel_math_changed": false
+          },
+          "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+        },
+        "extra_IO_matches": 2
+      }
+    ],
+    "final_source_SHA256": {
+      "run_hdr_s101.py": "44890aac2a1fe1a271d1a0651ed4167f0fafde4e2b18dd3f0c490147dec9f68e",
+      "rebuild_export_s101.py": "f7ddd496b4a1ef94e14825e6bb1af68973097b90d15e001599814a236c97e160",
+      "headroom_validation_s101.py": "d52027a9010847edf04205c9bf19896fc162fc615475c0dce562d6f4fb6d459f",
+      "export_hdr_target_s101.py": "ce5fe2cd1f528702bdde93ed0393df040a9510bfff277ef4f611edb94666bb01",
+      "seal_partial_s101.py": "5bd74ccb73a1e4adaa283671e9042485bdd8e64a7582f4079bef297b3a2281e7",
+      "s101_transfer_policy.json": "92c5aa1a31a9c25ef3e56062e8086a319a962c34fb56ce314b11dadc035860b1",
+      "hdr-native-s101.yml": "e6458745f70d80e5af7648b655ca2b658705339f088e7c90019895bc0684353c"
+    },
+    "prior_preflight_is_historical": true,
+    "new_test_cohort": false,
+    "new_inverse_or_precision_hunt": false,
+    "transfer_policy": {
+      "scope": "One new full-file delivery run S101, no historical large archives fetched or recopied",
+      "authorization": "User explicitly lifted resource restrictions and authorized storing research data on Japan VM, then required avoiding repeated HK/Japan cross-region transfers",
+      "superseded_resource_limits": [
+        "100MB cumulative write limit",
+        "4GB HK free-space floor",
+        "1GB automatic-download cap for this new Japan-direct archive"
+      ],
+      "new_archive_aggregate_guard_bytes": 3000000000,
+      "guard_behavior": "Read actual GitHub artifact sizes before download; stop for review above the guard. No chunking or multiple runs to evade a size guard.",
+      "destination": "Japan research archive runs/<run_id>/artifact-<artifact_id>.zip",
+      "large_transfer_route": "GitHub signed artifact endpoint directly to Japan once; preserve original provider SHA-verified ZIPs",
+      "prohibited_backhaul": "No full ZIP or large encrypted/plaintext image body from Japan to HK",
+      "HK_receives": "Small public evidence, at most32KiB encrypted header per cipher, hash-only GPG verification receipts; SSH/base64 overhead separately acknowledged",
+      "verification": "GPG authentication and every tar member hash on Japan, no image decode or plaintext member files",
+      "private_key": "Stays on HK; archive-specific session key through SSH stdin and anonymous FD only",
+      "memory": "HK Python400MB scope; heavy image work macOS runner only; Japan streaming verifier400MB RLIMIT",
+      "input_upload": "None; all five originals already in repository. No new secret or release required.",
+      "output_privacy": "All image outputs encrypted, safe staged public text only, retention-days1",
+      "source_preservation": "Originals, frozen models, historical outputs, master and protected untracked files remain unchanged"
+    },
+    "A_phase_complete": false,
+    "engineering_accepted": false,
+    "acceptance_complete": false
+  },
+  "goal": "Five complete frozen-recipe masters/common-key1/global/local EXRs plus independent FLOAT HDR targets and original-SDR-preserving HEIC carriers, authenticated private file delivery on Japan",
+  "new_validation_cohort": false,
+  "same_five_S89_cases": true,
+  "original_pixel_math_or_masks_changed": false,
+  "retention_days": 1,
+  "new_input_secret_or_release_required": false,
+  "partial_failure_outputs_encrypted": true,
+  "public_upload_staging": "Whitelisted text only; unsafe out files never uploaded",
+  "Japan_direct_aggregate_guard_bytes": 3000000000,
+  "no_HK_large_backhaul": true,
+  "A_phase_complete": false,
+  "engineering_accepted": false,
+  "acceptance_complete": false
+}
