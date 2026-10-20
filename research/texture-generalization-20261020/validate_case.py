@@ -69,6 +69,9 @@ def validate(root, head):
             generated=read(f'person-{index}/{name}-type1-Studio-EV0.json')
             assert not generated.get('exception') and generated['native_statistics_operations_completed']
             assert all(generated[stage]==0 for stage in stages)
+            assert generated['native_call_order'][-1]=='finishProcessing'
+            assert generated['native_call_order'].count('finishProcessing')==1
+            assert generated['terminal_queue_fence_status']==4
             assert generated['shared_context_geometry_used'] and not generated['person_before_stats'].get('imageStats')
             assert same_geometry(generated['person_before_stats'],p['native_person_without_stats'])
             assert generated['actual_input_mask_textures']['instance']['sha256']==sha(p['instance_role']+'.l8')
@@ -92,6 +95,8 @@ def validate(root, head):
             stored_role='instance-'+str(index) if role=='instance' else role
             assert facts['sha256']==decode_by_role[stored_role]['sha256']
         assert replay['render_calculate_stats_status']==replay['render_process_status']==0
+        assert replay['render_prepare_status']==0
+        assert replay['native_call_order'][-1]=='finishProcessing' and replay['terminal_queue_fence_status']==4
         assert replay['render_command_status']==4 and not replay['render_command_error']
         assert replay['rendered_pixels']['nonfinite']==0 and replay['native_preview_finalized']
         renders.append(replay['rendered_pixels'])
