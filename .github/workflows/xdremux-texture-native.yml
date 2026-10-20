@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 21Z121Z1/XDRemux
-          ref: cf4113922d9066a81e044bc2583fa5f038487525
+          ref: f3adfae83d0d4384c8a8b079aa38e26a367c5396
           path: product
           fetch-depth: 0
           persist-credentials: false
@@ -29,7 +29,7 @@ jobs:
         working-directory: product
         run: |
           mkdir -p "$RUNNER_TEMP/texture-product"
-          test "$(git rev-parse HEAD)" = cf4113922d9066a81e044bc2583fa5f038487525
+          test "$(git rev-parse HEAD)" = f3adfae83d0d4384c8a8b079aa38e26a367c5396
           sw_vers > "$RUNNER_TEMP/texture-product/os.txt"
           xcodebuild -version > "$RUNNER_TEMP/texture-product/xcode.txt"
           set -o pipefail
@@ -77,7 +77,7 @@ jobs:
               if result.exists():shutil.copyfile(result,output/'result.json')
           for p in output.glob('*.zip'):
               manifests.append({'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-          report={'source_repository':'21Z121Z1/XDRemux','source_head':'cf4113922d9066a81e044bc2583fa5f038487525','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
+          report={'source_repository':'21Z121Z1/XDRemux','source_head':'f3adfae83d0d4384c8a8b079aa38e26a367c5396','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
           (output/'DELIVERY.json').write_text(json.dumps(report,indent=2)+'\n')
           (output/'.gitattributes').write_text('*.zip binary\n')
           branch='research/texture-product-output-'+os.environ['GITHUB_RUN_ID']
