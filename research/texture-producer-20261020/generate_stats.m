@@ -237,7 +237,9 @@ int main(int argc, char **argv) {
             report[@"native_queue_explicitly_bound"] = @(Call(effect, @"metalCommandQueue", @[]) != nil);
             id executionStatus = Make(@"FigMetalExecutionStatus");
             Call(nativeContext, @"setExecutionStatus:", @[executionStatus]);
-            for (NSString *stage in @[@"setup", @"prewarm", @"prepareToProcess:", @"calculateStats", @"process", @"finishProcessing"]) {
+            NSMutableArray *callOrder=[NSMutableArray new];report[@"native_call_order"]=callOrder;
+            for (NSString *stage in @[@"setup", @"prewarm", @"prepareToProcess:", @"calculateStats", @"process"]) {
+                [callOrder addObject:stage];
                 report[@"stage"] = stage; Write(report, out);
                 id<MTLCommandBuffer> explicitCommand = nil;
                 if ([stage isEqual:@"calculateStats"] || [stage isEqual:@"process"]) {
@@ -274,13 +276,10 @@ int main(int argc, char **argv) {
                 report[stage] = status; report[@"native_output_person_stats"] = nativeStats; Write(report, out);
                 if (status.intValue != 0) break;
             }
-            report[@"stage"] = @"finished";
-            BOOL operationsCompleted=YES;
-            for(NSString *stage in @[@"setup",@"prewarm",@"prepareToProcess:",@"calculateStats",@"process",@"finishProcessing"])
-                operationsCompleted &= report[stage]!=nil && [report[stage] intValue]==0;
-            report[@"native_statistics_operations_completed"]=@(operationsCompleted);
-            report[@"native_returned_empty_statistics"]=@(operationsCompleted && !nativeStats.count);
-            if (nativeStats.count && [report[@"process"] intValue] == 0) {
+            BOOL productionCompleted=YES;
+            for(NSString *stage in @[@"setup",@"prewarm",@"prepareToProcess:",@"calculateStats",@"process"])
+                productionCompleted &= report[stage]!=nil && [report[stage] intValue]==0;
+            if (productionCompleted && nativeStats.count) {
                 id effectName = Call(NSClassFromString(@"CMITextureStylesProcessor"), @"effectTypeToEffectName:", @[report[@"native_effect_type"] ?: @3]);
                 report[@"native_effect_name"] = effectName;
                 Call(person, @"setImageStats:", @[@{effectName: nativeStats}]);
@@ -291,9 +290,13 @@ int main(int argc, char **argv) {
                 if ([effectKind isEqual:@"Mattify"] && [parameterSource isEqual:@"Studio"] && exposure == 0 && ![report[@"calculateStats"] intValue]) {
                     report[@"stage"] = @"render_preview"; Write(report, out);
                     Call(effect, @"setSkipRendering:", @[@NO]);
+                    [callOrder addObject:@"render_prepareToProcess:"];
+                    report[@"render_prepare_status"]=Call(effect,@"prepareToProcess:",@[@0]);
                     id<MTLCommandBuffer> renderCommand = [queue commandBuffer];
                     Call(nativeContext, @"setCommandBuffer:", @[renderCommand]);
+                    [callOrder addObject:@"render_calculateStats"];
                     report[@"render_calculate_stats_status"] = Call(effect, @"calculateStats", @[]);
+                    [callOrder addObject:@"render_process"];
                     report[@"render_process_status"] = Call(effect, @"process", @[]);
                     Call(nativeContext, @"forceCommit", @[]);
                     if (renderCommand.status < MTLCommandBufferStatusCommitted) [renderCommand commit];
@@ -333,6 +336,18 @@ int main(int argc, char **argv) {
                     report[@"stage"] = @"finished";
                 }
             }
+            // All statistics and rendering use the prepared effect before its
+            // terminal finish. Fence both the native context and caller queue.
+            Call(nativeContext,@"forceCommit",@[]);Call(nativeContext,@"waitForIdle",@[]);
+            id<MTLCommandBuffer> fence=[queue commandBuffer];[fence commit];[fence waitUntilCompleted];
+            report[@"terminal_queue_fence_status"]=@(fence.status);
+            [callOrder addObject:@"finishProcessing"];report[@"stage"]=@"finishProcessing";Write(report,out);
+            report[@"finishProcessing"]=Call(effect,@"finishProcessing",@[]);
+            Call(nativeContext,@"forceCommit",@[]);Call(nativeContext,@"waitForIdle",@[]);
+            BOOL operationsCompleted=productionCompleted && [report[@"finishProcessing"] intValue]==0 && fence.status==MTLCommandBufferStatusCompleted;
+            report[@"native_statistics_operations_completed"]=@(operationsCompleted);
+            report[@"native_returned_empty_statistics"]=@(operationsCompleted && !nativeStats.count);
+            report[@"stage"]=@"finished";
             CGImageRelease(image); CFRelease(source);
             CGColorSpaceRelease(srgb); CGColorSpaceRelease(working);
         } @catch (NSException *exception) {
