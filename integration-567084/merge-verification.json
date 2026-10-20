@@ -1,0 +1,78 @@
+{
+  "schema": "xdremux-texture-integration-verification-v1",
+  "repository": "21Z121Z1/XDRemux",
+  "pr": 70,
+  "merged_at": "2026-10-20T10:45:08Z",
+  "verified_pr_head": "56708428060e87c87e2006145d545a0b6f12dbed",
+  "merged_main_head": "89d806c8aec961a7991eb3e6d6e2b1370aed8791",
+  "verified_tree": "c552b5b725c91aadb40926699063898b2225f1e8",
+  "main_tree_equals_verified_pr_tree": true,
+  "native_full_matrix_source": "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+  "production_source_identical_between_native_matrix_and_pr_head": true,
+  "canonical_gate": {
+    "run": 39407132947,
+    "job": 118575803103,
+    "conclusion": "success",
+    "checks": 14,
+    "receipt_sha256": "6a4c0f0f9b83c24201284f44428b1684d1b95d2e515b15a5948b53a35b42a46e",
+    "artifact": 12258802552,
+    "artifact_sha256": "4b569ccbf920eedd411a0caa36600db4978224b2a1436f4c329ea7aade2326cd",
+    "local_verify": "passed"
+  },
+  "performance": {
+    "run": 39407132944,
+    "conclusion": "success",
+    "artifact": 12257534611,
+    "artifact_sha256": "1c37e3509cefcd96b18fb3c7eca7df03f2eae946ae2c3e7e8d397acf94d059b5",
+    "joint_styles_median_seconds": 7.968190125000092,
+    "joint_styles_p95_seconds": 8.421738941400053,
+    "adapter_processes": 1
+  },
+  "product_integration": {
+    "run": 39407132941,
+    "conclusion": "success",
+    "artifact": 12258941417,
+    "artifact_sha256": "d30d633cb2cc159d584d22cd0ba7ca7db758c701bc5713c07f611f98f4798e97",
+    "texture_transactions": 5,
+    "person_statistics_through": [
+      "single",
+      "batch",
+      "app"
+    ]
+  },
+  "other_workflows": [
+    {
+      "run": 39407132946,
+      "name": "Research evidence",
+      "conclusion": "success"
+    },
+    {
+      "run": 39407132963,
+      "name": "Rust ProXDR real fixtures",
+      "conclusion": "success"
+    },
+    {
+      "run": 39407133027,
+      "name": "Rust CLI portability",
+      "conclusion": "success"
+    }
+  ],
+  "full_fixture_evidence": {
+    "repository": "21Z121Z1/Photographic_Style_Research",
+    "run": 39400277870,
+    "checks": 11,
+    "fixture_count": 14,
+    "outputs": 16,
+    "independent_rgb_equality_cases": 14
+  },
+  "candidate": {
+    "url": "https://raw.githubusercontent.com/21Z121Z1/Photographic_Style_Research/27e7adcd2a77aeb35fa3985142c07a217888a815/texture-candidate.heic",
+    "bytes": 2051854,
+    "sha256": "d29d1f4fd62a9ac222681e5a9502c13ca6b38ec40920161f984aed738c53dbb0"
+  },
+  "limitations": [
+    "New full-resolution HDR product outputs need separate Photos device import, effect, save and reopen checks. Earlier SDR research activation was user-reported.",
+    "The native SPI producer was validated on macOS 27. Source camera facts are retained; the editing context is derived.",
+    "The canonical receipt binds the PR head, not the different squash-merge hash. Main was verified to have exactly the same tree."
+  ]
+}

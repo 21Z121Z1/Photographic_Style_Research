@@ -1,0 +1,126 @@
+{
+  "base_commit": "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+  "base_revision": "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+  "builtins": {
+    "diff_check_passed": true,
+    "final_tracked_tree_clean": true,
+    "head_unchanged": true,
+    "initial_tracked_tree_clean": true
+  },
+  "changed_files": [
+    ".github/workflows/performance.yml",
+    ".github/workflows/research.yml",
+    "benchmarks/macos27-arm64-product-baseline.json",
+    "research/oppo_styles/tools/probe_style_version.py",
+    "scripts/apple/check_styles_version_hypothesis.sh",
+    "tests/test_style_version_probe.py"
+  ],
+  "checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "1a52db02f3e54eeb511019abdafe54155d06a7a6",
+        "HEAD",
+        "--",
+        "crates",
+        "Sources",
+        "apps",
+        "Package.swift",
+        "Cargo.lock",
+        "Cargo.toml",
+        "docs"
+      ],
+      "duration_seconds": 0.006,
+      "finished_at": "2026-10-20T10:20:25.473827+00:00",
+      "kind": "static",
+      "name": "native-verified-product-source-unchanged",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T10:20:25.467684+00:00",
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "timed_out": false,
+      "timeout_seconds": 30
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.test_performance_design",
+        "tests.test_performance_budget",
+        "tests.validation.test_workflow_configuration",
+        "tests.test_style_version_probe"
+      ],
+      "duration_seconds": 0.342,
+      "finished_at": "2026-10-20T10:20:25.816227+00:00",
+      "kind": "regression",
+      "name": "performance-and-workflow-contracts",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T10:20:25.473924+00:00",
+      "stderr_tail": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 0.203s\n\nOK\n",
+      "stdout_tail": "",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/performance/check_performance_budget.py",
+        "--baseline",
+        "benchmarks/macos27-arm64-product-baseline.json",
+        "--benchmark",
+        "/workspace/texture-product-pass6/product-benchmark.json",
+        "--launches",
+        "/workspace/texture-product-pass6/adapter-launches.json",
+        "--expected-head",
+        "1a52db02f3e54eeb511019abdafe54155d06a7a6"
+      ],
+      "duration_seconds": 0.043,
+      "finished_at": "2026-10-20T10:20:25.858852+00:00",
+      "kind": "static",
+      "name": "recorded-performance-reference",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T10:20:25.816261+00:00",
+      "stderr_tail": "",
+      "stdout_tail": "product performance regression budget:\n  hdr-uhdr-rgb444 median_wall_seconds: observed=6.897s reference=9.687s budget=13.077s\n  hdr-uhdr-rgb444 p95_wall_seconds: observed=6.939s reference=11.133s budget=15.030s\n  hdr-uhdr-rgb444 max_peak_rss_mib: observed=115.344MiB reference=120.600MiB budget=152.600MiB\n  oppo-compatible-uhdr-rgb420 median_wall_seconds: observed=5.946s reference=8.757s budget=11.822s\n  oppo-compatible-uhdr-rgb420 p95_wall_seconds: observed=6.235s reference=10.069s budget=13.593s\n  oppo-compatible-uhdr-rgb420 max_peak_rss_mib: observed=111.484MiB reference=116.400MiB budget=148.400MiB\n  motion-jpeg median_wall_seconds: observed=6.024s reference=8.432s budget=11.383s\n  motion-jpeg p95_wall_seconds: observed=6.449s reference=8.628s budget=11.648s\n  motion-jpeg max_peak_rss_mib: observed=313.953MiB reference=313.600MiB budget=392.000MiB\n  motion-heif median_wall_seconds: observed=0.098s reference=0.143s budget=0.393s\n  motion-heif p95_wall_seconds: observed=0.101s reference=0.184s budget=0.434s\n  motion-heif max_peak_rss_mib: observed=27.766MiB reference=27.500MiB budget=59.500MiB\n  batch-3 median_wall_seconds: observed=16.197s reference=21.280s budget=28.728s\n  batch-3 p95_wall_seconds: observed=16.754s reference=21.726s budget=29.330s\n  batch-3 max_peak_rss_mib: observed=249.000MiB reference=259.100MiB budget=323.875MiB\n  apple-portrait median_wall_seconds: observed=3.367s reference=4.789s budget=6.465s\n  apple-portrait p95_wall_seconds: observed=3.506s reference=6.789s budget=9.165s\n  apple-portrait max_peak_rss_mib: observed=896.688MiB reference=821.200MiB budget=1026.500MiB\n  apple-styles median_wall_seconds: observed=7.976s reference=8.691s budget=11.732s\n  apple-styles p95_wall_seconds: observed=8.150s reference=11.412s budget=15.406s\n  apple-styles max_peak_rss_mib: observed=1089.094MiB reference=1089.094MiB budget=1361.367MiB\nApple adapter structural launch budget:\n  apple-portrait: observed=1 max=1\n  apple-styles: observed=1 max=1\nperformance regression gate passed\n",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "python3",
+        "-c",
+        "from pathlib import Path; from scripts.diagnostics.inspect_oppo_heif import inspect; from research.oppo_styles.tools.probe_style_version import patch_heic; p=Path('/workspace/texture-product-pass6/texture-candidate.heic'); data=p.read_bytes(); output,receipt=patch_heic(data,inspect(p)); assert receipt['other_bytes_identical'] and sum(a!=b for a,b in zip(data,output))==1"
+      ],
+      "duration_seconds": 0.32,
+      "finished_at": "2026-10-20T10:20:26.179343+00:00",
+      "kind": "functional",
+      "name": "real-HDR-texture-version-control",
+      "passed": true,
+      "return_code": 0,
+      "started_at": "2026-10-20T10:20:25.858886+00:00",
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "timed_out": false,
+      "timeout_seconds": 60
+    }
+  ],
+  "diff_check_output": "",
+  "final_tracked_status": [],
+  "generated_at": "2026-10-20T10:20:26.189039+00:00",
+  "head_commit": "56708428060e87c87e2006145d545a0b6f12dbed",
+  "initial_tracked_status": [],
+  "passed": true,
+  "policy": {
+    "production_changed": false,
+    "source_changed": true
+  },
+  "repository": "/workspace/XDRemux-integration",
+  "schema_version": 1,
+  "scope": "CI baseline and version-only research controls; production code equals the native-verified revision"
+}

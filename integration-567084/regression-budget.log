@@ -1,0 +1,26 @@
+product performance regression budget:
+  hdr-uhdr-rgb444 median_wall_seconds: observed=8.515s reference=9.687s budget=13.077s
+  hdr-uhdr-rgb444 p95_wall_seconds: observed=9.657s reference=11.133s budget=15.030s
+  hdr-uhdr-rgb444 max_peak_rss_mib: observed=115.469MiB reference=120.600MiB budget=152.600MiB
+  oppo-compatible-uhdr-rgb420 median_wall_seconds: observed=5.921s reference=8.757s budget=11.822s
+  oppo-compatible-uhdr-rgb420 p95_wall_seconds: observed=5.965s reference=10.069s budget=13.593s
+  oppo-compatible-uhdr-rgb420 max_peak_rss_mib: observed=111.531MiB reference=116.400MiB budget=148.400MiB
+  motion-jpeg median_wall_seconds: observed=6.218s reference=8.432s budget=11.383s
+  motion-jpeg p95_wall_seconds: observed=6.384s reference=8.628s budget=11.648s
+  motion-jpeg max_peak_rss_mib: observed=314.031MiB reference=313.600MiB budget=392.000MiB
+  motion-heif median_wall_seconds: observed=0.087s reference=0.143s budget=0.393s
+  motion-heif p95_wall_seconds: observed=0.089s reference=0.184s budget=0.434s
+  motion-heif max_peak_rss_mib: observed=27.781MiB reference=27.500MiB budget=59.500MiB
+  batch-3 median_wall_seconds: observed=16.073s reference=21.280s budget=28.728s
+  batch-3 p95_wall_seconds: observed=16.833s reference=21.726s budget=29.330s
+  batch-3 max_peak_rss_mib: observed=246.656MiB reference=259.100MiB budget=323.875MiB
+  apple-portrait median_wall_seconds: observed=4.849s reference=4.789s budget=6.465s
+  apple-portrait p95_wall_seconds: observed=5.388s reference=6.789s budget=9.165s
+  apple-portrait max_peak_rss_mib: observed=896.453MiB reference=821.200MiB budget=1026.500MiB
+  apple-styles median_wall_seconds: observed=7.968s reference=8.691s budget=11.732s
+  apple-styles p95_wall_seconds: observed=8.422s reference=11.412s budget=15.406s
+  apple-styles max_peak_rss_mib: observed=1089.047MiB reference=1089.094MiB budget=1361.367MiB
+Apple adapter structural launch budget:
+  apple-portrait: observed=1 max=1
+  apple-styles: observed=1 max=1
+performance regression gate passed

@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "measurement_layer": "product-e2e",
+  "head": "56708428060e87c87e2006145d545a0b6f12dbed",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python": "3.15.0",
+  "cli": "/Users/runner/work/XDRemux/XDRemux/target/release/xdremux",
+  "apple_adapter": "/Users/runner/work/XDRemux/XDRemux/.build/out/Products/Release/xdremux-apple-adapter",
+  "warmup": 1,
+  "iterations": 5,
+  "cases": [
+    {
+      "name": "hdr-lhdr-mono400",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": "lhdr",
+      "gain_map_channels": "mono",
+      "gain_map_chroma": "400",
+      "codec_path": "portable-libheif",
+      "input_bytes": 2296401,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 2.1813881250000122,
+          "peak_rss_bytes": 51953664
+        },
+        {
+          "wall_seconds": 2.2287474999998267,
+          "peak_rss_bytes": 51740672
+        },
+        {
+          "wall_seconds": 2.043255333000161,
+          "peak_rss_bytes": 56000512
+        },
+        {
+          "wall_seconds": 1.6707187500001055,
+          "peak_rss_bytes": 51888128
+        },
+        {
+          "wall_seconds": 1.9230225000001155,
+          "peak_rss_bytes": 51773440
+        }
+      ],
+      "median_wall_seconds": 2.043255333000161,
+      "p95_wall_seconds": 2.2192756249998635,
+      "median_peak_rss_bytes": 51888128,
+      "max_peak_rss_bytes": 56000512,
+      "median_input_mib_per_second": 1.0718281844168598
+    },
+    {
+      "name": "hdr-uhdr-rgb444",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": "uhdr",
+      "gain_map_channels": "rgb",
+      "gain_map_chroma": "444",
+      "codec_path": "portable-libheif",
+      "input_bytes": 4931736,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 9.722126083999683,
+          "peak_rss_bytes": 120963072
+        },
+        {
+          "wall_seconds": 9.398389333000068,
+          "peak_rss_bytes": 121061376
+        },
+        {
+          "wall_seconds": 8.514866666000216,
+          "peak_rss_bytes": 120963072
+        },
+        {
+          "wall_seconds": 7.499498875000427,
+          "peak_rss_bytes": 121077760
+        },
+        {
+          "wall_seconds": 7.007489583000279,
+          "peak_rss_bytes": 121077760
+        }
+      ],
+      "median_wall_seconds": 8.514866666000216,
+      "p95_wall_seconds": 9.65737873379976,
+      "median_peak_rss_bytes": 121061376,
+      "max_peak_rss_bytes": 121077760,
+      "median_input_mib_per_second": 0.5523597894111727
+    },
+    {
+      "name": "oppo-compatible-lhdr-rgb420",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": "lhdr",
+      "gain_map_channels": "rgb",
+      "gain_map_chroma": "420",
+      "codec_path": "portable-libheif",
+      "input_bytes": 2296401,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 1.8723213749999559,
+          "peak_rss_bytes": 67682304
+        },
+        {
+          "wall_seconds": 1.567309541999748,
+          "peak_rss_bytes": 67551232
+        },
+        {
+          "wall_seconds": 1.7077237499997864,
+          "peak_rss_bytes": 67764224
+        },
+        {
+          "wall_seconds": 1.5102271670002665,
+          "peak_rss_bytes": 67567616
+        },
+        {
+          "wall_seconds": 1.5962015000000065,
+          "peak_rss_bytes": 67813376
+        }
+      ],
+      "median_wall_seconds": 1.5962015000000065,
+      "p95_wall_seconds": 1.8394018499999218,
+      "median_peak_rss_bytes": 67682304,
+      "max_peak_rss_bytes": 67813376,
+      "median_input_mib_per_second": 1.3720189173294348
+    },
+    {
+      "name": "oppo-compatible-uhdr-rgb420",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": "uhdr",
+      "gain_map_channels": "rgb",
+      "gain_map_chroma": "420",
+      "codec_path": "portable-libheif",
+      "input_bytes": 4931736,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 5.744947708999916,
+          "peak_rss_bytes": 116948992
+        },
+        {
+          "wall_seconds": 5.946918334000202,
+          "peak_rss_bytes": 116916224
+        },
+        {
+          "wall_seconds": 5.920776999999816,
+          "peak_rss_bytes": 116736000
+        },
+        {
+          "wall_seconds": 5.969806833000348,
+          "peak_rss_bytes": 116785152
+        },
+        {
+          "wall_seconds": 5.846509874999811,
+          "peak_rss_bytes": 116850688
+        }
+      ],
+      "median_wall_seconds": 5.920776999999816,
+      "p95_wall_seconds": 5.965229133200318,
+      "median_peak_rss_bytes": 116850688,
+      "max_peak_rss_bytes": 116948992,
+      "median_input_mib_per_second": 0.7943670161021501
+    },
+    {
+      "name": "motion-jpeg",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": null,
+      "gain_map_channels": null,
+      "gain_map_chroma": null,
+      "codec_path": null,
+      "input_bytes": 6842570,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 6.395132874999945,
+          "peak_rss_bytes": 328990720
+        },
+        {
+          "wall_seconds": 6.178130667000005,
+          "peak_rss_bytes": 329285632
+        },
+        {
+          "wall_seconds": 6.11637625000003,
+          "peak_rss_bytes": 329089024
+        },
+        {
+          "wall_seconds": 6.218159458999708,
+          "peak_rss_bytes": 328957952
+        },
+        {
+          "wall_seconds": 6.341785374999745,
+          "peak_rss_bytes": 329236480
+        }
+      ],
+      "median_wall_seconds": 6.218159458999708,
+      "p95_wall_seconds": 6.384463374999905,
+      "median_peak_rss_bytes": 329089024,
+      "max_peak_rss_bytes": 329285632,
+      "median_input_mib_per_second": 1.0494396790946336
+    },
+    {
+      "name": "motion-heif",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": null,
+      "gain_map_channels": null,
+      "gain_map_chroma": null,
+      "codec_path": null,
+      "input_bytes": 5786707,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 0.08920870800011471,
+          "peak_rss_bytes": 29081600
+        },
+        {
+          "wall_seconds": 0.08660883399988961,
+          "peak_rss_bytes": 29114368
+        },
+        {
+          "wall_seconds": 0.08626137500004916,
+          "peak_rss_bytes": 29048832
+        },
+        {
+          "wall_seconds": 0.08771837499989488,
+          "peak_rss_bytes": 29130752
+        },
+        {
+          "wall_seconds": 0.08570974999975078,
+          "peak_rss_bytes": 29048832
+        }
+      ],
+      "median_wall_seconds": 0.08660883399988961,
+      "p95_wall_seconds": 0.08891064140007074,
+      "median_peak_rss_bytes": 29081600,
+      "max_peak_rss_bytes": 29130752,
+      "median_input_mib_per_second": 63.71906406770579
+    },
+    {
+      "name": "batch-3",
+      "measurement_layer": "product-e2e",
+      "apple": false,
+      "source_family": null,
+      "gain_map_channels": null,
+      "gain_map_chroma": null,
+      "codec_path": null,
+      "input_bytes": 19012750,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 16.019061040999986,
+          "peak_rss_bytes": 258506752
+        },
+        {
+          "wall_seconds": 17.00583795900002,
+          "peak_rss_bytes": 258260992
+        },
+        {
+          "wall_seconds": 15.995013458000358,
+          "peak_rss_bytes": 258637824
+        },
+        {
+          "wall_seconds": 16.140267875000063,
+          "peak_rss_bytes": 256884736
+        },
+        {
+          "wall_seconds": 16.072613999999703,
+          "peak_rss_bytes": 258293760
+        }
+      ],
+      "median_wall_seconds": 16.072613999999703,
+      "p95_wall_seconds": 16.832723942200026,
+      "median_peak_rss_bytes": 258293760,
+      "max_peak_rss_bytes": 258637824,
+      "median_input_mib_per_second": 1.1281283404960303
+    },
+    {
+      "name": "apple-portrait",
+      "measurement_layer": "product-e2e",
+      "apple": true,
+      "source_family": "uhdr",
+      "gain_map_channels": null,
+      "gain_map_chroma": null,
+      "codec_path": "product-e2e-with-apple-adapter",
+      "input_bytes": 8041362,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 3.7473728330000995,
+          "peak_rss_bytes": 939917312
+        },
+        {
+          "wall_seconds": 5.4255053339998085,
+          "peak_rss_bytes": 939032576
+        },
+        {
+          "wall_seconds": 5.2364867080000295,
+          "peak_rss_bytes": 939065344
+        },
+        {
+          "wall_seconds": 4.848868459000187,
+          "peak_rss_bytes": 939917312
+        },
+        {
+          "wall_seconds": 3.504741458999888,
+          "peak_rss_bytes": 939999232
+        }
+      ],
+      "median_wall_seconds": 4.848868459000187,
+      "p95_wall_seconds": 5.387701608799853,
+      "median_peak_rss_bytes": 939917312,
+      "max_peak_rss_bytes": 939999232,
+      "median_input_mib_per_second": 1.5815732006692698
+    },
+    {
+      "name": "apple-styles",
+      "measurement_layer": "product-e2e",
+      "apple": true,
+      "source_family": "uhdr",
+      "gain_map_channels": null,
+      "gain_map_chroma": null,
+      "codec_path": "product-e2e-with-apple-adapter",
+      "input_bytes": 8041362,
+      "iterations": 5,
+      "samples": [
+        {
+          "wall_seconds": 8.455792958000075,
+          "peak_rss_bytes": 1141784576
+        },
+        {
+          "wall_seconds": 7.968190125000092,
+          "peak_rss_bytes": 1141686272
+        },
+        {
+          "wall_seconds": 7.953210332999788,
+          "peak_rss_bytes": 1141948416
+        },
+        {
+          "wall_seconds": 7.808062459000212,
+          "peak_rss_bytes": 1141866496
+        },
+        {
+          "wall_seconds": 8.28552287499997,
+          "peak_rss_bytes": 1141637120
+        }
+      ],
+      "median_wall_seconds": 7.968190125000092,
+      "p95_wall_seconds": 8.421738941400053,
+      "median_peak_rss_bytes": 1141784576,
+      "max_peak_rss_bytes": 1141948416,
+      "median_input_mib_per_second": 0.9624319058683488
+    }
+  ]
+}
