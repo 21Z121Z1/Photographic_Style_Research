@@ -38,7 +38,7 @@ jobs:
           persist-credentials: false
       - name: Run exact-source native fixture matrix
         env:
-          MATRIX_PHASE: ${{ inputs.phase || 'stress' }}
+          MATRIX_PHASE: ${{ inputs.phase || 'generate' }}
           MATRIX_SELECTION: ${{ inputs.selection || 'all' }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
