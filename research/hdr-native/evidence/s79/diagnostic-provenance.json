@@ -1,0 +1,161 @@
+{
+  "S78_receipt": {
+    "run_id": 39389860461,
+    "artifact_id": 12249385894,
+    "ZIP_bytes": 31286,
+    "ZIP_sha256": "ee17bf5a1519b023d3a6a715f56c955649fe311e2864070bed866a8a04f78596",
+    "manifest_sha256": "893b8043d0d5ef023708442a862879cadbeaf8807ad1226139d0be12d6b8e7c3",
+    "payload_members_SHA_verified": 12,
+    "all_members_verified": true,
+    "source_commit": "98e67973d745de83aca865d9317034ad5a33743c",
+    "all_recipe_sources_verified_against_commit": true,
+    "event": "push",
+    "run_attempt": 1,
+    "run_conclusion": "failure",
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "no_photo_input": true,
+    "synthetic_pixel_buffers_only": true,
+    "download_transport": "Configured gh credential only in memory/stdin on api.github.com; signed asset fetched without credential; no URL or credential saved",
+    "original_ZIP_preserved": true
+  },
+  "reason": "S78 synthetic92-float serializer roundtrip passed; guide/guided/LTM operators run, final original ROI checker5. Original segmentation code only conditionally upsamples person; skin/sky copied unchanged. Diagnose complete geometry using appropriate synthetic input grid, retain failing history and checks. Original S78 high blackPoint control kept as separate profile; ordered profile changes only field7 and is explicitly synthetic.",
+  "source_ranges": [
+    [
+      39681,
+      39794
+    ],
+    [
+      40952,
+      41540
+    ],
+    [
+      43655,
+      43678
+    ]
+  ],
+  "installed": [
+    {
+      "file": "research/hdr-native/ci_status_s79.inc",
+      "sha256": "24f0854acc71fe39211548e4f640f87dd4b1668bb6ef84bcb8827deb7d53f8cc",
+      "bytes": 8141
+    },
+    {
+      "file": "research/hdr-native/stats_context_s79.inc",
+      "sha256": "8e8b81e2911c2d1d855295948e4fcdb8f87804e0c98863c88211e3c458186387",
+      "bytes": 3097
+    },
+    {
+      "file": "research/hdr-native/probe_consumer_ci_s79.m",
+      "sha256": "9def014bbd827de8c63f39b5c1ee24d3811f3c2de7c2faa491ea5ed9f19557e5",
+      "bytes": 25661
+    },
+    {
+      "file": "research/hdr-native/run_hdr_s79.py",
+      "sha256": "b8b0d83efc9a21d3a22bf06251959b48e790257de86499b19cede25f15260344",
+      "bytes": 11395
+    },
+    {
+      "file": ".github/workflows/hdr-native-s79.yml",
+      "sha256": "0da2d91fd4f08ff12b909fc4faf18b3ed344ae04338a4f65a52ca91a0e054bc1",
+      "bytes": 2150
+    }
+  ],
+  "derivation_changes": [
+    {
+      "old": "@\"_processingType\",@\"_useStyleEngine\"]]",
+      "new": "@\"_processingType\",@\"_useStyleEngine\",@\"_inputImageTexture\",@\"_inputImageThumbnailTexture\",@\"_inputLinearImageTexture\",@\"_outputImageTexture\",@\"_inputPersonMaskTexture\",@\"_inputSkinMaskTexture\",@\"_inputSkyMaskTexture\",@\"_personMaskTexture\",@\"_skinMaskTexture\",@\"_skyMaskTexture\"]]"
+    },
+    {
+      "old": "if(!pipeline&&![wanted containsObject:name])continue;",
+      "new": "BOOL rect=strcmp(type,@encode(CGRect))==0,size=strcmp(type,@encode(CGSize))==0;if(!pipeline&&!rect&&!size&&![wanted containsObject:name])continue;"
+    },
+    {
+      "old": "if(type[0]=='@'){id v=object_getIvar(o,iv);",
+      "new": "if(rect){CGRect v;memcpy(&v,(const char*)(__bridge void*)o+ivar_getOffset(iv),sizeof(v));r[@\"value\"]=R75(v);}else if(size){CGSize v;memcpy(&v,(const char*)(__bridge void*)o+ivar_getOffset(iv),sizeof(v));r[@\"value\"]=SZ75(v);}else if(strcmp(type,\"[2@\\\"<MTLComputePipelineState>\\\"]\")==0){NSMutableArray*a=[NSMutableArray new];for(int k=0;k<2;k++){__unsafe_unretained id v=nil;memcpy(&v,(const char*)(__bridge void*)o+ivar_getOffset(iv)+k*sizeof(id),sizeof(id));[a addObject:T77PipelineInfo(v)];}r[@\"value\"]=a;}else if(type[0]=='@'){id v=object_getIvar(o,iv);"
+    },
+    {
+      "old": "S78StatsContext(void)",
+      "new": "S79StatsContext(BOOL ordered)"
+    },
+    {
+      "old": "const float fields[9]={.01f,.03f,.08f,.15f,.3f,.45f,.7f,.9f,1.f};",
+      "new": "float fields[9]={.01f,.03f,.08f,.15f,.3f,.45f,.7f,.9f,1.f};if(ordered)fields[7]=.005f;"
+    },
+    {
+      "old": "NSMutableDictionary*proof=[@{",
+      "new": "NSMutableArray*fieldValues=[NSMutableArray new];for(int k=0;k<9;k++)[fieldValues addObject:@(fields[k])];NSMutableDictionary*proof=[@{"
+    },
+    {
+      "old": "@\"global_field_vector_as_raw_f32_control\":@[@.01f,@.03f,@.08f,@.15f,@.3f,@.45f,@.7f,@.9f,@1.f],",
+      "new": "@\"global_field_vector_as_raw_f32_control\":fieldValues,@\"ordered_blackPoint_control\":@(ordered),"
+    },
+    {
+      "old": "#include \"ci_status_s77.inc\"",
+      "new": "#include \"ci_status_s79.inc\""
+    },
+    {
+      "old": "#include \"stats_context_s78.inc\"",
+      "new": "#include \"stats_context_s79.inc\""
+    },
+    {
+      "old": "NSDictionary*statsContext=S78StatsContext();",
+      "new": "NSDictionary*statsContext=S79StatsContext([spec[@\"ordered_stats\"]boolValue]);"
+    },
+    {
+      "old": "files=[D/n for n in['probe_consumer_ci_s78.m','ci_trace_s77.inc','ci_status_s77.inc','stats_context_s78.inc','analyze_ci_s77.py','run_hdr_s78.py'",
+      "new": "files=[D/n for n in['probe_consumer_ci_s79.m','ci_trace_s77.inc','ci_status_s79.inc','stats_context_s79.inc','analyze_ci_s77.py','run_hdr_s79.py'"
+    },
+    {
+      "old": "str(D/'probe_consumer_ci_s78.m')",
+      "new": "str(D/'probe_consumer_ci_s79.m')"
+    },
+    {
+      "old": "'probe_version':'S78'",
+      "new": "'probe_version':'S79'"
+    },
+    {
+      "old": "'test_plan_frozen_before_compile_and_native':'S78 adds original-serialized synthetic stats and xstats, selects type2, useLightMap true, three geometries full/tile/translated A/A. Same other fixtures/parameters as S76. SSRStats10x9 float32 and two extended values are an explicit synthetic control, not actual photo statistics; all92 floats must roundtrip exactly through original functions. Original CMI statuses/PSO calls observed unchanged. First failure stops cases; no shader/math/residency override.'",
+      "new": "'test_plan_frozen_before_compile_and_native':'S79 full bounds A/A with skin and sky resampled from16x12 to64x48 by nearest replication (skin step and sky checker logical positions preserved), person16x12 unchanged. Compare original S78 synthetic stats vs a second declared profile changing only raw global field7 blackPoint from.9 to.005, verified by original serialization. Fresh independent processes per stats profile, all other args fixed. Observe original CMI geometric ivars and final-render PSO. No shader/math/check/residency override. Not photo/camera/statistics truth.'"
+    },
+    {
+      "old": "'scope':'Original CI type2 with explicit synthetic serialized statistics. Require real final-render dispatch and finite nonzero RGB before numerical gate; A/A repeats and geometry diagnostics only. Not actual photo statistics, camera/scene, five-photo or33-point full-domain certification.'",
+      "new": "'scope':'S79 synthetic ROI admissibility diagnosis; full-frame skin/sky textures, original CMI conditions preserved, old vs ordered stats profiles independently observed. Require actual final dispatch/finite nonzero RGB for a useful finite capture; diagnostic job success is not five-photo or original inverse acceptance.'"
+    },
+    {
+      "old": "sizes=[(64,48),(16,12),(16,12),(16,12),(16,12),(32,24),(256,1),(32,32),(32,32)]",
+      "new": "sizes=[(64,48),(16,12),(64,48),(64,48),(16,12),(32,24),(256,1),(32,32),(32,32)]"
+    },
+    {
+      "old": "i==3 and (x//4+y//4)%2",
+      "new": "i==3 and (x//16+y//16)%2"
+    },
+    {
+      "old": "for name,rects,render in geometries for repeat in[0,1]",
+      "new": "for name,rects,render in geometries[:1] for repeat in[0,1]"
+    },
+    {
+      "old": "name: hdr-native-s78",
+      "new": "name: hdr-native-s79"
+    },
+    {
+      "old": "research/vm-native-20261020-hdr-s78",
+      "new": "research/vm-native-20261020-hdr-s79"
+    },
+    {
+      "old": "W=\"$RUNNER_TEMP/hdr-s78\"",
+      "new": "W=\"$RUNNER_TEMP/hdr-s79\""
+    },
+    {
+      "old": "run_hdr_s78.py",
+      "new": "run_hdr_s79.py"
+    },
+    {
+      "old": "name: hdr-s78-original-CI-type2",
+      "new": "name: hdr-s79-original-ROI-geometry-diagnostic"
+    }
+  ],
+  "no_original_images_or_frozen_models_changed": true,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}
