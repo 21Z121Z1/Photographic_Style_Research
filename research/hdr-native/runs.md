@@ -249,3 +249,6 @@ S98 [39504949862](https://github.com/21Z121Z1/Photographic_Style_Research/action
 
 
 S98终态 [39504949862](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39504949862)，source1165f8a074c3b5118cae776c61e0b2f945247687，26A434/image20261012.0260.1，success。24MP条件逆估计完整，三种0.5效果作用区p99EV0.001387628/0.002192000/0.001676502，ACES全图max1、原预声明实用gate全过；旧mask8327939点超1e-3、max.711356保留false。12map/12mask与私有manifest逐一核验，3271预览SHA不变。776092602B ZIP直接日本，22 public/GPG167 private全验；本次secret/release/tag/临时branch清完。不是拍摄端已烘焙语义/scene真值通过。
+
+
+S99 [39513947146](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39513947146)，branch research/vm-native-20261021-semantic-s99，source3936cb99f172df2a7a5f47645cf7e2b3df92cba3，26A434/image20261012.0260.1，failure。编译成功；native key1源码调用缺SRC资源前提，未执行图像case。两原ZIP日本认证归档，临时资源清理完成。见evidence/s99/phase-summary.json与closure.json。

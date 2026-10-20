@@ -1,0 +1,173 @@
+{
+  "archived_at_UTC": "2026-10-20T23:17:43.243005+00:00",
+  "run_id": 39513947146,
+  "source_commit": "3936cb99f172df2a7a5f47645cf7e2b3df92cba3",
+  "branch": "research/vm-native-20261021-semantic-s99",
+  "conclusion": "failure",
+  "event": "push",
+  "attempt": 1,
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "artifacts": [
+    {
+      "name": "semantic-s99-encrypted-outputs",
+      "artifact_id": 12307091071,
+      "ZIP_bytes": 821,
+      "ZIP_sha256": "44e56bbfa3a796c66d9fdfba9fd44016e967de4e477a6ea09d2c4069e725cf74",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39513947146/artifact-12307091071.zip",
+      "local_ZIP_copy": false
+    },
+    {
+      "name": "semantic-s99-aggregate",
+      "artifact_id": 12306776240,
+      "ZIP_bytes": 19083,
+      "ZIP_sha256": "3209294d61596a1509650bfb237e006e4811903f6fbe2a34b23014be07576d7d",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39513947146/artifact-12306776240.zip",
+      "local_ZIP_copy": false
+    }
+  ],
+  "all_public_manifest_members_SHA_verified": 13,
+  "source_hashes_match_commit": [
+    {
+      "path": "research/hdr-native/run_semantic_s99.py",
+      "sha256": "57c4a05935b2c21eeff01ad1ecef991d8c63fef684fe89ea291f1746c3b4fd00"
+    },
+    {
+      "path": "research/hdr-native/domain_analysis_s99.py",
+      "sha256": "337587b14134b3687acf79c522ee7433869dec8c7c57152c74a29abed2f8014b"
+    },
+    {
+      "path": "research/hdr-native/semantic_domain_s99.m",
+      "sha256": "f50d1230c44509ac217a1677579a18ac5653c6a6a098e4e857721f288ba2fd52"
+    },
+    {
+      "path": "research/hdr-native/s99_binding.json",
+      "sha256": "d8a6156d029275b7e20e3515984b3b484abc6d1c23700fd67d40ae763a0785a4"
+    },
+    {
+      "path": "research/hdr-native/source_s37.m",
+      "sha256": "116d40c05a8d03ffbb6546db96f4753be63ab3a5bd472a72d84a3ea835340b0f"
+    },
+    {
+      "path": "research/vm-native/runner/Styles_full_v3.m",
+      "sha256": "e4e1bfca83e719382c52157951d48fb9b89507309fbb3c931359409570538773"
+    },
+    {
+      "path": "research/vm-native/runner/native_filter_probe.m",
+      "sha256": "46d36788485e4c4e76dcd8db029980506fe0cf373b819219df3cd9a5e0a4fb4b"
+    },
+    {
+      "path": "research/hdr-native/semantic_fullframe_s96.m",
+      "sha256": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0"
+    },
+    {
+      "path": "research/hdr-native/s96_observer_binding.json",
+      "sha256": "3a892a29512f85c8f1f625180564fa7d93c8c4660f7e23612303c691715a1626"
+    },
+    {
+      "path": "research/hdr-native/observer_prerequisites_s96.inc",
+      "sha256": "0b13e81677a4b1350a4ad4b8cd0f4f3fcdde7d3d275472001072c43c3eda23f8"
+    },
+    {
+      "path": "research/hdr-native/encoder_capture_s96.inc",
+      "sha256": "87ddbb06fcd9943e90e45b11657172b504e41493bfb2795274270c8f044f637a"
+    },
+    {
+      "path": "research/vm-native/runner/replay_helpers_v7.inc",
+      "sha256": "5e0192adb23401056df2e0b2d74d32ce69121839235a6bbb8cd8be414c5732cc"
+    },
+    {
+      "path": "research/vm-native/runner/consumer-structured-v8.metal",
+      "sha256": "d242cb9c06b050aa35a5fb7a62f3da79120540668c8bc1c6665aa21f18433e6d"
+    }
+  ],
+  "private_stream_verifications": [
+    {
+      "protocol": "JP-local-GPG-v2",
+      "run_id": 39513947146,
+      "source_commit": "3936cb99f172df2a7a5f47645cf7e2b3df92cba3",
+      "os_build": "26A434",
+      "ZIP_bytes": 821,
+      "ZIP_sha256": "44e56bbfa3a796c66d9fdfba9fd44016e967de4e477a6ea09d2c4069e725cf74",
+      "cipher_member": "results.tar.gz.gpg",
+      "cipher_bytes": 671,
+      "cipher_sha256": "06414e82ef9f72e424a533a79f732ad39717ae1fcd7d8548a92a882e1b4587f8",
+      "GPG_returncode": 0,
+      "event_names_only": [
+        "ENC_TO",
+        "BEGIN_DECRYPTION",
+        "DECRYPTION_INFO",
+        "PLAINTEXT",
+        "PLAINTEXT_LENGTH",
+        "DECRYPTION_OKAY",
+        "GOODMDC",
+        "END_DECRYPTION"
+      ],
+      "all_manifest_members_verified": 1,
+      "private_manifest_SHA256": "26bbfc30851e12c9fbba3a27fa7f962a1723ff19952af0d8b22ffb377e5c814a",
+      "member_hashes_only": {
+        "fallback-intermediate-hashes.json": {
+          "size": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "manifest.json": {
+          "size": 324,
+          "sha256": "26bbfc30851e12c9fbba3a27fa7f962a1723ff19952af0d8b22ffb377e5c814a"
+        }
+      },
+      "images_decoded_or_written": false,
+      "private_key_received": false,
+      "session_key_received_via_SSH_stdin_and_anonymous_fd": true,
+      "session_key_saved_or_logged": false,
+      "plaintext_members_saved": false,
+      "temporary_GNUPGHOME_removed": true,
+      "whole_cipher_or_ZIP_exported": false,
+      "remote_max_RSS_KiB": 17492,
+      "child_max_RSS_KiB": 17492,
+      "verification_traffic_payload": {
+        "HK_to_JP_verification_request_bytes": 481,
+        "JP_to_HK_encrypted_header_bytes": 671,
+        "JP_to_HK_hash_receipt_bytes": 1221,
+        "prefix_GPG_returncode": 0,
+        "prefix_only_is_not_authentication": true,
+        "encrypted_packet_length_reframed_for_key_extraction_only": true,
+        "header_contains_complete_small_cipher": true,
+        "complete_small_cipher_bytes_within_bounded_header": 671,
+        "whole_ZIP_backhaul_bytes": 0,
+        "large_cipher_body_backhaul_bytes": 0,
+        "new_GitHub_artifact_download_bytes": 0,
+        "counts_are_application_payload_exclude_SSH_overhead": true
+      },
+      "remote_helper_SHA256": "6345a517acb70148f2ab79f67f838106282b8f1ddeee9fd745c1ff807a58aca1",
+      "helper_code_upload_bytes": 0,
+      "helper_install_receipt_bytes": 94
+    }
+  ],
+  "Japan_download_receipt": {
+    "run_id": 39513947146,
+    "artifacts": [
+      {
+        "artifact_id": 12307091071,
+        "bytes": 821,
+        "sha256": "44e56bbfa3a796c66d9fdfba9fd44016e967de4e477a6ea09d2c4069e725cf74",
+        "relative_path": "runs/39513947146/artifact-12307091071.zip"
+      },
+      {
+        "artifact_id": 12306776240,
+        "bytes": 19083,
+        "sha256": "3209294d61596a1509650bfb237e006e4811903f6fbe2a34b23014be07576d7d",
+        "relative_path": "runs/39513947146/artifact-12306776240.zip"
+      }
+    ],
+    "root_free_bytes": 61484449792,
+    "download_credential_received": false,
+    "signed_URL_saved": false
+  },
+  "original_ZIPs_preserved": true,
+  "VM_full_artifact_or_photo_plaintext_materialized": false,
+  "signed_URL_or_credential_saved": false
+}

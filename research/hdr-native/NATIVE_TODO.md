@@ -183,3 +183,6 @@ S98已触发39504949862，实时状态须查同run，不以历史queued文件判
 
 
 S98终态39504949862：整幅条件consumer皮肤效果0.5实用门槛全过（全强度敏感性也过），不再为8327939旧1e-3失败点追bit-exact；保留所有原mask/residual。下一runner重点是实际照片revert-image链路/原照片处理域与完整matte支持检查，避免把以native B=F(S,tone+.35)为baseline的map直接乘原SDR当拍摄端语义逆；需要原S/R和native参数对照来界定实际可撤回部分，保持GTM/LTM独立。另补五套完整EXR/HEIC及global/local独立全帧文件；原统计/拍摄曲线/RAW/实屏仍按实机清单。
+
+
+S99 run39513947146已终态failure并完成归档/清理，不再等待或派发旧run。缺SRC目录/资源是已定位的驱动前提错误，下一新driver先extract(photo,SRC)，保留冻结source_s37以及原生shader；显式沿用S42/S89 residency兼容环境。真实S/R Tone0/+0.35的consumer连接仍可runner推进，不把调用错误归为实机限制或皮肤不可逆。

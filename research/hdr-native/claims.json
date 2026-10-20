@@ -4518,9 +4518,49 @@
           "sha256": "a7f9d39728d1225ee34ede13823250e98d77490506955b52f79c35b035496f32"
         }
       ]
+    },
+    {
+      "id": "HDR-161",
+      "category": "semantic/real-input-S99-driver-prerequisite-failure",
+      "status": "已验证静态",
+      "claim": "S99两源码编译成功但driver没有向冻结解码器的SRC准备metadata/linear/delta，导致source入口失败；未执行新图像case，不能用于算子/逆解验收。小型失败归档已日本认证、全部临时资源清理。",
+      "os_build": "26A434",
+      "run_id": 39513947146,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s99/phase-summary.json",
+          "line": 1,
+          "sha256": "d5d10af6746e252e9954f6f9f0679303b48865315100cc3fcd85db1cbd010dfc"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s99/run/source-native.log",
+          "line": 1,
+          "sha256": "c7d542cb1e832df05846f00715139c44e806a7329947467dbc9fa70862f596f6"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s99/run/driver.log",
+          "line": 1,
+          "sha256": "a87c29f5a9cffa59a808cd9a7f0d8a6e8accb14020b63f20978efe94e16b280d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s99/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "742488c46f5a90fc7d6de526f119e2b8cc54d3f73e92814205a30c9ae48f680d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s99/closure.json",
+          "line": 1,
+          "sha256": "d9be5c6d003b99a38d421b4c9e164c99bc31a746028823ae65f36f2847e821b1"
+        },
+        {
+          "file": "repo/research/hdr-native/run_semantic_s99.py",
+          "line": 1,
+          "sha256": "57c4a05935b2c21eeff01ad1ecef991d8c63fef684fe89ea291f1746c3b4fd00"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T22:45:36.247773+00:00",
+  "updated_utc": "2026-10-20T23:19:59.417961+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -7230,6 +7270,30 @@
       "new_GitHub_artifact_download_bytes": 0,
       "counts_are_application_payload_exclude_SSH_overhead": true
     },
+    "A_phase_complete": false,
+    "engineering_accepted": false,
+    "acceptance_complete": false
+  },
+  "semantic_S99_terminal": {
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "run_id": 39513947146,
+    "source_commit": "3936cb99f172df2a7a5f47645cf7e2b3df92cba3",
+    "conclusion": "failure",
+    "compiled_frozen_source_and_native_observer": true,
+    "failure_stage": "Frozen source entry called before resources existed in its output/input directory",
+    "static_cause": "source_s37 -> Styles_full_v3 Decode reads styles.plist/linear.heic/delta.heic from output_path. Driver extracted into RES only, but passed nonexistent SRC. Catch then also could not write source-exception.json there.",
+    "native_pixel_cases_completed": false,
+    "new_image_metrics_available": false,
+    "not_a_native_operator_or_math_failure": true,
+    "correction_plan": "Extract original input into new SRC before frozen source call, and use existing S42/S89 VM_DISABLE_RESIDENCY_SETS=1 resource compatibility prerequisite; do not modify frozen source or native pixel functions.",
+    "private_manifest_members_verified": 1,
+    "total_GitHub_to_Japan_ZIP_bytes": 19904,
+    "small_cipher_entirely_fits_header": true,
+    "small_cipher_backhaul_bytes": 671,
+    "whole_ZIP_backhaul_bytes": 0,
+    "large_cipher_body_backhaul_bytes": 0,
+    "all_temporary_transport_cleaned": true,
     "A_phase_complete": false,
     "engineering_accepted": false,
     "acceptance_complete": false

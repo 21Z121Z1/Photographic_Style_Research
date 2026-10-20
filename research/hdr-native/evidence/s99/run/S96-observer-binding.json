@@ -1,0 +1,82 @@
+{
+  "original_native_source": "research/hdr-native/semantic_fullframe_s95.m",
+  "original_native_SHA256": "6b7e90ef246df47e1f3a271c11cac5c0eee0770227914c3456124c13bf02aa42",
+  "new_native_SHA256": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0",
+  "exact_native_replacements": [
+    {
+      "old": "#include \"native_filter_probe_s95.m\"",
+      "new": "#include \"native_filter_probe_s96.m\"",
+      "count": 1
+    },
+    {
+      "old": "#include \"encoder_capture_v2.inc\"",
+      "new": "#include \"encoder_capture_s96.inc\"",
+      "count": 1
+    },
+    {
+      "old": "static NSUInteger WholeContexts94;",
+      "new": "static NSUInteger PixelsAccepted96;",
+      "count": 1
+    },
+    {
+      "old": "static NSDictionary*Probe94(id renderer,NSDictionary*call,NSString*dir){",
+      "new": "#include \"observer_prerequisites_s96.inc\"\nstatic NSDictionary*Probe94(id renderer,NSDictionary*call,NSString*dir){",
+      "count": 1
+    },
+    {
+      "old": " NSMutableDictionary*hashes=[NSMutableDictionary new];for(NSString*k in call[@\"textures\"]){@autoreleasepool{id<MTLTexture>t=call[@\"textures\"][k];Need94(BPP94(t.pixelFormat)>0,@\"known readable native texture format\");hashes[k]=@{@\"width\":@(t.width),@\"height\":@(t.height),@\"format\":@(t.pixelFormat),@\"SHA256\":TextureHash94(q,t)};}}row[@\"bindings_before\"]=hashes;\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": " for(NSString*k in snap){NSData*d=snap[k];[d writeToFile:[dir stringByAppendingPathComponent:[NSString stringWithFormat:@\"buffer-%@.bin\",k]]atomically:NO];}for(NSString*k in call[@\"bytes\"]){NSData*d=call[@\"bytes\"][k];[d writeToFile:[dir stringByAppendingPathComponent:[NSString stringWithFormat:@\"bytes-%@.bin\",k]]atomically:NO];}\n // Never silently treat an internally allocated CI tile as a complete photo.\n if(ot.width!=5712||ot.height!=4284||ot.pixelFormat!=MTLPixelFormatRGBA16Float){row[@\"stop_reason\"]=@\"Actual final allocation is not the requested full5712x4284 RGBA16 frame; geometry census only\";JSON94(row,[dir stringByAppendingPathComponent:@\"native.json\"]);return row;}\n if(WholeContexts94++){row[@\"stop_reason\"]=@\"Additional whole-frame final context observed; census only, no repeated whole-frame reference allocation\";JSON94(row,[dir stringByAppendingPathComponent:@\"native.json\"]);return row;}\n",
+      "new": " NSDictionary*owner=[NSThread currentThread].threadDictionary[OwnerKey96];row[@\"CI_owner\"]=owner?:@{};\n NSArray*rect=owner[@\"output_region\"];BOOL ownerOK=rect.count==4;double coords[4]={0};if(ownerOK)for(int j=0;j<4;j++){if(![rect[j]isKindOfClass:NSNumber.class]){ownerOK=NO;break;}coords[j]=[rect[j]doubleValue];ownerOK&=isfinite(coords[j])&&fabs(coords[j]-round(coords[j]))<1e-6;}ownerOK&=coords[0]>=0&&coords[1]>=0&&coords[2]>0&&coords[3]>0&&coords[0]+coords[2]<=5712&&coords[1]+coords[3]<=4284;\n NSData*roi=call[@\"bytes\"][@\"5\"];uint16_t origin[2]={UINT16_MAX,UINT16_MAX};if(roi.length==176)memcpy(origin,(const char*)roi.bytes+160,4);row[@\"output_origin_u16\"]=@[@(origin[0]),@(origin[1])];\n if(!ownerOK||ot.width!=(NSUInteger)coords[2]||ot.height!=(NSUInteger)coords[3]||ot.pixelFormat!=MTLPixelFormatRGBA16Float||roi.length!=176||origin[0]||origin[1]||call[@\"textures\"][@\"14\"]){row[@\"stop_reason\"]=@\"Owner/physical-output/ROI geometry unproven or second write target present; census only, unknown padding is not serialized\";JSON94(row,[dir stringByAppendingPathComponent:@\"native.json\"]);return row;}\n BOOL budget=NO;@synchronized(Calls94){budget=PixelsAccepted96+ot.width*ot.height<=24470208;if(budget)PixelsAccepted96+=ot.width*ot.height;}if(!budget){row[@\"stop_reason\"]=@\"Reference pixel budget already consumed; no duplicate full-photo allocation\";JSON94(row,[dir stringByAppendingPathComponent:@\"native.json\"]);return row;}\n NSMutableDictionary*hashes=[NSMutableDictionary new];for(NSString*k in call[@\"textures\"]){@autoreleasepool{id<MTLTexture>t=call[@\"textures\"][k];Need94(BPP94(t.pixelFormat)>0,@\"known readable native texture format\");hashes[k]=@{@\"width\":@(t.width),@\"height\":@(t.height),@\"format\":@(t.pixelFormat),@\"SHA256\":TextureHash94(q,t)};}}row[@\"bindings_before\"]=hashes;\n // Only established initialized ABI payload sizes are serialized; other\n // captured allocations get hashes, never raw padding.\n for(NSString*k in @[@\"1\",@\"3\"]){NSData*d=snap[k];NSUInteger expected=[k isEqualToString:@\"1\"]?672:10640;Need94(d.length==expected,@\"original known uniform ABI length\");[d writeToFile:[dir stringByAppendingPathComponent:[NSString stringWithFormat:@\"buffer-%@.bin\",k]]atomically:NO];}\n for(NSString*k in @[@\"0\",@\"5\"]){NSData*d=call[@\"bytes\"][k];NSUInteger expected=[k isEqualToString:@\"0\"]?320:176;if(d.length==expected)[d writeToFile:[dir stringByAppendingPathComponent:[NSString stringWithFormat:@\"bytes-%@.bin\",k]]atomically:NO];}\n",
+      "count": 1
+    },
+    {
+      "old": "@\"whole_frame_available\"",
+      "new": "@\"region_reference_available\"",
+      "count": 2
+    },
+    {
+      "old": "static int Process94(id s,SEL c){@autoreleasepool{Need94([[NSFileManager defaultManager]createDirectoryAtPath:Root94 withIntermediateDirectories:YES attributes:nil error:NULL],@\"capture directory before any process callback\");ECStates=[NSMutableDictionary new];ECDispatches=[NSMutableArray new];ECActive=YES;int rc=Old94(s,c);ECActive=NO;[s finishProcessing];NSUInteger serial=Serial94++;\n @try{for(NSDictionary*d in ECDispatches){if(!d[@\"textures\"][@\"13\"]||!d[@\"textures\"][@\"11\"]||!d[@\"buffers\"][@\"1\"])continue;NSString*folder=[Root94 stringByAppendingPathComponent:[NSString stringWithFormat:@\"dispatch-%lu\",(unsigned long)serial]];Need94([[NSFileManager defaultManager]createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:NULL],@\"new native capture directory\");NSMutableDictionary*row=[Probe94(s,d,folder)mutableCopy];row[@\"serial\"]=@(serial);[Calls94 addObject:row];}}\n @catch(NSException*e){[Calls94 addObject:@{@\"serial\":@(serial),@\"exception\":e.reason?:e.name}];}\n NSMutableArray*census=[NSMutableArray new];NSArray*observed=ECDispatches.count?ECDispatches:ECStates.allValues;for(NSDictionary*d in observed){NSMutableDictionary*t=[NSMutableDictionary new];for(NSString*k in d[@\"textures\"]){id<MTLTexture>v=d[@\"textures\"][k];t[k]=@{@\"width\":@(v.width),@\"height\":@(v.height),@\"format\":@(v.pixelFormat)};}id<MTLComputePipelineState>ps=d[@\"pipeline_object\"];[census addObject:@{@\"textures\":t,@\"buffer_keys\":[d[@\"buffers\"]allKeys]?:@[],@\"byte_keys\":[d[@\"bytes\"]allKeys]?:@[],@\"grid\":d[@\"grid\"]?:@[],@\"group\":d[@\"group\"]?:@[],@\"pipeline_description\":ps.description?:@\"nil\"}];}id<MTLCommandQueue>observedQueue=[s metalCommandQueue];[Processes94 addObject:@{@\"serial\":@(serial),@\"original_process_return\":@(rc),@\"renderer_class\":NSStringFromClass(object_getClass(s)),@\"queue_class\":observedQueue?NSStringFromClass(object_getClass(observedQueue)):@\"nil\",@\"encoder_state_count\":@(ECStates.count),@\"dispatch_record_count\":@(ECDispatches.count),@\"census_is_bound_state_fallback_not_actual_dispatch\":@(ECDispatches.count==0),@\"captured_dispatches_or_states\":census}];\n JSON94(@{@\"calls\":Calls94,@\"processes\":Processes94,@\"scope\":@\"Full original photograph request; actual allocations recorded; fixed native consumer context, not baked-camera inverse\"},[Root94 stringByAppendingPathComponent:@\"native-calls.json\"]);ECStates=nil;ECDispatches=nil;return rc;}}\nint main(int argc,char**argv){@autoreleasepool{if(argc!=4)return 2;Root94=[@(argv[3])stringByAppendingPathComponent:@\"semantic-full\"];Calls94=[NSMutableArray new];Processes94=[NSMutableArray new];dlopen(\"/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging\",RTLD_NOW|RTLD_LOCAL);Method m=class_getClassMethod(NSClassFromString(@\"CMIMetalResourceCache\"),NSSelectorFromString(@\"_enableResidencySets\"));if(m)method_setImplementation(m,(IMP)NoResidency94);ECInstall();m=class_getInstanceMethod(NSClassFromString(@\"CMISmartStyleMetalRendererV1\"),NSSelectorFromString(@\"process\"));Need94(m!=NULL,@\"native renderer process\");Old94=(void*)method_getImplementation(m);method_setImplementation(m,(IMP)Process94);return FrozenFilterMain(argc,argv);}}\n",
+      "new": "static int Process94(id s,SEL c){@autoreleasepool{\n Need94([[NSFileManager defaultManager]createDirectoryAtPath:Root94 withIntermediateDirectories:YES attributes:nil error:NULL],@\"capture directory\");\n __attribute__((objc_precise_lifetime)) NSMutableDictionary*states=[NSMutableDictionary new];\n __attribute__((objc_precise_lifetime)) NSMutableArray*dispatches=[NSMutableArray new];\n ECStates=states;ECDispatches=dispatches;NSMutableDictionary*td=[NSThread currentThread].threadDictionary;id oldGuided=td[GuidedKey96];NSMutableArray*guided=[NSMutableArray new];td[GuidedKey96]=guided;\n NSUInteger serial;@synchronized(Calls94){serial=Serial94++;}uint64_t tid=0;pthread_threadid_np(NULL,&tid);NSDictionary*allocation=Allocator96(s);NSDictionary*owner=[td[OwnerKey96]copy]?:@{};\n ECActive=YES;int rc=Old94(s,c);[s finishProcessing];ECActive=NO;\n @try{if(rc==0){NSMutableArray*matches=[NSMutableArray new];for(NSDictionary*d in dispatches)if(d[@\"textures\"][@\"13\"]&&d[@\"textures\"][@\"11\"]&&d[@\"buffers\"][@\"1\"])[matches addObject:d];\n  if(matches.count==1){NSString*folder=[Root94 stringByAppendingPathComponent:[NSString stringWithFormat:@\"dispatch-%lu\",(unsigned long)serial]];Need94([[NSFileManager defaultManager]createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:NULL],@\"native capture directory\");NSMutableDictionary*row=[Probe94(s,matches[0],folder)mutableCopy];row[@\"serial\"]=@(serial);@synchronized(Calls94){[Calls94 addObject:row];}}\n  else if(matches.count>1){@synchronized(Calls94){[Calls94 addObject:@{@\"serial\":@(serial),@\"stop_reason\":@\"More than one candidate final dispatch in one owner callback; census only\"}];}}\n }}@catch(NSException*e){@synchronized(Calls94){[Calls94 addObject:@{@\"serial\":@(serial),@\"exception\":e.reason?:e.name}];}}\n NSMutableArray*census=[NSMutableArray new];NSArray*observed=dispatches.count?dispatches:states.allValues;\n for(NSDictionary*d in observed){NSMutableDictionary*t=[NSMutableDictionary new];for(NSString*k in d[@\"textures\"]){id<MTLTexture>v=d[@\"textures\"][k];t[k]=Tex96(v);}id<MTLComputePipelineState>ps=d[@\"pipeline_object\"];[census addObject:@{@\"textures\":t,@\"buffer_keys\":[d[@\"buffers\"]allKeys]?:@[],@\"byte_keys\":[d[@\"bytes\"]allKeys]?:@[],@\"grid\":d[@\"grid\"]?:@[],@\"group\":d[@\"group\"]?:@[],@\"pipeline_description\":ps.description?:@\"nil\"}];}\n @synchronized(Calls94){[Processes94 addObject:@{@\"serial\":@(serial),@\"thread_id\":@(tid),@\"renderer_id\":[NSString stringWithFormat:@\"%p\",s],@\"CI_owner\":owner,@\"allocator_before_process\":allocation,@\"original_process_return\":@(rc),@\"guided_calls\":guided,@\"dispatch_record_count\":@(dispatches.count),@\"encoder_state_count\":@(states.count),@\"census_is_bound_state_fallback_not_actual_dispatch\":@(dispatches.count==0),@\"captured_dispatches_or_states\":census}];\n JSON94(@{@\"calls\":[Calls94 copy],@\"processes\":[Processes94 copy],@\"pool_events\":[PoolEvents96 copy],@\"runtime\":Runtime96,@\"scope\":@\"One original5712x4284 CI request; native owner regions must cover every pixel once. Forward controls only, not baked-camera inverse.\"},[Root94 stringByAppendingPathComponent:@\"native-calls.json\"]);}\n if(oldGuided)td[GuidedKey96]=oldGuided;else[td removeObjectForKey:GuidedKey96];ECStates=nil;ECDispatches=nil;return rc;\n}}\nint main(int argc,char**argv){@autoreleasepool{if(argc!=4)return 2;Root94=[@(argv[3])stringByAppendingPathComponent:@\"semantic-full\"];Calls94=[NSMutableArray new];Processes94=[NSMutableArray new];\n dlopen(\"/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging\",RTLD_NOW|RTLD_LOCAL);Method m=class_getClassMethod(NSClassFromString(@\"CMIMetalResourceCache\"),NSSelectorFromString(@\"_enableResidencySets\"));if(m)method_setImplementation(m,(IMP)NoResidency94);\n dlopen(\"/System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore\",RTLD_NOW|RTLD_LOCAL);dlopen(\"/System/Library/PrivateFrameworks/PhotoImaging.framework/PhotoImaging\",RTLD_NOW|RTLD_LOCAL);\n InstallPrerequisites96();ECInstall();m=class_getInstanceMethod(NSClassFromString(@\"CMISmartStyleMetalRendererV1\"),NSSelectorFromString(@\"process\"));Need94(m!=NULL,@\"native renderer process\");Old94=(void*)method_getImplementation(m);method_setImplementation(m,(IMP)Process94);return FrozenFilterMain(argc,argv);\n}}\n",
+      "count": 1
+    }
+  ],
+  "original_capture_source": "research/vm-native/runner/encoder_capture_v2.inc",
+  "original_capture_SHA256": "90d8d37bcd520c96b2c184fde0cf6edc916a2f257aeb3b5affefae0ae12c25af",
+  "new_capture_SHA256": "87ddbb06fcd9943e90e45b11657172b504e41493bfb2795274270c8f044f637a",
+  "exact_capture_replacements": [
+    {
+      "old": "static NSMutableDictionary *ECStates;",
+      "new": "static __thread __unsafe_unretained NSMutableDictionary *ECStates;",
+      "count": 1
+    },
+    {
+      "old": "static NSMutableArray *ECDispatches;",
+      "new": "static __thread __unsafe_unretained NSMutableArray *ECDispatches;",
+      "count": 1
+    },
+    {
+      "old": "static BOOL ECActive;",
+      "new": "static __thread BOOL ECActive;",
+      "count": 1
+    }
+  ],
+  "prerequisites_source_SHA256": "0b13e81677a4b1350a4ad4b8cd0f4f3fcdde7d3d275472001072c43c3eda23f8",
+  "old_sources_unchanged": true,
+  "resource_only_capacity_override": {
+    "old_bytes": 150994944,
+    "new_bytes": 536870912,
+    "exact_caller_from_init_IMP": 300,
+    "CMI_UUID": "3CCD434E-B1E0-3F14-8EF6-E29D58379BE8",
+    "new_capacity_not_previously_validated": true
+  },
+  "native_math_sampler_and_old_thresholds_changed": false,
+  "scope": "Real CI owner rectangles, full source pixel coverage unchanged. Unknown padding/extra write targets stop, no image inverse claim.",
+  "original_driver_SHA256": "4f9df7ed031282e8e7d303c77ad96e2cd262f94a54663fce0ff813b5b4a639c8",
+  "new_driver_SHA256": "49753218e782f2378c24cbc6f0f34d4f1e1a1646856ce62ba5407a5c6746549a",
+  "preview_stride": 10,
+  "assembly_rule": "CI owner rectangles must tile the original canvas exactly once; fixed high-CI-y to first-row convention, checked against full original CI output, no error-fitted flip"
+}

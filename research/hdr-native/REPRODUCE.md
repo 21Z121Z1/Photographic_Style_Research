@@ -247,3 +247,6 @@ S98复现源码1165f8a：run_semantic_s98.py、semantic_fullframe_s98.m、fullfr
 
 
 S98实际结果入口：evidence/s98/NUMERICAL_RESULTS.zh-CN.md、run/analysis.json、inverse-roundtrip.json、review-checks.json。下载无需重复：原ZIP在日本runs/39504949862/artifact-12304682191.zip。每个owner的native.f16是本次校正baseline，使用operator-strength0.5-loggain.f16按metadata重建B_RGB*exp2(loggain)；mask false保持B。不要把它当原HEIC SDR的直接gain，也不要把recovered-effective.f16当scene master。F_neutral-estimate、native-inverse-roundtrip与native reference均留档，semantic_strength_s82.apply可重建0/0.5/1政策。3271预览ledger在私有tar，public SHA与GPG167成员清单一致。无需重新传旧S5/S8/S97大包。
+
+
+S99失败复现：3936cb99的run_semantic_s99.py只extract(photo,RES)后，直接source photo PRIVATE/native-key1-source；冻结Decode要求该dir已有styles.plist/linear.heic/delta.heic。run39513947146 source-native.log记录最终catch写目录也失败。新实验必须先extract(photo,SRC)，保持source_s37原字节；原失败日志与密文归档不覆盖。

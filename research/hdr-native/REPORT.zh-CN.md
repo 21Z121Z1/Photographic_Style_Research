@@ -896,3 +896,12 @@ half loggain传输与逆估计分开：色彩max gain误差0.0000305065EV、亮�
 继续可runner工作：连接真实revert-image/原照片处理域，验证适用于实际原片的独立语义撤回及全分辨率matte边界；完整五套母版/载体与global/local文件留存、HDR组合。仅本次条件测试通过，不宣布A完成。相机同帧曲线/统计、原Studio、RAW和实屏仍待实机。
 
 **已验证数值（归档身份）。** private artifact12304682191/776048869B/SHA af4026a8401bdf63eb2886c8ad0da0ad18ceb55fed4a8d5e8014c68fca90646f；public12303818883/43733B/SHA cb95c0b9ca1af80857c9de49fa0c2656791a41c87a32d9f952095d2dc5b26f2a。cipher SHA dc3f8e0619c1e30bb013cbfbe9d966145caf6abfdeb09eab4a64c470e6ab6980；private manifest SHA46236cfde047e9bf343e44237d24bd4df766222524589ca270b86c90f3f7c4f6。完整GPG rc0及所有成员核验在日本，截断头GPG rc2只用于取session key，不能冒充认证；SHA原件保留。旧queued观察不覆盖，新增terminal记录为后续依据。A_phase_complete=false、engineering_accepted=false、legacy acceptance_complete=false。
+
+
+### SEMANTIC-20261018 / S99 终态：调用前提失败，未产生新像素结论
+
+**已验证静态（调用错误定位）/可交给macOS runner（修正后验证）。** run 39513947146，source 3936cb99f172df2a7a5f47645cf7e2b3df92cba3，26A434/image 20261012.0260.1。两个clang编译均成功；driver只在RES提取metadata/linear/delta，却把尚不存在的SRC传给冻结source_s37。Styles_full_v3.m:146起从该dir读styles.plist、linear.heic、delta.heic；缺资源触发失败，外层catch再向不存在目录写source-exception，最终日志只呈现“Cannot write S37 source facts”。这是探针调用前提错误，不能解释为Apple算法不可用或任何像素门槛未过。实际三个图像case均未执行，没有新图像误差，errors.csv不填占位零。
+
+失败日志已先读：evidence/s99/run/source-native.log、driver.log、source-build.log、native-build.log；修正只在新driver中向新SRC执行extract(photo,SRC)，按已有S42/S89显式设置VM_DISABLE_RESIDENCY_SETS=1兼容前提，不动冻结源或pixel算法。后续另开有证据的单run，保留本次归档与分支中的源，不盲目重试。
+
+原ZIP直接GitHub→日本共19904B。public13、GPG private1成员全部认证：private artifact12307091071 ZIP SHA44e56bbfa3a796c66d9fdfba9fd44016e967de4e477a6ea09d2c4069e725cf74；public12306776240 SHA3209294d61596a1509650bfb237e006e4811903f6fbe2a34b23014be07576d7d。671B小cipher全部落在bounded header里，准确计作671B小密文回传；无ZIP或大cipher body跨区回传。PR head/base引用0、源保留后，本次secret/release/tag/private branch全部清理。A/工程/旧acceptance仍false。

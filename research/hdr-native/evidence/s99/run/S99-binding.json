@@ -1,0 +1,39 @@
+{
+  "original_native_source": "research/hdr-native/semantic_fullframe_s96.m",
+  "original_native_SHA256": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0",
+  "exact_native_replacements": [
+    {
+      "old": "// S94: full original-size native semantic references and bounded patch replay.",
+      "new": "// S99: original-photo/key1-reverse domain census, no inverse or patch replay.",
+      "count": 1
+    },
+    {
+      "old": "#include \"native_filter_probe_s96.m\"",
+      "new": "#include \"native_filter_probe_s99.m\"",
+      "count": 1
+    },
+    {
+      "old": "static NSDictionary*Patch94(NSDictionary*call,id<MTLDevice>dev,NSUInteger x,NSUInteger y,NSUInteger w,NSUInteger h){\n NSData*original=call[@\"bytes\"][@\"5\"];Need94(original.length==176,@\"SSRRenderROI176 bytes binding\");NSMutableData*r=[original mutableCopy];\n // AIR buffer5+16..144: nine float4(sx,sy,tx,ty) normalized samplings.\n // Keep every original texture and its dimensions. Only relocate the patch gid.\n for(NSUInteger off=16;off<=144;off+=16){float m[4];memcpy(m,(const char*)r.bytes+off,16);m[2]=fmaf((float)x,m[0],m[2]);m[3]=fmaf((float)y,m[1],m[3]);memcpy((char*)r.mutableBytes+off,m,16);}\n uint16_t shape[2]={(uint16_t)w,(uint16_t)h},origin[2]={0,0};memcpy((char*)r.mutableBytes+8,shape,4);memcpy((char*)r.mutableBytes+160,origin,4);\n id<MTLTexture>ref=call[@\"textures\"][@\"13\"];MTLTextureDescriptor*td=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:ref.pixelFormat width:w height:h mipmapped:NO];td.storageMode=MTLStorageModePrivate;td.usage=MTLTextureUsageShaderRead|MTLTextureUsageShaderWrite;id<MTLTexture>placeholder=[dev newTextureWithDescriptor:td];Need94(placeholder!=nil,@\"patch output allocation\");\n NSMutableDictionary*c=[call mutableCopy],*b=[call[@\"bytes\"]mutableCopy],*t=[call[@\"textures\"]mutableCopy];b[@\"5\"]=r;t[@\"13\"]=placeholder;c[@\"bytes\"]=b;c[@\"textures\"]=t;c[@\"dispatch\"]=@\"threads\";c[@\"grid\"]=@[@(w),@(h),@1];return c;\n}\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "  if(![name isEqualToString:@\"original\"])Store94(whole,dir,[name stringByAppendingString:@\".f16\"],ot.width,ot.height);\n  NSString*tilepath=[dir stringByAppendingPathComponent:[name stringByAppendingString:@\"-stitched.f16\"]];Need94([[NSFileManager defaultManager]createFileAtPath:tilepath contents:nil attributes:nil],@\"new stitched output\");NSFileHandle*out=[NSFileHandle fileHandleForWritingAtPath:tilepath];[out truncateFileAtOffset:whole.length];\n  NSMutableArray*patches=[NSMutableArray new];uint64_t pixels=0,bits=0,nf=0;double mx=0,sse=0;for(NSUInteger y=0;y<ot.height;y+=384)for(NSUInteger x=0;x<ot.width;x+=512){@autoreleasepool{\n   NSUInteger w=MIN((NSUInteger)512,ot.width-x),h=MIN((NSUInteger)384,ot.height-y);NSDictionary*c=Patch94(call,q.device,x,y,w,h);NSData*t=V2Evaluate(q,c,state,ps,nil,nil);NSMutableData*cut=[NSMutableData dataWithLength:w*h*8];for(NSUInteger j=0;j<h;j++){memcpy((char*)cut.mutableBytes+j*w*8,(const char*)whole.bytes+((y+j)*ot.width+x)*8,w*8);[out seekToFileOffset:((y+j)*ot.width+x)*8];[out writeData:[t subdataWithRange:NSMakeRange(j*w*8,w*8)]];}NSDictionary*m=Metrics94(t,cut);[patches addObject:@{@\"xywh\":@[@(x),@(y),@(w),@(h)],@\"metrics\":m,@\"patch_SHA256\":Hash94(t),@\"reference_crop_SHA256\":Hash94(cut)}];pixels+=w*h;bits+=[m[@\"half_differing_components\"]unsignedLongLongValue];nf+=[m[@\"nonfinite_components\"]unsignedLongLongValue];mx=fmax(mx,[m[@\"max_abs\"]doubleValue]);sse+=[m[@\"SSE_RGB\"]doubleValue];\n  }}[out synchronizeFile];[out closeFile];Need94(pixels==ot.width*ot.height,@\"all original pixels covered once\");trial[@\"patches\"]=patches;trial[@\"patch_pixels\"]=@(pixels);trial[@\"patch_count\"]=@(patches.count);trial[@\"tile_half_differing_components\"]=@(bits);trial[@\"tile_nonfinite_components\"]=@(nf);trial[@\"tile_max_abs\"]=@(mx);trial[@\"tile_PSNR_peak1_dB\"]=sse?@(-10*log10(sse/(pixels*3))):@\"inf\";[trials addObject:trial];row[@\"trials\"]=trials;JSON94(row,[dir stringByAppendingPathComponent:@\"native-checkpoint.json\"]);\n }}\n",
+      "new": "  BOOL equal=[whole isEqual:ref];NSString*file=equal?@\"native.f16\":[name stringByAppendingString:@\".f16\"];\n  if(!equal)Store94(whole,dir,file,ot.width,ot.height);trial[@\"file\"]=file;trial[@\"same_as_original_bytes\"]=@(equal);[trials addObject:trial];row[@\"trials\"]=trials;JSON94(row,[dir stringByAppendingPathComponent:@\"native-checkpoint.json\"]);\n }}\n // Serialize only the initialized full owner skin texture, never allocation padding.\n id<MTLTexture>skin=call[@\"textures\"][@\"11\"];\n Need94(skin&&skin.pixelFormat==MTLPixelFormatR16Float&&skin.width==ot.width&&skin.height==ot.height,@\"full initialized skin binding shape\");\n NSData*matte=Region94(q,skin,0,0,skin.width,skin.height);NSString*mp=[dir stringByAppendingPathComponent:@\"binding11-skin.f16\"];Need94([matte writeToFile:mp atomically:NO],@\"skin texture write\");\n JSON94(@{@\"shape\":@[@(skin.height),@(skin.width),@1],@\"dtype\":@\"<f2\",@\"sha256\":Hash94(matte),@\"space\":@\"Raw bound texture11. AIR uses ROI buffer5+128 and normalized clamp-to-edge linear sampler; raw grid is not a certified internal sampled matte.\"},[mp stringByAppendingString:@\".json\"]);\n row[@\"original_kernel_input_vs_output\"]=Metrics94(Region94(q,call[@\"textures\"][@\"0\"],0,0,ot.width,ot.height),ref);\n",
+      "count": 1
+    },
+    {
+      "old": "return FrozenFilterMain(argc,argv);",
+      "new": "int result=FrozenFilterMain(argc,argv);\n // Identity/early-return paths can have no renderer process. Still write a census.\n Need94([[NSFileManager defaultManager]createDirectoryAtPath:Root94 withIntermediateDirectories:YES attributes:nil error:NULL],@\"final census directory\");\n JSON94(@{@\"calls\":[Calls94 copy],@\"processes\":[Processes94 copy],@\"pool_events\":[PoolEvents96 copy],@\"runtime\":Runtime96,@\"frozen_filter_return\":@(result),@\"scope\":@\"Native whole input domain census and parameter-only forward controls. Zero callbacks are recorded, never assumed to prove identity.\"},[Root94 stringByAppendingPathComponent:@\"native-calls.json\"]);return result;",
+      "count": 1
+    }
+  ],
+  "new_native_source": "research/hdr-native/semantic_domain_s99.m",
+  "new_native_SHA256": "f50d1230c44509ac217a1677579a18ac5653c6a6a098e4e857721f288ba2fd52",
+  "frozen_key1_source": "research/hdr-native/source_s37.m",
+  "frozen_key1_source_SHA256": "116d40c05a8d03ffbb6546db96f4753be63ab3a5bd472a72d84a3ea835340b0f",
+  "no_inverse_or_patch_benchmark": true,
+  "same_resource_prerequisites_as_S98": true,
+  "new_driver_SHA256": "57c4a05935b2c21eeff01ad1ecef991d8c63fef684fe89ea291f1746c3b4fd00",
+  "new_analysis_SHA256": "337587b14134b3687acf79c522ee7433869dec8c7c57152c74a29abed2f8014b"
+}

@@ -1,0 +1,19 @@
+{
+  "original_source_SHA256": "46d36788485e4c4e76dcd8db029980506fe0cf373b819219df3cd9a5e0a4fb4b",
+  "derived_source_SHA256": "c4c493095986623c3b86de77ab350965ce26c771a2e2e94051ee4f65e48d858f",
+  "exact_replacements": [
+    {
+      "old": "if(w*h>2000000)",
+      "new": "if(w*h>32000000)"
+    },
+    {
+      "old": "for(NSNumber *engine in @[@NO,@YES])",
+      "new": "for(NSNumber *engine in @[@NO])"
+    },
+    {
+      "old": "facts[@\"defaults\"]=defaults;",
+      "new": "facts[@\"defaults\"]=defaults; @try{facts[@\"default_use_style_engine_before_override\"]=[filter valueForKey:@\"useStyleEngine\"]?:NSNull.null;}@catch(NSException*e){facts[@\"default_use_style_engine_observation_error\"]=e.name;}"
+    }
+  ],
+  "no_ROI_or_downscale_override": true
+}
