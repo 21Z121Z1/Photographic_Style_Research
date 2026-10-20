@@ -25,13 +25,17 @@ jobs:
         shell: bash
         run: |
           python3 - <<'PY'
-          import hashlib,json,os,pathlib
+          import base64,hashlib,json,os,pathlib,zlib
           p=pathlib.Path(os.environ['RUNNER_TEMP'])/'texture-producer-evidence'
           p.mkdir(exist_ok=True)
           rows=[]
           for f in sorted(p.rglob('*')):
               if not f.is_file() or f.suffix not in {'.json','.txt','.log'}:continue
               rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
+              encoded=base64.b64encode(zlib.compress(f.read_bytes(),9)).decode('ascii')
+              print('PRODUCER_FILE_BEGIN '+str(f.relative_to(p)))
+              for offset in range(0,len(encoded),512):print(encoded[offset:offset+512])
+              print('PRODUCER_FILE_END '+str(f.relative_to(p)))
           manifest={'schema':'texture-producer-evidence-v1','head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'photos_used':False,'apple_implementation_patched':False,'files':rows}
           (p/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
           print(json.dumps(manifest,indent=2))
