@@ -1,8 +1,15 @@
 {
-  "schema": "texture-fixture-run-marker-v1",
-  "phase": "stress",
-  "purpose": "Repeat the full 2048 native producer/readback/replay pipeline three times after fixing effect lifetime",
-  "repeats": 3,
-  "allocator_budget_MiB": 128,
-  "failed_reports_preserved_before_debugging": true
+  "schema": "texture-fixture-final-run-v1",
+  "phase": "generate",
+  "selection": "all",
+  "purpose": "Generate and validate all 26 unique real fixtures and 12 supplemental cases at this exact source commit; create the import bundle only on complete acceptance",
+  "prior_2048_stress": {
+    "source_head": "045ff91a024781892fffe5bcbabc5bf8dcc17551",
+    "run_id": "39387614262",
+    "full_pipeline_repeats": 3,
+    "passed": 3
+  },
+  "fixture_head": "18340989590d451f5676924feb03c70baa503e1a",
+  "fixture_manifest_matches_current_main": "9838fd538cc86da5668e628e65d4f1777ca568bb",
+  "new_device_claims": false
 }
