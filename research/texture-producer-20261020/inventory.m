@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     @autoreleasepool {
         if (argc != 2) return 64;
         NSMutableArray *frameworks = [NSMutableArray new];
-        for (NSString *name in @[@"NeutrinoCore", @"PhotoImaging", @"CMImaging", @"CMCapture", @"Vision"]) {
+        for (NSString *name in @[@"NeutrinoCore", @"PhotoImaging", @"CMImaging", @"CMCapture", @"ANSTKit", @"Vision"]) {
             NSString *root = [name isEqual:@"Vision"] ? @"Frameworks" : @"PrivateFrameworks";
             NSString *path = [NSString stringWithFormat:@"/System/Library/%@/%@.framework/%@", root, name, name];
             void *handle = dlopen(path.UTF8String, RTLD_NOW | RTLD_LOCAL);
@@ -65,12 +65,21 @@ int main(int argc, char **argv) {
         Class *classes = objc_copyClassList(&count);
         NSMutableSet<NSString *> *selected = [NSMutableSet new];
         NSMutableArray *candidateNames = [NSMutableArray new];
+        NSMutableArray *sourceNames = [NSMutableArray new];
         for (unsigned i = 0; i < count; i++) {
             NSString *name = @(class_getName(classes[i]));
+            if ([name hasPrefix:@"NU"] || [name hasPrefix:@"_NU"] ||
+                [name hasPrefix:@"VNGenerate"] || [name containsString:@"FSINC"] ||
+                [name containsString:@"SmartStyle"]) [sourceNames addObject:name];
             if ([name containsString:@"AutoCalculator"] || [name containsString:@"TextureStyle"] ||
                 [name containsString:@"PersonImageStat"] || [name containsString:@"SemanticStyle"] ||
                 [name hasPrefix:@"NURender"] || [name hasPrefix:@"NUImage"] ||
-                [name hasPrefix:@"PISemantic"] || [name hasPrefix:@"PIMatte"]) {
+                [name hasPrefix:@"PISemantic"] || [name hasPrefix:@"PIMatte"] ||
+                [name hasPrefix:@"_NUImage"] || [name hasPrefix:@"NUURL"] ||
+                [name hasPrefix:@"CMITS"] || [name hasPrefix:@"CMIImageTile"] ||
+                [name hasPrefix:@"CMIMetalResource"] || [name isEqual:@"FigMetalContext"] ||
+                [name containsString:@"CompositionController"] || [name hasPrefix:@"NUSource"] ||
+                [name containsString:@"FSINC"] || [name containsString:@"SmartStyleStatistics"]) {
                 [candidateNames addObject:name];
                 for (Class cls = classes[i]; cls && cls != NSObject.class; cls = class_getSuperclass(cls))
                     [selected addObject:@(class_getName(cls))];
@@ -90,6 +99,7 @@ int main(int argc, char **argv) {
             @"schema": @"texture-producer-inventory-v1", @"os": NSProcessInfo.processInfo.operatingSystemVersionString,
             @"device": device.name ?: @"unavailable", @"frameworks": frameworks,
             @"candidate_names": [candidateNames sortedArrayUsingSelector:@selector(compare:)], @"classes": rows,
+            @"source_class_names": [sourceNames sortedArrayUsingSelector:@selector(compare:)],
             @"apple_implementation_patched": @NO, @"photos_used": @NO,
         };
         NSError *error = nil;

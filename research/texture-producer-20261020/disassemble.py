@@ -20,6 +20,10 @@ def target_label(target, process, address):
             source = (word >> 5) & 31
             if source in regs:
                 regs[word & 31] = regs[source] + (((word >> 10) & 4095) << (12 if word & (1 << 22) else 0))
+                if word & 31 == 1:
+                    selector = process.ReadCStringFromMemory(regs[1], 1024, error)
+                    if error.Success() and selector and all(32 <= ord(c) < 127 for c in selector):
+                        return 'selector=' + selector
         elif word & 0xFFC00000 == 0xF9400000:  # LDR unsigned immediate, 64 bit
             source, dest = (word >> 5) & 31, word & 31
             if source not in regs:
