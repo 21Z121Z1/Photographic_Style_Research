@@ -1,0 +1,142 @@
+{
+  "S76_source_commit": "de39c5fd11685f7ee0f1f333a8811b15e2df98c9",
+  "S76_receipt": {
+    "run_id": 39387725065,
+    "artifact_id": 12247894805,
+    "ZIP_bytes": 119659,
+    "ZIP_sha256": "03d611d8c1fd0e059cdc6e7161737fb863ca380881a7f3d6727c8dac7bc50071",
+    "manifest_sha256": "d775a9b491c1a8340f5ebb9379a7de76b52d324e7bd5f12c827bc90a000a8b76",
+    "payload_members_SHA_verified": 84,
+    "all_members_verified": true,
+    "source_commit": "de39c5fd11685f7ee0f1f333a8811b15e2df98c9",
+    "all_recipe_sources_verified_against_commit": true,
+    "event": "push",
+    "run_attempt": 1,
+    "run_conclusion": "failure",
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "no_photo_input": true,
+    "synthetic_pixel_buffers_only": true,
+    "download_transport": "Configured gh credential only in memory/stdin on api.github.com; signed asset fetched without credential; no URL or credential saved",
+    "original_ZIP_preserved": true
+  },
+  "original_source_preserved": true,
+  "reason": "S76 returned NO on first lightmap0; first inspected output bytes zero despite prior YES, and trace reached512 cap. Diagnose actual final dispatch and original method statuses before claiming valid pixel output. All controls use same nil-stats type3; no real-photo/type2 or full-domain inference.",
+  "installed": [
+    {
+      "file": "research/hdr-native/ci_status_s77.inc",
+      "sha256": "7de28afa1472b1cac600eb86247f9455e92b84a92cf45e82de31338aa2c46363",
+      "size": 7295
+    },
+    {
+      "file": "research/hdr-native/analyze_ci_s77.py",
+      "sha256": "392dd815226c8e0eae64182e181bf7a397d426c5169a1b4c918e904a0e30dcc0",
+      "size": 3737
+    },
+    {
+      "file": "research/hdr-native/ci_trace_s77.inc",
+      "sha256": "ad26629b24a7fa1d5ab2c8cb2df9a3dcccd057fca51b07ea27ff9fe017d0e97c",
+      "size": 4283
+    },
+    {
+      "file": "research/hdr-native/probe_consumer_ci_s77.m",
+      "sha256": "8c054fd9cb52770e458bf728800145d248bb7405569695cfe3784b3941dfef24",
+      "size": 24864
+    },
+    {
+      "file": "research/hdr-native/run_hdr_s77.py",
+      "sha256": "c67b0c96ba2b7da87c31bbf786f8cd48394a03e1a05deedf3344ebe89c303f38",
+      "size": 10836
+    },
+    {
+      "file": ".github/workflows/hdr-native-s77.yml",
+      "sha256": "2c77a7360b20e75fc3310d9824f76ca4dd4633a04bae21518243e50a5d557d0d",
+      "size": 2140
+    }
+  ],
+  "exact_derivation_changes": [
+    {
+      "old": "p?@{@\"class\":NSStringFromClass(object_getClass(p)),@\"label\":p.label?:@\"unlabelled\",@\"threadExecutionWidth\":@(p.threadExecutionWidth),@\"maxTotalThreads\":@(p.maxTotalThreadsPerThreadgroup)}:@{@\"nil\":@YES}",
+      "new": "T77PipelineInfo(p)"
+    },
+    {
+      "old": "T75Dispatches.count>=512",
+      "new": "T75Dispatches.count>=2048"
+    },
+    {
+      "old": "#include \"ci_trace_s75.inc\"",
+      "new": "static NSDictionary*T77PipelineInfo(id<MTLComputePipelineState>p);\n#include \"ci_trace_s77.inc\""
+    },
+    {
+      "old": "static BOOL Active75(void)",
+      "new": "#include \"ci_status_s77.inc\"\nstatic BOOL Active75(void)"
+    },
+    {
+      "old": "else{Need(strcmp(argv[1],\"evaluate\")==0,@\"probe mode\");T75Install(dev);",
+      "new": "else{Need(strcmp(argv[1],\"evaluate\")==0,@\"probe mode\");T75Install(dev);S77Install(dev);"
+    },
+    {
+      "old": "if(T75Dispatches)Doc75[@\"dispatches\"]=T75Dispatches;rc=3;",
+      "new": "if(T75Dispatches)Doc75[@\"dispatches\"]=T75Dispatches;Doc75[@\"compute_capture_limit_reached\"]=@(T75CaptureLimit);rc=3;"
+    },
+    {
+      "old": "files=[D/n for n in['probe_consumer_ci_s76.m','ci_trace_s75.inc','run_hdr_s76.py'",
+      "new": "files=[D/n for n in['probe_consumer_ci_s77.m','ci_trace_s77.inc','ci_status_s77.inc','analyze_ci_s77.py','run_hdr_s77.py'"
+    },
+    {
+      "old": "'probe_version':'S76'",
+      "new": "'probe_version':'S77'"
+    },
+    {
+      "old": "'scope':'Original CI allocation + controlled native forward oracle, not five-photo acceptance, original stats-present type2, 33-point global hull, scene recovery or physical j EV.'",
+      "new": "'scope':'S77 diagnostic: same nil-stats type3 context, fresh process per lightmap flag, original substep return codes and PSO function creation. S76 partial outputs independently audited on runner. Original return YES alone is not a pixel acceptance; zero outputs must not count as valid rendering. No new five-photo/type2/33-point/camera/scene claim.'"
+    },
+    {
+      "old": "str(D/'probe_consumer_ci_s76.m')",
+      "new": "str(D/'probe_consumer_ci_s77.m')"
+    },
+    {
+      "old": "def run(mode,spec_path,timeout):\n    with(O/(mode+'.log')).open('x')as log:\n        proc=subprocess.Popen([str(W/'probe'),mode,str(spec_path),str(O)],stdout=log,stderr=subprocess.STDOUT)",
+      "new": "def run(mode,spec_path,timeout,output=None,tag=None):\n    output=O if output is None else output;tag=mode if tag is None else tag\n    with(O/(tag+'.log')).open('x')as log:\n        proc=subprocess.Popen([str(W/'probe'),mode,str(spec_path),str(output)],stdout=log,stderr=subprocess.STDOUT)"
+    },
+    {
+      "old": "save(mode+'-timeout.json'",
+      "new": "save(tag+'-timeout.json'"
+    },
+    {
+      "old": "with(O/(mode+'-live-stack.log'))",
+      "new": "with(O/(tag+'-live-stack.log'))"
+    },
+    {
+      "old": "name: hdr-native-s76",
+      "new": "name: hdr-native-s77"
+    },
+    {
+      "old": "research/vm-native-20261020-hdr-s76",
+      "new": "research/vm-native-20261020-hdr-s77"
+    },
+    {
+      "old": "W=\"$RUNNER_TEMP/hdr-s76\"",
+      "new": "W=\"$RUNNER_TEMP/hdr-s77\""
+    },
+    {
+      "old": "run_hdr_s76.py",
+      "new": "run_hdr_s77.py"
+    },
+    {
+      "old": "name: hdr-s76-original-CI-synthetic",
+      "new": "name: hdr-s77-original-CI-diagnostic"
+    },
+    {
+      "old": "for p in sorted(root.iterdir()):",
+      "new": "for p in sorted(root.rglob('*')):"
+    },
+    {
+      "old": "'path':p.name",
+      "new": "'path':str(p.relative_to(root))"
+    }
+  ],
+  "legacy_thresholds_masks_changed": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

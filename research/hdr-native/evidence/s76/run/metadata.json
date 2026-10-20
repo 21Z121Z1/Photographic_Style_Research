@@ -1,0 +1,996 @@
+{
+  "photos" : 0,
+  "tested_original_processor_calls" : 0,
+  "A_phase_complete" : false,
+  "cases" : [
+
+  ],
+  "acceptance_complete" : false,
+  "metadata" : {
+    "process_ABI" : "B48@0:8@16@24@32^@40",
+    "flags" : [
+      {
+        "value" : true,
+        "selector" : "outputIsOpaque",
+        "ABI" : "B16@0:8",
+        "IMP_unslid" : "0x1cbef064c"
+      },
+      {
+        "value" : false,
+        "selector" : "synchronizeInputs",
+        "ABI" : "B16@0:8",
+        "IMP_unslid" : "0x1cbef0654"
+      },
+      {
+        "value" : true,
+        "selector" : "allowPartialOutputRegion",
+        "ABI" : "B16@0:8",
+        "IMP_unslid" : "0x1cbef065c"
+      },
+      {
+        "value" : false,
+        "selector" : "allowCompressedInputsAndOutputs",
+        "ABI" : "B16@0:8",
+        "IMP_unslid" : "0x1cbef0664"
+      }
+    ],
+    "setter_selector_candidates" : [
+      "metalCommandBuffer",
+      "usingSharedSemanticStyleRendererWithMetalCommandQueue:processingType:useStyleEngine:perform:",
+      "setLogicalImageSize:",
+      "setRenderRegionRect:",
+      "metalTexture",
+      "setOutputImageTexture:",
+      "setOutputImageTextureMappedRegion:",
+      "setInputImageTexture:",
+      "setInputImageTextureMappedRegion:",
+      "setInputLinearImageTexture:",
+      "setLogicalImageToInputLinearImageScale:",
+      "setInputGainMapTexture:",
+      "setInputPersonMaskTexture:",
+      "setInputPersonMaskTextureMappedRegion:",
+      "setInputSkinMaskTexture:",
+      "setInputSkinMaskTextureMappedRegion:",
+      "setInputSkyMaskTexture:",
+      "setInputSkyMaskTextureMappedRegion:",
+      "setSemanticStyleSceneType:",
+      "setInputSRLCurveParameter:",
+      "setBrightnessValue:",
+      "setTuningParameterVariant:",
+      "setInputLinearBaseGain:",
+      "setFaceBasedGlobalExposureBoostRatio:",
+      "initWithCastType:castIntensity:toneBias:colorBias:",
+      "setInputStyle:",
+      "setInputStatisticsByStatsType:",
+      "setInputStatisticsByStatsKey:",
+      "setInputSmallLightMapTexture:",
+      "setInputSmallLinearLightMapTexture:",
+      "setBaselineExposure:",
+      "setInputGlobalToneCurveTexture:",
+      "roiForInput:arguments:outputRect:",
+      "vectorWithCGRect:",
+      "metalCommandQueue",
+      "initWithbundle:andOptionalCommandQueue:",
+      "setMemSize:",
+      "setWireMemory:",
+      "resourceOptions",
+      "setResourceOptions:",
+      "initWithDevice:allocatorType:",
+      "setAllocator:",
+      "setupWithDescriptor:",
+      "initWithMetalContext:",
+      "prepareToProcess:"
+    ],
+    "CMImaging" : {
+      "path" : "\/System\/Library\/PrivateFrameworks\/CMImaging.framework\/Versions\/A\/CMImaging",
+      "UUID" : "3CCD434E-B1E0-3F14-8EF6-E29D58379BE8"
+    },
+    "input_formats" : [
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRGBAh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0b8",
+        "native_CIFormat" : 2056,
+        "global_unslid" : "0x18e835188",
+        "index" : 0
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0c0",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 1
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0c8",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 2
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0d0",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 3
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRGBAh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0d8",
+        "native_CIFormat" : 2056,
+        "global_unslid" : "0x18e835188",
+        "index" : 4
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0e0",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 5
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0e8",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 6
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0f0",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 7
+      },
+      {
+        "global_symbol" : {
+          "exact_address" : 1,
+          "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+          "found" : true,
+          "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+          "name" : "kCIFormatRh"
+        },
+        "table_slot_unslid" : "0x1e1fcb0f8",
+        "native_CIFormat" : 2053,
+        "global_unslid" : "0x18e8351d0",
+        "index" : 8
+      }
+    ],
+    "additional_method_ABIs" : [
+      {
+        "selector" : "roiTileArrayForInput:arguments:outputRect:",
+        "class_method" : true,
+        "class" : "PISemanticStyleProcessor",
+        "ABI" : "@60@0:8i16@20{CGRect={CGPoint=dd}{CGSize=dd}}28",
+        "IMP_unslid" : "0x1cbef07f4"
+      },
+      {
+        "selector" : "usingSharedSemanticStyleRendererWithMetalCommandQueue:processingType:useStyleEngine:perform:",
+        "class_method" : true,
+        "class" : "PISemanticStyleRenderer",
+        "ABI" : "B40@0:8@16i24B28@?32",
+        "IMP_unslid" : "0x1cbef105c"
+      },
+      {
+        "selector" : "initWithMetalCommandQueue:processingType:useStyleEngine:",
+        "class_method" : false,
+        "class" : "PISemanticStyleRenderer",
+        "ABI" : "@32@0:8@16i24B28",
+        "IMP_unslid" : "0x1cbef0bb4"
+      },
+      {
+        "selector" : "prepareProcessor",
+        "class_method" : false,
+        "class" : "PISemanticStyleRenderer",
+        "ABI" : "B16@0:8",
+        "IMP_unslid" : "0x1cbef1244"
+      }
+    ],
+    "process_IMP_unslid" : "0x1cbeef754",
+    "PhotoImaging" : {
+      "path" : "\/System\/Library\/PrivateFrameworks\/PhotoImaging.framework\/Versions\/A\/PhotoImaging",
+      "UUID" : "5F17E1DB-A15E-38C7-9BEC-E081688B62E5"
+    },
+    "output_format" : 2056,
+    "renderer_class_refs" : [
+      {
+        "class" : "FigMetalContext",
+        "slot_unslid" : "0x1e01ddab8"
+      },
+      {
+        "class" : "CMISmartStyleMetalRendererV1",
+        "slot_unslid" : "0x1e01dd9e8"
+      },
+      {
+        "class" : "CMISmartStyleV1",
+        "slot_unslid" : "0x1e01dd9f8"
+      },
+      {
+        "class" : "FigMetalAllocatorDescriptor",
+        "slot_unslid" : "0x1e01ddaa8"
+      },
+      {
+        "class" : "FigMetalAllocator",
+        "slot_unslid" : "0x1e01dda90"
+      }
+    ],
+    "extra_scalar_key" : {
+      "value" : "baselineExposure",
+      "physical_meaning_not_inferred_from_name" : true,
+      "unslid" : "0x1ee262158",
+      "synthetic_control_chosen_after_native_binding" : true
+    },
+    "output_format_global_symbol" : {
+      "exact_address" : 1,
+      "image_UUID" : "374BB926-BF7C-3439-843C-D6E5F0D518F6",
+      "found" : true,
+      "image" : "\/System\/Library\/Frameworks\/CoreImage.framework\/Versions\/A\/CoreImage",
+      "name" : "kCIFormatRGBAh"
+    },
+    "Metal_device_class" : "AppleParavirtDevice",
+    "optimized_selectors" : [
+      {
+        "words" : [
+          "0xf012ac21",
+          "0x913c0021",
+          "0x17fd2e8e",
+          "0xd4200020",
+          "0x90124501",
+          "0x912c5421",
+          "0x17fd2e8a",
+          "0xd4200020"
+        ],
+        "selector" : "metalCommandBuffer",
+        "unslid" : "0x1d00b4dc0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd01356e1",
+          "0x913bc821",
+          "0x17fd134e",
+          "0xd4200020",
+          "0xd01356e1",
+          "0x913d3c21",
+          "0x17fd134a",
+          "0xd4200020"
+        ],
+        "selector" : "usingSharedSemanticStyleRendererWithMetalCommandQueue:processingType:useStyleEngine:perform:",
+        "unslid" : "0x1d00bbac0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd0128141",
+          "0x91200021",
+          "0x17fd1dd6",
+          "0xd4200020",
+          "0x90128b81",
+          "0x91340021",
+          "0x17fd1dd2",
+          "0xd4200020"
+        ],
+        "selector" : "setLogicalImageSize:",
+        "unslid" : "0x1d00b90a0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf01273c1",
+          "0x911a0021",
+          "0x17fd1c46",
+          "0xd4200020",
+          "0xb012e921",
+          "0x911f7c21",
+          "0x17fd1c42",
+          "0xd4200020"
+        ],
+        "selector" : "setRenderRegionRect:",
+        "unslid" : "0x1d00b96e0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0125821",
+          "0x91280021",
+          "0x17fd2e7e",
+          "0xd4200020",
+          "0x901347c1",
+          "0x9106bc21",
+          "0x17fd2e7a",
+          "0xd4200020"
+        ],
+        "selector" : "metalTexture",
+        "unslid" : "0x1d00b4e00",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd0124dc1",
+          "0x91320021",
+          "0x17fd1d1a",
+          "0xd4200020",
+          "0xb0124581",
+          "0x9134c021",
+          "0x17fd1d16",
+          "0xd4200020"
+        ],
+        "selector" : "setOutputImageTexture:",
+        "unslid" : "0x1d00b9390",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb0124581",
+          "0x9134c021",
+          "0x17fd1d16",
+          "0xd4200020",
+          "0xb012f1a1",
+          "0x912dc821",
+          "0x17fd1d12",
+          "0xd4200020"
+        ],
+        "selector" : "setOutputImageTextureMappedRegion:",
+        "unslid" : "0x1d00b93a0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0128e21",
+          "0x91068021",
+          "0x17fd1f56",
+          "0xd4200020",
+          "0xd012b681",
+          "0x91080021",
+          "0x17fd1f52",
+          "0xd4200020"
+        ],
+        "selector" : "setInputImageTexture:",
+        "unslid" : "0x1d00b8aa0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd012b681",
+          "0x91080021",
+          "0x17fd1f52",
+          "0xd4200020",
+          "0xb01260e1",
+          "0x91028821",
+          "0x17fd1f4e",
+          "0xd4200020"
+        ],
+        "selector" : "setInputImageTextureMappedRegion:",
+        "unslid" : "0x1d00b8ab0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd012a001",
+          "0x91387821",
+          "0x17fd1f2e",
+          "0xd4200020",
+          "0xb012b101",
+          "0x91320021",
+          "0x17fd1f2a",
+          "0xd4200020"
+        ],
+        "selector" : "setInputLinearImageTexture:",
+        "unslid" : "0x1d00b8b40",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90128b81",
+          "0x91340021",
+          "0x17fd1dd2",
+          "0xd4200020",
+          "0x90124d81",
+          "0x91120021",
+          "0x17fd1dce",
+          "0xd4200020"
+        ],
+        "selector" : "setLogicalImageToInputLinearImageScale:",
+        "unslid" : "0x1d00b90b0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd0128921",
+          "0x913a0021",
+          "0x17fd1f6a",
+          "0xd4200020",
+          "0xf01356e1",
+          "0x910c6021",
+          "0x17fd1f66",
+          "0xd4200020"
+        ],
+        "selector" : "setInputGainMapTexture:",
+        "unslid" : "0x1d00b8a50",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0124fe1",
+          "0x91226c21",
+          "0x17fd1f06",
+          "0xd4200020",
+          "0xf012aa21",
+          "0x91260021",
+          "0x17fd1f02",
+          "0xd4200020"
+        ],
+        "selector" : "setInputPersonMaskTexture:",
+        "unslid" : "0x1d00b8be0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf012aa21",
+          "0x91260021",
+          "0x17fd1f02",
+          "0xd4200020",
+          "0xf01356e1",
+          "0x91115021",
+          "0x17fd1efe",
+          "0xd4200020"
+        ],
+        "selector" : "setInputPersonMaskTextureMappedRegion:",
+        "unslid" : "0x1d00b8bf0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf01259e1",
+          "0x912e0021",
+          "0x17fd1eea",
+          "0xd4200020",
+          "0xd012a8c1",
+          "0x912c0021",
+          "0x17fd1ee6",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSkinMaskTexture:",
+        "unslid" : "0x1d00b8c50",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd012a8c1",
+          "0x912c0021",
+          "0x17fd1ee6",
+          "0xd4200020",
+          "0xb0124e21",
+          "0x912a7421",
+          "0x17fd1ee2",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSkinMaskTextureMappedRegion:",
+        "unslid" : "0x1d00b8c60",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0126f21",
+          "0x91300021",
+          "0x17fd1eda",
+          "0xd4200020",
+          "0xf0127121",
+          "0x91360021",
+          "0x17fd1ed6",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSkyMaskTexture:",
+        "unslid" : "0x1d00b8c90",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0127121",
+          "0x91360021",
+          "0x17fd1ed6",
+          "0xd4200020",
+          "0xd012b001",
+          "0x91073421",
+          "0x17fd1ed2",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSkyMaskTextureMappedRegion:",
+        "unslid" : "0x1d00b8ca0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd012ba41",
+          "0x913e0021",
+          "0x17fd1b7a",
+          "0xd4200020",
+          "0xf01356e1",
+          "0x9103f421",
+          "0x17fd1b76",
+          "0xd4200020"
+        ],
+        "selector" : "setSemanticStyleSceneType:",
+        "unslid" : "0x1d00b9a10",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90124401",
+          "0x912d5421",
+          "0x17fd1ef6",
+          "0xd4200020",
+          "0xf012b681",
+          "0x913f5c21",
+          "0x17fd1ef2",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSRLCurveParameter:",
+        "unslid" : "0x1d00b8c20",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90128101",
+          "0x91080021",
+          "0x17fd22da",
+          "0xd4200020",
+          "0xf0135661",
+          "0x911ebc21",
+          "0x17fd22d6",
+          "0xd4200020"
+        ],
+        "selector" : "setBrightnessValue:",
+        "unslid" : "0x1d00b7c90",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x901247e1",
+          "0x910c0021",
+          "0x17fd1a12",
+          "0xd4200020",
+          "0xd0125101",
+          "0x91320021",
+          "0x17fd1a0e",
+          "0xd4200020"
+        ],
+        "selector" : "setTuningParameterVariant:",
+        "unslid" : "0x1d00b9fb0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf01286c1",
+          "0x91120021",
+          "0x17fd1f3a",
+          "0xd4200020",
+          "0xb0130081",
+          "0x910f0c21",
+          "0x17fd1f36",
+          "0xd4200020"
+        ],
+        "selector" : "setInputLinearBaseGain:",
+        "unslid" : "0x1d00b8b10",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf012a6c1",
+          "0x913a0021",
+          "0x17fd20be",
+          "0xd4200020",
+          "0x90124b81",
+          "0x91249421",
+          "0x17fd20ba",
+          "0xd4200020"
+        ],
+        "selector" : "setFaceBasedGlobalExposureBoostRatio:",
+        "unslid" : "0x1d00b8500",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf01356e1",
+          "0x91097c21",
+          "0x17fd3b66",
+          "0xd4200020",
+          "0xf01356e1",
+          "0x910a4821",
+          "0x17fd3b62",
+          "0xd4200020"
+        ],
+        "selector" : "initWithCastType:castIntensity:toneBias:colorBias:",
+        "unslid" : "0x1d00b1a60",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf01243a1",
+          "0x9125a821",
+          "0x17fd1eba",
+          "0xd4200020",
+          "0xf012ba81",
+          "0x91131c21",
+          "0x17fd1eb6",
+          "0xd4200020"
+        ],
+        "selector" : "setInputStyle:",
+        "unslid" : "0x1d00b8d10",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb012aec1",
+          "0x91040021",
+          "0x17fd1ebe",
+          "0xd4200020",
+          "0xf01243a1",
+          "0x9125a821",
+          "0x17fd1eba",
+          "0xd4200020"
+        ],
+        "selector" : "setInputStatisticsByStatsType:",
+        "unslid" : "0x1d00b8d00",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90124701",
+          "0x913c0021",
+          "0x17fd1ec2",
+          "0xd4200020",
+          "0xb012aec1",
+          "0x91040021",
+          "0x17fd1ebe",
+          "0xd4200020"
+        ],
+        "selector" : "setInputStatisticsByStatsKey:",
+        "unslid" : "0x1d00b8cf0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf012b2e1",
+          "0x913a0021",
+          "0x17fd1ece",
+          "0xd4200020",
+          "0x90129241",
+          "0x91020021",
+          "0x17fd1eca",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSmallLightMapTexture:",
+        "unslid" : "0x1d00b8cc0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90129241",
+          "0x91020021",
+          "0x17fd1eca",
+          "0xd4200020",
+          "0xd0128081",
+          "0x9126bc21",
+          "0x17fd1ec6",
+          "0xd4200020"
+        ],
+        "selector" : "setInputSmallLinearLightMapTexture:",
+        "unslid" : "0x1d00b8cd0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0129441",
+          "0x91200021",
+          "0x17fd230a",
+          "0xd4200020",
+          "0xd0126721",
+          "0x912a0021",
+          "0x17fd2306",
+          "0xd4200020"
+        ],
+        "selector" : "setBaselineExposure:",
+        "unslid" : "0x1d00b7bd0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90128f41",
+          "0x91320021",
+          "0x17fd1f62",
+          "0xd4200020",
+          "0xb012d4a1",
+          "0x91349821",
+          "0x17fd1f5e",
+          "0xd4200020"
+        ],
+        "selector" : "setInputGlobalToneCurveTexture:",
+        "unslid" : "0x1d00b8a70",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90124981",
+          "0x91112421",
+          "0x17fd2596",
+          "0xd4200020",
+          "0xf0135661",
+          "0x911d5c21",
+          "0x17fd2592",
+          "0xd4200020"
+        ],
+        "selector" : "roiForInput:arguments:outputRect:",
+        "unslid" : "0x1d00b71a0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb012b0e1",
+          "0x9126b021",
+          "0x17fd12fe",
+          "0xd4200020",
+          "0xf01347a1",
+          "0x91231421",
+          "0x17fd12fa",
+          "0xd4200020"
+        ],
+        "selector" : "vectorWithCGRect:",
+        "unslid" : "0x1d00bbc00",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90124501",
+          "0x912c5421",
+          "0x17fd2e8a",
+          "0xd4200020",
+          "0xf0128981",
+          "0x9118cc21",
+          "0x17fd2e86",
+          "0xd4200020"
+        ],
+        "selector" : "metalCommandQueue",
+        "unslid" : "0x1d00b4dd0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf0126321",
+          "0x913afc21",
+          "0x17fd37f2",
+          "0xd4200020",
+          "0xb0130081",
+          "0x910bd821",
+          "0x17fd37ee",
+          "0xd4200020"
+        ],
+        "selector" : "initWithbundle:andOptionalCommandQueue:",
+        "unslid" : "0x1d00b2830",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xf01247a1",
+          "0x912d3821",
+          "0x17fd1d86",
+          "0xd4200020",
+          "0xd0129741",
+          "0x91220021",
+          "0x17fd1d82",
+          "0xd4200020"
+        ],
+        "selector" : "setMemSize:",
+        "unslid" : "0x1d00b91e0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd0125b41",
+          "0x912dbc21",
+          "0x17fd197e",
+          "0xd4200020",
+          "0xb012aac1",
+          "0x912a9021",
+          "0x17fd197a",
+          "0xd4200020"
+        ],
+        "selector" : "setWireMemory:",
+        "unslid" : "0x1d00ba200",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd0125721",
+          "0x91040021",
+          "0x17fd25e6",
+          "0xd4200020",
+          "0xd01356e1",
+          "0x910c0021",
+          "0x17fd25e2",
+          "0xd4200020"
+        ],
+        "selector" : "resourceOptions",
+        "unslid" : "0x1d00b7060",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x901246a1",
+          "0x91162021",
+          "0x17fd1c0a",
+          "0xd4200020",
+          "0x90131a81",
+          "0x910d5421",
+          "0x17fd1c06",
+          "0xd4200020"
+        ],
+        "selector" : "setResourceOptions:",
+        "unslid" : "0x1d00b97d0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb0126b21",
+          "0x91120021",
+          "0x17fd3b02",
+          "0xd4200020",
+          "0xf01356e1",
+          "0x91145c21",
+          "0x17fd3afe",
+          "0xd4200020"
+        ],
+        "selector" : "initWithDevice:allocatorType:",
+        "unslid" : "0x1d00b1bf0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb0128d41",
+          "0x913a0021",
+          "0x17fd2382",
+          "0xd4200020",
+          "0x90130081",
+          "0x913bf821",
+          "0x17fd237e",
+          "0xd4200020"
+        ],
+        "selector" : "setAllocator:",
+        "unslid" : "0x1d00b79f0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x90126d41",
+          "0x91160021",
+          "0x17fd190a",
+          "0xd4200020",
+          "0xd0127ae1",
+          "0x911ab421",
+          "0x17fd1906",
+          "0xd4200020"
+        ],
+        "selector" : "setupWithDescriptor:",
+        "unslid" : "0x1d00ba3d0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xd0124641",
+          "0x91308021",
+          "0x17fd39b2",
+          "0xd4200020",
+          "0xd01356e1",
+          "0x912bc021",
+          "0x17fd39ae",
+          "0xd4200020"
+        ],
+        "selector" : "initWithMetalContext:",
+        "unslid" : "0x1d00b2130",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb0124701",
+          "0x91280021",
+          "0x17fd28da",
+          "0xd4200020",
+          "0xd01356e1",
+          "0x9122b821",
+          "0x17fd28d6",
+          "0xd4200020"
+        ],
+        "selector" : "prepareToProcess:",
+        "unslid" : "0x1d00b6490",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0x901254e1",
+          "0x913a0021",
+          "0x17ff570a",
+          "0xd4200020",
+          "0xf0135461",
+          "0x91352821",
+          "0x17ff5706",
+          "0xd4200020"
+        ],
+        "selector" : "commandQueue",
+        "unslid" : "0x1d002abd0",
+        "selector_decoded" : true
+      },
+      {
+        "words" : [
+          "0xb012b0e1",
+          "0x9126b021",
+          "0x17fd12fe",
+          "0xd4200020",
+          "0xf01347a1",
+          "0x91231421",
+          "0x17fd12fa",
+          "0xd4200020"
+        ],
+        "selector" : "vectorWithCGRect:",
+        "unslid" : "0x1d00bbc00",
+        "selector_decoded" : true
+      }
+    ],
+    "Metal_device" : "Apple Paravirtual device",
+    "residency_override" : false,
+    "original_process_returns_preserved" : true,
+    "math_or_shader_override" : false,
+    "AppleFamily4" : true
+  },
+  "completed" : true,
+  "callbacks" : [
+
+  ]
+}
