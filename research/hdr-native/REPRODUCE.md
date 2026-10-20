@@ -141,3 +141,24 @@ S72: workflow hdr-native-s72.yml on an authorized research ref, source a5ea4e2; 
 S73: from styles-gtm-ltm run `scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_consumer_roi_s73.py hdr-native-20261019/runs/39353695210/artifact-12234397335.zip`. It verifies all original SHA,54 frozen requested-ROI cases and the post-native standalone implementation; no new holdouts/full consumer proof. Native source/workflow: hdr-native-s73.yml,4a34917,26A434 required,retention1; default master untouched.
 
 S67 full original ZIP now retained: `unzip -t hdr-native-20261019/runs/39335997594/artifact-12226746912.zip`; `sha256sum` must equal b1b95a5df2ee252eec41153cdce6f88d521c36490fc5422bbacb734a208509f1. Historical manifest uses `bytes` rather than `size`;29 payload SHA already verified by supplemental receipt. Essential numerical/AIR replay remains the unchanged validate_stats_s67.py selected-tar command; no native experiment repetition.
+
+
+S75–S80（26A434/image20261012.0260.1，artifact retention-days:1）：6份完整原ZIP合计834255B、294个payload成员及所有recipe源码SHA已校验落地。无人物输入、临时secret/release或Apple可执行binary上传；只用公开合成图案。源分支research/vm-native-20261020-hdr-s75至s80，保留研究分支research/vm-native-20261018。失败均先读gh run view --log-failed，再依原生日志/静态证据修改新版本，未盲目重跑。ZIP路径hdr-native-20261019/runs/<run>/artifact-<artifact>.zip；manifest SHA/source SHA见evidence/s80/bundle-index.json。
+
+|阶段|source commit|run / artifact|结论|原ZIP SHA256|
+|---|---|---|---|---|
+|S75|0d08bb13bb0f6980674addb33d3bd939333bfd53|39387345347 / 12248270752|failure|44a413d9e9402dabd113cda68036a007d3d828ebeebef3e756c76d17ededf857|
+|S76|de39c5fd11685f7ee0f1f333a8811b15e2df98c9|39387725065 / 12247894805|failure|03d611d8c1fd0e059cdc6e7161737fb863ca380881a7f3d6727c8dac7bc50071|
+|S77|c2e80eedf3a25fdadbcf2ad08016ec869ddc04b8|39388810043 / 12248522157|success|dc31a1e3b4706521d914e5d41a0930f5dcbe95ffdedb2fc552bafabc7dacfcd1|
+|S78|98e67973d745de83aca865d9317034ad5a33743c|39389860461 / 12249385894|failure|ee17bf5a1519b023d3a6a715f56c955649fe311e2864070bed866a8a04f78596|
+|S79|b5c9d8e5e163e782c2f65acf67dfe0cc0091dcdf|39390615195 / 12249605976|success|bfacffe4ad6f10aeeb4e4a9d47bcdf35237dccf1c84dc5543d8c3c2677a0b83a|
+|S80|efccbe9887b9fec8129394ac8c829b8548b8c727|39391600201 / 12250205961|success|a821de2eab035d2189343c27a9602a42ca5ce9f9a358d92f17046294290cf825|
+
+只读复现完整性及既有数值记录（不重算像素，不执行原生，不改validate.py）：
+
+```sh
+cd ~/work/styles-gtm-ltm
+scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_ci_evidence_s75_s80.py hdr-native-20261019/runs
+```
+
+原生复现仅macOS runner：源文件run_hdr_s80.py及probe_consumer_ci_s80.m、ci_status_s80.inc、ci_trace_s77.inc、stats_context_s79.inc、analyze_ci_s77.py；workflow hdr-native-s80.yml列出全部参数/源码SHA并限制build26A434。先mkdir "$W/out"，再python3 research/hdr-native/run_hdr_s80.py；只在新问题需要时派发新run。原stats92-float fixture不是相机统计，不把AA gate当模型验收。累计125MB许可有效，根分区至少4GB，完整EXR仍未获单独许可。

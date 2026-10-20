@@ -116,3 +116,8 @@ S69之后（runner）：在原UUID/PSO下使用1024×768恒灰main/linear、32×
 
 
 S74之后（HDR-91，可交给macOS runner）：原region getter、±1e-6两个double常量及有限正scale四int64几何已完成，不重复54例。下一步在同UUID原PISemanticStyleProcessor实际CI运行中，只读hook原process方法、保留返回，记录每个输入region、format、bytesPerRow、metalTexture width/height/pixelFormat以及原mapped-region/scale setter；先从原formatForInputAtIndex的0x1cbef041c/table0x1e1fcb0b8与outputFormat0x1cbef063c绑定9个format数值/常量（不猜格式），并复核outputIsOpaque/synchronizeInputs/allowPartialOutputRegion/allowCompressedInputsAndOutputs。全帧、分块、带非零原点合成输入各A→A，原global/local/semantic参数及GTC/guides/c/d/stats/其他matte分别冻结并SHA检查；保存实际分配CGRect与S74转换的逐项差，再按原像素门槛核对。请求ROI和CPU整数链不是实际纹理证书；C01-C05完整声明域、33点紧区间、完整往返及封装ImageIO SDR max0仍待runner/静态继续。只有匹配相机同帧j曲线/统计、原Studio、RAW和实屏按既有方案列待实机，β不当EV。没有修改原mask或声明域。
+
+
+S80之后（HDR-97，可交给macOS runner/静态继续）：原CI合法type2合成入口已建立，不重复S75编译错误或S76 nil-stats+maps无效成功。固定S80 ordered统计、九路纹理、tone+.35及logical extents，保留原process返回和PSO；whole/tile/translated各AA。先在final dispatch保留并读回实际guides、五组guided结果、c/d、三个matte、params/stats/ROI和输出；记录所有shape/dtype/OS/UUID/PSO来源及SHA，未知padding不上传。原生完整输出对照外，仅替换单项whole的对应crop到tile，其他输入/统计/参数逐字节不变，分别测RGB maxabs、PSNR、half差分、边缘距离；最后做完整native往返，可逆mask内仍≤1e-3。判定不能只看PI返回YES，必须有实际final dispatch、有限非零源响应和正确capture。tile当前max2.44140625e-4未过float1e-5，定位前不归因于half或边界。PI上游对skin/sky/person的resize来源仍需原调用者证据；S79的全尺寸控制不当作相机合同。C01–C05与33点全域tight hull依旧未认证，不能整体转为只能实机。
+
+实机计划不变：匹配IMG2810设备/OS，在同一合成帧/统计的j-only对照中捕获j与WithoutFaceBoost的四组global/local曲线，完整N、B/T/V、face histogram、allocateTone约束、实际应用域及clamp/plateau标记；每次只改变j，其他matte/key1/GTC/cd/曝光固定并SHA。按曲线区间传播β，输出可辨识EV区间和不可恢复mask，不把内部权重界当RGB增益。Studio需原始统计的目标参数反事实，RAW需Mac的2679/2408配对；实屏按低/中/高headroom与同一SDR基底验证，ACES预览不替代显示测试。

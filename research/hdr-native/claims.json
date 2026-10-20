@@ -2130,9 +2130,957 @@
           "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
         }
       ]
+    },
+    {
+      "id": "HDR-92",
+      "category": "semantic/original-consumer-CI-formats-and-context-branch",
+      "status": "已验证静态",
+      "claim": "26A434原PI格式表/实际getter/优化selector绑定：0和4为kCIFormatRGBAh(2056)，其余1/2/3/5/6/7/8为kCIFormatRh(2053)，输出RGBAh；实际MTL格式115/25。slot4线性输入、slot5只证明setInputGainMapTexture、6 GTC、7/8 small lightmaps。useLightMap保护stats/xstats和两图setter；stats参数缺失选type3、存在选type2。baselineExposure键CF1ee262158绑定setBaselineExposure:，不能由形式名推断相机域或HDR载体。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s75/source-flow.json",
+          "line": 1,
+          "sha256": "74cdf25e1dd54228aa2c0d15ef7b515f7a5ebb760eac460fccb8e509df38d37b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/run/build.log",
+          "line": 1,
+          "sha256": "e51875b21b9ab68f38ef5f71c7692f6c0427c2c440d410cefb2b7f4b68c81cd0",
+          "run_id": 39387345347,
+          "artifact_id": 12248270752
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/metadata.json",
+          "line": 1,
+          "sha256": "c99a9b611bdee69a17ada060c15e7bc9d61fd5bd3e32c33761f4ffcf4328bd9a",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/native.json",
+          "line": 1,
+          "sha256": "b3dc856a859cbb6795092d9e76f36fe0759130add249cfe1ef9ba57c83e5902b",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/S76-partial-audit.json",
+          "line": 1,
+          "sha256": "c734362c30e095293109bada4f0a9b93ca902129f90ff5251d8464846bd70a2a",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1-analysis.json",
+          "line": 1,
+          "sha256": "7524f39653e02cc4b9663490481876f956db5d2bec1a62fe906749ef1a0fca15",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1/native.json",
+          "line": 1,
+          "sha256": "cacae38b77a73eb8b451f3c11be1275cf389a1cf561d3281232dae31833c8883",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap0-analysis.json",
+          "line": 1,
+          "sha256": "f70f31e4eac8420670486803f7aebb5eb9d1de5f9497bbf0941a84e69dcdbb1f",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/CMImaging-source.txt",
+          "line": 1,
+          "sha256": "0b31e4f172c3638b6faf8a1eb7d81bf9dc5b43d1f9a1398ed9cdc30ea6d00d4f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/metadata.json",
+          "line": 1,
+          "sha256": "23bd68c7c82148589f0c144eb9e74d90d02d141b105fa2f337bf70302c50dc27",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/analysis.json",
+          "line": 1,
+          "sha256": "2c21f36704fed44dacf6d3ce90c036f113b945aee8b5bcdfde9081ac26aa29b8",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/native.json",
+          "line": 1,
+          "sha256": "f12686dc33285897691d929fa9df225d008333b9ed0675c986a83705628378ce",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/ROI-source.txt",
+          "line": 1,
+          "sha256": "6114c1537aca0e669ef4d623dd5ccb893b02a5038c2e3149fd8f3f5451fff64a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/ordered-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats/native.json",
+          "line": 1,
+          "sha256": "360383c1016184f5e92872d9f05a243f9306bbf756c72818b43be2af6038d77f",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/bundle-index.json",
+          "line": 1,
+          "sha256": "4731d230c026fe536d50224fe7252b1d9b06119554dfdc9e6af945440d09c762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/phase-summary.json",
+          "line": 1,
+          "sha256": "93cfc6db2ee72146baaedd0c7c932fcba8bdf1d2e9b05756c9ff85d69e294c18"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/recipe.json",
+          "line": 1,
+          "sha256": "359e98a36bda1975d0320fdb1248e3720eaf1d3ac5a4dc0fa9761d7a62610dd7",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/freeze.json",
+          "line": 1,
+          "sha256": "393c7c5a4a7304f0a60ebca3d6dbb48c5fd4d5fb167945257820ae7805e92793",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/native.json",
+          "line": 1,
+          "sha256": "15a10d44964230f889663f276b55157245219aebce034f350b2c640c0df1d025",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/analysis.json",
+          "line": 1,
+          "sha256": "2c65bbcb9b2e6b8d0a52e8fd71186fcc37aa0071dd20144d73aed3d7b6f4de77",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        }
+      ]
+    },
+    {
+      "id": "HDR-93",
+      "category": "semantic/native-invalid-context-zero-output-rejected",
+      "status": "已验证数值",
+      "claim": "S76六次YES输出均全零。S77原函数调用/状态/PSO函数名表证实：type3缺stats而给small maps命中原一致性assert，CMI返回0且PI返回YES，只有每次157次hueSatLumLUTCalculation，没有最终renderFinalAdjustments；false/missing-stats控制原ROI返回5。A/A零差不能当有效图像oracle。S75编译失败与全部失败归档保留。S78无完成case时all(empty)的true标志不作为不变性证据。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s75/source-flow.json",
+          "line": 1,
+          "sha256": "74cdf25e1dd54228aa2c0d15ef7b515f7a5ebb760eac460fccb8e509df38d37b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/run/build.log",
+          "line": 1,
+          "sha256": "e51875b21b9ab68f38ef5f71c7692f6c0427c2c440d410cefb2b7f4b68c81cd0",
+          "run_id": 39387345347,
+          "artifact_id": 12248270752
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/metadata.json",
+          "line": 1,
+          "sha256": "c99a9b611bdee69a17ada060c15e7bc9d61fd5bd3e32c33761f4ffcf4328bd9a",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/native.json",
+          "line": 1,
+          "sha256": "b3dc856a859cbb6795092d9e76f36fe0759130add249cfe1ef9ba57c83e5902b",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/S76-partial-audit.json",
+          "line": 1,
+          "sha256": "c734362c30e095293109bada4f0a9b93ca902129f90ff5251d8464846bd70a2a",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1-analysis.json",
+          "line": 1,
+          "sha256": "7524f39653e02cc4b9663490481876f956db5d2bec1a62fe906749ef1a0fca15",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1/native.json",
+          "line": 1,
+          "sha256": "cacae38b77a73eb8b451f3c11be1275cf389a1cf561d3281232dae31833c8883",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap0-analysis.json",
+          "line": 1,
+          "sha256": "f70f31e4eac8420670486803f7aebb5eb9d1de5f9497bbf0941a84e69dcdbb1f",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/CMImaging-source.txt",
+          "line": 1,
+          "sha256": "0b31e4f172c3638b6faf8a1eb7d81bf9dc5b43d1f9a1398ed9cdc30ea6d00d4f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/metadata.json",
+          "line": 1,
+          "sha256": "23bd68c7c82148589f0c144eb9e74d90d02d141b105fa2f337bf70302c50dc27",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/analysis.json",
+          "line": 1,
+          "sha256": "2c21f36704fed44dacf6d3ce90c036f113b945aee8b5bcdfde9081ac26aa29b8",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/native.json",
+          "line": 1,
+          "sha256": "f12686dc33285897691d929fa9df225d008333b9ed0675c986a83705628378ce",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/ROI-source.txt",
+          "line": 1,
+          "sha256": "6114c1537aca0e669ef4d623dd5ccb893b02a5038c2e3149fd8f3f5451fff64a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/ordered-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats/native.json",
+          "line": 1,
+          "sha256": "360383c1016184f5e92872d9f05a243f9306bbf756c72818b43be2af6038d77f",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/bundle-index.json",
+          "line": 1,
+          "sha256": "4731d230c026fe536d50224fe7252b1d9b06119554dfdc9e6af945440d09c762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/phase-summary.json",
+          "line": 1,
+          "sha256": "93cfc6db2ee72146baaedd0c7c932fcba8bdf1d2e9b05756c9ff85d69e294c18"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/recipe.json",
+          "line": 1,
+          "sha256": "359e98a36bda1975d0320fdb1248e3720eaf1d3ac5a4dc0fa9761d7a62610dd7",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/freeze.json",
+          "line": 1,
+          "sha256": "393c7c5a4a7304f0a60ebca3d6dbb48c5fd4d5fb167945257820ae7805e92793",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/native.json",
+          "line": 1,
+          "sha256": "15a10d44964230f889663f276b55157245219aebce034f350b2c640c0df1d025",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/analysis.json",
+          "line": 1,
+          "sha256": "2c65bbcb9b2e6b8d0a52e8fd71186fcc37aa0071dd20144d73aed3d7b6f4de77",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        }
+      ]
+    },
+    {
+      "id": "HDR-94",
+      "category": "semantic/original-stats-dictionary-serialization",
+      "status": "已验证数值",
+      "claim": "S78–S80匹配CMI UUID的原SSRDictionaryFromStats0x2333d7b40/SSRExtendedDictionaryFromStats0x2333d7e14及两个Populate入口0x2333d81a8/81b4精确dladdr绑定。0x2990B SSRStats中offset0x2800的10x9 float32和0x2970两float由原函数往返逐位相同，输入SHA不变。仅显式合成控制，不代表同帧相机统计或物理场景。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s75/source-flow.json",
+          "line": 1,
+          "sha256": "74cdf25e1dd54228aa2c0d15ef7b515f7a5ebb760eac460fccb8e509df38d37b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/run/build.log",
+          "line": 1,
+          "sha256": "e51875b21b9ab68f38ef5f71c7692f6c0427c2c440d410cefb2b7f4b68c81cd0",
+          "run_id": 39387345347,
+          "artifact_id": 12248270752
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/metadata.json",
+          "line": 1,
+          "sha256": "c99a9b611bdee69a17ada060c15e7bc9d61fd5bd3e32c33761f4ffcf4328bd9a",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/native.json",
+          "line": 1,
+          "sha256": "b3dc856a859cbb6795092d9e76f36fe0759130add249cfe1ef9ba57c83e5902b",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/S76-partial-audit.json",
+          "line": 1,
+          "sha256": "c734362c30e095293109bada4f0a9b93ca902129f90ff5251d8464846bd70a2a",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1-analysis.json",
+          "line": 1,
+          "sha256": "7524f39653e02cc4b9663490481876f956db5d2bec1a62fe906749ef1a0fca15",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1/native.json",
+          "line": 1,
+          "sha256": "cacae38b77a73eb8b451f3c11be1275cf389a1cf561d3281232dae31833c8883",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap0-analysis.json",
+          "line": 1,
+          "sha256": "f70f31e4eac8420670486803f7aebb5eb9d1de5f9497bbf0941a84e69dcdbb1f",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/CMImaging-source.txt",
+          "line": 1,
+          "sha256": "0b31e4f172c3638b6faf8a1eb7d81bf9dc5b43d1f9a1398ed9cdc30ea6d00d4f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/metadata.json",
+          "line": 1,
+          "sha256": "23bd68c7c82148589f0c144eb9e74d90d02d141b105fa2f337bf70302c50dc27",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/analysis.json",
+          "line": 1,
+          "sha256": "2c21f36704fed44dacf6d3ce90c036f113b945aee8b5bcdfde9081ac26aa29b8",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/native.json",
+          "line": 1,
+          "sha256": "f12686dc33285897691d929fa9df225d008333b9ed0675c986a83705628378ce",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/ROI-source.txt",
+          "line": 1,
+          "sha256": "6114c1537aca0e669ef4d623dd5ccb893b02a5038c2e3149fd8f3f5451fff64a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/ordered-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats/native.json",
+          "line": 1,
+          "sha256": "360383c1016184f5e92872d9f05a243f9306bbf756c72818b43be2af6038d77f",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/bundle-index.json",
+          "line": 1,
+          "sha256": "4731d230c026fe536d50224fe7252b1d9b06119554dfdc9e6af945440d09c762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/phase-summary.json",
+          "line": 1,
+          "sha256": "93cfc6db2ee72146baaedd0c7c932fcba8bdf1d2e9b05756c9ff85d69e294c18"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/recipe.json",
+          "line": 1,
+          "sha256": "359e98a36bda1975d0320fdb1248e3720eaf1d3ac5a4dc0fa9761d7a62610dd7",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/freeze.json",
+          "line": 1,
+          "sha256": "393c7c5a4a7304f0a60ebca3d6dbb48c5fd4d5fb167945257820ae7805e92793",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/native.json",
+          "line": 1,
+          "sha256": "15a10d44964230f889663f276b55157245219aebce034f350b2c640c0df1d025",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/analysis.json",
+          "line": 1,
+          "sha256": "2c65bbcb9b2e6b8d0a52e8fd71186fcc37aa0071dd20144d73aed3d7b6f4de77",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        }
+      ]
+    },
+    {
+      "id": "HDR-95",
+      "category": "semantic/finite-original-type2-final-render-validity",
+      "status": "已验证数值",
+      "claim": "S78有效stats已走guide/guided/LTM，但final ROI5；S79保持原stats，skin/sky仅按原逻辑位置4x最近复制为64x48，person仍16x12后原检查通过。两个独立合成stats profile共4次实际renderFinalAdjustments，RGBA全部有限、RGB非零，A/A half逐字节相同/float max0。只证明这组条件可接受，不证明所有真实matte必须全尺寸，也不替代真实照片逆解。S79精确类型比较漏掉含引号字段名的CGRect，未称几何完整。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s75/source-flow.json",
+          "line": 1,
+          "sha256": "74cdf25e1dd54228aa2c0d15ef7b515f7a5ebb760eac460fccb8e509df38d37b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/run/build.log",
+          "line": 1,
+          "sha256": "e51875b21b9ab68f38ef5f71c7692f6c0427c2c440d410cefb2b7f4b68c81cd0",
+          "run_id": 39387345347,
+          "artifact_id": 12248270752
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/metadata.json",
+          "line": 1,
+          "sha256": "c99a9b611bdee69a17ada060c15e7bc9d61fd5bd3e32c33761f4ffcf4328bd9a",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/native.json",
+          "line": 1,
+          "sha256": "b3dc856a859cbb6795092d9e76f36fe0759130add249cfe1ef9ba57c83e5902b",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/S76-partial-audit.json",
+          "line": 1,
+          "sha256": "c734362c30e095293109bada4f0a9b93ca902129f90ff5251d8464846bd70a2a",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1-analysis.json",
+          "line": 1,
+          "sha256": "7524f39653e02cc4b9663490481876f956db5d2bec1a62fe906749ef1a0fca15",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1/native.json",
+          "line": 1,
+          "sha256": "cacae38b77a73eb8b451f3c11be1275cf389a1cf561d3281232dae31833c8883",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap0-analysis.json",
+          "line": 1,
+          "sha256": "f70f31e4eac8420670486803f7aebb5eb9d1de5f9497bbf0941a84e69dcdbb1f",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/CMImaging-source.txt",
+          "line": 1,
+          "sha256": "0b31e4f172c3638b6faf8a1eb7d81bf9dc5b43d1f9a1398ed9cdc30ea6d00d4f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/metadata.json",
+          "line": 1,
+          "sha256": "23bd68c7c82148589f0c144eb9e74d90d02d141b105fa2f337bf70302c50dc27",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/analysis.json",
+          "line": 1,
+          "sha256": "2c21f36704fed44dacf6d3ce90c036f113b945aee8b5bcdfde9081ac26aa29b8",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/native.json",
+          "line": 1,
+          "sha256": "f12686dc33285897691d929fa9df225d008333b9ed0675c986a83705628378ce",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/ROI-source.txt",
+          "line": 1,
+          "sha256": "6114c1537aca0e669ef4d623dd5ccb893b02a5038c2e3149fd8f3f5451fff64a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/ordered-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats/native.json",
+          "line": 1,
+          "sha256": "360383c1016184f5e92872d9f05a243f9306bbf756c72818b43be2af6038d77f",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/bundle-index.json",
+          "line": 1,
+          "sha256": "4731d230c026fe536d50224fe7252b1d9b06119554dfdc9e6af945440d09c762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/phase-summary.json",
+          "line": 1,
+          "sha256": "93cfc6db2ee72146baaedd0c7c932fcba8bdf1d2e9b05756c9ff85d69e294c18"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/recipe.json",
+          "line": 1,
+          "sha256": "359e98a36bda1975d0320fdb1248e3720eaf1d3ac5a4dc0fa9761d7a62610dd7",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/freeze.json",
+          "line": 1,
+          "sha256": "393c7c5a4a7304f0a60ebca3d6dbb48c5fd4d5fb167945257820ae7805e92793",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/native.json",
+          "line": 1,
+          "sha256": "15a10d44964230f889663f276b55157245219aebce034f350b2c640c0df1d025",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/analysis.json",
+          "line": 1,
+          "sha256": "2c65bbcb9b2e6b8d0a52e8fd71186fcc37aa0071dd20144d73aed3d7b6f4de77",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        }
+      ]
+    },
+    {
+      "id": "HDR-96",
+      "category": "semantic/finite-original-CI-spatial-oracle",
+      "status": "已验证数值",
+      "claim": "S80 run39391600201/artifact12250205961在原type2/固定合成stats/原PSO下，whole/tile/translated各A/A共6次final draw、1062总dispatch；三组AA half精确/float max0，全部原返回成功，inputs和stats SHA不变。规范化含字段名ivar编码并核对尺寸/对齐，24快照各22几何项。平移whole half/float精确。以输入纹理独立匹配row20后，tile对whole RGB maxabs0.000244140625/PSNR84.44812904567885dB，仍超过原float1e-5门槛；row8不匹配输入，不选输出误差最优假设。不认证C04全域或NumPy/逆模型。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s75/source-flow.json",
+          "line": 1,
+          "sha256": "74cdf25e1dd54228aa2c0d15ef7b515f7a5ebb760eac460fccb8e509df38d37b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/run/build.log",
+          "line": 1,
+          "sha256": "e51875b21b9ab68f38ef5f71c7692f6c0427c2c440d410cefb2b7f4b68c81cd0",
+          "run_id": 39387345347,
+          "artifact_id": 12248270752
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/metadata.json",
+          "line": 1,
+          "sha256": "c99a9b611bdee69a17ada060c15e7bc9d61fd5bd3e32c33761f4ffcf4328bd9a",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/native.json",
+          "line": 1,
+          "sha256": "b3dc856a859cbb6795092d9e76f36fe0759130add249cfe1ef9ba57c83e5902b",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/S76-partial-audit.json",
+          "line": 1,
+          "sha256": "c734362c30e095293109bada4f0a9b93ca902129f90ff5251d8464846bd70a2a",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1-analysis.json",
+          "line": 1,
+          "sha256": "7524f39653e02cc4b9663490481876f956db5d2bec1a62fe906749ef1a0fca15",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1/native.json",
+          "line": 1,
+          "sha256": "cacae38b77a73eb8b451f3c11be1275cf389a1cf561d3281232dae31833c8883",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap0-analysis.json",
+          "line": 1,
+          "sha256": "f70f31e4eac8420670486803f7aebb5eb9d1de5f9497bbf0941a84e69dcdbb1f",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/CMImaging-source.txt",
+          "line": 1,
+          "sha256": "0b31e4f172c3638b6faf8a1eb7d81bf9dc5b43d1f9a1398ed9cdc30ea6d00d4f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/metadata.json",
+          "line": 1,
+          "sha256": "23bd68c7c82148589f0c144eb9e74d90d02d141b105fa2f337bf70302c50dc27",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/analysis.json",
+          "line": 1,
+          "sha256": "2c21f36704fed44dacf6d3ce90c036f113b945aee8b5bcdfde9081ac26aa29b8",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/native.json",
+          "line": 1,
+          "sha256": "f12686dc33285897691d929fa9df225d008333b9ed0675c986a83705628378ce",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/ROI-source.txt",
+          "line": 1,
+          "sha256": "6114c1537aca0e669ef4d623dd5ccb893b02a5038c2e3149fd8f3f5451fff64a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/ordered-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats/native.json",
+          "line": 1,
+          "sha256": "360383c1016184f5e92872d9f05a243f9306bbf756c72818b43be2af6038d77f",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/bundle-index.json",
+          "line": 1,
+          "sha256": "4731d230c026fe536d50224fe7252b1d9b06119554dfdc9e6af945440d09c762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/phase-summary.json",
+          "line": 1,
+          "sha256": "93cfc6db2ee72146baaedd0c7c932fcba8bdf1d2e9b05756c9ff85d69e294c18"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/recipe.json",
+          "line": 1,
+          "sha256": "359e98a36bda1975d0320fdb1248e3720eaf1d3ac5a4dc0fa9761d7a62610dd7",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/freeze.json",
+          "line": 1,
+          "sha256": "393c7c5a4a7304f0a60ebca3d6dbb48c5fd4d5fb167945257820ae7805e92793",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/native.json",
+          "line": 1,
+          "sha256": "15a10d44964230f889663f276b55157245219aebce034f350b2c640c0df1d025",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/analysis.json",
+          "line": 1,
+          "sha256": "2c65bbcb9b2e6b8d0a52e8fd71186fcc37aa0071dd20144d73aed3d7b6f4de77",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        }
+      ]
+    },
+    {
+      "id": "HDR-97",
+      "category": "semantic/remaining-CI-tile-localization-and-global-contract",
+      "status": "runner",
+      "claim": "以已合格原CI上下文继续逐算子定位tile差异：固定统计/GTC/cd和目标外参数，抓最终PSO所用guide/上采样maps/matte/ROI常量及输出，逐项oracle-replacement只换一项，所有替换与原上下文分别SHA。继续上游PI matte尺寸/resize来源、C01 half-pow、C02真实backend重写、C03非有限路径、C04所有采样组合及C05全域覆盖；原33点紧区间、1e-3/mask、完整往返与全图编码SDRmax0仍未认证。停止旧bit-exact拟合；仅同帧相机j/曲线统计、Studio、RAW和实屏保持待实机。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s75/source-flow.json",
+          "line": 1,
+          "sha256": "74cdf25e1dd54228aa2c0d15ef7b515f7a5ebb760eac460fccb8e509df38d37b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s75/run/build.log",
+          "line": 1,
+          "sha256": "e51875b21b9ab68f38ef5f71c7692f6c0427c2c440d410cefb2b7f4b68c81cd0",
+          "run_id": 39387345347,
+          "artifact_id": 12248270752
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/metadata.json",
+          "line": 1,
+          "sha256": "c99a9b611bdee69a17ada060c15e7bc9d61fd5bd3e32c33761f4ffcf4328bd9a",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s76/run/native.json",
+          "line": 1,
+          "sha256": "b3dc856a859cbb6795092d9e76f36fe0759130add249cfe1ef9ba57c83e5902b",
+          "run_id": 39387725065,
+          "artifact_id": 12247894805
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/S76-partial-audit.json",
+          "line": 1,
+          "sha256": "c734362c30e095293109bada4f0a9b93ca902129f90ff5251d8464846bd70a2a",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1-analysis.json",
+          "line": 1,
+          "sha256": "7524f39653e02cc4b9663490481876f956db5d2bec1a62fe906749ef1a0fca15",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap1/native.json",
+          "line": 1,
+          "sha256": "cacae38b77a73eb8b451f3c11be1275cf389a1cf561d3281232dae31833c8883",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s77/run/lightmap0-analysis.json",
+          "line": 1,
+          "sha256": "f70f31e4eac8420670486803f7aebb5eb9d1de5f9497bbf0941a84e69dcdbb1f",
+          "run_id": 39388810043,
+          "artifact_id": 12248522157
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/CMImaging-source.txt",
+          "line": 1,
+          "sha256": "0b31e4f172c3638b6faf8a1eb7d81bf9dc5b43d1f9a1398ed9cdc30ea6d00d4f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/metadata.json",
+          "line": 1,
+          "sha256": "23bd68c7c82148589f0c144eb9e74d90d02d141b105fa2f337bf70302c50dc27",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/analysis.json",
+          "line": 1,
+          "sha256": "2c21f36704fed44dacf6d3ce90c036f113b945aee8b5bcdfde9081ac26aa29b8",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s78/run/native.json",
+          "line": 1,
+          "sha256": "f12686dc33285897691d929fa9df225d008333b9ed0675c986a83705628378ce",
+          "run_id": 39389860461,
+          "artifact_id": 12249385894
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/ROI-source.txt",
+          "line": 1,
+          "sha256": "6114c1537aca0e669ef4d623dd5ccb893b02a5038c2e3149fd8f3f5451fff64a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/ordered-stats-analysis.json",
+          "line": 1,
+          "sha256": "a64b2428fb5d90b98fa45cd286122e2ab779e69e8ad46ce8169868b843ed503b",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s79/run/same-stats/native.json",
+          "line": 1,
+          "sha256": "360383c1016184f5e92872d9f05a243f9306bbf756c72818b43be2af6038d77f",
+          "run_id": 39390615195,
+          "artifact_id": 12249605976
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/bundle-index.json",
+          "line": 1,
+          "sha256": "4731d230c026fe536d50224fe7252b1d9b06119554dfdc9e6af945440d09c762"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/phase-summary.json",
+          "line": 1,
+          "sha256": "93cfc6db2ee72146baaedd0c7c932fcba8bdf1d2e9b05756c9ff85d69e294c18"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/recipe.json",
+          "line": 1,
+          "sha256": "359e98a36bda1975d0320fdb1248e3720eaf1d3ac5a4dc0fa9761d7a62610dd7",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/freeze.json",
+          "line": 1,
+          "sha256": "393c7c5a4a7304f0a60ebca3d6dbb48c5fd4d5fb167945257820ae7805e92793",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/native.json",
+          "line": 1,
+          "sha256": "15a10d44964230f889663f276b55157245219aebce034f350b2c640c0df1d025",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s80/run/analysis.json",
+          "line": 1,
+          "sha256": "2c65bbcb9b2e6b8d0a52e8fd71186fcc37aa0071dd20144d73aed3d7b6f4de77",
+          "run_id": 39391600201,
+          "artifact_id": 12250205961
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T04:40:06.130600+00:00",
+  "updated_utc": "2026-10-20T08:19:01.855899+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
