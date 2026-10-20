@@ -7,7 +7,7 @@ on:
     inputs:
       phase:
         type: choice
-        options: [inventory, generate, diagnose]
+        options: [inventory, generate, diagnose, stress]
         default: inventory
       selection:
         type: choice
@@ -38,7 +38,7 @@ jobs:
           persist-credentials: false
       - name: Run exact-source native fixture matrix
         env:
-          MATRIX_PHASE: ${{ inputs.phase || 'diagnose' }}
+          MATRIX_PHASE: ${{ inputs.phase || 'stress' }}
           MATRIX_SELECTION: ${{ inputs.selection || 'all' }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
