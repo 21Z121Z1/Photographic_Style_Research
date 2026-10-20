@@ -24,7 +24,7 @@ Native Mattify exposure controls use EV −1, 0 and +1, with distinct source pix
 
 The 2026 plist contains `TextureStylePostProcessedPeopleData`. Each entry names an **instance** auxiliary image with URI `tag:apple.com,2026:photo:aux:semanticpersoninstances`. Its XMP must contain the matching `fsincMattes:InstanceMaskReferenceKey`. An aggregate `semanticpersonmatte` cannot replace that binding. The harness observes the actual native mask-metadata dictionary in LLDB and verifies one person plus all three statistics groups through `PITextureStyleProcessorKernel.personInputDataFromStillProperties:`.
 
-Public ImageIO ignores direct writes of the new 2026 auxiliary identifiers. Each real scalar mask is therefore encoded through ImageIO's supported scalar carrier, then its actual encoded payload and properties are assigned to the final role. The final file is read through the original Neutrino/CMPhoto path. All twelve 2026 semantic roles, legacy hair, the keyed instance, Linear Thumbnail and Style Delta are present.
+The ImageIO API type identifiers differ from `auxC` URIs. Directly passing 2026 URIs was ignored; this is not proof that every private 2026 encoder entry is unavailable. Each real scalar mask is encoded through a verified ImageIO scalar-carrier API, then its actual encoded payload and properties are assigned to the final role. The final file is read through the original Neutrino/CMPhoto path. All twelve 2026 semantic roles, legacy hair, the keyed instance, Linear Thumbnail and Style Delta are present.
 
 Resource sources are explicit in `carrier-production.json`:
 
@@ -38,7 +38,7 @@ Ordinary Styles prerequisites describe a **new SDR identity-edit context**: meas
 
 ## Final-file validation
 
-`project_final.py` copies the final carrier's encoded skin, face-skin and instance payloads into standalone decoder inputs. Original ImageIO decodes them. The replay uses those decoded masks, the final primary image and the person/statistics read back from that HEIC. Fresh Vision results are excluded from the replay inputs. The original native Mattify renderer must complete with finite pixels and a nonzero effect.
+One shared inferred geometry and full raw-mask context feeds the original statistics producers and writer. `project_final.py` copies the final carrier's encoded semantic and instance payloads into standalone decoder inputs. Original ImageIO decodes all fourteen scalar inputs. The replay uses those decoded masks, the final primary image and the person/statistics read back from that HEIC. Each effect binds its supported required/optional entries. Fresh Vision results are excluded from the replay inputs. The original native Mattify renderer must complete with finite pixels and a nonzero effect.
 
 The current verified fixture is one 512×512 public NASA portrait with one detected face/person. This is not universal-input certification. Multiple-person matching, no-person production, broader orientations/resolutions, full PhotoImaging rendering, and device UI activation are not certified by this receipt.
 

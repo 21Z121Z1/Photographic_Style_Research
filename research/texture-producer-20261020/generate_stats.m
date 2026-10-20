@@ -45,6 +45,20 @@ static NSDictionary *ScalarTextureFacts(id<MTLTexture> texture) {
     return result;
 }
 
+static void WriteRowOrderPreview(NSData *rgbaHalf, size_t width, size_t height, NSString *path) {
+    NSMutableData *bytes = [NSMutableData dataWithLength:width * height * 4]; const __fp16 *values = rgbaHalf.bytes;
+    for (size_t i=0;i<width*height;i++) {
+        for (size_t c=0;c<3;c++) { double v=MAX(0,(double)values[i*4+c]); v=v<=0.0031308?12.92*v:1.055*pow(v,1/2.4)-0.055; ((uint8_t *)bytes.mutableBytes)[i*4+c]=(uint8_t)lrint(MAX(0,MIN(1,v))*255); }
+        ((uint8_t *)bytes.mutableBytes)[i*4+3]=255;
+    }
+    CGColorSpaceRef color=CGColorSpaceCreateWithName(kCGColorSpaceDisplayP3);
+    CGDataProviderRef provider=CGDataProviderCreateWithCFData((__bridge CFDataRef)bytes);
+    CGImageRef image=CGImageCreate(width,height,8,32,width*4,color,kCGImageAlphaLast,provider,NULL,NO,kCGRenderingIntentDefault);
+    CGImageDestinationRef output=CGImageDestinationCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:path],CFSTR("public.png"),1,NULL);
+    CGImageDestinationAddImage(output,image,NULL); if (!CGImageDestinationFinalize(output)) @throw [NSException exceptionWithName:@"PreviewPNG" reason:path userInfo:nil];
+    CFRelease(output);CGImageRelease(image);CGDataProviderRelease(provider);CGColorSpaceRelease(color);
+}
+
 int main(int argc, char **argv) {
     @autoreleasepool {
         if (argc < 4 || argc > 6) return 64;
@@ -154,6 +168,7 @@ int main(int argc, char **argv) {
                 for (NSString *role in contextTextures) inputFacts[role] = ScalarTextureFacts(contextTextures[role]);
                 report[@"actual_input_mask_textures"] = inputFacts;
                 report[@"face_skin_sha256"] = report[@"actual_input_mask_textures"][@"face"][@"sha256"];
+                report[@"face_skin_mean"] = report[@"actual_input_mask_textures"][@"face"][@"mean"];
             }
             MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice:device];
             id<MTLTexture> encoded = [loader newTextureWithCGImage:image options:@{MTKTextureLoaderOptionOrigin: MTKTextureLoaderOriginTopLeft, MTKTextureLoaderOptionSRGB: @NO} error:&error];
@@ -365,6 +380,10 @@ int main(int argc, char **argv) {
                         changed += pixelChanged;
                     }
                     report[@"rendered_pixels"] = @{@"sha256": SHA(renderedPixels), @"mean_absolute_RGB_change": @(absoluteError / (width * height * 3)), @"maximum_RGB_change": @(maximumError), @"changed_pixels_over_0_0001": @(changed), @"nonfinite": @(invalid)};
+                    if (replayRoot) {
+                        WriteRowOrderPreview(imagePixels,width,height,[replayRoot stringByAppendingPathComponent:@"final-working-input.png"]);
+                        WriteRowOrderPreview(renderedPixels,width,height,[replayRoot stringByAppendingPathComponent:@"final-working-mattify.png"]);
+                    }
                     CIImage *preview = [CIImage imageWithMTLTexture:outputTexture options:@{kCIImageColorSpace: (__bridge id)working}];
                     CGImageRef previewImage = [context createCGImage:preview fromRect:full format:kCIFormatRGBA8 colorSpace:srgb];
                     NSString *previewPath = [[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:replayRoot ? @"final-file-mattify-preview.heic" : @"mattify-native-preview.heic"];
