@@ -225,12 +225,17 @@ int main(int argc, char **argv) {
             }
             report[@"allocator_class"] = allocator ? NSStringFromClass([allocator class]) : @"nil";
             id nativeContext = [effect valueForKey:@"_context"];
+            id originalQueue = Call(effect, @"metalCommandQueue", @[]);
+            report[@"native_queue_before_binding"] = originalQueue ? [originalQueue description] : @"nil";
+            Call(effect, @"setMetalCommandQueue:", @[queue]);
+            report[@"native_queue_explicitly_bound"] = @(Call(effect, @"metalCommandQueue", @[]) != nil);
             id executionStatus = Make(@"FigMetalExecutionStatus");
             Call(nativeContext, @"setExecutionStatus:", @[executionStatus]);
             for (NSString *stage in @[@"setup", @"prewarm", @"prepareToProcess:", @"calculateStats", @"process", @"finishProcessing"]) {
                 report[@"stage"] = stage; Write(report, out);
                 NSNumber *status = Call(effect, stage, [stage containsString:@":"] ? @[@0] : @[]);
                 report[stage] = status; Write(report, out);
+                if ([stage isEqual:@"setup"]) Call(effect, @"setMetalCommandQueue:", @[queue]);
                 if ([stage isEqual:@"calculateStats"] || [stage isEqual:@"process"] || [stage isEqual:@"finishProcessing"]) {
                     Call(nativeContext, @"forceCommit", @[]);
                     Call(nativeContext, @"waitForIdle", @[]);
