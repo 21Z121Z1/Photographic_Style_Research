@@ -1,0 +1,12 @@
+{
+  "run_id": 39486436418,
+  "protocol": "v2 bounded header on an archive smaller than the header ceiling",
+  "cipher_bytes": 8465,
+  "received_header_bytes": 8465,
+  "header_contains_entire_small_cipher": true,
+  "whole_ZIP_backhaul_bytes": 0,
+  "complete_small_cipher_bytes_in_bounded_header": 8465,
+  "large_cipher_body_backhaul_bytes": 0,
+  "historical_receipt_field_correction": "v2 whole_cipher_or_ZIP_backhaul_bytes=0 means no separate unbounded stream; it is not an accurate byte count when the entire cipher fits in the bounded header. Preserve original receipt, use explicit counters here and coordinator v3 for new runs.",
+  "no_large_or_repeated_archive_transfer": true
+}

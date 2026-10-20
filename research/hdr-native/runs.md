@@ -228,3 +228,6 @@ S92：[39477063576](https://github.com/21Z121Z1/Photographic_Style_Research/acti
 
 
 S93：[39480275514](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39480275514)，source e8b6d0c0cbca2be151d995295851cca3f04f6910，research/vm-native-20261021-semantic-s93，xcode-27/26A434/image20261012.0260.1，success。两原尺寸ROI，目标外参数差0/输入SHA同S92/18预览输入SHA不变；半强度联合p99 EV0.001495/0.001431、3×3支持外变化0；完整consumer仍83960/76477失败，旧门槛未过。21 public及GPG/145 private成员/源码绑定已核验，原ZIP日本保留，临时secret/release/tag/branch已清理。后续transport-v2同日本既存ZIP原地重验全成员SHA相同，整包跨区0、新下载0，非新native run；见evidence/s93/transfer-local-verification.json。
+
+
+S94：run39486436418，sourcebf117dccb793e2ceaaff85b5e2ee9a368cd54353，research/vm-native-20261021-semantic-s94，26A434/image20261012.0260.1，failure。编译/原尺寸CI解码成功；首次内部调用写不存在目录导致观测异常，未得final dispatch/整幅指标。原ZIP日本、10 public与GPG/11 private成员已核验；临时secret/release/tag/分支全清理。private cipher8465B完全落在32KiB头内，按traffic-accounting-correction计入小cipher流量，未回传大包。

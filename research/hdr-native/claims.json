@@ -4012,9 +4012,79 @@
           "sha256": "50da2029ece3fa3863609d759d6f34a9fa3ebf475ca804ae30f95c55dab036f2"
         }
       ]
+    },
+    {
+      "id": "HDR-141",
+      "category": "semantic/fullframe-S94",
+      "status": "已验证静态",
+      "claim": "S94编译和5712x4284 CI解码完成，但首个内部调用未匹配final dispatch，探针写不存在目录抛异常。未取得整幅前向/逆解，不能据此归因为原生算法或精度。",
+      "os_build": "26A434",
+      "run_id": 39486436418,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s94/run/native.log",
+          "line": 1,
+          "sha256": "ea896463c19f62b964f8e12d09cb1a5c3cb48599e4519fb5f9bf06e7ae3a33e0"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s94/run/driver.log",
+          "line": 1,
+          "sha256": "7db10c1c2dcad75bbd0a1f124fb35a61cc66229dda0f295a207b4af093f9003d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s94/phase-summary.json",
+          "line": 1,
+          "sha256": "7bc182eef1bf96bdccf1233aa00044bec65480c295bb659b57012819a50876b9"
+        }
+      ]
+    },
+    {
+      "id": "HDR-142",
+      "category": "semantic/fullframe-S94",
+      "status": "已验证静态",
+      "claim": "静态发现未执行预览stride8超S82 cap：536x714=382704>262144；新派生可用stride10=245388，原S94/S82不改。新whole/patch工程判据运行前冻结，但本run未执行/未通过。",
+      "os_build": "26A434",
+      "run_id": 39486436418,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s94/preflight.json",
+          "line": 1,
+          "sha256": "c8875ee0687f6b49b468c86bfff75b3db4a015ebce2b125010ae92ff37d5e284"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s94/phase-summary.json",
+          "line": 1,
+          "sha256": "7bc182eef1bf96bdccf1233aa00044bec65480c295bb659b57012819a50876b9"
+        }
+      ]
+    },
+    {
+      "id": "HDR-143",
+      "category": "semantic/fullframe-S94",
+      "status": "已验证数值",
+      "claim": "S94日本原地GPG/11 private和10 public成员全验，临时资源已清理；8465B小cipher整体位于bounded header内，应计入小文件流量，不能按旧v2零大流字段声称完全未回传cipher。",
+      "os_build": "26A434",
+      "run_id": 39486436418,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s94/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "7f5161504a0f7dee5424fecf1cde860881cbc2a277565c214b21b9fa07f9422c"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s94/traffic-accounting-correction.json",
+          "line": 1,
+          "sha256": "3f6d11b94106cdba34392a00ef727a48710c3391216891e6facbd450816ad40d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s94/closure.json",
+          "line": 1,
+          "sha256": "8301e2670f33137e24025026b8ddce1718944fed060d5787695f4769dfdf12d1"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T19:28:29.793330+00:00",
+  "updated_utc": "2026-10-20T19:53:55.076941+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -5769,5 +5839,27 @@
     "next_runner": "Do not resume precision hunting. Original-frame streaming practical semantic correction, separate native reference and held-out-photo validation remain possible. Test effect quality rather than claim full consumer inverse success.",
     "device_only": "Actual same-frame j/WithoutFaceBoost/N/B/T/V/histograms/allocateTone/application domain; original Studio statistics; paired RAW and real HDR display."
   },
-  "storage_cross_region_traffic_policy": "See evidence/s93/transfer-policy.json; full-cipher backhaul for verification disabled."
+  "storage_cross_region_traffic_policy": "See evidence/s93/transfer-policy.json; full-cipher backhaul for verification disabled.",
+  "semantic_fullframe_S94": {
+    "run_id": 39486436418,
+    "source_commit": "bf117dccb793e2ceaaff85b5e2ee9a368cd54353",
+    "OS_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "conclusion": "failure",
+    "source_canvas": [
+      4284,
+      5712
+    ],
+    "primary_CI_rendered_pixels": 24470208,
+    "primary_nonfinite_RGB": 0,
+    "target_final_dispatch_or_pixel_metrics_obtained": false,
+    "failure": "Probe tried writing native-calls.json before creating its parent when the first internal process call yielded no matching final dispatch. The observation exception interrupted original processing. This is a probe failure, not evidence that full native processing is unsupported.",
+    "static_preview_bug_not_reached": "Stride8 produces536x714=382704 pixels, exceeding frozen S82 apply cap262144. Use stride10 (429x572=245388) only in a new derived probe. No native outcome exists for the unreached branch.",
+    "private_GPG_members_verified": 11,
+    "public_members_verified": 10,
+    "all_owned_transport_cleaned": true,
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  }
 }

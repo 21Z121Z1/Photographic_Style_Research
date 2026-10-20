@@ -778,3 +778,16 @@ headroom1显示对照有43个像素差1码，来自应用gain/有理数offset的
 **已验证数值（用户要求减少跨区计费后的原地校验）。** 历史v1的完整cipher SSH回HK方式停止用于新run，旧receipt不改。storage/remote_artifact_store_v2.py在日本现存S93 ZIP上重做完整GPG/tar/hash认证，145成员SHA与旧receipt全同；无新artifact下载、无整包回传。HK仅收32KiB加密头，私钥留HK，归档专用session经SSH stdin/匿名fd到日本，回传19190B hash摘要、请求491B。初始头部直送GPG失败；诊断确认1KiB OpenPGP partial lengths后，只在本机缓存上去除分包长度并重封短包来取session。截断头无论GPG输出什么状态均不当作认证；完整认证只认日本端实际全cipher的GPG returncode0、DECRYPTION_OKAY/GOODMDC及全部manifest。初始排错合计约102081B数据payload（不含SSH命令/开销和其他API元数据），正常已安装工具的本例约52543B。日本helper/GPG峰值RSS34304/17488KiB，未解码图片或落地明文成员，临时GNUPGHOME已清理。工具不自动回退整包传输，遇未知头格式先诊断。证据transfer-local-verification.json、transfer-policy.json；此为传输验证，不增加图像样本数或场景精度证据。
 
 **分类与下一步。** 两个ROI的语义效果/支持集/固定预览已验证数值；整幅流式实用校正、更多照片与独立保留样本仍可交macOS runner。相机j权重上限β=0..0.1953125仍不能换成实际像素EV；相机同帧曲线/统计、Studio原统计、RAW配对和真实HDR屏幕只能待实机，预览幅度继续标“假设”。A_phase_complete=false、engineering_accepted=false、legacy acceptance_complete=false；本轮未重启bit-exact/33点全域紧区间追逐。
+
+
+### SEMANTIC-20261018 / S94：整幅语义原生基准的观测入口失败（不冒充像素验证）
+
+**已验证静态/数值（运行边界）。** source bf117dccb793e2ceaaff85b5e2ee9a368cd54353，run39486436418 failure，xcode-27/26A434/image20261012.0260.1。Objective-C编译成功，CI原图解码确为5712×4284、24470208像素、RGB非有限0，LinearThumbnail保持原Apple Log入口；但没有捕获目标final dispatch、没有整幅语义或whole/patch像素指标。native.log只证明输入可解码，不证明前向通过。
+
+**已验证静态（失败定位）。** semantic_fullframe_s94.m的Process94仅在找到满足texture13/11/buffer1的dispatch时才创建子目录；随后的native-calls.json写入却无条件执行。首个内部调用没有该匹配项，父目录未建立，写日志异常被原PISemanticStyleFilter记录在trial.exception，中断后续实际处理。driver.log随后因没有native-calls.json失败。不能把这个探针自身的异常归咎于半精度、matte、不可识别性或苹果不支持大图。后续新版本应在process入口建立本次capture目录，记录所有内部dispatch/绑定的census，再据真实final allocation决定分块比较，不改原PSO或数学。
+
+**已验证静态（运行前定义的门槛与另一个未执行缺陷）。** inputs_s94.json/source commit预先定义新的工程whole/patch判据：maxabs≤1/256、PSNR≥70dB、固定ACES的99%像素各通道差≤1码、最坏≤4码、非有限0；旧half逐位、float1e-5/PSNR60和逆1e-3仍独立保留。S94没有到达这些判据，不得记通过。另在静态复查发现预览stride8给536×714=382704像素，超过冻结S82 apply的262144像素上限；该分支本run未执行，不能把它写成观察到的失败。新派生版本改成stride10（429×572=245388），原S94与S82文件保持。
+
+**已验证静态（低流量归档与清理）。** public artifact12294260940/11387B/SHA e07678bd850e277f22d7dd7ec0030960156df3da0d6bd63ccbbe4c554ed6fdab；private artifact12293452567/8615B/SHA3bb63fdf731b2d088d392358cb8c2ec6c510d0e1ef1332258bc105444b03cf16。原ZIP日本保留、10 public与GPG/11 private成员全验；本次secret/release/tag/临时分支已按PR零引用/终态/源保留规则清理。首次实际新run已使用日本原地完整GPG/member核验，HK未接收完整ZIP或大密文。注意这份cipher仅8465B，小于32KiB头部上限，所以“头部”包含整份小cipher；旧v2 receipt的whole_cipher_or_ZIP_backhaul_bytes=0不能按字面当作它的字节数。原receipt不改，精确解释/计数见traffic-accounting-correction.json；后续协调器分开计完整小cipher与大cipher流，不隐去这8465B。
+
+**分类。** 探针编译/原图CI解码/错误定位/归档已验证；整幅native final allocation与语义控制仍可交runner，尚无新图像结论。只修证实的观测入口与预览分块上限，不重开bit-exact。实机j曲线/统计、Studio/RAW/实屏清单不变；A_phase_complete=false、engineering_accepted=false、acceptance_complete=false。
