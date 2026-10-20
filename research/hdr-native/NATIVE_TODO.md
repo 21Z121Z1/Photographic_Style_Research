@@ -109,3 +109,5 @@ VM/runner仍能推进：metadata序列化/调用者换绑、c/d生成连接、�
 S69之后（runner）：在原UUID/PSO下使用1024×768恒灰main/linear、32×24阶跃目标matte，固定GTC/params/其他matte及输出，分别测试zero crop/显式full-matte crop。以原_encodeRenderRegionForStats的176B、输入SHA、sampler与per-tile person/skin计数为oracle，先从AIR推导UV，再判定配准；不得按观感调smooth或据字段名选择比例。原调用者的实际stats源/ROI/尺寸和封装后SDR max0、33点全域合同仍可runner推进。CPU ROI检查0不是图像前向通过；S63大图全局统计不认证为相机上下文。实机j/WithoutFaceBoost四曲线和N/B/T/V/face hist/allocateTone/app域、RAW2679/2408/原Studio/HDR观看按原清单，β不换算假EV。
 
 - S71已完成有限阶跃matte原CPU ROI+原PSO计数验证：7组/14336格max0，见evidence/s70-s71；C04全声明域仍未证明。下一步原PhotoImaging调用点/参数常量/ABI取证，固定实际logical/render/crop和context后再验证真实consumer，不把默认wrapper比例强加于已有冻结输入。33点、完整往返、编码后ImageIO SDR max0仍可runner推进；相机同帧j四曲线/N/B/T/V/face hist/allocateTone/应用域、原Studio统计、RAW与屏幕仍按实机方案。
+
+- S72（evidence/s72）：原PI消费者26 selector/15常量/4 ABI已绑定；下一步可runner用显式extents和full/tile输出调用原ROI(IMP0x1cbef066c)，捕获mapped region/实际texture尺寸和scale，并保留非目标上下文SHA。不能把S71默认wrapper比例当真实consumer。33点全域/完整往返/编码SDRmax0继续未证；同帧相机j曲线/统计、RAW、原Studio统计与实屏沿用原实机方案。

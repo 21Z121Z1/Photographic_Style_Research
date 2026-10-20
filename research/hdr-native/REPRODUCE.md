@@ -135,3 +135,5 @@ S69复现：在新增日期研究分支复制s69 workflow并更新push filter，
 
 
 S70–S71: run `scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_matte_roi_s70.py hdr-native-20261019/runs/39346448714/artifact-12231437053.zip` from styles-gtm-ltm (VM 400MB cap). This verifies all original manifest members and finite step counts, never a global sampler certificate. Original failed parent:39345177157/artifact-12230252826.zip. Native reproduction: workflow hdr-native-s71.yml on an authorized new research branch/ref; no parallel run,26A434/retention1; source derivation SHA in original derivation-s71.json. Use mask1 per existing S56 static proof; do not edit archived S70.
+
+S72: workflow hdr-native-s72.yml on an authorized research ref, source a5ea4e2; pure CPU framework bindings. Check evidence/s72/run/native.json and receipt, compile/run source with matching26A434 UUIDs; do not infer pixel/scene gates from job success. S71 same validation command now additionally reports post-native CPU UV56-component replay (not new holdouts); helper/source SHA in evidence/s70-s71/uv-model-validation.json.

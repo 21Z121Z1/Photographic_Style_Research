@@ -1,0 +1,16 @@
+{
+  "id": "HDR-82",
+  "category": "semantic/CPU-matte-UV-encoder",
+  "status": "已验证数值",
+  "claim": "独立matte_roi_s71.py按原CPU double顺序除法→RN32及float偏置编码实现；S71已有7例person/skin共56个UV float32分量逐位相同。实现为原生之后补写，不计新增留出，不证明实际相机/CI调用者、全域C04或33点，未装入冻结路径。",
+  "os_build": "26A434",
+  "evidence": [
+    {
+      "file": "repo/research/hdr-native/evidence/s70-s71/uv-model-validation.json",
+      "line": 1,
+      "sha256": "ae62f15190dec777e6c610560864afb7a7cd46d574636ef64fc410330f2bce3d",
+      "run_id": 39346448714,
+      "artifact_id": 12231437053
+    }
+  ]
+}

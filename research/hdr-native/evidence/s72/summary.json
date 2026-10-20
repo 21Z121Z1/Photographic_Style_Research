@@ -1,0 +1,80 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "scope": "Original CPU selector/literal/ABI binding with matched UUIDs; no image/PSO dispatch and no pixel/global-domain certification",
+  "classification": "已验证静态，原生绑定核对",
+  "PhotoImaging_UUID": "5F17E1DB-A15E-38C7-9BEC-E081688B62E5",
+  "PhotoImaging_archived_binary_SHA256": "c72d3ef8d551998ae7b9468ad339a913b6db7ec2388e810357c86252b65246e1",
+  "CMImaging_UUID": "3CCD434E-B1E0-3F14-8EF6-E29D58379BE8",
+  "optimized_selectors": 26,
+  "unresolved": 0,
+  "argument_CFStrings": 15,
+  "native_methods": [
+    {
+      "selector": "processWithInputs:arguments:output:error:",
+      "is_class_method": true,
+      "class": "PISemanticStyleProcessor",
+      "ABI": "B48@0:8@16@24@32^@40",
+      "IMP_unslid": "0x1cbeef754"
+    },
+    {
+      "selector": "roiForInput:arguments:outputRect:",
+      "is_class_method": true,
+      "class": "PISemanticStyleProcessor",
+      "ABI": "{CGRect={CGPoint=dd}{CGSize=dd}}60@0:8i16@20{CGRect={CGPoint=dd}{CGSize=dd}}28",
+      "IMP_unslid": "0x1cbef066c"
+    },
+    {
+      "selector": "prepareProcessor",
+      "is_class_method": false,
+      "class": "PISemanticStyleRenderer",
+      "ABI": "B16@0:8",
+      "IMP_unslid": "0x1cbef1244"
+    },
+    {
+      "selector": "outputImage",
+      "is_class_method": false,
+      "class": "PISemanticStyleFilter",
+      "ABI": "@16@0:8",
+      "IMP_unslid": "0x1cbef1c78"
+    }
+  ],
+  "linear_coordinates": {
+    "logical_size_setter_call": "0x1cbeefd84–d88",
+    "reciprocal_double_divide": "0x1cbeefe4c–e58",
+    "linear_scale_setter_call": "0x1cbeefe60",
+    "actual_selector": "setLogicalImageToInputLinearImageScale:",
+    "meaning": "same captured logical dimensions passed to setLogicalImageSize and reciprocal for linear scale; not default wrapper mask scale"
+  },
+  "external_arguments": {
+    "baseGain": {
+      "constant": "0x1ee262218",
+      "call": "0x1cbef001c",
+      "selector": "setInputLinearBaseGain:"
+    },
+    "faceBasedGlobalExposureBoostRatio": {
+      "constant": "0x1ee262238",
+      "call": "0x1cbef0048",
+      "selector": "setFaceBasedGlobalExposureBoostRatio:"
+    },
+    "stats": {
+      "constant": "0x1ee2621d8",
+      "call": "0x1cbef0154",
+      "selector": "setInputStatisticsByStatsType:",
+      "guard": "block+0xc0 == 1 at0x1cbef0128–0130; captured flag source not independently bound here"
+    },
+    "xstats": {
+      "constant": "0x1ee262258",
+      "call": "0x1cbef0180",
+      "selector": "setInputStatisticsByStatsKey:",
+      "guard": "block+0xc0 == 1 at0x1cbef0128–0130; captured flag source not independently bound here"
+    }
+  },
+  "mattes": "person/skin/sky each have texture and mapped-region setters; their actual caller ROI needs separate validation",
+  "j_not_direct_RGB_gain_proven_by_this": false,
+  "camera_statistics_origin_proven": false,
+  "full_C04_sampler_contract": false,
+  "new_photos_or_previews": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

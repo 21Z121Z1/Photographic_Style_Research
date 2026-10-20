@@ -1706,6 +1706,84 @@
           "sha256": "9ba16e7f2b77062e57752729a05e4ff8992bae113451eecee22b925573a5f1c6"
         }
       ]
+    },
+    {
+      "id": "HDR-82",
+      "category": "semantic/CPU-matte-UV-encoder",
+      "status": "已验证数值",
+      "claim": "独立matte_roi_s71.py按原CPU double顺序除法→RN32及float偏置编码实现；S71已有7例person/skin共56个UV float32分量逐位相同。实现为原生之后补写，不计新增留出，不证明实际相机/CI调用者、全域C04或33点，未装入冻结路径。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s70-s71/uv-model-validation.json",
+          "line": 1,
+          "sha256": "ae62f15190dec777e6c610560864afb7a7cd46d574636ef64fc410330f2bce3d",
+          "run_id": 39346448714,
+          "artifact_id": 12231437053
+        }
+      ]
+    },
+    {
+      "id": "HDR-83",
+      "category": "global-local-semantic/original-consumer-argument-binding",
+      "status": "已验证静态",
+      "claim": "26A434原PhotoImaging的26个优化selector、15个CFString、4个方法ABI已在匹配UUID原生进程核对。process block用同一logical尺寸的double倒数设置linear坐标；baseGain/j与stats/xstats按实际代码分别传到CMI属性接口，三种matte各自绑定纹理和mapped region。只是接口数据流，不证明相机统计源、j像素增益或全部采样域。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s72/summary.json",
+          "line": 1,
+          "sha256": "dc712db492bd34753519ca6a69ad84d67bc15698e5375c4cb35e136b8d3ec339"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s72/source-notes.txt",
+          "line": 1,
+          "sha256": "847d905fdfd2be1adacd0d71872f0af02a8e84f0e8feeed7d6b7b09a8bbbde82"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s72/run/native.json",
+          "line": 1,
+          "sha256": "bc8e7020e5be7ffc3036cecff5d01d27f29fbc5f2a4e748653b7641ab17902d5"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s72/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "00b21da55dadac86d2166e6f3b3eb0c01229b0fc3c04578ed19e7c7c195a4c9c",
+          "run_id": 39350205726,
+          "artifact_id": 12232168720
+        }
+      ]
+    },
+    {
+      "id": "HDR-84",
+      "category": "semantic/remaining-original-CI-ROI-binding",
+      "status": "runner",
+      "claim": "接着用显式extents、原PISemanticStyleProcessor ROI方法和全帧/分块输出区域验证实际consumer的matte映射，再固定上下文做目标算子反事实。S71 wrapper有限计数和S72接口绑定均不能替代33点全域C01-C05、完整往返或封装SDR max0。匹配相机同帧j曲线/统计、Studio原统计、RAW及实际屏幕仍待实机。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s72/summary.json",
+          "line": 1,
+          "sha256": "dc712db492bd34753519ca6a69ad84d67bc15698e5375c4cb35e136b8d3ec339"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s72/source-notes.txt",
+          "line": 1,
+          "sha256": "847d905fdfd2be1adacd0d71872f0af02a8e84f0e8feeed7d6b7b09a8bbbde82"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s72/run/native.json",
+          "line": 1,
+          "sha256": "bc8e7020e5be7ffc3036cecff5d01d27f29fbc5f2a4e748653b7641ab17902d5"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s72/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "00b21da55dadac86d2166e6f3b3eb0c01229b0fc3c04578ed19e7c7c195a4c9c",
+          "run_id": 39350205726,
+          "artifact_id": 12232168720
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-19T19:50:09.527146+00:00",

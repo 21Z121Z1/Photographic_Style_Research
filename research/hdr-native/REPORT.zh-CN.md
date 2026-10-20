@@ -431,3 +431,23 @@ S68–S69原生CPU检查：prepareToProcess:的实际ABI为i20@0:8I16；原PSO m
 **失败与范围**：S70误带历史mask2而未创建统计PSO，run39345177157/artifact12230252826返回3；这是S55/S56已解决的初始化问题，本轮保留失败归档，S71只依已有静态证据修为mask1。未新拟合曲线、未重做旧269例。两份ZIP共8582B全部成员SHA已校验，S71 ZIP SHA `0cf5bc0e6ffba46c7354e5bfccae3feb32bafd5772152888be2ede6e251114db`；manifest/source/完整原始JSON与复现见research/hdr-native/evidence/s70-s71/及validate_matte_roi_s70.py。只验证有限合成阶跃，不是全纹理/fast数学/非有限路径的C04合同，也不是新增7张照片或完整host/相机执行。没有新照片预览或物理EV结论，旧ACES预览保留。
 
 **可交给macOS runner（HDR-81）**：读原PhotoImaging消费端优化selector、参数常量及ABI，继续绑定真实consumer ROI和统计源；33皮肤点C01–C05紧外包络、完整原生往返、封装后全图ImageIO SDR max0保持未认证。**待实机**：匹配IMG2810同帧j/WithoutFaceBoost曲线、N/B/T/V、face hist、allocateTone与应用域，原Studio统计、2679/2408 RAW及实际HDR观看沿用原清单；β=.1953125仍不是像素EV。GTM/LTM/语义分开，Apple Log、原件、冻结文件、原mask及阈值均不改。**A_phase_complete=false，acceptance_complete=false。** 累计写入许可125MB，根分区至少4GB；无人物明文上传，无完整EXR写入。
+
+S71坐标编码补充（已验证数值，HDR-82）：matte_roi_s71.py独立实现原CPU舍入/除法顺序；复用原7组捕获的56个UV float32分量全部逐位相同。实现后补，不计新增留出；证据uv-model-validation.json含代码SHA。validate_matte_roi_s70.py同一复现入口同时报告原计数和此CPU坐标检查；未接入冻结路径、未认证实际调用者或C04全域。
+
+
+### SEMANTIC-20261018：S72 原 PhotoImaging 消费端调用绑定
+
+**已验证静态（HDR-83，原生符号绑定佐证）**：run39350205726/artifact12232168720，26A434/image20261012.0260.1。匹配PhotoImaging UUID5F17E1DB-A15E-38C7-9BEC-E081688B62E5、CMI UUID3CCD434E-B1E0-3F14-8EF6-E29D58379BE8；26个优化selector、15个CFString常量、4个方法ABI均读取成功。纯CPU只读，无图像/PSO dispatch。PISemanticStyleProcessor方法IMP0x1cbeef754、ROI IMP0x1cbef066c，Filter outputImage0x1cbef1c78。
+
+原process block在0x1cbeefd84–d88把block+0x90的两个double交给setLogicalImageSize:；0x1cbeefe4c–e60用同一尺寸的double倒数交给实际selector **setLogicalImageToInputLinearImageScale:**。这明确是linear输入比例，不能凭邻近setter猜成LTM map或matte比例。person/skin/sky分别设置纹理及mapped region；它们的实际CI ROI仍需下一步验证。
+
+|arguments实测常量|原调用|实际CMI接口|
+|---|---|---|
+|baseGain，0x1ee262218|0x1cbef001c|setInputLinearBaseGain:|
+|faceBasedGlobalExposureBoostRatio，0x1ee262238|0x1cbef0048|setFaceBasedGlobalExposureBoostRatio:|
+|stats，0x1ee2621d8|0x1cbef0154|setInputStatisticsByStatsType:|
+|xstats，0x1ee262258|0x1cbef0180|setInputStatisticsByStatsKey:|
+
+stats/xstats两个setter受block+0xc0==1分支保护（0x1cbef0128–0130）；本节尚未独立绑定该标志的来源，不把这两步当作无条件执行。这里只证明字典取值→实际setter的数据流。常量名不证明应用域、相机来源、j是RGB乘数或影调逆已完成；既有j干预consumer零差与相机β界仍按原范围解释。S72完整ZIP3657B，SHA `f8b4dba6e3fddc344ebeff071a8f480d9777aeea2134db8c444fdc04261dff98`，manifest及每成员SHA全部校验；原JSON、源码SHA、ABI、反汇编行与归档receipt见research/hdr-native/evidence/s72/。
+
+**可交给macOS runner（HDR-84）**：以显式extents和全帧/分块输出区域调用原ROI方法，进一步绑定实际consumer的matte采样；继续原统计源、33点C01–C05、完整往返与编码SDRmax0。**待实机**仍为匹配IMG2810的同帧j/WithoutFaceBoost四曲线及N/B/T/V、face hist、allocateTone/应用域，原Studio统计、2679/2408 RAW与HDR实屏。没有新增照片结果或预览；GTM/LTM/语义分离、Apple Log、冻结上下文和全部门槛保持。**A_phase_complete=false，acceptance_complete=false，goal active。**
