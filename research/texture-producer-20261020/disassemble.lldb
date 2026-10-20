@@ -11,7 +11,10 @@ original-disassembly -[CMITextureStylesProcessor process]
 original-disassembly -[CMITextureStylesMattify calculateStats]
 original-disassembly -[CMITextureStylesUnderEyeBrighten calculateStats]
 original-disassembly -[CMITextureStylesSkinSmoothStandalone calculateStats]
-original-disassembly -[CMIMetalResourceCache initWithDevice:]
+original-disassembly -[CMIMetalResourceCache initWithMetalDevice:]
+original-disassembly +[CMIMetalResourceCache _enableResidencySets]
+original-disassembly -[CMITextureStylesProcessor _preparePerPersonData]
+original-disassembly -[CMITextureStylesProcessor _prepareEffectsToRender]
 original-disassembly -[PIModularAutoCalculator submit:]
 continue
 quit

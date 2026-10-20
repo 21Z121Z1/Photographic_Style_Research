@@ -28,7 +28,9 @@ static void Require(id target, NSString *name, NSArray<NSString *> *arguments, c
     if (!signature || signature.numberOfArguments != arguments.count + 2 || strcmp(signature.methodReturnType, result))
         @throw [NSException exceptionWithName:@"SPIABI" reason:name userInfo:nil];
     for (NSUInteger i = 0; i < arguments.count; i++) {
-        if (strcmp([signature getArgumentTypeAtIndex:i + 2], arguments[i].UTF8String))
+        const char *actual = [signature getArgumentTypeAtIndex:i + 2];
+        while (strchr("rnNoORV", *actual) && *actual) actual++;
+        if (strcmp(actual, arguments[i].UTF8String))
             @throw [NSException exceptionWithName:@"SPIABI" reason:[name stringByAppendingFormat:@" argument %lu: %s", (unsigned long)i, [signature getArgumentTypeAtIndex:i + 2]] userInfo:nil];
     }
 }
@@ -58,7 +60,7 @@ static NSArray *FaceFacts(NSArray<VNFaceObservation *> *observations) {
         VNFaceLandmarkRegion2D *landmarks = face.landmarks.allPoints;
         NSMutableArray *points = [NSMutableArray new];
         for (NSUInteger i = 0; i < landmarks.pointCount; i++) {
-            vector_float2 point = landmarks.normalizedPoints[i];
+            CGPoint point = landmarks.normalizedPoints[i];
             [points addObject:@[@(point.x), @(point.y)]];
         }
         [result addObject:@{

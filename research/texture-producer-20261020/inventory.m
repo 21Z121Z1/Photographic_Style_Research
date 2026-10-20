@@ -68,8 +68,9 @@ int main(int argc, char **argv) {
         NSMutableArray *sourceNames = [NSMutableArray new];
         for (unsigned i = 0; i < count; i++) {
             NSString *name = @(class_getName(classes[i]));
+            BOOL fsinc = [name rangeOfString:@"fsinc" options:NSCaseInsensitiveSearch].location != NSNotFound;
             if ([name hasPrefix:@"NU"] || [name hasPrefix:@"_NU"] ||
-                [name hasPrefix:@"VNGenerate"] || [name containsString:@"FSINC"] ||
+                [name hasPrefix:@"VNGenerate"] || fsinc ||
                 [name containsString:@"SmartStyle"]) [sourceNames addObject:name];
             if ([name containsString:@"AutoCalculator"] || [name containsString:@"TextureStyle"] ||
                 [name containsString:@"PersonImageStat"] || [name containsString:@"SemanticStyle"] ||
@@ -79,7 +80,7 @@ int main(int argc, char **argv) {
                 [name hasPrefix:@"CMITS"] || [name hasPrefix:@"CMIImageTile"] ||
                 [name hasPrefix:@"CMIMetalResource"] || [name isEqual:@"FigMetalContext"] ||
                 [name containsString:@"CompositionController"] || [name hasPrefix:@"NUSource"] ||
-                [name containsString:@"FSINC"] || [name containsString:@"SmartStyleStatistics"]) {
+                fsinc || [name containsString:@"SmartStyleStatistics"]) {
                 [candidateNames addObject:name];
                 for (Class cls = classes[i]; cls && cls != NSObject.class; cls = class_getSuperclass(cls))
                     [selected addObject:@(class_getName(cls))];
