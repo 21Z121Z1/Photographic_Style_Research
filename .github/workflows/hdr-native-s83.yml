@@ -1,0 +1,57 @@
+name: hdr-native-s83
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s83']
+  workflow_dispatch:
+jobs:
+  synthetic-control-safety:
+    runs-on: xcode-27
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check new control without private input
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s83"
+          mkdir -m 700 "$W"
+          mkdir "$W/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          export W
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          python3 -m pip install --quiet 'numpy==2.3.4' > "$W/out/dependencies.log" 2>&1
+          python3 research/hdr-native/check_strength_s83.py > "$W/out/driver.log" 2>&1
+      - name: Seal small synthetic text evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,hashlib,json,subprocess
+          p=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for f in sorted(p.iterdir()):
+              if f.is_file() and f.name!='manifest.json':
+                  assert f.suffix in {'.json','.log','.txt'}
+                  with f.open('rb') as b:h=hashlib.file_digest(b,'sha256').hexdigest()
+                  rows.append({'path':f.name,'size':f.stat().st_size,'sha256':h})
+          assert sum(r['size'] for r in rows)<50000
+          (p/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'synthetic_only':True,'files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s83-synthetic
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Remove only own synthetic scratch files
+        if: always()
+        run: |
+          test -n "${W:-}"
+          rm -rf -- "$W"

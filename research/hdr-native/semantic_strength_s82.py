@@ -21,14 +21,19 @@ def apply(base, recovered_native, recovered_neutral, strength):
     if not np.isfinite(strength)or not 0<=strength<=1:raise ValueError('Strength must be finite and in[0,1]')
     if arrays[0].dtype not in [np.dtype('f4'),np.dtype('f8')]:raise ValueError('Base must be float32 or float64; preserve its storage at strength0')
     a,f,n=[x.astype('f8',copy=False)for x in arrays]
-    candidate=a+(n-f)
+    with np.errstate(over='ignore',invalid='ignore'):
+        candidate=a+(n-f)
     finite=np.isfinite(a).all(-1)&np.isfinite(f).all(-1)&np.isfinite(n).all(-1)&np.isfinite(candidate).all(-1)
     valid=finite&(a.min(-1)>0)&(candidate.min(-1)>0)
     loggain=np.zeros(a.shape,'f8')
     loggain[valid]=np.log2(candidate[valid])-np.log2(a[valid])
     result=np.array(arrays[0],copy=True)
     if strength:
-        selected=a[valid]*np.exp2(float(strength)*loggain[valid])
+        # Interpolate in log space to avoid an overflowing ratio intermediate.
+        selected=np.exp2(np.log2(a[valid])+float(strength)*loggain[valid])
         if not np.isfinite(selected).all():raise FloatingPointError('Finite-domain correction overflow; preserve and report rather than upload invalid output')
-        result[valid]=selected.astype(result.dtype)
+        with np.errstate(over='ignore',under='ignore'):
+            stored=selected.astype(result.dtype)
+        if not np.isfinite(stored).all():raise FloatingPointError('Correction does not fit the declared output dtype')
+        result[valid]=stored
     return {'rgb':result,'log2_gain':loggain*float(strength),'ratio_valid':valid,'nonfinite_context':~finite,'candidate_nonpositive':finite&(candidate.min(-1)<=0),'base_nonpositive':finite&(a.min(-1)<=0),'unique_inverse_certified':False}
