@@ -4223,9 +4223,109 @@
           "sha256": "2f22d5fff58ecd3325623388516cb5f02bd6f237858cff320e8f3f621bf2efb2"
         }
       ]
+    },
+    {
+      "id": "HDR-150",
+      "category": "semantic/fullframe-S97",
+      "status": "已验证数值",
+      "claim": "S97原生前提已工作：仅命中已证主池请求144→512MiB，另46080B请求未改，单renderer顺序处理4 owner；原process及16 guided均返回0、共68 actual dispatch。RGB投影eps.001与scalar c/d eps.05均r1；不称512MiB为Apple生产默认或回填S95耗尽根因。",
+      "os_build": "26A434",
+      "run_id": 39499003223,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/native-calls.json",
+          "line": 1,
+          "sha256": "6b3fad4ef748607c3540eacf0f22139ab564b3c8e0ad9aa712e365c0127147ff"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/native-execution.json",
+          "line": 1,
+          "sha256": "d5d589a1d099593202b4180d199335914a82e9109c316313ed6179041560a0e9"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/S97-driver-binding.json",
+          "line": 1,
+          "sha256": "30bb585fcf8f2099e1648f415e955417e3daaee7ba3712d77dd915490e668f5d"
+        }
+      ]
+    },
+    {
+      "id": "HDR-151",
+      "category": "semantic/fullframe-S97",
+      "status": "已验证数值",
+      "claim": "S97四个真实CI owner无洞无重叠覆盖全部24470208像素；冻结行映射下原native与CI整图RGB max0，4块hydration half0、原纹理/参数SHA保持不变。参照闭合不等于语义逆解已完成。",
+      "os_build": "26A434",
+      "run_id": 39499003223,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/owner-coverage.json",
+          "line": 1,
+          "sha256": "d64561be6b0f5150611412444b77e315964a1a1957932ed31439b2c4b67bdefd"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/native-CI-fullframe.json",
+          "line": 1,
+          "sha256": "aaa1f84be799fc03b1adaeb0a0c34bcbfd2794c5af82e8ce31634bde3bce1e98"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/native-calls.json",
+          "line": 1,
+          "sha256": "6b3fad4ef748607c3540eacf0f22139ab564b3c8e0ad9aa712e365c0127147ff"
+        }
+      ]
+    },
+    {
+      "id": "HDR-152",
+      "category": "semantic/fullframe-S97",
+      "status": "已验证数值",
+      "claim": "S97仅中和592/596分别有276785/499250/776015个half RGB分量发生原生变化，其他参数字节不变；整幅分块相对同上下文参照PSNR≥122.395dB、ACES max1、p99EV0，新实用patch gate通过，旧float/half gate仍失败。不追82/83个细微残差；inverse未运行、不是99%物理场景恢复。",
+      "os_build": "26A434",
+      "run_id": 39499003223,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/analysis.json",
+          "line": 1,
+          "sha256": "facd008259ff0d929d77ee242ac40bb65e0a657e7a3af251edf5f20080db2994"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/native-calls.json",
+          "line": 1,
+          "sha256": "6b3fad4ef748607c3540eacf0f22139ab564b3c8e0ad9aa712e365c0127147ff"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/phase-summary.json",
+          "line": 1,
+          "sha256": "81756dc0e9dbc5d965fd8b4433f2a158aa2da8d5e40d84061b65b63ca7f71266"
+        }
+      ]
+    },
+    {
+      "id": "HDR-153",
+      "category": "semantic/fullframe-S97",
+      "status": "已验证数值",
+      "claim": "S97约319.6MB原ZIP直接日本，19 public/GPG70 private和源绑定全验；HK只读708170B公开成员文本（编码开销另计）、32KiB密文头和10944B hash，无ZIP/大cipher body跨区回传。临时secret/release/tag/分支清完，历史归档未移动。",
+      "os_build": "26A434",
+      "run_id": 39499003223,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "826d6a9e34c04f66d1db23f295221fc623b2e304c39858251180ae062f5785fc"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/run/manifest.json",
+          "line": 1,
+          "sha256": "3f1a91c6e0cd361b078b85750d33c017341199b6006e513bf97e003efa403ab6"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s97/closure.json",
+          "line": 1,
+          "sha256": "8c4400064c2f7f54b913fbf8afd2533fa73c4567fd8815d8e6492e6aa88c93a1"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T21:13:31.702925+00:00",
+  "updated_utc": "2026-10-20T21:40:35.862685+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -6101,6 +6201,292 @@
     "all_owned_transport_cleaned": true,
     "engineering_accepted": false,
     "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "semantic_fullframe_S97": {
+    "run_id": 39499003223,
+    "source_commit": "5f8646db52be89d09563f922a369900aee056081",
+    "OS_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "conclusion": "success",
+    "photo_count": 1,
+    "canvas": [
+      4284,
+      5712
+    ],
+    "complete_native_reference_pixels": 24470208,
+    "CI_owner_rectangles": [
+      [
+        0,
+        0,
+        2856,
+        2144
+      ],
+      [
+        0,
+        2144,
+        2856,
+        2140
+      ],
+      [
+        2856,
+        0,
+        2856,
+        2144
+      ],
+      [
+        2856,
+        2144,
+        2856,
+        2140
+      ]
+    ],
+    "coverage": {
+      "source_canvas": [
+        4284,
+        5712
+      ],
+      "pixels": 24470208,
+      "owner_regions": 4,
+      "minimum_coverage": 1,
+      "maximum_coverage": 1,
+      "uncovered_pixels": 0,
+      "overlapped_pixels": 0,
+      "coordinate_rule_frozen": "Top-left y=H-(CI_y+CI_h), based on prior S91 native bitmap ramp; no flip selected by image errors"
+    },
+    "native_CI_RGB_max_abs": 0.0,
+    "resource_events": [
+      {
+        "effective_bytes": 536870912,
+        "known_constructor_caller_matched": true,
+        "only_capacity_argument_changed": true,
+        "requested_bytes": 150994944
+      },
+      {
+        "effective_bytes": 46080,
+        "known_constructor_caller_matched": false,
+        "only_capacity_argument_changed": true,
+        "requested_bytes": 46080
+      }
+    ],
+    "same_renderer_reused": true,
+    "process_returns": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_dispatches": 68,
+    "guided_calls": [
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      },
+      {
+        "radius": 1,
+        "epsilon": 0.05000000074505806,
+        "return": 0
+      }
+    ],
+    "effects": {
+      "skin-color": {
+        "changed_half_RGB_components": 276785,
+        "max_abs": 0.0771484375
+      },
+      "skin-brightness": {
+        "changed_half_RGB_components": 499250,
+        "max_abs": 0.0079345703125
+      },
+      "skin-both": {
+        "changed_half_RGB_components": 776015,
+        "max_abs": 0.0771484375
+      }
+    },
+    "metrics": [
+      {
+        "operator": "original",
+        "tile_max_abs": 0.00390625,
+        "tile_half_differing_RGB_components": 83,
+        "tile_PSNR_peak1_dB": 122.39567339123859,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "ACES_max_codes": 1,
+        "EV": {
+          "n": 23288907,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.00408515427261591
+        },
+        "EV_excluded_pixels": 1181301,
+        "gradient_error_max_all_adjacencies": 0.0019464350546874998,
+        "new_practical_patch_gate": true,
+        "legacy_float_gate": false,
+        "legacy_half_bit_exact": false
+      },
+      {
+        "operator": "skin-color",
+        "tile_max_abs": 0.00390625,
+        "tile_half_differing_RGB_components": 83,
+        "tile_PSNR_peak1_dB": 122.39567339123859,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "ACES_max_codes": 1,
+        "EV": {
+          "n": 23288907,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.00408515427261591
+        },
+        "EV_excluded_pixels": 1181301,
+        "gradient_error_max_all_adjacencies": 0.0019464350546874998,
+        "new_practical_patch_gate": true,
+        "legacy_float_gate": false,
+        "legacy_half_bit_exact": false
+      },
+      {
+        "operator": "skin-brightness",
+        "tile_max_abs": 0.00390625,
+        "tile_half_differing_RGB_components": 82,
+        "tile_PSNR_peak1_dB": 122.39529557958654,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "ACES_max_codes": 1,
+        "EV": {
+          "n": 23288750,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.00408515427261591
+        },
+        "EV_excluded_pixels": 1181458,
+        "gradient_error_max_all_adjacencies": 0.0019464350546874998,
+        "new_practical_patch_gate": true,
+        "legacy_float_gate": false,
+        "legacy_half_bit_exact": false
+      },
+      {
+        "operator": "skin-both",
+        "tile_max_abs": 0.00390625,
+        "tile_half_differing_RGB_components": 82,
+        "tile_PSNR_peak1_dB": 122.39529557958654,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "ACES_max_codes": 1,
+        "EV": {
+          "n": 23288750,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.00408515427261591
+        },
+        "EV_excluded_pixels": 1181458,
+        "gradient_error_max_all_adjacencies": 0.0019464350546874998,
+        "new_practical_patch_gate": true,
+        "legacy_float_gate": false,
+        "legacy_half_bit_exact": false
+      }
+    ],
+    "preview_input_SHA_checks": 280,
+    "preview_input_SHA_all_unchanged": true,
+    "display": {
+      "view": "ACES 1.0 - SDR Video",
+      "source": "Linear P3-D65",
+      "display": "sRGB - Display",
+      "exposure_EV": 0,
+      "config_SHA256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440"
+    },
+    "native_child_peak_RSS_bytes_macOS": 1553530880,
+    "new_practical_patch_gate_complete": true,
+    "inverse_executed": false,
+    "all_owned_transport_cleaned": true,
+    "traffic": {
+      "GitHub_to_Japan_original_ZIP_bytes": 319624564,
+      "public_manifest_member_uncompressed_bytes": 708170,
+      "public_base64_JSON_and_transport_overhead_not_in_that_raw_count": true,
+      "HK_to_JP_verification_request_bytes": 493,
+      "JP_to_HK_encrypted_header_bytes": 32768,
+      "JP_to_HK_hash_receipt_bytes": 10944,
+      "prefix_GPG_returncode": 2,
+      "prefix_only_is_not_authentication": true,
+      "encrypted_packet_length_reframed_for_key_extraction_only": true,
+      "header_contains_complete_small_cipher": false,
+      "complete_small_cipher_bytes_within_bounded_header": 0,
+      "whole_ZIP_backhaul_bytes": 0,
+      "large_cipher_body_backhaul_bytes": 0,
+      "new_GitHub_artifact_download_bytes": 0,
+      "counts_are_application_payload_exclude_SSH_overhead": true
+    },
+    "A_phase_complete": false,
+    "engineering_accepted": false,
     "acceptance_complete": false
   }
 }

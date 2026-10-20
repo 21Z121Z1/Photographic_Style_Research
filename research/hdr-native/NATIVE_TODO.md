@@ -174,3 +174,6 @@ S95已终态failure并归档/清理，不再等待其旧queued marker。4个原C
 
 
 S96终态39496980234为编译失败，未执行native operator；资源容量/owner布局不能据它下结论。runner下一步：仅修复driver单一translation unit命令，复用S96 native observer/PSO/参数/旧阈值，先验证实际guided返回和allocator命中，再做完整owner覆盖/native-CI对照。实际相机j/WithoutFaceBoost同帧统计、Studio统计、配对RAW、实屏仍待实机。
+
+
+S97 run39499003223已完成整幅24MP native参照与分块实用门槛：4 owner无洞无重叠、原native/CI RGB max0；所有原context hash不变。下一runner工作是完整语义逆估计而非补参照；不得把已知X当seed，所有旧失败/mask保留，按真实owner/patch接缝测量。新native参照不是拍摄端语义去除证明。相机同帧j/WithoutFaceBoost四曲线和N/B/T/V/histogram/allocateTone/application域、原Studio stats、RAW与实屏仍按原可执行清单待实机。

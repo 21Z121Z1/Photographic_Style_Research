@@ -828,3 +828,22 @@ A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=fal
 **指标解释边界（静态审阅，尚无新像素值）。** S96继承的regular_tile_boundary_gradient统计的是全图512×384规则网格，实际subpatch从各CI owner内部重新起格，故不能把它称为所有实际接缝的平均误差。覆盖全部相邻像素的gradient_error_max在有限路径下仍是任意接缝子集最大误差的上界。后续逆估计应先由owner矩形和各局部网格声明真实接缝mask，再看输出；不修改冻结S96定义或借此改变门槛。详见metric-scope-notes.json。
 
 A_phase_complete=false、engineering_accepted=false、legacy acceptance_complete=false。没有新增99%场景恢复或完整语义逆解结论。既有global/local/semantic分离、Apple Log、mask及实机清单不变。
+
+
+### SEMANTIC-20261018 / S97：整幅24MP原生参照闭合，分块达到预声明实用门槛
+
+**已验证数值（原生前提）。** run39499003223/source5f8646db52be89d09563f922a369900aee056081，26A434/image20261012.0260.1，success。S97仅修正driver构建输入和run标识，native、observer、TLS、采样和像素算法与S96完全相同，精确替换表/源SHA见S97-driver-binding.json和S96-observer-binding.json。loaded CMI UUID3CCD434E-B1E0-3F14-8EF6-E29D58379BE8；allocator setter ABI v24@0:8Q16、guided ABI i60@0:8@16@24@32@40Q48f56、PI ABI B48@0:8@16@24@32^@40均实际核验。
+
+只在已证constructor返回点IMP+0x12c命中一次144MiB→512MiB容量请求，另一个46080B请求保持原值；4次process在同一renderer/线程顺序执行，实际allocatorType=2、memSize=536870912。4次原process均返回0，每次17个actual dispatch，共68；16次guided均返回0，r=1，其中8次RGB投影eps=0.0010000000474974513、8次scalar c/d eps=0.05000000074505806，不能把二者混成同一个eps。native child峰值RSS1553530880B。此配置证明原生前提可运行，不能把512MiB称为Apple生产默认值；与S95间还有观测实现差异，未做同版单因素A/B，不把S95历史错误反填成已证耗尽根因。
+
+**已验证数值（完整原生参照）。** CI output.region依次为(0,0,2856,2144)、(0,2144,2856,2140)、(2856,0,2856,2144)、(2856,2144,2856,2140)，4块严格覆盖5712×4284=24470208像素一次，空洞/重叠均0。按预先冻结的CI-y→bitmap行规则组装，捕获原native与完整CI P3缓冲RGB max abs=0、非有限0；4块原PSO hydration RGB half差分量均0、所有原纹理/参数SHA前后相同。已摆脱“单个物理全图纹理”的错误前提，同时完整原像素覆盖要求不变。
+
+**已验证数值（目标参数反事实，非拍摄端已烘焙逆解）。** Tone=+0.35固定上下文，仅清零field9/offset592（0.503125011920929）或field10/offset596（−0.22238825261592865），其余参数字节差0，c/d、GTC、guides、统计和其他matte所处绑定保持不变。整幅skin-color、skin-brightness、skin-both分别改变276785、499250、776015个half RGB分量；最大绝对变化分别0.0771484375、0.0079345703125、0.0771484375。它们是参数中和的真实原生效果，不是像素误差，也不是证明Apple拍摄端实际幅度已识别。保留4种全分辨率half输出和统一ACES的50% oracle效果预览；preview输入SHA共280次均不变。
+
+**已验证数值（整幅分块的实用效果）。** 每种operator都比较同一owner原native参照与512×384分块，4种输出均覆盖24470208像素。original/skin-color分别83个、skin-brightness/skin-both分别82个half RGB分量不同；max abs均0.00390625，PSNR分别122.3956733912/122.3952955796dB。固定ACES1.0 SDR Video、Linear P3-D65→sRGB、0EV、config SHA5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440：p99码差0、最大1码、大于1码像素0。Yref>1/255且正有限的EV域n=23288907/23288750，排除1181301/1181458像素，p50/p95/p99均0，max=0.0040851543EV。非有限0，全部相邻像素亮度梯度残差max=0.0019464351，它是实际接缝子集最大值的上界。规则全图网格统计为0仍不能当作实际CI/局部patch接缝均值，见S96 metric-scope-notes。新实用patch门槛全部通过；旧float与half门槛仍false，不追这82/83个残差的bit-exact。此处比较的是重放几何误差，不能改称完整语义逆解或99%场景恢复。
+
+**已验证数值（日本归档与流量）。** private artifact12300720827/319567324B/SHA684f8a43a4946fdb5d0ae323509cbba1cc30d067cfa9f9f64125623749fad92d；public artifact12299419596/57240B/SHA3c9760c3c405f59553991e390c6232d4c13840806f03277e52e567c6767dde92。319624564B原ZIP直接GitHub→日本，19 public与GPG/70 private成员校验通过，private manifest SHA275336113ded61a47a4047060b97079a91c0245527ace4505ec37e74c6c09cb5。香港收到708170B未压缩公开成员文本（Base64/manifest/SSH开销另计）、32768B密文头与10944B私有hash摘要，验证请求493B。完整ZIP/大cipher body跨区回传0；头部GPG rc2只用于提取session key，真正认证为日本端完整GPG rc0及所有成员SHA。不能把私有verification子项“new_download=0”误读成整次没有GitHub下载。没有人物明文回传/上传，没有移动旧S5/S8等大归档。PR零引用、研究源保留和校验后，S97临时secret/release/tag/分支已清理。永久传输规则见storage/TRANSFER_POLICY.zh-CN.md。
+
+**可交runner（下一步）。** 现在可在已闭合的整幅原生参照上推进保守语义逆估计，按真实owner/局部patch建立实际接缝mask，单独报告估计对原生中和效果的EV/ACES/色偏/边缘误差、旧往返失败及不可识别mask；不得把已知原输入当作反演seed，也不能把旧参数反事实当成去掉已烘焙语义的真值。原global/local分开输出、Apple Log、固定ACES与原SDR max0要求继续保留。新整幅native参照通过不等于整幅inverse通过，S97没有执行inverse，A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。
+
+同帧相机j/WithoutFaceBoost曲线、N/B/T/V/face histogram/allocateTone约束与应用域、原Studio统计、IMG2679/2408配对RAW、真实HDR屏幕/Photos UI继续待实机；不以Gain Map承载自洽替代scene-referred物理精度。

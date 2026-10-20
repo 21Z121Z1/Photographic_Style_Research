@@ -238,3 +238,6 @@ S95终态39488329547，先读已落地native-failed.log与evidence/s95/run/nativ
 
 
 S96复现失败：在commit c735ecb检查research/hdr-native/run_semantic_s96.py:56与evidence/s96/run/build.log（无需下载密文）。clang输入误含旧S95 unit，缺generated native_filter_probe_s95.m；应只编译semantic_fullframe_s96.m，由它include已冻结S96派生native/observer/capture。修正版应单独冻结driver SHA和精确替换表，不改S96 source或把本run称为像素验证。原ZIP留日本，不重复回传。
+
+
+S97 source5f8646d/run39499003223：读取run_semantic_s97.py、s97_driver_binding.json和冻结S96 native/observer/include；driver精确修复clang单一translation unit，native代码不变。输入仍仅2.56MB原始HEIC密文，非旧320MB结果包。复现先检查26A434/loaded UUID/容量命中、所有原返回0，再检查owner-coverage.json与native-CI-fullframe.json；analysis.json的practical patch gate是分块误差，不是inverse认证。private原件留日本runs/39499003223/artifact-12300720827.zip，已做GPG/70成员SHA核验；无需为补文档再次下载或回传。临时release/secret已清，未来新run用新临时凭据，不恢复历史值。

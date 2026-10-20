@@ -240,3 +240,6 @@ S95终态：[39488329547](https://github.com/21Z121Z1/Photographic_Style_Researc
 
 
 S96 [39496980234](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39496980234)，sourcec735ecbbb000426d676eea20a575718f3fe2f8e0，26A434/image20261012.0260.1，failure于clang编译列表误入旧S95源码，尚无native像素。public12297668691/private12297814046已日本原地校验，10 public/GPG1 private；666B小cipher头、1221B摘要，大体积跨区回传0。临时secret/release/tag/分支已清理。
+
+
+S97 [39499003223](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39499003223)，source5f8646db52be89d09563f922a369900aee056081，26A434/image20261012.0260.1，success。4原process rc0、68 actual dispatch、16 guided rc0；整幅24470208像素native/CI RGB max0；四种operator分块PSNR≥122.395dB、ACES max1，实用patch gate全过、旧gate仍false。尚未执行inverse。319624564B ZIP直接日本，19 public/GPG70 private全验，所有本次临时资源已清理；香港只读公开文本708170B（编码开销另计）、32768B头与10944B摘要，无大归档回传。
