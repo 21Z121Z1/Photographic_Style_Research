@@ -68,5 +68,27 @@ for landmark_type,parameter_source,exposure in [(1,'defaults',0),(1,'Studio',0),
         except subprocess.TimeoutExpired:status='timeout120'
     rows.append({'landmark_type_control':landmark_type,'parameter_source':parameter_source,'exposure':exposure,'exit':status})
 (p/'generate-stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
+if any(isinstance(row['exit'],int) and row['exit']<0 for row in rows):
+    with (p/'generate-stats-debug.log').open('wb') as output:
+        try:
+            result=subprocess.run(['xcrun','lldb','--batch','-o','run','-o','thread backtrace all','-o','quit','--',str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/'mattify-debug.json'),'1','Studio','0'],stdout=output,stderr=subprocess.STDOUT,timeout=120)
+            debug_status=result.returncode
+        except subprocess.TimeoutExpired:debug_status='timeout120'
+    (p/'generate-stats-debug-process.json').write_text(json.dumps({'debugger_exit':debug_status,'scope':'crash diagnosis; not successful generation'})+'\n')
 PY
-rm "$TASK_OUT/generate-stats" "$TASK_OUT/public-astronaut.png"
+rm "$TASK_OUT/generate-stats"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/coreml_fsinc.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -framework CoreML \
+    -o "$TASK_OUT/coreml-fsinc" 2>&1 | tee "$TASK_OUT/coreml-fsinc-build.log"
+python3 - "$TASK_OUT" <<'PY'
+import json,pathlib,subprocess,sys
+p=pathlib.Path(sys.argv[1])
+with (p/'coreml-fsinc.stdout.log').open('wb') as stdout,(p/'coreml-fsinc.stderr.log').open('wb') as stderr:
+    try:
+        result=subprocess.run([str(p/'coreml-fsinc'),str(p/'public-astronaut.png'),str(p/'coreml-fsinc.json')],stdout=stdout,stderr=stderr,timeout=180)
+        status=result.returncode
+    except subprocess.TimeoutExpired:status='timeout180'
+(p/'coreml-fsinc-process.json').write_text(json.dumps({'exit':status})+'\n')
+PY
+rm "$TASK_OUT/coreml-fsinc" "$TASK_OUT/public-astronaut.png"
