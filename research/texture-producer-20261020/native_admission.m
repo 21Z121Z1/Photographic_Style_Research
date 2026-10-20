@@ -43,9 +43,12 @@ int main(int argc, char **argv) {
                     report[@"semantic_properties_present"] = @(semantic != nil);
                     if (texture) {
                         report[@"texture_person_count"] = Call(texture, @"numberOfPersons", @[]);
-                        NSMutableArray *people = [NSMutableArray new];
-                        for (id person in Call(NSClassFromString(@"PITextureStyleProcessorKernel"), @"personInputDataFromStillProperties:", @[texture])) [people addObject:Call(person, @"dictionaryRepresentation", @[])];
+                        NSMutableArray *people = [NSMutableArray new],*unadjusted=[NSMutableArray new];
+                        for (id person in Call(NSClassFromString(@"PITextureStyleProcessorKernel"), @"personInputDataFromStillProperties:", @[texture])) {
+                            [people addObject:PersonDictionary(person)];[unadjusted addObject:Call(person,@"dictionaryRepresentation",@[])];
+                        }
                         report[@"native_person_data_readback"] = people;
+                        report[@"unadjusted_native_person_dictionaries"] = unadjusted;
                     }
                 }
                 id media = Call(asset, @"media", @[]);

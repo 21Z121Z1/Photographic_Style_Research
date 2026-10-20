@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
             if(!personDictionary && !linearOnly) @throw [NSException exceptionWithName:@"PersonSelection" reason:@"no measured person at requested index" userInfo:nil];
             id person=personDictionary?Call(NSClassFromString(@"CMITextureStylesPersonInputData"),@"personDataFromDictionary:",@[personDictionary]):nil;
             report[@"person_index"]=@(personIndex); report[@"fresh_Vision_observations_used_as_replay_inputs"]=@NO;
-            if(person)report[@"person_before_stats"]=Call(person,@"dictionaryRepresentation",@[]);
+            if(person){report[@"person_before_stats"]=PersonDictionary(person);report[@"unadjusted_native_person_dictionary_before_stats"]=Call(person,@"dictionaryRepresentation",@[]);}
             NSDictionary *roleFiles=@{@"skin":@"semanticskinmattev2",@"face":@"semanticfaceskinmatte",@"instance":selected[@"instance_role"] ?: @"semanticpersonmatte",@"person":@"semanticpersonmatte",@"hair":@"semantichairmatte",@"glasses":@"semanticglassesmattev2",@"teeth":@"semanticteethmattev2",@"nose":@"semanticnosematte",@"lips":@"semanticlipsmatte",@"eyebrows":@"semanticeyebrowsmatte",@"body":@"semanticnonfaceskinmatte",@"hands":@"semantichandsmatte",@"ears":@"semanticearsmatte",@"tattoo":@"semantictattoomatte"};
             NSMutableDictionary *contextTextures=[NSMutableDictionary new],*inputFacts=[NSMutableDictionary new];
             for(NSString *role in roleFiles) {
@@ -282,7 +282,8 @@ int main(int argc, char **argv) {
                 report[@"native_effect_name"] = effectName;
                 Call(person, @"setImageStats:", @[@{effectName: nativeStats}]);
                 id normalized = Call(person, @"normalizeRelativeToCropRect:", @[[NSValue valueWithRect:full]]);
-                report[@"normalized_person_with_stats"] = Call(normalized, @"dictionaryRepresentation", @[]);
+                report[@"normalized_person_with_stats"] = PersonDictionary(normalized);
+                report[@"unadjusted_native_normalized_person_dictionary"] = Call(normalized,@"dictionaryRepresentation",@[]);
                 report[@"statistics_generation_completed"] = @YES;
                 if ([effectKind isEqual:@"Mattify"] && [parameterSource isEqual:@"Studio"] && exposure == 0 && ![report[@"calculateStats"] intValue]) {
                     report[@"stage"] = @"render_preview"; Write(report, out);

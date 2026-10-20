@@ -46,7 +46,7 @@ def compile_tools(build, phase):
     build.mkdir(parents=True, exist_ok=True)
     sources = [('prepare', HERE / 'prepare_input.m')]
     if phase == 'generate':
-        sources += [('matching-tests', HERE/'matching_tests.m'), ('augment', HERE/'augment_input.m'), ('produce',PRODUCER/'produce_carrier.m'),
+        sources += [('angle-tests',HERE/'angle_tests.m'),('matching-tests', HERE/'matching_tests.m'), ('augment', HERE/'augment_input.m'), ('produce',PRODUCER/'produce_carrier.m'),
                     ('stats',PRODUCER/'generate_stats.m'), ('thumbnail',PRODUCER/'encode_thumbnail.m'),
                     ('admission',PRODUCER/'native_admission.m'), ('decode',PRODUCER/'decode_final_masks.m')]
     for name, source in sources:
@@ -56,6 +56,7 @@ def compile_tools(build, phase):
         args += ['-o', build / name]
         require(args, build, name + '-build')
     if phase=='generate':
+        require([build/'angle-tests',build/'angle-tests.json'],build,'angle-tests')
         require([build/'matching-tests',build/'matching-tests.json'],build,'matching-tests')
 
 

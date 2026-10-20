@@ -34,6 +34,12 @@ def validate(root, head):
     for p in people:
         assert p['face_probability_overlap']>=.02
         assert not p['native_person_without_stats'].get('imageStats')
+        face=production['face_geometry'][p['face_index']]
+        for component in ['yaw','pitch','roll']:
+            angle=face[component+'_radians']
+            if angle is not None:
+                actual=p['native_person_without_stats']['face'+component.title()]
+                assert math.isclose(actual,math.degrees(angle),abs_tol=1e-4,rel_tol=1e-5)
     for r in production['resources']+production['instance_resources']:
         assert sha(r['file'])==r['sha256'] and (root/r['file']).stat().st_size==width*height
     assert all(r['native_auxiliary_readback'] for r in production['native_mask_codec_controls'])

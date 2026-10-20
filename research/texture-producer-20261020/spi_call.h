@@ -42,6 +42,20 @@ static id Call(id target, NSString *name, NSArray *args) {
 
 static id Make(NSString *name) { return Call([NSClassFromString(name) alloc], @"init", @[]); }
 
+// This OS's dictionaryRepresentation rounds positive angle floats and converts
+// negative ones into huge positive values. Preserve the actual signed native
+// getter values when serializing our newly generated context. Apple code stays
+// unchanged; callers retain the original dictionary separately as evidence.
+static NSMutableDictionary *PersonDictionary(id person) {
+    NSMutableDictionary *dictionary=[Call(person,@"dictionaryRepresentation",@[]) mutableCopy];
+    for(NSString *key in @[@"facePitch",@"faceRoll",@"faceYaw"]) {
+        NSNumber *value=Call(person,key,@[]);
+        if(!isfinite(value.doubleValue))@throw [NSException exceptionWithName:@"NativeAngle" reason:key userInfo:nil];
+        dictionary[key]=value;
+    }
+    return dictionary;
+}
+
 static id PersonFromVisionFace(VNFaceObservation *face, size_t width, size_t height) {
     CGRect box = face.boundingBox;
     CGRect roi = CGRectMake(box.origin.x * width, (1-CGRectGetMaxY(box)) * height, box.size.width * width, box.size.height * height);

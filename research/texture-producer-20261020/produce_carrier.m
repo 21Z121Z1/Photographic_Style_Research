@@ -138,11 +138,11 @@ int main(int argc, char **argv) {
                 if(!edge){[unmatched addObject:@{@"face_index":@(f),@"reason":@"no distinct native person instance overlaps the detected face"}];continue;}
                 id nativePerson=PersonFromVisionFace(faces.results[f],w,h);
                 Call(nativePerson,@"setFaceID:",@[@(people.count+1)]);
-                NSMutableDictionary *person=[Call(nativePerson,@"dictionaryRepresentation",@[]) mutableCopy];
+                NSMutableDictionary *person=PersonDictionary(nativePerson);
                 [person removeObjectForKey:@"faceROIAndLandmarksROIRelativeScalingROI"];
                 NSString *key=[NSString stringWithFormat:@"DerivedVisionInstance%lu",(unsigned long)people.count+1];
                 NSString *role=edge[@"instance_role"]; NSDictionary *mask=individualMasks[role];
-                [people addObject:@{@"face_index":@(f),@"instance_role":role,@"instance_reference_key":key,@"face_probability_overlap":edge[@"face_probability_overlap"],@"native_person_without_stats":person}];
+                [people addObject:@{@"face_index":@(f),@"instance_role":role,@"instance_reference_key":key,@"face_probability_overlap":edge[@"face_probability_overlap"],@"native_person_without_stats":person,@"unadjusted_native_dictionary":Call(nativePerson,@"dictionaryRepresentation",@[])}];
                 [instanceRows addObject:@{@"role":role,@"uri":@"tag:apple.com,2026:photo:aux:semanticpersoninstances",@"reference_key":key,@"file":[role stringByAppendingString:@".l8"],@"width":@(w),@"height":@(h),@"sha256":SHA(mask[@"data"]),@"size":@(w*h)}];
             }
             report[@"people"] = people; report[@"unmatched_faces"] = unmatched; report[@"matching_candidates"] = edges;
