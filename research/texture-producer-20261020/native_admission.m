@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
             dlopen("/System/Library/PrivateFrameworks/PhotoImaging.framework/PhotoImaging", RTLD_NOW | RTLD_LOCAL);
             id source = Call(NSClassFromString(@"NUSourceDefinition"), @"imageSourceDefinitionWithURL:options:", @[[NSURL fileURLWithPath:@(argv[1])], @{}]);
             NSError *error = nil;
-            id asset = Call(source, @"assetWithOptions:error:", @[@{}, [NSValue valueWithPointer:&error]]);
+            id asset = Call(NSClassFromString(@"NUAssetLoader"), @"loadAssetWithSourceDefinition:options:error:", @[source, @{}, [NSValue valueWithPointer:&error]]);
             report[@"asset_loaded"] = @(asset != nil); report[@"asset_error"] = error.description ?: @"";
             if (asset) {
                 report[@"asset_class"] = NSStringFromClass([asset class]);
@@ -33,6 +33,21 @@ int main(int argc, char **argv) {
                 report[@"capabilities"] = Call(asset, @"capabilities", @[]);
                 report[@"PhotographicStyleV2"] = Call(asset, @"hasCapability:", @[@"PhotographicStyleV2"]);
                 report[@"PhotographicStyle"] = Call(asset, @"hasCapability:", @[@"PhotographicStyle"]);
+                if ([asset respondsToSelector:NSSelectorFromString(@"imageProperties")]) {
+                    id properties = Call(asset, @"imageProperties", @[]);
+                    report[@"native_image_properties"] = [properties description] ?: @"nil";
+                    report[@"native_image_metadata"] = JSONCompatible(Call(properties, @"metadata", @[]));
+                    id texture = Call(properties, @"textureStyleProperties", @[]);
+                    id semantic = Call(properties, @"semanticStyleProperties", @[]);
+                    report[@"texture_properties_present"] = @(texture != nil);
+                    report[@"semantic_properties_present"] = @(semantic != nil);
+                    if (texture) {
+                        report[@"texture_person_count"] = Call(texture, @"numberOfPersons", @[]);
+                        NSMutableArray *people = [NSMutableArray new];
+                        for (id person in Call(NSClassFromString(@"PITextureStyleProcessorKernel"), @"personInputDataFromStillProperties:", @[texture])) [people addObject:Call(person, @"dictionaryRepresentation", @[])];
+                        report[@"native_person_data_readback"] = people;
+                    }
+                }
                 id media = Call(asset, @"media", @[]);
                 report[@"media_description"] = [media description] ?: @"";
                 for (NSString *key in @[@"imageProperties", @"properties", @"textureStyleProperties", @"metadata", @"rawProperties"])
@@ -52,6 +67,9 @@ int main(int argc, char **argv) {
             // The observed predicate only reads composition["source"]. Supply
             // that lookup contract with a real NUSource and its file definition.
             id composition = @{@"source": nativeSource};
+            report[@"pipeline_isAvailable"] = Call(NSClassFromString(@"PITextureStylePipelineProcessor"), @"isAvailable", @[]);
+            id platform = Call(NSClassFromString(@"NUPlatform"), @"currentPlatform", @[]);
+            report[@"platform_supportsSemanticStyleRendering"] = Call(platform, @"supportsSemanticStyleRendering", @[]);
             report[@"predicate_argument"] = @"composition source lookup backed by an actual NUSource; no capability overrides";
             report[@"canRenderTextureStylesOnComposition"] = Call(NSClassFromString(@"PITextureStyleAutoCalculator"), @"canRenderTextureStylesOnComposition:", @[composition]);
         } @catch (NSException *exception) { report[@"exception"] = @{@"name": exception.name, @"reason": exception.reason ?: @""}; }

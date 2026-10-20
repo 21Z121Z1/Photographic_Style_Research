@@ -104,7 +104,8 @@ def attach(source: bytes, texture: dict, native_masks=()) -> tuple[bytes, dict]:
                b'<rdf:Description rdf:about="" xmlns:fsincMattes="http://ns.apple.com/fsinc/1.0/">'
                b'<fsincMattes:FSINCMatteVersion>0</fsincMattes:FSINCMatteVersion></rdf:Description></rdf:RDF></x:xmpmeta>')
         mime_ids = {info['id'] for info in mask_infos if info.get('type') == 'mime'}
-        for old in selected & mime_ids: payloads[mapping[old]] = xmp
+        if uri.startswith('tag:apple.com,2026:'):
+            for old in selected & mime_ids: payloads[mapping[old]] = xmp
         mask_report.append({'uri': uri, 'image_item': mapping[mask_primary], 'codec_source_sha256': hashlib.sha256(codec).hexdigest(),
                             'codec_payload_sha256': hashlib.sha256(mask_payloads[mask_primary]).hexdigest()})
     item_id = max(payloads) + 1

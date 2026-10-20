@@ -85,7 +85,8 @@ int main(int argc, char **argv) {
                 NSDictionary *mask = masks[name]; NSData *bytes = mask[@"data"];
                 NSString *file = [name stringByAppendingString:@".l8"];
                 [bytes writeToFile:[directory stringByAppendingPathComponent:file] atomically:YES];
-                [resourceRows addObject:@{@"role": name, @"uri": [@"tag:apple.com,2026:photo:aux:" stringByAppendingString:name], @"file": file, @"width": mask[@"width"], @"height": mask[@"height"], @"sha256": SHA(bytes), @"size": @(bytes.length)}];
+                NSString *uri = [name isEqual:@"semantichairmatte"] ? (__bridge NSString *)kCGImageAuxiliaryDataTypeSemanticSegmentationHairMatte : [@"tag:apple.com,2026:photo:aux:" stringByAppendingString:name];
+                [resourceRows addObject:@{@"role": name, @"uri": uri, @"file": file, @"width": mask[@"width"], @"height": mask[@"height"], @"sha256": SHA(bytes), @"size": @(bytes.length)}];
             }
             report[@"resources"] = resourceRows;
             NSMutableArray *codecRows = [NSMutableArray new];
