@@ -253,3 +253,6 @@ S99失败复现：3936cb99的run_semantic_s99.py只extract(photo,RES)后，直�
 
 
 S100源码 e9a93b09f0c814dce6816e60b0bc2f274db4cb35：run_semantic_s100.py / semantic_domain_s99.m / domain_analysis_s99.py，精确衍生绑定 s100_binding.json。唯一原生run39514608080；三个case为原片S Tone0、冻结source_s37的native key1 R Tone0/+0.35。无本地图片执行，无旧大archive依赖。原输入以既有2.56MB密文+临时session secret提供，私钥不离开香港；归档在日本完成全部GPG/成员SHA。重现时须重新建立临时密文传输，不复用已清的release id或secret。此条是运行前配方，不是已通过结论。
+
+
+S100实际run39514608080，源e9a93b09：driver精确衍生于S99，修正SRC资源并显式沿用residency兼容前提，native和analysis维持S99。原私有ZIP12308091275在日本runs/39514608080/artifact-12308091275.zip，SHA6940dfa84d0d3d4dfc9b05eb1318d9c889612dcc997352906012fbf6a2db1655，所有206成员已认证。香港不得为读指标回拉此577MB包；先读公开evidence/s100/run/analysis.json、三个*-native-calls、filter-report与source-facts。预览和原始数据保持加密，需要新增指标时先选现有证据可回答的范围；F(R0)对S像素比较还未测，不拿各自input/output表冒充往返。

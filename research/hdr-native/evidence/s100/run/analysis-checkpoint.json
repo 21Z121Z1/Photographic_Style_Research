@@ -1,0 +1,455 @@
+{
+  "cases": [
+    {
+      "label": "original-tone0",
+      "tone": 0.0,
+      "canvas": [
+        4284,
+        5712
+      ],
+      "consumer_input_domain": "Original decoded HEIC S",
+      "default_use_style_engine_before_override": false,
+      "forced_use_style_engine": false,
+      "input_vs_output": {
+        "scope": "Observable consumer output compared with its own input, not reconstruction/scene error",
+        "pixels": 24470208,
+        "changed_float_RGB_pixels": 24470208,
+        "changed_after_half_cast_RGB_pixels": 24451674,
+        "RGB_max_abs": 0.0689321756362915,
+        "PSNR_peak1_dB": 38.25177888015548,
+        "nonfinite_output_RGB": 0,
+        "abs_luma_EV": {
+          "n": 23268518,
+          "p50": 0.05021871253848076,
+          "p99": 0.4176386296749115,
+          "max": 0.5324175357818604
+        },
+        "ACES_p99_pixel_Linf_codes": 5,
+        "ACES_max_codes": 23
+      },
+      "native_processes": 4,
+      "native_final_calls": 4,
+      "camera_baked_semantics_identified": false,
+      "key1_not_isolated_skin_factor": true,
+      "native_owner_coverage": {
+        "complete": true,
+        "owners": 4,
+        "minimum": 1,
+        "maximum": 1,
+        "uncovered_pixels": 0,
+        "overlapped_pixels": 0,
+        "native_CI_RGB_max_abs": 0.0,
+        "nonfinite_CI_RGB": 0,
+        "no_callback_is_not_automatically_identity": true
+      },
+      "parameter_only_controls": {
+        "skin-color": {
+          "active_pixels": 0,
+          "max_abs_RGB": 0.0,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "5468bccd33ee9e4fd7b07b026d3214b554f67addc8b9d8b675e7ac978084d7ce"
+            },
+            {
+              "serial": 1,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "c0086590c35be61b2fd068a83ceba5d33e4efac9b643635cd5f810b51d95a21d"
+            },
+            {
+              "serial": 2,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "8e01541fa79778b342453d52158259c3558a63e9e4ceca545ae79b16d1989a49"
+            },
+            {
+              "serial": 3,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "de06b451fab4a7ef518604489286863b9fe0e9a176b2d39eba60dac04a412bf4"
+            }
+          ]
+        },
+        "skin-brightness": {
+          "active_pixels": 0,
+          "max_abs_RGB": 0.0,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "5468bccd33ee9e4fd7b07b026d3214b554f67addc8b9d8b675e7ac978084d7ce"
+            },
+            {
+              "serial": 1,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "c0086590c35be61b2fd068a83ceba5d33e4efac9b643635cd5f810b51d95a21d"
+            },
+            {
+              "serial": 2,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "8e01541fa79778b342453d52158259c3558a63e9e4ceca545ae79b16d1989a49"
+            },
+            {
+              "serial": 3,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "de06b451fab4a7ef518604489286863b9fe0e9a176b2d39eba60dac04a412bf4"
+            }
+          ]
+        },
+        "skin-both": {
+          "active_pixels": 0,
+          "max_abs_RGB": 0.0,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "5468bccd33ee9e4fd7b07b026d3214b554f67addc8b9d8b675e7ac978084d7ce"
+            },
+            {
+              "serial": 1,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "c0086590c35be61b2fd068a83ceba5d33e4efac9b643635cd5f810b51d95a21d"
+            },
+            {
+              "serial": 2,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "8e01541fa79778b342453d52158259c3558a63e9e4ceca545ae79b16d1989a49"
+            },
+            {
+              "serial": 3,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "de06b451fab4a7ef518604489286863b9fe0e9a176b2d39eba60dac04a412bf4"
+            }
+          ]
+        }
+      },
+      "raw_skin_binding": {
+        "raw_texels": 24470208,
+        "positive_raw_texels": 869043,
+        "zero_raw_texels": 23601165,
+        "nonfinite_raw_texels": 0,
+        "raw_texel_grid_is_not_internal_sampled_matte": true
+      },
+      "returncode": 0,
+      "native_child_peak_RSS_bytes_macOS": 1158545408
+    },
+    {
+      "label": "key1-reverse-tone0",
+      "tone": 0.0,
+      "canvas": [
+        4284,
+        5712
+      ],
+      "consumer_input_domain": "Frozen native Neutrino key1 reverse R, stored half then exactly widened f32",
+      "default_use_style_engine_before_override": false,
+      "forced_use_style_engine": false,
+      "input_vs_output": {
+        "scope": "Observable consumer output compared with its own input, not reconstruction/scene error",
+        "pixels": 24470208,
+        "changed_float_RGB_pixels": 24452576,
+        "changed_after_half_cast_RGB_pixels": 24452576,
+        "RGB_max_abs": 0.07080078125,
+        "PSNR_peak1_dB": 38.509988008358306,
+        "nonfinite_output_RGB": 0,
+        "abs_luma_EV": {
+          "n": 23565417,
+          "p50": 0.05010858178138733,
+          "p99": 0.42636269330978394,
+          "max": 0.5233298540115356
+        },
+        "ACES_p99_pixel_Linf_codes": 5,
+        "ACES_max_codes": 23
+      },
+      "native_processes": 4,
+      "native_final_calls": 4,
+      "camera_baked_semantics_identified": false,
+      "key1_not_isolated_skin_factor": true,
+      "native_owner_coverage": {
+        "complete": true,
+        "owners": 4,
+        "minimum": 1,
+        "maximum": 1,
+        "uncovered_pixels": 0,
+        "overlapped_pixels": 0,
+        "native_CI_RGB_max_abs": 0.0,
+        "nonfinite_CI_RGB": 0,
+        "no_callback_is_not_automatically_identity": true
+      },
+      "parameter_only_controls": {
+        "skin-color": {
+          "active_pixels": 0,
+          "max_abs_RGB": 0.0,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "1c3954138963e16ef643c8c866f2fc1fdcb3b4fc113c1968f3c5263eaf71d215"
+            },
+            {
+              "serial": 1,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "31d54ea6cc0c87d18a076e596198546a0345bcaddc24d49e821caa43599ef717"
+            },
+            {
+              "serial": 2,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "92242128a93d0d6c0a080ac741e3ceb62a700dff5e7dcb2ac951229118701f06"
+            },
+            {
+              "serial": 3,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "a680d98ed5ddfb84cceffc2c26f2f709290608d6e4bb449ab3d8fd42a1b9448f"
+            }
+          ]
+        },
+        "skin-brightness": {
+          "active_pixels": 0,
+          "max_abs_RGB": 0.0,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "1c3954138963e16ef643c8c866f2fc1fdcb3b4fc113c1968f3c5263eaf71d215"
+            },
+            {
+              "serial": 1,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "31d54ea6cc0c87d18a076e596198546a0345bcaddc24d49e821caa43599ef717"
+            },
+            {
+              "serial": 2,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "92242128a93d0d6c0a080ac741e3ceb62a700dff5e7dcb2ac951229118701f06"
+            },
+            {
+              "serial": 3,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "a680d98ed5ddfb84cceffc2c26f2f709290608d6e4bb449ab3d8fd42a1b9448f"
+            }
+          ]
+        },
+        "skin-both": {
+          "active_pixels": 0,
+          "max_abs_RGB": 0.0,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "1c3954138963e16ef643c8c866f2fc1fdcb3b4fc113c1968f3c5263eaf71d215"
+            },
+            {
+              "serial": 1,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "31d54ea6cc0c87d18a076e596198546a0345bcaddc24d49e821caa43599ef717"
+            },
+            {
+              "serial": 2,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "92242128a93d0d6c0a080ac741e3ceb62a700dff5e7dcb2ac951229118701f06"
+            },
+            {
+              "serial": 3,
+              "file": "native.f16",
+              "native_alias": true,
+              "sha256": "a680d98ed5ddfb84cceffc2c26f2f709290608d6e4bb449ab3d8fd42a1b9448f"
+            }
+          ]
+        }
+      },
+      "raw_skin_binding": {
+        "raw_texels": 24470208,
+        "positive_raw_texels": 869043,
+        "zero_raw_texels": 23601165,
+        "nonfinite_raw_texels": 0,
+        "raw_texel_grid_is_not_internal_sampled_matte": true
+      },
+      "returncode": 0,
+      "native_child_peak_RSS_bytes_macOS": 1521270784
+    },
+    {
+      "label": "key1-reverse-tone035",
+      "tone": 0.35,
+      "canvas": [
+        4284,
+        5712
+      ],
+      "consumer_input_domain": "Frozen native Neutrino key1 reverse R, stored half then exactly widened f32",
+      "default_use_style_engine_before_override": false,
+      "forced_use_style_engine": false,
+      "input_vs_output": {
+        "scope": "Observable consumer output compared with its own input, not reconstruction/scene error",
+        "pixels": 24470208,
+        "changed_float_RGB_pixels": 24466642,
+        "changed_after_half_cast_RGB_pixels": 24466642,
+        "RGB_max_abs": 0.353515625,
+        "PSNR_peak1_dB": 21.233025198958842,
+        "nonfinite_output_RGB": 0,
+        "abs_luma_EV": {
+          "n": 23565417,
+          "p50": 0.38033947348594666,
+          "p99": 0.6440277099609375,
+          "max": 2.3608007431030273
+        },
+        "ACES_p99_pixel_Linf_codes": 33,
+        "ACES_max_codes": 69
+      },
+      "native_processes": 4,
+      "native_final_calls": 4,
+      "camera_baked_semantics_identified": false,
+      "key1_not_isolated_skin_factor": true,
+      "native_owner_coverage": {
+        "complete": true,
+        "owners": 4,
+        "minimum": 1,
+        "maximum": 1,
+        "uncovered_pixels": 0,
+        "overlapped_pixels": 0,
+        "native_CI_RGB_max_abs": 0.0,
+        "nonfinite_CI_RGB": 0,
+        "no_callback_is_not_automatically_identity": true
+      },
+      "parameter_only_controls": {
+        "skin-color": {
+          "active_pixels": 128324,
+          "max_abs_RGB": 0.07275390625,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "skin-color.f16",
+              "native_alias": false,
+              "sha256": "7382de9db764f51811dacb63cbabf0185038257b5cb65a321a08f6b0bb0001f8"
+            },
+            {
+              "serial": 1,
+              "file": "skin-color.f16",
+              "native_alias": false,
+              "sha256": "a0c62b47ca4c66b9357df4192db9aa58b4b2747c7dbb9cbde21172a57fe3a134"
+            },
+            {
+              "serial": 2,
+              "file": "skin-color.f16",
+              "native_alias": false,
+              "sha256": "23ba8ba350779fe1b00e4238633beb26c55a664528483a41e3e62e0b0d5458bc"
+            },
+            {
+              "serial": 3,
+              "file": "skin-color.f16",
+              "native_alias": false,
+              "sha256": "f1ad7adeed188371c215d8a35a83d2b36b7d407aa82f37eaf87edbc2035c5f66"
+            }
+          ]
+        },
+        "skin-brightness": {
+          "active_pixels": 178433,
+          "max_abs_RGB": 0.0079345703125,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "skin-brightness.f16",
+              "native_alias": false,
+              "sha256": "210de6b5f7325b921c44523a17c39349bc3b4ae5f57b806c80a668fc1e6316b5"
+            },
+            {
+              "serial": 1,
+              "file": "skin-brightness.f16",
+              "native_alias": false,
+              "sha256": "09e5c91e6dcc12430f5272adebc53f87ef87e90ca6738642f6b8a48d9d13da97"
+            },
+            {
+              "serial": 2,
+              "file": "skin-brightness.f16",
+              "native_alias": false,
+              "sha256": "2844e864c5fedd0c265b15931fe9c39af465792c28d64ec05b1b1b3400b2f605"
+            },
+            {
+              "serial": 3,
+              "file": "skin-brightness.f16",
+              "native_alias": false,
+              "sha256": "5b6932424fac927a5297a874ac5d87e28e52fcde3c6fb130bf75f47aad5e34ea"
+            }
+          ]
+        },
+        "skin-both": {
+          "active_pixels": 306749,
+          "max_abs_RGB": 0.07275390625,
+          "nonfinite_components": 0,
+          "outside_target_byte_changes": 0,
+          "files": [
+            {
+              "serial": 0,
+              "file": "skin-both.f16",
+              "native_alias": false,
+              "sha256": "992a4baadb45f9b93065b89d08661c53fb49132e08bf3c845298111115e9c190"
+            },
+            {
+              "serial": 1,
+              "file": "skin-both.f16",
+              "native_alias": false,
+              "sha256": "0b26b67d433885c360347fb6d89db4be02fe730dece8a612279b6134aaba4d0d"
+            },
+            {
+              "serial": 2,
+              "file": "skin-both.f16",
+              "native_alias": false,
+              "sha256": "6f92e276b45bcfa1527588512eb87bc03b380534226b916712ecec00ea70114d"
+            },
+            {
+              "serial": 3,
+              "file": "skin-both.f16",
+              "native_alias": false,
+              "sha256": "e85f5e8ce3fbc24ec921e93abf2980b109c07afa48d6dcc514d62ab9d92ba2df"
+            }
+          ]
+        }
+      },
+      "raw_skin_binding": {
+        "raw_texels": 24470208,
+        "positive_raw_texels": 869043,
+        "zero_raw_texels": 23601165,
+        "nonfinite_raw_texels": 0,
+        "raw_texel_grid_is_not_internal_sampled_matte": true
+      },
+      "returncode": 0,
+      "native_child_peak_RSS_bytes_macOS": 1521270784
+    }
+  ],
+  "A_phase_complete": false
+}

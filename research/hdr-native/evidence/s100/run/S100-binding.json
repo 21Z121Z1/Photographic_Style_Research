@@ -1,0 +1,46 @@
+{
+  "original_driver": "research/hdr-native/run_semantic_s99.py",
+  "original_driver_SHA256": "57c4a05935b2c21eeff01ad1ecef991d8c63fef684fe89ea291f1746c3b4fd00",
+  "exact_driver_replacements": [
+    {
+      "old": "\"\"\"Runner only: connect actual native key1 reverse and consumer input domains.",
+      "new": "\"\"\"S100 runner: original S99 experiment with source resources prepared first.",
+      "count": 1
+    },
+    {
+      "old": "D/'inputs_s99.json'",
+      "new": "D/'inputs_s100.json'",
+      "count": 1
+    },
+    {
+      "old": "'SEMANTIC_S99_INPUT_SESSION'",
+      "new": "'SEMANTIC_S100_INPUT_SESSION'",
+      "count": 1
+    },
+    {
+      "old": "sources=[Path(__file__).resolve(),",
+      "new": "sources=[D/'s100_binding.json',D/'run_semantic_s99.py',Path(__file__).resolve(),",
+      "count": 1
+    },
+    {
+      "old": "save(O/'S99-binding.json',json.loads((D/'s99_binding.json').read_text()))",
+      "new": "save(O/'S99-binding.json',json.loads((D/'s99_binding.json').read_text()))\nsave(O/'S100-binding.json',json.loads((D/'s100_binding.json').read_text()))",
+      "count": 1
+    },
+    {
+      "old": "SRC=PRIVATE/'native-key1-source';assert command([W/'source',photo,SRC],O/'source-native.log',timeout=2400)==0",
+      "new": "SRC=PRIVATE/'native-key1-source';extract(photo,SRC)\nrequired=['styles.plist','linear.heic','delta.heic']\nassert SRC.is_dir()and all((SRC/n).is_file()and sha(SRC/n)==sha(RES/n)for n in required)\nsave(O/'source-prerequisites.json',{'directory_prepared':True,'same_resources_as_original_extract':{n:sha(SRC/n)for n in required},'source_s37_byte_unchanged':True,'existing_S42_S89_residency_compatibility_flag':'VM_DISABLE_RESIDENCY_SETS=1','native_pixel_model_changed':False})\nrc=command([W/'source',photo,SRC],O/'source-native.log',{'VM_DISABLE_RESIDENCY_SETS':'1'},timeout=2400)\nif(SRC/'source-exception.json').exists():save(O/'source-exception.json',json.loads((SRC/'source-exception.json').read_text()))\nassert rc==0,'Frozen source failed after prerequisites prepared; inspect source-native.log and source-exception.json before another run'",
+      "count": 1
+    }
+  ],
+  "new_driver": "research/hdr-native/run_semantic_s100.py",
+  "new_driver_SHA256": "82c1e02abbf5b797eb834690ea2aec167f574c19c92f16147f57fa980d0e1721",
+  "unchanged_native": "research/hdr-native/semantic_domain_s99.m",
+  "unchanged_native_SHA256": "f50d1230c44509ac217a1677579a18ac5653c6a6a098e4e857721f288ba2fd52",
+  "unchanged_analysis": "research/hdr-native/domain_analysis_s99.py",
+  "unchanged_analysis_SHA256": "337587b14134b3687acf79c522ee7433869dec8c7c57152c74a29abed2f8014b",
+  "failed_run": 39513947146,
+  "failure_reviewed": true,
+  "source_prerequisite_only": true,
+  "new_inverse_or_gate_change": false
+}

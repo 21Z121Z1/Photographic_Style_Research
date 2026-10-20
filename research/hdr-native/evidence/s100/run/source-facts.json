@@ -1,0 +1,124 @@
+{
+  "Apple_Log_parameters": {
+    "Gain": 9.450071334838867,
+    "OriginalRangeMax": 1.0439453125,
+    "OriginalRangeMin": -0.1202392578125
+  },
+  "frozen_decode": {
+    "coefficient_bytes": 51840,
+    "coefficient_float16": true,
+    "configuration": {
+      "linearSystemOrder": 1,
+      "linearSystemSolver": 2,
+      "linearSystemType": 1,
+      "spotlightCountX": 12,
+      "spotlightCountY": 9,
+      "thumbnailHeight": 192,
+      "thumbnailWidth": 256,
+      "usage": "revert-image",
+      "weightPlaneCount": 8
+    },
+    "globalToneCurveData": 1024,
+    "lightMapData": 2048,
+    "linearLightMapData": 2048,
+    "metadata_version": 16,
+    "native_version": "0.16",
+    "orientation": 6,
+    "original_hdr": {
+      "reason": "Exposure scale reuses the frozen relative scale; full HDR baseline is not needed for guided upsampling",
+      "skipped": true
+    },
+    "original_sdr": {
+      "compression": "zlib",
+      "dtype": "<f2",
+      "file": "original_sdr.f16.zlib",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "os": "Version 27.0.1 (Build 26A434)",
+    "schema_version": 2,
+    "thumbnail": {
+      "dtype": "<f4",
+      "file": "thumbnail_codes.f32",
+      "height": 768,
+      "shape": [
+        768,
+        1024,
+        4
+      ],
+      "width": 1024
+    },
+    "tuning": {
+      "ExtLambda": 0.25,
+      "LearningModulationOffset": 0,
+      "LearningModulationStrength": 2,
+      "TikLambdaConstant": 0.01,
+      "TikLambdaLinear": 0.01,
+      "TikLambdaQuadratic": 0.01,
+      "WeightPlaneColorSplitStrength": 5,
+      "WeightPlaneDoColorSplit": false,
+      "WeightPlaneStandardDeviation": 2.5
+    },
+    "unstyled": {
+      "compression": "zlib",
+      "dtype": "<f2",
+      "file": "unstyled.f16.zlib",
+      "height": 4284,
+      "maximum": 1,
+      "minimum": 0,
+      "nonfinite": 0,
+      "render_format": "kCIFormatRGBAf",
+      "row_order": "Core Image whole-image bitmap order; no ROI concatenation",
+      "scope": "One native whole-image float render; only compression and storage conversion are chunked",
+      "shape": [
+        4284,
+        5712,
+        4
+      ],
+      "storage_cast": "CPU float32 to IEEE binary16 round-to-nearest",
+      "storage_chunk_rows": 128,
+      "uncompressed_bytes": 195761664,
+      "width": 5712
+    }
+  },
+  "gtc_native": {
+    "dtype": "<f4",
+    "file": "gtc_native.f32",
+    "height": 1,
+    "shape": [
+      1,
+      256,
+      4
+    ],
+    "width": 256
+  },
+  "linear_native": {
+    "dtype": "<f4",
+    "file": "linear_native.f32",
+    "height": 768,
+    "shape": [
+      768,
+      1024,
+      4
+    ],
+    "width": 1024
+  },
+  "native_properties": {
+    "baseGain": 2.362517833709717,
+    "baselineExposure": 4.138461589813232
+  },
+  "original_sdr_float32": {
+    "dtype": "<f4",
+    "file": "original_sdr_exact.f32",
+    "shape": [
+      4284,
+      5712,
+      4
+    ]
+  },
+  "os_build": "26A434",
+  "scope": "Frozen native key1 inverse-style source plus unchanged native Apple Log; not full camera/semantic inverse. Exact SDR is an unencoded denominator, no carrier comparison yet."
+}

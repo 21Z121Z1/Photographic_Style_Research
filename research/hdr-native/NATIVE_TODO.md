@@ -189,3 +189,6 @@ S99 run39513947146已终态failure并完成归档/清理，不再等待或派发
 
 
 S100已启动39514608080：先审真实key1 R与原片S各自Tone0输出/原生调用，再看R+.35单独皮肤参数中和。检查完整owner覆盖、CI颜色域、原上下文SHA、完整texture11/ROI留存和固定ACES输入SHA。即使新consumer链可复现，也不证明拍摄端已烘焙皮肤因子的可识别性；相机开关反事实/同帧统计仍需要原清单中的实机测试。不得将S98 B基底map直接移用到原片。
+
+
+S100终态success，39514608080已完整归档/清理，不再等待或重跑旧三case。可runner下一步：原样准备SRC并用frozen key1 R，直接比较native F(R,Tone0)与同一次source的original_sdr_exact.f32，逐块比较raw方向/颜色域/未剪裁分量，报告EV/ACES/梯度及排除域；同时明确inputCast默认nil、其他默认编辑参数与实际Photos配置尚未匹配，未证明UI顺序。Tone0两皮肤项已0且neutral差0，不能把整体非恒等差当作这两项皮肤处理，或把Tone0当成已去LTM。需要实机的相机同帧语义开关/曲线、j四曲线/统计、原Studio、RAW、Photos实际UI与显示仍按原方案。
