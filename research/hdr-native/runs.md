@@ -196,3 +196,6 @@ S81（2026-10-20）为用户授权的优先级调整，无新增 run/artifact/�
 |S83|research/vm-native-20261020-hdr-s83 / 17fcc3bd029da1d252515660e70e8ffa30123e36|39399353600 / 12254506268|26A434 / 20261012.0260.1|合成结构检查通过；原ZIP2337B已验证；触发分支已清理|
 
 S83 ZIP SHA3d180ba38ea787438fd6911ce5b6dab0bcdf1293570a137797606c5c28c6c356，manifest SHA9f10c46b49086375c18a9768197079e75c6f8b5610dd47a310a21bc5e48d6a88，5个成员和两份源码SHA全部对应原commit。原ZIP保存在hdr-native-20261019/runs/39399353600/；文本、freeze和closure见research/hdr-native/evidence/s83。retention-days1，已立即落地；无人物输入/secret/release。S82拒绝记录见evidence/s82，未发生明文或密文上传。未重跑旧原生精度实验。
+
+
+S84 原型已提交：research/vm-native-20261020-hdr-s84，source45e02e86d1ced0c375b6c9ebed8cae3bc3681090，run39403808066。首次观测queued，实际OS/image与结果待原run完成后的artifact确认；workflow限定xcode-27/26A434、只读权限、retention1天。只用已有公开样张IMG2600，新的RGB测试增益非scene目标；无S82数据、secret或release。不能把排队/运行当通过，不重复派发。五个原容器的tmap/base/gain绑定及属性原字节SHA/offset见repo/research/hdr-native/evidence/s84/source-container-bindings.json。

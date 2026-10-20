@@ -1,0 +1,136 @@
+{
+  "AppleFamily4": true,
+  "CI_present": {
+    "base": 1,
+    "gain": 1,
+    "HDR": 1,
+    "original": 1
+  },
+  "content_headroom": 8,
+  "device": "Apple Paravirtual device",
+  "files": {
+    "gain": {
+      "dtype": "<f4",
+      "file": "decoded-gain.f32",
+      "readback_rows_per_block": 32,
+      "sha256": "1e91a02f2b28fa7aed21f48ec2f4efe27a3e2b62e412fde09dabeea1cbda0a11",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "HDR": {
+      "dtype": "<f4",
+      "file": "decoded-hdr.f32",
+      "readback_rows_per_block": 32,
+      "sha256": "4bc30343762d0876728f94cfe76edcca2d3a19b6f06c00d21c37c78b66659958",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "SDR": {
+      "dtype": "<f4",
+      "file": "carrier-sdr.f32",
+      "readback_rows_per_block": 32,
+      "sha256": "cdc4aa5f86f485a33d7df38b716ae6e47b14ba1d0e36252feb334614e9c5f675",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    }
+  },
+  "gain_extent": [
+    0,
+    0,
+    5712,
+    4284
+  ],
+  "HDR_extent": [
+    0,
+    0,
+    5712,
+    4284
+  ],
+  "headrooms": [
+    {
+      "dtype": "<f4",
+      "file": "headroom-1.f32",
+      "headroom": 1,
+      "readback_rows_per_block": 32,
+      "sha256": "cdc4aa5f86f485a33d7df38b716ae6e47b14ba1d0e36252feb334614e9c5f675",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    {
+      "dtype": "<f4",
+      "file": "headroom-2.f32",
+      "headroom": 2,
+      "readback_rows_per_block": 32,
+      "sha256": "c204a6f79bf62f294c381380ef4a064b65732c6d13ac14ab8e2b7e268c1f1964",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    {
+      "dtype": "<f4",
+      "file": "headroom-8.f32",
+      "headroom": 8,
+      "readback_rows_per_block": 32,
+      "sha256": "4bc30343762d0876728f94cfe76edcca2d3a19b6f06c00d21c37c78b66659958",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    }
+  ],
+  "height": 4284,
+  "ImageIO_full_SDR": {
+    "active_bytes_per_row": 22848,
+    "active_hash_convention": "SHA256 of concatenated active raster rows, excluding padding",
+    "active_SHA_carrier": "45db8a8a774044df6ff51c81a06c4e098ed6cb3e0bef9030adb98347157fe797",
+    "active_SHA_original": "45db8a8a774044df6ff51c81a06c4e098ed6cb3e0bef9030adb98347157fe797",
+    "API_reference": "https://developer.apple.com/documentation/imageio/kcgimagesourcedecodetosdr",
+    "carrier": {
+      "alpha_info": 5,
+      "bitmap_info": 5,
+      "bpc": 8,
+      "bpp": 32,
+      "CS_name": "kCGColorSpaceDisplayP3",
+      "height": 4284,
+      "ICC_sha256": "0ff6958f98684c61f6bbdce1368ddeaf3873baf84545baba482e920d92a914c0",
+      "width": 5712
+    },
+    "changed_active_bytes": 0,
+    "decoded_sdr_max_abs": 0,
+    "decoded_sdr_max0_verified": true,
+    "max_active_byte_difference": 0,
+    "original": {
+      "alpha_info": 5,
+      "bitmap_info": 5,
+      "bpc": 8,
+      "bpp": 32,
+      "CS_name": "kCGColorSpaceDisplayP3",
+      "height": 4284,
+      "ICC_sha256": "0ff6958f98684c61f6bbdce1368ddeaf3873baf84545baba482e920d92a914c0",
+      "width": 5712
+    },
+    "provider_is_full_raster": true,
+    "rows_checked": 4284,
+    "same_format_and_ICC": true,
+    "scope": "ImageIO explicit DecodeToSDR integer raster, complete stored canvas; equal active bytes and identical format/ICC imply zero decoded-pixel difference"
+  },
+  "os": "Version 27.0.1 (Build 26A434)",
+  "scope": "One original full-resolution photograph, new known RGB transport target only; no inverse or scene validation",
+  "success": true,
+  "width": 5712
+}
