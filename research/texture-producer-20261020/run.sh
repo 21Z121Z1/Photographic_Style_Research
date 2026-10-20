@@ -35,7 +35,7 @@ for mode in ['vision','fsinc','VNGenerateHumanAttributesSegmentationRequest','VN
     rows.append({'mode':mode,'exit':status})
 (p/'inference-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
-rm "$TASK_OUT/inference" "$TASK_OUT/public-astronaut.png"
+rm "$TASK_OUT/inference"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/stats_preflight.m" \
     -framework Foundation -framework Metal -framework CoreVideo \
     -o "$TASK_OUT/stats-preflight" 2>&1 | tee "$TASK_OUT/stats-build.log"
@@ -52,3 +52,21 @@ for name in ['CMITextureStylesMattify','CMITextureStylesUnderEyeBrighten','CMITe
 (p/'stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
 rm "$TASK_OUT/stats-preflight"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/generate_stats.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -framework Metal -framework MetalKit \
+    -o "$TASK_OUT/generate-stats" 2>&1 | tee "$TASK_OUT/generate-stats-build.log"
+python3 - "$TASK_OUT" <<'PY'
+import json,pathlib,subprocess,sys
+p=pathlib.Path(sys.argv[1]);rows=[]
+for landmark_type in [1,2]:
+    name='mattify-type'+str(landmark_type)
+    with (p/(name+'.stdout.log')).open('wb') as stdout,(p/(name+'.stderr.log')).open('wb') as stderr:
+        try:
+            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type)],stdout=stdout,stderr=stderr,timeout=120)
+            status=result.returncode
+        except subprocess.TimeoutExpired:status='timeout120'
+    rows.append({'landmark_type_control':landmark_type,'exit':status})
+(p/'generate-stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
+PY
+rm "$TASK_OUT/generate-stats" "$TASK_OUT/public-astronaut.png"
