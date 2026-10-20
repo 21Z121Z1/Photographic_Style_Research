@@ -22,6 +22,11 @@ int main(int argc, char **argv) {
             if (!descriptor) @throw [NSException exceptionWithName:@"Descriptor" reason:error.description userInfo:nil];
             NSURL *url = Call(descriptor, @"assetURL", @[]);
             report[@"asset_url"] = url.path ?: @"";
+            // E5 consumes the MIL entry file; CoreML consumes its enclosing
+            // compiled model directory. Both reference the original system model.
+            if ([url.pathExtension isEqual:@"mil"]) url = [url URLByDeletingLastPathComponent];
+            report[@"coreml_bundle_url"] = url.path ?: @"";
+            report[@"coreml_bundle_files"] = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:url.path error:NULL] ?: @[];
             report[@"asset_type"] = [descriptor valueForKey:@"assetType"];
             report[@"native_input_descriptor"] = [Call(descriptor, @"inputImageDescriptor", @[]) description] ?: @"";
             report[@"native_output_descriptors"] = [Call(descriptor, @"outputDescriptors", @[]) description] ?: @"";

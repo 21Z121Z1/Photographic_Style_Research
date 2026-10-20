@@ -227,9 +227,10 @@ int main(int argc, char **argv) {
             id nativeContext = [effect valueForKey:@"_context"];
             id executionStatus = Make(@"FigMetalExecutionStatus");
             Call(nativeContext, @"setExecutionStatus:", @[executionStatus]);
-            for (NSString *stage in @[@"setup", @"prepareToProcess:", @"calculateStats", @"process", @"finishProcessing"]) {
+            for (NSString *stage in @[@"setup", @"prewarm", @"prepareToProcess:", @"calculateStats", @"process", @"finishProcessing"]) {
                 report[@"stage"] = stage; Write(report, out);
                 NSNumber *status = Call(effect, stage, [stage containsString:@":"] ? @[@0] : @[]);
+                report[stage] = status; Write(report, out);
                 if ([stage isEqual:@"calculateStats"] || [stage isEqual:@"process"] || [stage isEqual:@"finishProcessing"]) {
                     Call(nativeContext, @"forceCommit", @[]);
                     Call(nativeContext, @"waitForIdle", @[]);
@@ -238,21 +239,13 @@ int main(int argc, char **argv) {
                 for (id<MTLCommandBuffer> failed in Call(executionStatus, @"failedCommandBuffers", @[]))
                     [failures addObject:@{@"status": @(failed.status), @"error": failed.error.description ?: @"", @"label": failed.label ?: @""}];
                 report[@"native_GPU_execution"] = @{@"status": Call(executionStatus, @"status", @[]), @"completed_command_buffers": Call(executionStatus, @"completedCommandBuffersCount", @[]), @"failures": failures};
+                Write(report, out);
                 @try {
                     NSDictionary *states = [effect valueForKey:@"_perPersonIntermediatesAndStats"];
                     id state = states[@1];
                     if (state) {
                         NSValue *roi = [state valueForKey:@"_extendedFaceROI"];
-                        id valid = [state valueForKey:@"_validMask"], warped = [state valueForKey:@"_warpedMaskAggregate"];
-                        id<MTLBuffer> buffer = [state valueForKey:@"_statsBuffer"];
-                        NSMutableDictionary *details = [@{@"extended_face_roi": roi.description ?: @"", @"valid_mask": ScalarTextureFacts(Call(valid, @"texture", @[])), @"warped_mask": ScalarTextureFacts(Call(warped, @"texture", @[]))} mutableCopy];
-                        if (buffer && buffer.contents) {
-                            details[@"stats_buffer_bytes"] = @(buffer.length);
-                            details[@"stats_buffer_sha256"] = SHA([NSData dataWithBytes:buffer.contents length:buffer.length]);
-                            NSMutableArray *head = [NSMutableArray new];
-                            for (size_t i = 0; i < MIN((size_t)16, buffer.length / 4); i++) [head addObject:@(((const float *)buffer.contents)[i])];
-                            details[@"stats_buffer_float_head"] = head;
-                        }
+                        NSMutableDictionary *details = [@{@"extended_face_roi": roi.description ?: @""} mutableCopy];
                         report[@"native_intermediates"] = details;
                     }
                 } @catch (NSException *diagnostic) { report[@"intermediate_inspection_error"] = diagnostic.reason ?: @""; }

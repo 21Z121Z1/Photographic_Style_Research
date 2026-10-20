@@ -71,7 +71,7 @@ for landmark_type,parameter_source,exposure in [(1,'defaults',0),(1,'Studio',0),
 if any(isinstance(row['exit'],int) and row['exit']<0 for row in rows):
     with (p/'generate-stats-debug.log').open('wb') as output:
         try:
-            result=subprocess.run(['xcrun','lldb','--batch','-o','run','-o','thread backtrace all','-o','quit','--',str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/'mattify-debug.json'),'1','Studio','0'],stdout=output,stderr=subprocess.STDOUT,timeout=120)
+            result=subprocess.run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','-k','quit','--',str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/'mattify-debug.json'),'1','Studio','0'],stdout=output,stderr=subprocess.STDOUT,timeout=120)
             debug_status=result.returncode
         except subprocess.TimeoutExpired:debug_status='timeout120'
     (p/'generate-stats-debug-process.json').write_text(json.dumps({'debugger_exit':debug_status,'scope':'crash diagnosis; not successful generation'})+'\n')
