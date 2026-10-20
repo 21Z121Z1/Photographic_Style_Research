@@ -5,6 +5,7 @@
 #import <Vision/Vision.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <objc/message.h>
+#import <objc/runtime.h>
 #import <dlfcn.h>
 
 static NSString *SHA(NSData *data) {
@@ -139,6 +140,25 @@ int main(int argc, char **argv) {
                     NSMutableDictionary *item = [@{@"class": NSStringFromClass([observation class]), @"confidence": @(observation.confidence)} mutableCopy];
                     if ([observation isKindOfClass:VNPixelBufferObservation.class])
                         item[@"pixel_buffer"] = BufferFacts(((VNPixelBufferObservation *)observation).pixelBuffer);
+                    if ([observation isKindOfClass:VNFaceObservation.class]) {
+                        item[@"face_geometry"] = FaceFacts(@[(VNFaceObservation *)observation]);
+                        id segments = [observation valueForKey:@"faceSegments"];
+                        if (segments) {
+                            NSMutableDictionary *segmentInfo = [NSMutableDictionary new];
+                            for (NSString *key in @[@"numberOfFaceSegments", @"outputBufferWidth", @"outputBufferHeight", @"faceSegmentLabelToProbabilityMap"]) {
+                                id value = [segments valueForKey:key];
+                                if ([value isKindOfClass:NSNumber.class]) segmentInfo[key] = value;
+                                if ([value isKindOfClass:NSDictionary.class]) segmentInfo[[key stringByAppendingString:@"_keys"]] = [value allKeys];
+                            }
+                            Class segmentClass = [segments class];
+                            for (NSString *key in @[@"faceSegmentIndexToFlagMap", @"faceSegmentToSegmentMaskGrayLevelDictionary"]) {
+                                Require(segmentClass, key, @[], "@");
+                                id mapping = ((id(*)(id,SEL))objc_msgSend)(segmentClass, NSSelectorFromString(key));
+                                if (mapping) segmentInfo[key] = mapping;
+                            }
+                            item[@"face_segments"] = segmentInfo;
+                        }
+                    }
                     NSMutableArray *properties = [NSMutableArray new];
                     for (Class cls = [observation class]; cls && cls != VNObservation.class; cls = class_getSuperclass(cls)) {
                         unsigned count = 0; objc_property_t *list = class_copyPropertyList(cls, &count);
