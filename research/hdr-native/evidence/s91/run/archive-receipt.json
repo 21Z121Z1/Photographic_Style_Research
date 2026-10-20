@@ -1,0 +1,127 @@
+{
+  "archived_at_UTC": "2026-10-20T18:35:03.464550+00:00",
+  "run_id": 39474288686,
+  "source_commit": "c27610d0dd63ca70f6bca4acfe7f9c9068756df5",
+  "branch": "research/vm-native-20261021-semantic-s91",
+  "conclusion": "failure",
+  "event": "push",
+  "attempt": 1,
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "artifacts": [
+    {
+      "name": "semantic-s91-encrypted-outputs",
+      "artifact_id": 12289660799,
+      "ZIP_bytes": 85861,
+      "ZIP_sha256": "f10dd43012ac55c5f33b725a0092aba7bbcab4c44bc6995e02246c58b430b2eb",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39474288686/artifact-12289660799.zip",
+      "local_ZIP_copy": false
+    },
+    {
+      "name": "semantic-s91-aggregate",
+      "artifact_id": 12288922498,
+      "ZIP_bytes": 7033,
+      "ZIP_sha256": "d2531412e88bcaeb33f1f1a516b0fbbcd4b76928ea063307168792be3040d4d3",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39474288686/artifact-12288922498.zip",
+      "local_ZIP_copy": false
+    }
+  ],
+  "all_public_manifest_members_SHA_verified": 12,
+  "source_hashes_match_commit": [
+    {
+      "path": "research/hdr-native/run_semantic_s91.py",
+      "sha256": "58d3f1f6480a5ec44e37d0837c5e944b5c771f6f6b516cb8e2dbf07e6b9670f1"
+    },
+    {
+      "path": "research/hdr-native/semantic_strength_s82.py",
+      "sha256": "34e40b0e4d67393844f6c962e7a70b2946c8e5dbf3bded1c04c4e73eea1fccb0"
+    },
+    {
+      "path": "research/semantic-styles/semantic_consumer_s5.m",
+      "sha256": "5ae3b3ab2c93d83bd9076a8b0fa6611d1e987f0cafa4f91a5fc9a6fadf07c278"
+    },
+    {
+      "path": "research/semantic-styles/generate_semantic_s5.py",
+      "sha256": "3efd1479c73461e456411f9776aa64b7bda0eb825015178084d4a2c8096f2985"
+    },
+    {
+      "path": "research/vm-native/runner/native_filter_probe.m",
+      "sha256": "46d36788485e4c4e76dcd8db029980506fe0cf373b819219df3cd9a5e0a4fb4b"
+    },
+    {
+      "path": "research/vm-native/runner/replay_helpers_v7.inc",
+      "sha256": "5e0192adb23401056df2e0b2d74d32ce69121839235a6bbb8cd8be414c5732cc"
+    },
+    {
+      "path": "research/vm-native/runner/oracle_replay_v7.inc",
+      "sha256": "70d4e8dd71390cac0e190ba39d94b4917c42524b1db67c7bbcfa536cb5ac5d70"
+    }
+  ],
+  "private_stream_verifications": [
+    {
+      "cipher_member": "results.tar.gz.gpg",
+      "cipher_sha256": "ddcfd1e19dafacff03df21f60e1ded3bac94a5d799e4485279002344b6848eba",
+      "cipher_bytes": 85711,
+      "GPG_returncode": 0,
+      "event_names_only": [
+        "ENC_TO",
+        "KEY_CONSIDERED",
+        "KEY_CONSIDERED",
+        "KEY_CONSIDERED",
+        "DECRYPTION_KEY",
+        "BEGIN_DECRYPTION",
+        "DECRYPTION_INFO",
+        "PLAINTEXT",
+        "PLAINTEXT_LENGTH",
+        "DECRYPTION_OKAY",
+        "GOODMDC",
+        "END_DECRYPTION"
+      ],
+      "all_manifest_members_verified": 2,
+      "private_manifest_SHA256": "980044ef3cefb82403245e5b1a05e176eb5db4e0016a2cde029005ec019be8aa",
+      "member_hashes_only": {
+        "ROI-selection.json": {
+          "size": 633,
+          "sha256": "ed772c4f37f28f1a79c419591e9f18f229cbb748c20935ec5682d0b0456755bb"
+        },
+        "manifest.json": {
+          "size": 468,
+          "sha256": "980044ef3cefb82403245e5b1a05e176eb5db4e0016a2cde029005ec019be8aa"
+        },
+        "selection-matte.f32": {
+          "size": 12192768,
+          "sha256": "60d477432d15ee4da3f02eb183b42ada53fb86020a1406f3dfd364ec38f58d78"
+        }
+      },
+      "images_decoded_or_written_on_VM": false,
+      "plaintext_uploaded": false
+    }
+  ],
+  "Japan_download_receipt": {
+    "run_id": 39474288686,
+    "artifacts": [
+      {
+        "artifact_id": 12289660799,
+        "bytes": 85861,
+        "sha256": "f10dd43012ac55c5f33b725a0092aba7bbcab4c44bc6995e02246c58b430b2eb",
+        "relative_path": "runs/39474288686/artifact-12289660799.zip"
+      },
+      {
+        "artifact_id": 12288922498,
+        "bytes": 7033,
+        "sha256": "d2531412e88bcaeb33f1f1a516b0fbbcd4b76928ea063307168792be3040d4d3",
+        "relative_path": "runs/39474288686/artifact-12288922498.zip"
+      }
+    ],
+    "root_free_bytes": 62695243776,
+    "download_credential_received": false,
+    "signed_URL_saved": false
+  },
+  "original_ZIPs_preserved": true,
+  "VM_full_artifact_or_photo_plaintext_materialized": false,
+  "signed_URL_or_credential_saved": false
+}

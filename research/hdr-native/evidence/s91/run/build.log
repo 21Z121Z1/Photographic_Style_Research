@@ -1,0 +1,31 @@
+/Users/runner/work/_temp/semantic-s91/generated/semantic_consumer_s91.m:36:142: warning: 'fastMathEnabled' is deprecated: first deprecated in macOS 15.0 - Use mathMode instead [-Wdeprecated-declarations]
+   36 |  NSString*mp=NSProcessInfo.processInfo.environment[@"SEMANTIC_STAGE_MSL"];if(mp){NSError*e=nil;MTLCompileOptions*o=[MTLCompileOptions new];o.fastMathEnabled=YES;id<MTLLibrary>l=[q.device newLibraryWithSource:[NSString stringWithContentsOfFile:mp encoding:NSUTF8StringEncoding error:NULL]options:o error:&e];id<MTLComputePipelineState>ps=l?[q.device newComputePipelineStateWithFunction:[l newFunctionWithName:@"f1"]error:&e]:nil;if(ps){id<MTLBuffer>b=[q.device newBufferWithLength:ot.width*ot.height*3*16 options:MTLResourceStorageModeShared];NSData*y=V2Evaluate(q,call,snap,ps,nil,b);f[@"stage_model_vs_native"]=V2Metrics(y,ref);Bin([NSData dataWithBytes:b.contents length:b.length],@"model-skin-stage.f32",@[@(ot.height),@(ot.width),@3,@4],@"<f4");}else f[@"stage_model_compile_error"]=e.description?:@"nil";Put(f,[SOut stringByAppendingPathComponent:@"results.json"]);}
+      |                                                                                                                                              ^
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTLLibrary.h:326:39: note: 'fastMathEnabled' has been explicitly marked deprecated here
+  326 | @property (readwrite, nonatomic) BOOL fastMathEnabled API_DEPRECATED("Use mathMode instead", macos(10.11, 15.0), ios(8.0, 18.0));
+      |                                       ^
+/Users/runner/work/_temp/semantic-s91/generated/semantic_consumer_s91.m:39:174: error: multiple methods named 'pixelFormat' found with mismatched result, parameter type or attributes
+   39 |  if([NSProcessInfo.processInfo.environment[@"SEMANTIC_RUN_INVERSE"]boolValue] && [call[@"textures"][@"0"] width]==ot.width && [call[@"textures"][@"0"] height]==ot.height && [call[@"textures"][@"0"] pixelFormat]==MTLPixelFormatRGBA16Float && ot.width*ot.height<=196608){SemanticInverse(q,call,snap,ref,SOut);NSData*d=[NSData dataWithContentsOfFile:[SOut stringByAppendingPathComponent:@"native-inverse-rgb.f32"]];if(d.length==ot.width*ot.height*12){id<MTLTexture>t=call[@"textures"][@"0"];if(t.width!=ot.width||t.height!=ot.height)@throw[NSException exceptionWithName:@"InverseGeometry"reason:@"Input/output shape differs"userInfo:nil];MTLTextureDescriptor*td=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:t.pixelFormat width:t.width height:t.height mipmapped:NO];td.storageMode=MTLStorageModeShared;td.usage=MTLTextureUsageShaderRead;id<MTLTexture>x=[q.device newTextureWithDescriptor:td];NSMutableData*h=[NSMutableData dataWithLength:t.width*t.height*8];const float*a=d.bytes;__fp16*b=h.mutableBytes;for(NSUInteger i=0;i<t.width*t.height;i++){for(int c=0;c<3;c++)b[i*4+c]=(__fp16)a[i*3+c];b[i*4+3]=1;}[x replaceRegion:MTLRegionMake2D(0,0,t.width,t.height)mipmapLevel:0 withBytes:h.bytes bytesPerRow:t.width*8];NSMutableArray*ir=[NSMutableArray new];for(NSArray*spec in @[@[@"skin-color",@[@9]],@[@"skin-brightness",@[@10]],@[@"skin-both",@[@9,@10]]]){NSMutableDictionary*r=[@{@"operator":spec[0]}mutableCopy];NSDictionary*s=Mutate(snap,spec[1],r);NSData*y=V2Evaluate(q,call,s,native,x,nil),*expected=[NSData dataWithContentsOfFile:[SOut stringByAppendingPathComponent:[spec[0]stringByAppendingString:@"-removed-oracle.f16"]]];r[@"candidate_vs_oracle"]=V2Metrics(y,expected);Bin(y,[spec[0]stringByAppendingString:@"-removed-estimate.f16"],shape,@"<f2");[ir addObject:r];}f[@"inverse_counterfactual_trials"]=ir;Put(f,[SOut stringByAppendingPathComponent:@"results.json"]);}}
+      |                                                                                                                                                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/IOSurface.framework/Headers/IOSurfaceObjC.h:150:29: note: one possibility
+  150 | @property (readonly) OSType pixelFormat;
+      |                             ^~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTLTexture.h:147:49: note: also found
+  147 | @property (readwrite, nonatomic) MTLPixelFormat pixelFormat;
+      |                                                 ^~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTLTexture.h:275:49: note: also found
+  275 | @property (readwrite, nonatomic) MTLPixelFormat pixelFormat;
+      |                                                 ^~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTLTexture.h:401:37: note: also found
+  401 | @property (readonly) MTLPixelFormat pixelFormat;
+      |                                     ^~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTLRenderPipeline.h:116:38: note: also found
+  116 | @property (nonatomic) MTLPixelFormat pixelFormat;
+      |                                      ^~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTLRenderPipeline.h:555:38: note: also found
+  555 | @property (nonatomic) MTLPixelFormat pixelFormat;
+      |                                      ^~~~~~~~~~~
+/Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Metal.framework/Headers/MTL4RenderPipeline.h:49:38: note: also found
+   49 | @property (nonatomic) MTLPixelFormat pixelFormat;
+      |                                      ^~~~~~~~~~~
+1 warning and 1 error generated.

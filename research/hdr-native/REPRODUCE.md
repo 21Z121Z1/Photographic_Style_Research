@@ -210,3 +210,10 @@ scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_display_diag
 gh run view 39435568710 --repo 21Z121Z1/Photographic_Style_Research --log-failed
 ```
 完整显示、亮度分层与支持边界见evidence/s90/run/analysis.json、native-checkpoint-12.json、codec-versions.json和phase-summary.json。密文previews.tar.gz.gpg含10bit三档ideal/native/difference×8 contact及数值见证；差图放大仅用于诊断。VM没有解码图像；没有完整12bit HEIC或EXR交付，不把SHA等同文件已持久保存。
+
+
+S91：source c27610d0dd63ca70f6bca4acfe7f9c9068756df5，run_semantic_s91.py/inputs_s91.json/.github/workflows/semantic-native-s91.yml。原源码可复现pixelFormat类型冲突，不修改它。输入只允许新加密包+临时session secret，禁止提交人物明文。原ZIP在私有日本存储runs/39474288686/；连接选择保存在工作目录的storage-jp-20261021.json。公开证据验证入口为evidence/s91/run/archive-receipt.json、manifest.json、build.log和closure.json，精确private成员SHA在receipt；原私钥仅本机GPG使用，未上传。原生失败日志命令：
+```bash
+gh run view 39474288686 --repo 21Z121Z1/Photographic_Style_Research --log-failed
+```
+归档通过短期签名URL在日本直接写独占.part，provider长度/SHA通过后原子改名；HK仅接收public小文本，通过SSH读取cipher流做GPG/tar hash。收尾脚本的自动重跑原生选项始终关闭；核验失败保留现场。具体中断保护的首次nohup启动未形成进程，之后由前台scope实际执行归档/清理，完成状态见closure；不宣称先前后台监控成功。

@@ -153,3 +153,6 @@ S89更新：5张真实独立HDR目标均已完成原尺寸像素计算，SDR全0
 
 
 S90更新：最差IMG2600的完整固定ACES诊断已完成（h8像素误差p99=1/255，>2码267个，最大8码），这是中性SDR预览而非HDR屏幕验收；原SDR完整0差。真实HDR屏幕按已有headroom1/2/8/环境方案查看暗部色块与23个>4码极值，确认观看条件记录，不能用本预览推物理scene精度。12bit实编码但当前26A434 aux gain getter=nil：先做runner独立item解码/aux-tmap getter控制再定位，不直接归到“只能实机”。全尺寸语义和GTM/LTM分离质量仍可runner推进。相机同帧曲线/统计、Studio原统计、配对RAW继续待实机。
+
+
+S91补充：原尺寸语义探针在编译guard处失败，尚无新consumer或逆解像素结果；先在runner以显式id<MTLTexture>修复pixelFormat类型冲突，再测原尺寸坐标ROI，不改旧模型。日本存储已实际保存并核验本run原ZIP/GPG，可容纳后续较大密文。该编译问题可runner解决，不归到实机。相机同帧曲线/统计、Studio原统计、RAW与HDR屏幕清单不变。

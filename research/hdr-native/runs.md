@@ -219,3 +219,6 @@ S89：[39430695395](https://github.com/21Z121Z1/Photographic_Style_Research/acti
 
 
 S90：[39435568710](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39435568710)，source0a2a4fe66a63e564504926b30110a95820bb1133，research/vm-native-20261020-hdr-s90，26A434/image20261012.0260.1；run=failure，10bit完整诊断完成，12bit实际编码/SDR0但原生gain=nil退出5。h8完整ACES像素p99=1码，99.09154%≤1码，267像素>2码，最大8码；亮度分层保留所有非正数/极值。31汇总成员和1份GPG已验，原始ZIP已归档，临时分支按引用检查清理，无secret/release。未归档新完整载体/EXR，不能宣称12bit HDR有效或A/scene通过。
+
+
+S91：[39474288686](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39474288686)，source c27610d0dd63ca70f6bca4acfe7f9c9068756df5，research/vm-native-20261021-semantic-s91，26A434/image20261012.0260.1。failure=生成ObjC guard的pixelFormat未指定MTLTexture类型；consumer/逆解未执行。原生2016×1512 matte/bitmap行标尺完成；两份原ZIP直接日本落盘，12 public成员、7源码、GPG/2 private成员均验。本次secret/release/tag/临时branch已按引用检查清理。

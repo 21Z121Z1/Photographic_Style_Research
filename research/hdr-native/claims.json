@@ -3712,9 +3712,89 @@
         }
       ],
       "run_id": 39435568710
+    },
+    {
+      "id": "HDR-126",
+      "category": "semantic/native-scale-S91",
+      "status": "已验证数值",
+      "claim": "日本私有存储62文件/125133909B逐个SHA相等，密文+研究文本；原件/历史/私钥不移动删除。新S91原ZIP直接日本存储并经provider/GPG/manifest核验，HK未物化完整ZIP或人物明文。",
+      "os_build": "26A434",
+      "run_id": 39474288686,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s91/storage.json",
+          "line": 1,
+          "sha256": "dc6edf409ccee92b19e8772a6f917c619b4a56043734a57e9010e47da14059f4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s91/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "054d9b97aa9da285ada85383e9453a0cdb0e6c7c1f1ab4a4fcf34b0724923ab9"
+        }
+      ]
+    },
+    {
+      "id": "HDR-127",
+      "category": "semantic/native-scale-S91",
+      "status": "已验证静态",
+      "claim": "S91生成guard向id发送pixelFormat，与IOSurface/Metal返回类型冲突而编译失败；consumer/逆解未执行，须显式id<MTLTexture>。不据此改旧阈值或宣称原尺寸语义验证完成。",
+      "os_build": "26A434",
+      "run_id": 39474288686,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s91/run/build.log",
+          "line": 1,
+          "sha256": "2a56c744e027570a4db8d751ed3936d0845b243cb78fb9252c9bece28ae38cb3"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s91/phase-summary.json",
+          "line": 1,
+          "sha256": "f568d68caf9ce8c2b9365d3c371e9c64c0e341e504e815e46c33e9194fe03229"
+        }
+      ]
+    },
+    {
+      "id": "HDR-128",
+      "category": "semantic/native-scale-S91",
+      "status": "已验证数值",
+      "claim": "S91原生no-orientation matte读取2016×1512；独立梯度标尺row0=.75/row1=.25，bitmap首行较高CI y。仅用于事先选择ROI，非通用纹理朝向证明。",
+      "os_build": "26A434",
+      "run_id": 39474288686,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s91/run/bitmap-coordinate-calibration.json",
+          "line": 1,
+          "sha256": "b93b3aa2c8799929247099d517ea5a25ebd9375350f9808ea955229d80c280e0"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s91/phase-summary.json",
+          "line": 1,
+          "sha256": "f568d68caf9ce8c2b9365d3c371e9c64c0e341e504e815e46c33e9194fe03229"
+        }
+      ]
+    },
+    {
+      "id": "HDR-129",
+      "category": "semantic/native-scale-S91",
+      "status": "runner",
+      "claim": "原尺寸语义色彩/亮度/联合条件逆解仍待新探针修复后runner验证；冻结模型、global/local、Apple Log和旧mask/门槛不动。相机实际j/Studio统计/RAW/HDR屏幕仍需实机。",
+      "os_build": "26A434",
+      "run_id": 39474288686,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s91/phase-summary.json",
+          "line": 1,
+          "sha256": "f568d68caf9ce8c2b9365d3c371e9c64c0e341e504e815e46c33e9194fe03229"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s91/closure.json",
+          "line": 1,
+          "sha256": "9bdd6edece9732213d9103af0b406751a299bfbb64627635d63b8d1a83e2e4cb"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T18:07:09.216834+00:00",
+  "updated_utc": "2026-10-20T18:37:15.406632+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -4788,5 +4868,31 @@
     "acceptance_complete": false,
     "twelve_bit_native_gain_present": false,
     "whole_scope_unchanged": true
-  }
+  },
+  "semantic_native_scale_S91": {
+    "run_id": 39474288686,
+    "source_commit": "c27610d0dd63ca70f6bca4acfe7f9c9068756df5",
+    "OS_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "run_conclusion": "failure",
+    "completed": "Encrypted input verification, original matte native decode and bitmap row calibration",
+    "consumer_or_inverse_executed": false,
+    "failure": "Generated diagnostic guard sends pixelFormat to untyped id; ambiguous IOSurface OSType vs Metal MTLPixelFormat. Explicit id<MTLTexture> required. Not a numerical skin inverse failure.",
+    "native_coordinate_ramp_row0": 0.75,
+    "native_coordinate_ramp_row1": 0.25,
+    "native_matte_shape": [
+      1512,
+      2016
+    ],
+    "original_ZIPs_on_Japan": true,
+    "local_full_ZIP_copies": 0,
+    "private_GPG_and_manifest_verified": true,
+    "temporary_transport_cleaned": true,
+    "original_frozen_and_protected_files_unchanged": true,
+    "next": "New S92 derived probe with only explicit Metal texture type and transport bindings; retain S91 sources/results, no lattice search",
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "engineering_accepted": false
 }

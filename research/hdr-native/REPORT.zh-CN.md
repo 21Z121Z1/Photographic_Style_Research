@@ -697,3 +697,16 @@ headroom1显示对照有43个像素差1码，来自应用gain/有理数offset的
 **已验证静态（归档与清理）。** run结论failure因12bit原生缺gain，10bit子结果不作整run成功。原ZIP：汇总artifact12273330314/36903B/SHA09682fe2281f192e5a22e889414986cbfb3a25d737ab6314ebe6f96b504825b9；密文artifact12272895685/222155B/SHAa3d9b7b2786d5ae3affefbacec94b382132c8d2ff924c184b25f1797b5e13362。31个public成员及源/前缀绑定、GPG/私有manifest全部核验；完整12bit载体与EXR未上传或下载，只有可复现源码、文件SHA和加密contact/见证。原静态模型/原件/consumer-goto-v8保留。临时分支经全状态PR head/base无引用与源保留检查后清理，无新secret/release。
 
 **分类边界：** 固定ACES与码值指标为已验证数值；真正HDR屏幕、同帧相机j/WithoutFaceBoost曲线及N/B/T/V/人脸统计/allocateTone/应用域、Studio原统计、RAW2679/2408仍待实机。全尺寸语义与独立GTM/LTM/semantic五路实用质量、必要时12bit直接解码控制仍可交runner。A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false；按用户新优先级停止bit-exact/33点全域紧界追查。
+
+
+### SEMANTIC-20261018 / S91：日本存储闭环与原尺寸语义探针编译边界
+
+**已验证数值（存储完整性）。** 新授权解除此前任务累计写入/下载和本机剩余空间限制，旧预算记录保留；本地Python仍用300/400MB scope，重型图像计算仍在macOS runner。已在用户日本VM的独立私有目录复制62文件/125133909B，逐文件长度和SHA全部相等；manifest SHA256为7b70c0428c2095510b408d6a222ee8d6b51e15e36c9baf5d68c4754414ba61b0。包括S5/S8和S88–S90原始密文/汇总ZIP及研究文本，不含明文人物照片或私钥。本机原件、冻结文件、历史ZIP均保留；没有为恢复空间删除历史数据。私有连接选择见工作目录hdr-native-20261019/storage-jp-20261021.json，不提交公开仓库。
+
+**已验证静态（新探针失败，不能算逆解完成）。** source c27610d0dd63ca70f6bca4acfe7f9c9068756df5，run39474288686，xcode-27/macOS27.0.1(26A434)/image20261012.0260.1。目标是保持5712×4284主图、原c/d/GTC/guides/统计/其他matte不变，在预先由原skin matte选定的两个512×384 CI请求区域上只归零SSRFG9/10，复用一输出种子/24LM而不追格点。输入密文完整SHA和GPG已过；原尺寸consumer探针编译失败：新guard对未指定类型的id发送pixelFormat，IOSurface的OSType和Metal的MTLPixelFormat返回类型冲突（run/build.log:8–9，生成代码第39行）。这是新增诊断代码的类型错误，consumer/逆解没有执行，不得把预声明ROI或旧S82指标当成全分辨率新验证。下一版仅补显式id<MTLTexture>并换传输绑定，保留S91源码与失败。
+
+**已验证数值（坐标预检）。** 同一原生no-orientation/unmanaged路径读取legacy skin matte为2016×1512。独立CILinearGradient坐标标尺render得到row0=0.75、row1=0.25，说明该bitmap第一行对应较高CI y；ROI选择因此在看输出/误差之前固定转换。这个结果只覆盖该原生bitmap路径，不推成所有纹理的通用朝向合同；具体人物选区坐标和matte像素只在密文里。
+
+**已验证静态（新存储路径实际用通）。** 两份原ZIP直接保存在日本存储runs/39474288686/，HK没有复制完整ZIP或解码人物图。aggregate artifact12288922498/7033B/SHA d2531412e88bcaeb33f1f1a516b0fbbcd4b76928ea063307168792be3040d4d3；encrypted artifact12289660799/85861B/SHA f10dd43012ac55c5f33b725a0092aba7bbcab4c44bc6995e02246c58b430b2eb。provider digest、12个public成员、7份source SHA和私有GPG/2成员manifest均核验。原ZIP保留，signed URL/凭据不落盘；通过SSH流式GPG/tar SHA核验不等于在VM运行图像处理。终态+归档+PR head/base全状态零引用+源码在研究分支保留均确认后，已删除本次secret、预发布release、tag和临时分支；见closure.json。
+
+**分类边界。** 原尺寸语义参数干预/逆解/预览仍可交macOS runner，S91没有新增这些结果。相机j最终像素EV、同帧WithoutFaceBoost/N/B/T/V/人脸直方图/allocateTone和应用域、Studio原统计、配对RAW及真实HDR显示继续待实机。GTM/LTM/semantic保持分开，Apple Log不变，旧门槛与mask不改；A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。用户已要求按实用效果推进，停止bit-exact和33点全域紧界追逐。
