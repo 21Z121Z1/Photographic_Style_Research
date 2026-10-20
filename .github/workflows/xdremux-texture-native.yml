@@ -1,60 +1,42 @@
-name: Texture producer SPI research
+name: Texture real-fixture generalization
 on:
   workflow_dispatch:
+    inputs:
+      phase:
+        type: choice
+        options: [inventory, generate]
+        default: inventory
 permissions:
   contents: write
 concurrency:
-  group: texture-producer-${{ github.ref }}
+  group: texture-fixture-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  producer:
+  fixtures:
     runs-on: xcode-27
-    timeout-minutes: 15
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: research/texture-producer-20261020
+          sparse-checkout: |
+            research/texture-producer-20261020
+            research/texture-generalization-20261020
           persist-credentials: false
-      - name: Observe producer inheritance, input dependencies and original call order
-        shell: bash
+      - uses: actions/checkout@v4
+        with:
+          repository: 21Z121Z1/XDRemux
+          ref: 18340989590d451f5676924feb03c70baa503e1a
+          path: xdremux-fixtures
+          sparse-checkout: fixtures
+          persist-credentials: false
+      - name: Run exact-source native fixture matrix
+        env:
+          MATRIX_PHASE: ${{ inputs.phase }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          bash research/texture-producer-20261020/run.sh "$RUNNER_TEMP/texture-producer-evidence"
-      - name: Bind text evidence to exact source
+          python3 research/texture-generalization-20261020/matrix.py xdremux-fixtures/fixtures "$RUNNER_TEMP/texture-fixture-evidence" --phase "$MATRIX_PHASE"
+      - name: Preserve fresh results and failure evidence
         if: always()
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          import base64,hashlib,json,os,pathlib,zlib
-          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'texture-producer-evidence'
-          p.mkdir(exist_ok=True)
-          rows=[]
-          for f in sorted(p.rglob('*')):
-              if not f.is_file() or f.suffix not in {'.json','.txt','.log','.heic','.l8','.bplist','.png'}:continue
-              rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
-              encoded=base64.b64encode(zlib.compress(f.read_bytes(),9)).decode('ascii')
-              print('PRODUCER_FILE_BEGIN '+str(f.relative_to(p)))
-              for offset in range(0,len(encoded),512):print(encoded[offset:offset+512])
-              print('PRODUCER_FILE_END '+str(f.relative_to(p)))
-          manifest={'schema':'texture-producer-evidence-v1','head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'photos_used':False,'apple_implementation_patched':False,'files':rows}
-          (p/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
-          print(json.dumps(manifest,indent=2))
-          PY
-      - name: Preserve newly generated public results on an isolated output branch
         env:
           GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          python3 research/texture-producer-20261020/publish_results.py "$RUNNER_TEMP/texture-producer-evidence"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: texture-producer-text
-          path: |
-            ${{ runner.temp }}/texture-producer-evidence/*.json
-            ${{ runner.temp }}/texture-producer-evidence/*.txt
-            ${{ runner.temp }}/texture-producer-evidence/*.log
-            ${{ runner.temp }}/texture-producer-evidence/*.heic
-            ${{ runner.temp }}/texture-producer-evidence/*.l8
-            ${{ runner.temp }}/texture-producer-evidence/*.png
-          retention-days: 1
+        run: python3 research/texture-generalization-20261020/publish.py "$RUNNER_TEMP/texture-fixture-evidence"
