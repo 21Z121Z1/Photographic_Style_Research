@@ -156,3 +156,6 @@ S90更新：最差IMG2600的完整固定ACES诊断已完成（h8像素误差p99=
 
 
 S91补充：原尺寸语义探针在编译guard处失败，尚无新consumer或逆解像素结果；先在runner以显式id<MTLTexture>修复pixelFormat类型冲突，再测原尺寸坐标ROI，不改旧模型。日本存储已实际保存并核验本run原ZIP/GPG，可容纳后续较大密文。该编译问题可runner解决，不归到实机。相机同帧曲线/统计、Studio原统计、RAW与HDR屏幕清单不变。
+
+
+S92：两个原尺寸坐标512×384语义ROI已有非零native色彩/亮度控制与固定ACES预览，0.5联合p99约0.001495/0.001434EV；整consumer仍82905/75984 eligible点失败，不能称全帧通过。已排除这些固定点的粗采样翻转/平移；下一步runner诊断一输出种子初始化/搜索域/平台和严格matte采样支持，不做half格点追逐，不改原eligible/1e-3。整幅流式语义校正及跨照片验证仍可runner，不归到“只能实机”。相机j曲线/统计、Studio原统计、RAW/HDR屏幕清单不变。

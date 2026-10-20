@@ -1,0 +1,37 @@
+{
+  "original_source": "research/hdr-native/run_semantic_s91.py",
+  "original_source_commit": "c27610d0dd63ca70f6bca4acfe7f9c9068756df5",
+  "original_source_SHA256": "58d3f1f6480a5ec44e37d0837c5e944b5c771f6f6b516cb8e2dbf07e6b9670f1",
+  "derived_source_SHA256": "dc2fdcb88d7da66c12c1c453cd2a5239b9ae1a3dc160dd7ed20a62ddcf038cfe",
+  "wrapper_source_SHA256": "6d7ded8b800eabef86c95f0581679462f3728ff0aecef499d4bd932a5f80d397",
+  "exact_replacements": [
+    {
+      "old": "inputs_s91.json",
+      "new": "inputs_s92.json",
+      "count": 1
+    },
+    {
+      "old": "SEMANTIC_S91_INPUT_SESSION",
+      "new": "SEMANTIC_S92_INPUT_SESSION",
+      "count": 1
+    },
+    {
+      "old": "[call[@\"textures\"][@\"0\"] width]",
+      "new": "((id<MTLTexture>)call[@\"textures\"][@\"0\"]).width",
+      "count": 1
+    },
+    {
+      "old": "[call[@\"textures\"][@\"0\"] height]",
+      "new": "((id<MTLTexture>)call[@\"textures\"][@\"0\"]).height",
+      "count": 1
+    },
+    {
+      "old": "[call[@\"textures\"][@\"0\"] pixelFormat]",
+      "new": "((id<MTLTexture>)call[@\"textures\"][@\"0\"]).pixelFormat",
+      "count": 1
+    }
+  ],
+  "reverse_changes_equal_original": true,
+  "inverse_solver_or_frozen_model_changed": false,
+  "S91_failure_retained": true
+}

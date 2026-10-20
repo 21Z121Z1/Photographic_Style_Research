@@ -217,3 +217,7 @@ S91：source c27610d0dd63ca70f6bca4acfe7f9c9068756df5，run_semantic_s91.py/inpu
 gh run view 39474288686 --repo 21Z121Z1/Photographic_Style_Research --log-failed
 ```
 归档通过短期签名URL在日本直接写独占.part，provider长度/SHA通过后原子改名；HK仅接收public小文本，通过SSH读取cipher流做GPG/tar hash。收尾脚本的自动重跑原生选项始终关闭；核验失败保留现场。具体中断保护的首次nohup启动未形成进程，之后由前台scope实际执行归档/清理，完成状态见closure；不宣称先前后台监控成功。
+
+
+S92复现source13780b9b6bca8bf5a5ac6dcb846696664055f6bc，run_semantic_s92.py/inputs_s92.json/semantic-native-s92.yml。wrapper对原S91驱动仅作精确类型/传输绑定替换，S92-binding.json与S92-derived-driver.txt可反向核对。输入仍须使用加密+临时session secret，清理后的旧asset不能假定永久可取；创建新传输绑定时保留旧输入SHA，不修改原源码。完整原始ZIP在私有日本存储runs/39477063576，receipt列provider/private成员SHA；HK只保存public证据。
+本地小型参数核对没有解码图像：从已核验cipher流读取bytes-5.bin、copy-control和18点空间扰动JSON，见evidence/s92/context-metadata.json；source0/skin11 affines是原生参数，不是由图像对齐拟合。原尺寸图像重放和统计均在runner；源图尺寸5712×4284，已测试的每块ROI仅512×384，不能把原生inverse JSON full_frame标志用于整幅验收。

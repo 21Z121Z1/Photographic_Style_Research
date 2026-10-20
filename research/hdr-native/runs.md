@@ -222,3 +222,6 @@ S90：[39435568710](https://github.com/21Z121Z1/Photographic_Style_Research/acti
 
 
 S91：[39474288686](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39474288686)，source c27610d0dd63ca70f6bca4acfe7f9c9068756df5，research/vm-native-20261021-semantic-s91，26A434/image20261012.0260.1。failure=生成ObjC guard的pixelFormat未指定MTLTexture类型；consumer/逆解未执行。原生2016×1512 matte/bitmap行标尺完成；两份原ZIP直接日本落盘，12 public成员、7源码、GPG/2 private成员均验。本次secret/release/tag/临时branch已按引用检查清理。
+
+
+S92：[39477063576](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39477063576)，source13780b9b6bca8bf5a5ac6dcb846696664055f6bc，research/vm-native-20261021-semantic-s92，26A434/image20261012.0260.1，success。两个原尺寸ROI控制完成、目标外参数差0/纹理SHA不变/18次预览SHA不变。半强度联合p99约0.001495/0.001434EV；完整consumer仍82905/75984失败，旧门槛未过。原ZIP日本落盘，19 public及GPG/143 private成员已验，派生源码绑定已验；本次secret/release/tag/branch已清理。

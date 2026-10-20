@@ -3792,9 +3792,109 @@
           "sha256": "9bdd6edece9732213d9103af0b406751a299bfbb64627635d63b8d1a83e2e4cb"
         }
       ]
+    },
+    {
+      "id": "HDR-130",
+      "category": "semantic/native-scale-S92",
+      "status": "已验证静态",
+      "claim": "S92仅显式Metal纹理属性类型和临时输入绑定派生原S91驱动，反向替换恢复原SHA；旧求解器/模型不改。",
+      "os_build": "26A434",
+      "run_id": 39477063576,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s92/run/S92-binding.json",
+          "line": 1,
+          "sha256": "c221b8a36b12cdf7b47fc67f8ae478362700fed73bdaf12c86c3f645f550d530"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s92/run/S92-derived-driver.txt",
+          "line": 1,
+          "sha256": "dc2fdcb88d7da66c12c1c453cd2a5239b9ae1a3dc160dd7ed20a62ddcf038cfe"
+        }
+      ]
+    },
+    {
+      "id": "HDR-131",
+      "category": "semantic/native-scale-S92",
+      "status": "已验证数值",
+      "claim": "两个原尺寸坐标512×384 ROI原生half重放零差；只归零SSRFG9/10，目标外参数差0、前后可读纹理/缓冲SHA不变。不是整幅24MP验证。",
+      "os_build": "26A434",
+      "run_id": 39477063576,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s92/run/analysis.json",
+          "line": 1,
+          "sha256": "1526f346cae55860b12c8bd2be10e4bddf1df344ea34cb2b64913736221b2221"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s92/phase-summary.json",
+          "line": 1,
+          "sha256": "03982743f927dd1cc6a56f17f4eb35ebf6123d6ec7991aba53cadcaedffbb1a4"
+        }
+      ]
+    },
+    {
+      "id": "HDR-132",
+      "category": "semantic/native-scale-S92",
+      "status": "已验证数值",
+      "claim": "0.5联合原生反事实对照p99亮度差0.001495/0.001434EV，选择的校正往返max≤2.98e-8；18次固定ACES显示输入SHA相等。完整consumer仍82905/75984失败，不能据效果差小豁免旧门槛。",
+      "os_build": "26A434",
+      "run_id": 39477063576,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s92/run/analysis.json",
+          "line": 1,
+          "sha256": "1526f346cae55860b12c8bd2be10e4bddf1df344ea34cb2b64913736221b2221"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s92/phase-summary.json",
+          "line": 1,
+          "sha256": "03982743f927dd1cc6a56f17f4eb35ebf6123d6ec7991aba53cadcaedffbb1a4"
+        }
+      ]
+    },
+    {
+      "id": "HDR-133",
+      "category": "semantic/native-scale-S92",
+      "status": "已验证数值",
+      "claim": "原生ROI source0/skin11归一化affine为[1/512,float32(1/384),0,0]、输出origin0；原输入复制half零差、18扰动仅同点响应，不支持粗坐标错误解释；非全域证明，初始化/搜索域仍待诊断。",
+      "os_build": "26A434",
+      "run_id": 39477063576,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s92/context-metadata.json",
+          "line": 1,
+          "sha256": "cec2e1c8cb6fef069362eb63335cfbf5af577ac986180368c9c52ececd803d72"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s92/phase-summary.json",
+          "line": 1,
+          "sha256": "03982743f927dd1cc6a56f17f4eb35ebf6123d6ec7991aba53cadcaedffbb1a4"
+        }
+      ]
+    },
+    {
+      "id": "HDR-134",
+      "category": "semantic/native-scale-S92",
+      "status": "已验证静态",
+      "claim": "S92原始ZIP直接日本保存，19 public与GPG/143 private成员及源码绑定全验，HK无完整ZIP/图片解码；终态/PR零引用/源码保留后清理仅本次secret/release/tag/分支。",
+      "os_build": "26A434",
+      "run_id": 39477063576,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s92/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "7686910eea5adbed1128f28e54eb5365a85389b052a9003bf358b9cf1e00f651"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s92/closure.json",
+          "line": 1,
+          "sha256": "541ab540ab0ff5eef371cac284188f816221a947beb18ad473ecafec17962cec"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T18:37:15.406632+00:00",
+  "updated_utc": "2026-10-20T18:55:46.782730+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -4894,5 +4994,292 @@
     "A_phase_complete": false,
     "acceptance_complete": false
   },
-  "engineering_accepted": false
+  "engineering_accepted": false,
+  "semantic_native_scale_S92": {
+    "run_id": 39477063576,
+    "source_commit": "13780b9b6bca8bf5a5ac6dcb846696664055f6bc",
+    "OS_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "run_conclusion": "success",
+    "source_canvas": [
+      4284,
+      5712
+    ],
+    "validated_ROIs": 2,
+    "ROI_shape": [
+      384,
+      512
+    ],
+    "unique_full_frame_coverage_not_claimed": true,
+    "inverse_RT": [
+      {
+        "ROI": 0,
+        "failed_eligible": 82905,
+        "max_relative": 1.1411974430084229,
+        "mask_coverage": 0.9631093343098959
+      },
+      {
+        "ROI": 1,
+        "failed_eligible": 75984,
+        "max_relative": 2.4658572673797607,
+        "mask_coverage": 0.8174591064453125
+      }
+    ],
+    "half_strength": [
+      {
+        "ROI": 0,
+        "operator": "skin-color",
+        "strength": 0.5,
+        "pixels": 196608,
+        "native_affected_eligible": 15010,
+        "relative_error_affected_eligible": {
+          "n": 15010,
+          "p50": 0.00033419452797041793,
+          "p99": 0.0013849304649678615,
+          "max": 0.0027827366142515924
+        },
+        "EV_error_affected_eligible": {
+          "n": 15010,
+          "p50": 6.481629448906545e-05,
+          "p99": 0.0014707142731030102,
+          "max": 0.0025865601884204757
+        },
+        "EV_excluded_affected_eligible": 0,
+        "old_gt_1e3_pixels": 1424,
+        "ratio_invalid": 3,
+        "max_abs": 0.0012205243110656738,
+        "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+        "chromaticity_max_abs_vs_oracle": 0.0010780692100524902,
+        "luma_gradient_error": {
+          "n": 392320,
+          "p50": 0.0,
+          "p99": 0.0004590370774636099,
+          "max": 0.0015403760716666826
+        },
+        "luma_laplacian_error": {
+          "n": 194820,
+          "p50": 0.0,
+          "p99": 0.001416708433292792,
+          "max": 0.004825490104512387
+        },
+        "native_unchanged_pixels": 181598,
+        "max_change_on_native_unchanged_pixels": 0.0009752810001373291
+      },
+      {
+        "ROI": 0,
+        "operator": "skin-brightness",
+        "strength": 0.5,
+        "pixels": 196608,
+        "native_affected_eligible": 5400,
+        "relative_error_affected_eligible": {
+          "n": 5400,
+          "p50": 0.0,
+          "p99": 0.00208987581902459,
+          "max": 0.004589331678774306
+        },
+        "EV_error_affected_eligible": {
+          "n": 5400,
+          "p50": 0.0,
+          "p99": 0.0015563610751662298,
+          "max": 0.0020012257959694797
+        },
+        "EV_excluded_affected_eligible": 0,
+        "old_gt_1e3_pixels": 510,
+        "ratio_invalid": 3,
+        "max_abs": 0.0003052353858947754,
+        "chosen_transform_roundtrip_max_abs": 1.4901161193847656e-08,
+        "chromaticity_max_abs_vs_oracle": 0.0005393624305725098,
+        "luma_gradient_error": {
+          "n": 392320,
+          "p50": 0.0,
+          "p99": 1.2760787174131982e-05,
+          "max": 0.00020671473220248981
+        },
+        "luma_laplacian_error": {
+          "n": 194820,
+          "p50": 0.0,
+          "p99": 5.407838055804616e-05,
+          "max": 0.0005055065706496553
+        },
+        "native_unchanged_pixels": 190915,
+        "max_change_on_native_unchanged_pixels": 9.161233901977539e-05
+      },
+      {
+        "ROI": 0,
+        "operator": "skin-both",
+        "strength": 0.5,
+        "pixels": 196608,
+        "native_affected_eligible": 20410,
+        "relative_error_affected_eligible": {
+          "n": 20410,
+          "p50": 0.0002964617568319362,
+          "p99": 0.0015709160472200153,
+          "max": 0.004589331678774306
+        },
+        "EV_error_affected_eligible": {
+          "n": 20410,
+          "p50": 2.883472658228742e-05,
+          "p99": 0.0014948864422152039,
+          "max": 0.0025865601884204757
+        },
+        "EV_excluded_affected_eligible": 0,
+        "old_gt_1e3_pixels": 1934,
+        "ratio_invalid": 3,
+        "max_abs": 0.0012205243110656738,
+        "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+        "chromaticity_max_abs_vs_oracle": 0.0010780692100524902,
+        "luma_gradient_error": {
+          "n": 392320,
+          "p50": 0.0,
+          "p99": 0.0004590370774636099,
+          "max": 0.0015403760716666826
+        },
+        "luma_laplacian_error": {
+          "n": 194820,
+          "p50": 0.0,
+          "p99": 0.001416708433292792,
+          "max": 0.004825490104512387
+        },
+        "native_unchanged_pixels": 175905,
+        "max_change_on_native_unchanged_pixels": 0.0009752810001373291
+      },
+      {
+        "ROI": 1,
+        "operator": "skin-color",
+        "strength": 0.5,
+        "pixels": 196608,
+        "native_affected_eligible": 24270,
+        "relative_error_affected_eligible": {
+          "n": 24270,
+          "p50": 0.0003172851699720032,
+          "p99": 0.0016491287888492732,
+          "max": 0.011424715785733218
+        },
+        "EV_error_affected_eligible": {
+          "n": 24270,
+          "p50": 4.175833203048209e-05,
+          "p99": 0.0014733758234209732,
+          "max": 0.006701870193684061
+        },
+        "EV_excluded_affected_eligible": 0,
+        "old_gt_1e3_pixels": 2420,
+        "ratio_invalid": 1902,
+        "max_abs": 0.0021864771842956543,
+        "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+        "chromaticity_max_abs_vs_oracle": 0.0021581053733825684,
+        "luma_gradient_error": {
+          "n": 392320,
+          "p50": 0.0,
+          "p99": 0.00048753734980081946,
+          "max": 0.0016615255648978478
+        },
+        "luma_laplacian_error": {
+          "n": 194820,
+          "p50": 0.0,
+          "p99": 0.0016598984103130465,
+          "max": 0.006566520245174512
+        },
+        "native_unchanged_pixels": 172338,
+        "max_change_on_native_unchanged_pixels": 0.0014621913433074951
+      },
+      {
+        "ROI": 1,
+        "operator": "skin-brightness",
+        "strength": 0.5,
+        "pixels": 196608,
+        "native_affected_eligible": 31833,
+        "relative_error_affected_eligible": {
+          "n": 31833,
+          "p50": 0.0002530982449919351,
+          "p99": 0.0017730411454206295,
+          "max": 0.013245681102433874
+        },
+        "EV_error_affected_eligible": {
+          "n": 31833,
+          "p50": 1.692418079556597e-05,
+          "p99": 0.0013903940090703765,
+          "max": 0.002573702205791232
+        },
+        "EV_excluded_affected_eligible": 0,
+        "old_gt_1e3_pixels": 1761,
+        "ratio_invalid": 2130,
+        "max_abs": 0.0011412985622882843,
+        "chosen_transform_roundtrip_max_abs": 7.450580596923828e-09,
+        "chromaticity_max_abs_vs_oracle": 0.0005599856376647949,
+        "luma_gradient_error": {
+          "n": 392320,
+          "p50": 0.0,
+          "p99": 3.458127362349525e-05,
+          "max": 0.0005380638330219692
+        },
+        "luma_laplacian_error": {
+          "n": 194820,
+          "p50": 0.0,
+          "p99": 8.930383206899595e-05,
+          "max": 0.0017724308330835173
+        },
+        "native_unchanged_pixels": 151187,
+        "max_change_on_native_unchanged_pixels": 0.00048810243606567383
+      },
+      {
+        "ROI": 1,
+        "operator": "skin-both",
+        "strength": 0.5,
+        "pixels": 196608,
+        "native_affected_eligible": 56103,
+        "relative_error_affected_eligible": {
+          "n": 56103,
+          "p50": 0.000275402158906909,
+          "p99": 0.0017178454659390785,
+          "max": 0.013245681102433874
+        },
+        "EV_error_affected_eligible": {
+          "n": 56103,
+          "p50": 2.0786842678605542e-05,
+          "p99": 0.0014340663812284482,
+          "max": 0.006701870193684061
+        },
+        "EV_excluded_affected_eligible": 0,
+        "old_gt_1e3_pixels": 4181,
+        "ratio_invalid": 2130,
+        "max_abs": 0.0021864771842956543,
+        "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+        "chromaticity_max_abs_vs_oracle": 0.0021581053733825684,
+        "luma_gradient_error": {
+          "n": 392320,
+          "p50": 0.0,
+          "p99": 0.0004877517025586997,
+          "max": 0.0016615255648978478
+        },
+        "luma_laplacian_error": {
+          "n": 194820,
+          "p50": 0.0,
+          "p99": 0.0016599786231839084,
+          "max": 0.006566520245174512
+        },
+        "native_unchanged_pixels": 126917,
+        "max_change_on_native_unchanged_pixels": 0.0014621913433074951
+      }
+    ],
+    "native_target_only_outside_bytes": 0,
+    "all_readable_input_bindings_and_buffers_SHA_unchanged": true,
+    "preview_SHA_checks": 18,
+    "input_space_qualified_by_native_CI_comparison": true,
+    "coordinate_checks": {
+      "AIR_source": "repo/research/vm-native/runner/consumer-structured-v8.metal:608",
+      "affine_buffer5_offset16_source0_and128_skin11": "[1/512,float32(1/384),0,0]",
+      "output_origin_u16": [
+        0,
+        0
+      ],
+      "native_copy_control_differing_components": 0,
+      "native_perturbations": 18,
+      "different_outside_same_input_pixel": 0,
+      "global_pointwise_or_rounding_proof": false
+    },
+    "next": "Diagnose old one-seed solver robustness/search domain on runner; do not chase bit-exact or remove failures. Fullframe streaming and strict matte support/edges remain runner work.",
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  }
 }

@@ -710,3 +710,36 @@ headroom1显示对照有43个像素差1码，来自应用gain/有理数offset的
 **已验证静态（新存储路径实际用通）。** 两份原ZIP直接保存在日本存储runs/39474288686/，HK没有复制完整ZIP或解码人物图。aggregate artifact12288922498/7033B/SHA d2531412e88bcaeb33f1f1a516b0fbbcd4b76928ea063307168792be3040d4d3；encrypted artifact12289660799/85861B/SHA f10dd43012ac55c5f33b725a0092aba7bbcab4c44bc6995e02246c58b430b2eb。provider digest、12个public成员、7份source SHA和私有GPG/2成员manifest均核验。原ZIP保留，signed URL/凭据不落盘；通过SSH流式GPG/tar SHA核验不等于在VM运行图像处理。终态+归档+PR head/base全状态零引用+源码在研究分支保留均确认后，已删除本次secret、预发布release、tag和临时分支；见closure.json。
 
 **分类边界。** 原尺寸语义参数干预/逆解/预览仍可交macOS runner，S91没有新增这些结果。相机j最终像素EV、同帧WithoutFaceBoost/N/B/T/V/人脸直方图/allocateTone和应用域、Studio原统计、配对RAW及真实HDR显示继续待实机。GTM/LTM/semantic保持分开，Apple Log不变，旧门槛与mask不改；A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。用户已要求按实用效果推进，停止bit-exact和33点全域紧界追逐。
+
+
+### SEMANTIC-20261018 / S92：原尺寸坐标的皮肤反事实与逆解初始化边界
+
+**已验证静态（修复范围）。** source13780b9b6bca8bf5a5ac6dcb846696664055f6bc，run39477063576 success，xcode-27/26A434/image20261012.0260.1。原S91驱动字节SHA58d3f1f6480a5ec44e37d0837c5e944b5c771f6f6b516cb8e2dbf07e6b9670f1保持；S92只替换输入计划/临时secret名称及三个id→MTLTexture显式属性类型。派生全文、逐项替换和反向还原校验见S92-binding.json、S92-derived-driver.txt，原S5/V7求解器与所有冻结模型未修改。
+
+**已验证数值（原生控制，非整幅验收）。** 主图CI extent实际为5712×4284，未缩小；两个512×384请求区域在读输出之前由原skin matte确定。两次完整原生retained-PSO重放均half零差；texture0/11实际为512×384，guide5/6为256×192，thumbnail1分别93×70/92×70。每次只归零672B参数中offset592/596（SSRFG9/10），目标外字节差0，前后所有可读取绑定/缓冲SHA不变；GTM/LTM、其他matte、GTC和统计保持同一捕获上下文。原生色彩/亮度/联合干预分别改变half分量数如下，改变不等于真值已恢复：
+
+|ROI|去皮肤色彩|去皮肤亮度|联合|
+|---|---:|---:|---:|
+|0|32729|13510|46239|
+|1|57287|122625|179912|
+
+**已验证数值（实用半强度，比较对象为同上下文的原生参数反事实）。** 复用S82定义C=y+[F0(xhat)-F(xhat)]，正RGB域内做0/.5/1的log-RGB效果强度插值，不插值Apple参数；域外原像素保留并计数。下面p99只在预声明旧eligible且原生目标算子确实改变的像素上统计，不用大面积背景稀释。0.5是预先默认值，不根据本run结果改选：
+
+|ROI/算子|受影响eligible像素|p99 EV|最大EV|RGB相对误差>1e-3像素|选择的校正往返max abs|
+|---|---:|---:|---:|---:|---:|
+|0/skin-color|15010|0.0014707142731030102|0.0025865601884204757|1424|2.9802322387695312e-08|
+|0/skin-brightness|5400|0.0015563610751662298|0.0020012257959694797|510|1.4901161193847656e-08|
+|0/skin-both|20410|0.0014948864422152039|0.0025865601884204757|1934|2.9802322387695312e-08|
+|1/skin-color|24270|0.0014733758234209732|0.006701870193684061|2420|2.9802322387695312e-08|
+|1/skin-brightness|31833|0.0013903940090703765|0.002573702205791232|1761|7.450580596923828e-09|
+|1/skin-both|56103|0.0014340663812284482|0.006701870193684061|4181|2.9802322387695312e-08|
+
+联合0.5的p99约0.001495/0.001434EV，最大0.002587/0.006702EV，是有用的实用误差结果；不能称99%场景恢复或旧RGB门槛通过。全部6路0.5选择校正的往返max≤2.98023224e-8，是自选gain控制的自洽，不是完整consumer逆往返。18次固定ACES1.0 SDR Video/LinearP3-D65→sRGB/0EV预览前后输入SHA全部相同；原生输出与CI P3渲染对比均满足旧1e-5颜色域检查。预览、原始像素/参数和mask只在密文中。
+
+**已验证数值（大残差明确保留）。** 旧一输出种子/24LM在ROI0/1的完整consumer eligible内仍有82905/75984点超过1e-3，最大相对误差1.141197443/2.465857267，覆盖率0.9631093343/0.8174591064。native-inverse.json里的full_frame=1只指512×384捕获区域，绝非整张24MP通过。上述实用效果差小不能豁免这些失败。原生反事实“恰好没变化”的像素也不保证输出完全不变：0.5最大变化在ROI0/1联合达0.0009752810/0.0014621913；这个集合含matte正值但half舍入未变的像素，不能当作严格matte外背景来宣称串色或背景零差。严格采样支持/边缘分层与完整原帧仍需runner测量。
+
+**已验证静态+数值（排除粗坐标错位，不是全域证明）。** AIR对应source consumer-structured-v8.metal:608–619、653–660、1342：buffer5+16/+128给source0/skin11归一化affine，输出写到buffer5+160 ushort2+gid。本次两ROI实参均[1/512,float32(1/384),0,0]、输出origin[0,0]；原texture0复制重放half零差，18个预定义输入点/通道扰动都只影响同位置的一个输出，未见翻转/平移。证据不支持把大失败归咎于粗坐标错误，但这不是整个有限域、所有纹理或fast数学的全域证明。下一步检查固定旧求解器的初始化/搜索域/导数平台，属于实用鲁棒性；不重启half格点搜索，也不把“初始化落在clamp”这个尚未检验的解释写成已证原因。
+
+**已验证静态（日本归档与清理）。** aggregate artifact12290035513/31339B/SHA b189692f3fc9a511d8515d79d6d418271b95074cb2c1da17fc98c62121b40d3c；private artifact12289627351/50786968B/SHA6cbc5de765bd6546aeb9723b4540def21fa56e2c3b674345e4f97e5d436d0c8b。两份原ZIP直接日本runs/39477063576保存，provider digest、19个public成员、原/派生源码绑定及GPG/143个private成员全部核验，HK未下载完整ZIP或解码图像。终态、PR全状态head/base零引用和代码在研究分支保留确认后，本次secret/release/tag/临时branch均清理，见closure.json。
+
+**分类边界。** 两块原尺寸坐标ROI已验证数值；整幅、严格matte支持、求解器冷启动和更多真实样张仍可交runner。相机实际j/WithoutFaceBoost/N/B/T/V/人脸统计/allocateTone/应用域、Studio原统计、RAW和HDR屏幕仍待实机。Apple Log不变，GTM/LTM/semantic保持分开；A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。
