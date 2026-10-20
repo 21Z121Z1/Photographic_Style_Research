@@ -37,11 +37,19 @@ def run(args, root, name, env=None, timeout=180):
     return code
 
 
+def diagnose_crash(args,root,name,env):
+    debug_args=list(args)
+    original=Path(args[2])
+    if original.exists():shutil.copyfile(original,original.with_name(original.stem+'.first-failure.json'))
+    debug_args[2]=original.with_name(original.stem+'.debugger.json')
+    return run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','-k','quit','--',*debug_args],root,name+'-crash-backtrace',env)
+
+
 def require(args, root, name, env=None):
     code = run(args, root, name, env)
     if code != 0:
         if isinstance(code,int) and code<0 and Path(args[0]).name=='stats':
-            run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','-k','quit','--',*args],root,name+'-crash-backtrace',env)
+            diagnose_crash(args,root,name,env)
         raise RuntimeError(name + ' exit ' + str(code))
 
 
@@ -99,7 +107,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('fixtures', type=Path)
     parser.add_argument('output', type=Path)
-    parser.add_argument('--phase', choices=['inventory', 'generate', 'diagnose'], default='inventory')
+    parser.add_argument('--phase', choices=['inventory', 'generate', 'diagnose', 'stress'], default='inventory')
     parser.add_argument('--selection', choices=['smoke','all'],default='all')
     args = parser.parse_args()
     out = args.output.resolve(); out.mkdir(parents=True, exist_ok=True)
@@ -109,9 +117,24 @@ def main():
     report={'schema':'texture-fixture-matrix-v1','source_head':head,'fixture_repository':'21Z121Z1/XDRemux','fixture_head':fixture_head,'phase':args.phase,'selection':args.selection,'rows':rows}
     def save(): (out/'matrix.json').write_text(json.dumps(report,indent=2)+'\n')
     save()
-    build=out/'_build';compile_tools(build,'generate' if args.phase=='diagnose' else args.phase)
+    build=out/'_build';compile_tools(build,'generate' if args.phase in ['diagnose','stress'] else args.phase)
     subprocess.run(['sw_vers'],stdout=(build/'os.txt').open('wb'),check=True)
     subprocess.run(['xcodebuild','-version'],stdout=(build/'xcode.txt').open('wb'),check=True)
+    if args.phase=='stress':
+        source=args.fixtures/'motion-photo/samsung/jpeg-ultrahdr-01.jpg'
+        for repeat in range(3):
+            directory=out/('resolution-2048-repeat-'+str(repeat));directory.mkdir()
+            row={'id':directory.name,'kind':'repeated_full_2048_pipeline','passed':False}
+            try:
+                require([build/'prepare',source,directory,2048],directory,'prepare')
+                row['input']=json.loads((directory/'input.json').read_text());row['prepare_exit']=0
+                row['acceptance']=generate_case(directory,build,head);row['passed']=True
+            except Exception as error:
+                row['failure']=str(error) or type(error).__name__
+                (directory/'failure.json').write_text(json.dumps({'source_head':head,'failure':row['failure'],'traceback':traceback.format_exc()},indent=2)+'\n')
+            rows.append(row);save()
+        report.update({'case_count':3,'passed_case_count':sum(r['passed'] for r in rows),'all_cases_passed':all(r['passed'] for r in rows)})
+        save();return 0 if report['all_cases_passed'] else 1
     if args.phase=='diagnose':
         directory=out/'resolution-2048-diagnostic';directory.mkdir()
         source=args.fixtures/'motion-photo/samsung/jpeg-ultrahdr-01.jpg'
@@ -124,7 +147,7 @@ def main():
             command=[build/'stats',directory/'working.png',directory/(name+'.json'),1,'Studio',0]
             code=run(command,directory,name,env)
             if isinstance(code,int) and code<0:
-                run(['xcrun','lldb','--batch','-o','run','-k','thread backtrace all','-k','quit','--',*command],directory,name+'-crash-backtrace',env)
+                diagnose_crash(command,directory,name,env)
             variants.append({'allocator_MiB':budget,'exit':code,'report':name+'.json'})
         report.update({'diagnostic_only':True,'all_cases_passed':False,'rows':[{'id':directory.name,'kind':'native_crash_diagnostic','variants':variants}]})
         save();return 0
