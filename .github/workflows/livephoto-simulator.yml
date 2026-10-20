@@ -1,0 +1,39 @@
+name: Live Photo Simulator capability probe
+on:
+  push:
+    branches: [research/livephoto-simulator-20261020]
+    paths:
+      - '.github/workflows/livephoto-simulator.yml'
+      - 'tools/livephoto_simulator/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: livephoto-simulator-capability
+  cancel-in-progress: true
+jobs:
+  capability:
+    runs-on: macos-26
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: tools/livephoto_simulator
+      - name: Probe real iOS Simulator frameworks and gates
+        run: bash tools/livephoto_simulator/run.sh
+      - name: Upload diagnostic text only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: livephoto-simulator-capability
+          path: |
+            probe-results/*.json
+            probe-results/*.jsonl
+            probe-results/*.txt
+            probe-results/*.md
+            probe-results/*.plist
+          retention-days: 1
+      - name: Stop simulator
+        if: always()
+        run: if [ -n "$SIM_UDID" ]; then xcrun simctl shutdown "$SIM_UDID" || true; fi
