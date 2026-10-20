@@ -1,0 +1,36 @@
+{
+  "status": "已验证静态",
+  "os_build": "26A434",
+  "source_file": "repo/research/hdr-native/evidence/s75/PhotoImaging-source.txt",
+  "source_SHA256": "0cd6dc56728c5331250c7b6c17670ba881311d1212b72dfb1ff1ad8cda6cd735",
+  "S72_native_CF_and_selector_binding": "repo/research/hdr-native/evidence/s72/run/native.json",
+  "useLightMap_trace": [
+    "keyCF0x1ee270178 -> boolValue -> w23 at0x1cbeef7f8",
+    "w23 savedsp+0x58 at0x1cbeef89c",
+    "loadedw8 sp+0x58 at0x1cbeefa78 -> capturedbyte sp+0x150 at0x1cbeefa7c; block base sp+0x90 => offset0xc0",
+    "block0x1cbeefd50: ldrb offset0xc0 at0x1cbef0128 / cmp1 / b.ne0x1cbef01d4",
+    "true branch dictionary stats/xstats -> setInputStatisticsByStatsType:0x1cbef0154 and ByStatsKey:0x1cbef0180; also two light-map texture setters, names pending native binding"
+  ],
+  "stats_presence_type_selection": [
+    "w26=2 at0x1cbeef854",
+    "stats keyCF0x1ee2621d8 lookup0x1cbeef9b0..9c4",
+    "cmpstats_nil0x1cbeef9cc -> cincw8,w26,eq0x1cbeef9d0 => missing3,present2",
+    "type storedsp+0x24 -> w3 at0x1cbeefb24; shared renderer queue/type/style/block call0x1cbeefb2c"
+  ],
+  "input_slots_proved_from_capture_and_S72_setters": {
+    "0": "main image: slot0->sp80->block+0x28->setInputImageTexture:",
+    "1": "person: slot1->sp50->block+0x40->setInputPersonMaskTexture:",
+    "2": "skin: slot2->sp48->block+0x48->setInputSkinMaskTexture:",
+    "3": "sky: slot3->sp40->block+0x50->setInputSkyMaskTexture:",
+    "4": "linear image: slot4->sp68->block+0x30->setInputLinearImageTexture:",
+    "5": "slot5->sp60->block+0x38->setInputGainMapTexture:; upstream HDR/container/domain meaning is separate, not inferred from this property name",
+    "6": "block+0x70->stub0x1d00b8a70, setter native name pending",
+    "7": "block+0x60->stub0x1d00b8cc0 in useLightMap true branch, name pending",
+    "8": "block+0x68->stub0x1d00b8cd0 in true branch, name pending"
+  },
+  "not_pixel_domain_or_c_d_physical_semantics_proof": true,
+  "native_actual_CI_allocation_capture_pending": true,
+  "A_phase_complete": false,
+  "acceptance_complete": false,
+  "S72_native_binding_SHA256": "bc8e7020e5be7ffc3036cecff5d01d27f29fbc5f2a4e748653b7641ab17902d5"
+}
