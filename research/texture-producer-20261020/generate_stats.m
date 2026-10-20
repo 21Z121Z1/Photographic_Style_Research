@@ -233,12 +233,23 @@ int main(int argc, char **argv) {
             Call(nativeContext, @"setExecutionStatus:", @[executionStatus]);
             for (NSString *stage in @[@"setup", @"prewarm", @"prepareToProcess:", @"calculateStats", @"process", @"finishProcessing"]) {
                 report[@"stage"] = stage; Write(report, out);
+                id<MTLCommandBuffer> explicitCommand = nil;
+                if ([stage isEqual:@"calculateStats"] || [stage isEqual:@"process"]) {
+                    explicitCommand = [queue commandBuffer];
+                    explicitCommand.label = [@"Texture producer " stringByAppendingString:stage];
+                    Call(nativeContext, @"setCommandBuffer:", @[explicitCommand]);
+                }
                 NSNumber *status = Call(effect, stage, [stage containsString:@":"] ? @[@0] : @[]);
                 report[stage] = status; Write(report, out);
                 if ([stage isEqual:@"setup"]) Call(effect, @"setMetalCommandQueue:", @[queue]);
                 if ([stage isEqual:@"calculateStats"] || [stage isEqual:@"process"] || [stage isEqual:@"finishProcessing"]) {
                     Call(nativeContext, @"forceCommit", @[]);
                     Call(nativeContext, @"waitForIdle", @[]);
+                }
+                if (explicitCommand) {
+                    if (explicitCommand.status == MTLCommandBufferStatusNotEnqueued || explicitCommand.status == MTLCommandBufferStatusEnqueued) [explicitCommand commit];
+                    [explicitCommand waitUntilCompleted];
+                    report[[stage stringByAppendingString:@"_command"]] = @{@"status": @(explicitCommand.status), @"error": explicitCommand.error.description ?: @""};
                 }
                 NSMutableArray *failures = [NSMutableArray new];
                 for (id<MTLCommandBuffer> failed in Call(executionStatus, @"failedCommandBuffers", @[]))
