@@ -76,7 +76,6 @@ if any(isinstance(row['exit'],int) and row['exit']<0 for row in rows):
         except subprocess.TimeoutExpired:debug_status='timeout120'
     (p/'generate-stats-debug-process.json').write_text(json.dumps({'debugger_exit':debug_status,'scope':'crash diagnosis; not successful generation'})+'\n')
 PY
-rm "$TASK_OUT/generate-stats"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/produce_carrier.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
     -framework ImageIO -framework Vision -o "$TASK_OUT/produce-carrier" 2>&1 | tee "$TASK_OUT/carrier-build.log"
@@ -101,10 +100,17 @@ for f in sorted(p.glob('*.heic')):
     rows.append({'file':f.name,'exit':status})
 (p/'admission-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
+python3 "$TASK_ROOT/project_final.py" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/final-project.log"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/decode_final_masks.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -o "$TASK_OUT/decode-final" 2>&1 | tee "$TASK_OUT/final-decode-build.log"
+"$TASK_OUT/decode-final" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/final-decode.log"
+TEXTURE_REPLAY_DIR="$TASK_OUT" "$TASK_OUT/generate-stats" "$TASK_OUT/texture-candidate.heic" "$TASK_OUT/final-file-replay.json" 1 Studio 0 \
+    > "$TASK_OUT/final-file-replay.stdout.log" 2> "$TASK_OUT/final-file-replay.stderr.log"
 xcrun lldb --batch -s "$TASK_ROOT/person_readback.lldb" -- \
     "$TASK_OUT/native-admission" "$TASK_OUT/texture-candidate.heic" "$TASK_OUT/person-debug-admission.json" \
     2>&1 | tee "$TASK_OUT/person-metadata-readback.log"
-rm "$TASK_OUT/produce-carrier" "$TASK_OUT/native-admission" "$TASK_OUT/encode-thumbnail" "$TASK_OUT/native-linear-p3.rgba32f" "$TASK_OUT/derived-applelog-thumbnail.rgba32f"
+rm "$TASK_OUT/produce-carrier" "$TASK_OUT/native-admission" "$TASK_OUT/encode-thumbnail" "$TASK_OUT/generate-stats" "$TASK_OUT/decode-final" "$TASK_OUT/native-linear-p3.rgba32f" "$TASK_OUT/derived-applelog-thumbnail.rgba32f"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/coreml_fsinc.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
     -framework ImageIO -framework Vision -framework CoreML \

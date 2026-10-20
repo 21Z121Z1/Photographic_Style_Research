@@ -133,6 +133,18 @@ int main(int argc, char **argv) {
             uint64_t faceMaskSum = 0;
             for (size_t i = 0; i < faceMaskData.length; i++) faceMaskSum += values[i];
             report[@"face_skin_mean"] = @(faceMaskSum / (255.0 * faceMaskData.length));
+            NSString *replayRoot = getenv("TEXTURE_REPLAY_DIR") ? @(getenv("TEXTURE_REPLAY_DIR")) : nil;
+            if (replayRoot) {
+                NSMutableArray *textures = [NSMutableArray new];
+                for (NSString *role in @[@"skin", @"face", @"instance"]) {
+                    NSData *pixels = [NSData dataWithContentsOfFile:[replayRoot stringByAppendingPathComponent:[@"stored-" stringByAppendingFormat:@"%@.l8", role]]];
+                    if (pixels.length != width * height) @throw [NSException exceptionWithName:@"FinalMaskReplay" reason:@"unexpected stored mask dimensions" userInfo:nil];
+                    id<MTLTexture> texture = Texture(device, MTLPixelFormatR8Unorm, width, height);
+                    [texture replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:pixels.bytes bytesPerRow:width]; [textures addObject:texture];
+                }
+                skinTexture = textures[0]; faceTexture = textures[1]; instanceTexture = textures[2];
+                report[@"replay_mask_source"] = @"native decoded masks extracted from the final HEIC; original pre-encoding masks are not used";
+            }
             MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice:device];
             id<MTLTexture> encoded = [loader newTextureWithCGImage:image options:@{MTKTextureLoaderOptionOrigin: MTKTextureLoaderOriginTopLeft, MTKTextureLoaderOptionSRGB: @NO} error:&error];
             if (!encoded) @throw [NSException exceptionWithName:@"ImageTexture" reason:error.description userInfo:nil];
@@ -193,8 +205,15 @@ int main(int argc, char **argv) {
                 [landmarks addObject:landmark];
             }
             Call(person, @"setFaceLandmarks:", @[landmarks]);
+            NSDictionary *storedPerson = nil;
+            if (replayRoot) {
+                storedPerson = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[replayRoot stringByAppendingPathComponent:@"stored-person-pixels.json"]] options:0 error:NULL];
+                person = Call(NSClassFromString(@"CMITextureStylesPersonInputData"), @"personDataFromDictionary:", @[storedPerson]);
+                report[@"provided_precomputed_image_stats_from_final_HEIC"] = @YES;
+            }
             report[@"person_before_stats"] = Call(person, @"dictionaryRepresentation", @[]);
             NSMutableDictionary *nativeStats = [NSMutableDictionary new];
+            if (storedPerson) [nativeStats addEntriesFromDictionary:storedPerson[@"imageStats"][@"Mattify"]];
             NSString *ioName = [effectKind isEqual:@"SkinSmoothStandalone"] ? @"CMITextureStylesSkinSmoothIO" : [[@"CMITextureStyles" stringByAppendingString:effectKind] stringByAppendingString:@"IO"];
             id io = Make(ioName);
             Call(io, @"setInputImage:", @[Wrap(inputTexture, full)]);
@@ -329,7 +348,7 @@ int main(int argc, char **argv) {
                     report[@"rendered_pixels"] = @{@"sha256": SHA(renderedPixels), @"mean_absolute_RGB_change": @(absoluteError / (width * height * 3)), @"maximum_RGB_change": @(maximumError), @"changed_pixels_over_0_0001": @(changed), @"nonfinite": @(invalid)};
                     CIImage *preview = [CIImage imageWithMTLTexture:outputTexture options:@{kCIImageColorSpace: (__bridge id)working}];
                     CGImageRef previewImage = [context createCGImage:preview fromRect:full format:kCIFormatRGBA8 colorSpace:srgb];
-                    NSString *previewPath = [[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"mattify-native-preview.heic"];
+                    NSString *previewPath = [[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:replayRoot ? @"final-file-mattify-preview.heic" : @"mattify-native-preview.heic"];
                     CGImageDestinationRef previewOut = CGImageDestinationCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:previewPath], CFSTR("public.heic"), 1, NULL);
                     CGImageDestinationAddImage(previewOut, previewImage, (__bridge CFDictionaryRef)@{(__bridge id)kCGImageDestinationLossyCompressionQuality: @0.95});
                     report[@"native_preview_finalized"] = @(CGImageDestinationFinalize(previewOut));
