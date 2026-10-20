@@ -1,77 +1,20 @@
-name: XDRemux isolated Texture native research
+name: XDRemux isolated offline acceptance
 on:
   push:
     branches: [research/xdremux-texture-native-20261019]
-    paths:
-      - research/xdremux-texture-native/**
-      - .github/workflows/xdremux-texture-native.yml
+    paths: [.github/workflows/xdremux-texture-native.yml]
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: xdremux-texture-native-${{ github.ref }}
+  group: xdremux-texture-offline-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  native:
-    strategy:
-      fail-fast: false
-      matrix:
-        runner: [macos-26, xcode-27]
-    runs-on: ${{ matrix.runner }}
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: research/xdremux-texture-native
-          persist-credentials: false
-      - name: Record exact environment and compile native API probe
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p evidence
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          sw_vers | tee evidence/os.txt
-          xcodebuild -version | tee evidence/xcode.txt
-          xcrun --sdk macosx --show-sdk-version | tee evidence/sdk.txt
-          xcrun swiftc --version | tee evidence/swift.txt
-          git rev-parse HEAD | tee evidence/head.txt
-          xcrun swiftc -swift-version 5 research/xdremux-texture-native/native_probe.swift \
-            -framework Foundation -framework CoreImage -framework ImageIO -framework Metal \
-            -o "$RUNNER_TEMP/xdremux-texture-native-probe" 2>&1 | tee evidence/build.log
-      - name: Execute isolated unpatched native Texture metadata controls
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 research/xdremux-texture-native/run_metadata_matrix.py \
-            "$RUNNER_TEMP/xdremux-texture-native-probe" evidence/metadata 2>&1 | tee evidence/probe.log
-      - name: Bind public text evidence to source and run
-        if: always()
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          import hashlib,json,os,pathlib
-          p=pathlib.Path('evidence');p.mkdir(exist_ok=True)
-          rows=[]
-          for f in sorted(p.rglob('*')):
-              if not f.is_file():continue
-              assert f.suffix in {'.json','.txt','.log'}
-              rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
-          manifest={'head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'photos_used':False,'files':rows}
-          (p/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
-          print('TEXTURE_JSON_BEGIN manifest.json');print(json.dumps(manifest,indent=2));print('TEXTURE_JSON_END manifest.json')
-          PY
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: xdremux-texture-native-text-${{ matrix.runner }}
-          path: evidence/
-          retention-days: 1
-  generated-image-and-product:
-    if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[image-product]') }}
+  offline-validation:
     runs-on: xcode-27
-    timeout-minutes: 35
+    timeout-minutes: 30
     env:
-      XDREMUX_SOURCE_SHA: 0a462134a6082b048508cee89c85615606abfc7f
+      XDREMUX_SOURCE_SHA: cf6da4c46e12960defc04e98901d20881d0b6a39
       HOMEBREW_NO_AUTO_UPDATE: '1'
     steps:
       - uses: actions/checkout@v4
@@ -82,21 +25,21 @@ jobs:
         with:
           repository: 21Z121Z1/XDRemux
           ref: ${{ env.XDREMUX_SOURCE_SHA }}
+          fetch-depth: 4
           path: xdremux
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /Cargo.toml
-            /Cargo.lock
-            /Package.swift
-            /crates/
-            /Sources/
-            /scripts/
+            /*
+            !/fixtures/
+            !/docs/assets/
+            !/research/
+            /research/texture-style/
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           toolchain: stable
-          components: rustfmt, clippy
-      - name: Record exact source and Apple environment
+          components: clippy
+      - name: Record exact checkout and toolchain
         shell: bash
         run: |
           set -euo pipefail
@@ -106,84 +49,40 @@ jobs:
           xcodebuild -version | tee evidence/xcode.txt
           xcrun --sdk macosx --show-sdk-version | tee evidence/sdk.txt
           git -C xdremux rev-parse HEAD | tee evidence/xdremux-head.txt
-          xcrun swiftc -swift-version 5 -target arm64-apple-macosx15.0 research/xdremux-texture-native/native_images.swift \
-            -framework Foundation -framework CoreImage -framework ImageIO \
-            -o "$RUNNER_TEMP/xdremux-native-images" 2>&1 | tee evidence/image-build.log
-          xcrun swiftc -swift-version 5 -target arm64-apple-macosx15.0 research/xdremux-texture-native/native_probe.swift \
-            -framework Foundation -framework CoreImage -framework ImageIO -framework Metal \
-            -o "$RUNNER_TEMP/xdremux-texture-native-probe" 2>&1 | tee evidence/processor-build.log
-          rustc --edition=2021 -O research/xdremux-texture-native/buffer_facts.rs -o "$RUNNER_TEMP/texture-buffer-facts"
-      - name: Build Rust test clients and generate CC0 analytical charts
-        shell: bash
-        run: |
-          set -euo pipefail
-          cargo build --locked --manifest-path xdremux/Cargo.toml -p xdremux-heif --examples 2>&1 | tee evidence/research-clients-build.log
-          cargo build --locked --manifest-path xdremux/Cargo.toml -p xdremux-engine
-          rustc --edition=2021 -D warnings research/xdremux-texture-native/semantic_control.rs \
-            --extern xdremux_engine=xdremux/target/debug/libxdremux_engine.rlib \
-            -L dependency=xdremux/target/debug/deps -o "$RUNNER_TEMP/texture-semantic-control"
-          xdremux/target/debug/examples/texture_synthetic_inputs "$RUNNER_TEMP/xdremux-analytic-inputs"
-          cp "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" evidence/input-manifest.json
-          "$RUNNER_TEMP/texture-semantic-control" \
-            "$RUNNER_TEMP/xdremux-analytic-inputs/landscape-hdr-edge.rgba32f" \
-            "$RUNNER_TEMP/xdremux-analytic-inputs/landscape-hdr-edge-sdr.rgba32f" \
-            384 256 "$RUNNER_TEMP/texture-diagnostic-semantic.plist" | tee evidence/semantic-control.txt
-      - name: Encode and independently read synthetic JPEG HEIC SDR HDR and orientation
-        shell: bash
-        run: |
-          set -euo pipefail
-          "$RUNNER_TEMP/xdremux-native-images" "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" \
-            "$RUNNER_TEMP/xdremux-generated-images" 2>&1 | tee evidence/image-probe.log
-          cp "$RUNNER_TEMP/xdremux-generated-images/image-matrix.json" evidence/image-matrix.json
-      - name: Exercise unpatched native Bloom without claiming a complete Texture producer
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 research/xdremux-texture-native/run_bloom_matrix.py \
-            "$RUNNER_TEMP/xdremux-texture-native-probe" "$RUNNER_TEMP/xdremux-analytic-inputs/manifest.json" \
-            "$RUNNER_TEMP/texture-buffer-facts" "$RUNNER_TEMP/xdremux-bloom-matrix" \
-            "$GITHUB_WORKSPACE/evidence/bloom" "$RUNNER_TEMP/texture-diagnostic-semantic.plist" \
-            2>&1 | tee evidence/bloom-driver.log
-      - name: Build the actual XDRemux product and narrow Apple adapter
-        if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[product-regression]') }}
-        shell: bash
-        run: |
-          set -euo pipefail
           if ! brew list --versions libheif >/dev/null 2>&1; then brew install libheif; fi
-          export PKG_CONFIG_PATH="$(brew --prefix libheif)/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
           pkg-config --modversion libheif | tee evidence/libheif.txt
-          cargo build --locked --manifest-path xdremux/Cargo.toml -p xdremux-cli 2>&1 | tee evidence/cli-build.log
-          cd xdremux
-          swift build --product xdremux-apple-adapter 2>&1 | tee ../evidence/adapter-build.log
-          echo "XDREMUX_APPLE_ADAPTER=$(swift build --show-bin-path)/xdremux-apple-adapter" >> "$GITHUB_ENV"
-      - name: Exercise convert and batch without inventing Texture capture data
-        if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[product-regression]') }}
+      - name: Run and verify exact-HEAD limited completion gate
         shell: bash
         run: |
           set -euo pipefail
-          python3 research/xdremux-texture-native/run_product_matrix.py \
-            "$GITHUB_WORKSPACE/xdremux" "$RUNNER_TEMP/xdremux-generated-images" \
-            "$GITHUB_WORKSPACE/evidence/product" "$RUNNER_TEMP/xdremux-native-images" \
-            2>&1 | tee evidence/product-driver.log
-      - name: Bind public text evidence to exact XDRemux source and run
+          export PKG_CONFIG_PATH="$(brew --prefix libheif)/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+          cd xdremux
+          python3 scripts/agent_completion_gate.py run \
+            --base f8fcf2067c506e87665e9ea113324db1a57d4cf7 \
+            --plan research/texture-style/offline-verification-plan.json
+          python3 scripts/agent_completion_gate.py verify \
+            ".codex/verification-receipts/$XDREMUX_SOURCE_SHA.json"
+      - name: Bind actual receipt or failure to exact source
         if: always()
         shell: bash
         run: |
           python3 - <<'PY'
-          import hashlib,json,os,pathlib
+          import hashlib,json,os,pathlib,shutil
           p=pathlib.Path('evidence');p.mkdir(exist_ok=True)
-          rows=[]
-          for f in sorted(p.rglob('*')):
-              if not f.is_file():continue
-              assert f.suffix in {'.json','.txt','.log'}
-              rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
-          manifest={'head_sha':os.environ['GITHUB_SHA'],'xdremux_head_sha':os.environ['XDREMUX_SOURCE_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'photos_used':False,'synthetic_license':'CC0-1.0','files':rows}
+          source=pathlib.Path('xdremux/.codex/verification-receipts')/(os.environ['XDREMUX_SOURCE_SHA']+'.json')
+          if source.is_file():
+              shutil.copyfile(source,p/'receipt.json')
+              print('TEXTURE_JSON_BEGIN receipt.json')
+              print(source.read_text(),end='')
+              print('TEXTURE_JSON_END receipt.json')
+          rows=[{'path':f.name,'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()} for f in sorted(p.iterdir()) if f.is_file()]
+          manifest={'head_sha':os.environ['GITHUB_SHA'],'xdremux_head_sha':os.environ['XDREMUX_SOURCE_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'scope':'offline transport and text integrity only; no Texture feature or Photos activation claim','files':rows}
           (p/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
           print('TEXTURE_JSON_BEGIN manifest.json');print(json.dumps(manifest,indent=2));print('TEXTURE_JSON_END manifest.json')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: xdremux-texture-generated-image-product-text
+          name: xdremux-texture-exact-head-offline-receipt
           path: evidence/
           retention-days: 1
