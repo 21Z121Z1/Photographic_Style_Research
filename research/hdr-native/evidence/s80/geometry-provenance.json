@@ -1,0 +1,118 @@
+{
+  "S79_receipt": {
+    "run_id": 39390615195,
+    "artifact_id": 12249605976,
+    "ZIP_bytes": 274791,
+    "ZIP_sha256": "bfacffe4ad6f10aeeb4e4a9d47bcdf35237dccf1c84dc5543d8c3c2677a0b83a",
+    "manifest_sha256": "d415783335d58a921c08657b93108901fc7e2d6aee820c63bc468d50d309d5df",
+    "payload_members_SHA_verified": 66,
+    "all_members_verified": true,
+    "source_commit": "b5c9d8e5e163e782c2f65acf67dfe0cc0091dcdf",
+    "all_recipe_sources_verified_against_commit": true,
+    "event": "push",
+    "run_attempt": 1,
+    "run_conclusion": "success",
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "no_photo_input": true,
+    "synthetic_pixel_buffers_only": true,
+    "download_transport": "Configured gh credential only in memory/stdin on api.github.com; signed asset fetched without credential; no URL or credential saved",
+    "original_ZIP_preserved": true
+  },
+  "reason": "S79 actual original final outputs valid, but observer exact @encode comparison missed ivar encodings with quoted field names. Normalize names and verify NSGetSizeAndAlignment before reading each geometric ivar. Extend finite controls to tile/translated with fixed ordered profile; never change original consumer or acceptance masks.",
+  "installed": [
+    {
+      "file": "research/hdr-native/ci_status_s80.inc",
+      "bytes": 8845,
+      "sha256": "3255229e2765942b1b94567ccfeef5433e877703e82e4ba06ddf427c46493612"
+    },
+    {
+      "file": "research/hdr-native/probe_consumer_ci_s80.m",
+      "bytes": 25661,
+      "sha256": "a118b210b82983b9fc5aa5428ce9788980403987375638972f33af787d83c009"
+    },
+    {
+      "file": "research/hdr-native/run_hdr_s80.py",
+      "bytes": 13760,
+      "sha256": "0fd79f5da25e481b3d56e7f305c4fb2ef4909d7fcb7b0ed49fdf888e6b4266f0"
+    },
+    {
+      "file": ".github/workflows/hdr-native-s80.yml",
+      "bytes": 2148,
+      "sha256": "a96503658de54891ad3e02fa51e105ac4b314af7b52959305d978d392fde690e"
+    }
+  ],
+  "changes": [
+    {
+      "old": "static NSDictionary*S77ObjectState(id o){",
+      "new": "static NSString*S80CanonicalType(const char*t){NSMutableString*s=[NSMutableString new];BOOL quoted=NO;for(NSUInteger i=0;t[i];i++){if(t[i]=='\"'){quoted=!quoted;continue;}if(!quoted)[s appendFormat:@\"%c\",t[i]];}return s;}\nstatic NSDictionary*S77ObjectState(id o){"
+    },
+    {
+      "old": "BOOL rect=strcmp(type,@encode(CGRect))==0,size=strcmp(type,@encode(CGSize))==0;",
+      "new": "NSString*canonical=S80CanonicalType(type);BOOL rect=[canonical isEqual:S80CanonicalType(@encode(CGRect))],size=[canonical isEqual:S80CanonicalType(@encode(CGSize))];"
+    },
+    {
+      "old": "if(rect){CGRect v;memcpy",
+      "new": "if(rect||size){NSUInteger measuredSize=0,measuredAlignment=0;NSGetSizeAndAlignment(type,&measuredSize,&measuredAlignment);Need(measuredSize==(rect?sizeof(CGRect):sizeof(CGSize))&&measuredAlignment==(rect?_Alignof(CGRect):_Alignof(CGSize)),@\"native geometry ivar ABI size/alignment\");r[@\"canonical_type\"]=canonical;r[@\"measured_size\"]=@(measuredSize);r[@\"measured_alignment\"]=@(measuredAlignment);}if(rect){CGRect v;memcpy"
+    },
+    {
+      "old": "#include \"ci_status_s79.inc\"",
+      "new": "#include \"ci_status_s80.inc\""
+    },
+    {
+      "old": "spec={'native_selector_targets':targets['optimized_selector_stubs']}",
+      "new": "spec={'native_selector_targets':targets['optimized_selector_stubs'],'ordered_stats':True}"
+    },
+    {
+      "old": "files=[D/n for n in['probe_consumer_ci_s79.m','ci_trace_s77.inc','ci_status_s79.inc'",
+      "new": "files=[D/n for n in['probe_consumer_ci_s80.m','ci_trace_s77.inc','ci_status_s80.inc'"
+    },
+    {
+      "old": "'run_hdr_s79.py'",
+      "new": "'run_hdr_s80.py'"
+    },
+    {
+      "old": "str(D/'probe_consumer_ci_s79.m')",
+      "new": "str(D/'probe_consumer_ci_s80.m')"
+    },
+    {
+      "old": "'probe_version':'S79'",
+      "new": "'probe_version':'S80'"
+    },
+    {
+      "old": "'test_plan_frozen_before_compile_and_native':'S79 full bounds A/A with skin and sky resampled from16x12 to64x48 by nearest replication (skin step and sky checker logical positions preserved), person16x12 unchanged. Compare original S78 synthetic stats vs a second declared profile changing only raw global field7 blackPoint from.9 to.005, verified by original serialization. Fresh independent processes per stats profile, all other args fixed. Observe original CMI geometric ivars and final-render PSO. No shader/math/check/residency override. Not photo/camera/statistics truth.'",
+      "new": "'test_plan_frozen_before_compile_and_native':'S80 freezes ordered S79 synthetic stats profile, original type2, full-size skin/sky and low-resolution person, unchanged GTC/maps/main/linear inputs. Three declared geometries full/tile/translated each A/A. Correct only observer quoted-field encoding normalization, verify native CGRect/CGSize size/alignment before read. Compare whole vs translated bytes, and report both predeclared vertical-row crop hypotheses for tile, each with independent input-texture match; never select output-best hypothesis. No original shader/math/return/check/residency change.'"
+    },
+    {
+      "old": "'scope':'S79 synthetic ROI admissibility diagnosis; full-frame skin/sky textures, original CMI conditions preserved, old vs ordered stats profiles independently observed. Require actual final dispatch/finite nonzero RGB for a useful finite capture; diagnostic job success is not five-photo or original inverse acceptance.'",
+      "new": "'scope':'S80 actual original type2 geometry and finite sampling diagnostic, canonical original stats from fixed synthetic profile. Original A/A gates maintained. No photo/camera/scene/33-point global certificate and no old model change.'"
+    },
+    {
+      "old": "for name,rects,render in geometries[:1] for repeat in[0,1]",
+      "new": "for name,rects,render in geometries for repeat in[0,1]"
+    },
+    {
+      "old": "name: hdr-native-s79",
+      "new": "name: hdr-native-s80"
+    },
+    {
+      "old": "research/vm-native-20261020-hdr-s79",
+      "new": "research/vm-native-20261020-hdr-s80"
+    },
+    {
+      "old": "W=\"$RUNNER_TEMP/hdr-s79\"",
+      "new": "W=\"$RUNNER_TEMP/hdr-s80\""
+    },
+    {
+      "old": "run_hdr_s79.py",
+      "new": "run_hdr_s80.py"
+    },
+    {
+      "old": "name: hdr-s79-original-ROI-geometry-diagnostic",
+      "new": "name: hdr-s80-original-CI-spatial-diagnostic"
+    }
+  ],
+  "legacy_masks_thresholds_changed": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}
