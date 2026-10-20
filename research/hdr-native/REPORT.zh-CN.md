@@ -539,3 +539,71 @@ S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run�
 自动审批先拒绝contents:read→write权限提升，再拒绝未得到目的地明确许可前将人物密文上传公开预发布release。两项均未执行；workflow保留read。已提出公开密文目的地确认，传输脚本额外要求明确批准记录；当前不改用其他方式上传同一人物数据。证据见evidence/s82/permission-decision.json与pending.json。S83无需人物/secret/release，已独立完成；不能用其成功冒充S82验证。
 
 **待实机清单不变：** 匹配同帧j/WithoutFaceBoost曲线与N/B/T/V/face histogram/allocateTone/应用域、原Studio统计、RAW2679/2408、真实HDR屏幕。j权重增量仍未标定为像素EV；Apple Log、原件/冻结模型和33点未认证记录不改。实用五图/两张冻结后留出、分离global/local/semantic预览和最终封装SDR max0尚未完成；engineering_accepted=false，A_phase_complete=false，原acceptance_complete=false，goal active。新实用控制说明见PRACTICAL_SEMANTIC.zh-CN.md。
+
+
+### SEMANTIC-20261018：S82 实用皮肤强度控制已运行，原生反事实与场景真值分开
+
+**已验证数值（S82，26A434）。** run39407894040 / source45e02e86d1ced0c375b6c9ebed8cae3bc3681090 / xcode-27 / image20261012.0260.1，复用原S5/S8已保存原生数组；本轮没有重复原生前像搜索，也没有采用S15/S16按oracle误差挑选的点补丁。输入为IMG2810既存384×512、tone=+.35的consumer捕获，不是5712×4284原片、五图或配对无风格场景真值。GTM、LTM、j、人脸/人身和Studio纹理不在这次校正中改变；LinearThumbnail保持Apple Log。
+
+自有控制公式为 C=y+[F0(xhat)−F(xhat)]，有限且y、C各RGB分量严格正的域内 Hα=exp2(log2(y)+α·[log2(C)−log2(y)])。0/.25/.5/.75/1五档、默认.5在查看本轮照片指标前已固定。它控制已求出的输出反事实差值，不是Apple tone或theta的线性插值，也没有把j=1.098当RGB倍数。F与F0使用同一恢复输入和外部上下文，原S5干预只改变目标theta9/10；其他参数字节、c/d、GTC、guides、统计和matte保持。oracle只用于对照，没有参与挑选强度或局部补丁。
+
+**已验证数值（按真实受影响区域报告）。** 半强度与相同输出强度的原生反事实比较：
+
+|单独去除项|实际受影响且非近黑像素|亮度误差p99 EV|最大EV|最大归一化RGB色度误差|该区域PSNR dB|
+|---|---:|---:|---:|---:|---:|
+|皮肤色彩|887|0.00126700|0.00167631|0.000328422|77.8183|
+|皮肤亮度|1512|0.00134784|0.00173077|0.000403702|88.5630|
+|联合|2399|0.00129445|0.00173077|0.000403702|81.5566|
+
+全强度联合在同一2399像素中的p99/最大EV为0.00258883/0.00346258，PSNR75.5271dB。整幅196608像素全部有限；187224个matte采样足迹外背景在15个变体中变化均0。原非近黑诊断保持RGB>1/255，共186949像素；这不是删改旧mask。整图正比值域196607像素、域外1像素保留base并输出mask，这一覆盖率不是场景准确率或唯一逆置信度。全图近黑的半/全强度联合最大EV仍0.0422613/0.0838671，不能只引用背景稀释后的整图p99=0。原生全强度端点未改写；域外1个原生变化5.960464477539063e−8也独立报告。
+
+**已验证数值（有限自洽性）。** 21次固定ACES预览的前后输入SHA相同，所有所选原输入文件SHA也相同。选定自有增益的浮点往返maxabs≤5.960464477539063e−8，只证明这条控制的自洽性，不证明Apple完整逆解或物理场景恢复。半强度联合的matte边缘加权log-RGB梯度p99/最大为0.0266308/0.0862873EV；它是所选校正的空间变化代理，并非相对原生的梯度误差，也不是无光晕证明。未在VM解码人物预览，不能据此下无色偏、无光晕或主观效果已通过的结论。
+
+证据：`repo/research/hdr-native/evidence/s82/practical-summary.json`、`run/analysis.json`（15变体全部区域与原生端点）、`run/input-verification.json`、`run/freeze.json`及源`run_hdr_s82.py:96`、`:109`、`:138`。固定显示仍为cg-config-v2.2.0_aces-v1.3_ocio-v2.4，LinearP3-D65 → sRGB Display / ACES1.0 SDR Video，0EV，config SHA5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440。三行三列密文contact对应色彩/亮度/联合×0/50/100%，另有联合matte边界ROI和比值域mask。
+
+**已验证静态/归档完整性（用户本轮明确授权后执行）。** S5/S8现有密文原ZIP合计110814893B临时上传公开prerelease，不产生本地归档副本；runner权限contents:read，未上传照片明文或私钥。S82结果ZIP已立即落地：汇总artifact12257239736，15425B、SHA3955094e7a72baaf16f643167ee3f7e828ccc080d14c9d6f87d3a49cca345474；密文预览artifact12257579499，270052B、SHA622ed242cfcc9e0a45696bd4ed35a02ab8f5604b24763c3388aaea67de7f301c。11个汇总成员和4个私有manifest成员SHA均核对，GPG returncode0、GOODMDC，私有manifest SHAfd2e7c2d4a6ce1ec1a2d73863455fb4c0200006527918c50d0dac0d5f493c4b3。归档后核对所有PR head/base引用为空、源码保留研究分支，再删除两条临时secret、release、tag和触发分支，五次DELETE均204，精确查询确认不存在。证据见`evidence/s82/user-transport-approval.json`、`closure.json`和`run/archive-receipt.json`。历史HDR-101“待授权/未运行”记录不覆盖；由这次新记录更新当前状态。原预检gh只读release列表失败发生于任何远端写入前，改用配置凭据仅在内存/stdin的curl GET重新核对全部条件后成功；未提升workflow权限。
+
+### HDR-S84：原尺寸SDR零差有效，旧混合坐标HDR指标不作结论
+
+**已验证数值（26A434）。** run39403808066 / source45e02e8，只用已公开IMG2600，5712×4284；固定旧S31 RGB压力图EV=[3u,−.5+2v,2(1−u)]，它是承载测试，不是scene母版或艺术HDR目标。8/10bit各自保留46个原primary后代的coded payload及所有属性、142个非gain/tmap原item payload；完整ImageIO显式DecodeToSDR整数光栅的4284行×22848有效字节变化0，格式/ICC相同，原/新有效字节SHA均45db8a8a774044df6ff51c81a06c4e098ed6cb3e0bef9030adb98347157fe797。此SDR max0结论独立于后续CI浮点读回坐标错误。
+
+**已验证静态（对照资格边界）。** S84新blocked reader把递增CI-y块直接拼成存储顺序，和S44整幅参考及先前S80的H48/CIy8/h20→存储row20约定不一致。原HDR/gain/CI误差表和native预览panel原样保留，但在同源坐标控制通过前均不具解释资格；不能把其中的约2EV误差归因于codec、颜色管理或场景逆解。参考源的独立量化数学诊断仍有效：8/10bit亮度EV中位数0.00217695/0.000540652，p99为0.00604822/0.00149291。RGB逐通道理论半LSB为3.5/(2·(2^bits−1)) EV；带符号RGB相消及近黑时亮度相对误差不受这个逐通道界约束。完整载体未下载或持久归档，不能把文件SHA当成已交付HEIC。
+
+S84原ZIP：汇总artifact12257525181，15772B、SHAafac971ddd9156a8f4499c77c86286b7e6fd6165a68cca7249e83991f11e9735；密文contact artifact12257480250，413188B、SHAd139f160e80ff938cc4f7bc20c2cc30f4177fd47600a94452bc434fef9557d8b。20个汇总成员及2个密文成员、GPG和源码SHA已验。触发分支在PR引用为空、源码保留后已清理。证据：`evidence/s84/run/archive-receipt.json`、`comparison-status.json`、`closure.json`；S85只修读回并增加颜色/坐标控制，不改变冻结目标、原件或旧模型。
+
+**已验证静态（五图容器，不计新像素验证）。** 五份既有HEIC均有ISO tmap/base/gain绑定，维度、属性原字节SHA及offset记录于`evidence/s84/source-container-bindings.json`。2600/2604/2608的primary存储画布5712×4284；0032/0033的primary4032×3024、irot270，而tmap3024×4032、irot0。因此后续两张验证必须原生核对坐标，不能用改变全局画布方向的隐式resize掩盖。
+
+
+### HDR-S85–S86：坐标、原生应用公式与编码误差分开
+
+**已验证数值（S85，26A434）。** run39408560663/source42dc055458bf9e5ddb8346ba80851c0751587f83；同一5712×4284源，共24470208像素。固定规则CI_y=H−storage_top−block_height，块内行序不变，整幅/分块和S44参考的差均0，SHA均1f8cd21a4278d466042cefb6c1adf35fb4ed0f3acfbfd425153d8bd32a4f2a66。旧递增CI-y拼接在这同源对照中maxabs1.123616136610508、PSNR5.29064dB。S84坐标错误因此有原生数值证据，原始归档不覆盖。
+
+原坐标修正后，matrix0的HDR目标仍失败：8/10bit中位EV0.277590841/0.277219802、p99为1.02657294/1.02635997，gain code maxabs0.783003279/0.777308541；两端完整SDR仍0差。原生headroom1/2/8与“实际解码gain”的方程比较，maxabs≤2.707780742738919e−6、PSNR≥145.090dB。说明应用公式对实际code正确，不代表实际code等于原上传整数。gain的CI颜色空间nil，HDR为DisplayP3_PQ，原/新SDR均同一DisplayP3 ICC；本轮未从字段名推断provider内部转换。matrix0问题与旧S31观测相容；没有重新追pow/half误差来解释它。
+
+**已验证数值（S86，26A434）。** run39409968844/sourcef0ccf95cea77e3359eca78e2a2e9506c3c392eb7，保持S31目标和S85读回，仅改为旧S32已观测更可靠的matrix6/10bit；实际colr为nclx、matrix6、primaries1、transfer13、full_range=true，hvcC为10bit/4:4:4，不只依靠调用参数。原片、float源和预览输入SHA不变，完整ImageIO及CI SDR均0差。目标maxrelative(floor1e−6)=0.00564012579、maxabs0.0305681229、PSNR(peak1)53.4487dB；EV中位0.00095417272、p990.00339722466，最大3.38626207416EV。最大EV点尚未由S86定位，不能直接把所有大值判为近黑或宣称无可见缺陷；S87新增逐点见证。原1e−3/1e−5/60dB目标门槛仍false，未改为通过。
+
+S86量化数学与codec/provider分开：理想10bit量化EV中位0.000540651468、p990.00149291405；相对该量化参考的额外原生EV中位0.000889274001、p990.00298003936。后者包含codec/provider路径，不是新逆处理误差。gain code maxabs0.00187288812。原生headroom1/2/8实际code方程maxabs≤1.0593947745718424e−6、PSNR≥142.688dB；这些有限承载自洽性不能替代场景恢复。
+
+S85证据在evidence/s85/run（22汇总成员、2私有成员），S86在evidence/s86/run（19汇总、2私有），原ZIP/GPG/manifest/源码SHA均验、临时触发分支已清理。S85汇总artifact12258786314 ZIP SHAae9baf8afeb058d9c094e23e4dba0252de23cb3c355755cb93391b82aa1bcc9f，密文12258456624 SHA4fe189474408a0943d704846cf83eaecaaa6e78e67c15e2c55a3f6273470a7b1；S86汇总12259445696 SHA86afef59b3d884d573349c15e2d5235284602a870fc021115b31c5d798c953ca，密文12259245854 SHAc795344500c684b3bea789c1c40d4e1cec01a03579b4b78e4ee2ef6559053700。原件/冻结模型/consumer-goto-v8不变，未下载完整载体。
+
+### HDR-S87：五图原尺寸、显式旋转和最大EV点审计
+
+**已验证数值（有限实际结果，26A434）。** run39411684190 / sourcecc3a20ad2149b64f84793f56102eee9273389075 / image20261012.0260.1，已完成5/5张，其中本配方留出2/2。源代码、顺序及坐标约定在执行前冻结（evidence/s87/source-freeze.json）；0032/0033曾参与旧研究，只称本次oriented carrier配方留出，不称全新场景。
+
+处理画布显式应用原primary irot；新gain编码前做反向irot，保留原primary和旋转属性。不是试翻转挑最低误差，也没有resize。ImageIO SDR零差逐项使用原整数光栅自身尺寸；它不与旋转后的浮点处理画布混为一谈。三个24MP源为5712×4284；两个12MP源原存储4032×3024/irot270，预期处理3024×4032。
+
+|照片/角色|处理shape(H,W,3)|完整SDR max0|目标EV中位/p99/最大|最大RGB相对误差(floor1e−6)|最大EV点：负RGB/相消条件数|
+|---|---|---|---|---|---|
+|IMG_2600 / development|[4284, 5712, 3]|True|0.00095417272 / 0.00339722466 / 3.38626207|0.00564012579|True / 756.901904|
+|IMG_2604 / development|[4284, 5712, 3]|True|0.000947487017 / 0.003227255 / 3.12501914|0.00564005289|True / 468.417859|
+|IMG_2608 / development|[4284, 5712, 3]|True|0.000950467715 / 0.00328339719 / 6.46228291|0.00564009556|True / 575.449466|
+|IMG_0032 / recipe-holdout|[4032, 3024, 3]|True|0.000938542653 / 0.00317216608 / 0.00607058792|0.00567894339|False / 1|
+|IMG_0033 / recipe-holdout|[4032, 3024, 3]|True|0.000940910366 / 0.00319136469 / 0.00609545802|0.00567897795|False / 1|
+
+最大EV的相消条件数定义为sum(|Yc·RGBc|)/|sum(Yc·RGBc)|；它描述该参考像素的亮度条件数，不能转换成全图准确率或无可见伪像结论。公开只存符号/近零分类和条件数，准确坐标、实际/参考RGB均在密文witness中。近零阈值、正亮度覆盖/排除数、所有headroom、量化和额外codec/provider误差均在每图analysis；不缩旧mask，也不删最大值。
+
+**已验证数值（实际边界）。** 三张24MP图的最大EV点均含负RGB、参考Y≤1e−4，相消条件数分别756.9019、468.4179、575.4495，最大EV为3.386262、3.125019、6.462283；这是实际捕获的点分类。两张留出无该点相消（条件数1、RGB非负），最大EV0.00607059/0.00609546。五图目标EV中位0.000938543–0.000954173、p990.00317217–0.00339722，RGB最大相对误差(floor1e−6)≤0.005678978；逐点分类并不保证显示后无可见问题。全部5图完整ImageIO及CI SDR均0差。
+
+**已验证静态（封装失败与归档恢复）。** S87 run结论为failure，五个child均returncode0、all_completed=true；主步骤和seal步骤失败于汇总101900B>预设90000B，缺少runner public manifest。原ZIP不改：汇总artifact12259413845/45106B/SHA5fc2a91d84ca682790e8e092bf127e6cab7bf8d7ba46300aea1b73b16f6a5f9b，密文12259249040/118227B/SHA1e6763fd0e823d69ba8a55446b716240a81d9fa3a07f19108421ab32f9d44a1e，均与API digest一致。另建derived-archive-inventory.json核对33个公开原成员；它不是runner manifest，未伪造或覆盖缺失文件。37个私有manifest成员经GPG returncode0/GOODMDC和逐成员SHA核对，包含JPEG contact及准确最大EV点witness。未重算像素或重跑workflow去改变run结论。evidence/s87/run/archive-receipt.json保留全部边界；原冻结workflow会重现这项封装失败，后续新任务应另估汇总容量。
+
+**实用验收边界：** 本轮五图是固定RGB压力目标的表示/承载验证，不是原生摄影风格global/local/semantic五路结果，也不是HDR艺术效果或场景真值。S82只覆盖一张384×512语义捕获；五路独立结果、肤色/边缘/断层质量、最大误差点显示影响及真实HDR屏幕尚未组成新工程验收。因此engineering_accepted=false、A_phase_complete=false、原acceptance_complete=false。遵守用户“接近效果即可”的新优先级，停止旧bit-exact/33点全域紧界追查；历史失败、旧模型与mask保持。人物j实际EV、原Studio统计和配对RAW仍待实机，不把假设升级为已验证。

@@ -3187,9 +3187,229 @@
           "sha256": "db7c25eb44bb997faa315425bd6612efc4bbd1dd9474c4f0c3fe44a86663dd74"
         }
       ]
+    },
+    {
+      "id": "HDR-102",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证静态",
+      "claim": "用户本轮明确允许原S5/S8密文公开prerelease及2条临时secret；S82完整ZIP/GPG核验后，secret、release、tag、触发ref均DELETE204并确认不存在，runner保持read，明文/私钥未上传。历史HDR-101不覆盖，由本记录更新当前执行状态。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s82/user-transport-approval.json",
+          "line": 1,
+          "sha256": "fb38b3200fc4c25d73b81162f92130c30326fd219306108e4b04fdd13108f84a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s82/closure.json",
+          "line": 1,
+          "sha256": "2118e6eca490f4289800a8690f281a2e0f90486f4d498af12c2e07c053733746"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s82/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "d69625594c57c6b9f66ef204b630d8d85b70fb838878f78b0eddbd6a52bb435e"
+        }
+      ],
+      "run_id": 39407894040
+    },
+    {
+      "id": "HDR-103",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "一张384x512 IMG2810旧捕获，3语义项x5固定强度；半强度联合在2399实际影响且非近黑像素EV p990.00129444514/max0.00173077178，187224背景像素15变体均0差，21预览前后SHA不变。不用S15/S16按oracle挑点补丁，不重新做原生前像搜索。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s82/practical-summary.json",
+          "line": 1,
+          "sha256": "e42a96f9bc695649add22ab86327242783142889cbc6de8a72102376dd14109c"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s82/run/analysis.json",
+          "line": 1,
+          "sha256": "a34722414ae65636e8a849243307ced9f7e63a1e0a5af68102e8221d03d7b96b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s82/run/input-verification.json",
+          "line": 1,
+          "sha256": "9ab0a460f4e9e95d5362cbb1a4a95185b51335483dbacaef75e00b5709c1592b"
+        }
+      ],
+      "run_id": 39407894040,
+      "full_resolution": false,
+      "new_holdouts": 0
+    },
+    {
+      "id": "HDR-104",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "S82整幅有限，但比值域外1像素保留base；半/全强度联合全图最大EV0.0422613301/0.0838671305，旧mask/1e-3诊断不改。自选gain往返≤5.96046447754e-8只证明控制自洽，边缘梯度不是无光晕证明，consumer参数反事实不是相机无风格真值或j标定。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s82/run/analysis.json",
+          "line": 1,
+          "sha256": "a34722414ae65636e8a849243307ced9f7e63a1e0a5af68102e8221d03d7b96b"
+        },
+        {
+          "file": "repo/research/hdr-native/semantic_strength_s82.py",
+          "line": 1,
+          "sha256": "34e40b0e4d67393844f6c962e7a70b2946c8e5dbf3bded1c04c4e73eea1fccb0"
+        }
+      ],
+      "run_id": 39407894040
+    },
+    {
+      "id": "HDR-105",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证静态",
+      "claim": "5份原HEIC的tmap/base/gain维度和property原字节SHA/offset已记；0032/33存储primary4032x3024/irot270，而tmap3024x4032/irot0，不能隐式resize匹配坐标。该元数据清单不计像素/场景验收。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s84/source-container-bindings.json",
+          "line": 1,
+          "sha256": "505b606e0087b10851732a1ad55228f5f072d3eab86fe5700b0078a00d88e90d"
+        }
+      ]
+    },
+    {
+      "id": "HDR-106",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "S84 IMG2600原尺寸8/10bit完整ImageIO显式SDR均max0，同format/ICC/activeSHA；46原primary后代coded+属性、142其他item payload不变。旧blocked CI坐标HDR误差/preview不作codec/scene结论，原始数据保留。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s84/run/analysis.json",
+          "line": 1,
+          "sha256": "d54513b001d312e31f112d7409999a9ccf3f8a863aecce7aa355ebdd9c0edb56"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s84/comparison-status.json",
+          "line": 1,
+          "sha256": "4dc3185b3a00fb447deb9571d84f3da939807fd111961022dc583a0254b0b24a"
+        }
+      ],
+      "run_id": 39403808066
+    },
+    {
+      "id": "HDR-107",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "S85同源24470208像素修正blocked读回规则y=H-storage_top-block_height，整幅/分块和S44max0及同SHA；原规则max1.12361613661。仅读回资格，不是逆处理证明。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s85/run/layout.json",
+          "line": 1,
+          "sha256": "cb7801a58c2a297c744f9923357630c2d4605bc6221a7891576c2786748fc66e"
+        },
+        {
+          "file": "repo/research/hdr-native/carrier_readback_s85.m",
+          "line": 1,
+          "sha256": "069d136b38a8c862163a2a15d1b12e312a3ee9524b2fd9208708d3016db866ff"
+        }
+      ],
+      "run_id": 39408560663
+    },
+    {
+      "id": "HDR-108",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "S85修正坐标后matrix0 HDR目标仍有约0.277EV中位/1.026EV p99，8/10均未过原门槛；原生headroom1/2/8对实际decoded gain公式maxabs≤2.70778074274e-6、PSNR≥145.09dB且SDR0。实际code公式正确不代表code上传精确。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s85/run/analysis.json",
+          "line": 1,
+          "sha256": "0bb02c8db34d9638aa9f0183d6fdd322ce30bc5e256827ac58e03a5fd4d47dc9"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s85/run/bit10-native.json",
+          "line": 1,
+          "sha256": "81b5039cdc2313820f4194a34e8dcf0d5f09dae305d302eaef50d52944866d05"
+        }
+      ],
+      "run_id": 39408560663
+    },
+    {
+      "id": "HDR-109",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "S86固定matrix6/10bit实际colr/hvcC核对；一张原尺寸HDR目标EV中位0.00095417272/p990.00339722466，RGB maxrelative0.00564012579，SDR0；EV max3.38626207416保留，旧strict gatefalse。量化与codec/provider另列，无scene或艺术效果通过结论。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s86/run/analysis.json",
+          "line": 1,
+          "sha256": "aaa93ea44759ee9567c3c6107cbfb000accfaa05af658c95f0f3259ea33d0b8e"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s86/run/bit10-native.json",
+          "line": 1,
+          "sha256": "507db6ff7725229fdd5e675744484f46c5a7509f695f6b76456a9a0ac6e12699"
+        }
+      ],
+      "run_id": 39409968844
+    },
+    {
+      "id": "HDR-110",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "已验证数值",
+      "claim": "S87冻结oriented matrix6/10bit后完成5/5原尺寸、2/2本配方留出，五图ImageIO/CI SDR0；目标p99EV≤0.003397225、RGB maxrel≤0.005678978。三24MP最大EV点有负RGB/Y≤1e-4、相消条件数468–757，6.462283EV最大值保留；两留出最大EV≤0.006095459。run失败仅101900>90000封装，runner manifest缺失；API原ZIP+派生本地清单及37个私有GPG成员已核。准确点RGB/坐标仅密文；不是GTM/LTM/semantic或scene五图通过。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s87/phase-summary.json",
+          "line": 1,
+          "sha256": "671e3c0ea9ba699725f6cd051b7263db26836749a42bd2252213ebcec06451ed"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s87/run/analysis.json",
+          "line": 1,
+          "sha256": "b297e18f991dc26617431ad60d1b5eefc68a28210563921c4e34c7f6b663b8fc"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s87/run/freeze.json",
+          "line": 1,
+          "sha256": "bb12868bcc018312774ff30fed2c2a8f431a70f1e0a4e0998822901fdfade12b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s87/run/derived-archive-inventory.json",
+          "line": 1,
+          "sha256": "7f0d2dc0e65ae922e81bfbe9406da06b47720f217df53011eb7e7a7082f9ae47"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s87/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "3959d35a3ae779a3fb33fdf406fb2d4f4fa0baabfbc58451bae9b6af5a5eb957"
+        }
+      ],
+      "run_id": 39411684190
+    },
+    {
+      "id": "HDR-111",
+      "category": "practical-semantic-carrier/S82-S87",
+      "status": "runner",
+      "claim": "工程验收仍需独立HDR目标和原生global/local/semantic五路实际质量、更多全尺寸语义照片/留出、边缘/肤色/最大误差点与headroom检查；原bit-exact/33点全域紧界按用户新优先级暂缓，历史失败不变。j同帧曲线/统计、Studio原统计、配对RAW与真实HDR屏幕仍待实机。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/PRACTICAL_ACCEPTANCE.zh-CN.md",
+          "line": 1,
+          "sha256": "2cfb5879fb1349551f75df57778a747b2627b5ff75598c38e273eb4548c323b2"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s87/phase-summary.json",
+          "line": 1,
+          "sha256": "671e3c0ea9ba699725f6cd051b7263db26836749a42bd2252213ebcec06451ed"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T09:25:06.437488+00:00",
+  "updated_utc": "2026-10-20T11:19:06.100341+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -3220,5 +3440,24 @@
     "S82_requires_explicit_public_destination_approval": true,
     "engineering_accepted": false,
     "old_strict_failures_retained": true
+  },
+  "practical_semantic_carrier_S82_S87": {
+    "S82_run_id": 39407894040,
+    "S82_semantic_capture_resolution": [
+      384,
+      512
+    ],
+    "S82_default_strength": 0.5,
+    "S82_temporary_transport_cleaned": true,
+    "S87_run_id": 39411684190,
+    "S87_full_resolution_photos_completed": 5,
+    "S87_recipe_holdouts_completed": 2,
+    "S87_scope": "Fixed HDR transport stress target; not camera inverse/scene or artistic quality",
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false,
+    "old_HDR101_pending_history_preserved": true,
+    "S84_unqualified_HDR_metrics_preserved_not_used_as_proof": true,
+    "legacy_masks_thresholds_models_unchanged": true
   }
 }

@@ -1,0 +1,59 @@
+{
+  "run_id": 39411684190,
+  "source_commit": "cc3a20ad2149b64f84793f56102eee9273389075",
+  "conclusion": "failure",
+  "event": "push",
+  "attempt": 1,
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "artifacts": [
+    {
+      "name": "hdr-s87-aggregate",
+      "artifact_id": 12259413845,
+      "ZIP_bytes": 45106,
+      "ZIP_sha256": "5fc2a91d84ca682790e8e092bf127e6cab7bf8d7ba46300aea1b73b16f6a5f9b"
+    },
+    {
+      "name": "hdr-s87-encrypted-contact",
+      "artifact_id": 12259249040,
+      "ZIP_bytes": 118227,
+      "ZIP_sha256": "1e6763fd0e823d69ba8a55446b716240a81d9fa3a07f19108421ab32f9d44a1e"
+    }
+  ],
+  "all_public_manifest_members_SHA_verified": 0,
+  "runner_public_manifest_missing": true,
+  "public_original_members_hashed_from_API_verified_ZIP": 33,
+  "derived_local_inventory_not_runner_manifest": true,
+  "original_public_payload_bytes": 101900,
+  "scientific_native_cases_completed": 5,
+  "new_recipe_holdouts_completed": 2,
+  "failure_scope": "Only90KB aggregate payload cap assertion; native/photo cases all completed. No pixel recomputation or workflow rerun.",
+  "source_hashes_match_commit": true,
+  "private_contact_verification": {
+    "cipher_sha256": "ffe6be7e9c490d8989fcf809f21c844aa88c364a019db754439b756e54392429",
+    "cipher_bytes": 118075,
+    "GPG_returncode": 0,
+    "event_names_only": [
+      "ENC_TO",
+      "KEY_CONSIDERED",
+      "KEY_CONSIDERED",
+      "KEY_CONSIDERED",
+      "DECRYPTION_KEY",
+      "BEGIN_DECRYPTION",
+      "DECRYPTION_INFO",
+      "PLAINTEXT",
+      "PLAINTEXT_LENGTH",
+      "DECRYPTION_OKAY",
+      "GOODMDC",
+      "END_DECRYPTION"
+    ],
+    "all_manifest_members_verified": 37,
+    "images_decoded_or_written_in_VM": false,
+    "plaintext_uploaded": false,
+    "private_manifest_sha256": "71c5340210ac3ca73e2c1bc0b5e035a6704158c5cc2f6cd88822422d7c733d10"
+  },
+  "whole_carrier_or_photo_arrays_downloaded": false,
+  "S82_input_secret_release_used": false,
+  "original_ZIPs_preserved": true,
+  "transport": "Configured API credential only in memory/stdin; signed assets fetched without auth; no credential or signed URL saved"
+}

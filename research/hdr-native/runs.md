@@ -199,3 +199,14 @@ S83 ZIP SHA3d180ba38ea787438fd6911ce5b6dab0bcdf1293570a137797606c5c28c6c356，ma
 
 
 S84 原型已提交：research/vm-native-20261020-hdr-s84，source45e02e86d1ced0c375b6c9ebed8cae3bc3681090，run39403808066。首次观测queued，实际OS/image与结果待原run完成后的artifact确认；workflow限定xcode-27/26A434、只读权限、retention1天。只用已有公开样张IMG2600，新的RGB测试增益非scene目标；无S82数据、secret或release。不能把排队/运行当通过，不重复派发。五个原容器的tmap/base/gain绑定及属性原字节SHA/offset见repo/research/hdr-native/evidence/s84/source-container-bindings.json。
+
+
+|阶段|临时触发分支 / source|run|OS / image|归档与结果|
+|---|---|---|---|---|
+|S82|research/vm-native-20261020-hdr-s82 / 45e02e86d1ced0c375b6c9ebed8cae3bc3681090|39407894040 success|26A434 / 20261012.0260.1|12257579499 (270052B, SHA 622ed242cfcc9e0a45696bd4ed35a02ab8f5604b24763c3388aaea67de7f301c); 12257239736 (15425B, SHA 3955094e7a72baaf16f643167ee3f7e828ccc080d14c9d6f87d3a49cca345474)|
+|S84|research/vm-native-20261020-hdr-s84 / 45e02e86d1ced0c375b6c9ebed8cae3bc3681090|39403808066 success|26A434 / 20261012.0260.1|12257525181 (15772B, SHA afac971ddd9156a8f4499c77c86286b7e6fd6165a68cca7249e83991f11e9735); 12257480250 (413188B, SHA d139f160e80ff938cc4f7bc20c2cc30f4177fd47600a94452bc434fef9557d8b)|
+|S85|research/vm-native-20261020-hdr-s85 / 42dc055458bf9e5ddb8346ba80851c0751587f83|39408560663 success|26A434 / 20261012.0260.1|12258786314 (17694B, SHA ae9baf8afeb058d9c094e23e4dba0252de23cb3c355755cb93391b82aa1bcc9f); 12258456624 (411215B, SHA 4fe189474408a0943d704846cf83eaecaaa6e78e67c15e2c55a3f6273470a7b1)|
+|S86|research/vm-native-20261020-hdr-s86 / f0ccf95cea77e3359eca78e2a2e9506c3c392eb7|39409968844 success|26A434 / 20261012.0260.1|12259445696 (13566B, SHA 86afef59b3d884d573349c15e2d5235284602a870fc021115b31c5d798c953ca); 12259245854 (90100B, SHA c795344500c684b3bea789c1c40d4e1cec01a03579b4b78e4ee2ef6559053700)|
+|S87|research/vm-native-20261020-hdr-s87 / cc3a20ad2149b64f84793f56102eee9273389075|39411684190 failure|26A434 / 20261012.0260.1|12259413845 (45106B, SHA 5fc2a91d84ca682790e8e092bf127e6cab7bf8d7ba46300aea1b73b16f6a5f9b); 12259249040 (118227B, SHA 1e6763fd0e823d69ba8a55446b716240a81d9fa3a07f19108421ab32f9d44a1e)|
+
+S82输入2份既存密文ZIP共110814893B，用户本轮明确允许公开prerelease+2条secret；验证结果后全部删除。S84旧坐标HDR指标不具资格，SDR max0独立有效；S85只修读回并确认matrix0偏差；S86选旧S32 matrix6/10bit；S87完成五图显式旋转/最大EV审计，但run失败于101900B>90000B汇总封装，runner public manifest缺失。其原ZIP通过API digest，33成员使用明确标为派生的本地清单核对；S82/S84/S85/S86使用原runner manifest。全部阶段源码SHA/私有GPG成员已核，retention1天后仍有本地原归档。所有相关临时ref已清理，master不动；证据见各evidence/{stage}/closure.json。旧S82待授权是历史状态，由本次记录更新。

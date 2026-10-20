@@ -135,3 +135,12 @@ S80之后（HDR-97，可交给macOS runner/静态继续）：原CI合法type2合
 S82/S83：实用语义控制源码已实现、S83合成结构检查已通过（run39399353600）。下一步是S82真实捕获强度/区域指标与密文预览，输入为原S5/S8两份已归档密文；自动审批要求用户明确批准“公开预发布release+两条临时session secret”目的地，当前确认待答，两次被拒动作均未执行，S82无运行/secret/release/分支。不得通过别的通道绕过该拒绝；源码保持contents:read，setup脚本额外要求s82-user-transport-approval.json。若批准，先重新核对单run/远端资源、完整ZIP/GPG/manifest，再运行；终态下载校验后删本次secret/release/tag/触发分支。
 
 该验证只是384x512真实consumer捕获，不替代全原件五图/两张留出与global/local分离预览。不得使用S15/S16按oracle误差挑点补丁冒充泛化算法。新增控制的强度不是Apple tone值；同一上下文的F/F0求差只给条件估计。半精度/33点全域证明继续按S81暂缓，实机j/RAW/Studio/实屏按既有可执行清单；全分辨率、背景/边缘/色偏和SDR max0仍可runner推进。
+
+
+### SEMANTIC-20261018 / S82–S87 后续：按实用效果推进
+
+可交给macOS runner：S82的三种皮肤控制已取得同一真实384×512捕获的15变体及目标外零变化；固定默认.5，保持c/d、GTC、guides、统计和其他matte。下一项是原尺寸语义目标、更多照片及两张新配方留出；预先记录质量标准，比较原SDR、只去global、只去local、只去语义、联合HDR五路。检查真实受影响区域方向/色偏、相对原生的梯度/Laplacian残差、皮肤/背景边界接缝及统一ACES预览，不能用整图p99=0或自选gain往返冒充Apple真值。原33点/half失败暂不作为工程阻塞，但不可逆mask/区间继续保留。
+
+可交给macOS runner：S87五图承载及最大EV点的每case结果以phase-summary.json为准。失败case先读原run日志和native extents；若完成，继续用独立设计HDR目标替代本次RGB压力图，并对headroom1/2/8和中间值做颜色/边缘/目标及量化分离比较。完整ImageIO原整数SDR max0仍独立执行。对最大EV点的RGB/坐标使用密文witness核对signed RGB、近零Y和显示后差异；分类只解释条件数，不构成肉眼无缺陷证明。新完整载体和EXR目前未持久归档，下载/写入必须先核预算；不把SHA或过期artifact当完整交付。
+
+待实机：IMG2810同帧CameraColorProcessing，冻结输入/统计/其他参数，分别捕获j与WithoutFaceBoost四组global/local曲线、N、B/T/V、人脸/人身直方图、allocateTone上下限及应用域的前后RGB。记录build/UUID/SHA和原始buffer dtype/shape，对照曲线变化与最终像素EV、plateau/clamp/近黑区间；β=0.1953125只约束局部权重上限，不能作为RGB或EV预算。Studio在同帧原统计下分别关眼下提亮、SkinSmooth、Mattify，保留输入/其他算子和纹理SHA，对比像素/边界/色彩；人工统计的既有条件逆不替代此测试。RAW仍需IMG2679/IMG2408配对、曝光/色彩对齐后报告EV；真实HDR屏幕/观看环境、Photos UI另按既有步骤验证。缺这些证据时维持假设/待实机分类。
