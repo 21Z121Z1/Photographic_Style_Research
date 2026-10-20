@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import subprocess
 
-from matrix import compile_tools,generate_case,require
+from matrix import compile_tools,generate_case,require,source_head
 
 
 def main():
@@ -17,7 +17,7 @@ def main():
     if not source.is_file():parser.error('input must be an existing image file')
     if out.exists() and any(out.iterdir()):parser.error('output directory must be empty')
     out.mkdir(parents=True,exist_ok=True)
-    head=subprocess.check_output(['git','-C',Path(__file__).resolve().parent,'rev-parse','HEAD'],text=True).strip()
+    head=source_head()
     build=out/'_build';compile_tools(build,'generate')
     require([build/'prepare',source,out,args.max_dimension],out,'prepare')
     receipt=generate_case(out,build,head)

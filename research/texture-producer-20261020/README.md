@@ -1,5 +1,7 @@
 # Image-derived Texture SPI production
 
+For the configurable converter and real XDRemux fixture matrix, see [Texture generalization](../texture-generalization-20261020/README.en.md). The evidence below describes the earlier single-portrait production milestone; newer per-input results have separate receipts.
+
 This research produces new Texture person statistics from a public input image, writes them with image-derived resources into a HEIC, and checks native readback and final-file effect replay. It is separate from the earlier preservation-only work.
 
 **2026-10-20: the user confirmed that the delivered `texture-candidate.heic` activates on their device.** The candidate SHA-256 is `a7ac5d0dc8721e0cac4db6bfec153864f96fc83f406adeedc2036bc6f0543a7b`. The exact statement, delivered-artifact binding and unreported checks are archived in [DEVICE_ACTIVATION.json](https://github.com/21Z121Z1/Photographic_Style_Research/blob/38f1216a567cc57c993b5e5646f6b0a0d944a18e/DEVICE_ACTIVATION.json). Device model, OS version and a device-local checksum were not supplied. This is user-reported device evidence for this candidate, alongside the independently verified native generation and file evidence.

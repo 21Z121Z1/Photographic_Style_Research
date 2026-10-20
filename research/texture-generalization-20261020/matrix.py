@@ -18,6 +18,11 @@ SMOKE = {'motion-photo/samsung/jpeg-ultrahdr-01.jpg',
          'proxdr/oppo/find-x9-ultra/uhdr-portrait-02.heic'}
 
 
+def source_head():
+    subprocess.run(['git','-C',HERE,'diff','--exit-code','--quiet','HEAD','--',str(HERE),str(PRODUCER)],check=True)
+    return subprocess.check_output(['git','-C',HERE,'rev-parse','HEAD'],text=True).strip()
+
+
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -41,7 +46,7 @@ def compile_tools(build, phase):
     build.mkdir(parents=True, exist_ok=True)
     sources = [('prepare', HERE / 'prepare_input.m')]
     if phase == 'generate':
-        sources += [('augment', HERE/'augment_input.m'), ('produce',PRODUCER/'produce_carrier.m'),
+        sources += [('matching-tests', HERE/'matching_tests.m'), ('augment', HERE/'augment_input.m'), ('produce',PRODUCER/'produce_carrier.m'),
                     ('stats',PRODUCER/'generate_stats.m'), ('thumbnail',PRODUCER/'encode_thumbnail.m'),
                     ('admission',PRODUCER/'native_admission.m'), ('decode',PRODUCER/'decode_final_masks.m')]
     for name, source in sources:
@@ -50,6 +55,8 @@ def compile_tools(build, phase):
             args += ['-framework', framework]
         args += ['-o', build / name]
         require(args, build, name + '-build')
+    if phase=='generate':
+        require([build/'matching-tests',build/'matching-tests.json'],build,'matching-tests')
 
 
 def generate_case(directory, build, head):
@@ -92,10 +99,10 @@ def main():
     parser.add_argument('--selection', choices=['smoke','all'],default='all')
     args = parser.parse_args()
     out = args.output.resolve(); out.mkdir(parents=True, exist_ok=True)
-    source_head = subprocess.check_output(['git', '-C', HERE, 'rev-parse', 'HEAD'], text=True).strip()
+    head = source_head()
     fixture_head = subprocess.check_output(['git', '-C', args.fixtures, 'rev-parse', 'HEAD'], text=True).strip()
     rows=[]
-    report={'schema':'texture-fixture-matrix-v1','source_head':source_head,'fixture_repository':'21Z121Z1/XDRemux','fixture_head':fixture_head,'phase':args.phase,'selection':args.selection,'rows':rows}
+    report={'schema':'texture-fixture-matrix-v1','source_head':head,'fixture_repository':'21Z121Z1/XDRemux','fixture_head':fixture_head,'phase':args.phase,'selection':args.selection,'rows':rows}
     def save(): (out/'matrix.json').write_text(json.dumps(report,indent=2)+'\n')
     save()
     build=out/'_build';compile_tools(build,args.phase)
@@ -113,12 +120,14 @@ def main():
                 row['orientation_pixels_match']=row['input']['working_native_pixels_sha256']==row['expected_upright_pixels']
                 assert row['orientation_pixels_match'],'orientation did not restore original upright pixels'
             if args.phase=='generate':
-                row['acceptance']=generate_case(directory,build,source_head)
+                row['acceptance']=generate_case(directory,build,head)
+                if 'expected_people' in row:
+                    assert row['acceptance']['stored_person_count']==row['expected_people'],'unexpected matched-person count'
                 row['passed']=True
             prepared[row['id']]=directory
         except Exception as error:
             row['passed']=False;row['failure']=str(error)
-            (directory/'failure.json').write_text(json.dumps({'source_head':source_head,'failure':str(error)},indent=2)+'\n')
+            (directory/'failure.json').write_text(json.dumps({'source_head':head,'failure':str(error)},indent=2)+'\n')
         rows.append(row);save()
         print(json.dumps({k:v for k,v in row.items() if k not in ['input','acceptance']}),flush=True)
     all_identities=[]
@@ -137,11 +146,11 @@ def main():
         nasa=build/'public-astronaut.png'
         require(['curl','--fail','--location','--silent','--show-error','https://raw.githubusercontent.com/scikit-image/scikit-image/v0.25.2/skimage/data/astronaut.png','--output',nasa],build,'fetch-baseline')
         assert sha(nasa)=='88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5'
-        execute({'id':'regression-nasa','kind':'prior_positive_input_regression','source_sha256':sha(nasa)},nasa)
+        execute({'id':'regression-nasa','kind':'prior_positive_input_regression','source_sha256':sha(nasa),'expected_people':1},nasa)
         left='motion-photo__samsung__jpeg-ultrahdr-01';right='motion-photo__vivo__android-v1-sdr-01'
         composite=build/'two-fixture-faces.png'
         require([build/'augment','compose',prepared[left]/'working.png',prepared[right]/'working.png',composite],build,'compose')
-        execute({'id':'derived-two-fixture-faces','kind':'derived_two_input_stress','source_cases':[left,right],'source_sha256':sha(composite)},composite)
+        execute({'id':'derived-two-fixture-faces','kind':'derived_two_input_stress','source_cases':[left,right],'source_sha256':sha(composite),'expected_people':2},composite)
         for orientation in ([6] if args.selection=='smoke' else range(2,9)):
             path=build/('orientation-'+str(orientation)+'.tiff')
             require([build/'augment','orientation',prepared[left]/'working.png',orientation,path],build,'make-orientation-'+str(orientation))
@@ -150,6 +159,14 @@ def main():
         for limit in ([512] if args.selection=='smoke' else [512,2048]):
             source=args.fixtures/'motion-photo/samsung/jpeg-ultrahdr-01.jpg'
             execute({'id':'resolution-'+str(limit),'kind':'resolution_variant','fixture':'motion-photo/samsung/jpeg-ultrahdr-01.jpg','source_sha256':sha(source)},source,limit)
+        cli_root=out/'cli-real-fixture'
+        cli_source=args.fixtures/'motion-photo/samsung/jpeg-ultrahdr-01.jpg'
+        cli_code=run(['python3',HERE/'convert.py',cli_source,cli_root,'--max-dimension',1024],build,'direct-cli')
+        cli_row={'id':'cli-real-fixture','kind':'direct_cli','source_sha256':sha(cli_source),'exit':cli_code,'passed':False}
+        if cli_code==0:
+            cli_row['input']=json.loads((cli_root/'input.json').read_text());cli_row['prepare_exit']=0
+            cli_row['acceptance']=validate(cli_root,head);cli_row['passed']=True
+        rows.append(cli_row);save()
     unique=[r for r in rows if 'duplicate_of' not in r]
     report['fixture_file_count']=len(all_identities)
     report['unique_fixture_count']=len(seen)

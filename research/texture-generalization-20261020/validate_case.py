@@ -9,6 +9,16 @@ sys.path.insert(0,str(Path(__file__).resolve().parent.parent/'texture-producer-2
 from pack_carrier import parse,iprp
 
 
+def same_geometry(actual,expected):
+    if isinstance(expected,dict):
+        return isinstance(actual,dict) and all(k in actual and same_geometry(actual[k],v) for k,v in expected.items())
+    if isinstance(expected,list):
+        return isinstance(actual,list) and len(actual)==len(expected) and all(same_geometry(a,b) for a,b in zip(actual,expected))
+    if isinstance(expected,(int,float)):
+        return isinstance(actual,(int,float)) and math.isfinite(actual) and math.isclose(actual,expected,rel_tol=1e-5,abs_tol=1e-5)
+    return actual==expected
+
+
 def validate(root, head):
     read=lambda p:json.loads((root/p).read_text())
     sha=lambda p:hashlib.sha256((root/p).read_bytes()).hexdigest()
@@ -54,6 +64,7 @@ def validate(root, head):
             assert not generated.get('exception') and generated['native_statistics_operations_completed']
             assert all(generated[stage]==0 for stage in stages)
             assert generated['shared_context_geometry_used'] and not generated['person_before_stats'].get('imageStats')
+            assert same_geometry(generated['person_before_stats'],p['native_person_without_stats'])
             assert generated['actual_input_mask_textures']['instance']['sha256']==sha(p['instance_role']+'.l8')
             assert generated['actual_input_mask_textures']['skin']['sha256']==sha('semanticskinmattev2.l8')
             if generated['native_returned_empty_statistics']:
@@ -63,6 +74,8 @@ def validate(root, head):
                 assert generated['statistics_generation_completed']
                 assert generated['native_output_person_stats']==stored['imageStats'][effect]
                 assert 'nonfinite_number' not in json.dumps(stored['imageStats'][effect],allow_nan=False)
+                expected={k:v for k,v in generated['normalized_person_with_stats'].items() if k!='imageStats'}
+                assert same_geometry(stored,expected)
                 outcome='measured native statistics round-tripped'
             effect_outcomes.append({'person_index':index,'effect':effect,'outcome':outcome})
         replay=read(f'person-{index}/final-file-replay.json')

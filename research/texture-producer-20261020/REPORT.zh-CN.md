@@ -1,5 +1,7 @@
 # 从图像生产 Texture 信息并写入 HEIC
 
+可配置转换器与 XDRemux 真实 fixture 矩阵见[泛化说明](../texture-generalization-20261020/README.zh-CN.md)。下文保留此前单人像生产阶段的证据，新输入的结果另有逐文件收据。
+
 本轮已取得真实的 Apple SPI 生产结果，写入并原生验证 HEIC；**用户于 2026-10-20 确认：`texture-candidate.heic 可以激活了`。** 这份已交付单人像候选已有“SPI 生成 → 写入/回读 → 用户确认激活”的完整路径证据。云端验收与用户设备反馈分别保留，不以解码或单效果渲染代替激活反馈。
 
 该候选 SHA-256 为 `a7ac5d0dc8721e0cac4db6bfec153864f96fc83f406adeedc2036bc6f0543a7b`，332177 字节。原话、交付文件绑定及未反馈项目见 [DEVICE_ACTIVATION.json](https://github.com/21Z121Z1/Photographic_Style_Research/blob/38f1216a567cc57c993b5e5646f6b0a0d944a18e/DEVICE_ACTIVATION.json)。用户通过文件名回复交付结果，未提供设备端校验值、设备型号或系统版本；助手未直接观察设备 UI。

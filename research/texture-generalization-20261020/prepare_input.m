@@ -31,8 +31,15 @@ int main(int argc, char **argv) {
             if (!CGImageDestinationFinalize(destination)) @throw [NSException exceptionWithName:@"Encode" reason:@"working PNG failed" userInfo:nil];
             report[@"working_width"] = @(CGImageGetWidth(image)); report[@"working_height"] = @(CGImageGetHeight(image));
             report[@"working_sha256"] = SHA([NSData dataWithContentsOfFile:path]);
-            CFDataRef pixels=CGDataProviderCopyData(CGImageGetDataProvider(image));
-            report[@"working_native_pixels_sha256"]=SHA((__bridge NSData *)pixels);CFRelease(pixels);
+            // CGImage provider storage may contain unspecified padding/skip
+            // bytes. Hash an initialized, tightly packed canonical RGBA raster.
+            size_t pw=CGImageGetWidth(image),ph=CGImageGetHeight(image);
+            NSMutableData *pixels=[NSMutableData dataWithLength:pw*ph*4];
+            CGContextRef bitmap=CGBitmapContextCreate(pixels.mutableBytes,pw,ph,8,pw*4,srgb,kCGImageAlphaPremultipliedLast|kCGBitmapByteOrder32Big);
+            if(!bitmap)@throw [NSException exceptionWithName:@"PixelHash" reason:@"canonical bitmap unavailable" userInfo:nil];
+            CGContextDrawImage(bitmap,CGRectMake(0,0,pw,ph),image);CGContextRelease(bitmap);
+            report[@"working_native_pixels_sha256"]=SHA(pixels);
+            report[@"working_pixel_hash_layout"]=@"tightly packed initialized RGBA8; provider padding and skipped channels excluded";
             VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image options:@{}];
             VNDetectFaceLandmarksRequest *faces = [VNDetectFaceLandmarksRequest new];
             VNGeneratePersonInstanceMaskRequest *instances = [VNGeneratePersonInstanceMaskRequest new];

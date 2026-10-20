@@ -1,4 +1,5 @@
 #import "spi_call.h"
+#import "matching.h"
 
 static double Cross(CGPoint a, CGPoint b, CGPoint c) { return (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x); }
 
@@ -129,17 +130,8 @@ int main(int argc, char **argv) {
                     [edges addObject:@{@"face_index":@(f),@"instance_role":role,@"face_probability_overlap":@(count?mass/count:0)}];
                 }
             }
-            [edges sortUsingComparator:^NSComparisonResult(NSDictionary *a,NSDictionary *b){
-                NSComparisonResult order=[b[@"face_probability_overlap"] compare:a[@"face_probability_overlap"]];
-                if(order!=NSOrderedSame)return order;
-                order=[a[@"face_index"] compare:b[@"face_index"]];
-                return order==NSOrderedSame?[a[@"instance_role"] compare:b[@"instance_role"]]:order;
-            }];
-            NSMutableDictionary *matched = [NSMutableDictionary new]; NSMutableSet *used = [NSMutableSet new];
-            for(NSDictionary *edge in edges) {
-                NSNumber *f=edge[@"face_index"];NSString *role=edge[@"instance_role"];
-                if([edge[@"face_probability_overlap"] doubleValue]>=0.02 && !matched[f] && ![used containsObject:role]){matched[f]=edge;[used addObject:role];}
-            }
+            NSDictionary *matched=SelectFaceInstances(edges,[[individualMasks allKeys] sortedArrayUsingSelector:@selector(compare:)],faces.results.count);
+            report[@"matching_algorithm"]=@"maximum-total-overlap bipartite assignment with explicit unmatched columns";
             NSMutableArray *people=[NSMutableArray new],*unmatched=[NSMutableArray new],*instanceRows=[NSMutableArray new];
             for(NSUInteger f=0;f<faces.results.count;f++) {
                 NSDictionary *edge=matched[@(f)];
