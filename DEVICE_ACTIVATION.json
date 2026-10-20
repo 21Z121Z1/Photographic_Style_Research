@@ -1,0 +1,37 @@
+{
+  "schema": "texture-device-activation-user-report-v1",
+  "reported_on": "2026-10-20",
+  "evidence_type": "user_report_in_delivery_conversation",
+  "user_statement": "texture-candidate.heic 可以激活了",
+  "device_activation_confirmed_by_user": true,
+  "assistant_observed_device_UI": false,
+  "artifact_binding": {
+    "basis": "User named the candidate in reply to its delivery; bound to the delivered artifact. No device-local checksum was supplied.",
+    "file": "import/texture-candidate.heic",
+    "bytes": 332177,
+    "sha256": "a7ac5d0dc8721e0cac4db6bfec153864f96fc83f406adeedc2036bc6f0543a7b",
+    "delivery_commit": "e81312a192b68c7984e5c2ff3f436e4c62beb0cd",
+    "download_url": "https://raw.githubusercontent.com/21Z121Z1/Photographic_Style_Research/e81312a192b68c7984e5c2ff3f436e4c62beb0cd/import/texture-candidate.heic",
+    "package_file": "texture-import-test-20261020.zip",
+    "package_sha256": "0f61ff23a450afe23d370eba8f796d0b223231b30cc5b964f753508a9d10abab"
+  },
+  "native_production": {
+    "source_head": "27122d06d29909e13709a13e4768419dc4473c1f",
+    "run_id": "39370651344",
+    "workflow_url": "https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39370651344",
+    "cloud_production_and_final_file_replay_passed": true,
+    "original_cloud_receipt": "import/acceptance.json",
+    "cloud_receipt_is_unchanged": true
+  },
+  "scope": {
+    "input": "512x512 public NASA portrait, one detected face and person instance",
+    "device_model": null,
+    "OS_version": null,
+    "texture_or_grain_control_effect": "not_reported",
+    "skin_smoothing_control_effect": "not_reported",
+    "save_and_reopen_retention": "not_reported",
+    "control_file_comparison": "not_reported",
+    "other_inputs": "not_validated_by_this_report"
+  },
+  "interpretation": "This delivered candidate has a user-confirmed device activation result in addition to its native production, write/readback and final-file replay evidence. The runner's false eligibility flags remain historical cloud observations, rather than a failure of this reported device activation. This report does not certify every image or device."
+}
