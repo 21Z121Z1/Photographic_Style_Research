@@ -81,6 +81,11 @@ xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/produce_carrier
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
     -framework ImageIO -framework Vision -o "$TASK_OUT/produce-carrier" 2>&1 | tee "$TASK_OUT/carrier-build.log"
 "$TASK_OUT/produce-carrier" "$TASK_OUT/public-astronaut.png" "$TASK_OUT" > "$TASK_OUT/carrier.stdout.log" 2> "$TASK_OUT/carrier.stderr.log"
+python3 "$TASK_ROOT/derive_styles.py" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/derived-styles.log"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/encode_thumbnail.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -o "$TASK_OUT/encode-thumbnail" 2>&1 | tee "$TASK_OUT/thumbnail-build.log"
+"$TASK_OUT/encode-thumbnail" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/thumbnail-codecs.log"
 python3 "$TASK_ROOT/pack_carrier.py" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/carrier-assembly.log"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/native_admission.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
@@ -99,7 +104,7 @@ PY
 xcrun lldb --batch -s "$TASK_ROOT/person_readback.lldb" -- \
     "$TASK_OUT/native-admission" "$TASK_OUT/texture-candidate.heic" "$TASK_OUT/person-debug-admission.json" \
     2>&1 | tee "$TASK_OUT/person-metadata-readback.log"
-rm "$TASK_OUT/produce-carrier" "$TASK_OUT/native-admission"
+rm "$TASK_OUT/produce-carrier" "$TASK_OUT/native-admission" "$TASK_OUT/encode-thumbnail" "$TASK_OUT/native-linear-p3.rgba32f" "$TASK_OUT/derived-applelog-thumbnail.rgba32f"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/coreml_fsinc.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
     -framework ImageIO -framework Vision -framework CoreML \

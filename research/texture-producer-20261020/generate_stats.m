@@ -164,6 +164,12 @@ int main(int argc, char **argv) {
                 mean[c] += v / (width * height); maxValue = MAX(maxValue, v);
             }
             report[@"image_pixels"] = @{@"sha256": SHA(imagePixels), @"mean_rgb": @[@(mean[0]), @(mean[1]), @(mean[2])], @"maximum": @(maxValue), @"nonfinite": @(nonfinite)};
+            if ([effectKind isEqual:@"Mattify"] && [parameterSource isEqual:@"Studio"] && exposure == 0) {
+                NSMutableData *rgba = [NSMutableData dataWithLength:width * height * 16];
+                for (size_t i = 0; i < width * height * 4; i++) ((float *)rgba.mutableBytes)[i] = imageValues[i];
+                [rgba writeToFile:[[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"native-linear-p3.rgba32f"] atomically:YES];
+                report[@"linear_RGBA32f_for_derived_styles_sha256"] = SHA(rgba);
+            }
             id person = Make(@"CMITextureStylesPersonInputData");
             Call(person, @"setFaceID:", @[@1]);
             Call(person, @"setFaceROI:", @[[NSValue valueWithRect:faceRect]]);

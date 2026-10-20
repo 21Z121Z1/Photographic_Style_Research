@@ -1,5 +1,42 @@
 #import "spi_call.h"
 
+static double Cross(CGPoint a, CGPoint b, CGPoint c) { return (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x); }
+
+static NSArray<NSValue *> *Hull(NSArray<NSValue *> *points) {
+    NSArray *sorted = [points sortedArrayUsingComparator:^NSComparisonResult(NSValue *a, NSValue *b) {
+        CGPoint p = a.pointValue, q = b.pointValue;
+        return p.x < q.x || (p.x == q.x && p.y < q.y) ? NSOrderedAscending : p.x == q.x && p.y == q.y ? NSOrderedSame : NSOrderedDescending;
+    }];
+    if (sorted.count < 3) return @[];
+    NSMutableArray *lower = [NSMutableArray new], *upper = [NSMutableArray new];
+    for (NSValue *point in sorted) { while (lower.count >= 2 && Cross([lower[lower.count-2] pointValue], [lower.lastObject pointValue], point.pointValue) <= 0) [lower removeLastObject]; [lower addObject:point]; }
+    for (NSValue *point in sorted.reverseObjectEnumerator) { while (upper.count >= 2 && Cross([upper[upper.count-2] pointValue], [upper.lastObject pointValue], point.pointValue) <= 0) [upper removeLastObject]; [upper addObject:point]; }
+    [lower removeLastObject]; [upper removeLastObject]; [lower addObjectsFromArray:upper]; return lower;
+}
+
+static void FillHull(NSMutableData *mask, size_t width, size_t height, NSArray<NSValue *> *points) {
+    NSArray<NSValue *> *hull = Hull(points); if (hull.count < 3) return;
+    uint8_t *pixels = mask.mutableBytes;
+    for (size_t y = 0; y < height; y++) for (size_t x = 0; x < width; x++) {
+        CGPoint point = CGPointMake(x + 0.5, y + 0.5); BOOL inside = YES;
+        for (NSUInteger i = 0; i < hull.count; i++) if (Cross(hull[i].pointValue, hull[(i+1)%hull.count].pointValue, point) < 0) { inside = NO; break; }
+        if (inside) pixels[y * width + x] = 255;
+    }
+}
+
+static NSDictionary *LandmarkMask(NSArray<VNFaceObservation *> *faces, NSArray<NSString *> *regions, size_t width, size_t height) {
+    NSMutableData *data = [NSMutableData dataWithLength:width * height];
+    for (VNFaceObservation *face in faces) for (NSString *region in regions) {
+        VNFaceLandmarkRegion2D *landmarks = [face.landmarks valueForKey:region]; NSMutableArray *points = [NSMutableArray new];
+        for (NSUInteger i = 0; i < landmarks.pointCount; i++) {
+            CGPoint p = landmarks.normalizedPoints[i]; CGRect b = face.boundingBox;
+            [points addObject:[NSValue valueWithPoint:CGPointMake((b.origin.x + p.x * b.size.width) * width, (1 - b.origin.y - p.y * b.size.height) * height)]];
+        }
+        FillHull(data, width, height, points);
+    }
+    return @{@"data": data, @"width": @(width), @"height": @(height)};
+}
+
 static NSDictionary *Mask(CVPixelBufferRef buffer) {
     size_t w = CVPixelBufferGetWidth(buffer), h = CVPixelBufferGetHeight(buffer), stride = CVPixelBufferGetBytesPerRow(buffer);
     OSType format = CVPixelBufferGetPixelFormatType(buffer);
@@ -80,6 +117,38 @@ int main(int argc, char **argv) {
                 masks[@"semanticfaceskinmatte"] = @{@"data": data, @"width": @(mw), @"height": @(mh)};
                 report[@"face_skin_source"] = @"inferred skin intersected with measured face bounds";
             }
+            NSMutableDictionary *resourceSources = [NSMutableDictionary new];
+            for (NSString *role in masks) resourceSources[role] = [role isEqual:@"semanticfaceskinmatte"] ? @"derived skin/face intersection" : @"native Vision segmentation";
+            if (skin) {
+                size_t mw = [skin[@"width"] unsignedLongValue], mh = [skin[@"height"] unsignedLongValue];
+                NSData *faceData = masks[@"semanticfaceskinmatte"][@"data"];
+                NSMutableData *other = [skin[@"data"] mutableCopy]; const uint8_t *facePixels = faceData.bytes;
+                if (faceData.length) for (size_t i = 0; i < other.length; i++) ((uint8_t *)other.mutableBytes)[i] = MAX(0, ((uint8_t *)other.mutableBytes)[i] - facePixels[i]);
+                masks[@"semanticnonfaceskinmatte"] = @{@"data": other, @"width": @(mw), @"height": @(mh)};
+                resourceSources[@"semanticnonfaceskinmatte"] = @"inferred skin minus derived face skin";
+                NSDictionary *regions = @{@"semanticnosematte": @[@"nose"], @"semanticlipsmatte": @[@"outerLips"], @"semanticeyebrowsmatte": @[@"leftEyebrow", @"rightEyebrow"]};
+                for (NSString *role in regions) {
+                    masks[role] = LandmarkMask(faces.results, regions[role], mw, mh);
+                    resourceSources[role] = @"convex regions derived from the current image's native Vision face landmarks; not FSINC segmentation";
+                }
+                VNDetectHumanHandPoseRequest *hands = [VNDetectHumanHandPoseRequest new]; hands.maximumHandCount = 2;
+                NSError *handError = nil; BOOL handSuccess = [handler performRequests:@[hands] error:&handError];
+                report[@"hand_inference"] = @{@"success": @(handSuccess), @"count": @(hands.results.count), @"error": handError.description ?: @"", @"minimum_joint_confidence": @0.3};
+                NSMutableData *handData = [NSMutableData dataWithLength:mw * mh];
+                if (handSuccess) for (VNHumanHandPoseObservation *hand in hands.results) {
+                    NSDictionary *joints = [hand recognizedPointsForGroupKey:VNHumanHandPoseObservationJointsGroupNameAll error:&handError];
+                    NSMutableArray *points = [NSMutableArray new];
+                    for (VNRecognizedPoint *point in joints.allValues) if (point.confidence >= 0.3) [points addObject:[NSValue valueWithPoint:CGPointMake(point.x * mw, (1 - point.y) * mh)]];
+                    FillHull(handData, mw, mh, points);
+                }
+                masks[@"semantichandsmatte"] = @{@"data": handData, @"width": @(mw), @"height": @(mh)};
+                resourceSources[@"semantichandsmatte"] = handSuccess ? @"current image's native hand-pose convex regions; empty when no hands detected" : @"optional hand protection disabled after an unavailable native request; no inference claimed";
+                for (NSString *role in @[@"semanticearsmatte", @"semantictattoomatte"]) {
+                    masks[role] = @{@"data": [NSMutableData dataWithLength:mw * mh], @"width": @(mw), @"height": @(mh)};
+                    resourceSources[role] = @"optional per-region protection explicitly disabled in this derived edit context; no absence detection claimed";
+                }
+            }
+            report[@"resource_sources"] = resourceSources;
             NSMutableArray *resourceRows = [NSMutableArray new];
             for (NSString *name in [[masks allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
                 NSDictionary *mask = masks[name]; NSData *bytes = mask[@"data"];

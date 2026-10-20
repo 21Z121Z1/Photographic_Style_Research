@@ -76,7 +76,7 @@ def make_iprp(properties, associations):
     return B.make_box('iprp', B.make_box('ipco', b''.join(properties)) + B.make_box('ipma', b'\0\0\0\1' + body))
 
 
-def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> tuple[bytes, dict]:
+def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False, styles=None) -> tuple[bytes, dict]:
     top, meta, children, infos, refs, payloads, primary = parse(source)
     if any(TEXTURE_URI.encode() + b'\0' in item['raw'] for item in infos):
         raise ValueError('input already contains Texture metadata')
@@ -96,10 +96,12 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> 
     properties, associations = iprp(source, children)
     mask_report = []
     for uri, codec in native_masks:
-        _, _, mask_children, mask_infos, mask_refs, mask_payloads, _ = parse(codec)
+        _, _, mask_children, mask_infos, mask_refs, mask_payloads, codec_primary = parse(codec)
         mask_properties, mask_associations = iprp(codec, mask_children)
         candidates = [item for item, values in mask_associations.items()
                       if any(mask_properties[index - 1][4:8] == b'auxC' for index, _ in values)]
+        ordinary_resource = not candidates
+        if ordinary_resource: candidates = [codec_primary]
         if len(candidates) != 1:
             raise ValueError(f'expected one native encoded mask: {candidates}')
         mask_primary = candidates[0]; selected = {mask_primary}
@@ -122,14 +124,35 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> 
             raw = bytearray(info['raw'])
             if raw[8] != 2: raise ValueError('native mask infe must be version 2')
             raw[12:14] = mapping[old].to_bytes(2, 'big')
+            raw[9:12] = b'\0\0\1'
             infos.append({'id': mapping[old], 'raw': bytes(raw)})
             payloads[mapping[old]] = mask_payloads[old]
             if old in mask_associations:
                 associations[mapping[old]] = [(index + property_base, essential) for index, essential in mask_associations[old]]
+        if ordinary_resource:
+            properties.append(B.make_box('auxC', b'\0\0\0\0' + uri.encode() + b'\0'))
+            associations[mapping[mask_primary]].append((len(properties), True))
         for ref in mask_refs:
             if ref['from'] in selected and all(item in selected for item in ref['to']):
                 refs.append({'type': ref['type'], 'from': mapping[ref['from']], 'to': [mapping[item] for item in ref['to']]})
-        refs.append({'type': 'auxl', 'from': mapping[mask_primary], 'to': [primary]})
+        final_aux = mapping[mask_primary]
+        if uri.endswith(':styledeltamap'):
+            image_info = next(info for info in mask_infos if info['id'] == mask_primary)
+            if image_info['type'] != 'hvc1': raise ValueError('neutral delta codec must produce one hvc1 tile')
+            tile_associations = [(index, essential) for index, essential in associations[final_aux] if properties[index-1][4:8] != b'auxC']
+            associations[final_aux] = tile_associations
+            tiles = [final_aux]
+            for _ in range(29):
+                tile = max(payloads) + 1; raw = bytearray(image_info['raw']); raw[12:14] = tile.to_bytes(2, 'big'); raw[9:12] = b'\0\0\1'
+                infos.append({'id': tile, 'raw': bytes(raw)}); payloads[tile] = mask_payloads[mask_primary]; associations[tile] = list(tile_associations); tiles.append(tile)
+            grid = max(payloads) + 1
+            infos.append({'id': grid, 'raw': B.make_box('infe', b'\2\0\0\1' + grid.to_bytes(2, 'big') + b'\0\0grid\0')})
+            payloads[grid] = b'\0\0\4\5' + (3072).to_bytes(2, 'big') + (2560).to_bytes(2, 'big')
+            properties.append(B.make_box('ispe', b'\0'*4 + (3072).to_bytes(4,'big') + (2560).to_bytes(4,'big'))); grid_ispe = len(properties)
+            properties.append(B.make_box('auxC', b'\0'*4 + uri.encode() + b'\0')); grid_aux = len(properties)
+            associations[grid] = [(index, essential) for index, essential in tile_associations if properties[index-1][4:8] not in [b'ispe',b'hvcC']] + [(grid_ispe,False),(grid_aux,True)]
+            refs.append({'type':'dimg','from':grid,'to':tiles}); final_aux = grid
+        refs.append({'type': 'auxl', 'from': final_aux, 'to': [primary]})
         # The 2026 FSINC version describes the final resource's carrier schema.
         # Its HEVC probability pixels remain the actual native codec output.
         xmp = (b'<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
@@ -140,8 +163,13 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> 
         mime_ids = {info['id'] for info in mask_infos if info.get('type') == 'mime'}
         if uri.startswith('tag:apple.com,2026:'):
             for old in selected & mime_ids: payloads[mapping[old]] = xmp
-        mask_report.append({'uri': uri, 'image_item': mapping[mask_primary], 'codec_source_sha256': hashlib.sha256(codec).hexdigest(),
+        mask_report.append({'uri': uri, 'image_item': final_aux, 'codec_source_sha256': hashlib.sha256(codec).hexdigest(),
                             'codec_payload_sha256': hashlib.sha256(mask_payloads[mask_primary]).hexdigest()})
+    style_item = None
+    if styles is not None:
+        style_item = max(payloads) + 1
+        infos.append({'id': style_item, 'raw': B.make_uri_infe(style_item, 'metadata', 'tag:apple.com,2023:photo:metadata:styles')})
+        payloads[style_item] = styles; refs.append({'type':'cdsc','from':style_item,'to':[primary]})
     item_id = max(payloads) + 1
     metadata = plistlib.dumps(texture, fmt=plistlib.FMT_BINARY, sort_keys=True)
     payloads[item_id] = metadata
@@ -185,6 +213,7 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> 
                     'output_sha256': hashlib.sha256(result).hexdigest(), 'primary_item': primary,
                     'texture_item': item_id, 'preserved_payload_count': len(old_payloads),
                     'changed_metadata_items': changed_metadata, 'declarative_edit_marker': STANDARD_EDIT_MARKER if edit_marker else None,
+                    'styles_item': style_item,
                     'image_and_auxiliary_payloads_byte_identical': True, 'native_encoded_masks': mask_report, 'texture_metadata': texture}
 
 
@@ -211,8 +240,11 @@ def main():
     native_masks = [(row['uri'], (root / codecs[row['role']]['file']).read_bytes()) for row in production['resources']]
     if production['instance_count'] != 1: raise ValueError('instance matching must be implemented before extending this one-person control')
     native_masks.append(('tag:apple.com,2026:photo:aux:semanticpersoninstances', (root / codecs['semanticpersonmatte']['file']).read_bytes()))
+    native_masks.extend([('tag:apple.com,2023:photo:aux:linearthumbnail', (root / 'linear-thumbnail-codec.heic').read_bytes()),
+                         ('tag:apple.com,2023:photo:aux:styledeltamap', (root / 'neutral-delta-codec.heic').read_bytes())])
+    styles = (root / 'derived-styles.bplist').read_bytes()
     for name, dictionary, marker in [('texture-candidate.heic', texture, True), ('texture-without-marker-control.heic', texture, False), ('texture-no-people-control.heic', {k:v for k,v in texture.items() if k != 'TextureStylePostProcessedPeopleData'}, True)]:
-        output, report = attach(source, dictionary, native_masks, marker)
+        output, report = attach(source, dictionary, native_masks, marker, styles)
         (root / name).write_bytes(output)
         (root / (name + '.assembly.json')).write_text(json.dumps(report, indent=2) + '\n')
         print(name, report['output_sha256'], len(output))
