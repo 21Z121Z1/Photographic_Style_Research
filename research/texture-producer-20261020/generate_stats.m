@@ -52,11 +52,13 @@ int main(int argc, char **argv) {
         uint64_t landmarkType = strtoull(argv[3], NULL, 10);
         NSString *parameterSource = argc > 4 ? @(argv[4]) : @"defaults";
         double exposure = argc > 5 ? strtod(argv[5], NULL) : 0;
+        NSString *effectKind = getenv("TEXTURE_EFFECT") ? @(getenv("TEXTURE_EFFECT")) : @"Mattify";
         NSMutableDictionary *report = [@{
             @"schema": @"texture-image-statistics-v1", @"stage": @"begin", @"input_sha256": SHA([NSData dataWithContentsOfFile:input]),
             @"apple_implementation_patched": @NO, @"provided_capture_image_stats": @NO,
             @"landmark_type_control": @(landmarkType), @"color_domain": @"newly derived extended linear Display P3 from upright SDR input",
             @"parameter_source_control": parameterSource, @"exposure_EV_control": @(exposure),
+            @"producer_effect": effectKind,
         } mutableCopy];
         Write(report, out);
         @try {
@@ -187,20 +189,22 @@ int main(int argc, char **argv) {
             Call(person, @"setFaceLandmarks:", @[landmarks]);
             report[@"person_before_stats"] = Call(person, @"dictionaryRepresentation", @[]);
             NSMutableDictionary *nativeStats = [NSMutableDictionary new];
-            id io = Make(@"CMITextureStylesMattifyIO");
+            NSString *ioName = [effectKind isEqual:@"SkinSmoothStandalone"] ? @"CMITextureStylesSkinSmoothIO" : [[@"CMITextureStyles" stringByAppendingString:effectKind] stringByAppendingString:@"IO"];
+            id io = Make(ioName);
             Call(io, @"setInputImage:", @[Wrap(inputTexture, full)]);
             Call(io, @"setOutputImage:", @[Wrap(outputTexture, full)]);
-            Call(io, @"setInputSkinMask:", @[Wrap(skinTexture, full)]);
-            Call(io, @"setInputFaceMask:", @[Wrap(faceTexture, full)]);
+            if ([io respondsToSelector:NSSelectorFromString(@"setInputSkinMask:")]) Call(io, @"setInputSkinMask:", @[Wrap(skinTexture, full)]);
+            if ([io respondsToSelector:NSSelectorFromString(@"setInputFaceMask:")]) Call(io, @"setInputFaceMask:", @[Wrap(faceTexture, full)]);
             Call(io, @"setInputInstanceMask:", @[Wrap(instanceTexture, full)]);
             Call(io, @"setOutputPersonStats:", @[nativeStats]);
-            id effect = Call([NSClassFromString(@"CMITextureStylesMattify") alloc], @"initWithOptionalMetalContext:", @[NSNull.null]);
+            id effect = Call([NSClassFromString([@"CMITextureStyles" stringByAppendingString:effectKind]) alloc], @"initWithOptionalMetalContext:", @[NSNull.null]);
             id parameters = nil;
-            if ([parameterSource isEqual:@"defaults"]) parameters = Make(@"CMITextureStylesMattifyParameters");
+            if ([parameterSource isEqual:@"defaults"]) parameters = Make([ioName stringByReplacingOccurrencesOfString:@"IO" withString:@"Parameters"]);
             else {
                 id tuning = Call(NSClassFromString(@"CMITextureStyleTuningLookup"), @"tuningDictionaryForHardwareModel:portType:captureMode:preset:captureType:", @[@"iPhone19,2", @"PortTypeBack", @"Still", parameterSource, @"LF"]);
                 if (!tuning) @throw [NSException exceptionWithName:@"TuningUnavailable" reason:parameterSource userInfo:nil];
-                id effectDescriptor = Call(NSClassFromString(@"PITextureStyleProcessorKernel"), @"descriptorForMattifyWithTuningDictionary:", @[tuning]);
+                NSString *descriptorSelector = [effectKind isEqual:@"Mattify"] ? @"descriptorForMattifyWithTuningDictionary:" : [effectKind isEqual:@"UnderEyeBrighten"] ? @"descriptorForUnderEyeBrighteningWithTuningDictionary:" : @"descriptorForSkinSmoothingWithTuningDictionary:";
+                id effectDescriptor = Call(NSClassFromString(@"PITextureStyleProcessorKernel"), descriptorSelector, @[tuning]);
                 parameters = Call(effectDescriptor, @"parameters", @[]);
                 if (!parameters) @throw [NSException exceptionWithName:@"TuningUnavailable" reason:@"native Mattify parameters unavailable" userInfo:nil];
                 report[@"tuning_target_is_source_camera_provenance"] = @NO;
@@ -208,7 +212,7 @@ int main(int argc, char **argv) {
             }
             NSMutableDictionary *parameterValues = [NSMutableDictionary new];
             for (NSString *key in @[@"editingStrength", @"smallBlurRadiusFaceDiagonalFactor", @"largeBlurRadiusFaceDiagonalFactor", @"fracMaskHighlightsHeadroom", @"fracMaskHighlightsNormFactor"])
-                parameterValues[key] = Call(parameters, key, @[]);
+                if ([parameters respondsToSelector:NSSelectorFromString(key)]) parameterValues[key] = Call(parameters, key, @[]);
             report[@"native_parameters"] = parameterValues;
             Call(effect, @"setParameters:", @[parameters]);
             Call(effect, @"setInputOutput:", @[io]);
@@ -275,6 +279,13 @@ int main(int argc, char **argv) {
                 if (status.intValue != 0) break;
             }
             report[@"stage"] = @"finished";
+            if (nativeStats.count && [report[@"process"] intValue] == 0) {
+                id effectName = Call(NSClassFromString(@"CMITextureStylesProcessor"), @"effectTypeToEffectName:", @[report[@"native_effect_type"] ?: @3]);
+                report[@"native_effect_name"] = effectName;
+                Call(person, @"setImageStats:", @[@{effectName: nativeStats}]);
+                id normalized = Call(person, @"normalizeRelativeToCropRect:", @[[NSValue valueWithRect:full]]);
+                report[@"normalized_person_with_stats"] = Call(normalized, @"dictionaryRepresentation", @[]);
+            }
             CVPixelBufferRelease(instanceMask); CGImageRelease(image); CFRelease(source);
             CGColorSpaceRelease(srgb); CGColorSpaceRelease(working);
         } @catch (NSException *exception) {

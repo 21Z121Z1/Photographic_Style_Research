@@ -57,16 +57,16 @@ xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/generate_stats.
     -framework ImageIO -framework Vision -framework Metal -framework MetalKit \
     -o "$TASK_OUT/generate-stats" 2>&1 | tee "$TASK_OUT/generate-stats-build.log"
 python3 - "$TASK_OUT" <<'PY'
-import json,pathlib,subprocess,sys
+import json,pathlib,subprocess,sys,os
 p=pathlib.Path(sys.argv[1]);rows=[]
-for landmark_type,parameter_source,exposure in [(1,'defaults',0),(1,'Studio',0),(1,'Studio',1),(1,'Studio',-1)]:
-    name='mattify-type'+str(landmark_type)+'-'+parameter_source+'-EV'+str(exposure)
+for effect,landmark_type,parameter_source,exposure in [('Mattify',1,'defaults',0),('Mattify',1,'Studio',0),('Mattify',1,'Studio',1),('Mattify',1,'Studio',-1),('UnderEyeBrighten',1,'Studio',0),('SkinSmoothStandalone',1,'Studio',0)]:
+    name=effect.lower()+'-type'+str(landmark_type)+'-'+parameter_source+'-EV'+str(exposure)
     with (p/(name+'.stdout.log')).open('wb') as stdout,(p/(name+'.stderr.log')).open('wb') as stderr:
         try:
-            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type),parameter_source,str(exposure)],stdout=stdout,stderr=stderr,timeout=120)
+            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type),parameter_source,str(exposure)],stdout=stdout,stderr=stderr,timeout=120,env={**os.environ,'TEXTURE_EFFECT':effect})
             status=result.returncode
         except subprocess.TimeoutExpired:status='timeout120'
-    rows.append({'landmark_type_control':landmark_type,'parameter_source':parameter_source,'exposure':exposure,'exit':status})
+    rows.append({'effect':effect,'landmark_type_control':landmark_type,'parameter_source':parameter_source,'exposure':exposure,'exit':status})
 (p/'generate-stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 if any(isinstance(row['exit'],int) and row['exit']<0 for row in rows):
     with (p/'generate-stats-debug.log').open('wb') as output:
@@ -77,6 +77,26 @@ if any(isinstance(row['exit'],int) and row['exit']<0 for row in rows):
     (p/'generate-stats-debug-process.json').write_text(json.dumps({'debugger_exit':debug_status,'scope':'crash diagnosis; not successful generation'})+'\n')
 PY
 rm "$TASK_OUT/generate-stats"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/produce_carrier.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -o "$TASK_OUT/produce-carrier" 2>&1 | tee "$TASK_OUT/carrier-build.log"
+"$TASK_OUT/produce-carrier" "$TASK_OUT/public-astronaut.png" "$TASK_OUT" > "$TASK_OUT/carrier.stdout.log" 2> "$TASK_OUT/carrier.stderr.log"
+python3 "$TASK_ROOT/pack_carrier.py" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/carrier-assembly.log"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/native_admission.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -o "$TASK_OUT/native-admission" 2>&1 | tee "$TASK_OUT/admission-build.log"
+python3 - "$TASK_OUT" <<'PY'
+import json,pathlib,subprocess,sys
+p=pathlib.Path(sys.argv[1]);rows=[]
+for f in sorted(p.glob('*.heic')):
+    with (p/(f.name+'.admission.stdout.log')).open('wb') as stdout,(p/(f.name+'.admission.stderr.log')).open('wb') as stderr:
+        try:
+            r=subprocess.run([str(p/'native-admission'),str(f),str(p/(f.name+'.admission.json'))],stdout=stdout,stderr=stderr,timeout=120);status=r.returncode
+        except subprocess.TimeoutExpired:status='timeout120'
+    rows.append({'file':f.name,'exit':status})
+(p/'admission-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
+PY
+rm "$TASK_OUT/produce-carrier" "$TASK_OUT/native-admission"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/coreml_fsinc.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
     -framework ImageIO -framework Vision -framework CoreML \

@@ -20,6 +20,7 @@ static id Call(id target, NSString *name, NSArray *args) {
         else if (!strcmp(type, "B")) { BOOL item = [value boolValue]; [call setArgument:&item atIndex:i + 2]; }
         else if (!strcmp(type, "f")) { float item = [value floatValue]; [call setArgument:&item atIndex:i + 2]; }
         else if (!strcmp(type, "d")) { double item = [value doubleValue]; [call setArgument:&item atIndex:i + 2]; }
+        else if (*type == '^') { void *item = [value pointerValue]; [call setArgument:&item atIndex:i + 2]; }
         else if (!strcmp(type, @encode(CGPoint))) { CGPoint item = [value pointValue]; [call setArgument:&item atIndex:i + 2]; }
         else if (!strcmp(type, @encode(CGSize))) { CGSize item = [value sizeValue]; [call setArgument:&item atIndex:i + 2]; }
         else if (!strcmp(type, @encode(CGRect))) { CGRect item = [value rectValue]; [call setArgument:&item atIndex:i + 2]; }
@@ -31,9 +32,11 @@ static id Call(id target, NSString *name, NSArray *args) {
     if (*type == 'v') return NSNull.null;
     if (!strcmp(type, "i")) { int result; [call getReturnValue:&result]; return @(result); }
     if (!strcmp(type, "Q")) { uint64_t result; [call getReturnValue:&result]; return @(result); }
+    if (!strcmp(type, "q")) { int64_t result; [call getReturnValue:&result]; return @(result); }
     if (!strcmp(type, "B")) { BOOL result; [call getReturnValue:&result]; return @(result); }
     if (!strcmp(type, "f")) { float result; [call getReturnValue:&result]; return @(result); }
     if (!strcmp(type, "d")) { double result; [call getReturnValue:&result]; return @(result); }
+    if (*type == '{') { NSMutableData *bytes = [NSMutableData dataWithLength:signature.methodReturnLength]; [call getReturnValue:bytes.mutableBytes]; return [NSValue valueWithBytes:bytes.bytes objCType:type]; }
     @throw [NSException exceptionWithName:@"SPIABI" reason:[name stringByAppendingFormat:@" unsupported return %s", type] userInfo:nil];
 }
 

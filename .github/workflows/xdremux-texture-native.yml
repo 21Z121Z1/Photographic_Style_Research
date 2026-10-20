@@ -30,7 +30,7 @@ jobs:
           p.mkdir(exist_ok=True)
           rows=[]
           for f in sorted(p.rglob('*')):
-              if not f.is_file() or f.suffix not in {'.json','.txt','.log'}:continue
+              if not f.is_file() or f.suffix not in {'.json','.txt','.log','.heic','.l8','.bplist'}:continue
               rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
               encoded=base64.b64encode(zlib.compress(f.read_bytes(),9)).decode('ascii')
               print('PRODUCER_FILE_BEGIN '+str(f.relative_to(p)))
@@ -48,4 +48,6 @@ jobs:
             ${{ runner.temp }}/texture-producer-evidence/*.json
             ${{ runner.temp }}/texture-producer-evidence/*.txt
             ${{ runner.temp }}/texture-producer-evidence/*.log
+            ${{ runner.temp }}/texture-producer-evidence/*.heic
+            ${{ runner.temp }}/texture-producer-evidence/*.l8
           retention-days: 1
