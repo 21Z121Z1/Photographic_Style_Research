@@ -126,3 +126,4 @@ with (p/'coreml-fsinc.stdout.log').open('wb') as stdout,(p/'coreml-fsinc.stderr.
 (p/'coreml-fsinc-process.json').write_text(json.dumps({'exit':status})+'\n')
 PY
 rm "$TASK_OUT/coreml-fsinc" "$TASK_OUT/public-astronaut.png"
+python3 "$TASK_ROOT/acceptance.py" "$TASK_OUT" --head "$(git -C "$TASK_ROOT" rev-parse HEAD)"

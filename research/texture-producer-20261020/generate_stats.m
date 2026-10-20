@@ -144,6 +144,10 @@ int main(int argc, char **argv) {
                 }
                 skinTexture = textures[0]; faceTexture = textures[1]; instanceTexture = textures[2];
                 report[@"replay_mask_source"] = @"native decoded masks extracted from the final HEIC; original pre-encoding masks are not used";
+                report[@"fresh_Vision_observations_used_as_replay_inputs"] = @NO;
+                report[@"face_skin_source"] = @"native decoded final-file face-skin matte";
+                report[@"actual_input_mask_textures"] = @{@"skin": ScalarTextureFacts(skinTexture), @"face": ScalarTextureFacts(faceTexture), @"instance": ScalarTextureFacts(instanceTexture)};
+                report[@"face_skin_sha256"] = report[@"actual_input_mask_textures"][@"face"][@"sha256"];
             }
             MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice:device];
             id<MTLTexture> encoded = [loader newTextureWithCGImage:image options:@{MTKTextureLoaderOptionOrigin: MTKTextureLoaderOriginTopLeft, MTKTextureLoaderOptionSRGB: @NO} error:&error];
@@ -296,7 +300,7 @@ int main(int argc, char **argv) {
                 NSMutableArray *failures = [NSMutableArray new];
                 for (id<MTLCommandBuffer> failed in Call(executionStatus, @"failedCommandBuffers", @[]))
                     [failures addObject:@{@"status": @(failed.status), @"error": failed.error.description ?: @"", @"label": failed.label ?: @""}];
-                report[@"native_GPU_execution"] = @{@"status": Call(executionStatus, @"status", @[]), @"completed_command_buffers": Call(executionStatus, @"completedCommandBuffersCount", @[]), @"failures": failures};
+                report[@"native_GPU_execution"] = @{@"diagnostic_counters_are_not_execution_proof": @YES, @"status": Call(executionStatus, @"status", @[]), @"completed_command_buffers": Call(executionStatus, @"completedCommandBuffersCount", @[]), @"failures": failures};
                 Write(report, out);
                 @try {
                     NSDictionary *states = [effect valueForKey:@"_perPersonIntermediatesAndStats"];
