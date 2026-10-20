@@ -1,0 +1,54 @@
+{
+  "schema": "texture-generalization-run-history-v1",
+  "fixture_head": "18340989590d451f5676924feb03c70baa503e1a",
+  "fixture_manifest_same_as_main": "9838fd538cc86da5668e628e65d4f1777ca568bb",
+  "earlier_partial_matrix": {
+    "run_id": "39384363008",
+    "source_head": "43f38b2ff80e9aa5f3e973da2c9780277bc73242",
+    "passed": 37,
+    "total": 38,
+    "failure": "resolution-2048 UnderEye process exited with SIGSEGV (-11)",
+    "evidence_branch": "research/texture-matrix-output-39384363008"
+  },
+  "allocator_diagnostic": {
+    "run_id": "39386441682",
+    "source_head": "c2bb9bccb09f61a0fba382b6f15f8429c2f8aeb2",
+    "budgets_MiB": [
+      128,
+      256,
+      512
+    ],
+    "all_completed_with_identical_statistics": true,
+    "interpretation": "fixed allocator capacity was not established as the cause"
+  },
+  "corrections": [
+    "serialize actual signed native pose getter values and retain unadjusted dictionaries",
+    "exclude unspecified provider padding/skip bytes from orientation hashes",
+    "record and clamp tiny negative linear components for the new SDR edit context",
+    "finish effects after statistics/rendering; fence native context and caller queue before teardown",
+    "preserve first failure reports before debugger reruns"
+  ],
+  "stress": {
+    "run_id": "39387614262",
+    "source_head": "045ff91a024781892fffe5bcbabc5bf8dcc17551",
+    "complete_2048_pipeline_passes": 3,
+    "attempts": 3,
+    "allocator_MiB": 128
+  },
+  "final": {
+    "run_id": "39388123337",
+    "source_head": "f3414decdf5b01451a09e467b68b6f7cf1393ffb",
+    "passed": 38,
+    "total": 38,
+    "unique_original_images": 26,
+    "import_candidates": 29,
+    "import_zip_sha256": "61b77452391415bd79b440eb32a15025929f906532945614ec197c60876e88f5"
+  },
+  "workflow_cleanup": {
+    "commit": "2bc4e3d16fc2c6028cdf708f06d79cf3be42a6d5",
+    "native_source_directories_unchanged_from_tested_commit": true,
+    "automatic_push_trigger_removed": true
+  },
+  "new_candidates_device_activation": "not tested",
+  "earlier_user_confirmed_candidate_sha256": "a7ac5d0dc8721e0cac4db6bfec153864f96fc83f406adeedc2036bc6f0543a7b"
+}
