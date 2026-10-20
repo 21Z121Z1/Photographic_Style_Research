@@ -50,7 +50,7 @@ Run from this repository root on an Apple-silicon macOS 27 machine with Xcode 27
 bash research/texture-producer-20261020/run.sh /tmp/texture-producer-evidence
 ```
 
-The manual Actions workflow uses read-only repository permissions and a sparse checkout. It never opens Photos, changes Apple implementations or uploads system model/framework binaries. Generated public-image evidence and all failures are framed in the authorized job text response. `readback.py` verifies every recovered file's byte length, SHA-256, manifest set and exact source commit. The archive and import bundle retain their own hashes.
+The manual Actions workflow uses a sparse checkout. Its final preservation step has repository-content write permission solely to create a separate `research/texture-output-<run-id>` branch with newly generated public-image results; it never merges or changes the source branch. Native programs receive no token. The workflow never opens Photos, changes Apple implementations or uploads system model/framework binaries. Generated evidence and all failures are also framed in the job text response. `readback.py` verifies every recovered file's byte length, SHA-256, manifest set and exact source commit. The result branch and import bundle retain their own hashes.
 
 Input: [scikit-image's NASA astronaut fixture](https://github.com/scikit-image/scikit-image/blob/v0.25.2/skimage/data/astronaut.png), SHA-256 `88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5`. Its dataset documentation identifies NASA/public-domain provenance.
 

@@ -2,7 +2,7 @@ name: Texture producer SPI research
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: texture-producer-${{ github.ref }}
   cancel-in-progress: false
@@ -40,6 +40,12 @@ jobs:
           (p/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
           print(json.dumps(manifest,indent=2))
           PY
+      - name: Preserve newly generated public results on an isolated output branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 research/texture-producer-20261020/publish_results.py "$RUNNER_TEMP/texture-producer-evidence"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
