@@ -135,6 +135,8 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> 
         xmp = (b'<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
                b'<rdf:Description rdf:about="" xmlns:fsincMattes="http://ns.apple.com/fsinc/1.0/">'
                b'<fsincMattes:FSINCMatteVersion>0</fsincMattes:FSINCMatteVersion></rdf:Description></rdf:RDF></x:xmpmeta>')
+        if uri.endswith(':semanticpersoninstances'):
+            xmp = xmp.replace(b'</rdf:Description>', b'<fsincMattes:InstanceMaskReferenceKey>DerivedVisionInstance1</fsincMattes:InstanceMaskReferenceKey></rdf:Description>')
         mime_ids = {info['id'] for info in mask_infos if info.get('type') == 'mime'}
         if uri.startswith('tag:apple.com,2026:'):
             for old in selected & mime_ids: payloads[mapping[old]] = xmp
@@ -200,13 +202,15 @@ def main():
         extra = json.loads((root / path).read_text())
         if extra.get('stage') == 'finished' and 'normalized_person_with_stats' in extra:
             person.setdefault('imageStats', {}).update(extra['normalized_person_with_stats'].get('imageStats', {}))
-    person['instanceMaskReferenceKey'] = 'tag:apple.com,2026:photo:aux:semanticpersonmatte'
+    person['instanceMaskReferenceKey'] = 'DerivedVisionInstance1'
     texture = {'HardwareModel': 'iPhone19,2', 'PortType': 'PortTypeBack', 'CaptureMode': 'Still', 'CaptureType': 'LF',
                'Preset': 'Standard', 'TextureStylePeopleDataVersion': 3, 'FilmGrainSeed': 0,
                'TextureStylePostProcessedPeopleData': [person]}
     source = (root / 'control.heic').read_bytes()
     codecs = {row['role']: row for row in production['native_mask_codec_controls']}
     native_masks = [(row['uri'], (root / codecs[row['role']]['file']).read_bytes()) for row in production['resources']]
+    if production['instance_count'] != 1: raise ValueError('instance matching must be implemented before extending this one-person control')
+    native_masks.append(('tag:apple.com,2026:photo:aux:semanticpersoninstances', (root / codecs['semanticpersonmatte']['file']).read_bytes()))
     for name, dictionary, marker in [('texture-candidate.heic', texture, True), ('texture-without-marker-control.heic', texture, False), ('texture-no-people-control.heic', {k:v for k,v in texture.items() if k != 'TextureStylePostProcessedPeopleData'}, True)]:
         output, report = attach(source, dictionary, native_masks, marker)
         (root / name).write_bytes(output)
