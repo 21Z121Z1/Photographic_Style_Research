@@ -1,0 +1,47 @@
+name: Texture producer SPI research
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: texture-producer-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  producer:
+    runs-on: xcode-27
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: research/texture-producer-20261020
+          persist-credentials: false
+      - name: Observe producer inheritance, input dependencies and original call order
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          bash research/texture-producer-20261020/run.sh "$RUNNER_TEMP/texture-producer-evidence"
+      - name: Bind text evidence to exact source
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'texture-producer-evidence'
+          p.mkdir(exist_ok=True)
+          rows=[]
+          for f in sorted(p.rglob('*')):
+              if not f.is_file() or f.suffix not in {'.json','.txt','.log'}:continue
+              rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
+          manifest={'schema':'texture-producer-evidence-v1','head_sha':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'photos_used':False,'apple_implementation_patched':False,'files':rows}
+          (p/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          print(json.dumps(manifest,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: texture-producer-text
+          path: |
+            ${{ runner.temp }}/texture-producer-evidence/*.json
+            ${{ runner.temp }}/texture-producer-evidence/*.txt
+            ${{ runner.temp }}/texture-producer-evidence/*.log
+          retention-days: 1

@@ -1,0 +1,12 @@
+breakpoint set --name ProducerDebugReady
+run
+disassemble --name '-[PITextureStyleAutoCalculator submit:]'
+disassemble --name '-[PITextureStyleAutoCalculator processComputedData:error:]'
+disassemble --name '-[PITextureStyleAutoCalculator pipelineOutput]'
+disassemble --name '+[PITextureStyleAutoCalculator canRenderTextureStylesOnComposition:]'
+disassemble --name '-[BWTextureStyleInfoMetadataNode renderSampleBuffer:forInput:]'
+disassemble --name '-[CMITextureStylesProcessor prepareToProcess:]'
+disassemble --name '-[CMITextureStylesProcessor process]'
+disassemble --name '-[CMITextureStylesProcessor initWithOptionalMetalCommandQueue:]'
+continue
+quit
