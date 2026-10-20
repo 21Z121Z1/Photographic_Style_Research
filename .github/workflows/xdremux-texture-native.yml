@@ -1,8 +1,5 @@
 name: Texture real-fixture generalization
 on:
-  push:
-    branches: [research/texture-generalization-20261020]
-    paths: [research/texture-generalization-20261020/FINAL_RUN.json]
   workflow_dispatch:
     inputs:
       phase:
@@ -17,7 +14,7 @@ permissions:
   contents: write
 concurrency:
   group: texture-fixture-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   fixtures:
     runs-on: xcode-27
