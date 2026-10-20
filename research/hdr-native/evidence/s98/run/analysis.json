@@ -1,0 +1,1015 @@
+{
+  "os_build": "26A434",
+  "canvas": [
+    4284,
+    5712
+  ],
+  "photo_count": 1,
+  "full_original_frame_pixels": 24470208,
+  "complete_native_reference": true,
+  "complete_owner_inverse_executed": true,
+  "roundtrip": {
+    "old_mask_coverage": 0.9443835540752249,
+    "failed_eligible_pixels": 8327939,
+    "max_relative_error_in_old_mask": 0.7113556778389195,
+    "old_1e3_gate_pass": false
+  },
+  "rows": [
+    {
+      "operator": "skin-color",
+      "strength": 0,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": false,
+      "delivery": "Unquantized sensitivity/identity only",
+      "EV": {
+        "n": 23288907,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "EV_excluded_pixels": 1181301,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 0,
+      "ACES_pixels_gt1": 0,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": "inf",
+      "normalized_RGB_ratio_error": {
+        "n": 23307029,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "normalized_RGB_excluded_pixels": 1163179,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453925,
+      "oracle_ratio_valid_pixels": 24453925,
+      "zero_strength_RGB_max": 0.0,
+      "oracle_zero_effect_pixels": 24334278,
+      "oracle_zero_effect_region_max_actual_change": 0.0,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0,
+        "RGB_max_abs_error": 0.0,
+        "ACES_max_codes": null
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.0,
+        "actual_CI_owner_seam_gradient_error_max": 0.0,
+        "actual_CI_owner_seam_gradient_error_mean": 0.0,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 135930,
+        "EV": {
+          "n": 135930,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_pixels": 0,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "normalized_RGB_ratio_error": {
+          "n": 135930,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-color",
+      "strength": 0.5,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": true,
+      "delivery": "Actual stored-half loggain reconstruction",
+      "EV": {
+        "n": 23288907,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.012528719380497932
+      },
+      "EV_excluded_pixels": 1181301,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 1,
+      "ACES_pixels_gt1": 0,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": 96.53144784832891,
+      "normalized_RGB_ratio_error": {
+        "n": 23307029,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.002945098327472806
+      },
+      "normalized_RGB_excluded_pixels": 1163179,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453925,
+      "oracle_ratio_valid_pixels": 24453925,
+      "zero_strength_RGB_max": null,
+      "oracle_zero_effect_pixels": 24334278,
+      "oracle_zero_effect_region_max_actual_change": 0.0009772777557373047,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 3.0506512638472927e-05,
+        "RGB_max_abs_error": 1.3470649719238281e-05,
+        "ACES_max_codes": 1
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.004865965456701815,
+        "actual_CI_owner_seam_gradient_error_max": 0.000777931563789025,
+        "actual_CI_owner_seam_gradient_error_mean": 2.391390805619061e-06,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 135930,
+        "EV": {
+          "n": 135930,
+          "p50": 2.0104864233871922e-05,
+          "p95": 0.0011281261686235666,
+          "p99": 0.0013876280281692743,
+          "max": 0.012528719380497932
+        },
+        "EV_excluded_pixels": 0,
+        "ACES_p99_pixel_Linf_codes": 1,
+        "normalized_RGB_ratio_error": {
+          "n": 135930,
+          "p50": 3.5614844819065183e-05,
+          "p95": 0.0001682798028923571,
+          "p99": 0.00023985425650607795,
+          "max": 0.002945098327472806
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-color",
+      "strength": 1,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": false,
+      "delivery": "Unquantized sensitivity/identity only",
+      "EV": {
+        "n": 23288907,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.02512281760573387
+      },
+      "EV_excluded_pixels": 1181301,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 3,
+      "ACES_pixels_gt1": 5,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": 90.48881849408346,
+      "normalized_RGB_ratio_error": {
+        "n": 23307029,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.005875866860151291
+      },
+      "normalized_RGB_excluded_pixels": 1163179,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453925,
+      "oracle_ratio_valid_pixels": 24453925,
+      "zero_strength_RGB_max": null,
+      "oracle_zero_effect_pixels": 24334278,
+      "oracle_zero_effect_region_max_actual_change": 0.001953125,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0,
+        "RGB_max_abs_error": 0.0,
+        "ACES_max_codes": null
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.009824772190768272,
+        "actual_CI_owner_seam_gradient_error_max": 0.0015572906122542918,
+        "actual_CI_owner_seam_gradient_error_mean": 4.786979904499068e-06,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 135930,
+        "EV": {
+          "n": 135930,
+          "p50": 4.0367442124988884e-05,
+          "p95": 0.0022563973907381296,
+          "p99": 0.0027755890041589737,
+          "max": 0.02512281760573387
+        },
+        "EV_excluded_pixels": 0,
+        "ACES_p99_pixel_Linf_codes": 1,
+        "normalized_RGB_ratio_error": {
+          "n": 135930,
+          "p50": 7.125729462131858e-05,
+          "p95": 0.00033654223079793155,
+          "p99": 0.0004797135479748249,
+          "max": 0.005875866860151291
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 0,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": false,
+      "delivery": "Unquantized sensitivity/identity only",
+      "EV": {
+        "n": 23288907,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "EV_excluded_pixels": 1181301,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 0,
+      "ACES_pixels_gt1": 0,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": "inf",
+      "normalized_RGB_ratio_error": {
+        "n": 23307029,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "normalized_RGB_excluded_pixels": 1163179,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453559,
+      "oracle_ratio_valid_pixels": 24453378,
+      "zero_strength_RGB_max": 0.0,
+      "oracle_zero_effect_pixels": 24282448,
+      "oracle_zero_effect_region_max_actual_change": 0.0,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0,
+        "RGB_max_abs_error": 0.0,
+        "ACES_max_codes": null
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.0,
+        "actual_CI_owner_seam_gradient_error_max": 0.0,
+        "actual_CI_owner_seam_gradient_error_mean": 0.0,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 187760,
+        "EV": {
+          "n": 146742,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_pixels": 41018,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "normalized_RGB_ratio_error": {
+          "n": 147325,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 0.5,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": true,
+      "delivery": "Actual stored-half loggain reconstruction",
+      "EV": {
+        "n": 23288836,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.11319395154714584
+      },
+      "EV_excluded_pixels": 1181372,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 1,
+      "ACES_pixels_gt1": 0,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": 111.04728018719808,
+      "normalized_RGB_ratio_error": {
+        "n": 23306958,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.014634666964411736
+      },
+      "normalized_RGB_excluded_pixels": 1163250,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453559,
+      "oracle_ratio_valid_pixels": 24453378,
+      "zero_strength_RGB_max": null,
+      "oracle_zero_effect_pixels": 24282448,
+      "oracle_zero_effect_region_max_actual_change": 0.000732719898223877,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0009749992788439243,
+        "RGB_max_abs_error": 1.519918441772461e-06,
+        "ACES_max_codes": 1
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.0008894041748135351,
+        "actual_CI_owner_seam_gradient_error_max": 0.00018841613200493157,
+        "actual_CI_owner_seam_gradient_error_mean": 7.808608704864951e-07,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 187760,
+        "EV": {
+          "n": 146671,
+          "p50": 4.822057962883264e-05,
+          "p95": 0.0012753966730087996,
+          "p99": 0.0021920003928244114,
+          "max": 0.11319395154714584
+        },
+        "EV_excluded_pixels": 41089,
+        "ACES_p99_pixel_Linf_codes": 1,
+        "normalized_RGB_ratio_error": {
+          "n": 147254,
+          "p50": 4.783074473380111e-05,
+          "p95": 0.00022255950898397714,
+          "p99": 0.0005846475251019001,
+          "max": 0.014634666964411736
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 1,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": false,
+      "delivery": "Unquantized sensitivity/identity only",
+      "EV": {
+        "n": 23288755,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.21813860535621643
+      },
+      "EV_excluded_pixels": 1181453,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 2,
+      "ACES_pixels_gt1": 8,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": 105.07560977151003,
+      "normalized_RGB_ratio_error": {
+        "n": 23306869,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.025542249903082848
+      },
+      "normalized_RGB_excluded_pixels": 1163339,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453559,
+      "oracle_ratio_valid_pixels": 24453378,
+      "zero_strength_RGB_max": null,
+      "oracle_zero_effect_pixels": 24282448,
+      "oracle_zero_effect_region_max_actual_change": 0.00146484375,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0,
+        "RGB_max_abs_error": 0.0,
+        "ACES_max_codes": null
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.001682580026681535,
+        "actual_CI_owner_seam_gradient_error_max": 0.00037480477476492524,
+        "actual_CI_owner_seam_gradient_error_mean": 1.552800926607163e-06,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 187760,
+        "EV": {
+          "n": 146590,
+          "p50": 9.613674774300307e-05,
+          "p95": 0.002546003321185708,
+          "p99": 0.004322484135627747,
+          "max": 0.21813860535621643
+        },
+        "EV_excluded_pixels": 41170,
+        "ACES_p99_pixel_Linf_codes": 1,
+        "normalized_RGB_ratio_error": {
+          "n": 147167,
+          "p50": 9.534620039630681e-05,
+          "p95": 0.0004424824146553874,
+          "p99": 0.00113004632294178,
+          "max": 0.025542249903082848
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-both",
+      "strength": 0,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": false,
+      "delivery": "Unquantized sensitivity/identity only",
+      "EV": {
+        "n": 23288907,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "EV_excluded_pixels": 1181301,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 0,
+      "ACES_pixels_gt1": 0,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": "inf",
+      "normalized_RGB_ratio_error": {
+        "n": 23307029,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "normalized_RGB_excluded_pixels": 1163179,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453559,
+      "oracle_ratio_valid_pixels": 24453378,
+      "zero_strength_RGB_max": 0.0,
+      "oracle_zero_effect_pixels": 24146528,
+      "oracle_zero_effect_region_max_actual_change": 0.0,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0,
+        "RGB_max_abs_error": 0.0,
+        "ACES_max_codes": null
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.0,
+        "actual_CI_owner_seam_gradient_error_max": 0.0,
+        "actual_CI_owner_seam_gradient_error_mean": 0.0,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 323680,
+        "EV": {
+          "n": 282662,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_pixels": 41018,
+        "ACES_p99_pixel_Linf_codes": 0,
+        "normalized_RGB_ratio_error": {
+          "n": 283245,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-both",
+      "strength": 0.5,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": true,
+      "delivery": "Actual stored-half loggain reconstruction",
+      "EV": {
+        "n": 23288836,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 1.0931999128160896e-07,
+        "max": 0.11319395154714584
+      },
+      "EV_excluded_pixels": 1181372,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 1,
+      "ACES_pixels_gt1": 0,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": 96.38067795637099,
+      "normalized_RGB_ratio_error": {
+        "n": 23306958,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 4.70273597841242e-08,
+        "max": 0.014634666964411736
+      },
+      "normalized_RGB_excluded_pixels": 1163250,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453559,
+      "oracle_ratio_valid_pixels": 24453378,
+      "zero_strength_RGB_max": null,
+      "oracle_zero_effect_pixels": 24146528,
+      "oracle_zero_effect_region_max_actual_change": 0.0009772777557373047,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0009749992788439243,
+        "RGB_max_abs_error": 1.3470649719238281e-05,
+        "ACES_max_codes": 1
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.004865965456701815,
+        "actual_CI_owner_seam_gradient_error_max": 0.000777931563789025,
+        "actual_CI_owner_seam_gradient_error_mean": 3.172250754830495e-06,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 323680,
+        "EV": {
+          "n": 282591,
+          "p50": 2.6372859792900272e-05,
+          "p95": 0.0011917771771550179,
+          "p99": 0.001676501939073205,
+          "max": 0.11319395154714584
+        },
+        "EV_excluded_pixels": 41089,
+        "ACES_p99_pixel_Linf_codes": 1,
+        "normalized_RGB_ratio_error": {
+          "n": 283174,
+          "p50": 4.332372191129252e-05,
+          "p95": 0.00019365332263987511,
+          "p99": 0.0003530454996507615,
+          "max": 0.014634666964411736
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    },
+    {
+      "operator": "skin-both",
+      "strength": 1,
+      "pixels": 24470208,
+      "practical_gate": true,
+      "selected_delivery": false,
+      "delivery": "Unquantized sensitivity/identity only",
+      "EV": {
+        "n": 23288755,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.21813860535621643
+      },
+      "EV_excluded_pixels": 1181453,
+      "ACES_p99_pixel_Linf_codes": 0,
+      "ACES_max_codes": 3,
+      "ACES_pixels_gt1": 13,
+      "ACES_pixels_gt4": 0,
+      "PSNR_peak1_dB": 90.34045199356278,
+      "normalized_RGB_ratio_error": {
+        "n": 23306869,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.025542249903082848
+      },
+      "normalized_RGB_excluded_pixels": 1163339,
+      "nonfinite_RGB": 0,
+      "ratio_valid_pixels": 24453559,
+      "oracle_ratio_valid_pixels": 24453378,
+      "zero_strength_RGB_max": null,
+      "oracle_zero_effect_pixels": 24146528,
+      "oracle_zero_effect_region_max_actual_change": 0.001953125,
+      "zero_effect_region_is_not_a_matte_or_new_mask": true,
+      "half_loggain_transport": {
+        "loggain_max_abs_EV_error": 0.0,
+        "RGB_max_abs_error": 0.0,
+        "ACES_max_codes": null
+      },
+      "gradient": {
+        "all_adjacency_gradient_error_max": 0.009824772190768272,
+        "actual_CI_owner_seam_gradient_error_max": 0.0015572906122542918,
+        "actual_CI_owner_seam_gradient_error_mean": 6.33978083110623e-06,
+        "actual_CI_owner_seam_edge_count": 9996,
+        "nonfinite_gradients": 0,
+        "scope": "Actual owner edges, deduplicated; this solve introduces no512x384 subpatches."
+      },
+      "old_1e3_gate_unchanged": true,
+      "camera_baked_parameter_or_scene_truth_identified": false,
+      "native_effect_active_region": {
+        "pixels": 323680,
+        "EV": {
+          "n": 282510,
+          "p50": 5.269933899398893e-05,
+          "p95": 0.002381640486419201,
+          "p99": 0.0033400144893676043,
+          "max": 0.21813860535621643
+        },
+        "EV_excluded_pixels": 41170,
+        "ACES_p99_pixel_Linf_codes": 1,
+        "normalized_RGB_ratio_error": {
+          "n": 283087,
+          "p50": 8.654745033709332e-05,
+          "p95": 0.00038648740155622363,
+          "p99": 0.000697449897415936,
+          "max": 0.025542249903082848
+        },
+        "practical_gate": true,
+        "selection": "Native neutral_RGB != native original_RGB before strength; diagnostic and acceptance region, not a new legacy mask or output gate"
+      }
+    }
+  ],
+  "selected_strength": 0.5,
+  "all_selected_practical_gates_pass": true,
+  "zero_strength_identity_all": true,
+  "preview_input_SHA_check_count": 3271,
+  "preview_input_SHA_all_unchanged": true,
+  "private_preview_SHA_checks_file_SHA256": "abd402f083db598219f2e8416543075b78c828f026917404b0c037f4084a083e",
+  "display": {
+    "view": "ACES 1.0 - SDR Video",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "exposure_EV": 0,
+    "config_SHA256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440"
+  },
+  "output_corrections": [
+    {
+      "shape": [
+        2144,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-color",
+      "CI_owner": [
+        0,
+        0,
+        2856,
+        2144
+      ],
+      "sha256": "ae23984ab73434f1cb74999a470002110d416de71d1f20df359785af8c4033cb",
+      "ratio_mask_sha256": "66fdd586853231c59b11d6d72dd08df0bf14d32ea73838e319d0f53a8802de94",
+      "ratio_mask_shape": [
+        2144,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2140,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-color",
+      "CI_owner": [
+        0,
+        2144,
+        2856,
+        2140
+      ],
+      "sha256": "ab48d5bc3ba1a87ec0c72de9144257ebeeb6450e0737ca99ae90ef58c45f564b",
+      "ratio_mask_sha256": "716e6f045bdced5e044dfa3a999181aac2746a0a5a13bf26cad5eef28e4b2c2f",
+      "ratio_mask_shape": [
+        2140,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2144,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-color",
+      "CI_owner": [
+        2856,
+        0,
+        2856,
+        2144
+      ],
+      "sha256": "a61df331eb4c84920b9b4549fc58f4d724118cfd38f284126078441b11090c38",
+      "ratio_mask_sha256": "a576f03bdc26ba2d38660ef415cec9a981cf6004b5d3e99bc0194540e2c81d38",
+      "ratio_mask_shape": [
+        2144,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2140,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-color",
+      "CI_owner": [
+        2856,
+        2144,
+        2856,
+        2140
+      ],
+      "sha256": "56698c21f4995449772e1e47e3532535f43ba9a2c33ab8ef79d9165957999a08",
+      "ratio_mask_sha256": "0534c11d95831ffa0c18a6113fb747cd5358f06a4d54578a21a3411dddf77d9f",
+      "ratio_mask_shape": [
+        2140,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2144,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-brightness",
+      "CI_owner": [
+        0,
+        0,
+        2856,
+        2144
+      ],
+      "sha256": "e82d9db01041c42630f21f9f239feae2a25bdbb1663c33ecdbbef2d50f207692",
+      "ratio_mask_sha256": "66fdd586853231c59b11d6d72dd08df0bf14d32ea73838e319d0f53a8802de94",
+      "ratio_mask_shape": [
+        2144,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2140,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-brightness",
+      "CI_owner": [
+        0,
+        2144,
+        2856,
+        2140
+      ],
+      "sha256": "1d2e5cfe80db84c9995d4e750e89063879c0ac45644150adc3d8f64b23773d1e",
+      "ratio_mask_sha256": "42ad6e730c12ab3bd0034c642b567c5c441dc9cc0bd35bc35872beddd3bf710c",
+      "ratio_mask_shape": [
+        2140,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2144,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-brightness",
+      "CI_owner": [
+        2856,
+        0,
+        2856,
+        2144
+      ],
+      "sha256": "5363ff3995558299966f631723d88a8248881e6b17d32b9e5ed9c338d40f2a38",
+      "ratio_mask_sha256": "a576f03bdc26ba2d38660ef415cec9a981cf6004b5d3e99bc0194540e2c81d38",
+      "ratio_mask_shape": [
+        2144,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2140,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-brightness",
+      "CI_owner": [
+        2856,
+        2144,
+        2856,
+        2140
+      ],
+      "sha256": "29c94fd70505b005f0f4e2b32d58e8190fa6bf82e56bb9c5f2564aa81f80931f",
+      "ratio_mask_sha256": "a6f57e42d948707c67923bc4f4cd191120f0df9fc2eaa96ab0d06ae6e185dfb8",
+      "ratio_mask_shape": [
+        2140,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2144,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-both",
+      "CI_owner": [
+        0,
+        0,
+        2856,
+        2144
+      ],
+      "sha256": "a504a804079089ab11f27dacb8f49e923eaa899b055376ffc3da20127d0ec5f0",
+      "ratio_mask_sha256": "66fdd586853231c59b11d6d72dd08df0bf14d32ea73838e319d0f53a8802de94",
+      "ratio_mask_shape": [
+        2144,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2140,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-both",
+      "CI_owner": [
+        0,
+        2144,
+        2856,
+        2140
+      ],
+      "sha256": "879757916a348d9c2eb543dc75f2737d5ca291f11f27f573f88b8857b880bffb",
+      "ratio_mask_sha256": "42ad6e730c12ab3bd0034c642b567c5c441dc9cc0bd35bc35872beddd3bf710c",
+      "ratio_mask_shape": [
+        2140,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2144,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-both",
+      "CI_owner": [
+        2856,
+        0,
+        2856,
+        2144
+      ],
+      "sha256": "66d1288e31ed291aa9393a4767d46a58c3f22ce2af5f2329ae12ac889e4b2cad",
+      "ratio_mask_sha256": "a576f03bdc26ba2d38660ef415cec9a981cf6004b5d3e99bc0194540e2c81d38",
+      "ratio_mask_shape": [
+        2144,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    },
+    {
+      "shape": [
+        2140,
+        2856,
+        3
+      ],
+      "dtype": "<f2",
+      "space": "RGB log2 correction in native/CI-verified linear P3",
+      "baseline": "native.f16",
+      "strength": 0.5,
+      "operator": "skin-both",
+      "CI_owner": [
+        2856,
+        2144,
+        2856,
+        2140
+      ],
+      "sha256": "500f8b48d09c9b4e8deb006c9a7de81341416e15680c861ffcf6552b1617718a",
+      "ratio_mask_sha256": "a6f57e42d948707c67923bc4f4cd191120f0df9fc2eaa96ab0d06ae6e185dfb8",
+      "ratio_mask_shape": [
+        2140,
+        2856
+      ],
+      "ratio_mask_dtype": "u1",
+      "reconstruction": "RGB = baseline_RGB * exp2(loggain); mask false has loggain zero; preserve signed baseline",
+      "not_final_HDR_container": true
+    }
+  ],
+  "old_masks_or_thresholds_changed": false,
+  "original_SDR_modified": false,
+  "no_new_ImageIO_container_test": true,
+  "face_body_actual_EV_identified": false,
+  "physical_scene_accuracy_unverified": true,
+  "camera_baked_semantics_restored": false,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

@@ -180,3 +180,6 @@ S97 run39499003223已完成整幅24MP native参照与分块实用门槛：4 owne
 
 
 S98已触发39504949862，实时状态须查同run，不以历史queued文件判断。下一步先核原生全owner/CI覆盖、context SHA与完整旧mask往返，再评估0/0.5/1皮肤独立效果、目标作用区EV/ACES、色比例和真实CI接缝；不重新追33点/bit-exact。另需补齐五套完整母版/载体与独立global/local结果的实际文件交付，S89/S90先前只保留小见证。相机曲线/统计、原Studio、RAW和实屏继续待实机，不能归档替代。
+
+
+S98终态39504949862：整幅条件consumer皮肤效果0.5实用门槛全过（全强度敏感性也过），不再为8327939旧1e-3失败点追bit-exact；保留所有原mask/residual。下一runner重点是实际照片revert-image链路/原照片处理域与完整matte支持检查，避免把以native B=F(S,tone+.35)为baseline的map直接乘原SDR当拍摄端语义逆；需要原S/R和native参数对照来界定实际可撤回部分，保持GTM/LTM独立。另补五套完整EXR/HEIC及global/local独立全帧文件；原统计/拍摄曲线/RAW/实屏仍按实机清单。

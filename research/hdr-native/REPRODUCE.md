@@ -244,3 +244,6 @@ S97 source5f8646d/run39499003223：读取run_semantic_s97.py、s97_driver_bindin
 
 
 S98复现源码1165f8a：run_semantic_s98.py、semantic_fullframe_s98.m、fullframe_analysis_s98.py、s98_binding.json。原S93 include保持SHA23fff931a0914e5956ccee79bc715ee60ecaff936658ea2f9e2fdf1a218f92e0；prefix/native精确替换和单一clang translation unit已冻结。小型4×6合成几何只检查10条实际owner接缝、mean0.5及稀疏预览位置覆盖，不冒充照片验证。新run只取2.56MB原HEIC密文，旧S97约320MB结果包不重传。当前结果待run39504949862，先看其日志/终态；不要重跑旧S89数值或12bit，仅当补交完整文件必须重建时复用原S42/S88 AST。
+
+
+S98实际结果入口：evidence/s98/NUMERICAL_RESULTS.zh-CN.md、run/analysis.json、inverse-roundtrip.json、review-checks.json。下载无需重复：原ZIP在日本runs/39504949862/artifact-12304682191.zip。每个owner的native.f16是本次校正baseline，使用operator-strength0.5-loggain.f16按metadata重建B_RGB*exp2(loggain)；mask false保持B。不要把它当原HEIC SDR的直接gain，也不要把recovered-effective.f16当scene master。F_neutral-estimate、native-inverse-roundtrip与native reference均留档，semantic_strength_s82.apply可重建0/0.5/1政策。3271预览ledger在私有tar，public SHA与GPG167成员清单一致。无需重新传旧S5/S8/S97大包。
