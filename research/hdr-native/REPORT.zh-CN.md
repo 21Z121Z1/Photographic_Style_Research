@@ -517,3 +517,12 @@ FlipYOrigin(r,b) = (minX(r)-minX(b), maxY(b)-maxY(r), width(r), height(r))
 
 
 S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run的原ZIP均已保存，并在删除前核对所有PR head/base引用为空、源码已在远端保留研究分支。六个临时ref全部返回DELETE204且随后精确查询为空；本批未创建任何secret/release，未修改master或其他分支。一次清理预检的公共API读取返回curl22，发生于任何删除之前；后续同一run读取200/completed，原失败HTTP状态未保留，不能推断根因。改为配置CLI凭据仅在内存/stdin访问api.github.com，重新检查全部前置条件后清理完成，未重复原生实验、未写盘凭据或签名URL。详见research/hdr-native/evidence/s80/closure.json及hdr-native-20261019/cleanup-s75-s80.json。原归档、样张、冻结模型及consumer-goto-v8两个受保护文件均保留。
+
+
+### SEMANTIC-20261018：S81 实用效果优先，停止微小精度追查
+
+**工程方向调整，非新增实验结论：** 2026-10-20 用户明确允许“99%效果”，不再要求像素级还原与完整可逆。按接近目标的实用效果理解，不声明已取得 99% 数值准确率。原 bit-exact、33 点全域紧外包络、C01–C05 全覆盖和逐像素唯一逆解从当前实用交付的阻塞项中移出，历史未通过记录、原门槛及冻结模型保留。S81 原 PSO 单绑定微小残差归因探针在创建源码/workflow/分支/run之前暂缓；没有新增照片、预览、原生运行或 errors.csv 测量行。
+
+**可交给 macOS runner（HDR-98，计划）：** 改为真实照片的 global-only、local-only、semantic-only 与联合 HDR 五种对照（含原 SDR），统一此前固定 ACES/曝光，报告 EV 分位数/最大值和 coverage、边缘光晕/振铃/接缝、肤色/背景误改、亮度连续性及低/中/高 headroom；至少五张全尺寸、两张冻结后留出。数值门槛按新配方提前声明，不把旧 PSNR 或 p99 冒充“99%效果”。保持原 SDR、预览输入 SHA 不变、不可恢复 mask/区间及目标/传输误差分开。真实可见缺陷需要时再重开精度定位。S80 的有限合成 max 0.000244140625、PSNR84.4481 dB 仅作为既有记录，不改称实用通过。
+
+**待实机：** 同帧 j/WithoutFaceBoost 曲线和 N/B/T/V/人脸统计/allocateTone/应用域、Studio 原统计、RAW2679/2408 及真实 HDR 屏幕仍按原方案。自然度和物理场景精度分别报告，相对场景母版仍标候选。新状态 engineering_accepted=false；A_phase_complete=false、原 acceptance_complete=false、goal active。完整政策与用户原文见 research/hdr-native/evidence/s81/scope-change.json；实用清单见 research/hdr-native/PRACTICAL_ACCEPTANCE.zh-CN.md。125MB 为累计许可，其他资源/隐私约束、Apple Log 与 global/local/语义分离保持。

@@ -121,3 +121,12 @@ S74之后（HDR-91，可交给macOS runner）：原region getter、±1e-6两个d
 S80之后（HDR-97，可交给macOS runner/静态继续）：原CI合法type2合成入口已建立，不重复S75编译错误或S76 nil-stats+maps无效成功。固定S80 ordered统计、九路纹理、tone+.35及logical extents，保留原process返回和PSO；whole/tile/translated各AA。先在final dispatch保留并读回实际guides、五组guided结果、c/d、三个matte、params/stats/ROI和输出；记录所有shape/dtype/OS/UUID/PSO来源及SHA，未知padding不上传。原生完整输出对照外，仅替换单项whole的对应crop到tile，其他输入/统计/参数逐字节不变，分别测RGB maxabs、PSNR、half差分、边缘距离；最后做完整native往返，可逆mask内仍≤1e-3。判定不能只看PI返回YES，必须有实际final dispatch、有限非零源响应和正确capture。tile当前max2.44140625e-4未过float1e-5，定位前不归因于half或边界。PI上游对skin/sky/person的resize来源仍需原调用者证据；S79的全尺寸控制不当作相机合同。C01–C05与33点全域tight hull依旧未认证，不能整体转为只能实机。
 
 实机计划不变：匹配IMG2810设备/OS，在同一合成帧/统计的j-only对照中捕获j与WithoutFaceBoost的四组global/local曲线，完整N、B/T/V、face histogram、allocateTone约束、实际应用域及clamp/plateau标记；每次只改变j，其他matte/key1/GTC/cd/曝光固定并SHA。按曲线区间传播β，输出可辨识EV区间和不可恢复mask，不把内部权重界当RGB增益。Studio需原始统计的目标参数反事实，RAW需Mac的2679/2408配对；实屏按低/中/高headroom与同一SDR基底验证，ACES预览不替代显示测试。
+
+
+### S81 用户调整后的执行优先级（2026-10-20）
+
+当前改做实用效果：先用已有真实样张/分离反事实配方在 runner 输出 global-only、local-only、semantic-only、联合 HDR 与原 SDR，统一固定 ACES/曝光，验证肤色、背景、连续性、边缘与三档 headroom，至少五图且两张冻结后留出。报告 EV median/p95/p99/max、覆盖率和不可恢复区域；不把“99%效果”转换为未经定义的准确率。完整清单在 PRACTICAL_ACCEPTANCE.zh-CN.md / evidence/s81/scope-change.json。
+
+33 点全域 tight hull、C01–C05 完整覆盖、逐像素唯一逆解及 S80 微小 tile 残差定位列为已知未认证/暂缓研究，暂不阻塞实用交付；它们没有被证明，也没有改称只能实机。出现可见缺陷或用户重新要求时才重开。原件、冻结模型/验收脚本及历史门槛不改，原严格失败保留，不强求完整 native 往返成为实用前提。
+
+实机清单继续执行：匹配 IMG2810 的同帧 j-only/WithoutFaceBoost 四曲线、N/B/T/V、face histogram、allocateTone 与应用域；原 Studio 统计；RAW2679/2408；实际 HDR 屏幕/观看条件。用户接受实用效果不构成这些物理量已恢复的证据。全图新载体 SDR max0、非有限值/隐私/内存检查仍为实用质量要求。

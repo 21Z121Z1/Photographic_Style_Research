@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-20T08:48:16.913110+00:00",
+  "phase": "S81-scope-change",
+  "kind": "user-directed project policy, not an Apple numerical finding",
+  "authority": {
+    "source": "current user message, 2026-10-20",
+    "verbatim": "我觉得精度方面就是达到 99% 的效果已经可以接受了，不用追求像素级的还原可逆，因为我们掌握的信息也不算很全？"
+  },
+  "engineering_target": "Useful, natural and stable separately controlled global/local/semantic reduction, then independent HDR rendering and RGB Gain Map; relative scene-linear remains a candidate.",
+  "interpretation_of_99_percent": "Qualitative near-complete effect. No numerical accuracy, fraction of correct pixels, or pass is asserted.",
+  "deferred_as_engineering_blockers": [
+    "NumPy/MSL half bit-exact fitting",
+    "33-point globally tight inverse hull and complete C01-C05 certification",
+    "explaining S80 2.44140625e-4 synthetic tile residual merely to satisfy the old 1e-5 gate",
+    "complete per-pixel unique inversion and proof over all nonfinite/sampler paths"
+  ],
+  "reopen_precision_research_only_if": "An observed practical defect (visible seams, halos, hue shifts, unstable inverse or loss of important structure) requires it, or the user explicitly requests it.",
+  "legacy_evidence_policy": "Keep frozen source, original gates, failures, masks and intervals. Deferred requirements do not turn into passed legacy checks.",
+  "practical_validation": {
+    "required_variants": [
+      "unchanged SDR",
+      "global-only reduction",
+      "local-only reduction",
+      "semantic-only reduction",
+      "combined candidate HDR"
+    ],
+    "photo_count_min": 5,
+    "post_recipe_freeze_holdouts_min": 2,
+    "full_resolution": true,
+    "common_preview": "Reuse the same previously fixed ACES display transform and exposure for all comparisons; record implementation/settings SHA and verify source SHA before/after preview.",
+    "display_headrooms": [
+      "low",
+      "middle",
+      "high"
+    ],
+    "report_without_relabeling_as_accuracy": [
+      "EV error median/p95/p99/max where a native/reference or a defined roundtrip exists; state denominator, near-black threshold, coverage and exclusions",
+      "whole-frame nonfinite/clamp/plateau counts and uncertainty masks; report excluded regions separately",
+      "edge halos, ringing, seams and smooth-ramp discontinuities, with full-size crops",
+      "skin hue/chromaticity change, target support versus background changes, and strength sweep",
+      "separate HDR target-to-carrier error and 8-bit map quantization error",
+      "full ImageIO decoded SDR max0 for the final new carrier"
+    ],
+    "decision": "Real-photo evidence plus visual review of the declared variants; quantitative limits must be declared for that suite before its holdouts, with no retroactive selection or hidden bad-pixel exclusions.",
+    "unacceptable_even_if_rare": [
+      "nonfinite output",
+      "visible skin/matte discontinuities",
+      "visible crop seams or halos",
+      "unexplained important-structure loss",
+      "unintended SDR modification"
+    ]
+  },
+  "physical_claims": {
+    "scene_referred_accuracy": "Not inferred from natural appearance, high PSNR, roundtrip or a Gain Map.",
+    "j": "Weight-ceiling bound is not pixel EV. Empirical amplitude remains a labeled conservative estimate until matched same-frame curves/statistics exist.",
+    "needs_device": [
+      "matched j-only/WithoutFaceBoost curves and same-frame N/B/T/V/face histogram/allocateTone/application domain",
+      "original Studio statistics",
+      "paired RAW IMG_2679/IMG_2408",
+      "actual HDR screen/viewing environment"
+    ]
+  },
+  "resources": {
+    "cumulative_cap_bytes": 125000000,
+    "free_floor_bytes": 4000000000,
+    "new_native_run": false,
+    "new_artifact": false,
+    "new_person_plaintext": false,
+    "Apple_Log_unchanged": true
+  },
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false,
+  "goal_status": "active"
+}

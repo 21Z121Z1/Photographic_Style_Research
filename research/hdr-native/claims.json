@@ -3078,9 +3078,34 @@
           "artifact_id": 12250205961
         }
       ]
+    },
+    {
+      "id": "HDR-98",
+      "category": "engineering/practical-quality-direction",
+      "status": "runner",
+      "planning_only": true,
+      "claim": "用户将工程交付重点调整为接近目标的实用效果，不再追像素级完整逆解；99%尚无数值定义。按五图/两张留出、分离global/local/semantic、固定ACES和三档headroom验证可见缺陷、色偏、连续性与传输；33点全域与bit-exact暂缓且保留未认证。当前不声明工程、A阶段或物理场景验收通过。",
+      "os_build": "26A434 (existing reference only; no new native run)",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s81/scope-change.json",
+          "line": 1,
+          "sha256": "16d4ec9ffc44f69e13d8fa4278e01aa5d01f6ff2aabe14d31eda4a7e09e9021e"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s81/phase-summary.json",
+          "line": 1,
+          "sha256": "bbb29d979d4373fea737619f10ff1c3c120e7751c41248e7314d6fc384305d91"
+        },
+        {
+          "file": "repo/research/hdr-native/PRACTICAL_ACCEPTANCE.zh-CN.md",
+          "line": 1,
+          "sha256": "2cfb5879fb1349551f75df57778a747b2627b5ff75598c38e273eb4548c323b2"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T08:19:01.855899+00:00",
+  "updated_utc": "2026-10-20T08:48:16.913110+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -3092,5 +3117,15 @@
     "downloads_over_1GB_require_approval": true,
     "full_EXR_separately_unapproved": true,
     "historical_ledgers_unchanged": true
+  },
+  "practical_quality_policy_20261020": {
+    "source": "repo/research/hdr-native/evidence/s81/scope-change.json",
+    "source_sha256": "16d4ec9ffc44f69e13d8fa4278e01aa5d01f6ff2aabe14d31eda4a7e09e9021e",
+    "engineering_accepted": false,
+    "99_percent_is_not_a_measured_accuracy": true,
+    "strict_proof_work_deferred_by_user": true,
+    "strict_failures_retained": true,
+    "scene_physical_validation_separate": true,
+    "next": "real-photo independent-operator and HDR quality validation"
   }
 }

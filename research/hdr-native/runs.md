@@ -185,3 +185,6 @@ scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_ci_evidence_
 
 
 S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run的原ZIP均已保存，并在删除前核对所有PR head/base引用为空、源码已在远端保留研究分支。六个临时ref全部返回DELETE204且随后精确查询为空；本批未创建任何secret/release，未修改master或其他分支。一次清理预检的公共API读取返回curl22，发生于任何删除之前；后续同一run读取200/completed，原失败HTTP状态未保留，不能推断根因。改为配置CLI凭据仅在内存/stdin访问api.github.com，重新检查全部前置条件后清理完成，未重复原生实验、未写盘凭据或签名URL。详见research/hdr-native/evidence/s80/closure.json及hdr-native-20261019/cleanup-s75-s80.json。原归档、样张、冻结模型及consumer-goto-v8两个受保护文件均保留。
+
+
+S81（2026-10-20）为用户授权的优先级调整，无新增 run/artifact/照片/预览。原 PSO 微小残差归因探针仅有本地准备基线，未创建 S81 workflow/源码/临时分支，按新指令暂缓。完整政策、原话和 S80 记录引用在 evidence/s81/scope-change.json 与 phase-summary.json；原实验 archives 全部保留。没有新增 errors.csv 测量行。
