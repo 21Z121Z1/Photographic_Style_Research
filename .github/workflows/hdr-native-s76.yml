@@ -1,0 +1,49 @@
+name: hdr-native-s76
+on:
+  push:
+    branches: ['research/vm-native-20261020-hdr-s76']
+  workflow_dispatch:
+jobs:
+  Original-CI-consumer-allocation-and-forward:
+    runs-on: xcode-27
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare synthetic-only working directory
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s76"; mkdir -m 700 "$W"; mkdir "$W/out"
+          echo "W=$W" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+      - name: Run actual original CI processor without shader or residency override
+        run: python3 research/hdr-native/run_hdr_s76.py > "$W/out/driver.log" 2>&1
+      - name: Hash synthetic captures and logs
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          root=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file() and p.name!='manifest.json':
+                  assert p.suffix in {'.json','.log','.txt','.bin'}
+                  rows.append({'path':p.name,'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          assert sum(x['size']for x in rows)<4000000
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'no_photo_input':True,'synthetic_pixel_buffers_only':True,'files':rows},indent=2)+chr(10))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s76-original-CI-synthetic
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - name: Clean own synthetic working directory
+        if: always()
+        run: test -n "${W:-}" && rm -rf -- "$W"

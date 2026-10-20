@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/run_hdr_s75.py", line 26, in <module>
+    subprocess.run(['clang','-I',str(D),'-I',str(W),'-O2','-fobjc-arc','-fblocks','-framework','Foundation','-framework','CoreFoundation','-framework','CoreGraphics','-framework','CoreImage','-framework','Metal',str(D/'probe_consumer_ci_s75.m'),'-o',str(W/'probe')],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=240)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['clang', '-I', 'research/hdr-native', '-I', '/Users/runner/work/_temp/hdr-s75', '-O2', '-fobjc-arc', '-fblocks', '-framework', 'Foundation', '-framework', 'CoreFoundation', '-framework', 'CoreGraphics', '-framework', 'CoreImage', '-framework', 'Metal', 'research/hdr-native/probe_consumer_ci_s75.m', '-o', '/Users/runner/work/_temp/hdr-s75/probe']' returned non-zero exit status 1.

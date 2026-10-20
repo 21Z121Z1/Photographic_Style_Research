@@ -1,0 +1,96 @@
+{
+  "parent_source_commit": "0d08bb13bb0f6980674addb33d3bd939333bfd53",
+  "S75_original_artifact_receipt": {
+    "run_id": 39387345347,
+    "artifact_id": 12248270752,
+    "ZIP_bytes": 3550,
+    "ZIP_sha256": "44a413d9e9402dabd113cda68036a007d3d828ebeebef3e756c76d17ededf857",
+    "manifest_sha256": "68c6d6ca5830a969d6fc2ca1bb69041d4c3084c263e5fe9f824ebbe43ab2a63c",
+    "payload_members_SHA_verified": 4,
+    "all_members_verified": true,
+    "source_commit": "0d08bb13bb0f6980674addb33d3bd939333bfd53",
+    "all_recipe_sources_verified_against_commit": true,
+    "event": "push",
+    "run_attempt": 1,
+    "run_conclusion": "failure",
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "no_photo_input": true,
+    "synthetic_pixel_buffers_only": true,
+    "download_transport": "Configured gh credential only in memory/stdin on api.github.com; signed asset fetched without credential; no URL or credential saved",
+    "original_ZIP_preserved": true
+  },
+  "reason": "Native compile failure only. Observer stores/retrieves identical CGRect bytes using public Foundation APIs. No original Apple method/category, shader, math or residency behavior modified. S75 original source and failure archive preserved.",
+  "test_plan_and_thresholds_unchanged": true,
+  "no_photo_input": true,
+  "changes": [
+    {
+      "parent": "research/hdr-native/probe_consumer_ci_s75.m",
+      "parent_sha256": "031be5e87b53fbd9174f49a552752d78a3406916fffc536c4072709c484fa6a4",
+      "derived": "research/hdr-native/probe_consumer_ci_s76.m",
+      "derived_sha256": "5194846eab4ebed3f38a9fc7a256b3b04c42ad83f7792942e44e0f84e4a23a07",
+      "replacements": [
+        {
+          "old": "[regions addObject:[NSValue valueWithCGRect:region]];",
+          "new": "[regions addObject:[NSValue valueWithBytes:&region objCType:@encode(CGRect)]];"
+        },
+        {
+          "old": "Readback75(cb,textures[i],[regions[i]CGRectValue],",
+          "new": "CGRect observedRegion=CGRectZero;[regions[i]getValue:&observedRegion size:sizeof(observedRegion)];Readback75(cb,textures[i],observedRegion,"
+        }
+      ]
+    },
+    {
+      "parent": "research/hdr-native/run_hdr_s75.py",
+      "parent_sha256": "ba8f95ced6301fc7913c2e5f3c4b2417912d78a2579cc7b993f3d2e1ed253440",
+      "derived": "research/hdr-native/run_hdr_s76.py",
+      "derived_sha256": "8b0509d9faa722e1e65a8ac81632e35000a84c91b72241c36542cc7fdbeebae9",
+      "replacements": [
+        {
+          "old": "files=[D/n for n in['probe_consumer_ci_s75.m'",
+          "new": "files=[D/n for n in['probe_consumer_ci_s76.m'"
+        },
+        {
+          "old": "run_hdr_s75.py",
+          "new": "run_hdr_s76.py"
+        },
+        {
+          "old": "recipe={'os_build':",
+          "new": "recipe={'probe_version':'S76','S75_failed_before_native':{'run_id':39387345347,'artifact_id':12248270752,'reason':'SDK lacks NSValue valueWithCGRect constructor declaration; portable valueWithBytes/getValue used only for observer geometry storage'},'os_build':"
+        },
+        {
+          "old": "str(D/'probe_consumer_ci_s75.m')",
+          "new": "str(D/'probe_consumer_ci_s76.m')"
+        }
+      ]
+    },
+    {
+      "parent": ".github/workflows/hdr-native-s75.yml",
+      "parent_sha256": "7f9b8d34b746b968ab183358c42b3c96ecc250710a4a4d6d17c2e8a261a759f4",
+      "derived": ".github/workflows/hdr-native-s76.yml",
+      "derived_sha256": "0f330b6e10f58f54f2f4693a9e57b5f828269f0fd56d3133a8a79794e15e6398",
+      "replacements": [
+        {
+          "old": "name: hdr-native-s75",
+          "new": "name: hdr-native-s76"
+        },
+        {
+          "old": "research/vm-native-20261020-hdr-s75",
+          "new": "research/vm-native-20261020-hdr-s76"
+        },
+        {
+          "old": "W=\"$RUNNER_TEMP/hdr-s75\"",
+          "new": "W=\"$RUNNER_TEMP/hdr-s76\""
+        },
+        {
+          "old": "run_hdr_s75.py",
+          "new": "run_hdr_s76.py"
+        },
+        {
+          "old": "name: hdr-s75-original-CI-synthetic",
+          "new": "name: hdr-s76-original-CI-synthetic"
+        }
+      ]
+    }
+  ]
+}
