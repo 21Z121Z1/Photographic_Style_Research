@@ -4688,9 +4688,34 @@
           "sha256": "c98ef97f2023c64bc04bd8a109f0b9a9dc3b8f1b3469de377b11c30bacce5446"
         }
       ]
+    },
+    {
+      "id": "HDR-167",
+      "category": "semantic/explicit-bridge-necessary-bound",
+      "status": "已验证数值",
+      "claim": "S100已认证完整RGB极值给出显式F(R,Tone0)对原片S的Linf必要下界0.19499731063842773，该上下文不可能过旧float1e-5；不是实测max、旧RGB mask内1e-3证明、p99/99%效果或EV界，不用再为bit-exact重跑。",
+      "os_build": "26A434",
+      "run_id": 39514608080,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s100/tone0-bridge-bounds.json",
+          "line": 1,
+          "sha256": "2b6615a8cc2e17bfd552f81c7e912888d012c77d0b6d63ba359e48ad5474541a"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s100/run/original-tone0-filter-report.json",
+          "line": 1,
+          "sha256": "a8d15a7af7d9d34f99bebe851fe96f72687c55f542d6d215b90a90277d9a726b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s100/run/key1-reverse-tone0-filter-report.json",
+          "line": 1,
+          "sha256": "ad9d0f52cf9b71e4a5a784eab645cea6ed20f08db0a7b590f769739127c63a29"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T23:37:30.015379+00:00",
+  "updated_utc": "2026-10-20T23:42:52.917209+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -7970,5 +7995,41 @@
     "A_phase_complete": false,
     "engineering_accepted": false,
     "acceptance_complete": false
+  },
+  "semantic_S100_explicit_bridge_bounds": {
+    "os_build": "26A434",
+    "run_id": 39514608080,
+    "status": "已验证数值",
+    "method": "Analytic necessary bound from authenticated complete-array RGB extrema/mean, no image decode/re-render/old-archive fetch",
+    "original_S_input_stats": {
+      "height": 4284,
+      "maximum": 1.2321066856384277,
+      "mean": 0.2876085004707776,
+      "minimum": -0.00792272575199604,
+      "nonfinite": 0,
+      "width": 5712
+    },
+    "native_B_F_R_tone0_output_stats": {
+      "height": 4284,
+      "maximum": 1.037109375,
+      "mean": 0.2879259262153151,
+      "minimum": 0,
+      "nonfinite": 0,
+      "width": 5712
+    },
+    "RGB_Linf_lower_bound_terms": {
+      "max_extrema_gap": 0.19499731063842773,
+      "min_extrema_gap": 0.00792272575199604,
+      "mean_gap": 0.00031742574453752503
+    },
+    "RGB_Linf_error_vs_S_lower_bound": 0.19499731063842773,
+    "proof": "For any same-shaped real arrays S,B: abs(max(S)-max(B)) <= max(abs(S-B)); likewise min, and abs(mean(S)-mean(B)) <= max(abs(S-B)). All stats cover the same complete raw5712x4284 RGB canvas in linearP3.",
+    "this_explicit_chain_can_meet_old_float_max_abs_1e5": false,
+    "not_a_measured_max_error": true,
+    "not_old_1e3_eligible_mask_proof": true,
+    "not_a_p99_or_99percent_practical_acceptance_bound": true,
+    "no_luma_EV_bound_inferred_from_RGB_extrema": true,
+    "inputCast_default_nil_and_Photos_UI_equivalence_unproven": true,
+    "no_reason_for_bit_exact_retry": true
   }
 }

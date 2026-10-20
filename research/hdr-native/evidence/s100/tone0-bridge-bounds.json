@@ -1,0 +1,36 @@
+{
+  "os_build": "26A434",
+  "run_id": 39514608080,
+  "status": "\u5df2\u9a8c\u8bc1\u6570\u503c",
+  "method": "Analytic necessary bound from authenticated complete-array RGB extrema/mean, no image decode/re-render/old-archive fetch",
+  "original_S_input_stats": {
+    "height": 4284,
+    "maximum": 1.2321066856384277,
+    "mean": 0.2876085004707776,
+    "minimum": -0.00792272575199604,
+    "nonfinite": 0,
+    "width": 5712
+  },
+  "native_B_F_R_tone0_output_stats": {
+    "height": 4284,
+    "maximum": 1.037109375,
+    "mean": 0.2879259262153151,
+    "minimum": 0,
+    "nonfinite": 0,
+    "width": 5712
+  },
+  "RGB_Linf_lower_bound_terms": {
+    "max_extrema_gap": 0.19499731063842773,
+    "min_extrema_gap": 0.00792272575199604,
+    "mean_gap": 0.00031742574453752503
+  },
+  "RGB_Linf_error_vs_S_lower_bound": 0.19499731063842773,
+  "proof": "For any same-shaped real arrays S,B: abs(max(S)-max(B)) <= max(abs(S-B)); likewise min, and abs(mean(S)-mean(B)) <= max(abs(S-B)). All stats cover the same complete raw5712x4284 RGB canvas in linearP3.",
+  "this_explicit_chain_can_meet_old_float_max_abs_1e5": false,
+  "not_a_measured_max_error": true,
+  "not_old_1e3_eligible_mask_proof": true,
+  "not_a_p99_or_99percent_practical_acceptance_bound": true,
+  "no_luma_EV_bound_inferred_from_RGB_extrema": true,
+  "inputCast_default_nil_and_Photos_UI_equivalence_unproven": true,
+  "no_reason_for_bit_exact_retry": true
+}

@@ -943,3 +943,6 @@ setDefaults后useStyleEngine实测false（本次仍显式设false），inputCast
 原ZIP GitHub→日本577462229B，香港只取公开成员549144B（编码开销另计）、32768B密文头和30993B摘要，无整ZIP或大cipher body回传。临时secret/release/tag/private分支在PR零引用/源保留后全部清理。私有ZIP artifact12308091275 SHA6940dfa84d0d3d4dfc9b05eb1318d9c889612dcc997352906012fbf6a2db1655，内cipher SHA816577f7767420cef7679e8d98df1621edd43bc0554444b3dce9d8aed2d3751d，manifest SHA14ce46f85bf834089bd795d606defc2f564428bdf7fba41ff35fef567c3b088f。
 
 下一步仍可runner：直接测F(R,0)与原片S并定位零Tone非恒等的处理域/配置，不能先假定UI顺序；按原条件保留语义反事实。完整母版/载体与global/local的IO保留器已在workspace准备（未运行），不拿代码准备替代文件交付。真实拍摄端语义分量、同帧j四曲线/N/B/T/V/hist/allocateTone/app域、原Studio统计、RAW2679/2408和实屏按原清单待实机。A、工程、旧acceptance仍false，不再追bit-exact/33点。
+
+
+S100补充（已验证数值，汇总下界推导，未重跑）：同一raw线性P3画布中，原片S的RGB全局max=1.2321066856384277，显式consumer F(R,Tone0)的全局max=1.037109375。因此max|S−F(R,0)|≥|max(S)−max(F(R,0))|=0.19499731063842773。这是严格必要下界，不是实测最大误差；当前显式配置（inputCast默认nil等）无法满足旧float maxabs1e-5，无须为了判定这一点再抓像素/追bit-exact。它没有定位见证像素是否落入旧RGB-eligible mask，也不能推导p99、99%实用效果、亮度EV或实际Photos UI是否等价；这些结论仍未测。均值接近不能代替实际往返。见evidence/s100/tone0-bridge-bounds.json。
