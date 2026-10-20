@@ -150,8 +150,10 @@ int main(int argc, char **argv) {
             if(people.count==1)report[@"native_person_without_stats"]=people[0][@"native_person_without_stats"];
             // Empty observations mean an empty derived editing context, not a
             // template person. Keep every scalar role explicitly dimensioned.
+            NSMutableSet *zeroRoles=[NSMutableSet new];
             for(NSString *role in @[@"semanticskinmattev2",@"semantichairmatte",@"semanticteethmattev2",@"semanticglassesmattev2",@"semanticpersonmatte",@"semanticfaceskinmatte"])
-                if(!masks[role])masks[role]=@{@"data":[NSMutableData dataWithLength:w*h],@"width":@(w),@"height":@(h)};
+                if(!masks[role]){masks[role]=@{@"data":[NSMutableData dataWithLength:w*h],@"width":@(w),@"height":@(h)};[zeroRoles addObject:role];}
+            report[@"mask_resampling"]=@"native probability buffers are sampled at working-pixel centers with nearest-neighbor interpolation, clamped and quantized to L8 before producer/writer sharing";
             // Declared derived resource: real inferred skin intersected with the
             // measured face bounds; this is not presented as FSINC inference.
             NSDictionary *skin = masks[@"semanticskinmattev2"];
@@ -163,10 +165,13 @@ int main(int argc, char **argv) {
                     if (!inside) ((uint8_t *)data.mutableBytes)[y * mw + x] = 0;
                 }
                 masks[@"semanticfaceskinmatte"] = @{@"data": data, @"width": @(mw), @"height": @(mh)};
+                [zeroRoles removeObject:@"semanticfaceskinmatte"];
                 report[@"face_skin_source"] = @"inferred skin intersected with measured face bounds";
             }
             NSMutableDictionary *resourceSources = [NSMutableDictionary new];
             for (NSString *role in masks) resourceSources[role] = [role isEqual:@"semanticfaceskinmatte"] ? @"derived skin/face intersection" : @"native Vision segmentation";
+            for(NSString *role in zeroRoles)resourceSources[role]=@"explicit empty context after no native observation; no detected-absence claim";
+            report[@"zero_filled_roles_without_observation"]=[[zeroRoles allObjects] sortedArrayUsingSelector:@selector(compare:)];
             if (skin) {
                 size_t mw = [skin[@"width"] unsignedLongValue], mh = [skin[@"height"] unsignedLongValue];
                 NSData *faceData = masks[@"semanticfaceskinmatte"][@"data"];
