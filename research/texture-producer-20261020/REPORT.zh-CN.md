@@ -1,6 +1,8 @@
 # 从图像生产 Texture 信息并写入 HEIC
 
-本轮已取得真实的 Apple SPI 生产结果，并制作导入候选。Photos 激活仍未证明，不能把文件解码、属性解析或单效果渲染当作激活成功。最终逐项结果、源码提交与文件 SHA 以 `acceptance.json` 和对应 manifest 为准。
+本轮已取得真实的 Apple SPI 生产结果，写入并原生验证 HEIC；**用户于 2026-10-20 确认：`texture-candidate.heic 可以激活了`。** 这份已交付单人像候选已有“SPI 生成 → 写入/回读 → 用户确认激活”的完整路径证据。云端验收与用户设备反馈分别保留，不以解码或单效果渲染代替激活反馈。
+
+该候选 SHA-256 为 `a7ac5d0dc8721e0cac4db6bfec153864f96fc83f406adeedc2036bc6f0543a7b`，332177 字节。原话、交付文件绑定及未反馈项目见 [DEVICE_ACTIVATION.json](https://github.com/21Z121Z1/Photographic_Style_Research/blob/38f1216a567cc57c993b5e5646f6b0a0d944a18e/DEVICE_ACTIVATION.json)。用户通过文件名回复交付结果，未提供设备端校验值、设备型号或系统版本；助手未直接观察设备 UI。
 
 ## 已取得的生产结果
 
@@ -30,11 +32,13 @@ Mattify 在 EV −1、0、+1 下的平均脸色分别约为 `[0.365,0.278,0.216]
 
 普通 Styles 是为当前 SDR 图像新建的中性编辑上下文：使用本图像素/人物/皮肤分布、sRGB 传递曲线、实测 light maps、中性系数和新编码的 Apple Log 缩略图。它没有恢复相机 RAW、原拍摄曝光或原 ISP。硬件等字段用于选择原生 tuning，MakerNote 84 仅声明默认编辑设置；未伪造 EXIF 相机型号、ISO、光圈、曝光或拍摄日期。
 
-## 仍未通过的边界
+## 设备激活结果与后续边界
 
-运行器上的 `PITextureStylePipelineProcessor.isAvailable=true`，但 `supportsSemanticStyleRendering=false`。`PhotographicStyleV2` capability 与 `canRenderTextureStylesOnComposition` 仍为 false。**尚未完全区分文件条件与平台资格各自的影响**，因此不能说只剩一个已证明的硬件原因，更不能宣布 Photos 激活成功。
+运行器上的 `PITextureStylePipelineProcessor.isAvailable=true`，但 `supportsSemanticStyleRendering=false`，`PhotographicStyleV2` capability 与 `canRenderTextureStylesOnComposition` 原始值仍为 false。现已取得用户确认的设备激活正样；这些 false 保留为云端历史观测，不作为该候选设备激活失败的结论。
 
-本次验证覆盖这张单人像。多人物匹配、无人像流程、更多方向/分辨率和完整 PhotoImaging 渲染没有通过通用验收；“任意输入通用生成器”仍不是已证明的交付。交付重点是本轮最可靠、具有真实生产结果和文件验证的导入候选。
+本次验证覆盖这张单人像。纹理/颗粒及柔肤控件的实际效果、修改保存后重新打开是否保留、对照文件表现尚未反馈。多人物匹配、无人像流程、更多方向/分辨率和完整 PhotoImaging 渲染尚未取得通用验收；这次激活成功不扩展为“任意输入通用生成器”已完成。
+
+原生生成采用源码 `27122d06d29909e13709a13e4768419dc4473c1f`，[Actions 39370651344](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39370651344) 通过。此次状态更新只增加设备反馈并修正文档，不重跑或改写原生证据。218 份生成证据再次核验 SHA 和长度；原始 ZIP、云端收据和本地 QA 逐字节保留。因此原交付收据中“激活未证明/未测试”的字段表示反馈前的历史状态，当前设备结果以新增反馈记录为准。
 
 ## 导入测试
 

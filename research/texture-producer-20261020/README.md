@@ -2,9 +2,11 @@
 
 This research produces new Texture person statistics from a public input image, writes them with image-derived resources into a HEIC, and checks native readback and final-file effect replay. It is separate from the earlier preservation-only work.
 
+**2026-10-20: the user confirmed that the delivered `texture-candidate.heic` activates on their device.** The candidate SHA-256 is `a7ac5d0dc8721e0cac4db6bfec153864f96fc83f406adeedc2036bc6f0543a7b`. The exact statement, delivered-artifact binding and unreported checks are archived in [DEVICE_ACTIVATION.json](https://github.com/21Z121Z1/Photographic_Style_Research/blob/38f1216a567cc57c993b5e5646f6b0a0d944a18e/DEVICE_ACTIVATION.json). Device model, OS version and a device-local checksum were not supplied. This is user-reported device evidence for this candidate, alongside the independently verified native generation and file evidence.
+
 The import candidate is `texture-candidate.heic`. `control.heic` contains the same encoded primary image without the editing resources. `final-file-mattify-preview.heic` is a baked preview, rather than the import candidate.
 
-The receipt is `acceptance.json`. A passing cloud receipt means native statistics generation, file readback and final-file replay passed. **It does not mean Photos activation passed.** Both the native `PhotographicStyleV2` capability and editor eligibility predicate have returned false on this runner; its platform also reports `supportsSemanticStyleRendering=false`. The contribution of file requirements versus platform eligibility has not been fully separated.
+The receipt is `acceptance.json`. A passing cloud receipt means native statistics generation, file readback and final-file replay passed. Device activation is recorded separately by the user report above. The native `PhotographicStyleV2` capability, editor eligibility predicate and `supportsSemanticStyleRendering` returned false on the runner. Those observations remain unchanged in the original receipt and do not negate the user's positive device result. The original delivered ZIP and pre-report receipts remain byte-identical.
 
 ## Original Apple production entries
 
@@ -42,7 +44,7 @@ One shared inferred geometry and full raw-mask context feeds the original statis
 
 Identical container properties are shared and unused descriptors removed; the verified container has 28 properties, below the decoder limit encountered in the compatibility check. The baked preview explicitly converts the Metal row origin to Core Image's image origin. Direct row-order PNGs permit independent orientation and appearance inspection.
 
-The current verified fixture is one 512×512 public NASA portrait with one detected face/person. This is not universal-input certification. Multiple-person matching, no-person production, broader orientations/resolutions, full PhotoImaging rendering, and device UI activation are not certified by this receipt.
+The current verified fixture is one 512×512 public NASA portrait with one detected face/person. The native production, write/readback, final-file replay and user-confirmed activation path is established for this delivered candidate. This is not universal-input certification. Multiple-person matching, no-person production, broader orientations/resolutions and full PhotoImaging rendering remain unverified. The user has not yet reported texture/grain or smoothing control effects, save-and-reopen retention, or a comparison against the control file.
 
 ## Reproduction and evidence
 
@@ -53,6 +55,8 @@ bash research/texture-producer-20261020/run.sh /tmp/texture-producer-evidence
 ```
 
 The manual Actions workflow uses a sparse checkout. Its final preservation step has repository-content write permission solely to create a separate `research/texture-output-<run-id>` branch with newly generated public-image results; it never merges or changes the source branch. Native programs receive no token. The workflow never opens Photos, changes Apple implementations or uploads system model/framework binaries. Generated evidence and all failures are also framed in the job text response. `readback.py` verifies every recovered file's byte length, SHA-256, manifest set and exact source commit. The result branch and import bundle retain their own hashes.
+
+The delivered candidate was generated from source commit `27122d06d29909e13709a13e4768419dc4473c1f` in [run 39370651344](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39370651344). The subsequent activation-status update changes documentation and adds the user's report; it does not rerun or alter the original native evidence. The original [import bundle](https://raw.githubusercontent.com/21Z121Z1/Photographic_Style_Research/e81312a192b68c7984e5c2ff3f436e4c62beb0cd/texture-import-test-20261020.zip) has SHA-256 `0f61ff23a450afe23d370eba8f796d0b223231b30cc5b964f753508a9d10abab`.
 
 Input: [scikit-image's NASA astronaut fixture](https://github.com/scikit-image/scikit-image/blob/v0.25.2/skimage/data/astronaut.png), SHA-256 `88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5`. Its dataset documentation identifies NASA/public-domain provenance.
 
