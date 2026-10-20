@@ -1,0 +1,44 @@
+{
+  "source_before_probe": "06ef881d63149edabff860c4e5dce6021ce6204a",
+  "protected_8_SHA_unchanged": true,
+  "solver_source": "research/hdr-native/evidence/s93/run/S93-inverse-include.txt",
+  "solver_SHA256": "23fff931a0914e5956ccee79bc715ee60ecaff936658ea2f9e2fdf1a218f92e0",
+  "test": "Complete original5712x4284 conditional inverse in real native CI owners; no repeated S97 patch benchmark. Unchanged S93 solver/bounds/mask/1e-3, native neutral refs and per-operator0/0.5/1 effects; selected0.5 half RGB loggain outputs, exact actual owner seam statistics, neutral ACES/input SHA.",
+  "practical_inverse_gate": {
+    "EV_luma_p99_max": 0.01,
+    "ACES_p99_pixel_Linf_codes_max": 1,
+    "ACES_max_codes_max": 4,
+    "nonfinite_RGB": 0,
+    "zero_strength_RGB_max": 0,
+    "evaluation_regions": [
+      "entire original frame",
+      "native-neutral != native-original target-active region"
+    ]
+  },
+  "gate_applies_to": [
+    "entire frame",
+    "native neutral!=native original target-active region"
+  ],
+  "old_thresholds_changed": false,
+  "input_or_neutral_oracle_used_as_seed": false,
+  "capacity_bytes": 536870912,
+  "capacity_settings_preserved_from_S97": true,
+  "small_synthetic_geometry_check": {
+    "synthetic_shape": [
+      4,
+      6
+    ],
+    "exact_actual_seam_edge_count": 10,
+    "exact_expected_seam_mean": 0.5,
+    "preview_sampling_all_positions_once": true,
+    "RGB_ratio_boolean_index_shape": true,
+    "no_photograph_input_or_large_image_computation": true,
+    "analysis_SHA256": "21cd14aac5b8de65f99e0715f0f1311a0030c4874de3df06fbb57a00524bb5d1"
+  },
+  "archive": "GitHub directly to Japan, full GPG/member verification there; HK only bounded header/hash/public text. No old large archive reused or transferred. Stop before download above1GB.",
+  "runner": "xcode-27/26A434",
+  "retention_days": 1,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

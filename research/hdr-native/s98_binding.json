@@ -1,0 +1,84 @@
+{
+  "original_native_source": "research/hdr-native/semantic_fullframe_s96.m",
+  "original_native_SHA256": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0",
+  "new_native_source": "research/hdr-native/semantic_fullframe_s98.m",
+  "new_native_SHA256": "017503ddafdb40f91b3b5ff6b133918524d29cf4a11e3d67af18cc659bae6a12",
+  "exact_native_replacements": [
+    {
+      "old": "#include \"replay_helpers_v7.inc\"",
+      "new": "#include \"replay_helpers_v7.inc\"\n#include \"evidence/s93/run/S93-inverse-include.txt\"",
+      "count": 1
+    },
+    {
+      "old": "  NSString*tilepath=[dir stringByAppendingPathComponent:[name stringByAppendingString:@\"-stitched.f16\"]];Need94([[NSFileManager defaultManager]createFileAtPath:tilepath contents:nil attributes:nil],@\"new stitched output\");NSFileHandle*out=[NSFileHandle fileHandleForWritingAtPath:tilepath];[out truncateFileAtOffset:whole.length];\n  NSMutableArray*patches=[NSMutableArray new];uint64_t pixels=0,bits=0,nf=0;double mx=0,sse=0;for(NSUInteger y=0;y<ot.height;y+=384)for(NSUInteger x=0;x<ot.width;x+=512){@autoreleasepool{\n   NSUInteger w=MIN((NSUInteger)512,ot.width-x),h=MIN((NSUInteger)384,ot.height-y);NSDictionary*c=Patch94(call,q.device,x,y,w,h);NSData*t=V2Evaluate(q,c,state,ps,nil,nil);NSMutableData*cut=[NSMutableData dataWithLength:w*h*8];for(NSUInteger j=0;j<h;j++){memcpy((char*)cut.mutableBytes+j*w*8,(const char*)whole.bytes+((y+j)*ot.width+x)*8,w*8);[out seekToFileOffset:((y+j)*ot.width+x)*8];[out writeData:[t subdataWithRange:NSMakeRange(j*w*8,w*8)]];}NSDictionary*m=Metrics94(t,cut);[patches addObject:@{@\"xywh\":@[@(x),@(y),@(w),@(h)],@\"metrics\":m,@\"patch_SHA256\":Hash94(t),@\"reference_crop_SHA256\":Hash94(cut)}];pixels+=w*h;bits+=[m[@\"half_differing_components\"]unsignedLongLongValue];nf+=[m[@\"nonfinite_components\"]unsignedLongLongValue];mx=fmax(mx,[m[@\"max_abs\"]doubleValue]);sse+=[m[@\"SSE_RGB\"]doubleValue];\n  }}[out synchronizeFile];[out closeFile];Need94(pixels==ot.width*ot.height,@\"all original pixels covered once\");trial[@\"patches\"]=patches;trial[@\"patch_pixels\"]=@(pixels);trial[@\"patch_count\"]=@(patches.count);trial[@\"tile_half_differing_components\"]=@(bits);trial[@\"tile_nonfinite_components\"]=@(nf);trial[@\"tile_max_abs\"]=@(mx);trial[@\"tile_PSNR_peak1_dB\"]=sse?@(-10*log10(sse/(pixels*3))):@\"inf\";[trials addObject:trial];row[@\"trials\"]=trials;JSON94(row,[dir stringByAppendingPathComponent:@\"native-checkpoint.json\"]);\n }}\n",
+      "new": "  [trials addObject:trial];row[@\"trials\"]=trials;JSON94(row,[dir stringByAppendingPathComponent:@\"native-checkpoint.json\"]);\n }}\n // Whole real CI owner, without a new sampling transform or prefix solve.\n id<MTLTexture>source=call[@\"textures\"][@\"0\"];NSUInteger total=ot.width*ot.height;\n Need94(source.width==ot.width&&source.height==ot.height&&source.pixelFormat==MTLPixelFormatRGBA16Float&&total<=7000000,@\"S98 same-shape full owner inverse; no prefix/downscale\");\n Need94([NSProcessInfo.processInfo.environment[@\"VM_EXACT_INVERSE_LIMIT\"]integerValue]>=total,@\"S98 inverse must cover every owner pixel\");\n SemanticInverse(q,call,snap,ref,dir);\n NSDictionary*inverse=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[dir stringByAppendingPathComponent:@\"native-inverse.json\"]]options:0 error:NULL];\n Need94([inverse[@\"pixels\"]unsignedLongLongValue]==total&&[inverse[@\"full_frame\"]boolValue],@\"complete owner solve, not a development prefix\");row[@\"inverse\"]=inverse;\n NSData*recovered=[NSData dataWithContentsOfFile:[dir stringByAppendingPathComponent:@\"native-inverse-rgb.f32\"]];Need94(recovered.length==total*12,@\"full recovered RGB array\");\n NSMutableData*effective=[V2ReadTexture(q,source)mutableCopy];const float*rf=recovered.bytes;__fp16*hp=effective.mutableBytes;uint64_t heldOutside=0;double sourceMin=INFINITY,sourceMax=-INFINITY;\n for(NSUInteger i=0;i<total;i++){for(int c=0;c<3;c++){double original=hp[i*4+c];sourceMin=fmin(sourceMin,original);sourceMax=fmax(sourceMax,original);heldOutside+=original<0x1p-20||original>1.25;hp[i*4+c]=(__fp16)rf[i*3+c];}}\n row[@\"held_aside_original_input_domain\"]=@{@\"min\":@(sourceMin),@\"max\":@(sourceMax),@\"components_outside_old_solver_domain\":@(heldOutside),@\"not_used_as_solver_seed\":@YES};\n Store94(effective,dir,@\"recovered-effective.f16\",source.width,source.height);\n MTLTextureDescriptor*td=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:source.pixelFormat width:source.width height:source.height mipmapped:NO];td.storageMode=MTLStorageModeShared;td.usage=MTLTextureUsageShaderRead;id<MTLTexture>x=[q.device newTextureWithDescriptor:td];Need94(x!=nil,@\"recovered input texture\");[x replaceRegion:MTLRegionMake2D(0,0,x.width,x.height)mipmapLevel:0 withBytes:effective.bytes bytesPerRow:x.width*8];\n NSData*rt=V2Evaluate(q,call,snap,ps,x,nil),*savedRT=[NSData dataWithContentsOfFile:[dir stringByAppendingPathComponent:@\"native-inverse-roundtrip.f16\"]];row[@\"effective_input_roundtrip_replay\"]=Metrics94(rt,savedRT);Need94([row[@\"effective_input_roundtrip_replay\"][@\"half_differing_components\"]unsignedLongLongValue]==0,@\"same effective input replays the saved roundtrip\");\n NSMutableArray*estimated=[NSMutableArray new];for(NSArray*spec in @[@[@\"skin-color\",@[@9]],@[@\"skin-brightness\",@[@10]],@[@\"skin-both\",@[@9,@10]]]){@autoreleasepool{\n  NSMutableDictionary*trial=[@{@\"operator\":spec[0]}mutableCopy];NSDictionary*state=Params94(snap,spec[1],trial);Need94([trial[@\"changed_bytes_outside_target\"]unsignedLongLongValue]==0,@\"inverse counterfactual changes only target parameters\");\n  NSData*y=V2Evaluate(q,call,state,ps,x,nil),*expected=[NSData dataWithContentsOfFile:[dir stringByAppendingPathComponent:[spec[0]stringByAppendingString:@\".f16\"]]];trial[@\"estimate_vs_native_neutral\"]=Metrics94(y,expected);Store94(y,dir,[spec[0]stringByAppendingString:@\"-estimate.f16\"],ot.width,ot.height);[estimated addObject:trial];\n }}row[@\"inverse_counterfactual_trials\"]=estimated;row[@\"inverse_available\"]=@YES;\n // Preserve the exact effective half input and hash the regenerable float\n // optimizer intermediate. Only this run's new temporary float file is removed.\n row[@\"temporary_optimizer_float\"]=@{@\"bytes\":@(recovered.length),@\"SHA256\":Hash94(recovered),@\"effective_half_input_preserved\":@YES};Need94([[NSFileManager defaultManager]removeItemAtPath:[dir stringByAppendingPathComponent:@\"native-inverse-rgb.f32\"]error:NULL],@\"remove only own regenerable float intermediate\");\n",
+      "count": 1
+    }
+  ],
+  "unchanged_solver_source": "research/hdr-native/evidence/s93/run/S93-inverse-include.txt",
+  "unchanged_solver_SHA256": "23fff931a0914e5956ccee79bc715ee60ecaff936658ea2f9e2fdf1a218f92e0",
+  "solver": "Existing eight output-derived coarse seeds and24LM. No input/oracle seeds or half-lattice search. Full actual owner only; same bounds/mask/1e-3.",
+  "whole_frame_not_new_subpatches": true,
+  "only_new_temporary_float_intermediate_removed": true,
+  "originals_historical_outputs_and_frozen_models_unchanged": true,
+  "scope": "Conditional consumer inverse; not camera-baked semantic parameter identification",
+  "driver_original_source": "research/hdr-native/run_semantic_s97.py",
+  "driver_original_SHA256": "2986dc3ef26df95bb0d7c9868b79ee49c9111250f9cf4422df8e5fd2097fd9a4",
+  "driver_prefix_marker": "shape=(4284,5712);scratch=",
+  "exact_driver_prefix_replacements": [
+    {
+      "old": "\"\"\"S97 full-frame native semantic references and bounded retained-PSO tiling.\n\nAll image work is macOS-runner-only. This constructs the reference needed for\nthe practical inverse, not a new inverse or proof of camera-debaked semantics.\n\"\"\"",
+      "new": "\"\"\"S98 full original-frame conditional semantic inverse; macOS runner only.\n\nExisting S93 solver, complete real CI owners, no new patch sampling or precision\nhunt. Camera-baked parameter identifiability and physical truth remain unproven.\n\"\"\"",
+      "count": 1
+    },
+    {
+      "old": "PLAN=json.loads((D/'inputs_s97.json').read_text())",
+      "new": "PLAN=json.loads((D/'inputs_s98.json').read_text())",
+      "count": 1
+    },
+    {
+      "old": "sources=[D/'s97_driver_binding.json',",
+      "new": "sources=[D/'s98_binding.json',D/'semantic_fullframe_s98.m',D/'fullframe_analysis_s98.py',D/'evidence/s93/run/S93-inverse-include.txt',D/'run_semantic_s97.py',D/'s97_driver_binding.json',",
+      "count": 1
+    },
+    {
+      "old": "save(O/'S97-driver-binding.json',",
+      "new": "save(O/'S98-binding.json',json.loads((D/'s98_binding.json').read_text()))\nsave(O/'S97-driver-binding.json',",
+      "count": 1
+    },
+    {
+      "old": "forward references only, no inverse",
+      "new": "full conditional inverse using unchanged S93 solver",
+      "count": 1
+    },
+    {
+      "old": "'SEMANTIC_S97_INPUT_SESSION'",
+      "new": "'SEMANTIC_S98_INPUT_SESSION'",
+      "count": 1
+    },
+    {
+      "old": "exe=W/'semantic-s97'",
+      "new": "exe=W/'semantic-s98'",
+      "count": 1
+    },
+    {
+      "old": "flags+[D/'semantic_fullframe_s96.m','-o',exe]",
+      "new": "flags+[D/'semantic_fullframe_s98.m','-o',exe]",
+      "count": 1
+    },
+    {
+      "old": "'XD_TONE_BIAS':'.35'},timeout=2400)",
+      "new": "'XD_TONE_BIAS':'.35','VM_EXACT_INVERSE_LIMIT':'7000000'},timeout=3300)",
+      "count": 1
+    },
+    {
+      "old": "'inverse_executed':False,'native_child_peak_RSS_bytes_macOS'",
+      "new": "'inverse_executed':True,'native_child_peak_RSS_bytes_macOS'",
+      "count": 1
+    }
+  ],
+  "new_driver_SHA256": "f89e86ba865cc7cef09f5559d2ab17bfd8b2fb1bf04d5c41352b1ce0fef24b7a",
+  "new_analysis_SHA256": "e28e3a6d793bd7622a6913d282c076cf8f1dd997520e35f0d5b9fa1ade07e159",
+  "driver_suffix_SHA256": "739039cae31fd01b59106d90c82efc8757c23931b983da6b80b973ec0391c31c",
+  "compile_translation_units": 1
+}
