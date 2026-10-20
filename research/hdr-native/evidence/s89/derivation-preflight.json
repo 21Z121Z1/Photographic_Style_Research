@@ -1,0 +1,285 @@
+{
+  "local_check": "stdlib AST/source bindings only under400MB scope; no image decode/math",
+  "all_five_driver_and_rebuild_inverse_binding_checks_passed": true,
+  "receipts": {
+    "IMG_2600": {
+      "driver": {
+        "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+        "derived_sha256": "417d6973670e8584261d3c90ec51356c71c1c2b6268d279ae2c0ed202d5a7183",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+            "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+            "count": 1
+          },
+          {
+            "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+            "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+            "count": 1
+          },
+          {
+            "old": "D/'rebuild_master_s88.py'",
+            "new": "Path(os.environ['HDR_S89_REBUILD'])",
+            "count": 1
+          },
+          {
+            "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+            "new": "[(PRIVATE,'contacts',300000)]",
+            "count": 1
+          },
+          {
+            "old": "IMG_0032",
+            "new": "IMG_2600",
+            "count": 5
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "rebuild": {
+        "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+        "derived_sha256": "dc26de7c430f274d6c061e5f196ad037258574e8e7a110faaaf96ed77cd89e28",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "IMG_0032",
+            "new": "IMG_2600",
+            "count": 2
+          },
+          {
+            "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+            "new": "69c553e49f3c70ffbebc6e85d32ad6933fe3582535088dd24f60f59c398c4634",
+            "count": 1
+          },
+          {
+            "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+            "new": "63872222783e757a41a41337b48875e1172e68ace0f6e411db999c77b027a4d0",
+            "count": 1
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+    },
+    "IMG_2604": {
+      "driver": {
+        "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+        "derived_sha256": "b9e8c3f92d5bcd05ff0a4295c31074013f2152398fe58ee6d17e3a4e67028504",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+            "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+            "count": 1
+          },
+          {
+            "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+            "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+            "count": 1
+          },
+          {
+            "old": "D/'rebuild_master_s88.py'",
+            "new": "Path(os.environ['HDR_S89_REBUILD'])",
+            "count": 1
+          },
+          {
+            "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+            "new": "[(PRIVATE,'contacts',300000)]",
+            "count": 1
+          },
+          {
+            "old": "IMG_0032",
+            "new": "IMG_2604",
+            "count": 5
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "rebuild": {
+        "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+        "derived_sha256": "ff202401d3c6792e13c2c8ac6b3e55e6c50bb75cbb10d4dfe4e16d50bed4e244",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "IMG_0032",
+            "new": "IMG_2604",
+            "count": 2
+          },
+          {
+            "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+            "new": "63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264",
+            "count": 1
+          },
+          {
+            "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+            "new": "71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e",
+            "count": 1
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+    },
+    "IMG_0032": {
+      "driver": {
+        "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+        "derived_sha256": "d8239c0d79ebd8c85d22031c34a52f31dae1d00690cc5672bc7b71a4251d5efa",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+            "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+            "count": 1
+          },
+          {
+            "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+            "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+            "count": 1
+          },
+          {
+            "old": "D/'rebuild_master_s88.py'",
+            "new": "Path(os.environ['HDR_S89_REBUILD'])",
+            "count": 1
+          },
+          {
+            "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+            "new": "[(PRIVATE,'contacts',300000)]",
+            "count": 1
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "rebuild": {
+        "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+        "derived_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [],
+        "pixel_math_changed": false
+      },
+      "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+    },
+    "IMG_2608": {
+      "driver": {
+        "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+        "derived_sha256": "8f136d977e1a63aa0ef408d6b6d650ff52f6441838d288c44702c50d781afbbb",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+            "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+            "count": 1
+          },
+          {
+            "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+            "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+            "count": 1
+          },
+          {
+            "old": "D/'rebuild_master_s88.py'",
+            "new": "Path(os.environ['HDR_S89_REBUILD'])",
+            "count": 1
+          },
+          {
+            "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+            "new": "[(PRIVATE,'contacts',300000)]",
+            "count": 1
+          },
+          {
+            "old": "IMG_0032",
+            "new": "IMG_2608",
+            "count": 5
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "rebuild": {
+        "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+        "derived_sha256": "5f53a1010925e184b177d40a104261892ece2ba161c471f0be08db3fb5da85c6",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "IMG_0032",
+            "new": "IMG_2608",
+            "count": 2
+          },
+          {
+            "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+            "new": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+            "count": 1
+          },
+          {
+            "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+            "new": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a",
+            "count": 1
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+    },
+    "IMG_0033": {
+      "driver": {
+        "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+        "derived_sha256": "a6ae99c3122572e06c6da3eec4b6b3d9ae5a8b45a3dc0f14bf886177f963074e",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+            "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+            "count": 1
+          },
+          {
+            "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+            "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+            "count": 1
+          },
+          {
+            "old": "D/'rebuild_master_s88.py'",
+            "new": "Path(os.environ['HDR_S89_REBUILD'])",
+            "count": 1
+          },
+          {
+            "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+            "new": "[(PRIVATE,'contacts',300000)]",
+            "count": 1
+          },
+          {
+            "old": "IMG_0032",
+            "new": "IMG_0033",
+            "count": 5
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "rebuild": {
+        "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+        "derived_sha256": "3dfe7711acff21b79ba2bda31af0ba096c3cd5091e118b0a052951fb6735950f",
+        "inverse_substitutions_equal_original": true,
+        "swaps": [
+          {
+            "old": "IMG_0032",
+            "new": "IMG_0033",
+            "count": 2
+          },
+          {
+            "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+            "new": "7d488706655324c2ae278281cad21f980f71aaf03e2a536dd7aa8eb512bcf89d",
+            "count": 1
+          },
+          {
+            "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+            "new": "c2f18ab9b1349377d2e23aaa7610bb5115f28f95c4d88ce6a789d6550e1213a0",
+            "count": 1
+          }
+        ],
+        "pixel_math_changed": false
+      },
+      "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+    }
+  },
+  "estimated_download_limit_bytes": 2500000,
+  "new_full_carrier_archives": false,
+  "S88_full_carrier_cipher_preserved": true,
+  "old_frozen_sources_edited": false,
+  "write_cap_bytes": 150000000
+}
