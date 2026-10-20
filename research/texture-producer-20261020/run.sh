@@ -59,14 +59,14 @@ xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/generate_stats.
 python3 - "$TASK_OUT" <<'PY'
 import json,pathlib,subprocess,sys
 p=pathlib.Path(sys.argv[1]);rows=[]
-for landmark_type in [1,2]:
-    name='mattify-type'+str(landmark_type)
+for landmark_type,parameter_source,exposure in [(1,'defaults',0),(1,'Studio',0),(1,'Studio',1),(1,'Studio',-1)]:
+    name='mattify-type'+str(landmark_type)+'-'+parameter_source+'-EV'+str(exposure)
     with (p/(name+'.stdout.log')).open('wb') as stdout,(p/(name+'.stderr.log')).open('wb') as stderr:
         try:
-            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type)],stdout=stdout,stderr=stderr,timeout=120)
+            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type),parameter_source,str(exposure)],stdout=stdout,stderr=stderr,timeout=120)
             status=result.returncode
         except subprocess.TimeoutExpired:status='timeout120'
-    rows.append({'landmark_type_control':landmark_type,'exit':status})
+    rows.append({'landmark_type_control':landmark_type,'parameter_source':parameter_source,'exposure':exposure,'exit':status})
 (p/'generate-stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
 rm "$TASK_OUT/generate-stats" "$TASK_OUT/public-astronaut.png"

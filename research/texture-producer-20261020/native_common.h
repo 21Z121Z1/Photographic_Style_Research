@@ -65,11 +65,25 @@ static NSDictionary *BufferFacts(CVPixelBufferRef buffer) {
     const uint8_t *bytes = CVPixelBufferGetBaseAddress(buffer);
     // The raw hash includes row padding; its scope is explicit.
     NSString *digest = bytes ? SHA([NSData dataWithBytes:bytes length:rowBytes * height]) : @"";
-    NSDictionary *result = @{
+    NSMutableDictionary *result = [@{
         @"available": @YES, @"width": @(width), @"height": @(height), @"bytes_per_row": @(rowBytes),
         @"pixel_format": @(CVPixelBufferGetPixelFormatType(buffer)), @"raw_with_padding_sha256": digest,
         @"planar": @(CVPixelBufferIsPlanar(buffer)),
-    };
+    } mutableCopy];
+    OSType format = CVPixelBufferGetPixelFormatType(buffer);
+    if (bytes && !CVPixelBufferIsPlanar(buffer) && (format == kCVPixelFormatType_OneComponent8 || format == kCVPixelFormatType_OneComponent32Float)) {
+        double mass = 0, sx = 0, sy = 0, maximum = 0;
+        uint64_t nonzero = 0, nonfinite = 0;
+        for (size_t y = 0; y < height; y++) for (size_t x = 0; x < width; x++) {
+            double v = format == kCVPixelFormatType_OneComponent8 ? bytes[y * rowBytes + x] / 255.0 : ((const float *)(bytes + y * rowBytes))[x];
+            if (!isfinite(v)) { nonfinite++; continue; }
+            mass += v; sx += v * (x + 0.5); sy += v * (y + 0.5);
+            maximum = MAX(maximum, v); nonzero += v > 0.001;
+        }
+        result[@"mask_values"] = @{@"mean": @(mass / (width * height)), @"maximum": @(maximum),
+            @"nonzero_over_0_001": @(nonzero), @"nonfinite": @(nonfinite),
+            @"centroid_row_order": mass > 0 ? @[@(sx / mass), @(sy / mass)] : @[]};
+    }
     CVPixelBufferUnlockBaseAddress(buffer, kCVPixelBufferLock_ReadOnly);
     return result;
 }
