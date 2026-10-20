@@ -216,3 +216,6 @@ S88：`research/vm-native-20261020-hdr-s88`，source`caae6869d2824884d36f27c475c
 
 
 S89：[39430695395](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39430695395)，sourceb03beb93cfd1b5093fd8bed314ff53a76842febf，research/vm-native-20261020-hdr-s89，26A434/image20261012.0260.1；5/5计算、2/2本配方留出、五图SDR0。run=failure，仅最终1554198B>1.5MB密文容量断言；原manifest及全部产物已校验归档，未重跑改状态。独立目标p99EV0.00873855–0.229329；最差需要亮度/显示域审查，原严格门槛保留false。六份GPG均验，未下载新完整载体/EXR，closure核对PR引用/保留源后只删临时分支，无secret/release。
+
+
+S90：[39435568710](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39435568710)，source0a2a4fe66a63e564504926b30110a95820bb1133，research/vm-native-20261020-hdr-s90，26A434/image20261012.0260.1；run=failure，10bit完整诊断完成，12bit实际编码/SDR0但原生gain=nil退出5。h8完整ACES像素p99=1码，99.09154%≤1码，267像素>2码，最大8码；亮度分层保留所有非正数/极值。31汇总成员和1份GPG已验，原始ZIP已归档，临时分支按引用检查清理，无secret/release。未归档新完整载体/EXR，不能宣称12bit HDR有效或A/scene通过。

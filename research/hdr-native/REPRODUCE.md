@@ -202,3 +202,11 @@ scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_independent_
 gh run view 39430695395 --repo 21Z121Z1/Photographic_Style_Research --log-failed
 ```
 归档恢复只为创建已检查的嵌套公共文本目录，并从已保存原ZIP补齐；s89-archival-recovery.json说明，不要覆盖任何原ZIP。六个密文只含contact/数值见证，不含新完整HEIC或EXR；S88的完整HEIC密文保留。每图精确派生源码/替换证明、算子/中间headroom/最大RGB点分类在evidence/s89/run/，原门槛逐项布尔在phase-summary.json。下一新实验应另建文件，不能为了绿灯修改本次冻结容量或数值门槛。
+
+
+S90复现source0a2a4fe66a63e564504926b30110a95820bb1133，run_hdr_s90.py/.github/workflows/hdr-native-s90.yml，xcode-27/26A434，最差开发IMG2600固定10/12bit；原代码会重现12bit缺gain导致的run failure，不为绿灯改写冻结文件。原ZIP已保存于hdr-native-20261019/runs/39435568710/，元数据验证：
+```bash
+scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_display_diagnostic_s90.py
+gh run view 39435568710 --repo 21Z121Z1/Photographic_Style_Research --log-failed
+```
+完整显示、亮度分层与支持边界见evidence/s90/run/analysis.json、native-checkpoint-12.json、codec-versions.json和phase-summary.json。密文previews.tar.gz.gpg含10bit三档ideal/native/difference×8 contact及数值见证；差图放大仅用于诊断。VM没有解码图像；没有完整12bit HEIC或EXR交付，不把SHA等同文件已持久保存。
