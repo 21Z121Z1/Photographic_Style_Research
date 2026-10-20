@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import traceback
 
 from validate_case import validate
 
@@ -127,8 +128,8 @@ def main():
                 row['passed']=True
             prepared[row['id']]=directory
         except Exception as error:
-            row['passed']=False;row['failure']=str(error)
-            (directory/'failure.json').write_text(json.dumps({'source_head':head,'failure':str(error)},indent=2)+'\n')
+            row['passed']=False;row['failure']=str(error) or type(error).__name__
+            (directory/'failure.json').write_text(json.dumps({'source_head':head,'failure':row['failure'],'traceback':traceback.format_exc()},indent=2)+'\n')
         rows.append(row);save()
         print(json.dumps({k:v for k,v in row.items() if k not in ['input','acceptance']}),flush=True)
     all_identities=[]
