@@ -4323,9 +4323,69 @@
           "sha256": "8c4400064c2f7f54b913fbf8afd2533fa73c4567fd8815d8e6492e6aa88c93a1"
         }
       ]
+    },
+    {
+      "id": "HDR-154",
+      "category": "semantic/fullframe-S98-plan",
+      "status": "runner",
+      "claim": "S98完整原画面条件语义逆估计已冻结并触发39504949862；旧S93求解器/范围/mask/1e-3不改，整图及native目标作用区的实用门槛在新结果前声明。当前只有排队/运行观察，不声称native效果通过。",
+      "os_build": "target26A434; runtime not observed",
+      "run_id": 39504949862,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s98/preflight.json",
+          "line": 1,
+          "sha256": "f99eed12e9ed2b23ff529a170f7d227ad20fe205cbdd82844ef67ee2a7bcb1ad"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s98/queued-observation.json",
+          "line": 6,
+          "sha256": "65dbe99635d939d86b9b9d43a48c67c01dec00586aacbd0976595f829671efe0"
+        },
+        {
+          "file": "repo/research/hdr-native/s98_binding.json",
+          "line": 18,
+          "sha256": "f9df974a769514cd25e95047ed54814007b426a3503cfe25e44937ab4e90bc51"
+        }
+      ]
+    },
+    {
+      "id": "HDR-155",
+      "category": "hdr/remaining-delivery-audit",
+      "status": "已验证静态",
+      "claim": "S89五图数值/SDRmax0与两张integration留出不等于五套完整文件交付；S89/S90明确未归档full carrier/master，S88只选存一套carrier/mask/meaning，S42分离global/local仅预览/诊断未各自完整保存。冻结数值不改，需补完整交付。S88/S89已是1023级10bit，不另造10bit覆盖缺口。",
+      "os_build": "26A434",
+      "run_id": 39430695395,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s98/delivery-gap-audit.json",
+          "line": 1,
+          "sha256": "04cfe11a05af63973d0defb45c4f6e20faca0573d9a0ee1de9e64ac7ce17bdb2"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/phase-summary.json",
+          "line": 488,
+          "sha256": "9a82cb86d09f1935c82df692947ab26580c52a703ee4086378f97980263a9c96"
+        },
+        {
+          "file": "repo/research/hdr-native/run_hdr_s88.py",
+          "line": 62,
+          "sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94"
+        },
+        {
+          "file": "repo/research/hdr-native/run_hdr_s90.py",
+          "line": 68,
+          "sha256": "6e5a424cfe136ddf0a754404f21dce9bda505b94fa1a7403c22708a140c09465"
+        },
+        {
+          "file": "repo/research/hdr-native/run_hdr_s42.py",
+          "line": 132,
+          "sha256": "7e07a4923ccb18b320ee55f6be04fa7c9579c2ae404769a9b733d47d28787d92"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T21:40:35.862685+00:00",
+  "updated_utc": "2026-10-20T22:17:47.302750+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -6484,6 +6544,56 @@
       "large_cipher_body_backhaul_bytes": 0,
       "new_GitHub_artifact_download_bytes": 0,
       "counts_are_application_payload_exclude_SSH_overhead": true
+    },
+    "A_phase_complete": false,
+    "engineering_accepted": false,
+    "acceptance_complete": false
+  },
+  "semantic_fullframe_S98_pending": {
+    "observed_UTC": "2026-10-20T22:17:47.302750+00:00",
+    "run_id": 39504949862,
+    "source_commit": "1165f8a074c3b5118cae776c61e0b2f945247687",
+    "branch": "research/vm-native-20261021-semantic-s98",
+    "status_observed": "queued",
+    "conclusion_observed": null,
+    "target_OS_build": "26A434; actual host not inferred from queue",
+    "actual_image_version": "not observed yet",
+    "native_result_not_yet_reviewed": true,
+    "native_retry_enabled": false,
+    "monitor": "workspace/s98-20261021/watch_archive_cleanup.py",
+    "transport": "Japan-local ZIP/GPG/member verification; bounded HK header/hash/public text only",
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "remaining_delivery_S98_audit": {
+    "scope": "Selected independent-HDR integration S88-S90, not a claim that no historical EXR exists anywhere.",
+    "five_photo_numerical_validation": {
+      "status": "已验证数值",
+      "run_id": 39430695395,
+      "photos": 5,
+      "encoded_integration_holdouts": 2,
+      "all_five_SDR_max0": true,
+      "holdout_limits": "IMG2608/0033 withheld from encoded integration, previously used in earlier studies; not never-seen or physical truth.",
+      "evidence": "evidence/s89/phase-summary.json"
+    },
+    "full_file_delivery": {
+      "status": "可交给macOS runner",
+      "S89_new_full_carrier_master_archived": false,
+      "S90_full_carrier_master_archival": false,
+      "S88_selected_full_archive_contents": "One carrier, inherited mask, meaning JSON; master hash is recorded but this full-folder copy does not contain a master EXR.",
+      "next": "Reuse unchanged frozen S42/S88 numerical recipe to regenerate only required files for actual retained full-output delivery, encrypt to Japan. Do not rerun12bit or old precision studies.",
+      "not_a_pixel_algorithm_failure": true
+    },
+    "global_local_export_boundary": {
+      "status": "已验证静态",
+      "S42": "Full both/master stored; local-only is natively evaluated/previewed, global-only evaluated for masks/preview, neither is stored as a separate full-frame result in the selected S42 writer.",
+      "classification_retained": "global-only producer-order/domain is hypothesis; thumbnail-projected local/both are conditional candidates, not certified camera inverse.",
+      "next": "Retain separate full-resolution outputs and masks with unchanged formula/status, in addition to master/HDR carrier."
+    },
+    "ten_bit_profile": {
+      "status": "已验证静态",
+      "fact": "S88 and derived S89 already use1023 levels in u16 high bits,10bit444/matrix6; S90 ten-bit is repeated diagnosis, not a new five-photo profile gap."
     },
     "A_phase_complete": false,
     "engineering_accepted": false,

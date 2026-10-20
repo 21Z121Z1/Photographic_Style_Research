@@ -847,3 +847,18 @@ A_phase_complete=false、engineering_accepted=false、legacy acceptance_complete
 **可交runner（下一步）。** 现在可在已闭合的整幅原生参照上推进保守语义逆估计，按真实owner/局部patch建立实际接缝mask，单独报告估计对原生中和效果的EV/ACES/色偏/边缘误差、旧往返失败及不可识别mask；不得把已知原输入当作反演seed，也不能把旧参数反事实当成去掉已烘焙语义的真值。原global/local分开输出、Apple Log、固定ACES与原SDR max0要求继续保留。新整幅native参照通过不等于整幅inverse通过，S97没有执行inverse，A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。
 
 同帧相机j/WithoutFaceBoost曲线、N/B/T/V/face histogram/allocateTone约束与应用域、原Studio统计、IMG2679/2408配对RAW、真实HDR屏幕/Photos UI继续待实机；不以Gain Map承载自洽替代scene-referred物理精度。
+
+
+### SEMANTIC-20261018 / S98 测试前状态：整幅条件逆估计已冻结，尚无结果
+
+**可交给macOS runner（已触发，非通过结论）。** source1165f8a074c3b5118cae776c61e0b2f945247687，run39504949862，branch research/vm-native-20261021-semantic-s98；2026-10-20T22:17:47.302750+00:00从GitHub观察为queued。OS目标26A434/xcode-27，实际镜像版本尚未观察，不能沿用S97值当作已证。此条是带时间的历史观察，后续看本run终态/归档，不把旧queued marker当持续运行或失败证据。监测入口无自动native重试，终态后先读失败日志、在日本校验原ZIP与完整GPG/成员SHA，再按PR零引用/源保留检查清理本次临时secret/release/tag/分支。
+
+原S93求解器SHA23fff931a0914e5956ccee79bc715ee60ecaff936658ea2f9e2fdf1a218f92e0保持不变：8个仅由观测输出导出的尺度seed、24LM、旧[2^-20,1.25]范围、原RGB-eligible mask和1e-3；不进行半码格点或全域紧包络追查。按S97实际CI owner运行全部像素，每块输入/输出形状必须相等且不超过7M像素，最终全24470208像素覆盖一次。无新512×384采样变换，不重做S97分块benchmark。原输入只用于复制对照和事后域检查；运行记录还须核对own_previous_recovery_seed。潜变量输入不称scene-linear母版。只中和皮肤592/596，其他c/d、GTC、guides、统计、参数/matte绑定保持同一上下文并SHA。
+
+测试前独立实用门槛：整图及“native neutral != native original”目标作用区域的p99EV≤0.01、固定ACES的p99像素RGB最大码差≤1；整图max≤4码、非有限0，strength0身份差0。0.5为选定保守效果，1为幅度敏感性。目标作用区域只是诊断/验收区域，不是matte、旧逆mask或输出门控；旧1e-3失败独立保留，不把p99改称99%物理恢复。输出分别为色彩、亮度、联合的全分辨率half RGB log2校正Gain Map和ratio-valid mask，量化与逆估计误差分开报告；实际CI owner接缝全量测量，不再用规则网格proxy代表接缝均值。完整预览SHA账本留日本密文，香港只取count/通过状态/SHA。统一ACES配置/曝光和Apple Log不变。当前无新ImageIO载体，因此不新增SDR max0通过声称。
+
+**已验证静态/数值（现有交付边界审阅，无重跑）。** S89 run39430695395确有5张、2张encoded-integration留出、全部原生SDR max0，但其phase-summary明确new_full_carrier_master_archived=false；S90也明确full_carrier_or_master_archival=false。S88的full目录只拷一份carrier、旧mask和meaning JSON，记录master hash并不等于该目录交付了master EXR。S42写出both/master，local-only虽原生运行/预览、global-only虽全图计算mask/预览，当前selected writer没有各自独立的完整结果文件。原假设状态不变，不能把这些边界解释为物理恢复成功或算子失败。后续还须保存完整的五套载体/母版与分离结果，不拿已有hash替代实际文件。S88/S89本来就用1023级10bit444/matrix6；不得误写成S89仍是8bit或新10bit配置只测一张。S90的12bit provider nil无须再追。留出IMG2608/0033只针对冻结后encoded integration，曾用于旧研究，不冒称从未看过的或RAW物理留出。
+
+仍可runner推进：本次整幅语义逆估计的真实结果、原生参考下误差/色偏/接缝/域mask评估，以及冻结配方完整文件留存/分离输出和HDR组合。只能实机的同帧j/WithoutFaceBoost四曲线、N/B/T/V/hist/allocateTone/app域、原Studio统计、RAW2679/2408和实屏按原可执行清单。A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false；尚未得新像素结果，不给errors.csv填占位零值。
+
+S98 strength是输出log-RGB差分插值，不等同Apple UI Tone。Tone固定+0.35用于本次条件语义测试；本轮不改变GTM/LTM上下文，也不把恢复潜变量命名为场景母版。

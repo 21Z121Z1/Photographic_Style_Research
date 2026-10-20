@@ -241,3 +241,6 @@ S96复现失败：在commit c735ecb检查research/hdr-native/run_semantic_s96.py
 
 
 S97 source5f8646d/run39499003223：读取run_semantic_s97.py、s97_driver_binding.json和冻结S96 native/observer/include；driver精确修复clang单一translation unit，native代码不变。输入仍仅2.56MB原始HEIC密文，非旧320MB结果包。复现先检查26A434/loaded UUID/容量命中、所有原返回0，再检查owner-coverage.json与native-CI-fullframe.json；analysis.json的practical patch gate是分块误差，不是inverse认证。private原件留日本runs/39499003223/artifact-12300720827.zip，已做GPG/70成员SHA核验；无需为补文档再次下载或回传。临时release/secret已清，未来新run用新临时凭据，不恢复历史值。
+
+
+S98复现源码1165f8a：run_semantic_s98.py、semantic_fullframe_s98.m、fullframe_analysis_s98.py、s98_binding.json。原S93 include保持SHA23fff931a0914e5956ccee79bc715ee60ecaff936658ea2f9e2fdf1a218f92e0；prefix/native精确替换和单一clang translation unit已冻结。小型4×6合成几何只检查10条实际owner接缝、mean0.5及稀疏预览位置覆盖，不冒充照片验证。新run只取2.56MB原HEIC密文，旧S97约320MB结果包不重传。当前结果待run39504949862，先看其日志/终态；不要重跑旧S89数值或12bit，仅当补交完整文件必须重建时复用原S42/S88 AST。
