@@ -130,3 +130,8 @@ S80之后（HDR-97，可交给macOS runner/静态继续）：原CI合法type2合
 33 点全域 tight hull、C01–C05 完整覆盖、逐像素唯一逆解及 S80 微小 tile 残差定位列为已知未认证/暂缓研究，暂不阻塞实用交付；它们没有被证明，也没有改称只能实机。出现可见缺陷或用户重新要求时才重开。原件、冻结模型/验收脚本及历史门槛不改，原严格失败保留，不强求完整 native 往返成为实用前提。
 
 实机清单继续执行：匹配 IMG2810 的同帧 j-only/WithoutFaceBoost 四曲线、N/B/T/V、face histogram、allocateTone 与应用域；原 Studio 统计；RAW2679/2408；实际 HDR 屏幕/观看条件。用户接受实用效果不构成这些物理量已恢复的证据。全图新载体 SDR max0、非有限值/隐私/内存检查仍为实用质量要求。
+
+
+S82/S83：实用语义控制源码已实现、S83合成结构检查已通过（run39399353600）。下一步是S82真实捕获强度/区域指标与密文预览，输入为原S5/S8两份已归档密文；自动审批要求用户明确批准“公开预发布release+两条临时session secret”目的地，当前确认待答，两次被拒动作均未执行，S82无运行/secret/release/分支。不得通过别的通道绕过该拒绝；源码保持contents:read，setup脚本额外要求s82-user-transport-approval.json。若批准，先重新核对单run/远端资源、完整ZIP/GPG/manifest，再运行；终态下载校验后删本次secret/release/tag/触发分支。
+
+该验证只是384x512真实consumer捕获，不替代全原件五图/两张留出与global/local分离预览。不得使用S15/S16按oracle误差挑点补丁冒充泛化算法。新增控制的强度不是Apple tone值；同一上下文的F/F0求差只给条件估计。半精度/33点全域证明继续按S81暂缓，实机j/RAW/Studio/实屏按既有可执行清单；全分辨率、背景/边缘/色偏和SDR max0仍可runner推进。

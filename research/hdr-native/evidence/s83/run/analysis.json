@@ -1,0 +1,68 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "python": "3.12.10",
+  "numpy": "2.3.4",
+  "scope": "Synthetic robustness, chunk invariance and additive counterfactual residual cancellation only. No photos, captured Apple PSO, global/local inverse or scene accuracy.",
+  "rows": [
+    {
+      "strength": 0,
+      "chunk_storage_differences_diagnostic_only": 0,
+      "chunk_max_abs": 0,
+      "synthetic_chunk_guard": 1e-06,
+      "self_consistency_max_abs": 0.0,
+      "valid_pixels": 24273
+    },
+    {
+      "strength": 0.25,
+      "chunk_storage_differences_diagnostic_only": 0,
+      "chunk_max_abs": 0,
+      "synthetic_chunk_guard": 1e-06,
+      "self_consistency_max_abs": 1.1861593507411783e-07,
+      "valid_pixels": 24273
+    },
+    {
+      "strength": 0.5,
+      "chunk_storage_differences_diagnostic_only": 0,
+      "chunk_max_abs": 0,
+      "synthetic_chunk_guard": 1e-06,
+      "self_consistency_max_abs": 1.170307570852458e-07,
+      "valid_pixels": 24273
+    },
+    {
+      "strength": 0.75,
+      "chunk_storage_differences_diagnostic_only": 0,
+      "chunk_max_abs": 0,
+      "synthetic_chunk_guard": 1e-06,
+      "self_consistency_max_abs": 1.1817291456495127e-07,
+      "valid_pixels": 24273
+    },
+    {
+      "strength": 1,
+      "chunk_storage_differences_diagnostic_only": 0,
+      "chunk_max_abs": 0,
+      "synthetic_chunk_guard": 1e-06,
+      "self_consistency_max_abs": 1.191113041532077e-07,
+      "valid_pixels": 24273
+    }
+  ],
+  "readonly_inputs_SHA_unchanged": true,
+  "known_additive_cancel_max_abs": 1.1102230246251565e-16,
+  "wide_range_intermediate_overflow_avoided_max_abs": 0.0,
+  "invalid_domain_preserves_base_and_mask": true,
+  "rejected_bad_inputs": [
+    "mismatched_shape",
+    "nonfinite_strength",
+    "negative_strength",
+    "too_large_strength",
+    "half_base_rejected",
+    "oversize_tile",
+    "float32_output_overflow"
+  ],
+  "synthetic_structural_checks_pass": true,
+  "new_photos": 0,
+  "new_native_Apple_pixel_execution": false,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

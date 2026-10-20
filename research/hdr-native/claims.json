@@ -3103,9 +3103,93 @@
           "sha256": "2cfb5879fb1349551f75df57778a747b2627b5ff75598c38e273eb4548c323b2"
         }
       ]
+    },
+    {
+      "id": "HDR-99",
+      "category": "semantic/practical-residual-strength-control",
+      "status": "已验证静态",
+      "claim": "新增自有条件校正C=y+F0(xhat)-F(xhat)，有限严格RGB正值域内做输出log-RGB强度插值；域外保留base并返回mask，0强度保留源，块上限262144，输出dtype溢出拒绝。没有修改GTM/LTM、matte平滑/放大或Apple参数，也不保证一般非线性误差抵消或拍摄端唯一逆。",
+      "os_build": "26A434 (associated runner; formula is custom)",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/semantic_strength_s82.py",
+          "line": 1,
+          "sha256": "34e40b0e4d67393844f6c962e7a70b2946c8e5dbf3bded1c04c4e73eea1fccb0"
+        },
+        {
+          "file": "repo/research/hdr-native/PRACTICAL_SEMANTIC.zh-CN.md",
+          "line": 1,
+          "sha256": "eadbcbcc35e170ded9ea32002e3a1d197d5fe18df0d7912bf7bc8d8965949547"
+        }
+      ]
+    },
+    {
+      "id": "HDR-100",
+      "category": "semantic/practical-control-synthetic-robustness",
+      "status": "已验证数值",
+      "claim": "S83仅合成：5强度×5分块，同一24576像素块间maxabs0；24273有效比值像素，域外保留原值，源SHA不变；7类输入/溢出保护通过，加性目标残差抵消max1.1102230246251565e-16，自选变换往返max1.191113041532077e-7。不是新Apple native像素、照片、全分辨率或场景验证。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s83/run/analysis.json",
+          "line": 1,
+          "sha256": "d11dfe63969bbd559688d23df5a6f6a912d1c3599236203cefe2e07b7edec48a",
+          "run_id": 39399353600,
+          "artifact_id": 12254506268
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s83/run/freeze.json",
+          "line": 1,
+          "sha256": "6d76c09a293111b6762c88bf4efb9a7be7d251adf82d1ab2e91872bc2a54b791",
+          "run_id": 39399353600,
+          "artifact_id": 12254506268
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s83/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "a7ae82cc5edbc195ca39c97acc4264399f7908516b688a9dd912438b82dcde46",
+          "run_id": 39399353600,
+          "artifact_id": 12254506268
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s83/closure.json",
+          "line": 1,
+          "sha256": "d0025cfbc7b3ab67d2efb79a51541e72b2cbb46ca9c81a15de55039927f54326"
+        }
+      ]
+    },
+    {
+      "id": "HDR-101",
+      "category": "semantic/practical-real-capture-pending-destination-approval",
+      "status": "runner",
+      "planning_only": true,
+      "claim": "S82准备复用原S5/S8密文捕获，不用S15/S16按oracle误差挑点补丁。真实384x512强度/区域指标和ACES密文预览尚未执行；自动审批拒绝写权限提升和未明确批准目的地的公开人物密文release，两项未执行，read权限保留。用户目的地确认待答，不绕过拒绝；五图全尺寸/global-local/HDR封装仍待完成。",
+      "os_build": "26A434 (planned; no new S82 run)",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/inputs_s82.json",
+          "line": 1,
+          "sha256": "432910f337b3c3e0a9f2d34a3c54c236f0f81cd99b83332807671798b75691b4"
+        },
+        {
+          "file": "repo/research/hdr-native/run_hdr_s82.py",
+          "line": 1,
+          "sha256": "592dffcf7a8594f605ea1f12411a2f9650b3adad451b7828728fbe1bcea71a86"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s82/permission-decision.json",
+          "line": 1,
+          "sha256": "442f621168107c8e922e0b62abda28789d8e536b7f2879e8be5bfbc86e13c0cd"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s82/pending.json",
+          "line": 1,
+          "sha256": "db7c25eb44bb997faa315425bd6612efc4bbd1dd9474c4f0c3fe44a86663dd74"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T08:48:16.913110+00:00",
+  "updated_utc": "2026-10-20T09:25:06.437488+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -3127,5 +3211,14 @@
     "strict_failures_retained": true,
     "scene_physical_validation_separate": true,
     "next": "real-photo independent-operator and HDR quality validation"
+  },
+  "practical_semantic_S82_S83": {
+    "custom_control_implemented": true,
+    "synthetic_checks_pass": true,
+    "synthetic_run": 39399353600,
+    "actual_new_photo_run": null,
+    "S82_requires_explicit_public_destination_approval": true,
+    "engineering_accepted": false,
+    "old_strict_failures_retained": true
   }
 }

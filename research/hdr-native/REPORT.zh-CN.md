@@ -526,3 +526,16 @@ S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run�
 **可交给 macOS runner（HDR-98，计划）：** 改为真实照片的 global-only、local-only、semantic-only 与联合 HDR 五种对照（含原 SDR），统一此前固定 ACES/曝光，报告 EV 分位数/最大值和 coverage、边缘光晕/振铃/接缝、肤色/背景误改、亮度连续性及低/中/高 headroom；至少五张全尺寸、两张冻结后留出。数值门槛按新配方提前声明，不把旧 PSNR 或 p99 冒充“99%效果”。保持原 SDR、预览输入 SHA 不变、不可恢复 mask/区间及目标/传输误差分开。真实可见缺陷需要时再重开精度定位。S80 的有限合成 max 0.000244140625、PSNR84.4481 dB 仅作为既有记录，不改称实用通过。
 
 **待实机：** 同帧 j/WithoutFaceBoost 曲线和 N/B/T/V/人脸统计/allocateTone/应用域、Studio 原统计、RAW2679/2408 及真实 HDR 屏幕仍按原方案。自然度和物理场景精度分别报告，相对场景母版仍标候选。新状态 engineering_accepted=false；A_phase_complete=false、原 acceptance_complete=false、goal active。完整政策与用户原文见 research/hdr-native/evidence/s81/scope-change.json；实用清单见 research/hdr-native/PRACTICAL_ACCEPTANCE.zh-CN.md。125MB 为累计许可，其他资源/隐私约束、Apple Log 与 global/local/语义分离保持。
+
+
+### SEMANTIC-20261018：S82 条件皮肤校正准备 / S83 实用控制代码验证
+
+**已验证静态（HDR-99，新增自有实现，非苹果全域逆证明）：** semantic_strength_s82.py 采用 C=y+F0(xhat)-F(xhat)，在有限且RGB严格为正的比值域做 output=exp2(log2(y)+alpha*(log2(C)-log2(y)))。F0仅关闭目标皮肤参数，外部c/d、GTC、guides、统计和其他matte固定；不加入平滑/曝光或GTM/LTM逆换。alpha是输出效果插值，不是苹果参数；默认.5未用oracle选强度。域外保持y并返回mask；0强度保留源、源只读、每块≤262144像素、dtype溢出拒绝。它是可复用的条件估计，既不保证一般非线性误差抵消，也不声称拍摄端皮肤恢复。
+
+**已验证数值（HDR-100，仅合成控制）：** S83 run39399353600/artifact12254506268，source17fcc3bd029da1d252515660e70e8ffa30123e36，26A434/image20261012.0260.1。5档强度×5种分块布局，同一24576像素合成张量块间max abs0；有效比值像素24273，域外原值保留。只读源SHA不变，7类无效输入/输出溢出被拒绝；已知加性目标的残差抵消max1.1102230246251565e-16，自选变换往返max1.191113041532077e-7。后者不是native consumer往返。chunk guard预先设1e-6，仅验证新代码结构，不替代旧门槛；没有照片、新Apple像素执行、预览或scene结论。原ZIP2337B，SHA3d180ba38ea787438fd6911ce5b6dab0bcdf1293570a137797606c5c28c6c356；5个成员和源码SHA均校验，临时S83分支经全状态PR head/base0引用检查后删除，源码留研究分支，master未变。
+
+**可交给macOS runner（HDR-101，S82待批准传输）：** 复用现有S5/S8两份密文原ZIP共110814893B，无本地大文件复制；不采用S15/S16按既有oracle误差挑点的补丁。计划在同一真实384x512捕获上输出0/.25/.5/.75/1强度，分开报告皮肤色彩、皮肤亮度和两者联合，固定ACES；整幅、matte footprint、实际受影响区域分别统计误差/边缘/色偏，避免背景稀释指标，正比值域外的原生端点差异另列。它不计全分辨率、五图或新留出，也不与global/local混合。源代码与workflow已冻结，但没有S82 run、secret、release、临时分支或新照片指标。
+
+自动审批先拒绝contents:read→write权限提升，再拒绝未得到目的地明确许可前将人物密文上传公开预发布release。两项均未执行；workflow保留read。已提出公开密文目的地确认，传输脚本额外要求明确批准记录；当前不改用其他方式上传同一人物数据。证据见evidence/s82/permission-decision.json与pending.json。S83无需人物/secret/release，已独立完成；不能用其成功冒充S82验证。
+
+**待实机清单不变：** 匹配同帧j/WithoutFaceBoost曲线与N/B/T/V/face histogram/allocateTone/应用域、原Studio统计、RAW2679/2408、真实HDR屏幕。j权重增量仍未标定为像素EV；Apple Log、原件/冻结模型和33点未认证记录不改。实用五图/两张冻结后留出、分离global/local/semantic预览和最终封装SDR max0尚未完成；engineering_accepted=false，A_phase_complete=false，原acceptance_complete=false，goal active。新实用控制说明见PRACTICAL_SEMANTIC.zh-CN.md。

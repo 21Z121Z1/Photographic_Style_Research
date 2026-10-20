@@ -168,3 +168,8 @@ S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run�
 
 
 S81 只记录方向调整，无原生实验可重跑。查看 PRACTICAL_ACCEPTANCE.zh-CN.md、evidence/s81/scope-change.json 和 phase-summary.json。S75–S80 原完整性复现入口保留，不为此政策调整重复执行；旧 validate.py/validate_hdr.py 的严格失败未改成通过。后续真实样张工程报告另列 engineering_accepted，不能用它替代物理 scene-referred 验证或“99%准确率”。
+
+
+S82/S83（源码在研究分支17fcc3b）：新控制semantic_strength_s82.py；新实用驱动run_hdr_s82.py；输入哈希inputs_s82.json；合成检查check_strength_s83.py。S83复现仅macOS26A434：设私有临时W并mkdir "$W/out"，安装numpy2.3.4，再python3 research/hdr-native/check_strength_s83.py。该命令不含照片/密钥，只复现新控制的结构检查，非旧native逆证明；现有证据足够时不要重复运行。
+
+S82还不能执行：先取得针对公开密文预发布release和两条临时session secret的明确批准；批准记录必须包括release_tag=hdr-private-s82-20261020、input_total_bytes=110814893以及两项approved=true。随后只用现有归档，不复制/解密原照片到VM，不向runner提供私钥；归档完整性和各成员SHA在任何像素处理前检查。workflow hdr-native-s82.yml保留contents:read、retention-days1；初次需push其单独触发分支，不能盲目重试。未获批准前不创建任何传输资源。源码/API/域/预览说明见PRACTICAL_SEMANTIC.zh-CN.md。
