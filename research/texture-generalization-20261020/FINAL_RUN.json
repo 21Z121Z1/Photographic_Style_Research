@@ -1,11 +1,8 @@
 {
   "schema": "texture-fixture-run-marker-v1",
-  "phase": "diagnose",
-  "reason": "37 of 38 native cases passed; isolate the 2048 UnderEye process SIGSEGV before accepting generalization",
-  "allocator_controls_MiB": [
-    128,
-    256,
-    512
-  ],
-  "original_frameworks_unchanged": true
+  "phase": "stress",
+  "purpose": "Repeat the full 2048 native producer/readback/replay pipeline three times after fixing effect lifetime",
+  "repeats": 3,
+  "allocator_budget_MiB": 128,
+  "failed_reports_preserved_before_debugging": true
 }
