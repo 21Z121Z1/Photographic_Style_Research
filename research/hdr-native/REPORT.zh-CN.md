@@ -791,3 +791,29 @@ headroom1显示对照有43个像素差1码，来自应用gain/有理数offset的
 **已验证静态（低流量归档与清理）。** public artifact12294260940/11387B/SHA e07678bd850e277f22d7dd7ec0030960156df3da0d6bd63ccbbe4c554ed6fdab；private artifact12293452567/8615B/SHA3bb63fdf731b2d088d392358cb8c2ec6c510d0e1ef1332258bc105444b03cf16。原ZIP日本保留、10 public与GPG/11 private成员全验；本次secret/release/tag/临时分支已按PR零引用/终态/源保留规则清理。首次实际新run已使用日本原地完整GPG/member核验，HK未接收完整ZIP或大密文。注意这份cipher仅8465B，小于32KiB头部上限，所以“头部”包含整份小cipher；旧v2 receipt的whole_cipher_or_ZIP_backhaul_bytes=0不能按字面当作它的字节数。原receipt不改，精确解释/计数见traffic-accounting-correction.json；后续协调器分开计完整小cipher与大cipher流，不隐去这8465B。
 
 **分类。** 探针编译/原图CI解码/错误定位/归档已验证；整幅native final allocation与语义控制仍可交runner，尚无新图像结论。只修证实的观测入口与预览分块上限，不重开bit-exact。实机j曲线/统计、Studio/RAW/实屏清单不变；A_phase_complete=false、engineering_accepted=false、acceptance_complete=false。
+
+
+### SEMANTIC-20261018 / S95 准备与 S94 推断边界更正（排队观察）
+
+**已验证静态（更正HDR-141的局部推断）。** S94日志实证是native-calls.json父目录不存在导致写入异常。原源码把mkdir放在匹配dispatch的分支内，但原catch也可能先吞掉目录创建失败，随后触发相同的JSON写入错误；所以“首个内部调用零匹配”还不是有直接计数支持的事实。此前S94段落/HDR-141中的这处更强解释收回，以本补充为准；已证的观测目录错误、无final像素结果、原尺寸CI解码和归档清理结论不变。源码分支与未排除路径见evidence/s95/static-assumption-audit.json，原日志与receipt字节均保留。
+
+**已验证静态（新源冻结）。** S95 source475e050dc0a4fd7fc30528c9bf9a65d875129596只派生修复：先建观测目录；记录所有内部调用的原返回/真实dispatch数/绑定state数，明确state fallback不是dispatch；预览stride10满足冻结S82的262144像素上限；最多分配一套整幅基准，额外上下文仅记census。精确全文改写与SHA见s95_observer_binding.json。原S94/S82、数学/采样器/PSO与旧门槛不改。仍先要求全原件5712×4284实际分配与原生对照，不用两个ROI冒充整幅。
+
+**可交给macOS runner（正在排队）。** run39488329547/job118854512641、xcode-27；queued-observation.json的时间点job未分配runner，尚无该run实际OS镜像或像素结果。不要拿API started_at字段当成已开始计算。独立监看进程已启动，只观察这个run，终态后在日本保存原ZIP并做完整GPG/member核验，再清理本次secret/release/tag/分支。v3把≤32KiB小cipher整包落在头部内的字节显式计入，保留无大包回传策略。排队不是新的原生失败，不重复派发或退到不同build制造结果。
+
+当前A、engineering与legacy验收均false。整幅语义实用逆估计/跨照片验证仍是runner工作；本次只准备其原生参照，不声称已逆掉原拍摄语义。相机同帧j/WithoutFaceBoost、N/B/T/V/face hist/allocateTone/应用域、Studio原统计、RAW与真实HDR屏幕继续待实机，沿用既有可执行清单。
+
+
+### SEMANTIC-20261018 / S95 结果：大图在 final 之前返回−12786；黑输出不能算成功
+
+**已验证数值。** run39488329547/source475e050dc0a4fd7fc30528c9bf9a65d875129596，26A434/image20261012.0260.1，failure；前一“排队观察”只记当时时点，此处为终态。目录修复生效，真实记录到4个CMISmartStyleMetalRendererV1 process调用，每次4个actual dispatch，共16个，均非bound-state fallback；4次原process都返回−12786，目标final dispatch为0。main纹理依序为2856×2144、2856×2140、2856×2144、2856×2140，guide为1428×1072/1070，thumbnail为512×385/384。尚未抓CI output.region，不能把四次调用直接证明为无重叠2×2覆盖；它们也不支持强求一个5712×4284物理纹理的前置假设。下一版必须按真实CI owner region组装同一整幅照片，不缩小原像素覆盖要求。
+
+原命令行程序最后返回0，但CI renderer.f32的min/max/mean全为0，实际原CMI方法已返回错误。这是**无效黑输出**，不是前向通过、SDR身份、完整native往返或可用预览。原图CI解码仍非黑且非有限0；native child峰值RSS1236320256B，并无本run被系统OOM终止的证据。错误位置已从探针写目录推进到原生final之前，仍不能凭数值−12786直接给原因命名。S94当时的零匹配计数未记录，S95新计数不回填S94历史。
+
+**已验证静态（资源错误路径，尚非runtime归因）。** 本机既有26A434 CMImaging文本、UUID3CCD434E-B1E0-3F14-8EF6-E29D58379BE8、binary SHA40868a2bc375526c2de6f378c2012420e91830bdb9e16e4cbb20662822b11c3e已绑定。constructor initWithMetalContext在context未提供allocator的分支于0x233369ef8请求0x9000000=150994944B主池，调用点0x233369efc/返回0x233369f00。CMIGuidedFilter encode在0x233363bf4/0x233363c10以−12786返回，相关分支含nil临时coefficient纹理或encoder；cold字符串明确包含coefficientAMeanTexture/coefficientBMeanTexture。原文行号与完整SHA见allocator-and-guided-error-source.txt、static-provenance.json。这只支持资源假设，不能证明S95恰好走这个callee或同一pool。S41先前通过2GiB caller-supplied池运行全尺寸原host，是可复用的原生前置经验，不是S95当前状态。
+
+**假设/可交runner（下一实际对照）。** 先绑定CMIGuidedFilter实际返回/radius/epsilon及allocator descriptor/原请求，复核loaded UUID与构造器callsite。若只改变已证主池容量，保留资源类型/flags、所有图像参数、PSO、采样器、c/d、GTC、guides及统计；记录每项实际值，不凭感觉改eps。四个并发CI上下文须核内存，不能盲目各给2GiB超7GiB runner。捕获外层PI output.region、原点与实际输出纹理/ROI，禁止上传未知padding；再将各合法owner region的native RGB与CI整幅缓冲比对，并做同一上下文内的512×384子块对照。采样仿射移位有AIR依据，浮点差异仍数值报告；旧门槛不改。原来单物理全帧假设不再作为fake gate，实际验收仍覆盖5712×4284全部像素。该工作仍是原生前向参照，尚未构成全尺寸语义逆变换。
+
+**已验证数值（归档/清理与准确流量）。** public artifact12294729886/14380B/SHA d437a6675d1f375d24484b8e1e5d8bf697b1663e6f591921ca7f7c56f8c30811；private artifact12294879502/9536B/SHA9e0af37ad65d53db290e216fd6a16c24cbecea94f76b19b33112b43d9b673491。原ZIP直接日本，13 public及GPG/13 private成员和源码精确改写全验，私有manifest SHA0d20b893a54f58d3d4c872af67755f56d9c12bad88be8c0e2163b09c2eec354b。本次v3明确计入9386B完整小cipher（处于≤32KiB头内），请求483B、hash摘要2671B；完整ZIP回传0、大cipher body回传0，未重传旧大归档。终态/PR零引用/研究源保留后，secret/release/tag/临时分支已清理，见closure.json。旧S95-active/queued观察是历史时点，terminal记录已另增，不覆盖。
+
+A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。整幅实用语义逆估计、与global/local分开组合和跨照片仍可runner推进；相机同帧j四曲线/N/B/T/V/face histogram/allocateTone/application域、原Studio统计、配对RAW和实屏继续待实机。这里没有新的HDR效果或物理场景精度结论。

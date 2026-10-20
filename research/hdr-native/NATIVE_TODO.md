@@ -165,3 +165,9 @@ S93更新：两个原尺寸坐标512×384 ROI已有严格3×3 matte外零变化�
 
 
 S94失败只涉及探针写目录，尚未取得整幅final dispatch；不要据此判苹果不支持大图。下一runner：在原process入口建本次日志目录，记录全部内部dispatch和绑定，再判实际full/tile分配；预览stride10保证≤262144像素，不改冻结S82函数。旧门槛/不可逆mask不动，继续原实机清单。
+
+
+S95当前已有live run39488329547/job118854512641，先查询同一run和监看句柄再做下一步；不得因为旧queued状态文件或超时重复派发。S94“零匹配dispatch”推断已收紧，待S95实际census区分dispatch/state/目录分支；整个原件语义逆估计和跨照片仍可runner。原相机j/Studio/RAW/实屏清单继续保留。
+
+
+S95已终态failure并归档/清理，不再等待其旧queued marker。4个原CMI process均−12786、各4个前置dispatch，final0，CI整幅缓冲为黑，不能算成功。下一步runner：只读捕获guided实际返回/eps/r和allocator请求，以UUID+已证constructor callsite约束资源容量对照；512MiB等预算须运行前说明，不盲目4×2GiB。再抓PI output.region/ROI/输出尺寸，合法CI region拼成整幅，全像素对照native/CI并保留旧gate，未知padding不上传。当前allocator耗尽只是可检验假设；同帧相机/Studio/RAW/实屏仍按原实机清单。

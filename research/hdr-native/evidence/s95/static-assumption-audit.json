@@ -1,0 +1,12 @@
+{
+  "related_run_id": 39486436418,
+  "related_claim": "HDR-141",
+  "observed_fact": "native.log reports NSCocoaErrorDomain Code4 for absent semantic-full/native-calls.json; no final-capture file or pixel metrics were obtained",
+  "source_fact": "S94 creates the capture subdirectory only inside the candidate-dispatch loop, then unconditionally writes native-calls.json outside the loop",
+  "overstrong_inference_to_correct": "The first internal process had zero matching final dispatches",
+  "unexcluded_alternative": "Directory creation inside a matching branch could itself have failed and been caught, followed by the same unguarded JSON write",
+  "conclusion": "The instrumentation directory failure is verified. Zero matching dispatches is not yet a verified runtime count. Do not attribute the error to Apple precision, matte information loss or unsupported fullframe rendering.",
+  "planned_discriminator": "S95 creates the directory at callback entry and records original return, dispatch count, bound-state count and all texture shapes; bound-state fallback explicitly differs from a dispatch record",
+  "no_new_image_experiment": true,
+  "S94_source_or_original_receipt_modified": false
+}

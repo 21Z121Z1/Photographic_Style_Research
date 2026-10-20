@@ -4082,9 +4082,100 @@
           "sha256": "8301e2670f33137e24025026b8ddce1718944fed060d5787695f4769dfdf12d1"
         }
       ]
+    },
+    {
+      "id": "HDR-144",
+      "category": "semantic/evidence-boundary",
+      "status": "已验证静态",
+      "claim": "更正HDR-141：日志证明S94观测目录写入失败，但未严格排除mkdir先失败并被catch吞掉；零匹配dispatch尚无直接计数。S95只为区分该路径，排队不计像素结果。原失败/无整幅指标/归档结论不变。",
+      "os_build": "26A434 for S94; S95 not allocated yet",
+      "run_id": 39486436418,
+      "partially_supersedes": "HDR-141",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s95/static-assumption-audit.json",
+          "line": 1,
+          "sha256": "57dfee839e86cf9eeebd9a92af9d94fd5ae4da0f0b307ac1ed1696ef1d7500c5"
+        },
+        {
+          "file": "repo/research/hdr-native/semantic_fullframe_s94.m",
+          "line": 67,
+          "sha256": "d4add7a2fafbdb49761000d3232fe4401be1e72ed780b5a480087d975d675e0d"
+        }
+      ]
+    },
+    {
+      "id": "HDR-145",
+      "category": "semantic/fullframe-S95",
+      "status": "已验证数值",
+      "claim": "S95目录修复后有4次原renderer返回−12786、共16实际前置dispatch、final0；输入区域2856x2144/2140，未抓CI owner region，不能证明2x2覆盖。命令rc0与全黑缓冲不是原处理成功。",
+      "os_build": "26A434",
+      "run_id": 39488329547,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s95/run/native-calls.json",
+          "line": 1,
+          "sha256": "48b37329b3c9db1d6525bff77746be15490a911f7d6093c9d800e611cc44fb0b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s95/run/native-execution.json",
+          "line": 1,
+          "sha256": "ae742a1685a0d9ec69a31f2abcb161ac629bbe209fcbcb53fb0d240e46dc2174"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s95/run/native.log",
+          "line": 1,
+          "sha256": "fd40f666650fcd682576aa789fabde51d425cd7eabc8cdbd2bf8acb2ab44aec1"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s95/phase-summary.json",
+          "line": 1,
+          "sha256": "4adf405a22718d1dd47b6625c329e0a520addecd20e118a242072e137006a215"
+        }
+      ]
+    },
+    {
+      "id": "HDR-146",
+      "category": "semantic/fullframe-S95",
+      "status": "已验证静态",
+      "claim": "26A434 CMI原constructor在context未提供allocator时请求144MiB主池；guided临时纹理/encoder nil路径返回−12786。S95同号尚未绑定callee或pool容量，allocator耗尽仍是假设，下一步只做资源/调用观测对照，不动图像数学。",
+      "os_build": "26A434",
+      "run_id": 39488329547,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s95/allocator-and-guided-error-source.txt",
+          "line": 1,
+          "sha256": "61429eb18699e343541180a5bfd8876c69b3a0cdcd0ea3c4609cb322e01426a3"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s95/static-provenance.json",
+          "line": 1,
+          "sha256": "84fd33498d7da5232024d51d425ff3790134049d10687415f251623b86fccf2f"
+        }
+      ]
+    },
+    {
+      "id": "HDR-147",
+      "category": "semantic/fullframe-S95",
+      "status": "已验证数值",
+      "claim": "S95日本原地核验13 public及GPG/13 private和源绑定，临时资源已清理；v3计入9386B完整小cipher、483B请求与2671B摘要，无ZIP或大cipher body跨区回传。",
+      "os_build": "26A434",
+      "run_id": 39488329547,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s95/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "3a4b7b5b02246e1cc0a58ce2fecc906838c726fe56c09833d23773c5e4ce4bc3"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s95/closure.json",
+          "line": 1,
+          "sha256": "1303fe62714ea54a83372d44654e36079182f0de4ff1a245be06d23837278200"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T19:53:55.076941+00:00",
+  "updated_utc": "2026-10-20T20:33:54.673675+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -5858,6 +5949,86 @@
     "private_GPG_members_verified": 11,
     "public_members_verified": 10,
     "all_owned_transport_cleaned": true,
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "semantic_fullframe_S95_pending": {
+    "observed_at_UTC": "2026-10-20T20:17:21.158664+00:00",
+    "run_id": 39488329547,
+    "job_id": 118854512641,
+    "source_commit": "475e050dc0a4fd7fc30528c9bf9a65d875129596",
+    "branch": "research/vm-native-20261021-semantic-s95",
+    "status_observed": "queued",
+    "runner_name": "",
+    "labels": [
+      "xcode-27"
+    ],
+    "OS_build": "target26A434; not observed until allocation",
+    "native_execution_not_started": true,
+    "live_monitor": "workspace/s95-20261021/watch_archive_cleanup.py",
+    "monitor_native_retry_enabled": false,
+    "archive": "Japan local verification; coordinator v3; bounded header/hash only",
+    "temporary_transport_retained_for_this_live_run": true,
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "semantic_fullframe_S95": {
+    "run_id": 39488329547,
+    "source_commit": "475e050dc0a4fd7fc30528c9bf9a65d875129596",
+    "OS_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "conclusion": "failure",
+    "source_canvas": [
+      4284,
+      5712
+    ],
+    "process_calls": 4,
+    "process_return_codes": [
+      -12786,
+      -12786,
+      -12786,
+      -12786
+    ],
+    "actual_dispatches_per_call": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "total_actual_dispatches": 16,
+    "target_final_dispatches": 0,
+    "main_texture_shapes": [
+      [
+        2144,
+        2856
+      ],
+      [
+        2140,
+        2856
+      ],
+      [
+        2144,
+        2856
+      ],
+      [
+        2140,
+        2856
+      ]
+    ],
+    "CI_output_regions_not_yet_captured": true,
+    "four_calls_do_not_prove_2x2_nonoverlapping_coverage": true,
+    "native_program_returncode": 0,
+    "native_child_peak_RSS_bytes_macOS": 1236320256,
+    "CI_renderer_buffer_all_black": true,
+    "black_buffer_not_valid_processing": true,
+    "fullframe_reference_or_inverse_metrics_obtained": false,
+    "allocator_exhaustion": "hypothesis, not established by the return code alone",
+    "all_owned_transport_cleaned": true,
+    "complete_small_cipher_header_bytes": 9386,
+    "large_cipher_body_backhaul_bytes": 0,
+    "whole_ZIP_backhaul_bytes": 0,
     "engineering_accepted": false,
     "A_phase_complete": false,
     "acceptance_complete": false

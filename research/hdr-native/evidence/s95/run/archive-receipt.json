@@ -1,0 +1,197 @@
+{
+  "archived_at_UTC": "2026-10-20T20:19:43.641374+00:00",
+  "run_id": 39488329547,
+  "source_commit": "475e050dc0a4fd7fc30528c9bf9a65d875129596",
+  "branch": "research/vm-native-20261021-semantic-s95",
+  "conclusion": "failure",
+  "event": "push",
+  "attempt": 1,
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "artifacts": [
+    {
+      "name": "semantic-s95-encrypted-outputs",
+      "artifact_id": 12294879502,
+      "ZIP_bytes": 9536,
+      "ZIP_sha256": "9e0af37ad65d53db290e216fd6a16c24cbecea94f76b19b33112b43d9b673491",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39488329547/artifact-12294879502.zip",
+      "local_ZIP_copy": false
+    },
+    {
+      "name": "semantic-s95-aggregate",
+      "artifact_id": 12294729886,
+      "ZIP_bytes": 14380,
+      "ZIP_sha256": "d437a6675d1f375d24484b8e1e5d8bf697b1663e6f591921ca7f7c56f8c30811",
+      "provider_SHA256_verified": true,
+      "storage_alias": "Japan",
+      "storage_relative_path": "runs/39488329547/artifact-12294729886.zip",
+      "local_ZIP_copy": false
+    }
+  ],
+  "all_public_manifest_members_SHA_verified": 13,
+  "source_hashes_match_commit": [
+    {
+      "path": "research/hdr-native/run_semantic_s95.py",
+      "sha256": "4f9df7ed031282e8e7d303c77ad96e2cd262f94a54663fce0ff813b5b4a639c8"
+    },
+    {
+      "path": "research/hdr-native/semantic_fullframe_s95.m",
+      "sha256": "6b7e90ef246df47e1f3a271c11cac5c0eee0770227914c3456124c13bf02aa42"
+    },
+    {
+      "path": "research/hdr-native/semantic_strength_s82.py",
+      "sha256": "34e40b0e4d67393844f6c962e7a70b2946c8e5dbf3bded1c04c4e73eea1fccb0"
+    },
+    {
+      "path": "research/vm-native/runner/native_filter_probe.m",
+      "sha256": "46d36788485e4c4e76dcd8db029980506fe0cf373b819219df3cd9a5e0a4fb4b"
+    },
+    {
+      "path": "research/vm-native/runner/encoder_capture_v2.inc",
+      "sha256": "90d8d37bcd520c96b2c184fde0cf6edc916a2f257aeb3b5affefae0ae12c25af"
+    },
+    {
+      "path": "research/vm-native/runner/replay_helpers_v7.inc",
+      "sha256": "5e0192adb23401056df2e0b2d74d32ce69121839235a6bbb8cd8be414c5732cc"
+    },
+    {
+      "path": "research/vm-native/runner/consumer-structured-v8.metal",
+      "sha256": "d242cb9c06b050aa35a5fb7a62f3da79120540668c8bc1c6665aa21f18433e6d"
+    }
+  ],
+  "private_stream_verifications": [
+    {
+      "protocol": "JP-local-GPG-v2",
+      "run_id": 39488329547,
+      "source_commit": "475e050dc0a4fd7fc30528c9bf9a65d875129596",
+      "os_build": "26A434",
+      "ZIP_bytes": 9536,
+      "ZIP_sha256": "9e0af37ad65d53db290e216fd6a16c24cbecea94f76b19b33112b43d9b673491",
+      "cipher_member": "results.tar.gz.gpg",
+      "cipher_bytes": 9386,
+      "cipher_sha256": "ec32b4f08d70d822309dfd4f228448f3b83cd7cf98448ddb9c4b24bcfcfd68aa",
+      "GPG_returncode": 0,
+      "event_names_only": [
+        "ENC_TO",
+        "BEGIN_DECRYPTION",
+        "DECRYPTION_INFO",
+        "PLAINTEXT",
+        "PLAINTEXT_LENGTH",
+        "DECRYPTION_OKAY",
+        "GOODMDC",
+        "END_DECRYPTION"
+      ],
+      "all_manifest_members_verified": 13,
+      "private_manifest_SHA256": "0d20b893a54f58d3d4c872af67755f56d9c12bad88be8c0e2163b09c2eec354b",
+      "member_hashes_only": {
+        "fallback-intermediate-hashes.json": {
+          "size": 743,
+          "sha256": "a63d9d847495600123a027625eb1effe86a3d5b6b6099201b71792349801e6ac"
+        },
+        "full-frame/checkpoint.json": {
+          "size": 4810,
+          "sha256": "f7d1f952bf249290779c6bcc2b5e55393036e6e87864a0975e1c435e83052230"
+        },
+        "full-frame/curve.f32": {
+          "size": 4096,
+          "sha256": "74f82b8fae0104097ca74a02b7e2a37cc6a877853b022256f82fcd59d686b63e"
+        },
+        "full-frame/curve.f32.json": {
+          "size": 94,
+          "sha256": "b3240c74e5b8654dbddea8b2ffdbbd64855ee675044266c6147795ba4b49b1b8"
+        },
+        "full-frame/facts.json": {
+          "size": 5542,
+          "sha256": "d99bfb61fcf6d06b8551da6d8ea502f5eeec12744e21be1795fed2604b82c75a"
+        },
+        "full-frame/light.f32": {
+          "size": 16384,
+          "sha256": "d07649211f76ac69fa7f7cd49f27c8fe56253af4ebeacb15f93068b551575e44"
+        },
+        "full-frame/light.f32.json": {
+          "size": 94,
+          "sha256": "63669306accfaabe42527fbe08adbb26c58f4661e69f085d93c461e966f0e96d"
+        },
+        "full-frame/linear_light.f32": {
+          "size": 16384,
+          "sha256": "efb19511ab466d541a34cb5c7b9bc5df37e3db0768c8fd67b7c1413e458edf7a"
+        },
+        "full-frame/linear_light.f32.json": {
+          "size": 94,
+          "sha256": "63669306accfaabe42527fbe08adbb26c58f4661e69f085d93c461e966f0e96d"
+        },
+        "full-frame/primary_input.f32.json": {
+          "size": 125,
+          "sha256": "ececb4e93045c69835bd7407048fef6e6eb043516baa05e3893791c1ff4cc642"
+        },
+        "full-frame/renderer.f32.json": {
+          "size": 125,
+          "sha256": "ececb4e93045c69835bd7407048fef6e6eb043516baa05e3893791c1ff4cc642"
+        },
+        "full-frame/semantic-full/native-calls.json": {
+          "size": 16326,
+          "sha256": "0f5b2ec4d29e4249ca8b9c51d6ef09284742e4f9cef05cd32197899f7fd7848a"
+        },
+        "full-frame/thumbnail_input.f32.json": {
+          "size": 124,
+          "sha256": "94f591a9f6fa218d81d954388f174dfae6a54f354c6f481417d247790a120c1b"
+        },
+        "manifest.json": {
+          "size": 2262,
+          "sha256": "0d20b893a54f58d3d4c872af67755f56d9c12bad88be8c0e2163b09c2eec354b"
+        }
+      },
+      "images_decoded_or_written": false,
+      "private_key_received": false,
+      "session_key_received_via_SSH_stdin_and_anonymous_fd": true,
+      "session_key_saved_or_logged": false,
+      "plaintext_members_saved": false,
+      "temporary_GNUPGHOME_removed": true,
+      "whole_cipher_or_ZIP_exported": false,
+      "remote_max_RSS_KiB": 17864,
+      "child_max_RSS_KiB": 17496,
+      "verification_traffic_payload": {
+        "HK_to_JP_verification_request_bytes": 483,
+        "JP_to_HK_encrypted_header_bytes": 9386,
+        "JP_to_HK_hash_receipt_bytes": 2671,
+        "prefix_GPG_returncode": 0,
+        "prefix_only_is_not_authentication": true,
+        "encrypted_packet_length_reframed_for_key_extraction_only": true,
+        "header_contains_complete_small_cipher": true,
+        "complete_small_cipher_bytes_within_bounded_header": 9386,
+        "whole_ZIP_backhaul_bytes": 0,
+        "large_cipher_body_backhaul_bytes": 0,
+        "new_GitHub_artifact_download_bytes": 0,
+        "counts_are_application_payload_exclude_SSH_overhead": true
+      },
+      "remote_helper_SHA256": "6345a517acb70148f2ab79f67f838106282b8f1ddeee9fd745c1ff807a58aca1",
+      "helper_code_upload_bytes": 0,
+      "helper_install_receipt_bytes": 94
+    }
+  ],
+  "Japan_download_receipt": {
+    "run_id": 39488329547,
+    "artifacts": [
+      {
+        "artifact_id": 12294879502,
+        "bytes": 9536,
+        "sha256": "9e0af37ad65d53db290e216fd6a16c24cbecea94f76b19b33112b43d9b673491",
+        "relative_path": "runs/39488329547/artifact-12294879502.zip"
+      },
+      {
+        "artifact_id": 12294729886,
+        "bytes": 14380,
+        "sha256": "d437a6675d1f375d24484b8e1e5d8bf697b1663e6f591921ca7f7c56f8c30811",
+        "relative_path": "runs/39488329547/artifact-12294729886.zip"
+      }
+    ],
+    "root_free_bytes": 62593122304,
+    "download_credential_received": false,
+    "signed_URL_saved": false
+  },
+  "original_ZIPs_preserved": true,
+  "VM_full_artifact_or_photo_plaintext_materialized": false,
+  "signed_URL_or_credential_saved": false
+}

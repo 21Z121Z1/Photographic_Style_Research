@@ -229,3 +229,9 @@ GPG头只用于取session：完整PKESK保持，partial body的长度标记去�
 
 
 S94 sourcebf117dccb793e2ceaaff85b5e2ee9a368cd54353/run39486436418；run_semantic_s94.py、semantic_fullframe_s94.m、inputs_s94.json与semantic-native-s94.yml。失败日志已读（gh run view39486436418 --log-failed，副本native-failed.log）；原生具体异常在evidence/s94/run/native.log，驱动缺少calls_path的断言是后果。后续新版本先建日志父目录并记录不匹配dispatch；不编辑S94已有源码/产物。归档器使用storage v2在日本完整认证；这份密文仅8465B，头部即全小文件，流量纠正附加记录，原receipt SHA不改。
+
+
+S95入口run_semantic_s95.py、semantic_fullframe_s95.m、inputs_s95.json、semantic-native-s95.yml、s95_observer_binding.json；source475e050dc0a4fd7fc30528c9bf9a65d875129596。绑定可从S94原生源逐项精确替换恢复并检查SHA；预览只改stride10，不改S82算子。已触发run39488329547，不再push或dispatch同一验证；先看其status/jobs，原生失败先取--log-failed。新归档协调器storage/verify_remote_private_v3.py，后台仍用v2日本GPG helper，差别为小cipher字节计数和要求显式新receipt，不默认重跑S93。
+
+
+S95终态39488329547，先读已落地native-failed.log与evidence/s95/run/native.log、native-calls.json、native-execution.json：原native program rc0不能替代四次renderer process rc−12786。恢复入口无需再等旧queued状态。资源假设静态来源已保存allocator-and-guided-error-source.txt，原文本SHA/UUID/binary SHA及行范围在static-provenance.json；只复用已有文本，没有下载Apple binary。未来容量对照前记录实际请求与guided返回，再据真实PI output.region建全帧参照；不重跑旧S41合成组/旧30个scalar-guided实验，不做半码格点精度追逐。

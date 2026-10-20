@@ -231,3 +231,9 @@ S93：[39480275514](https://github.com/21Z121Z1/Photographic_Style_Research/acti
 
 
 S94：run39486436418，sourcebf117dccb793e2ceaaff85b5e2ee9a368cd54353，research/vm-native-20261021-semantic-s94，26A434/image20261012.0260.1，failure。编译/原尺寸CI解码成功；首次内部调用写不存在目录导致观测异常，未得final dispatch/整幅指标。原ZIP日本、10 public与GPG/11 private成员已核验；临时secret/release/tag/分支全清理。private cipher8465B完全落在32KiB头内，按traffic-accounting-correction计入小cipher流量，未回传大包。
+
+
+S95：source475e050dc0a4fd7fc30528c9bf9a65d875129596，research/vm-native-20261021-semantic-s95，run39488329547/job118854512641；2026-10-20T20:17:21.158664+00:00核对queued、runner未分配、标签xcode-27。实际build/image未观测，不能先写26A434已验证。源修复观测入口/全内部调用census/预览cap；未做inverse，全部验收false。终态归档/清理以未来receipt与closure为准，当前临时资源仍供这个已存在run使用。
+
+
+S95终态：[39488329547](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39488329547)，source475e050dc0a4fd7fc30528c9bf9a65d875129596，26A434/image20261012.0260.1，failure。4次原process−12786、16前置dispatch、目标final0；CI表面输出全黑不能验收。13 public与GPG/13 private、源改写绑定均已日本原地核验；本次secret/release/tag/分支已清理。v3小cipher头9386B、request483B、hash2671B，无ZIP/大cipher回传。

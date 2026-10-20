@@ -1,0 +1,50 @@
+{
+  "original_native_source": "research/hdr-native/semantic_fullframe_s94.m",
+  "original_native_SHA256": "d4add7a2fafbdb49761000d3232fe4401be1e72ed780b5a480087d975d675e0d",
+  "new_native_SHA256": "6b7e90ef246df47e1f3a271c11cac5c0eee0770227914c3456124c13bf02aa42",
+  "exact_native_replacements": [
+    {
+      "old": "#include \"native_filter_probe_s94.m\"",
+      "new": "#include \"native_filter_probe_s95.m\"",
+      "count": 1
+    },
+    {
+      "old": "static NSMutableArray *Calls94;",
+      "new": "static NSMutableArray *Calls94;\nstatic NSMutableArray *Processes94;",
+      "count": 1
+    },
+    {
+      "old": "static int Process94(id s,SEL c){@autoreleasepool{ECStates=",
+      "new": "static int Process94(id s,SEL c){@autoreleasepool{Need94([[NSFileManager defaultManager]createDirectoryAtPath:Root94 withIntermediateDirectories:YES attributes:nil error:NULL],@\"capture directory before any process callback\");ECStates=",
+      "count": 1
+    },
+    {
+      "old": "Calls94=[NSMutableArray new];dlopen(",
+      "new": "Calls94=[NSMutableArray new];Processes94=[NSMutableArray new];dlopen(",
+      "count": 1
+    },
+    {
+      "old": "static NSUInteger Serial94;",
+      "new": "static NSUInteger Serial94;\nstatic NSUInteger WholeContexts94;",
+      "count": 1
+    },
+    {
+      "old": " row[@\"whole_frame_available\"]=@YES;NSData*ref=",
+      "new": " if(WholeContexts94++){row[@\"stop_reason\"]=@\"Additional whole-frame final context observed; census only, no repeated whole-frame reference allocation\";JSON94(row,[dir stringByAppendingPathComponent:@\"native.json\"]);return row;}\n row[@\"whole_frame_available\"]=@YES;NSData*ref=",
+      "count": 1
+    },
+    {
+      "old": " JSON94(@{@\"calls\":Calls94,@\"scope\":",
+      "new": " NSMutableArray*census=[NSMutableArray new];NSArray*observed=ECDispatches.count?ECDispatches:ECStates.allValues;for(NSDictionary*d in observed){NSMutableDictionary*t=[NSMutableDictionary new];for(NSString*k in d[@\"textures\"]){id<MTLTexture>v=d[@\"textures\"][k];t[k]=@{@\"width\":@(v.width),@\"height\":@(v.height),@\"format\":@(v.pixelFormat)};}id<MTLComputePipelineState>ps=d[@\"pipeline_object\"];[census addObject:@{@\"textures\":t,@\"buffer_keys\":[d[@\"buffers\"]allKeys]?:@[],@\"byte_keys\":[d[@\"bytes\"]allKeys]?:@[],@\"grid\":d[@\"grid\"]?:@[],@\"group\":d[@\"group\"]?:@[],@\"pipeline_description\":ps.description?:@\"nil\"}];}id<MTLCommandQueue>observedQueue=[s metalCommandQueue];[Processes94 addObject:@{@\"serial\":@(serial),@\"original_process_return\":@(rc),@\"renderer_class\":NSStringFromClass(object_getClass(s)),@\"queue_class\":observedQueue?NSStringFromClass(object_getClass(observedQueue)):@\"nil\",@\"encoder_state_count\":@(ECStates.count),@\"dispatch_record_count\":@(ECDispatches.count),@\"census_is_bound_state_fallback_not_actual_dispatch\":@(ECDispatches.count==0),@\"captured_dispatches_or_states\":census}];\n JSON94(@{@\"calls\":Calls94,@\"processes\":Processes94,@\"scope\":",
+      "count": 1
+    }
+  ],
+  "original_driver_SHA256": "662710eaaac805f0ef1b7f1652276ab90c74528153edc07fe330db34f6d0898e",
+  "new_driver_SHA256": "4f9df7ed031282e8e7d303c77ad96e2cd262f94a54663fce0ff813b5b4a639c8",
+  "preview_stride": 10,
+  "preview_pixels": 245388,
+  "frozen_S82_cap": 262144,
+  "evidence": "S94 run39486436418 native.log file-not-found and source control flow; preview cap issue is static/unreached",
+  "old_S94_S82_sources_unchanged": true,
+  "no_math_sampler_or_inverse_change": true
+}
