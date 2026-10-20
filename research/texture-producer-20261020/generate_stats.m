@@ -221,7 +221,10 @@ int main(int argc, char **argv) {
                 // CMIStyleEngineProcessor investigation; no cache implementation is changed.
                 allocator = Call([NSClassFromString(@"FigMetalAllocator") alloc], @"initWithDevice:allocatorType:", @[device, @2]);
                 id descriptor = Make(@"FigMetalAllocatorDescriptor");
-                Call(descriptor, @"setMemSize:", @[@(128ull * 1024 * 1024)]);
+                uint64_t allocatorMiB=getenv("TEXTURE_ALLOCATOR_MIB")?strtoull(getenv("TEXTURE_ALLOCATOR_MIB"),NULL,10):128;
+                if(allocatorMiB<64||allocatorMiB>2048)@throw [NSException exceptionWithName:@"AllocatorBudget" reason:@"outside diagnostic budget bounds" userInfo:nil];
+                report[@"allocator_budget_MiB"]=@(allocatorMiB);
+                Call(descriptor, @"setMemSize:", @[@(allocatorMiB * 1024 * 1024)]);
                 Call(descriptor, @"setAllowFallback:", @[@YES]);
                 report[@"allocator_setup"] = Call(allocator, @"setupWithDescriptor:", @[descriptor]);
                 Call(effect, @"setAllocator:", @[allocator]);
