@@ -96,6 +96,9 @@ for f in sorted(p.glob('*.heic')):
     rows.append({'file':f.name,'exit':status})
 (p/'admission-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
+xcrun lldb --batch -s "$TASK_ROOT/person_readback.lldb" -- \
+    "$TASK_OUT/native-admission" "$TASK_OUT/texture-candidate.heic" "$TASK_OUT/person-debug-admission.json" \
+    2>&1 | tee "$TASK_OUT/person-metadata-readback.log"
 rm "$TASK_OUT/produce-carrier" "$TASK_OUT/native-admission"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/coreml_fsinc.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \

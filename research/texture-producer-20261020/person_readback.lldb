@@ -1,0 +1,7 @@
+breakpoint set --name '+[_NUTextureStyleProperties textureStylePropertiesFromImageMetadata:auxImageMetadata:error:]'
+breakpoint command add 1
+expression -l objective-c -O -- (id)$x3
+continue
+DONE
+run
+quit

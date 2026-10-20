@@ -15,6 +15,26 @@ import bmff as B
 
 TEXTURE_URI = 'tag:apple.com,2026:photo:metadata:texture_styles'
 
+# Declarative default edit settings from the earlier native Standard contract.
+# These select an edit mode; they do not describe exposure, ISO, lens or camera.
+STANDARD_EDIT_MARKER = {'0': 1, '1': 0.0, '2': 0.0, '3': 1.0, '4': 1, '5': 1,
+                        '6': 4, '7': 0, '8': 1, '9': 1.0, '10': 0.0, '11': False, '12': 1}
+
+
+def derived_edit_exif():
+    import struct
+    settings = plistlib.dumps(STANDARD_EDIT_MARKER, fmt=plistlib.FMT_BINARY, sort_keys=True)
+    note = b'Apple iOS\0\0\1MM' + struct.pack('>H', 1) + struct.pack('>HHII', 84, 7, len(settings), 32) + b'\0' * 4 + settings
+    software = b'XDRemux derived Texture SPI research\0'
+    exif_offset = 50 + len(software) + len(software) % 2
+    maker_offset = exif_offset + 18
+    entry = lambda tag, kind, count, value: struct.pack('<HHII', tag, kind, count, value)
+    tiff = b'II' + struct.pack('<HI', 42, 8) + struct.pack('<H', 3)
+    tiff += entry(0x0112, 3, 1, 1) + entry(0x0131, 2, len(software), 50) + entry(0x8769, 4, 1, exif_offset) + b'\0' * 4
+    tiff += software + b'\0' * (len(software) % 2)
+    tiff += struct.pack('<H', 1) + entry(0x927c, 7, len(note), maker_offset) + b'\0' * 4 + note
+    return b'\0\0\0\6Exif\0\0' + tiff
+
 
 def parse(data):
     top = list(B.boxes(data, 0, len(data)))
@@ -56,11 +76,23 @@ def make_iprp(properties, associations):
     return B.make_box('iprp', B.make_box('ipco', b''.join(properties)) + B.make_box('ipma', b'\0\0\0\1' + body))
 
 
-def attach(source: bytes, texture: dict, native_masks=()) -> tuple[bytes, dict]:
+def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False) -> tuple[bytes, dict]:
     top, meta, children, infos, refs, payloads, primary = parse(source)
     if any(TEXTURE_URI.encode() + b'\0' in item['raw'] for item in infos):
         raise ValueError('input already contains Texture metadata')
     old_payloads = dict(payloads)
+    changed_metadata = []
+    if edit_marker:
+        exif_ids = [item['id'] for item in infos if item.get('type') == 'Exif']
+        if len(exif_ids) > 1: raise ValueError('multiple original Exif items')
+        if exif_ids:
+            exif_id = exif_ids[0]; changed_metadata.append(exif_id)
+        else:
+            exif_id = max(payloads) + 1
+            raw = B.make_box('infe', b'\2\0\0\1' + exif_id.to_bytes(2, 'big') + b'\0\0Exif\0')
+            infos.append({'id': exif_id, 'raw': raw})
+            refs.append({'type': 'cdsc', 'from': exif_id, 'to': [primary]})
+        payloads[exif_id] = derived_edit_exif()
     properties, associations = iprp(source, children)
     mask_report = []
     for uri, codec in native_masks:
@@ -145,11 +177,12 @@ def attach(source: bytes, texture: dict, native_masks=()) -> tuple[bytes, dict]:
     result = prefix + final_meta + B.make_box('mdat', b''.join(payloads[key] for key in order))
     *_, actual, actual_primary = parse(result)
     assert actual_primary == primary
-    assert all(actual[key] == value for key, value in old_payloads.items())
+    assert all(actual[key] == value for key, value in old_payloads.items() if key not in changed_metadata)
     assert plistlib.loads(actual[item_id]) == texture
     return result, {'schema': 'texture-carrier-assembly-v1', 'input_sha256': hashlib.sha256(source).hexdigest(),
                     'output_sha256': hashlib.sha256(result).hexdigest(), 'primary_item': primary,
                     'texture_item': item_id, 'preserved_payload_count': len(old_payloads),
+                    'changed_metadata_items': changed_metadata, 'declarative_edit_marker': STANDARD_EDIT_MARKER if edit_marker else None,
                     'image_and_auxiliary_payloads_byte_identical': True, 'native_encoded_masks': mask_report, 'texture_metadata': texture}
 
 
@@ -174,8 +207,8 @@ def main():
     source = (root / 'control.heic').read_bytes()
     codecs = {row['role']: row for row in production['native_mask_codec_controls']}
     native_masks = [(row['uri'], (root / codecs[row['role']]['file']).read_bytes()) for row in production['resources']]
-    for name, dictionary in [('texture-candidate.heic', texture), ('texture-no-people-control.heic', {k:v for k,v in texture.items() if k != 'TextureStylePostProcessedPeopleData'})]:
-        output, report = attach(source, dictionary, native_masks)
+    for name, dictionary, marker in [('texture-candidate.heic', texture, True), ('texture-without-marker-control.heic', texture, False), ('texture-no-people-control.heic', {k:v for k,v in texture.items() if k != 'TextureStylePostProcessedPeopleData'}, True)]:
+        output, report = attach(source, dictionary, native_masks, marker)
         (root / name).write_bytes(output)
         (root / (name + '.assembly.json')).write_text(json.dumps(report, indent=2) + '\n')
         print(name, report['output_sha256'], len(output))
