@@ -39,6 +39,7 @@ jobs:
         with:
           toolchain: stable
           components: clippy
+          cache: false
       - name: Record exact checkout and toolchain
         shell: bash
         run: |

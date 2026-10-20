@@ -91,6 +91,7 @@ jobs:
         with:
           toolchain: stable
           components: rustfmt, clippy
+          cache: false
       - name: Record exact source and Apple environment
         shell: bash
         run: |
