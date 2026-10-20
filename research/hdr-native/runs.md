@@ -182,3 +182,6 @@ scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_ci_evidence_
 ```
 
 原生复现仅macOS runner：源文件run_hdr_s80.py及probe_consumer_ci_s80.m、ci_status_s80.inc、ci_trace_s77.inc、stats_context_s79.inc、analyze_ci_s77.py；workflow hdr-native-s80.yml列出全部参数/源码SHA并限制build26A434。先mkdir "$W/out"，再python3 research/hdr-native/run_hdr_s80.py；只在新问题需要时派发新run。原stats92-float fixture不是相机统计，不把AA gate当模型验收。累计125MB许可有效，根分区至少4GB，完整EXR仍未获单独许可。
+
+
+S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run的原ZIP均已保存，并在删除前核对所有PR head/base引用为空、源码已在远端保留研究分支。六个临时ref全部返回DELETE204且随后精确查询为空；本批未创建任何secret/release，未修改master或其他分支。一次清理预检的公共API读取返回curl22，发生于任何删除之前；后续同一run读取200/completed，原失败HTTP状态未保留，不能推断根因。改为配置CLI凭据仅在内存/stdin访问api.github.com，重新检查全部前置条件后清理完成，未重复原生实验、未写盘凭据或签名URL。详见research/hdr-native/evidence/s80/closure.json及hdr-native-20261019/cleanup-s75-s80.json。原归档、样张、冻结模型及consumer-goto-v8两个受保护文件均保留。

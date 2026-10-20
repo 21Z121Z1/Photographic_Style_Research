@@ -514,3 +514,6 @@ FlipYOrigin(r,b) = (minX(r)-minX(b), maxY(b)-maxY(r), width(r), height(r))
 **可交给macOS runner（HDR-97）：** 固定已合格上下文，逐项捕获最终PSO使用的guides、上采样maps、mattes、ROI/params和输出；仅替换一项做oracle-replacement，区分tile残差来自哪一步。继续PI上游真实matte resize/crop、C01原half-pow合同、C02实际backend重写、C03非有限路径、C04全部允许采样组合与C05全域覆盖。PSO名称/对象/有限像素已绑定，仍没有最终ISA或原编译器mathMode合同；33点全域紧外包络、原1e-3/mask、完整native往返和全图编码后ImageIO SDR max0均未通过。停止旧bit-exact拟合的决定保持。
 
 **待实机：** IMG2810匹配设备/OS的同帧j-only/WithoutFaceBoost四曲线、N、B/T/V、face hist、allocateTone与应用域，原Studio统计、RAW2679/2408及真实HDR headroom显示继续按NATIVE_TODO清单；参考机型β=.1953125未换算最终像素EV。GTM/LTM/语义逆仍分开；LinearThumbnail保持Apple Log；本轮没有照片、EXR或新预览，旧固定ACES预览与SDR保持路径未改。**A_phase_complete=false，acceptance_complete=false，goal active。**
+
+
+S75–S80传输收尾（已验证静态/归档完整性）：六个terminal run的原ZIP均已保存，并在删除前核对所有PR head/base引用为空、源码已在远端保留研究分支。六个临时ref全部返回DELETE204且随后精确查询为空；本批未创建任何secret/release，未修改master或其他分支。一次清理预检的公共API读取返回curl22，发生于任何删除之前；后续同一run读取200/completed，原失败HTTP状态未保留，不能推断根因。改为配置CLI凭据仅在内存/stdin访问api.github.com，重新检查全部前置条件后清理完成，未重复原生实验、未写盘凭据或签名URL。详见research/hdr-native/evidence/s80/closure.json及hdr-native-20261019/cleanup-s75-s80.json。原归档、样张、冻结模型及consumer-goto-v8两个受保护文件均保留。
