@@ -26,6 +26,10 @@ def validate(root, head):
     production = read('carrier-production.json')
     assert production['stage'] == 'finished' and len(production['resources']) == 13
     assert sha('semanticfaceskinmatte.l8') == controls[1]['face_skin_sha256']
+    assert controls[1]['shared_context_geometry_used']
+    assert not controls[1]['person_before_stats'].get('imageStats')
+    assert controls[1]['actual_input_mask_textures']['skin']['sha256'] == sha('semanticskinmattev2.l8')
+    assert controls[1]['actual_input_mask_textures']['instance']['sha256'] == sha('semanticpersonmatte.l8')
     assert all(row['native_auxiliary_readback'] for row in production['native_mask_codec_controls'])
     candidate = read('texture-candidate.heic.admission.json')
     assert candidate['input_sha256'] == sha('texture-candidate.heic')
@@ -45,7 +49,7 @@ def validate(root, head):
     replay = read('final-file-replay.json')
     assert replay['input_sha256'] == sha('texture-candidate.heic') and replay['provided_precomputed_image_stats_from_final_HEIC']
     assert not replay['fresh_Vision_observations_used_as_replay_inputs']
-    for role in ['skin','face','instance']: assert replay['actual_input_mask_textures'][role]['sha256'] == sha('stored-'+role+'.l8')
+    for row in read('final-mask-decode.json')['rows']: assert replay['actual_input_mask_textures'][row['role']]['sha256'] == row['sha256']
     assert replay['render_process_status'] == replay['render_calculate_stats_status'] == 0
     assert replay['render_command_status'] == 4 and not replay['render_command_error']
     assert replay['rendered_pixels']['changed_pixels_over_0_0001'] > 0 and replay['rendered_pixels']['nonfinite'] == 0

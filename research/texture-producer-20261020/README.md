@@ -1,0 +1,59 @@
+# Image-derived Texture SPI production
+
+This research produces new Texture person statistics from a public input image, writes them with image-derived resources into a HEIC, and checks native readback and final-file effect replay. It is separate from the earlier preservation-only work.
+
+The import candidate is `texture-candidate.heic`. `control.heic` contains the same encoded primary image without the editing resources. `final-file-mattify-preview.heic` is a baked preview, rather than the import candidate.
+
+The receipt is `acceptance.json`. A passing cloud receipt means native statistics generation, file readback and final-file replay passed. **It does not mean Photos activation passed.** Both the native `PhotographicStyleV2` capability and editor eligibility predicate have returned false on this runner; its platform also reports `supportsSemanticStyleRendering=false`. The contribution of file requirements versus platform eligibility has not been fully separated.
+
+## Original Apple production entries
+
+| Effect class | Production entry | Real output |
+|---|---|---|
+| `CMITextureStylesMattify` | `calculateStats` / `process` | face color, highlight/mask ratio |
+| `CMITextureStylesUnderEyeBrighten` | `calculateStats` / `process` | left/right eye color, variance, modality |
+| `CMITextureStylesSkinSmoothStandalone` | `calculateStats` / `process` | face color, roughness, skip decision |
+
+`PITextureStyleAutoCalculator` computes an edit default; it is not these image-statistics producers. `ANSTFsincAlgorithmV2Dot4` initializes but its installed model fails E5 validation on this runner. Those failures remain in the evidence.
+
+The working sequence is: actual image decode/color conversion → native Vision geometry and masks → native parameter selection → bind IO and full-image regions → initialize the working output image → allocator/setup/prewarm/prepare → calculate statistics → commit/wait → process/collect statistics → finish. The Mattify statistics shader samples `IO.outputImage`; binding an empty output texture produced misleading all-zero results before this dependency was fixed.
+
+Native Mattify exposure controls use EV −1, 0 and +1, with distinct source pixels and distinct statistics. GPU command completion and pixel changes are checked. `FigMetalExecutionStatus` counters alone are not treated as execution evidence.
+
+## Stored resource contract
+
+The 2026 plist contains `TextureStylePostProcessedPeopleData`. Each entry names an **instance** auxiliary image with URI `tag:apple.com,2026:photo:aux:semanticpersoninstances`. Its XMP must contain the matching `fsincMattes:InstanceMaskReferenceKey`. An aggregate `semanticpersonmatte` cannot replace that binding. The harness observes the actual native mask-metadata dictionary in LLDB and verifies one person plus all three statistics groups through `PITextureStyleProcessorKernel.personInputDataFromStillProperties:`.
+
+Public ImageIO ignores direct writes of the new 2026 auxiliary identifiers. Each real scalar mask is therefore encoded through ImageIO's supported scalar carrier, then its actual encoded payload and properties are assigned to the final role. The final file is read through the original Neutrino/CMPhoto path. All twelve 2026 semantic roles, legacy hair, the keyed instance, Linear Thumbnail and Style Delta are present.
+
+Resource sources are explicit in `carrier-production.json`:
+
+- Skin, hair, teeth, glasses and the person instance come from native Vision segmentation.
+- Face skin and non-face skin are derived from actual skin probabilities and measured face bounds.
+- Nose, lip and eyebrow regions are derived from this image's native face landmarks, rather than FSINC inference.
+- Hand regions use native hand-pose detection; this fixture yields no detected hands.
+- Ear and tattoo protection are explicitly disabled. Their zero masks do not claim absence detection.
+
+Ordinary Styles prerequisites describe a **new SDR identity-edit context**: measured scene/person/skin statistics, an sRGB transfer curve, measured light maps, identity coefficient data, a newly encoded Apple Log thumbnail and a neutral Style Delta grid. They are not recovered camera RAW or original camera tone mapping. The hardware/port/capture fields choose a native tuning profile, and MakerNote 84 declares default edit settings. EXIF camera make/model, ISO, exposure and capture date are not manufactured.
+
+## Final-file validation
+
+`project_final.py` copies the final carrier's encoded skin, face-skin and instance payloads into standalone decoder inputs. Original ImageIO decodes them. The replay uses those decoded masks, the final primary image and the person/statistics read back from that HEIC. Fresh Vision results are excluded from the replay inputs. The original native Mattify renderer must complete with finite pixels and a nonzero effect.
+
+The current verified fixture is one 512×512 public NASA portrait with one detected face/person. This is not universal-input certification. Multiple-person matching, no-person production, broader orientations/resolutions, full PhotoImaging rendering, and device UI activation are not certified by this receipt.
+
+## Reproduction and evidence
+
+Run from this repository root on an Apple-silicon macOS 27 machine with Xcode 27:
+
+```sh
+bash research/texture-producer-20261020/run.sh /tmp/texture-producer-evidence
+```
+
+The manual Actions workflow uses read-only repository permissions and a sparse checkout. It never opens Photos, changes Apple implementations or uploads system model/framework binaries. Generated public-image evidence and all failures are framed in the authorized job text response. `readback.py` verifies every recovered file's byte length, SHA-256, manifest set and exact source commit. The archive and import bundle retain their own hashes.
+
+Input: [scikit-image's NASA astronaut fixture](https://github.com/scikit-image/scikit-image/blob/v0.25.2/skimage/data/astronaut.png), SHA-256 `88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5`. Its dataset documentation identifies NASA/public-domain provenance.
+
+The person-instance URI/XMP contract was also documented in [Shalielie facts §7](https://github.com/nathanatgit/Shalielie/blob/f95f832eb9f63286eba7b1748d8d9223f168b03a/facts.md). We independently verified the binding through the original native parser; its template landmarks and median person statistics are not used here. HEIF helpers and the identity edit-data contract originate in XDRemux research at `18340989590d451f5676924feb03c70baa503e1a`.
+
+中文结果说明见 [REPORT.zh-CN.md](REPORT.zh-CN.md)。

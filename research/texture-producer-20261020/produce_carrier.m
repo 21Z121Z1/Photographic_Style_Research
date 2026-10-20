@@ -71,6 +71,7 @@ int main(int argc, char **argv) {
         NSMutableDictionary *report = [@{@"schema": @"texture-derived-carrier-v1", @"input_sha256": SHA([NSData dataWithContentsOfFile:input]), @"original_camera_provenance": @NO, @"apple_implementation_patched": @NO, @"stage": @"begin"} mutableCopy];
         Write(report, reportPath);
         @try {
+            dlopen("/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging", RTLD_NOW | RTLD_LOCAL);
             CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:input], NULL);
             CGImageRef image = CGImageSourceCreateThumbnailAtIndex(source, 0, (__bridge CFDictionaryRef)@{(__bridge id)kCGImageSourceCreateThumbnailFromImageAlways: @YES, (__bridge id)kCGImageSourceCreateThumbnailWithTransform: @YES, (__bridge id)kCGImageSourceThumbnailMaxPixelSize: @4096});
             if (!image) @throw [NSException exceptionWithName:@"Input" reason:@"upright decode failed" userInfo:nil];
@@ -104,6 +105,11 @@ int main(int argc, char **argv) {
                 }
             }
             report[@"face_geometry"] = FaceFacts(faces.results);
+            if (faces.results.count == 1) {
+                NSMutableDictionary *person = [Call(PersonFromVisionFace(faces.results[0],w,h),@"dictionaryRepresentation",@[]) mutableCopy];
+                [person removeObjectForKey:@"faceROIAndLandmarksROIRelativeScalingROI"];
+                report[@"native_person_without_stats"] = person;
+            }
             // Declared derived resource: real inferred skin intersected with the
             // measured face bounds; this is not presented as FSINC inference.
             NSDictionary *skin = masks[@"semanticskinmattev2"];

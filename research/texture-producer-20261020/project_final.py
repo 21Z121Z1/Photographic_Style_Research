@@ -57,8 +57,10 @@ def main(root):
     person.pop('faceROIAndLandmarksROIRelativeScalingROI',None)
     (root/'stored-person-pixels.json').write_text(json.dumps(person,indent=2)+'\n')
     reports = []
-    for name,role in [('skin','semanticskinmattev2'),('face','semanticfaceskinmatte'),('instance','semanticpersoninstances')]:
-        output,report=project(source,'tag:apple.com,2026:photo:aux:'+role)
+    roles = {'skin':'semanticskinmattev2','face':'semanticfaceskinmatte','instance':'semanticpersoninstances','person':'semanticpersonmatte','hair':'semantichairmatte','glasses':'semanticglassesmattev2','teeth':'semanticteethmattev2','nose':'semanticnosematte','lips':'semanticlipsmatte','eyebrows':'semanticeyebrowsmatte','body':'semanticnonfaceskinmatte','hands':'semantichandsmatte','ears':'semanticearsmatte','tattoo':'semantictattoomatte'}
+    for name,role in roles.items():
+        uri = 'urn:com:apple:photo:2019:aux:semantichairmatte' if name=='hair' else 'tag:apple.com,2026:photo:aux:'+role
+        output,report=project(source,uri)
         (root/('stored-'+name+'.heic')).write_bytes(output);reports.append(report)
     (root/'final-mask-projections.json').write_text(json.dumps({'final_carrier_sha256':hashlib.sha256(source).hexdigest(),'resources':reports},indent=2)+'\n')
 

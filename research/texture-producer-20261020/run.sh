@@ -52,6 +52,10 @@ for name in ['CMITextureStylesMattify','CMITextureStylesUnderEyeBrighten','CMITe
 (p/'stats-processes.json').write_text(json.dumps(rows,indent=2)+'\n')
 PY
 rm "$TASK_OUT/stats-preflight"
+xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/produce_carrier.m" \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
+    -framework ImageIO -framework Vision -o "$TASK_OUT/produce-carrier" 2>&1 | tee "$TASK_OUT/carrier-build.log"
+"$TASK_OUT/produce-carrier" "$TASK_OUT/public-astronaut.png" "$TASK_OUT" > "$TASK_OUT/carrier.stdout.log" 2> "$TASK_OUT/carrier.stderr.log"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/generate_stats.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
     -framework ImageIO -framework Vision -framework Metal -framework MetalKit \
@@ -63,7 +67,7 @@ for effect,landmark_type,parameter_source,exposure in [('Mattify',1,'defaults',0
     name=effect.lower()+'-type'+str(landmark_type)+'-'+parameter_source+'-EV'+str(exposure)
     with (p/(name+'.stdout.log')).open('wb') as stdout,(p/(name+'.stderr.log')).open('wb') as stderr:
         try:
-            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type),parameter_source,str(exposure)],stdout=stdout,stderr=stderr,timeout=120,env={**os.environ,'TEXTURE_EFFECT':effect})
+            result=subprocess.run([str(p/'generate-stats'),str(p/'public-astronaut.png'),str(p/(name+'.json')),str(landmark_type),parameter_source,str(exposure)],stdout=stdout,stderr=stderr,timeout=120,env={**os.environ,'TEXTURE_EFFECT':effect,'TEXTURE_RAW_CONTEXT_DIR':str(p)})
             status=result.returncode
         except subprocess.TimeoutExpired:status='timeout120'
     rows.append({'effect':effect,'landmark_type_control':landmark_type,'parameter_source':parameter_source,'exposure':exposure,'exit':status})
@@ -76,10 +80,6 @@ if any(isinstance(row['exit'],int) and row['exit']<0 for row in rows):
         except subprocess.TimeoutExpired:debug_status='timeout120'
     (p/'generate-stats-debug-process.json').write_text(json.dumps({'debugger_exit':debug_status,'scope':'crash diagnosis; not successful generation'})+'\n')
 PY
-xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/produce_carrier.m" \
-    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \
-    -framework ImageIO -framework Vision -o "$TASK_OUT/produce-carrier" 2>&1 | tee "$TASK_OUT/carrier-build.log"
-"$TASK_OUT/produce-carrier" "$TASK_OUT/public-astronaut.png" "$TASK_OUT" > "$TASK_OUT/carrier.stdout.log" 2> "$TASK_OUT/carrier.stderr.log"
 python3 "$TASK_ROOT/derive_styles.py" "$TASK_OUT" 2>&1 | tee "$TASK_OUT/derived-styles.log"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/encode_thumbnail.m" \
     -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo \

@@ -42,3 +42,22 @@ static id Call(id target, NSString *name, NSArray *args) {
 
 static id Make(NSString *name) { return Call([NSClassFromString(name) alloc], @"init", @[]); }
 
+static id PersonFromVisionFace(VNFaceObservation *face, size_t width, size_t height) {
+    CGRect box = face.boundingBox;
+    CGRect roi = CGRectMake(box.origin.x * width, (1-CGRectGetMaxY(box)) * height, box.size.width * width, box.size.height * height);
+    id person = Make(@"CMITextureStylesPersonInputData");
+    Call(person,@"setFaceID:",@[@1]); Call(person,@"setFaceROI:",@[[NSValue valueWithRect:roi]]);
+    Call(person,@"setFaceSkinROI:",@[[NSValue valueWithRect:roi]]); Call(person,@"setInstanceROI:",@[[NSValue valueWithRect:CGRectMake(0,0,width,height)]]);
+    Call(person,@"setFaceLandmarkType:",@[@1]); Call(person,@"setUnitOfAngle:",@[@0]);
+    for (NSString *key in @[@"pitch",@"yaw",@"roll"]) {
+        NSNumber *value = [face valueForKey:key];
+        if (value) Call(person,[NSString stringWithFormat:@"setFace%@%@:",[[key substringToIndex:1] uppercaseString],[key substringFromIndex:1]],@[@(value.doubleValue * 180.0/M_PI)]);
+    }
+    NSMutableArray *landmarks = [NSMutableArray new]; VNFaceLandmarkRegion2D *points = face.landmarks.allPoints;
+    for (NSUInteger i=0;i<points.pointCount;i++) {
+        CGPoint p = points.normalizedPoints[i]; p = CGPointMake((box.origin.x+p.x*box.size.width)*width,(1-box.origin.y-p.y*box.size.height)*height);
+        [landmarks addObject:Call([NSClassFromString(@"CMITextureStylesFaceLandmark") alloc],@"initWithPoint:error:",@[[NSValue valueWithPoint:p],@0])];
+    }
+    Call(person,@"setFaceLandmarks:",@[landmarks]); return person;
+}
+

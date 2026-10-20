@@ -134,19 +134,25 @@ int main(int argc, char **argv) {
             for (size_t i = 0; i < faceMaskData.length; i++) faceMaskSum += values[i];
             report[@"face_skin_mean"] = @(faceMaskSum / (255.0 * faceMaskData.length));
             NSString *replayRoot = getenv("TEXTURE_REPLAY_DIR") ? @(getenv("TEXTURE_REPLAY_DIR")) : nil;
-            if (replayRoot) {
-                NSMutableArray *textures = [NSMutableArray new];
-                for (NSString *role in @[@"skin", @"face", @"instance"]) {
-                    NSData *pixels = [NSData dataWithContentsOfFile:[replayRoot stringByAppendingPathComponent:[@"stored-" stringByAppendingFormat:@"%@.l8", role]]];
+            NSString *rawRoot = getenv("TEXTURE_RAW_CONTEXT_DIR") ? @(getenv("TEXTURE_RAW_CONTEXT_DIR")) : nil;
+            NSString *contextRoot = replayRoot ?: rawRoot;
+            NSDictionary *roleFiles = @{@"skin":@"semanticskinmattev2",@"face":@"semanticfaceskinmatte",@"instance":@"semanticpersonmatte",@"person":@"semanticpersonmatte",@"hair":@"semantichairmatte",@"glasses":@"semanticglassesmattev2",@"teeth":@"semanticteethmattev2",@"nose":@"semanticnosematte",@"lips":@"semanticlipsmatte",@"eyebrows":@"semanticeyebrowsmatte",@"body":@"semanticnonfaceskinmatte",@"hands":@"semantichandsmatte",@"ears":@"semanticearsmatte",@"tattoo":@"semantictattoomatte"};
+            NSMutableDictionary *contextTextures = [NSMutableDictionary new];
+            if (contextRoot) {
+                for (NSString *role in roleFiles) {
+                    NSString *file = replayRoot ? [@"stored-" stringByAppendingFormat:@"%@.l8",role] : [roleFiles[role] stringByAppendingString:@".l8"];
+                    NSData *pixels = [NSData dataWithContentsOfFile:[contextRoot stringByAppendingPathComponent:file]];
                     if (pixels.length != width * height) @throw [NSException exceptionWithName:@"FinalMaskReplay" reason:@"unexpected stored mask dimensions" userInfo:nil];
                     id<MTLTexture> texture = Texture(device, MTLPixelFormatR8Unorm, width, height);
-                    [texture replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:pixels.bytes bytesPerRow:width]; [textures addObject:texture];
+                    [texture replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:pixels.bytes bytesPerRow:width]; contextTextures[role] = texture;
                 }
-                skinTexture = textures[0]; faceTexture = textures[1]; instanceTexture = textures[2];
-                report[@"replay_mask_source"] = @"native decoded masks extracted from the final HEIC; original pre-encoding masks are not used";
+                skinTexture = contextTextures[@"skin"]; faceTexture = contextTextures[@"face"]; instanceTexture = contextTextures[@"instance"];
+                report[@"replay_mask_source"] = replayRoot ? @"native decoded masks extracted from the final HEIC; original pre-encoding masks are not used" : @"one shared image-derived context for the producer and writer, before encoding";
                 report[@"fresh_Vision_observations_used_as_replay_inputs"] = @NO;
-                report[@"face_skin_source"] = @"native decoded final-file face-skin matte";
-                report[@"actual_input_mask_textures"] = @{@"skin": ScalarTextureFacts(skinTexture), @"face": ScalarTextureFacts(faceTexture), @"instance": ScalarTextureFacts(instanceTexture)};
+                report[@"face_skin_source"] = replayRoot ? @"native decoded final-file face-skin matte" : @"shared inferred skin and measured face bounds";
+                NSMutableDictionary *inputFacts = [NSMutableDictionary new];
+                for (NSString *role in contextTextures) inputFacts[role] = ScalarTextureFacts(contextTextures[role]);
+                report[@"actual_input_mask_textures"] = inputFacts;
                 report[@"face_skin_sha256"] = report[@"actual_input_mask_textures"][@"face"][@"sha256"];
             }
             MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice:device];
@@ -214,6 +220,10 @@ int main(int argc, char **argv) {
                 storedPerson = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[replayRoot stringByAppendingPathComponent:@"stored-person-pixels.json"]] options:0 error:NULL];
                 person = Call(NSClassFromString(@"CMITextureStylesPersonInputData"), @"personDataFromDictionary:", @[storedPerson]);
                 report[@"provided_precomputed_image_stats_from_final_HEIC"] = @YES;
+            } else if (rawRoot) {
+                NSDictionary *context = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[rawRoot stringByAppendingPathComponent:@"carrier-production.json"]] options:0 error:NULL];
+                person = Call(NSClassFromString(@"CMITextureStylesPersonInputData"), @"personDataFromDictionary:", @[context[@"native_person_without_stats"]]);
+                report[@"shared_context_geometry_used"] = @YES;
             }
             report[@"person_before_stats"] = Call(person, @"dictionaryRepresentation", @[]);
             NSMutableDictionary *nativeStats = [NSMutableDictionary new];
@@ -229,9 +239,14 @@ int main(int argc, char **argv) {
                 Call(io, @"setFaceSkinMaskTextureAndFullImageRegion:", @[Wrap(faceTexture, full)]);
                 Call(io, @"setInstanceMaskTextureAndFullImageRegion:", @[Wrap(instanceTexture, full)]);
                 Call(io, @"setPersonMaskTextureAndFullImageRegion:", @[Wrap(instanceTexture, full)]);
-                Call(io, @"setInputFaceRect:", @[[NSValue valueWithRect:faceRect]]);
+                Call(io, @"setInputFaceRect:", @[Call(person,@"faceROI",@[])]);
                 Call(io, @"setAllPersonDataForBlending:", @[@[person]]);
             } else Call(io, @"setInputInstanceMask:", @[Wrap(instanceTexture, full)]);
+            if (contextTextures.count) {
+                NSDictionary *selectors = [effectKind isEqual:@"SkinSmoothStandalone"] ? @{@"hair":@"setHairMaskTextureAndFullImageRegion:",@"glasses":@"setGlassesMaskTextureAndFullImageRegion:",@"teeth":@"setTeethMaskTextureAndFullImageRegion:",@"lips":@"setLipsMaskTextureAndFullImageRegion:",@"eyebrows":@"setEyebrowsMaskTextureAndFullImageRegion:",@"body":@"setBodyMaskTextureAndFullImageRegion:",@"hands":@"setHandsMaskTextureAndFullImageRegion:",@"ears":@"setEarsMaskTextureAndFullImageRegion:",@"tattoo":@"setTattoosMaskTextureAndFullImageRegion:"} : @{@"hair":@"setInputHairMask:",@"glasses":@"setInputGlassesMask:",@"nose":@"setInputNoseMask:",@"lips":@"setInputLipMask:",@"ears":@"setInputEarMask:",@"tattoo":@"setInputTattooMask:"};
+                for (NSString *role in selectors) if ([io respondsToSelector:NSSelectorFromString(selectors[role])]) Call(io,selectors[role],@[Wrap(contextTextures[role],full)]);
+                if ([effectKind isEqual:@"SkinSmoothStandalone"]) Call(io,@"setAllPersonDataForBlending:",@[@[person]]);
+            }
             Call(io, @"setOutputPersonStats:", @[nativeStats]);
             id effect = Call([NSClassFromString([@"CMITextureStyles" stringByAppendingString:effectKind]) alloc], @"initWithOptionalMetalContext:", @[NSNull.null]);
             id parameters = nil;
