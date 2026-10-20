@@ -1,0 +1,97 @@
+name: semantic-native-s93
+on:
+  push:
+    branches: ['research/vm-native-20261021-semantic-s93']
+  workflow_dispatch:
+jobs:
+  unscaled-semantic-ROI:
+    runs-on: xcode-27
+    timeout-minutes: 55
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare private workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/semantic-s93"
+          mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/private" "$W/encrypted"
+          mkdir -m 700 "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          export GNUPGHOME="$W/gnupg"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          gpg --batch --import research/semantic-styles/archive-public.asc > "$W/out/key-import.log" 2>&1
+          python3 -m pip install --quiet 'numpy==2.3.4' 'opencolorio==2.6.0' pillow > "$W/out/dependencies.log" 2>&1
+      - name: Native original-coordinate semantic controls
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SEMANTIC_S93_INPUT_SESSION: ${{ secrets.SEMANTIC_S93_INPUT_SESSION }}
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          python3 research/hdr-native/run_semantic_s93.py > "$W/out/driver.log" 2>&1
+      - name: Seal private results even if a later metric fails
+        if: always()
+        run: |
+          set -euo pipefail
+          if test ! -f "$W/encrypted/results.tar.gz.gpg"; then
+            python3 - <<'PY'
+          import os,pathlib,json,hashlib,tarfile
+          w=pathlib.Path(os.environ['W']);root=w/'private'
+          rows=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='manifest.json':
+                  with p.open('rb') as f:h=hashlib.file_digest(f,'sha256').hexdigest()
+                  rows.append({'path':str(p.relative_to(root)),'size':p.stat().st_size,'sha256':h})
+          (root/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','partial_after_failure':True,'files':rows},indent=2)+'\n')
+          with tarfile.open(w/'private.tar.gz','w:gz') as t:t.add(root,arcname='out')
+          PY
+            gpg --batch --trust-model always --recipient 28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA --output "$W/encrypted/results.tar.gz.gpg" --encrypt "$W/private.tar.gz" > "$W/out/fallback-encrypt.log" 2>&1
+          fi
+      - name: Seal aggregate text only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,subprocess
+          p=pathlib.Path(os.environ['W'])/'out';rows=[]
+          for f in sorted(p.iterdir()):
+              if f.is_file() and f.name!='manifest.json':
+                  assert f.suffix in {'.json','.log','.txt'}
+                  with f.open('rb') as stream:h=hashlib.file_digest(stream,'sha256').hexdigest()
+                  rows.append({'path':f.name,'size':f.stat().st_size,'sha256':h})
+          (p/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'public_scope':'Aggregate text only; all photo pixels/ROI geometry encrypted','files':rows},indent=2)+'\n')
+          assert sum(x['size'] for x in rows)<2000000
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-s93-aggregate
+          path: ${{ env.W }}/out/
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-s93-encrypted-outputs
+          path: ${{ env.W }}/encrypted/*.gpg
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Remove only this run's transient copies
+        if: always()
+        run: |
+          test -n "${W:-}"
+          gpgconf --homedir "$W/gnupg" --kill gpg-agent || true
+          rm -rf -- "$W"
