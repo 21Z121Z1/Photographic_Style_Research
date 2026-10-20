@@ -1,0 +1,173 @@
+{
+  "classification_static": "已验证静态",
+  "classification_finite_oracle": "已验证数值",
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "run_id": 39368595307,
+  "artifact_id": 12240755401,
+  "source_commit": "07353ab0a6d16096a3883da960fa8613da91d243",
+  "ZIP_sha256": "64af6fe10403d51a66950970f3f0b286c3194a05f9ef993c8743d758086289a4",
+  "manifest_sha256": "e18804df3412f92eb533c1df8ad30d9c292af4cb4ba53957c0e527d6482ea28e",
+  "all_payload_members_SHA_verified": 10,
+  "PhotoImaging_UUID": "5F17E1DB-A15E-38C7-9BEC-E081688B62E5",
+  "NeutrinoCore_UUID": "5E0B3F6B-554E-3373-A411-4A4D1CF0A057",
+  "NeutrinoCore_archived_binary_SHA256": "b42a15eab428fb24f355d19b00efc0e8599d37e7c672516f97c21ea76cb24419",
+  "getter": {
+    "words": [
+      "0x90124501",
+      "0x911fb821",
+      "0x17fddf62",
+      "0xd4200020",
+      "0xd01296c1",
+      "0x912c0021",
+      "0x17fddf5e",
+      "0xd4200020"
+    ],
+    "selector": "region",
+    "unslid": "0x1d0088a70",
+    "selector_decoded": true
+  },
+  "rounding_literals": [
+    {
+      "value": 1e-06,
+      "unslid": "0x1c5cf52a8",
+      "bits": "0x3eb0c6f7a0b5ed8d"
+    },
+    {
+      "value": -1e-06,
+      "unslid": "0x1c5cf5450",
+      "bits": "0xbeb0c6f7a0b5ed8d"
+    }
+  ],
+  "FPCR": "0x0",
+  "PixelRect_size": 32,
+  "PixelRect_alignment": 8,
+  "PixelRect_layout": "x,y,width,height; signed int64",
+  "policy0": "floor(min+1e-6),ceil(max-1e-6), then size=max-min",
+  "positive_scale_order": "multiply integer origin and integer size separately in binary64, add origin+size to form max, then policy0",
+  "flip": "minX(r)-minX(bounds),maxY(bounds)-maxY(r),width(r),height(r)",
+  "controls": 54,
+  "original_primitive_calls": 270,
+  "integer_fields_compared": 432,
+  "integer_exact": true,
+  "CGRect_fields_compared": 648,
+  "max_CGRect_abs": 0.0,
+  "finite_CGRect_gate": 1e-12,
+  "original_integer_inputs_and_case_JSON_unchanged": true,
+  "pre_frozen_driver_reference": true,
+  "standalone_replay_not_new_holdout": true,
+  "zero_epsilon_controls_changed": 16,
+  "zero_epsilon_integer_fields_changed": 48,
+  "original_CGRect_imports": [
+    {
+      "slot_unslid": "0x1e7f5df28",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "B0FB9AC2-E3CC-31C2-A90E-0D38A776BAE2",
+        "found": true,
+        "image": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+        "name": "CGRectGetMinX"
+      },
+      "indirect_pointer_decoded": true,
+      "query_symbol": {
+        "found": false
+      },
+      "target_unslid": "0x1876d26d0",
+      "words": [
+        "0xf00fef31",
+        "0x913ca231",
+        "0xf9400230",
+        "0xd71f0a11",
+        "0xf00fef31",
+        "0x913cc231",
+        "0xf9400230",
+        "0xd71f0a11"
+      ],
+      "query_unslid": "0x1c81766d0"
+    },
+    {
+      "slot_unslid": "0x1e7f5df30",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "B0FB9AC2-E3CC-31C2-A90E-0D38A776BAE2",
+        "found": true,
+        "image": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+        "name": "CGRectGetMinY"
+      },
+      "indirect_pointer_decoded": true,
+      "query_symbol": {
+        "found": false
+      },
+      "target_unslid": "0x1876d2700",
+      "words": [
+        "0xf00fef31",
+        "0x913cc231",
+        "0xf9400230",
+        "0xd71f0a11",
+        "0xf00fef31",
+        "0x913ce231",
+        "0xf9400230",
+        "0xd71f0a11"
+      ],
+      "query_unslid": "0x1c81766e0"
+    },
+    {
+      "slot_unslid": "0x1e7f5df08",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "B0FB9AC2-E3CC-31C2-A90E-0D38A776BAE2",
+        "found": true,
+        "image": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+        "name": "CGRectGetMaxX"
+      },
+      "indirect_pointer_decoded": true,
+      "query_symbol": {
+        "found": false
+      },
+      "target_unslid": "0x1876d26e4",
+      "words": [
+        "0xf00fef31",
+        "0x913c2231",
+        "0xf9400230",
+        "0xd71f0a11",
+        "0xf00fef31",
+        "0x913c4231",
+        "0xf9400230",
+        "0xd71f0a11"
+      ],
+      "query_unslid": "0x1c8176690"
+    },
+    {
+      "slot_unslid": "0x1e7f5df10",
+      "target_symbol": {
+        "exact_address": 1,
+        "image_UUID": "B0FB9AC2-E3CC-31C2-A90E-0D38A776BAE2",
+        "found": true,
+        "image": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+        "name": "CGRectGetMaxY"
+      },
+      "indirect_pointer_decoded": true,
+      "query_symbol": {
+        "found": false
+      },
+      "target_unslid": "0x1876d2718",
+      "words": [
+        "0xf00fef31",
+        "0x913c4231",
+        "0xf9400230",
+        "0xd71f0a11",
+        "0xf00fef31",
+        "0x913c6231",
+        "0xf9400230",
+        "0xd71f0a11"
+      ],
+      "query_unslid": "0x1c81766a0"
+    }
+  ],
+  "scope": "Positive-size finite CPU geometry with positive finite scale only. Not actual CI allocated regions, textures/sampler, original RGB gate or full C01-C05 domain certification.",
+  "new_photos": 0,
+  "new_image_dispatches": 0,
+  "legacy_thresholds_masks_changed": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

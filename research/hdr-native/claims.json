@@ -1908,9 +1908,231 @@
           "artifact_id": 12226746912
         }
       ]
+    },
+    {
+      "id": "HDR-89",
+      "category": "semantic/original-consumer-integer-ROI-literals-and-getter",
+      "status": "已验证静态",
+      "claim": "原PI callback getter0x1d0088a70精确解析为region；原NC policy0两double常量为+1e-6/-1e-6，bits3eb0c6f7a0b5ed8d/beb0c6f7a0b5ed8d。原CG extrema导入和四signed-int64布局/正scale运算顺序支持source-notes里的ROI/flip公式；尚未捕获实际CI buffer分配。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s74/summary.json",
+          "line": 1,
+          "sha256": "5123d4ff24b4b002ed83db88c0a80a2905ffbe6c4c52d90b98a539a531107451"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/source-notes.txt",
+          "line": 1,
+          "sha256": "691030e12f5aafe79d0b59ac13f148e27f24a19c93673abad1b2b6cdfe7f893d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/model-replay.json",
+          "line": 1,
+          "sha256": "d2840a8546fa87cdefdfebcbb6612e8386109f224954c5f5050eab41d8e7f6eb"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/epsilon-ablation.json",
+          "line": 1,
+          "sha256": "5589f90d2cfe70598d49c68fa77ee2982ed62c92663ca421dd2639fa0832d3ca"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "1fe8e7450ef3a809d405a93d2bf6871d8ff504a1584c74eb458f5e2537bc545b",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/metadata.json",
+          "line": 1,
+          "sha256": "721053095a852edcf535f870e83af330aa0994602f3a1ad13491325a3424c191",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/freeze.json",
+          "line": 1,
+          "sha256": "dcdb169c0c7f2b0c33b3e31cec7b95bfe4d8f5827ff68549362e433fce2ec173",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/native.json",
+          "line": 1,
+          "sha256": "bcb2f899f872b621f6042f42728b964df1cd6a41c0e735cb37c5775996b4612c",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/analysis.json",
+          "line": 1,
+          "sha256": "2726299d9c64076effb266ca2dd3373bc7d090acfa5d2d2ce62c9c22a563e19c",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/NeutrinoCore-source.txt",
+          "line": 1,
+          "sha256": "a524a3b31cf824d98d3fab9bd6cd05f34a774fc6ff1de3fb2281b3fd2226a698"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
+        }
+      ]
+    },
+    {
+      "id": "HDR-90",
+      "category": "semantic/finite-original-integer-ROI-native-oracle",
+      "status": "已验证数值",
+      "claim": "S74 run39368595307/artifact12240755401的54预冻结有限控制（含实际全图比例、小数/负原点、常量边界nextafter）调用270次原CPU函数；432整数分量精确，648CGRect分量maxabs0，原输入/FPCR不变。无容差模型改变16/54例、48整数分量。此为独立CPU几何1e-12 gate，未认证RGB像素/纹理C04或原33点全域。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s74/summary.json",
+          "line": 1,
+          "sha256": "5123d4ff24b4b002ed83db88c0a80a2905ffbe6c4c52d90b98a539a531107451"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/source-notes.txt",
+          "line": 1,
+          "sha256": "691030e12f5aafe79d0b59ac13f148e27f24a19c93673abad1b2b6cdfe7f893d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/model-replay.json",
+          "line": 1,
+          "sha256": "d2840a8546fa87cdefdfebcbb6612e8386109f224954c5f5050eab41d8e7f6eb"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/epsilon-ablation.json",
+          "line": 1,
+          "sha256": "5589f90d2cfe70598d49c68fa77ee2982ed62c92663ca421dd2639fa0832d3ca"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "1fe8e7450ef3a809d405a93d2bf6871d8ff504a1584c74eb458f5e2537bc545b",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/metadata.json",
+          "line": 1,
+          "sha256": "721053095a852edcf535f870e83af330aa0994602f3a1ad13491325a3424c191",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/freeze.json",
+          "line": 1,
+          "sha256": "dcdb169c0c7f2b0c33b3e31cec7b95bfe4d8f5827ff68549362e433fce2ec173",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/native.json",
+          "line": 1,
+          "sha256": "bcb2f899f872b621f6042f42728b964df1cd6a41c0e735cb37c5775996b4612c",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/analysis.json",
+          "line": 1,
+          "sha256": "2726299d9c64076effb266ca2dd3373bc7d090acfa5d2d2ce62c9c22a563e19c",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/NeutrinoCore-source.txt",
+          "line": 1,
+          "sha256": "a524a3b31cf824d98d3fab9bd6cd05f34a774fc6ff1de3fb2281b3fd2226a698"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
+        }
+      ]
+    },
+    {
+      "id": "HDR-91",
+      "category": "semantic/remaining-original-CI-allocation-and-full-domain-contract",
+      "status": "runner",
+      "claim": "下一步在原PISemanticStyleProcessor实际CI执行中抓region/format/texture尺寸与mapped region，先绑定原format表/flags和processor上下文；固定非目标输入。S74只补有限CPU几何，33点C01-C05全声明域、完整往返、封装后ImageIO SDRmax0仍未通过；相机j/WithoutFaceBoost同帧统计曲线、Studio、RAW和实屏仍按实机清单。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s74/summary.json",
+          "line": 1,
+          "sha256": "5123d4ff24b4b002ed83db88c0a80a2905ffbe6c4c52d90b98a539a531107451"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/source-notes.txt",
+          "line": 1,
+          "sha256": "691030e12f5aafe79d0b59ac13f148e27f24a19c93673abad1b2b6cdfe7f893d"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/model-replay.json",
+          "line": 1,
+          "sha256": "d2840a8546fa87cdefdfebcbb6612e8386109f224954c5f5050eab41d8e7f6eb"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/epsilon-ablation.json",
+          "line": 1,
+          "sha256": "5589f90d2cfe70598d49c68fa77ee2982ed62c92663ca421dd2639fa0832d3ca"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "1fe8e7450ef3a809d405a93d2bf6871d8ff504a1584c74eb458f5e2537bc545b",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/metadata.json",
+          "line": 1,
+          "sha256": "721053095a852edcf535f870e83af330aa0994602f3a1ad13491325a3424c191",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/freeze.json",
+          "line": 1,
+          "sha256": "dcdb169c0c7f2b0c33b3e31cec7b95bfe4d8f5827ff68549362e433fce2ec173",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/native.json",
+          "line": 1,
+          "sha256": "bcb2f899f872b621f6042f42728b964df1cd6a41c0e735cb37c5775996b4612c",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s74/run/analysis.json",
+          "line": 1,
+          "sha256": "2726299d9c64076effb266ca2dd3373bc7d090acfa5d2d2ce62c9c22a563e19c",
+          "run_id": 39368595307,
+          "artifact_id": 12240755401
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/NeutrinoCore-source.txt",
+          "line": 1,
+          "sha256": "a524a3b31cf824d98d3fab9bd6cd05f34a774fc6ff1de3fb2281b3fd2226a698"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s73/PhotoImaging-source.txt",
+          "line": 1,
+          "sha256": "79cbce708e6b2e930ffd82ea3293fc8ffa59f8dfd8f870716ad7f82921f7546c"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-19T19:50:09.527146+00:00",
+  "updated_utc": "2026-10-20T04:40:06.130600+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,

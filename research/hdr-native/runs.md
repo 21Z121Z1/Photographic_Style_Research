@@ -149,3 +149,15 @@ S73 research/vm-native-20261020-hdr-s73, source4a349173547b96e9b0994c57c98192d77
 S67 archive supplement2026-10-20: source4df92c6f1dcab7c6b57e5783d22438ee05bab609,run39335997594,artifact12226746912,26A434/image20261012.0260.1,ZIP210521B SHA b1b95a5df2ee252eec41153cdce6f88d521c36490fc5422bbacb734a208509f1;29 payload SHA verified,30 ZIP members including manifest; original selectionxz unchanged; native reruns0, no new branch/run/secret/release.
 
 S73收尾：源码与全部证据已普通push至research/vm-native-20261018@1cca0fb4dca4168d0618ba62f753166b08f5812b。head/base PR为空、release为空、临时ref为原source且完整ZIP已校验后，仅删除本轮S73分支；DELETE成功并以公开REST matching-ref=[]复核。S70–S73四条本轮临时分支均已清，无临时secret/release创建，未改master、原件、历史归档或既有分支。核查自动审批超时后采用拆分只读查询完成；无待审批动作。见evidence/s73/closure.json。A与acceptance=false；下一步整数取整/实际CI buffer及未认证的C01–C05。
+
+
+S74（26A434，源码07353ab0a6d16096a3883da960fa8613da91d243）：branch research/vm-native-20261020-hdr-s74，push run39368595307，artifact12240755401，原ZIP9973B/SHA 64af6fe10403d51a66950970f3f0b286c3194a05f9ef993c8743d758086289a4；image20261012.0260.1，54有限CPU控制/432int64完全一致/648CGRect max0、FPCR0。原JSON与recipe/source SHA见evidence/s74/run。只调用270次CPU几何函数，无照片/PSO dispatch；C01-C05/A/acceptance仍未通过。传输两次超时均先于写盘，最终curl同一run/attempt1成功并完整校验。复现（只读原归档，不重跑）：
+
+```sh
+cd ~/work/styles-gtm-ltm
+scripts/local-python-scope.sh -I -B repo/research/hdr-native/validate_consumer_pixelrect_s74.py hdr-native-20261019/runs/39368595307/artifact-12240755401.zip
+```
+
+runner原生复现入口：W=<private-temp> 且先mkdir W/out后，`python3 research/hdr-native/run_hdr_s74.py`；依赖probe_consumer_pixelrect_s74.m、S73/S72/S66 helper，实际命令见workflow hdr-native-s74.yml。新重复原生run仅在新问题需要时派发；artifact retention-days:1，完整小ZIP已落地。许可累计125MB与根分区至少4GB继续有效。
+
+S74临时资源清理：run39368595307已完成，完整原ZIP/10个payload与源码SHA已落地验证；源07353ab为远端研究主线祖先。清理前所有head/base PR引用为空，仅删除本轮research/vm-native-20261020-hdr-s74，随后精确ref查询为空；未创建临时secret/release，未改master或其他分支。组合清理命令自动审批超时且未启动，拆分只读预检/单独DELETE/只读复核后完成。证据evidence/s74/closure.json。A/acceptance仍false。

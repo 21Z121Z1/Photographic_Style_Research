@@ -473,3 +473,25 @@ Ri = (xi+(X-x0)*Wi/W0, yi+(Y-y0)*Hi/H0, Wout*Wi/W0, Hout*Hi/H0)
 **可交给macOS runner（HDR-87）**：读原getter/常量，逐项复现整数取整/缩放及实际CI buffer的尺寸、mapped region、scale，再做完整像素对照。33皮肤点C01–C05紧外包络、完整原生往返、ImageIO封装SDRmax0继续未通过。**待实机**同帧j/WithoutFaceBoost、N/B/T/V、face hist/allocateTone/应用域、原Studio统计、2679/2408 RAW及真实HDR观看仍按既有计划。没有新HDR预览或物理EV；GTM/LTM/语义仍分离、LinearThumbnail为Apple Log，原件、mask、half/float/PSNR/1e-3门槛不改。**A_phase_complete=false，acceptance_complete=false，goal active。**
 
 125MB许可下的S67补档（已验证数值，仅完整性，HDR-88）：原run39335997594/artifact12226746912仍未过期，完整ZIP210521B现已追加落地，SHA b1b95a5df2ee252eec41153cdce6f88d521c36490fc5422bbacb734a208509f1，原manifest SHA 8efb2a7166222ef8054df2a569d4bd5b0fdbb5a5e67d5af2cd0754851417141c，29个payload成员SHA均验证。与原选取包记录为同一份原ZIP，旧selected-original-members.tar.xz保留且SHA不变；未重跑任何原生实验，也未改变S67冻结2/3或后补条件模型的结论。第一次补档读取器把历史bytes字段误当size，在写ZIP前报错；核对旧原manifest后修正，最终完整验证。见evidence/s72/full-s67-archive-supplement.json；此后补记录不改写早先“只保留必要成员”的历史事实。
+
+
+### SEMANTIC-20261018：S74 原整数 ROI、容差与 region getter
+
+**已验证静态（HDR-89）**：26A434原callback的getter0x1d0088a70现已解析为`region`。原NC UUID5E0B3F6B-554E-3373-A411-4A4D1CF0A057（binary SHA b42a15eab428fb24f355d19b00efc0e8599d37e7c672516f97c21ea76cb24419）中，policy0的double槽0x1c5cf52a8和0x1c5cf5450分别为+1e-6与-1e-6（bits `0x3eb0c6f7a0b5ed8d` / `0xbeb0c6f7a0b5ed8d`）。四个CoreGraphics极值导入均dladdr精确绑定，因而有限正尺寸路径可写为：
+
+```text
+lo = floor(min + 1e-6); hi = ceil(max - 1e-6)
+PixelRect = (lo_x, lo_y, hi_x-lo_x, hi_y-lo_y)   # 四个 signed int64
+正scale：先分别乘整数origin与size，再将两者相加得到max，重复policy0。
+FlipYOrigin(r,b) = (minX(r)-minX(b), maxY(b)-maxY(r), width(r), height(r))
+```
+
+来源：FromCGRect0x1c59b581c、setXYMinMax policy0的0x1c59b5a0c–5a44、Scale0x1c5ba4b0c、Flip0x1c5ba65d4；原disasm行40547、40600、40727、554398、556159及本节evidence/s74/source-notes.txt。这里的x平移也依赖bounds原点，不能仅翻转y。
+
+**已验证数值（HDR-90）**：S74 run39368595307/artifact12240755401，source07353ab0a6d16096a3883da960fa8613da91d243，image20261012.0260.1。运行前写入公式/控制规则，metadata进程只读常量（测试primitive调用数0），在oracle前冻结54个控制：5类整数/小数/负原点矩形×6种正scale，加24个原常量边界的nextafter邻点；比例含5712/1024与4032/1024。270次原CPU函数调用的432个整数分量完全一致、648个CGRect分量max abs0，输入JSON/整数输入与FPCR0均不变。独立CPU几何预设gate1e-12通过，原RGB half/float1e-5+PSNR60及可逆mask内1e-3保持原样。
+
+不带±1e-6容差的数值重放会改变16/54个控制、48个整数分量（epsilon-ablation.json）；这证明几何边界会改变，不是照片光晕/像素误差测量。consumer_pixelrect_s74.py与validate_consumer_pixelrect_s74.py提供独立重放，不覆盖冻结路径，不计额外留出或五图验收。本轮没有照片/PSO dispatch或新预览；旧固定ACES预览与Apple Log缩略图保留。
+
+原始ZIP9973B SHA `64af6fe10403d51a66950970f3f0b286c3194a05f9ef993c8743d758086289a4`，manifest SHA `e18804df3412f92eb533c1df8ad30d9c292af4cb4ba53957c0e527d6482ea28e`，10个payload成员及所有recipe源码SHA均校验，原ZIP在hdr-native-20261019/runs/39368595307/。两次传输在写入前超时；改用curl后取得同一run/attempt1，未重跑原生实验，凭据/签名URL未写盘或日志。原JSON、冻结值、逐项误差和复现在research/hdr-native/evidence/s74/。
+
+**可交给macOS runner（HDR-91）**：实际CI分配的region/format/texture尺寸、mapped region与sampler尚未捕获；本轮只补正尺寸/正scale的有限CPU链。33点C01-C05完整声明域（纹理、fast math、非有限路径）紧外包络、完整原生往返和封装SDR ImageIO max0继续未认证。**待实机**：匹配IMG2810同帧j-only/WithoutFaceBoost四曲线、N/B/T/V、face hist、allocateTone/应用域，Studio原统计、RAW2679/2408与真实HDR屏幕；β=.1953125仍不换算像素EV。GTM/LTM/人物语义分开，全部原mask/门槛保持。**A_phase_complete=false，acceptance_complete=false，goal active。**
