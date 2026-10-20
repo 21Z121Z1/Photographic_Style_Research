@@ -1,0 +1,75 @@
+{
+  "source_before_probe": "8c72530ed8b685355a8c57c3a30cc71fda181378",
+  "protected_8_SHA_unchanged": true,
+  "native_S96_sources_unchanged": [
+    {
+      "path": "research/hdr-native/semantic_fullframe_s96.m",
+      "sha256": "066b104495fb83e24e33687ffd0a4220d82063eaf7efaed392a58269e30c91a0"
+    },
+    {
+      "path": "research/hdr-native/observer_prerequisites_s96.inc",
+      "sha256": "0b13e81677a4b1350a4ad4b8cd0f4f3fcdde7d3d275472001072c43c3eda23f8"
+    },
+    {
+      "path": "research/hdr-native/encoder_capture_s96.inc",
+      "sha256": "87ddbb06fcd9943e90e45b11657172b504e41493bfb2795274270c8f044f637a"
+    },
+    {
+      "path": "research/hdr-native/s96_observer_binding.json",
+      "sha256": "3a892a29512f85c8f1f625180564fa7d93c8c4660f7e23612303c691715a1626"
+    }
+  ],
+  "driver_exact_replacements": [
+    {
+      "old": "\"\"\"S96 full-frame",
+      "new": "\"\"\"S97 full-frame",
+      "count": 1
+    },
+    {
+      "old": "PLAN=json.loads((D/'inputs_s96.json').read_text())",
+      "new": "PLAN=json.loads((D/'inputs_s97.json').read_text())",
+      "count": 1
+    },
+    {
+      "old": "'SEMANTIC_S96_INPUT_SESSION'",
+      "new": "'SEMANTIC_S97_INPUT_SESSION'",
+      "count": 1
+    },
+    {
+      "old": "exe=W/'semantic-s96'",
+      "new": "exe=W/'semantic-s97'",
+      "count": 1
+    },
+    {
+      "old": "assert command(flags+[D/'semantic_fullframe_s96.m',D/'observer_prerequisites_s96.inc',D/'encoder_capture_s96.inc',D/'s96_observer_binding.json',D/'semantic_fullframe_s95.m','-o',exe],O/'build.log')==0",
+      "new": "assert command(flags+[D/'semantic_fullframe_s96.m','-o',exe],O/'build.log')==0",
+      "count": 1
+    },
+    {
+      "old": "sources=[Path(__file__).resolve(),",
+      "new": "sources=[D/'s97_driver_binding.json',D/'run_semantic_s96.py',Path(__file__).resolve(),",
+      "count": 1
+    },
+    {
+      "old": "save(O/'S96-observer-binding.json',",
+      "new": "save(O/'S97-driver-binding.json',json.loads((D/'s97_driver_binding.json').read_text()))\nsave(O/'S96-observer-binding.json',",
+      "count": 1
+    }
+  ],
+  "compile_translation_units": 1,
+  "test": "Same fullframe native reference and bounded patch experiment as S96; only correct compilation argv and ephemeral transport labels. No inverse or scene-truth claim.",
+  "practical_patch_gate": {
+    "linear_max_abs": 0.00390625,
+    "PSNR_peak1_min_dB": 70,
+    "ACES_p99_pixel_Linf_codes": 1,
+    "ACES_max_codes": 4,
+    "nonfinite_RGB": 0
+  },
+  "old_thresholds_changed": false,
+  "archive": "GitHub directly to Japan, Japan-local GPG/member verification; HK bounded header/hash/public text only; no old large archive movement",
+  "runner": "xcode-27/26A434",
+  "retention_days": 1,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}
