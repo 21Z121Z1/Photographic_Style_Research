@@ -186,3 +186,11 @@ scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_carrier_s87.
 第一条校验S82/S84/S85/S86保留原ZIP/public manifest、原commit源码SHA和已存GPG收据；第二条专门校验S87原ZIP/派生成员清单，明确报告原runner manifest缺失和run封装failure，同时核对五图整数SDR0及实际code/headroom公式。两条均不重做GPG解密、图像计算或Apple原生执行。完整GPG与每个私有成员的流式校验在archive-receipt.json，人物预览在原密文ZIP内；VM未解码/写入人物明文。S82入口run_hdr_s82.py/semantic_strength_s82.py，S85为carrier_readback_s85.m，S86仅选择matrix6/10bit；原生仅xcode-27/26A434。S87入口run_hdr_s87.py，子case carrier_case_s87.py，原生carrier_readback_s87.m/read_sdr_s87.m。workflow列出依赖、只读权限、retention-days1，源码/holdout顺序在evidence/s87/source-freeze.json。原S87会复现末端90KB封装失败，无需为改变run颜色重复像素实验；后续新任务另估容量。数学目标是RGB压力图，不是艺术HDR或生产ISP逆。
 
 本次所有临时触发ref在原ZIP/GPG验证、PR引用为空、源码保留研究分支后删除；S82两条secret及prerelease/tag已删除。需要重新原生执行时先用新研究触发ref按现有串行流程准备，密文传输的临时secret须从既有本地归档以stdin提供，不在命令/日志中记录值；不得修改旧workflow或复用已删除ref。所有原件/冻结模型/历史archive保留，旧validate.py不改。125MB累计许可不重置，根分区≥4GB，>1GB下载先问，完整输出另核预算。
+
+
+S88复现（代码固定于caae6869d2824884d36f27c475c4684744f0be37；全部图像计算只在xcode-27/26A434）：
+```bash
+gh workflow run hdr-native-s88.yml --repo 21Z121Z1/Photographic_Style_Research --ref research/vm-native-20261018
+gh run view 39428400454 --repo 21Z121Z1/Photographic_Style_Research
+```
+精确复现应另取source commit创建新research临时分支并修改新workflow的触发绑定，不能重写历史分支/workflow或盲目重复run。此新版不依赖过期artifact、secret或私钥。原结果ZIP已在hdr-native-20261019/runs/39428400454/，外层ZIP/providerSHA见evidence/s88/run/archive-receipt.json。archive内carrier.tar.gz.gpg包含成品HEIC与旧transport mask，contacts.tar.gz.gpg是固定ACES三联及误差点witness。只在受控本地按现有GPG私钥流式解密/解tar，不把人物明文上传或提交；本阶段VM仅流式SHA/GPG核对，没有解码图片。S88所有原始数值在analysis.json，原生SDR完整行哈希在native.json，门槛逐项结果在phase-summary.json；本次不覆盖旧validate.py或宣称总验收通过。

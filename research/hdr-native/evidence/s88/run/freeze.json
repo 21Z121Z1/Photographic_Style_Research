@@ -1,0 +1,46 @@
+{
+  "os_build": "26A434",
+  "source_sha256": {
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/run_hdr_s47.py": "e2f783a0a3cfa1f99a4faa49680d5320ac88b6cf18f0551853d871bf2d8a7cc1",
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/render_intent_s44.py": "d257a6f96b056caf3a6d7f9645c93bd361a12f44eaca0bc0fc35a82fe280c69f",
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/read_sdr_s44.m": "eb2cd0cd31c775e65d6c9ae2e5d0e6bf57d33d652e230d8bc3f3af59ac70628b",
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/unencoded_s44.m": "47c23e5ba612fdbb5c2ae0d33fab3f8bc5d9f26bc34e8086c341c91f7ada53bd",
+    "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f"
+  },
+  "upstream": {
+    "run_id": "39254061338",
+    "artifact_id": "12187152763",
+    "ZIP_sha256": "230cd8fcae5c17fec4d3841788b4003e0c016fb3714c674ce1a176a45887dc59",
+    "cipher_sha256": "757af22e93e6c8db257b924023f69c913f4a398d8a651f14b1f9d396af24b1a6",
+    "master_EXR_sha256": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012"
+  },
+  "sample": "IMG_0032 integration-development; previous display-only holdout for frozen S44/S47 HDR display intent",
+  "master_immutable": "New integration input reconstructed from frozen S42 recipe after old artifact expired; display stage keeps its pixels unchanged",
+  "display_exposure_policy": "One scalar k=exp2(median(log2(Y_SDR/Y_M))) on fixed center-sampled grid up to1024x768, finite positive luma only; explicitly display intent, not physical calibration",
+  "render": "H=k*M*8/(8+max(P3_Y(k*M),0)), shared RGB scalar, no spatial/semantic operation",
+  "offset_policy": "Compare offset0 versus common o=nextafter(float32(max(0,-min_component(SDR,H))+2^-16),+inf), same offset on both sides/all channels. Custom signed RGB ratio; not native generator negative-clamp behavior. Never change an inverse mask",
+  "gain": "Store/reopen float32 log2((H+o)/(S+o)); unrepresentable pixels counted separately; no encoded HEIF",
+  "headrooms": [
+    1,
+    1.25,
+    2,
+    4,
+    8
+  ],
+  "unchanged_gates": {
+    "float_linear_abs": 1e-05,
+    "PSNR_db_min": 60,
+    "relative_max": 0.001,
+    "SDR_max_abs": 0
+  },
+  "relative_denominator_floor": 1e-06,
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0
+  },
+  "scope": "Independent display prototype and supplied-pair representation only, no scene/semantic or new five-photo claim"
+}

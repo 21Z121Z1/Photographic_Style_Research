@@ -144,3 +144,6 @@ S82/S83：实用语义控制源码已实现、S83合成结构检查已通过（r
 可交给macOS runner：S87五图承载及最大EV点的每case结果以phase-summary.json为准。失败case先读原run日志和native extents；若完成，继续用独立设计HDR目标替代本次RGB压力图，并对headroom1/2/8和中间值做颜色/边缘/目标及量化分离比较。完整ImageIO原整数SDR max0仍独立执行。对最大EV点的RGB/坐标使用密文witness核对signed RGB、近零Y和显示后差异；分类只解释条件数，不构成肉眼无缺陷证明。新完整载体和EXR目前未持久归档，下载/写入必须先核预算；不把SHA或过期artifact当完整交付。
 
 待实机：IMG2810同帧CameraColorProcessing，冻结输入/统计/其他参数，分别捕获j与WithoutFaceBoost四组global/local曲线、N、B/T/V、人脸/人身直方图、allocateTone上下限及应用域的前后RGB。记录build/UUID/SHA和原始buffer dtype/shape，对照曲线变化与最终像素EV、plateau/clamp/近黑区间；β=0.1953125只约束局部权重上限，不能作为RGB或EV预算。Studio在同帧原统计下分别关眼下提亮、SkinSmooth、Mattify，保留输入/其他算子和纹理SHA，对比像素/边界/色彩；人工统计的既有条件逆不替代此测试。RAW仍需IMG2679/IMG2408配对、曝光/色彩对齐后报告EV；真实HDR屏幕/观看环境、Photos UI另按既有步骤验证。缺这些证据时维持假设/待实机分类。
+
+
+2026-10-20 S88更新：真实独立HDR目标已在IMG0032原尺寸HEIC原生回读，ImageIO/CI SDR0、实际gain及1/2/8公式满足原float门槛。此项从单图封装阻塞移出；五图独立HDR目标、理想中间headroom、全尺寸语义和独立global/local五路质量仍可在runner推进。真实屏幕需将S88密文成品在受控本地解密，分别在可记录headroom约1/2/8和室内/室外环境下查看同一原片/新片，记录亮度/剪切、肤色、边缘接缝及SDR未变；固定ACES小预览不能代替。相机同帧曲线/统计、Studio原统计及RAW配对仍按已有步骤；没有新增像素EV的j标定。

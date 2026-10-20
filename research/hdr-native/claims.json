@@ -3407,9 +3407,104 @@
           "sha256": "671e3c0ea9ba699725f6cd051b7263db26836749a42bd2252213ebcec06451ed"
         }
       ]
+    },
+    {
+      "id": "HDR-112",
+      "category": "independent-HDR-carrier/S88",
+      "status": "已验证静态",
+      "claim": "S88经用户明确批准累计150MB后执行；旧输入artifact404，冻结S42原AST重建所需单图输入，S47显示计算不变；原件/模型/旧门槛未改。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s88/expired-input-fallback.json",
+          "line": 1,
+          "sha256": "1756a31dfae8bf40560b6c90314eafbcf810b1c0db9e685a1f37f94e766786f0"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/user-write-approval-150MB.json",
+          "line": 1,
+          "sha256": "a716ee2d089d0c4892ed4aa7d6c9c483913151246ec861543540d4e754d62371"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/run/integration-freeze.json",
+          "line": 1,
+          "sha256": "4601147a5a43978c0338bb7ac0f38d2d4b0e99dfa84d27433cae86d5d121c4b3"
+        }
+      ],
+      "run_id": 39428400454
+    },
+    {
+      "id": "HDR-113",
+      "category": "independent-HDR-carrier/S88",
+      "status": "已验证数值",
+      "claim": "IMG0032重建EXR实际SHA与旧9b392...相同，独立S44/S47 HDR目标封装成5742091B HEIC；完整ImageIO及CI SDR0，原生实际gain方程及headroom1/2/8满足原float门槛。单图开发，不计五图/物理场景/语义通过。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s88/phase-summary.json",
+          "line": 1,
+          "sha256": "bbbe3e1a1cb172a467c0d65bbc08a5dd8e05eb7020e7252da274e6f972ee6c81"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/run/rebuild-rebuild-result.json",
+          "line": 1,
+          "sha256": "ebfeb0d5b772590708484edc52e8a8688e74b65e47f87d64275f17e06e654514"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/run/native.json",
+          "line": 1,
+          "sha256": "1870170f563feff82ff8c087ce3f3c3244c1b8f3321fe12a2eec6c79971ba8eb"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/run/analysis.json",
+          "line": 1,
+          "sha256": "919e6db6ed755576fc7e59471257dfd4983e30abd482e47352387109de475a17"
+        }
+      ],
+      "run_id": 39428400454
+    },
+    {
+      "id": "HDR-114",
+      "category": "independent-HDR-carrier/S88",
+      "status": "已验证数值",
+      "claim": "S88实际独立HDR对目标亮度p99/max0.008738548/0.026948415EV；float log、offset舍入、实际10bit量化及codec/provider分栏。RGB maxrel0.417625415/PSNR55.6757，原严格目标门槛仍false；大RGB相对点尚未逐点归因。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s88/phase-summary.json",
+          "line": 1,
+          "sha256": "bbbe3e1a1cb172a467c0d65bbc08a5dd8e05eb7020e7252da274e6f972ee6c81"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/run/analysis.json",
+          "line": 1,
+          "sha256": "919e6db6ed755576fc7e59471257dfd4983e30abd482e47352387109de475a17"
+        }
+      ],
+      "run_id": 39428400454
+    },
+    {
+      "id": "HDR-115",
+      "category": "independent-HDR-carrier/S88",
+      "status": "已验证静态",
+      "claim": "S88原ZIP/providerSHA、28个public成员、两份密文GPG/manifest、源/派生AST已校验，完整HEIC只存密文，输入EXR不下载、照片不在VM解码；临时分支按PR引用空/源码保留检查清理，无secret/release。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s88/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "d981ccb056c8baf39044d449eab7da89f865ebb5e6203ca88f67f4261f93d8a4"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s88/closure.json",
+          "line": 1,
+          "sha256": "4a7cacf6a7381f3984c7cefb492c5bf947c7bcd261cf9bcfcf45aaf50ea03f5f"
+        }
+      ],
+      "run_id": 39428400454
     }
   ],
-  "updated_utc": "2026-10-20T11:19:06.100341+00:00",
+  "updated_utc": "2026-10-20T13:20:43.289089+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -3459,5 +3554,107 @@
     "old_HDR101_pending_history_preserved": true,
     "S84_unqualified_HDR_metrics_preserved_not_used_as_proof": true,
     "legacy_masks_thresholds_models_unchanged": true
+  },
+  "independent_HDR_S88": {
+    "run_id": 39428400454,
+    "source_commit": "caae6869d2824884d36f27c475c4684744f0be37",
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "scope": "One independent HDR display target encoded on an original photograph; not five-photo, new semantic inverse, camera boost or physical scene verification",
+    "source_shape_stored": [
+      3024,
+      4032,
+      3
+    ],
+    "primary_irot_ccw": 270,
+    "processing_shape": [
+      4032,
+      3024,
+      3
+    ],
+    "actual_master_matches_old_EXR_SHA": true,
+    "carrier_bytes": 5742091,
+    "carrier_sha256": "db24e56e81ee1080f5bf93dd8623c4ad47e0bf99c6ea84d8b737cf98340b8869",
+    "ImageIO_full_SDR_max0": true,
+    "CI_full_SDR_maxabs": 0.0,
+    "actual_gain_native_equation_and_headroom_original_float_gates_pass": true,
+    "all_original_gates_report_only": {
+      "encoded_HDR_vs_target": {
+        "linear_abs_le_1e5": false,
+        "PSNR_peak1_ge_60": false,
+        "relative_floor1e6_le_1e3": false,
+        "all_original_float_gates": false
+      },
+      "log_f32_only": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": true,
+        "all_original_float_gates": true
+      },
+      "metadata_offset_additional": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": false,
+        "all_original_float_gates": false
+      },
+      "quantization_additional": {
+        "linear_abs_le_1e5": false,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": false,
+        "all_original_float_gates": false
+      },
+      "codec_provider_additional": {
+        "linear_abs_le_1e5": false,
+        "PSNR_peak1_ge_60": false,
+        "relative_floor1e6_le_1e3": false,
+        "all_original_float_gates": false
+      },
+      "native_full_actual_gain_equation": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": true,
+        "all_original_float_gates": true
+      },
+      "CI_SDR_vs_original": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": true,
+        "all_original_float_gates": true
+      },
+      "headroom1": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": true,
+        "all_original_float_gates": true
+      },
+      "headroom2": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": true,
+        "all_original_float_gates": true
+      },
+      "headroom8": {
+        "linear_abs_le_1e5": true,
+        "PSNR_peak1_ge_60": true,
+        "relative_floor1e6_le_1e3": true,
+        "all_original_float_gates": true
+      }
+    },
+    "HDR_target_brightness_error_percent_at_p99": 0.6075481356088785,
+    "full_HDR_target_original_gates_pass": false,
+    "scope_exclusions": [
+      "No new skin/GTM/LTM inverse or physical RAW verification",
+      "Only one integration-development photograph, not five or two holdouts",
+      "Headroom equations use actual decoded gain, not independent mid-headroom visual quality",
+      "Fixed neutral ACES contact is not HDR display acceptance"
+    ],
+    "engineering_accepted": false,
+    "A_phase_complete": false,
+    "acceptance_complete": false
+  },
+  "current_resource_authorization_S88": {
+    "cap_bytes": 150000000,
+    "minimum_root_free_bytes": 4294967296,
+    "approval_evidence": "repo/research/hdr-native/evidence/s88/user-write-approval-150MB.json"
   }
 }

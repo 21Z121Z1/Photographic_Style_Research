@@ -607,3 +607,29 @@ S85证据在evidence/s85/run（22汇总成员、2私有成员），S86在evidenc
 **已验证静态（封装失败与归档恢复）。** S87 run结论为failure，五个child均returncode0、all_completed=true；主步骤和seal步骤失败于汇总101900B>预设90000B，缺少runner public manifest。原ZIP不改：汇总artifact12259413845/45106B/SHA5fc2a91d84ca682790e8e092bf127e6cab7bf8d7ba46300aea1b73b16f6a5f9b，密文12259249040/118227B/SHA1e6763fd0e823d69ba8a55446b716240a81d9fa3a07f19108421ab32f9d44a1e，均与API digest一致。另建derived-archive-inventory.json核对33个公开原成员；它不是runner manifest，未伪造或覆盖缺失文件。37个私有manifest成员经GPG returncode0/GOODMDC和逐成员SHA核对，包含JPEG contact及准确最大EV点witness。未重算像素或重跑workflow去改变run结论。evidence/s87/run/archive-receipt.json保留全部边界；原冻结workflow会重现这项封装失败，后续新任务应另估汇总容量。
 
 **实用验收边界：** 本轮五图是固定RGB压力目标的表示/承载验证，不是原生摄影风格global/local/semantic五路结果，也不是HDR艺术效果或场景真值。S82只覆盖一张384×512语义捕获；五路独立结果、肤色/边缘/断层质量、最大误差点显示影响及真实HDR屏幕尚未组成新工程验收。因此engineering_accepted=false、A_phase_complete=false、原acceptance_complete=false。遵守用户“接近效果即可”的新优先级，停止旧bit-exact/33点全域紧界追查；历史失败、旧模型与mask保持。人物j实际EV、原Studio统计和配对RAW仍待实机，不把假设升级为已验证。
+
+
+### SEMANTIC-20261018 / HDR-S88：独立HDR目标已封装，单图原生回读
+
+**已验证静态（输入和公式边界）。** 用户“怎么样了，允许写入”批准此前明确申请的累计150000000B，保留根空余4GiB和所有原件/旧产物。旧S42 artifact12187152763在2026-10-20T13:04Z已404，未继续下载失效输入、未等待Mac文件。新rebuild_master_s88.py直接选择冻结run_hdr_s42.py的原AST语句（preamble行1–93、native master95–122、旧transport mask123–126），仅选IMG0032进行必要的集成输入重建。S42/S47及旧模型未改，S47的完整显示计算块除照片标签外字节相同；额外替换ZIP/GPG绑定和来源文字。该图这次是集成开发样本，不计新留出。证据evidence/s88/expired-input-fallback.json、user-write-approval-150MB.json和run/integration-freeze.json。
+
+**已验证数值（输入重建）。** run39428400454 / sourcecaae6869d2824884d36f27c475c4684744f0be37 / macOS27.0.1(26A434) / image20261012.0260.1 / Apple Paravirtual device成功。实际重建EXR为27791119B，SHA9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012，与旧记录完全相同，EXR存储读回差0；这项相等来自实际新文件，不是以旧SHA代填。它依然是原生RGB guided thumbnail投影的相对场景线性P3候选，并非真实相机局部处理已经完全逆掉；其锚点面积误差p99仍0.0461462EV、最大3.56194EV，不能用transport通过替代母版精度。LinearThumbnail保持Apple Log。
+
+**已验证数值（真正独立HDR目标，不是S31压力图）。** 冻结S44/S47显示步骤：固定网格中位亮度比定义单一显示scale k，H=kM·8/(8+max(Y(kM),0))；不改M、不添加语义操作、不做nit标定。直接对原4032×3024存储画布编码matrix6/10bit/4:4:4 RGB gain，保留primary irot270，原生oriented处理shape4032×3024(H×W)。Gain范围[-8.125,2.9375]EV，共同正offset在ISO有理数中序列化为0.000015，gamma1/headroom8。不同误差分栏，不把量化或codec损失记到场景反演。
+
+|算子对照|亮度误差p99 EV|最大EV|线性maxabs|PSNR peak1 dB|
+|---|---:|---:|---:|---:|
+|float32 log存储|3.66465776e-08|1.20379089e-07|3.1997704e-08|174.578|
+|offset有理数舍入额外|2.10970871e-05|0.000131612268|1.67138811e-06|137.756|
+|实际编码输入的10bit量化额外|0.00463634541|0.00543600138|0.00581895779|61.5967|
+|codec/provider额外|0.00600027846|0.02281758|0.0141467395|56.9188|
+|最终原生HDR对独立目标|0.00873854818|0.0269484147|0.0191915035|55.6757|
+|原生HDR对实际解码gain方程|4.48956342e-07|6.7630479e-07|6.1598254e-07|142.991|
+
+完整12192768像素、36578304个RGB分量均有限，所有像素亮度满足该EV诊断域，没有排除亮度像素。最终亮度p99约0.61%，最大0.0269484EV；它是本图传输误差分布，不称“99%场景准确率”。RGB最大相对误差(floor1e−6)仍0.417625415、线性max0.0191915/PSNR55.6757，原1e−3/1e−5/60dB目标门槛保持false。offset舍入单项RGB maxrel0.2578478/线性max1.67139e−6也保留；尚未单独抓取最大RGB相对误差分量，不能仅凭大比值宣称可见色偏或完全无害。最大亮度EV见证为非负RGB、相消条件数1，准确坐标和RGB只在密文。
+
+**已验证数值（SDR和有限headroom自洽性）。** 完整ImageIO显式DecodeToSDR整数光栅、格式和ICC相同，变化有效字节0，SHA8a74ebc858f021c9e839f645a4494a22acc3b135d998033bde1be3eb7512ca24；CI SDR max0。原生实际gain方程及headroom1/2/8均满足原float门槛，maxabs≤6.1598254e−7、PSNR≥142.991dB、RGB maxrel≤6.09498e−6。此处比较使用实际解码gain，还没有证明中间headroom相对创作目标的自然度。固定ACES1.0 SDR Video / LinearP3-D65→sRGB /0EV三联图仅作中性预览，三个输入样本SHA及完整源数组SHA前后相同，母版和原HEIC SHA不变。
+
+**已验证静态（交付和归档）。** 成品HEIC5742091B，SHAdb24e56e81ee1080f5bf93dd8623c4ad47e0bf99c6ea84d8b737cf98340b8869；已保存在密文carrier.tar.gz.gpg内，附原S42零offset transport mask（未旋转存储画布，非场景逆置信mask或新HDR域）。原始ZIP：汇总artifact12266424270/28674B/SHAf598d9f1619796353d456fa56e79d5b5a99971a902be18dfa4917c7c4f15e2c9；密文artifact12267380960/5814301B/SHAa33b1420f2569452edfcfddf4689e5dd55a6519297264ced5c42f0c0ff164d22。28个public成员、两个密文archive所有manifest成员、GPG、源码和派生AST SHA均已验证，VM未解码或写出照片明文，完整输入EXR未下载。artifact retention1天，但原ZIP已本地留存。evidence/s88/run/archive-receipt.json和closure.json记录PR引用检查、原始归档及临时分支清理；本次无需secret/release。
+
+**可交给macOS runner：** 将完全相同的独立目标/载体数学推广到其余原尺寸照片，独立报告理想headroom目标和实际输出，保持开发/配方留出边界；再推进全尺寸global-only/local-only/semantic-only分离与肤色/边缘实际质量。**待实机：** 同帧j/WithoutFaceBoost曲线与N/B/T/V/histogram/allocateTone/应用域、Studio原统计、RAW2679/2408、真实HDR屏幕。β=.1953125不换算像素EV。本图封装衔接成功，A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false；按用户新优先级停止bit-exact和33点全域紧界追查。

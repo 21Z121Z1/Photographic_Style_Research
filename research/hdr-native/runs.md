@@ -210,3 +210,6 @@ S84 原型已提交：research/vm-native-20261020-hdr-s84，source45e02e86d1ced0
 |S87|research/vm-native-20261020-hdr-s87 / cc3a20ad2149b64f84793f56102eee9273389075|39411684190 failure|26A434 / 20261012.0260.1|12259413845 (45106B, SHA 5fc2a91d84ca682790e8e092bf127e6cab7bf8d7ba46300aea1b73b16f6a5f9b); 12259249040 (118227B, SHA 1e6763fd0e823d69ba8a55446b716240a81d9fa3a07f19108421ab32f9d44a1e)|
 
 S82输入2份既存密文ZIP共110814893B，用户本轮明确允许公开prerelease+2条secret；验证结果后全部删除。S84旧坐标HDR指标不具资格，SDR max0独立有效；S85只修读回并确认matrix0偏差；S86选旧S32 matrix6/10bit；S87完成五图显式旋转/最大EV审计，但run失败于101900B>90000B汇总封装，runner public manifest缺失。其原ZIP通过API digest，33成员使用明确标为派生的本地清单核对；S82/S84/S85/S86使用原runner manifest。全部阶段源码SHA/私有GPG成员已核，retention1天后仍有本地原归档。所有相关临时ref已清理，master不动；证据见各evidence/{stage}/closure.json。旧S82待授权是历史状态，由本次记录更新。
+
+
+S88：`research/vm-native-20261020-hdr-s88`，source`caae6869d2824884d36f27c475c4684744f0be37`，run[39428400454](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39428400454)，success，xcode-27/26A434/image20261012.0260.1。失效S42输入改为冻结AST重建，实际EXR SHA等于旧记录；真实独立HDR目标经matrix6/10bit封装和原生读回，单图完整SDR0，实际gain公式通过，目标p99EV0.00873855/max0.0269484，原目标阈值仍false。原ZIP、两密文GPG和所有SHA已本地归档，见evidence/s88/run/archive-receipt.json；临时分支经PR引用空和源码保留检查后清理，无secret/release。成品HEIC仅加密保留，不计五图/RAW/全尺寸语义通过。

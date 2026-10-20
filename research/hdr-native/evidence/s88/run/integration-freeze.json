@@ -1,0 +1,73 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "case": {
+    "photo": "IMG_0032",
+    "role": "integration-development; previous display-only holdout",
+    "shape": [
+      3024,
+      4032,
+      3
+    ],
+    "source_path": "Apple_Native_Samples/IMG_0032.HEIC",
+    "source_sha256": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+    "artifact_id": 12187152763,
+    "ZIP_bytes": 153946146,
+    "ZIP_sha256": "230cd8fcae5c17fec4d3841788b4003e0c016fb3714c674ce1a176a45887dc59",
+    "cipher_member": "IMG_0032-full.tar.gz.gpg",
+    "cipher_sha256": "757af22e93e6c8db257b924023f69c913f4a398d8a651f14b1f9d396af24b1a6",
+    "master_EXR_sha256": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+    "old_logmap_EXR_sha256": "3a421d369fd108ae91e320b5ae5d2b4ed20f38d16d5b8b2a2fc2bad3774396e8",
+    "session_env": "HDR_S51_IMG_0032_SESSION",
+    "input_provenance": "Old artifact expired with API404; one input regenerated on this runner from unchanged frozen S42 AST. Not a new holdout."
+  },
+  "source_sha256": {
+    "research/hdr-native/run_hdr_s88.py": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+    "research/hdr-native/rebuild_master_s88.py": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+    "research/hdr-native/run_hdr_s42.py": "7e07a4923ccb18b320ee55f6be04fa7c9579c2ae404769a9b733d47d28787d92",
+    "research/hdr-native/run_hdr_s47.py": "e2f783a0a3cfa1f99a4faa49680d5320ac88b6cf18f0551853d871bf2d8a7cc1",
+    "research/hdr-native/derive_display_s51.py": "898c5dadc90314a531e8702cdf7e119c2f383861e62f4415a3e2c47c3c0fcb82",
+    "research/hdr-native/inputs-s51.json": "e631296861500c2c0dfbe0636e75e8b310e7288f618ef876debae92e69b45fee",
+    "research/hdr-native/render_intent_s44.py": "d257a6f96b056caf3a6d7f9645c93bd361a12f44eaca0bc0fc35a82fe280c69f",
+    "research/hdr-native/carrier_case_s87.py": "18dbb8747034386037a6fdcc8adb47623ed5491ea2885ae75ea601fae8af26f6",
+    "research/hdr-native/carrier_readback_s87.m": "90c39f50c794be130cfaec78e21c2a991bd7b97197d7c3e35e333261d667ed13",
+    "research/hdr-native/read_sdr_s44.m": "eb2cd0cd31c775e65d6c9ae2e5d0e6bf57d33d652e230d8bc3f3af59ac70628b",
+    "research/hdr-native/hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f",
+    "research/hdr-native/iso_splice.py": "2fc2caf76a466c9504bb5589ee8464c57bb073b0c73c4ceb0f7982f6d7d2fb29"
+  },
+  "derived_prefix_sha256": "7db11adf83d17725df629b9da516d7008dbb03ea34cf6a2d8555e3d929838dc8",
+  "derivation": {
+    "original_template_sha256": "e2f783a0a3cfa1f99a4faa49680d5320ac88b6cf18f0551853d871bf2d8a7cc1",
+    "derived_script_sha256": "253bd45fdff24c95f9668ce5ca2ce2e84cd3c5e9280cb407cd41dd30449171bb",
+    "inverse_binding_and_layout_substitutions_equal_original_prefix": true,
+    "mathematical_processing_changed": false,
+    "new_preview_layout": "3 columns,240x180 contact cells; pixel processing and original preview samples unchanged",
+    "original_encryption_footer_replaced_by": "Parent runner seals only contact and meaning for bounded archival; no individual photo PNG uploaded",
+    "S88_additional_IO_changes": [
+      "Replace expired ZIP/GPG extraction and ZIP assertion with hash-verified regenerated EXR",
+      "Use precreated case directory",
+      "Correct input provenance text; no pixel calculation modified"
+    ],
+    "S88_final_prefix_sha256": "7db11adf83d17725df629b9da516d7008dbb03ea34cf6a2d8555e3d929838dc8"
+  },
+  "extra_prefix_change": [
+    "Replace expired ZIP/GPG extraction and ZIP assertion with hash-verified regenerated EXR",
+    "Use precreated case directory",
+    "Correct input provenance text; no pixel calculation modified"
+  ],
+  "rebuild": {
+    "old_EXR_expected_sha256": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+    "new_EXR_sha256": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+    "matches_old_EXR": true
+  },
+  "recipe": "S44/S47 frozen exposure_intent+hdr_intent; required S42 input regenerated from unchanged original AST after expiry. No new scene/operator fit or proof.",
+  "carrier": "matrix6/10-bit/4:4:4; shared positive offset; signed input retained. Metadata rational rounding, float log, quantization, codec and native equations reported separately.",
+  "coordinates": "Prefix remains stored canvas. Encode raw-grid codes; original irot retained. Native readback is oriented; fixed np.rot90(reference,primary irot_ccw/90), no adaptive flip.",
+  "scope": "One independent HDR display target encoded on an original photograph; not five-photo, new semantic inverse, camera boost or physical scene verification",
+  "full_cipher_max_bytes": 20000000,
+  "contact_cipher_max_bytes": 300000,
+  "original_masks_or_legacy_gates_changed": false,
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}
