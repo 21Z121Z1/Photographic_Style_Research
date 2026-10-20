@@ -144,8 +144,14 @@ int main(int argc, char **argv) {
             id<MTLCommandBuffer> command = [queue commandBuffer];
             CIContext *context = [CIContext contextWithMTLDevice:device options:@{}];
             [context render:ciImage toMTLTexture:inputTexture commandBuffer:command bounds:full colorSpace:working];
+            // The original _calculateStats reads IO.outputImage. The main CMI
+            // processor initializes that working image before calculating stats.
+            id<MTLBlitCommandEncoder> initialCopy = [command blitCommandEncoder];
+            [initialCopy copyFromTexture:inputTexture toTexture:outputTexture];
+            [initialCopy endEncoding];
             [command commit]; [command waitUntilCompleted];
             report[@"image_upload_status"] = @(command.status);
+            report[@"statistics_samples_initialized_output_image"] = @YES;
             NSMutableData *imagePixels = [NSMutableData dataWithLength:width * height * 8];
             [inputTexture getBytes:imagePixels.mutableBytes bytesPerRow:width * 8 fromRegion:MTLRegionMake2D(0, 0, width, height) mipmapLevel:0];
             const __fp16 *imageValues = imagePixels.bytes;
