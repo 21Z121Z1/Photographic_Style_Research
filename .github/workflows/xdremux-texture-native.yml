@@ -8,7 +8,7 @@ permissions:
   contents: write
 concurrency:
   group: texture-product-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   fixtures:
     runs-on: xcode-27
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 21Z121Z1/XDRemux
-          ref: 4720cd3a568f5646a13fbac3c3e755d125cf1a22
+          ref: 3ff6e9ca7bbfe15a56e83aec90f5d0ebd1289369
           path: product
           fetch-depth: 0
           persist-credentials: false
@@ -29,7 +29,7 @@ jobs:
         working-directory: product
         run: |
           mkdir -p "$RUNNER_TEMP/texture-product"
-          test "$(git rev-parse HEAD)" = 4720cd3a568f5646a13fbac3c3e755d125cf1a22
+          test "$(git rev-parse HEAD)" = 3ff6e9ca7bbfe15a56e83aec90f5d0ebd1289369
           sw_vers > "$RUNNER_TEMP/texture-product/os.txt"
           xcodebuild -version > "$RUNNER_TEMP/texture-product/xcode.txt"
           set -o pipefail
@@ -96,7 +96,7 @@ jobs:
               if result.exists():shutil.copyfile(result,output/'result.json')
           for p in output.glob('*.zip'):
               manifests.append({'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
-          report={'source_repository':'21Z121Z1/XDRemux','source_head':'4720cd3a568f5646a13fbac3c3e755d125cf1a22','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
+          report={'source_repository':'21Z121Z1/XDRemux','source_head':'3ff6e9ca7bbfe15a56e83aec90f5d0ebd1289369','run_id':os.environ['GITHUB_RUN_ID'],'archives':manifests}
           (output/'DELIVERY.json').write_text(json.dumps(report,indent=2)+'\n')
           (output/'.gitattributes').write_text('*.zip binary\n')
           branch='research/texture-product-output-'+os.environ['GITHUB_RUN_ID']
