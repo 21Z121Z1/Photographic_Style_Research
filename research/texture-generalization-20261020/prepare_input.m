@@ -31,6 +31,8 @@ int main(int argc, char **argv) {
             if (!CGImageDestinationFinalize(destination)) @throw [NSException exceptionWithName:@"Encode" reason:@"working PNG failed" userInfo:nil];
             report[@"working_width"] = @(CGImageGetWidth(image)); report[@"working_height"] = @(CGImageGetHeight(image));
             report[@"working_sha256"] = SHA([NSData dataWithContentsOfFile:path]);
+            CFDataRef pixels=CGDataProviderCopyData(CGImageGetDataProvider(image));
+            report[@"working_native_pixels_sha256"]=SHA((__bridge NSData *)pixels);CFRelease(pixels);
             VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image options:@{}];
             VNDetectFaceLandmarksRequest *faces = [VNDetectFaceLandmarksRequest new];
             VNGeneratePersonInstanceMaskRequest *instances = [VNGeneratePersonInstanceMaskRequest new];

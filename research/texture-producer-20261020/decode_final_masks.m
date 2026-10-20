@@ -4,7 +4,9 @@ int main(int argc, char **argv) {
     @autoreleasepool {
         if (argc != 2) return 64;
         NSString *root = @(argv[1]); NSMutableArray *rows = [NSMutableArray new];
-        for (NSString *role in @[@"skin", @"face", @"instance", @"person", @"hair", @"glasses", @"teeth", @"nose", @"lips", @"eyebrows", @"body", @"hands", @"ears", @"tattoo"]) {
+        NSDictionary *projection=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[root stringByAppendingPathComponent:@"final-mask-projections.json"]] options:0 error:NULL];
+        for (NSDictionary *resource in projection[@"resources"]) {
+            NSString *role=resource[@"role"];
             NSString *name = [@"stored-" stringByAppendingString:role];
             CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:[root stringByAppendingPathComponent:[name stringByAppendingString:@".heic"]]], NULL);
             CGImageRef image = source ? CGImageSourceCreateImageAtIndex(source, 0, NULL) : NULL;

@@ -105,7 +105,8 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False, sty
         payloads[exif_id] = derived_edit_exif()
     properties, associations = iprp(source, children)
     mask_report = []
-    for uri, codec in native_masks:
+    for mask_entry in native_masks:
+        uri, codec, *reference = mask_entry
         _, _, mask_children, mask_infos, mask_refs, mask_payloads, codec_primary = parse(codec)
         mask_properties, mask_associations = iprp(codec, mask_children)
         candidates = [item for item, values in mask_associations.items()
@@ -169,7 +170,9 @@ def attach(source: bytes, texture: dict, native_masks=(), edit_marker=False, sty
                b'<rdf:Description rdf:about="" xmlns:fsincMattes="http://ns.apple.com/fsinc/1.0/">'
                b'<fsincMattes:FSINCMatteVersion>0</fsincMattes:FSINCMatteVersion></rdf:Description></rdf:RDF></x:xmpmeta>')
         if uri.endswith(':semanticpersoninstances'):
-            xmp = xmp.replace(b'</rdf:Description>', b'<fsincMattes:InstanceMaskReferenceKey>DerivedVisionInstance1</fsincMattes:InstanceMaskReferenceKey></rdf:Description>')
+            from html import escape
+            key = reference[0] if reference else 'DerivedVisionInstance1'
+            xmp = xmp.replace(b'</rdf:Description>', ('<fsincMattes:InstanceMaskReferenceKey>' + escape(key) + '</fsincMattes:InstanceMaskReferenceKey></rdf:Description>').encode())
         mime_ids = {info['id'] for info in mask_infos if info.get('type') == 'mime'}
         if uri.startswith('tag:apple.com,2026:'):
             for old in selected & mime_ids: payloads[mapping[old]] = xmp
@@ -232,24 +235,30 @@ def main():
     production = json.loads((root / 'carrier-production.json').read_text())
     if production.get('stage') != 'finished' or not all(row['native_auxiliary_readback'] for row in production['native_mask_codec_controls']):
         raise ValueError('native auxiliary writing/readback did not finish')
-    stats = json.loads((root / 'mattify-type1-Studio-EV0.json').read_text())
-    values = stats.get('native_output_person_stats', {})
-    if not (stats.get('stage') == 'finished' or stats.get('statistics_generation_completed')) or not any(v > 0 for v in values.get('AverageFaceColor', [])):
-        raise ValueError('no measured, nonzero native statistics')
-    person = stats['normalized_person_with_stats']
-    for path in ['undereyebrighten-type1-Studio-EV0.json', 'skinsmoothstandalone-type1-Studio-EV0.json']:
-        extra = json.loads((root / path).read_text())
-        if extra.get('stage') == 'finished' and 'normalized_person_with_stats' in extra:
-            person.setdefault('imageStats', {}).update(extra['normalized_person_with_stats'].get('imageStats', {}))
-    person['instanceMaskReferenceKey'] = 'DerivedVisionInstance1'
+    people = []
+    inferred = production.get('people', [{'instance_reference_key':'DerivedVisionInstance1'}])
+    for index, entry in enumerate(inferred):
+        stats_root = root / ('person-' + str(index))
+        if not stats_root.exists(): stats_root = root
+        stats = json.loads((stats_root / 'mattify-type1-Studio-EV0.json').read_text())
+        if not stats.get('statistics_generation_completed') or stats.get('exception'):
+            raise ValueError('native person statistics did not finish')
+        person = stats['normalized_person_with_stats']
+        for path in ['undereyebrighten-type1-Studio-EV0.json', 'skinsmoothstandalone-type1-Studio-EV0.json']:
+            extra = json.loads((stats_root / path).read_text())
+            if not extra.get('statistics_generation_completed') or extra.get('exception'):
+                raise ValueError('native effect statistics did not finish: ' + path)
+            person.setdefault('imageStats', {}).update(extra['normalized_person_with_stats']['imageStats'])
+        person['instanceMaskReferenceKey'] = entry['instance_reference_key']
+        people.append(person)
     texture = {'HardwareModel': 'iPhone19,2', 'PortType': 'PortTypeBack', 'CaptureMode': 'Still', 'CaptureType': 'LF',
                'Preset': 'Standard', 'TextureStylePeopleDataVersion': 3, 'FilmGrainSeed': 0,
-               'TextureStylePostProcessedPeopleData': [person]}
+               'TextureStylePostProcessedPeopleData': people}
     source = (root / 'control.heic').read_bytes()
     codecs = {row['role']: row for row in production['native_mask_codec_controls']}
     native_masks = [(row['uri'], (root / codecs[row['role']]['file']).read_bytes()) for row in production['resources']]
-    if production['instance_count'] != 1: raise ValueError('instance matching must be implemented before extending this one-person control')
-    native_masks.append(('tag:apple.com,2026:photo:aux:semanticpersoninstances', (root / codecs['semanticpersonmatte']['file']).read_bytes()))
+    for row in production.get('instance_resources', [{'role':'semanticpersonmatte','reference_key':'DerivedVisionInstance1'}]):
+        native_masks.append(('tag:apple.com,2026:photo:aux:semanticpersoninstances', (root / codecs[row['role']]['file']).read_bytes(), row['reference_key']))
     native_masks.extend([('tag:apple.com,2023:photo:aux:linearthumbnail', (root / 'linear-thumbnail-codec.heic').read_bytes()),
                          ('tag:apple.com,2023:photo:aux:styledeltamap', (root / 'neutral-delta-codec.heic').read_bytes())])
     styles = (root / 'derived-styles.bplist').read_bytes()

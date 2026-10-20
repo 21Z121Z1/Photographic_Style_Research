@@ -42,7 +42,10 @@ def main(root):
     production = json.loads((root / 'carrier-production.json').read_text())
     width, height = production['width'], production['height']; count = width * height
     raw = (root / 'native-linear-p3.rgba32f').read_bytes()
-    stats = json.loads((root / 'mattify-type1-Studio-EV0.json').read_text())
+    stats_path = root / 'mattify-type1-Studio-EV0.json'
+    if not stats_path.exists(): stats_path = root / 'linear-only.json'
+    if not stats_path.exists(): stats_path = root / 'person-0/mattify-type1-Studio-EV0.json'
+    stats = json.loads(stats_path.read_text())
     assert hashlib.sha256(raw).hexdigest() == stats['linear_RGBA32f_for_derived_styles_sha256']
     rgba = array.array('f'); rgba.frombytes(raw)
     if sys.byteorder != 'little': rgba.byteswap()
@@ -54,13 +57,15 @@ def main(root):
     skin = (root / 'semanticskinmattev2.l8').read_bytes(); person = (root / 'semanticpersonmatte.l8').read_bytes()
     assert len(skin) == len(person) == count
     subset = lambda values, mask: [v for v, m in zip(values, mask) if m >= 128]
-    distributions = {'LinearGTCImage': distribution(mapped), 'LinearImage': distribution(linear),
-                     'LinearImagePersonSegmentBased': distribution(subset(linear, person)),
-                     'LinearImageSkinBased': distribution(subset(linear, skin)), 'ToneMappedImage': distribution(tone),
-                     'ToneMappedImagePersonSegmentBased': distribution(subset(tone, person)),
-                     'ToneMappedImageSkinBased': distribution(subset(tone, skin))}
-    for c, name in enumerate(['Red', 'Green', 'Blue']):
-        distributions['ToneMappedImage' + name + 'ChannelSkinBased'] = distribution(subset([p[c] for p in encoded], skin))
+    distributions = {'LinearGTCImage': distribution(mapped), 'LinearImage': distribution(linear), 'ToneMappedImage': distribution(tone)}
+    populations = {'person':sum(m >= 128 for m in person), 'skin':sum(m >= 128 for m in skin)}
+    for label, mask in [('PersonSegmentBased', person), ('SkinBased', skin)]:
+        if any(m >= 128 for m in mask):
+            distributions['LinearImage' + label] = distribution(subset(linear, mask))
+            distributions['ToneMappedImage' + label] = distribution(subset(tone, mask))
+    if populations['skin']:
+        for c, name in enumerate(['Red', 'Green', 'Blue']):
+            distributions['ToneMappedImage' + name + 'ChannelSkinBased'] = distribution(subset([p[c] for p in encoded], skin))
     def lightmap(values):
         output = bytearray()
         for y in range(32):
@@ -75,7 +80,7 @@ def main(root):
     assert hashlib.sha256(identity).hexdigest() == '43e0ae73508cc10684d4be708fa1d19f3b55b8de15cb8e3544ef16300db91dbe'
     curve = struct.pack('<H', 257) + b''.join(struct.pack('<H', round(gamma(i / 255) * 65534)) for i in range(256)) + struct.pack('<H', 65534)
     document = {'0': 16, '1': identity, '2': True, '3': curve, '4': 0.0, '5': 0, '6': distributions,
-                '7': {'PeopleRatio': sum(person) / (255 * count), 'SkinRatio': sum(skin) / (255 * count), 'PersonMasksValidHint': 1.0},
+                '7': {'PeopleRatio': sum(person) / (255 * count), 'SkinRatio': sum(skin) / (255 * count), 'PersonMasksValidHint': 1.0 if populations['person'] else 0.0},
                 'c': lightmap(tone), 'd': lightmap(mapped), 'e': 32, 'f': 32, 'g': 0x4C303068,
                 'h': 1.0, 'i': {'Gain': 1.0, 'OriginalRangeMin': min(linear), 'OriginalRangeMax': max(linear)},
                 'j': 0.0, 'k': False, 'l': False}
@@ -89,7 +94,7 @@ def main(root):
               'input_linear_p3_sha256': hashlib.sha256(raw).hexdigest(), 'metadata_sha256': hashlib.sha256(metadata).hexdigest(),
               'thumbnail_encoding': 'published Apple Log function applied to this image-derived linear P3',
               'tone_pipeline': 'new sRGB-transfer SDR identity edit, exposure 0, gains 1, no extra face boost',
-              'mask_population_statistics': distributions, 'people_and_skin_ratios': document['7']}
+              'mask_population_statistics': distributions, 'population_counts':populations, 'empty_populations':'omitted, no invented statistics', 'people_and_skin_ratios': document['7']}
     (root / 'derived-styles.json').write_text(json.dumps(report, indent=2) + '\n')
 
 

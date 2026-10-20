@@ -84,92 +84,49 @@ int main(int argc, char **argv) {
             if (!image) @throw [NSException exceptionWithName:@"Decode" reason:@"image unavailable" userInfo:nil];
             size_t width = CGImageGetWidth(image), height = CGImageGetHeight(image);
             CGRect full = CGRectMake(0, 0, width, height);
-            VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image options:@{}];
-            VNRequest *segmentRequest = [NSClassFromString(@"VNGenerateFaceSegmentsRequest") new];
-            VNRequest *skinRequest = [NSClassFromString(@"VNGenerateHumanAttributesSegmentationRequest") new];
-            VNGeneratePersonInstanceMaskRequest *instanceRequest = [VNGeneratePersonInstanceMaskRequest new];
             NSError *error = nil;
-            report[@"stage"] = @"inference"; Write(report, out);
-            BOOL success = [handler performRequests:@[segmentRequest, skinRequest, instanceRequest] error:&error];
-            report[@"inference_success"] = @(success); report[@"inference_error"] = error.description ?: @"";
-            if (!success) @throw [NSException exceptionWithName:@"Inference" reason:report[@"inference_error"] userInfo:nil];
-            VNDetectFaceLandmarksRequest *landmarkRequest = [VNDetectFaceLandmarksRequest new];
-            landmarkRequest.inputFaceObservations = (NSArray<VNFaceObservation *> *)segmentRequest.results;
-            success = [handler performRequests:@[landmarkRequest] error:&error];
-            if (!success || landmarkRequest.results.count != 1 || instanceRequest.results.count != 1)
-                @throw [NSException exceptionWithName:@"ProbeScope" reason:@"this first statistics control requires exactly one inferred face and one person observation" userInfo:nil];
-            VNFaceObservation *face = landmarkRequest.results[0];
-            report[@"face_geometry"] = FaceFacts(@[face]);
-            VNPixelBufferObservation *skinObservation = nil;
-            for (VNPixelBufferObservation *item in skinRequest.results)
-                if ([[item valueForKey:@"featureName"] isEqual:@"human_attribute_skin"]) skinObservation = item;
-            if (!skinObservation) @throw [NSException exceptionWithName:@"Inference" reason:@"no skin output" userInfo:nil];
-            VNInstanceMaskObservation *instance = instanceRequest.results[0];
-            if (instance.allInstances.count != 1) @throw [NSException exceptionWithName:@"ProbeScope" reason:@"multiple instances require explicit face matching" userInfo:nil];
-            CVPixelBufferRef instanceMask = [instance generateScaledMaskForImageForInstances:instance.allInstances fromRequestHandler:handler error:&error];
-            if (!instanceMask) @throw [NSException exceptionWithName:@"InstanceMask" reason:error.description userInfo:nil];
-            CGRect box = face.boundingBox;
-            CGRect faceRect = CGRectMake(box.origin.x * width, (1 - CGRectGetMaxY(box)) * height, box.size.width * width, box.size.height * height);
-            report[@"pixel_face_roi_top_left"] = @[@(faceRect.origin.x), @(faceRect.origin.y), @(faceRect.size.width), @(faceRect.size.height)];
-            report[@"skin_buffer"] = BufferFacts(skinObservation.pixelBuffer);
-            report[@"instance_buffer"] = BufferFacts(instanceMask);
-            id<MTLTexture> skinTexture = CopyBuffer(device, skinObservation.pixelBuffer);
-            id<MTLTexture> instanceTexture = CopyBuffer(device, instanceMask);
-            if (instanceTexture.pixelFormat == MTLPixelFormatR32Float) {
-                // Vision's scaled Float32 mask can overshoot [0,1]. The native
-                // HEIF instance-matte carrier uses an L8 mask, so normalize once.
-                CVPixelBufferLockBaseAddress(instanceMask, kCVPixelBufferLock_ReadOnly);
-                size_t iw = CVPixelBufferGetWidth(instanceMask), ih = CVPixelBufferGetHeight(instanceMask), stride = CVPixelBufferGetBytesPerRow(instanceMask);
-                const uint8_t *base = CVPixelBufferGetBaseAddress(instanceMask);
-                NSMutableData *l8 = [NSMutableData dataWithLength:iw * ih];
-                for (size_t y = 0; y < ih; y++) for (size_t x = 0; x < iw; x++) {
-                    float v = ((const float *)(base + y * stride))[x];
-                    ((uint8_t *)l8.mutableBytes)[y * iw + x] = (uint8_t)lrintf(fminf(1, fmaxf(0, v)) * 255);
-                }
-                CVPixelBufferUnlockBaseAddress(instanceMask, kCVPixelBufferLock_ReadOnly);
-                instanceTexture = Texture(device, MTLPixelFormatR8Unorm, iw, ih);
-                [instanceTexture replaceRegion:MTLRegionMake2D(0, 0, iw, ih) mipmapLevel:0 withBytes:l8.bytes bytesPerRow:iw];
-                report[@"instance_normalization"] = @"native inferred Float32 to clamped L8 probabilities";
-                report[@"instance_texture"] = ScalarTextureFacts(instanceTexture);
-            }
-            // Diagnostic face-skin derivation uses measured skin probabilities and face bounds.
-            // It is distinct from a FSINC face-skin result, which is not claimed here.
-            size_t maskWidth = skinTexture.width, maskHeight = skinTexture.height;
-            NSMutableData *faceMaskData = [NSMutableData dataWithLength:maskWidth * maskHeight];
-            [skinTexture getBytes:faceMaskData.mutableBytes bytesPerRow:maskWidth fromRegion:MTLRegionMake2D(0, 0, maskWidth, maskHeight) mipmapLevel:0];
-            uint8_t *values = faceMaskData.mutableBytes;
-            for (size_t y = 0; y < maskHeight; y++) for (size_t x = 0; x < maskWidth; x++)
-                if (!CGRectContainsPoint(faceRect, CGPointMake((x + 0.5) * width / maskWidth, (y + 0.5) * height / maskHeight))) values[y * maskWidth + x] = 0;
-            id<MTLTexture> faceTexture = Texture(device, MTLPixelFormatR8Unorm, maskWidth, maskHeight);
-            [faceTexture replaceRegion:MTLRegionMake2D(0, 0, maskWidth, maskHeight) mipmapLevel:0 withBytes:values bytesPerRow:maskWidth];
-            report[@"face_skin_source"] = @"diagnostic intersection of inferred skin probabilities with measured face bounds";
-            report[@"face_skin_sha256"] = SHA(faceMaskData);
-            uint64_t faceMaskSum = 0;
-            for (size_t i = 0; i < faceMaskData.length; i++) faceMaskSum += values[i];
-            report[@"face_skin_mean"] = @(faceMaskSum / (255.0 * faceMaskData.length));
             NSString *replayRoot = getenv("TEXTURE_REPLAY_DIR") ? @(getenv("TEXTURE_REPLAY_DIR")) : nil;
             NSString *rawRoot = getenv("TEXTURE_RAW_CONTEXT_DIR") ? @(getenv("TEXTURE_RAW_CONTEXT_DIR")) : nil;
             NSString *contextRoot = replayRoot ?: rawRoot;
-            NSDictionary *roleFiles = @{@"skin":@"semanticskinmattev2",@"face":@"semanticfaceskinmatte",@"instance":@"semanticpersonmatte",@"person":@"semanticpersonmatte",@"hair":@"semantichairmatte",@"glasses":@"semanticglassesmattev2",@"teeth":@"semanticteethmattev2",@"nose":@"semanticnosematte",@"lips":@"semanticlipsmatte",@"eyebrows":@"semanticeyebrowsmatte",@"body":@"semanticnonfaceskinmatte",@"hands":@"semantichandsmatte",@"ears":@"semanticearsmatte",@"tattoo":@"semantictattoomatte"};
-            NSMutableDictionary *contextTextures = [NSMutableDictionary new];
-            if (contextRoot) {
-                for (NSString *role in roleFiles) {
-                    NSString *file = replayRoot ? [@"stored-" stringByAppendingFormat:@"%@.l8",role] : [roleFiles[role] stringByAppendingString:@".l8"];
-                    NSData *pixels = [NSData dataWithContentsOfFile:[contextRoot stringByAppendingPathComponent:file]];
-                    if (pixels.length != width * height) @throw [NSException exceptionWithName:@"FinalMaskReplay" reason:@"unexpected stored mask dimensions" userInfo:nil];
-                    id<MTLTexture> texture = Texture(device, MTLPixelFormatR8Unorm, width, height);
-                    [texture replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:pixels.bytes bytesPerRow:width]; contextTextures[role] = texture;
-                }
-                skinTexture = contextTextures[@"skin"]; faceTexture = contextTextures[@"face"]; instanceTexture = contextTextures[@"instance"];
-                report[@"replay_mask_source"] = replayRoot ? @"native decoded masks extracted from the final HEIC; original pre-encoding masks are not used" : @"one shared image-derived context for the producer and writer, before encoding";
-                report[@"fresh_Vision_observations_used_as_replay_inputs"] = @NO;
-                report[@"face_skin_source"] = replayRoot ? @"native decoded final-file face-skin matte" : @"shared inferred skin and measured face bounds";
-                NSMutableDictionary *inputFacts = [NSMutableDictionary new];
-                for (NSString *role in contextTextures) inputFacts[role] = ScalarTextureFacts(contextTextures[role]);
-                report[@"actual_input_mask_textures"] = inputFacts;
-                report[@"face_skin_sha256"] = report[@"actual_input_mask_textures"][@"face"][@"sha256"];
-                report[@"face_skin_mean"] = report[@"actual_input_mask_textures"][@"face"][@"mean"];
+            NSUInteger personIndex = getenv("TEXTURE_PERSON_INDEX") ? strtoul(getenv("TEXTURE_PERSON_INDEX"),NULL,10) : 0;
+            BOOL linearOnly = getenv("TEXTURE_LINEAR_ONLY") != NULL;
+            if(!contextRoot) @throw [NSException exceptionWithName:@"SharedContext" reason:@"an inferred or final-file context is required" userInfo:nil];
+            NSDictionary *rawContext = rawRoot ? [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[rawRoot stringByAppendingPathComponent:@"carrier-production.json"]] options:0 error:NULL] : nil;
+            NSDictionary *selected = nil, *storedPerson = nil;
+            if(replayRoot) {
+                NSString *personPath=[replayRoot stringByAppendingPathComponent:[NSString stringWithFormat:@"stored-person-%lu-pixels.json",(unsigned long)personIndex]];
+                if(![[NSFileManager defaultManager] fileExistsAtPath:personPath] && personIndex==0)personPath=[replayRoot stringByAppendingPathComponent:@"stored-person-pixels.json"];
+                storedPerson=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:personPath] options:0 error:NULL];
+                report[@"provided_precomputed_image_stats_from_final_HEIC"]=@YES;
+            } else {
+                NSArray *people=rawContext[@"people"];
+                if(people && personIndex<people.count) selected=people[personIndex];
+                else if(!people && rawContext[@"native_person_without_stats"])selected=@{@"native_person_without_stats":rawContext[@"native_person_without_stats"]};
+                report[@"shared_context_geometry_used"]=@YES;
             }
+            NSDictionary *personDictionary = storedPerson ?: selected[@"native_person_without_stats"];
+            if(!personDictionary && !linearOnly) @throw [NSException exceptionWithName:@"PersonSelection" reason:@"no measured person at requested index" userInfo:nil];
+            id person=personDictionary?Call(NSClassFromString(@"CMITextureStylesPersonInputData"),@"personDataFromDictionary:",@[personDictionary]):nil;
+            report[@"person_index"]=@(personIndex); report[@"fresh_Vision_observations_used_as_replay_inputs"]=@NO;
+            if(person)report[@"person_before_stats"]=Call(person,@"dictionaryRepresentation",@[]);
+            NSDictionary *roleFiles=@{@"skin":@"semanticskinmattev2",@"face":@"semanticfaceskinmatte",@"instance":selected[@"instance_role"] ?: @"semanticpersonmatte",@"person":@"semanticpersonmatte",@"hair":@"semantichairmatte",@"glasses":@"semanticglassesmattev2",@"teeth":@"semanticteethmattev2",@"nose":@"semanticnosematte",@"lips":@"semanticlipsmatte",@"eyebrows":@"semanticeyebrowsmatte",@"body":@"semanticnonfaceskinmatte",@"hands":@"semantichandsmatte",@"ears":@"semanticearsmatte",@"tattoo":@"semantictattoomatte"};
+            NSMutableDictionary *contextTextures=[NSMutableDictionary new],*inputFacts=[NSMutableDictionary new];
+            for(NSString *role in roleFiles) {
+                NSString *file=replayRoot?[@"stored-" stringByAppendingFormat:@"%@.l8",role]:[roleFiles[role] stringByAppendingString:@".l8"];
+                if(replayRoot && [role isEqual:@"instance"]) {
+                    NSString *specific=[NSString stringWithFormat:@"stored-instance-%lu.l8",(unsigned long)personIndex];
+                    if([[NSFileManager defaultManager] fileExistsAtPath:[replayRoot stringByAppendingPathComponent:specific]])file=specific;
+                }
+                NSData *pixels=[NSData dataWithContentsOfFile:[contextRoot stringByAppendingPathComponent:file]];
+                if(pixels.length!=width*height)@throw [NSException exceptionWithName:@"ContextMaskDimensions" reason:file userInfo:nil];
+                id<MTLTexture> texture=Texture(device,MTLPixelFormatR8Unorm,width,height);
+                [texture replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:pixels.bytes bytesPerRow:width];
+                contextTextures[role]=texture;inputFacts[role]=ScalarTextureFacts(texture);
+            }
+            id<MTLTexture> skinTexture=contextTextures[@"skin"],faceTexture=contextTextures[@"face"],instanceTexture=contextTextures[@"instance"];
+            report[@"actual_input_mask_textures"]=inputFacts;
+            report[@"face_skin_sha256"]=inputFacts[@"face"][@"sha256"];report[@"face_skin_mean"]=inputFacts[@"face"][@"mean"];
+            report[@"replay_mask_source"]=replayRoot?@"native decoded final-file masks":@"shared measured image-derived masks";
             MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice:device];
             id<MTLTexture> encoded = [loader newTextureWithCGImage:image options:@{MTKTextureLoaderOptionOrigin: MTKTextureLoaderOriginTopLeft, MTKTextureLoaderOptionSRGB: @NO} error:&error];
             if (!encoded) @throw [NSException exceptionWithName:@"ImageTexture" reason:error.description userInfo:nil];
@@ -207,40 +164,10 @@ int main(int argc, char **argv) {
                 [rgba writeToFile:[[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"native-linear-p3.rgba32f"] atomically:YES];
                 report[@"linear_RGBA32f_for_derived_styles_sha256"] = SHA(rgba);
             }
-            id person = Make(@"CMITextureStylesPersonInputData");
-            Call(person, @"setFaceID:", @[@1]);
-            Call(person, @"setFaceROI:", @[[NSValue valueWithRect:faceRect]]);
-            Call(person, @"setFaceSkinROI:", @[[NSValue valueWithRect:faceRect]]);
-            Call(person, @"setInstanceROI:", @[[NSValue valueWithRect:full]]);
-            Call(person, @"setFaceLandmarkType:", @[@(landmarkType)]);
-            Call(person, @"setUnitOfAngle:", @[@0]);
-            for (NSString *key in @[@"yaw", @"pitch", @"roll"]) {
-                NSNumber *angle = [face valueForKey:key];
-                if (angle) {
-                    NSString *setter = [NSString stringWithFormat:@"setFace%@%@:", [[key substringToIndex:1] uppercaseString], [key substringFromIndex:1]];
-                    Call(person, setter, @[@(angle.doubleValue * 180.0 / M_PI)]);
-                }
+            if(linearOnly) {
+                report[@"linearization_only"]=@YES;report[@"stage"]=@"finished";Write(report,out);
+                CGImageRelease(image);CFRelease(source);CGColorSpaceRelease(srgb);CGColorSpaceRelease(working);return 0;
             }
-            NSMutableArray *landmarks = [NSMutableArray new];
-            VNFaceLandmarkRegion2D *points = face.landmarks.allPoints;
-            for (NSUInteger i = 0; i < points.pointCount; i++) {
-                CGPoint p = points.normalizedPoints[i];
-                p = CGPointMake((box.origin.x + p.x * box.size.width) * width, (1 - box.origin.y - p.y * box.size.height) * height);
-                id landmark = Call([NSClassFromString(@"CMITextureStylesFaceLandmark") alloc], @"initWithPoint:error:", @[[NSValue valueWithPoint:p], @0]);
-                [landmarks addObject:landmark];
-            }
-            Call(person, @"setFaceLandmarks:", @[landmarks]);
-            NSDictionary *storedPerson = nil;
-            if (replayRoot) {
-                storedPerson = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[replayRoot stringByAppendingPathComponent:@"stored-person-pixels.json"]] options:0 error:NULL];
-                person = Call(NSClassFromString(@"CMITextureStylesPersonInputData"), @"personDataFromDictionary:", @[storedPerson]);
-                report[@"provided_precomputed_image_stats_from_final_HEIC"] = @YES;
-            } else if (rawRoot) {
-                NSDictionary *context = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[rawRoot stringByAppendingPathComponent:@"carrier-production.json"]] options:0 error:NULL];
-                person = Call(NSClassFromString(@"CMITextureStylesPersonInputData"), @"personDataFromDictionary:", @[context[@"native_person_without_stats"]]);
-                report[@"shared_context_geometry_used"] = @YES;
-            }
-            report[@"person_before_stats"] = Call(person, @"dictionaryRepresentation", @[]);
             NSMutableDictionary *nativeStats = [NSMutableDictionary new];
             if (storedPerson) [nativeStats addEntriesFromDictionary:storedPerson[@"imageStats"][@"Mattify"]];
             NSString *ioName = [effectKind isEqual:@"SkinSmoothStandalone"] ? @"CMITextureStylesSkinSmoothIO" : [[@"CMITextureStyles" stringByAppendingString:effectKind] stringByAppendingString:@"IO"];
@@ -283,7 +210,7 @@ int main(int argc, char **argv) {
             Call(effect, @"setParameters:", @[parameters]);
             Call(effect, @"setInputOutput:", @[io]);
             Call(effect, @"setPersonData:", @[person]);
-            Call(effect, @"setInstanceID:", @[@1]);
+            Call(effect, @"setInstanceID:", @[Call(person,@"faceID",@[])]);
             Call(effect, @"setFullImageSize:", @[[NSValue valueWithSize:full.size]]);
             Call(effect, @"setRegionToRender:", @[[NSValue valueWithRect:full]]);
             if ([effect respondsToSelector:NSSelectorFromString(@"setSkipRendering:")]) Call(effect, @"setSkipRendering:", @[@YES]);
@@ -334,7 +261,7 @@ int main(int argc, char **argv) {
                 Write(report, out);
                 @try {
                     NSDictionary *states = [effect valueForKey:@"_perPersonIntermediatesAndStats"];
-                    id state = states[@1];
+                    id state = states[Call(person,@"faceID",@[])];
                     if (state) {
                         NSValue *roi = [state valueForKey:@"_extendedFaceROI"];
                         NSMutableDictionary *details = [@{@"extended_face_roi": roi.description ?: @""} mutableCopy];
@@ -381,8 +308,8 @@ int main(int argc, char **argv) {
                     }
                     report[@"rendered_pixels"] = @{@"sha256": SHA(renderedPixels), @"mean_absolute_RGB_change": @(absoluteError / (width * height * 3)), @"maximum_RGB_change": @(maximumError), @"changed_pixels_over_0_0001": @(changed), @"nonfinite": @(invalid)};
                     if (replayRoot) {
-                        WriteRowOrderPreview(imagePixels,width,height,[replayRoot stringByAppendingPathComponent:@"final-working-input.png"]);
-                        WriteRowOrderPreview(renderedPixels,width,height,[replayRoot stringByAppendingPathComponent:@"final-working-mattify.png"]);
+                        WriteRowOrderPreview(imagePixels,width,height,[[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"final-working-input.png"]);
+                        WriteRowOrderPreview(renderedPixels,width,height,[[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"final-working-mattify.png"]);
                     }
                     CIImage *preview = [CIImage imageWithMTLTexture:outputTexture options:@{kCIImageColorSpace: (__bridge id)working}];
                     // The Metal working rows use top-left image coordinates;
@@ -397,12 +324,12 @@ int main(int argc, char **argv) {
                     report[@"stage"] = @"finished";
                 }
             }
-            CVPixelBufferRelease(instanceMask); CGImageRelease(image); CFRelease(source);
+            CGImageRelease(image); CFRelease(source);
             CGColorSpaceRelease(srgb); CGColorSpaceRelease(working);
         } @catch (NSException *exception) {
             report[@"exception"] = @{@"name": exception.name, @"reason": exception.reason ?: @""};
         }
         Write(report, out);
-        return 0;
+        return report[@"exception"] ? 1 : 0;
     }
 }

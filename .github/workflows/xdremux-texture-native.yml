@@ -6,6 +6,10 @@ on:
         type: choice
         options: [inventory, generate]
         default: inventory
+      selection:
+        type: choice
+        options: [smoke, all]
+        default: all
 permissions:
   contents: write
 concurrency:
@@ -32,9 +36,10 @@ jobs:
       - name: Run exact-source native fixture matrix
         env:
           MATRIX_PHASE: ${{ inputs.phase }}
+          MATRIX_SELECTION: ${{ inputs.selection }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          python3 research/texture-generalization-20261020/matrix.py xdremux-fixtures/fixtures "$RUNNER_TEMP/texture-fixture-evidence" --phase "$MATRIX_PHASE"
+          python3 research/texture-generalization-20261020/matrix.py xdremux-fixtures/fixtures "$RUNNER_TEMP/texture-fixture-evidence" --phase "$MATRIX_PHASE" --selection "$MATRIX_SELECTION"
       - name: Preserve fresh results and failure evidence
         if: always()
         env:

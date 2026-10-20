@@ -12,10 +12,12 @@ import bmff as B
 from pack_carrier import parse, iprp, make_iprp
 
 
-def project(source, uri):
+def project(source, uri, reference_key=None):
     top, meta, children, infos, refs, payloads, _ = parse(source)
     properties, associations = iprp(source, children)
     matching = [item for item, values in associations.items() if any(properties[index-1][4:8] == b'auxC' and uri.encode() + b'\0' in properties[index-1] for index, _ in values)]
+    if reference_key is not None:
+        matching = [item for item in matching if any(ref['type']=='cdsc' and item in ref['to'] and reference_key.encode() in payloads[ref['from']] for ref in refs)]
     if len(matching) != 1: raise ValueError('missing or ambiguous final mask ' + uri)
     primary = matching[0]; selected = {primary}
     while True:
@@ -49,18 +51,31 @@ def project(source, uri):
 def main(root):
     source = (root/'texture-candidate.heic').read_bytes()
     admission = json.loads((root/'texture-candidate.heic.admission.json').read_text())
-    person = copy.deepcopy(admission['native_person_data_readback'][0])
+    people = admission.get('native_person_data_readback', [])
+    production = json.loads((root/'carrier-production.json').read_text())
+    if 'people' in production:
+        by_key = {p['instanceMaskReferenceKey']:p for p in people}
+        people = [by_key[p['instance_reference_key']] for p in production['people']]
     width, height = admission['decoded_width'], admission['decoded_height']
-    for key in ['faceROI','faceSkinROI','instanceROI']:
-        for name, scale in [('x',width),('width',width),('y',height),('height',height)]: person[key][name] *= scale
-    for landmark in person['faceLandmarks']: landmark['point']['x'] *= width; landmark['point']['y'] *= height
-    person.pop('faceROIAndLandmarksROIRelativeScalingROI',None)
-    (root/'stored-person-pixels.json').write_text(json.dumps(person,indent=2)+'\n')
+    for index, native in enumerate(people):
+        person = copy.deepcopy(native)
+        for key in ['faceROI','faceSkinROI','instanceROI']:
+            for name, scale in [('x',width),('width',width),('y',height),('height',height)]: person[key][name] *= scale
+        for landmark in person['faceLandmarks']: landmark['point']['x'] *= width; landmark['point']['y'] *= height
+        person.pop('faceROIAndLandmarksROIRelativeScalingROI',None)
+        (root/('stored-person-'+str(index)+'-pixels.json')).write_text(json.dumps(person,indent=2)+'\n')
+        if index == 0: (root/'stored-person-pixels.json').write_text(json.dumps(person,indent=2)+'\n')
     reports = []
-    roles = {'skin':'semanticskinmattev2','face':'semanticfaceskinmatte','instance':'semanticpersoninstances','person':'semanticpersonmatte','hair':'semantichairmatte','glasses':'semanticglassesmattev2','teeth':'semanticteethmattev2','nose':'semanticnosematte','lips':'semanticlipsmatte','eyebrows':'semanticeyebrowsmatte','body':'semanticnonfaceskinmatte','hands':'semantichandsmatte','ears':'semanticearsmatte','tattoo':'semantictattoomatte'}
+    roles = {'skin':'semanticskinmattev2','face':'semanticfaceskinmatte','instance':'semanticpersoninstances' if people else 'semanticpersonmatte','person':'semanticpersonmatte','hair':'semantichairmatte','glasses':'semanticglassesmattev2','teeth':'semanticteethmattev2','nose':'semanticnosematte','lips':'semanticlipsmatte','eyebrows':'semanticeyebrowsmatte','body':'semanticnonfaceskinmatte','hands':'semantichandsmatte','ears':'semanticearsmatte','tattoo':'semantictattoomatte'}
     for name,role in roles.items():
         uri = 'urn:com:apple:photo:2019:aux:semantichairmatte' if name=='hair' else 'tag:apple.com,2026:photo:aux:'+role
-        output,report=project(source,uri)
+        output,report=project(source,uri, people[0]['instanceMaskReferenceKey'] if name=='instance' and people else None)
+        report['role']=name
+        (root/('stored-'+name+'.heic')).write_bytes(output);reports.append(report)
+    for index, person in enumerate(people):
+        name='instance-'+str(index)
+        output,report=project(source,'tag:apple.com,2026:photo:aux:semanticpersoninstances',person['instanceMaskReferenceKey'])
+        report['role']=name
         (root/('stored-'+name+'.heic')).write_bytes(output);reports.append(report)
     (root/'final-mask-projections.json').write_text(json.dumps({'final_carrier_sha256':hashlib.sha256(source).hexdigest(),'resources':reports},indent=2)+'\n')
 
