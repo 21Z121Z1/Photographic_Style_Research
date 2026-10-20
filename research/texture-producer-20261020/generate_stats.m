@@ -65,6 +65,23 @@ static id<MTLTexture> CopyBuffer(id<MTLDevice> device, CVPixelBufferRef buffer) 
     return texture;
 }
 
+static NSDictionary *ScalarTextureFacts(id<MTLTexture> texture) {
+    if (!texture) return @{@"available": @NO};
+    size_t size = texture.pixelFormat == MTLPixelFormatR8Unorm ? 1 : texture.pixelFormat == MTLPixelFormatR16Float ? 2 : texture.pixelFormat == MTLPixelFormatR32Float ? 4 : 0;
+    NSMutableDictionary *result = [@{@"available": @YES, @"width": @(texture.width), @"height": @(texture.height), @"format": @(texture.pixelFormat), @"type": @(texture.textureType)} mutableCopy];
+    if (!size || texture.textureType != MTLTextureType2D || texture.storageMode == MTLStorageModePrivate) return result;
+    NSMutableData *pixels = [NSMutableData dataWithLength:texture.width * texture.height * size];
+    [texture getBytes:pixels.mutableBytes bytesPerRow:texture.width * size fromRegion:MTLRegionMake2D(0, 0, texture.width, texture.height) mipmapLevel:0];
+    double sum = 0, maxValue = 0; uint64_t nonzero = 0;
+    for (size_t i = 0; i < texture.width * texture.height; i++) {
+        double v = size == 1 ? ((const uint8_t *)pixels.bytes)[i] / 255.0 : size == 2 ? ((const __fp16 *)pixels.bytes)[i] : ((const float *)pixels.bytes)[i];
+        if (isfinite(v)) { sum += v; maxValue = MAX(maxValue, v); nonzero += v > 0.001; }
+    }
+    result[@"mean"] = @(sum / (texture.width * texture.height)); result[@"maximum"] = @(maxValue);
+    result[@"nonzero_over_0_001"] = @(nonzero); result[@"sha256"] = SHA(pixels);
+    return result;
+}
+
 int main(int argc, char **argv) {
     @autoreleasepool {
         if (argc < 4 || argc > 6) return 64;
@@ -119,6 +136,23 @@ int main(int argc, char **argv) {
             report[@"instance_buffer"] = BufferFacts(instanceMask);
             id<MTLTexture> skinTexture = CopyBuffer(device, skinObservation.pixelBuffer);
             id<MTLTexture> instanceTexture = CopyBuffer(device, instanceMask);
+            if (instanceTexture.pixelFormat == MTLPixelFormatR32Float) {
+                // Vision's scaled Float32 mask can overshoot [0,1]. The native
+                // HEIF instance-matte carrier uses an L8 mask, so normalize once.
+                CVPixelBufferLockBaseAddress(instanceMask, kCVPixelBufferLock_ReadOnly);
+                size_t iw = CVPixelBufferGetWidth(instanceMask), ih = CVPixelBufferGetHeight(instanceMask), stride = CVPixelBufferGetBytesPerRow(instanceMask);
+                const uint8_t *base = CVPixelBufferGetBaseAddress(instanceMask);
+                NSMutableData *l8 = [NSMutableData dataWithLength:iw * ih];
+                for (size_t y = 0; y < ih; y++) for (size_t x = 0; x < iw; x++) {
+                    float v = ((const float *)(base + y * stride))[x];
+                    ((uint8_t *)l8.mutableBytes)[y * iw + x] = (uint8_t)lrintf(fminf(1, fmaxf(0, v)) * 255);
+                }
+                CVPixelBufferUnlockBaseAddress(instanceMask, kCVPixelBufferLock_ReadOnly);
+                instanceTexture = Texture(device, MTLPixelFormatR8Unorm, iw, ih);
+                [instanceTexture replaceRegion:MTLRegionMake2D(0, 0, iw, ih) mipmapLevel:0 withBytes:l8.bytes bytesPerRow:iw];
+                report[@"instance_normalization"] = @"native inferred Float32 to clamped L8 probabilities";
+                report[@"instance_texture"] = ScalarTextureFacts(instanceTexture);
+            }
             // Diagnostic face-skin derivation uses measured skin probabilities and face bounds.
             // It is distinct from a FSINC face-skin result, which is not claimed here.
             size_t maskWidth = skinTexture.width, maskHeight = skinTexture.height;
@@ -227,14 +261,38 @@ int main(int argc, char **argv) {
                 Call(effect, @"setAllocator:", @[allocator]);
             }
             report[@"allocator_class"] = allocator ? NSStringFromClass([allocator class]) : @"nil";
+            id nativeContext = [effect valueForKey:@"_context"];
+            id executionStatus = Make(@"FigMetalExecutionStatus");
+            Call(nativeContext, @"setExecutionStatus:", @[executionStatus]);
             for (NSString *stage in @[@"setup", @"prepareToProcess:", @"calculateStats", @"process", @"finishProcessing"]) {
                 report[@"stage"] = stage; Write(report, out);
                 NSNumber *status = Call(effect, stage, [stage containsString:@":"] ? @[@0] : @[]);
                 if ([stage isEqual:@"calculateStats"] || [stage isEqual:@"process"] || [stage isEqual:@"finishProcessing"]) {
-                    id nativeContext = [effect valueForKey:@"_context"];
                     Call(nativeContext, @"forceCommit", @[]);
                     Call(nativeContext, @"waitForIdle", @[]);
                 }
+                NSMutableArray *failures = [NSMutableArray new];
+                for (id<MTLCommandBuffer> failed in Call(executionStatus, @"failedCommandBuffers", @[]))
+                    [failures addObject:@{@"status": @(failed.status), @"error": failed.error.description ?: @"", @"label": failed.label ?: @""}];
+                report[@"native_GPU_execution"] = @{@"status": Call(executionStatus, @"status", @[]), @"completed_command_buffers": Call(executionStatus, @"completedCommandBuffersCount", @[]), @"failures": failures};
+                @try {
+                    NSDictionary *states = [effect valueForKey:@"_perPersonIntermediatesAndStats"];
+                    id state = states[@1];
+                    if (state) {
+                        NSValue *roi = [state valueForKey:@"_extendedFaceROI"];
+                        id valid = [state valueForKey:@"_validMask"], warped = [state valueForKey:@"_warpedMaskAggregate"];
+                        id<MTLBuffer> buffer = [state valueForKey:@"_statsBuffer"];
+                        NSMutableDictionary *details = [@{@"extended_face_roi": roi.description ?: @"", @"valid_mask": ScalarTextureFacts(Call(valid, @"texture", @[])), @"warped_mask": ScalarTextureFacts(Call(warped, @"texture", @[]))} mutableCopy];
+                        if (buffer && buffer.contents) {
+                            details[@"stats_buffer_bytes"] = @(buffer.length);
+                            details[@"stats_buffer_sha256"] = SHA([NSData dataWithBytes:buffer.contents length:buffer.length]);
+                            NSMutableArray *head = [NSMutableArray new];
+                            for (size_t i = 0; i < MIN((size_t)16, buffer.length / 4); i++) [head addObject:@(((const float *)buffer.contents)[i])];
+                            details[@"stats_buffer_float_head"] = head;
+                        }
+                        report[@"native_intermediates"] = details;
+                    }
+                } @catch (NSException *diagnostic) { report[@"intermediate_inspection_error"] = diagnostic.reason ?: @""; }
                 report[stage] = status; report[@"native_output_person_stats"] = nativeStats; Write(report, out);
                 if (status.intValue != 0) break;
             }
