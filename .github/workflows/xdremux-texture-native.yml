@@ -1,5 +1,8 @@
 name: Texture real-fixture generalization
 on:
+  push:
+    branches: [research/texture-generalization-20261020]
+    paths: [research/texture-generalization-20261020/FINAL_RUN.json]
   workflow_dispatch:
     inputs:
       phase:
@@ -35,8 +38,8 @@ jobs:
           persist-credentials: false
       - name: Run exact-source native fixture matrix
         env:
-          MATRIX_PHASE: ${{ inputs.phase }}
-          MATRIX_SELECTION: ${{ inputs.selection }}
+          MATRIX_PHASE: ${{ inputs.phase || 'generate' }}
+          MATRIX_SELECTION: ${{ inputs.selection || 'all' }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           python3 research/texture-generalization-20261020/matrix.py xdremux-fixtures/fixtures "$RUNNER_TEMP/texture-fixture-evidence" --phase "$MATRIX_PHASE" --selection "$MATRIX_SELECTION"
