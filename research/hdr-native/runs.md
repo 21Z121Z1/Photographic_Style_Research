@@ -213,3 +213,6 @@ S82输入2份既存密文ZIP共110814893B，用户本轮明确允许公开prerel
 
 
 S88：`research/vm-native-20261020-hdr-s88`，source`caae6869d2824884d36f27c475c4684744f0be37`，run[39428400454](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39428400454)，success，xcode-27/26A434/image20261012.0260.1。失效S42输入改为冻结AST重建，实际EXR SHA等于旧记录；真实独立HDR目标经matrix6/10bit封装和原生读回，单图完整SDR0，实际gain公式通过，目标p99EV0.00873855/max0.0269484，原目标阈值仍false。原ZIP、两密文GPG和所有SHA已本地归档，见evidence/s88/run/archive-receipt.json；临时分支经PR引用空和源码保留检查后清理，无secret/release。成品HEIC仅加密保留，不计五图/RAW/全尺寸语义通过。
+
+
+S89：[39430695395](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39430695395)，sourceb03beb93cfd1b5093fd8bed314ff53a76842febf，research/vm-native-20261020-hdr-s89，26A434/image20261012.0260.1；5/5计算、2/2本配方留出、五图SDR0。run=failure，仅最终1554198B>1.5MB密文容量断言；原manifest及全部产物已校验归档，未重跑改状态。独立目标p99EV0.00873855–0.229329；最差需要亮度/显示域审查，原严格门槛保留false。六份GPG均验，未下载新完整载体/EXR，closure核对PR引用/保留源后只删临时分支，无secret/release。

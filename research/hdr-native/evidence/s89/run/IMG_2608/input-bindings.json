@@ -1,0 +1,59 @@
+{
+  "driver": {
+    "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+    "derived_sha256": "8f136d977e1a63aa0ef408d6b6d650ff52f6441838d288c44702c50d781afbbb",
+    "inverse_substitutions_equal_original": true,
+    "swaps": [
+      {
+        "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+        "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+        "count": 1
+      },
+      {
+        "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+        "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+        "count": 1
+      },
+      {
+        "old": "D/'rebuild_master_s88.py'",
+        "new": "Path(os.environ['HDR_S89_REBUILD'])",
+        "count": 1
+      },
+      {
+        "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+        "new": "[(PRIVATE,'contacts',300000)]",
+        "count": 1
+      },
+      {
+        "old": "IMG_0032",
+        "new": "IMG_2608",
+        "count": 5
+      }
+    ],
+    "pixel_math_changed": false
+  },
+  "rebuild": {
+    "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+    "derived_sha256": "5f53a1010925e184b177d40a104261892ece2ba161c471f0be08db3fb5da85c6",
+    "inverse_substitutions_equal_original": true,
+    "swaps": [
+      {
+        "old": "IMG_0032",
+        "new": "IMG_2608",
+        "count": 2
+      },
+      {
+        "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+        "new": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+        "count": 1
+      },
+      {
+        "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+        "new": "8039573c1da8f235eb73748c13c5b4aee43af08d159814f8026280c4b417ad2a",
+        "count": 1
+      }
+    ],
+    "pixel_math_changed": false
+  },
+  "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+}

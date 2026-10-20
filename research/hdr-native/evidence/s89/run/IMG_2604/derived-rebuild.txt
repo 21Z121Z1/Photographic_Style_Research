@@ -1,0 +1,65 @@
+"""Runner-only restoration of one expired S42 integration input.
+
+The selected S42 statements are copied as AST nodes, including its original
+native Apple RGB-map path. No old scene/semantic acceptance is inferred.
+"""
+from pathlib import Path
+import ast,hashlib,json,os,shutil,subprocess
+
+def digest(path):
+    with Path(path).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+
+def selections(template):
+    tree=ast.parse(template)
+    index=next(i for i,n in enumerate(tree.body)if isinstance(n,ast.For)and isinstance(n.iter,ast.Name)and n.iter.id=='PHOTOS')
+    loop=tree.body[index];attempt=next(n for n in loop.body if isinstance(n,ast.Try));pre=loop.body[:loop.body.index(attempt)]
+    start=next(i for i,n in enumerate(attempt.body)if isinstance(n,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='lg'for t in n.targets))
+    first_mask_loop=next(i for i in range(start,len(attempt.body))if isinstance(attempt.body[i],ast.For))
+    exrs=next(n for n in attempt.body if isinstance(n,ast.Assign)and any(isinstance(t,ast.Subscript)and isinstance(t.slice,ast.Constant)and t.slice.value=='EXRs'for t in n.targets))
+    assert isinstance(exrs.value,ast.List)and len(exrs.value.elts)==2
+    modules={'preamble':ast.Module(body=tree.body[:index],type_ignores=[]),'native_master':ast.Module(body=pre+attempt.body[:start],type_ignores=[]),'old_transport_mask':ast.Module(body=attempt.body[start:first_mask_loop+1],type_ignores=[])}
+    spans={key:{'AST_sha256':hashlib.sha256(ast.dump(value,include_attributes=False).encode()).hexdigest(),'source_lines':[min(n.lineno for n in value.body),max(n.end_lineno for n in value.body)],'original_AST_nodes_unmodified':True}for key,value in modules.items()}
+    return modules,ast.Expression(body=exrs.value.elts[0]),spans
+
+def display_prefix(template,case):
+    # Keep all supplied S44/S47 pixel computations. Replace only the obsolete
+    # encrypted-input binding with the newly generated, independently hashed EXR.
+    from derive_display_s51 import derive
+    code,receipt=derive(template,case);code=code.split('pw,ph=640,480;',1)[0]
+    old=";assert sha(W/'S42.zip')==ZIP_SHA";assert code.count(old)==1;code=code.replace(old,'')
+    a=code.index("with zipfile.ZipFile(W/'S42.zip') as z:");b=code.index("flags=['clang'",a)
+    replacement="""assert sha(CASE/'master.exr')==EXR_SHA
+save(O/'upstream-verified.json',{'input_kind':'Regenerated on this runner from unmodified frozen S42 AST statements','old_artifact_status':'Expired API404; no old master archive reused','master_EXR_sha256':EXR_SHA,'archive_private_key_supplied':False,'temporary_input_secret_created':False})
+"""
+    code=code[:a]+replacement+code[b:]
+    old="CASE=W/'case';CASE.mkdir()";assert code.count(old)==1;code=code.replace(old,"CASE=W/'case';assert CASE.is_dir()")
+    old="'master_immutable':'Reuse S42 half linearP3 candidate; no key1, thumbnail, guided filter or camera re-evaluation'";assert code.count(old)==1
+    code=code.replace(old,"'master_immutable':'New integration input reconstructed from frozen S42 recipe after old artifact expired; display stage keeps its pixels unchanged'")
+    # The original derivation receipt applies before the explicit I/O changes.
+    receipt['S88_additional_IO_changes']=['Replace expired ZIP/GPG extraction and ZIP assertion with hash-verified regenerated EXR','Use precreated case directory','Correct input provenance text; no pixel calculation modified']
+    receipt['S88_final_prefix_sha256']=hashlib.sha256(code.encode()).hexdigest()
+    ast.parse(code)
+    return code,receipt
+
+def main():
+    root=Path.cwd();d=root/'research/hdr-native';work=Path(os.environ['W']);out=work/'out'
+    for p in [work,out,work/'private',work/'encrypted']:p.mkdir(exist_ok=True)
+    template=(d/'run_hdr_s42.py').read_text();parts,exr_call,spans=selections(template)
+    facts={'original_template_sha256':hashlib.sha256(template.encode()).hexdigest(),'selection':spans,'selection_photo':'IMG_2604','scope':'One expired input rebuilt for new real HDR carrier integration. Existing two-map native calculation preserved; no new holdout, original inverse proof, or RAW claim.','OS_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'math_or_parameters_changed':False,'old_full_archive_reused':False}
+    scope={'__name__':'s88_selected_frozen_S42'}
+    exec(compile(parts['preamble'],'S42-original-preamble','exec'),scope)
+    photo,role,source=next(row for row in scope['PHOTOS']if row[0]=='IMG_2604');scope.update(photo=photo,role=role,source=source)
+    exec(compile(parts['native_master'],'S42-original-native-master-statements','exec'),scope)
+    exec(compile(parts['old_transport_mask'],'S42-original-transport-mask-statements','exec'),scope)
+    scope['scene'].flush();scope['mask'].flush()
+    exr=eval(compile(exr_call,'S42-original-master-EXR-call','eval'),scope)
+    import numpy as np
+    maskpath=scope['full']/'positive_pair_mask.npy';np.save(maskpath,np.asarray(scope['mask'],dtype=bool))
+    facts.update(master_EXR=exr,old_master_EXR_sha256='63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264',master_pixel_sha256=digest(scope['case']/'scene_candidate.f16'),source_sha256=digest(source),formula_freeze_sha256=scope['frozen_sha'],mask={'file':str(maskpath.relative_to(work)),'sha256':digest(maskpath),'scope':'Regenerated original S42 zero-offset positive transport mask, stored raw canvas. Not scene-inverse or new display-gain validity.'},old_S42_native_map_variants=scope['row']['map_variants'],anchor_diagnostic=scope['row']['native_RGB_anchor'])
+    facts['EXR_matches_old_archive_member']=exr['sha256']==facts['old_master_EXR_sha256']
+    assert facts['source_sha256']=='71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e'
+    assert digest(d/'run_hdr_s42.py')==facts['original_template_sha256']
+    with(out/'rebuild-result.json').open('x')as f:json.dump(facts,f,indent=2,allow_nan=False);f.write('\n')
+    print(json.dumps({'completed':True,'reconstructed_one_required_input':True,'master_matches_old_EXR_sha256':facts['EXR_matches_old_archive_member'],'A_phase_complete':False}))
+
+if __name__=='__main__':main()

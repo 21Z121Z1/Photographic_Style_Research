@@ -194,3 +194,11 @@ gh workflow run hdr-native-s88.yml --repo 21Z121Z1/Photographic_Style_Research -
 gh run view 39428400454 --repo 21Z121Z1/Photographic_Style_Research
 ```
 精确复现应另取source commit创建新research临时分支并修改新workflow的触发绑定，不能重写历史分支/workflow或盲目重复run。此新版不依赖过期artifact、secret或私钥。原结果ZIP已在hdr-native-20261019/runs/39428400454/，外层ZIP/providerSHA见evidence/s88/run/archive-receipt.json。archive内carrier.tar.gz.gpg包含成品HEIC与旧transport mask，contacts.tar.gz.gpg是固定ACES三联及误差点witness。只在受控本地按现有GPG私钥流式解密/解tar，不把人物明文上传或提交；本阶段VM仅流式SHA/GPG核对，没有解码图片。S88所有原始数值在analysis.json，原生SDR完整行哈希在native.json，门槛逐项结果在phase-summary.json；本次不覆盖旧validate.py或宣称总验收通过。
+
+
+S89复现固定于b03beb93cfd1b5093fd8bed314ff53a76842febf；.github/workflows/hdr-native-s89.yml/xcode-27/26A434，五case顺序及角色见inputs-s89.json。原workflow会重复最终1.5MB容量失败，历史代码不修写。原始ZIP已在hdr-native-20261019/runs/39430695395/。元数据复核无需图像计算：
+```bash
+scripts/local-python-scope.sh -I -B repo/research/hdr-native/verify_independent_hdr_s89.py
+gh run view 39430695395 --repo 21Z121Z1/Photographic_Style_Research --log-failed
+```
+归档恢复只为创建已检查的嵌套公共文本目录，并从已保存原ZIP补齐；s89-archival-recovery.json说明，不要覆盖任何原ZIP。六个密文只含contact/数值见证，不含新完整HEIC或EXR；S88的完整HEIC密文保留。每图精确派生源码/替换证明、算子/中间headroom/最大RGB点分类在evidence/s89/run/，原门槛逐项布尔在phase-summary.json。下一新实验应另建文件，不能为了绿灯修改本次冻结容量或数值门槛。

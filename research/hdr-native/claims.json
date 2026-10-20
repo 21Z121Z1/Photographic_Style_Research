@@ -3502,9 +3502,114 @@
         }
       ],
       "run_id": 39428400454
+    },
+    {
+      "id": "HDR-116",
+      "category": "independent-HDR-five/S89",
+      "status": "已验证静态",
+      "claim": "S89仅输入/归档绑定派生且可逆还原S88原模板，生成源码已逐图归档；五个实际重建EXR SHA等于旧记录，2张仅为本encoded配方留出，不是新场景。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s89/derivation-preflight.json",
+          "line": 1,
+          "sha256": "e2fcf1bad2c09b3dfd9df0a484d3aa97963d3cc287308409c889912cd78da2a0"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/run/suite-freeze.json",
+          "line": 1,
+          "sha256": "d697d728d771346e62141c08ae2ac01c2a77007deac0192ff8b0c09f35d6ae6c"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/phase-summary.json",
+          "line": 1,
+          "sha256": "9a82cb86d09f1935c82df692947ab26580c52a703ee4086378f97980263a9c96"
+        }
+      ],
+      "run_id": 39430695395
+    },
+    {
+      "id": "HDR-117",
+      "category": "independent-HDR-five/S89",
+      "status": "已验证数值",
+      "claim": "五图原尺寸独立HDR目标已计算且全部ImageIO/CI SDR0；目标p99EV范围0.00873855–0.229329，非正亮度排除与最大误差保留。最差2600主要量化/codec，不能称全部实用通过。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s89/run/analysis.json",
+          "line": 1,
+          "sha256": "c2216090a4f1c00f7e13dccf4d9b425382f88a79e010aedb2165c69e81fb7cc8"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/phase-summary.json",
+          "line": 1,
+          "sha256": "9a82cb86d09f1935c82df692947ab26580c52a703ee4086378f97980263a9c96"
+        }
+      ],
+      "run_id": 39430695395
+    },
+    {
+      "id": "HDR-118",
+      "category": "independent-HDR-five/S89",
+      "status": "已验证数值",
+      "claim": "中间headroom对独立理想端点插值单列，h2 p99EV0.002913–0.0715222；五个最大RGB相对点参考分量都≤1e−6，实际绝对误差最高6.98121e−4。原始相对门槛失败保留，未据此推断无可见影响。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s89/run/analysis.json",
+          "line": 1,
+          "sha256": "c2216090a4f1c00f7e13dccf4d9b425382f88a79e010aedb2165c69e81fb7cc8"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/phase-summary.json",
+          "line": 1,
+          "sha256": "9a82cb86d09f1935c82df692947ab26580c52a703ee4086378f97980263a9c96"
+        }
+      ],
+      "run_id": 39430695395
+    },
+    {
+      "id": "HDR-119",
+      "category": "independent-HDR-five/S89",
+      "status": "已验证静态",
+      "claim": "S89所有child返回0，但最终密文1554198B>1.5MB使run=failure；public manifest存在，138个成员与6份GPG及源/派生绑定均验，原ZIP保留。归档恢复只补嵌套目录和复用原ZIP，临时ref经PR检查后清理，无secret/release。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s89/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "62b3942d21eb558c0d6347d28fa7fb65250ffdc4872bd2bb3f9aca6478a641c1"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/closure.json",
+          "line": 1,
+          "sha256": "6a83d4ae49887b981f135ca85aa97bf56db53ea82348e58e83fd821313a593c3"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s89/phase-summary.json",
+          "line": 1,
+          "sha256": "9a82cb86d09f1935c82df692947ab26580c52a703ee4086378f97980263a9c96"
+        }
+      ],
+      "run_id": 39430695395
+    },
+    {
+      "id": "HDR-120",
+      "category": "independent-HDR-five/S89",
+      "status": "runner",
+      "claim": "下一步按预声明亮度分层和固定ACES完整显示误差判实际影响，最差样张配对10/12bit；不改冻结M/渲染/阈值/mask，不恢复bit-exact研究。全尺寸语义和global/local分离质量仍需runner，同帧camera/Studio/RAW/HDR屏幕仍待实机。",
+      "os_build": "26A434",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s89/phase-summary.json",
+          "line": 1,
+          "sha256": "9a82cb86d09f1935c82df692947ab26580c52a703ee4086378f97980263a9c96"
+        }
+      ],
+      "run_id": 39430695395
     }
   ],
-  "updated_utc": "2026-10-20T13:20:43.289089+00:00",
+  "updated_utc": "2026-10-20T13:53:02.873323+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -3656,5 +3761,494 @@
     "cap_bytes": 150000000,
     "minimum_root_free_bytes": 4294967296,
     "approval_evidence": "repo/research/hdr-native/evidence/s88/user-write-approval-150MB.json"
+  },
+  "independent_HDR_S89": {
+    "run_id": 39430695395,
+    "source_commit": "b03beb93cfd1b5093fd8bed314ff53a76842febf",
+    "os_build": "26A434",
+    "image_version": "20261012.0260.1",
+    "original_public_members_SHA_verified": 138,
+    "private_archive_GPG_receipts_checked_without_image_decode": 6,
+    "completed_photos": 5,
+    "completed_encoded_integration_holdouts": 2,
+    "holdout_scope": "IMG2608/0033 withheld from the encoded independent-HDR S88 integration math until this source freeze; previously used in old projection/display/stress studies, not never-seen or physical-scene holdouts. IMG0032 already integration development in S88.",
+    "all_five_SDR_max0": true,
+    "rows": [
+      {
+        "photo": "IMG_2600",
+        "role": "integration-development",
+        "shape": [
+          4284,
+          5712,
+          3
+        ],
+        "master_EXR_matches_old": true,
+        "SDR_max0": true,
+        "original_float_gates_per_operator": {
+          "encoded_HDR_vs_target": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "log_f32_only": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "metadata_offset_additional": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "quantization_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "codec_provider_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "native_full_actual_gain_equation": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "CI_SDR_vs_original": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom2": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom8": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          }
+        },
+        "ideal_headroom_original_float_gates": {
+          "1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "2": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "8": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          }
+        },
+        "target_EV_p99": 0.22932927787303942,
+        "target_EV_max": 16.89030186812199,
+        "ideal_h2_EV_p99": 0.0715222056210042,
+        "max_RGB_relative_point": {
+          "max_relative_floor1e6": 698.1206825003028,
+          "reference_component_abs_le_1e6": true,
+          "reference_component_abs_le_1e4": true,
+          "reference_luma_le_1e4": false,
+          "reference_component_negative": false,
+          "actual_component_negative": false,
+          "absolute_component_error": 0.0006981206825003028,
+          "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+        }
+      },
+      {
+        "photo": "IMG_2604",
+        "role": "integration-development",
+        "shape": [
+          4284,
+          5712,
+          3
+        ],
+        "master_EXR_matches_old": true,
+        "SDR_max0": true,
+        "original_float_gates_per_operator": {
+          "encoded_HDR_vs_target": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "log_f32_only": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "metadata_offset_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "quantization_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "codec_provider_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "native_full_actual_gain_equation": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "CI_SDR_vs_original": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom2": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom8": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          }
+        },
+        "ideal_headroom_original_float_gates": {
+          "1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "2": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "8": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          }
+        },
+        "target_EV_p99": 0.012581510487943887,
+        "target_EV_max": 7.171795320269575,
+        "ideal_h2_EV_p99": 0.004530587941408155,
+        "max_RGB_relative_point": {
+          "max_relative_floor1e6": 231.94283130578697,
+          "reference_component_abs_le_1e6": true,
+          "reference_component_abs_le_1e4": true,
+          "reference_luma_le_1e4": false,
+          "reference_component_negative": false,
+          "actual_component_negative": true,
+          "absolute_component_error": 0.00023194283130578697,
+          "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+        }
+      },
+      {
+        "photo": "IMG_0032",
+        "role": "integration-development",
+        "shape": [
+          4032,
+          3024,
+          3
+        ],
+        "master_EXR_matches_old": true,
+        "SDR_max0": true,
+        "original_float_gates_per_operator": {
+          "encoded_HDR_vs_target": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "log_f32_only": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "metadata_offset_additional": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "quantization_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "codec_provider_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "native_full_actual_gain_equation": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "CI_SDR_vs_original": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom2": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom8": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          }
+        },
+        "ideal_headroom_original_float_gates": {
+          "1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "2": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "8": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          }
+        },
+        "target_EV_p99": 0.008738548178225756,
+        "target_EV_max": 0.026948414689715528,
+        "ideal_h2_EV_p99": 0.0029130015312694014,
+        "max_RGB_relative_point": {
+          "max_relative_floor1e6": 0.4176254151389003,
+          "reference_component_abs_le_1e6": true,
+          "reference_component_abs_le_1e4": true,
+          "reference_luma_le_1e4": false,
+          "reference_component_negative": false,
+          "actual_component_negative": false,
+          "absolute_component_error": 4.176254151389003e-07,
+          "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+        }
+      },
+      {
+        "photo": "IMG_2608",
+        "role": "encoded-integration-holdout",
+        "shape": [
+          4284,
+          5712,
+          3
+        ],
+        "master_EXR_matches_old": true,
+        "SDR_max0": true,
+        "original_float_gates_per_operator": {
+          "encoded_HDR_vs_target": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "log_f32_only": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "metadata_offset_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "quantization_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "codec_provider_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "native_full_actual_gain_equation": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "CI_SDR_vs_original": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom2": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom8": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          }
+        },
+        "ideal_headroom_original_float_gates": {
+          "1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "2": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "8": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          }
+        },
+        "target_EV_p99": 0.026013611406087878,
+        "target_EV_max": 8.745529144130472,
+        "ideal_h2_EV_p99": 0.01111511281691491,
+        "max_RGB_relative_point": {
+          "max_relative_floor1e6": 271.2836430873722,
+          "reference_component_abs_le_1e6": true,
+          "reference_component_abs_le_1e4": true,
+          "reference_luma_le_1e4": false,
+          "reference_component_negative": false,
+          "actual_component_negative": true,
+          "absolute_component_error": 0.0002712836430873722,
+          "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+        }
+      },
+      {
+        "photo": "IMG_0033",
+        "role": "encoded-integration-holdout",
+        "shape": [
+          4032,
+          3024,
+          3
+        ],
+        "master_EXR_matches_old": true,
+        "SDR_max0": true,
+        "original_float_gates_per_operator": {
+          "encoded_HDR_vs_target": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "log_f32_only": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "metadata_offset_additional": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "quantization_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "codec_provider_additional": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          },
+          "native_full_actual_gain_equation": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "CI_SDR_vs_original": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom2": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "headroom8": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          }
+        },
+        "ideal_headroom_original_float_gates": {
+          "1": {
+            "max_abs_le_1e5": true,
+            "max_relative_floor1e6_le_1e3": true,
+            "PSNR_peak1_ge_60": true
+          },
+          "2": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": true
+          },
+          "8": {
+            "max_abs_le_1e5": false,
+            "max_relative_floor1e6_le_1e3": false,
+            "PSNR_peak1_ge_60": false
+          }
+        },
+        "target_EV_p99": 0.009103819727897644,
+        "target_EV_max": 0.3851049944201669,
+        "ideal_h2_EV_p99": 0.003028860855847597,
+        "max_RGB_relative_point": {
+          "max_relative_floor1e6": 0.4521128857959411,
+          "reference_component_abs_le_1e6": true,
+          "reference_component_abs_le_1e4": true,
+          "reference_luma_le_1e4": true,
+          "reference_component_negative": false,
+          "actual_component_negative": false,
+          "absolute_component_error": 4.521128857959411e-07,
+          "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+        }
+      }
+    ],
+    "legacy_thresholds_changed": false,
+    "A_phase_complete": false,
+    "engineering_accepted": false,
+    "acceptance_complete": false,
+    "run_conclusion": "failure",
+    "failure_stage": "Final private cipher capacity assertion only; all five children returncode0",
+    "declared_private_cipher_limit": 1500000,
+    "actual_private_cipher_bytes": 1554198,
+    "original_public_runner_manifest_present": true,
+    "new_full_carrier_master_archived": false
   }
 }

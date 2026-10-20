@@ -633,3 +633,28 @@ S85证据在evidence/s85/run（22汇总成员、2私有成员），S86在evidenc
 **已验证静态（交付和归档）。** 成品HEIC5742091B，SHAdb24e56e81ee1080f5bf93dd8623c4ad47e0bf99c6ea84d8b737cf98340b8869；已保存在密文carrier.tar.gz.gpg内，附原S42零offset transport mask（未旋转存储画布，非场景逆置信mask或新HDR域）。原始ZIP：汇总artifact12266424270/28674B/SHAf598d9f1619796353d456fa56e79d5b5a99971a902be18dfa4917c7c4f15e2c9；密文artifact12267380960/5814301B/SHAa33b1420f2569452edfcfddf4689e5dd55a6519297264ced5c42f0c0ff164d22。28个public成员、两个密文archive所有manifest成员、GPG、源码和派生AST SHA均已验证，VM未解码或写出照片明文，完整输入EXR未下载。artifact retention1天，但原ZIP已本地留存。evidence/s88/run/archive-receipt.json和closure.json记录PR引用检查、原始归档及临时分支清理；本次无需secret/release。
 
 **可交给macOS runner：** 将完全相同的独立目标/载体数学推广到其余原尺寸照片，独立报告理想headroom目标和实际输出，保持开发/配方留出边界；再推进全尺寸global-only/local-only/semantic-only分离与肤色/边缘实际质量。**待实机：** 同帧j/WithoutFaceBoost曲线与N/B/T/V/histogram/allocateTone/应用域、Studio原统计、RAW2679/2408、真实HDR屏幕。β=.1953125不换算像素EV。本图封装衔接成功，A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false；按用户新优先级停止bit-exact和33点全域紧界追查。
+
+
+### SEMANTIC-20261018 / HDR-S89：五图独立目标、中间headroom与暗部传输边界
+
+**已验证静态：** sourceb03beb93cfd1b5093fd8bed314ff53a76842febf只对冻结S88做输入/助手路径/小型归档绑定，逆替换后与原模板字节相同；实际生成的driver/rebuild源码逐图作为公共文本归档。S42原AST、S44/S47显示与S88编码数学不变。顺序2600/2604/0032为开发，2608/0033在S88 encoded independent-HDR数学冻结后才运行，计本配方留出；这些照片参与过旧投影/显示/压力图，绝不称全新场景或物理逆解留出。五个重建EXR实际SHA都与旧记录相同，无旧失效ZIP下载或新secret/release。
+
+**已验证数值：** run39430695395，xcode-27/macOS27.0.1(26A434)/image20261012.0260.1；5/5完整计算，五个child returncode0，2/2上述配方留出，全部源数组与预览前后SHA相同。三张24MP和两张12MP的ImageIO完整整数SDR/格式/ICC均0差，CI SDR也0差。此处使用真正独立S44/S47目标，不能用S87较小的压力图误差替代：
+
+|照片|原生HDR对目标p99/最大EV|EV排除数|理想headroom2对原生p99/最大EV|RGB最大相对误差(floor1e−6)|
+|---|---:|---:|---:|---:|
+|IMG_2600|0.229329278 / 16.8903019|95323|0.0715222056 / 8.08451913|698.120683|
+|IMG_2604|0.0125815105 / 7.17179532|1609|0.00453058794 / 9.15462763|231.942831|
+|IMG_0032|0.00873854818 / 0.0269484147|0|0.00291300153 / 0.0065224234|0.417625415|
+|IMG_2608|0.0260136114 / 8.74552914|29373|0.0111151128 / 11.3448359|271.283643|
+|IMG_0033|0.00910381973 / 0.385104994|8023|0.00302886086 / 0.00657193691|0.452112886|
+
+原EV诊断域保持有限RGB、参考Y>1e−6且实际Y>0，以上排除数不能省略；新增headroom比较也逐项保留coverage/非正亮度数。理想端点过渡预先定义为I(h)=(S+o)·exp2(log2(h)/3·log2((H+o)/(S+o)))−o，h=1/2/8，使用原未舍入共同offset，与“按实际解码gain再代方程”分开。中间headroom不是显示环境自适应已通过，也不是当前像素达到scene-referred真值。
+
+**已验证数值（实际暗部问题，不以大比值直接判观感）：** IMG2600完整目标p99为0.229329EV，不能从单图0.00874EV外推五图都接近。分解p99：float log6.27588e−8、offset舍入1.74180e−5、10bit量化0.150238、额外codec/provider0.189437EV；两项分位数不作可加误差预算。当前共同offset0.030745、gain范围[-14.125,4.125]EV。公式对gain扰动的导数为dH/dg=ln2·(H+o)，因而小H相对误差可被共同offset放大；这是数学条件分析，尚未据此证明p99全部落在哪个亮度段或显示后无伪像。三个24MP源的实际gain方程线性maxabs≤3.91955e−6，但近零分量RGB maxrel达到0.0134913/0.00332611/0.00386282，原1e−3 gate仍false；两12MP该方程通过原float gates。完整各算子门槛在phase-summary.json，未放宽或隐藏。
+
+**已验证数值（最大RGB点分类）：** 五图的最大RGB相对误差分量，参考绝对值都≤1e−6，所以分母使用既定floor；它们的绝对分量误差依次6.98121e−4、2.31943e−4、4.17625e−7、2.71284e−4、4.52113e−7。前三个24MP部分点有符号变化，不能只称“相对误差大所以一定无害”。公开仅保存阈值/符号/绝对误差，准确坐标/RGB及log/offset/量化/codec各项贡献只在密文；亮度最大EV点的非正/相消分类也保留。五图×六张理想/原生headroom固定ACES图均先copy再变换，30次新增输入SHA相同；不是实机HDR观感通过。
+
+**已验证静态（run失败如实保留）：** 五图计算均完成，但最终密文容量断言失败：1554198B>预先声明1500000B，导致run结论failure。公开manifest在容量核对前生成并存在，实际产物均上传，未改变原run或重跑像素。原ZIP：汇总artifact12268852452/202175B/SHAe9a37804c934b8d072a4e5d39235738ba67270c2e8b6e09114deebd484587c29；密文artifact12267719347/1555094B/SHAf425d482bb813e13de03718c97e6a0164e207375e34a34bf5b0138cd60492576。138个public成员、全部源码/派生输入替换、六份密文GPG/manifest均验证。本地归档第一次漏建嵌套目录，在原ZIP落地后停止；仅修复目录创建并复用原ZIP补齐，不覆盖历史归档、不重算。原容量失败与本地归档恢复分别记录；未来新实验需计入5份contact及新增对照的总大小。
+
+**可交给macOS runner：** 下一步用预声明的相对亮度分层和固定ACES完整显示误差，判断暗部大EV的显示影响，再对最差IMG2600做10/12bit同目标配对；若12bit不被实际编码/原生解码支持则如实停止该分支。只研究可见/可用的编码损失，不恢复bit-exact/33点全域紧界工作。原M/旧渲染/SDR、Apple Log、原阈值和mask不改。原尺寸语义/独立global-local五路质量仍可runner推进；同帧j/WithoutFaceBoost曲线与N/B/T/V/人脸统计/allocateTone/应用域、Studio原统计、RAW2679/2408及真实HDR显示仍待实机。A_phase_complete=false、engineering_accepted=false、旧acceptance_complete=false。

@@ -1,0 +1,72 @@
+"""One regenerated frozen-recipe S42 input -> HDR intent -> preserved-SDR RGB HEIF."""
+from pathlib import Path
+import os,sys,json,hashlib,subprocess,ast,math,struct,tarfile,shutil
+import numpy as np
+import pillow_heif
+from PIL import Image,ImageDraw
+R=Path.cwd();D=R/'research/hdr-native';sys.path[:0]=[str(R),str(D)]
+from rebuild_master_s88 import display_prefix
+from iso_splice import replace_map,tmap_metadata
+from tools.heif_dump import parse_heif
+W=Path(os.environ['W']);O=W/'out';PRIVATE=W/'private';ENC=W/'encrypted';Y=np.array([.2289745641,.6917385218,.0792869141]);ROWS=32
+def sha(p):
+ with Path(p).open('rb')as f:return hashlib.file_digest(f,'sha256').hexdigest()
+def save(p,v):
+ with Path(p).open('x')as f:json.dump(v,f,indent=2,allow_nan=False);f.write('\n')
+def run(args,log):
+ with Path(log).open('x')as f:subprocess.run(list(map(str,args)),stdout=f,stderr=subprocess.STDOUT,check=True,timeout=1200)
+case=json.loads(os.environ['HDR_S89_CASE_JSON'])
+assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read
+rebuild=W/'rebuild';rebuild.mkdir();env=os.environ.copy();env['W']=str(rebuild)
+with(O/'rebuild-driver.log').open('x')as log:
+ result=subprocess.run([sys.executable,Path(os.environ['HDR_S89_REBUILD'])],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=2100)
+for name in ['formula-freeze.json','native-library.json','versions.json','rebuild-result.json','IMG_0032-both-candidate-native.json','IMG_0032-local-only-GTC-retained-candidate-native.json','IMG_0032-source-source-exception.json']:
+ source_file=rebuild/'out'/name
+ if source_file.exists():shutil.copyfile(source_file,O/('rebuild-'+name))
+assert result.returncode==0,'Frozen-recipe input regeneration failed; inspect rebuild-driver.log/checkpoints'
+rebuilt=json.loads((rebuild/'out/rebuild-result.json').read_text());old_expected=case['master_EXR_sha256'];case['master_EXR_sha256']=rebuilt['master_EXR']['sha256']
+case['input_provenance']='Old artifact expired with API404; one input regenerated on this runner from unchanged frozen S42 AST. Not a new holdout.'
+folder=W/'case';folder.mkdir();shutil.move(rebuild/('IMG_0032/publish/'+rebuilt['master_EXR']['path']),folder/'master.exr');shutil.move(rebuild/rebuilt['mask']['file'],folder/'inherited-positive-pair-mask.npy');shutil.rmtree(rebuild)
+prefix,derivation=display_prefix((D/'run_hdr_s47.py').read_text(),case)
+files=['run_hdr_s88.py','rebuild_master_s88.py','run_hdr_s42.py','run_hdr_s47.py','derive_display_s51.py','inputs-s51.json','render_intent_s44.py','carrier_case_s87.py','carrier_readback_s87.m','read_sdr_s44.m','hdr_headroom_s29.m','iso_splice.py']
+freeze={'os_build':'26A434','image_version':os.environ.get('ImageVersion'),'case':case,'source_sha256':{str((D/f).relative_to(R)):sha(D/f)for f in files},'derived_prefix_sha256':hashlib.sha256(prefix.encode()).hexdigest(),'derivation':derivation,'extra_prefix_change':derivation['S88_additional_IO_changes'],'rebuild':{'old_EXR_expected_sha256':old_expected,'new_EXR_sha256':case['master_EXR_sha256'],'matches_old_EXR':rebuilt['EXR_matches_old_archive_member']},'recipe':'S44/S47 frozen exposure_intent+hdr_intent; required S42 input regenerated from unchanged original AST after expiry. No new scene/operator fit or proof.','carrier':'matrix6/10-bit/4:4:4; shared positive offset; signed input retained. Metadata rational rounding, float log, quantization, codec and native equations reported separately.','coordinates':'Prefix remains stored canvas. Encode raw-grid codes; original irot retained. Native readback is oriented; fixed np.rot90(reference,primary irot_ccw/90), no adaptive flip.','scope':'One independent HDR display target encoded on an original photograph; not five-photo, new semantic inverse, camera boost or physical scene verification','full_cipher_max_bytes':20000000,'contact_cipher_max_bytes':300000,'original_masks_or_legacy_gates_changed':False,'engineering_accepted':False,'A_phase_complete':False,'acceptance_complete':False}
+save(O/'integration-freeze.json',freeze);freeze_sha=sha(O/'integration-freeze.json')
+g={'__name__':'s88_frozen_display_prefix'};exec(compile(prefix,'S47-derived-frozen-prefix','exec'),g)
+source=g['PHOTO'];folder=g['CASE'];s=g['s'];target=g['target'];off=g['common'];h,w=g['h'],g['w'];original=source.read_bytes();p=parse_heif(original);rotation=p['items'][str(p['primary_item_id'])].get('irot',{}).get('angle_ccw_degrees',0);k=rotation//90;before_pixels={f:sha(folder/f)for f in ['original-sdr.f32','master.f16','HDR.f32']}
+lg=np.memmap(folder/'integration-log.f32',dtype='<f4',mode='w+',shape=(h,w,3));low=0.;high=0.
+for top in range(0,h,ROWS):
+ end=min(h,top+ROWS);v,mask=g['supplied_pair_log'](s[top:end,:,:3],target[top:end],off);assert mask.all(),'No undeclared ratio-domain replacement permitted';lg[top:end]=v;low=min(low,float(v.min()));high=max(high,float(v.max()))
+lg.flush();lo=math.floor(low*16)/16;hi=max(math.ceil(high*16)/16,lo+1/16);meta=tmap_metadata(lo,hi,off,3);values=[n/d for n,d in struct.iter_unpack('>iI',meta[6:])];encoded_off=values[5];assert values[2:4]==[lo,hi]
+codes=np.memmap(folder/'codes.u16',dtype='<u2',mode='w+',shape=(h,w,3))
+for top in range(0,h,ROWS):end=min(h,top+ROWS);codes[top:end]=np.rint((lg[top:end]-lo)/(hi-lo)*1023).astype('u2')<<6
+codes.flush();pillow_heif.options.SAVE_HDR_TO_12_BIT=False;im=pillow_heif.from_bytes('RGB;16',(w,h),codes.tobytes());enc=folder/'gain.heic';im.save(enc,quality=-1,chroma=444,matrix_coefficients=6,enc_params={'preset':'fast','x265:pools':'1','x265:frame-threads':'1'});del im,codes
+ep=parse_heif(enc.read_bytes());ep=ep['items'][str(ep['primary_item_id'])];assert ep['hvcC']['bit_depth_luma']==10 and ep['hvcC']['chroma_format']==3 and ep['colr']['matrix_coefficients']==6
+carrier,identity=replace_map(original,enc.read_bytes(),meta);path=folder/'carrier.heic';path.write_bytes(carrier);del carrier
+run(['clang','-O2','-fobjc-arc','-framework','Foundation','-framework','CoreImage','-framework','ImageIO','-framework','Metal','-framework','CoreGraphics',D/'carrier_readback_s87.m','-o',W/'oracle'],O/'oracle-build.log')
+native_dir=folder/'native';native_dir.mkdir();run([W/'oracle',source,path,native_dir],O/'native.log');native=json.loads((native_dir/'native.json').read_text());save(O/'native.json',native);assert native['success']and native['ImageIO_full_SDR']['decoded_sdr_max0_verified']
+tree=ast.parse((D/'carrier_case_s87.py').read_text());node=next(n for n in tree.body if isinstance(n,ast.ClassDef)and n.name=='ErrorState');ns={'np':np,'math':math,'Y':Y,'PRIVATE':PRIVATE,'save':save};exec(compile(ast.Module(body=[node],type_ignores=[]),'S87-unchanged-ErrorState','exec'),ns)
+states={n:ns['ErrorState'](folder,n)for n in ['encoded_HDR_vs_target','log_f32_only','metadata_offset_additional','quantization_additional','codec_provider_additional','native_full_actual_gain_equation','CI_SDR_vs_original','headroom1','headroom2','headroom8']}
+height,width=native['height'],native['width'];sr=np.rot90(s[:,:,:3],k=k);hr=np.rot90(target,k=k);lr=np.rot90(lg,k=k);encoded_codes=np.rot90(np.memmap(folder/'codes.u16',dtype='<u2',mode='r',shape=(h,w,3)),k=k);assert sr.shape==(height,width,3)
+read=lambda spec:np.memmap(native_dir/spec['file'],dtype='<f4',mode='r',shape=(height,width,4))
+decoded={n:read(spec)for n,spec in native['files'].items()};heads={r['headroom']:read(r)for r in native['headrooms']}
+for top in range(0,height,ROWS):
+ end=min(height,top+ROWS);b=sr[top:end].astype('f8');H=hr[top:end];l=lr[top:end].astype('f8');q=(encoded_codes[top:end]>>6).astype('f8')/1023;gain=decoded['gain'][top:end,:,:3].astype('f8');actual=decoded['HDR'][top:end,:,:3];f32=(b+off)*np.exp2(l)-off;rational=(b+encoded_off)*np.exp2(l)-encoded_off;quant=(b+encoded_off)*np.exp2(lo+(hi-lo)*q)-encoded_off
+ for name,a,ref in [('encoded_HDR_vs_target',actual,H),('log_f32_only',f32,H),('metadata_offset_additional',rational,f32),('quantization_additional',quant,rational),('codec_provider_additional',actual,quant),('native_full_actual_gain_equation',actual,(b+encoded_off)*np.exp2(lo+(hi-lo)*gain)-encoded_off),('CI_SDR_vs_original',decoded['SDR'][top:end,:,:3],b)]:states[name].add(a,ref)
+ for head,value in heads.items():states['headroom'+str(head)].add(value[top:end,:,:3],(b+encoded_off)*np.exp2(math.log2(head)/3*(lo+(hi-lo)*gain))-encoded_off)
+metrics={n:v.finish()for n,v in states.items()};assert metrics['CI_SDR_vs_original']['max_abs']==0
+checks=[];cards=[];ys=np.floor((np.arange(120)+.5)*height/120).astype(int);xs=np.floor((np.arange(160)+.5)*width/160).astype(int)
+for label,array in [('SDR',sr),('HDR target',hr),('native HDR',decoded['HDR'][...,:3])]:
+ sample=np.asarray(array[ys[:,None],xs[None,:]],'f4');before=hashlib.sha256(sample.tobytes()).hexdigest();x=sample.copy();g['cpu'].apply(g['ocio'].PackedImageDesc(x,160,120,3));cards.append((label,Image.fromarray(np.rint(np.clip(x,0,1)*255).astype('u1'))));checks.append({'label':label,'before':before,'after':hashlib.sha256(sample.tobytes()).hexdigest()});assert checks[-1]['before']==checks[-1]['after']
+sheet=Image.new('RGB',(480,144),'white');draw=ImageDraw.Draw(sheet)
+for i,(label,image)in enumerate(cards):sheet.paste(image,(160*i,0));draw.text((160*i+2,123),label,fill='black')
+sheet.save(PRIVATE/'contact.png');full=W/'full';full.mkdir();shutil.copyfile(path,full/'IMG_0032-independent-HDR.heic');shutil.copyfile(folder/'inherited-positive-pair-mask.npy',full/'inherited-S42-transport-mask.npy')
+save(full/'meaning.json',{'scene_master':'Regenerated from frozen S42 math; unchanged in display stage; not physical scene truth','new_master_matches_old_EXR':rebuilt['EXR_matches_old_archive_member'],'HDR':'S44/S47 independent display intent','mask':'Regenerated old S42 zero-offset transport mask on unrotated stored canvas; not scene-inverse certification or the new display gain domain. HEIC retains original irot.','source_sha256':case['source_sha256'],'master_EXR_sha256':case['master_EXR_sha256'],'display_intent':g['intent'],'metadata_values':values,'carrier_sha256':sha(path)})
+assert before_pixels=={f:sha(folder/f)for f in before_pixels}
+summary={'os_build':'26A434','image_version':os.environ.get('ImageVersion'),'source_commit':os.environ['GITHUB_SHA'],'scope':freeze['scope'],'shape':[height,width,3],'metadata_values':values,'carrier_bytes':path.stat().st_size,'carrier_sha256':sha(path),'quantization_reference':'Actual saved/reopened u16 encoder input codes shifted6; no re-evaluation with a different float precision','encoded_colr':ep['colr'],'identity':identity,'metrics':metrics,'preview_checks':checks,'source_pixel_SHA_before_after_unchanged':before_pixels,'source_photo_SHA_unchanged':sha(source)==case['source_sha256'],'master_EXR_SHA_unchanged':sha(folder/'master.exr')==case['master_EXR_sha256'],'integration_freeze_SHA_unchanged':sha(O/'integration-freeze.json')==freeze_sha,'engineering_accepted':False,'A_phase_complete':False,'acceptance_complete':False};save(O/'analysis.json',summary)
+for root,name,limit in [(PRIVATE,'contacts',300000)]:
+ save(root/'manifest.json',{'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':'26A434','people_results_encrypted':True,'files':[{'path':f.name,'size':f.stat().st_size,'sha256':sha(f)}for f in sorted(root.iterdir())if f.is_file()]})
+ tarpath=W/(name+'.tar.gz')
+ with tarfile.open(tarpath,'w:gz')as tar:tar.add(root,arcname='out')
+ cipher=ENC/(name+'.tar.gz.gpg');run(['gpg','--batch','--trust-model','always','--recipient','28E62F64A29764C2F2AEBF5D5B6B1C101E5F5ABA','--encrypt','--output',cipher,tarpath],O/(name+'-encrypt.log'));assert cipher.stat().st_size<limit
+ save(O/(name+'-inventory.json'),{'size':cipher.stat().st_size,'sha256':sha(cipher),'plaintext_uploaded':False})
+print(json.dumps({'completed':True,'one_original_HDR_target_encoded':True,'scene_inverse_verified':False}))

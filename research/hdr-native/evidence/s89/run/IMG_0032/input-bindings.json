@@ -1,0 +1,38 @@
+{
+  "driver": {
+    "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+    "derived_sha256": "d8239c0d79ebd8c85d22031c34a52f31dae1d00690cc5672bc7b71a4251d5efa",
+    "inverse_substitutions_equal_original": true,
+    "swaps": [
+      {
+        "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+        "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+        "count": 1
+      },
+      {
+        "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+        "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+        "count": 1
+      },
+      {
+        "old": "D/'rebuild_master_s88.py'",
+        "new": "Path(os.environ['HDR_S89_REBUILD'])",
+        "count": 1
+      },
+      {
+        "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+        "new": "[(PRIVATE,'contacts',300000)]",
+        "count": 1
+      }
+    ],
+    "pixel_math_changed": false
+  },
+  "rebuild": {
+    "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+    "derived_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+    "inverse_substitutions_equal_original": true,
+    "swaps": [],
+    "pixel_math_changed": false
+  },
+  "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+}

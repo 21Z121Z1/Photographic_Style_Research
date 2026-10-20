@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/run_hdr_s89.py", line 101, in <module>
+    save(O/'encrypted-inventory.json',{'files':[{'file':p.name,'size':p.stat().st_size,'sha256':sha(p)}for p in sorted(ENC.glob('*.gpg'))],'full_new_carrier_master_archived':False,'plaintext_uploaded':False});assert sum(p.stat().st_size for p in ENC.glob('*.gpg'))<1500000
+                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

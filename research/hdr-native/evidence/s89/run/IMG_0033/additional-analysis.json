@@ -1,0 +1,320 @@
+{
+  "photo": "IMG_0033",
+  "role": "encoded-integration-holdout",
+  "completed": true,
+  "child_returncode": 0,
+  "ideal_headroom_metrics": {
+    "1": {
+      "max_abs": 2.9802322387695312e-08,
+      "max_relative_floor_1e6": 6.002839102782052e-08,
+      "PSNR_peak1_dB": 209.5705759332078,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 6.147880157811115e-08,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "2": {
+      "max_abs": 0.00507089493333468,
+      "max_relative_floor_1e6": 0.00669074937284941,
+      "PSNR_peak1_dB": 65.08063649038392,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0009786932496353984,
+      "EV_abs_p95": 0.00250438196817413,
+      "EV_abs_p99": 0.003028860855847597,
+      "EV_abs_max_f64": 0.0065719369120879586,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "8": {
+      "max_abs": 0.018655896186828613,
+      "max_relative_floor_1e6": 0.4521128857959411,
+      "PSNR_peak1_dB": 56.007563268646706,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184745,
+      "EV_excluded_pixels": 8023,
+      "EV_abs_median": 0.0029354607686400414,
+      "EV_abs_p95": 0.007513928692787886,
+      "EV_abs_p99": 0.009103819727897644,
+      "EV_abs_max_f64": 0.38510499442017054,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0000000000000044,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    }
+  },
+  "max_RGB_relative_diagnostic": {
+    "max_relative_floor1e6": 0.4521128857959411,
+    "reference_component_abs_le_1e6": true,
+    "reference_component_abs_le_1e4": true,
+    "reference_luma_le_1e4": true,
+    "reference_component_negative": false,
+    "actual_component_negative": false,
+    "absolute_component_error": 4.521128857959411e-07,
+    "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+  },
+  "preview_checks": [
+    {
+      "label": "ideal h1",
+      "before": "4f6fc8d04b949bbab6b4aafa1807f5143aea5712e8d4e31fd9f40aec2fb1fc54",
+      "after": "4f6fc8d04b949bbab6b4aafa1807f5143aea5712e8d4e31fd9f40aec2fb1fc54"
+    },
+    {
+      "label": "native h1",
+      "before": "f5c8597f0cc87522d25111520567ecd78f1fd031387c53c2db9c8a49c93f662e",
+      "after": "f5c8597f0cc87522d25111520567ecd78f1fd031387c53c2db9c8a49c93f662e"
+    },
+    {
+      "label": "ideal h2",
+      "before": "1b466954f7b642724372e1d5aa4c717029ac403111bf89d9b653cf8c2049f1d5",
+      "after": "1b466954f7b642724372e1d5aa4c717029ac403111bf89d9b653cf8c2049f1d5"
+    },
+    {
+      "label": "native h2",
+      "before": "7eab57ec75608c466ded3d150ccab4c9d2592684e9e613c910124876c34da431",
+      "after": "7eab57ec75608c466ded3d150ccab4c9d2592684e9e613c910124876c34da431"
+    },
+    {
+      "label": "ideal h8",
+      "before": "0496c0d022da6c55633b4829f560c08c1ccbaca0a96d3ec078e109670ff163c7",
+      "after": "0496c0d022da6c55633b4829f560c08c1ccbaca0a96d3ec078e109670ff163c7"
+    },
+    {
+      "label": "native h8",
+      "before": "848224fb820211728f8d0516c368eb242196817119c82a3d839f16ccc0827bb4",
+      "after": "848224fb820211728f8d0516c368eb242196817119c82a3d839f16ccc0827bb4"
+    }
+  ],
+  "source_SHA_before_after": {
+    "master.exr": "7d488706655324c2ae278281cad21f980f71aaf03e2a536dd7aa8eb512bcf89d",
+    "master.f16": "0665a6937aad7a5bce1a0f95e957256c11a41a6b5aa90fc462ff12e52efc14a2",
+    "original-sdr.f32": "734baaa5e1ec949e24adaf2528b646566ba06cd18c5be49f31d85052f9b625c5",
+    "HDR.f32": "d3360020cdbf60c87c3462dd866ff486953f13007f4acdb2c5799b12cd83ecb3"
+  },
+  "SDR_max0": true,
+  "original_S88_metrics": {
+    "encoded_HDR_vs_target": {
+      "max_abs": 0.018655896186828613,
+      "max_relative_floor_1e6": 0.4521128857959411,
+      "PSNR_peak1_dB": 56.007563268646706,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184745,
+      "EV_excluded_pixels": 8023,
+      "EV_abs_median": 0.0029354607686400414,
+      "EV_abs_p95": 0.007513928692787886,
+      "EV_abs_p99": 0.009103819727897644,
+      "EV_abs_max_f64": 0.3851049944201669,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "log_f32_only": {
+      "max_abs": 2.4023663058869715e-08,
+      "max_relative_floor_1e6": 4.853326042173812e-06,
+      "PSNR_peak1_dB": 175.26751786722974,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184745,
+      "EV_excluded_pixels": 8023,
+      "EV_abs_median": 3.1443136983000386e-09,
+      "EV_abs_p95": 2.3171701002411282e-08,
+      "EV_abs_p99": 4.664388228547978e-08,
+      "EV_abs_max_f64": 2.110386898692662e-06,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "metadata_offset_additional": {
+      "max_abs": 2.168473616760702e-06,
+      "max_relative_floor_1e6": 0.2578478034933376,
+      "PSNR_peak1_dB": 134.89257163100373,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184745,
+      "EV_excluded_pixels": 8023,
+      "EV_abs_median": 3.017536016614031e-07,
+      "EV_abs_p95": 1.4056725012778733e-05,
+      "EV_abs_p99": 3.854940543533312e-05,
+      "EV_abs_max_f64": 0.3225436988727874,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "quantization_additional": {
+      "max_abs": 0.005313782457011085,
+      "max_relative_floor_1e6": 0.05888465125600289,
+      "PSNR_peak1_dB": 61.90692911571713,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184760,
+      "EV_excluded_pixels": 8008,
+      "EV_abs_median": 0.0019076679600402713,
+      "EV_abs_p95": 0.0041509168688207854,
+      "EV_abs_p99": 0.004751010737381876,
+      "EV_abs_max_f64": 0.046918872788523705,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "codec_provider_additional": {
+      "max_abs": 0.014055987036573958,
+      "max_relative_floor_1e6": 0.20772894697836236,
+      "PSNR_peak1_dB": 57.139323856522864,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184759,
+      "EV_excluded_pixels": 8009,
+      "EV_abs_median": 0.002858958672732115,
+      "EV_abs_p95": 0.005717681720852852,
+      "EV_abs_p99": 0.006275380961596966,
+      "EV_abs_max_f64": 0.08121551248486397,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "native_full_actual_gain_equation": {
+      "max_abs": 5.613733584652891e-07,
+      "max_relative_floor_1e6": 5.300407600892024e-06,
+      "PSNR_peak1_dB": 143.83910856497297,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184759,
+      "EV_excluded_pixels": 8009,
+      "EV_abs_median": 1.476758058061023e-07,
+      "EV_abs_p95": 3.539831254784076e-07,
+      "EV_abs_p99": 4.282634620267345e-07,
+      "EV_abs_max_f64": 4.53510904383787e-06,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "CI_SDR_vs_original": {
+      "max_abs": 0.0,
+      "max_relative_floor_1e6": 0.0,
+      "PSNR_peak1_dB": "inf",
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 0.0,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom1": {
+      "max_abs": 2.9802322387695312e-08,
+      "max_relative_floor_1e6": 6.002839113963211e-08,
+      "PSNR_peak1_dB": 209.57057593158873,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 6.147880157811115e-08,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom2": {
+      "max_abs": 2.679029396102095e-07,
+      "max_relative_floor_1e6": 3.3645126278293595e-07,
+      "PSNR_peak1_dB": 150.26216503894497,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 7.841402904773531e-08,
+      "EV_abs_p95": 1.977203254455162e-07,
+      "EV_abs_p99": 2.4316218826925257e-07,
+      "EV_abs_max_f64": 3.879416676209101e-07,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom8": {
+      "max_abs": 5.613733584652891e-07,
+      "max_relative_floor_1e6": 5.300407600892024e-06,
+      "PSNR_peak1_dB": 143.83910856497297,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12184759,
+      "EV_excluded_pixels": 8009,
+      "EV_abs_median": 1.476758058061023e-07,
+      "EV_abs_p95": 3.539831254784076e-07,
+      "EV_abs_p99": 4.282634620267345e-07,
+      "EV_abs_max_f64": 4.53510904383787e-06,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    }
+  },
+  "actual_master_matches_old_EXR": true
+}
