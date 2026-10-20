@@ -16,7 +16,7 @@ xcrun lldb --batch -s "$TASK_ROOT/disassemble.lldb" -- \
     "$TASK_OUT/inventory" "$TASK_OUT/debug-inventory.json" 2>&1 | tee "$TASK_OUT/disassembly.log"
 rm "$TASK_OUT/inventory"
 xcrun clang -g -O0 -fobjc-arc -fblocks -Wall -Wextra "$TASK_ROOT/inference.m" \
-    -framework Foundation -framework CoreImage -framework CoreVideo -framework ImageIO -framework Vision \
+    -framework Foundation -framework CoreGraphics -framework CoreImage -framework CoreVideo -framework ImageIO -framework Vision \
     -o "$TASK_OUT/inference" 2>&1 | tee "$TASK_OUT/inference-build.log"
 curl --fail --location --silent --show-error \
     https://raw.githubusercontent.com/scikit-image/scikit-image/v0.25.2/skimage/data/astronaut.png \
