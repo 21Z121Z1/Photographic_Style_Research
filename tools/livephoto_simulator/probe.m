@@ -4,6 +4,7 @@
 #import <objc/runtime.h>
 #import <dlfcn.h>
 #import <TargetConditionals.h>
+#import <unistd.h>
 
 static void emit(NSDictionary *event) {
     NSData *data = [NSJSONSerialization dataWithJSONObject:event options:NSJSONWritingSortedKeys error:nil];
@@ -14,6 +15,16 @@ static NSArray *methods(Class c) {
     unsigned n = 0; Method *m = class_copyMethodList(c, &n); NSMutableArray *r = [NSMutableArray array];
     for (unsigned i=0;i<n;i++) [r addObject:@{@"selector":str(sel_getName(method_getName(m[i]))), @"encoding":str(method_getTypeEncoding(m[i]))}];
     free(m); return r;
+}
+static void dumpImplementation(NSString *name, NSString *selector, BOOL isClass) {
+    Class c=NSClassFromString(name); SEL sel=NSSelectorFromString(selector);
+    Method m=isClass?class_getClassMethod(c,sel):class_getInstanceMethod(c,sel);
+    if(!m) { emit(@{@"kind":@"implementation",@"class":name,@"selector":selector,@"present":@NO}); return; }
+    IMP imp=method_getImplementation(m); const unsigned char *bytes=(const unsigned char *)imp;
+    NSMutableString *hex=[NSMutableString string];
+    for(int i=0;i<128;i++) [hex appendFormat:@"%02x",bytes[i]];
+    Dl_info info={0}; dladdr((void *)imp,&info);
+    emit(@{@"kind":@"implementation",@"class":name,@"selector":selector,@"is_class_method":@(isClass),@"present":@YES,@"encoding":str(method_getTypeEncoding(m)),@"hex128":hex,@"symbol":str(info.dli_sname),@"image":str(info.dli_fname),@"offset_in_image":@((uintptr_t)imp-(uintptr_t)info.dli_fbase)});
 }
 static void dumpClass(NSString *name) {
     Class c = NSClassFromString(name);
@@ -47,5 +58,16 @@ int main(int argc, char **argv) { @autoreleasepool {
         if([n rangeOfString:@"Settling" options:NSCaseInsensitiveSearch].location!=NSNotFound || [n rangeOfString:@"LivePhotoMeta" options:NSCaseInsensitiveSearch].location!=NSNotFound || [n rangeOfString:@"FRCFrameDrop"].location!=NSNotFound || [n rangeOfString:@"ParallaxSegmentation"].location!=NSNotFound) [names addObject:n];
     } free(classes);
     for(NSString *n in names) dumpClass(n);
+    dumpClass(@"VCPVideoAnalyzer");
+    dumpClass(@"PFParallaxAssetResource");
+    dumpClass(@"PIParallaxAsset");
+    dumpImplementation(@"VCPSettlingEffectAnalyzer",@"initWithTimestamps:andTrack:",NO);
+    dumpImplementation(@"VCPSettlingEffectAnalyzer",@"finishAnalysisPass:withStillImageBuffer:",NO);
+    dumpImplementation(@"VCPSettlingEffectAnalyzer",@"getSettlingEffectTimeRange:withOptions:",YES);
+    dumpImplementation(@"VCPVideoAnalyzer",@"analyzeFrame:withTimestamp:andDuration:flags:",NO);
+    dumpImplementation(@"VCPVideoAnalyzer",@"results",NO);
+    dumpImplementation(@"PIPosterSettlingEffectLoader",@"loadVideoWithResource:options:completion:",YES);
+    dumpImplementation(@"PIPosterSettlingEffectLoader",@"loadCropRectWithResource:options:completion:",YES);
+    dumpImplementation(@"PIPosterSettlingEffectLoader",@"_canLoadVideoAtURL:",YES);
     emit(@{@"kind":@"conclusion", @"media_test_run":@NO, @"wallpaper_eligibility":@"not_tested", @"note":@"Runtime presence and selectors only. No success or absence is a device wallpaper eligibility verdict."});
 } return 0; }
