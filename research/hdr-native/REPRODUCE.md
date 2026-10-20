@@ -250,3 +250,6 @@ S98实际结果入口：evidence/s98/NUMERICAL_RESULTS.zh-CN.md、run/analysis.j
 
 
 S99失败复现：3936cb99的run_semantic_s99.py只extract(photo,RES)后，直接source photo PRIVATE/native-key1-source；冻结Decode要求该dir已有styles.plist/linear.heic/delta.heic。run39513947146 source-native.log记录最终catch写目录也失败。新实验必须先extract(photo,SRC)，保持source_s37原字节；原失败日志与密文归档不覆盖。
+
+
+S100源码 e9a93b09f0c814dce6816e60b0bc2f274db4cb35：run_semantic_s100.py / semantic_domain_s99.m / domain_analysis_s99.py，精确衍生绑定 s100_binding.json。唯一原生run39514608080；三个case为原片S Tone0、冻结source_s37的native key1 R Tone0/+0.35。无本地图片执行，无旧大archive依赖。原输入以既有2.56MB密文+临时session secret提供，私钥不离开香港；归档在日本完成全部GPG/成员SHA。重现时须重新建立临时密文传输，不复用已清的release id或secret。此条是运行前配方，不是已通过结论。

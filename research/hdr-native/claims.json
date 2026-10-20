@@ -4558,9 +4558,39 @@
           "sha256": "57c4a05935b2c21eeff01ad1ecef991d8c63fef684fe89ea291f1746c3b4fd00"
         }
       ]
+    },
+    {
+      "id": "HDR-162",
+      "category": "semantic/actual-key1-consumer-domain-S100-plan",
+      "status": "runner",
+      "claim": "S100冻结真实native key1 R与原片S的Tone0及R+.35对照；每case内仅中和皮肤592/596，完整原生输出/texture11/ROI留存，不能把S98 B基底map直接解释为原片拍摄端逆变换。运行已启动，尚无结果。",
+      "os_build": "target26A434; runtime not reviewed",
+      "run_id": 39514608080,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s100/preflight.json",
+          "line": 1,
+          "sha256": "8b656b388eb368e26a3720ee4639a3201e52fb97200481aaa549b7468611bc03"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s100/queued-observation.json",
+          "line": 1,
+          "sha256": "626cfc33a39d010ce9073dce8ffd94613a1e4d6d226eb44b02bda8ed475554d3"
+        },
+        {
+          "file": "repo/research/hdr-native/s100_binding.json",
+          "line": 1,
+          "sha256": "2d9fb53253a779145705b6cb50599992054e7f71121e00eb8d83cd617275bb66"
+        },
+        {
+          "file": "repo/research/hdr-native/run_semantic_s100.py",
+          "line": 1,
+          "sha256": "82c1e02abbf5b797eb834690ea2aec167f574c19c92f16147f57fa980d0e1721"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T23:19:59.417961+00:00",
+  "updated_utc": "2026-10-20T23:25:06.555873+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -7294,6 +7324,22 @@
     "whole_ZIP_backhaul_bytes": 0,
     "large_cipher_body_backhaul_bytes": 0,
     "all_temporary_transport_cleaned": true,
+    "A_phase_complete": false,
+    "engineering_accepted": false,
+    "acceptance_complete": false
+  },
+  "semantic_S100_pending": {
+    "observed_UTC": "2026-10-20T23:25:06.555873+00:00",
+    "run_id": 39514608080,
+    "source_commit": "e9a93b09f0c814dce6816e60b0bc2f274db4cb35",
+    "previous_failure_run_reviewed": 39513947146,
+    "branch": "research/vm-native-20261021-semantic-s100",
+    "observed_status": "queued",
+    "actual_host_build_not_yet_reviewed": true,
+    "target_build": "26A434",
+    "input_cipher_bytes": 2558570,
+    "large_archive_route": "GitHub->Japan directly; GPG and all-member SHA on Japan; HK small header/hash/public metadata only",
+    "native_retry_enabled": false,
     "A_phase_complete": false,
     "engineering_accepted": false,
     "acceptance_complete": false

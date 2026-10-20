@@ -186,3 +186,6 @@ S98终态39504949862：整幅条件consumer皮肤效果0.5实用门槛全过（�
 
 
 S99 run39513947146已终态failure并完成归档/清理，不再等待或派发旧run。缺SRC目录/资源是已定位的驱动前提错误，下一新driver先extract(photo,SRC)，保留冻结source_s37以及原生shader；显式沿用S42/S89 residency兼容环境。真实S/R Tone0/+0.35的consumer连接仍可runner推进，不把调用错误归为实机限制或皮肤不可逆。
+
+
+S100已启动39514608080：先审真实key1 R与原片S各自Tone0输出/原生调用，再看R+.35单独皮肤参数中和。检查完整owner覆盖、CI颜色域、原上下文SHA、完整texture11/ROI留存和固定ACES输入SHA。即使新consumer链可复现，也不证明拍摄端已烘焙皮肤因子的可识别性；相机开关反事实/同帧统计仍需要原清单中的实机测试。不得将S98 B基底map直接移用到原片。

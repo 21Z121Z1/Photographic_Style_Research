@@ -905,3 +905,14 @@ half loggain传输与逆估计分开：色彩max gain误差0.0000305065EV、亮�
 失败日志已先读：evidence/s99/run/source-native.log、driver.log、source-build.log、native-build.log；修正只在新driver中向新SRC执行extract(photo,SRC)，按已有S42/S89显式设置VM_DISABLE_RESIDENCY_SETS=1兼容前提，不动冻结源或pixel算法。后续另开有证据的单run，保留本次归档与分支中的源，不盲目重试。
 
 原ZIP直接GitHub→日本共19904B。public13、GPG private1成员全部认证：private artifact12307091071 ZIP SHA44e56bbfa3a796c66d9fdfba9fd44016e967de4e477a6ea09d2c4069e725cf74；public12306776240 SHA3209294d61596a1509650bfb237e006e4811903f6fbe2a34b23014be07576d7d。671B小cipher全部落在bounded header里，准确计作671B小密文回传；无ZIP或大cipher body跨区回传。PR head/base引用0、源保留后，本次secret/release/tag/private branch全部清理。A/工程/旧acceptance仍false。
+
+
+### SEMANTIC-20261018 / S100 真实 key1 输入域衔接：测试已启动，结果待审阅
+
+**可交给macOS runner。** run 39514608080，source e9a93b09f0c814dce6816e60b0bc2f274db4cb35，branch research/vm-native-20261021-semantic-s100，2026-10-20T23:25:06.555873+00:00 观察为 queued。这是带时间的历史状态，实际结果以终态归档为准；尚未观察的主机build不能当作已验证26A434。
+
+本次先修正已归档S99的SRC资源前提错误：先extract(photo,SRC)并比对styles/linear/delta的SHA，冻结source入口沿用S42/S89 VM_DISABLE_RESIDENCY_SETS=1兼容前提，源文件和S99 native/analysis字节均不改。S99失败run39513947146已先读日志、日本认证归档并清理；这不是盲目重试。随后解决S98的使用边界：S98以B=F(S;Tone+.35)为baseline，不能直接把校正map乘到原HEIC S并宣称撤回拍摄端处理。S100调用冻结source_s37.m/Styles_full_v3.m，max_edge0获得苹果实际key1逆风格图R，native half存储再精确widen为f32，分别观察F(S;Tone0)、F(R;Tone0)、F(R;Tone+.35)。三个case的native guides可随主输入重算；每个case内部中和field9/592、field10/596时，其他纹理、c/d、GTC、guides、统计和参数保持同一绑定并SHA核验。没有新的求解器、格点搜索或分块benchmark。只测这条显式构造链路，不能据此宣称Photos UI实际顺序，R也不是scene母版或已隔离的皮肤逆变换。
+
+即使Tone0完全跳过CMI最终dispatch，也写census并比较实际完整CI输出与输入；无调用本身不证明恒等。有dispatch时需完整owner覆盖和native/CI误差检查；只保存已知初始化范围的texture11 R16与176B ROI。原始texel格不能冒充内部实际采样的matte，更不能据此虚报背景零变化。全部预览使用同一固定ACES1.0 SDR Video/Linear P3-D65/0EV，并核验预览前后输入SHA。
+
+传输只复用原2.56MB密文；无旧S5/S8/S98大包重传。新原ZIP直接GitHub→日本，完整GPG/所有成员校验留在日本，香港只取小型cipher头、hash及公开汇总。人物像素只加密上传，artifact保留1天，完成归档后核PR零引用/源保留再清本次临时资源。A、工程、旧acceptance均false，尚无新照片指标，不填errors占位值。
