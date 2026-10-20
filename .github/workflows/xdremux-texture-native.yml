@@ -7,7 +7,7 @@ on:
     inputs:
       phase:
         type: choice
-        options: [inventory, generate]
+        options: [inventory, generate, diagnose]
         default: inventory
       selection:
         type: choice
@@ -17,7 +17,7 @@ permissions:
   contents: write
 concurrency:
   group: texture-fixture-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   fixtures:
     runs-on: xcode-27
@@ -38,7 +38,7 @@ jobs:
           persist-credentials: false
       - name: Run exact-source native fixture matrix
         env:
-          MATRIX_PHASE: ${{ inputs.phase || 'generate' }}
+          MATRIX_PHASE: ${{ inputs.phase || 'diagnose' }}
           MATRIX_SELECTION: ${{ inputs.selection || 'all' }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
