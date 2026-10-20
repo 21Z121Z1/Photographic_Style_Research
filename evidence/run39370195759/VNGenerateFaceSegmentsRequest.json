@@ -1,0 +1,285 @@
+{
+  "apple_implementation_patched" : false,
+  "image_size" : [
+    512,
+    512
+  ],
+  "input_exif_orientation" : 1,
+  "input_sha256" : "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "mode" : "VNGenerateFaceSegmentsRequest",
+  "os" : "Version 27.0.1 (Build 26A434)",
+  "photos_used" : false,
+  "request_error" : "",
+  "request_revision" : 1,
+  "request_success" : true,
+  "results" : [
+    {
+      "alignedRotationAngle" : 0.055113792419433594,
+      "blinkScore" : 0,
+      "boundingBoxAligned" : true,
+      "class" : "VNFaceObservation",
+      "confidence" : 0.87604451179504395,
+      "face_geometry" : [
+        {
+          "bounding_box" : [
+            0.33271792531013489,
+            0.6542012095451355,
+            0.20626081526279449,
+            0.20626081526279449
+          ],
+          "box_coordinates" : "Vision normalized image coordinates, lower-left origin",
+          "confidence" : 0.87604451179504395,
+          "landmarks_in_face_coordinates" : [
+
+          ],
+          "pitch_radians" : 0.15951566398143768,
+          "roll_radians" : 0.023090232163667679,
+          "yaw_radians" : 0.016027215868234634
+        }
+      ],
+      "face_segments" : {
+        "faceSegmentIndexToFlagMap" : {
+          "0" : 1,
+          "1" : 2,
+          "2" : 4,
+          "3" : 8,
+          "4" : 16,
+          "5" : 32,
+          "6" : 64,
+          "7" : 128,
+          "8" : 256,
+          "9" : 512,
+          "10" : 1024,
+          "11" : 2048,
+          "12" : 4096,
+          "13" : 8192,
+          "14" : 16384
+        },
+        "faceSegmentLabelToProbabilityMap_keys" : [
+          4096,
+          8192,
+          16384,
+          128,
+          32,
+          256,
+          1,
+          2048,
+          64,
+          16,
+          1024,
+          8,
+          512,
+          4,
+          2
+        ],
+        "faceSegmentToSegmentMaskGrayLevelDictionary" : {
+          "1" : 250,
+          "2" : 249,
+          "4" : 248,
+          "8" : 247,
+          "16" : 246,
+          "32" : 245,
+          "64" : 244,
+          "128" : 243,
+          "256" : 242,
+          "512" : 241,
+          "1024" : 240,
+          "2048" : 239,
+          "4096" : 238,
+          "8192" : 237,
+          "16384" : 236
+        },
+        "numberOfFaceSegments" : 15,
+        "outputBufferHeight" : 256,
+        "outputBufferWidth" : 256
+      },
+      "faceId" : 0,
+      "faceIdConfidence" : 0,
+      "faceJunkinessIndex" : -1.4596235752105713,
+      "faceOrientationIndex" : 0.35070744156837463,
+      "landmarksConstellation" : 0,
+      "nameConfidence" : 0,
+      "pitch" : 0.15951566398143768,
+      "providesBoundsNormalizedToROI" : false,
+      "roll" : 0.023090232163667679,
+      "runtime_properties" : [
+        {
+          "attributes" : "T{_Geometry2D_rect2D_={_Geometry2D_point2D_=ff}{_Geometry2D_size2D_=ff}},N,V_alignedBoundingBox",
+          "name" : "alignedBoundingBox"
+        },
+        {
+          "attributes" : "Tf,N,V_alignedRotationAngle",
+          "name" : "alignedRotationAngle"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_landmarkPoints",
+          "name" : "landmarkPoints"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_landmarkPoints65",
+          "name" : "landmarkPoints65"
+        },
+        {
+          "attributes" : "TQ,N,V_landmarksConstellation",
+          "name" : "landmarksConstellation"
+        },
+        {
+          "attributes" : "T@\"NSArray\",&,N,V_landmarkPrecisionEstimatesPerPoint",
+          "name" : "landmarkPrecisionEstimatesPerPoint"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_landmarkPoints3d",
+          "name" : "landmarkPoints3d"
+        },
+        {
+          "attributes" : "T@\"NSData\",R,N,V_poseData",
+          "name" : "poseData"
+        },
+        {
+          "attributes" : "Tf,N,V_faceIdConfidence",
+          "name" : "faceIdConfidence"
+        },
+        {
+          "attributes" : "T@\"NSData\",&,N,V_alignedMeanShape",
+          "name" : "alignedMeanShape"
+        },
+        {
+          "attributes" : "T@\"VNRequestSpecifier\",R,N,V_landmarksOriginatingRequestSpecifier",
+          "name" : "landmarksOriginatingRequestSpecifier"
+        },
+        {
+          "attributes" : "T@\"VNRequestSpecifier\",R,N,V_landmarks3DOriginatingRequestSpecifier",
+          "name" : "landmarks3DOriginatingRequestSpecifier"
+        },
+        {
+          "attributes" : "T{CGRect={CGPoint=dd}{CGSize=dd}},R,N,V_unalignedBoundingBox",
+          "name" : "unalignedBoundingBox"
+        },
+        {
+          "attributes" : "T@\"VNFaceLandmarks3D\",R,N",
+          "name" : "landmarks3d"
+        },
+        {
+          "attributes" : "T@\"VNFaceLandmarks2D\",R,N",
+          "name" : "landmarks65"
+        },
+        {
+          "attributes" : "T@\"VNFaceRegionMap\",R,N,V_faceRegionMap",
+          "name" : "faceRegionMap"
+        },
+        {
+          "attributes" : "T@\"VNFaceAttributes\",R,N,V_faceAttributes",
+          "name" : "faceAttributes"
+        },
+        {
+          "attributes" : "T@\"NSDictionary\",R,C,N",
+          "name" : "expressionsAndConfidence"
+        },
+        {
+          "attributes" : "T@\"VNFaceLegacyFaceCore\",R,N,V_legacyFaceCore",
+          "name" : "legacyFaceCore"
+        },
+        {
+          "attributes" : "T{?=[4]},R,N",
+          "name" : "pose"
+        },
+        {
+          "attributes" : "T@\"VNRequestSpecifier\",R,N,V_poseOriginatingRequestSpecifier",
+          "name" : "poseOriginatingRequestSpecifier"
+        },
+        {
+          "attributes" : "T{?=},R,N",
+          "name" : "poseQuaternion"
+        },
+        {
+          "attributes" : "Tf,R,N",
+          "name" : "nameConfidence"
+        },
+        {
+          "attributes" : "TQ,N,V_faceId",
+          "name" : "faceId"
+        },
+        {
+          "attributes" : "T@\"VNFaceSegments\",R,N,V_faceSegments",
+          "name" : "faceSegments"
+        },
+        {
+          "attributes" : "T@\"VNRequestSpecifier\",R,N,V_faceCaptureQualityOriginatingRequestSpecifier",
+          "name" : "faceCaptureQualityOriginatingRequestSpecifier"
+        },
+        {
+          "attributes" : "Tf,R",
+          "name" : "blinkScore"
+        },
+        {
+          "attributes" : "Tf,R,N,GfaceJunkinessIndex",
+          "name" : "faceJunkinessIndex"
+        },
+        {
+          "attributes" : "Tf,R,N,GfaceOrientationIndex",
+          "name" : "faceOrientationIndex"
+        },
+        {
+          "attributes" : "T@\"VNFaceGaze\",R,N,V_gaze",
+          "name" : "gaze"
+        },
+        {
+          "attributes" : "T@\"VNFaceScreenGaze\",R,N,V_faceScreenGaze",
+          "name" : "faceScreenGaze"
+        },
+        {
+          "attributes" : "TB,R,N,GisBoundingBoxAligned,V_boundingBoxAligned",
+          "name" : "boundingBoxAligned"
+        },
+        {
+          "attributes" : "T@\"VNFaceLandmarks2D\",R,N",
+          "name" : "landmarks"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N",
+          "name" : "faceCaptureQuality"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_roll",
+          "name" : "roll"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_yaw",
+          "name" : "yaw"
+        },
+        {
+          "attributes" : "T@\"NSNumber\",R,N,V_pitch",
+          "name" : "pitch"
+        },
+        {
+          "attributes" : "T@\"NSUUID\",R,N,V_groupId",
+          "name" : "groupId"
+        },
+        {
+          "attributes" : "T@\"NSUUID\",C,V_identifier",
+          "name" : "identifier"
+        },
+        {
+          "attributes" : "T@\"VNPixelBufferObservation\",R,N,V_instanceSegmentationMask",
+          "name" : "instanceSegmentationMask"
+        },
+        {
+          "attributes" : "TB,R,N",
+          "name" : "providesBoundsNormalizedToROI"
+        },
+        {
+          "attributes" : "T{CGRect={CGPoint=dd}{CGSize=dd}},R,N,V_boundingBox",
+          "name" : "boundingBox"
+        },
+        {
+          "attributes" : "T@\"VNPixelBufferObservation\",R,N,V_globalSegmentationMask",
+          "name" : "globalSegmentationMask"
+        }
+      ],
+      "yaw" : 0.016027215868234634
+    }
+  ],
+  "schema" : "texture-image-inference-v1",
+  "source_camera_metadata_required" : false,
+  "stage" : "vision-private-finished"
+}

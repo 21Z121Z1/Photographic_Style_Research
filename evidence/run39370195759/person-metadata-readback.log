@@ -1,0 +1,42 @@
+(lldb) target create "/Users/runner/work/_temp/texture-producer-evidence/native-admission"
+Current executable set to '/Users/runner/work/_temp/texture-producer-evidence/native-admission' (arm64).
+(lldb) settings set -- target.run-args  "/Users/runner/work/_temp/texture-producer-evidence/texture-candidate.heic" "/Users/runner/work/_temp/texture-producer-evidence/person-debug-admission.json"
+(lldb) command source -s 0 '/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/texture-producer-20261020/person_readback.lldb'
+Executing commands in '/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/texture-producer-20261020/person_readback.lldb'.
+(lldb) breakpoint set --name '+[_NUTextureStyleProperties textureStylePropertiesFromImageMetadata:auxImageMetadata:error:]'
+Breakpoint 1: no locations (pending).
+WARNING:  Unable to resolve breakpoint to any actual locations.
+(lldb) breakpoint command add 1
+(lldb) run
+2026-10-20 04:34:47.541852+0000 native-admission[17420:46593] [native-admission] copyAuxiliaryDataInfoAtIndex:4106: *** ERROR: unsupported auxiliaryDataType: 'tag:apple.com,2026:photo:aux:semanticpersonmatte'
+2026-10-20 04:34:47.542859+0000 native-admission[17420:46593] [native-admission] copyAuxiliaryDataInfoAtIndex:4106: *** ERROR: unsupported auxiliaryDataType: 'tag:apple.com,2026:photo:aux:semanticskinmattev2'
+2026-10-20 04:34:47.542886+0000 native-admission[17420:46593] [native-admission] copyAuxiliaryDataInfoAtIndex:4106: *** ERROR: unsupported auxiliaryDataType: 'tag:apple.com,2026:photo:aux:semanticfaceskinmatte'
+2026-10-20 04:34:47.542905+0000 native-admission[17420:46593] [native-admission] copyAuxiliaryDataInfoAtIndex:4106: *** ERROR: unsupported auxiliaryDataType: 'tag:apple.com,2026:photo:aux:semanticteethmattev2'
+2026-10-20 04:34:47.542924+0000 native-admission[17420:46593] [native-admission] copyAuxiliaryDataInfoAtIndex:4106: *** ERROR: unsupported auxiliaryDataType: 'tag:apple.com,2026:photo:aux:semanticglassesmattev2'
+2026-10-20 04:34:47.542943+0000 native-admission[17420:46593] [native-admission] copyAuxiliaryDataInfoAtIndex:4106: *** ERROR: unsupported auxiliaryDataType: 'tag:apple.com,2026:photo:aux:semantichairmatte'
+1 location added to breakpoint 1
+(lldb)  expression -l objective-c -O -- (id)$x3
+{
+    DerivedVisionInstance1 =     {
+        height = 512;
+        pixelFormat = 1278226488;
+        width = 512;
+    };
+}
+(lldb)  continue
+Process 17420 resuming
+Command #2 'continue' continued the target.
+(lldb)  expression -l objective-c -O -- (id)$x3
+{
+    DerivedVisionInstance1 =     {
+        height = 512;
+        pixelFormat = 1278226488;
+        width = 512;
+    };
+}
+(lldb)  continue
+Process 17420 resuming
+Command #2 'continue' continued the target.
+Process 17420 launched: '/Users/runner/work/_temp/texture-producer-evidence/native-admission' (arm64)
+Process 17420 exited with status = 0 (0x00000000)
+(lldb) quit

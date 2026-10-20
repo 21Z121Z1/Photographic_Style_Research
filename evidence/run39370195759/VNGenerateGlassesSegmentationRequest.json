@@ -1,0 +1,57 @@
+{
+  "apple_implementation_patched" : false,
+  "image_size" : [
+    512,
+    512
+  ],
+  "input_exif_orientation" : 1,
+  "input_sha256" : "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+  "mode" : "VNGenerateGlassesSegmentationRequest",
+  "os" : "Version 27.0.1 (Build 26A434)",
+  "photos_used" : false,
+  "request_error" : "",
+  "request_revision" : 1,
+  "request_success" : true,
+  "results" : [
+    {
+      "class" : "VNPixelBufferObservation",
+      "confidence" : 1,
+      "pixel_buffer" : {
+        "available" : true,
+        "bytes_per_row" : 512,
+        "height" : 512,
+        "mask_values" : {
+          "centroid_row_order" : [
+            423.38157611040992,
+            373.46433448326729
+          ],
+          "maximum" : 0.20784313725490197,
+          "mean" : 0.00083259133731615942,
+          "nonfinite" : 0,
+          "nonzero_over_0_001" : 6777
+        },
+        "pixel_format" : 1278226488,
+        "planar" : 0,
+        "raw_with_padding_sha256" : "7fb8b9883f159e6010e2dc908aab0d69612c82fbfdb27a1e896155fe53072d23",
+        "width" : 512
+      },
+      "runtime_properties" : [
+        {
+          "attributes" : "T{CGRect={CGPoint=dd}{CGSize=dd}},R,N,V_croppedBoundingBox",
+          "name" : "croppedBoundingBox"
+        },
+        {
+          "attributes" : "T^{__CVBuffer=},R,N,V_pixelBuffer",
+          "name" : "pixelBuffer"
+        },
+        {
+          "attributes" : "T@\"NSString\",R,C,N,V_featureName",
+          "name" : "featureName"
+        }
+      ]
+    }
+  ],
+  "schema" : "texture-image-inference-v1",
+  "source_camera_metadata_required" : false,
+  "stage" : "vision-private-finished"
+}
