@@ -16,9 +16,26 @@ static NSString *SHA(NSData *data) {
     return result;
 }
 
+static id JSONCompatible(id value) {
+    if (!value || value == NSNull.null) return NSNull.null;
+    if ([value isKindOfClass:NSString.class] || [value isKindOfClass:NSNumber.class]) return value;
+    if ([value isKindOfClass:NSDictionary.class]) {
+        NSMutableDictionary *result = [NSMutableDictionary new];
+        for (id key in value) result[[key description]] = JSONCompatible(value[key]);
+        return result;
+    }
+    if ([value isKindOfClass:NSArray.class]) {
+        NSMutableArray *result = [NSMutableArray new];
+        for (id item in value) [result addObject:JSONCompatible(item)];
+        return result;
+    }
+    if ([value isKindOfClass:NSData.class]) return @{@"bytes": @([value length]), @"sha256": SHA(value)};
+    return [value description] ?: @"";
+}
+
 static void Write(NSDictionary *report, NSString *path) {
     NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:report options:NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys error:&error];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:JSONCompatible(report) options:NSJSONWritingPrettyPrinted | NSJSONWritingSortedKeys error:&error];
     if (!data || ![data writeToFile:path options:NSDataWritingAtomic error:&error]) {
         fprintf(stderr, "JSON_ERROR %s\n", error.description.UTF8String); exit(1);
     }
@@ -154,7 +171,11 @@ int main(int argc, char **argv) {
                             for (NSString *key in @[@"faceSegmentIndexToFlagMap", @"faceSegmentToSegmentMaskGrayLevelDictionary"]) {
                                 Require(segmentClass, key, @[], "@");
                                 id mapping = ((id(*)(id,SEL))objc_msgSend)(segmentClass, NSSelectorFromString(key));
-                                if (mapping) segmentInfo[key] = mapping;
+                                if ([mapping isKindOfClass:NSDictionary.class]) {
+                                    NSMutableDictionary *jsonMap = [NSMutableDictionary new];
+                                    for (id mapKey in mapping) jsonMap[[mapKey description]] = mapping[mapKey];
+                                    segmentInfo[key] = jsonMap;
+                                }
                             }
                             item[@"face_segments"] = segmentInfo;
                         }
