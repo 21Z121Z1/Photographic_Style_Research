@@ -212,6 +212,8 @@ def make_iloc(info, entries):
 
 
 def item_payload(data, entry, idat):
+    if entry.get("data_ref", 0) != 0:
+        raise ValueError("external item data is unsupported")
     output = bytearray()
     for extent in entry["extents"]:
         absolute = entry["base_offset"] + extent["offset"]
@@ -221,6 +223,8 @@ def item_payload(data, entry, idat):
             absolute += idat["data_start"]
         elif entry["method"] != 0:
             raise ValueError(f"unsupported construction method {entry['method']}")
+        if absolute < 0 or extent["length"] < 0 or absolute + extent["length"] > len(data):
+            raise ValueError(f"item {entry['id']} extent is outside the file")
         output += data[absolute:absolute + extent["length"]]
     return bytes(output)
 

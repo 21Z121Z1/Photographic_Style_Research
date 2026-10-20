@@ -195,7 +195,14 @@ int main(int argc, char **argv) {
             Call(io, @"setOutputImage:", @[Wrap(outputTexture, full)]);
             if ([io respondsToSelector:NSSelectorFromString(@"setInputSkinMask:")]) Call(io, @"setInputSkinMask:", @[Wrap(skinTexture, full)]);
             if ([io respondsToSelector:NSSelectorFromString(@"setInputFaceMask:")]) Call(io, @"setInputFaceMask:", @[Wrap(faceTexture, full)]);
-            Call(io, @"setInputInstanceMask:", @[Wrap(instanceTexture, full)]);
+            if ([effectKind isEqual:@"SkinSmoothStandalone"]) {
+                Call(io, @"setInputSkinMaskAndFullImageRegion:", @[Wrap(skinTexture, full)]);
+                Call(io, @"setFaceSkinMaskTextureAndFullImageRegion:", @[Wrap(faceTexture, full)]);
+                Call(io, @"setInstanceMaskTextureAndFullImageRegion:", @[Wrap(instanceTexture, full)]);
+                Call(io, @"setPersonMaskTextureAndFullImageRegion:", @[Wrap(instanceTexture, full)]);
+                Call(io, @"setInputFaceRect:", @[[NSValue valueWithRect:faceRect]]);
+                Call(io, @"setAllPersonDataForBlending:", @[@[person]]);
+            } else Call(io, @"setInputInstanceMask:", @[Wrap(instanceTexture, full)]);
             Call(io, @"setOutputPersonStats:", @[nativeStats]);
             id effect = Call([NSClassFromString([@"CMITextureStyles" stringByAppendingString:effectKind]) alloc], @"initWithOptionalMetalContext:", @[NSNull.null]);
             id parameters = nil;
@@ -220,7 +227,7 @@ int main(int argc, char **argv) {
             Call(effect, @"setInstanceID:", @[@1]);
             Call(effect, @"setFullImageSize:", @[[NSValue valueWithSize:full.size]]);
             Call(effect, @"setRegionToRender:", @[[NSValue valueWithRect:full]]);
-            Call(effect, @"setSkipRendering:", @[@YES]);
+            if ([effect respondsToSelector:NSSelectorFromString(@"setSkipRendering:")]) Call(effect, @"setSkipRendering:", @[@YES]);
             report[@"parameter_validation"] = Call(parameters, @"validate", @[]);
             id allocator = Call(effect, @"allocator", @[]);
             if (!allocator) {
@@ -285,6 +292,43 @@ int main(int argc, char **argv) {
                 Call(person, @"setImageStats:", @[@{effectName: nativeStats}]);
                 id normalized = Call(person, @"normalizeRelativeToCropRect:", @[[NSValue valueWithRect:full]]);
                 report[@"normalized_person_with_stats"] = Call(normalized, @"dictionaryRepresentation", @[]);
+                if ([effectKind isEqual:@"Mattify"] && [parameterSource isEqual:@"Studio"] && exposure == 0 && ![report[@"calculateStats"] intValue]) {
+                    report[@"stage"] = @"render_preview"; Write(report, out);
+                    Call(effect, @"setSkipRendering:", @[@NO]);
+                    id<MTLCommandBuffer> renderCommand = [queue commandBuffer];
+                    Call(nativeContext, @"setCommandBuffer:", @[renderCommand]);
+                    report[@"render_calculate_stats_status"] = Call(effect, @"calculateStats", @[]);
+                    report[@"render_process_status"] = Call(effect, @"process", @[]);
+                    Call(nativeContext, @"forceCommit", @[]);
+                    if (renderCommand.status < MTLCommandBufferStatusCommitted) [renderCommand commit];
+                    [renderCommand waitUntilCompleted];
+                    Call(nativeContext, @"waitForIdle", @[]);
+                    report[@"render_command_status"] = @(renderCommand.status);
+                    report[@"render_command_error"] = renderCommand.error.description ?: @"";
+                    NSMutableData *renderedPixels = [NSMutableData dataWithLength:imagePixels.length];
+                    [outputTexture getBytes:renderedPixels.mutableBytes bytesPerRow:width * 8 fromRegion:MTLRegionMake2D(0, 0, width, height) mipmapLevel:0];
+                    const __fp16 *renderedValues = renderedPixels.bytes;
+                    double absoluteError = 0, maximumError = 0; uint64_t changed = 0, invalid = 0;
+                    for (size_t i = 0; i < width * height; i++) {
+                        BOOL pixelChanged = NO;
+                        for (size_t c = 0; c < 3; c++) {
+                            double value = renderedValues[i * 4 + c];
+                            if (!isfinite(value)) { invalid++; continue; }
+                            double delta = fabs(value - (double)imageValues[i * 4 + c]);
+                            absoluteError += delta; maximumError = MAX(maximumError, delta); pixelChanged |= delta > 0.0001;
+                        }
+                        changed += pixelChanged;
+                    }
+                    report[@"rendered_pixels"] = @{@"sha256": SHA(renderedPixels), @"mean_absolute_RGB_change": @(absoluteError / (width * height * 3)), @"maximum_RGB_change": @(maximumError), @"changed_pixels_over_0_0001": @(changed), @"nonfinite": @(invalid)};
+                    CIImage *preview = [CIImage imageWithMTLTexture:outputTexture options:@{kCIImageColorSpace: (__bridge id)working}];
+                    CGImageRef previewImage = [context createCGImage:preview fromRect:full format:kCIFormatRGBA8 colorSpace:srgb];
+                    NSString *previewPath = [[out stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"mattify-native-preview.heic"];
+                    CGImageDestinationRef previewOut = CGImageDestinationCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:previewPath], CFSTR("public.heic"), 1, NULL);
+                    CGImageDestinationAddImage(previewOut, previewImage, (__bridge CFDictionaryRef)@{(__bridge id)kCGImageDestinationLossyCompressionQuality: @0.95});
+                    report[@"native_preview_finalized"] = @(CGImageDestinationFinalize(previewOut));
+                    CFRelease(previewOut); CGImageRelease(previewImage);
+                    report[@"stage"] = @"finished";
+                }
             }
             CVPixelBufferRelease(instanceMask); CGImageRelease(image); CFRelease(source);
             CGColorSpaceRelease(srgb); CGColorSpaceRelease(working);

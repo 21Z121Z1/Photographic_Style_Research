@@ -85,6 +85,28 @@ int main(int argc, char **argv) {
                 [resourceRows addObject:@{@"role": name, @"uri": [@"tag:apple.com,2026:photo:aux:" stringByAppendingString:name], @"file": file, @"width": mask[@"width"], @"height": mask[@"height"], @"sha256": SHA(bytes), @"size": @(bytes.length)}];
             }
             report[@"resources"] = resourceRows;
+            NSMutableArray *codecRows = [NSMutableArray new];
+            for (NSDictionary *row in resourceRows) {
+                // Public ImageIO only writes recognized auxiliary identifiers.
+                // Encode each actual mask through its supported L8 carrier; the
+                // assembler later assigns that distinct payload its final role.
+                NSString *codecFile = [@"codec-" stringByAppendingFormat:@"%@.heic", row[@"role"]];
+                NSString *path = [directory stringByAppendingPathComponent:codecFile];
+                CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:path], CFSTR("public.heic"), 1, NULL);
+                CGImageDestinationAddImage(destination, image, (__bridge CFDictionaryRef)@{(__bridge id)kCGImageDestinationLossyCompressionQuality: @0.95});
+                CGMutableImageMetadataRef metadata = CGImageMetadataCreateMutable(); CFErrorRef metadataError = NULL;
+                CGImageMetadataRegisterNamespaceForPrefix(metadata, CFSTR("http://ns.apple.com/semanticSegmentationMatte/1.0/"), CFSTR("semanticSegmentationMatte"), &metadataError);
+                CGImageMetadataSetValueWithPath(metadata, NULL, CFSTR("semanticSegmentationMatte:SemanticSegmentationMatteVersion"), CFSTR("65536"));
+                NSDictionary *mask = masks[row[@"role"]];
+                NSDictionary *aux = @{(__bridge id)kCGImageAuxiliaryDataInfoData: mask[@"data"], (__bridge id)kCGImageAuxiliaryDataInfoDataDescription: @{(__bridge id)kCGImagePropertyWidth: row[@"width"], (__bridge id)kCGImagePropertyHeight: row[@"height"], (__bridge id)kCGImagePropertyBytesPerRow: row[@"width"], (__bridge id)kCGImagePropertyPixelFormat: @(kCVPixelFormatType_OneComponent8)}, (__bridge id)kCGImageAuxiliaryDataInfoMetadata: (__bridge id)metadata};
+                CGImageDestinationAddAuxiliaryDataInfo(destination, kCGImageAuxiliaryDataTypeSemanticSegmentationSkinMatte, (__bridge CFDictionaryRef)aux);
+                BOOL finalized = CGImageDestinationFinalize(destination); CFRelease(destination); CFRelease(metadata);
+                CGImageSourceRef encoded = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:path], NULL);
+                CFDictionaryRef read = encoded ? CGImageSourceCopyAuxiliaryDataInfoAtIndex(encoded, 0, kCGImageAuxiliaryDataTypeSemanticSegmentationSkinMatte) : NULL;
+                [codecRows addObject:@{@"role": row[@"role"], @"file": codecFile, @"finalized": @(finalized), @"native_auxiliary_readback": @(read != NULL), @"readback": read ? JSONCompatible((__bridge id)read) : @{}}];
+                if (read) CFRelease(read); if (encoded) CFRelease(encoded);
+            }
+            report[@"native_mask_codec_controls"] = codecRows;
             for (NSString *name in @[@"control.heic", @"inferred-mattes.heic"]) {
                 NSString *path = [directory stringByAppendingPathComponent:name];
                 CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:path], CFSTR("public.heic"), 1, NULL);

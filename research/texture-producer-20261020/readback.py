@@ -1,4 +1,4 @@
-"""Recover exact text files from the authorized GitHub job-log response."""
+"""Recover exact research evidence and generated files from job-log frames."""
 import argparse
 import base64
 import hashlib
@@ -29,7 +29,8 @@ def recover(raw, expected_head):
             payload = decoder.decompress(compressed) + decoder.flush()
             if not decoder.eof or decoder.unused_data or decoder.unconsumed_tail:
                 raise ValueError('incomplete or extra compressed bytes')
-            payload.decode('utf-8')
+            if pathlib.PurePosixPath(active).suffix in {'.json', '.txt', '.log'}:
+                payload.decode('utf-8')
             files[active] = payload
             active, last_end = None, index
         elif active is not None:
