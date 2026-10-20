@@ -1,0 +1,2600 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "freeze_sha256": "d5027a527fa100f3b4e4a85a0b47c5f5db56cc407b3721353f2697e27e8034e8",
+  "scope": "Reuse original S5 and general S8 saved native counterfactual arrays; no S15/S16 oracle-error-selected point patches, no new lattice/native precision search. New work is strength controls and practical quality metrics on one original 512x384 consumer capture, not a full-resolution/five-photo pass.",
+  "capture": "IMG_2810, native consumer tone+.35, type/context from original S5/S8",
+  "shape": [
+    384,
+    512,
+    3
+  ],
+  "photo_count": 1,
+  "new_holdouts": 0,
+  "full_original_resolution": false,
+  "new_native_pixel_execution": false,
+  "new_preimage_search": false,
+  "oracle_error_selected_S15_S16_patch_used": false,
+  "native_output_vs_CI_linear_P3_max_abs": 0.0,
+  "native_target_parameter_only_controls": [
+    {
+      "changed_bytes_outside_target": 0,
+      "changes": [
+        {
+          "after": 0,
+          "before": 0.503125011920929,
+          "offset": 592,
+          "SSRFG_field": 9
+        }
+      ],
+      "difference_from_native": {
+        "half_differing_components": 1794,
+        "max_abs": 0.020263671875,
+        "max_relative": 0.048507462686567165,
+        "pixels": 196608,
+        "psnr_peak1_db": 75.41691255192737
+      },
+      "operator": "skin-color",
+      "params_after_sha256": "f33bbfb089ec0cd792f4894d003480798c1125fcef9c19d9e15cc31b9f84fae9",
+      "params_before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f"
+    },
+    {
+      "changed_bytes_outside_target": 0,
+      "changes": [
+        {
+          "after": 0,
+          "before": -0.22238825261592865,
+          "offset": 596,
+          "SSRFG_field": 10
+        }
+      ],
+      "difference_from_native": {
+        "half_differing_components": 4552,
+        "max_abs": 0.009033203125,
+        "max_relative": 0.652542372881356,
+        "pixels": 196608,
+        "psnr_peak1_db": 80.11778803293844
+      },
+      "operator": "skin-brightness",
+      "params_after_sha256": "77674744636fad3d5d7f0353c7f447a81458fb2195b6bafdb6bc3374e7316038",
+      "params_before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f"
+    },
+    {
+      "changed_bytes_outside_target": 0,
+      "changes": [
+        {
+          "after": 0,
+          "before": 0.503125011920929,
+          "offset": 592,
+          "SSRFG_field": 9
+        },
+        {
+          "after": 0,
+          "before": -0.22238825261592865,
+          "offset": 596,
+          "SSRFG_field": 10
+        }
+      ],
+      "difference_from_native": {
+        "half_differing_components": 6346,
+        "max_abs": 0.020263671875,
+        "max_relative": 0.652542372881356,
+        "pixels": 196608,
+        "psnr_peak1_db": 74.14983383520395
+      },
+      "operator": "skin-both",
+      "params_after_sha256": "8b36227d444c6e7caf3c96910dfc95aaa155fb4e49b7f2b608dc49ab1cec6e6d",
+      "params_before_sha256": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f"
+    }
+  ],
+  "same_native_context": true,
+  "input_files_before_after_SHA_unchanged": true,
+  "input_source_hashes": {
+    "s5/selected/consumer-toneP035/renderer.f32": "10ed708e771f8307818aa608d11a03ef2d25d851f3a0b39ee1c33e63f8baa7f8",
+    "s5/selected/consumer-toneP035/semantic/bytes-0.bin": "906f04f65694d206fb5f08877c236a9d4daf197a37741a36a091baf1d6d8d2fe",
+    "s5/selected/consumer-toneP035/semantic/native.f16": "62dab7e7446e0c5146d908917768e3cab7113cc4346f3daf60243da007269a5d",
+    "s5/selected/consumer-toneP035/semantic/bytes-5.bin": "f6b74377214f50820a2a8f63c9600a53fce8d24fc9b96cd7581831a52ceee4f9",
+    "s5/selected/consumer-toneP035/semantic/skin-brightness-removed-oracle.f16": "a4ff13d856a98ccf41ccec75ec4bcf8055135c03d71d6e9ee22000d61a6a4eb8",
+    "s5/selected/consumer-toneP035/semantic/results.json": "d40bece227595a3ae95b2e2209b07975d5515313361747b545a9027db840ab6f",
+    "s5/selected/consumer-toneP035/semantic/skin-color-removed-oracle.f16": "6b0751dd563a7c4f4c9cbd9d752261dddc2a71f43773f4de5b506431fd791343",
+    "s5/selected/consumer-toneP035/semantic/texture-11.bin": "5b7d8570d16b6099de18c9b613852f42bfadb1e65bb9e4c5727346048a86785e",
+    "s5/selected/consumer-toneP035/semantic/buffer-1.bin": "b4c6ad59500b5f8af3dbd6ab1f4d0dc89b6773b870c4bc14008962cb00c0d46f",
+    "s5/selected/consumer-toneP035/semantic/skin-both-removed-oracle.f16": "4cb6661dfee583b26a1e4ee09514d39cc4282a7c41fa8079322af2fbdd42bd37",
+    "s8/selected/native/s8-context.json": "279ba8d30d744f96021f0461edf7a66d256298ddc2dbbcec96924ca6e80d8aeb",
+    "s8/selected/native/original-eligible.u8": "7dc1c1f1be0bc3a46c181bbb6e65342d350d7b3c84b3c4e0fce50ff7358cbfc6",
+    "s8/selected/native/optimizer-support.u8": "42b70877a9ae97ba4c129a9b76238edd048efef4d90a5c5a13eb2ecf5817311d",
+    "s8/selected/native/s8-results.json": "504d7da74935da63702adda377c3344582238e0c89232c892df381f9b096ec96",
+    "s8/selected/native/skin-color-new-neutral.f16": "71bc4536f2d0184eebac6a2eff576fe36e40cb86af02aec137998dc0d8e8af00",
+    "s8/selected/native/skin-brightness-new-neutral.f16": "5575aba9e5d81d51afa8b5e427fdd2e95fbd2795b1ab332fca8e9cc706f9b5c7",
+    "s8/selected/native/new-roundtrip.f16": "804d75cfaef2e183315c2c00e26f0306cfee0bf1e00ff3ddacff605bbd53877c",
+    "s8/selected/native/skin-both-new-neutral.f16": "7089fe95407a88eb3ccd86fa7c8e5d50d1d1494f34c5ee3be57c4002b92d2cba"
+  },
+  "display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0,
+    "orientation": "Existing irot3 capture; rotate90 clockwise for display only"
+  },
+  "preview_input_checks": [
+    {
+      "name": "skin-color-0",
+      "before_sha256": "5dc854fb2b9e5cd7fb2cd8d27b7422d046faa52aef02273fa9ea41e192ca8582",
+      "after_sha256": "5dc854fb2b9e5cd7fb2cd8d27b7422d046faa52aef02273fa9ea41e192ca8582"
+    },
+    {
+      "name": "skin-color-0.5",
+      "before_sha256": "0226227229c814f7f4d15044a40548c3de80f99a5b1bec0e51cde3044cd1b975",
+      "after_sha256": "0226227229c814f7f4d15044a40548c3de80f99a5b1bec0e51cde3044cd1b975"
+    },
+    {
+      "name": "skin-color-0.5-ROI0",
+      "before_sha256": "83f69e7d0e5c6430fe767e39d4e2b7606c6402504dbad36a06ded349cf46d488",
+      "after_sha256": "83f69e7d0e5c6430fe767e39d4e2b7606c6402504dbad36a06ded349cf46d488"
+    },
+    {
+      "name": "skin-color-0.5-ROI1",
+      "before_sha256": "aabfc8fa3befaa832c16184b71bbf18e3a84cc1d2ab1dbe5a1dba2121b5c4254",
+      "after_sha256": "aabfc8fa3befaa832c16184b71bbf18e3a84cc1d2ab1dbe5a1dba2121b5c4254"
+    },
+    {
+      "name": "skin-color-1",
+      "before_sha256": "9a02742addbeba648e2ccaec0c67baf58bee0022714549ee5f8239cfe54be933",
+      "after_sha256": "9a02742addbeba648e2ccaec0c67baf58bee0022714549ee5f8239cfe54be933"
+    },
+    {
+      "name": "skin-color-1-ROI0",
+      "before_sha256": "69b5a42b7ba8d795693302b337d3dca1dae53b1cf0e7caaa119927093f53a865",
+      "after_sha256": "69b5a42b7ba8d795693302b337d3dca1dae53b1cf0e7caaa119927093f53a865"
+    },
+    {
+      "name": "skin-color-1-ROI1",
+      "before_sha256": "a3826cd8363fff6cfc52b05a896d4be52a2e1f528b7eda86f2ba1c5e83049270",
+      "after_sha256": "a3826cd8363fff6cfc52b05a896d4be52a2e1f528b7eda86f2ba1c5e83049270"
+    },
+    {
+      "name": "skin-brightness-0",
+      "before_sha256": "5dc854fb2b9e5cd7fb2cd8d27b7422d046faa52aef02273fa9ea41e192ca8582",
+      "after_sha256": "5dc854fb2b9e5cd7fb2cd8d27b7422d046faa52aef02273fa9ea41e192ca8582"
+    },
+    {
+      "name": "skin-brightness-0.5",
+      "before_sha256": "8af16bc4a278f94989a2bc03b1203cc0b579718295d8589432f65df8b37432b2",
+      "after_sha256": "8af16bc4a278f94989a2bc03b1203cc0b579718295d8589432f65df8b37432b2"
+    },
+    {
+      "name": "skin-brightness-0.5-ROI0",
+      "before_sha256": "20463d30bd6f5eadf39469c5ca23441895e290454462ea95c3679866aa02b3db",
+      "after_sha256": "20463d30bd6f5eadf39469c5ca23441895e290454462ea95c3679866aa02b3db"
+    },
+    {
+      "name": "skin-brightness-0.5-ROI1",
+      "before_sha256": "6364bcc0d758a8f5b7d07d97054e6a5b257773e175144c8978a2867d1801074e",
+      "after_sha256": "6364bcc0d758a8f5b7d07d97054e6a5b257773e175144c8978a2867d1801074e"
+    },
+    {
+      "name": "skin-brightness-1",
+      "before_sha256": "1f78185b6bbf2102198165a115059c889c478d607df396dabc32b09bb37cb1ff",
+      "after_sha256": "1f78185b6bbf2102198165a115059c889c478d607df396dabc32b09bb37cb1ff"
+    },
+    {
+      "name": "skin-brightness-1-ROI0",
+      "before_sha256": "6bfbdeacb83b48a13fb8c9fe2ff5505daca7727f61cc39ce62daff8fe316c67f",
+      "after_sha256": "6bfbdeacb83b48a13fb8c9fe2ff5505daca7727f61cc39ce62daff8fe316c67f"
+    },
+    {
+      "name": "skin-brightness-1-ROI1",
+      "before_sha256": "e7dd90cfd91a966c32b4c4ad5245e9e5d3d1455cfb549523801bb173f8da7f28",
+      "after_sha256": "e7dd90cfd91a966c32b4c4ad5245e9e5d3d1455cfb549523801bb173f8da7f28"
+    },
+    {
+      "name": "skin-both-0",
+      "before_sha256": "5dc854fb2b9e5cd7fb2cd8d27b7422d046faa52aef02273fa9ea41e192ca8582",
+      "after_sha256": "5dc854fb2b9e5cd7fb2cd8d27b7422d046faa52aef02273fa9ea41e192ca8582"
+    },
+    {
+      "name": "skin-both-0.5",
+      "before_sha256": "7b3767581a21daa42dbc9c93a3dc287a979350e5514116549b1a592b2ee07c80",
+      "after_sha256": "7b3767581a21daa42dbc9c93a3dc287a979350e5514116549b1a592b2ee07c80"
+    },
+    {
+      "name": "skin-both-0.5-ROI0",
+      "before_sha256": "71d5313104099ffbdce3eb60d007a55e6353ad908ec214b72db285b4acd1af62",
+      "after_sha256": "71d5313104099ffbdce3eb60d007a55e6353ad908ec214b72db285b4acd1af62"
+    },
+    {
+      "name": "skin-both-0.5-ROI1",
+      "before_sha256": "44350437a2a8cf00008e4d6bcc0671742344aa4bccdf93cf5d3d1fef7cafd2a7",
+      "after_sha256": "44350437a2a8cf00008e4d6bcc0671742344aa4bccdf93cf5d3d1fef7cafd2a7"
+    },
+    {
+      "name": "skin-both-1",
+      "before_sha256": "b3979f3ac8c8488e71a267bfd38e0cd47959df6c4758383648e4dd1728ebb145",
+      "after_sha256": "b3979f3ac8c8488e71a267bfd38e0cd47959df6c4758383648e4dd1728ebb145"
+    },
+    {
+      "name": "skin-both-1-ROI0",
+      "before_sha256": "5dd491deaf85ba5b9818bdeaabe331cd07e087134048d43853abc23d474de1c9",
+      "after_sha256": "5dd491deaf85ba5b9818bdeaabe331cd07e087134048d43853abc23d474de1c9"
+    },
+    {
+      "name": "skin-both-1-ROI1",
+      "before_sha256": "6515d3e44f5ca48d979d2f094bbb6ee8fa70dd6f31d18530045b8ac01114399d",
+      "after_sha256": "6515d3e44f5ca48d979d2f094bbb6ee8fa70dd6f31d18530045b8ac01114399d"
+    }
+  ],
+  "rows": [
+    {
+      "operator": "skin-color",
+      "strength": 0,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 887,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 887,
+        "finite_pixels": 887,
+        "finite_coverage_of_frame": 0.004511515299479167,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "chosen_transform_roundtrip_max_abs": 0.0,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-color",
+      "strength": 0.25,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 887,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0010230283628188004
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0008381947680389879
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00016415119171142578,
+        "PSNR_peak1_dB": 106.96720071221631,
+        "legacy_gt_1e3_pixels_diagnostic_only": 1
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0010230283628188004
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0008381947680389879
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00016415119171142578,
+        "PSNR_peak1_dB": 106.74842032310772,
+        "legacy_gt_1e3_pixels_diagnostic_only": 1
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.000250274692796638,
+          "max": 0.0010230283628188004
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.00014202630964783692,
+          "max": 0.0008381947680389879
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00016415119171142578,
+        "PSNR_peak1_dB": 93.57554372206751,
+        "legacy_gt_1e3_pixels_diagnostic_only": 1
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 887,
+        "finite_pixels": 887,
+        "finite_coverage_of_frame": 0.004511515299479167,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0004557550946910953,
+          "p99": 0.0006657141120301209,
+          "max": 0.0010230283628188004
+        },
+        "EV_abs_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0004371709529741827,
+          "p99": 0.0006334848395763611,
+          "max": 0.0008381947680389879
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00016415119171142578,
+        "PSNR_peak1_dB": 83.84550061110957,
+        "legacy_gt_1e3_pixels_diagnostic_only": 1
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.01810965274112547
+      },
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0005767301316479737,
+        "p99": 0.002667967702491135,
+        "max": 0.010743006564500831
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.0020625644695310323,
+        "p99": 0.007424486841161679,
+        "max": 0.03153297345354994
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-color",
+      "strength": 0.5,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 887,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.002044963202032294
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0016763087483941338
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00032842159271240234,
+        "PSNR_peak1_dB": 100.94041602921672,
+        "legacy_gt_1e3_pixels_diagnostic_only": 37
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.002044963202032294
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0016763087483941338
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00032842159271240234,
+        "PSNR_peak1_dB": 100.72163564010815,
+        "legacy_gt_1e3_pixels_diagnostic_only": 37
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0005006644159744819,
+          "max": 0.002044963202032294
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0002839776775128662,
+          "max": 0.0016763087483941338
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00032842159271240234,
+        "PSNR_peak1_dB": 87.54875903906793,
+        "legacy_gt_1e3_pixels_diagnostic_only": 37
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 887,
+        "finite_pixels": 887,
+        "finite_coverage_of_frame": 0.004511515299479167,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0009117328891597089,
+          "p99": 0.0013318457082590754,
+          "max": 0.002044963202032294
+        },
+        "EV_abs_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0008744466163271787,
+          "p99": 0.0012670014176029171,
+          "max": 0.0016763087483941338
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.00032842159271240234,
+        "PSNR_peak1_dB": 77.81830638194607,
+        "legacy_gt_1e3_pixels_diagnostic_only": 34
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.03621930548225094
+      },
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0011534602632959474,
+        "p99": 0.00533593540498227,
+        "max": 0.021486013129001662
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.004125128939062065,
+        "p99": 0.014848973682323357,
+        "max": 0.06306594690709988
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-color",
+      "strength": 0.75,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 887,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0030659292426692326
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0025144798981542008
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004925727844238281,
+        "PSNR_peak1_dB": 97.41232816072296,
+        "legacy_gt_1e3_pixels_diagnostic_only": 75
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0030659292426692326
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0025144798981542008
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004925727844238281,
+        "PSNR_peak1_dB": 97.19354777161439,
+        "legacy_gt_1e3_pixels_diagnostic_only": 75
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0007510541391523259,
+          "max": 0.0030659292426692326
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0004260600490434638,
+          "max": 0.0025144798981542008
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004925727844238281,
+        "PSNR_peak1_dB": 84.02067117057416,
+        "legacy_gt_1e3_pixels_diagnostic_only": 75
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 887,
+        "finite_pixels": 887,
+        "finite_coverage_of_frame": 0.004511515299479167,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0013675092889533303,
+          "p99": 0.001998449560918415,
+          "max": 0.0030659292426692326
+        },
+        "EV_abs_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0013118379293797005,
+          "p99": 0.0019004703925536621,
+          "max": 0.0025144798981542008
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004925727844238281,
+        "PSNR_peak1_dB": 74.2897786403363,
+        "legacy_gt_1e3_pixels_diagnostic_only": 71
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.05432895822337641
+      },
+      "chosen_transform_roundtrip_max_abs": 5.960464477539063e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0017301903949439215,
+        "p99": 0.008003903107473403,
+        "max": 0.0322290196935025
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.006187693408593096,
+        "p99": 0.02227346052348504,
+        "max": 0.09459892036064987
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-color",
+      "strength": 1,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 887,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 94.90725171295024,
+        "legacy_gt_1e3_pixels_diagnostic_only": 91
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 94.68847132384167,
+        "legacy_gt_1e3_pixels_diagnostic_only": 91
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0010015588927113754,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0005680674490697844,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 81.51559472280144,
+        "legacy_gt_1e3_pixels_diagnostic_only": 91
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 887,
+        "finite_pixels": 887,
+        "finite_coverage_of_frame": 0.004511515299479167,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0018231857562991801,
+          "p99": 0.0026654709434516966,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0017493236934013258,
+          "p99": 0.002533970884945664,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 71.78427211501653,
+        "legacy_gt_1e3_pixels_diagnostic_only": 82
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.07243861096450188
+      },
+      "chosen_transform_roundtrip_max_abs": 0.0,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0023069205265918947,
+        "p99": 0.01067187080996454,
+        "max": 0.042972026258003324
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.00825025787812413,
+        "p99": 0.029697947364646714,
+        "max": 0.12613189381419976
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 0,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 1733,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 1512,
+        "finite_pixels": 1512,
+        "finite_coverage_of_frame": 0.0076904296875,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "chosen_transform_roundtrip_max_abs": 0.0,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 0.25,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 1733,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000244140625,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.20345173326901655
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.021226827974661428
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0028583407402038574,
+        "PSNR_peak1_dB": 115.52884052636966,
+        "legacy_gt_1e3_pixels_diagnostic_only": 72
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000244140625,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0017015259037678207
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0008651899901831698
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0002021193504333496,
+        "PSNR_peak1_dB": 115.32790393735797,
+        "legacy_gt_1e3_pixels_diagnostic_only": 9
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000244140625,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0005060298455862309,
+          "max": 0.0017015259037678207
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0003867757625588334,
+          "max": 0.0008651899901831698
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0002021193504333496,
+        "PSNR_peak1_dB": 102.15502733631774,
+        "legacy_gt_1e3_pixels_diagnostic_only": 9
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 1512,
+        "finite_pixels": 1512,
+        "finite_coverage_of_frame": 0.0076904296875,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000244140625,
+        "RGB_relative_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0005365940513310473,
+          "p99": 0.0008609911115576402,
+          "max": 0.0016315084226863569
+        },
+        "EV_abs_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0004133310742355586,
+          "p99": 0.000674649061207079,
+          "max": 0.0008651899901831698
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0002021193504333496,
+        "PSNR_peak1_dB": 94.57192543247325,
+        "legacy_gt_1e3_pixels_diagnostic_only": 8
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.1140945736649357
+      },
+      "chosen_transform_roundtrip_max_abs": 7.450580596923828e-09,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.003316453952509003,
+        "p99": 0.013194793803015832,
+        "max": 0.043143661528638876
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.011523237241802584,
+        "p99": 0.03191660562066894,
+        "max": 0.10810924646941833
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 0.5,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 1733,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.44829588949379107
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.042261330087491604
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.005570054054260254,
+        "PSNR_peak1_dB": 109.51993873410557,
+        "legacy_gt_1e3_pixels_diagnostic_only": 191
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0034002341628479294
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.001730771780217312
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004037022590637207,
+        "PSNR_peak1_dB": 109.3184933399971,
+        "legacy_gt_1e3_pixels_diagnostic_only": 92
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0010123495848678931,
+          "max": 0.0034002341628479294
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0007735360389003654,
+          "max": 0.001730771780217312
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004037022590637207,
+        "PSNR_peak1_dB": 96.1456167389569,
+        "legacy_gt_1e3_pixels_diagnostic_only": 92
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 1512,
+        "finite_pixels": 1512,
+        "finite_coverage_of_frame": 0.0076904296875,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0010729125457488553,
+          "p99": 0.0017224760433893975,
+          "max": 0.003265725236281515
+        },
+        "EV_abs_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0008254886265070868,
+          "p99": 0.0013478437445049096,
+          "max": 0.001730771780217312
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004037022590637207,
+        "PSNR_peak1_dB": 88.56298173427467,
+        "legacy_gt_1e3_pixels_diagnostic_only": 86
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.2281891473298714
+      },
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.006632907905018006,
+        "p99": 0.026389587606031665,
+        "max": 0.08628732305727775
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.023046474483605167,
+        "p99": 0.06383321124133788,
+        "max": 0.21621849293883666
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 0.75,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 1733,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000732421875,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.7429541250036967
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.06313348883137879
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.008141160011291504,
+        "PSNR_peak1_dB": 106.00972471753462,
+        "legacy_gt_1e3_pixels_diagnostic_only": 313
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000732421875,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.005095959033435167
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0025965604415155983
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006045103073120117,
+        "PSNR_peak1_dB": 105.80779502617,
+        "legacy_gt_1e3_pixels_diagnostic_only": 172
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000732421875,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.001518891240496952,
+          "max": 0.005095959033435167
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0011602642092261408,
+          "max": 0.0025965604415155983
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006045103073120117,
+        "PSNR_peak1_dB": 92.63491842512978,
+        "legacy_gt_1e3_pixels_diagnostic_only": 172
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 1512,
+        "finite_pixels": 1512,
+        "finite_coverage_of_frame": 0.0076904296875,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.000732421875,
+        "RGB_relative_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.001608924021384628,
+          "p99": 0.002584646695656555,
+          "max": 0.004902536418785019
+        },
+        "EV_abs_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0012366065366688063,
+          "p99": 0.0020196049979552388,
+          "max": 0.0025965604415155983
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006045103073120117,
+        "PSNR_peak1_dB": 85.0527129617003,
+        "legacy_gt_1e3_pixels_diagnostic_only": 162
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.3422837209948071
+      },
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.00994936185752701,
+        "p99": 0.0395843814090475,
+        "max": 0.12943098458591665
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.03456971172540775,
+        "p99": 0.09574981686200681,
+        "max": 0.32432773940825504
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-brightness",
+      "strength": 1,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 1733,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 1.0975609756097562
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.08386713054556431
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.010577678680419922,
+        "PSNR_peak1_dB": 103.52236590588846,
+        "legacy_gt_1e3_pixels_diagnostic_only": 371
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.006788866259334691
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 103.31997481687084,
+        "legacy_gt_1e3_pixels_diagnostic_only": 205
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0020257025542579714,
+          "max": 0.006788866259334691
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0015469770436742968,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 90.14709821583062,
+        "legacy_gt_1e3_pixels_diagnostic_only": 205
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 1512,
+        "finite_pixels": 1512,
+        "finite_coverage_of_frame": 0.0076904296875,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.00214466125150537,
+          "p99": 0.003447297417499334,
+          "max": 0.0065420560747663555
+        },
+        "EV_abs_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0016464704157998296,
+          "p99": 0.0026899187611613322,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 82.56533485617004,
+        "legacy_gt_1e3_pixels_diagnostic_only": 192
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.4563782946597428
+      },
+      "chosen_transform_roundtrip_max_abs": 0.0,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.013265815810036012,
+        "p99": 0.05277917521206333,
+        "max": 0.1725746461145555
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.046092948967210334,
+        "p99": 0.12766642248267576,
+        "max": 0.4324369858776733
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-both",
+      "strength": 0,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 2620,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 2399,
+        "finite_pixels": 2399,
+        "finite_coverage_of_frame": 0.012201944986979166,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0,
+        "RGB_relative_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_abs_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0,
+        "PSNR_peak1_dB": "inf",
+        "legacy_gt_1e3_pixels_diagnostic_only": 0
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "chosen_transform_roundtrip_max_abs": 0.0,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-both",
+      "strength": 0.25,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 2620,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.20345173326901655
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.021226827974661428
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0028583407402038574,
+        "PSNR_peak1_dB": 106.40096044994735,
+        "legacy_gt_1e3_pixels_diagnostic_only": 73
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0017015259037678207
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0008651899901831698
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0002021193504333496,
+        "PSNR_peak1_dB": 106.18435735103475,
+        "legacy_gt_1e3_pixels_diagnostic_only": 10
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.00020178508558077988,
+          "p99": 0.0005827511904825794,
+          "max": 0.0017015259037678207
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 7.413542180368797e-05,
+          "p99": 0.0004927293498213409,
+          "max": 0.0008651899901831698
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0002021193504333496,
+        "PSNR_peak1_dB": 93.01148074999453,
+        "legacy_gt_1e3_pixels_diagnostic_only": 10
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 2399,
+        "finite_pixels": 2399,
+        "finite_coverage_of_frame": 0.012201944986979166,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00048828125,
+        "RGB_relative_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.000499520939824004,
+          "p99": 0.0007978008730266405,
+          "max": 0.0016315084226863569
+        },
+        "EV_abs_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.00042187267965733513,
+          "p99": 0.0006472276666224513,
+          "max": 0.0008651899901831698
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0002021193504333496,
+        "PSNR_peak1_dB": 87.58152171184057,
+        "legacy_gt_1e3_pixels_diagnostic_only": 9
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.00020696263792613215,
+        "max": 0.1140945736649357
+      },
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.004047142107113625,
+        "p99": 0.013315381989650902,
+        "max": 0.043143661528638876
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.00015075294607344879,
+        "p95": 0.012160362072580207,
+        "p99": 0.03236286188047559,
+        "max": 0.10810924646941833
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-both",
+      "strength": 0.5,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 2620,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.44829588949379107
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.042261330087491604
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.005570054054260254,
+        "PSNR_peak1_dB": 100.37635781834337,
+        "legacy_gt_1e3_pixels_diagnostic_only": 228
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0034002341628479294
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.001730771780217312
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004037022590637207,
+        "PSNR_peak1_dB": 100.15968510861812,
+        "legacy_gt_1e3_pixels_diagnostic_only": 129
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.00040365656318443714,
+          "p99": 0.0011650708021123057,
+          "max": 0.0034002341628479294
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.00014823518656638447,
+          "p99": 0.0009855813794848727,
+          "max": 0.001730771780217312
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004037022590637207,
+        "PSNR_peak1_dB": 86.9868085075779,
+        "legacy_gt_1e3_pixels_diagnostic_only": 129
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 2399,
+        "finite_pixels": 2399,
+        "finite_coverage_of_frame": 0.012201944986979166,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0009988935400613733,
+          "p99": 0.0015949440107564555,
+          "max": 0.003265725236281515
+        },
+        "EV_abs_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0008460089988900412,
+          "p99": 0.0012944451405168544,
+          "max": 0.001730771780217312
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0004037022590637207,
+        "PSNR_peak1_dB": 81.55662341593819,
+        "legacy_gt_1e3_pixels_diagnostic_only": 120
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0004139252758522643,
+        "max": 0.2281891473298714
+      },
+      "chosen_transform_roundtrip_max_abs": 2.9802322387695312e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.00809428421422725,
+        "p99": 0.026630763979301805,
+        "max": 0.08628732305727775
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.00030150589214689757,
+        "p95": 0.024320724145160413,
+        "p99": 0.06472572376095118,
+        "max": 0.21621849293883666
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-both",
+      "strength": 0.75,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 2620,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.7429541250036967
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.06313348883137879
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.008141160011291504,
+        "PSNR_peak1_dB": 96.85044302791115,
+        "legacy_gt_1e3_pixels_diagnostic_only": 388
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.005095959033435167
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0025965604415155983
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006045103073120117,
+        "PSNR_peak1_dB": 96.63370413947922,
+        "legacy_gt_1e3_pixels_diagnostic_only": 247
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0006055158611944961,
+          "p99": 0.0017472174222313522,
+          "max": 0.005095959033435167
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.00022234936856155548,
+          "p99": 0.0014785302998460688,
+          "max": 0.0025965604415155983
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006045103073120117,
+        "PSNR_peak1_dB": 83.460827538439,
+        "legacy_gt_1e3_pixels_diagnostic_only": 247
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 2399,
+        "finite_pixels": 2399,
+        "finite_coverage_of_frame": 0.012201944986979166,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.00146484375,
+        "RGB_relative_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0014979763045155719,
+          "p99": 0.002391555818351148,
+          "max": 0.004902536418785019
+        },
+        "EV_abs_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0012725601969561554,
+          "p99": 0.0019416418411888835,
+          "max": 0.0025965604415155983
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006045103073120117,
+        "PSNR_peak1_dB": 78.03038424199721,
+        "legacy_gt_1e3_pixels_diagnostic_only": 233
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0006208879137783965,
+        "max": 0.3422837209948071
+      },
+      "chosen_transform_roundtrip_max_abs": 5.960464477539063e-08,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.012141426321340876,
+        "p99": 0.03994614596895271,
+        "max": 0.12943098458591665
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0004522588382203464,
+        "p95": 0.03648108621774063,
+        "p99": 0.09708858564142678,
+        "max": 0.32432773940825504
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    },
+    {
+      "operator": "skin-both",
+      "strength": 1,
+      "shape": [
+        384,
+        512,
+        3
+      ],
+      "ratio_valid_pixels": 196607,
+      "ratio_valid_coverage": 0.9999949137369791,
+      "preserved_outside_ratio_domain_pixels": 1,
+      "candidate_nonpositive_pixels": 1,
+      "base_nonpositive_pixels": 1,
+      "nonfinite_context_pixels": 0,
+      "background_pixels": 187224,
+      "background_max_abs_change": 0.0,
+      "native_oracle_changed_pixels": 2620,
+      "all_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 1.0975609756097562
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.08386713054556431
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.010577678680419922,
+        "PSNR_peak1_dB": 94.3475129242011,
+        "legacy_gt_1e3_pixels_diagnostic_only": 462
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.006788866259334691
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 94.1307111206168,
+        "legacy_gt_1e3_pixels_diagnostic_only": 296
+      },
+      "skin_footprint_eligible": {
+        "requested_region_pixels": 9004,
+        "finite_pixels": 9004,
+        "finite_coverage_of_frame": 0.045796712239583336,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.0008074615421666051,
+          "p99": 0.002328922338631805,
+          "max": 0.006788866259334691
+        },
+        "EV_abs_error": {
+          "count": 9004,
+          "median": 0.0,
+          "p95": 0.00029642788768396815,
+          "p99": 0.001971598127951995,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 80.95783451957658,
+        "legacy_gt_1e3_pixels_diagnostic_only": 296
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 2399,
+        "finite_pixels": 2399,
+        "finite_coverage_of_frame": 0.012201944986979166,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.00199780529706693,
+          "p99": 0.003187401499019501,
+          "max": 0.0065420560747663555
+        },
+        "EV_abs_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0017013787836099054,
+          "p99": 0.0025888281542093498,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 75.52714160867625,
+        "legacy_gt_1e3_pixels_diagnostic_only": 274
+      },
+      "correction_log2_RGB_abs_EV": {
+        "count": 589821,
+        "median": 0.0,
+        "p95": 0.0,
+        "p99": 0.0008278505517045286,
+        "max": 0.4563782946597428
+      },
+      "chosen_transform_roundtrip_max_abs": 0.0,
+      "RGB_weighted_log_gain_gradient_EV_on_matte_edge": {
+        "count": 12139,
+        "median": 0.0,
+        "p95": 0.0161885684284545,
+        "p99": 0.05326152795860361,
+        "max": 0.1725746461145555
+      },
+      "RGB_weighted_log_gain_laplacian_EV_on_matte_edge": {
+        "count": 5629,
+        "median": 0.0006030117842937951,
+        "p95": 0.04864144829032083,
+        "p99": 0.12945144752190235,
+        "max": 0.4324369858776733
+      },
+      "scope": "Spatial discontinuity proxies of the chosen log-RGB correction; not a certified halo visibility score or luminance EV field"
+    }
+  ],
+  "unmodified_native_endpoint_comparisons": [
+    {
+      "operator": "skin-color",
+      "reference": "Original unchanged native zero-parameter counterfactual, including nonpositive components; not the interpolated reference",
+      "all_finite_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 94.90725171295024,
+        "legacy_gt_1e3_pixels_diagnostic_only": 91
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 94.68847132384167,
+        "legacy_gt_1e3_pixels_diagnostic_only": 91
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 887,
+        "finite_pixels": 887,
+        "finite_coverage_of_frame": 0.004511515299479167,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0018231857562991801,
+          "p99": 0.0026654709434516966,
+          "max": 0.0040858018386108275
+        },
+        "EV_abs_error": {
+          "count": 887,
+          "median": 0.0,
+          "p95": 0.0017493236934013258,
+          "p99": 0.002533970884945664,
+          "max": 0.0033525699432962134
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0006568431854248047,
+        "PSNR_peak1_dB": 71.78427211501653,
+        "legacy_gt_1e3_pixels_diagnostic_only": 82
+      },
+      "native_changed_pixels_outside_ratio_domain": 0,
+      "outside_ratio_domain_max_abs_native_change": 0.0
+    },
+    {
+      "operator": "skin-brightness",
+      "reference": "Original unchanged native zero-parameter counterfactual, including nonpositive components; not the interpolated reference",
+      "all_finite_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 1.0975609756097562
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.08386713054556431
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.010577678680419922,
+        "PSNR_peak1_dB": 103.52236590529982,
+        "legacy_gt_1e3_pixels_diagnostic_only": 372
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.006788866259334691
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 103.31997481687084,
+        "legacy_gt_1e3_pixels_diagnostic_only": 205
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 1512,
+        "finite_pixels": 1512,
+        "finite_coverage_of_frame": 0.0076904296875,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.0009765625,
+        "RGB_relative_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.00214466125150537,
+          "p99": 0.003447297417499334,
+          "max": 0.0065420560747663555
+        },
+        "EV_abs_error": {
+          "count": 1512,
+          "median": 0.0,
+          "p95": 0.0016464704157998296,
+          "p99": 0.0026899187611613322,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 82.56533485617004,
+        "legacy_gt_1e3_pixels_diagnostic_only": 192
+      },
+      "native_changed_pixels_outside_ratio_domain": 1,
+      "outside_ratio_domain_max_abs_native_change": 5.960464477539063e-08
+    },
+    {
+      "operator": "skin-both",
+      "reference": "Original unchanged native zero-parameter counterfactual, including nonpositive components; not the interpolated reference",
+      "all_finite_frame": {
+        "requested_region_pixels": 196608,
+        "finite_pixels": 196608,
+        "finite_coverage_of_frame": 1.0,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 1.0975609756097562
+        },
+        "EV_abs_error": {
+          "count": 196608,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.08386713054556431
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.010577678680419922,
+        "PSNR_peak1_dB": 94.34751292412992,
+        "legacy_gt_1e3_pixels_diagnostic_only": 463
+      },
+      "legacy_eligible": {
+        "requested_region_pixels": 186949,
+        "finite_pixels": 186949,
+        "finite_coverage_of_frame": 0.9508717854817709,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.006788866259334691
+        },
+        "EV_abs_error": {
+          "count": 186949,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 94.1307111206168,
+        "legacy_gt_1e3_pixels_diagnostic_only": 296
+      },
+      "native_affected_eligible": {
+        "requested_region_pixels": 2399,
+        "finite_pixels": 2399,
+        "finite_coverage_of_frame": 0.012201944986979166,
+        "nonfinite_in_requested_region": 0,
+        "max_abs": 0.001953125,
+        "RGB_relative_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.00199780529706693,
+          "p99": 0.003187401499019501,
+          "max": 0.0065420560747663555
+        },
+        "EV_abs_error": {
+          "count": 2399,
+          "median": 0.0,
+          "p95": 0.0017013787836099054,
+          "p99": 0.0025888281542093498,
+          "max": 0.003462578237922854
+        },
+        "EV_excluded_nonpositive_luma": 0,
+        "chromaticity_max_abs_vs_oracle": 0.0008048415184020996,
+        "PSNR_peak1_dB": 75.52714160867625,
+        "legacy_gt_1e3_pixels_diagnostic_only": 274
+      },
+      "native_changed_pixels_outside_ratio_domain": 1,
+      "outside_ratio_domain_max_abs_native_change": 5.960464477539063e-08
+    }
+  ],
+  "separate_GTM_LTM_unchanged": true,
+  "LinearThumbnail_Apple_Log_unchanged": true,
+  "old_face_body_polluted_metrics_used": false,
+  "face_body_actual_EV_identified": false,
+  "legacy_inverse_proof_or_mask_changed": false,
+  "engineering_accepted": false,
+  "visual_review": "pending; encrypted contacts only, no appearance claim from scalar metrics",
+  "physical_scene_verified": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}
