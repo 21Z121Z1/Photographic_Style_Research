@@ -1,0 +1,33 @@
+{
+  "schema": "texture-fixture-matrix-v1",
+  "source_head": "c2bb9bccb09f61a0fba382b6f15f8429c2f8aeb2",
+  "fixture_repository": "21Z121Z1/XDRemux",
+  "fixture_head": "18340989590d451f5676924feb03c70baa503e1a",
+  "phase": "diagnose",
+  "selection": "all",
+  "rows": [
+    {
+      "id": "resolution-2048-diagnostic",
+      "kind": "native_crash_diagnostic",
+      "variants": [
+        {
+          "allocator_MiB": 128,
+          "exit": 0,
+          "report": "undereye-allocator-128.json"
+        },
+        {
+          "allocator_MiB": 256,
+          "exit": 0,
+          "report": "undereye-allocator-256.json"
+        },
+        {
+          "allocator_MiB": 512,
+          "exit": 0,
+          "report": "undereye-allocator-512.json"
+        }
+      ]
+    }
+  ],
+  "diagnostic_only": true,
+  "all_cases_passed": false
+}
