@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/run_hdr_s103.py", line 70, in <module>
+    archive, receipt = download(SCRATCH)
+                       ^^^^^^^^^^^^^^^^^
+  File "/Users/runner/work/Photographic_Style_Research/Photographic_Style_Research/research/hdr-native/input_archive_s103.py", line 53, in download
+    while block := response.read(1024 * 1024):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 479, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 1251, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 1103, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out

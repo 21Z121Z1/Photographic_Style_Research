@@ -265,3 +265,6 @@ S101完整文件：日本runs/39518274902/artifact-12310032763.zip，2081013365B
 
 
 2026-10-21 起，后续配方先读取 final_image_retention.json：只将最终 HEIC 加入图片归档清单；EXR/raw/mask/预览写入 runner scratch，完成指标和 SHA 检查后在 job 的 always 清理步骤删除，绝不加入 upload-artifact/release/repo。公开文本须为无像素载荷的小型证据。纯诊断只上传汇总记录，不重复传已留存的 HEIC。历史 S101 配方是历史记录，不再视为后续 EXR 留存要求。
+
+
+S103复现失败：source b0a0784，原workflow hdr-native-s103.yml / run39524824105；查看 evidence/s103/run/driver.log 和 phase-summary.json。不可直接盲目重派同整包下载方案，先用有界HTTP206/每份密文SHA/GPG认证修传输。显示/亮度/边缘数学仍是S90原AST。S104指令复核入口 workspace/s103-20261021/trace_thumbnail.py，使用既有只读 /tmp/dsc_full 与 ios_cache_reader，受 scripts/local-python-scope.sh 限制；小型公开证据 evidence/s104/，不解码照片、不上传Apple二进制。

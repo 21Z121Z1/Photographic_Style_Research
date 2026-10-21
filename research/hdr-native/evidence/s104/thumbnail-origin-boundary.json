@@ -1,0 +1,60 @@
+{
+  "status": "已验证静态",
+  "reference_build": "24A446",
+  "reference_device": "iPhone12,1",
+  "IMG2810_matching_build_proof": false,
+  "module_UUID": "0A211E15-50CA-373B-AD9A-F9E3283C68F4",
+  "binary_sha256": "974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e",
+  "instructions_cache_byte_verified": 285,
+  "cache_stat_unchanged": true,
+  "evidence_file": "research/hdr-native/evidence/s104/producer-thumbnail-precurve.txt",
+  "evidence_sha256": "4b42c24a40c06847d44f5302849bd20b48617539858189c38dd250f2385cd305",
+  "blocks": [
+    {
+      "role": "process: input selection and generated linear texture",
+      "start": "0x256b64298",
+      "end_exclusive": "0x256b64324",
+      "evidence_line": 7,
+      "instructions": 35
+    },
+    {
+      "role": "process: same texture to statistics, then curve compute and output metadata",
+      "start": "0x256b64d44",
+      "end_exclusive": "0x256b64e60",
+      "evidence_line": 44,
+      "instructions": 71
+    },
+    {
+      "role": "generateLinearRGBA: input accessors",
+      "start": "0x256b77b14",
+      "end_exclusive": "0x256b77b90",
+      "evidence_line": 117,
+      "instructions": 31
+    },
+    {
+      "role": "generateLinearRGBA: float texture forwarding and undoScaleDown",
+      "start": "0x256b77dd4",
+      "end_exclusive": "0x256b77e38",
+      "evidence_line": 150,
+      "instructions": 25
+    },
+    {
+      "role": "createLTMInTextureFromRGBAFloatTex: dimensions, texture and two scalar bindings",
+      "start": "0x256baf95c",
+      "end_exclusive": "0x256bafa88",
+      "evidence_line": 177,
+      "instructions": 75
+    },
+    {
+      "role": "compute: internal WithoutFaceBoost parameter writes",
+      "start": "0x256b86e30",
+      "end_exclusive": "0x256b86ef0",
+      "evidence_line": 254,
+      "instructions": 48
+    }
+  ],
+  "verified_path": "On the selected path LTMProcessor first obtains/generates its input texture, saves it at fp-0x98, loads that same value into x19/x2 for startCalculateHITHStatistics at0x256b64d84, then constructs and calls curves compute at0x256b64e10/0x256b64e20. The RGBA input conversion binds source/output textures and two4-byte scalars before that curve call.",
+  "interpretation_boundary": "The camera has a pre-curve linear/statistics path; this is not evidence that the HEIF auxiliary LinearThumbnail equals its texture or that it is the WithoutFaceBoost rendering. Untraced upstream processing and texture kernel are not certified.",
+  "user_correction": "WithoutFaceBoost is an internal API branch, not a user-visible camera off switch. Do not require the user to obtain a second exposure with a nonexistent UI switch.",
+  "next_identifiable_test": "Trace the encoded file auxiliary item producer back to the texture/curve key, dimensions, crop, exposure, colorspace and Apple Log encode. Compare same-frame thumbnail with original/main low-frequency data under matched geometry. Until binding, use as anchor with explicit hypothesis; do not label all differences isolated face boost."
+}

@@ -4883,6 +4883,73 @@
           "sha256": "92c5aa1a31a9c25ef3e56062e8086a319a962c34fb56ce314b11dadc035860b1"
         }
       ]
+    },
+    {
+      "id": "HDR-174",
+      "category": "hdr/S103/transport-prerequisite",
+      "status": "runner",
+      "os_build": "26A434",
+      "claim": "S103 run39524824105 sourceb0a0784 compiled the native readers but timed out reading the existing GitHub input artifact before any photo/source/oracle execution. No new pixel result or display gate passed. Small artifact12312825604 is SHA-verified on Japan; owned session secret/temporary branch cleaned. Next action fixes bounded input transport only.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s103/phase-summary.json",
+          "line": 1,
+          "sha256": "bdcb3453eab951da18b8638cfc2f578a7e1e4e550136efcf1c62254e591d2d9b"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s103/run/driver.log",
+          "line": 1,
+          "sha256": "a297a02a2578c6cbd0473e4cfdcf382bccfd047a75227e40afd69c6c44c73370"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s103/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "9621ed47d6aa38f8738e5c4464e82eb9493f3733734c6174affcf77ce30201cd"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s103/closure.json",
+          "line": 1,
+          "sha256": "76821b53332de3dd458cac7b815da755f716906c94f9c29cf7c2d081f2a809d7"
+        }
+      ]
+    },
+    {
+      "id": "HDR-175",
+      "category": "producer/thumbnail/precurve-path",
+      "status": "已验证静态",
+      "os_build": "24A446",
+      "claim": "Reference iPhone12,1 CameraColorProcessing path obtains/generates its texture before the curve calculation; the saved texture is forwarded to startCalculateHITHStatistics at0x256b64d84, then curves init/compute at0x256b64e10/0x256b64e20. 285 selected instruction bytes were checked against the read-only cache. This proves this reference internal path only, not the encoded HEIF LinearThumbnail source or IMG2810 production order.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s104/thumbnail-origin-boundary.json",
+          "line": 1,
+          "sha256": "7328dbeccb5957397be1d8297015007e90a53c41b57abdbedd0a506c26ad080f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s104/producer-thumbnail-precurve.txt",
+          "line": 1,
+          "sha256": "4b42c24a40c06847d44f5302849bd20b48617539858189c38dd250f2385cd305"
+        }
+      ]
+    },
+    {
+      "id": "HDR-176",
+      "category": "producer/thumbnail/face-boost-boundary",
+      "status": "假设",
+      "os_build": "24A446 reference; IMG2810 matching build not established",
+      "claim": "Use the existing LinearThumbnail as a low-frequency no-boost/reference hypothesis and trace its producer rather than requiring a nonexistent user-facing face-boost-off capture. Current evidence has not joined the encoded auxiliary to the pre-curve texture or actual WithoutFaceBoost curve selection. Thumbnail/main differences can mix global/local/color/scale/semantic processing; do not identify all of them as face boost or multiply/divide by j.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s104/thumbnail-origin-boundary.json",
+          "line": 1,
+          "sha256": "7328dbeccb5957397be1d8297015007e90a53c41b57abdbedd0a506c26ad080f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s54/producer-paired-capture-plan.json",
+          "line": 1,
+          "sha256": "50477be1839cd83e818cce4325c66d183d0200272cf2ec3211f9ef41bd4fc3ca"
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-21T00:29:46.563292+00:00",

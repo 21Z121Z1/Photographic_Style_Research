@@ -1,0 +1,303 @@
+Reference-only iOS27 24A446 iPhone12,1; not the IMG2810 matching production build.
+Module CameraColorProcessing UUID 0A211E15-50CA-373B-AD9A-F9E3283C68F4
+Extracted Mach-O SHA256 974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e
+Every instruction below rechecked against the read-only /tmp/dsc_full cache.
+No file LinearThumbnail / HEIF item producer binding has been established by these excerpts.
+
+## process: input selection and generated linear texture
+original-line 7377: 0x256b64298:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 7378: 0x256b6429c:  f1 55 55 94   bl	0x2580b9a60 ; CALL inRGBImageUInt16Tex
+original-line 7379: 0x256b642a0:  b8 71 56 94   bl	0x258100980
+original-line 7380: 0x256b642a4:  f5 03 00 aa   mov	x21, x0
+original-line 7381: 0x256b642a8:  e6 71 56 94   bl	0x258100a40
+original-line 7382: 0x256b642ac:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 7383: 0x256b642b0:  15 01 00 b4   cbz	x21, 0x256b642d0
+original-line 7384: 0x256b642b4:  eb 55 55 94   bl	0x2580b9a60 ; CALL inRGBImageUInt16Tex
+original-line 7385: 0x256b642b8:  b2 71 56 94   bl	0x258100980
+original-line 7386: 0x256b642bc:  f5 03 00 aa   mov	x21, x0
+original-line 7387: 0x256b642c0:  a0 83 16 f8   stur	x0, [fp, #-0x98]
+original-line 7388: 0x256b642c4:  b7 70 57 94   bl	0x2581405a0
+original-line 7389: 0x256b642c8:  d5 02 00 b5   cbnz	x21, 0x256b64320
+original-line 7390: 0x256b642cc:  1d 03 00 14   b	0x256b64f40
+original-line 7391: 0x256b642d0:  ec 57 55 94   bl	0x2580ba280 ; CALL undoHRGainDownRatio
+original-line 7392: 0x256b642d4:  08 10 2e 1e   fmov	s8, #1.00000000
+original-line 7393: 0x256b642d8:  60 01 00 34   cbz	w0, 0x256b64304
+original-line 7394: 0x256b642dc:  95 2e 47 f9   ldr	x21, [x20, #0xe58]
+original-line 7395: 0x256b642e0:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 7396: 0x256b642e4:  d7 55 55 94   bl	0x2580b9a40 ; CALL inMetaData
+original-line 7397: 0x256b642e8:  a6 71 56 94   bl	0x258100980
+original-line 7398: 0x256b642ec:  f6 03 00 aa   mov	x22, x0
+original-line 7399: 0x256b642f0:  e0 03 15 aa   mov	x0, x21
+original-line 7400: 0x256b642f4:  e2 03 16 aa   mov	x2, x22
+original-line 7401: 0x256b642f8:  6e 55 55 94   bl	0x2580b98b0 ; CALL extractHRGainDownRatioFrom:
+original-line 7402: 0x256b642fc:  08 1c a0 4e   mov	v8.16b, v0.16b
+original-line 7403: 0x256b64300:  d4 71 56 94   bl	0x258100a50
+original-line 7404: 0x256b64304:  e0 03 1b aa   mov	x0, x27
+original-line 7405: 0x256b64308:  00 1d a8 4e   mov	v0.16b, v8.16b
+original-line 7406: 0x256b6430c:  91 55 55 94   bl	0x2580b9950 ; CALL generateLinearRGBATexture:
+original-line 7407: 0x256b64310:  9c 71 56 94   bl	0x258100980
+original-line 7408: 0x256b64314:  f5 03 00 aa   mov	x21, x0
+original-line 7409: 0x256b64318:  a0 83 16 f8   stur	x0, [fp, #-0x98]
+original-line 7410: 0x256b6431c:  35 61 00 b4   cbz	x21, 0x256b64f40
+original-line 7411: 0x256b64320:  e0 03 15 aa   mov	x0, x21
+
+## process: same texture to statistics, then curve compute and output metadata
+original-line 8060: 0x256b64d44:  b3 83 56 f8   ldur	x19, [fp, #-0x98]
+original-line 8061: 0x256b64d48:  97 2a 47 f9   ldr	x23, [x20, #0xe50]
+original-line 8062: 0x256b64d4c:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8063: 0x256b64d50:  ac 52 55 94   bl	0x2580b9800 ; CALL enableAntiAliasing
+original-line 8064: 0x256b64d54:  f8 03 00 aa   mov	x24, x0
+original-line 8065: 0x256b64d58:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8066: 0x256b64d5c:  d5 51 55 94   bl	0x2580b94b0 ; CALL calcGlobalHistOnROI
+original-line 8067: 0x256b64d60:  e7 03 00 aa   mov	x7, x0
+original-line 8068: 0x256b64d64:  76 c3 25 91   add	x22, x27, #0x970
+original-line 8069: 0x256b64d68:  f6 03 00 f9   str	x22, [sp]
+original-line 8070: 0x256b64d6c:  64 83 00 91   add	x4, x27, #0x20
+original-line 8071: 0x256b64d70:  e0 03 1c aa   mov	x0, x28
+original-line 8072: 0x256b64d74:  e2 03 13 aa   mov	x2, x19
+original-line 8073: 0x256b64d78:  e3 03 17 aa   mov	x3, x23
+original-line 8074: 0x256b64d7c:  e5 03 15 aa   mov	x5, x21
+original-line 8075: 0x256b64d80:  e6 03 18 aa   mov	x6, x24
+original-line 8076: 0x256b64d84:  2b 55 55 94   bl	0x2580ba230 ; CALL startCalculateHITHStatistics:ltmGeometry:inputDriverMetadata:optimized:enableAntiAliasing:calcGlobalHistOnROI:outputProcHITHStat:
+original-line 8077: 0x256b64d88:  60 0f 00 35   cbnz	w0, 0x256b64f74
+original-line 8078: 0x256b64d8c:  28 4e 0d b0   adrp	x8, 0x271529000
+original-line 8079: 0x256b64d90:  08 c1 28 91   add	x8, x8, #0xa30
+original-line 8080: 0x256b64d94:  89 aa 79 39   ldrb	w9, [x20, #0xe6a]
+original-line 8081: 0x256b64d98:  2a 4e 0d b0   adrp	x10, 0x271529000
+original-line 8082: 0x256b64d9c:  4a a1 28 91   add	x10, x10, #0xa28
+original-line 8083: 0x256b64da0:  3f 01 00 71   cmp	w9, #0
+original-line 8084: 0x256b64da4:  08 11 8a 9a   csel	x8, x8, x10, ne
+original-line 8085: 0x256b64da8:  00 01 40 f9   ldr	x0, [x8]
+original-line 8086: 0x256b64dac:  e5 6e 56 94   bl	0x258100940
+original-line 8087: 0x256b64db0:  f3 03 00 aa   mov	x19, x0
+original-line 8088: 0x256b64db4:  97 2a 47 f9   ldr	x23, [x20, #0xe50]
+original-line 8089: 0x256b64db8:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8090: 0x256b64dbc:  71 52 55 94   bl	0x2580b9780 ; CALL digitalFlash
+original-line 8091: 0x256b64dc0:  f8 03 00 aa   mov	x24, x0
+original-line 8092: 0x256b64dc4:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8093: 0x256b64dc8:  0e 52 55 94   bl	0x2580b9600 ; CALL computeHDRCurves
+original-line 8094: 0x256b64dcc:  f9 03 00 aa   mov	x25, x0
+original-line 8095: 0x256b64dd0:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8096: 0x256b64dd4:  03 52 55 94   bl	0x2580b95e0 ; CALL computeCurvesWoFaceBoost
+original-line 8097: 0x256b64dd8:  fa 03 00 aa   mov	x26, x0
+original-line 8098: 0x256b64ddc:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8099: 0x256b64de0:  0c 52 55 94   bl	0x2580b9610 ; CALL computeHDRCurvesWoFaceBoost
+original-line 8100: 0x256b64de4:  e0 0b 00 39   strb	w0, [sp, #0x2]
+original-line 8101: 0x256b64de8:  fa 07 00 39   strb	w26, [sp, #0x1]
+original-line 8102: 0x256b64dec:  62 83 00 91   add	x2, x27, #0x20
+original-line 8103: 0x256b64df0:  f9 03 00 39   strb	w25, [sp]
+original-line 8104: 0x256b64df4:  e0 03 13 aa   mov	x0, x19
+original-line 8105: 0x256b64df8:  e3 03 16 aa   mov	x3, x22
+original-line 8106: 0x256b64dfc:  e4 03 17 aa   mov	x4, x23
+original-line 8107: 0x256b64e00:  fb 03 1c aa   mov	x27, x28
+original-line 8108: 0x256b64e04:  e5 03 1c aa   mov	x5, x28
+original-line 8109: 0x256b64e08:  e6 03 15 aa   mov	x6, x21
+original-line 8110: 0x256b64e0c:  e7 03 18 aa   mov	x7, x24
+original-line 8111: 0x256b64e10:  1c 53 55 94   bl	0x2580b9a80 ; CALL initWith:HITH:geometryData:statsObj:optimized:digitalFlash:computeHDRCurves:computeCurvesWoFaceBoost:computeHDRCurvesWoFaceBoost:
+original-line 8112: 0x256b64e14:  f8 03 00 aa   mov	x24, x0
+original-line 8113: 0x256b64e18:  c0 0b 00 b4   cbz	x0, 0x256b64f90
+original-line 8114: 0x256b64e1c:  e0 03 18 aa   mov	x0, x24
+original-line 8115: 0x256b64e20:  ec 51 55 94   bl	0x2580b95d0 ; CALL compute
+original-line 8116: 0x256b64e24:  d7 6e 56 94   bl	0x258100980
+original-line 8117: 0x256b64e28:  f7 03 00 aa   mov	x23, x0
+original-line 8118: 0x256b64e2c:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8119: 0x256b64e30:  04 53 55 94   bl	0x2580b9a40 ; CALL inMetaData
+original-line 8120: 0x256b64e34:  d3 6e 56 94   bl	0x258100980
+original-line 8121: 0x256b64e38:  f3 03 00 aa   mov	x19, x0
+original-line 8122: 0x256b64e3c:  a1 78 52 94   bl	0x2580030c0 ; CALL mutableCopy
+original-line 8123: 0x256b64e40:  f6 03 00 aa   mov	x22, x0
+original-line 8124: 0x256b64e44:  f7 6e 56 94   bl	0x258100a20
+original-line 8125: 0x256b64e48:  e0 03 16 aa   mov	x0, x22
+original-line 8126: 0x256b64e4c:  e2 03 17 aa   mov	x2, x23
+original-line 8127: 0x256b64e50:  24 9a 52 94   bl	0x25800b6e0 ; CALL addEntriesFromDictionary:
+original-line 8128: 0x256b64e54:  80 62 47 f9   ldr	x0, [x20, #0xec0]
+original-line 8129: 0x256b64e58:  e2 03 16 aa   mov	x2, x22
+original-line 8130: 0x256b64e5c:  7d 54 55 94   bl	0x2580ba050 ; CALL setOutMetaData:
+
+## generateLinearRGBA: input accessors
+original-line 27916: 0x256b77b14:  7f 23 03 d5   pacibsp
+original-line 27917: 0x256b77b18:  ff 03 04 d1   sub	sp, sp, #0x100
+original-line 27918: 0x256b77b1c:  e9 23 0b 6d   stp	d9, d8, [sp, #0xb0]
+original-line 27919: 0x256b77b20:  f8 5f 0c a9   stp	x24, x23, [sp, #0xc0]
+original-line 27920: 0x256b77b24:  f6 57 0d a9   stp	x22, x21, [sp, #0xd0]
+original-line 27921: 0x256b77b28:  f4 4f 0e a9   stp	x20, x19, [sp, #0xe0]
+original-line 27922: 0x256b77b2c:  fd 7b 0f a9   stp	fp, lr, [sp, #0xf0]
+original-line 27923: 0x256b77b30:  fd c3 03 91   add	fp, sp, #0xf0
+original-line 27924: 0x256b77b34:  f4 03 1e aa   mov	x20, lr
+original-line 27925: 0x256b77b38:  08 1c a0 4e   mov	v8.16b, v0.16b
+original-line 27926: 0x256b77b3c:  f3 03 00 aa   mov	x19, x0
+original-line 27927: 0x256b77b40:  17 3c 40 91   add	x23, x0, #0xf, lsl #0xc
+original-line 27928: 0x256b77b44:  e0 62 47 f9   ldr	x0, [x23, #0xec0]
+original-line 27929: 0x256b77b48:  ba 07 55 94   bl	0x2580b9a30 ; CALL inLumaTex
+original-line 27930: 0x256b77b4c:  8d 23 56 94   bl	0x258100980
+original-line 27931: 0x256b77b50:  20 05 00 b4   cbz	x0, 0x256b77bf4
+original-line 27932: 0x256b77b54:  f5 03 00 aa   mov	x21, x0
+original-line 27933: 0x256b77b58:  e0 62 47 f9   ldr	x0, [x23, #0xec0]
+original-line 27934: 0x256b77b5c:  b1 07 55 94   bl	0x2580b9a20 ; CALL inChromaTex
+original-line 27935: 0x256b77b60:  88 23 56 94   bl	0x258100980
+original-line 27936: 0x256b77b64:  f6 03 00 aa   mov	x22, x0
+original-line 27937: 0x256b77b68:  ba 23 56 94   bl	0x258100a50
+original-line 27938: 0x256b77b6c:  b5 23 56 94   bl	0x258100a40
+original-line 27939: 0x256b77b70:  36 04 00 b4   cbz	x22, 0x256b77bf4
+original-line 27940: 0x256b77b74:  e0 62 47 f9   ldr	x0, [x23, #0xec0]
+original-line 27941: 0x256b77b78:  b6 07 55 94   bl	0x2580b9a50 ; CALL inRGBAFloatTex
+original-line 27942: 0x256b77b7c:  81 23 56 94   bl	0x258100980
+original-line 27943: 0x256b77b80:  f4 03 00 aa   mov	x20, x0
+original-line 27944: 0x256b77b84:  ab 23 56 94   bl	0x258100a30
+original-line 27945: 0x256b77b88:  14 17 00 b5   cbnz	x20, 0x256b77e68
+original-line 27946: 0x256b77b8c:  e0 62 47 f9   ldr	x0, [x23, #0xec0]
+
+## generateLinearRGBA: float texture forwarding and undoScaleDown
+original-line 28092: 0x256b77dd4:  e0 62 47 f9   ldr	x0, [x23, #0xec0]
+original-line 28093: 0x256b77dd8:  1e 07 55 94   bl	0x2580b9a50 ; CALL inRGBAFloatTex
+original-line 28094: 0x256b77ddc:  e9 22 56 94   bl	0x258100980
+original-line 28095: 0x256b77de0:  f5 03 00 aa   mov	x21, x0
+original-line 28096: 0x256b77de4:  fb aa 52 94   bl	0x2580229d0 ; CALL width
+original-line 28097: 0x256b77de8:  f4 03 00 aa   mov	x20, x0
+original-line 28098: 0x256b77dec:  15 23 56 94   bl	0x258100a40
+original-line 28099: 0x256b77df0:  e0 62 47 f9   ldr	x0, [x23, #0xec0]
+original-line 28100: 0x256b77df4:  17 07 55 94   bl	0x2580b9a50 ; CALL inRGBAFloatTex
+original-line 28101: 0x256b77df8:  e2 22 56 94   bl	0x258100980
+original-line 28102: 0x256b77dfc:  f5 03 00 aa   mov	x21, x0
+original-line 28103: 0x256b77e00:  e0 03 13 aa   mov	x0, x19
+original-line 28104: 0x256b77e04:  e2 03 15 aa   mov	x2, x21
+original-line 28105: 0x256b77e08:  00 1d a8 4e   mov	v0.16b, v8.16b
+original-line 28106: 0x256b77e0c:  39 06 55 94   bl	0x2580b96f0 ; CALL createLTMInTextureFromRGBAFloatTex:undoScaleDown:
+original-line 28107: 0x256b77e10:  dc 22 56 94   bl	0x258100980
+original-line 28108: 0x256b77e14:  f3 03 00 aa   mov	x19, x0
+original-line 28109: 0x256b77e18:  0a 23 56 94   bl	0x258100a40
+original-line 28110: 0x256b77e1c:  f3 02 00 b4   cbz	x19, 0x256b77e78
+original-line 28111: 0x256b77e20:  88 02 23 9e   ucvtf	s8, x20
+original-line 28112: 0x256b77e24:  e0 03 13 aa   mov	x0, x19
+original-line 28113: 0x256b77e28:  ea aa 52 94   bl	0x2580229d0 ; CALL width
+original-line 28114: 0x256b77e2c:  00 00 23 9e   ucvtf	s0, x0
+original-line 28115: 0x256b77e30:  00 18 28 1e   fdiv	s0, s0, s8
+original-line 28116: 0x256b77e34:  e0 aa 0e bd   str	s0, [x23, #0xea8]
+
+## createLTMInTextureFromRGBAFloatTex: dimensions, texture and two scalar bindings
+original-line 87326: 0x256baf95c:  a8 c3 19 bc   stur	s8, [fp, #-0x64]
+original-line 87327: 0x256baf960:  08 f0 a7 52   mov	w8, #0x3f800000
+original-line 87328: 0x256baf964:  a8 83 19 b8   stur	w8, [fp, #-0x68]
+original-line 87329: 0x256baf968:  00 0e 00 b4   cbz	x0, 0x256bafb28
+original-line 87330: 0x256baf96c:  e0 03 13 aa   mov	x0, x19
+original-line 87331: 0x256baf970:  18 cc 51 94   bl	0x2580229d0 ; CALL width
+original-line 87332: 0x256baf974:  08 10 2e 1e   fmov	s8, #1.00000000
+original-line 87333: 0x256baf978:  1f 04 21 f1   cmp	x0, #0x841
+original-line 87334: 0x256baf97c:  83 01 00 54   b.lo	0x256baf9ac
+original-line 87335: 0x256baf980:  08 00 a8 52   mov	w8, #0x40000000
+original-line 87336: 0x256baf984:  a8 83 19 b8   stur	w8, [fp, #-0x68]
+original-line 87337: 0x256baf988:  e0 03 13 aa   mov	x0, x19
+original-line 87338: 0x256baf98c:  11 cc 51 94   bl	0x2580229d0 ; CALL width
+original-line 87339: 0x256baf990:  08 10 20 1e   fmov	s8, #2.00000000
+original-line 87340: 0x256baf994:  08 fc 41 d3   lsr	x8, x0, #0x1
+original-line 87341: 0x256baf998:  1f 05 21 f1   cmp	x8, #0x841
+original-line 87342: 0x256baf99c:  83 00 00 54   b.lo	0x256baf9ac
+original-line 87343: 0x256baf9a0:  08 10 a8 52   mov	w8, #0x40800000
+original-line 87344: 0x256baf9a4:  a8 83 19 b8   stur	w8, [fp, #-0x68]
+original-line 87345: 0x256baf9a8:  08 10 22 1e   fmov	s8, #4.00000000
+original-line 87346: 0x256baf9ac:  e0 03 13 aa   mov	x0, x19
+original-line 87347: 0x256baf9b0:  08 cc 51 94   bl	0x2580229d0 ; CALL width
+original-line 87348: 0x256baf9b4:  00 00 23 9e   ucvtf	s0, x0
+original-line 87349: 0x256baf9b8:  00 18 28 1e   fdiv	s0, s0, s8
+original-line 87350: 0x256baf9bc:  14 00 39 9e   fcvtzu	x20, s0
+original-line 87351: 0x256baf9c0:  e0 03 13 aa   mov	x0, x19
+original-line 87352: 0x256baf9c4:  9f c9 51 94   bl	0x258022040 ; CALL height
+original-line 87353: 0x256baf9c8:  00 00 23 9e   ucvtf	s0, x0
+original-line 87354: 0x256baf9cc:  00 18 28 1e   fdiv	s0, s0, s8
+original-line 87355: 0x256baf9d0:  04 00 39 9e   fcvtzu	x4, s0
+original-line 87356: 0x256baf9d4:  62 25 14 f0   adrp	x2, 0x27f05e000
+original-line 87357: 0x256baf9d8:  42 c0 07 91   add	x2, x2, #0x1f0 ; CHECKED_LITERAL "ltmLinearRGB"
+original-line 87358: 0x256baf9dc:  e0 03 16 aa   mov	x0, x22
+original-line 87359: 0x256baf9e0:  e3 03 14 aa   mov	x3, x20
+original-line 87360: 0x256baf9e4:  3b 27 54 94   bl	0x2580b96d0 ; CALL createIntermediateRGBAMetalTexture:width:height:
+original-line 87361: 0x256baf9e8:  e6 43 55 94   bl	0x258100980
+original-line 87362: 0x256baf9ec:  f4 03 00 aa   mov	x20, x0
+original-line 87363: 0x256baf9f0:  00 0a 00 b4   cbz	x0, 0x256bafb30
+original-line 87364: 0x256baf9f4:  c0 06 40 f9   ldr	x0, [x22, #0x8]
+original-line 87365: 0x256baf9f8:  12 7b 52 94   bl	0x25804e640 ; CALL commandQueue
+original-line 87366: 0x256baf9fc:  e1 43 55 94   bl	0x258100980
+original-line 87367: 0x256bafa00:  f7 03 00 aa   mov	x23, x0
+original-line 87368: 0x256bafa04:  4b bf 51 94   bl	0x25801f730 ; CALL commandBuffer
+original-line 87369: 0x256bafa08:  de 43 55 94   bl	0x258100980
+original-line 87370: 0x256bafa0c:  f5 03 00 aa   mov	x21, x0
+original-line 87371: 0x256bafa10:  14 44 55 94   bl	0x258100a60
+original-line 87372: 0x256bafa14:  35 09 00 b4   cbz	x21, 0x256bafb38
+original-line 87373: 0x256bafa18:  e0 03 15 aa   mov	x0, x21
+original-line 87374: 0x256bafa1c:  0d ed 51 94   bl	0x25802ae50 ; CALL computeCommandEncoder
+original-line 87375: 0x256bafa20:  d8 43 55 94   bl	0x258100980
+original-line 87376: 0x256bafa24:  a0 0d 00 b4   cbz	x0, 0x256bafbd8
+original-line 87377: 0x256bafa28:  f7 03 00 aa   mov	x23, x0
+original-line 87378: 0x256bafa2c:  08 c5 9f 52   mov	w8, #0xfe28
+original-line 87379: 0x256bafa30:  d8 02 08 8b   add	x24, x22, x8
+original-line 87380: 0x256bafa34:  02 03 40 f9   ldr	x2, [x24]
+original-line 87381: 0x256bafa38:  92 ed 51 94   bl	0x25802b080 ; CALL setComputePipelineState:
+original-line 87382: 0x256bafa3c:  e0 03 17 aa   mov	x0, x23
+original-line 87383: 0x256bafa40:  e2 03 13 aa   mov	x2, x19
+original-line 87384: 0x256bafa44:  03 00 80 d2   mov	x3, #0
+original-line 87385: 0x256bafa48:  b2 f4 51 94   bl	0x25802cd10 ; CALL setTexture:atIndex:
+original-line 87386: 0x256bafa4c:  39 00 80 52   mov	w25, #0x1
+original-line 87387: 0x256bafa50:  e0 03 17 aa   mov	x0, x23
+original-line 87388: 0x256bafa54:  e2 03 14 aa   mov	x2, x20
+original-line 87389: 0x256bafa58:  23 00 80 52   mov	w3, #0x1
+original-line 87390: 0x256bafa5c:  ad f4 51 94   bl	0x25802cd10 ; CALL setTexture:atIndex:
+original-line 87391: 0x256bafa60:  a2 a3 01 d1   sub	x2, fp, #0x68
+original-line 87392: 0x256bafa64:  e0 03 17 aa   mov	x0, x23
+original-line 87393: 0x256bafa68:  83 00 80 52   mov	w3, #0x4
+original-line 87394: 0x256bafa6c:  04 00 80 d2   mov	x4, #0
+original-line 87395: 0x256bafa70:  78 ed 51 94   bl	0x25802b050 ; CALL setBytes:length:atIndex:
+original-line 87396: 0x256bafa74:  a2 93 01 d1   sub	x2, fp, #0x64
+original-line 87397: 0x256bafa78:  e0 03 17 aa   mov	x0, x23
+original-line 87398: 0x256bafa7c:  83 00 80 52   mov	w3, #0x4
+original-line 87399: 0x256bafa80:  24 00 80 52   mov	w4, #0x1
+original-line 87400: 0x256bafa84:  73 ed 51 94   bl	0x25802b050 ; CALL setBytes:length:atIndex:
+
+## compute: internal WithoutFaceBoost parameter writes
+original-line 44135: 0x256b86e30:  68 50 15 39   strb	w8, [x3, #0x554]
+original-line 44136: 0x256b86e34:  08 f0 a7 52   mov	w8, #0x3f800000
+original-line 44137: 0x256b86e38:  68 24 00 b9   str	w8, [x3, #0x24]
+original-line 44138: 0x256b86e3c:  7f 58 05 b9   str	wzr, [x3, #0x558]
+original-line 44139: 0x256b86e40:  60 0a 40 f9   ldr	x0, [x19, #0x10]
+original-line 44140: 0x256b86e44:  64 02 01 91   add	x4, x19, #0x40
+original-line 44141: 0x256b86e48:  65 02 15 8b   add	x5, x19, x21
+original-line 44142: 0x256b86e4c:  fd c9 54 94   bl	0x2580b9640 ; CALL computeLtmComputeInput:withMetadata:to:computeInputMetadata:
+original-line 44143: 0x256b86e50:  a0 07 00 35   cbnz	w0, 0x256b86f44
+original-line 44144: 0x256b86e54:  60 06 40 f9   ldr	x0, [x19, #0x8]
+original-line 44145: 0x256b86e58:  62 02 01 91   add	x2, x19, #0x40
+original-line 44146: 0x256b86e5c:  63 02 15 8b   add	x3, x19, x21
+original-line 44147: 0x256b86e60:  64 02 16 8b   add	x4, x19, x22
+original-line 44148: 0x256b86e64:  f3 c9 54 94   bl	0x2580b9630 ; CALL computeLTM:withMetadata:to:
+original-line 44149: 0x256b86e68:  a0 07 00 35   cbnz	w0, 0x256b86f5c
+original-line 44150: 0x256b86e6c:  e0 2a 45 f9   ldr	x0, [x23, #0xa50]
+original-line 44151: 0x256b86e70:  66 16 43 a9   ldp	x6, x5, [x19, #0x30]
+original-line 44152: 0x256b86e74:  67 16 40 f9   ldr	x7, [x19, #0x28]
+original-line 44153: 0x256b86e78:  64 02 16 8b   add	x4, x19, x22
+original-line 44154: 0x256b86e7c:  e2 03 14 aa   mov	x2, x20
+original-line 44155: 0x256b86e80:  43 00 80 52   mov	w3, #0x2
+original-line 44156: 0x256b86e84:  53 c9 54 94   bl	0x2580b93d0 ; CALL addLTMMetadataTo:curvesType:fromLTMOutput:statistics:driverInputMetadata:geometryData:
+original-line 44157: 0x256b86e88:  68 8e 40 39   ldrb	w8, [x19, #0x23]
+original-line 44158: 0x256b86e8c:  1f 05 00 71   cmp	w8, #0x1
+original-line 44159: 0x256b86e90:  01 03 00 54   b.ne	0x256b86ef0
+original-line 44160: 0x256b86e94:  63 0a 43 a9   ldp	x3, x2, [x19, #0x30]
+original-line 44161: 0x256b86e98:  68 50 15 39   strb	w8, [x3, #0x554]
+original-line 44162: 0x256b86e9c:  09 f0 a7 52   mov	w9, #0x3f800000
+original-line 44163: 0x256b86ea0:  69 24 00 b9   str	w9, [x3, #0x24]
+original-line 44164: 0x256b86ea4:  68 58 05 b9   str	w8, [x3, #0x558]
+original-line 44165: 0x256b86ea8:  60 0a 40 f9   ldr	x0, [x19, #0x10]
+original-line 44166: 0x256b86eac:  64 02 01 91   add	x4, x19, #0x40
+original-line 44167: 0x256b86eb0:  65 02 15 8b   add	x5, x19, x21
+original-line 44168: 0x256b86eb4:  e3 c9 54 94   bl	0x2580b9640 ; CALL computeLtmComputeInput:withMetadata:to:computeInputMetadata:
+original-line 44169: 0x256b86eb8:  c0 04 00 35   cbnz	w0, 0x256b86f50
+original-line 44170: 0x256b86ebc:  60 06 40 f9   ldr	x0, [x19, #0x8]
+original-line 44171: 0x256b86ec0:  62 02 01 91   add	x2, x19, #0x40
+original-line 44172: 0x256b86ec4:  63 02 15 8b   add	x3, x19, x21
+original-line 44173: 0x256b86ec8:  64 02 16 8b   add	x4, x19, x22
+original-line 44174: 0x256b86ecc:  d9 c9 54 94   bl	0x2580b9630 ; CALL computeLTM:withMetadata:to:
+original-line 44175: 0x256b86ed0:  c0 04 00 35   cbnz	w0, 0x256b86f68
+original-line 44176: 0x256b86ed4:  e0 2a 45 f9   ldr	x0, [x23, #0xa50]
+original-line 44177: 0x256b86ed8:  66 16 43 a9   ldp	x6, x5, [x19, #0x30]
+original-line 44178: 0x256b86edc:  67 16 40 f9   ldr	x7, [x19, #0x28]
+original-line 44179: 0x256b86ee0:  64 02 16 8b   add	x4, x19, x22
+original-line 44180: 0x256b86ee4:  e2 03 14 aa   mov	x2, x20
+original-line 44181: 0x256b86ee8:  63 00 80 52   mov	w3, #0x3
+original-line 44182: 0x256b86eec:  39 c9 54 94   bl	0x2580b93d0 ; CALL addLTMMetadataTo:curvesType:fromLTMOutput:statistics:driverInputMetadata:geometryData:
+

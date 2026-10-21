@@ -1,0 +1,51 @@
+{
+  "os_build": "26A434",
+  "image_version": "20261012.0260.1",
+  "source_commit": "b0a0784ff5b413b2082ac0e9b083b0b2754d86af",
+  "source_SHA256": {
+    "run_hdr_s103.py": "c813b416540b5ebae3bb83da9d27dcafc32f42ee701fe2db06c4f42d3736a170",
+    "input_archive_s103.py": "875be15729f5a4cb2a439b49dda21ec6ad299158441f2ef2c13340e40d83b68c",
+    "read_original_s103.m": "4077ee55e9cbe3dc8b579eda180e17cc9846614c4a62ac2515a0fcc599a17520",
+    "run_hdr_s90.py": "6e5a424cfe136ddf0a754404f21dce9bda505b94fa1a7403c22708a140c09465",
+    "source_s37.m": "116d40c05a8d03ffbb6546db96f4753be63ab3a5bd472a72d84a3ea835340b0f",
+    "carrier_readback_s87.m": "90c39f50c794be130cfaec78e21c2a991bd7b97197d7c3e35e333261d667ed13",
+    "hdr_headroom_s29.m": "76c393a9e69efedb4e807729db57046f7291e42117f0a45b0790841fd6e1421f",
+    "inputs-s89.json": "fe9f2e626a39e3b2b93b73a81ac23f19e65698c7bf9e52d73daa18f2f22f6fdb",
+    "final_image_retention.json": "7060de216dcea0b58ed2b99e9aad180ac244355630966c4fe694566e98f07bc8"
+  },
+  "photos": [
+    "IMG_2604",
+    "IMG_0032",
+    "IMG_2608",
+    "IMG_0033"
+  ],
+  "no_new_holdouts": true,
+  "reuse_IMG2600": "evidence/s101/S90-reuse-binding.json and completed S90 10bit statistics; no rerun or 12bit retry",
+  "statistics_AST_SHA256": "09eef23ffe53fe5784e69da0cda487d330d9118d61697740d1fa539f3c1beb50",
+  "statistics_original_nodes_unmodified": true,
+  "headrooms": [
+    1,
+    2,
+    8
+  ],
+  "fixed_display": {
+    "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+    "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+    "source": "Linear P3-D65",
+    "display": "sRGB - Display",
+    "view": "ACES 1.0 - SDR Video",
+    "exposure_ev": 0
+  },
+  "ideal_headroom": "(S+original_fullprecision_offset)*exp2(log2(headroom)/3*log2((H+offset)/(S+offset)))-offset; same S89/S90 formula, no encoded-offset substitution",
+  "predeclared_practical_display_diagnostic": {
+    "name": "fraction of full-frame pixels with max RGB difference <=1 code in the fixed 8bit ACES view",
+    "at_least": 0.99,
+    "scope": "Display transport diagnostic only; not scene recovery or actual HDR display acceptance. No clipping of source inputs."
+  },
+  "edge_brightness_diagnostics": "Unmodified S90 gradient/reference-edge>=4/Laplacian proxies and brightness bins. No invented halo-visibility or per-bin acceptance threshold.",
+  "old_gates_or_masks_changed": false,
+  "image_archival": "None. Reuse existing final HEIC; all decoded arrays/EXR/display images temporary runner scratch, cleanup on success/failure",
+  "engineering_accepted": false,
+  "A_phase_complete": false,
+  "acceptance_complete": false
+}

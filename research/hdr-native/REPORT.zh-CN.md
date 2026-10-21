@@ -995,3 +995,12 @@ EV域沿用旧验证：RGB有限，Yactual>0、Yref>1e-6；排除数量如表，
 按用户最新指令，后续持久化的图片仅为最终 HDR HEIC，原 SDR 与 HDR Gain Map 在同一容器中。EXR、half/float 像素数组、中间算子图、像素 mask 和 PNG/JPEG 预览仅作 runner 临时验证数据，不上传归档，任务结束（含失败）清理。保留小型报告、汇总指标、哈希和复现记录。仅补指标的 run 不重复归档已有 HEIC。
 
 执行约定见 final_image_retention.json。这是交付格式变更，不是新的精度结论；旧门槛、mask 和 A 阶段状态不变。S101 的既有归档及其历史证据保持原样，后续不再新增 EXR 交付。大图仍在 macOS runner 处理，新增密文最终 HEIC 直接归档到日本一次，不在日本与香港间回传大包。
+
+
+### S103 / S104（2026-10-21）：输入传输失败与 LinearThumbnail 来源边界
+
+**可交给 macOS runner（HDR-174）。** S103 source b0a0784ff5b413b2082ac0e9b083b0b2754d86af，run39524824105，26A434 / image20261012.0260.1。原生 reader 编译通过；读取既有 S101 GitHub 大包时 response.read 超时，尚未解密或执行任何照片。因此没有新的显示、边缘、EV 或 SDR 指标，也不向 errors.csv 填零。失败日志保留，artifact12312825604（3446B，SHA754780b5f4ea2e19d1aa72eeb1f2eceea4fa234433eaabea174ff66fbcfdf602）已在日本认证6份公开记录；临时 secret 与分支已按 PR 零引用及源保留条件清理。Mac 部分下载字节未记录，不能冒充0。下一次只修输入传输：按 HTTP206 有界分段取得四份必需密文，核每份 SHA 与完整 GPG，不改原图算法，不回传日本大包，不退回整包200。
+
+**已验证静态（HDR-175，参考 iOS24A446/iPhone12,1）。** 复核285条现有缓存指令。`LTMProcessor process` 在0x256b6430c取得生成的线性输入，保存的同一texture在0x256b64d44..0x256b64d84送入HITH统计，再在0x256b64e10/0x256b64e20初始化并执行曲线计算。RGBA入口转换在此之前绑定输入/输出纹理和两个4字节标量。逐字节证据见 evidence/s104/producer-thumbnail-precurve.txt；UUID0A211E15-50CA-373B-AD9A-F9E3283C68F4，Mach-O SHA974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e。原缓存未改。这证明参考内部前曲线路径，尚不证明 HEIF 辅助图来自该texture，更不把参考地址当 IMG2810 的匹配实现。
+
+**假设 / 来源待绑定（HDR-176）。** 接受用户纠正：WithoutFaceBoost是内部重算路径，不是用户可单独关闭的相机设置；不再要求用户通过UI拍一张关闭提亮的对照。优先追现有LinearThumbnail的生产节点，并用它约束低频亮度。已验证的Apple Log解码/线性P3数值继续复用；“它是否直接是无提亮分支的输出”仍需将编码辅助项与纹理/曲线选择实际连上。主图与缩略图差异包含未知global/local/色彩/尺度/语义因素，不能全称人脸提亮，也不把j换算成RGB增益。没有因此重跑33点或放宽旧门槛。仅保留最终HEIC的约定不变。
