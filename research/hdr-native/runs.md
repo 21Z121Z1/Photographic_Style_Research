@@ -264,3 +264,6 @@ S101 [39518274902](https://github.com/21Z121Z1/Photographic_Style_Research/actio
 
 
 S101 [39518274902](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39518274902)，branch research/vm-native-20261021-hdr-s101，source90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，26A434/image20261012.0260.1，success。五套25EXR/5HEIC认证115private/134public成员、SDR full0、旧master与S89carrier一致。2.081GB原ZIP仅GitHub→日本；无输入secret/release，临时分支清理。文件交付闭合不等于scene或A完成；HDR线性传输仍未过旧门槛，详细误差及S90同文件复用见evidence/s101/NUMERICAL_RESULTS.zh-CN.md。
+
+
+2026-10-21 输出留存策略变更（无新 run）：用户指定只存最终 HEIC。后续不归档 EXR、原始数组、mask 或预览图；诊断 run 只留小型文字/指标。既有 S101 run39518274902 的归档与证据保持不变。执行约定 final_image_retention.json；此变更没有新增数值结果或改变任何验收状态。

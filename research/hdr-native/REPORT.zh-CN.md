@@ -988,3 +988,10 @@ EV域沿用旧验证：RGB有限，Yactual>0、Yref>1e-6；排除数量如表，
 大包共2081208288B直接GitHub→日本，private artifact12310032763 SHAb26a2c7c006fc931d93e312b71d64ba556d18ec00f58919fb6d5c14548379908。香港只取738875B公开原始payload、163840B密文头、19314B校验摘要，编码/SSH开销另计，无大包回传。没有新增输入secret/release，临时分支已在PR零引用、源保留、归档校验后清理。五套23成员cipher与完整清单见archive-receipt/full-file-inventory。
 
 下一步：对其余4个同一目标/载体做固定ACES与边缘/亮度分层实用验证，复用已完成IMG2600；不重建旧master或重跑bit-exact。A语义实际烘焙因子仍未识别、face j→实际EV/原Studio统计/配对RAW/实屏按NATIVE_TODO实机计划。S100新增小型ABI读取已因审批拒绝而保持未执行，此限制不波及公开五图的HDR交付与验证。
+
+
+### 2026-10-21：后续图片只保留最终 HEIC
+
+按用户最新指令，后续持久化的图片仅为最终 HDR HEIC，原 SDR 与 HDR Gain Map 在同一容器中。EXR、half/float 像素数组、中间算子图、像素 mask 和 PNG/JPEG 预览仅作 runner 临时验证数据，不上传归档，任务结束（含失败）清理。保留小型报告、汇总指标、哈希和复现记录。仅补指标的 run 不重复归档已有 HEIC。
+
+执行约定见 final_image_retention.json。这是交付格式变更，不是新的精度结论；旧门槛、mask 和 A 阶段状态不变。S101 的既有归档及其历史证据保持原样，后续不再新增 EXR 交付。大图仍在 macOS runner 处理，新增密文最终 HEIC 直接归档到日本一次，不在日本与香港间回传大包。

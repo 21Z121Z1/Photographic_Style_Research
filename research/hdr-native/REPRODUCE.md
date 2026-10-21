@@ -262,3 +262,6 @@ S101源码90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7：run_hdr_s101.py、rebuild_e
 
 
 S101完整文件：日本runs/39518274902/artifact-12310032763.zip，2081013365B，SHAb26a2c7c006fc931d93e312b71d64ba556d18ec00f58919fb6d5c14548379908。五个photo-full-delivery.tar.gz.gpg分别认证23成员，25EXR/5HEIC逐项file/size/SHA见evidence/s101/full-file-inventory.json。源90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，无输入secret/release；原S42 master与S89 carrier全部SHA相同。HDR目标FLOAT EXR精确复制HDR.f32，按原始画布存放，HEIC保留原irot，预览才按orientation转换。读指标先用本地evidence/s101文本，不回拉大包。IMG2600复用S90的精确文件/native数组/目标SHA证明见S90-reuse-binding.json，下一次只补其余四图完整显示诊断。
+
+
+2026-10-21 起，后续配方先读取 final_image_retention.json：只将最终 HEIC 加入图片归档清单；EXR/raw/mask/预览写入 runner scratch，完成指标和 SHA 检查后在 job 的 always 清理步骤删除，绝不加入 upload-artifact/release/repo。公开文本须为无像素载荷的小型证据。纯诊断只上传汇总记录，不重复传已留存的 HEIC。历史 S101 配方是历史记录，不再视为后续 EXR 留存要求。

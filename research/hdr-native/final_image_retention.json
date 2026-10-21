@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "effective_date": "2026-10-21",
+  "effective_after_research_commit": "cce24e0eca04990898926a1b79726899701c983f",
+  "authorization_user_text": "存什么 exr 啊，只存最终的 heic 就行啊",
+  "kind": "user output-retention instruction, not a numerical validation claim",
+  "retained_images": "Final HDR HEIC only, including the original SDR base and HDR Gain Map in the same container",
+  "retained_nonimage_evidence": [
+    "small reports",
+    "aggregate metrics",
+    "hashes and file sizes",
+    "reproduction records",
+    "small logs without pixel payloads"
+  ],
+  "runner_scratch_only": [
+    "EXR",
+    "raw half/float pixel arrays",
+    "intermediate operator images",
+    "pixel masks",
+    "PNG/JPEG previews",
+    "temporary decoded rasters"
+  ],
+  "scratch_cleanup": "Do not upload scratch to artifacts, releases, repository, or Japan storage. Clean scratch at runner job end, including on failure.",
+  "diagnostic_only_runs": "Upload aggregate text evidence only; reuse existing final HEIC, without duplicating it.",
+  "archive_privacy": "Encrypt retained image outputs before upload; temporary secrets and transfer resources follow existing verified-cleanup rules.",
+  "artifact_retention_days": 1,
+  "large_transfer_route": "New encrypted final HEIC archives go directly from GitHub to Japan once. No large image/archive backhaul between Japan and HK.",
+  "historical_data": "This policy applies to future outputs; do not delete or rewrite original inputs, historical archives, frozen models, or old run evidence.",
+  "accuracy_effect": "None. Existing masks, failed gates, A-phase status, and separation of global/local/semantic inverses remain as recorded."
+}
