@@ -259,3 +259,6 @@ S100实际run39514608080，源e9a93b09：driver精确衍生于S99，修正SRC资
 
 
 S101源码90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7：run_hdr_s101.py、rebuild_export_s101.py、headroom_validation_s101.py、export_hdr_target_s101.py、seal_partial_s101.py与s101_transfer_policy.json。S42原native AST hash9028e46f...，S89验证64–84原AST hashb395ffeb...；完整值见evidence/s101/preflight.json。执行只使用仓库已有五原片；不得为本轮读旧大archive到HK。原像素公式不改，仅新增文件留存和原验证复用。按后续资源授权，单次新日本直存guard3GB，实际artifact总量预检后才取；无HK大包回传。结果待run39518274902，先查同run终态，不因监测暂时失败另派run。
+
+
+S101完整文件：日本runs/39518274902/artifact-12310032763.zip，2081013365B，SHAb26a2c7c006fc931d93e312b71d64ba556d18ec00f58919fb6d5c14548379908。五个photo-full-delivery.tar.gz.gpg分别认证23成员，25EXR/5HEIC逐项file/size/SHA见evidence/s101/full-file-inventory.json。源90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，无输入secret/release；原S42 master与S89 carrier全部SHA相同。HDR目标FLOAT EXR精确复制HDR.f32，按原始画布存放，HEIC保留原irot，预览才按orientation转换。读指标先用本地evidence/s101文本，不回拉大包。IMG2600复用S90的精确文件/native数组/目标SHA证明见S90-reuse-binding.json，下一次只补其余四图完整显示诊断。

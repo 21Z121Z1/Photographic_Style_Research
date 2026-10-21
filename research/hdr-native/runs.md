@@ -261,3 +261,6 @@ S100 [39514608080](https://github.com/21Z121Z1/Photographic_Style_Research/actio
 
 
 S101 [39518274902](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39518274902)，source90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，branch research/vm-native-20261021-hdr-s101；2026-10-21T00:04:55.444596+00:00状态in_progress，目标xcode-27/26A434，image待终态。五套完整分离候选/母版/独立HDR目标EXR/载体保留，原S42/S88/S89数学与门槛不改。无新输入传输、secret或release；原ZIP直接日本。旧监测API失败后仅恢复同一run观察，无native重启。
+
+
+S101 [39518274902](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39518274902)，branch research/vm-native-20261021-hdr-s101，source90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，26A434/image20261012.0260.1，success。五套25EXR/5HEIC认证115private/134public成员、SDR full0、旧master与S89carrier一致。2.081GB原ZIP仅GitHub→日本；无输入secret/release，临时分支清理。文件交付闭合不等于scene或A完成；HDR线性传输仍未过旧门槛，详细误差及S90同文件复用见evidence/s101/NUMERICAL_RESULTS.zh-CN.md。

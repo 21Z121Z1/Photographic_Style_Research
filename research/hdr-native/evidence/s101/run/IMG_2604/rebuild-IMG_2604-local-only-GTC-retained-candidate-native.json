@@ -1,0 +1,661 @@
+{
+  "allocation_scope" : "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+  "allocation_state" : {
+    "allocatedSize" : "[<FigMetalAllocator 0x10292d240> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+    "allocator" : "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x75cf01c5a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x75cec80e80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x75cec40900>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+    "allocatorType" : 2,
+    "context" : "<FigMetalContext: 0x75cecc1180>",
+    "externalMemoryResource" : "[<CMISmartStyleMetalRendererV1 0x10292bac0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+    "memSize" : 2147483648,
+    "supportsExternalMemoryResource" : "[<CMISmartStyleMetalRendererV1 0x10292bac0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+    "useLiveMetalAllocations" : false
+  },
+  "candidate_projection_only" : true,
+  "color_SHA" : "e191fbe76d68a475fadf2fabc5a3c538fa83c78d5c940898bf9997ddb04ad6f3",
+  "config_status" : 0,
+  "descriptor_events" : [
+    {
+      "after" : {
+        "allowFallback" : false,
+        "autoUseSubAllocators" : false,
+        "memSize" : 2147483648,
+        "resourceOptions" : 512,
+        "wireMemory" : false
+      },
+      "call" : "setMemSize:",
+      "object" : "0x75cec80ec0",
+      "value" : 2147483648
+    },
+    {
+      "after" : {
+        "allowFallback" : false,
+        "autoUseSubAllocators" : false,
+        "memSize" : 2147483648,
+        "resourceOptions" : 512,
+        "wireMemory" : true
+      },
+      "call" : "setWireMemory:",
+      "object" : "0x75cec80ec0",
+      "value" : true
+    },
+    {
+      "after" : {
+        "allowFallback" : false,
+        "autoUseSubAllocators" : false,
+        "memSize" : 46080,
+        "resourceOptions" : 512,
+        "wireMemory" : false
+      },
+      "call" : "setMemSize:",
+      "object" : "0x75cec80f40",
+      "value" : 46080
+    },
+    {
+      "after" : {
+        "allowFallback" : false,
+        "autoUseSubAllocators" : false,
+        "memSize" : 46080,
+        "resourceOptions" : 512,
+        "wireMemory" : true
+      },
+      "call" : "setWireMemory:",
+      "object" : "0x75cec80f40",
+      "value" : true
+    }
+  ],
+  "device" : "Apple Paravirtual device",
+  "dispatch_count" : 7,
+  "guided_ABI" : "i60@0:8@16@24@32@40Q48f56",
+  "guided_calls" : [
+    {
+      "epsilon" : 0.0010000000474974513,
+      "guide_format" : 115,
+      "guide_size" : [
+        4284,
+        5712
+      ],
+      "input_size" : [
+        768,
+        1024
+      ],
+      "output_size" : [
+        4284,
+        5712
+      ],
+      "radius" : 1
+    },
+    {
+      "epsilon" : 0.0010000000474974513,
+      "guide_format" : 115,
+      "guide_size" : [
+        4284,
+        5712
+      ],
+      "input_size" : [
+        768,
+        1024
+      ],
+      "output_size" : [
+        4284,
+        5712
+      ],
+      "radius" : 1
+    }
+  ],
+  "guided_filter_present" : 1,
+  "host_preconditions_verified" : true,
+  "imageblock_pipeline" : "<AppleParavirtComputePipelineState: 0x75cee24380>\n    label = <none> \n    device = <AppleParavirtDevice: 0x102920fc0>\n        name = Apple Paravirtual device",
+  "ivars" : {
+    "_baselineExposure" : {
+      "offset" : 1464,
+      "type" : "f"
+    },
+    "_bgLTMGainMapTexture" : {
+      "offset" : 568,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_brightnessValue" : {
+      "offset" : 1488,
+      "type" : "@\"NSNumber\""
+    },
+    "_cameraInfoByPortType" : {
+      "offset" : 1528,
+      "type" : "@\"NSDictionary\""
+    },
+    "_cmiGuidedFilter" : {
+      "offset" : 16,
+      "type" : "@\"CMIGuidedFilter\""
+    },
+    "_colorManagement" : {
+      "offset" : 128,
+      "type" : "{?=\"inputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputLinearImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"inputMasks\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}\"outputImage\"{?=\"transferFunction\"i\"colorConversionMatrix\"{?=\"columns\"[3]}\"useVELuma\"B}}"
+    },
+    "_copyStats" : {
+      "offset" : 1368,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_createGuidePipelineStateUsingImageBlock" : {
+      "offset" : 1280,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_createGuidePipelineStateWithoutImageBlock" : {
+      "offset" : 1272,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_createLTMGainMapPipelineStateUsingImageBlock" : {
+      "offset" : 1288,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_createLTMGainMapPipelineStateWithoutImageBlock" : {
+      "offset" : 1296,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_cubicSplineToneCurveTexture" : {
+      "offset" : 624,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_encodeLinearPipelineState" : {
+      "offset" : 1360,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_faceBasedGlobalExposureBoostRatio" : {
+      "offset" : 1472,
+      "type" : "f"
+    },
+    "_fakeLinearStatsBuffer" : {
+      "offset" : 1448,
+      "type" : "@\"<MTLBuffer>\""
+    },
+    "_fgbgMatteTexture" : {
+      "offset" : 584,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_fgLTMGainMapTexture" : {
+      "offset" : 576,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_globalHistogramPipelineState" : {
+      "offset" : 1248,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_globalStatsPipelineState" : {
+      "offset" : 1264,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_guideTexture" : {
+      "offset" : 488,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_hueSatLumLUTPipelineState" : {
+      "offset" : 1344,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_hueSatLumLUTTexByCastTypeForVariant" : {
+      "offset" : 1416,
+      "type" : "@\"NSDictionary\""
+    },
+    "_imageReduction" : {
+      "offset" : 1224,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_inputBgLTMGainMapTextureMappedRegion" : {
+      "offset" : 792,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputFgLTMGainMapTextureMappedRegion" : {
+      "offset" : 824,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputGainMapTexture" : {
+      "offset" : 104,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputGlobalToneCurveTexture" : {
+      "offset" : 616,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputImageTexture" : {
+      "offset" : 32,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputImageTextureMappedRegion" : {
+      "offset" : 728,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputImageThumbnailTexture" : {
+      "offset" : 40,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputLightMapTexture" : {
+      "offset" : 552,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputLightMapTextureMappedRegion" : {
+      "offset" : 856,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputLinearBaseGain" : {
+      "offset" : 1460,
+      "type" : "f"
+    },
+    "_inputLinearEncodingGain" : {
+      "offset" : 1468,
+      "type" : "f"
+    },
+    "_inputLinearImageChromaTexture" : {
+      "offset" : 64,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputLinearImageLumaTexture" : {
+      "offset" : 56,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputLinearImageTexture" : {
+      "offset" : 48,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputLinearImageTextureMappedRegion" : {
+      "offset" : 760,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputLinearLightMapTexture" : {
+      "offset" : 560,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputLinearLightMapTextureMappedRegion" : {
+      "offset" : 888,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputPersonMaskTexture" : {
+      "offset" : 80,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputPersonMaskTextureMappedRegion" : {
+      "offset" : 920,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputSkinMaskTexture" : {
+      "offset" : 88,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputSkinMaskTextureMappedRegion" : {
+      "offset" : 952,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputSkyMaskTexture" : {
+      "offset" : 96,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputSkyMaskTextureMappedRegion" : {
+      "offset" : 984,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_inputSmallLightMapTexture" : {
+      "offset" : 520,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputSmallLinearLightMapTexture" : {
+      "offset" : 528,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_inputSRLCoefficientsBuf" : {
+      "offset" : 1424,
+      "type" : "@\"<MTLBuffer>\""
+    },
+    "_inputSRLCurveParameter" : {
+      "offset" : 1432,
+      "type" : "f"
+    },
+    "_inputStatisticsByStatsKey" : {
+      "offset" : 640,
+      "type" : "@\"NSDictionary\""
+    },
+    "_inputStatisticsByStatsType" : {
+      "offset" : 632,
+      "type" : "@\"NSDictionary\""
+    },
+    "_inputStyle" : {
+      "offset" : 24,
+      "type" : "@\"CMISmartStyleV1\""
+    },
+    "_instanceLabel" : {
+      "offset" : 1480,
+      "type" : "@\"NSString\""
+    },
+    "_internalTuningParams" : {
+      "offset" : 608,
+      "type" : "@\"SmartStyleRendererPlist\""
+    },
+    "_linearGuideTexture" : {
+      "offset" : 496,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_linearStatsBuf" : {
+      "offset" : 480,
+      "type" : "@\"<MTLBuffer>\""
+    },
+    "_localHistogramStatsAll" : {
+      "offset" : 1240,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_logicalImageSize" : {
+      "offset" : 680,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToBgLTMGainMapScale" : {
+      "offset" : 1112,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToFgLTMGainMapScale" : {
+      "offset" : 1128,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputImageScale" : {
+      "offset" : 1080,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputLightMapScale" : {
+      "offset" : 1144,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputLinearImageScale" : {
+      "offset" : 1096,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputLinearLightMapScale" : {
+      "offset" : 1160,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputPersonMaskScale" : {
+      "offset" : 1176,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputSkinMaskScale" : {
+      "offset" : 1192,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_logicalImageToInputSkyMaskScale" : {
+      "offset" : 1208,
+      "type" : "{CGSize=\"width\"d\"height\"d}"
+    },
+    "_mainAllocatorLock" : {
+      "offset" : 460,
+      "type" : "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+    },
+    "_metalContext" : {
+      "offset" : 8,
+      "type" : "@\"FigMetalContext\""
+    },
+    "_outputCodedLinearMetadata" : {
+      "offset" : 1520,
+      "type" : "@\"NSMutableDictionary\""
+    },
+    "_outputCodedLinearTexture" : {
+      "offset" : 1512,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_outputGainMapTexture" : {
+      "offset" : 112,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_outputImageStatistics" : {
+      "offset" : 1496,
+      "type" : "@\"NSMutableDictionary\""
+    },
+    "_outputImageStatisticsExtended" : {
+      "offset" : 1504,
+      "type" : "@\"NSMutableDictionary\""
+    },
+    "_outputImageTexture" : {
+      "offset" : 72,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_outputImageTextureMappedRegion" : {
+      "offset" : 1016,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_outputSmallLightMapTexture" : {
+      "offset" : 536,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_outputSmallLinearLightMapTexture" : {
+      "offset" : 544,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_paramsBuf" : {
+      "offset" : 464,
+      "type" : "@\"<MTLBuffer>\""
+    },
+    "_personMasksValidHint" : {
+      "offset" : 1476,
+      "type" : "f"
+    },
+    "_processingType" : {
+      "offset" : 648,
+      "type" : "i"
+    },
+    "_renderingParamsFromStatsPipelineState" : {
+      "offset" : 1352,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_renderRegionRect" : {
+      "offset" : 696,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_renderSmartStylePipelineStateUsingImageBlock" : {
+      "offset" : 1304,
+      "type" : "[2@\"<MTLComputePipelineState>\"]"
+    },
+    "_renderSmartStylePipelineStateWithoutImageBlock" : {
+      "offset" : 1320,
+      "type" : "[2@\"<MTLComputePipelineState>\"]"
+    },
+    "_sceneType" : {
+      "offset" : 664,
+      "type" : "@\"NSString\""
+    },
+    "_semanticStyleSceneType" : {
+      "offset" : 672,
+      "type" : "i"
+    },
+    "_sharedAccessAllocator" : {
+      "offset" : 448,
+      "type" : "@\"FigMetalAllocator\""
+    },
+    "_sharedAccessAllocatorLock" : {
+      "offset" : 456,
+      "type" : "{os_unfair_lock_s=\"_os_unfair_lock_opaque\"I}"
+    },
+    "_sharedEvent" : {
+      "offset" : 1384,
+      "type" : "@\"<MTLSharedEvent>\""
+    },
+    "_sharedEventListener" : {
+      "offset" : 1376,
+      "type" : "@\"MTLSharedEventListener\""
+    },
+    "_sharedEventSignal" : {
+      "offset" : 1392,
+      "type" : "Q"
+    },
+    "_shouldCreateLTMGainMap" : {
+      "offset" : 1401,
+      "type" : "B"
+    },
+    "_shouldUpsampleInputPersonMask" : {
+      "offset" : 1400,
+      "type" : "B"
+    },
+    "_skinMatteTexture" : {
+      "offset" : 592,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_skyMatteTexture" : {
+      "offset" : 600,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_smallLightMapTexture" : {
+      "offset" : 504,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_smallLinearLightMapTexture" : {
+      "offset" : 512,
+      "type" : "@\"<MTLTexture>\""
+    },
+    "_srlSemanticKind" : {
+      "offset" : 1440,
+      "type" : "i"
+    },
+    "_statsBuf" : {
+      "offset" : 472,
+      "type" : "@\"<MTLBuffer>\""
+    },
+    "_statsComputationRect" : {
+      "offset" : 1048,
+      "type" : "{CGRect=\"origin\"{CGPoint=\"x\"d\"y\"d}\"size\"{CGSize=\"width\"d\"height\"d}}"
+    },
+    "_sumPersonAndSkinCounts" : {
+      "offset" : 1256,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_texturesToPurge" : {
+      "offset" : 1408,
+      "type" : "@\"NSMutableSet\""
+    },
+    "_tuningParameters" : {
+      "offset" : 1536,
+      "type" : "@\"NSDictionary\""
+    },
+    "_tuningParameterVariant" : {
+      "offset" : 656,
+      "type" : "@\"NSString\""
+    },
+    "_updateBaseGainWithStats" : {
+      "offset" : 1232,
+      "type" : "@\"<MTLComputePipelineState>\""
+    },
+    "_useFaceBasedGlobalExposureBoostRatio" : {
+      "offset" : 1436,
+      "type" : "B"
+    },
+    "_useLiveMetalAllocations" : {
+      "offset" : 1456,
+      "type" : "B"
+    },
+    "_useSemanticSRL" : {
+      "offset" : 1437,
+      "type" : "B"
+    },
+    "_useSemanticSRLByDefault" : {
+      "offset" : 1457,
+      "type" : "B"
+    },
+    "_YCbCrToRGBColorConversionPipelineState" : {
+      "offset" : 1336,
+      "type" : "@\"<MTLComputePipelineState>\""
+    }
+  },
+  "mode" : "host",
+  "os" : "Version 27.0.1 (Build 26A434)",
+  "params_SHA_after" : "9f6f8f8b0e901605c3a4d395d350e2a7a5898a7c080e7efbdf766a268966bf76",
+  "params_SHA_before" : "9f6f8f8b0e901605c3a4d395d350e2a7a5898a7c080e7efbdf766a268966bf76",
+  "photos_used" : true,
+  "plain_pipeline" : "<AppleParavirtComputePipelineState: 0x75cee24540>\n    label = <none> \n    device = <AppleParavirtDevice: 0x102920fc0>\n        name = Apple Paravirtual device",
+  "prepare_status" : 0,
+  "process_status" : 0,
+  "runtime_override" : "CMIMetalResourceCache._enableResidencySets=NO (existing VM compatibility shim)",
+  "scene_inverse_verified" : false,
+  "should_create_LTM_maps" : 1,
+  "srl_flag_offset_0x59d" : 0,
+  "success" : true,
+  "supplied_allocator_setup_status" : 0,
+  "supplied_descriptor" : {
+    "allowFallback" : false,
+    "autoUseSubAllocators" : false,
+    "memSize" : 2147483648,
+    "resourceOptions" : 512,
+    "wireMemory" : true
+  },
+  "supplied_heap_bytes" : 2147483648,
+  "supports_Apple4" : true,
+  "synthetic_only" : false,
+  "textures" : {
+    "bg-full" : {
+      "dtype" : "<f2",
+      "file" : "bg-full.f16",
+      "pixel_format" : 115,
+      "sha256" : "1f19c16f6d1577553caeeedeaac55840c32113442e88a550b760fcc759dec51e",
+      "shape" : [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "bg-small" : {
+      "dtype" : "<f2",
+      "file" : "bg-small.f16",
+      "pixel_format" : 115,
+      "sha256" : "47a94afeaabbec553092c567ee0613647c928a7258dc6ef40680b65c4caae768",
+      "shape" : [
+        768,
+        1024,
+        4
+      ]
+    },
+    "fg-full" : {
+      "dtype" : "<f2",
+      "file" : "fg-full.f16",
+      "pixel_format" : 115,
+      "sha256" : "1f19c16f6d1577553caeeedeaac55840c32113442e88a550b760fcc759dec51e",
+      "shape" : [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "fg-small" : {
+      "dtype" : "<f2",
+      "file" : "fg-small.f16",
+      "pixel_format" : 115,
+      "sha256" : "47a94afeaabbec553092c567ee0613647c928a7258dc6ef40680b65c4caae768",
+      "shape" : [
+        768,
+        1024,
+        4
+      ]
+    },
+    "gtc" : {
+      "dtype" : "<f2",
+      "file" : "gtc.f16",
+      "pixel_format" : 25,
+      "sha256" : "9e6c7bb59b89661c9331c5f2e585796a2fd95105b1de414983c197f5dce28b82",
+      "shape" : [
+        1,
+        256,
+        1
+      ]
+    },
+    "linear" : {
+      "dtype" : "<f2",
+      "file" : "linear.f16",
+      "pixel_format" : 115,
+      "sha256" : "a38147aab84534c52a5bca46a2605aa1480b2e121809b839cffe42549b76ed0f",
+      "shape" : [
+        768,
+        1024,
+        4
+      ]
+    },
+    "main" : {
+      "dtype" : "<f2",
+      "file" : "main.f16",
+      "pixel_format" : 115,
+      "sha256" : "4db7007b582df60a08883258b10d71c80f6d7beef0391926ec675f158608c596",
+      "shape" : [
+        4284,
+        5712,
+        4
+      ]
+    }
+  }
+}

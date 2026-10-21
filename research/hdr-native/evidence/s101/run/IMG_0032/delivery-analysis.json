@@ -1,0 +1,587 @@
+{
+  "photo": "IMG_0032",
+  "previous_role": "integration-development",
+  "completed": true,
+  "new_holdout": false,
+  "ideal_headroom_metrics": {
+    "1": {
+      "max_abs": 2.9802322387695312e-08,
+      "max_relative_floor_1e6": 5.973224662058842e-08,
+      "PSNR_peak1_dB": 208.64271314284392,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 6.717755227941892e-08,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "2": {
+      "max_abs": 0.0050062958906147426,
+      "max_relative_floor_1e6": 0.006203075470475539,
+      "PSNR_peak1_dB": 65.24521681573042,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0009473347454331815,
+      "EV_abs_p95": 0.0024171665543690326,
+      "EV_abs_p99": 0.0029130015312694014,
+      "EV_abs_max_f64": 0.006522423398159901,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "8": {
+      "max_abs": 0.019191503524780273,
+      "max_relative_floor_1e6": 0.41762541513890367,
+      "PSNR_peak1_dB": 55.67569970859787,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.002840774250216782,
+      "EV_abs_p95": 0.007249391311779619,
+      "EV_abs_p99": 0.008738548178225756,
+      "EV_abs_max_f64": 0.026948414689715528,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    }
+  },
+  "max_RGB_relative_diagnostic": {
+    "max_relative_floor1e6": 0.4176254151389003,
+    "reference_component_abs_le_1e6": true,
+    "reference_component_abs_le_1e4": true,
+    "reference_luma_le_1e4": false,
+    "reference_component_negative": false,
+    "actual_component_negative": false,
+    "absolute_component_error": 4.176254151389003e-07,
+    "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+  },
+  "preview_checks": [
+    {
+      "label": "ideal h1",
+      "before": "538aedb4c9f0aab8323d04c3837e58bc0e8c892fed6eeec38e76c63cb7266c28",
+      "after": "538aedb4c9f0aab8323d04c3837e58bc0e8c892fed6eeec38e76c63cb7266c28"
+    },
+    {
+      "label": "native h1",
+      "before": "24cddcc128ceb0ac9b6952dbb512ef6e37e5ba92697978f40e9cda2aedac40f0",
+      "after": "24cddcc128ceb0ac9b6952dbb512ef6e37e5ba92697978f40e9cda2aedac40f0"
+    },
+    {
+      "label": "ideal h2",
+      "before": "2071f67671b03eda1d8cf24270654e6fd11b235bcb3a8a887ecc61ab611e2db9",
+      "after": "2071f67671b03eda1d8cf24270654e6fd11b235bcb3a8a887ecc61ab611e2db9"
+    },
+    {
+      "label": "native h2",
+      "before": "4ddbb3619e017d7be3d4c5b8795cda0fcb955eea20560707994267cea5ef3278",
+      "after": "4ddbb3619e017d7be3d4c5b8795cda0fcb955eea20560707994267cea5ef3278"
+    },
+    {
+      "label": "ideal h8",
+      "before": "4256a0e05b808ab8ddd945ee9afee27c645af8460e21ccac124957f038083ceb",
+      "after": "4256a0e05b808ab8ddd945ee9afee27c645af8460e21ccac124957f038083ceb"
+    },
+    {
+      "label": "native h8",
+      "before": "ba3512c512e3498d4325a14b2c185d2474580b19aba896d0fb298d3d5f79a967",
+      "after": "ba3512c512e3498d4325a14b2c185d2474580b19aba896d0fb298d3d5f79a967"
+    }
+  ],
+  "source_SHA_before_after": {
+    "master.exr": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+    "master.f16": "dc6f2e0089bad628f488e8b66e46593420be52cb8840e04ae449898acafd29c9",
+    "original-sdr.f32": "91a7cc791d223b7dcaabc3ed51e1aa92abbf51d77721c90d11e9994012ff1090",
+    "HDR.f32": "3d2514e342f68efa2ff7d497646297341f7eb79a915b768c4b4fd00f41fcf96e"
+  },
+  "SDR_max0": true,
+  "original_S88_metrics": {
+    "encoded_HDR_vs_target": {
+      "max_abs": 0.019191503524780273,
+      "max_relative_floor_1e6": 0.4176254151389003,
+      "PSNR_peak1_dB": 55.67569970859787,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.002840774250216782,
+      "EV_abs_p95": 0.007249391311779619,
+      "EV_abs_p99": 0.008738548178225756,
+      "EV_abs_max_f64": 0.026948414689715528,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "log_f32_only": {
+      "max_abs": 3.199770404194169e-08,
+      "max_relative_floor_1e6": 5.0136170849689535e-06,
+      "PSNR_peak1_dB": 174.57835206317338,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 3.1268281297514022e-09,
+      "EV_abs_p95": 2.019458911206584e-08,
+      "EV_abs_p99": 3.664657764801405e-08,
+      "EV_abs_max_f64": 1.2037908919596001e-07,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "metadata_offset_additional": {
+      "max_abs": 1.6713881131891206e-06,
+      "max_relative_floor_1e6": 0.2578478034933376,
+      "PSNR_peak1_dB": 137.75597578272146,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 2.325544201653429e-07,
+      "EV_abs_p95": 8.547142169845759e-06,
+      "EV_abs_p99": 2.1097087137604832e-05,
+      "EV_abs_max_f64": 0.0001316122681462102,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.00000000084003,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "quantization_additional": {
+      "max_abs": 0.005818957791424051,
+      "max_relative_floor_1e6": 0.0576335260639179,
+      "PSNR_peak1_dB": 61.59665413101942,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0018411908531561494,
+      "EV_abs_p95": 0.004046635539270938,
+      "EV_abs_p99": 0.004636345407925547,
+      "EV_abs_max_f64": 0.005436001379464948,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "codec_provider_additional": {
+      "max_abs": 0.014146739541570197,
+      "max_relative_floor_1e6": 0.15224421878294908,
+      "PSNR_peak1_dB": 56.9187919256376,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0027641919441521168,
+      "EV_abs_p95": 0.005392530933022499,
+      "EV_abs_p99": 0.006000278457067908,
+      "EV_abs_max_f64": 0.02281758001243091,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "native_full_actual_gain_equation": {
+      "max_abs": 6.159825396423457e-07,
+      "max_relative_floor_1e6": 6.09497485813714e-06,
+      "PSNR_peak1_dB": 142.9909987556477,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 1.521197674492214e-07,
+      "EV_abs_p95": 3.6888997101414134e-07,
+      "EV_abs_p99": 4.48956342324891e-07,
+      "EV_abs_max_f64": 6.763047900790868e-07,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "CI_SDR_vs_original": {
+      "max_abs": 0.0,
+      "max_relative_floor_1e6": 0.0,
+      "PSNR_peak1_dB": "inf",
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 0.0,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom1": {
+      "max_abs": 2.9802322387695312e-08,
+      "max_relative_floor_1e6": 5.973224673184839e-08,
+      "PSNR_peak1_dB": 208.6427131423702,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 6.717755227941892e-08,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom2": {
+      "max_abs": 2.720668474953669e-07,
+      "max_relative_floor_1e6": 3.195352541486005e-07,
+      "PSNR_peak1_dB": 149.73476001438047,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 8.474303569983022e-08,
+      "EV_abs_p95": 2.0366140063288185e-07,
+      "EV_abs_p99": 2.486386847522226e-07,
+      "EV_abs_max_f64": 4.04259507703317e-07,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom8": {
+      "max_abs": 6.159825396423457e-07,
+      "max_relative_floor_1e6": 6.09497485813714e-06,
+      "PSNR_peak1_dB": 142.9909987556477,
+      "components": 36578304,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 12192768,
+      "EV_excluded_pixels": 0,
+      "EV_abs_median": 1.521197674492214e-07,
+      "EV_abs_p95": 3.6888997101414134e-07,
+      "EV_abs_p99": 4.48956342324891e-07,
+      "EV_abs_max_f64": 6.763047900790868e-07,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    }
+  },
+  "actual_master_matches_old_EXR": true,
+  "S89_validation_AST_binding": {
+    "display": {
+      "AST_SHA256": "0f056c97f1efbddcd830ffbe7bc90d225e6e537918d3a14fff35fe5335fde654",
+      "lines": [
+        41,
+        41
+      ],
+      "original_nodes_unmodified": true
+    },
+    "actual_file_validation": {
+      "AST_SHA256": "b395ffebd7dbdfbabdaa64e67d9a836c17f42c9cb8cd668f43fa059352eedc5f",
+      "lines": [
+        64,
+        84
+      ],
+      "original_nodes_unmodified": true
+    }
+  },
+  "full_file_inventory": [
+    {
+      "file": "native-key1-reverse.exr",
+      "bytes": 13423330,
+      "sha256": "93674c066a7cdedd8b4910265444604f69cdf02df6d316cc871bcd3f36f0f967"
+    },
+    {
+      "file": "global-only-GTC-hypothesis.exr",
+      "bytes": 12978874,
+      "sha256": "19ef869b256f9b1063f835174dfb31527de388451a433699d62657e0abbd6cf5"
+    },
+    {
+      "file": "local-only-thumbnail-projection-candidate.exr",
+      "bytes": 28943837,
+      "sha256": "b4c8ae78106b83c20d3f9190cca8f85c6b6f78c21765b5d8fb487cfc7fd826b7"
+    },
+    {
+      "file": "relative-scene-candidate.exr",
+      "bytes": 27791119,
+      "sha256": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012"
+    },
+    {
+      "file": "independent-HDR-target.exr",
+      "bytes": 124604322,
+      "sha256": "ffee12891ccd17d48ce5e824d1af09f953139fb45ab85da2eb9a2a1b935fbc9b"
+    },
+    {
+      "file": "target-EXR-readback.json",
+      "bytes": 1208,
+      "sha256": "9a6632d33204103ab65bf389d13e8f630d40516a8b6a0e7a1936217d231058e2"
+    },
+    {
+      "file": "independent-HDR.heic",
+      "bytes": 5742091,
+      "sha256": "db24e56e81ee1080f5bf93dd8623c4ad47e0bf99c6ea84d8b737cf98340b8869"
+    },
+    {
+      "file": "global-hypothesis-flags.u8",
+      "bytes": 36578304,
+      "sha256": "6e6f7c35e02057cbc43070494ab673c506fef448ba8b2bc09bd765c8a87b2213"
+    },
+    {
+      "file": "global-hypothesis-flags.json",
+      "bytes": 877,
+      "sha256": "aa01a235b51a4c66dc1c517f928d02cfdd935f599583031669e725b21fb97ada"
+    },
+    {
+      "file": "inherited-S42-positive-pair-mask.npy",
+      "bytes": 12192896,
+      "sha256": "aa4f33c700e2d3763b0796cd802907d01df1ed7297716739b5d186614126b7fe"
+    },
+    {
+      "file": "separated-meaning.json",
+      "bytes": 11309,
+      "sha256": "4160ec274c41958950431b5e6aa6fbc086ac8007c1eff1e6f6bb41cffe119205"
+    },
+    {
+      "file": "carrier-meaning.json",
+      "bytes": 1033,
+      "sha256": "6b84de622b875294dd6cb6d80ca872214455684f5b36bc2a7be351ce2464445b"
+    }
+  ],
+  "HDR_target_EXR": {
+    "file": "independent-HDR-target.exr",
+    "bytes": 124604322,
+    "sha256": "ffee12891ccd17d48ce5e824d1af09f953139fb45ab85da2eb9a2a1b935fbc9b",
+    "shape": [
+      3024,
+      4032,
+      3
+    ],
+    "dtype": "<f4",
+    "RGB_storage_readback_different_components": 0,
+    "nonfinite_components": 0,
+    "source_f32_SHA256": "3d2514e342f68efa2ff7d497646297341f7eb79a915b768c4b4fd00f41fcf96e",
+    "source_f32_unchanged": true,
+    "metadata": {
+      "photo": "IMG_0032",
+      "representation": "Relative display-linear P3 RGB, independent S44/S47 intent; not scene-linear truth or a nit calibration",
+      "HDR_intent": {
+        "display_exposure_EV": 1.1995097410400644,
+        "scale": 2.2966161375670953,
+        "statistic_pixels": 762048,
+        "sample_pixels": 762048,
+        "scope": "One global display scale from fixed sample-grid median, not a scene exposure or white-level measurement"
+      },
+      "source_f32_SHA256": "3d2514e342f68efa2ff7d497646297341f7eb79a915b768c4b4fd00f41fcf96e",
+      "stored_canvas": [
+        3024,
+        4032,
+        3
+      ],
+      "orientation": "Raw stored canvas, same as all master/operator EXRs; original HEIC irot applies only when displaying the carrier",
+      "no_new_pixel_calculation": true
+    }
+  },
+  "native_ImageIO_full_SDR_max0": true,
+  "master_exact_old_SHA": true,
+  "separated_storage_metrics": {
+    "local_half_max_abs_vs_frozen_v": 0.000244140625,
+    "global_half_max_abs_vs_frozen_hypothesis": 0.00024356617647058876,
+    "new_half_overflow_components": 0,
+    "all_EXR_storage_readback_differences": 0
+  },
+  "original_anchor": {
+    "positive_anchor_pixels": 786432,
+    "all_anchor_pixels": 786432,
+    "mean_abs_EV": 0.009531612272901079,
+    "p99_abs_EV": 0.046146153340881735,
+    "max_abs_EV": 3.5619417110678366,
+    "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+  },
+  "original_map_variants": [
+    {
+      "tag": "both-candidate",
+      "native_supplied_heap_bytes": 2147483648,
+      "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+      "allocation_state": {
+        "allocatedSize": "[<FigMetalAllocator 0x105691c80> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+        "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7a3f048540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7a3f078dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7a3ec20600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+        "allocatorType": 2,
+        "context": "<FigMetalContext: 0x7a3ec79180>",
+        "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105691030> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+        "memSize": 2147483648,
+        "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105691030> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+        "useLiveMetalAllocations": false
+      },
+      "radius": 1,
+      "epsilon": 0.0010000000474974513,
+      "guided_calls": [
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            3024,
+            4032
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            3024,
+            4032
+          ],
+          "radius": 1
+        },
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            3024,
+            4032
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            3024,
+            4032
+          ],
+          "radius": 1
+        }
+      ],
+      "dispatches": 7,
+      "source_texture_unchanged": true,
+      "params_unchanged": true,
+      "full_bg_fg_SHA_equal": true,
+      "full_bg_sha256": "917327860a5b197824dac40367cb6acf2531cbe550c76f2449465aa5d78f250a",
+      "small_bg_sha256": "2565e0bb9b329daf121ddf9ad44843f1f5d8a527274e201255b802db591d4f3f",
+      "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+      "candidate_negative_components": 0,
+      "candidate_nonfinite_components": 0,
+      "gain_gradient_max_EV": 10.071020126342773,
+      "gain_laplacian_max_EV": 22.041976928710938
+    },
+    {
+      "tag": "local-only-GTC-retained-candidate",
+      "native_supplied_heap_bytes": 2147483648,
+      "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+      "allocation_state": {
+        "allocatedSize": "[<FigMetalAllocator 0x104f26bf0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+        "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x776f048540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x776f078dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x776ec20900>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+        "allocatorType": 2,
+        "context": "<FigMetalContext: 0x776ec79080>",
+        "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x104f3cf70> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+        "memSize": 2147483648,
+        "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x104f3cf70> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+        "useLiveMetalAllocations": false
+      },
+      "radius": 1,
+      "epsilon": 0.0010000000474974513,
+      "guided_calls": [
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            3024,
+            4032
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            3024,
+            4032
+          ],
+          "radius": 1
+        },
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            3024,
+            4032
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            3024,
+            4032
+          ],
+          "radius": 1
+        }
+      ],
+      "dispatches": 7,
+      "source_texture_unchanged": true,
+      "params_unchanged": true,
+      "full_bg_fg_SHA_equal": true,
+      "full_bg_sha256": "217e28b0b819f1fd5a7ca84d9382b98ff92688e116230c0beb9c4260522ebe91",
+      "small_bg_sha256": "7dbbb1d4062a4525eca22d1a2a5b1e3a91b9e9c048d5ddba09f202bfdb67996c",
+      "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+      "candidate_negative_components": 0,
+      "candidate_nonfinite_components": 0,
+      "gain_gradient_max_EV": 10.691162109375,
+      "gain_laplacian_max_EV": 20.944862365722656
+    }
+  ],
+  "encrypted": {
+    "file": "IMG_0032-full-delivery.tar.gz.gpg",
+    "bytes": 214795894,
+    "sha256": "af08cdee1f78323985866286a1104baba8e8a73264ed01b01b1f63acdca4ae65",
+    "private_manifest_SHA256": "027e9cb8af8fef4009e2d23a5de0f7fa8f3ad46caa8d4f9ce957dcbaf4f3240a",
+    "member_files": 23
+  }
+}

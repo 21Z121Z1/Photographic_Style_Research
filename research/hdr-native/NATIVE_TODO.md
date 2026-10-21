@@ -195,3 +195,6 @@ S100终态success，39514608080已完整归档/清理，不再等待或重跑旧
 
 
 S101 run39518274902已启动：终态后核5套认证tar实际含4份共同R/global/local/scene HALF EXR、独立HDR FLOAT EXR和HEIC，目标EXR readback0、原master旧SHA、ImageIO原SDRmax0、实际新carrier headroom1/2/8及全部排除域/量化误差。原global/local假设不变，本轮无新语义反演。既有S100零Tone显式桥接已由极值证实不能过旧float1e-5，不再追该精度；实用意义与正确编辑配置仍需另行判断。A、相机曲线/统计、Studio、RAW、实屏边界不因文件交付而消失。
+
+
+S101 run39518274902已终态认证/清理。完整25EXR和5HEIC现在实际在日本密文，后续不再为补文件重建master。可runner：其余4个公开样片的完整固定ACES/边缘/亮度分层验收；IMG2600与S90 carrier/目标/native数组SHA相同，可复用完成10bit诊断，无须重复或再试12bit。raw线性PSNR47.67–56.01/IMG2600 p99 EV0.229是未过旧门槛的已有结果，不改阈值或当物理场景准确；scene/相机语义/face j实际EV/Studio/RAW/实屏仍按原清单。另有非硬件阻塞：S100新增36个小型ABI摘要的跨区读取在进程启动前遭自动审批拒绝，未安装helper/读取/回传；不得换路径绕过，需要针对载荷的明确授权。它不影响上述公开五图验收。

@@ -1,0 +1,447 @@
+{
+  "original_template_sha256": "7e07a4923ccb18b320ee55f6be04fa7c9579c2ae404769a9b733d47d28787d92",
+  "selection": {
+    "preamble": {
+      "AST_sha256": "4704183e8a125b830a6884ea9236be8dda06aa8d185b866376b23addaa020643",
+      "source_lines": [
+        1,
+        93
+      ],
+      "original_AST_nodes_unmodified": true
+    },
+    "native_master": {
+      "AST_sha256": "9028e46fc475868ef7aea5c03f06c9051072c2982ddb534caedb35098f4c7108",
+      "source_lines": [
+        95,
+        122
+      ],
+      "original_AST_nodes_unmodified": true
+    },
+    "old_transport_mask": {
+      "AST_sha256": "6a577b85b2ff6f10fa314a31f3ec01bc2753314c428ceec315dc66da3a344c4b",
+      "source_lines": [
+        123,
+        126
+      ],
+      "original_AST_nodes_unmodified": true
+    }
+  },
+  "selection_photo": "IMG_2604",
+  "scope": "Original frozen S42 master plus IO-only retained global/local/common-key1 files. No old large archive read.",
+  "OS_build": "26A434",
+  "math_or_parameters_changed": false,
+  "old_full_archive_reused": false,
+  "master_EXR": {
+    "path": "scene_candidate_linear_P3.exr",
+    "size": 65765522,
+    "sha256": "63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264",
+    "readback_different_storage_components": 0,
+    "dtype": "<f2",
+    "unit": "relative linearP3; scene candidate only"
+  },
+  "old_master_EXR_sha256": "63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264",
+  "master_pixel_sha256": "553f1dccbab42479580d0e039fe47e60f21e2e7651fe545f45e8131f16148a61",
+  "source_sha256": "71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e",
+  "formula_freeze_sha256": "c05933c2da4255ea9ef0bcdb3e9e320339a8de13257a4abca5480ac0a1ce5d7b",
+  "mask": {
+    "file": "IMG_2604/publish/positive_pair_mask.npy",
+    "sha256": "b9557d1376dd38b7829a7954302dacb6a2a928d617c90080e2bfcb03e1b91d9b",
+    "scope": "Original S42 zero-offset inherited positive transport mask; not scene inverse/new HDR gain mask"
+  },
+  "old_S42_native_map_variants": [
+    {
+      "tag": "both-candidate",
+      "native_supplied_heap_bytes": 2147483648,
+      "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+      "allocation_state": {
+        "allocatedSize": "[<FigMetalAllocator 0x10528d090> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+        "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7c7d01c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7c7cc80dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7c7cc40600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+        "allocatorType": 2,
+        "context": "<FigMetalContext: 0x7c7ccc1180>",
+        "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105278a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+        "memSize": 2147483648,
+        "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105278a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+        "useLiveMetalAllocations": false
+      },
+      "radius": 1,
+      "epsilon": 0.0010000000474974513,
+      "guided_calls": [
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        },
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        }
+      ],
+      "dispatches": 7,
+      "source_texture_unchanged": true,
+      "params_unchanged": true,
+      "full_bg_fg_SHA_equal": true,
+      "full_bg_sha256": "319fbe1f3c2491e231066f3db61772b03c0aa3e5317fef532f953982a28ad332",
+      "small_bg_sha256": "7cd564bc46c64aea4fbc0042f881802689dac1e246b36bc994a2e7144abbdb92",
+      "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+      "candidate_negative_components": 0,
+      "candidate_nonfinite_components": 0,
+      "gain_gradient_max_EV": 8.187228202819824,
+      "gain_laplacian_max_EV": 7.469688415527344
+    },
+    {
+      "tag": "local-only-GTC-retained-candidate",
+      "native_supplied_heap_bytes": 2147483648,
+      "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+      "allocation_state": {
+        "allocatedSize": "[<FigMetalAllocator 0x10292d240> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+        "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x75cf01c5a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x75cec80e80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x75cec40900>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+        "allocatorType": 2,
+        "context": "<FigMetalContext: 0x75cecc1180>",
+        "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x10292bac0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+        "memSize": 2147483648,
+        "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x10292bac0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+        "useLiveMetalAllocations": false
+      },
+      "radius": 1,
+      "epsilon": 0.0010000000474974513,
+      "guided_calls": [
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        },
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        }
+      ],
+      "dispatches": 7,
+      "source_texture_unchanged": true,
+      "params_unchanged": true,
+      "full_bg_fg_SHA_equal": true,
+      "full_bg_sha256": "1f19c16f6d1577553caeeedeaac55840c32113442e88a550b760fcc759dec51e",
+      "small_bg_sha256": "47a94afeaabbec553092c567ee0613647c928a7258dc6ef40680b65c4caae768",
+      "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+      "candidate_negative_components": 0,
+      "candidate_nonfinite_components": 0,
+      "gain_gradient_max_EV": 6.741466522216797,
+      "gain_laplacian_max_EV": 9.357551574707031
+    }
+  ],
+  "anchor_diagnostic": {
+    "positive_anchor_pixels": 786422,
+    "all_anchor_pixels": 786432,
+    "mean_abs_EV": 0.13766733841368822,
+    "p99_abs_EV": 1.07455098829795,
+    "max_abs_EV": 13.555623708439231,
+    "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+  },
+  "EXR_matches_old_archive_member": true,
+  "full_separated_export": {
+    "photo": "IMG_2604",
+    "common_baseline": "Native Neutrino key1 reverse R is shared BEFORE both global/local hypotheses; R itself reverses a whole style and does not isolate semantic processing",
+    "os_build": "26A434",
+    "formula_freeze_sha256": "c05933c2da4255ea9ef0bcdb3e9e320339a8de13257a4abca5480ac0a1ce5d7b",
+    "RAW_scene_accuracy_unverified": true,
+    "Apple_Log_unchanged": true,
+    "no_new_camera_inverse_or_99percent_scene_claim": true,
+    "shape": [
+      4284,
+      5712,
+      3
+    ],
+    "relative_exposure_E": 1.0,
+    "files": [
+      {
+        "path": "relative-scene-candidate.exr",
+        "sha256": "63dc270cc5561a1285a6e64cd9488987d536e55834268db95af436a91ef17264",
+        "bytes": 65765522,
+        "original_frozen_EXR_exact": true
+      },
+      {
+        "path": "native-key1-reverse.exr",
+        "size": 57853198,
+        "sha256": "86db3c248648c5c983103c3a86c7f1d4740af890d0ff20b8ee5bd1abd32b5d8a",
+        "readback_different_storage_components": 0,
+        "dtype": "<f2",
+        "unit": "relative linearP3; scene candidate only"
+      },
+      {
+        "path": "global-only-GTC-hypothesis.exr",
+        "size": 54364200,
+        "sha256": "f62f5bad006ac34d549707f9148698b94cc59d3126769df1624676f6d0c63a5d",
+        "readback_different_storage_components": 0,
+        "dtype": "<f2",
+        "unit": "relative linearP3; scene candidate only"
+      },
+      {
+        "path": "local-only-thumbnail-projection-candidate.exr",
+        "size": 51676499,
+        "sha256": "d537152739623941b64921070cf844372b2ff4cf03206fdd9bf372dd58428239",
+        "readback_different_storage_components": 0,
+        "dtype": "<f2",
+        "unit": "relative linearP3; scene candidate only"
+      }
+    ],
+    "global_mask": {
+      "curve_low_clamp_components": 36567,
+      "curve_high_clamp_components": 6,
+      "curve_plateau_components": 0,
+      "nonfinite_components": 0,
+      "valid_components": 73374051
+    },
+    "storage_only": {
+      "local_half_max_abs_vs_frozen_v": 3.814697265625e-06,
+      "global_half_max_abs_vs_frozen_hypothesis": 0.00023853291316522363,
+      "new_half_overflow_components": 0,
+      "all_EXR_storage_readback_differences": 0
+    },
+    "original_frozen_map_variants": [
+      {
+        "tag": "both-candidate",
+        "native_supplied_heap_bytes": 2147483648,
+        "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+        "allocation_state": {
+          "allocatedSize": "[<FigMetalAllocator 0x10528d090> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+          "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7c7d01c540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7c7cc80dc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7c7cc40600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+          "allocatorType": 2,
+          "context": "<FigMetalContext: 0x7c7ccc1180>",
+          "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105278a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+          "memSize": 2147483648,
+          "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x105278a30> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+          "useLiveMetalAllocations": false
+        },
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "guided_calls": [
+          {
+            "epsilon": 0.0010000000474974513,
+            "guide_format": 115,
+            "guide_size": [
+              4284,
+              5712
+            ],
+            "input_size": [
+              768,
+              1024
+            ],
+            "output_size": [
+              4284,
+              5712
+            ],
+            "radius": 1
+          },
+          {
+            "epsilon": 0.0010000000474974513,
+            "guide_format": 115,
+            "guide_size": [
+              4284,
+              5712
+            ],
+            "input_size": [
+              768,
+              1024
+            ],
+            "output_size": [
+              4284,
+              5712
+            ],
+            "radius": 1
+          }
+        ],
+        "dispatches": 7,
+        "source_texture_unchanged": true,
+        "params_unchanged": true,
+        "full_bg_fg_SHA_equal": true,
+        "full_bg_sha256": "319fbe1f3c2491e231066f3db61772b03c0aa3e5317fef532f953982a28ad332",
+        "small_bg_sha256": "7cd564bc46c64aea4fbc0042f881802689dac1e246b36bc994a2e7144abbdb92",
+        "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+        "candidate_negative_components": 0,
+        "candidate_nonfinite_components": 0,
+        "gain_gradient_max_EV": 8.187228202819824,
+        "gain_laplacian_max_EV": 7.469688415527344
+      },
+      {
+        "tag": "local-only-GTC-retained-candidate",
+        "native_supplied_heap_bytes": 2147483648,
+        "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+        "allocation_state": {
+          "allocatedSize": "[<FigMetalAllocator 0x10292d240> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+          "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x75cf01c5a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x75cec80e80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x75cec40900>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+          "allocatorType": 2,
+          "context": "<FigMetalContext: 0x75cecc1180>",
+          "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x10292bac0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+          "memSize": 2147483648,
+          "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x10292bac0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+          "useLiveMetalAllocations": false
+        },
+        "radius": 1,
+        "epsilon": 0.0010000000474974513,
+        "guided_calls": [
+          {
+            "epsilon": 0.0010000000474974513,
+            "guide_format": 115,
+            "guide_size": [
+              4284,
+              5712
+            ],
+            "input_size": [
+              768,
+              1024
+            ],
+            "output_size": [
+              4284,
+              5712
+            ],
+            "radius": 1
+          },
+          {
+            "epsilon": 0.0010000000474974513,
+            "guide_format": 115,
+            "guide_size": [
+              4284,
+              5712
+            ],
+            "input_size": [
+              768,
+              1024
+            ],
+            "output_size": [
+              4284,
+              5712
+            ],
+            "radius": 1
+          }
+        ],
+        "dispatches": 7,
+        "source_texture_unchanged": true,
+        "params_unchanged": true,
+        "full_bg_fg_SHA_equal": true,
+        "full_bg_sha256": "1f19c16f6d1577553caeeedeaac55840c32113442e88a550b760fcc759dec51e",
+        "small_bg_sha256": "47a94afeaabbec553092c567ee0613647c928a7258dc6ef40680b65c4caae768",
+        "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+        "candidate_negative_components": 0,
+        "candidate_nonfinite_components": 0,
+        "gain_gradient_max_EV": 6.741466522216797,
+        "gain_laplacian_max_EV": 9.357551574707031
+      }
+    ],
+    "original_frozen_anchor": {
+      "positive_anchor_pixels": 786422,
+      "all_anchor_pixels": 786432,
+      "mean_abs_EV": 0.13766733841368822,
+      "p99_abs_EV": 1.07455098829795,
+      "max_abs_EV": 13.555623708439231,
+      "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+    },
+    "preview_checks": [
+      {
+        "file": "preview-0.png",
+        "input_before_sha256": "d4c72c9c6cc820d59f827328519ff59fa76506fd9670723b35dc103693ac0453",
+        "input_after_sha256": "d4c72c9c6cc820d59f827328519ff59fa76506fd9670723b35dc103693ac0453",
+        "source_unchanged": true,
+        "nonfinite_preview_replacement": "black for display only; masks retained separately",
+        "label": "original SDR"
+      },
+      {
+        "file": "preview-1.png",
+        "input_before_sha256": "c5f06a9d7bdc49003a69e50339e3a578dc4cdb2d898389e6d5320befdcb1c09e",
+        "input_after_sha256": "c5f06a9d7bdc49003a69e50339e3a578dc4cdb2d898389e6d5320befdcb1c09e",
+        "source_unchanged": true,
+        "nonfinite_preview_replacement": "black for display only; masks retained separately",
+        "label": "native key1 reverse"
+      },
+      {
+        "file": "preview-2.png",
+        "input_before_sha256": "38064408a5c0d7d8b0ee0c30cbf8c1bebc54cf78175730195f32fa55934247b3",
+        "input_after_sha256": "38064408a5c0d7d8b0ee0c30cbf8c1bebc54cf78175730195f32fa55934247b3",
+        "source_unchanged": true,
+        "nonfinite_preview_replacement": "black for display only; masks retained separately",
+        "label": "global GTC hypothesis"
+      },
+      {
+        "file": "preview-3.png",
+        "input_before_sha256": "85e9ea2ee0c6911abce95a2c1f666b7962ad901706b3d263a84e56e1fc7c58dc",
+        "input_after_sha256": "85e9ea2ee0c6911abce95a2c1f666b7962ad901706b3d263a84e56e1fc7c58dc",
+        "source_unchanged": true,
+        "nonfinite_preview_replacement": "black for display only; masks retained separately",
+        "label": "local projection candidate"
+      },
+      {
+        "file": "preview-4.png",
+        "input_before_sha256": "9775909aff7b3bb1efe0cb0d26f8be92e6a11bfd08a845e4d4fdebb859cc7ab7",
+        "input_after_sha256": "9775909aff7b3bb1efe0cb0d26f8be92e6a11bfd08a845e4d4fdebb859cc7ab7",
+        "source_unchanged": true,
+        "nonfinite_preview_replacement": "black for display only; masks retained separately",
+        "label": "both scene candidate"
+      }
+    ],
+    "display": {
+      "config": "cg-config-v2.2.0_aces-v1.3_ocio-v2.4",
+      "config_sha256": "5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440",
+      "source": "Linear P3-D65",
+      "display": "sRGB - Display",
+      "view": "ACES 1.0 - SDR Video",
+      "exposure_ev": 0,
+      "orientation": "Original stored canvas, transform from native metadata for previews only"
+    },
+    "ast_binding": {
+      "inserted_IO_calls": 1,
+      "removing_IO_calls_restores_original_AST": true,
+      "original_AST_SHA256": "9028e46fc475868ef7aea5c03f06c9051072c2982ddb534caedb35098f4c7108",
+      "new_AST_SHA256": "c191fdc06d343ea971dc13f8b081ff9f0429c4859169e9dbdc31209b839ec82f",
+      "pixel_expressions_modified": false
+    },
+    "separate_file_export_is_not_physical_recovery_proof": true
+  }
+}

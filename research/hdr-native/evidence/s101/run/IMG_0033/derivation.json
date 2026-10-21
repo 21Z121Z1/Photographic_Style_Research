@@ -1,0 +1,74 @@
+{
+  "S89_original_derivation": {
+    "driver": {
+      "original_sha256": "18f5d7d10796c0767b099a5762bf3819af0146c79f7450b30049e9b1cdba0a94",
+      "derived_sha256": "a6ae99c3122572e06c6da3eec4b6b3d9ae5a8b45a3dc0f14bf886177f963074e",
+      "inverse_substitutions_equal_original": true,
+      "swaps": [
+        {
+          "old": "case=next(c.copy()for c in json.loads((D/'inputs-s51.json').read_text())['cases']if c['photo']=='IMG_0032');case['role']='integration-development; previous display-only holdout'",
+          "new": "case=json.loads(os.environ['HDR_S89_CASE_JSON'])",
+          "count": 1
+        },
+        {
+          "old": "assert case['ZIP_bytes']<1_000_000_000 and subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434'",
+          "new": "assert subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip()=='26A434' # Obsolete ZIP is not read",
+          "count": 1
+        },
+        {
+          "old": "D/'rebuild_master_s88.py'",
+          "new": "Path(os.environ['HDR_S89_REBUILD'])",
+          "count": 1
+        },
+        {
+          "old": "[(PRIVATE,'contacts',300000),(full,'carrier',20000000)]",
+          "new": "[(PRIVATE,'contacts',300000)]",
+          "count": 1
+        },
+        {
+          "old": "IMG_0032",
+          "new": "IMG_0033",
+          "count": 5
+        }
+      ],
+      "pixel_math_changed": false
+    },
+    "rebuild": {
+      "original_sha256": "576777f56e2c11b168502482a26343fe84522d9167caf9916cfe2e75bb1e1518",
+      "derived_sha256": "3dfe7711acff21b79ba2bda31af0ba096c3cd5091e118b0a052951fb6735950f",
+      "inverse_substitutions_equal_original": true,
+      "swaps": [
+        {
+          "old": "IMG_0032",
+          "new": "IMG_0033",
+          "count": 2
+        },
+        {
+          "old": "9b392ea7cf996d1cbc70fbf82911b3c04e51562653010e7a78ee4a7a8129b012",
+          "new": "7d488706655324c2ae278281cad21f980f71aaf03e2a536dd7aa8eb512bcf89d",
+          "count": 1
+        },
+        {
+          "old": "76a2fa2723e5a2419b3752042dda7675077451d957594f6d497f0e613ef6501a",
+          "new": "c2f18ab9b1349377d2e23aaa7610bb5115f28f95c4d88ce6a789d6550e1213a0",
+          "count": 1
+        }
+      ],
+      "pixel_math_changed": false
+    },
+    "scope": "Only input labels/SHA/selector/helper path and contacts-only archival; S88 pixel math and original S42 AST selection unchanged"
+  },
+  "S101_extra_driver_replacements": [
+    {
+      "old": "shutil.copyfile(path,full/'IMG_0033-independent-HDR.heic')",
+      "new": "shutil.copyfile(path,full/'IMG_0033-independent-HDR.heic');shutil.copyfile(path,Path(os.environ['HDR_S101_EXPORT'])/'independent-HDR.heic')"
+    },
+    {
+      "old": "assert before_pixels=={f:sha(folder/f)for f in before_pixels}",
+      "new": "shutil.copyfile(full/'meaning.json',Path(os.environ['HDR_S101_EXPORT'])/'carrier-meaning.json')\nassert before_pixels=={f:sha(folder/f)for f in before_pixels}"
+    }
+  ],
+  "S101_final_driver_SHA256": "fa61494ab3ce46c763140166199a3d13292c4eef05f8ff3a55275993c2e2be17",
+  "rebuilder": "New rebuild_export_s101.py selects original S42 AST, adds only IO retention call. Original S89 substituted helper is not executed.",
+  "original_S88_pixel_math_changed": false
+}

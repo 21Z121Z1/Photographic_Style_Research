@@ -1,0 +1,587 @@
+{
+  "photo": "IMG_2608",
+  "previous_role": "encoded-integration-holdout",
+  "completed": true,
+  "new_holdout": false,
+  "ideal_headroom_metrics": {
+    "1": {
+      "max_abs": 5.960464477539063e-08,
+      "max_relative_floor_1e6": 0.0009185328053717967,
+      "PSNR_peak1_dB": 174.45758276380144,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24441838,
+      "EV_excluded_pixels": 28370,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 1.1720378267909837e-07,
+      "EV_abs_p99": 2.6792918106366415e-07,
+      "EV_abs_max_f64": 0.0008124399066893754,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 243.10148367318297,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "2": {
+      "max_abs": 0.005198338291394267,
+      "max_relative_floor_1e6": 88.24760740202068,
+      "PSNR_peak1_dB": 61.12689972584239,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24453774,
+      "EV_excluded_pixels": 16434,
+      "EV_abs_median": 0.0014147830079309642,
+      "EV_abs_p95": 0.004648840543814,
+      "EV_abs_p99": 0.01111511281691491,
+      "EV_abs_max_f64": 11.344835932191538,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 3.6774106159764126,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "8": {
+      "max_abs": 0.01852893829345703,
+      "max_relative_floor_1e6": 271.2836430873722,
+      "PSNR_peak1_dB": 50.89545466198239,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24440835,
+      "EV_excluded_pixels": 29373,
+      "EV_abs_median": 0.004295350518077612,
+      "EV_abs_p95": 0.013205448724329473,
+      "EV_abs_p99": 0.026013611406087878,
+      "EV_abs_max_f64": 8.745529144130472,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    }
+  },
+  "max_RGB_relative_diagnostic": {
+    "max_relative_floor1e6": 271.2836430873722,
+    "reference_component_abs_le_1e6": true,
+    "reference_component_abs_le_1e4": true,
+    "reference_luma_le_1e4": false,
+    "reference_component_negative": false,
+    "actual_component_negative": true,
+    "absolute_component_error": 0.0002712836430873722,
+    "private_only": "Exact coordinate/RGB and individual error contributions are encrypted"
+  },
+  "preview_checks": [
+    {
+      "label": "ideal h1",
+      "before": "6b951a37b5b70def73628f42f71dc0a36b77a828891a42bd5fb0569c9e81745e",
+      "after": "6b951a37b5b70def73628f42f71dc0a36b77a828891a42bd5fb0569c9e81745e"
+    },
+    {
+      "label": "native h1",
+      "before": "6e40c466fcb28741935ff30bec4798b39c436b8739f09b25f08cd0cf3150fe8a",
+      "after": "6e40c466fcb28741935ff30bec4798b39c436b8739f09b25f08cd0cf3150fe8a"
+    },
+    {
+      "label": "ideal h2",
+      "before": "445e001bac47955a8d09dbba5f9cbd52b3c0e5164b489b6f71b19b570d6e3380",
+      "after": "445e001bac47955a8d09dbba5f9cbd52b3c0e5164b489b6f71b19b570d6e3380"
+    },
+    {
+      "label": "native h2",
+      "before": "ab8be987944da1b793319f673f83ceb0920fc444610f4acf08c73384bbf120d9",
+      "after": "ab8be987944da1b793319f673f83ceb0920fc444610f4acf08c73384bbf120d9"
+    },
+    {
+      "label": "ideal h8",
+      "before": "79fba439b27ea349a5b801c3195daeead30d913d5fc15d36897b3aa247d94012",
+      "after": "79fba439b27ea349a5b801c3195daeead30d913d5fc15d36897b3aa247d94012"
+    },
+    {
+      "label": "native h8",
+      "before": "6799a8ca604a08339236d2d95018f57e30537e44a50ad3b081524c12b7ab6246",
+      "after": "6799a8ca604a08339236d2d95018f57e30537e44a50ad3b081524c12b7ab6246"
+    }
+  ],
+  "source_SHA_before_after": {
+    "master.exr": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b",
+    "master.f16": "33bbecc50e685a962cc082a45c61fd19e49e5723c24a45b1c13b2dbe64fbeea3",
+    "original-sdr.f32": "ec2aa73bee081757cb2bbb21b49ab0ace475958dd6ddf9c61ddf47e49b60dbf0",
+    "HDR.f32": "0e908801c0b4fe9637a6fd8cd1ea145a8416111b3d0a0b8274110a62360cffd7"
+  },
+  "SDR_max0": true,
+  "original_S88_metrics": {
+    "encoded_HDR_vs_target": {
+      "max_abs": 0.01852893829345703,
+      "max_relative_floor_1e6": 271.2836430873722,
+      "PSNR_peak1_dB": 50.89545466198239,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24440835,
+      "EV_excluded_pixels": 29373,
+      "EV_abs_median": 0.004295350518077612,
+      "EV_abs_p95": 0.013205448724329473,
+      "EV_abs_p99": 0.026013611406087878,
+      "EV_abs_max_f64": 8.745529144130472,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "log_f32_only": {
+      "max_abs": 1.0493407631706475e-07,
+      "max_relative_floor_1e6": 0.00122141142339105,
+      "PSNR_peak1_dB": 171.08208503292246,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24444000,
+      "EV_excluded_pixels": 26208,
+      "EV_abs_median": 6.450966427706817e-09,
+      "EV_abs_p95": 3.7666638696975965e-08,
+      "EV_abs_p99": 5.489002695924231e-08,
+      "EV_abs_max_f64": 0.0001185562899380951,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "metadata_offset_additional": {
+      "max_abs": 0.00017948034086163328,
+      "max_relative_floor_1e6": 0.18529935549849164,
+      "PSNR_peak1_dB": 145.08906394364243,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24444000,
+      "EV_excluded_pixels": 26208,
+      "EV_abs_median": 8.899054364519543e-07,
+      "EV_abs_p95": 4.55110580332985e-06,
+      "EV_abs_p99": 7.953440263008823e-06,
+      "EV_abs_max_f64": 0.05582366073596976,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "quantization_additional": {
+      "max_abs": 0.00629766260101694,
+      "max_relative_floor_1e6": 73.08550732720853,
+      "PSNR_peak1_dB": 57.03748495844033,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24439709,
+      "EV_excluded_pixels": 30499,
+      "EV_abs_median": 0.002847127616405487,
+      "EV_abs_p95": 0.007418115437030791,
+      "EV_abs_p99": 0.015116146467626088,
+      "EV_abs_max_f64": 9.819621718251403,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "codec_provider_additional": {
+      "max_abs": 0.01572391109115512,
+      "max_relative_floor_1e6": 199.97521684252465,
+      "PSNR_peak1_dB": 52.06970956358126,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24454069,
+      "EV_excluded_pixels": 16139,
+      "EV_abs_median": 0.003977542277425528,
+      "EV_abs_p95": 0.010067966021597381,
+      "EV_abs_p99": 0.021629029959440257,
+      "EV_abs_max_f64": 10.94623637344477,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 1.0541534414589084,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "native_full_actual_gain_equation": {
+      "max_abs": 7.157586886449852e-07,
+      "max_relative_floor_1e6": 0.003862821295469443,
+      "PSNR_peak1_dB": 149.30036275173146,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24457209,
+      "EV_excluded_pixels": 12999,
+      "EV_abs_median": 1.1109290909416814e-07,
+      "EV_abs_p95": 3.0002999551470534e-07,
+      "EV_abs_p99": 5.588751196228095e-07,
+      "EV_abs_max_f64": 0.0021593391431873224,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 46.51712505541336,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "CI_SDR_vs_original": {
+      "max_abs": 0.0,
+      "max_relative_floor_1e6": 0.0,
+      "PSNR_peak1_dB": "inf",
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24441838,
+      "EV_excluded_pixels": 28370,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 0.0,
+      "EV_abs_p99": 0.0,
+      "EV_abs_max_f64": 0.0,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": false,
+        "actual_has_negative_RGB": false,
+        "reference_luma_le_1e4": false,
+        "signed_luma_cancellation_condition": 1.0,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom1": {
+      "max_abs": 5.960464488641293e-08,
+      "max_relative_floor_1e6": 0.0009185328053717967,
+      "PSNR_peak1_dB": 174.45758276757007,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24441838,
+      "EV_excluded_pixels": 28370,
+      "EV_abs_median": 0.0,
+      "EV_abs_p95": 1.1720378267909837e-07,
+      "EV_abs_p99": 2.6792918106366415e-07,
+      "EV_abs_max_f64": 0.0008124399066893754,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 243.10148367318297,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom2": {
+      "max_abs": 2.2812450151121766e-07,
+      "max_relative_floor_1e6": 0.0030307164972098732,
+      "PSNR_peak1_dB": 151.89888617968077,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24461606,
+      "EV_excluded_pixels": 8602,
+      "EV_abs_median": 8.366227532974335e-08,
+      "EV_abs_p95": 2.5352121468813493e-07,
+      "EV_abs_p99": 6.138641793995685e-07,
+      "EV_abs_max_f64": 0.0016403804336702652,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 545.3299717788615,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    },
+    "headroom8": {
+      "max_abs": 7.157586886449852e-07,
+      "max_relative_floor_1e6": 0.003862821295469443,
+      "PSNR_peak1_dB": 149.30036275173146,
+      "components": 73410624,
+      "nonfinite_components": 0,
+      "EV_valid_pixels": 24457209,
+      "EV_excluded_pixels": 12999,
+      "EV_abs_median": 1.1109290909416814e-07,
+      "EV_abs_p95": 3.0002999551470534e-07,
+      "EV_abs_p99": 5.588751196228095e-07,
+      "EV_abs_max_f64": 0.0021593391431873224,
+      "worst_EV_diagnostic": {
+        "reference_has_negative_RGB": true,
+        "actual_has_negative_RGB": true,
+        "reference_luma_le_1e4": true,
+        "signed_luma_cancellation_condition": 46.51712505541336,
+        "location_and_RGB": "Encrypted private witness only; no pixel RGB or coordinates in public output"
+      }
+    }
+  },
+  "actual_master_matches_old_EXR": true,
+  "S89_validation_AST_binding": {
+    "display": {
+      "AST_SHA256": "0f056c97f1efbddcd830ffbe7bc90d225e6e537918d3a14fff35fe5335fde654",
+      "lines": [
+        41,
+        41
+      ],
+      "original_nodes_unmodified": true
+    },
+    "actual_file_validation": {
+      "AST_SHA256": "b395ffebd7dbdfbabdaa64e67d9a836c17f42c9cb8cd668f43fa059352eedc5f",
+      "lines": [
+        64,
+        84
+      ],
+      "original_nodes_unmodified": true
+    }
+  },
+  "full_file_inventory": [
+    {
+      "file": "native-key1-reverse.exr",
+      "bytes": 73746304,
+      "sha256": "1aa5c78be3d022c37733b9656adc8693eb344b162777da7e241cf9ce64299433"
+    },
+    {
+      "file": "global-only-GTC-hypothesis.exr",
+      "bytes": 70209580,
+      "sha256": "a5bd8dee4fa6b4e415872818b8c8d0ed932997dd448f9979223a3ef6bbfb4716"
+    },
+    {
+      "file": "local-only-thumbnail-projection-candidate.exr",
+      "bytes": 63448281,
+      "sha256": "e9e395f40cf849917c285f104bdd54cafa3c8260b28efb3e8826c8bc8fde94a6"
+    },
+    {
+      "file": "relative-scene-candidate.exr",
+      "bytes": 84216124,
+      "sha256": "1dc35a1647029f5375d453636bd6e8e08c4f2efbd60d9f9f767c624d5610a54b"
+    },
+    {
+      "file": "independent-HDR-target.exr",
+      "bytes": 271206575,
+      "sha256": "e98a4b425b2217bc50b42849f300a8bf5bfa17994b7860f5115239546c24e922"
+    },
+    {
+      "file": "target-EXR-readback.json",
+      "bytes": 1208,
+      "sha256": "32997e4481f11cb578405d0ad8baa2c0ef966dc95f262d495e9a48358aefe140"
+    },
+    {
+      "file": "independent-HDR.heic",
+      "bytes": 27098304,
+      "sha256": "12b3c907dc047c367ac4666eb7a553db9689ea70caee5b0fddfea11f48e5f74c"
+    },
+    {
+      "file": "global-hypothesis-flags.u8",
+      "bytes": 73410624,
+      "sha256": "7dec35f628022212e473ff1e059ea1fbfb853155f1bec1cde418e777380205ee"
+    },
+    {
+      "file": "global-hypothesis-flags.json",
+      "bytes": 879,
+      "sha256": "b7b5c94330fce9c46bd83b7ab081be55a5aa8a2324b18a04a2e654ebc1662dda"
+    },
+    {
+      "file": "inherited-S42-positive-pair-mask.npy",
+      "bytes": 24470336,
+      "sha256": "6bc2e6e4289440c332ff24ed0db5baf1a0a8f41d6722b88491731897bec50929"
+    },
+    {
+      "file": "separated-meaning.json",
+      "bytes": 11305,
+      "sha256": "adc15ea5357a217ae3b23e33a29696c2026a622ab016e32680ed1b72124a747e"
+    },
+    {
+      "file": "carrier-meaning.json",
+      "bytes": 1037,
+      "sha256": "8143c8ac92ae7fe39861e6f73e17c3509fccef246b1365c406ec14c2771b2124"
+    }
+  ],
+  "HDR_target_EXR": {
+    "file": "independent-HDR-target.exr",
+    "bytes": 271206575,
+    "sha256": "e98a4b425b2217bc50b42849f300a8bf5bfa17994b7860f5115239546c24e922",
+    "shape": [
+      4284,
+      5712,
+      3
+    ],
+    "dtype": "<f4",
+    "RGB_storage_readback_different_components": 0,
+    "nonfinite_components": 0,
+    "source_f32_SHA256": "0e908801c0b4fe9637a6fd8cd1ea145a8416111b3d0a0b8274110a62360cffd7",
+    "source_f32_unchanged": true,
+    "metadata": {
+      "photo": "IMG_2608",
+      "representation": "Relative display-linear P3 RGB, independent S44/S47 intent; not scene-linear truth or a nit calibration",
+      "HDR_intent": {
+        "display_exposure_EV": 3.6761973994696815,
+        "scale": 12.783379653557867,
+        "statistic_pixels": 678517,
+        "sample_pixels": 679728,
+        "scope": "One global display scale from fixed sample-grid median, not a scene exposure or white-level measurement"
+      },
+      "source_f32_SHA256": "0e908801c0b4fe9637a6fd8cd1ea145a8416111b3d0a0b8274110a62360cffd7",
+      "stored_canvas": [
+        4284,
+        5712,
+        3
+      ],
+      "orientation": "Raw stored canvas, same as all master/operator EXRs; original HEIC irot applies only when displaying the carrier",
+      "no_new_pixel_calculation": true
+    }
+  },
+  "native_ImageIO_full_SDR_max0": true,
+  "master_exact_old_SHA": true,
+  "separated_storage_metrics": {
+    "local_half_max_abs_vs_frozen_v": 1.52587890625e-05,
+    "global_half_max_abs_vs_frozen_hypothesis": 0.0002414811410675899,
+    "new_half_overflow_components": 0,
+    "all_EXR_storage_readback_differences": 0
+  },
+  "original_anchor": {
+    "positive_anchor_pixels": 785870,
+    "all_anchor_pixels": 786432,
+    "mean_abs_EV": 0.2043365785759026,
+    "p99_abs_EV": 1.7489779373949814,
+    "max_abs_EV": 12.872201744513712,
+    "scope": "Area diagnostic, not an enforced constraint and not RAW truth"
+  },
+  "original_map_variants": [
+    {
+      "tag": "both-candidate",
+      "native_supplied_heap_bytes": 2147483648,
+      "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+      "allocation_state": {
+        "allocatedSize": "[<FigMetalAllocator 0x102f9f8b0> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+        "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x7c2d028540>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7c2cc5cdc0>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x7c2d02c600>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+        "allocatorType": 2,
+        "context": "<FigMetalContext: 0x7c2cc99180>",
+        "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102f9e670> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+        "memSize": 2147483648,
+        "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x102f9e670> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+        "useLiveMetalAllocations": false
+      },
+      "radius": 1,
+      "epsilon": 0.0010000000474974513,
+      "guided_calls": [
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        },
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        }
+      ],
+      "dispatches": 7,
+      "source_texture_unchanged": true,
+      "params_unchanged": true,
+      "full_bg_fg_SHA_equal": true,
+      "full_bg_sha256": "d1505dc5870d2f7a03645e84e19b4a89cc085280e0ccd3cfca22795a8dd62797",
+      "small_bg_sha256": "c98b1d4b0ee06cdd5680392518613029b870a28a4ee1efb1a87e21af5c2c3762",
+      "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+      "candidate_negative_components": 0,
+      "candidate_nonfinite_components": 0,
+      "gain_gradient_max_EV": 8.935317993164062,
+      "gain_laplacian_max_EV": 7.085639953613281
+    },
+    {
+      "tag": "local-only-GTC-retained-candidate",
+      "native_supplied_heap_bytes": 2147483648,
+      "allocation_scope": "Original designated host initializer with caller-supplied type2 allocator. Only pool capacity changes; production Photos caller budget not identified.",
+      "allocation_state": {
+        "allocatedSize": "[<FigMetalAllocator 0x100ad3b10> valueForUndefinedKey:]: this class is not key value coding-compliant for the key allocatedSize.",
+        "allocator": "S41_original_host_supplied_pool_<FigMetalAllocatorBackend 0x78030285a0>: Storage: Size:2147483648, Alignment:0, Description:<FigMetalHeapAllocator 0x7802c5ce80>: label:S41_original_host_supplied_pool 2048.0 MB (2147483648 bytes) <AppleParavirtHeap: 0x780302c900>\n    label = <none> \n    type = MTLHeapTypePlacement \n    size = 2147483648 \n    usedSize = 0 \n    cpuCacheMode = MTLCPUCacheModeDefaultCache \n    storageMode = Invalid \n    hazardTrackingMode = MTLHazardTrackingModeTracked \n    resourceOptions = MTLResourceCPUCacheModeDefaultCache MTLResourceStorageModeShared MTLResourceHazardTrackingModeTracked ",
+        "allocatorType": 2,
+        "context": "<FigMetalContext: 0x7802c99480>",
+        "externalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x100ad2c90> valueForUndefinedKey:]: this class is not key value coding-compliant for the key externalMemoryResource.",
+        "memSize": 2147483648,
+        "supportsExternalMemoryResource": "[<CMISmartStyleMetalRendererV1 0x100ad2c90> valueForUndefinedKey:]: this class is not key value coding-compliant for the key supportsExternalMemoryResource.",
+        "useLiveMetalAllocations": false
+      },
+      "radius": 1,
+      "epsilon": 0.0010000000474974513,
+      "guided_calls": [
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        },
+        {
+          "epsilon": 0.0010000000474974513,
+          "guide_format": 115,
+          "guide_size": [
+            4284,
+            5712
+          ],
+          "input_size": [
+            768,
+            1024
+          ],
+          "output_size": [
+            4284,
+            5712
+          ],
+          "radius": 1
+        }
+      ],
+      "dispatches": 7,
+      "source_texture_unchanged": true,
+      "params_unchanged": true,
+      "full_bg_fg_SHA_equal": true,
+      "full_bg_sha256": "955888dc7789b4479064df645c10bf31abe90cd9f52bf927715fe8a51fe7e040",
+      "small_bg_sha256": "aa1396de51420d1132066056655fd7900083e4c7ddb69e076cdea134154198b9",
+      "coefficient_materialization": "Original host GPU; coefficient textures traced but not duplicated to disk",
+      "candidate_negative_components": 0,
+      "candidate_nonfinite_components": 0,
+      "gain_gradient_max_EV": 6.988685607910156,
+      "gain_laplacian_max_EV": 9.455322265625
+    }
+  ],
+  "encrypted": {
+    "file": "IMG_2608-full-delivery.tar.gz.gpg",
+    "bytes": 592864677,
+    "sha256": "f6b958775578927a59cf31a36563fa49b7ad9dc04dc48ea2618d12d9e5ba1d2e",
+    "private_manifest_SHA256": "f4713445c41863f7d399fa25a4f8f571891b49f8d1d731aa99c3dda6a9c12327",
+    "member_files": 23
+  }
+}

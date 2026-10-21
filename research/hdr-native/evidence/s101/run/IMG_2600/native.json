@@ -1,0 +1,154 @@
+{
+  "AppleFamily4": true,
+  "CI_colour_spaces": {
+    "carrier_base": {
+      "ICC_sha256": "0ff6958f98684c61f6bbdce1368ddeaf3873baf84545baba482e920d92a914c0",
+      "name": "kCGColorSpaceDisplayP3"
+    },
+    "gain": {
+      "ICC_sha256": "nil",
+      "name": "nil"
+    },
+    "HDR": {
+      "ICC_sha256": "aa36691d3056a6ddb4ed3d59e3ea98d6fff0a0f0328bc6dd34011d73e0a30bcb",
+      "name": "kCGColorSpaceDisplayP3_PQ"
+    },
+    "original": {
+      "ICC_sha256": "0ff6958f98684c61f6bbdce1368ddeaf3873baf84545baba482e920d92a914c0",
+      "name": "kCGColorSpaceDisplayP3"
+    }
+  },
+  "CI_present": {
+    "base": 1,
+    "gain": 1,
+    "HDR": 1,
+    "original": 1
+  },
+  "content_headroom": 8,
+  "device": "Apple Paravirtual device",
+  "files": {
+    "gain": {
+      "dtype": "<f4",
+      "file": "decoded-gain.f32",
+      "readback_rows_per_block": 32,
+      "sha256": "6539dc2ab73cee5b2f615ea22503a01dd4310e55aab06ea42ff3abdfa4c04f7e",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "HDR": {
+      "dtype": "<f4",
+      "file": "decoded-hdr.f32",
+      "readback_rows_per_block": 32,
+      "sha256": "b51bcf6558d52edb38cce6e8d358034258ff973ca366ea9fc9bae6dc99e01be8",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    "SDR": {
+      "dtype": "<f4",
+      "file": "carrier-sdr.f32",
+      "readback_rows_per_block": 32,
+      "sha256": "1f8cd21a4278d466042cefb6c1adf35fb4ed0f3acfbfd425153d8bd32a4f2a66",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    }
+  },
+  "gain_extent": [
+    0,
+    0,
+    5712,
+    4284
+  ],
+  "HDR_extent": [
+    0,
+    0,
+    5712,
+    4284
+  ],
+  "headrooms": [
+    {
+      "dtype": "<f4",
+      "file": "headroom-1.f32",
+      "headroom": 1,
+      "readback_rows_per_block": 32,
+      "sha256": "edac25a1b32ba994c654f9c1961d04bbecbf4993fafe6a45918ed5a8ff54ffd5",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    {
+      "dtype": "<f4",
+      "file": "headroom-2.f32",
+      "headroom": 2,
+      "readback_rows_per_block": 32,
+      "sha256": "2eed4cb8a7d4b0f9e544b05de91c52f4a1b6eb86651e565c8bc66ea44554e03c",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    },
+    {
+      "dtype": "<f4",
+      "file": "headroom-8.f32",
+      "headroom": 8,
+      "readback_rows_per_block": 32,
+      "sha256": "b51bcf6558d52edb38cce6e8d358034258ff973ca366ea9fc9bae6dc99e01be8",
+      "shape": [
+        4284,
+        5712,
+        4
+      ]
+    }
+  ],
+  "height": 4284,
+  "ImageIO_full_SDR": {
+    "active_bytes_per_row": 22848,
+    "active_hash_convention": "SHA256 of concatenated active raster rows, excluding padding",
+    "active_SHA_carrier": "45db8a8a774044df6ff51c81a06c4e098ed6cb3e0bef9030adb98347157fe797",
+    "active_SHA_original": "45db8a8a774044df6ff51c81a06c4e098ed6cb3e0bef9030adb98347157fe797",
+    "API_reference": "https://developer.apple.com/documentation/imageio/kcgimagesourcedecodetosdr",
+    "carrier": {
+      "alpha_info": 5,
+      "bitmap_info": 5,
+      "bpc": 8,
+      "bpp": 32,
+      "CS_name": "kCGColorSpaceDisplayP3",
+      "height": 4284,
+      "ICC_sha256": "0ff6958f98684c61f6bbdce1368ddeaf3873baf84545baba482e920d92a914c0",
+      "width": 5712
+    },
+    "changed_active_bytes": 0,
+    "decoded_sdr_max_abs": 0,
+    "decoded_sdr_max0_verified": true,
+    "max_active_byte_difference": 0,
+    "original": {
+      "alpha_info": 5,
+      "bitmap_info": 5,
+      "bpc": 8,
+      "bpp": 32,
+      "CS_name": "kCGColorSpaceDisplayP3",
+      "height": 4284,
+      "ICC_sha256": "0ff6958f98684c61f6bbdce1368ddeaf3873baf84545baba482e920d92a914c0",
+      "width": 5712
+    },
+    "provider_is_full_raster": true,
+    "rows_checked": 4284,
+    "same_format_and_ICC": true,
+    "scope": "ImageIO explicit DecodeToSDR integer raster, complete stored canvas; equal active bytes and identical format/ICC imply zero decoded-pixel difference"
+  },
+  "os": "Version 27.0.1 (Build 26A434)",
+  "scope": "One original full-resolution photograph, new known RGB transport target only; no inverse or scene validation",
+  "success": true,
+  "width": 5712
+}
