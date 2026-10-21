@@ -1,0 +1,30 @@
+{
+  "S103_source": "b0a0784ff5b413b2082ac0e9b083b0b2754d86af",
+  "original_driver_SHA256": "c813b416540b5ebae3bb83da9d27dcafc32f42ee701fe2db06c4f42d3736a170",
+  "replacements": [
+    {
+      "old": "from input_archive_s103 import download, decrypt_photo",
+      "new": "from input_archive_s105 import download, decrypt_photo"
+    },
+    {
+      "old": "sources = ['run_hdr_s103.py', 'input_archive_s103.py',",
+      "new": "sources = ['run_hdr_s105.py', 'input_archive_s105.py', 'input_archive_s103.py',"
+    },
+    {
+      "old": "assert sha(O / 'suite-freeze.json') == frozen_sha",
+      "new": "save(O / 'input-range-receipt.json', archive.receipt())\narchive.close()\nassert sha(O / 'suite-freeze.json') == frozen_sha"
+    },
+    {
+      "old": "save(O / 'suite-freeze.json', freeze)",
+      "new": "freeze['S105_transport_change'] = 'Bounded HTTP206 virtual ZIP, four selected ciphers; cipher SHA and full GPG unchanged. No full200 fallback, whole ZIP SHA not rehashed here. Same S103/S90 numeric body.'\nsave(O / 'suite-freeze.json', freeze)"
+    }
+  ],
+  "reversing_exact_IO_metadata_changes_restores_S103_bytes": true,
+  "numerical_formulas_or_original_thresholds_changed": false,
+  "new_image_archive": false,
+  "new_sources": {
+    "run_hdr_s105.py": "78a9172a3940edb8351f55efa993db03fef67980d2d70687a64a706a6dd9a8a2",
+    "input_archive_s105.py": "9621e56f068ea3f6e82fc4fbe423429fa8fcd6169f9a9ac7aa04eccf03252898"
+  },
+  "workflow_SHA256": "6e1ffe4fc69ce8e36e547b04e94f1d3002db6082a88c2313fa4f42e19fd19c75"
+}
