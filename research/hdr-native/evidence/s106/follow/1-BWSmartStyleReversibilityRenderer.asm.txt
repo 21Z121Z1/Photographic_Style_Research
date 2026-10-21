@@ -1,0 +1,453 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+BWSmartStyleReversibilityRenderer renderUsingParameters:inputPixelBuffer:inputSampleBuffer:processedPixelBuffer:completionHandler:
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b0a61d0c <__text>:
+1b0a61d0c: d503237f    	pacibsp
+1b0a61d10: d10583ff    	sub	sp, sp, #0x160
+1b0a61d14: 6d0d33ed    	stp	d13, d12, [sp, #0xd0]
+1b0a61d18: 6d0e2beb    	stp	d11, d10, [sp, #0xe0]
+1b0a61d1c: 6d0f23e9    	stp	d9, d8, [sp, #0xf0]
+1b0a61d20: a9106ffc    	stp	x28, x27, [sp, #0x100]
+1b0a61d24: a91167fa    	stp	x26, x25, [sp, #0x110]
+1b0a61d28: a9125ff8    	stp	x24, x23, [sp, #0x120]
+1b0a61d2c: a91357f6    	stp	x22, x21, [sp, #0x130]
+1b0a61d30: a9144ff4    	stp	x20, x19, [sp, #0x140]
+1b0a61d34: a9157bfd    	stp	x29, x30, [sp, #0x150]
+1b0a61d38: 910543fd    	add	x29, sp, #0x150
+1b0a61d3c: aa1e03f7    	mov	x23, x30
+1b0a61d40: aa0603f3    	mov	x19, x6
+1b0a61d44: aa0403f4    	mov	x20, x4
+1b0a61d48: aa0303fa    	mov	x26, x3
+1b0a61d4c: aa0003fb    	mov	x27, x0
+1b0a61d50: f0183d48    	adrp	x8, 0x1e120c000 <__text+0x307aa2f4>
+1b0a61d54: 912a6108    	add	x8, x8, #0xa98
+1b0a61d58: f9400101    	ldr	x1, [x8] ; 0x1ec309be0 CFString 'StillSettings'
+1b0a61d5c: aa0403e0    	mov	x0, x4
+1b0a61d60: d2800002    	mov	x2, #0x0                ; =0
+1b0a61d64: 95db26fb    	bl	0x1b812b950 <__text+0x76c9c44>
+1b0a61d68: aa0003f5    	mov	x21, x0
+1b0a61d6c: aa1403e0    	mov	x0, x20
+1b0a61d70: 97f48042    	bl	0x1b0781e78
+1b0a61d74: 52a05008    	mov	w8, #0x2800000          ; =41943040
+1b0a61d78: d01a40dc    	adrp	x28, 0x1e527b000 <__text+0x348192f4>
+1b0a61d7c: 6a08001f    	tst	w0, w8
+1b0a61d80: 54002921    	b.ne	0x1b0a622a4 <__text+0x598>
+1b0a61d84: 90183d68    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a61d88: f941a501    	ldr	x1, [x8, #0x348] ; 0x1ec30bb20 CFString 'SmartStyleStillUnstyledImage'
+1b0a61d8c: aa1403e0    	mov	x0, x20
+1b0a61d90: 97ee9552    	bl	0x1b06072d8
+1b0a61d94: b4002940    	cbz	x0, 0x1b0a622bc <__text+0x5b0>
+1b0a61d98: 95db2892    	bl	0x1b812bfe0 <__text+0x76ca2d4>
+1b0a61d9c: aa0003f9    	mov	x25, x0
+1b0a61da0: b4002940    	cbz	x0, 0x1b0a622c8 <__text+0x5bc>
+1b0a61da4: aa1b03e0    	mov	x0, x27
+1b0a61da8: aa1503e1    	mov	x1, x21
+1b0a61dac: 97f6adc2    	bl	0x1b080d4b4
+1b0a61db0: 370027a0    	tbnz	w0, #0x0, 0x1b0a622a4 <__text+0x598>
+1b0a61db4: f9400f60    	ldr	x0, [x27, #0x18]
+1b0a61db8: 95db20ce    	bl	0x1b812a0f0 <__text+0x76c83e4>
+1b0a61dbc: aa0003f6    	mov	x22, x0
+1b0a61dc0: b40028e0    	cbz	x0, 0x1b0a622dc <__text+0x5d0>
+1b0a61dc4: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61dc8: 95db2112    	bl	0x1b812a210 <__text+0x76c8504>
+1b0a61dcc: aa0003f7    	mov	x23, x0
+1b0a61dd0: aa1503e0    	mov	x0, x21
+1b0a61dd4: 95d6eb2f    	bl	0x1b801ca90 <__text+0x75bad84> ; SELECTOR requestedSettings
+1b0a61dd8: 95d69a1a    	bl	0x1b8008640 <__text+0x75a6934> ; SELECTOR aspectRatio
+1b0a61ddc: 97ed6bfb    	bl	0x1b05bcdc8
+1b0a61de0: 1e602008    	fcmp	d0, #0.0
+1b0a61de4: 1e6e1001    	fmov	d1, #1.00000000
+1b0a61de8: 1e611400    	fccmp	d0, d1, #0x0, ne
+1b0a61dec: 54000084    	b.mi	0x1b0a61dfc <__text+0xf0>
+1b0a61df0: aa1703e0    	mov	x0, x23
+1b0a61df4: 95d6b8d7    	bl	0x1b8010150 <__text+0x75ae444> ; SELECTOR getDefaultProcessorConfigurationForStills
+1b0a61df8: 14000003    	b	0x1b0a61e04 <__text+0xf8>
+1b0a61dfc: aa1703e0    	mov	x0, x23
+1b0a61e00: 95d6b8d8    	bl	0x1b8010160 <__text+0x75ae454> ; SELECTOR getDefaultProcessorConfigurationForStills3x4
+1b0a61e04: aa0003e2    	mov	x2, x0
+1b0a61e08: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61e0c: 95d6f755    	bl	0x1b801fb60 <__text+0x75bde54> ; SELECTOR setConfiguration:
+1b0a61e10: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61e14: 52800022    	mov	w2, #0x1                ; =1
+1b0a61e18: 95d6e112    	bl	0x1b801a260 <__text+0x75b8554> ; SELECTOR prepareToProcess:
+1b0a61e1c: 350027e0    	cbnz	w0, 0x1b0a62318 <__text+0x60c>
+1b0a61e20: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61e24: 95d6a52f    	bl	0x1b800b2e0 <__text+0x75a95d4> ; SELECTOR configuration
+1b0a61e28: 95d72922    	bl	0x1b802c2b0 <__text+0x75ca5a4> ; SELECTOR styleEngineConfiguration
+1b0a61e2c: 95d72c71    	bl	0x1b802cff0 <__text+0x75cb2e4> ; SELECTOR thumbnailSize
+1b0a61e30: 4ea01c0c    	mov.16b	v12, v0
+1b0a61e34: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61e38: 95d6a52a    	bl	0x1b800b2e0 <__text+0x75a95d4> ; SELECTOR configuration
+1b0a61e3c: 95d7291d    	bl	0x1b802c2b0 <__text+0x75ca5a4> ; SELECTOR styleEngineConfiguration
+1b0a61e40: 95d72c6c    	bl	0x1b802cff0 <__text+0x75cb2e4> ; SELECTOR thumbnailSize
+1b0a61e44: 4ea11c2d    	mov.16b	v13, v1
+1b0a61e48: f0183e68    	adrp	x8, 0x1e1230000 <__text+0x307ce2f4>
+1b0a61e4c: f9450108    	ldr	x8, [x8, #0xa00]
+1b0a61e50: f9400101    	ldr	x1, [x8] ; 0x27efe78f0 CFString 'MetadataDictionary'
+1b0a61e54: aa1403e0    	mov	x0, x20
+1b0a61e58: d2800002    	mov	x2, #0x0                ; =0
+1b0a61e5c: 95db26bd    	bl	0x1b812b950 <__text+0x76c9c44>
+1b0a61e60: b40022a0    	cbz	x0, 0x1b0a622b4 <__text+0x5a8>
+1b0a61e64: aa1a03e1    	mov	x1, x26
+1b0a61e68: 97f4a03a    	bl	0x1b0789f50
+1b0a61e6c: 4ea01c08    	mov.16b	v8, v0
+1b0a61e70: 4ea11c29    	mov.16b	v9, v1
+1b0a61e74: 4ea21c4a    	mov.16b	v10, v2
+1b0a61e78: 4ea31c6b    	mov.16b	v11, v3
+1b0a61e7c: 95db2621    	bl	0x1b812b700 <__text+0x76c99f4>
+1b0a61e80: 370021a0    	tbnz	w0, #0x0, 0x1b0a622b4 <__text+0x5a8>
+1b0a61e84: 1e780198    	fcvtzs	w24, d12
+1b0a61e88: 1e7801bc    	fcvtzs	w28, d13
+1b0a61e8c: aa1a03e0    	mov	x0, x26
+1b0a61e90: 95db29c8    	bl	0x1b812c5b0 <__text+0x76ca8a4>
+1b0a61e94: aa0003f7    	mov	x23, x0
+1b0a61e98: 528005c0    	mov	w0, #0x2e               ; =46
+1b0a61e9c: 97f64a4f    	bl	0x1b07f47d8
+1b0a61ea0: aa0003e3    	mov	x3, x0
+1b0a61ea4: aa1c831c    	orr	x28, x24, x28, lsl #32
+1b0a61ea8: aa1b03e0    	mov	x0, x27
+1b0a61eac: aa1c03e1    	mov	x1, x28
+1b0a61eb0: aa1703e2    	mov	x2, x23
+1b0a61eb4: 94000152    	bl	0x1b0a623fc <__text+0x6f0>
+1b0a61eb8: aa0003f8    	mov	x24, x0
+1b0a61ebc: b4002340    	cbz	x0, 0x1b0a62324 <__text+0x618>
+1b0a61ec0: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61ec4: 95d730bb    	bl	0x1b802e1b0 <__text+0x75cc4a4> ; SELECTOR utilities
+1b0a61ec8: aa1903e2    	mov	x2, x25
+1b0a61ecc: aa1803e3    	mov	x3, x24
+1b0a61ed0: 97ec1890    	bl	0x1b0568110
+1b0a61ed4: 350022e0    	cbnz	w0, 0x1b0a62330 <__text+0x624>
+1b0a61ed8: aa1a03e0    	mov	x0, x26
+1b0a61edc: 95db29b5    	bl	0x1b812c5b0 <__text+0x76ca8a4>
+1b0a61ee0: aa0003e2    	mov	x2, x0
+1b0a61ee4: f01dc303    	adrp	x3, 0x1ec2c4000 <__text+0x3b8622f4>
+1b0a61ee8: 910f8063    	add	x3, x3, #0x3e0 ; 0x1ec2c43e0 CFString 'SmartStyleOutputStyledThumbnail'
+1b0a61eec: aa1b03e0    	mov	x0, x27
+1b0a61ef0: aa1c03e1    	mov	x1, x28
+1b0a61ef4: 94000142    	bl	0x1b0a623fc <__text+0x6f0>
+1b0a61ef8: aa0003f9    	mov	x25, x0
+1b0a61efc: b4002220    	cbz	x0, 0x1b0a62340 <__text+0x634>
+1b0a61f00: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61f04: 95d730ab    	bl	0x1b802e1b0 <__text+0x75cc4a4> ; SELECTOR utilities
+1b0a61f08: aa1a03e2    	mov	x2, x26
+1b0a61f0c: aa1903e3    	mov	x3, x25
+1b0a61f10: 97ec1880    	bl	0x1b0568110
+1b0a61f14: d01a40dc    	adrp	x28, 0x1e527b000 <__text+0x348192f4>
+1b0a61f18: 350021c0    	cbnz	w0, 0x1b0a62350 <__text+0x644>
+1b0a61f1c: aa1603e0    	mov	x0, x22
+1b0a61f20: aa1903e2    	mov	x2, x25
+1b0a61f24: 95d703f7    	bl	0x1b8022f00 <__text+0x75c11f4> ; SELECTOR setInputUnstyledThumbnailPixelBuffer:
+1b0a61f28: aa1603e0    	mov	x0, x22
+1b0a61f2c: aa1803e2    	mov	x2, x24
+1b0a61f30: 95d7030c    	bl	0x1b8022b60 <__text+0x75c0e54> ; SELECTOR setInputLearningTargetThumbnailPixelBuffer:
+1b0a61f34: aa1603e0    	mov	x0, x22
+1b0a61f38: d2800002    	mov	x2, #0x0                ; =0
+1b0a61f3c: 95d70d75    	bl	0x1b8025510 <__text+0x75c3804> ; SELECTOR setOutputSmallLightMapPixelBuffer:
+1b0a61f40: aa1603e0    	mov	x0, x22
+1b0a61f44: d2800002    	mov	x2, #0x0                ; =0
+1b0a61f48: 95d70d76    	bl	0x1b8025520 <__text+0x75c3814> ; SELECTOR setOutputSmallLinearLightMapPixelBuffer:
+1b0a61f4c: 52800560    	mov	w0, #0x2b               ; =43
+1b0a61f50: 97f64a22    	bl	0x1b07f47d8
+1b0a61f54: aa0003f7    	mov	x23, x0
+1b0a61f58: aa1503e0    	mov	x0, x21
+1b0a61f5c: 95d6eacd    	bl	0x1b801ca90 <__text+0x75bad84> ; SELECTOR requestedSettings
+1b0a61f60: 95d699b8    	bl	0x1b8008640 <__text+0x75a6934> ; SELECTOR aspectRatio
+1b0a61f64: aa0003e2    	mov	x2, x0
+1b0a61f68: aa1b03e0    	mov	x0, x27
+1b0a61f6c: aa1703e1    	mov	x1, x23
+1b0a61f70: 9400015a    	bl	0x1b0a624d8 <__text+0x7cc>
+1b0a61f74: aa0003fa    	mov	x26, x0
+1b0a61f78: b4001f20    	cbz	x0, 0x1b0a6235c <__text+0x650>
+1b0a61f7c: aa1603e0    	mov	x0, x22
+1b0a61f80: aa1a03e2    	mov	x2, x26
+1b0a61f84: 95d70cfb    	bl	0x1b8025370 <__text+0x75c3664> ; SELECTOR setOutputLearnedStyleCoefficientsPixelBuffer:
+1b0a61f88: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61f8c: aa1603e2    	mov	x2, x22
+1b0a61f90: 95d70328    	bl	0x1b8022c30 <__text+0x75c0f24> ; SELECTOR setInputOutput:
+1b0a61f94: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61f98: 95d6e2fa    	bl	0x1b801ab80 <__text+0x75b8e74> ; SELECTOR process
+1b0a61f9c: 35001e40    	cbnz	w0, 0x1b0a62364 <__text+0x658>
+1b0a61fa0: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61fa4: 95d73313    	bl	0x1b802ebf0 <__text+0x75ccee4> ; SELECTOR waitForSchedule
+1b0a61fa8: 35001e20    	cbnz	w0, 0x1b0a6236c <__text+0x660>
+1b0a61fac: f9400760    	ldr	x0, [x27, #0x8]
+1b0a61fb0: 95d6eb70    	bl	0x1b801cd70 <__text+0x75bb064> ; SELECTOR resetState
+1b0a61fb4: aa0003f7    	mov	x23, x0
+1b0a61fb8: 35000260    	cbnz	w0, 0x1b0a62004 <__text+0x2f8>
+1b0a61fbc: 90183d68    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a61fc0: f941a901    	ldr	x1, [x8, #0x350] ; 0x1ec30bb40 CFString 'SmartStyleStillStyledThumbnail'
+1b0a61fc4: 9100c363    	add	x3, x27, #0x30
+1b0a61fc8: aa1403e0    	mov	x0, x20
+1b0a61fcc: aa1903e2    	mov	x2, x25
+1b0a61fd0: d2800004    	mov	x4, #0x0                ; =0
+1b0a61fd4: d2800005    	mov	x5, #0x0                ; =0
+1b0a61fd8: 52800026    	mov	w6, #0x1                ; =1
+1b0a61fdc: 97f4ca5c    	bl	0x1b079494c
+1b0a61fe0: 90183d68    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a61fe4: f941b101    	ldr	x1, [x8, #0x360] ; 0x1ec30bb80 CFString 'SmartStyleStillReverseLearnedCoefficients'
+1b0a61fe8: 9100e363    	add	x3, x27, #0x38
+1b0a61fec: aa1403e0    	mov	x0, x20
+1b0a61ff0: aa1a03e2    	mov	x2, x26
+1b0a61ff4: d2800004    	mov	x4, #0x0                ; =0
+1b0a61ff8: d2800005    	mov	x5, #0x0                ; =0
+1b0a61ffc: 52800026    	mov	w6, #0x1                ; =1
+1b0a62000: 97f4ca53    	bl	0x1b079494c
+1b0a62004: f0183d48    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a62008: f941d501    	ldr	x1, [x8, #0x3a8] ; 0x1ec30bca0 CFString 'SmartStyleStreamingLinearThumbnail'
+1b0a6200c: aa1403e0    	mov	x0, x20
+1b0a62010: 97ee5c17    	bl	0x1b05f906c
+1b0a62014: f0183d48    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a62018: f9419d01    	ldr	x1, [x8, #0x338] ; 0x1ec30bae0 CFString 'SmartStyleStillLinearImage'
+1b0a6201c: aa1403e0    	mov	x0, x20
+1b0a62020: 97ee5c13    	bl	0x1b05f906c
+1b0a62024: f0183d48    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a62028: f9418d01    	ldr	x1, [x8, #0x318] ; 0x1ec30ba60 CFString 'HumanFullBodiesMask'
+1b0a6202c: aa1403e0    	mov	x0, x20
+1b0a62030: 97ee5c0f    	bl	0x1b05f906c
+1b0a62034: f0183d48    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a62038: f9419101    	ldr	x1, [x8, #0x320] ; 0x1ec30ba80 CFString 'HumanSkinsMask'
+1b0a6203c: aa1403e0    	mov	x0, x20
+1b0a62040: 97ee5c0b    	bl	0x1b05f906c
+1b0a62044: f0183d48    	adrp	x8, 0x1e120d000 <__text+0x307ab2f4>
+1b0a62048: f9419901    	ldr	x1, [x8, #0x330] ; 0x1ec30bac0 CFString 'SkyMask'
+1b0a6204c: aa1403e0    	mov	x0, x20
+1b0a62050: 97ee5c07    	bl	0x1b05f906c
+1b0a62054: 95db2097    	bl	0x1b812a2b0 <__text+0x76c85a4>
+1b0a62058: b4000078    	cbz	x24, 0x1b0a62064 <__text+0x358>
+1b0a6205c: aa1803e0    	mov	x0, x24
+1b0a62060: 95db1c20    	bl	0x1b81290e0 <__text+0x76c73d4>
+1b0a62064: b4000079    	cbz	x25, 0x1b0a62070 <__text+0x364>
+1b0a62068: aa1903e0    	mov	x0, x25
+1b0a6206c: 95db1c1d    	bl	0x1b81290e0 <__text+0x76c73d4>
+1b0a62070: b400007a    	cbz	x26, 0x1b0a6207c <__text+0x370>
+1b0a62074: aa1a03e0    	mov	x0, x26
+1b0a62078: 95db1c1a    	bl	0x1b81290e0 <__text+0x76c73d4>
+1b0a6207c: 34000377    	cbz	w23, 0x1b0a620e8 <__text+0x3dc>
+1b0a62080: 97f92a78    	bl	0x1b08aca60
+1b0a62084: 34000380    	cbz	w0, 0x1b0a620f4 <__text+0x3e8>
+1b0a62088: 97ec3b7e    	bl	0x1b0570e80
+1b0a6208c: 52800001    	mov	w1, #0x0                ; =0
+1b0a62090: 95db3288    	bl	0x1b812eab0 <__text+0x76ccda4>
+1b0a62094: 97ebe523    	bl	0x1b055b520
+1b0a62098: 121f7b28    	and	w8, w25, #0xfffffffe
+1b0a6209c: 7100001f    	cmp	w0, #0x0
+1b0a620a0: 1a88133a    	csel	w26, w25, w8, ne
+1b0a620a4: 3400059a    	cbz	w26, 0x1b0a62154 <__text+0x448>
+1b0a620a8: aa1503e0    	mov	x0, x21
+1b0a620ac: 95d720a9    	bl	0x1b802a350 <__text+0x75c8644> ; SELECTOR settingsID
+1b0a620b0: d0000da8    	adrp	x8, 0x1b0c18000 <__text+0x1b62f4>
+1b0a620b4: fd40d100    	ldr	d0, [x8, #0x1a0]
+1b0a620b8: 97ec9be4    	bl	0x1b0589048
+1b0a620bc: 52810008    	mov	w8, #0x800              ; =2048
+1b0a620c0: 790067e8    	strh	w8, [sp, #0x32]
+1b0a620c4: f80343e0    	stur	x0, [sp, #0x34]
+1b0a620c8: 52800388    	mov	w8, #0x1c               ; =28
+1b0a620cc: 97ebd812    	bl	0x1b0558114
+1b0a620d0: f0001dc7    	adrp	x7, 0x1b0e1d000 <__text+0x3bb2f4>
+1b0a620d4: 9112b0e7    	add	x7, x7, #0x4ac
+1b0a620d8: 97ebe8de    	bl	0x1b055c450
+1b0a620dc: aa0003e3    	mov	x3, x0
+1b0a620e0: b85743b9    	ldur	w25, [x29, #-0x8c]
+1b0a620e4: 1400001d    	b	0x1b0a62158 <__text+0x44c>
+1b0a620e8: d2800015    	mov	x21, #0x0               ; =0
+1b0a620ec: b5000bb3    	cbnz	x19, 0x1b0a62260 <__text+0x554>
+1b0a620f0: 14000062    	b	0x1b0a62278 <__text+0x56c>
+1b0a620f4: 97ec3b63    	bl	0x1b0570e80
+1b0a620f8: 52800061    	mov	w1, #0x3                ; =3
+1b0a620fc: 95db326d    	bl	0x1b812eab0 <__text+0x76ccda4>
+1b0a62100: 97ebe508    	bl	0x1b055b520
+1b0a62104: 121f7b28    	and	w8, w25, #0xfffffffe
+1b0a62108: 7100001f    	cmp	w0, #0x0
+1b0a6210c: 1a88133a    	csel	w26, w25, w8, ne
+1b0a62110: 340002fa    	cbz	w26, 0x1b0a6216c <__text+0x460>
+1b0a62114: aa1503e0    	mov	x0, x21
+1b0a62118: 95d7208e    	bl	0x1b802a350 <__text+0x75c8644> ; SELECTOR settingsID
+1b0a6211c: d0000da8    	adrp	x8, 0x1b0c18000 <__text+0x1b62f4>
+1b0a62120: fd40d100    	ldr	d0, [x8, #0x1a0]
+1b0a62124: 97ec9bc9    	bl	0x1b0589048
+1b0a62128: 52810008    	mov	w8, #0x800              ; =2048
+1b0a6212c: 790067e8    	strh	w8, [sp, #0x32]
+1b0a62130: f80343e0    	stur	x0, [sp, #0x34]
+1b0a62134: 52800388    	mov	w8, #0x1c               ; =28
+1b0a62138: 97ebd7f7    	bl	0x1b0558114
+1b0a6213c: f0001dc7    	adrp	x7, 0x1b0e1d000 <__text+0x3bb2f4>
+1b0a62140: 9112b0e7    	add	x7, x7, #0x4ac
+1b0a62144: 97ebe8c3    	bl	0x1b055c450
+1b0a62148: aa0003e3    	mov	x3, x0
+1b0a6214c: b85743b9    	ldur	w25, [x29, #-0x8c]
+1b0a62150: 14000008    	b	0x1b0a62170 <__text+0x464>
+1b0a62154: d2800003    	mov	x3, #0x0                ; =0
+1b0a62158: 97ebf7a5    	bl	0x1b055ffec
+1b0a6215c: aa1903e5    	mov	x5, x25
+1b0a62160: d2800006    	mov	x6, #0x0                ; =0
+1b0a62164: 95db324f    	bl	0x1b812eaa0 <__text+0x76ccd94>
+1b0a62168: 14000031    	b	0x1b0a6222c <__text+0x520>
+1b0a6216c: d2800003    	mov	x3, #0x0                ; =0
+1b0a62170: f9404f80    	ldr	x0, [x28, #0x98]
+1b0a62174: 910103f6    	add	x22, sp, #0x40
+1b0a62178: eb16007f    	cmp	x3, x22
+1b0a6217c: 1a9f07e4    	cset	w4, ne
+1b0a62180: 52800061    	mov	w1, #0x3                ; =3
+1b0a62184: 52800022    	mov	w2, #0x1                ; =1
+1b0a62188: aa1903e5    	mov	x5, x25
+1b0a6218c: d2800006    	mov	x6, #0x0                ; =0
+1b0a62190: 95db3244    	bl	0x1b812eaa0 <__text+0x76ccd94>
+1b0a62194: aa1503e0    	mov	x0, x21
+1b0a62198: 95d7206e    	bl	0x1b802a350 <__text+0x75c8644> ; SELECTOR settingsID
+1b0a6219c: d0000da8    	adrp	x8, 0x1b0c18000 <__text+0x1b62f4>
+1b0a621a0: fd40dd00    	ldr	d0, [x8, #0x1b8]
+1b0a621a4: bd0043e0    	str	s0, [sp, #0x40]
+1b0a621a8: b90047f7    	str	w23, [sp, #0x44]
+1b0a621ac: 52810008    	mov	w8, #0x800              ; =2048
+1b0a621b0: 790093e8    	strh	w8, [sp, #0x48]
+1b0a621b4: f804a3e0    	stur	x0, [sp, #0x4a]
+1b0a621b8: 52800248    	mov	w8, #0x12               ; =18
+1b0a621bc: b9000be8    	str	w8, [sp, #0x8]
+1b0a621c0: f90003f6    	str	x22, [sp]
+1b0a621c4: d0ffd784    	adrp	x4, 0x1b0554000
+1b0a621c8: 91000084    	add	x4, x4, #0x0
+1b0a621cc: d017b9c5    	adrp	x5, 0x1e019c000 <__text+0x2f73a2f4>
+1b0a621d0: f943a8a5    	ldr	x5, [x5, #0x750]
+1b0a621d4: f0001dc7    	adrp	x7, 0x1b0e1d000 <__text+0x3bb2f4>
+1b0a621d8: 911484e7    	add	x7, x7, #0x521
+1b0a621dc: 52800040    	mov	w0, #0x2                ; =2
+1b0a621e0: d2800001    	mov	x1, #0x0                ; =0
+1b0a621e4: d2800002    	mov	x2, #0x0                ; =0
+1b0a621e8: 52800003    	mov	w3, #0x0                ; =0
+1b0a621ec: 52800006    	mov	w6, #0x0                ; =0
+1b0a621f0: 95db2fec    	bl	0x1b812e1a0 <__text+0x76cc494>
+1b0a621f4: aa0003f5    	mov	x21, x0
+1b0a621f8: d00018a3    	adrp	x3, 0x1b0d78000 <__text+0x3162f4>
+1b0a621fc: 913fc063    	add	x3, x3, #0xff0
+1b0a62200: d01dc305    	adrp	x5, 0x1ec2c4000 <__text+0x3b8622f4>
+1b0a62204: 911000a5    	add	x5, x5, #0x400 ; 0x1ec2c4400 CFString 'LastShownDate:BWSmartStyleReversibilityRenderer.m:308'
+1b0a62208: d01dc306    	adrp	x6, 0x1ec2c4000 <__text+0x3b8622f4>
+1b0a6220c: 911080c6    	add	x6, x6, #0x420 ; 0x1ec2c4420 CFString 'LastShownBuild:BWSmartStyleReversibilityRenderer.m:308'
+1b0a62210: 52800180    	mov	w0, #0xc                ; =12
+1b0a62214: aa1503e1    	mov	x1, x21
+1b0a62218: d2800002    	mov	x2, #0x0                ; =0
+1b0a6221c: 52802684    	mov	w4, #0x134              ; =308
+1b0a62220: 94008962    	bl	0x1b0a847a8 <__text+0x22a9c>
+1b0a62224: aa1503e0    	mov	x0, x21
+1b0a62228: 95db1f62    	bl	0x1b8129fb0 <__text+0x76c82a4>
+1b0a6222c: b017b608    	adrp	x8, 0x1e0123000 <__text+0x2f6c12f4>
+1b0a62230: f9447500    	ldr	x0, [x8, #0x8e8]
+1b0a62234: b017b608    	adrp	x8, 0x1e0123000 <__text+0x2f6c12f4>
+1b0a62238: f9425508    	ldr	x8, [x8, #0x4a8]
+1b0a6223c: f9400102    	ldr	x2, [x8] ; 0x1e8eaacd8 CFString 'NSOSStatusErrorDomain'
+1b0a62240: 928000e3    	mov	x3, #-0x8               ; =-8
+1b0a62244: d2800004    	mov	x4, #0x0                ; =0
+1b0a62248: 95d67fc2    	bl	0x1b8002150 <__text+0x75a0444> ; SELECTOR errorWithDomain:code:userInfo:
+1b0a6224c: aa0003f5    	mov	x21, x0
+1b0a62250: aa1403e0    	mov	x0, x20
+1b0a62254: 52a01001    	mov	w1, #0x800000           ; =8388608
+1b0a62258: 97f42f91    	bl	0x1b076e09c
+1b0a6225c: b40000f3    	cbz	x19, 0x1b0a62278 <__text+0x56c>
+1b0a62260: aa1303e8    	mov	x8, x19
+1b0a62264: f8410d09    	ldr	x9, [x8, #0x10]!
+1b0a62268: aa1303e0    	mov	x0, x19
+1b0a6226c: d2800001    	mov	x1, #0x0                ; =0
+1b0a62270: aa1503e2    	mov	x2, x21
+1b0a62274: d73f0928    	blraa	x9, x8
+1b0a62278: a9557bfd    	ldp	x29, x30, [sp, #0x150]
+1b0a6227c: a9544ff4    	ldp	x20, x19, [sp, #0x140]
+1b0a62280: a95357f6    	ldp	x22, x21, [sp, #0x130]
+1b0a62284: a9525ff8    	ldp	x24, x23, [sp, #0x120]
+1b0a62288: a95167fa    	ldp	x26, x25, [sp, #0x110]
+1b0a6228c: a9506ffc    	ldp	x28, x27, [sp, #0x100]
+1b0a62290: 6d4f23e9    	ldp	d9, d8, [sp, #0xf0]
+1b0a62294: 6d4e2beb    	ldp	d11, d10, [sp, #0xe0]
+1b0a62298: 6d4d33ed    	ldp	d13, d12, [sp, #0xd0]
+1b0a6229c: 910583ff    	add	sp, sp, #0x160
+1b0a622a0: d65f0fff    	retab
+1b0a622a4: 97ebdaeb    	bl	0x1b0558e50
+1b0a622a8: d2800016    	mov	x22, #0x0               ; =0
+1b0a622ac: 52800017    	mov	w23, #0x0               ; =0
+1b0a622b0: 17ffff55    	b	0x1b0a62004 <__text+0x2f8>
+1b0a622b4: 97ebdae7    	bl	0x1b0558e50
+1b0a622b8: 14000007    	b	0x1b0a622d4 <__text+0x5c8>
+1b0a622bc: d280001a    	mov	x26, #0x0               ; =0
+1b0a622c0: d2800019    	mov	x25, #0x0               ; =0
+1b0a622c4: 14000002    	b	0x1b0a622cc <__text+0x5c0>
+1b0a622c8: d280001a    	mov	x26, #0x0               ; =0
+1b0a622cc: d2800018    	mov	x24, #0x0               ; =0
+1b0a622d0: d2800016    	mov	x22, #0x0               ; =0
+1b0a622d4: 12863d77    	mov	w23, #-0x31ec           ; =-12780
+1b0a622d8: 17ffff4b    	b	0x1b0a62004 <__text+0x2f8>
+1b0a622dc: f9404f81    	ldr	x1, [x28, #0x98]
+1b0a622e0: aa1703e8    	mov	x8, x23
+1b0a622e4: 97ec9326    	bl	0x1b0586f7c
+1b0a622e8: d00018a3    	adrp	x3, 0x1b0d78000 <__text+0x3162f4>
+1b0a622ec: 913a5863    	add	x3, x3, #0xe96 ; 0x1b0d78e96 cstring 'reverseLearningInputOutputProvider'
+1b0a622f0: f0001824    	adrp	x4, 0x1b0d69000 <__text+0x3072f4>
+1b0a622f4: 9134bc84    	add	x4, x4, #0xd2f ; 0x1b0d69d2f cstring 'bail'
+1b0a622f8: d00018a6    	adrp	x6, 0x1b0d78000 <__text+0x3162f4>
+1b0a622fc: 913ae4c6    	add	x6, x6, #0xeb9 ; 0x1b0d78eb9 cstring 'BWSmartStyleReversibilityRenderer.m'
+1b0a62300: d2800005    	mov	x5, #0x0                ; =0
+1b0a62304: 52801c47    	mov	w7, #0xe2               ; =226
+1b0a62308: 95db2a82    	bl	0x1b812cd10 <__text+0x76cb004>
+1b0a6230c: 97ebdad1    	bl	0x1b0558e50
+1b0a62310: 12863db7    	mov	w23, #-0x31ee           ; =-12782
+1b0a62314: 17ffff3c    	b	0x1b0a62004 <__text+0x2f8>
+1b0a62318: aa0003f7    	mov	x23, x0
+1b0a6231c: 97ebdacd    	bl	0x1b0558e50
+1b0a62320: 17ffff39    	b	0x1b0a62004 <__text+0x2f8>
+1b0a62324: d280001a    	mov	x26, #0x0               ; =0
+1b0a62328: d2800019    	mov	x25, #0x0               ; =0
+1b0a6232c: 14000006    	b	0x1b0a62344 <__text+0x638>
+1b0a62330: aa0003f7    	mov	x23, x0
+1b0a62334: d280001a    	mov	x26, #0x0               ; =0
+1b0a62338: d2800019    	mov	x25, #0x0               ; =0
+1b0a6233c: 14000003    	b	0x1b0a62348 <__text+0x63c>
+1b0a62340: d280001a    	mov	x26, #0x0               ; =0
+1b0a62344: 12863e37    	mov	w23, #-0x31f2           ; =-12786
+1b0a62348: b01a40dc    	adrp	x28, 0x1e527b000 <__text+0x348192f4>
+1b0a6234c: 17ffff2e    	b	0x1b0a62004 <__text+0x2f8>
+1b0a62350: aa0003f7    	mov	x23, x0
+1b0a62354: d280001a    	mov	x26, #0x0               ; =0
+1b0a62358: 17ffff2b    	b	0x1b0a62004 <__text+0x2f8>
+1b0a6235c: 12863e37    	mov	w23, #-0x31f2           ; =-12786
+1b0a62360: 17ffff29    	b	0x1b0a62004 <__text+0x2f8>
+1b0a62364: aa0003f7    	mov	x23, x0
+1b0a62368: 17ffff27    	b	0x1b0a62004 <__text+0x2f8>
+1b0a6236c: aa0003f7    	mov	x23, x0
+1b0a62370: 97ec3ac4    	bl	0x1b0570e80
+1b0a62374: 52800001    	mov	w1, #0x0                ; =0
+1b0a62378: 95db31ce    	bl	0x1b812eab0 <__text+0x76ccda4>
+1b0a6237c: b85743bb    	ldur	w27, [x29, #-0x8c]
+1b0a62380: 385733bc    	ldurb	w28, [x29, #-0x8d]
+1b0a62384: f9000fe0    	str	x0, [sp, #0x18]
+1b0a62388: aa1c03e1    	mov	x1, x28
+1b0a6238c: 95db2069    	bl	0x1b812a530 <__text+0x76c8824>
+1b0a62390: 121f7b68    	and	w8, w27, #0xfffffffe
+1b0a62394: 7100001f    	cmp	w0, #0x0
+1b0a62398: 1a881360    	csel	w0, w27, w8, ne
+1b0a6239c: 34000220    	cbz	w0, 0x1b0a623e0 <__text+0x6d4>
+1b0a623a0: d0000da8    	adrp	x8, 0x1b0c18000 <__text+0x1b62f4>
+1b0a623a4: fd40d500    	ldr	d0, [x8, #0x1a8]
+1b0a623a8: 97ec9b28    	bl	0x1b0589048
+1b0a623ac: 52800248    	mov	w8, #0x12               ; =18
+1b0a623b0: 97ebd759    	bl	0x1b0558114
+1b0a623b4: f0001dc7    	adrp	x7, 0x1b0e1d000 <__text+0x3bb2f4>
+1b0a623b8: 911180e7    	add	x7, x7, #0x460
+1b0a623bc: 910103e2    	add	x2, sp, #0x40
+1b0a623c0: d2800001    	mov	x1, #0x0                ; =0
+1b0a623c4: 52801003    	mov	w3, #0x80               ; =128
+1b0a623c8: f9400fe5    	ldr	x5, [sp, #0x18]
+1b0a623cc: aa1c03e6    	mov	x6, x28
+1b0a623d0: 95db2f74    	bl	0x1b812e1a0 <__text+0x76cc494>
+1b0a623d4: aa0003e3    	mov	x3, x0
+1b0a623d8: b85743bb    	ldur	w27, [x29, #-0x8c]
+1b0a623dc: 14000002    	b	0x1b0a623e4 <__text+0x6d8>
+1b0a623e0: d2800003    	mov	x3, #0x0                ; =0
+1b0a623e4: b01a40dc    	adrp	x28, 0x1e527b000 <__text+0x348192f4>
+1b0a623e8: 97ebf701    	bl	0x1b055ffec
+1b0a623ec: aa1b03e5    	mov	x5, x27
+1b0a623f0: d2800006    	mov	x6, #0x0                ; =0
+1b0a623f4: 95db31ab    	bl	0x1b812eaa0 <__text+0x76ccd94>
+1b0a623f8: 17ffff03    	b	0x1b0a62004 <__text+0x2f8>

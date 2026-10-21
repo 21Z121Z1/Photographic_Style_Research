@@ -1011,3 +1011,34 @@ EV域沿用旧验证：RGB有限，Yactual>0、Yref>1e-6；排除数量如表，
 **可交给 macOS runner（HDR-177）。** run39526823912 / source7e747a28b0b53cf9c6b9ca7e1bb7cd5aafdc3397 / 26A434 / image20261012.0260.1。两个reader编译和输入artifact元数据查询通过；driver仍请求HDR_S103_ARCHIVE_SESSIONS，workflow提供的是HDR_S105_ARCHIVE_SESSIONS，触发KeyError。这是新探针配置错误，发生在任何密文/照片读取前；range body计数0，不含HTTP元数据开销。没有新的像素/显示/边缘指标，errors.csv不填占位零。
 
 artifact12313737886（4083B，SHAab0fe1741d0f0312ad19fa832cba07cfe911bc4038eb73ff58ecce3d5f119eb3）在日本保留并认证7份公开记录；临时secret和分支已按原规则清理。S107只同步secret名称与源码自哈希路径，反向恢复两处文字替换即可还原S105 driver字节；新增静态一致性检查能检出旧错配并确认新workflow/driver/coordinator同名。数值公式、旧门槛、mask与最终HEIC-only策略不变；实际分段网络与四图结果仍须运行。
+
+
+### S107 终态（2026-10-21）：固定显示诊断收尾，回到苹果调整机制
+
+**已验证数值（HDR-178，仅承载诊断）。** run39527547342 / sourceea695a690a411fa12a47759b4c178bd207f739fa / 26A434 / image20261012.0260.1。四张原尺寸图的carrier、目标、原SDR和原生headroom数组逐文件SHA与S101完全一致；只补统计，没有重建目标或新图片归档。headroom1/2/8全部达到预声明的“固定ACES显示后≥99%像素的最大RGB误差≤1码”。IMG2600复用S90同文件绑定，五张共15档均满足这项范围有限的诊断，不当新五图/新留出、真实HDR显示或scene精度通过。
+
+统一视图为cg-config-v2.2.0_aces-v1.3_ocio-v2.4 / ACES1.0 SDR Video / Linear P3-D65→sRGB /0EV；配置SHA5aefc668796eabb1902b9593340496231758eceaec18ce290e12901042bd4440，源线性数组未clip，只有显示输出按8bit量化。原S90统计AST未变。高headroom8如下；梯度及Laplacian是误差代理，不是“看不到光晕”的证明。
+
+|照片|≤1码比例|最大码差|参考边缘梯度p99/max|Laplacian p99/max|原SDR整数最大差|
+|---|---:|---:|---:|---:|---:|
+|IMG_2604|99.978504%|4|2/6|6/19|0|
+|IMG_0032|99.999639%|2|2/3|6/10|0|
+|IMG_2608|99.986351%|4|2/6|6/18|0|
+|IMG_0033|99.998540%|2|2/3|6/11|0|
+
+四图3120次预览副本SHA检查及各输入文件前后SHA全部不变。按原Y区间[-inf,0,1e-6,1e-5,1e-4,1e-3,1e-2,.1,1,inf]另列正EV、非正像素和分层EV；原始JSON与errors.csv保留，未用排除近黑来改显示全图分母。原线性目标max1e-5/PSNR60门槛仍未通过，A/工程/旧总验收保持false。
+
+artifact12314526095，35049B，SHA2d188a4cfb2c0823ea66768eef6217bbfb4543c7f2cff77a7ebae1e684232606，日本原ZIP保留、29个公开成员认证。输入GitHub→runner实收1,529,280,980B；按8MiB有界分段，186个成功range、1次重试、2次signed URL刷新。未重哈希整份S101 ZIP，但4×23个消费成员均核cipher SHA并完成GPG认证；不是仅有密文头校验。没有日本/香港大包回传。临时secret与分支已在PR零引用/源保留条件后清理，master未改。
+
+按用户最新优先级，承载诊断到此收尾。后续追踪苹果Styles实际生产/编辑算子、Tone/cd/thumbnail/语义数据流，复用或复刻其局部调整以制作HDR look；不再安排codec精度或33点穷举。全局、局部、人物处理保持分离，LinearThumbnail保持Apple Log，未来图片仅保留最终HEIC。
+
+
+### SEMANTIC-20261018 / S106–S108：转回苹果真实Styles生产/调整机制
+
+**已验证静态（HDR-179，参考24A446/iPhone12,1）。** 新追踪18个完整caller/helper函数、合计31,164B指令，均来自现有只读cache的LC_FUNCTION_STARTS边界。CMCapture UUID995FC22B-41BD-37B4-812F-2686B81C2694；每个代码窗口及Mach-O header的SHA见evidence/s106三个manifest，未抽取整Mach-O故不冒充完整binary SHA。
+
+实际loader把SmartStyle+version1拼成 `/System/Library/VideoProcessors/SmartStyleV1.bundle`，通过bundle classNamed构造CMISmartStyleProcessorV1（0x1b05e1410/1418、0x1b05e10dc–1134、0x1b05e1524–1530）。BWSmartStyleLearningNode有三种实际createLinearThumbnail调用，分别接受LTM-only、post-only、pre+post输入（0x1b0639b38/bcc/c4c）；补解析category后，已检查的共享缓存模块仍未找到其实现。因此本次不把调用名当作内部曲线/无提亮证明。
+
+BWSmartStyleTargetRenderer复制真实请求style的cast、intensity、Tone、color；Tone返回值保存在v13再原样送setToneBias（0x1b0936394–63ac）。同一context还绑定unstyled图、linear图和各自metadata、person/skin/sky matte及crop，输出coded LinearThumbnail和两张small light map，再调用process（0x1b09360f8/6104、63d4–646c、64c0/cc/e0）。coded buffer沿两条分支进入SmartStyleStillLinearThumbnail附件，编码器再取它作aux type10（0x1b09369a8–69ec、0x1b08165c0/6774–6788）。原c/d、key3序列化等价与inside-plugin曲线/应用域仍待绑定；不能由此宣称IMG2810或所有机型无face boost。详见evidence/s106/DATAFLOW.zh-CN.md及reviewed-dataflow.json。
+
+**可交给macOS runner（HDR-180）。** 新S108只检查真实VideoProcessors插件路径、三个createLinearThumbnail selector和处理器元数据，不输入照片、不生成图片、不上传Apple binary。若具备同一接口，下一步直接复用原算子构造局部反事实；若缺失，明确缺的是插件实现，继续查可用固件来源。后续实用目标是减弱/去掉可识别的local以独立制作HDR look；严格scene-referred仍需物理证据。Tone0非恒等、负Tone非逆、c/d不是任意灰度gain等既有边界保留，GTM/LTM/人物仍分开，Apple Log不变。没有新像素指标，errors.csv只加入已完成S107诊断，不给本静态阶段填零。

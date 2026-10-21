@@ -209,3 +209,9 @@ LinearThumbnail来源测试改为优先项：不要求用户通过相机UI关闭
 
 
 S105尚未执行照片：临时secret名称错配已定位并归档，旧secret/分支已清。S107仅修名称，静态检查确认driver/workflow/coordinator一致；继续四图同一S90显示与分亮度/边缘诊断，复用IMG2600，不改冻结数学。文件LinearThumbnail与参考前曲线路径的绑定仍可静态推进，不要求用户在UI关闭提亮。
+
+
+S107已完成其余四图固定ACES/headroom1/2/8诊断：四图原SDR完整整数max0，3120预览副本SHA不变；与S90 IMG2600同文件复用共同通过五图范围有限的99%≤1显示码诊断。旧线性门槛和实屏/RAW边界不改。这一传输精度任务收尾，不继续codec验证。下一步优先沿原Styles生产处理器与thumbnail/Tone/LTM实际算子追踪，参照S106的新静态入口。
+
+
+S106/S108：用户要求优先追摄影风格真实调整机制。静态已定位参考iOS的VideoProcessors/SmartStyleV1.bundle实际loader及CMISmartStyleProcessorV1、三个thumbnail producer调用、TargetRenderer的Tone/linear/matte/small-map输出链（evidence/s106）。S108先在26A434仅查相同接口能否原生调用，文本artifact保留1日；无照片/secret/release。存在则对同一输入固定global/semantic，捕获Tone→local参数→small maps/guide→输出并复刻；缺失则先补插件静态实现，不能把缓存旧utilities当同一版本。完成内部线性thumbnail/LTM/WithoutFaceBoost曲线选择绑定之前，继续优先使用现有Apple Log thumbnail作低频参考，但不给“纯关闭face boost”定论。实际j EV、同帧曲线/原Studio统计/RAW和实屏仍按原可执行计划。

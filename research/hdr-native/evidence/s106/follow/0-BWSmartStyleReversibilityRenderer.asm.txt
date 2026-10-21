@@ -1,0 +1,124 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+BWSmartStyleReversibilityRenderer prepareForRenderingWithParameters:inputVideoFormat:inputMediaPropertiesByAttachedMediaKey:
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b0a61b40 <__text>:
+1b0a61b40: d503237f    	pacibsp
+1b0a61b44: d10283ff    	sub	sp, sp, #0xa0
+1b0a61b48: a90567fa    	stp	x26, x25, [sp, #0x50]
+1b0a61b4c: a9065ff8    	stp	x24, x23, [sp, #0x60]
+1b0a61b50: a90757f6    	stp	x22, x21, [sp, #0x70]
+1b0a61b54: a9084ff4    	stp	x20, x19, [sp, #0x80]
+1b0a61b58: a9097bfd    	stp	x29, x30, [sp, #0x90]
+1b0a61b5c: 910243fd    	add	x29, sp, #0x90
+1b0a61b60: aa0303f3    	mov	x19, x3
+1b0a61b64: aa0003f8    	mov	x24, x0
+1b0a61b68: f8408f08    	ldr	x8, [x24, #0x8]!
+1b0a61b6c: b50009c8    	cbnz	x8, 0x1b0a61ca4 <__text+0x164>
+1b0a61b70: aa0003f4    	mov	x20, x0
+1b0a61b74: 9100a3f9    	add	x25, sp, #0x28
+1b0a61b78: f017b9d0    	adrp	x16, 0x1e019c000 <__text+0x2f73a4c0>
+1b0a61b7c: f941f610    	ldr	x16, [x16, #0x3e8]
+1b0a61b80: aa1903f1    	mov	x17, x25
+1b0a61b84: f2ed5c31    	movk	x17, #0x6ae1, lsl #48
+1b0a61b88: dac10a30    	pacda	x16, x17
+1b0a61b8c: f90017f0    	str	x16, [sp, #0x28]
+1b0a61b90: f0000da8    	adrp	x8, 0x1b0c18000 <__text+0x1b64c0>
+1b0a61b94: fd413100    	ldr	d0, [x8, #0x260]
+1b0a61b98: fd001be0    	str	d0, [sp, #0x30]
+1b0a61b9c: 91004328    	add	x8, x25, #0x10
+1b0a61ba0: 90183ce9    	adrp	x9, 0x1e11fd000 <__text+0x3079b4c0>
+1b0a61ba4: 91248129    	add	x9, x9, #0x920
+1b0a61ba8: 90ffefb0    	adrp	x16, 0x1b0855000
+1b0a61bac: 91034210    	add	x16, x16, #0xd0
+1b0a61bb0: dac10110    	pacia	x16, x8
+1b0a61bb4: a903a7f0    	stp	x16, x9, [sp, #0x38]
+1b0a61bb8: f90027e0    	str	x0, [sp, #0x48]
+1b0a61bbc: f9400800    	ldr	x0, [x0, #0x10]
+1b0a61bc0: 95d72460    	bl	0x1b802ad40 <__text+0x75c9200> ; SELECTOR smartStyleRenderingVersion
+1b0a61bc4: aa0003f5    	mov	x21, x0
+1b0a61bc8: f9400a80    	ldr	x0, [x20, #0x10]
+1b0a61bcc: 95d7245d    	bl	0x1b802ad40 <__text+0x75c9200> ; SELECTOR smartStyleRenderingVersion
+1b0a61bd0: aa0003f6    	mov	x22, x0
+1b0a61bd4: 90183e48    	adrp	x8, 0x1e1229000 <__text+0x307c74c0>
+1b0a61bd8: f9415117    	ldr	x23, [x8, #0x2a0]
+1b0a61bdc: f9400a80    	ldr	x0, [x20, #0x10]
+1b0a61be0: 95d6d748    	bl	0x1b8017900 <__text+0x75b5dc0> ; SELECTOR mtlCommandQueue
+1b0a61be4: a90163f9    	stp	x25, x24, [sp, #0x10]
+1b0a61be8: a90003ff    	stp	xzr, x0, [sp]
+1b0a61bec: f01dc302    	adrp	x2, 0x1ec2c4000 <__text+0x3b8624c0>
+1b0a61bf0: 910e8042    	add	x2, x2, #0x3a0 ; 0x1ec2c43a0 CFString 'CMI'
+1b0a61bf4: f01dc2e0    	adrp	x0, 0x1ec2c0000 <__text+0x3b85e4c0>
+1b0a61bf8: 911a8000    	add	x0, x0, #0x6a0 ; 0x1ec2c06a0 CFString 'SmartStyle'
+1b0a61bfc: aa1503e1    	mov	x1, x21
+1b0a61c00: aa0003e3    	mov	x3, x0
+1b0a61c04: aa1603e4    	mov	x4, x22
+1b0a61c08: aa1703e5    	mov	x5, x23
+1b0a61c0c: 52800006    	mov	w6, #0x0                ; =0
+1b0a61c10: 52800007    	mov	w7, #0x0                ; =0
+1b0a61c14: 97f1baa3    	bl	0x1b06d06a0
+1b0a61c18: 35000680    	cbnz	w0, 0x1b0a61ce8 <__text+0x1a8>
+1b0a61c1c: f9400680    	ldr	x0, [x20, #0x8]
+1b0a61c20: 52800022    	mov	w2, #0x1                ; =1
+1b0a61c24: 95d71f53    	bl	0x1b8029970 <__text+0x75c7e30> ; SELECTOR setUseLiveMetalAllocations:
+1b0a61c28: f9400680    	ldr	x0, [x20, #0x8]
+1b0a61c2c: 52800022    	mov	w2, #0x1                ; =1
+1b0a61c30: 95d716e8    	bl	0x1b80277d0 <__text+0x75c5c90> ; SELECTOR setShouldFlushCVMTLTextureCacheAfterProcessing:
+1b0a61c34: f9400a80    	ldr	x0, [x20, #0x10]
+1b0a61c38: 95d6b3c2    	bl	0x1b800eb40 <__text+0x75ad000> ; SELECTOR externalMemoryResource
+1b0a61c3c: aa0003e2    	mov	x2, x0
+1b0a61c40: f9400680    	ldr	x0, [x20, #0x8]
+1b0a61c44: 95d6fdb3    	bl	0x1b8021310 <__text+0x75bf7d0> ; SELECTOR setExternalMemoryResource:
+1b0a61c48: d017b616    	adrp	x22, 0x1e0123000 <__text+0x2f6c14c0>
+1b0a61c4c: f945eed5    	ldr	x21, [x22, #0xbd8]
+1b0a61c50: f9400a80    	ldr	x0, [x20, #0x10]
+1b0a61c54: 95d7243b    	bl	0x1b802ad40 <__text+0x75c9200> ; SELECTOR smartStyleRenderingVersion
+1b0a61c58: f90003e0    	str	x0, [sp]
+1b0a61c5c: f01dc302    	adrp	x2, 0x1ec2c4000 <__text+0x3b8624c0>
+1b0a61c60: 910f0042    	add	x2, x2, #0x3c0 ; 0x1ec2c43c0 CFString 'CMISmartStyleProcessorInputOutputV%d'
+1b0a61c64: aa1503e0    	mov	x0, x21
+1b0a61c68: 95d68a2a    	bl	0x1b8004510 <__text+0x75a29d0> ; SELECTOR stringWithFormat:
+1b0a61c6c: 95db3005    	bl	0x1b812dc80 <__text+0x76cc140>
+1b0a61c70: 95db21b4    	bl	0x1b812a340 <__text+0x76c8800>
+1b0a61c74: f9000e80    	str	x0, [x20, #0x18]
+1b0a61c78: f945eed5    	ldr	x21, [x22, #0xbd8]
+1b0a61c7c: f9400a80    	ldr	x0, [x20, #0x10]
+1b0a61c80: 95d72430    	bl	0x1b802ad40 <__text+0x75c9200> ; SELECTOR smartStyleRenderingVersion
+1b0a61c84: f90003e0    	str	x0, [sp]
+1b0a61c88: b01dc2e2    	adrp	x2, 0x1ec2be000 <__text+0x3b85c4c0>
+1b0a61c8c: 91270042    	add	x2, x2, #0x9c0 ; 0x1ec2be9c0 CFString 'CMISmartStyleV%d'
+1b0a61c90: aa1503e0    	mov	x0, x21
+1b0a61c94: 95d68a1f    	bl	0x1b8004510 <__text+0x75a29d0> ; SELECTOR stringWithFormat:
+1b0a61c98: 95db2ffa    	bl	0x1b812dc80 <__text+0x76cc140>
+1b0a61c9c: f9001280    	str	x0, [x20, #0x20]
+1b0a61ca0: b4000320    	cbz	x0, 0x1b0a61d04 <__text+0x1c4>
+1b0a61ca4: aa1303e0    	mov	x0, x19
+1b0a61ca8: 95d6bb12    	bl	0x1b80108f0 <__text+0x75aedb0> ; SELECTOR height
+1b0a61cac: aa0003f4    	mov	x20, x0
+1b0a61cb0: aa1303e0    	mov	x0, x19
+1b0a61cb4: 95d734af    	bl	0x1b802ef70 <__text+0x75cd430> ; SELECTOR width
+1b0a61cb8: aa0003f3    	mov	x19, x0
+1b0a61cbc: f9400300    	ldr	x0, [x24]
+1b0a61cc0: 95db2154    	bl	0x1b812a210 <__text+0x76c86d0>
+1b0a61cc4: eb13029f    	cmp	x20, x19
+1b0a61cc8: 54000069    	b.ls	0x1b0a61cd4 <__text+0x194>
+1b0a61ccc: 95d6b925    	bl	0x1b8010160 <__text+0x75ae620> ; SELECTOR getDefaultProcessorConfigurationForStills3x4
+1b0a61cd0: 14000002    	b	0x1b0a61cd8 <__text+0x198>
+1b0a61cd4: 95d6b91f    	bl	0x1b8010150 <__text+0x75ae610> ; SELECTOR getDefaultProcessorConfigurationForStills
+1b0a61cd8: aa0003e2    	mov	x2, x0
+1b0a61cdc: f9400300    	ldr	x0, [x24]
+1b0a61ce0: 95d6f7a0    	bl	0x1b801fb60 <__text+0x75be020> ; SELECTOR setConfiguration:
+1b0a61ce4: 52800000    	mov	w0, #0x0                ; =0
+1b0a61ce8: a9497bfd    	ldp	x29, x30, [sp, #0x90]
+1b0a61cec: a9484ff4    	ldp	x20, x19, [sp, #0x80]
+1b0a61cf0: a94757f6    	ldp	x22, x21, [sp, #0x70]
+1b0a61cf4: a9465ff8    	ldp	x24, x23, [sp, #0x60]
+1b0a61cf8: a94567fa    	ldp	x26, x25, [sp, #0x50]
+1b0a61cfc: 910283ff    	add	sp, sp, #0xa0
+1b0a61d00: d65f0fff    	retab
+1b0a61d04: 12863e20    	mov	w0, #-0x31f2            ; =-12786
+1b0a61d08: 17fffff8    	b	0x1b0a61ce8 <__text+0x1a8>

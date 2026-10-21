@@ -4984,6 +4984,88 @@
           "sha256": "46341573e24fe2a2f8ad04bc56cb540aaa376e4acbadbe83600227bc0a47a26c"
         }
       ]
+    },
+    {
+      "id": "HDR-178",
+      "category": "hdr/S107/fixed-view-transport-diagnostic",
+      "status": "已验证数值",
+      "os_build": "26A434",
+      "claim": "Four original-size S101 carriers/targets/native arrays reused by exact SHA. Headrooms1/2/8 pass the scoped >=99% pixels within1 maxRGB display-code ACES diagnostic; fifth IMG2600 reuses prior S90 binding. 3120 preview-copy SHA checks unchanged, full integer original SDR max0. This is neither scene/real-HDR-screen accuracy nor a new holdout/full-scientific-acceptance claim. Codec diagnostics closed under latest user priority.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s107/phase-summary.json",
+          "line": 1,
+          "sha256": "6045ed5ac4b265db7230bdb262967b619c36f5247071e169edb53c6738cd8d9f"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s107/run/analysis.json",
+          "line": 1,
+          "sha256": "23d53fbe7b77934cc9d0cf1a93e0bcdeaa8e9da7ea0dde1315cf0897c81f07e9"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s107/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "0089738261a9e41a3f8b59e38e29938994324d7158843641c54d0eac10dc3584"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s107/closure.json",
+          "line": 1,
+          "sha256": "e3b43b3a12e7f8983b29eb32e0d91e268fa8d213e3774be8b6d0ee4ab03102af"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s101/S90-reuse-binding.json",
+          "line": 1,
+          "sha256": "5fde33ba512902a1084d3ea89a55446e84750bfd22b1bdf62ffb4c8b547ef8fe"
+        }
+      ]
+    },
+    {
+      "id": "HDR-179",
+      "category": "producer/Styles/actual-loader-and-target-dataflow",
+      "status": "已验证静态",
+      "os_build": "24A446 iPhone12,1 reference only",
+      "claim": "Actual CMCapture loader resolves VideoProcessors/SmartStyleV1.bundle and CMISmartStyleProcessorV1. TargetRenderer forwards requested Tone plus separate unstyled/linear metadata, person/skin/sky inputs and outputs coded thumbnail/two light maps. Exact coded-buffer to StillLinearThumbnail attachment to encoder aux type10 flow recorded. Plugin internals, file cd/key3 equivalence and WithoutFaceBoost choice remain unproven; no IMG2810 matching-build assertion.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s106/reviewed-dataflow.json",
+          "line": 1,
+          "sha256": "281490155b46fb23db35cafb0f9c08678b344f1a89397046660a69f3a8a179c0"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s106/follow-manifest.json",
+          "line": 1,
+          "sha256": "f34b46ce7d2cc3e1dc127e5b282c25f98fbe577c4d34ae692df82de67d0c501e"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s106/annotated-manifest.json",
+          "line": 1,
+          "sha256": "0a44adad3561cd9282acfc4196abc61e1c07cc568714f5d9e24e2afc8ea6e327"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s106/loader-helpers-manifest.json",
+          "line": 1,
+          "sha256": "32ca07ecc6d4520eb1be3dde6bc64844a1aedcde147b9a70fbfdca645c02b4bd"
+        }
+      ]
+    },
+    {
+      "id": "HDR-180",
+      "category": "producer/Styles/S108-runtime-availability",
+      "status": "runner",
+      "os_build": "26A434 requested, runtime pending",
+      "claim": "Photo-free runtime capability inventory of actual SmartStyleV1 plugin path and exact three thumbnail producer selectors is prepared. No image/pixel/scene conclusion until actual native result. Further codec and bitexact investigations are deprioritized in favor of actual Apple operator dataflow.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/native_style_inventory_s108.m",
+          "line": 1,
+          "sha256": "b2b1c777efd160a4a431c5bb56566fc62ffcdf4caaca1b8999d0b56b8abc8e5e"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s106/reviewed-dataflow.json",
+          "line": 1,
+          "sha256": "281490155b46fb23db35cafb0f9c08678b344f1a89397046660a69f3a8a179c0"
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-21T00:29:46.563292+00:00",

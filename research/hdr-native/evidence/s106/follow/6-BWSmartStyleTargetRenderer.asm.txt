@@ -1,0 +1,119 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+BWSmartStyleTargetRenderer prepareForRenderingWithParameters:inputVideoFormat:inputMediaPropertiesByAttachedMediaKey:
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b0b030d4 <__text>:
+1b0b030d4: d503237f    	pacibsp
+1b0b030d8: d10283ff    	sub	sp, sp, #0xa0
+1b0b030dc: a90567fa    	stp	x26, x25, [sp, #0x50]
+1b0b030e0: a9065ff8    	stp	x24, x23, [sp, #0x60]
+1b0b030e4: a90757f6    	stp	x22, x21, [sp, #0x70]
+1b0b030e8: a9084ff4    	stp	x20, x19, [sp, #0x80]
+1b0b030ec: a9097bfd    	stp	x29, x30, [sp, #0x90]
+1b0b030f0: 910243fd    	add	x29, sp, #0x90
+1b0b030f4: aa0303f3    	mov	x19, x3
+1b0b030f8: aa0003f8    	mov	x24, x0
+1b0b030fc: f8408f08    	ldr	x8, [x24, #0x8]!
+1b0b03100: b5000928    	cbnz	x8, 0x1b0b03224 <__text+0x150>
+1b0b03104: aa0003f4    	mov	x20, x0
+1b0b03108: 9100a3f9    	add	x25, sp, #0x28
+1b0b0310c: b017b4d0    	adrp	x16, 0x1e019c000 <__text+0x2f698f2c>
+1b0b03110: f941f610    	ldr	x16, [x16, #0x3e8]
+1b0b03114: aa1903f1    	mov	x17, x25
+1b0b03118: f2ed5c31    	movk	x17, #0x6ae1, lsl #48
+1b0b0311c: dac10a30    	pacda	x16, x17
+1b0b03120: f90017f0    	str	x16, [sp, #0x28]
+1b0b03124: b00008a8    	adrp	x8, 0x1b0c18000 <__text+0x114f2c>
+1b0b03128: fd413100    	ldr	d0, [x8, #0x260]
+1b0b0312c: fd001be0    	str	d0, [sp, #0x30]
+1b0b03130: 91004328    	add	x8, x25, #0x10
+1b0b03134: d01837c9    	adrp	x9, 0x1e11fd000 <__text+0x306f9f2c>
+1b0b03138: 91248129    	add	x9, x9, #0x920
+1b0b0313c: d0fff190    	adrp	x16, 0x1b0935000
+1b0b03140: 9129e210    	add	x16, x16, #0xa78
+1b0b03144: dac10110    	pacia	x16, x8
+1b0b03148: a903a7f0    	stp	x16, x9, [sp, #0x38]
+1b0b0314c: f90027e0    	str	x0, [sp, #0x48]
+1b0b03150: f9400800    	ldr	x0, [x0, #0x10]
+1b0b03154: 95d49efb    	bl	0x1b802ad40 <__text+0x7527c6c> ; SELECTOR smartStyleRenderingVersion
+1b0b03158: aa0003f5    	mov	x21, x0
+1b0b0315c: f9400a80    	ldr	x0, [x20, #0x10]
+1b0b03160: 95d49ef8    	bl	0x1b802ad40 <__text+0x7527c6c> ; SELECTOR smartStyleRenderingVersion
+1b0b03164: aa0003f6    	mov	x22, x0
+1b0b03168: d0183928    	adrp	x8, 0x1e1229000 <__text+0x30725f2c>
+1b0b0316c: f9415117    	ldr	x23, [x8, #0x2a0]
+1b0b03170: f9400a80    	ldr	x0, [x20, #0x10]
+1b0b03174: 95d451e3    	bl	0x1b8017900 <__text+0x751482c> ; SELECTOR mtlCommandQueue
+1b0b03178: a90163f9    	stp	x25, x24, [sp, #0x10]
+1b0b0317c: a90003ff    	stp	xzr, x0, [sp]
+1b0b03180: b01dbe02    	adrp	x2, 0x1ec2c4000 <__text+0x3b7c0f2c>
+1b0b03184: 910e8042    	add	x2, x2, #0x3a0 ; 0x1ec2c43a0 CFString 'CMI'
+1b0b03188: b01dbde0    	adrp	x0, 0x1ec2c0000 <__text+0x3b7bcf2c>
+1b0b0318c: 911a8000    	add	x0, x0, #0x6a0 ; 0x1ec2c06a0 CFString 'SmartStyle'
+1b0b03190: aa1503e1    	mov	x1, x21
+1b0b03194: aa0003e3    	mov	x3, x0
+1b0b03198: aa1603e4    	mov	x4, x22
+1b0b0319c: aa1703e5    	mov	x5, x23
+1b0b031a0: 52800006    	mov	w6, #0x0                ; =0
+1b0b031a4: 52800007    	mov	w7, #0x0                ; =0
+1b0b031a8: 97ef353e    	bl	0x1b06d06a0
+1b0b031ac: 350005e0    	cbnz	w0, 0x1b0b03268 <__text+0x194>
+1b0b031b0: f9400680    	ldr	x0, [x20, #0x8]
+1b0b031b4: 52800022    	mov	w2, #0x1                ; =1
+1b0b031b8: 95d499ee    	bl	0x1b8029970 <__text+0x752689c> ; SELECTOR setUseLiveMetalAllocations:
+1b0b031bc: f9400680    	ldr	x0, [x20, #0x8]
+1b0b031c0: 52800022    	mov	w2, #0x1                ; =1
+1b0b031c4: 95d49183    	bl	0x1b80277d0 <__text+0x75246fc> ; SELECTOR setShouldFlushCVMTLTextureCacheAfterProcessing:
+1b0b031c8: 9017b116    	adrp	x22, 0x1e0123000 <__text+0x2f61ff2c>
+1b0b031cc: f945eed5    	ldr	x21, [x22, #0xbd8]
+1b0b031d0: f9400a80    	ldr	x0, [x20, #0x10]
+1b0b031d4: 95d49edb    	bl	0x1b802ad40 <__text+0x7527c6c> ; SELECTOR smartStyleRenderingVersion
+1b0b031d8: f90003e0    	str	x0, [sp]
+1b0b031dc: b01dbe02    	adrp	x2, 0x1ec2c4000 <__text+0x3b7c0f2c>
+1b0b031e0: 910f0042    	add	x2, x2, #0x3c0 ; 0x1ec2c43c0 CFString 'CMISmartStyleProcessorInputOutputV%d'
+1b0b031e4: aa1503e0    	mov	x0, x21
+1b0b031e8: 95d404ca    	bl	0x1b8004510 <__text+0x750143c> ; SELECTOR stringWithFormat:
+1b0b031ec: 95d8aaa5    	bl	0x1b812dc80 <__text+0x762abac>
+1b0b031f0: 95d89c54    	bl	0x1b812a340 <__text+0x762726c>
+1b0b031f4: f9000e80    	str	x0, [x20, #0x18]
+1b0b031f8: f945eed5    	ldr	x21, [x22, #0xbd8]
+1b0b031fc: f9400a80    	ldr	x0, [x20, #0x10]
+1b0b03200: 95d49ed0    	bl	0x1b802ad40 <__text+0x7527c6c> ; SELECTOR smartStyleRenderingVersion
+1b0b03204: f90003e0    	str	x0, [sp]
+1b0b03208: f01dbdc2    	adrp	x2, 0x1ec2be000 <__text+0x3b7baf2c>
+1b0b0320c: 91270042    	add	x2, x2, #0x9c0 ; 0x1ec2be9c0 CFString 'CMISmartStyleV%d'
+1b0b03210: aa1503e0    	mov	x0, x21
+1b0b03214: 95d404bf    	bl	0x1b8004510 <__text+0x750143c> ; SELECTOR stringWithFormat:
+1b0b03218: 95d8aa9a    	bl	0x1b812dc80 <__text+0x762abac>
+1b0b0321c: f9001280    	str	x0, [x20, #0x20]
+1b0b03220: b4000320    	cbz	x0, 0x1b0b03284 <__text+0x1b0>
+1b0b03224: aa1303e0    	mov	x0, x19
+1b0b03228: 95d435b2    	bl	0x1b80108f0 <__text+0x750d81c> ; SELECTOR height
+1b0b0322c: aa0003f4    	mov	x20, x0
+1b0b03230: aa1303e0    	mov	x0, x19
+1b0b03234: 95d4af4f    	bl	0x1b802ef70 <__text+0x752be9c> ; SELECTOR width
+1b0b03238: aa0003f3    	mov	x19, x0
+1b0b0323c: f9400300    	ldr	x0, [x24]
+1b0b03240: 95d89bf4    	bl	0x1b812a210 <__text+0x762713c>
+1b0b03244: eb13029f    	cmp	x20, x19
+1b0b03248: 54000069    	b.ls	0x1b0b03254 <__text+0x180>
+1b0b0324c: 95d433c5    	bl	0x1b8010160 <__text+0x750d08c> ; SELECTOR getDefaultProcessorConfigurationForStills3x4
+1b0b03250: 14000002    	b	0x1b0b03258 <__text+0x184>
+1b0b03254: 95d433bf    	bl	0x1b8010150 <__text+0x750d07c> ; SELECTOR getDefaultProcessorConfigurationForStills
+1b0b03258: aa0003e2    	mov	x2, x0
+1b0b0325c: f9400300    	ldr	x0, [x24]
+1b0b03260: 95d47240    	bl	0x1b801fb60 <__text+0x751ca8c> ; SELECTOR setConfiguration:
+1b0b03264: 52800000    	mov	w0, #0x0                ; =0
+1b0b03268: a9497bfd    	ldp	x29, x30, [sp, #0x90]
+1b0b0326c: a9484ff4    	ldp	x20, x19, [sp, #0x80]
+1b0b03270: a94757f6    	ldp	x22, x21, [sp, #0x70]
+1b0b03274: a9465ff8    	ldp	x24, x23, [sp, #0x60]
+1b0b03278: a94567fa    	ldp	x26, x25, [sp, #0x50]
+1b0b0327c: 910283ff    	add	sp, sp, #0xa0
+1b0b03280: d65f0fff    	retab
+1b0b03284: 12863e20    	mov	w0, #-0x31f2            ; =-12786
+1b0b03288: 17fffff8    	b	0x1b0b03268 <__text+0x194>

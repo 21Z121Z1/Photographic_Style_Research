@@ -271,3 +271,9 @@ S103复现失败：source b0a0784，原workflow hdr-native-s103.yml / run3952482
 
 
 S105失败复现见source7e747a2的workflow/driver与evidence/s105/run/driver.log：环境secret名称错配。S107新增evidence/s107/preflight.json的AST/正则检查，在启动前核同一个secret标识；只改driver环境名与自哈希文件名，显示/线性数学仍沿S103/S90。之前的分段字节夹具检查只认证虚拟ZIP读合同，不是原生照片结果。
+
+
+S107已完成（sourceea695a690a411fa12a47759b4c178bd207f739fa）：workflow hdr-native-s107.yml调用run_hdr_s107.py，四份原S101密文直接GitHub→runner分段读取，完整GPG后复用run_hdr_s103.py/S90固定视图统计。新evidence/s107/run原始文本及phase-summary/closure为终态，不重跑IMG2600，不生成新HEIC/EXR。源码复现需要旧输入可得与临时授权传输上下文；过期artifact不伪称永久可下载，日本原ZIP是现有归档。后续优先追苹果生产/编辑数据流。
+
+
+S106静态复现：在原本机现有只读/tmp/dsc_full及ios_cache_reader.py条件下，evidence/s106/repro中的locator→objc_locate→capture_methods→utility_categories→trace_capture→annotate_windows→trace_follow→trace_loader_helpers按依赖执行。脚本open(x)防覆盖旧证据，换到新的输出目录后再执行；每次本地Python必须包scripts/local-python-scope.sh。精确命令与输入位置也保留在workspace s106-20261021。只保留文本；反汇编临时MH_OBJECT在TemporaryDirectory退出即删，原缓存不移动不改。S108 workflow producer-interfaces-s108.yml调用native_style_inventory_s108.m，仅检查明确源路径和selector，不需照片输入或secret。

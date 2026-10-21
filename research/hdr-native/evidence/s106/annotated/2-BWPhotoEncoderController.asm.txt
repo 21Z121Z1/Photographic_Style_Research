@@ -1,0 +1,166 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+BWPhotoEncoderController _addSmartStyleLinearThumbnailForEncodingScheme:sampleBuffer:primaryOutputAspectRatio:
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694
+Function bounds from cached LC_FUNCTION_STARTS. All instruction bytes read directly from unchanged cache. Selector/literal annotations are static locators; inspect dataflow before drawing algorithm conclusions.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b081656c <__text>:
+1b081656c: d503237f    	pacibsp
+1b0816570: d102c3ff    	sub	sp, sp, #0xb0
+1b0816574: 6d032beb    	stp	d11, d10, [sp, #0x30]
+1b0816578: 6d0423e9    	stp	d9, d8, [sp, #0x40]
+1b081657c: a9056ffc    	stp	x28, x27, [sp, #0x50]
+1b0816580: a90667fa    	stp	x26, x25, [sp, #0x60]
+1b0816584: a9075ff8    	stp	x24, x23, [sp, #0x70]
+1b0816588: a90857f6    	stp	x22, x21, [sp, #0x80]
+1b081658c: a9094ff4    	stp	x20, x19, [sp, #0x90]
+1b0816590: a90a7bfd    	stp	x29, x30, [sp, #0xa0]
+1b0816594: 910283fd    	add	x29, sp, #0xa0
+1b0816598: 4ea01c08    	mov.16b	v8, v0
+1b081659c: aa0303f8    	mov	x24, x3
+1b08165a0: aa0203f7    	mov	x23, x2
+1b08165a4: aa0003f3    	mov	x19, x0
+1b08165a8: 95dfbc72    	bl	0x1b8005770 <__text+0x77ef204> ; SELECTOR _encoderManagerForEncodingScheme:
+1b08165ac: b4001000    	cbz	x0, 0x1b08167ac <__text+0x240>
+1b08165b0: aa0003f5    	mov	x21, x0
+1b08165b4: 95dff86b    	bl	0x1b8014760 <__text+0x77fe1f4> ; SELECTOR isContainerOpen
+1b08165b8: 34000fa0    	cbz	w0, 0x1b08167ac <__text+0x240>
+1b08165bc: f0184fa8    	adrp	x8, 0x1e120d000 <__text+0x309f6a94>
+1b08165c0: f941a114    	ldr	x20, [x8, #0x340] ; 0x1ec30bb00 CFString 'SmartStyleStillLinearThumbnail'
+1b08165c4: aa1803e0    	mov	x0, x24
+1b08165c8: aa1403e1    	mov	x1, x20
+1b08165cc: 97f7c343    	bl	0x1b06072d8
+1b08165d0: b4000ee0    	cbz	x0, 0x1b08167ac <__text+0x240>
+1b08165d4: aa0003fa    	mov	x26, x0
+1b08165d8: a900d3f5    	stp	x21, x20, [sp, #0x8]
+1b08165dc: 95e45681    	bl	0x1b812bfe0 <__text+0x7915a74>
+1b08165e0: b4000e60    	cbz	x0, 0x1b08167ac <__text+0x240>
+1b08165e4: aa0003f6    	mov	x22, x0
+1b08165e8: 95e457fe    	bl	0x1b812c5e0 <__text+0x7916074>
+1b08165ec: 97f5dd7d    	bl	0x1b058dbe0
+1b08165f0: 95e457e4    	bl	0x1b812c580 <__text+0x7916014>
+1b08165f4: aa0003fb    	mov	x27, x0
+1b08165f8: aa1603e0    	mov	x0, x22
+1b08165fc: 95e457c5    	bl	0x1b812c510 <__text+0x7915fa4>
+1b0816600: aa0003fc    	mov	x28, x0
+1b0816604: 9017c808    	adrp	x8, 0x1e0116000 <__text+0x2f8ffa94>
+1b0816608: f9409514    	ldr	x20, [x8, #0x128]
+1b081660c: 97f76620    	bl	0x1b05efe8c
+1b0816610: f9000ff3    	str	x19, [sp, #0x18]
+1b0816614: 8b080275    	add	x21, x19, x8
+1b0816618: f94002a0    	ldr	x0, [x21]
+1b081661c: 95e05ec1    	bl	0x1b802e120 <__text+0x7817bb4> ; SELECTOR usesHighEncodingPriority
+1b0816620: aa0003f3    	mov	x19, x0
+1b0816624: f94002a0    	ldr	x0, [x21]
+1b0816628: 95dfe2ee    	bl	0x1b800f1e0 <__text+0x77f8c74> ; SELECTOR figThreadPriority
+1b081662c: aa0003e4    	mov	x4, x0
+1b0816630: aa1903e0    	mov	x0, x25
+1b0816634: aa1b03e1    	mov	x1, x27
+1b0816638: aa1c03e2    	mov	x2, x28
+1b081663c: aa1303e3    	mov	x3, x19
+1b0816640: 97fe46b2    	bl	0x1b07a8108
+1b0816644: aa0003e2    	mov	x2, x0
+1b0816648: aa1403e0    	mov	x0, x20
+1b081664c: 95dfae0d    	bl	0x1b8001e80 <__text+0x77eb914> ; SELECTOR dictionaryWithDictionary:
+1b0816650: 97f5dd64    	bl	0x1b058dbe0
+1b0816654: 95e457d7    	bl	0x1b812c5b0 <__text+0x7916044>
+1b0816658: 52864608    	mov	w8, #0x3230             ; =12848
+1b081665c: 72af0cc8    	movk	w8, #0x7866, lsl #16
+1b0816660: 6b08001f    	cmp	w0, w8
+1b0816664: 54000b81    	b.ne	0x1b08167d4 <__text+0x268>
+1b0816668: 97f505af    	bl	0x1b0557d24
+1b081666c: 71000eff    	cmp	w23, #0x3
+1b0816670: 9a890114    	csel	x20, x8, x9, eq
+1b0816674: 97f5c130    	bl	0x1b0586b34
+1b0816678: 97f6c21d    	bl	0x1b05c6eec
+1b081667c: 95e454b5    	bl	0x1b812b950 <__text+0x79153e4>
+1b0816680: 95dfac28    	bl	0x1b8001720 <__text+0x77eb1b4> ; SELECTOR boolValue
+1b0816684: aa0003f3    	mov	x19, x0
+1b0816688: 1e6e1001    	fmov	d1, #1.00000000
+1b081668c: aa1a03e0    	mov	x0, x26
+1b0816690: f9400bf5    	ldr	x21, [sp, #0x10]
+1b0816694: aa1503e1    	mov	x1, x21
+1b0816698: 4ea81d00    	mov.16b	v0, v8
+1b081669c: 97fdceec    	bl	0x1b078a24c
+1b08166a0: 370001f3    	tbnz	w19, #0x0, 0x1b08166dc <__text+0x170>
+1b08166a4: 97f50401    	bl	0x1b05576a8
+1b08166a8: 95e45416    	bl	0x1b812b700 <__text+0x7915194>
+1b08166ac: 37000180    	tbnz	w0, #0x0, 0x1b08166dc <__text+0x170>
+1b08166b0: f9400293    	ldr	x19, [x20]
+1b08166b4: 97f508c6    	bl	0x1b05589cc
+1b08166b8: 95e453d2    	bl	0x1b812b600 <__text+0x7915094>
+1b08166bc: 95e44e91    	bl	0x1b812a100 <__text+0x7913b94>
+1b08166c0: 97f53f61    	bl	0x1b0566444
+1b08166c4: aa1303e3    	mov	x3, x19
+1b08166c8: 95dfb5de    	bl	0x1b8003e40 <__text+0x77ed8d4> ; SELECTOR setObject:forKeyedSubscript:
+1b08166cc: 97f53a30    	bl	0x1b0564f8c
+1b08166d0: aa1903e0    	mov	x0, x25
+1b08166d4: d2800002    	mov	x2, #0x0                ; =0
+1b08166d8: 95dfb5da    	bl	0x1b8003e40 <__text+0x77ed8d4> ; SELECTOR setObject:forKeyedSubscript:
+1b08166dc: 97f5065a    	bl	0x1b0558044
+1b08166e0: 97f6c203    	bl	0x1b05c6eec
+1b08166e4: 95e4549b    	bl	0x1b812b950 <__text+0x79153e4>
+1b08166e8: aa0003e4    	mov	x4, x0
+1b08166ec: f9400ff3    	ldr	x19, [sp, #0x18]
+1b08166f0: aa1303e0    	mov	x0, x19
+1b08166f4: aa1903e2    	mov	x2, x25
+1b08166f8: aa1703e3    	mov	x3, x23
+1b08166fc: 52800025    	mov	w5, #0x1                ; =1
+1b0816700: 95dfb948    	bl	0x1b8004c20 <__text+0x77ee6b4> ; SELECTOR _addBakedInSensorOrientationOptionsToDictionary:encodingScheme:metadata:allowSensorOrientationRotation:
+1b0816704: b017c9a8    	adrp	x8, 0x1e014b000 <__text+0x2f934a94>
+1b0816708: f9422508    	ldr	x8, [x8, #0x448]
+1b081670c: f9400103    	ldr	x3, [x8] ; 0x1eb7acdc0 CFString 'QualityControllerType'
+1b0816710: d01ddd62    	adrp	x2, 0x1ec3c4000 <__text+0x3bbada94>
+1b0816714: 91332042    	add	x2, x2, #0xcc8
+1b0816718: aa1903e0    	mov	x0, x25
+1b081671c: 95dfb5c9    	bl	0x1b8003e40 <__text+0x77ed8d4> ; SELECTOR setObject:forKeyedSubscript:
+1b0816720: b017c9a8    	adrp	x8, 0x1e014b000 <__text+0x2f934a94>
+1b0816724: f9438108    	ldr	x8, [x8, #0x700]
+1b0816728: f9400108    	ldr	x8, [x8] ; 0x1eb74e7c0 CFString 'QualityValue'
+1b081672c: f90013e8    	str	x8, [sp, #0x20]
+1b0816730: 97f5122d    	bl	0x1b055afe4
+1b0816734: d0002a08    	adrp	x8, 0x1b0d58000 <__text+0x541a94>
+1b0816738: bd497d00    	ldr	s0, [x8, #0x97c]
+1b081673c: 95dfb24d    	bl	0x1b8003070 <__text+0x77ecb04> ; SELECTOR numberWithFloat:
+1b0816740: f90017e0    	str	x0, [sp, #0x28]
+1b0816744: 97f51d18    	bl	0x1b055dba4
+1b0816748: 9100a3e2    	add	x2, sp, #0x28
+1b081674c: 910083e3    	add	x3, sp, #0x20
+1b0816750: 52800024    	mov	w4, #0x1                ; =1
+1b0816754: 95dfadcf    	bl	0x1b8001e90 <__text+0x77eb924> ; SELECTOR dictionaryWithObjects:forKeys:count:
+1b0816758: aa0003e2    	mov	x2, x0
+1b081675c: b017c9a8    	adrp	x8, 0x1e014b000 <__text+0x2f934a94>
+1b0816760: f9422108    	ldr	x8, [x8, #0x440]
+1b0816764: f9400103    	ldr	x3, [x8] ; 0x1eb7acde0 CFString 'QualityControllerParameters'
+1b0816768: aa1903e0    	mov	x0, x25
+1b081676c: 95dfb5b5    	bl	0x1b8003e40 <__text+0x77ed8d4> ; SELECTOR setObject:forKeyedSubscript:
+1b0816770: f94007e0    	ldr	x0, [sp, #0x8]
+1b0816774: aa1603e2    	mov	x2, x22
+1b0816778: 52800143    	mov	w3, #0xa                ; =10
+1b081677c: d2800004    	mov	x4, #0x0                ; =0
+1b0816780: aa1903e5    	mov	x5, x25
+1b0816784: 97f54078    	bl	0x1b0566964
+1b0816788: 95dfc356    	bl	0x1b80074e0 <__text+0x77f0f74> ; SELECTOR addAuxImage:type:auxImageMetadata:options:parentImageHandle:auxImageHandleOut:
+1b081678c: 35000240    	cbnz	w0, 0x1b08167d4 <__text+0x268>
+1b0816790: aa1303e0    	mov	x0, x19
+1b0816794: 95dfd68b    	bl	0x1b800c1c0 <__text+0x77f5c54> ; SELECTOR currentRequest
+1b0816798: 95dff4da    	bl	0x1b8013b00 <__text+0x77fd594> ; SELECTOR input
+1b081679c: 95dfde99    	bl	0x1b800e200 <__text+0x77f7c94> ; SELECTOR encodedAttachedMediaKeys
+1b08167a0: aa1503e2    	mov	x2, x21
+1b08167a4: 95dfab23    	bl	0x1b8001430 <__text+0x77eaec4> ; SELECTOR addObject:
+1b08167a8: 52800020    	mov	w0, #0x1                ; =1
+1b08167ac: a94a7bfd    	ldp	x29, x30, [sp, #0xa0]
+1b08167b0: a9494ff4    	ldp	x20, x19, [sp, #0x90]
+1b08167b4: a94857f6    	ldp	x22, x21, [sp, #0x80]
+1b08167b8: a9475ff8    	ldp	x24, x23, [sp, #0x70]
+1b08167bc: a94667fa    	ldp	x26, x25, [sp, #0x60]
+1b08167c0: a9456ffc    	ldp	x28, x27, [sp, #0x50]
+1b08167c4: 6d4423e9    	ldp	d9, d8, [sp, #0x40]
+1b08167c8: 6d432beb    	ldp	d11, d10, [sp, #0x30]
+1b08167cc: 9102c3ff    	add	sp, sp, #0xb0
+1b08167d0: d65f0fff    	retab
+1b08167d4: 52800000    	mov	w0, #0x0                ; =0
+1b08167d8: 17fffff5    	b	0x1b08167ac <__text+0x240>

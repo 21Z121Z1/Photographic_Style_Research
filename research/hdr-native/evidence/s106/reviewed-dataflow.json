@@ -1,0 +1,106 @@
+{
+  "reference_build": "24A446 iPhone12,1 only; not IMG2810 matching build",
+  "status": "已验证静态",
+  "module": "CMCapture",
+  "UUID": "995FC22B-41BD-37B4-812F-2686B81C2694",
+  "MachO_header_SHA256": "0678924feef322a69bb19bb45f41992b81a158810ae8746b5f20c54096552a4d",
+  "whole_binary_SHA256_available": false,
+  "reason": "Existing shared cache read-only; no new complete Mach-O extracted/uploaded. Exact complete selected function bytes and hashes, plus header hash, supplied in manifests.",
+  "input_cache_unchanged": true,
+  "class_metadata_categories_added": true,
+  "unresolved_class_or_category_groups": 0,
+  "verified_bindings": [
+    {
+      "step": "load real producer plug-in",
+      "addresses": [
+        "0x1b05e1410",
+        "0x1b05e1418",
+        "0x1b05e10dc",
+        "0x1b05e10fc",
+        "0x1b05e110c",
+        "0x1b05e1134"
+      ],
+      "result": "SmartStyle + version1 resolves /System/Library/VideoProcessors/SmartStyleV1.bundle; classNamed CMISmartStyleProcessorV1; not the cached legacy CMISmartStyleUtilitiesV1 implementation"
+    },
+    {
+      "step": "create producer linear reference",
+      "addresses": [
+        "0x1b0639b38",
+        "0x1b0639bcc",
+        "0x1b0639c4c"
+      ],
+      "result": "Three actual utility calls consume LTM-only, post-only, or pre+post buffers. Algorithm/curve choice remains inside separately loaded plugin, not demonstrated by selector names."
+    },
+    {
+      "step": "target renderer style input",
+      "addresses": [
+        "0x1b0936358",
+        "0x1b0936374",
+        "0x1b0936390",
+        "0x1b09363ac",
+        "0x1b09363c8"
+      ],
+      "result": "Input style object has cast, intensity, Tone and color copied from requested capture style. The actual float returned by toneBias is saved in v13 and copied to the input style setter unchanged."
+    },
+    {
+      "step": "target renderer image/matte/context binding",
+      "addresses": [
+        "0x1b09363d4",
+        "0x1b09363f0",
+        "0x1b09363fc",
+        "0x1b0936408",
+        "0x1b0936414",
+        "0x1b0936438",
+        "0x1b093645c"
+      ],
+      "result": "Unstyled input, its metadata, separate linear input+metadata, person/skin/sky buffers and distinct crop rects are supplied to the same input/output context."
+    },
+    {
+      "step": "output roles",
+      "addresses": [
+        "0x1b09360f0",
+        "0x1b09360f8",
+        "0x1b0936104",
+        "0x1b09364c0",
+        "0x1b09364cc",
+        "0x1b09364d8",
+        "0x1b09364e0"
+      ],
+      "result": "CodedLinearThumbnail buffer held at sp+c8; metadata at sp+e0; separate small light maps held at sp+d8/d0. Same context supplied to processor.process."
+    },
+    {
+      "step": "pass coded thumbnail to attachment and encoder",
+      "addresses": [
+        "0x1b09369a8",
+        "0x1b09369c8",
+        "0x1b09369d8",
+        "0x1b09369ec",
+        "0x1b08165c0",
+        "0x1b0816774",
+        "0x1b0816778",
+        "0x1b0816788"
+      ],
+      "result": "Both attachment branches use coded buffer sp+c8 under SmartStyleStillLinearThumbnail; encoder reads that key and passes its pixel buffer as x2 with aux type10. HEIF literal-tag mapping and exact producer kernel remain separately unbound."
+    },
+    {
+      "step": "learning is separately parameterized",
+      "addresses": [
+        "0x1b0b32f78",
+        "0x1b0b32fcc",
+        "0x1b0b32ff4",
+        "0x1b0b33000",
+        "0x1b0b33024",
+        "0x1b0b33038"
+      ],
+      "result": "BWLearnSmartStyleRenderer receives style Tone, unstyled thumbnail, learning target thumbnail, output learned coefficients and calls process. Whole key1 is not reclassified as LTM."
+    }
+  ],
+  "still_unproven": [
+    "Inside-plugin linear-thumbnail generation, selection of WithoutFaceBoost and applied transfer/curve domain",
+    "Source-to-file c/d/key3 serialization equality on same capture",
+    "Matching IMG2810 hardware/build production pipeline",
+    "UI Tone0 as local-free endpoint, or negative Tone as an inverse",
+    "Scene accuracy and final j EV"
+  ],
+  "next_native_test": "S108 photo-free runtime interface inventory of actual plugin path and three exact producer selectors; availability is not pixel validation"
+}

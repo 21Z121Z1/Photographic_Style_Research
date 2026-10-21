@@ -273,3 +273,9 @@ S103 run39524824105，branch research/vm-native-20261021-hdr-s103，source b0a07
 
 
 S105 run39526823912 / research/vm-native-20261021-hdr-s105 / source7e747a28b0b53cf9c6b9ca7e1bb7cd5aafdc3397 / xcode-27 / 26A434 / image20261012.0260.1：failure，driver请求S103 secret而workflow提供S105，0照片、0range body。artifact12313737886，4083B，SHAab0fe1741d0f0312ad19fa832cba07cfe911bc4038eb73ff58ecce3d5f119eb3，日本7文本成员已认证；临时secret/branch已清，PR0/master未改。S107为已定位的名称修复，数值配方不变。
+
+
+S107 [39527547342](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39527547342)，branch research/vm-native-20261021-hdr-s107，sourceea695a690a411fa12a47759b4c178bd207f739fa，26A434/image20261012.0260.1，success。四图3档固定ACES诊断均≥99%像素≤1码，原SDR整数max0、3120预览SHA不变；IMG2600复用S90，非scene/真实HDR屏幕通过。artifact12314526095，35049B，SHA2d188a4cfb2c0823ea66768eef6217bbfb4543c7f2cff77a7ebae1e684232606，29公开成员日本认证，无新图像归档。临时secret/branch已清、PR0/master未改。见evidence/s107/phase-summary.json、run/analysis.json及closure.json。
+
+
+S106为只读静态阶段，无新native run：24A446/iPhone12,1 CMCapture UUID995FC22B-41BD-37B4-812F-2686B81C2694，18完整函数31,164B代码，逐窗口SHA及header SHA见evidence/s106，源cache未改。S108已准备仅文本的实际producer接口可用性探针；未取得run id前不报执行成功。

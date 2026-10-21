@@ -1,0 +1,2550 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+BWSmartStyleLearningNode _asynchronouslyLearnWithContainer:inputUnstyledSampleBuffer:withUnrefinedMasks:portTypeToLearn:synchronizedPortTypeToLearn:withStats:withStatsExtended:styleToLearn:currentTextureStyle:shouldLearn:shouldBypass:
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b063bbfc <__text>:
+1b063bbfc: d503237f    	pacibsp
+1b063bc00: 6db82beb    	stp	d11, d10, [sp, #-0x80]!
+1b063bc04: 6d0123e9    	stp	d9, d8, [sp, #0x10]
+1b063bc08: a9026ffc    	stp	x28, x27, [sp, #0x20]
+1b063bc0c: a90367fa    	stp	x26, x25, [sp, #0x30]
+1b063bc10: a9045ff8    	stp	x24, x23, [sp, #0x40]
+1b063bc14: a90557f6    	stp	x22, x21, [sp, #0x50]
+1b063bc18: a9064ff4    	stp	x20, x19, [sp, #0x60]
+1b063bc1c: a9077bfd    	stp	x29, x30, [sp, #0x70]
+1b063bc20: 9101c3fd    	add	x29, sp, #0x70
+1b063bc24: d10c43ff    	sub	sp, sp, #0x310
+1b063bc28: f9003ffe    	str	x30, [sp, #0x78]
+1b063bc2c: aa0703f5    	mov	x21, x7
+1b063bc30: aa0603fc    	mov	x28, x6
+1b063bc34: aa0503f7    	mov	x23, x5
+1b063bc38: aa0403f6    	mov	x22, x4
+1b063bc3c: f9007fe3    	str	x3, [sp, #0xf8]
+1b063bc40: aa0203fb    	mov	x27, x2
+1b063bc44: aa0003f3    	mov	x19, x0
+1b063bc48: 3940a7a8    	ldrb	w8, [x29, #0x29]
+1b063bc4c: b900dfe8    	str	w8, [sp, #0xdc]
+1b063bc50: 3940a3b9    	ldrb	w25, [x29, #0x28]
+1b063bc54: a937ffbf    	stp	xzr, xzr, [x29, #-0x88]
+1b063bc58: a936ffbf    	stp	xzr, xzr, [x29, #-0x98]
+1b063bc5c: a935ffbf    	stp	xzr, xzr, [x29, #-0xa8]
+1b063bc60: a934ffbf    	stp	xzr, xzr, [x29, #-0xb8]
+1b063bc64: a933ffbf    	stp	xzr, xzr, [x29, #-0xc8]
+1b063bc68: a932ffbf    	stp	xzr, xzr, [x29, #-0xd8]
+1b063bc6c: a931ffbf    	stp	xzr, xzr, [x29, #-0xe8]
+1b063bc70: f81103bf    	stur	xzr, [x29, #-0xf0]
+1b063bc74: b017d6f4    	adrp	x20, 0x1e0118000 <__text+0x2fadc404>
+1b063bc78: f9477e94    	ldr	x20, [x20, #0xef8] ; 0x18f4a94b8 CFString 'd'
+1b063bc7c: f9400288    	ldr	x8, [x20] ; 0x180000000 cstring 'dyld_v1  arm64e'
+1b063bc80: f81003a8    	stur	x8, [x29, #-0x100]
+1b063bc84: b9400a88    	ldr	w8, [x20, #0x8]
+1b063bc88: b81083a8    	stur	w8, [x29, #-0xf8]
+1b063bc8c: 97fcaeff    	bl	0x1b0567888
+1b063bc90: ad400500    	ldp	q0, q1, [x8]
+1b063bc94: ad1307e0    	stp	q0, q1, [sp, #0x260]
+1b063bc98: f017d6c8    	adrp	x8, 0x1e0116000 <__text+0x2fada404>
+1b063bc9c: f9408d00    	ldr	x0, [x8, #0x118]
+1b063bca0: 95ebb914    	bl	0x1b812a0f0 <__text+0x7aee4f4>
+1b063bca4: 95ebb917    	bl	0x1b812a100 <__text+0x7aee504>
+1b063bca8: aa0003f8    	mov	x24, x0
+1b063bcac: 95ebb9d1    	bl	0x1b812a3f0 <__text+0x7aee7f4>
+1b063bcb0: b40101bb    	cbz	x27, 0x1b063dce4 <__text+0x20e8>
+1b063bcb4: b40007b3    	cbz	x19, 0x1b063bda8 <__text+0x1ac>
+1b063bcb8: 910583e8    	add	x8, sp, #0x160
+1b063bcbc: aa1303e0    	mov	x0, x19
+1b063bcc0: aa1b03e2    	mov	x2, x27
+1b063bcc4: 95e7274f    	bl	0x1b8005a00 <__text+0x79c9e04> ; SELECTOR _getSampleBufferPresentationTimeStamp:
+1b063bcc8: f940bbe8    	ldr	x8, [sp, #0x170]
+1b063bccc: f90087e8    	str	x8, [sp, #0x108]
+1b063bcd0: f940b3e8    	ldr	x8, [sp, #0x160]
+1b063bcd4: f81003a8    	stur	x8, [x29, #-0x100]
+1b063bcd8: b9416fe9    	ldr	w9, [sp, #0x16c]
+1b063bcdc: b9416be8    	ldr	w8, [sp, #0x168]
+1b063bce0: b81083a8    	stur	w8, [x29, #-0xf8]
+1b063bce4: b90107e9    	str	w9, [sp, #0x104]
+1b063bce8: 36010489    	tbz	w9, #0x0, 0x1b063dd78 <__text+0x217c>
+1b063bcec: f9003bf5    	str	x21, [sp, #0x70]
+1b063bcf0: 97fc85a9    	bl	0x1b055d394
+1b063bcf4: 540001c1    	b.ne	0x1b063bd2c <__text+0x130>
+1b063bcf8: 5280a3a8    	mov	w8, #0x51d              ; =1309
+1b063bcfc: 72a62028    	movk	w8, #0x3101, lsl #16
+1b063bd00: 11016109    	add	w9, w8, #0x58
+1b063bd04: 7100033f    	cmp	w25, #0x0
+1b063bd08: 1a881135    	csel	w21, w9, w8, ne
+1b063bd0c: 97fc8301    	bl	0x1b055c910
+1b063bd10: 910583e0    	add	x0, sp, #0x160
+1b063bd14: 95ebc137    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063bd18: 97fd47d5    	bl	0x1b058dc6c
+1b063bd1c: aa1503e0    	mov	x0, x21
+1b063bd20: d2800003    	mov	x3, #0x0                ; =0
+1b063bd24: d2800004    	mov	x4, #0x0                ; =0
+1b063bd28: 95ebcc62    	bl	0x1b812eeb0 <__text+0x7af32b4>
+1b063bd2c: b0185fa8    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063bd30: f9450108    	ldr	x8, [x8, #0xa00]
+1b063bd34: f9400114    	ldr	x20, [x8] ; 0x27efe78f0 CFString 'MetadataDictionary'
+1b063bd38: f90047fb    	str	x27, [sp, #0x88]
+1b063bd3c: aa1b03e0    	mov	x0, x27
+1b063bd40: aa1403e1    	mov	x1, x20
+1b063bd44: d2800002    	mov	x2, #0x0                ; =0
+1b063bd48: 95ebbf02    	bl	0x1b812b950 <__text+0x7aefd54>
+1b063bd4c: aa0003fb    	mov	x27, x0
+1b063bd50: b400fec0    	cbz	x0, 0x1b063dd28 <__text+0x212c>
+1b063bd54: f9400fa8    	ldr	x8, [x29, #0x18]
+1b063bd58: f9004be8    	str	x8, [sp, #0x90]
+1b063bd5c: b400ffc8    	cbz	x8, 0x1b063dd54 <__text+0x2158>
+1b063bd60: f90037f4    	str	x20, [sp, #0x68]
+1b063bd64: f9007bf6    	str	x22, [sp, #0xf0]
+1b063bd68: d0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063bd6c: f941f101    	ldr	x1, [x8, #0x3e0] ; 0x1ec30bd80 CFString 'PostColorProcessingThumbnail'
+1b063bd70: f9407ff4    	ldr	x20, [sp, #0xf8]
+1b063bd74: aa1403e0    	mov	x0, x20
+1b063bd78: 97ff2d58    	bl	0x1b06072d8
+1b063bd7c: f9005be0    	str	x0, [sp, #0xb0]
+1b063bd80: d0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063bd84: f941ed01    	ldr	x1, [x8, #0x3d8] ; 0x1ec30bd60 CFString 'LTMThumbnail'
+1b063bd88: aa1403e0    	mov	x0, x20
+1b063bd8c: 97ff2d53    	bl	0x1b06072d8
+1b063bd90: b01a6194    	adrp	x20, 0x1e526c000 <__text+0x34c30404>
+1b063bd94: b900abf9    	str	w25, [sp, #0xa8]
+1b063bd98: f90033f7    	str	x23, [sp, #0x60]
+1b063bd9c: b40001c0    	cbz	x0, 0x1b063bdd4 <__text+0x1d8>
+1b063bda0: aa0003f6    	mov	x22, x0
+1b063bda4: 14000012    	b	0x1b063bdec <__text+0x1f0>
+1b063bda8: 97fd4302    	bl	0x1b058c9b0
+1b063bdac: f90087ff    	str	xzr, [sp, #0x108]
+1b063bdb0: b90107ff    	str	wzr, [sp, #0x104]
+1b063bdb4: d2800017    	mov	x23, #0x0               ; =0
+1b063bdb8: a90cffff    	stp	xzr, xzr, [sp, #0xc8]
+1b063bdbc: d2800018    	mov	x24, #0x0               ; =0
+1b063bdc0: f90073ff    	str	xzr, [sp, #0xe0]
+1b063bdc4: 5280001b    	mov	w27, #0x0               ; =0
+1b063bdc8: b81083bf    	stur	wzr, [x29, #-0xf8]
+1b063bdcc: f81003bf    	stur	xzr, [x29, #-0x100]
+1b063bdd0: 14000785    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063bdd4: d0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063bdd8: f941e901    	ldr	x1, [x8, #0x3d0] ; 0x1ec30bd40 CFString 'PreLTMThumbnail'
+1b063bddc: f9407fe0    	ldr	x0, [sp, #0xf8]
+1b063bde0: 97ff2d3e    	bl	0x1b06072d8
+1b063bde4: aa0003f6    	mov	x22, x0
+1b063bde8: b4003540    	cbz	x0, 0x1b063c490 <__text+0x894>
+1b063bdec: aa1603e0    	mov	x0, x22
+1b063bdf0: 95ebc07c    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063bdf4: b400ff20    	cbz	x0, 0x1b063ddd8 <__text+0x21dc>
+1b063bdf8: aa0003f5    	mov	x21, x0
+1b063bdfc: aa1903fa    	mov	x26, x25
+1b063be00: f9407ff9    	ldr	x25, [sp, #0xf8]
+1b063be04: b989fa88    	ldrsw	x8, [x20, #0x9f8]
+1b063be08: 8b080277    	add	x23, x19, x8
+1b063be0c: f94002e0    	ldr	x0, [x23]
+1b063be10: 95e7c8e8    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063be14: 910983e4    	add	x4, sp, #0x260
+1b063be18: aa1b03e2    	mov	x2, x27
+1b063be1c: aa1503e3    	mov	x3, x21
+1b063be20: 95e75148    	bl	0x1b8010340 <__text+0x79d4744> ; SELECTOR getPreLTMValidROIFromMetadata:inputPreLTMThumbnailPixelBuffer:outputRect:
+1b063be24: aa1903e0    	mov	x0, x25
+1b063be28: 95ebc06e    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063be2c: aa0003f9    	mov	x25, x0
+1b063be30: b9025fff    	str	wzr, [sp, #0x25c]
+1b063be34: f94002e0    	ldr	x0, [x23]
+1b063be38: 95e7c8de    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063be3c: 910973e3    	add	x3, sp, #0x25c
+1b063be40: aa1603e2    	mov	x2, x22
+1b063be44: 95e75117    	bl	0x1b80102a0 <__text+0x79d46a4> ; SELECTOR getLTMThumbnailFormatFromSampleBuffer:outputFormat:
+1b063be48: 3500fe20    	cbnz	w0, 0x1b063de0c <__text+0x2210>
+1b063be4c: 5280001a    	mov	w26, #0x0               ; =0
+1b063be50: aa1903f5    	mov	x21, x25
+1b063be54: b01a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063be58: b9899508    	ldrsw	x8, [x8, #0x994]
+1b063be5c: f9005fe8    	str	x8, [sp, #0xb8]
+1b063be60: 97fc7039    	bl	0x1b0557f44
+1b063be64: d0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063be68: f941cd02    	ldr	x2, [x8, #0x398] ; 0x1ec30bc60 CFString 'SmartStyleStreamingUnstyledThumbnail'
+1b063be6c: 95e71ca9    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063be70: 95e76fc0    	bl	0x1b8017d70 <__text+0x79dc174> ; SELECTOR newPixelBuffer
+1b063be74: f90077e0    	str	x0, [sp, #0xe8]
+1b063be78: b400f840    	cbz	x0, 0x1b063dd80 <__text+0x2184>
+1b063be7c: f9002bf8    	str	x24, [sp, #0x50]
+1b063be80: b989fa97    	ldrsw	x23, [x20, #0x9f8]
+1b063be84: 8b170274    	add	x20, x19, x23
+1b063be88: f9400280    	ldr	x0, [x20]
+1b063be8c: 95e73d15    	bl	0x1b800b2e0 <__text+0x79cf6e4> ; SELECTOR configuration
+1b063be90: 95e760bc    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063be94: 4ea01c08    	mov.16b	v8, v0
+1b063be98: 4ea11c29    	mov.16b	v9, v1
+1b063be9c: f9400280    	ldr	x0, [x20]
+1b063bea0: 95e73d10    	bl	0x1b800b2e0 <__text+0x79cf6e4> ; SELECTOR configuration
+1b063bea4: 95e7c103    	bl	0x1b802c2b0 <__text+0x79f06b4> ; SELECTOR styleEngineConfiguration
+1b063bea8: 95e7c452    	bl	0x1b802cff0 <__text+0x79f13f4> ; SELECTOR thumbnailSize
+1b063beac: 1e602100    	fcmp	d8, d0
+1b063beb0: 1a9f17e8    	cset	w8, eq
+1b063beb4: 1e612120    	fcmp	d9, d1
+1b063beb8: 1a8813f9    	csel	w25, wzr, w8, ne
+1b063bebc: d0185e89    	adrp	x9, 0x1e120d000 <__text+0x30bd1404>
+1b063bec0: 36000079    	tbz	w25, #0x0, 0x1b063becc <__text+0x2d0>
+1b063bec4: f90073ff    	str	xzr, [sp, #0xe0]
+1b063bec8: 14000007    	b	0x1b063bee4 <__text+0x2e8>
+1b063becc: 97fddea8    	bl	0x1b05b396c
+1b063bed0: f941c922    	ldr	x2, [x9, #0x390]
+1b063bed4: 95e71c8f    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063bed8: 95e76fa6    	bl	0x1b8017d70 <__text+0x79dc174> ; SELECTOR newPixelBuffer
+1b063bedc: f90073e0    	str	x0, [sp, #0xe0]
+1b063bee0: b400fd80    	cbz	x0, 0x1b063de90 <__text+0x2294>
+1b063bee4: f9006bf5    	str	x21, [sp, #0xd0]
+1b063bee8: 97fcd24c    	bl	0x1b0570818
+1b063beec: f90123e8    	str	x8, [sp, #0x240]
+1b063bef0: f90127e9    	str	x9, [sp, #0x248]
+1b063bef4: b0185fa8    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063bef8: f9436908    	ldr	x8, [x8, #0x6d0]
+1b063befc: f9400108    	ldr	x8, [x8] ; 0x27efe33f0 CFString 'PortTypeFrontSuperWide'
+1b063bf00: f90027e8    	str	x8, [sp, #0x48]
+1b063bf04: f9012be8    	str	x8, [sp, #0x250]
+1b063bf08: f017d6c8    	adrp	x8, 0x1e0116000 <__text+0x2fada404>
+1b063bf0c: f9404900    	ldr	x0, [x8, #0x90]
+1b063bf10: 910903e2    	add	x2, sp, #0x240
+1b063bf14: 52800063    	mov	w3, #0x3                ; =3
+1b063bf18: 95e715c6    	bl	0x1b8001630 <__text+0x79c5a34> ; SELECTOR arrayWithObjects:count:
+1b063bf1c: b01a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063bf20: b9894d08    	ldrsw	x8, [x8, #0x94c]
+1b063bf24: 97fc700b    	bl	0x1b0557f50
+1b063bf28: d0185fa9    	adrp	x9, 0x1e1231000 <__text+0x30bf5404>
+1b063bf2c: f946d929    	ldr	x9, [x9, #0xdb0]
+1b063bf30: 7100051f    	cmp	w8, #0x1
+1b063bf34: 54000121    	b.ne	0x1b063bf58 <__text+0x35c>
+1b063bf38: aa0003f5    	mov	x21, x0
+1b063bf3c: f9400122    	ldr	x2, [x9]
+1b063bf40: aa1b03e0    	mov	x0, x27
+1b063bf44: 95e71c73    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063bf48: 97fc7009    	bl	0x1b0557f6c
+1b063bf4c: 95e716c1    	bl	0x1b8001a50 <__text+0x79c5e54> ; SELECTOR containsObject:
+1b063bf50: aa0003f8    	mov	x24, x0
+1b063bf54: 14000002    	b	0x1b063bf5c <__text+0x360>
+1b063bf58: 52800018    	mov	w24, #0x0               ; =0
+1b063bf5c: 6f00e400    	movi.2d	v0, #0000000000000000
+1b063bf60: ad1103e0    	stp	q0, q0, [sp, #0x220]
+1b063bf64: ad1003e0    	stp	q0, q0, [sp, #0x200]
+1b063bf68: ad0f03e0    	stp	q0, q0, [sp, #0x1e0]
+1b063bf6c: 3d8077e0    	str	q0, [sp, #0x1d0]
+1b063bf70: b9425fe8    	ldr	w8, [sp, #0x25c]
+1b063bf74: 7100091f    	cmp	w8, #0x2
+1b063bf78: f90063fb    	str	x27, [sp, #0xc0]
+1b063bf7c: f9002ffc    	str	x28, [sp, #0x58]
+1b063bf80: 54000661    	b.ne	0x1b063c04c <__text+0x450>
+1b063bf84: aa1a03fc    	mov	x28, x26
+1b063bf88: 97fc8503    	bl	0x1b055d394
+1b063bf8c: 54000101    	b.ne	0x1b063bfac <__text+0x3b0>
+1b063bf90: 97fc8260    	bl	0x1b055c910
+1b063bf94: 910583e0    	add	x0, sp, #0x160
+1b063bf98: 95ebc096    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063bf9c: 9e660001    	fmov	x1, d0
+1b063bfa0: 52832000    	mov	w0, #0x1900             ; =6400
+1b063bfa4: 72a62020    	movk	w0, #0x3101, lsl #16
+1b063bfa8: 97fc8574    	bl	0x1b055d578
+1b063bfac: 97fe2b9e    	bl	0x1b05c6e24
+1b063bfb0: 9a89011a    	csel	x26, x8, x9, eq
+1b063bfb4: aa1603e0    	mov	x0, x22
+1b063bfb8: 95ebc00a    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063bfbc: b400f820    	cbz	x0, 0x1b063dec0 <__text+0x22c4>
+1b063bfc0: aa0003f5    	mov	x21, x0
+1b063bfc4: f8776a60    	ldr	x0, [x19, x23]
+1b063bfc8: 95e7c87a    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063bfcc: aa0003fb    	mov	x27, x0
+1b063bfd0: b01a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063bfd4: b989f508    	ldrsw	x8, [x8, #0x9f4]
+1b063bfd8: 8b080268    	add	x8, x19, x8
+1b063bfdc: f9400114    	ldr	x20, [x8]
+1b063bfe0: 97fc70c6    	bl	0x1b05582f8
+1b063bfe4: f94063e0    	ldr	x0, [sp, #0xc0]
+1b063bfe8: 95e71c4a    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063bfec: 97fc6dfe    	bl	0x1b05577e4
+1b063bff0: 95e71c48    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063bff4: aa0003e4    	mov	x4, x0
+1b063bff8: aa1b03e0    	mov	x0, x27
+1b063bffc: f94063e2    	ldr	x2, [sp, #0xc0]
+1b063c000: aa1503e3    	mov	x3, x21
+1b063c004: aa1803e5    	mov	x5, x24
+1b063c008: aa1a03e6    	mov	x6, x26
+1b063c00c: 95e73fe9    	bl	0x1b800bfb0 <__text+0x79d03b4> ; SELECTOR createUnstyledThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:
+1b063c010: 35011120    	cbnz	w0, 0x1b063e234 <__text+0x2638>
+1b063c014: f8776a60    	ldr	x0, [x19, x23]
+1b063c018: 95e7c866    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c01c: f9406be2    	ldr	x2, [sp, #0xd0]
+1b063c020: aa1a03e3    	mov	x3, x26
+1b063c024: 52800004    	mov	w4, #0x0                ; =0
+1b063c028: 95e77c82    	bl	0x1b801b230 <__text+0x79df634> ; SELECTOR propagatePixelBufferColorAttachments:toPixelBuffer:forceLinearTransferFunction:
+1b063c02c: 5280001b    	mov	w27, #0x0               ; =0
+1b063c030: aa1c03fa    	mov	x26, x28
+1b063c034: d280001c    	mov	x28, #0x0               ; =0
+1b063c038: 340006a0    	cbz	w0, 0x1b063c10c <__text+0x510>
+1b063c03c: aa1c03f4    	mov	x20, x28
+1b063c040: aa1c03f7    	mov	x23, x28
+1b063c044: a90cf3fc    	stp	x28, x28, [sp, #0xc8]
+1b063c048: 1400087d    	b	0x1b063e23c <__text+0x2640>
+1b063c04c: 97fc8589    	bl	0x1b055d670
+1b063c050: f9405be9    	ldr	x9, [sp, #0xb0]
+1b063c054: b4000489    	cbz	x9, 0x1b063c0e4 <__text+0x4e8>
+1b063c058: 7100051f    	cmp	w8, #0x1
+1b063c05c: 540000e1    	b.ne	0x1b063c078 <__text+0x47c>
+1b063c060: 97fc822c    	bl	0x1b055c910
+1b063c064: 910583e0    	add	x0, sp, #0x160
+1b063c068: 95ebc062    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c06c: 97fc8cfc    	bl	0x1b055f45c
+1b063c070: 11001100    	add	w0, w8, #0x4
+1b063c074: 97fc8541    	bl	0x1b055d578
+1b063c078: f9405be0    	ldr	x0, [sp, #0xb0]
+1b063c07c: 95ebbfd9    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063c080: aa0003fc    	mov	x28, x0
+1b063c084: b400fb60    	cbz	x0, 0x1b063dff0 <__text+0x23f4>
+1b063c088: 340001d8    	cbz	w24, 0x1b063c0c0 <__text+0x4c4>
+1b063c08c: f017d868    	adrp	x8, 0x1e014b000 <__text+0x2fb0f404>
+1b063c090: f9402d14    	ldr	x20, [x8, #0x58]
+1b063c094: 97fcaccc    	bl	0x1b05673c4
+1b063c098: aa1b03e0    	mov	x0, x27
+1b063c09c: 95e71c1d    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c0a0: 97fc6fb3    	bl	0x1b0557f6c
+1b063c0a4: 95e71c1b    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c0a8: aa0003e3    	mov	x3, x0
+1b063c0ac: 910743e2    	add	x2, sp, #0x1d0
+1b063c0b0: aa1403e0    	mov	x0, x20
+1b063c0b4: aa1b03e4    	mov	x4, x27
+1b063c0b8: 95e75066    	bl	0x1b8010250 <__text+0x79d4654> ; SELECTOR getGDCParams:cameraInfo:metadata:
+1b063c0bc: 35010b00    	cbnz	w0, 0x1b063e21c <__text+0x2620>
+1b063c0c0: f8776a60    	ldr	x0, [x19, x23]
+1b063c0c4: 95e7c83b    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c0c8: f9406be2    	ldr	x2, [sp, #0xd0]
+1b063c0cc: aa1c03e3    	mov	x3, x28
+1b063c0d0: 52800004    	mov	w4, #0x0                ; =0
+1b063c0d4: 95e77c57    	bl	0x1b801b230 <__text+0x79df634> ; SELECTOR propagatePixelBufferColorAttachments:toPixelBuffer:forceLinearTransferFunction:
+1b063c0d8: aa1803fb    	mov	x27, x24
+1b063c0dc: 34000180    	cbz	w0, 0x1b063c10c <__text+0x510>
+1b063c0e0: 14000855    	b	0x1b063e234 <__text+0x2638>
+1b063c0e4: 7100051f    	cmp	w8, #0x1
+1b063c0e8: 540000e1    	b.ne	0x1b063c104 <__text+0x508>
+1b063c0ec: 97fc8209    	bl	0x1b055c910
+1b063c0f0: 910583e0    	add	x0, sp, #0x160
+1b063c0f4: 95ebc03f    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c0f8: 97fc8cd9    	bl	0x1b055f45c
+1b063c0fc: 11002100    	add	w0, w8, #0x8
+1b063c100: 97fc851e    	bl	0x1b055d578
+1b063c104: 5280001b    	mov	w27, #0x0               ; =0
+1b063c108: f9406bfc    	ldr	x28, [sp, #0xd0]
+1b063c10c: b9425fe8    	ldr	w8, [sp, #0x25c]
+1b063c110: 7100091f    	cmp	w8, #0x2
+1b063c114: 36000599    	tbz	w25, #0x0, 0x1b063c1c4 <__text+0x5c8>
+1b063c118: b940abf9    	ldr	w25, [sp, #0xa8]
+1b063c11c: 54000d40    	b.eq	0x1b063c2c4 <__text+0x6c8>
+1b063c120: aa1c03e0    	mov	x0, x28
+1b063c124: 95ebc12f    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063c128: 97fd14a3    	bl	0x1b05813b4
+1b063c12c: 95ebc115    	bl	0x1b812c580 <__text+0x7af0984>
+1b063c130: 97fcab9d    	bl	0x1b0566fa4
+1b063c134: 4ea01c08    	mov.16b	v8, v0
+1b063c138: 4ea11c29    	mov.16b	v9, v1
+1b063c13c: 4ea21c4a    	mov.16b	v10, v2
+1b063c140: 4ea31c6b    	mov.16b	v11, v3
+1b063c144: 97fc8494    	bl	0x1b055d394
+1b063c148: 540000e1    	b.ne	0x1b063c164 <__text+0x568>
+1b063c14c: 97fc81f1    	bl	0x1b055c910
+1b063c150: 910583e0    	add	x0, sp, #0x160
+1b063c154: 95ebc027    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c158: 97fc8cc1    	bl	0x1b055f45c
+1b063c15c: 11005500    	add	w0, w8, #0x15
+1b063c160: 97fc8506    	bl	0x1b055d578
+1b063c164: f8776a60    	ldr	x0, [x19, x23]
+1b063c168: 95e7c812    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c16c: 97fe2301    	bl	0x1b05c4d70
+1b063c170: 910583e4    	add	x4, sp, #0x160
+1b063c174: aa1403e0    	mov	x0, x20
+1b063c178: aa1c03e2    	mov	x2, x28
+1b063c17c: f94077e3    	ldr	x3, [sp, #0xe8]
+1b063c180: 97fccd9a    	bl	0x1b056f7e8
+1b063c184: aa0003f5    	mov	x21, x0
+1b063c188: 97fc8483    	bl	0x1b055d394
+1b063c18c: 540000e1    	b.ne	0x1b063c1a8 <__text+0x5ac>
+1b063c190: 97fc81e0    	bl	0x1b055c910
+1b063c194: 910583e0    	add	x0, sp, #0x160
+1b063c198: 95ebc016    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c19c: 97fc8cb0    	bl	0x1b055f45c
+1b063c1a0: 11005900    	add	w0, w8, #0x16
+1b063c1a4: 97fc84f5    	bl	0x1b055d578
+1b063c1a8: 340008f5    	cbz	w21, 0x1b063c2c4 <__text+0x6c8>
+1b063c1ac: 97fc71fd    	bl	0x1b05589a0
+1b063c1b0: 97fc750d    	bl	0x1b05595e4
+1b063c1b4: b90003f5    	str	w21, [sp]
+1b063c1b8: 97fcd4ce    	bl	0x1b05714f0
+1b063c1bc: 52822b27    	mov	w7, #0x1159             ; =4441
+1b063c1c0: 1400074e    	b	0x1b063def8 <__text+0x22fc>
+1b063c1c4: 54000480    	b.eq	0x1b063c254 <__text+0x658>
+1b063c1c8: aa1c03e0    	mov	x0, x28
+1b063c1cc: 95ebc105    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063c1d0: 97fd1479    	bl	0x1b05813b4
+1b063c1d4: 95ebc0eb    	bl	0x1b812c580 <__text+0x7af0984>
+1b063c1d8: 97fcab73    	bl	0x1b0566fa4
+1b063c1dc: 4ea01c08    	mov.16b	v8, v0
+1b063c1e0: 4ea11c29    	mov.16b	v9, v1
+1b063c1e4: 4ea21c4a    	mov.16b	v10, v2
+1b063c1e8: 4ea31c6b    	mov.16b	v11, v3
+1b063c1ec: 97fc846a    	bl	0x1b055d394
+1b063c1f0: 540000e1    	b.ne	0x1b063c20c <__text+0x610>
+1b063c1f4: 97fc81c7    	bl	0x1b055c910
+1b063c1f8: 910583e0    	add	x0, sp, #0x160
+1b063c1fc: 95ebbffd    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c200: 97fc8c97    	bl	0x1b055f45c
+1b063c204: 11003500    	add	w0, w8, #0xd
+1b063c208: 97fc84dc    	bl	0x1b055d578
+1b063c20c: f8776a60    	ldr	x0, [x19, x23]
+1b063c210: 95e7c7e8    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c214: 97fe22d7    	bl	0x1b05c4d70
+1b063c218: 910583e4    	add	x4, sp, #0x160
+1b063c21c: aa1403e0    	mov	x0, x20
+1b063c220: aa1c03e2    	mov	x2, x28
+1b063c224: f94073e3    	ldr	x3, [sp, #0xe0]
+1b063c228: 97fccd70    	bl	0x1b056f7e8
+1b063c22c: aa0003f5    	mov	x21, x0
+1b063c230: 97fc8459    	bl	0x1b055d394
+1b063c234: 540000e1    	b.ne	0x1b063c250 <__text+0x654>
+1b063c238: 97fc81b6    	bl	0x1b055c910
+1b063c23c: 910583e0    	add	x0, sp, #0x160
+1b063c240: 95ebbfec    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c244: 97fc8c86    	bl	0x1b055f45c
+1b063c248: 11003900    	add	w0, w8, #0xe
+1b063c24c: 97fc84cb    	bl	0x1b055d578
+1b063c250: 3500eff5    	cbnz	w21, 0x1b063e04c <__text+0x2450>
+1b063c254: 97fc8450    	bl	0x1b055d394
+1b063c258: 540000e1    	b.ne	0x1b063c274 <__text+0x678>
+1b063c25c: 97fc81ad    	bl	0x1b055c910
+1b063c260: 910583e0    	add	x0, sp, #0x160
+1b063c264: 95ebbfe3    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c268: 97fc8c7d    	bl	0x1b055f45c
+1b063c26c: 11004500    	add	w0, w8, #0x11
+1b063c270: 97fc84c2    	bl	0x1b055d578
+1b063c274: f8776a60    	ldr	x0, [x19, x23]
+1b063c278: 95e7c7ce    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c27c: 97fe22bd    	bl	0x1b05c4d70
+1b063c280: 910583e5    	add	x5, sp, #0x160
+1b063c284: aa1403e0    	mov	x0, x20
+1b063c288: a94e0fe2    	ldp	x2, x3, [sp, #0xe0]
+1b063c28c: 52800024    	mov	w4, #0x1                ; =1
+1b063c290: 52800006    	mov	w6, #0x0                ; =0
+1b063c294: 95e7462f    	bl	0x1b800db50 <__text+0x79d1f54> ; SELECTOR downScalePixelBuffer:toPixelBuffer:propagateAttachments:gdcParams:applyGDC:
+1b063c298: aa0003f5    	mov	x21, x0
+1b063c29c: 97fc843e    	bl	0x1b055d394
+1b063c2a0: b940abf9    	ldr	w25, [sp, #0xa8]
+1b063c2a4: 540000e1    	b.ne	0x1b063c2c0 <__text+0x6c4>
+1b063c2a8: 97fc819a    	bl	0x1b055c910
+1b063c2ac: 910583e0    	add	x0, sp, #0x160
+1b063c2b0: 95ebbfd0    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c2b4: 97fc8c6a    	bl	0x1b055f45c
+1b063c2b8: 11004900    	add	w0, w8, #0x12
+1b063c2bc: 97fc84af    	bl	0x1b055d578
+1b063c2c0: 3500e135    	cbnz	w21, 0x1b063dee4 <__text+0x22e8>
+1b063c2c4: 97fdddaa    	bl	0x1b05b396c
+1b063c2c8: b0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063c2cc: f941d502    	ldr	x2, [x8, #0x3a8] ; 0x1ec30bca0 CFString 'SmartStyleStreamingLinearThumbnail'
+1b063c2d0: 95e71b90    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c2d4: 95e76ea7    	bl	0x1b8017d70 <__text+0x79dc174> ; SELECTOR newPixelBuffer
+1b063c2d8: f90067e0    	str	x0, [sp, #0xc8]
+1b063c2dc: b400d6c0    	cbz	x0, 0x1b063ddb4 <__text+0x21b8>
+1b063c2e0: b900aff8    	str	w24, [sp, #0xac]
+1b063c2e4: 34001c39    	cbz	w25, 0x1b063c668 <__text+0xa6c>
+1b063c2e8: 97fc842b    	bl	0x1b055d394
+1b063c2ec: 540000e1    	b.ne	0x1b063c308 <__text+0x70c>
+1b063c2f0: 97fc8188    	bl	0x1b055c910
+1b063c2f4: 910583e0    	add	x0, sp, #0x160
+1b063c2f8: 95ebbfbe    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c2fc: 97fc8c58    	bl	0x1b055f45c
+1b063c300: 11006100    	add	w0, w8, #0x18
+1b063c304: 97fc849d    	bl	0x1b055d578
+1b063c308: 360006da    	tbz	w26, #0x0, 0x1b063c3e0 <__text+0x7e4>
+1b063c30c: b0185fa8    	adrp	x8, 0x1e1231000 <__text+0x30bf5404>
+1b063c310: f9466508    	ldr	x8, [x8, #0xcc8]
+1b063c314: f9400102    	ldr	x2, [x8] ; 0x27efe4150 CFString 'LTMThumbnail'
+1b063c318: f94063e0    	ldr	x0, [sp, #0xc0]
+1b063c31c: 95e71b7d    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c320: 97fc84d4    	bl	0x1b055d670
+1b063c324: b4000ca0    	cbz	x0, 0x1b063c4b8 <__text+0x8bc>
+1b063c328: aa1903f8    	mov	x24, x25
+1b063c32c: 7100051f    	cmp	w8, #0x1
+1b063c330: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063c334: 540000e1    	b.ne	0x1b063c350 <__text+0x754>
+1b063c338: 97fc8176    	bl	0x1b055c910
+1b063c33c: 910583e0    	add	x0, sp, #0x160
+1b063c340: 95ebbfac    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c344: 97fc8c46    	bl	0x1b055f45c
+1b063c348: 11009500    	add	w0, w8, #0x25
+1b063c34c: 97fc848b    	bl	0x1b055d578
+1b063c350: f8776a60    	ldr	x0, [x19, x23]
+1b063c354: 95e7c797    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c358: aa0003f4    	mov	x20, x0
+1b063c35c: 97fcac1a    	bl	0x1b05673c4
+1b063c360: f94063f9    	ldr	x25, [sp, #0xc0]
+1b063c364: aa1903e0    	mov	x0, x25
+1b063c368: 95e71b6a    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c36c: 97fc6f00    	bl	0x1b0557f6c
+1b063c370: 95e71b68    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c374: 97fe295b    	bl	0x1b05c68e0
+1b063c378: aa1903e2    	mov	x2, x25
+1b063c37c: f94077e3    	ldr	x3, [sp, #0xe8]
+1b063c380: b940afe5    	ldr	w5, [sp, #0xac]
+1b063c384: 52800006    	mov	w6, #0x0                ; =0
+1b063c388: f94067e7    	ldr	x7, [sp, #0xc8]
+1b063c38c: 95e73ed1    	bl	0x1b800bed0 <__text+0x79d02d4> ; SELECTOR createLinearThumbnailFromMetadata:postLTMThumbnailPixelBuffer:cameraInfo:applyGDC:cropToPreLTMBounds:toPixelBuffer:
+1b063c390: aa0003f5    	mov	x21, x0
+1b063c394: 97fc8400    	bl	0x1b055d394
+1b063c398: 540000e1    	b.ne	0x1b063c3b4 <__text+0x7b8>
+1b063c39c: 97fc815d    	bl	0x1b055c910
+1b063c3a0: 910583e0    	add	x0, sp, #0x160
+1b063c3a4: 95ebbf93    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c3a8: 97fc8c2d    	bl	0x1b055f45c
+1b063c3ac: 11009900    	add	w0, w8, #0x26
+1b063c3b0: 97fc8472    	bl	0x1b055d578
+1b063c3b4: aa1803f9    	mov	x25, x24
+1b063c3b8: 3500cb15    	cbnz	w21, 0x1b063dd18 <__text+0x211c>
+1b063c3bc: f8776a60    	ldr	x0, [x19, x23]
+1b063c3c0: 95e7c77c    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c3c4: a94cd3e3    	ldp	x3, x20, [sp, #0xc8]
+1b063c3c8: aa1403e2    	mov	x2, x20
+1b063c3cc: 52800024    	mov	w4, #0x1                ; =1
+1b063c3d0: 95e77b98    	bl	0x1b801b230 <__text+0x79df634> ; SELECTOR propagatePixelBufferColorAttachments:toPixelBuffer:forceLinearTransferFunction:
+1b063c3d4: b940aff8    	ldr	w24, [sp, #0xac]
+1b063c3d8: 340011e0    	cbz	w0, 0x1b063c614 <__text+0xa18>
+1b063c3dc: 1400064f    	b	0x1b063dd18 <__text+0x211c>
+1b063c3e0: aa1603e0    	mov	x0, x22
+1b063c3e4: 95ebbeff    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063c3e8: b400e3e0    	cbz	x0, 0x1b063e064 <__text+0x2468>
+1b063c3ec: aa0003f6    	mov	x22, x0
+1b063c3f0: aa1703fa    	mov	x26, x23
+1b063c3f4: b9425fe9    	ldr	w9, [sp, #0x25c]
+1b063c3f8: 97fc849e    	bl	0x1b055d670
+1b063c3fc: 340009c9    	cbz	w9, 0x1b063c534 <__text+0x938>
+1b063c400: aa1903f7    	mov	x23, x25
+1b063c404: 7100051f    	cmp	w8, #0x1
+1b063c408: 540000e1    	b.ne	0x1b063c424 <__text+0x828>
+1b063c40c: 97fc8141    	bl	0x1b055c910
+1b063c410: 910583e0    	add	x0, sp, #0x160
+1b063c414: 95ebbf77    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c418: 97fc8c11    	bl	0x1b055f45c
+1b063c41c: 11008500    	add	w0, w8, #0x21
+1b063c420: 97fc8456    	bl	0x1b055d578
+1b063c424: f87a6a60    	ldr	x0, [x19, x26]
+1b063c428: 95e7c762    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c42c: aa0003f4    	mov	x20, x0
+1b063c430: 97fcabe5    	bl	0x1b05673c4
+1b063c434: f94063f9    	ldr	x25, [sp, #0xc0]
+1b063c438: aa1903e0    	mov	x0, x25
+1b063c43c: 95e71b35    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c440: 97fc6ecb    	bl	0x1b0557f6c
+1b063c444: 95e71b33    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c448: 97fe2926    	bl	0x1b05c68e0
+1b063c44c: aa1903e2    	mov	x2, x25
+1b063c450: aa1603e3    	mov	x3, x22
+1b063c454: b940afe5    	ldr	w5, [sp, #0xac]
+1b063c458: f94067e6    	ldr	x6, [sp, #0xc8]
+1b063c45c: 95e73e99    	bl	0x1b800bec0 <__text+0x79d02c4> ; SELECTOR createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:
+1b063c460: aa0003f6    	mov	x22, x0
+1b063c464: 97fc83cc    	bl	0x1b055d394
+1b063c468: 54000b81    	b.ne	0x1b063c5d8 <__text+0x9dc>
+1b063c46c: 97fc8129    	bl	0x1b055c910
+1b063c470: 910583e0    	add	x0, sp, #0x160
+1b063c474: 95ebbf5f    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c478: 52832008    	mov	w8, #0x1900             ; =6400
+1b063c47c: 72a62028    	movk	w8, #0x3101, lsl #16
+1b063c480: 11008900    	add	w0, w8, #0x22
+1b063c484: aa1703f9    	mov	x25, x23
+1b063c488: b940aff8    	ldr	w24, [sp, #0xac]
+1b063c48c: 14000050    	b	0x1b063c5cc <__text+0x9d0>
+1b063c490: f90137ff    	str	xzr, [sp, #0x268]
+1b063c494: f90133ff    	str	xzr, [sp, #0x260]
+1b063c498: 6f03f600    	fmov.2d	v0, #1.00000000
+1b063c49c: 3d809fe0    	str	q0, [sp, #0x270]
+1b063c4a0: f9407fe0    	ldr	x0, [sp, #0xf8]
+1b063c4a4: 95ebbecf    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063c4a8: aa0003f5    	mov	x21, x0
+1b063c4ac: b9025fff    	str	wzr, [sp, #0x25c]
+1b063c4b0: 5280003a    	mov	w26, #0x1               ; =1
+1b063c4b4: 17fffe68    	b	0x1b063be54 <__text+0x258>
+1b063c4b8: 7100051f    	cmp	w8, #0x1
+1b063c4bc: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063c4c0: 540000e1    	b.ne	0x1b063c4dc <__text+0x8e0>
+1b063c4c4: 97fc8113    	bl	0x1b055c910
+1b063c4c8: 910583e0    	add	x0, sp, #0x160
+1b063c4cc: 95ebbf49    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c4d0: 97fc8be3    	bl	0x1b055f45c
+1b063c4d4: 1100a500    	add	w0, w8, #0x29
+1b063c4d8: 97fc8428    	bl	0x1b055d578
+1b063c4dc: f8776a60    	ldr	x0, [x19, x23]
+1b063c4e0: 95e7c734    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c4e4: 97fe2223    	bl	0x1b05c4d70
+1b063c4e8: 910583e5    	add	x5, sp, #0x160
+1b063c4ec: aa1403e0    	mov	x0, x20
+1b063c4f0: aa1c03e2    	mov	x2, x28
+1b063c4f4: f94067e3    	ldr	x3, [sp, #0xc8]
+1b063c4f8: 52800024    	mov	w4, #0x1                ; =1
+1b063c4fc: aa1b03e6    	mov	x6, x27
+1b063c500: 95e74594    	bl	0x1b800db50 <__text+0x79d1f54> ; SELECTOR downScalePixelBuffer:toPixelBuffer:propagateAttachments:gdcParams:applyGDC:
+1b063c504: aa0003f5    	mov	x21, x0
+1b063c508: 97fc83a3    	bl	0x1b055d394
+1b063c50c: 540000e1    	b.ne	0x1b063c528 <__text+0x92c>
+1b063c510: 97fc8100    	bl	0x1b055c910
+1b063c514: 910583e0    	add	x0, sp, #0x160
+1b063c518: 95ebbf36    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c51c: 97fc8bd0    	bl	0x1b055f45c
+1b063c520: 1100a900    	add	w0, w8, #0x2a
+1b063c524: 97fc8415    	bl	0x1b055d578
+1b063c528: f9406bf4    	ldr	x20, [sp, #0xd0]
+1b063c52c: 3500bf75    	cbnz	w21, 0x1b063dd18 <__text+0x211c>
+1b063c530: 14000039    	b	0x1b063c614 <__text+0xa18>
+1b063c534: 7100051f    	cmp	w8, #0x1
+1b063c538: 540000e1    	b.ne	0x1b063c554 <__text+0x958>
+1b063c53c: 97fc80f5    	bl	0x1b055c910
+1b063c540: 910583e0    	add	x0, sp, #0x160
+1b063c544: 95ebbf2b    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c548: 97fc8bc5    	bl	0x1b055f45c
+1b063c54c: 11007500    	add	w0, w8, #0x1d
+1b063c550: 97fc840a    	bl	0x1b055d578
+1b063c554: f87a6a60    	ldr	x0, [x19, x26]
+1b063c558: 95e7c716    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c55c: aa0003f4    	mov	x20, x0
+1b063c560: 97fcab99    	bl	0x1b05673c4
+1b063c564: f94063f9    	ldr	x25, [sp, #0xc0]
+1b063c568: aa1903e0    	mov	x0, x25
+1b063c56c: 95e71ae9    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c570: 97fc6e7f    	bl	0x1b0557f6c
+1b063c574: 95e71ae7    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c578: aa0003e5    	mov	x5, x0
+1b063c57c: f94067e8    	ldr	x8, [sp, #0xc8]
+1b063c580: f90003e8    	str	x8, [sp]
+1b063c584: aa1403e0    	mov	x0, x20
+1b063c588: aa1903e2    	mov	x2, x25
+1b063c58c: aa1603e3    	mov	x3, x22
+1b063c590: f94077e4    	ldr	x4, [sp, #0xe8]
+1b063c594: b940aff8    	ldr	w24, [sp, #0xac]
+1b063c598: aa1803e6    	mov	x6, x24
+1b063c59c: 52800027    	mov	w7, #0x1                ; =1
+1b063c5a0: 95e73e50    	bl	0x1b800bee0 <__text+0x79d02e4> ; SELECTOR createLinearThumbnailFromMetadata:preLTMThumbnailPixelBuffer:postLTMThumbnailPixelBuffer:cameraInfo:applyGDC:cropToPreLTMBounds:toPixelBuffer:
+1b063c5a4: aa0003f6    	mov	x22, x0
+1b063c5a8: 97fc837b    	bl	0x1b055d394
+1b063c5ac: 540001e1    	b.ne	0x1b063c5e8 <__text+0x9ec>
+1b063c5b0: 97fc80d8    	bl	0x1b055c910
+1b063c5b4: 910583e0    	add	x0, sp, #0x160
+1b063c5b8: 95ebbf0e    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c5bc: 52832008    	mov	w8, #0x1900             ; =6400
+1b063c5c0: 72a62028    	movk	w8, #0x3101, lsl #16
+1b063c5c4: 11007900    	add	w0, w8, #0x1e
+1b063c5c8: b940abf9    	ldr	w25, [sp, #0xa8]
+1b063c5cc: 9e660001    	fmov	x1, d0
+1b063c5d0: 97fc83ea    	bl	0x1b055d578
+1b063c5d4: 14000006    	b	0x1b063c5ec <__text+0x9f0>
+1b063c5d8: aa1703f9    	mov	x25, x23
+1b063c5dc: aa1a03f7    	mov	x23, x26
+1b063c5e0: b940aff8    	ldr	w24, [sp, #0xac]
+1b063c5e4: 14000003    	b	0x1b063c5f0 <__text+0x9f4>
+1b063c5e8: b940abf9    	ldr	w25, [sp, #0xa8]
+1b063c5ec: aa1a03f7    	mov	x23, x26
+1b063c5f0: 3500e4d6    	cbnz	w22, 0x1b063e288 <__text+0x268c>
+1b063c5f4: f8776a60    	ldr	x0, [x19, x23]
+1b063c5f8: 95e7c6ee    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c5fc: a94cd3e3    	ldp	x3, x20, [sp, #0xc8]
+1b063c600: aa1403e2    	mov	x2, x20
+1b063c604: 52800024    	mov	w4, #0x1                ; =1
+1b063c608: 95e77b0a    	bl	0x1b801b230 <__text+0x79df634> ; SELECTOR propagatePixelBufferColorAttachments:toPixelBuffer:forceLinearTransferFunction:
+1b063c60c: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063c610: 3500b840    	cbnz	w0, 0x1b063dd18 <__text+0x211c>
+1b063c614: f8776a60    	ldr	x0, [x19, x23]
+1b063c618: 95e7c6e6    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c61c: aa1403e2    	mov	x2, x20
+1b063c620: f94077e3    	ldr	x3, [sp, #0xe8]
+1b063c624: 52800004    	mov	w4, #0x0                ; =0
+1b063c628: 95e77b02    	bl	0x1b801b230 <__text+0x79df634> ; SELECTOR propagatePixelBufferColorAttachments:toPixelBuffer:forceLinearTransferFunction:
+1b063c62c: 3500b760    	cbnz	w0, 0x1b063dd18 <__text+0x211c>
+1b063c630: b0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063c634: f941f501    	ldr	x1, [x8, #0x3e8] ; 0x1ec30bda0 CFString 'WeightSegmentMap'
+1b063c638: f9407fe0    	ldr	x0, [sp, #0xf8]
+1b063c63c: 97ff2b27    	bl	0x1b06072d8
+1b063c640: b40001a0    	cbz	x0, 0x1b063c674 <__text+0xa78>
+1b063c644: 95ebbe67    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063c648: b400cf00    	cbz	x0, 0x1b063e028 <__text+0x242c>
+1b063c64c: 97fd23ff    	bl	0x1b0585648
+1b063c650: 97fc7b64    	bl	0x1b055b3e0
+1b063c654: 540000a1    	b.ne	0x1b063c668 <__text+0xa6c>
+1b063c658: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063c65c: b9891908    	ldrsw	x8, [x8, #0x918]
+1b063c660: 97fc6e3c    	bl	0x1b0557f50
+1b063c664: 360000c8    	tbz	w8, #0x0, 0x1b063c67c <__text+0xa80>
+1b063c668: f9006bff    	str	xzr, [sp, #0xd0]
+1b063c66c: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063c670: 14000024    	b	0x1b063c700 <__text+0xb04>
+1b063c674: f9006bff    	str	xzr, [sp, #0xd0]
+1b063c678: 14000022    	b	0x1b063c700 <__text+0xb04>
+1b063c67c: aa0003f6    	mov	x22, x0
+1b063c680: 97fddcbb    	bl	0x1b05b396c
+1b063c684: b0185e88    	adrp	x8, 0x1e120d000 <__text+0x30bd1404>
+1b063c688: f941dd02    	ldr	x2, [x8, #0x3b8] ; 0x1ec30bce0 CFString 'SmartStyleStreamingWeightSegmentMap'
+1b063c68c: 95e71aa1    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c690: 95e76db8    	bl	0x1b8017d70 <__text+0x79dc174> ; SELECTOR newPixelBuffer
+1b063c694: f9006be0    	str	x0, [sp, #0xd0]
+1b063c698: b400de60    	cbz	x0, 0x1b063e264 <__text+0x2668>
+1b063c69c: 97fc833e    	bl	0x1b055d394
+1b063c6a0: 540000e1    	b.ne	0x1b063c6bc <__text+0xac0>
+1b063c6a4: 97fc809b    	bl	0x1b055c910
+1b063c6a8: 910583e0    	add	x0, sp, #0x160
+1b063c6ac: 95ebbed1    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c6b0: 97fc8b6b    	bl	0x1b055f45c
+1b063c6b4: 1100b500    	add	w0, w8, #0x2d
+1b063c6b8: 97fc83b0    	bl	0x1b055d578
+1b063c6bc: aa1303e0    	mov	x0, x19
+1b063c6c0: aa1603e2    	mov	x2, x22
+1b063c6c4: f9407fe3    	ldr	x3, [sp, #0xf8]
+1b063c6c8: aa1803e4    	mov	x4, x24
+1b063c6cc: f9406be5    	ldr	x5, [sp, #0xd0]
+1b063c6d0: 95e723b8    	bl	0x1b80055b0 <__text+0x79c99b4> ; SELECTOR _cropAndUndistortWeightSegmentMap:unstyledSampleBuffer:doGDC:toPixelBuffer:
+1b063c6d4: aa0003f5    	mov	x21, x0
+1b063c6d8: 97fc832f    	bl	0x1b055d394
+1b063c6dc: 540000e1    	b.ne	0x1b063c6f8 <__text+0xafc>
+1b063c6e0: 97fc808c    	bl	0x1b055c910
+1b063c6e4: 910583e0    	add	x0, sp, #0x160
+1b063c6e8: 95ebbec2    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c6ec: 97fc8b5c    	bl	0x1b055f45c
+1b063c6f0: 1100b900    	add	w0, w8, #0x2e
+1b063c6f4: 97fc83a1    	bl	0x1b055d578
+1b063c6f8: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063c6fc: 3500dd35    	cbnz	w21, 0x1b063e2a0 <__text+0x26a4>
+1b063c700: 901a6194    	adrp	x20, 0x1e526c000 <__text+0x34c30404>
+1b063c704: f90043f7    	str	x23, [sp, #0x80]
+1b063c708: b4000516    	cbz	x22, 0x1b063c7a8 <__text+0xbac>
+1b063c70c: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063c710: b98a7116    	ldrsw	x22, [x8, #0xa70]
+1b063c714: 8b160260    	add	x0, x19, x22
+1b063c718: 95ebb79a    	bl	0x1b812a580 <__text+0x7aee984>
+1b063c71c: 97fc831e    	bl	0x1b055d394
+1b063c720: 540000e1    	b.ne	0x1b063c73c <__text+0xb40>
+1b063c724: 97fc807b    	bl	0x1b055c910
+1b063c728: 910583e0    	add	x0, sp, #0x160
+1b063c72c: 95ebbeb1    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c730: 97fc8b4b    	bl	0x1b055f45c
+1b063c734: 1100c500    	add	w0, w8, #0x31
+1b063c738: 97fc8390    	bl	0x1b055d578
+1b063c73c: b98a7688    	ldrsw	x8, [x20, #0xa74]
+1b063c740: 8b080268    	add	x8, x19, x8
+1b063c744: 39400106    	ldrb	w6, [x8]
+1b063c748: 97fc8072    	bl	0x1b055c910
+1b063c74c: 910583e4    	add	x4, sp, #0x160
+1b063c750: aa1303e0    	mov	x0, x19
+1b063c754: a94f0fe2    	ldp	x2, x3, [sp, #0xf0]
+1b063c758: aa1803e5    	mov	x5, x24
+1b063c75c: 95e72391    	bl	0x1b80055a0 <__text+0x79c99a4> ; SELECTOR _cropAndScaleMasks:unstyledSampleBuffer:currentPTS:applyGDC:useIntermediatePool:
+1b063c760: aa0003f5    	mov	x21, x0
+1b063c764: 97fc830c    	bl	0x1b055d394
+1b063c768: 540000e1    	b.ne	0x1b063c784 <__text+0xb88>
+1b063c76c: 97fc8069    	bl	0x1b055c910
+1b063c770: 910583e0    	add	x0, sp, #0x160
+1b063c774: 95ebbe9f    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c778: 97fc8b39    	bl	0x1b055f45c
+1b063c77c: 1100c900    	add	w0, w8, #0x32
+1b063c780: 97fc837e    	bl	0x1b055d578
+1b063c784: 8b160260    	add	x0, x19, x22
+1b063c788: 95ebb782    	bl	0x1b812a590 <__text+0x7aee994>
+1b063c78c: b0185e97    	adrp	x23, 0x1e120d000 <__text+0x30bd1404>
+1b063c790: b400b6b5    	cbz	x21, 0x1b063de64 <__text+0x2268>
+1b063c794: f9407be8    	ldr	x8, [sp, #0xf0]
+1b063c798: 95ebb6e2    	bl	0x1b812a320 <__text+0x7aee724>
+1b063c79c: 95ebb711    	bl	0x1b812a3e0 <__text+0x7aee7e4>
+1b063c7a0: aa0003f6    	mov	x22, x0
+1b063c7a4: 14000002    	b	0x1b063c7ac <__text+0xbb0>
+1b063c7a8: b0185e97    	adrp	x23, 0x1e120d000 <__text+0x30bd1404>
+1b063c7ac: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063c7b0: b9893508    	ldrsw	x8, [x8, #0x934]
+1b063c7b4: 97fc7b0b    	bl	0x1b055b3e0
+1b063c7b8: f9007bf6    	str	x22, [sp, #0xf0]
+1b063c7bc: 54001581    	b.ne	0x1b063ca6c <__text+0xe70>
+1b063c7c0: b98a7688    	ldrsw	x8, [x20, #0xa74]
+1b063c7c4: 97fc7b07    	bl	0x1b055b3e0
+1b063c7c8: 54001521    	b.ne	0x1b063ca6c <__text+0xe70>
+1b063c7cc: b4001516    	cbz	x22, 0x1b063ca6c <__text+0xe70>
+1b063c7d0: f900abff    	str	xzr, [sp, #0x150]
+1b063c7d4: 6f00e400    	movi.2d	v0, #0000000000000000
+1b063c7d8: ad0983e0    	stp	q0, q0, [sp, #0x130]
+1b063c7dc: ad0883e0    	stp	q0, q0, [sp, #0x110]
+1b063c7e0: 97fddc63    	bl	0x1b05b396c
+1b063c7e4: f941caf6    	ldr	x22, [x23, #0x390]
+1b063c7e8: aa1603e2    	mov	x2, x22
+1b063c7ec: 95e71a49    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063c7f0: 95e76d60    	bl	0x1b8017d70 <__text+0x79dc174> ; SELECTOR newPixelBuffer
+1b063c7f4: aa0003f7    	mov	x23, x0
+1b063c7f8: b400c480    	cbz	x0, 0x1b063e088 <__text+0x248c>
+1b063c7fc: 97fc82e6    	bl	0x1b055d394
+1b063c800: 540000e1    	b.ne	0x1b063c81c <__text+0xc20>
+1b063c804: 97fc8043    	bl	0x1b055c910
+1b063c808: 910583e0    	add	x0, sp, #0x160
+1b063c80c: 95ebbe79    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c810: 97fc8b13    	bl	0x1b055f45c
+1b063c814: 1100d500    	add	w0, w8, #0x35
+1b063c818: 97fc8358    	bl	0x1b055d578
+1b063c81c: f94043e8    	ldr	x8, [sp, #0x80]
+1b063c820: f8686a60    	ldr	x0, [x19, x8]
+1b063c824: 95e7c663    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063c828: aa0003f4    	mov	x20, x0
+1b063c82c: 97fe297e    	bl	0x1b05c6e24
+1b063c830: 9a890108    	csel	x8, x8, x9, eq
+1b063c834: f100039f    	cmp	x28, #0x0
+1b063c838: 9a9c0115    	csel	x21, x8, x28, eq
+1b063c83c: 910583e0    	add	x0, sp, #0x160
+1b063c840: 910743e1    	add	x1, sp, #0x1d0
+1b063c844: 52800e02    	mov	w2, #0x70               ; =112
+1b063c848: 95ebb60e    	bl	0x1b812a080 <__text+0x7aee484>
+1b063c84c: 910583e5    	add	x5, sp, #0x160
+1b063c850: 97fc8347    	bl	0x1b055d56c
+1b063c854: aa1703e3    	mov	x3, x23
+1b063c858: 52800024    	mov	w4, #0x1                ; =1
+1b063c85c: aa1b03e6    	mov	x6, x27
+1b063c860: 95e744bc    	bl	0x1b800db50 <__text+0x79d1f54> ; SELECTOR downScalePixelBuffer:toPixelBuffer:propagateAttachments:gdcParams:applyGDC:
+1b063c864: aa0003f5    	mov	x21, x0
+1b063c868: 97fc82cb    	bl	0x1b055d394
+1b063c86c: 540000e1    	b.ne	0x1b063c888 <__text+0xc8c>
+1b063c870: 97fc8028    	bl	0x1b055c910
+1b063c874: 910583e0    	add	x0, sp, #0x160
+1b063c878: 95ebbe5e    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c87c: 97fc8af8    	bl	0x1b055f45c
+1b063c880: 1100d900    	add	w0, w8, #0x36
+1b063c884: 97fc833d    	bl	0x1b055d578
+1b063c888: f94047f4    	ldr	x20, [sp, #0x88]
+1b063c88c: 3500c115    	cbnz	w21, 0x1b063e0ac <__text+0x24b0>
+1b063c890: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063c894: b989cd08    	ldrsw	x8, [x8, #0x9cc]
+1b063c898: 97fc6dab    	bl	0x1b0557f44
+1b063c89c: 95e73971    	bl	0x1b800ae60 <__text+0x79cf264> ; SELECTOR commandQueue
+1b063c8a0: 95e7396c    	bl	0x1b800ae50 <__text+0x79cf254> ; SELECTOR commandBuffer
+1b063c8a4: b400c100    	cbz	x0, 0x1b063e0c4 <__text+0x24c8>
+1b063c8a8: aa0003f5    	mov	x21, x0
+1b063c8ac: f01de4e2    	adrp	x2, 0x1ec2db000 <__text+0x3bc9f404>
+1b063c8b0: 91028042    	add	x2, x2, #0xa0 ; 0x1ec2db0a0 CFString 'waitUntilScheduledForVMRefiner'
+1b063c8b4: 95e79afb    	bl	0x1b80234a0 <__text+0x79e78a4> ; SELECTOR setLabel:
+1b063c8b8: aa1503e0    	mov	x0, x21
+1b063c8bc: 95e73971    	bl	0x1b800ae80 <__text+0x79cf284> ; SELECTOR commit
+1b063c8c0: aa1503e0    	mov	x0, x21
+1b063c8c4: 95e7c8ef    	bl	0x1b802ec80 <__text+0x79f3084> ; SELECTOR waitUntilScheduled
+1b063c8c8: 910443e2    	add	x2, sp, #0x110
+1b063c8cc: f9407fe0    	ldr	x0, [sp, #0xf8]
+1b063c8d0: 97fd14b4    	bl	0x1b0581ba0
+1b063c8d4: 3500c1e0    	cbnz	w0, 0x1b063e110 <__text+0x2514>
+1b063c8d8: 910583e0    	add	x0, sp, #0x160
+1b063c8dc: 910443e1    	add	x1, sp, #0x110
+1b063c8e0: 52800902    	mov	w2, #0x48               ; =72
+1b063c8e4: 95ebb5e7    	bl	0x1b812a080 <__text+0x7aee484>
+1b063c8e8: 910583e1    	add	x1, sp, #0x160
+1b063c8ec: d103a3a2    	sub	x2, x29, #0xe8
+1b063c8f0: d103c3a3    	sub	x3, x29, #0xf0
+1b063c8f4: aa1703e0    	mov	x0, x23
+1b063c8f8: 97ff2a22    	bl	0x1b0607180
+1b063c8fc: 3500c2e0    	cbnz	w0, 0x1b063e158 <__text+0x255c>
+1b063c900: f85103a2    	ldur	x2, [x29, #-0xf0]
+1b063c904: b400c362    	cbz	x2, 0x1b063e170 <__text+0x2574>
+1b063c908: aa1403e0    	mov	x0, x20
+1b063c90c: aa1603e1    	mov	x1, x22
+1b063c910: 97ff29e8    	bl	0x1b06070b0
+1b063c914: 97fc82a0    	bl	0x1b055d394
+1b063c918: 540000e1    	b.ne	0x1b063c934 <__text+0xd38>
+1b063c91c: 97fc7ffd    	bl	0x1b055c910
+1b063c920: 910583e0    	add	x0, sp, #0x160
+1b063c924: 95ebbe33    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c928: 97fc8acd    	bl	0x1b055f45c
+1b063c92c: 1100e500    	add	w0, w8, #0x39
+1b063c930: 97fc8312    	bl	0x1b055d578
+1b063c934: 97fc7ff7    	bl	0x1b055c910
+1b063c938: 910583e5    	add	x5, sp, #0x160
+1b063c93c: 97fcabf3    	bl	0x1b0567908
+1b063c940: a94f0ff6    	ldp	x22, x3, [sp, #0xf0]
+1b063c944: aa1603e4    	mov	x4, x22
+1b063c948: 95e72736    	bl	0x1b8006620 <__text+0x79caa24> ; SELECTOR _runInferences:unstyledSampleBuffer:withMasks:currentPTS:
+1b063c94c: aa0003f4    	mov	x20, x0
+1b063c950: 97fc8291    	bl	0x1b055d394
+1b063c954: 540000e1    	b.ne	0x1b063c970 <__text+0xd74>
+1b063c958: 97fc7fee    	bl	0x1b055c910
+1b063c95c: 910583e0    	add	x0, sp, #0x160
+1b063c960: 95ebbe24    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c964: 97fc8abe    	bl	0x1b055f45c
+1b063c968: 1100e900    	add	w0, w8, #0x3a
+1b063c96c: 97fc8303    	bl	0x1b055d578
+1b063c970: b400add4    	cbz	x20, 0x1b063df28 <__text+0x232c>
+1b063c974: aa1403e0    	mov	x0, x20
+1b063c978: 95e7146a    	bl	0x1b8001b20 <__text+0x79c5f24> ; SELECTOR count
+1b063c97c: aa1403f5    	mov	x21, x20
+1b063c980: aa0003f4    	mov	x20, x0
+1b063c984: aa1603e0    	mov	x0, x22
+1b063c988: 95e71466    	bl	0x1b8001b20 <__text+0x79c5f24> ; SELECTOR count
+1b063c98c: eb00029f    	cmp	x20, x0
+1b063c990: aa1503f4    	mov	x20, x21
+1b063c994: 5400aca1    	b.ne	0x1b063df28 <__text+0x232c>
+1b063c998: 95ebb68e    	bl	0x1b812a3d0 <__text+0x7aee7d4>
+1b063c99c: 97fc827e    	bl	0x1b055d394
+1b063c9a0: 540000e1    	b.ne	0x1b063c9bc <__text+0xdc0>
+1b063c9a4: 97fc7fdb    	bl	0x1b055c910
+1b063c9a8: 910583e0    	add	x0, sp, #0x160
+1b063c9ac: 95ebbe11    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c9b0: 97fc8aab    	bl	0x1b055f45c
+1b063c9b4: 1100f500    	add	w0, w8, #0x3d
+1b063c9b8: 97fc82f0    	bl	0x1b055d578
+1b063c9bc: 97fc7fd5    	bl	0x1b055c910
+1b063c9c0: 910583e4    	add	x4, sp, #0x160
+1b063c9c4: 97fcabd1    	bl	0x1b0567908
+1b063c9c8: f9407fe3    	ldr	x3, [sp, #0xf8]
+1b063c9cc: 95e721b5    	bl	0x1b80050a0 <__text+0x79c94a4> ; SELECTOR _blitMasksToOutputPools:unstyledSampleBuffer:currentPTS:
+1b063c9d0: aa0003f5    	mov	x21, x0
+1b063c9d4: 97fc8270    	bl	0x1b055d394
+1b063c9d8: 540000e1    	b.ne	0x1b063c9f4 <__text+0xdf8>
+1b063c9dc: 97fc7fcd    	bl	0x1b055c910
+1b063c9e0: 910583e0    	add	x0, sp, #0x160
+1b063c9e4: 95ebbe03    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063c9e8: 97fc8a9d    	bl	0x1b055f45c
+1b063c9ec: 1100f900    	add	w0, w8, #0x3e
+1b063c9f0: 97fc82e2    	bl	0x1b055d578
+1b063c9f4: b4000095    	cbz	x21, 0x1b063ca04 <__text+0xe08>
+1b063c9f8: 95ebb626    	bl	0x1b812a290 <__text+0x7aee694>
+1b063c9fc: 95ebb679    	bl	0x1b812a3e0 <__text+0x7aee7e4>
+1b063ca00: aa0003f4    	mov	x20, x0
+1b063ca04: aa1703e0    	mov	x0, x23
+1b063ca08: 95ebb1b6    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063ca0c: f85183a0    	ldur	x0, [x29, #-0xe8]
+1b063ca10: b4000060    	cbz	x0, 0x1b063ca1c <__text+0xe20>
+1b063ca14: 95ebb1b3    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063ca18: f81183bf    	stur	xzr, [x29, #-0xe8]
+1b063ca1c: f85103a0    	ldur	x0, [x29, #-0xf0]
+1b063ca20: b4000060    	cbz	x0, 0x1b063ca2c <__text+0xe30>
+1b063ca24: 95ebb1af    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063ca28: f81103bf    	stur	xzr, [x29, #-0xf0]
+1b063ca2c: b4000254    	cbz	x20, 0x1b063ca74 <__text+0xe78>
+1b063ca30: d10223a1    	sub	x1, x29, #0x88
+1b063ca34: d102e3a2    	sub	x2, x29, #0xb8
+1b063ca38: d10243a3    	sub	x3, x29, #0x90
+1b063ca3c: d10303a4    	sub	x4, x29, #0xc0
+1b063ca40: d10263a5    	sub	x5, x29, #0x98
+1b063ca44: d10323a6    	sub	x6, x29, #0xc8
+1b063ca48: aa1403e0    	mov	x0, x20
+1b063ca4c: 940a7c6c    	bl	0x1b08dbbfc <__text+0x2a0000>
+1b063ca50: 34000120    	cbz	w0, 0x1b063ca74 <__text+0xe78>
+1b063ca54: 97fc7812    	bl	0x1b055aa9c
+1b063ca58: 97fc72e3    	bl	0x1b05595e4
+1b063ca5c: b90003f5    	str	w21, [sp]
+1b063ca60: 97fcd2a4    	bl	0x1b05714f0
+1b063ca64: 528242a7    	mov	w7, #0x1215             ; =4629
+1b063ca68: 140004f9    	b	0x1b063de4c <__text+0x2250>
+1b063ca6c: d2800014    	mov	x20, #0x0               ; =0
+1b063ca70: b4000156    	cbz	x22, 0x1b063ca98 <__text+0xe9c>
+1b063ca74: d10283a1    	sub	x1, x29, #0xa0
+1b063ca78: d10343a2    	sub	x2, x29, #0xd0
+1b063ca7c: d102a3a3    	sub	x3, x29, #0xa8
+1b063ca80: d10363a4    	sub	x4, x29, #0xd8
+1b063ca84: d102c3a5    	sub	x5, x29, #0xb0
+1b063ca88: d10383a6    	sub	x6, x29, #0xe0
+1b063ca8c: aa1603e0    	mov	x0, x22
+1b063ca90: 940a7c5b    	bl	0x1b08dbbfc <__text+0x2a0000>
+1b063ca94: 35009d20    	cbnz	w0, 0x1b063de38 <__text+0x223c>
+1b063ca98: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063ca9c: b9893908    	ldrsw	x8, [x8, #0x938]
+1b063caa0: 97fc6d2c    	bl	0x1b0557f50
+1b063caa4: f85483b5    	ldur	x21, [x29, #-0xb8]
+1b063caa8: f85303b6    	ldur	x22, [x29, #-0xd0]
+1b063caac: 7100051f    	cmp	w8, #0x1
+1b063cab0: 540000e1    	b.ne	0x1b063cacc <__text+0xed0>
+1b063cab4: b40000d5    	cbz	x21, 0x1b063cacc <__text+0xed0>
+1b063cab8: b40000b6    	cbz	x22, 0x1b063cacc <__text+0xed0>
+1b063cabc: 97fc6b8e    	bl	0x1b05578f4
+1b063cac0: aa1603e3    	mov	x3, x22
+1b063cac4: 95e726d3    	bl	0x1b8006610 <__text+0x79caa14> ; SELECTOR _runFalsePositiveRejectionOnPixelBuffer:unrefinedPixelBuffer:
+1b063cac8: 3500b100    	cbnz	w0, 0x1b063e0e8 <__text+0x24ec>
+1b063cacc: f85783a8    	ldur	x8, [x29, #-0x88]
+1b063cad0: f85603a9    	ldur	x9, [x29, #-0xa0]
+1b063cad4: f100011f    	cmp	x8, #0x0
+1b063cad8: 9a880128    	csel	x8, x9, x8, eq
+1b063cadc: f9007fe8    	str	x8, [sp, #0xf8]
+1b063cae0: f85683a8    	ldur	x8, [x29, #-0x98]
+1b063cae4: a97527aa    	ldp	x10, x9, [x29, #-0xb0]
+1b063cae8: f100011f    	cmp	x8, #0x0
+1b063caec: 9a880148    	csel	x8, x10, x8, eq
+1b063caf0: a909d3e8    	stp	x8, x20, [sp, #0x98]
+1b063caf4: f85703a8    	ldur	x8, [x29, #-0x90]
+1b063caf8: f100011f    	cmp	x8, #0x0
+1b063cafc: 9a880128    	csel	x8, x9, x8, eq
+1b063cb00: f9005fe8    	str	x8, [sp, #0xb8]
+1b063cb04: f10002bf    	cmp	x21, #0x0
+1b063cb08: 9a9502ca    	csel	x10, x22, x21, eq
+1b063cb0c: a973a3ab    	ldp	x11, x8, [x29, #-0xc8]
+1b063cb10: f85203a9    	ldur	x9, [x29, #-0xe0]
+1b063cb14: f100017f    	cmp	x11, #0x0
+1b063cb18: 9a8b013b    	csel	x27, x9, x11, eq
+1b063cb1c: f85283a9    	ldur	x9, [x29, #-0xd8]
+1b063cb20: f100011f    	cmp	x8, #0x0
+1b063cb24: 9a880129    	csel	x9, x9, x8, eq
+1b063cb28: 34000659    	cbz	w25, 0x1b063cbf0 <__text+0xff4>
+1b063cb2c: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cb30: b989c916    	ldrsw	x22, [x8, #0x9c8]
+1b063cb34: 8b160268    	add	x8, x19, x22
+1b063cb38: 901a619a    	adrp	x26, 0x1e526c000 <__text+0x34c30404>
+1b063cb3c: 901a6197    	adrp	x23, 0x1e526c000 <__text+0x34c30404>
+1b063cb40: 39400108    	ldrb	w8, [x8]
+1b063cb44: 901a6195    	adrp	x21, 0x1e526c000 <__text+0x34c30404>
+1b063cb48: 7100051f    	cmp	w8, #0x1
+1b063cb4c: a903a7ea    	stp	x10, x9, [sp, #0x38]
+1b063cb50: 540002e1    	b.ne	0x1b063cbac <__text+0xfb0>
+1b063cb54: aa1303e0    	mov	x0, x19
+1b063cb58: f94063e2    	ldr	x2, [sp, #0xc0]
+1b063cb5c: 95e728ad    	bl	0x1b8006e10 <__text+0x79cb214> ; SELECTOR _updateTextureStyleEnableFlagsForMetadataDict:
+1b063cb60: b989bf48    	ldrsw	x8, [x26, #0x9bc]
+1b063cb64: 97fc6cfb    	bl	0x1b0557f50
+1b063cb68: 37000168    	tbnz	w8, #0x0, 0x1b063cb94 <__text+0xf98>
+1b063cb6c: b989bae8    	ldrsw	x8, [x23, #0x9b8]
+1b063cb70: 97fc6cf8    	bl	0x1b0557f50
+1b063cb74: 37000108    	tbnz	w8, #0x0, 0x1b063cb94 <__text+0xf98>
+1b063cb78: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cb7c: b989c108    	ldrsw	x8, [x8, #0x9c0]
+1b063cb80: 97fc6cf4    	bl	0x1b0557f50
+1b063cb84: 37000088    	tbnz	w8, #0x0, 0x1b063cb94 <__text+0xf98>
+1b063cb88: b989c6a8    	ldrsw	x8, [x21, #0x9c4]
+1b063cb8c: 97fc7a15    	bl	0x1b055b3e0
+1b063cb90: 54000041    	b.ne	0x1b063cb98 <__text+0xf9c>
+1b063cb94: b900dfff    	str	wzr, [sp, #0xdc]
+1b063cb98: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cb9c: b989d108    	ldrsw	x8, [x8, #0x9d0]
+1b063cba0: 97fc6ce9    	bl	0x1b0557f44
+1b063cba4: 52800022    	mov	w2, #0x1                ; =1
+1b063cba8: 95e7af2e    	bl	0x1b8028860 <__text+0x79ecc64> ; SELECTOR setStreamingMode:
+1b063cbac: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cbb0: b989b514    	ldrsw	x20, [x8, #0x9b4]
+1b063cbb4: 901a6189    	adrp	x9, 0x1e526c000 <__text+0x34c30404>
+1b063cbb8: b940dfe8    	ldr	w8, [sp, #0xdc]
+1b063cbbc: 340004a8    	cbz	w8, 0x1b063cc50 <__text+0x1054>
+1b063cbc0: 8b140268    	add	x8, x19, x20
+1b063cbc4: 39400108    	ldrb	w8, [x8]
+1b063cbc8: 36000448    	tbz	w8, #0x0, 0x1b063cc50 <__text+0x1054>
+1b063cbcc: b98a4535    	ldrsw	x21, [x9, #0xa44]
+1b063cbd0: 8b150268    	add	x8, x19, x21
+1b063cbd4: f9400100    	ldr	x0, [x8]
+1b063cbd8: 95e715c2    	bl	0x1b80022e0 <__text+0x79c66e4> ; SELECTOR floatValue
+1b063cbdc: 1e2a1001    	fmov	s1, #0.25000000
+1b063cbe0: 1e212000    	fcmp	s0, s1
+1b063cbe4: 540002aa    	b.ge	0x1b063cc38 <__text+0x103c>
+1b063cbe8: 52800028    	mov	w8, #0x1                ; =1
+1b063cbec: 14000018    	b	0x1b063cc4c <__text+0x1050>
+1b063cbf0: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cbf4: b989cd08    	ldrsw	x8, [x8, #0x9cc]
+1b063cbf8: 97fc6cd3    	bl	0x1b0557f44
+1b063cbfc: 95e73899    	bl	0x1b800ae60 <__text+0x79cf264> ; SELECTOR commandQueue
+1b063cc00: 95e73894    	bl	0x1b800ae50 <__text+0x79cf254> ; SELECTOR commandBuffer
+1b063cc04: b4009800    	cbz	x0, 0x1b063df04 <__text+0x2308>
+1b063cc08: aa0003f5    	mov	x21, x0
+1b063cc0c: f01de4e2    	adrp	x2, 0x1ec2db000 <__text+0x3bc9f404>
+1b063cc10: 91038042    	add	x2, x2, #0xe0 ; 0x1ec2db0e0 CFString 'waitUntilScheduledForMasks'
+1b063cc14: 95e79a23    	bl	0x1b80234a0 <__text+0x79e78a4> ; SELECTOR setLabel:
+1b063cc18: aa1503e0    	mov	x0, x21
+1b063cc1c: 95e73899    	bl	0x1b800ae80 <__text+0x79cf284> ; SELECTOR commit
+1b063cc20: aa1503e0    	mov	x0, x21
+1b063cc24: 95e7c817    	bl	0x1b802ec80 <__text+0x79f3084> ; SELECTOR waitUntilScheduled
+1b063cc28: d280001c    	mov	x28, #0x0               ; =0
+1b063cc2c: f94077f8    	ldr	x24, [sp, #0xe8]
+1b063cc30: f9404ffb    	ldr	x27, [sp, #0x98]
+1b063cc34: 1400039f    	b	0x1b063dab0 <__text+0x1eb4>
+1b063cc38: f8756a60    	ldr	x0, [x19, x21]
+1b063cc3c: 95e715a9    	bl	0x1b80022e0 <__text+0x79c66e4> ; SELECTOR floatValue
+1b063cc40: 1e2c1001    	fmov	s1, #0.50000000
+1b063cc44: 1e212000    	fcmp	s0, s1
+1b063cc48: 1a9f47e8    	cset	w8, pl
+1b063cc4c: b900dfe8    	str	w8, [sp, #0xdc]
+1b063cc50: b0185fa8    	adrp	x8, 0x1e1231000 <__text+0x30bf5404>
+1b063cc54: f9443908    	ldr	x8, [x8, #0x870]
+1b063cc58: f9400102    	ldr	x2, [x8] ; 0x27efe3630 CFString 'AESignals'
+1b063cc5c: f94063e0    	ldr	x0, [sp, #0xc0]
+1b063cc60: 95e7192c    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063cc64: 95e7c37f    	bl	0x1b802da60 <__text+0x79f1e64> ; SELECTOR unsignedIntValue
+1b063cc68: 901a618a    	adrp	x10, 0x1e526c000 <__text+0x34c30404>
+1b063cc6c: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cc70: 90185fba    	adrp	x26, 0x1e1230000 <__text+0x30bf4404>
+1b063cc74: f947cf5a    	ldr	x26, [x26, #0xf98]
+1b063cc78: b940dfe9    	ldr	w9, [sp, #0xdc]
+1b063cc7c: b90037e0    	str	w0, [sp, #0x34]
+1b063cc80: 340004c9    	cbz	w9, 0x1b063cd18 <__text+0x111c>
+1b063cc84: b98a7908    	ldrsw	x8, [x8, #0xa78]
+1b063cc88: 8b080277    	add	x23, x19, x8
+1b063cc8c: 390002ff    	strb	wzr, [x23]
+1b063cc90: 97fc81c1    	bl	0x1b055d394
+1b063cc94: 540000e1    	b.ne	0x1b063ccb0 <__text+0x10b4>
+1b063cc98: 97fc7f1e    	bl	0x1b055c910
+1b063cc9c: 910583e0    	add	x0, sp, #0x160
+1b063cca0: 95ebbd54    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063cca4: 97fc89ee    	bl	0x1b055f45c
+1b063cca8: 11010500    	add	w0, w8, #0x41
+1b063ccac: 97fc8233    	bl	0x1b055d578
+1b063ccb0: d10203a3    	sub	x3, x29, #0x80
+1b063ccb4: aa1303e0    	mov	x0, x19
+1b063ccb8: f94047e2    	ldr	x2, [sp, #0x88]
+1b063ccbc: 95e7222d    	bl	0x1b8005570 <__text+0x79c9974> ; SELECTOR _createIdentityCoefficientsFromSampleBuffer:to:
+1b063ccc0: aa0003f5    	mov	x21, x0
+1b063ccc4: 97fc81b4    	bl	0x1b055d394
+1b063ccc8: 540000e1    	b.ne	0x1b063cce4 <__text+0x10e8>
+1b063cccc: 97fc7f11    	bl	0x1b055c910
+1b063ccd0: 910583e0    	add	x0, sp, #0x160
+1b063ccd4: 95ebbd47    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063ccd8: 97fc89e1    	bl	0x1b055f45c
+1b063ccdc: 11010900    	add	w0, w8, #0x42
+1b063cce0: 97fc8226    	bl	0x1b055d578
+1b063cce4: f90017f7    	str	x23, [sp, #0x28]
+1b063cce8: 3500a215    	cbnz	w21, 0x1b063e128 <__text+0x252c>
+1b063ccec: f85803a0    	ldur	x0, [x29, #-0x80]
+1b063ccf0: f9400341    	ldr	x1, [x26]
+1b063ccf4: d017d6c2    	adrp	x2, 0x1e0116000 <__text+0x2fada404>
+1b063ccf8: f9414042    	ldr	x2, [x2, #0x280]
+1b063ccfc: 94013ef5    	bl	0x1b068c8d0 <__text+0x50cd4>
+1b063cd00: d2800017    	mov	x23, #0x0               ; =0
+1b063cd04: d280001c    	mov	x28, #0x0               ; =0
+1b063cd08: 38746a68    	ldrb	w8, [x19, x20]
+1b063cd0c: 7100051f    	cmp	w8, #0x1
+1b063cd10: 54000480    	b.eq	0x1b063cda0 <__text+0x11a4>
+1b063cd14: 140002d4    	b	0x1b063d864 <__text+0x1c68>
+1b063cd18: 721e001f    	tst	w0, #0x4
+1b063cd1c: b989e149    	ldrsw	x9, [x10, #0x9e0]
+1b063cd20: 8b090269    	add	x9, x19, x9
+1b063cd24: 39400129    	ldrb	w9, [x9]
+1b063cd28: 1a8913e9    	csel	w9, wzr, w9, ne
+1b063cd2c: b98a7908    	ldrsw	x8, [x8, #0xa78]
+1b063cd30: 8b08026a    	add	x10, x19, x8
+1b063cd34: 39000149    	strb	w9, [x10]
+1b063cd38: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cd3c: b9891d08    	ldrsw	x8, [x8, #0x91c]
+1b063cd40: 97fc79a8    	bl	0x1b055b3e0
+1b063cd44: f90017ea    	str	x10, [sp, #0x28]
+1b063cd48: 540002a1    	b.ne	0x1b063cd9c <__text+0x11a0>
+1b063cd4c: d10203a3    	sub	x3, x29, #0x80
+1b063cd50: aa1303e0    	mov	x0, x19
+1b063cd54: f94047e2    	ldr	x2, [sp, #0x88]
+1b063cd58: 95e721f6    	bl	0x1b8005530 <__text+0x79c9934> ; SELECTOR _createCoefficientsFromSampleBuffer:to:
+1b063cd5c: 3500a740    	cbnz	w0, 0x1b063e244 <__text+0x2648>
+1b063cd60: f85803a0    	ldur	x0, [x29, #-0x80]
+1b063cd64: 95ebbc9f    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063cd68: aa0003f7    	mov	x23, x0
+1b063cd6c: b50001a0    	cbnz	x0, 0x1b063cda0 <__text+0x11a4>
+1b063cd70: 97fc6f0c    	bl	0x1b05589a0
+1b063cd74: aa0003e1    	mov	x1, x0
+1b063cd78: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063cd7c: 97fc7ae6    	bl	0x1b055b914
+1b063cd80: d0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063cd84: 910dd463    	add	x3, x3, #0x375 ; 0x1b0da6375 cstring 'outputLearnedCoefficientsPixelBuffer'
+1b063cd88: 97fcb9c5    	bl	0x1b056b49c
+1b063cd8c: 52825147    	mov	w7, #0x128a             ; =4746
+1b063cd90: 95ebbfe0    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063cd94: d280001c    	mov	x28, #0x0               ; =0
+1b063cd98: 14000582    	b	0x1b063e3a0 <__text+0x27a4>
+1b063cd9c: d2800017    	mov	x23, #0x0               ; =0
+1b063cda0: f94043f8    	ldr	x24, [sp, #0x80]
+1b063cda4: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cda8: b98a0d1a    	ldrsw	x26, [x8, #0xa0c]
+1b063cdac: 8b1a0268    	add	x8, x19, x26
+1b063cdb0: f9400100    	ldr	x0, [x8]
+1b063cdb4: b40001e0    	cbz	x0, 0x1b063cdf0 <__text+0x11f4>
+1b063cdb8: 95ebbe0a    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063cdbc: 97fd40dc    	bl	0x1b058d12c
+1b063cdc0: 95e75cf0    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063cdc4: 1e682000    	fcmp	d0, d8
+1b063cdc8: 540000e1    	b.ne	0x1b063cde4 <__text+0x11e8>
+1b063cdcc: f87a6a60    	ldr	x0, [x19, x26]
+1b063cdd0: 95ebbdec    	bl	0x1b812c580 <__text+0x7af0984>
+1b063cdd4: 97fd40d6    	bl	0x1b058d12c
+1b063cdd8: 95e75cea    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063cddc: 1e682020    	fcmp	d1, d8
+1b063cde0: 540004a0    	b.eq	0x1b063ce74 <__text+0x1278>
+1b063cde4: f87a6a60    	ldr	x0, [x19, x26]
+1b063cde8: b4000040    	cbz	x0, 0x1b063cdf0 <__text+0x11f4>
+1b063cdec: 95ebb0bd    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063cdf0: 97fc8169    	bl	0x1b055d394
+1b063cdf4: 540000e1    	b.ne	0x1b063ce10 <__text+0x1214>
+1b063cdf8: 97fc7ec6    	bl	0x1b055c910
+1b063cdfc: 910583e0    	add	x0, sp, #0x160
+1b063ce00: 95ebbcfc    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063ce04: 97fc8996    	bl	0x1b055f45c
+1b063ce08: 11011500    	add	w0, w8, #0x45
+1b063ce0c: 97fc81db    	bl	0x1b055d578
+1b063ce10: f8786a60    	ldr	x0, [x19, x24]
+1b063ce14: 95e73933    	bl	0x1b800b2e0 <__text+0x79cf6e4> ; SELECTOR configuration
+1b063ce18: 95e75cda    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063ce1c: 1e780014    	fcvtzs	w20, d0
+1b063ce20: f8786a60    	ldr	x0, [x19, x24]
+1b063ce24: 95e7392f    	bl	0x1b800b2e0 <__text+0x79cf6e4> ; SELECTOR configuration
+1b063ce28: 95e75cd6    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063ce2c: 1e780035    	fcvtzs	w21, d1
+1b063ce30: f94077e0    	ldr	x0, [sp, #0xe8]
+1b063ce34: 95ebbddf    	bl	0x1b812c5b0 <__text+0x7af09b4>
+1b063ce38: aa0003e2    	mov	x2, x0
+1b063ce3c: aa1403e0    	mov	x0, x20
+1b063ce40: aa1503e1    	mov	x1, x21
+1b063ce44: 95ebbe43    	bl	0x1b812c750 <__text+0x7af0b54>
+1b063ce48: f83a6a60    	str	x0, [x19, x26]
+1b063ce4c: 97fc8152    	bl	0x1b055d394
+1b063ce50: 54000101    	b.ne	0x1b063ce70 <__text+0x1274>
+1b063ce54: 97fc7eaf    	bl	0x1b055c910
+1b063ce58: 910583e0    	add	x0, sp, #0x160
+1b063ce5c: 95ebbce5    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063ce60: 97fc897f    	bl	0x1b055f45c
+1b063ce64: 11011900    	add	w0, w8, #0x46
+1b063ce68: 97fc81c4    	bl	0x1b055d578
+1b063ce6c: f87a6a60    	ldr	x0, [x19, x26]
+1b063ce70: b4008ae0    	cbz	x0, 0x1b063dfcc <__text+0x23d0>
+1b063ce74: f90013f7    	str	x23, [sp, #0x20]
+1b063ce78: 38766a68    	ldrb	w8, [x19, x22]
+1b063ce7c: 901a6195    	adrp	x21, 0x1e526c000 <__text+0x34c30404>
+1b063ce80: 7100051f    	cmp	w8, #0x1
+1b063ce84: 54000681    	b.ne	0x1b063cf54 <__text+0x1358>
+1b063ce88: b98a12b7    	ldrsw	x23, [x21, #0xa10]
+1b063ce8c: 97fc883f    	bl	0x1b055ef88
+1b063ce90: b40001e0    	cbz	x0, 0x1b063cecc <__text+0x12d0>
+1b063ce94: 95ebbdd3    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063ce98: 97fd40a5    	bl	0x1b058d12c
+1b063ce9c: 95e75cb9    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063cea0: 1e682000    	fcmp	d0, d8
+1b063cea4: 540000e1    	b.ne	0x1b063cec0 <__text+0x12c4>
+1b063cea8: f8776a60    	ldr	x0, [x19, x23]
+1b063ceac: 95ebbdb5    	bl	0x1b812c580 <__text+0x7af0984>
+1b063ceb0: 97fd409f    	bl	0x1b058d12c
+1b063ceb4: 95e75cb3    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063ceb8: 1e682020    	fcmp	d1, d8
+1b063cebc: 540004c0    	b.eq	0x1b063cf54 <__text+0x1358>
+1b063cec0: f8776a60    	ldr	x0, [x19, x23]
+1b063cec4: b4000040    	cbz	x0, 0x1b063cecc <__text+0x12d0>
+1b063cec8: 95ebb086    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063cecc: 97fc8132    	bl	0x1b055d394
+1b063ced0: 540000e1    	b.ne	0x1b063ceec <__text+0x12f0>
+1b063ced4: 97fc7e8f    	bl	0x1b055c910
+1b063ced8: 910583e0    	add	x0, sp, #0x160
+1b063cedc: 95ebbcc5    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063cee0: 97fc895f    	bl	0x1b055f45c
+1b063cee4: 11012500    	add	w0, w8, #0x49
+1b063cee8: 97fc81a4    	bl	0x1b055d578
+1b063ceec: f8786a60    	ldr	x0, [x19, x24]
+1b063cef0: 95e738fc    	bl	0x1b800b2e0 <__text+0x79cf6e4> ; SELECTOR configuration
+1b063cef4: 95e75ca3    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063cef8: 1e780014    	fcvtzs	w20, d0
+1b063cefc: f8786a60    	ldr	x0, [x19, x24]
+1b063cf00: 95e738f8    	bl	0x1b800b2e0 <__text+0x79cf6e4> ; SELECTOR configuration
+1b063cf04: 95e75c9f    	bl	0x1b8014180 <__text+0x79d8584> ; SELECTOR intermediateStyleRendererThumbnailSize
+1b063cf08: 1e780035    	fcvtzs	w21, d1
+1b063cf0c: f94077e0    	ldr	x0, [sp, #0xe8]
+1b063cf10: 95ebbda8    	bl	0x1b812c5b0 <__text+0x7af09b4>
+1b063cf14: aa0003e2    	mov	x2, x0
+1b063cf18: aa1403e0    	mov	x0, x20
+1b063cf1c: aa1503e1    	mov	x1, x21
+1b063cf20: 95ebbe0c    	bl	0x1b812c750 <__text+0x7af0b54>
+1b063cf24: f8376a60    	str	x0, [x19, x23]
+1b063cf28: 97fc811b    	bl	0x1b055d394
+1b063cf2c: 54000101    	b.ne	0x1b063cf4c <__text+0x1350>
+1b063cf30: 97fc7e78    	bl	0x1b055c910
+1b063cf34: 910583e0    	add	x0, sp, #0x160
+1b063cf38: 95ebbcae    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063cf3c: 97fc8948    	bl	0x1b055f45c
+1b063cf40: 11012900    	add	w0, w8, #0x4a
+1b063cf44: 97fc818d    	bl	0x1b055d578
+1b063cf48: f8776a60    	ldr	x0, [x19, x23]
+1b063cf4c: 901a6195    	adrp	x21, 0x1e526c000 <__text+0x34c30404>
+1b063cf50: b4009540    	cbz	x0, 0x1b063e1f8 <__text+0x25fc>
+1b063cf54: f94013b7    	ldr	x23, [x29, #0x20]
+1b063cf58: 38766a68    	ldrb	w8, [x19, x22]
+1b063cf5c: 901a6189    	adrp	x9, 0x1e526c000 <__text+0x34c30404>
+1b063cf60: 7100051f    	cmp	w8, #0x1
+1b063cf64: 54000ba1    	b.ne	0x1b063d0d8 <__text+0x14dc>
+1b063cf68: 901a6188    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063cf6c: b989c108    	ldrsw	x8, [x8, #0x9c0]
+1b063cf70: 97fc791c    	bl	0x1b055b3e0
+1b063cf74: 54000b21    	b.ne	0x1b063d0d8 <__text+0x14dc>
+1b063cf78: b989d528    	ldrsw	x8, [x9, #0x9d4]
+1b063cf7c: 97fc7919    	bl	0x1b055b3e0
+1b063cf80: 54000ac1    	b.ne	0x1b063d0d8 <__text+0x14dc>
+1b063cf84: 97fc8104    	bl	0x1b055d394
+1b063cf88: 540000e1    	b.ne	0x1b063cfa4 <__text+0x13a8>
+1b063cf8c: 97fc7e61    	bl	0x1b055c910
+1b063cf90: 910583e0    	add	x0, sp, #0x160
+1b063cf94: 95ebbc97    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063cf98: 97fc8931    	bl	0x1b055f45c
+1b063cf9c: 11013500    	add	w0, w8, #0x4d
+1b063cfa0: 97fc8176    	bl	0x1b055d578
+1b063cfa4: aa1303e0    	mov	x0, x19
+1b063cfa8: f94073e2    	ldr	x2, [sp, #0xe0]
+1b063cfac: 95e72651    	bl	0x1b80068f0 <__text+0x79cacf4> ; SELECTOR _setupProcessorFullImageSizeAndRegionToRenderPixelBuffer:
+1b063cfb0: 35009b20    	cbnz	w0, 0x1b063e314 <__text+0x2718>
+1b063cfb4: aa1703e0    	mov	x0, x23
+1b063cfb8: 95e75c5a    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063cfbc: aa1303e0    	mov	x0, x19
+1b063cfc0: f94023e2    	ldr	x2, [sp, #0x40]
+1b063cfc4: f94063f4    	ldr	x20, [sp, #0xc0]
+1b063cfc8: aa1403e3    	mov	x3, x20
+1b063cfcc: f9402be4    	ldr	x4, [sp, #0x50]
+1b063cfd0: 95e72634    	bl	0x1b80068a0 <__text+0x79caca4> ; SELECTOR _setupMattifyForSkinMask:metadataDict:intensity:effectsToRender:
+1b063cfd4: 350096a0    	cbnz	w0, 0x1b063e2a8 <__text+0x26ac>
+1b063cfd8: f017d868    	adrp	x8, 0x1e014b000 <__text+0x2fb0f404>
+1b063cfdc: f940ed08    	ldr	x8, [x8, #0x1d8]
+1b063cfe0: b9400103    	ldr	w3, [x8]
+1b063cfe4: 97fcaa49    	bl	0x1b0567908
+1b063cfe8: 95e72632    	bl	0x1b80068b0 <__text+0x79cacb4> ; SELECTOR _setupPersonDataFromMetadata:maxFaceCount:
+1b063cfec: 350096a0    	cbnz	w0, 0x1b063e2c0 <__text+0x26c4>
+1b063cff0: b4009757    	cbz	x23, 0x1b063e2d8 <__text+0x26dc>
+1b063cff4: aa1703e0    	mov	x0, x23
+1b063cff8: 95e75c4a    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063cffc: 1e202008    	fcmp	s0, #0.0
+1b063d000: 540098ab    	b.lt	0x1b063e314 <__text+0x2718>
+1b063d004: aa1703e0    	mov	x0, x23
+1b063d008: 95e75c46    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d00c: 1e2e1001    	fmov	s1, #1.00000000
+1b063d010: 1e212000    	fcmp	s0, s1
+1b063d014: 54009808    	b.hi	0x1b063e314 <__text+0x2718>
+1b063d018: aa1703e0    	mov	x0, x23
+1b063d01c: 95e75c41    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d020: bd0113e0    	str	s0, [sp, #0x110]
+1b063d024: aa1303e0    	mov	x0, x19
+1b063d028: f94063e2    	ldr	x2, [sp, #0xc0]
+1b063d02c: 95e7226d    	bl	0x1b80059e0 <__text+0x79c9de4> ; SELECTOR _getPortTypeFromMetadataDict:
+1b063d030: aa0003f4    	mov	x20, x0
+1b063d034: aa1703fc    	mov	x28, x23
+1b063d038: aa1703e0    	mov	x0, x23
+1b063d03c: 95e75c39    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d040: 910443e3    	add	x3, sp, #0x110
+1b063d044: 97fcaa31    	bl	0x1b0567908
+1b063d048: 95e72012    	bl	0x1b8005090 <__text+0x79c9494> ; SELECTOR _blendedTuningParametersForPortType:intensity:effectiveIntensityOut:
+1b063d04c: 97fe54df    	bl	0x1b05d23c8
+1b063d050: f94002a0    	ldr	x0, [x21]
+1b063d054: f9402be2    	ldr	x2, [sp, #0x50]
+1b063d058: 95e78f82    	bl	0x1b8020e60 <__text+0x79e5264> ; SELECTOR setEffectsToRender:
+1b063d05c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d060: b98a1108    	ldrsw	x8, [x8, #0xa10]
+1b063d064: 8b080275    	add	x21, x19, x8
+1b063d068: f94002a1    	ldr	x1, [x21]
+1b063d06c: f94073f7    	ldr	x23, [sp, #0xe0]
+1b063d070: aa1703e0    	mov	x0, x23
+1b063d074: 95ebbb9f    	bl	0x1b812bef0 <__text+0x7af02f4>
+1b063d078: f94002a3    	ldr	x3, [x21]
+1b063d07c: 97fc7a2e    	bl	0x1b055b934
+1b063d080: 95e725e8    	bl	0x1b8006820 <__text+0x79cac24> ; SELECTOR _setupCommonInputsForInputPixelBuffer:outputPixelBuffer:
+1b063d084: 350093c0    	cbnz	w0, 0x1b063e2fc <__text+0x2700>
+1b063d088: f8746a60    	ldr	x0, [x19, x20]
+1b063d08c: 95e776bd    	bl	0x1b801ab80 <__text+0x79def84> ; SELECTOR process
+1b063d090: 35009420    	cbnz	w0, 0x1b063e314 <__text+0x2718>
+1b063d094: f8746a60    	ldr	x0, [x19, x20]
+1b063d098: 95e77f36    	bl	0x1b801cd70 <__text+0x79e1174> ; SELECTOR resetState
+1b063d09c: b017d6c8    	adrp	x8, 0x1e0116000 <__text+0x2fada404>
+1b063d0a0: f9408d00    	ldr	x0, [x8, #0x118]
+1b063d0a4: 95ebb413    	bl	0x1b812a0f0 <__text+0x7aee4f4>
+1b063d0a8: 95ebb416    	bl	0x1b812a100 <__text+0x7aee504>
+1b063d0ac: f9002be0    	str	x0, [sp, #0x50]
+1b063d0b0: 97fc80b9    	bl	0x1b055d394
+1b063d0b4: f01a6175    	adrp	x21, 0x1e526c000 <__text+0x34c30404>
+1b063d0b8: aa1c03f7    	mov	x23, x28
+1b063d0bc: 540000e1    	b.ne	0x1b063d0d8 <__text+0x14dc>
+1b063d0c0: 97fc7e14    	bl	0x1b055c910
+1b063d0c4: 910583e0    	add	x0, sp, #0x160
+1b063d0c8: 95ebbc4a    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d0cc: 97fc88e4    	bl	0x1b055f45c
+1b063d0d0: 11013900    	add	w0, w8, #0x4e
+1b063d0d4: 97fc8129    	bl	0x1b055d578
+1b063d0d8: f9405be0    	ldr	x0, [sp, #0xb0]
+1b063d0dc: f90047fa    	str	x26, [sp, #0x88]
+1b063d0e0: b4000080    	cbz	x0, 0x1b063d0f0 <__text+0x14f4>
+1b063d0e4: 95ebbbbf    	bl	0x1b812bfe0 <__text+0x7af03e4>
+1b063d0e8: aa0003fa    	mov	x26, x0
+1b063d0ec: 14000003    	b	0x1b063d0f8 <__text+0x14fc>
+1b063d0f0: 97fe274d    	bl	0x1b05c6e24
+1b063d0f4: 9a89011a    	csel	x26, x8, x9, eq
+1b063d0f8: f9000ff7    	str	x23, [sp, #0x18]
+1b063d0fc: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d100: b98a8508    	ldrsw	x8, [x8, #0xa84]
+1b063d104: 97fc6b90    	bl	0x1b0557f44
+1b063d108: 95ebb3fa    	bl	0x1b812a0f0 <__text+0x7aee4f4>
+1b063d10c: aa0003fc    	mov	x28, x0
+1b063d110: b4007200    	cbz	x0, 0x1b063df50 <__text+0x2354>
+1b063d114: f9400bb7    	ldr	x23, [x29, #0x10]
+1b063d118: 97fe2743    	bl	0x1b05c6e24
+1b063d11c: 9a890102    	csel	x2, x8, x9, eq
+1b063d120: aa1c03e0    	mov	x0, x28
+1b063d124: f9005be2    	str	x2, [sp, #0xb0]
+1b063d128: 95e79772    	bl	0x1b8022ef0 <__text+0x79e72f4> ; SELECTOR setInputUnstyledPixelBuffer:
+1b063d12c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d130: b989c114    	ldrsw	x20, [x8, #0x9c0]
+1b063d134: 8b140268    	add	x8, x19, x20
+1b063d138: 39400108    	ldrb	w8, [x8]
+1b063d13c: 7100051f    	cmp	w8, #0x1
+1b063d140: 540000a1    	b.ne	0x1b063d154 <__text+0x1558>
+1b063d144: b98a12a8    	ldrsw	x8, [x21, #0xa10]
+1b063d148: 8b080268    	add	x8, x19, x8
+1b063d14c: f9400102    	ldr	x2, [x8]
+1b063d150: 14000004    	b	0x1b063d160 <__text+0x1564>
+1b063d154: aa1c03e0    	mov	x0, x28
+1b063d158: 95e75b7e    	bl	0x1b8013f50 <__text+0x79d8354> ; SELECTOR inputUnstyledPixelBuffer
+1b063d15c: aa0003e2    	mov	x2, x0
+1b063d160: aa1c03e0    	mov	x0, x28
+1b063d164: 95e79763    	bl	0x1b8022ef0 <__text+0x79e72f4> ; SELECTOR setInputUnstyledPixelBuffer:
+1b063d168: 38746a68    	ldrb	w8, [x19, x20]
+1b063d16c: f94077e2    	ldr	x2, [sp, #0xe8]
+1b063d170: 7100051f    	cmp	w8, #0x1
+1b063d174: 54000081    	b.ne	0x1b063d184 <__text+0x1588>
+1b063d178: b98a12a8    	ldrsw	x8, [x21, #0xa10]
+1b063d17c: 8b080268    	add	x8, x19, x8
+1b063d180: f9400102    	ldr	x2, [x8]
+1b063d184: aa1c03e0    	mov	x0, x28
+1b063d188: 95e7975e    	bl	0x1b8022f00 <__text+0x79e7304> ; SELECTOR setInputUnstyledThumbnailPixelBuffer:
+1b063d18c: aa1c03e0    	mov	x0, x28
+1b063d190: f94067e2    	ldr	x2, [sp, #0xc8]
+1b063d194: 95e79687    	bl	0x1b8022bb0 <__text+0x79e6fb4> ; SELECTOR setInputLinearPixelBuffer:
+1b063d198: aa1c03e0    	mov	x0, x28
+1b063d19c: f94063f4    	ldr	x20, [sp, #0xc0]
+1b063d1a0: aa1403e2    	mov	x2, x20
+1b063d1a4: 95e79693    	bl	0x1b8022bf0 <__text+0x79e6ff4> ; SELECTOR setInputMetadataDict:
+1b063d1a8: aa1c03e0    	mov	x0, x28
+1b063d1ac: aa1403e2    	mov	x2, x20
+1b063d1b0: 95e7967c    	bl	0x1b8022ba0 <__text+0x79e6fa4> ; SELECTOR setInputLinearMetadataDict:
+1b063d1b4: aa1c03e0    	mov	x0, x28
+1b063d1b8: f9401fe2    	ldr	x2, [sp, #0x38]
+1b063d1bc: 95e796ad    	bl	0x1b8022c70 <__text+0x79e7074> ; SELECTOR setInputPersonMaskPixelBuffer:
+1b063d1c0: aa1c03e0    	mov	x0, x28
+1b063d1c4: 95e75b0f    	bl	0x1b8013e00 <__text+0x79d8204> ; SELECTOR inputPersonMaskPixelBuffer
+1b063d1c8: 95ebbd06    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063d1cc: 97fd107a    	bl	0x1b05813b4
+1b063d1d0: 95e75b0c    	bl	0x1b8013e00 <__text+0x79d8204> ; SELECTOR inputPersonMaskPixelBuffer
+1b063d1d4: 95ebbceb    	bl	0x1b812c580 <__text+0x7af0984>
+1b063d1d8: 97fca773    	bl	0x1b0566fa4
+1b063d1dc: aa1c03e0    	mov	x0, x28
+1b063d1e0: 95e796a0    	bl	0x1b8022c60 <__text+0x79e7064> ; SELECTOR setInputPersonMaskCropRect:
+1b063d1e4: aa1c03e0    	mov	x0, x28
+1b063d1e8: aa1b03e2    	mov	x2, x27
+1b063d1ec: 95e79721    	bl	0x1b8022e70 <__text+0x79e7274> ; SELECTOR setInputSkyMaskPixelBuffer:
+1b063d1f0: aa1c03e0    	mov	x0, x28
+1b063d1f4: 95e75b4b    	bl	0x1b8013f20 <__text+0x79d8324> ; SELECTOR inputSkyMaskPixelBuffer
+1b063d1f8: 95ebbcfa    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063d1fc: 97fd106e    	bl	0x1b05813b4
+1b063d200: 95e75b48    	bl	0x1b8013f20 <__text+0x79d8324> ; SELECTOR inputSkyMaskPixelBuffer
+1b063d204: 95ebbcdf    	bl	0x1b812c580 <__text+0x7af0984>
+1b063d208: 97fca767    	bl	0x1b0566fa4
+1b063d20c: aa1c03e0    	mov	x0, x28
+1b063d210: 95e79714    	bl	0x1b8022e60 <__text+0x79e7264> ; SELECTOR setInputSkyMaskCropRect:
+1b063d214: aa1c03e0    	mov	x0, x28
+1b063d218: f94023e2    	ldr	x2, [sp, #0x40]
+1b063d21c: 95e79705    	bl	0x1b8022e30 <__text+0x79e7234> ; SELECTOR setInputSkinMaskPixelBuffer:
+1b063d220: aa1c03e0    	mov	x0, x28
+1b063d224: 95e75b3b    	bl	0x1b8013f10 <__text+0x79d8314> ; SELECTOR inputSkinMaskPixelBuffer
+1b063d228: 95ebbcee    	bl	0x1b812c5e0 <__text+0x7af09e4>
+1b063d22c: 97fd1062    	bl	0x1b05813b4
+1b063d230: 95e75b38    	bl	0x1b8013f10 <__text+0x79d8314> ; SELECTOR inputSkinMaskPixelBuffer
+1b063d234: 95ebbcd3    	bl	0x1b812c580 <__text+0x7af0984>
+1b063d238: 97fca75b    	bl	0x1b0566fa4
+1b063d23c: aa1c03e0    	mov	x0, x28
+1b063d240: 95e796f4    	bl	0x1b8022e10 <__text+0x79e7214> ; SELECTOR setInputSkinMaskCropRect:
+1b063d244: aa1c03e0    	mov	x0, x28
+1b063d248: f94013e2    	ldr	x2, [sp, #0x20]
+1b063d24c: 95e7a049    	bl	0x1b8025370 <__text+0x79e9774> ; SELECTOR setOutputLearnedStyleCoefficientsPixelBuffer:
+1b063d250: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d254: b98a8108    	ldrsw	x8, [x8, #0xa80]
+1b063d258: 97fc6b3b    	bl	0x1b0557f44
+1b063d25c: 95ebb3a5    	bl	0x1b812a0f0 <__text+0x7aee4f4>
+1b063d260: 95ebb3a8    	bl	0x1b812a100 <__text+0x7aee504>
+1b063d264: aa0003e2    	mov	x2, x0
+1b063d268: aa1c03e0    	mov	x0, x28
+1b063d26c: 95e79705    	bl	0x1b8022e80 <__text+0x79e7284> ; SELECTOR setInputSmartStyle:
+1b063d270: f9404bf5    	ldr	x21, [sp, #0x90]
+1b063d274: aa1503e0    	mov	x0, x21
+1b063d278: 95e7343e    	bl	0x1b800a370 <__text+0x79ce774> ; SELECTOR cast
+1b063d27c: aa0003f4    	mov	x20, x0
+1b063d280: aa1c03e0    	mov	x0, x28
+1b063d284: 95e75b2b    	bl	0x1b8013f30 <__text+0x79d8334> ; SELECTOR inputSmartStyle
+1b063d288: aa1403e2    	mov	x2, x20
+1b063d28c: 95e78831    	bl	0x1b801f350 <__text+0x79e3754> ; SELECTOR setCastType:
+1b063d290: aa1503e0    	mov	x0, x21
+1b063d294: 95e75ba3    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d298: 4ea01c08    	mov.16b	v8, v0
+1b063d29c: aa1c03e0    	mov	x0, x28
+1b063d2a0: 95e75b24    	bl	0x1b8013f30 <__text+0x79d8334> ; SELECTOR inputSmartStyle
+1b063d2a4: 4ea81d00    	mov.16b	v0, v8
+1b063d2a8: 95e78826    	bl	0x1b801f340 <__text+0x79e3744> ; SELECTOR setCastIntensity:
+1b063d2ac: aa1503e0    	mov	x0, x21
+1b063d2b0: 95e7bfe8    	bl	0x1b802d250 <__text+0x79f1654> ; SELECTOR toneBias
+1b063d2b4: 4ea01c08    	mov.16b	v8, v0
+1b063d2b8: aa1c03e0    	mov	x0, x28
+1b063d2bc: 95e75b1d    	bl	0x1b8013f30 <__text+0x79d8334> ; SELECTOR inputSmartStyle
+1b063d2c0: 4ea81d00    	mov.16b	v0, v8
+1b063d2c4: 95e7b06f    	bl	0x1b8029480 <__text+0x79ed884> ; SELECTOR setToneBias:
+1b063d2c8: aa1503e0    	mov	x0, x21
+1b063d2cc: 95e7364d    	bl	0x1b800ac00 <__text+0x79cf004> ; SELECTOR colorBias
+1b063d2d0: 4ea01c08    	mov.16b	v8, v0
+1b063d2d4: aa1c03e0    	mov	x0, x28
+1b063d2d8: 95e75b16    	bl	0x1b8013f30 <__text+0x79d8334> ; SELECTOR inputSmartStyle
+1b063d2dc: 4ea81d00    	mov.16b	v0, v8
+1b063d2e0: 95e78980    	bl	0x1b801f8e0 <__text+0x79e3ce4> ; SELECTOR setColorBias:
+1b063d2e4: d017d868    	adrp	x8, 0x1e014b000 <__text+0x2fb0f404>
+1b063d2e8: f9400908    	ldr	x8, [x8, #0x10]
+1b063d2ec: f9400102    	ldr	x2, [x8] ; 0x1ef3490d8 CFString 'Video'
+1b063d2f0: aa1c03e0    	mov	x0, x28
+1b063d2f4: 95e796f7    	bl	0x1b8022ed0 <__text+0x79e72d4> ; SELECTOR setInputTuningType:
+1b063d2f8: aa1c03e0    	mov	x0, x28
+1b063d2fc: aa1a03e2    	mov	x2, x26
+1b063d300: 95e7968c    	bl	0x1b8022d30 <__text+0x79e7134> ; SELECTOR setInputSRLPixelBuffer:
+1b063d304: 97fd20d1    	bl	0x1b0585648
+1b063d308: 97fc6b12    	bl	0x1b0557f50
+1b063d30c: 7100011f    	cmp	w8, #0x0
+1b063d310: f9406be8    	ldr	x8, [sp, #0xd0]
+1b063d314: 9a9f1102    	csel	x2, x8, xzr, ne
+1b063d318: aa1c03e0    	mov	x0, x28
+1b063d31c: 95e79709    	bl	0x1b8022f40 <__text+0x79e7344> ; SELECTOR setInputWeightSegmentMapPixelBufferScaledForISPSMG:
+1b063d320: f94047e8    	ldr	x8, [sp, #0x88]
+1b063d324: f8686a62    	ldr	x2, [x19, x8]
+1b063d328: aa1c03e0    	mov	x0, x28
+1b063d32c: 95e7a08d    	bl	0x1b8025560 <__text+0x79e9964> ; SELECTOR setOutputTargetPixelBuffer:
+1b063d330: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d334: b989a514    	ldrsw	x20, [x8, #0x9a4]
+1b063d338: 8b140260    	add	x0, x19, x20
+1b063d33c: 95ebb491    	bl	0x1b812a580 <__text+0x7aee984>
+1b063d340: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d344: b989a908    	ldrsw	x8, [x8, #0x9a8]
+1b063d348: 8b080268    	add	x8, x19, x8
+1b063d34c: b9400102    	ldr	w2, [x8]
+1b063d350: aa1c03e0    	mov	x0, x28
+1b063d354: 95e7a837    	bl	0x1b8027430 <__text+0x79eb834> ; SELECTOR setSemanticStyleSceneType:
+1b063d358: 8b140260    	add	x0, x19, x20
+1b063d35c: 95ebb48d    	bl	0x1b812a590 <__text+0x7aee994>
+1b063d360: aa1c03e0    	mov	x0, x28
+1b063d364: f9403be2    	ldr	x2, [sp, #0x70]
+1b063d368: 95e79ffa    	bl	0x1b8025350 <__text+0x79e9754> ; SELECTOR setOutputImageStatistics:
+1b063d36c: aa1c03e0    	mov	x0, x28
+1b063d370: aa1703e2    	mov	x2, x23
+1b063d374: 95e79ffb    	bl	0x1b8025360 <__text+0x79e9764> ; SELECTOR setOutputImageStatisticsExtended:
+1b063d378: b94037e8    	ldr	w8, [sp, #0x34]
+1b063d37c: 721e011f    	tst	w8, #0x4
+1b063d380: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d384: b989e108    	ldrsw	x8, [x8, #0x9e0]
+1b063d388: 8b080268    	add	x8, x19, x8
+1b063d38c: 39400108    	ldrb	w8, [x8]
+1b063d390: 1a8813e2    	csel	w2, wzr, w8, ne
+1b063d394: aa1c03e0    	mov	x0, x28
+1b063d398: 95e7adc2    	bl	0x1b8028aa0 <__text+0x79ecea4> ; SELECTOR setSubjectRelightingEnabled:
+1b063d39c: b940dfe8    	ldr	w8, [sp, #0xdc]
+1b063d3a0: 340000e8    	cbz	w8, 0x1b063d3bc <__text+0x17c0>
+1b063d3a4: aa1c03e0    	mov	x0, x28
+1b063d3a8: 95e7bc0a    	bl	0x1b802c3d0 <__text+0x79f07d4> ; SELECTOR subjectRelightingEnabled
+1b063d3ac: 34000080    	cbz	w0, 0x1b063d3bc <__text+0x17c0>
+1b063d3b0: aa1c03e0    	mov	x0, x28
+1b063d3b4: 52800022    	mov	w2, #0x1                ; =1
+1b063d3b8: 95e789c6    	bl	0x1b801fad0 <__text+0x79e3ed4> ; SELECTOR setComputeOnlySubjectRelighting:
+1b063d3bc: 97fc7ff6    	bl	0x1b055d394
+1b063d3c0: b940affa    	ldr	w26, [sp, #0xac]
+1b063d3c4: 540000e1    	b.ne	0x1b063d3e0 <__text+0x17e4>
+1b063d3c8: 97fc7d52    	bl	0x1b055c910
+1b063d3cc: 910583e0    	add	x0, sp, #0x160
+1b063d3d0: 95ebbb88    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d3d4: 97fc8822    	bl	0x1b055f45c
+1b063d3d8: 11014500    	add	w0, w8, #0x51
+1b063d3dc: 97fc8067    	bl	0x1b055d578
+1b063d3e0: f8786a60    	ldr	x0, [x19, x24]
+1b063d3e4: 52800102    	mov	w2, #0x8                ; =8
+1b063d3e8: 95e7739e    	bl	0x1b801a260 <__text+0x79de664> ; SELECTOR prepareToProcess:
+1b063d3ec: aa0003f5    	mov	x21, x0
+1b063d3f0: 97fc7fe9    	bl	0x1b055d394
+1b063d3f4: f94063fb    	ldr	x27, [sp, #0xc0]
+1b063d3f8: 540000e1    	b.ne	0x1b063d414 <__text+0x1818>
+1b063d3fc: 97fc7d45    	bl	0x1b055c910
+1b063d400: 910583e0    	add	x0, sp, #0x160
+1b063d404: 95ebbb7b    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d408: 97fc8815    	bl	0x1b055f45c
+1b063d40c: 11014900    	add	w0, w8, #0x52
+1b063d410: 97fc805a    	bl	0x1b055d578
+1b063d414: 35005b15    	cbnz	w21, 0x1b063df74 <__text+0x2378>
+1b063d418: f8786a60    	ldr	x0, [x19, x24]
+1b063d41c: aa1c03e2    	mov	x2, x28
+1b063d420: 95e79604    	bl	0x1b8022c30 <__text+0x79e7034> ; SELECTOR setInputOutput:
+1b063d424: 97fc7fdc    	bl	0x1b055d394
+1b063d428: 540000e1    	b.ne	0x1b063d444 <__text+0x1848>
+1b063d42c: 97fc7d39    	bl	0x1b055c910
+1b063d430: 910583e0    	add	x0, sp, #0x160
+1b063d434: 95ebbb6f    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d438: 97fc8809    	bl	0x1b055f45c
+1b063d43c: 11015500    	add	w0, w8, #0x55
+1b063d440: 97fc804e    	bl	0x1b055d578
+1b063d444: f8786a60    	ldr	x0, [x19, x24]
+1b063d448: 95e775ce    	bl	0x1b801ab80 <__text+0x79def84> ; SELECTOR process
+1b063d44c: aa0003f5    	mov	x21, x0
+1b063d450: 97fc7fd1    	bl	0x1b055d394
+1b063d454: 540000e1    	b.ne	0x1b063d470 <__text+0x1874>
+1b063d458: 97fc7d2e    	bl	0x1b055c910
+1b063d45c: 910583e0    	add	x0, sp, #0x160
+1b063d460: 95ebbb64    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d464: 97fc87fe    	bl	0x1b055f45c
+1b063d468: 11015900    	add	w0, w8, #0x56
+1b063d46c: 97fc8043    	bl	0x1b055d578
+1b063d470: 350058f5    	cbnz	w21, 0x1b063df8c <__text+0x2390>
+1b063d474: b940dfe8    	ldr	w8, [sp, #0xdc]
+1b063d478: 37001da8    	tbnz	w8, #0x0, 0x1b063d82c <__text+0x1c30>
+1b063d47c: 38766a68    	ldrb	w8, [x19, x22]
+1b063d480: 7100051f    	cmp	w8, #0x1
+1b063d484: 54001121    	b.ne	0x1b063d6a8 <__text+0x1aac>
+1b063d488: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d48c: b989bd14    	ldrsw	x20, [x8, #0x9bc]
+1b063d490: 8b140268    	add	x8, x19, x20
+1b063d494: 39400108    	ldrb	w8, [x8]
+1b063d498: 37000128    	tbnz	w8, #0x0, 0x1b063d4bc <__text+0x18c0>
+1b063d49c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d4a0: b989b908    	ldrsw	x8, [x8, #0x9b8]
+1b063d4a4: 97fc6aab    	bl	0x1b0557f50
+1b063d4a8: 370000a8    	tbnz	w8, #0x0, 0x1b063d4bc <__text+0x18c0>
+1b063d4ac: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d4b0: b989c508    	ldrsw	x8, [x8, #0x9c4]
+1b063d4b4: 97fc77cb    	bl	0x1b055b3e0
+1b063d4b8: 54000f81    	b.ne	0x1b063d6a8 <__text+0x1aac>
+1b063d4bc: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d4c0: b989d508    	ldrsw	x8, [x8, #0x9d4]
+1b063d4c4: 97fc77c7    	bl	0x1b055b3e0
+1b063d4c8: 54000f01    	b.ne	0x1b063d6a8 <__text+0x1aac>
+1b063d4cc: 97fc7fb2    	bl	0x1b055d394
+1b063d4d0: 540000e1    	b.ne	0x1b063d4ec <__text+0x18f0>
+1b063d4d4: 97fc7d0f    	bl	0x1b055c910
+1b063d4d8: 910583e0    	add	x0, sp, #0x160
+1b063d4dc: 95ebbb45    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d4e0: 97fc87df    	bl	0x1b055f45c
+1b063d4e4: 11016500    	add	w0, w8, #0x59
+1b063d4e8: 97fc8024    	bl	0x1b055d578
+1b063d4ec: f94047e8    	ldr	x8, [sp, #0x88]
+1b063d4f0: f8686a62    	ldr	x2, [x19, x8]
+1b063d4f4: aa1303e0    	mov	x0, x19
+1b063d4f8: 95e724fe    	bl	0x1b80068f0 <__text+0x79cacf4> ; SELECTOR _setupProcessorFullImageSizeAndRegionToRenderPixelBuffer:
+1b063d4fc: 35007500    	cbnz	w0, 0x1b063e39c <__text+0x27a0>
+1b063d500: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d504: b989b917    	ldrsw	x23, [x8, #0x9b8]
+1b063d508: 8b170268    	add	x8, x19, x23
+1b063d50c: 39400108    	ldrb	w8, [x8]
+1b063d510: f01a6176    	adrp	x22, 0x1e526c000 <__text+0x34c30404>
+1b063d514: 7100051f    	cmp	w8, #0x1
+1b063d518: 540000c1    	b.ne	0x1b063d530 <__text+0x1934>
+1b063d51c: f8786a60    	ldr	x0, [x19, x24]
+1b063d520: b989dac8    	ldrsw	x8, [x22, #0x9d8]
+1b063d524: 8b080268    	add	x8, x19, x8
+1b063d528: f9400102    	ldr	x2, [x8]
+1b063d52c: 95e739cd    	bl	0x1b800bc60 <__text+0x79d0064> ; SELECTOR copyStatsForOtherEffectsTo:
+1b063d530: 38746a68    	ldrb	w8, [x19, x20]
+1b063d534: 7100051f    	cmp	w8, #0x1
+1b063d538: 54000121    	b.ne	0x1b063d55c <__text+0x1960>
+1b063d53c: f9400fe0    	ldr	x0, [sp, #0x18]
+1b063d540: 95e75af8    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d544: aa1303e0    	mov	x0, x19
+1b063d548: a9438fe2    	ldp	x2, x3, [sp, #0x38]
+1b063d54c: aa1b03e4    	mov	x4, x27
+1b063d550: f9402be5    	ldr	x5, [sp, #0x50]
+1b063d554: 95e724bf    	bl	0x1b8006850 <__text+0x79cac54> ; SELECTOR _setupDiffusionForPersonMask:forSkinMaskPixelBuffer:metadataDict:intensity:effectsToRender:
+1b063d558: 35006fe0    	cbnz	w0, 0x1b063e354 <__text+0x2758>
+1b063d55c: 38776a68    	ldrb	w8, [x19, x23]
+1b063d560: 7100051f    	cmp	w8, #0x1
+1b063d564: f9400ff7    	ldr	x23, [sp, #0x18]
+1b063d568: 540001c1    	b.ne	0x1b063d5a0 <__text+0x19a4>
+1b063d56c: aa1703e0    	mov	x0, x23
+1b063d570: 95e75aec    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d574: b989dac8    	ldrsw	x8, [x22, #0x9d8]
+1b063d578: 8b080268    	add	x8, x19, x8
+1b063d57c: f9400107    	ldr	x7, [x8]
+1b063d580: aa1303e0    	mov	x0, x19
+1b063d584: f9401fe2    	ldr	x2, [sp, #0x38]
+1b063d588: aa1b03e3    	mov	x3, x27
+1b063d58c: f94067e4    	ldr	x4, [sp, #0xc8]
+1b063d590: aa1b03e5    	mov	x5, x27
+1b063d594: f9402be6    	ldr	x6, [sp, #0x50]
+1b063d598: 95e724b2    	bl	0x1b8006860 <__text+0x79cac64> ; SELECTOR _setupGlowForPersonMask:metadataDict:linearThumbnail:linearThumbnailMetadata:intensity:effectsToRender:statistics:
+1b063d59c: 35006e80    	cbnz	w0, 0x1b063e36c <__text+0x2770>
+1b063d5a0: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d5a4: b989c508    	ldrsw	x8, [x8, #0x9c4]
+1b063d5a8: 97fc778e    	bl	0x1b055b3e0
+1b063d5ac: b940affa    	ldr	w26, [sp, #0xac]
+1b063d5b0: 540000e1    	b.ne	0x1b063d5cc <__text+0x19d0>
+1b063d5b4: aa1303e0    	mov	x0, x19
+1b063d5b8: f94023e2    	ldr	x2, [sp, #0x40]
+1b063d5bc: aa1b03e3    	mov	x3, x27
+1b063d5c0: f9402be4    	ldr	x4, [sp, #0x50]
+1b063d5c4: 95e7248f    	bl	0x1b8006800 <__text+0x79cac04> ; SELECTOR _setupBloomForSkinMask:metadataDict:effectsToRender:
+1b063d5c8: 35006de0    	cbnz	w0, 0x1b063e384 <__text+0x2788>
+1b063d5cc: b4006eb7    	cbz	x23, 0x1b063e3a0 <__text+0x27a4>
+1b063d5d0: aa1703e0    	mov	x0, x23
+1b063d5d4: 95e75ad3    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d5d8: 1e202008    	fcmp	s0, #0.0
+1b063d5dc: 54006e0b    	b.lt	0x1b063e39c <__text+0x27a0>
+1b063d5e0: aa1703e0    	mov	x0, x23
+1b063d5e4: 95e75acf    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d5e8: 1e2e1001    	fmov	s1, #1.00000000
+1b063d5ec: 1e212000    	fcmp	s0, s1
+1b063d5f0: 54006d68    	b.hi	0x1b063e39c <__text+0x27a0>
+1b063d5f4: aa1703e0    	mov	x0, x23
+1b063d5f8: 95e75aca    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d5fc: bd0113e0    	str	s0, [sp, #0x110]
+1b063d600: aa1303e0    	mov	x0, x19
+1b063d604: aa1b03e2    	mov	x2, x27
+1b063d608: 95e720f6    	bl	0x1b80059e0 <__text+0x79c9de4> ; SELECTOR _getPortTypeFromMetadataDict:
+1b063d60c: aa0003f4    	mov	x20, x0
+1b063d610: aa1703e0    	mov	x0, x23
+1b063d614: 95e75ac3    	bl	0x1b8014120 <__text+0x79d8524> ; SELECTOR intensity
+1b063d618: 910443e3    	add	x3, sp, #0x110
+1b063d61c: 97fca8bb    	bl	0x1b0567908
+1b063d620: 95e71e9c    	bl	0x1b8005090 <__text+0x79c9494> ; SELECTOR _blendedTuningParametersForPortType:intensity:effectiveIntensityOut:
+1b063d624: 97fe5369    	bl	0x1b05d23c8
+1b063d628: f94002a0    	ldr	x0, [x21]
+1b063d62c: f9402be2    	ldr	x2, [sp, #0x50]
+1b063d630: 95e78e0c    	bl	0x1b8020e60 <__text+0x79e5264> ; SELECTOR setEffectsToRender:
+1b063d634: f94047f7    	ldr	x23, [sp, #0x88]
+1b063d638: f8776a60    	ldr	x0, [x19, x23]
+1b063d63c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d640: b98a1116    	ldrsw	x22, [x8, #0xa10]
+1b063d644: 8b160275    	add	x21, x19, x22
+1b063d648: f94002a1    	ldr	x1, [x21]
+1b063d64c: 95ebba29    	bl	0x1b812bef0 <__text+0x7af02f4>
+1b063d650: f8776a62    	ldr	x2, [x19, x23]
+1b063d654: f94002a3    	ldr	x3, [x21]
+1b063d658: aa1303e0    	mov	x0, x19
+1b063d65c: 95e72471    	bl	0x1b8006820 <__text+0x79cac24> ; SELECTOR _setupCommonInputsForInputPixelBuffer:outputPixelBuffer:
+1b063d660: 350066e0    	cbnz	w0, 0x1b063e33c <__text+0x2740>
+1b063d664: f8746a60    	ldr	x0, [x19, x20]
+1b063d668: 95e77546    	bl	0x1b801ab80 <__text+0x79def84> ; SELECTOR process
+1b063d66c: 35006980    	cbnz	w0, 0x1b063e39c <__text+0x27a0>
+1b063d670: f8766a62    	ldr	x2, [x19, x22]
+1b063d674: aa1c03e0    	mov	x0, x28
+1b063d678: 95e79536    	bl	0x1b8022b50 <__text+0x79e6f54> ; SELECTOR setInputLearningTargetPixelBuffer:
+1b063d67c: f8746a60    	ldr	x0, [x19, x20]
+1b063d680: 95e77dbc    	bl	0x1b801cd70 <__text+0x79e1174> ; SELECTOR resetState
+1b063d684: 97fc7f44    	bl	0x1b055d394
+1b063d688: 54000181    	b.ne	0x1b063d6b8 <__text+0x1abc>
+1b063d68c: 97fc7ca1    	bl	0x1b055c910
+1b063d690: 910583e0    	add	x0, sp, #0x160
+1b063d694: 95ebbad7    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d698: 97fc8771    	bl	0x1b055f45c
+1b063d69c: 11016900    	add	w0, w8, #0x5a
+1b063d6a0: 97fc7fb6    	bl	0x1b055d578
+1b063d6a4: 14000005    	b	0x1b063d6b8 <__text+0x1abc>
+1b063d6a8: f94047e8    	ldr	x8, [sp, #0x88]
+1b063d6ac: f8686a62    	ldr	x2, [x19, x8]
+1b063d6b0: aa1c03e0    	mov	x0, x28
+1b063d6b4: 95e79527    	bl	0x1b8022b50 <__text+0x79e6f54> ; SELECTOR setInputLearningTargetPixelBuffer:
+1b063d6b8: f94027f4    	ldr	x20, [sp, #0x48]
+1b063d6bc: f9405be2    	ldr	x2, [sp, #0xb0]
+1b063d6c0: aa1c03e0    	mov	x0, x28
+1b063d6c4: 95e7960b    	bl	0x1b8022ef0 <__text+0x79e72f4> ; SELECTOR setInputUnstyledPixelBuffer:
+1b063d6c8: aa1c03e0    	mov	x0, x28
+1b063d6cc: d2800002    	mov	x2, #0x0                ; =0
+1b063d6d0: 95e7960c    	bl	0x1b8022f00 <__text+0x79e7304> ; SELECTOR setInputUnstyledThumbnailPixelBuffer:
+1b063d6d4: aa1c03e0    	mov	x0, x28
+1b063d6d8: d2800002    	mov	x2, #0x0                ; =0
+1b063d6dc: 95e79fa1    	bl	0x1b8025560 <__text+0x79e9964> ; SELECTOR setOutputTargetPixelBuffer:
+1b063d6e0: 97fc6b06    	bl	0x1b05582f8
+1b063d6e4: aa1b03e0    	mov	x0, x27
+1b063d6e8: 95e7168a    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063d6ec: aa1403e2    	mov	x2, x20
+1b063d6f0: 95e714cc    	bl	0x1b8002a20 <__text+0x79c6e24> ; SELECTOR isEqualToString:
+1b063d6f4: 34000140    	cbz	w0, 0x1b063d71c <__text+0x1b20>
+1b063d6f8: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d6fc: b989f508    	ldrsw	x8, [x8, #0x9f4]
+1b063d700: 8b080268    	add	x8, x19, x8
+1b063d704: f9400101    	ldr	x1, [x8]
+1b063d708: aa1b03e0    	mov	x0, x27
+1b063d70c: 940a5a8b    	bl	0x1b08d4138 <__text+0x29853c>
+1b063d710: 7124541f    	cmp	w0, #0x915
+1b063d714: 1a9f17f4    	cset	w20, eq
+1b063d718: 14000002    	b	0x1b063d720 <__text+0x1b24>
+1b063d71c: 52800014    	mov	w20, #0x0               ; =0
+1b063d720: f0185f88    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063d724: f946b908    	ldr	x8, [x8, #0xd70]
+1b063d728: f9400102    	ldr	x2, [x8] ; 0x27efe2b10 CFString 'ImageCircle'
+1b063d72c: aa1b03e0    	mov	x0, x27
+1b063d730: 95e71678    	bl	0x1b8003110 <__text+0x79c7514> ; SELECTOR objectForKeyedSubscript:
+1b063d734: b4000340    	cbz	x0, 0x1b063d79c <__text+0x1ba0>
+1b063d738: 34000334    	cbz	w20, 0x1b063d79c <__text+0x1ba0>
+1b063d73c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d740: b989dd08    	ldrsw	x8, [x8, #0x9dc]
+1b063d744: 97fc7727    	bl	0x1b055b3e0
+1b063d748: 540002a1    	b.ne	0x1b063d79c <__text+0x1ba0>
+1b063d74c: aa1c03e0    	mov	x0, x28
+1b063d750: 95e75a04    	bl	0x1b8013f60 <__text+0x79d8364> ; SELECTOR inputUnstyledThumbnailPixelBuffer
+1b063d754: aa0003f5    	mov	x21, x0
+1b063d758: b5000080    	cbnz	x0, 0x1b063d768 <__text+0x1b6c>
+1b063d75c: aa1c03e0    	mov	x0, x28
+1b063d760: 95e759fc    	bl	0x1b8013f50 <__text+0x79d8354> ; SELECTOR inputUnstyledPixelBuffer
+1b063d764: aa0003f5    	mov	x21, x0
+1b063d768: f8786a60    	ldr	x0, [x19, x24]
+1b063d76c: 95e7c291    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063d770: aa0003f4    	mov	x20, x0
+1b063d774: aa1c03e0    	mov	x0, x28
+1b063d778: 95e7598a    	bl	0x1b8013da0 <__text+0x79d81a4> ; SELECTOR inputLearningTargetPixelBuffer
+1b063d77c: 97fc681a    	bl	0x1b05577e4
+1b063d780: 95e72b60    	bl	0x1b8008500 <__text+0x79cc904> ; SELECTOR applyOctagonMirrorExtensionToPixelBuffer:
+1b063d784: 35005ae0    	cbnz	w0, 0x1b063e2e0 <__text+0x26e4>
+1b063d788: f8786a60    	ldr	x0, [x19, x24]
+1b063d78c: 95e7c289    	bl	0x1b802e1b0 <__text+0x79f25b4> ; SELECTOR utilities
+1b063d790: aa1503e2    	mov	x2, x21
+1b063d794: 95e72b5b    	bl	0x1b8008500 <__text+0x79cc904> ; SELECTOR applyOctagonMirrorExtensionToPixelBuffer:
+1b063d798: 35005c60    	cbnz	w0, 0x1b063e324 <__text+0x2728>
+1b063d79c: f8786a60    	ldr	x0, [x19, x24]
+1b063d7a0: 52800022    	mov	w2, #0x1                ; =1
+1b063d7a4: 95e772af    	bl	0x1b801a260 <__text+0x79de664> ; SELECTOR prepareToProcess:
+1b063d7a8: f8786a60    	ldr	x0, [x19, x24]
+1b063d7ac: aa1c03e2    	mov	x2, x28
+1b063d7b0: 95e79520    	bl	0x1b8022c30 <__text+0x79e7034> ; SELECTOR setInputOutput:
+1b063d7b4: 97fc7ef8    	bl	0x1b055d394
+1b063d7b8: 540000e1    	b.ne	0x1b063d7d4 <__text+0x1bd8>
+1b063d7bc: 97fc7c55    	bl	0x1b055c910
+1b063d7c0: 910583e0    	add	x0, sp, #0x160
+1b063d7c4: 95ebba8b    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d7c8: 97fc8725    	bl	0x1b055f45c
+1b063d7cc: 11017500    	add	w0, w8, #0x5d
+1b063d7d0: 97fc7f6a    	bl	0x1b055d578
+1b063d7d4: f8786a60    	ldr	x0, [x19, x24]
+1b063d7d8: 95e774ea    	bl	0x1b801ab80 <__text+0x79def84> ; SELECTOR process
+1b063d7dc: aa0003f5    	mov	x21, x0
+1b063d7e0: 97fc7eed    	bl	0x1b055d394
+1b063d7e4: 540000e1    	b.ne	0x1b063d800 <__text+0x1c04>
+1b063d7e8: 97fc7c4a    	bl	0x1b055c910
+1b063d7ec: 910583e0    	add	x0, sp, #0x160
+1b063d7f0: 95ebba80    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063d7f4: 97fc871a    	bl	0x1b055f45c
+1b063d7f8: 11017900    	add	w0, w8, #0x5e
+1b063d7fc: 97fc7f5f    	bl	0x1b055d578
+1b063d800: 35004f15    	cbnz	w21, 0x1b063e1e0 <__text+0x25e4>
+1b063d804: f85803b4    	ldur	x20, [x29, #-0x80]
+1b063d808: f0185f88    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063d80c: f947cd08    	ldr	x8, [x8, #0xf98]
+1b063d810: f9400115    	ldr	x21, [x8] ; 0x27efdf290 CFString 'SmartStyleGeometricDistortionCorrectionAppliedOnThisFrame'
+1b063d814: 97fc75f4    	bl	0x1b055afe4
+1b063d818: aa1a03e2    	mov	x2, x26
+1b063d81c: 95e7160d    	bl	0x1b8003050 <__text+0x79c7454> ; SELECTOR numberWithBool:
+1b063d820: 97fc67f1    	bl	0x1b05577e4
+1b063d824: aa1503e1    	mov	x1, x21
+1b063d828: 94013c2a    	bl	0x1b068c8d0 <__text+0x50cd4>
+1b063d82c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d830: b989cd08    	ldrsw	x8, [x8, #0x9cc]
+1b063d834: 97fc69c4    	bl	0x1b0557f44
+1b063d838: 95e7358a    	bl	0x1b800ae60 <__text+0x79cf264> ; SELECTOR commandQueue
+1b063d83c: 95e73585    	bl	0x1b800ae50 <__text+0x79cf254> ; SELECTOR commandBuffer
+1b063d840: b4003b20    	cbz	x0, 0x1b063dfa4 <__text+0x23a8>
+1b063d844: aa0003f5    	mov	x21, x0
+1b063d848: d01de4e2    	adrp	x2, 0x1ec2db000 <__text+0x3bc9f404>
+1b063d84c: 91030042    	add	x2, x2, #0xc0 ; 0x1ec2db0c0 CFString 'waitUntilScheduledForLearning'
+1b063d850: 95e79714    	bl	0x1b80234a0 <__text+0x79e78a4> ; SELECTOR setLabel:
+1b063d854: aa1503e0    	mov	x0, x21
+1b063d858: 95e7358a    	bl	0x1b800ae80 <__text+0x79cf284> ; SELECTOR commit
+1b063d85c: aa1503e0    	mov	x0, x21
+1b063d860: 95e7c508    	bl	0x1b802ec80 <__text+0x79f3084> ; SELECTOR waitUntilScheduled
+1b063d864: aa1903fa    	mov	x26, x25
+1b063d868: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d86c: b9896d15    	ldrsw	x21, [x8, #0x96c]
+1b063d870: 8b150260    	add	x0, x19, x21
+1b063d874: 95ebb343    	bl	0x1b812a580 <__text+0x7aee984>
+1b063d878: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d87c: b98a4d14    	ldrsw	x20, [x8, #0xa4c]
+1b063d880: 8b140268    	add	x8, x19, x20
+1b063d884: f9400100    	ldr	x0, [x8]
+1b063d888: b4000040    	cbz	x0, 0x1b063d890 <__text+0x1c94>
+1b063d88c: 95ebae15    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063d890: f85803a8    	ldur	x8, [x29, #-0x80]
+1b063d894: f8346a68    	str	x8, [x19, x20]
+1b063d898: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d89c: b98a1918    	ldrsw	x24, [x8, #0xa18]
+1b063d8a0: 8b180274    	add	x20, x19, x24
+1b063d8a4: f9400288    	ldr	x8, [x20]
+1b063d8a8: 95ebb29e    	bl	0x1b812a320 <__text+0x7aee724>
+1b063d8ac: f9404be8    	ldr	x8, [sp, #0x90]
+1b063d8b0: 95ebb300    	bl	0x1b812a4b0 <__text+0x7aee8b4>
+1b063d8b4: f9000280    	str	x0, [x20]
+1b063d8b8: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d8bc: b98a4519    	ldrsw	x25, [x8, #0xa44]
+1b063d8c0: 8b190268    	add	x8, x19, x25
+1b063d8c4: f9400108    	ldr	x8, [x8]
+1b063d8c8: 95ebb296    	bl	0x1b812a320 <__text+0x7aee724>
+1b063d8cc: f9404ffb    	ldr	x27, [sp, #0x98]
+1b063d8d0: b400013c    	cbz	x28, 0x1b063d8f4 <__text+0x1cf8>
+1b063d8d4: 97fc75c4    	bl	0x1b055afe4
+1b063d8d8: 95ebb1fe    	bl	0x1b812a0d0 <__text+0x7aee4d4>
+1b063d8dc: aa0003f4    	mov	x20, x0
+1b063d8e0: aa1c03e0    	mov	x0, x28
+1b063d8e4: 95e76cff    	bl	0x1b8018ce0 <__text+0x79dd0e4> ; SELECTOR outputSRLCurveParameter
+1b063d8e8: aa1403e0    	mov	x0, x20
+1b063d8ec: 95e75285    	bl	0x1b8012300 <__text+0x79d6704> ; SELECTOR initWithFloat:
+1b063d8f0: 14000002    	b	0x1b063d8f8 <__text+0x1cfc>
+1b063d8f4: d2800000    	mov	x0, #0x0                ; =0
+1b063d8f8: f8396a60    	str	x0, [x19, x25]
+1b063d8fc: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d900: b98a4914    	ldrsw	x20, [x8, #0xa48]
+1b063d904: 8b140276    	add	x22, x19, x20
+1b063d908: f94002c8    	ldr	x8, [x22]
+1b063d90c: 95ebb285    	bl	0x1b812a320 <__text+0x7aee724>
+1b063d910: aa1c03e0    	mov	x0, x28
+1b063d914: 95e76cf7    	bl	0x1b8018cf0 <__text+0x79dd0f4> ; SELECTOR outputSRLStats
+1b063d918: 95ebb28a    	bl	0x1b812a340 <__text+0x7aee744>
+1b063d91c: f90002c0    	str	x0, [x22]
+1b063d920: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d924: b98a7d08    	ldrsw	x8, [x8, #0xa7c]
+1b063d928: 8b080277    	add	x23, x19, x8
+1b063d92c: ad5303e1    	ldp	q1, q0, [sp, #0x260]
+1b063d930: ad0002e1    	stp	q1, q0, [x23]
+1b063d934: 8b150260    	add	x0, x19, x21
+1b063d938: 95ebb316    	bl	0x1b812a590 <__text+0x7aee994>
+1b063d93c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063d940: b9891908    	ldrsw	x8, [x8, #0x918]
+1b063d944: 97fc76a7    	bl	0x1b055b3e0
+1b063d948: 54000b01    	b.ne	0x1b063daa8 <__text+0x1eac>
+1b063d94c: f85803a0    	ldur	x0, [x29, #-0x80]
+1b063d950: f94037e1    	ldr	x1, [sp, #0x68]
+1b063d954: d2800002    	mov	x2, #0x0                ; =0
+1b063d958: 95ebb7fe    	bl	0x1b812b950 <__text+0x7aefd54>
+1b063d95c: b4004280    	cbz	x0, 0x1b063e1ac <__text+0x25b0>
+1b063d960: aa0003f6    	mov	x22, x0
+1b063d964: 8b150260    	add	x0, x19, x21
+1b063d968: 95ebb306    	bl	0x1b812a580 <__text+0x7aee984>
+1b063d96c: 6d4006e0    	ldp	d0, d1, [x23]
+1b063d970: 6d410ee2    	ldp	d2, d3, [x23, #0x10]
+1b063d974: 95ebb723    	bl	0x1b812b600 <__text+0x7aefa04>
+1b063d978: aa0003f7    	mov	x23, x0
+1b063d97c: f0185f88    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063d980: f947e108    	ldr	x8, [x8, #0xfc0]
+1b063d984: 97fc9129    	bl	0x1b0561e28
+1b063d988: aa1703e2    	mov	x2, x23
+1b063d98c: 95e7192d    	bl	0x1b8003e40 <__text+0x79c8244> ; SELECTOR setObject:forKeyedSubscript:
+1b063d990: f8796a62    	ldr	x2, [x19, x25]
+1b063d994: f0185f88    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063d998: f947fd08    	ldr	x8, [x8, #0xff8]
+1b063d99c: 97fc9123    	bl	0x1b0561e28
+1b063d9a0: 95e71928    	bl	0x1b8003e40 <__text+0x79c8244> ; SELECTOR setObject:forKeyedSubscript:
+1b063d9a4: f8746a62    	ldr	x2, [x19, x20]
+1b063d9a8: b50000c2    	cbnz	x2, 0x1b063d9c0 <__text+0x1dc4>
+1b063d9ac: b017d6c8    	adrp	x8, 0x1e0116000 <__text+0x2fada404>
+1b063d9b0: f9405d00    	ldr	x0, [x8, #0xb8]
+1b063d9b4: 95ebb21f    	bl	0x1b812a230 <__text+0x7aee634>
+1b063d9b8: 95ebb1d2    	bl	0x1b812a100 <__text+0x7aee504>
+1b063d9bc: aa0003e2    	mov	x2, x0
+1b063d9c0: 90185fa8    	adrp	x8, 0x1e1231000 <__text+0x30bf5404>
+1b063d9c4: f9400108    	ldr	x8, [x8]
+1b063d9c8: 97fc9118    	bl	0x1b0561e28
+1b063d9cc: 95e7191d    	bl	0x1b8003e40 <__text+0x79c8244> ; SELECTOR setObject:forKeyedSubscript:
+1b063d9d0: f8786a60    	ldr	x0, [x19, x24]
+1b063d9d4: 95e7111f    	bl	0x1b8001e50 <__text+0x79c6254> ; SELECTOR dictionaryRepresentation
+1b063d9d8: 95e71046    	bl	0x1b8001af0 <__text+0x79c5ef4> ; SELECTOR copy
+1b063d9dc: 95ebb1c9    	bl	0x1b812a100 <__text+0x7aee504>
+1b063d9e0: aa0003e2    	mov	x2, x0
+1b063d9e4: f0185f88    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063d9e8: f947e508    	ldr	x8, [x8, #0xfc8]
+1b063d9ec: 97fc910f    	bl	0x1b0561e28
+1b063d9f0: 95e71914    	bl	0x1b8003e40 <__text+0x79c8244> ; SELECTOR setObject:forKeyedSubscript:
+1b063d9f4: 97fc757c    	bl	0x1b055afe4
+1b063d9f8: f94017e8    	ldr	x8, [sp, #0x28]
+1b063d9fc: 39400102    	ldrb	w2, [x8]
+1b063da00: 95e71594    	bl	0x1b8003050 <__text+0x79c7454> ; SELECTOR numberWithBool:
+1b063da04: aa0003e2    	mov	x2, x0
+1b063da08: f0185f88    	adrp	x8, 0x1e1230000 <__text+0x30bf4404>
+1b063da0c: f947f508    	ldr	x8, [x8, #0xfe8]
+1b063da10: 97fc9106    	bl	0x1b0561e28
+1b063da14: 95e7190b    	bl	0x1b8003e40 <__text+0x79c8244> ; SELECTOR setObject:forKeyedSubscript:
+1b063da18: 95ebb22a    	bl	0x1b812a2c0 <__text+0x7aee6c4>
+1b063da1c: 8b150260    	add	x0, x19, x21
+1b063da20: 95ebb2dc    	bl	0x1b812a590 <__text+0x7aee994>
+1b063da24: 97fc7e5c    	bl	0x1b055d394
+1b063da28: aa1a03f9    	mov	x25, x26
+1b063da2c: 540000e1    	b.ne	0x1b063da48 <__text+0x1e4c>
+1b063da30: 97fc7bb8    	bl	0x1b055c910
+1b063da34: 910583e0    	add	x0, sp, #0x160
+1b063da38: 95ebb9ee    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063da3c: 97fc8688    	bl	0x1b055f45c
+1b063da40: 11019500    	add	w0, w8, #0x65
+1b063da44: 97fc7ecd    	bl	0x1b055d578
+1b063da48: f85803a2    	ldur	x2, [x29, #-0x80]
+1b063da4c: aa1303e0    	mov	x0, x19
+1b063da50: a9458fe4    	ldp	x4, x3, [sp, #0x58]
+1b063da54: 95e724b7    	bl	0x1b8006d30 <__text+0x79cb134> ; SELECTOR _updateISPSTENConfigurationsWithCoefficients:onPortType:onSynchronizedLearnedPortType:
+1b063da58: aa0003f5    	mov	x21, x0
+1b063da5c: 97fc7e4e    	bl	0x1b055d394
+1b063da60: f94077f8    	ldr	x24, [sp, #0xe8]
+1b063da64: 540000e1    	b.ne	0x1b063da80 <__text+0x1e84>
+1b063da68: 97fc7baa    	bl	0x1b055c910
+1b063da6c: 910583e0    	add	x0, sp, #0x160
+1b063da70: 95ebb9e0    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063da74: 97fc867a    	bl	0x1b055f45c
+1b063da78: 11019900    	add	w0, w8, #0x66
+1b063da7c: 97fc7ebf    	bl	0x1b055d578
+1b063da80: 34000195    	cbz	w21, 0x1b063dab0 <__text+0x1eb4>
+1b063da84: 97fc6bc7    	bl	0x1b05589a0
+1b063da88: 97fc6ed7    	bl	0x1b05595e4
+1b063da8c: b90003f5    	str	w21, [sp]
+1b063da90: 97fcce98    	bl	0x1b05714f0
+1b063da94: 52827c07    	mov	w7, #0x13e0             ; =5088
+1b063da98: 95ebbc9e    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063da9c: d2800017    	mov	x23, #0x0               ; =0
+1b063daa0: 5280001b    	mov	w27, #0x0               ; =0
+1b063daa4: 1400004e    	b	0x1b063dbdc <__text+0x1fe0>
+1b063daa8: aa1a03f9    	mov	x25, x26
+1b063daac: f94077f8    	ldr	x24, [sp, #0xe8]
+1b063dab0: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063dab4: b9897114    	ldrsw	x20, [x8, #0x970]
+1b063dab8: 8b140260    	add	x0, x19, x20
+1b063dabc: 95ebb2b1    	bl	0x1b812a580 <__text+0x7aee984>
+1b063dac0: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063dac4: b9896d15    	ldrsw	x21, [x8, #0x96c]
+1b063dac8: 8b150260    	add	x0, x19, x21
+1b063dacc: 95ebb2ad    	bl	0x1b812a580 <__text+0x7aee984>
+1b063dad0: f01a6176    	adrp	x22, 0x1e526c000 <__text+0x34c30404>
+1b063dad4: f9407fe8    	ldr	x8, [sp, #0xf8]
+1b063dad8: b4000288    	cbz	x8, 0x1b063db28 <__text+0x1f2c>
+1b063dadc: 37000119    	tbnz	w25, #0x0, 0x1b063dafc <__text+0x1f00>
+1b063dae0: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063dae4: b9894108    	ldrsw	x8, [x8, #0x940]
+1b063dae8: 97fc691a    	bl	0x1b0557f50
+1b063daec: 36000088    	tbz	w8, #0x0, 0x1b063dafc <__text+0x1f00>
+1b063daf0: f9405fe8    	ldr	x8, [sp, #0xb8]
+1b063daf4: b5000208    	cbnz	x8, 0x1b063db34 <__text+0x1f38>
+1b063daf8: 1400001e    	b	0x1b063db70 <__text+0x1f74>
+1b063dafc: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063db00: b98a5117    	ldrsw	x23, [x8, #0xa50]
+1b063db04: 97fc8521    	bl	0x1b055ef88
+1b063db08: b4000060    	cbz	x0, 0x1b063db14 <__text+0x1f18>
+1b063db0c: 95ebad75    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063db10: f8376a7f    	str	xzr, [x19, x23]
+1b063db14: f9407fe0    	ldr	x0, [sp, #0xf8]
+1b063db18: 95ebad76    	bl	0x1b81290f0 <__text+0x7aed4f4>
+1b063db1c: 97fca8bb    	bl	0x1b0567e08
+1b063db20: 32000129    	orr	w9, w9, #0x1
+1b063db24: 39000109    	strb	w9, [x8]
+1b063db28: f9405fe8    	ldr	x8, [sp, #0xb8]
+1b063db2c: b4000228    	cbz	x8, 0x1b063db70 <__text+0x1f74>
+1b063db30: 370000b9    	tbnz	w25, #0x0, 0x1b063db44 <__text+0x1f48>
+1b063db34: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063db38: b9894908    	ldrsw	x8, [x8, #0x948]
+1b063db3c: 97fc6905    	bl	0x1b0557f50
+1b063db40: 37000188    	tbnz	w8, #0x0, 0x1b063db70 <__text+0x1f74>
+1b063db44: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063db48: b98a5517    	ldrsw	x23, [x8, #0xa54]
+1b063db4c: 97fc850f    	bl	0x1b055ef88
+1b063db50: b4000060    	cbz	x0, 0x1b063db5c <__text+0x1f60>
+1b063db54: 95ebad63    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063db58: f8376a7f    	str	xzr, [x19, x23]
+1b063db5c: f9405fe0    	ldr	x0, [sp, #0xb8]
+1b063db60: 95ebad64    	bl	0x1b81290f0 <__text+0x7aed4f4>
+1b063db64: 97fca8a9    	bl	0x1b0567e08
+1b063db68: 321f0129    	orr	w9, w9, #0x2
+1b063db6c: 39000109    	strb	w9, [x8]
+1b063db70: b400023b    	cbz	x27, 0x1b063dbb4 <__text+0x1fb8>
+1b063db74: 370000b9    	tbnz	w25, #0x0, 0x1b063db88 <__text+0x1f8c>
+1b063db78: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063db7c: b9894508    	ldrsw	x8, [x8, #0x944]
+1b063db80: 97fc68f4    	bl	0x1b0557f50
+1b063db84: 37000208    	tbnz	w8, #0x0, 0x1b063dbc4 <__text+0x1fc8>
+1b063db88: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063db8c: b98a5917    	ldrsw	x23, [x8, #0xa58]
+1b063db90: 97fc84fe    	bl	0x1b055ef88
+1b063db94: b4000060    	cbz	x0, 0x1b063dba0 <__text+0x1fa4>
+1b063db98: 95ebad52    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063db9c: f8376a7f    	str	xzr, [x19, x23]
+1b063dba0: aa1b03e0    	mov	x0, x27
+1b063dba4: 95ebad53    	bl	0x1b81290f0 <__text+0x7aed4f4>
+1b063dba8: 97fca898    	bl	0x1b0567e08
+1b063dbac: 321e0129    	orr	w9, w9, #0x4
+1b063dbb0: 39000109    	strb	w9, [x8]
+1b063dbb4: 34000099    	cbz	w25, 0x1b063dbc4 <__text+0x1fc8>
+1b063dbb8: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063dbbc: b98a8d08    	ldrsw	x8, [x8, #0xa8c]
+1b063dbc0: 97fc93fa    	bl	0x1b0562ba8
+1b063dbc4: 8b150260    	add	x0, x19, x21
+1b063dbc8: 95ebb272    	bl	0x1b812a590 <__text+0x7aee994>
+1b063dbcc: 8b140260    	add	x0, x19, x20
+1b063dbd0: 95ebb270    	bl	0x1b812a590 <__text+0x7aee994>
+1b063dbd4: d2800017    	mov	x23, #0x0               ; =0
+1b063dbd8: 5280003b    	mov	w27, #0x1               ; =1
+1b063dbdc: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063dbe0: f94053f4    	ldr	x20, [sp, #0xa0]
+1b063dbe4: f85183a0    	ldur	x0, [x29, #-0xe8]
+1b063dbe8: b4000040    	cbz	x0, 0x1b063dbf0 <__text+0x1ff4>
+1b063dbec: 95ebad3d    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dbf0: f85103a0    	ldur	x0, [x29, #-0xf0]
+1b063dbf4: b4000040    	cbz	x0, 0x1b063dbfc <__text+0x2000>
+1b063dbf8: 95ebad3a    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dbfc: b4000077    	cbz	x23, 0x1b063dc08 <__text+0x200c>
+1b063dc00: aa1703e0    	mov	x0, x23
+1b063dc04: 95ebad37    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dc08: b4000078    	cbz	x24, 0x1b063dc14 <__text+0x2018>
+1b063dc0c: aa1803e0    	mov	x0, x24
+1b063dc10: 95ebad34    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dc14: f94073e0    	ldr	x0, [sp, #0xe0]
+1b063dc18: b4000040    	cbz	x0, 0x1b063dc20 <__text+0x2024>
+1b063dc1c: 95ebad31    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dc20: f94067e0    	ldr	x0, [sp, #0xc8]
+1b063dc24: b4000040    	cbz	x0, 0x1b063dc2c <__text+0x2030>
+1b063dc28: 95ebad2e    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dc2c: f9406be8    	ldr	x8, [sp, #0xd0]
+1b063dc30: b4000068    	cbz	x8, 0x1b063dc3c <__text+0x2040>
+1b063dc34: f9406be0    	ldr	x0, [sp, #0xd0]
+1b063dc38: 95ebad2a    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dc3c: 95ebb195    	bl	0x1b812a290 <__text+0x7aee694>
+1b063dc40: 95ebb19c    	bl	0x1b812a2b0 <__text+0x7aee6b4>
+1b063dc44: 95ebb1b3    	bl	0x1b812a310 <__text+0x7aee714>
+1b063dc48: 370001db    	tbnz	w27, #0x0, 0x1b063dc80 <__text+0x2084>
+1b063dc4c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063dc50: b9896d14    	ldrsw	x20, [x8, #0x96c]
+1b063dc54: 8b140260    	add	x0, x19, x20
+1b063dc58: 95ebb24a    	bl	0x1b812a580 <__text+0x7aee984>
+1b063dc5c: f01a6168    	adrp	x8, 0x1e526c000 <__text+0x34c30404>
+1b063dc60: b98a4d15    	ldrsw	x21, [x8, #0xa4c]
+1b063dc64: 8b150268    	add	x8, x19, x21
+1b063dc68: f9400100    	ldr	x0, [x8]
+1b063dc6c: b4000060    	cbz	x0, 0x1b063dc78 <__text+0x207c>
+1b063dc70: 95ebad1c    	bl	0x1b81290e0 <__text+0x7aed4e4>
+1b063dc74: f8356a7f    	str	xzr, [x19, x21]
+1b063dc78: 8b140260    	add	x0, x19, x20
+1b063dc7c: 95ebb245    	bl	0x1b812a590 <__text+0x7aee994>
+1b063dc80: 97fc7dc5    	bl	0x1b055d394
+1b063dc84: 540001c1    	b.ne	0x1b063dcbc <__text+0x20c0>
+1b063dc88: 5280a3a8    	mov	w8, #0x51d              ; =1309
+1b063dc8c: 72a62028    	movk	w8, #0x3101, lsl #16
+1b063dc90: 11016509    	add	w9, w8, #0x59
+1b063dc94: 7100033f    	cmp	w25, #0x0
+1b063dc98: 1a881533    	csinc	w19, w9, w8, ne
+1b063dc9c: 97fc7b1d    	bl	0x1b055c910
+1b063dca0: 910583e0    	add	x0, sp, #0x160
+1b063dca4: 95ebb953    	bl	0x1b812c1f0 <__text+0x7af05f4>
+1b063dca8: 97fd3ff1    	bl	0x1b058dc6c
+1b063dcac: aa1303e0    	mov	x0, x19
+1b063dcb0: d2800003    	mov	x3, #0x0                ; =0
+1b063dcb4: d2800004    	mov	x4, #0x0                ; =0
+1b063dcb8: 95ebc47e    	bl	0x1b812eeb0 <__text+0x7af32b4>
+1b063dcbc: 910c43ff    	add	sp, sp, #0x310
+1b063dcc0: a9477bfd    	ldp	x29, x30, [sp, #0x70]
+1b063dcc4: a9464ff4    	ldp	x20, x19, [sp, #0x60]
+1b063dcc8: a94557f6    	ldp	x22, x21, [sp, #0x50]
+1b063dccc: a9445ff8    	ldp	x24, x23, [sp, #0x40]
+1b063dcd0: a94367fa    	ldp	x26, x25, [sp, #0x30]
+1b063dcd4: a9426ffc    	ldp	x28, x27, [sp, #0x20]
+1b063dcd8: 6d4123e9    	ldp	d9, d8, [sp, #0x10]
+1b063dcdc: 6cc82beb    	ldp	d11, d10, [sp], #0x80
+1b063dce0: d65f0fff    	retab
+1b063dce4: b9400e88    	ldr	w8, [x20, #0xc]
+1b063dce8: b90107e8    	str	w8, [sp, #0x104]
+1b063dcec: f9400a88    	ldr	x8, [x20, #0x10]
+1b063dcf0: f90087e8    	str	x8, [sp, #0x108]
+1b063dcf4: 97fc6b2b    	bl	0x1b05589a0
+1b063dcf8: aa0003e1    	mov	x1, x0
+1b063dcfc: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dd00: 97fc7705    	bl	0x1b055b914
+1b063dd04: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063dd08: 91073063    	add	x3, x3, #0x1cc ; 0x1b0da61cc cstring 'inputSmartStyleContainerSampleBuffer'
+1b063dd0c: 97fcb5e4    	bl	0x1b056b49c
+1b063dd10: 528218e7    	mov	w7, #0x10c7             ; =4295
+1b063dd14: 1400000d    	b	0x1b063dd48 <__text+0x214c>
+1b063dd18: 97fd3b26    	bl	0x1b058c9b0
+1b063dd1c: d2800017    	mov	x23, #0x0               ; =0
+1b063dd20: f9006bff    	str	xzr, [sp, #0xd0]
+1b063dd24: 1400004d    	b	0x1b063de58 <__text+0x225c>
+1b063dd28: 97fc6b1e    	bl	0x1b05589a0
+1b063dd2c: aa0003e1    	mov	x1, x0
+1b063dd30: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dd34: 97fc76f8    	bl	0x1b055b914
+1b063dd38: f0003ae3    	adrp	x3, 0x1b0d9c000 <__text+0x760404>
+1b063dd3c: 91332063    	add	x3, x3, #0xcc8 ; 0x1b0d9ccc8 cstring 'inputMetadataDict'
+1b063dd40: 97fcb5d7    	bl	0x1b056b49c
+1b063dd44: 528219e7    	mov	w7, #0x10cf             ; =4303
+1b063dd48: 95ebbbf2    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063dd4c: 97fc6761    	bl	0x1b0557ad0
+1b063dd50: 17ffffa5    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063dd54: 97fc6b13    	bl	0x1b05589a0
+1b063dd58: aa0003e1    	mov	x1, x0
+1b063dd5c: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dd60: 97fc76ed    	bl	0x1b055b914
+1b063dd64: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063dd68: 9107c463    	add	x3, x3, #0x1f1 ; 0x1b0da61f1 cstring 'styleToLearn'
+1b063dd6c: 97fcb5cc    	bl	0x1b056b49c
+1b063dd70: 52821a27    	mov	w7, #0x10d1             ; =4305
+1b063dd74: 95ebbbe7    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063dd78: 97fc6756    	bl	0x1b0557ad0
+1b063dd7c: 1400010a    	b	0x1b063e1a4 <__text+0x25a8>
+1b063dd80: 97fc6b08    	bl	0x1b05589a0
+1b063dd84: aa0003e1    	mov	x1, x0
+1b063dd88: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dd8c: 97fc76e2    	bl	0x1b055b914
+1b063dd90: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063dd94: 91084063    	add	x3, x3, #0x210 ; 0x1b0da6210 cstring 'inputUnstyledThumbnailPixelBuffer'
+1b063dd98: 97fcb5c1    	bl	0x1b056b49c
+1b063dd9c: 52821e87    	mov	w7, #0x10f4             ; =4340
+1b063dda0: 95ebbbdc    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063dda4: 97fc674b    	bl	0x1b0557ad0
+1b063dda8: 5280001b    	mov	w27, #0x0               ; =0
+1b063ddac: b940abf9    	ldr	w25, [sp, #0xa8]
+1b063ddb0: 14000015    	b	0x1b063de04 <__text+0x2208>
+1b063ddb4: 97fc6afb    	bl	0x1b05589a0
+1b063ddb8: aa0003e1    	mov	x1, x0
+1b063ddbc: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063ddc0: 97fc76d5    	bl	0x1b055b914
+1b063ddc4: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063ddc8: 91095c63    	add	x3, x3, #0x257 ; 0x1b0da6257 cstring 'inputLinearThumbnailPixelBuffer'
+1b063ddcc: 97fcb5b4    	bl	0x1b056b49c
+1b063ddd0: 52822bc7    	mov	w7, #0x115e             ; =4446
+1b063ddd4: 14000049    	b	0x1b063def8 <__text+0x22fc>
+1b063ddd8: 97fc6af2    	bl	0x1b05589a0
+1b063dddc: aa0003e1    	mov	x1, x0
+1b063dde0: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dde4: 97fc76cc    	bl	0x1b055b914
+1b063dde8: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063ddec: 9107f863    	add	x3, x3, #0x1fe ; 0x1b0da61fe cstring 'preLTMPixelBuffer'
+1b063ddf0: 97fcb5ab    	bl	0x1b056b49c
+1b063ddf4: 52821bc7    	mov	w7, #0x10de             ; =4318
+1b063ddf8: 95ebbbc6    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063ddfc: 97fc6735    	bl	0x1b0557ad0
+1b063de00: 5280001b    	mov	w27, #0x0               ; =0
+1b063de04: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063de08: 17ffff77    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063de0c: 97fc7324    	bl	0x1b055aa9c
+1b063de10: 97fc6df5    	bl	0x1b05595e4
+1b063de14: b90003f5    	str	w21, [sp]
+1b063de18: 97fccdb6    	bl	0x1b05714f0
+1b063de1c: 52821e07    	mov	w7, #0x10f0             ; =4336
+1b063de20: 95ebbbbc    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063de24: 97fc672b    	bl	0x1b0557ad0
+1b063de28: 5280001b    	mov	w27, #0x0               ; =0
+1b063de2c: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063de30: aa1a03f9    	mov	x25, x26
+1b063de34: 17ffff6c    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063de38: 97fc7319    	bl	0x1b055aa9c
+1b063de3c: 97fc6dea    	bl	0x1b05595e4
+1b063de40: b90003f5    	str	w21, [sp]
+1b063de44: 97fccdab    	bl	0x1b05714f0
+1b063de48: 52824407    	mov	w7, #0x1220             ; =4640
+1b063de4c: 95ebbbb1    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063de50: d280001c    	mov	x28, #0x0               ; =0
+1b063de54: d2800017    	mov	x23, #0x0               ; =0
+1b063de58: 5280001b    	mov	w27, #0x0               ; =0
+1b063de5c: f94077f8    	ldr	x24, [sp, #0xe8]
+1b063de60: 17ffff61    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063de64: 97fc6acf    	bl	0x1b05589a0
+1b063de68: aa0003e1    	mov	x1, x0
+1b063de6c: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063de70: 97fc76a9    	bl	0x1b055b914
+1b063de74: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063de78: 910b1463    	add	x3, x3, #0x2c5 ; 0x1b0da62c5 cstring 'croppedAndScaledMasks'
+1b063de7c: 97fcb588    	bl	0x1b056b49c
+1b063de80: 52823987    	mov	w7, #0x11cc             ; =4556
+1b063de84: 95ebbba3    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063de88: 97fd3aca    	bl	0x1b058c9b0
+1b063de8c: 1400009f    	b	0x1b063e108 <__text+0x250c>
+1b063de90: 97fc6ac4    	bl	0x1b05589a0
+1b063de94: aa0003e1    	mov	x1, x0
+1b063de98: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063de9c: 97fc769e    	bl	0x1b055b914
+1b063dea0: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063dea4: 9108c863    	add	x3, x3, #0x232 ; 0x1b0da6232 cstring 'inputUnstyledIntermediatePixelBuffer'
+1b063dea8: 97fcb57d    	bl	0x1b056b49c
+1b063deac: 52822007    	mov	w7, #0x1100             ; =4352
+1b063deb0: 95ebbb98    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063deb4: 97fd0b90    	bl	0x1b0580cf4
+1b063deb8: f90073ff    	str	xzr, [sp, #0xe0]
+1b063debc: 140000df    	b	0x1b063e238 <__text+0x263c>
+1b063dec0: 97fc6ab8    	bl	0x1b05589a0
+1b063dec4: aa0003e1    	mov	x1, x0
+1b063dec8: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063decc: 97fc7692    	bl	0x1b055b914
+1b063ded0: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063ded4: 91051463    	add	x3, x3, #0x145 ; 0x1b0da6145 cstring 'inputLTMThumbnailPixelBuffer'
+1b063ded8: 97fcb571    	bl	0x1b056b49c
+1b063dedc: 528222a7    	mov	w7, #0x1115             ; =4373
+1b063dee0: 140000d4    	b	0x1b063e230 <__text+0x2634>
+1b063dee4: 97fc6aaf    	bl	0x1b05589a0
+1b063dee8: 97fc6dbf    	bl	0x1b05595e4
+1b063deec: b90003f5    	str	w21, [sp]
+1b063def0: 97fccd80    	bl	0x1b05714f0
+1b063def4: 52822a07    	mov	w7, #0x1150             ; =4432
+1b063def8: 95ebbb86    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063defc: 97fd0b7e    	bl	0x1b0580cf4
+1b063df00: 140000e5    	b	0x1b063e294 <__text+0x2698>
+1b063df04: 97fc6aa7    	bl	0x1b05589a0
+1b063df08: aa0003e1    	mov	x1, x0
+1b063df0c: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063df10: 97fc7681    	bl	0x1b055b914
+1b063df14: b0003963    	adrp	x3, 0x1b0d6a000 <__text+0x72e404>
+1b063df18: 9105d463    	add	x3, x3, #0x175 ; 0x1b0d6a175 cstring 'commandBuffer'
+1b063df1c: 97fcb560    	bl	0x1b056b49c
+1b063df20: 52827d27    	mov	w7, #0x13e9             ; =5097
+1b063df24: 14000077    	b	0x1b063e100 <__text+0x2504>
+1b063df28: 97fc6a9e    	bl	0x1b05589a0
+1b063df2c: aa0003e1    	mov	x1, x0
+1b063df30: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063df34: 97fc7678    	bl	0x1b055b914
+1b063df38: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063df3c: 910cd863    	add	x3, x3, #0x336
+1b063df40: 97fcb557    	bl	0x1b056b49c
+1b063df44: 52823ea7    	mov	w7, #0x11f5             ; =4597
+1b063df48: 95ebbb72    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063df4c: 14000094    	b	0x1b063e19c <__text+0x25a0>
+1b063df50: 97fc6a94    	bl	0x1b05589a0
+1b063df54: aa0003e1    	mov	x1, x0
+1b063df58: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063df5c: 97fc766e    	bl	0x1b055b914
+1b063df60: f0003ae3    	adrp	x3, 0x1b0d9c000 <__text+0x760404>
+1b063df64: 91355c63    	add	x3, x3, #0xd57 ; 0x1b0d9cd57 cstring 'inputOutput'
+1b063df68: 97fcb54d    	bl	0x1b056b49c
+1b063df6c: 52825bc7    	mov	w7, #0x12de             ; =4830
+1b063df70: 14000015    	b	0x1b063dfc4 <__text+0x23c8>
+1b063df74: 97fc6a8b    	bl	0x1b05589a0
+1b063df78: 97fc6d9b    	bl	0x1b05595e4
+1b063df7c: b90003f5    	str	w21, [sp]
+1b063df80: 97fccd5c    	bl	0x1b05714f0
+1b063df84: 52826327    	mov	w7, #0x1319             ; =4889
+1b063df88: 1400000f    	b	0x1b063dfc4 <__text+0x23c8>
+1b063df8c: 97fc6a85    	bl	0x1b05589a0
+1b063df90: 97fc6d95    	bl	0x1b05595e4
+1b063df94: b90003f5    	str	w21, [sp]
+1b063df98: 97fccd56    	bl	0x1b05714f0
+1b063df9c: 52826467    	mov	w7, #0x1323             ; =4899
+1b063dfa0: 14000009    	b	0x1b063dfc4 <__text+0x23c8>
+1b063dfa4: 97fc6a7f    	bl	0x1b05589a0
+1b063dfa8: aa0003e1    	mov	x1, x0
+1b063dfac: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dfb0: 97fc7659    	bl	0x1b055b914
+1b063dfb4: b0003963    	adrp	x3, 0x1b0d6a000 <__text+0x72e404>
+1b063dfb8: 9105d463    	add	x3, x3, #0x175 ; 0x1b0d6a175 cstring 'commandBuffer'
+1b063dfbc: 97fcb538    	bl	0x1b056b49c
+1b063dfc0: 528274c7    	mov	w7, #0x13a6             ; =5030
+1b063dfc4: 95ebbb53    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063dfc8: 140000d4    	b	0x1b063e318 <__text+0x271c>
+1b063dfcc: 97fc6a75    	bl	0x1b05589a0
+1b063dfd0: aa0003e1    	mov	x1, x0
+1b063dfd4: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dfd8: 97fc764f    	bl	0x1b055b914
+1b063dfdc: b0003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063dfe0: 910e6863    	add	x3, x3, #0x39a ; 0x1b0da639a cstring '_targetPixelBufferWithSmartStyleApplied'
+1b063dfe4: 97fcb52e    	bl	0x1b056b49c
+1b063dfe8: 52825347    	mov	w7, #0x129a             ; =4762
+1b063dfec: 140000c9    	b	0x1b063e310 <__text+0x2714>
+1b063dff0: 97fc6a6c    	bl	0x1b05589a0
+1b063dff4: aa0003e1    	mov	x1, x0
+1b063dff8: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063dffc: 97fc7646    	bl	0x1b055b914
+1b063e000: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e004: 91058863    	add	x3, x3, #0x162 ; 0x1b0da6162 cstring 'inputUnstyledPixelBufferForThumbnail'
+1b063e008: 97fcb525    	bl	0x1b056b49c
+1b063e00c: 528224e7    	mov	w7, #0x1127             ; =4391
+1b063e010: 95ebbb40    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e014: d2800014    	mov	x20, #0x0               ; =0
+1b063e018: d2800017    	mov	x23, #0x0               ; =0
+1b063e01c: a90cffff    	stp	xzr, xzr, [sp, #0xc8]
+1b063e020: 5280003b    	mov	w27, #0x1               ; =1
+1b063e024: 14000086    	b	0x1b063e23c <__text+0x2640>
+1b063e028: 97fc6a5e    	bl	0x1b05589a0
+1b063e02c: aa0003e1    	mov	x1, x0
+1b063e030: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e034: 97fc7638    	bl	0x1b055b914
+1b063e038: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e03c: 9109dc63    	add	x3, x3, #0x277 ; 0x1b0da6277 cstring 'inputWeightSegmentMapPixelBuffer'
+1b063e040: 97fcb517    	bl	0x1b056b49c
+1b063e044: 52823587    	mov	w7, #0x11ac             ; =4524
+1b063e048: 1400008f    	b	0x1b063e284 <__text+0x2688>
+1b063e04c: 97fc6a55    	bl	0x1b05589a0
+1b063e050: 97fc6d65    	bl	0x1b05595e4
+1b063e054: b90003f5    	str	w21, [sp]
+1b063e058: 97fccd26    	bl	0x1b05714f0
+1b063e05c: 52822907    	mov	w7, #0x1148             ; =4424
+1b063e060: 14000074    	b	0x1b063e230 <__text+0x2634>
+1b063e064: 97fc6a4f    	bl	0x1b05589a0
+1b063e068: aa0003e1    	mov	x1, x0
+1b063e06c: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e070: 97fc7629    	bl	0x1b055b914
+1b063e074: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e078: 91051463    	add	x3, x3, #0x145 ; 0x1b0da6145 cstring 'inputLTMThumbnailPixelBuffer'
+1b063e07c: 97fcb508    	bl	0x1b056b49c
+1b063e080: 52822d07    	mov	w7, #0x1168             ; =4456
+1b063e084: 14000080    	b	0x1b063e284 <__text+0x2688>
+1b063e088: 97fc6a46    	bl	0x1b05589a0
+1b063e08c: aa0003e1    	mov	x1, x0
+1b063e090: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e094: 97fc7620    	bl	0x1b055b914
+1b063e098: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e09c: 910b6c63    	add	x3, x3, #0x2db ; 0x1b0da62db cstring 'vmRefinerInputPixelBuffer'
+1b063e0a0: 97fcb4ff    	bl	0x1b056b49c
+1b063e0a4: 52823ac7    	mov	w7, #0x11d6             ; =4566
+1b063e0a8: 1400003a    	b	0x1b063e190 <__text+0x2594>
+1b063e0ac: 97fc6a3d    	bl	0x1b05589a0
+1b063e0b0: 97fc6d4d    	bl	0x1b05595e4
+1b063e0b4: b90003f5    	str	w21, [sp]
+1b063e0b8: 97fccd0e    	bl	0x1b05714f0
+1b063e0bc: 52823b67    	mov	w7, #0x11db             ; =4571
+1b063e0c0: 14000034    	b	0x1b063e190 <__text+0x2594>
+1b063e0c4: 97fc6a37    	bl	0x1b05589a0
+1b063e0c8: aa0003e1    	mov	x1, x0
+1b063e0cc: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e0d0: 97fc7611    	bl	0x1b055b914
+1b063e0d4: 90003963    	adrp	x3, 0x1b0d6a000 <__text+0x72e404>
+1b063e0d8: 9105d463    	add	x3, x3, #0x175 ; 0x1b0d6a175 cstring 'commandBuffer'
+1b063e0dc: 97fcb4f0    	bl	0x1b056b49c
+1b063e0e0: 52823c47    	mov	w7, #0x11e2             ; =4578
+1b063e0e4: 1400002b    	b	0x1b063e190 <__text+0x2594>
+1b063e0e8: aa0003f7    	mov	x23, x0
+1b063e0ec: 97fc6a2d    	bl	0x1b05589a0
+1b063e0f0: 97fc6d3d    	bl	0x1b05595e4
+1b063e0f4: b90003f7    	str	w23, [sp]
+1b063e0f8: 97fcccfe    	bl	0x1b05714f0
+1b063e0fc: 52824567    	mov	w7, #0x122b             ; =4651
+1b063e100: 95ebbb04    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e104: d280001c    	mov	x28, #0x0               ; =0
+1b063e108: d2800017    	mov	x23, #0x0               ; =0
+1b063e10c: 14000062    	b	0x1b063e294 <__text+0x2698>
+1b063e110: 97fc7263    	bl	0x1b055aa9c
+1b063e114: 97fc6d34    	bl	0x1b05595e4
+1b063e118: b90003f5    	str	w21, [sp]
+1b063e11c: 97fcccf5    	bl	0x1b05714f0
+1b063e120: 52823d47    	mov	w7, #0x11ea             ; =4586
+1b063e124: 1400001b    	b	0x1b063e190 <__text+0x2594>
+1b063e128: 97fc6a1e    	bl	0x1b05589a0
+1b063e12c: 97fc6d2e    	bl	0x1b05595e4
+1b063e130: b90003f5    	str	w21, [sp]
+1b063e134: 97fcccef    	bl	0x1b05714f0
+1b063e138: 52824f87    	mov	w7, #0x127c             ; =4732
+1b063e13c: 95ebbaf5    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e140: d280001c    	mov	x28, #0x0               ; =0
+1b063e144: d2800017    	mov	x23, #0x0               ; =0
+1b063e148: 5280001b    	mov	w27, #0x0               ; =0
+1b063e14c: 52800028    	mov	w8, #0x1                ; =1
+1b063e150: b900dfe8    	str	w8, [sp, #0xdc]
+1b063e154: 14000095    	b	0x1b063e3a8 <__text+0x27ac>
+1b063e158: 97fc7251    	bl	0x1b055aa9c
+1b063e15c: 97fc6d22    	bl	0x1b05595e4
+1b063e160: b90003f5    	str	w21, [sp]
+1b063e164: 97fccce3    	bl	0x1b05714f0
+1b063e168: 52823da7    	mov	w7, #0x11ed             ; =4589
+1b063e16c: 14000009    	b	0x1b063e190 <__text+0x2594>
+1b063e170: 97fc6a0c    	bl	0x1b05589a0
+1b063e174: aa0003e1    	mov	x1, x0
+1b063e178: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e17c: 97fc75e6    	bl	0x1b055b914
+1b063e180: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e184: 910c5063    	add	x3, x3, #0x314 ; 0x1b0da6314 cstring 'vmRefinerIntermediateSampleBuffer'
+1b063e188: 97fcb4c5    	bl	0x1b056b49c
+1b063e18c: 52823dc7    	mov	w7, #0x11ee             ; =4590
+1b063e190: 95ebbae0    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e194: d2800014    	mov	x20, #0x0               ; =0
+1b063e198: f9407bf6    	ldr	x22, [sp, #0xf0]
+1b063e19c: f94077f8    	ldr	x24, [sp, #0xe8]
+1b063e1a0: d280001c    	mov	x28, #0x0               ; =0
+1b063e1a4: 5280001b    	mov	w27, #0x0               ; =0
+1b063e1a8: 17fffe8f    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063e1ac: 97fc69fd    	bl	0x1b05589a0
+1b063e1b0: aa0003e1    	mov	x1, x0
+1b063e1b4: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e1b8: 97fc75d7    	bl	0x1b055b914
+1b063e1bc: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e1c0: 91101463    	add	x3, x3, #0x405 ; 0x1b0da6405 cstring 'outputCoefficientsSampleBufferMetadataDict'
+1b063e1c4: 97fcb4b6    	bl	0x1b056b49c
+1b063e1c8: 52827a27    	mov	w7, #0x13d1             ; =5073
+1b063e1cc: 95ebbad1    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e1d0: d2800017    	mov	x23, #0x0               ; =0
+1b063e1d4: 5280001b    	mov	w27, #0x0               ; =0
+1b063e1d8: aa1a03f9    	mov	x25, x26
+1b063e1dc: 14000073    	b	0x1b063e3a8 <__text+0x27ac>
+1b063e1e0: 97fc69f0    	bl	0x1b05589a0
+1b063e1e4: 97fc6d00    	bl	0x1b05595e4
+1b063e1e8: b90003f5    	str	w21, [sp]
+1b063e1ec: 97fcccc1    	bl	0x1b05714f0
+1b063e1f0: 52827367    	mov	w7, #0x139b             ; =5019
+1b063e1f4: 14000069    	b	0x1b063e398 <__text+0x279c>
+1b063e1f8: 97fc69ea    	bl	0x1b05589a0
+1b063e1fc: aa0003e1    	mov	x1, x0
+1b063e200: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e204: 97fc75c4    	bl	0x1b055b914
+1b063e208: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e20c: 910f0863    	add	x3, x3, #0x3c2 ; 0x1b0da63c2 cstring '_targetPixelBufferWithTextureApplied'
+1b063e210: 97fcb4a3    	bl	0x1b056b49c
+1b063e214: 52825507    	mov	w7, #0x12a8             ; =4776
+1b063e218: 1400003e    	b	0x1b063e310 <__text+0x2714>
+1b063e21c: 97fc7220    	bl	0x1b055aa9c
+1b063e220: 97fc6cf1    	bl	0x1b05595e4
+1b063e224: b90003f5    	str	w21, [sp]
+1b063e228: 97fcccb2    	bl	0x1b05714f0
+1b063e22c: 528225c7    	mov	w7, #0x112e             ; =4398
+1b063e230: 95ebbab8    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e234: 97fd0ab0    	bl	0x1b0580cf4
+1b063e238: 5280001b    	mov	w27, #0x0               ; =0
+1b063e23c: b940abf9    	ldr	w25, [sp, #0xa8]
+1b063e240: 14000016    	b	0x1b063e298 <__text+0x269c>
+1b063e244: 97fc7216    	bl	0x1b055aa9c
+1b063e248: 97fc6ce7    	bl	0x1b05595e4
+1b063e24c: b90003f5    	str	w21, [sp]
+1b063e250: 97fccca8    	bl	0x1b05714f0
+1b063e254: 528250e7    	mov	w7, #0x1287             ; =4743
+1b063e258: 95ebbaae    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e25c: d280001c    	mov	x28, #0x0               ; =0
+1b063e260: 1400004f    	b	0x1b063e39c <__text+0x27a0>
+1b063e264: 97fc69cf    	bl	0x1b05589a0
+1b063e268: aa0003e1    	mov	x1, x0
+1b063e26c: f9403fe8    	ldr	x8, [sp, #0x78]
+1b063e270: 97fc75a9    	bl	0x1b055b914
+1b063e274: 90003b43    	adrp	x3, 0x1b0da6000 <__text+0x76a404>
+1b063e278: 910a6063    	add	x3, x3, #0x298 ; 0x1b0da6298 cstring 'inputWeightSegmentMapIntermediatePixelBuffer'
+1b063e27c: 97fcb488    	bl	0x1b056b49c
+1b063e280: 52823687    	mov	w7, #0x11b4             ; =4532
+1b063e284: 95ebbaa3    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e288: 97fd39ca    	bl	0x1b058c9b0
+1b063e28c: d2800017    	mov	x23, #0x0               ; =0
+1b063e290: f9006bff    	str	xzr, [sp, #0xd0]
+1b063e294: 5280001b    	mov	w27, #0x0               ; =0
+1b063e298: a94edbf8    	ldp	x24, x22, [sp, #0xe8]
+1b063e29c: 17fffe52    	b	0x1b063dbe4 <__text+0x1fe8>
+1b063e2a0: 97fd39c4    	bl	0x1b058c9b0
+1b063e2a4: 17fffeec    	b	0x1b063de54 <__text+0x2258>
+1b063e2a8: 97fc71fd    	bl	0x1b055aa9c
+1b063e2ac: 97fc6cce    	bl	0x1b05595e4
+1b063e2b0: b90003f5    	str	w21, [sp]
+1b063e2b4: 97fccc8f    	bl	0x1b05714f0
+1b063e2b8: 52825667    	mov	w7, #0x12b3             ; =4787
+1b063e2bc: 14000015    	b	0x1b063e310 <__text+0x2714>
+1b063e2c0: 97fc71f7    	bl	0x1b055aa9c
+1b063e2c4: 97fc6cc8    	bl	0x1b05595e4
+1b063e2c8: b90003f5    	str	w21, [sp]
+1b063e2cc: 97fccc89    	bl	0x1b05714f0
+1b063e2d0: 528256e7    	mov	w7, #0x12b7             ; =4791
+1b063e2d4: 1400000f    	b	0x1b063e310 <__text+0x2714>
+1b063e2d8: d280001c    	mov	x28, #0x0               ; =0
+1b063e2dc: 14000010    	b	0x1b063e31c <__text+0x2720>
+1b063e2e0: aa0003f6    	mov	x22, x0
+1b063e2e4: 97fc69af    	bl	0x1b05589a0
+1b063e2e8: 97fc6cbf    	bl	0x1b05595e4
+1b063e2ec: b90003f6    	str	w22, [sp]
+1b063e2f0: 97fccc80    	bl	0x1b05714f0
+1b063e2f4: 52827067    	mov	w7, #0x1383             ; =4995
+1b063e2f8: 14000028    	b	0x1b063e398 <__text+0x279c>
+1b063e2fc: 97fc71e8    	bl	0x1b055aa9c
+1b063e300: 97fc6cb9    	bl	0x1b05595e4
+1b063e304: b90003f5    	str	w21, [sp]
+1b063e308: 97fccc7a    	bl	0x1b05714f0
+1b063e30c: 52825887    	mov	w7, #0x12c4             ; =4804
+1b063e310: 95ebba80    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e314: d280001c    	mov	x28, #0x0               ; =0
+1b063e318: d2800017    	mov	x23, #0x0               ; =0
+1b063e31c: 5280001b    	mov	w27, #0x0               ; =0
+1b063e320: 14000022    	b	0x1b063e3a8 <__text+0x27ac>
+1b063e324: 97fc71de    	bl	0x1b055aa9c
+1b063e328: 97fc6caf    	bl	0x1b05595e4
+1b063e32c: b90003f5    	str	w21, [sp]
+1b063e330: 97fccc70    	bl	0x1b05714f0
+1b063e334: 528270c7    	mov	w7, #0x1386             ; =4998
+1b063e338: 14000018    	b	0x1b063e398 <__text+0x279c>
+1b063e33c: 97fc71d8    	bl	0x1b055aa9c
+1b063e340: 97fc6ca9    	bl	0x1b05595e4
+1b063e344: b90003f5    	str	w21, [sp]
+1b063e348: 97fccc6a    	bl	0x1b05714f0
+1b063e34c: 52826c67    	mov	w7, #0x1363             ; =4963
+1b063e350: 14000012    	b	0x1b063e398 <__text+0x279c>
+1b063e354: 97fc71d2    	bl	0x1b055aa9c
+1b063e358: 97fc6ca3    	bl	0x1b05595e4
+1b063e35c: b90003f5    	str	w21, [sp]
+1b063e360: 97fccc64    	bl	0x1b05714f0
+1b063e364: 52826867    	mov	w7, #0x1343             ; =4931
+1b063e368: 1400000c    	b	0x1b063e398 <__text+0x279c>
+1b063e36c: 97fc71cc    	bl	0x1b055aa9c
+1b063e370: 97fc6c9d    	bl	0x1b05595e4
+1b063e374: b90003f5    	str	w21, [sp]
+1b063e378: 97fccc5e    	bl	0x1b05714f0
+1b063e37c: 528269e7    	mov	w7, #0x134f             ; =4943
+1b063e380: 14000006    	b	0x1b063e398 <__text+0x279c>
+1b063e384: 97fc71c6    	bl	0x1b055aa9c
+1b063e388: 97fc6c97    	bl	0x1b05595e4
+1b063e38c: b90003f5    	str	w21, [sp]
+1b063e390: 97fccc58    	bl	0x1b05714f0
+1b063e394: 52826aa7    	mov	w7, #0x1355             ; =4949
+1b063e398: 95ebba5e    	bl	0x1b812cd10 <__text+0x7af1114>
+1b063e39c: d2800017    	mov	x23, #0x0               ; =0
+1b063e3a0: 5280001b    	mov	w27, #0x0               ; =0
+1b063e3a4: b900dfff    	str	wzr, [sp, #0xdc]
+1b063e3a8: a94edbf8    	ldp	x24, x22, [sp, #0xe8]
+1b063e3ac: 17fffe0d    	b	0x1b063dbe0 <__text+0x1fe4>

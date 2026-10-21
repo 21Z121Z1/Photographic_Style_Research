@@ -1,0 +1,40 @@
+name: Apple producer interfaces S108
+on:
+  push:
+    branches: [research/vm-native-20261021-producer-s108]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: xcode-27
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm build and list actual producer interfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/producer-s108-text"
+          sw_vers > "$RUNNER_TEMP/producer-s108-text/os.txt"
+          test "$(sw_vers -buildVersion)" = 26A434
+          printf '%s\n' "$ImageOS" "$ImageVersion" "$GITHUB_SHA" > "$RUNNER_TEMP/producer-s108-text/runner.txt"
+          xcrun clang -fobjc-arc -framework Foundation -framework Metal -ldl research/hdr-native/native_style_inventory_s108.m -o "$RUNNER_TEMP/producer-inventory-s108" > "$RUNNER_TEMP/producer-s108-text/build.log" 2>&1
+          "$RUNNER_TEMP/producer-inventory-s108" "$RUNNER_TEMP/producer-s108-text/inventory.json" > "$RUNNER_TEMP/producer-s108-text/native.log" 2>&1
+          for b in /System/Library/VideoProcessors/SmartStyle{,V1,V2}.bundle; do
+            if test -d "$b"; then
+              find "$b" -type f -print >> "$RUNNER_TEMP/producer-s108-text/bundle-files.txt"
+              /usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$b/Contents/Info.plist" >> "$RUNNER_TEMP/producer-s108-text/bundle-files.txt" 2>&1 || true
+            fi
+          done
+      - name: Retain small text only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: producer-s108-text
+          path: ${{ runner.temp }}/producer-s108-text/
+          retention-days: 1
+      - name: Remove owned executable
+        if: always()
+        shell: bash
+        run: rm -f "$RUNNER_TEMP/producer-inventory-s108"

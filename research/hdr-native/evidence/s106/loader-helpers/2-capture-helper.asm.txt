@@ -1,0 +1,26 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+capture-helper CMSampleBuffer attachment lookup helper
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b06072d8 <__text>:
+1b06072d8: d503237f    	pacibsp
+1b06072dc: a9be4ff4    	stp	x20, x19, [sp, #-0x20]!
+1b06072e0: a9017bfd    	stp	x29, x30, [sp, #0x10]
+1b06072e4: 910043fd    	add	x29, sp, #0x10
+1b06072e8: aa0103f3    	mov	x19, x1
+1b06072ec: f01de681    	adrp	x1, 0x1ec2da000 <__text+0x3bcd2d28>
+1b06072f0: 91380021    	add	x1, x1, #0xe00 ; 0x1ec2dae00 CFString 'AttachedMedia'
+1b06072f4: d2800002    	mov	x2, #0x0                ; =0
+1b06072f8: 95ec9196    	bl	0x1b812b950 <__text+0x7b24678>
+1b06072fc: aa1303e2    	mov	x2, x19
+1b0607300: a9417bfd    	ldp	x29, x30, [sp, #0x10]
+1b0607304: a8c24ff4    	ldp	x20, x19, [sp], #0x20
+1b0607308: d50323ff    	autibsp
+1b060730c: ca1e07d0    	eor	x16, x30, x30, lsl #1
+1b0607310: b6f00050    	tbz	x16, #0x3e, 0x1b0607318 <__text+0x40>
+1b0607314: d4388e20    	brk	#0xc471
+1b0607318: 15e7ef7e    	b	0x1b8003110 <__text+0x79fbe38>

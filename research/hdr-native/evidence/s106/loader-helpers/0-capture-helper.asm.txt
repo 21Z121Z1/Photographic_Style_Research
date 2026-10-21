@@ -1,0 +1,228 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+capture-helper loadSmartStyleBundle helper
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b05e1038 <__text>:
+1b05e1038: d503237f    	pacibsp
+1b05e103c: d10483ff    	sub	sp, sp, #0x120
+1b05e1040: a90d67fa    	stp	x26, x25, [sp, #0xd0]
+1b05e1044: a90e5ff8    	stp	x24, x23, [sp, #0xe0]
+1b05e1048: a90f57f6    	stp	x22, x21, [sp, #0xf0]
+1b05e104c: a9104ff4    	stp	x20, x19, [sp, #0x100]
+1b05e1050: a9117bfd    	stp	x29, x30, [sp, #0x110]
+1b05e1054: 910443fd    	add	x29, sp, #0x110
+1b05e1058: aa0103f3    	mov	x19, x1
+1b05e105c: aa0003f4    	mov	x20, x0
+1b05e1060: 95ed2fe8    	bl	0x1b812d000 <__text+0x7b4bfc8>
+1b05e1064: 7100001f    	cmp	w0, #0x0
+1b05e1068: 52b00008    	mov	w8, #-0x80000000        ; =-2147483648
+1b05e106c: 1a8803e5    	csel	w5, wzr, w8, eq
+1b05e1070: d01a64d5    	adrp	x21, 0x1e527b000 <__text+0x34c99fc8>
+1b05e1074: 911ba2b5    	add	x21, x21, #0x6e8
+1b05e1078: 901de796    	adrp	x22, 0x1ec2d1000 <__text+0x3bceffc8>
+1b05e107c: 913a82d6    	add	x22, x22, #0xea0 ; 0x1ec2d1ea0 CFString 'bwutilities_trace'
+1b05e1080: 901de6f7    	adrp	x23, 0x1ec2bd000 <__text+0x3bcdbfc8>
+1b05e1084: 912f82f7    	add	x23, x23, #0xbe0 ; 0x1ec2bdbe0 CFString 'com.apple.coremedia'
+1b05e1088: 90003c58    	adrp	x24, 0x1b0d69000 <__text+0x787fc8>
+1b05e108c: 91276718    	add	x24, x24, #0x9d9
+1b05e1090: 90003c59    	adrp	x25, 0x1b0d69000 <__text+0x787fc8>
+1b05e1094: 91276b39    	add	x25, x25, #0x9da ; 0x1b0d699da cstring 'com.apple.cameracapture'
+1b05e1098: 910022a0    	add	x0, x21, #0x8
+1b05e109c: aa1603e1    	mov	x1, x22
+1b05e10a0: aa1703e2    	mov	x2, x23
+1b05e10a4: aa1803e3    	mov	x3, x24
+1b05e10a8: aa1903e4    	mov	x4, x25
+1b05e10ac: 52800006    	mov	w6, #0x0                ; =0
+1b05e10b0: aa1503e7    	mov	x7, x21
+1b05e10b4: 95ed368b    	bl	0x1b812eae0 <__text+0x7b4daa8>
+1b05e10b8: 910062a0    	add	x0, x21, #0x18
+1b05e10bc: 910042a7    	add	x7, x21, #0x10
+1b05e10c0: aa1603e1    	mov	x1, x22
+1b05e10c4: aa1703e2    	mov	x2, x23
+1b05e10c8: aa1803e3    	mov	x3, x24
+1b05e10cc: aa1903e4    	mov	x4, x25
+1b05e10d0: 52b00005    	mov	w5, #-0x80000000        ; =-2147483648
+1b05e10d4: 52800006    	mov	w6, #0x0                ; =0
+1b05e10d8: 95ed3682    	bl	0x1b812eae0 <__text+0x7b4daa8>
+1b05e10dc: b01de6e0    	adrp	x0, 0x1ec2be000 <__text+0x3bcdcfc8>
+1b05e10e0: 91110000    	add	x0, x0, #0x440 ; 0x1ec2be440 CFString '/System/Library/VideoProcessors'
+1b05e10e4: aa1403e2    	mov	x2, x20
+1b05e10e8: 95e88cda    	bl	0x1b8004450 <__text+0x7a23418> ; SELECTOR stringByAppendingPathComponent:
+1b05e10ec: 3100067f    	cmn	w19, #0x1
+1b05e10f0: 540000a0    	b.eq	0x1b05e1104 <__text+0xcc>
+1b05e10f4: f90003f3    	str	x19, [sp]
+1b05e10f8: 901de782    	adrp	x2, 0x1ec2d1000 <__text+0x3bceffc8>
+1b05e10fc: 913b8042    	add	x2, x2, #0xee0 ; 0x1ec2d1ee0 CFString 'V%d'
+1b05e1100: 95e92c18    	bl	0x1b802c160 <__text+0x7a4b128> ; SELECTOR stringByAppendingFormat:
+1b05e1104: 901de782    	adrp	x2, 0x1ec2d1000 <__text+0x3bceffc8>
+1b05e1108: 913c0042    	add	x2, x2, #0xf00 ; 0x1ec2d1f00 CFString 'bundle'
+1b05e110c: 95e92c19    	bl	0x1b802c170 <__text+0x7a4b138> ; SELECTOR stringByAppendingPathExtension:
+1b05e1110: aa0003f3    	mov	x19, x0
+1b05e1114: d017da08    	adrp	x8, 0x1e0123000 <__text+0x2fb41fc8>
+1b05e1118: f9440d00    	ldr	x0, [x8, #0x818]
+1b05e111c: aa1303e2    	mov	x2, x19
+1b05e1120: 95e8a170    	bl	0x1b80096e0 <__text+0x7a286a8> ; SELECTOR bundleWithPath:
+1b05e1124: b40001c0    	cbz	x0, 0x1b05e115c <__text+0x124>
+1b05e1128: aa0003f4    	mov	x20, x0
+1b05e112c: f9000fff    	str	xzr, [sp, #0x18]
+1b05e1130: 910063e2    	add	x2, sp, #0x18
+1b05e1134: 95e8d3ef    	bl	0x1b80160f0 <__text+0x7a350b8> ; SELECTOR loadAndReturnError:
+1b05e1138: 36001320    	tbz	w0, #0x0, 0x1b05e139c <__text+0x364>
+1b05e113c: aa1403e0    	mov	x0, x20
+1b05e1140: a9517bfd    	ldp	x29, x30, [sp, #0x110]
+1b05e1144: a9504ff4    	ldp	x20, x19, [sp, #0x100]
+1b05e1148: a94f57f6    	ldp	x22, x21, [sp, #0xf0]
+1b05e114c: a94e5ff8    	ldp	x24, x23, [sp, #0xe0]
+1b05e1150: a94d67fa    	ldp	x26, x25, [sp, #0xd0]
+1b05e1154: 910483ff    	add	sp, sp, #0x120
+1b05e1158: d65f0fff    	retab
+1b05e115c: 940a7e0f    	bl	0x1b0880998 <__text+0x29f960>
+1b05e1160: aa0003f4    	mov	x20, x0
+1b05e1164: 940b2e3f    	bl	0x1b08aca60 <__text+0x2cba28>
+1b05e1168: 34000580    	cbz	w0, 0x1b05e1218 <__text+0x1e0>
+1b05e116c: b81bc3bf    	stur	wzr, [x29, #-0x44]
+1b05e1170: 381bb3bf    	sturb	wzr, [x29, #-0x45]
+1b05e1174: d01a64d7    	adrp	x23, 0x1e527b000 <__text+0x34c99fc8>
+1b05e1178: f9437ee0    	ldr	x0, [x23, #0x6f8] ; 0x180000000 cstring 'dyld_v1  arm64e'
+1b05e117c: d10113a2    	sub	x2, x29, #0x44
+1b05e1180: d10117a3    	sub	x3, x29, #0x45
+1b05e1184: 52800001    	mov	w1, #0x0                ; =0
+1b05e1188: 95ed364a    	bl	0x1b812eab0 <__text+0x7b4da78>
+1b05e118c: aa0003f4    	mov	x20, x0
+1b05e1190: b85bc3b6    	ldur	w22, [x29, #-0x44]
+1b05e1194: 385bb3b5    	ldurb	w21, [x29, #-0x45]
+1b05e1198: aa1503e1    	mov	x1, x21
+1b05e119c: 95ed24e5    	bl	0x1b812a530 <__text+0x7b494f8>
+1b05e11a0: 121f7ac8    	and	w8, w22, #0xfffffffe
+1b05e11a4: 7100001f    	cmp	w0, #0x0
+1b05e11a8: 1a8812c0    	csel	w0, w22, w8, ne
+1b05e11ac: 340008c0    	cbz	w0, 0x1b05e12c4 <__text+0x28c>
+1b05e11b0: f00031a8    	adrp	x8, 0x1b0c18000 <__text+0x636fc8>
+1b05e11b4: fd40d500    	ldr	d0, [x8, #0x1a8]
+1b05e11b8: bd0023e0    	str	s0, [sp, #0x20]
+1b05e11bc: b0003da8    	adrp	x8, 0x1b0d96000 <__text+0x7b4fc8>
+1b05e11c0: 91310108    	add	x8, x8, #0xc40 ; 0x1b0d96c40 cstring 'BWLoadProcessorBundle'
+1b05e11c4: f80243e8    	stur	x8, [sp, #0x24]
+1b05e11c8: 52810808    	mov	w8, #0x840              ; =2112
+1b05e11cc: 79005be8    	strh	w8, [sp, #0x2c]
+1b05e11d0: f802e3f3    	stur	x19, [sp, #0x2e]
+1b05e11d4: 528002c8    	mov	w8, #0x16               ; =22
+1b05e11d8: b9000be8    	str	w8, [sp, #0x8]
+1b05e11dc: 910083e8    	add	x8, sp, #0x20
+1b05e11e0: f90003e8    	str	x8, [sp]
+1b05e11e4: f0fffb84    	adrp	x4, 0x1b0554000
+1b05e11e8: 91000084    	add	x4, x4, #0x0
+1b05e11ec: b0004247    	adrp	x7, 0x1b0e2a000 <__text+0x848fc8>
+1b05e11f0: 911f10e7    	add	x7, x7, #0x7c4
+1b05e11f4: 910103e2    	add	x2, sp, #0x40
+1b05e11f8: d2800001    	mov	x1, #0x0                ; =0
+1b05e11fc: 52801003    	mov	w3, #0x80               ; =128
+1b05e1200: aa1403e5    	mov	x5, x20
+1b05e1204: aa1503e6    	mov	x6, x21
+1b05e1208: 95ed33e6    	bl	0x1b812e1a0 <__text+0x7b4d168>
+1b05e120c: aa0003e3    	mov	x3, x0
+1b05e1210: b85bc3b6    	ldur	w22, [x29, #-0x44]
+1b05e1214: 1400002d    	b	0x1b05e12c8 <__text+0x290>
+1b05e1218: b81bc3bf    	stur	wzr, [x29, #-0x44]
+1b05e121c: 381bb3bf    	sturb	wzr, [x29, #-0x45]
+1b05e1220: d01a64d7    	adrp	x23, 0x1e527b000 <__text+0x34c99fc8>
+1b05e1224: f9437ee0    	ldr	x0, [x23, #0x6f8] ; 0x180000000 cstring 'dyld_v1  arm64e'
+1b05e1228: d10113a2    	sub	x2, x29, #0x44
+1b05e122c: d10117a3    	sub	x3, x29, #0x45
+1b05e1230: 52800061    	mov	w1, #0x3                ; =3
+1b05e1234: 95ed361f    	bl	0x1b812eab0 <__text+0x7b4da78>
+1b05e1238: aa0003f5    	mov	x21, x0
+1b05e123c: b85bc3b8    	ldur	w24, [x29, #-0x44]
+1b05e1240: 385bb3b6    	ldurb	w22, [x29, #-0x45]
+1b05e1244: aa1603e1    	mov	x1, x22
+1b05e1248: 95ed24ba    	bl	0x1b812a530 <__text+0x7b494f8>
+1b05e124c: 121f7b08    	and	w8, w24, #0xfffffffe
+1b05e1250: 7100001f    	cmp	w0, #0x0
+1b05e1254: 1a881300    	csel	w0, w24, w8, ne
+1b05e1258: 340004c0    	cbz	w0, 0x1b05e12f0 <__text+0x2b8>
+1b05e125c: f00031a8    	adrp	x8, 0x1b0c18000 <__text+0x636fc8>
+1b05e1260: fd40d500    	ldr	d0, [x8, #0x1a8]
+1b05e1264: bd0023e0    	str	s0, [sp, #0x20]
+1b05e1268: b0003da8    	adrp	x8, 0x1b0d96000 <__text+0x7b4fc8>
+1b05e126c: 91310108    	add	x8, x8, #0xc40 ; 0x1b0d96c40 cstring 'BWLoadProcessorBundle'
+1b05e1270: f80243e8    	stur	x8, [sp, #0x24]
+1b05e1274: 52810808    	mov	w8, #0x840              ; =2112
+1b05e1278: 79005be8    	strh	w8, [sp, #0x2c]
+1b05e127c: f802e3f3    	stur	x19, [sp, #0x2e]
+1b05e1280: 528002c8    	mov	w8, #0x16               ; =22
+1b05e1284: b9000be8    	str	w8, [sp, #0x8]
+1b05e1288: 910083e8    	add	x8, sp, #0x20
+1b05e128c: f90003e8    	str	x8, [sp]
+1b05e1290: f0fffb84    	adrp	x4, 0x1b0554000
+1b05e1294: 91000084    	add	x4, x4, #0x0
+1b05e1298: b0004247    	adrp	x7, 0x1b0e2a000 <__text+0x848fc8>
+1b05e129c: 911f10e7    	add	x7, x7, #0x7c4
+1b05e12a0: 910103e2    	add	x2, sp, #0x40
+1b05e12a4: d2800001    	mov	x1, #0x0                ; =0
+1b05e12a8: 52801003    	mov	w3, #0x80               ; =128
+1b05e12ac: aa1503e5    	mov	x5, x21
+1b05e12b0: aa1603e6    	mov	x6, x22
+1b05e12b4: 95ed33bb    	bl	0x1b812e1a0 <__text+0x7b4d168>
+1b05e12b8: aa0003e3    	mov	x3, x0
+1b05e12bc: b85bc3a5    	ldur	w5, [x29, #-0x44]
+1b05e12c0: 1400000e    	b	0x1b05e12f8 <__text+0x2c0>
+1b05e12c4: d2800003    	mov	x3, #0x0                ; =0
+1b05e12c8: f9437ee0    	ldr	x0, [x23, #0x6f8]
+1b05e12cc: 910103e8    	add	x8, sp, #0x40
+1b05e12d0: eb08007f    	cmp	x3, x8
+1b05e12d4: 1a9f07e4    	cset	w4, ne
+1b05e12d8: 52800001    	mov	w1, #0x0                ; =0
+1b05e12dc: 52800022    	mov	w2, #0x1                ; =1
+1b05e12e0: aa1603e5    	mov	x5, x22
+1b05e12e4: d2800006    	mov	x6, #0x0                ; =0
+1b05e12e8: 95ed35ee    	bl	0x1b812eaa0 <__text+0x7b4da68>
+1b05e12ec: 1400002c    	b	0x1b05e139c <__text+0x364>
+1b05e12f0: aa1803e5    	mov	x5, x24
+1b05e12f4: d2800003    	mov	x3, #0x0                ; =0
+1b05e12f8: f9437ee0    	ldr	x0, [x23, #0x6f8]
+1b05e12fc: 910103f5    	add	x21, sp, #0x40
+1b05e1300: eb15007f    	cmp	x3, x21
+1b05e1304: 1a9f07e4    	cset	w4, ne
+1b05e1308: 52800061    	mov	w1, #0x3                ; =3
+1b05e130c: 52800022    	mov	w2, #0x1                ; =1
+1b05e1310: d2800006    	mov	x6, #0x0                ; =0
+1b05e1314: 95ed35e3    	bl	0x1b812eaa0 <__text+0x7b4da68>
+1b05e1318: f00031a8    	adrp	x8, 0x1b0c18000 <__text+0x636fc8>
+1b05e131c: fd414100    	ldr	d0, [x8, #0x280]
+1b05e1320: bd0043e0    	str	s0, [sp, #0x40]
+1b05e1324: f80443f3    	stur	x19, [sp, #0x44]
+1b05e1328: 52800188    	mov	w8, #0xc                ; =12
+1b05e132c: b9000be8    	str	w8, [sp, #0x8]
+1b05e1330: f90003f5    	str	x21, [sp]
+1b05e1334: f0fffb84    	adrp	x4, 0x1b0554000
+1b05e1338: 91000084    	add	x4, x4, #0x0
+1b05e133c: f017ddc5    	adrp	x5, 0x1e019c000 <__text+0x2fbbafc8>
+1b05e1340: f943a8a5    	ldr	x5, [x5, #0x750]
+1b05e1344: b0004247    	adrp	x7, 0x1b0e2a000 <__text+0x848fc8>
+1b05e1348: 911ff8e7    	add	x7, x7, #0x7fe
+1b05e134c: 52800040    	mov	w0, #0x2                ; =2
+1b05e1350: d2800001    	mov	x1, #0x0                ; =0
+1b05e1354: d2800002    	mov	x2, #0x0                ; =0
+1b05e1358: 52800003    	mov	w3, #0x0                ; =0
+1b05e135c: 52800006    	mov	w6, #0x0                ; =0
+1b05e1360: 95ed3390    	bl	0x1b812e1a0 <__text+0x7b4d168>
+1b05e1364: aa0003f3    	mov	x19, x0
+1b05e1368: b0003da3    	adrp	x3, 0x1b0d96000 <__text+0x7b4fc8>
+1b05e136c: 91326463    	add	x3, x3, #0xc99
+1b05e1370: 901de785    	adrp	x5, 0x1ec2d1000 <__text+0x3bceffc8>
+1b05e1374: 913c80a5    	add	x5, x5, #0xf20 ; 0x1ec2d1f20 CFString 'LastShownDate:BWUtilities.m:1065'
+1b05e1378: 901de786    	adrp	x6, 0x1ec2d1000 <__text+0x3bceffc8>
+1b05e137c: 913d00c6    	add	x6, x6, #0xf40 ; 0x1ec2d1f40 CFString 'LastShownBuild:BWUtilities.m:1065'
+1b05e1380: aa1403e0    	mov	x0, x20
+1b05e1384: aa1303e1    	mov	x1, x19
+1b05e1388: d2800002    	mov	x2, #0x0                ; =0
+1b05e138c: 52808524    	mov	w4, #0x429              ; =1065
+1b05e1390: 94128d06    	bl	0x1b0a847a8 <__text+0x4a3770>
+1b05e1394: aa1303e0    	mov	x0, x19
+1b05e1398: 95ed2306    	bl	0x1b8129fb0 <__text+0x7b48f78>
+1b05e139c: d2800014    	mov	x20, #0x0               ; =0
+1b05e13a0: 17ffff67    	b	0x1b05e113c <__text+0x104>

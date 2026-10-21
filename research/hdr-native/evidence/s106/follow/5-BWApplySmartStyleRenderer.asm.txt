@@ -1,0 +1,354 @@
+Reference iOS27 24A446/iPhone12,1; not IMG2810 matching build.
+BWApplySmartStyleRenderer renderUsingParameters:inputPixelBuffer:inputSampleBuffer:processedPixelBuffer:completionHandler:
+CMCapture UUID 995fc22b41bd37b4812f2686b81c2694; exact bounds LC_FUNCTION_STARTS. Annotations are locators, not dataflow proofs.
+
+temporary-function-container.macho:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001b0934208 <__text>:
+1b0934208: d503237f    	pacibsp
+1b093420c: d10503ff    	sub	sp, sp, #0x140
+1b0934210: 6d0b33ed    	stp	d13, d12, [sp, #0xb0]
+1b0934214: 6d0c2beb    	stp	d11, d10, [sp, #0xc0]
+1b0934218: 6d0d23e9    	stp	d9, d8, [sp, #0xd0]
+1b093421c: a90e6ffc    	stp	x28, x27, [sp, #0xe0]
+1b0934220: a90f67fa    	stp	x26, x25, [sp, #0xf0]
+1b0934224: a9105ff8    	stp	x24, x23, [sp, #0x100]
+1b0934228: a91157f6    	stp	x22, x21, [sp, #0x110]
+1b093422c: a9124ff4    	stp	x20, x19, [sp, #0x120]
+1b0934230: a9137bfd    	stp	x29, x30, [sp, #0x130]
+1b0934234: 9104c3fd    	add	x29, sp, #0x130
+1b0934238: aa0603f3    	mov	x19, x6
+1b093423c: aa0503f6    	mov	x22, x5
+1b0934240: aa0403f4    	mov	x20, x4
+1b0934244: aa0303f7    	mov	x23, x3
+1b0934248: aa0003f5    	mov	x21, x0
+1b093424c: 901847e8    	adrp	x8, 0x1e1230000 <__text+0x308fbdf8>
+1b0934250: f9450108    	ldr	x8, [x8, #0xa00]
+1b0934254: f9400101    	ldr	x1, [x8] ; 0x27efe78f0 CFString 'MetadataDictionary'
+1b0934258: aa0403e0    	mov	x0, x4
+1b093425c: d2800002    	mov	x2, #0x0                ; =0
+1b0934260: 95dfddbc    	bl	0x1b812b950 <__text+0x77f7748>
+1b0934264: b40016a0    	cbz	x0, 0x1b0934538 <__text+0x330>
+1b0934268: aa0003f8    	mov	x24, x0
+1b093426c: f94006a0    	ldr	x0, [x21, #0x8]
+1b0934270: 95dba2c0    	bl	0x1b801cd70 <__text+0x76e8b68> ; SELECTOR resetState
+1b0934274: aa1403e0    	mov	x0, x20
+1b0934278: 97f93700    	bl	0x1b0781e78
+1b093427c: 52a05008    	mov	w8, #0x2800000          ; =41943040
+1b0934280: 6a08001f    	tst	w0, w8
+1b0934284: 540015e1    	b.ne	0x1b0934540 <__text+0x338>
+1b0934288: 901846c8    	adrp	x8, 0x1e120c000 <__text+0x308d7df8>
+1b093428c: 912a6108    	add	x8, x8, #0xa98
+1b0934290: f9400101    	ldr	x1, [x8] ; 0x1ec309be0 CFString 'StillSettings'
+1b0934294: aa1403e0    	mov	x0, x20
+1b0934298: d2800002    	mov	x2, #0x0                ; =0
+1b093429c: 95dfddad    	bl	0x1b812b950 <__text+0x77f7748>
+1b09342a0: b4000220    	cbz	x0, 0x1b09342e4 <__text+0xdc>
+1b09342a4: aa0003f9    	mov	x25, x0
+1b09342a8: 95db577e    	bl	0x1b800a0a0 <__text+0x76d5e98> ; SELECTOR captureSettings
+1b09342ac: 95db5811    	bl	0x1b800a2f0 <__text+0x76d60e8> ; SELECTOR captureType
+1b09342b0: aa0003fa    	mov	x26, x0
+1b09342b4: aa1903e0    	mov	x0, x25
+1b09342b8: 95db577a    	bl	0x1b800a0a0 <__text+0x76d5e98> ; SELECTOR captureSettings
+1b09342bc: 95db5729    	bl	0x1b8009f60 <__text+0x76d5d58> ; SELECTOR captureFlags
+1b09342c0: aa0003e1    	mov	x1, x0
+1b09342c4: aa1a03e0    	mov	x0, x26
+1b09342c8: 97fdeb52    	bl	0x1b08af010
+1b09342cc: aa0003e2    	mov	x2, x0
+1b09342d0: b01847e8    	adrp	x8, 0x1e1231000 <__text+0x308fcdf8>
+1b09342d4: f9400508    	ldr	x8, [x8, #0x8]
+1b09342d8: f9400103    	ldr	x3, [x8] ; 0x27efdf350 CFString 'SmartStyleTuningType'
+1b09342dc: aa1803e0    	mov	x0, x24
+1b09342e0: 95db3ed8    	bl	0x1b8003e40 <__text+0x76cfc38> ; SELECTOR setObject:forKeyedSubscript:
+1b09342e4: b01846c8    	adrp	x8, 0x1e120d000 <__text+0x308d8df8>
+1b09342e8: f941ad01    	ldr	x1, [x8, #0x358] ; 0x1ec30bb60 CFString 'SmartStyleStillLearnedCoefficients'
+1b09342ec: aa1403e0    	mov	x0, x20
+1b09342f0: 97f34bfa    	bl	0x1b06072d8
+1b09342f4: b4001220    	cbz	x0, 0x1b0934538 <__text+0x330>
+1b09342f8: 95dfdf3a    	bl	0x1b812bfe0 <__text+0x77f7dd8>
+1b09342fc: aa0003f9    	mov	x25, x0
+1b0934300: b01846c8    	adrp	x8, 0x1e120d000 <__text+0x308d8df8>
+1b0934304: f9416901    	ldr	x1, [x8, #0x2d0] ; 0x1ec309880 CFString 'GainMap'
+1b0934308: aa1403e0    	mov	x0, x20
+1b093430c: 97f34bf3    	bl	0x1b06072d8
+1b0934310: b4000080    	cbz	x0, 0x1b0934320 <__text+0x118>
+1b0934314: 95dfdf33    	bl	0x1b812bfe0 <__text+0x77f7dd8>
+1b0934318: aa0003fa    	mov	x26, x0
+1b093431c: 14000002    	b	0x1b0934324 <__text+0x11c>
+1b0934320: d280001a    	mov	x26, #0x0               ; =0
+1b0934324: aa1803e0    	mov	x0, x24
+1b0934328: 97f91db3    	bl	0x1b077b9f4
+1b093432c: 4ea01c08    	mov.16b	v8, v0
+1b0934330: 4ea11c29    	mov.16b	v9, v1
+1b0934334: 4ea21c4a    	mov.16b	v10, v2
+1b0934338: 4ea31c6b    	mov.16b	v11, v3
+1b093433c: b01847e8    	adrp	x8, 0x1e1231000 <__text+0x308fcdf8>
+1b0934340: f9400d08    	ldr	x8, [x8, #0x18]
+1b0934344: f9400114    	ldr	x20, [x8] ; 0x27efde290 CFString 'StillImageProcessingMetadata'
+1b0934348: aa1803e0    	mov	x0, x24
+1b093434c: aa1403e2    	mov	x2, x20
+1b0934350: 95db3b70    	bl	0x1b8003110 <__text+0x76cef08> ; SELECTOR objectForKeyedSubscript:
+1b0934354: b01847e8    	adrp	x8, 0x1e1231000 <__text+0x308fcdf8>
+1b0934358: f9408508    	ldr	x8, [x8, #0x108]
+1b093435c: f940011b    	ldr	x27, [x8] ; 0x27efde2b0 CFString 'FinalAspectRatio'
+1b0934360: aa1b03e2    	mov	x2, x27
+1b0934364: 95db3b6b    	bl	0x1b8003110 <__text+0x76cef08> ; SELECTOR objectForKeyedSubscript:
+1b0934368: b4000e80    	cbz	x0, 0x1b0934538 <__text+0x330>
+1b093436c: aa1803e0    	mov	x0, x24
+1b0934370: aa1403e2    	mov	x2, x20
+1b0934374: 95db3b67    	bl	0x1b8003110 <__text+0x76cef08> ; SELECTOR objectForKeyedSubscript:
+1b0934378: aa1b03e2    	mov	x2, x27
+1b093437c: 95db3b65    	bl	0x1b8003110 <__text+0x76cef08> ; SELECTOR objectForKeyedSubscript:
+1b0934380: 95db36ec    	bl	0x1b8001f30 <__text+0x76cdd28> ; SELECTOR doubleValue
+1b0934384: 4ea01c0c    	mov.16b	v12, v0
+1b0934388: aa1703e0    	mov	x0, x23
+1b093438c: 95dfe095    	bl	0x1b812c5e0 <__text+0x77f83d8>
+1b0934390: aa0003f4    	mov	x20, x0
+1b0934394: aa1703e0    	mov	x0, x23
+1b0934398: 95dfe07a    	bl	0x1b812c580 <__text+0x77f8378>
+1b093439c: aa0003e1    	mov	x1, x0
+1b09343a0: aa1403e0    	mov	x0, x20
+1b09343a4: 4ea81d00    	mov.16b	v0, v8
+1b09343a8: 4ea91d21    	mov.16b	v1, v9
+1b09343ac: 4eaa1d42    	mov.16b	v2, v10
+1b09343b0: 4eab1d63    	mov.16b	v3, v11
+1b09343b4: 4eac1d84    	mov.16b	v4, v12
+1b09343b8: 97f54386    	bl	0x1b06851d0
+1b09343bc: 4ea01c08    	mov.16b	v8, v0
+1b09343c0: 4ea11c29    	mov.16b	v9, v1
+1b09343c4: 4ea21c4a    	mov.16b	v10, v2
+1b09343c8: 4ea31c6b    	mov.16b	v11, v3
+1b09343cc: 95dfdccd    	bl	0x1b812b700 <__text+0x77f74f8>
+1b09343d0: 37000b40    	tbnz	w0, #0x0, 0x1b0934538 <__text+0x330>
+1b09343d4: 6d0226a8    	stp	d8, d9, [x21, #0x20]
+1b09343d8: 6d032eaa    	stp	d10, d11, [x21, #0x30]
+1b09343dc: b4000117    	cbz	x23, 0x1b09343fc <__text+0x1f4>
+1b09343e0: aa1703e0    	mov	x0, x23
+1b09343e4: 95dfe07f    	bl	0x1b812c5e0 <__text+0x77f83d8>
+1b09343e8: aa0003f4    	mov	x20, x0
+1b09343ec: aa1703e0    	mov	x0, x23
+1b09343f0: 95dfe064    	bl	0x1b812c580 <__text+0x77f8378>
+1b09343f4: b3607c14    	bfi	x20, x0, #32, #32
+1b09343f8: 14000002    	b	0x1b0934400 <__text+0x1f8>
+1b09343fc: d2800014    	mov	x20, #0x0               ; =0
+1b0934400: f90022b4    	str	x20, [x21, #0x40]
+1b0934404: b4000116    	cbz	x22, 0x1b0934424 <__text+0x21c>
+1b0934408: aa1603e0    	mov	x0, x22
+1b093440c: 95dfe075    	bl	0x1b812c5e0 <__text+0x77f83d8>
+1b0934410: aa0003f4    	mov	x20, x0
+1b0934414: aa1603e0    	mov	x0, x22
+1b0934418: 95dfe05a    	bl	0x1b812c580 <__text+0x77f8378>
+1b093441c: b3607c14    	bfi	x20, x0, #32, #32
+1b0934420: 14000002    	b	0x1b0934428 <__text+0x220>
+1b0934424: d2800014    	mov	x20, #0x0               ; =0
+1b0934428: f90026b4    	str	x20, [x21, #0x48]
+1b093442c: f9400ea0    	ldr	x0, [x21, #0x18]
+1b0934430: 95dfd730    	bl	0x1b812a0f0 <__text+0x77f5ee8>
+1b0934434: aa0003f4    	mov	x20, x0
+1b0934438: b40008a0    	cbz	x0, 0x1b093454c <__text+0x344>
+1b093443c: aa1403e0    	mov	x0, x20
+1b0934440: aa1703e2    	mov	x2, x23
+1b0934444: 95dbbaab    	bl	0x1b8022ef0 <__text+0x76eece8> ; SELECTOR setInputUnstyledPixelBuffer:
+1b0934448: aa1403e0    	mov	x0, x20
+1b093444c: aa1803e2    	mov	x2, x24
+1b0934450: 95dbb9e8    	bl	0x1b8022bf0 <__text+0x76ee9e8> ; SELECTOR setInputMetadataDict:
+1b0934454: aa1403e0    	mov	x0, x20
+1b0934458: 4ea81d00    	mov.16b	v0, v8
+1b093445c: 4ea91d21    	mov.16b	v1, v9
+1b0934460: 4eaa1d42    	mov.16b	v2, v10
+1b0934464: 4eab1d63    	mov.16b	v3, v11
+1b0934468: 95dbba9e    	bl	0x1b8022ee0 <__text+0x76eecd8> ; SELECTOR setInputUnstyledCropRect:
+1b093446c: aa1403e0    	mov	x0, x20
+1b0934470: aa1903e2    	mov	x2, x25
+1b0934474: 95dbba87    	bl	0x1b8022e90 <__text+0x76eec88> ; SELECTOR setInputStyleCoefficientsPixelBuffer:
+1b0934478: aa1403e0    	mov	x0, x20
+1b093447c: aa1603e2    	mov	x2, x22
+1b0934480: 95dbc434    	bl	0x1b8025550 <__text+0x76f1348> ; SELECTOR setOutputStyledPixelBuffer:
+1b0934484: aa1403e0    	mov	x0, x20
+1b0934488: 4ea81d00    	mov.16b	v0, v8
+1b093448c: 4ea91d21    	mov.16b	v1, v9
+1b0934490: 4eaa1d42    	mov.16b	v2, v10
+1b0934494: 4eab1d63    	mov.16b	v3, v11
+1b0934498: 95dbc42a    	bl	0x1b8025540 <__text+0x76f1338> ; SELECTOR setOutputStyledCropRect:
+1b093449c: aa1403e0    	mov	x0, x20
+1b09344a0: aa1a03e2    	mov	x2, x26
+1b09344a4: 95dbc393    	bl	0x1b80252f0 <__text+0x76f10e8> ; SELECTOR setOutputGainMapPixelBuffer:
+1b09344a8: aa1403e0    	mov	x0, x20
+1b09344ac: 52800022    	mov	w2, #0x1                ; =1
+1b09344b0: 95dbca50    	bl	0x1b8026df0 <__text+0x76f2be8> ; SELECTOR setResidualsCalculationDisabled:
+1b09344b4: f94006a0    	ldr	x0, [x21, #0x8]
+1b09344b8: aa1403e2    	mov	x2, x20
+1b09344bc: 95dbb9dd    	bl	0x1b8022c30 <__text+0x76eea28> ; SELECTOR setInputOutput:
+1b09344c0: f94006a0    	ldr	x0, [x21, #0x8]
+1b09344c4: 528000c2    	mov	w2, #0x6                ; =6
+1b09344c8: 95db9766    	bl	0x1b801a260 <__text+0x76e6058> ; SELECTOR prepareToProcess:
+1b09344cc: 35000440    	cbnz	w0, 0x1b0934554 <__text+0x34c>
+1b09344d0: f94006a0    	ldr	x0, [x21, #0x8]
+1b09344d4: 95db99ab    	bl	0x1b801ab80 <__text+0x76e6978> ; SELECTOR process
+1b09344d8: 35000840    	cbnz	w0, 0x1b09345e0 <__text+0x3d8>
+1b09344dc: f94006a0    	ldr	x0, [x21, #0x8]
+1b09344e0: 95dbe9c4    	bl	0x1b802ebf0 <__text+0x76fa9e8> ; SELECTOR waitForSchedule
+1b09344e4: 35000cc0    	cbnz	w0, 0x1b093467c <__text+0x474>
+1b09344e8: 52800055    	mov	w21, #0x2               ; =2
+1b09344ec: 95dfd769    	bl	0x1b812a290 <__text+0x77f6088>
+1b09344f0: d2800002    	mov	x2, #0x0                ; =0
+1b09344f4: b40000d3    	cbz	x19, 0x1b093450c <__text+0x304>
+1b09344f8: aa1303e8    	mov	x8, x19
+1b09344fc: f8410d09    	ldr	x9, [x8, #0x10]!
+1b0934500: aa1303e0    	mov	x0, x19
+1b0934504: aa1503e1    	mov	x1, x21
+1b0934508: d73f0928    	blraa	x9, x8
+1b093450c: a9537bfd    	ldp	x29, x30, [sp, #0x130]
+1b0934510: a9524ff4    	ldp	x20, x19, [sp, #0x120]
+1b0934514: a95157f6    	ldp	x22, x21, [sp, #0x110]
+1b0934518: a9505ff8    	ldp	x24, x23, [sp, #0x100]
+1b093451c: a94f67fa    	ldp	x26, x25, [sp, #0xf0]
+1b0934520: a94e6ffc    	ldp	x28, x27, [sp, #0xe0]
+1b0934524: 6d4d23e9    	ldp	d9, d8, [sp, #0xd0]
+1b0934528: 6d4c2beb    	ldp	d11, d10, [sp, #0xc0]
+1b093452c: 6d4b33ed    	ldp	d13, d12, [sp, #0xb0]
+1b0934530: 910503ff    	add	sp, sp, #0x140
+1b0934534: d65f0fff    	retab
+1b0934538: d2800014    	mov	x20, #0x0               ; =0
+1b093453c: 14000085    	b	0x1b0934750 <__text+0x548>
+1b0934540: d2800014    	mov	x20, #0x0               ; =0
+1b0934544: d2800015    	mov	x21, #0x0               ; =0
+1b0934548: 17ffffe9    	b	0x1b09344ec <__text+0x2e4>
+1b093454c: 940738d0    	bl	0x1b0b0288c <__text+0x1ce684>
+1b0934550: 17ffffbb    	b	0x1b093443c <__text+0x234>
+1b0934554: aa0003f6    	mov	x22, x0
+1b0934558: b817c3bf    	stur	wzr, [x29, #-0x84]
+1b093455c: 3817b3bf    	sturb	wzr, [x29, #-0x85]
+1b0934560: d10213a2    	sub	x2, x29, #0x84
+1b0934564: d10217a3    	sub	x3, x29, #0x85
+1b0934568: d2800000    	mov	x0, #0x0                ; =0
+1b093456c: 52800001    	mov	w1, #0x0                ; =0
+1b0934570: 95dfe950    	bl	0x1b812eab0 <__text+0x77fa8a8>
+1b0934574: aa0003f5    	mov	x21, x0
+1b0934578: b857c3b8    	ldur	w24, [x29, #-0x84]
+1b093457c: 3857b3b7    	ldurb	w23, [x29, #-0x85]
+1b0934580: aa1703e1    	mov	x1, x23
+1b0934584: 95dfd7eb    	bl	0x1b812a530 <__text+0x77f6328>
+1b0934588: 121f7b08    	and	w8, w24, #0xfffffffe
+1b093458c: 7100001f    	cmp	w0, #0x0
+1b0934590: 1a881300    	csel	w0, w24, w8, ne
+1b0934594: 34000960    	cbz	w0, 0x1b09346c0 <__text+0x4b8>
+1b0934598: 90001728    	adrp	x8, 0x1b0c18000 <__text+0x2e3df8>
+1b093459c: fd40d500    	ldr	d0, [x8, #0x1a8]
+1b09345a0: bd0013e0    	str	s0, [sp, #0x10]
+1b09345a4: f0002468    	adrp	x8, 0x1b0dc3000 <__text+0x48edf8>
+1b09345a8: 91111d08    	add	x8, x8, #0x447
+1b09345ac: f80143e8    	stur	x8, [sp, #0x14]
+1b09345b0: 52808008    	mov	w8, #0x400              ; =1024
+1b09345b4: 79003be8    	strh	w8, [sp, #0x1c]
+1b09345b8: b801e3f6    	stur	w22, [sp, #0x1e]
+1b09345bc: 52800248    	mov	w8, #0x12               ; =18
+1b09345c0: b9000be8    	str	w8, [sp, #0x8]
+1b09345c4: 910043e8    	add	x8, sp, #0x10
+1b09345c8: f90003e8    	str	x8, [sp]
+1b09345cc: 90ffe104    	adrp	x4, 0x1b0554000
+1b09345d0: 91000084    	add	x4, x4, #0x0
+1b09345d4: b0002847    	adrp	x7, 0x1b0e3d000 <__text+0x508df8>
+1b09345d8: 91105ce7    	add	x7, x7, #0x417
+1b09345dc: 14000023    	b	0x1b0934668 <__text+0x460>
+1b09345e0: aa0003f6    	mov	x22, x0
+1b09345e4: b817c3bf    	stur	wzr, [x29, #-0x84]
+1b09345e8: 3817b3bf    	sturb	wzr, [x29, #-0x85]
+1b09345ec: d10213a2    	sub	x2, x29, #0x84
+1b09345f0: d10217a3    	sub	x3, x29, #0x85
+1b09345f4: d2800000    	mov	x0, #0x0                ; =0
+1b09345f8: 52800001    	mov	w1, #0x0                ; =0
+1b09345fc: 95dfe92d    	bl	0x1b812eab0 <__text+0x77fa8a8>
+1b0934600: aa0003f5    	mov	x21, x0
+1b0934604: b857c3b8    	ldur	w24, [x29, #-0x84]
+1b0934608: 3857b3b7    	ldurb	w23, [x29, #-0x85]
+1b093460c: aa1703e1    	mov	x1, x23
+1b0934610: 95dfd7c8    	bl	0x1b812a530 <__text+0x77f6328>
+1b0934614: 121f7b08    	and	w8, w24, #0xfffffffe
+1b0934618: 7100001f    	cmp	w0, #0x0
+1b093461c: 1a881300    	csel	w0, w24, w8, ne
+1b0934620: 34000500    	cbz	w0, 0x1b09346c0 <__text+0x4b8>
+1b0934624: 90001728    	adrp	x8, 0x1b0c18000 <__text+0x2e3df8>
+1b0934628: fd40d500    	ldr	d0, [x8, #0x1a8]
+1b093462c: bd0013e0    	str	s0, [sp, #0x10]
+1b0934630: f0002468    	adrp	x8, 0x1b0dc3000 <__text+0x48edf8>
+1b0934634: 91111d08    	add	x8, x8, #0x447
+1b0934638: f80143e8    	stur	x8, [sp, #0x14]
+1b093463c: 52808008    	mov	w8, #0x400              ; =1024
+1b0934640: 79003be8    	strh	w8, [sp, #0x1c]
+1b0934644: b801e3f6    	stur	w22, [sp, #0x1e]
+1b0934648: 52800248    	mov	w8, #0x12               ; =18
+1b093464c: b9000be8    	str	w8, [sp, #0x8]
+1b0934650: 910043e8    	add	x8, sp, #0x10
+1b0934654: f90003e8    	str	x8, [sp]
+1b0934658: 90ffe104    	adrp	x4, 0x1b0554000
+1b093465c: 91000084    	add	x4, x4, #0x0
+1b0934660: b0002847    	adrp	x7, 0x1b0e3d000 <__text+0x508df8>
+1b0934664: 911170e7    	add	x7, x7, #0x45c
+1b0934668: 9100a3e2    	add	x2, sp, #0x28
+1b093466c: d2800001    	mov	x1, #0x0                ; =0
+1b0934670: 52801003    	mov	w3, #0x80               ; =128
+1b0934674: aa1503e5    	mov	x5, x21
+1b0934678: 14000029    	b	0x1b093471c <__text+0x514>
+1b093467c: aa0003f5    	mov	x21, x0
+1b0934680: b817c3bf    	stur	wzr, [x29, #-0x84]
+1b0934684: 3817b3bf    	sturb	wzr, [x29, #-0x85]
+1b0934688: d10213a2    	sub	x2, x29, #0x84
+1b093468c: d10217a3    	sub	x3, x29, #0x85
+1b0934690: d2800000    	mov	x0, #0x0                ; =0
+1b0934694: 52800001    	mov	w1, #0x0                ; =0
+1b0934698: 95dfe906    	bl	0x1b812eab0 <__text+0x77fa8a8>
+1b093469c: aa0003f6    	mov	x22, x0
+1b09346a0: b857c3b8    	ldur	w24, [x29, #-0x84]
+1b09346a4: 3857b3b7    	ldurb	w23, [x29, #-0x85]
+1b09346a8: aa1703e1    	mov	x1, x23
+1b09346ac: 95dfd7a1    	bl	0x1b812a530 <__text+0x77f6328>
+1b09346b0: 121f7b08    	and	w8, w24, #0xfffffffe
+1b09346b4: 7100001f    	cmp	w0, #0x0
+1b09346b8: 1a881300    	csel	w0, w24, w8, ne
+1b09346bc: 35000060    	cbnz	w0, 0x1b09346c8 <__text+0x4c0>
+1b09346c0: d2800003    	mov	x3, #0x0                ; =0
+1b09346c4: 1400001a    	b	0x1b093472c <__text+0x524>
+1b09346c8: 90001728    	adrp	x8, 0x1b0c18000 <__text+0x2e3df8>
+1b09346cc: fd40d500    	ldr	d0, [x8, #0x1a8]
+1b09346d0: bd0013e0    	str	s0, [sp, #0x10]
+1b09346d4: f0002468    	adrp	x8, 0x1b0dc3000 <__text+0x48edf8>
+1b09346d8: 91111d08    	add	x8, x8, #0x447
+1b09346dc: f80143e8    	stur	x8, [sp, #0x14]
+1b09346e0: 52808008    	mov	w8, #0x400              ; =1024
+1b09346e4: 79003be8    	strh	w8, [sp, #0x1c]
+1b09346e8: b801e3f5    	stur	w21, [sp, #0x1e]
+1b09346ec: 52800248    	mov	w8, #0x12               ; =18
+1b09346f0: b9000be8    	str	w8, [sp, #0x8]
+1b09346f4: 910043e8    	add	x8, sp, #0x10
+1b09346f8: f90003e8    	str	x8, [sp]
+1b09346fc: 90ffe104    	adrp	x4, 0x1b0554000
+1b0934700: 91000084    	add	x4, x4, #0x0
+1b0934704: b0002847    	adrp	x7, 0x1b0e3d000 <__text+0x508df8>
+1b0934708: 911260e7    	add	x7, x7, #0x498
+1b093470c: 9100a3e2    	add	x2, sp, #0x28
+1b0934710: d2800001    	mov	x1, #0x0                ; =0
+1b0934714: 52801003    	mov	w3, #0x80               ; =128
+1b0934718: aa1603e5    	mov	x5, x22
+1b093471c: aa1703e6    	mov	x6, x23
+1b0934720: 95dfe6a0    	bl	0x1b812e1a0 <__text+0x77f9f98>
+1b0934724: aa0003e3    	mov	x3, x0
+1b0934728: b857c3b8    	ldur	w24, [x29, #-0x84]
+1b093472c: 9100a3e8    	add	x8, sp, #0x28
+1b0934730: eb08007f    	cmp	x3, x8
+1b0934734: 1a9f07e4    	cset	w4, ne
+1b0934738: d2800000    	mov	x0, #0x0                ; =0
+1b093473c: 52800001    	mov	w1, #0x0                ; =0
+1b0934740: 52800022    	mov	w2, #0x1                ; =1
+1b0934744: aa1803e5    	mov	x5, x24
+1b0934748: d2800006    	mov	x6, #0x0                ; =0
+1b093474c: 95dfe8d5    	bl	0x1b812eaa0 <__text+0x77fa898>
+1b0934750: 9100a3e1    	add	x1, sp, #0x28
+1b0934754: aa1403e0    	mov	x0, x20
+1b0934758: 9407386d    	bl	0x1b0b0290c <__text+0x1ce704>
+1b093475c: d2800015    	mov	x21, #0x0               ; =0
+1b0934760: f94017e2    	ldr	x2, [sp, #0x28]
+1b0934764: b5ffecb3    	cbnz	x19, 0x1b09344f8 <__text+0x2f0>
+1b0934768: 17ffff69    	b	0x1b093450c <__text+0x304>
