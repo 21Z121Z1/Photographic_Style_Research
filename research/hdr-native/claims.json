@@ -5090,6 +5090,73 @@
           "sha256": "a7085f35d7af7a7f5021b2b0b78e3c32d8153ffdd7f85c6f1af2d7afb649b5c9"
         }
       ]
+    },
+    {
+      "id": "HDR-182",
+      "category": "producer/S109/runtime-interface-availability",
+      "status": "已验证数值",
+      "os_build": "26A434",
+      "claim": "Photo-free runtime inventory succeeds:3 frameworks dlopen, Metal Apple Paravirtual device,32 SmartStyle-related classes. Actual producer SmartStyleV1 and2 alternative bundle paths absent; exact3 createLinearThumbnail selectors absent on loaded classes. Scope only this image/loading set, not all macOS/iOS. Plugin static implementation is the next software evidence gap, not a no-GPU/device-only blocker.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s109/closure.json",
+          "line": 1,
+          "sha256": "87ba687417f3145be18cb798162c277db5389f4f85b9cb00f1d614520eeb8130"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s109/run/inventory.json",
+          "line": 1,
+          "sha256": "586ba310d4c0c90ae7ea27ffa5ad75fa4f2e2d85f5f84ab34a122a7f2dbc02bc"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s109/run/os.txt",
+          "line": 1,
+          "sha256": "4ef10a0fc370704ea84699cf3851e51488598c5f1ab35cb572eb6b96278a8e5c"
+        }
+      ]
+    },
+    {
+      "id": "HDR-183",
+      "category": "producer/firmware/filesystem-cost-and-role-inventory",
+      "status": "已验证静态",
+      "os_build": "24A446 iPhone12,1 reference",
+      "claim": "Official Apple ZIP/BuildManifest bind SystemOS cryptex2,348,810,240B and actual OS7,784,628,224B entries. Metadata-only local reads, no DMG downloaded. Canonical IM4P/msys+pbze metadata scan has0 path matches but this is not absence proof. These locators are not producer code/scene evidence.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s110/firmware-filesystems.json",
+          "line": 1,
+          "sha256": "c5d5ffc1c068ee5b5b9a5002e53144c23d6157a65c4101a1a823989dbdca8ed1"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s110/canonical-metadata-scan.json",
+          "line": 1,
+          "sha256": "5fd822576415a22615d90e41cb8f562e3f19cdf132abdedc6d2d35fbda80b5bb"
+        }
+      ]
+    },
+    {
+      "id": "HDR-184",
+      "category": "producer/S110/actual-plugin-static-acquisition",
+      "status": "runner",
+      "os_build": "24A446 input;26A434 runner requested",
+      "claim": "Prepared actual OS entry static extraction on runner only, disk preflight17,716,740,096B, strict206, CRC/SHA, read-only mount, no iOS execution or Apple binary upload. Stop on unavailable AEA key. Only text/IR artifacts retained1day; firmware scratch cleaned. No new pixel/LTM/scene result yet.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s110/preflight.json",
+          "line": 1,
+          "sha256": "28f5ca4c32acf84ea1a412928ce38c897ad88a0c964cd2849af6d29906a17c95"
+        },
+        {
+          "file": "repo/research/hdr-native/producer_firmware_s110.py",
+          "line": 1,
+          "sha256": "2351f6b3a57bcf4740d2acd8a8468a09f43560e1ff00c138eb83901572da92c6"
+        },
+        {
+          "file": "repo/research/hdr-native/producer_air_text_s110.py",
+          "line": 1,
+          "sha256": "c4857baf7f77fce5064d3b61b66f283b207b9b1cdae2f532b594066e6dc52f0d"
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-21T00:29:46.563292+00:00",

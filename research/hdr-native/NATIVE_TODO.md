@@ -218,3 +218,9 @@ S106/S108：用户要求优先追摄影风格真实调整机制。静态已定�
 
 
 S108编译前提失败已归档，不能据此认定producer不在macOS。S109只补ARC指针显式转换，再查同一真实插件/三个selector；不传照片、不新增像素指标。
+
+
+S109已验证本次26A434镜像无真实SmartStyleV1 producer bundle和三个thumbnail selector，但Metal及3framework均可用。静态缺口在iOS独立插件，不归为只能实机。下一步核固件元数据/现有源，在runner只下载所需SystemOS部分并静态输出方法/AIR文本，沿实际Tone→local曲线/thumbnail数据流；不要重复此能力查询。匹配同帧相机统计/j EV和RAW仍待实机。
+
+
+S110软件缺口推进：已核Apple BuildManifest的SystemOS/OS角色；只读实际OS查SmartStyleV1，不重复缓存卷。runner先核约17.72GB可用空间，不足不下载；满足才取7.7846GB单entry并只输出静态文本。AEA无key立即停止。插件/缩略图/curve分支证明可静态推进，不能归为只能等实机；j同帧统计和RAW仍待实机。

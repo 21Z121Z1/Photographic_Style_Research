@@ -1047,3 +1047,21 @@ BWSmartStyleTargetRenderer复制真实请求style的cast、intensity、Tone、co
 ### S108：接口查询在编译前提失败，不能判断插件可用性
 
 **可交给macOS runner（HDR-181）。** run39531127497 / source548cf16477d57253fe7003f9b3db9e8d075e8048 / 26A434 / image20261012.0260.1。新探针calloc返回值缺ARC所需的Class指针显式转换，编译报错；尚未执行任何接口查询或Metal检查。不是缺插件/原生算子失败证据，没有新像素指标。artifact12316025116，702B，SHA486ab4d70a2723a2a271cff6b1045eda2d23ab49fb0dee08532255b0e6af9bcf；三份原始文本已校验留存，临时分支在PR零引用/源保留后删除，无secret或release。S109只补该指针ownership/cast，反向替换可还原S108源码字节，不改变查询范围；S106静态数据流结论不受影响。
+
+
+### S109 终态：原拍摄端插件不在本次macOS镜像，缺口已定位
+
+**已验证数值（接口可用性，HDR-182）。** run39531601892 / sourceebd05cc560dd04e0298a6246d646e6e784f3dc86 / 26A434 / image20261012.0260.1，success。CMImaging、PhotoImaging、CMCapture均dlopen成功，Metal为Apple Paravirtual device。原拍摄端loader的VideoProcessors/SmartStyleV1.bundle及另两候选路径均不存在，加载类中三个精确createLinearThumbnail selector均未出现；32个SmartStyle相关类的元数据已留存。VideoProcessors实际仅列RTSCV1.bundle、BarcodeScanner.videoprocessor、CCPortrait.bundle。这是此镜像/此加载集合的可用性结论，不扩展为所有macOS或iOS无该实现。
+
+artifact12315671570，15209B，SHAcdc099274e269edfd7d58a4e7264ae1679c636e7bc9b2dc6212c739bd9167f69；5份纯文本成员逐一核SHA。本机仅取15KB公开ZIP，无照片、密文输入、secret/release或日本/香港大包往返。临时分支在PR零引用/源保留后清理。没有新像素指标，errors.csv不填零。
+
+后续缺的是**iOS实际SmartStyleV1插件的静态实现**，并非“无GPU所以只能等实机”。先核已有固件路径及远程ZIP元数据，只选择所需SystemOS部分；若要新取固件，只在runner静态拆解并传回文本，避免香港磁盘与跨区传输。当前仍可复用已验证的Mac guide/light-map/render算子；不把它们的手工配置叫作拍摄端复现。待补Tone→参数/曲线/linear输出绑定后，再制作保留global、减弱local的独立HDR look。
+
+
+### S110 前置：选实际文件系统，防止重复下载缓存卷
+
+**已验证静态（固件元数据，HDR-183）。** 直接读取Apple官方24A446/iPhone12,1 IPSW的ZIP中央目录与BuildManifest，HTTP206精确范围、禁止整IPSW回退。BuildManifest确认产品/build，并将Cryptex1,SystemOS映射到043-69708-712.dmg.aea（2,348,810,240B），OS映射到043-70213-665.dmg.aea（7,784,628,224B）；完整entry大小/CRC/偏移和manifest SHA见evidence/s110/firmware-filesystems.json。本机两次补齐元数据各117509B；没有下载任何DMG。另流式读取36,103,251B canonical metadata载荷并验证ZIP CRC，内容为IM4P/msys+pbze、未找到相关路径文本。零命中不作为插件缺失证据，不继续把该摘要当目录清单。
+
+**可交给macOS runner（HDR-184，尚未执行）。** 新producer-firmware-s110.yml在确认26A434后，先检查空间至少17,716,740,096B，再检查工具；不足立即停止、不会下载DMG。满足才从Apple直取OS单个entry、核CRC/SHA，用既有公开AEA解密流程只读挂载，查真实SmartStyleV1插件并导出UUID/完整可执行文件SHA、ObjC/符号/源码反汇编及可解析AIR文本。密钥不可得就记录停止，不硬破；iOS可执行文件不运行，整Apple二进制不上传。输入固件及临时bitcode在runner任务结束清理，artifact只留文本且1日保留，无人物照片输入。大包不在香港/日本之间转发。
+
+这是取得缺失实际生产实现的步骤，不是新的LTM逆像素结果。解析后优先查三个createLinearThumbnail入口怎样选曲线/曝光/CCM，及Tone如何进local light map与最终渲染；继续把global、local、语义分开。减弱HDR局部效果的实用目标与严格scene/RAW目标分别报告，不重启bit-exact/33点/codec拟合。冻结文件和旧边界不变。

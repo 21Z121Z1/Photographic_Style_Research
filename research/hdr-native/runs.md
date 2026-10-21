@@ -282,3 +282,9 @@ S106为只读静态阶段，无新native run：24A446/iPhone12,1 CMCapture UUID9
 
 
 S108 run39531127497 / research/vm-native-20261021-producer-s108 / source548cf16477d57253fe7003f9b3db9e8d075e8048 / 26A434/image20261012.0260.1：failure，探针ARC指针转换编译错误，未执行库存查询。artifact12316025116，702B，SHA486ab4d70a2723a2a271cff6b1045eda2d23ab49fb0dee08532255b0e6af9bcf，3文本成员已认证；PR0/源保留后临时branch清理，无secret/release。S109仅修明确编译前提。
+
+
+S109 [39531601892](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39531601892)，branch research/vm-native-20261021-producer-s109，sourceebd05cc560dd04e0298a6246d646e6e784f3dc86，26A434/image20261012.0260.1，success。3framework dlopen、Metal存在；3候选SmartStyle bundle均缺失、精确3producer selector未出现。artifact12315671570，15209B，SHAcdc099274e269edfd7d58a4e7264ae1679c636e7bc9b2dc6212c739bd9167f69，5文本成员核验。临时分支PR0/源保留后清理，无secret/release/图像输入。
+
+
+S110前置无新native运行：Apple24A446 BuildManifest及两类DMG角色/大小已核，只读取公开元数据，未下载DMG。新workflow producer-firmware-s110.yml准备在空间预检后仅runner取实际OS、静态输出插件文本；run id及实际image待触发记录，尚无算子/像素结果。

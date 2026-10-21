@@ -280,3 +280,9 @@ S106静态复现：在原本机现有只读/tmp/dsc_full及ios_cache_reader.py�
 
 
 S108可复现的编译失败见evidence/s108/run/build.log及source548cf16。S109的evidence/s109/preflight.json逐字记录唯一ownership/cast修正；native_style_inventory_s109.m与新workflow仅做相同无照片接口查询，旧源码/workflow保留。
+
+
+S109 sourceebd05cc、workflow producer-interfaces-s109.yml、源码native_style_inventory_s109.m已成功查询。evidence/s109/run/inventory.json是原始接口证据；artifact原ZIP SHA与5成员SHA见closure.json。该查询已完成，不再排队重复。后续以iOS实际插件静态实现为入口。
+
+
+S110：evidence/s110/repro三脚本为本机受400MB限制的公开IPSW metadata查询；firmware-filesystems.json记录选择OS entry的依据。新producer-firmware-s110.yml调用producer_firmware_s110.py，先核空间，再Apple→runner范围下载、CRC/SHA、AEA正常解密与只读挂载，输出插件反汇编/AIR文本。producer_air_text_s110.py隔离每个LLVM解析进程。禁止将临时DMG/可执行文件/metallib/bitcode加入artifact；新workflow只传producer-s110-text。

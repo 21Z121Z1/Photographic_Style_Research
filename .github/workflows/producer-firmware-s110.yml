@@ -1,0 +1,37 @@
+name: Apple actual producer static source S110
+on:
+  push:
+    branches: [research/vm-native-20261021-producer-s110]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  extract-static:
+    runs-on: xcode-27
+    timeout-minutes: 70
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract only actual reference producer to text
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/producer-s110-text"
+          python3 research/hdr-native/producer_firmware_s110.py > "$RUNNER_TEMP/producer-s110-text/driver.log" 2>&1
+      - name: Retain text only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: producer-s110-text
+          path: ${{ runner.temp }}/producer-s110-text/
+          retention-days: 1
+      - name: Remove only this job's firmware scratch
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if mount | grep -F "$RUNNER_TEMP/producer-firmware-s110/mount" >/dev/null; then
+            hdiutil detach "$RUNNER_TEMP/producer-firmware-s110/mount"
+          fi
+          rm -rf "$RUNNER_TEMP/producer-firmware-s110"
