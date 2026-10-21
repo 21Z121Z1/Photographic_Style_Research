@@ -946,3 +946,16 @@ setDefaults后useStyleEngine实测false（本次仍显式设false），inputCast
 
 
 S100补充（已验证数值，汇总下界推导，未重跑）：同一raw线性P3画布中，原片S的RGB全局max=1.2321066856384277，显式consumer F(R,Tone0)的全局max=1.037109375。因此max|S−F(R,0)|≥|max(S)−max(F(R,0))|=0.19499731063842773。这是严格必要下界，不是实测最大误差；当前显式配置（inputCast默认nil等）无法满足旧float maxabs1e-5，无须为了判定这一点再抓像素/追bit-exact。它没有定位见证像素是否落入旧RGB-eligible mask，也不能推导p99、99%实用效果、亮度EV或实际Photos UI是否等价；这些结论仍未测。均值接近不能代替实际往返。见evidence/s100/tone0-bridge-bounds.json。
+
+
+### SEMANTIC-20261018 / S101 交付补齐：完整文件保留已冻结并执行，尚无终态结论
+
+**可交给macOS runner。** run39518274902，source90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，branch research/vm-native-20261021-hdr-s101；2026-10-21T00:04:55.444596+00:00观察为in_progress。这是带时间的观察，实际build/image须终态归档复核，不从runner标签直接推定。一次API轮询失败只停止了旧监测器；已重新确认同一run实际in_progress，恢复观察，没有重启native或排第二个job。
+
+补的是先前selected S89/S90只留contacts/hash造成的完整文件缺口。原S42计算插入一条local v保存调用，移除它后AST完全恢复；原master EXR必须匹配旧SHA。global-only沿用原GTC逆假设，clamp/plateau/nonfinite flags与NaN保留，不猜缺失值；local-only沿用native RGB thumbnail projection候选。二者均在共同native key1逆风格R后计算，不能改称原片S上的纯GTM/LTM生产端逆解。原S44/S47显示意图及S88/S89 10bit444/matrix6编码不变，原S89实际载体headroom1/2/8的验证AST原样复用到本次新保存文件；这不是新留出集或物理精度提升。
+
+每张实际保存R、global假设、local候选、相对scene候选四份HALF P3 EXR，以及独立HDR显示目标FLOAT P3 EXR、完整保留原SDR的HEIC、mask/flags、统一ACES预览与meaning。HDR目标EXR需与源HDR.f32存储分量逐位相同；不能只留它的hash或把carrier自洽当scene准确。五张沿用既有IMG2600/2604/0032/2608/0033，后两张只是旧encoded-integration冻结留出，不声称本轮新留出。所有新图像输出按照片加密，失败的剩余新文件也尝试加密保留；只上传独立staging中通过类型检查的小型text，人物明文不进入公开artifact。
+
+按用户后续“解除所有限制并可存在日本”的明确资源授权，本次新归档采用日本直存3GB总量预检guard；不修改历史脚本的1GB规则，不拆包规避guard，实际总量超3GB时先停下复核。原100MB/4GB限制已在storage-jp-receipt-20261021记录为被后续授权替代。唯一大路径为GitHub→日本一次，完整GPG/所有成员在那里验证；香港只取小型公开证据、每cipher至多32KiB密文头和hash摘要，不回拉整包，不重传旧S5/S8/S98/S100大结果。输入已在仓库，无新增原片上传/secret/release；artifact retention1day。归档后还须逐文件核对认证tar中实际EXR/HEIC存在且size/SHA对应，不以文件清单代替交付。
+
+当前没有新像素结果，不给errors.csv填零占位。A/工程/旧acceptance仍false；原S100已证显式Tone0桥接的RGB max必要下界0.1949973，不为此重跑bit-exact。真实拍摄端语义、j同帧曲线/统计、原Studio、RAW与实屏仍按原测试方案，不能用完整文件保存替代。

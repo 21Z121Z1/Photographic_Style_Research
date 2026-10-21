@@ -4713,9 +4713,39 @@
           "sha256": "ad9d0f52cf9b71e4a5a784eab645cea6ed20f08db0a7b590f769739127c63a29"
         }
       ]
+    },
+    {
+      "id": "HDR-168",
+      "category": "hdr/full-file-retention-S101-plan",
+      "status": "runner",
+      "claim": "S101冻结五套完整共同key1/global/local/scene/HDR目标EXR与保留SDR载体的交付；S42像素AST去除新增IO调用后恢复、S89实际headroom验证节点原样复用，无新留出/scene或语义逆解结论。原ZIP日本直存，尚未终态。",
+      "os_build": "target26A434; actual host pending",
+      "run_id": 39518274902,
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s101/preflight.json",
+          "line": 1,
+          "sha256": "e0b3dbc875e2e01bd17d3fe48f65ae3d604ce4c19d25f60cf6ba81b58aa4e2c9"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s101/pending-observation.json",
+          "line": 1,
+          "sha256": "57d4b7ecacbd697e0ce57f843e9b5dd5fd747e1d5d69ba3a94d3284112c1074a"
+        },
+        {
+          "file": "repo/research/hdr-native/run_hdr_s101.py",
+          "line": 1,
+          "sha256": "44890aac2a1fe1a271d1a0651ed4167f0fafde4e2b18dd3f0c490147dec9f68e"
+        },
+        {
+          "file": "repo/research/hdr-native/s101_transfer_policy.json",
+          "line": 1,
+          "sha256": "92c5aa1a31a9c25ef3e56062e8086a319a962c34fb56ce314b11dadc035860b1"
+        }
+      ]
     }
   ],
-  "updated_utc": "2026-10-20T23:42:52.917209+00:00",
+  "updated_utc": "2026-10-21T00:04:55.444596+00:00",
   "resource_authorization_20261020": {
     "scope": "Cumulative local retained writing allowance for text and small encrypted evidence",
     "previous_cap_bytes": 100000000,
@@ -8031,5 +8061,22 @@
     "no_luma_EV_bound_inferred_from_RGB_extrema": true,
     "inputCast_default_nil_and_Photos_UI_equivalence_unproven": true,
     "no_reason_for_bit_exact_retry": true
+  },
+  "hdr_S101_pending": {
+    "observed_UTC": "2026-10-21T00:04:55.444596+00:00",
+    "run_id": 39518274902,
+    "source_commit": "90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7",
+    "branch": "research/vm-native-20261021-hdr-s101",
+    "observed_status": "in_progress",
+    "observed_conclusion": null,
+    "target_OS_build": "26A434; actual host not yet reviewed",
+    "monitor_resume_after_API_error": true,
+    "same_native_run_not_restarted": true,
+    "input_upload_bytes": 0,
+    "new_input_secret_or_release": false,
+    "new_HK_Japan_large_transfer": false,
+    "A_phase_complete": false,
+    "engineering_accepted": false,
+    "acceptance_complete": false
   }
 }

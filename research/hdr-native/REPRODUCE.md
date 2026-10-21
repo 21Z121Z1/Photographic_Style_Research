@@ -256,3 +256,6 @@ S100源码 e9a93b09f0c814dce6816e60b0bc2f274db4cb35：run_semantic_s100.py / sem
 
 
 S100实际run39514608080，源e9a93b09：driver精确衍生于S99，修正SRC资源并显式沿用residency兼容前提，native和analysis维持S99。原私有ZIP12308091275在日本runs/39514608080/artifact-12308091275.zip，SHA6940dfa84d0d3d4dfc9b05eb1318d9c889612dcc997352906012fbf6a2db1655，所有206成员已认证。香港不得为读指标回拉此577MB包；先读公开evidence/s100/run/analysis.json、三个*-native-calls、filter-report与source-facts。预览和原始数据保持加密，需要新增指标时先选现有证据可回答的范围；F(R0)对S像素比较还未测，不拿各自input/output表冒充往返。
+
+
+S101源码90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7：run_hdr_s101.py、rebuild_export_s101.py、headroom_validation_s101.py、export_hdr_target_s101.py、seal_partial_s101.py与s101_transfer_policy.json。S42原native AST hash9028e46f...，S89验证64–84原AST hashb395ffeb...；完整值见evidence/s101/preflight.json。执行只使用仓库已有五原片；不得为本轮读旧大archive到HK。原像素公式不改，仅新增文件留存和原验证复用。按后续资源授权，单次新日本直存guard3GB，实际artifact总量预检后才取；无HK大包回传。结果待run39518274902，先查同run终态，不因监测暂时失败另派run。

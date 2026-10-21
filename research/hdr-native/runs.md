@@ -258,3 +258,6 @@ S100 [39514608080](https://github.com/21Z121Z1/Photographic_Style_Research/actio
 
 
 S100 [39514608080](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39514608080)，branch research/vm-native-20261021-semantic-s100，sourcee9a93b09f0c814dce6816e60b0bc2f274db4cb35，26A434/image20261012.0260.1，success。真实native key1 R与S各Tone0及R+.35；每case4owner全24470208像素、native/CI max0，Tone0两皮肤项已0但consumer非恒等。日本32public/206private认证、原ZIP577462229B直存，清理完成。详见evidence/s100/NUMERICAL_RESULTS.zh-CN.md；非scene/相机烘焙逆解完成。
+
+
+S101 [39518274902](https://github.com/21Z121Z1/Photographic_Style_Research/actions/runs/39518274902)，source90d565c7686cd45f55e1d1e4e5fd9b0f6af31ef7，branch research/vm-native-20261021-hdr-s101；2026-10-21T00:04:55.444596+00:00状态in_progress，目标xcode-27/26A434，image待终态。五套完整分离候选/母版/独立HDR目标EXR/载体保留，原S42/S88/S89数学与门槛不改。无新输入传输、secret或release；原ZIP直接日本。旧监测API失败后仅恢复同一run观察，无native重启。

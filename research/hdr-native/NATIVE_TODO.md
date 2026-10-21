@@ -192,3 +192,6 @@ S100已启动39514608080：先审真实key1 R与原片S各自Tone0输出/原生�
 
 
 S100终态success，39514608080已完整归档/清理，不再等待或重跑旧三case。可runner下一步：原样准备SRC并用frozen key1 R，直接比较native F(R,Tone0)与同一次source的original_sdr_exact.f32，逐块比较raw方向/颜色域/未剪裁分量，报告EV/ACES/梯度及排除域；同时明确inputCast默认nil、其他默认编辑参数与实际Photos配置尚未匹配，未证明UI顺序。Tone0两皮肤项已0且neutral差0，不能把整体非恒等差当作这两项皮肤处理，或把Tone0当成已去LTM。需要实机的相机同帧语义开关/曲线、j四曲线/统计、原Studio、RAW、Photos实际UI与显示仍按原方案。
+
+
+S101 run39518274902已启动：终态后核5套认证tar实际含4份共同R/global/local/scene HALF EXR、独立HDR FLOAT EXR和HEIC，目标EXR readback0、原master旧SHA、ImageIO原SDRmax0、实际新carrier headroom1/2/8及全部排除域/量化误差。原global/local假设不变，本轮无新语义反演。既有S100零Tone显式桥接已由极值证实不能过旧float1e-5，不再追该精度；实用意义与正确编辑配置仍需另行判断。A、相机曲线/统计、Studio、RAW、实屏边界不因文件交付而消失。
