@@ -277,3 +277,6 @@ S107已完成（sourceea695a690a411fa12a47759b4c178bd207f739fa）：workflow hdr
 
 
 S106静态复现：在原本机现有只读/tmp/dsc_full及ios_cache_reader.py条件下，evidence/s106/repro中的locator→objc_locate→capture_methods→utility_categories→trace_capture→annotate_windows→trace_follow→trace_loader_helpers按依赖执行。脚本open(x)防覆盖旧证据，换到新的输出目录后再执行；每次本地Python必须包scripts/local-python-scope.sh。精确命令与输入位置也保留在workspace s106-20261021。只保留文本；反汇编临时MH_OBJECT在TemporaryDirectory退出即删，原缓存不移动不改。S108 workflow producer-interfaces-s108.yml调用native_style_inventory_s108.m，仅检查明确源路径和selector，不需照片输入或secret。
+
+
+S108可复现的编译失败见evidence/s108/run/build.log及source548cf16。S109的evidence/s109/preflight.json逐字记录唯一ownership/cast修正；native_style_inventory_s109.m与新workflow仅做相同无照片接口查询，旧源码/workflow保留。

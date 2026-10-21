@@ -279,3 +279,6 @@ S107 [39527547342](https://github.com/21Z121Z1/Photographic_Style_Research/actio
 
 
 S106为只读静态阶段，无新native run：24A446/iPhone12,1 CMCapture UUID995FC22B-41BD-37B4-812F-2686B81C2694，18完整函数31,164B代码，逐窗口SHA及header SHA见evidence/s106，源cache未改。S108已准备仅文本的实际producer接口可用性探针；未取得run id前不报执行成功。
+
+
+S108 run39531127497 / research/vm-native-20261021-producer-s108 / source548cf16477d57253fe7003f9b3db9e8d075e8048 / 26A434/image20261012.0260.1：failure，探针ARC指针转换编译错误，未执行库存查询。artifact12316025116，702B，SHA486ab4d70a2723a2a271cff6b1045eda2d23ab49fb0dee08532255b0e6af9bcf，3文本成员已认证；PR0/源保留后临时branch清理，无secret/release。S109仅修明确编译前提。

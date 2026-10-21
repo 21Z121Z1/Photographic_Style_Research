@@ -1042,3 +1042,8 @@ artifact12314526095，35049B，SHA2d188a4cfb2c0823ea66768eef6217bbfb4543c7f2cff7
 BWSmartStyleTargetRenderer复制真实请求style的cast、intensity、Tone、color；Tone返回值保存在v13再原样送setToneBias（0x1b0936394–63ac）。同一context还绑定unstyled图、linear图和各自metadata、person/skin/sky matte及crop，输出coded LinearThumbnail和两张small light map，再调用process（0x1b09360f8/6104、63d4–646c、64c0/cc/e0）。coded buffer沿两条分支进入SmartStyleStillLinearThumbnail附件，编码器再取它作aux type10（0x1b09369a8–69ec、0x1b08165c0/6774–6788）。原c/d、key3序列化等价与inside-plugin曲线/应用域仍待绑定；不能由此宣称IMG2810或所有机型无face boost。详见evidence/s106/DATAFLOW.zh-CN.md及reviewed-dataflow.json。
 
 **可交给macOS runner（HDR-180）。** 新S108只检查真实VideoProcessors插件路径、三个createLinearThumbnail selector和处理器元数据，不输入照片、不生成图片、不上传Apple binary。若具备同一接口，下一步直接复用原算子构造局部反事实；若缺失，明确缺的是插件实现，继续查可用固件来源。后续实用目标是减弱/去掉可识别的local以独立制作HDR look；严格scene-referred仍需物理证据。Tone0非恒等、负Tone非逆、c/d不是任意灰度gain等既有边界保留，GTM/LTM/人物仍分开，Apple Log不变。没有新像素指标，errors.csv只加入已完成S107诊断，不给本静态阶段填零。
+
+
+### S108：接口查询在编译前提失败，不能判断插件可用性
+
+**可交给macOS runner（HDR-181）。** run39531127497 / source548cf16477d57253fe7003f9b3db9e8d075e8048 / 26A434 / image20261012.0260.1。新探针calloc返回值缺ARC所需的Class指针显式转换，编译报错；尚未执行任何接口查询或Metal检查。不是缺插件/原生算子失败证据，没有新像素指标。artifact12316025116，702B，SHA486ab4d70a2723a2a271cff6b1045eda2d23ab49fb0dee08532255b0e6af9bcf；三份原始文本已校验留存，临时分支在PR零引用/源保留后删除，无secret或release。S109只补该指针ownership/cast，反向替换可还原S108源码字节，不改变查询范围；S106静态数据流结论不受影响。
