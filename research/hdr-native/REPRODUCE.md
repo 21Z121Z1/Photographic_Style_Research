@@ -268,3 +268,6 @@ S101完整文件：日本runs/39518274902/artifact-12310032763.zip，2081013365B
 
 
 S103复现失败：source b0a0784，原workflow hdr-native-s103.yml / run39524824105；查看 evidence/s103/run/driver.log 和 phase-summary.json。不可直接盲目重派同整包下载方案，先用有界HTTP206/每份密文SHA/GPG认证修传输。显示/亮度/边缘数学仍是S90原AST。S104指令复核入口 workspace/s103-20261021/trace_thumbnail.py，使用既有只读 /tmp/dsc_full 与 ios_cache_reader，受 scripts/local-python-scope.sh 限制；小型公开证据 evidence/s104/，不解码照片、不上传Apple二进制。
+
+
+S105失败复现见source7e747a2的workflow/driver与evidence/s105/run/driver.log：环境secret名称错配。S107新增evidence/s107/preflight.json的AST/正则检查，在启动前核同一个secret标识；只改driver环境名与自哈希文件名，显示/线性数学仍沿S103/S90。之前的分段字节夹具检查只认证虚拟ZIP读合同，不是原生照片结果。

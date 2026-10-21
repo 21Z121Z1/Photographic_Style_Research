@@ -1,0 +1,79 @@
+name: hdr-native-s107
+on:
+  push:
+    branches: ['research/vm-native-20261021-hdr-s107']
+  workflow_dispatch:
+jobs:
+  fixed-view-remaining-four:
+    runs-on: xcode-27
+    timeout-minutes: 75
+    permissions:
+      contents: read
+      actions: read
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare temporary diagnostic workspace
+        run: |
+          set -euo pipefail
+          W="$RUNNER_TEMP/hdr-s107"
+          mkdir -m 700 "$W"
+          mkdir "$W/out" "$W/scratch"
+          mkdir -m 700 "$W/gnupg"
+          echo "W=$W" >> "$GITHUB_ENV"
+          echo "GNUPGHOME=$W/gnupg" >> "$GITHUB_ENV"
+          test "$(sw_vers -buildVersion)" = 26A434
+          sw_vers > "$W/out/host.txt"
+          command -v gpg >/dev/null || brew install gnupg
+          python3 -m pip install --quiet 'numpy==2.3.4' 'opencolorio==2.6.0' 'OpenEXR==3.5.2' > "$W/out/dependencies.log" 2>&1
+      - name: Reuse authenticated S101 files and measure four missing cases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HDR_S107_ARCHIVE_SESSIONS: ${{ secrets.HDR_S107_ARCHIVE_SESSIONS }}
+        run: |
+          set -euo pipefail
+          ulimit -c 0
+          test -n "${HDR_S107_ARCHIVE_SESSIONS:-}"
+          python3 research/hdr-native/run_hdr_s107.py > "$W/out/driver.log" 2>&1
+      - name: Remove temporary images on success or failure
+        if: always()
+        run: |
+          test -n "${W:-}"
+          rm -rf -- "$W/scratch"
+          gpgconf --homedir "$W/gnupg" --kill gpg-agent || true
+          rm -rf -- "$W/gnupg"
+      - name: Stage small aggregate text only
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,json,hashlib,shutil,subprocess
+          w=pathlib.Path(os.environ['W']);p=w/'out';rows=[]
+          for f in sorted(p.rglob('*')):
+              if f.is_file():
+                  assert f.suffix in {'.json','.log','.txt','.csv','.md'}
+                  assert f.stat().st_size<2000000
+                  rows.append({'path':str(f.relative_to(p)),'size':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()})
+          assert sum(r['size'] for r in rows)<5000000
+          target=w/'public';target.mkdir()
+          for row in rows:
+              dst=target/row['path'];dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p/row['path'],dst)
+          (target/'manifest.json').write_text(json.dumps({'run_id':os.environ['GITHUB_RUN_ID'],'commit':os.environ['GITHUB_SHA'],'os_build':subprocess.check_output(['sw_vers','-buildVersion'],text=True).strip(),'image_version':os.environ.get('ImageVersion'),'image_files':0,'scope':'Aggregate diagnostic text only; all image intermediates were runner scratch, not uploaded','files':rows},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hdr-s107-aggregate
+          path: ${{ env.W }}/public/
+          retention-days: 1
+      - name: Remove own remaining temporary files
+        if: always()
+        run: |
+          test -n "${W:-}"
+          rm -rf -- "$W"

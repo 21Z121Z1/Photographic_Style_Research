@@ -270,3 +270,6 @@ S101 [39518274902](https://github.com/21Z121Z1/Photographic_Style_Research/actio
 
 
 S103 run39524824105，branch research/vm-native-20261021-hdr-s103，source b0a0784ff5b413b2082ac0e9b083b0b2754d86af，xcode-27 / 26A434 / image20261012.0260.1：failure。两个native reader编译通过，但原S101 artifact下载response.read超时，尚未执行照片。公开artifact12312825604，3446B，SHA754780b5f4ea2e19d1aa72eeb1f2eceea4fa234433eaabea174ff66fbcfdf602，日本原ZIP保留，6成员认证；无新图片归档。临时secret HDR_S103_ARCHIVE_SESSIONS和临时分支已清，PR head/base全状态0，源留研究分支。未测部分Mac下载字节，不报0。S104是本地受限内存静态核对285条缓存指令，无新runner。
+
+
+S105 run39526823912 / research/vm-native-20261021-hdr-s105 / source7e747a28b0b53cf9c6b9ca7e1bb7cd5aafdc3397 / xcode-27 / 26A434 / image20261012.0260.1：failure，driver请求S103 secret而workflow提供S105，0照片、0range body。artifact12313737886，4083B，SHAab0fe1741d0f0312ad19fa832cba07cfe911bc4038eb73ff58ecce3d5f119eb3，日本7文本成员已认证；临时secret/branch已清，PR0/master未改。S107为已定位的名称修复，数值配方不变。

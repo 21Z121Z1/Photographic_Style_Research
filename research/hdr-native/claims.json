@@ -4950,6 +4950,40 @@
           "sha256": "50477be1839cd83e818cce4325c66d183d0200272cf2ec3211f9ef41bd4fc3ca"
         }
       ]
+    },
+    {
+      "id": "HDR-177",
+      "category": "hdr/S105/prerequisite",
+      "status": "runner",
+      "os_build": "26A434",
+      "claim": "S105 failed before photos/cipher bodies because the driver requested the old S103 session variable while workflow supplied S105. Zero artifact range body bytes observed, not zero HTTP overhead. No new pixel gate. Verified small text archive and owned-resource cleanup; S107 is only the evidenced configuration correction with static name consistency checks.",
+      "evidence": [
+        {
+          "file": "repo/research/hdr-native/evidence/s105/phase-summary.json",
+          "line": 1,
+          "sha256": "73a8d19c49b94b559c64feda143d24271e58d7aa1c1b23821ce92164cde0c0d5"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s105/run/driver.log",
+          "line": 1,
+          "sha256": "893f3008b4ab8272483dc496a37a85190678ceb3142dc877f9ac9d08627041c9"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s105/run/archive-receipt.json",
+          "line": 1,
+          "sha256": "906813e52eb10ecb634e73190a99bfc69cf3f056835209b8456285a25782de38"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s105/closure.json",
+          "line": 1,
+          "sha256": "4a0441d4a89d12ee184e52226d20ad744b2ec13bfba96f0404379452e08b3a58"
+        },
+        {
+          "file": "repo/research/hdr-native/evidence/s107/preflight.json",
+          "line": 1,
+          "sha256": "46341573e24fe2a2f8ad04bc56cb540aaa376e4acbadbe83600227bc0a47a26c"
+        }
+      ]
     }
   ],
   "updated_utc": "2026-10-21T00:29:46.563292+00:00",

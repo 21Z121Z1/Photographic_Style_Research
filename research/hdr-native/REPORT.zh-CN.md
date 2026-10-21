@@ -1004,3 +1004,10 @@ EV域沿用旧验证：RGB有限，Yactual>0、Yref>1e-6；排除数量如表，
 **已验证静态（HDR-175，参考 iOS24A446/iPhone12,1）。** 复核285条现有缓存指令。`LTMProcessor process` 在0x256b6430c取得生成的线性输入，保存的同一texture在0x256b64d44..0x256b64d84送入HITH统计，再在0x256b64e10/0x256b64e20初始化并执行曲线计算。RGBA入口转换在此之前绑定输入/输出纹理和两个4字节标量。逐字节证据见 evidence/s104/producer-thumbnail-precurve.txt；UUID0A211E15-50CA-373B-AD9A-F9E3283C68F4，Mach-O SHA974ffb2895cae06e26e63bd77ab4891f5401d4789449f7a0080d377553b2426e。原缓存未改。这证明参考内部前曲线路径，尚不证明 HEIF 辅助图来自该texture，更不把参考地址当 IMG2810 的匹配实现。
 
 **假设 / 来源待绑定（HDR-176）。** 接受用户纠正：WithoutFaceBoost是内部重算路径，不是用户可单独关闭的相机设置；不再要求用户通过UI拍一张关闭提亮的对照。优先追现有LinearThumbnail的生产节点，并用它约束低频亮度。已验证的Apple Log解码/线性P3数值继续复用；“它是否直接是无提亮分支的输出”仍需将编码辅助项与纹理/曲线选择实际连上。主图与缩略图差异包含未知global/local/色彩/尺度/语义因素，不能全称人脸提亮，也不把j换算成RGB增益。没有因此重跑33点或放宽旧门槛。仅保留最终HEIC的约定不变。
+
+
+### S105（2026-10-21）：临时 secret 名称不一致，尚无照片结果
+
+**可交给 macOS runner（HDR-177）。** run39526823912 / source7e747a28b0b53cf9c6b9ca7e1bb7cd5aafdc3397 / 26A434 / image20261012.0260.1。两个reader编译和输入artifact元数据查询通过；driver仍请求HDR_S103_ARCHIVE_SESSIONS，workflow提供的是HDR_S105_ARCHIVE_SESSIONS，触发KeyError。这是新探针配置错误，发生在任何密文/照片读取前；range body计数0，不含HTTP元数据开销。没有新的像素/显示/边缘指标，errors.csv不填占位零。
+
+artifact12313737886（4083B，SHAab0fe1741d0f0312ad19fa832cba07cfe911bc4038eb73ff58ecce3d5f119eb3）在日本保留并认证7份公开记录；临时secret和分支已按原规则清理。S107只同步secret名称与源码自哈希路径，反向恢复两处文字替换即可还原S105 driver字节；新增静态一致性检查能检出旧错配并确认新workflow/driver/coordinator同名。数值公式、旧门槛、mask与最终HEIC-only策略不变；实际分段网络与四图结果仍须运行。

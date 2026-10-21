@@ -206,3 +206,6 @@ S101 run39518274902已终态认证/清理。完整25EXR和5HEIC现在实际在�
 S103/S104更新：S103只在GitHub输入流读取超时，0张新像素结果；已有两个reader编译通过。下一runner修有界206分段/密文SHA/GPG传输，复用同一四图与S90统计，不重建旧母版、不重跑IMG2600或12bit。
 
 LinearThumbnail来源测试改为优先项：不要求用户通过相机UI关闭人脸提亮。参考24A446已有线性输入→HITH→曲线compute的285条字节证据，但HEIF辅助项未绑定。静态继续追编码器的实际输入texture、producer/metadata键、crop/尺寸/曝光/色域与Apple Log编码；匹配设备诊断时只读捕获这些绑定和同帧输入，内部only-j/WithoutFaceBoost反事实仍是诊断代码测试而非UI操作。先以原分支复现，再判断已有缩略图是否可作无提亮参照。未绑定前，缩略图锚定只约束低频综合处理，不冒称单独去人脸提亮；RAW、Studio统计和实屏计划保持。
+
+
+S105尚未执行照片：临时secret名称错配已定位并归档，旧secret/分支已清。S107仅修名称，静态检查确认driver/workflow/coordinator一致；继续四图同一S90显示与分亮度/边缘诊断，复用IMG2600，不改冻结数学。文件LinearThumbnail与参考前曲线路径的绑定仍可静态推进，不要求用户在UI关闭提亮。
