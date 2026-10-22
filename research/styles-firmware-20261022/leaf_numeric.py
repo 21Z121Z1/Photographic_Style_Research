@@ -99,6 +99,10 @@ class V:
         return self.rounded(low,np.maximum(self.lo*self.lo,self.hi*self.hi))
     def sign(self):return V(np.sign(self.lo),np.sign(self.hi),self.precision,self.point)
     def exp(self):return self.rounded(np.exp(self.lo),np.exp(self.hi),transcendental=True)
+    def log(self,base2=False):
+        if np.any(self.lo<=0):raise DomainUnknown('Unproven positive log domain')
+        fn=np.log2 if base2 else np.log
+        return self.rounded(fn(self.lo),fn(self.hi),transcendental=True)
     def atan2(self,x):
         x=self.box(x)
         if self.point:return self.rounded(np.arctan2(self.lo,x.lo),np.arctan2(self.lo,x.lo),transcendental=True)

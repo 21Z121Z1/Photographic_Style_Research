@@ -130,3 +130,5 @@ S12-D：补齐主入口保护与BW通道混合，154项回归；点位差与黑�
 S13-A：AIR7增益生产核心，10例宿主90half逐位一致；157项回归及显式上游边界见[阶段报告](PROGRESS-S13-A.zh-CN.md)。
 
 S13-B：复用本版guided三核；4有限fixture五处点位差0、条件集合覆盖，1负例unknown，161项回归见[阶段报告](PROGRESS-S13-B.zh-CN.md)。
+
+S13-C：原输出gain/CCM/transfer；165项回归、逐位结果和保留零除域见[阶段报告](PROGRESS-S13-C.zh-CN.md)。

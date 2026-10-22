@@ -14,18 +14,18 @@ def short(name):
 
 
 MATH_C=SAMPLER_C+'\nfloat psr_pow_scalar(float a,float b){return powf(a,b);}\nfloat psr_sqrt_scalar(float a){return sqrtf(a);}\n'
-MATH_C+='\n'.join('float psr_'+n+'_scalar(float a){return '+n+'f(a);}'for n in ['sin','cos','exp'])+'\nfloat psr_atan2_scalar(float a,float b){return atan2f(a,b);}\n'
+MATH_C+='\n'.join('float psr_'+n+'_scalar(float a){return '+n+'f(a);}'for n in ['sin','cos','exp','log','log2'])+'\nfloat psr_atan2_scalar(float a,float b){return atan2f(a,b);}\n'
 MATH_C+='float psr_fmod_scalar(float a,float b){return fmodf(a,b);}\n'
 
 
 def shims(names):
     out=['declare float @psr_pow_scalar(float,float)','declare float @psr_sqrt_scalar(float)','declare float @psr_sample(ptr,float)','declare float @llvm.fabs.f32(float)'];done=set()
-    out += ['declare float @psr_'+n+'_scalar(float)'for n in ['sin','cos','exp']]+['declare float @psr_atan2_scalar(float,float)']
+    out += ['declare float @psr_'+n+'_scalar(float)'for n in ['sin','cos','exp','log','log2']]+['declare float @psr_atan2_scalar(float,float)']
     out += ['declare float @psr_fmod_scalar(float,float)']
     def add(name):
         if name in done:return
         done.add(name)
-        operation=name.replace('air.fast_','air.')
+        operation=name.replace('air.fast_','air.').replace('.powr.','.pow.')
         if name=='air.convert.u.i1.f.f32':out.append('define i1 @air.convert.u.i1.f.f32(float %a){\n%r=fcmp une float %a,0.0\nret i1 %r\n}');return
         conversion=re.fullmatch(r'air.convert.f.v(\d+)f(16|32).f.v\1f(16|32)',name)
         if conversion:
@@ -67,7 +67,7 @@ def shims(names):
         if '.sign.'in operation:
             zero='0xH0000'if ty=='half'else'0.0';one='0xH3C00'if ty=='half'else'1.0';neg='0xHBC00'if ty=='half'else'-1.0'
             out.append(f'define {ty} @{name}({ty} %a){{\n%p=fcmp ogt {ty} %a,{zero}\n%n=fcmp olt {ty} %a,{zero}\n%x=select i1 %n,{ty} {neg},{ty} {zero}\n%r=select i1 %p,{ty} {one},{ty} %x\nret {ty} %r\n}}');return
-        math=next((n for n in ['pow','sqrt','sin','cos','atan2','exp','fmod']if'.'+n+'.'in operation),None)
+        math=next((n for n in ['pow','sqrt','sin','cos','atan2','exp','fmod','log2','log']if'.'+n+'.'in operation),None)
         if math:
             arity=2 if math in ['pow','atan2','fmod']else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
             for i in range(arity):
@@ -133,6 +133,8 @@ def build(source,names,*,extra_functions='',emit_wrappers=True):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif 'linearFromCurved'in name or 'curvedFromLinear'in name:
+            w += ['%code=fptoui float %f3 to i32'];args='<3 x half> %x,i32 %code'
         elif short(name)=='renderChannelMixForBWCasts':
             for i in range(5,11):w += [f'%mp{i}=getelementptr float,ptr %input,i64 {i}',f'%mf{i}=load float,ptr %mp{i}']
             w += ['%cast=fptoui float %f4 to i32','%params=alloca %struct.SSRParams,align 16','store %struct.SSRParams zeroinitializer,ptr %params','%params1=addrspacecast ptr %params to ptr addrspace(1)','%cp=getelementptr %struct.SSRParams,ptr %params,i64 0,i32 0','store i32 %cast,ptr %cp','%stats=alloca %struct.SSRStats,align 4','store %struct.SSRStats zeroinitializer,ptr %stats','%stats1=addrspacecast ptr %stats to ptr addrspace(1)']
