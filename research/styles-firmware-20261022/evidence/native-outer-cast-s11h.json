@@ -1,0 +1,752 @@
+{
+  "model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "conditional_outer_cast": {
+      "calls": 16,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0
+    }
+  },
+  "original_complete_function_sha256": {
+    "parent_main_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+    "original_SSA414_492_sha256": "3ff855e7eaf5d9b5d1ced7d6a85f7ecd30a9b11e84ad64cbbbcb9e9b4887b912",
+    "BW477_call_removed_sha256": "bf160b1e38ab49137ea8ab308f368f24dba9c63aa4b0b8b870a1ea59d8eb28e3",
+    "external_SSA_mapping": {
+      "413": "rgb",
+      "398": "highlight",
+      "96": "person",
+      "385": "person_f",
+      "218": "parameter2",
+      "245": "cast_type",
+      "17": "params",
+      "477": "bw"
+    },
+    "SSA477_is_explicit_input_not_algorithm_model": true,
+    "metadata_and_call_attributes_removed": true,
+    "additional_observation_stores": "SSA468 full RGB",
+    "other_arithmetic_or_predicates_changed": false,
+    "included_function_text_sha256": {
+      "contrastFilter": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18",
+      "psrOuter": "63d0ecbc6e3a35341a963c942822c56f1e4f69acdeb922ec5c35b9ee0d904d04",
+      "airyFilter": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22"
+    }
+  },
+  "original_bodies_modified": "Extracted SSA414..492: BW477 call replaced by explicit input; SSA alpha-renamed; metadata/call attributes removed; arithmetic preserved",
+  "reference_Lab_is_supplied": true,
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "host_bool_shim": "float!=0 (explicit assumption), not fptoui i1",
+  "host_fmod_shim": "C fmodf then half",
+  "source_sha256": {
+    "pixel_neutral.py": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+    "pixel_color.py": "5ecd215ae1907317f773162803f7c75937df3eff66cdd333e871f4a210f95202",
+    "pixel_skin.py": "2f2f4eac5c97d7a074ffdc9934ceba8a52531d8cc1de2dff1ba5be32bb29ab34",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_host.py": "a1417c1f5bd071f38b48a988735145e7133ad61a4cea813032d76e2d1abf0bc2",
+    "native_neutral_leaves_check.py": "b8d8de9a301fe5ec82f1a0201d741c7677d23db6a164421bd61e8be8f8ff3a4e"
+  },
+  "host_ir_sha256": "b5df6be8176f692ddd1bfb453849bc257a0b67b38a42f356ab80f578a13b2424",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "f13d084c2a491568cb478dc962128efac2d1367ff796671e9c611788d18f41c7",
+  "output_sha256": "051b2d128c3b1a31a4f9d29c4506c4b7420fd9eb4da3602d4aa2e153cb397750",
+  "rows": [
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        2.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.460205078125,
+        0.35986328125,
+        0.380126953125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.365234375,
+        0.5625,
+        0.896484375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        2.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.37255859375,
+        0.3974609375,
+        0.49267578125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.33642578125,
+        0.52734375,
+        0.8720703125
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 1,
+      "tonal_max_absolute_error": 0.0009765625,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        3.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.460205078125,
+        0.35986328125,
+        0.380126953125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.365234375,
+        0.5625,
+        0.896484375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        3.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.37255859375,
+        0.3974609375,
+        0.49267578125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.33642578125,
+        0.52734375,
+        0.8720703125
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 1,
+      "tonal_max_absolute_error": 0.0009765625,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        4.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.43994140625,
+        0.33984375,
+        0.43994140625
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.365234375,
+        0.5625,
+        0.896484375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        4.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.340087890625,
+        0.364990234375,
+        0.58984375
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.33642578125,
+        0.52734375,
+        0.8720703125
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 1,
+      "tonal_max_absolute_error": 0.0009765625,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        16.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.460205078125,
+        0.35986328125,
+        0.380126953125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.365234375,
+        0.5625,
+        0.896484375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        16.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.37255859375,
+        0.3974609375,
+        0.49267578125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.33642578125,
+        0.52734375,
+        0.8720703125
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 1,
+      "tonal_max_absolute_error": 0.0009765625,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        2.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.460205078125,
+        0.35986328125,
+        0.380126953125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.49560546875,
+        0.49560546875,
+        0.49560546875
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        2.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.37255859375,
+        0.3974609375,
+        0.49267578125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.474365234375,
+        0.474365234375,
+        0.474365234375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        3.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.460205078125,
+        0.35986328125,
+        0.380126953125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.49560546875,
+        0.49560546875,
+        0.49560546875
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        3.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.37255859375,
+        0.3974609375,
+        0.49267578125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.474365234375,
+        0.474365234375,
+        0.474365234375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        4.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.52001953125,
+        0.33984375,
+        0.280029296875
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.49560546875,
+        0.49560546875,
+        0.49560546875
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        4.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.469970703125,
+        0.364990234375,
+        0.329833984375
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.474365234375,
+        0.474365234375,
+        0.474365234375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.300048828125,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        2.0,
+        16.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.460205078125,
+        0.35986328125,
+        0.380126953125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.49560546875,
+        0.49560546875,
+        0.49560546875
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "conditional_outer_cast",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.25,
+        0.449951171875,
+        0.64990234375,
+        0.7998046875,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.25,
+        0.75,
+        5.0,
+        16.0,
+        0.60009765625,
+        0.300048828125,
+        0.199951171875
+      ],
+      "native_half_output": [
+        0.37255859375,
+        0.3974609375,
+        0.49267578125
+      ],
+      "native_nonfinite": 0,
+      "native_tonal468": [
+        0.474365234375,
+        0.474365234375,
+        0.474365234375
+      ],
+      "tonal_point_unknown": false,
+      "tonal_half_bit_mismatches": 0,
+      "tonal_max_absolute_error": 0.0,
+      "tonal_set_unknown": false,
+      "tonal_range_covered": true,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    }
+  ],
+  "full_pipeline_verified": false,
+  "set_error_budget_is_host_assumption": true,
+  "BW_algorithm_verified": false,
+  "conditional_on_explicit_BW477": true,
+  "tonal_set_unknown_calls": 0,
+  "tonal_metrics": {
+    "calls": 16,
+    "point_unknown": 0,
+    "half_bit_mismatches_known": 4,
+    "max_absolute_error_known": 0.0009765625,
+    "range_violations_known": 0
+  },
+  "declared_case_and_model_provider": {
+    "module": "native_outer_cast_check",
+    "no_previous_batches_repeated": true,
+    "source_sha256": {
+      "native_outer_cast_check.py": "7c36ab0a2e021d6eea66a946e3c4a069a87e4faf90796273a7d598ba9e8067fe",
+      "outer_cast.py": "fb3eaafd6efc7d6fd9166ad051c9205616f02fe81e9d564aa04d72fdacc0b4a3",
+      "outer_cast_host.py": "b08f3f721433f9aee978c672e945c139b5b5fa15319c31feb2ad331f0a7c55ac"
+    }
+  }
+}

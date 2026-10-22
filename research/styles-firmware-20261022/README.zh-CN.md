@@ -116,3 +116,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S11-F：完整warmth根与保护/白平衡分支：[阶段报告](PROGRESS-S11-F.zh-CN.md)。
 
 - S11-G：selective-color与cast集合前缀：[阶段报告](PROGRESS-S11-G.zh-CN.md)。
+
+- S11-H：外围cast/BW条件混合与独立tonal观察：[阶段报告](PROGRESS-S11-H.zh-CN.md)。

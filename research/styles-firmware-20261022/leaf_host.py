@@ -107,8 +107,9 @@ def inline_functions(source):
     return '\n'.join(additions),metadata
 
 
-def build(source,names):
+def build(source,names,*,extra_functions='',emit_wrappers=True):
     fragment(source)  # Exact source identity check only.
+    if extra_functions:source+='\n'+extra_functions+'\n'
     if any(n.startswith('BG.')for n in names):source+='\n'+inline_functions(source)[0]+'\n'
     functions={}
     for m in re.finditer(r'^define[^\n]*?@([^ (]+)\([^\n]+\{\n',source,re.M):functions[m[1]]=source[m.start():source.index('\n}',m.end())+2]
@@ -122,6 +123,7 @@ def build(source,names):
             if n not in ids:ids.add(n);pending.append(n)
     attrs=set(re.findall(r'#(\d+)', '\n'.join(bodies)));wrappers=[]
     for index,name in enumerate(roots):
+        if not emit_wrappers:continue
         w=[f'define void @psr_leaf_{index}(ptr %input,ptr %texture,ptr %output){{']
         for n in range(6):w += [f'%p{n}=getelementptr float,ptr %input,i64 {n}',f'%f{n}=load float,ptr %p{n}',f'%h{n}=fptrunc float %f{n} to half']
         w += ['%x0=insertelement <3 x half> poison,half %h0,i32 0','%x1=insertelement <3 x half> %x0,half %h1,i32 1','%x=insertelement <3 x half> %x1,half %h2,i32 2','%t=addrspacecast ptr %texture to ptr addrspace(1)']

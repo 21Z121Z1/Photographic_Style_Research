@@ -23,7 +23,7 @@ def model(name,data,point):
     return red_neutral_only(rgb,mask,ref,amount,other,v(data[9]))
 
 
-def check(source,output,names=None):
+def check(source,output,names=None,observe_native=None):
     if output.exists():raise FileExistsError(output)
     names=names or['deRed','deYellow','deRedNeutralOnly'];ir,original=build(source.read_text(),names);rows=[];ih=hashlib.sha256();outputs=[]
     with tempfile.TemporaryDirectory(prefix='psr-neutral-leaves-')as t:
@@ -35,6 +35,7 @@ def check(source,output,names=None):
             fn=getattr(lib,f'psr_leaf_{index}');fn.argtypes=[ctypes.c_void_p]*3
             for data in cases(name):
                 native=np.zeros(3,dtype='f4');fn(data.ctypes.data,tex.ctypes.data,native.ctypes.data);outputs.append(native.copy());ih.update(name.encode()+data.tobytes());row={'helper':name,'input':data.tolist(),'native_half_output':native.tolist(),'native_nonfinite':int(np.count_nonzero(~np.isfinite(native)))}
+                if observe_native is not None:row.update(observe_native(lib,name,data,native))
                 for point in [True,False]:
                     try:
                         value=model(name,data,point)
