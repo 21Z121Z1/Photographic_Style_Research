@@ -9,7 +9,7 @@ from native_semantic_tone_check import fragment,SAMPLER_C
 
 
 def short(name):
-    q=re.match('_Z(\d+)',name)
+    q=re.match(r'_Z(\d+)',name)
     return name[q.end():q.end()+int(q[1])]if q else name
 
 
@@ -21,10 +21,11 @@ def shims(names):
     def add(name):
         if name in done:return
         done.add(name)
+        operation=name.replace('air.fast_','air.')
         vector=None if name=='air.sample_texture_2d.v4f16'else re.search(r'\.v(\d+)f(16|32)$',name);bits='half'if name.endswith('f16')else'float';ty=bits
         if vector:
             n,b=vector.groups();n=int(n);scalar=name[:vector.start()]+f'.f{b}';add(scalar);ty=f'<{n} x {"half"if b=="16"else"float"}>'
-            arity=3 if any(x in name for x in ['.mix.','.clamp.'])else 2 if any(x in name for x in ['.pow.','.fmin.','.fmax.'])else 1
+            arity=3 if any(x in operation for x in ['.mix.','.clamp.'])else 2 if any(x in operation for x in ['.pow.','.fmin.','.fmax.'])else 1
             params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
             for lane in range(n):
                 for i in range(arity):lines.append(f'%x{lane}_{i}=extractelement {ty} %a{i},i32 {lane}')
@@ -38,17 +39,17 @@ def shims(names):
             out.append(f'define {ty} @{name}({ty} %a,{ty} %b,{ty} %w){{\n%d=fsub fast {ty} %b,%a\n%p=fmul fast {ty} %d,%w\n%r=fadd fast {ty} %a,%p\nret {ty} %r\n}}');return
         if any(x in name for x in ['.fmax3.','.fmin3.']):
             base=name.replace('3.','.');add(base);out.append(f'define {ty} @{name}({ty} %a,{ty} %b,{ty} %c){{\n%x=call {ty} @{base}({ty} %a,{ty} %b)\n%r=call {ty} @{base}({ty} %x,{ty} %c)\nret {ty} %r\n}}');return
-        if any(x in name for x in ['.fmin.','.fmax.']):
-            pred='olt'if'.fmin.'in name else'ogt';out.append(f'define {ty} @{name}({ty} %a,{ty} %b){{\n%c=fcmp {pred} {ty} %a,%b\n%r=select i1 %c,{ty} %a,{ty} %b\nret {ty} %r\n}}');return
+        if any(x in operation for x in ['.fmin.','.fmax.']):
+            pred='olt'if'.fmin.'in operation else'ogt';out.append(f'define {ty} @{name}({ty} %a,{ty} %b){{\n%c=fcmp {pred} {ty} %a,%b\n%r=select i1 %c,{ty} %a,{ty} %b\nret {ty} %r\n}}');return
         if '.clamp.'in name or '.saturate.'in name:
             base=name[:name.rindex('.')];prefix='air.fast_'if'fast_'in name else'air.';mn=prefix+'fmin.'+('f16'if ty=='half'else'f32');mx=prefix+'fmax.'+('f16'if ty=='half'else'f32');add(mn);add(mx)
             sat='.saturate.'in name;params=f'{ty} %a'if sat else f'{ty} %a,{ty} %lo,{ty} %hi';lo='0xH0000'if ty=='half'else'0.0';hi='0xH3C00'if ty=='half'else'1.0'
             out.append(f'define {ty} @{name}({params}){{\n%x=call {ty} @{mx}({ty} %a,{ty} '+(lo if sat else'%lo')+f')\n%r=call {ty} @{mn}({ty} %x,{ty} '+(hi if sat else'%hi')+f')\nret {ty} %r\n}}');return
-        if '.fabs.'in name:
+        if '.fabs.'in operation:
             pre='%x=fpext half %a to float\n'if ty=='half'else'';x='%x'if ty=='half'else'%a';post='%r=fptrunc float %f to half\nret half %r'if ty=='half'else'ret float %f'
             out.append(f'define {ty} @{name}({ty} %a){{\n'+pre+f'%f=call float @llvm.fabs.f32(float {x})\n'+post+'\n}');return
-        if '.pow.'in name or '.sqrt.'in name:
-            powop='.pow.'in name;arity=2 if powop else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
+        if '.pow.'in operation or '.sqrt.'in operation:
+            powop='.pow.'in operation;arity=2 if powop else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
             for i in range(arity):
                 if ty=='half':lines.append(f'%x{i}=fpext half %a{i} to float')
             args=','.join(f'float %'+(f'x{i}'if ty=='half'else f'a{i}')for i in range(arity));lines.append(f'%f=call float @psr_{"pow"if powop else"sqrt"}_scalar({args})')

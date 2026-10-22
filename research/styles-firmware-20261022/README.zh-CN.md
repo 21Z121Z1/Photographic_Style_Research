@@ -22,6 +22,8 @@ cast表与负Tone见 [PROGRESS-S7.zh-CN.md](PROGRESS-S7.zh-CN.md)：复用同一
 
 预计算semantic与首批共享叶见 [PROGRESS-S10-A.zh-CN.md](PROGRESS-S10-A.zh-CN.md)：AIR参数6/7是Metal8/9的BG/FG LTM gain map，补齐CPU生产/引导滤波/绑定和ROI byte48/64。显式供给两张纹理的block290新27组81分量宿主对照逐位差异0，集合后传接入原接口。whitesCurve两mode共30组、contrast15组、airy8个有限域非零激活案例逐位差异0；另2个airy全黑案例保留domain unknown。上述均使用明确宿主数学/sampler假设，不是GPU或完整照片管线认证；继续补Shadows及其余叶。
 
+Shadows两叶见 [PROGRESS-S10-B.zh-CN.md](PROGRESS-S10-B.zh-CN.md)：各45个非零guide/amount/RGB案例、各135分量逐位差异0，集合越界0；独立模型和adapter接回原controller，95项单元测试通过。只验两个新叶，未重复此前批次，继续saturation/lighten及剩余叶。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|
