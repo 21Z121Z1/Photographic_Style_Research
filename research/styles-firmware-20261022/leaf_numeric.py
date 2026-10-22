@@ -82,6 +82,12 @@ class V:
         if np.any((b.lo<=0)&(b.hi>=0)):raise DomainUnknown('Division interval includes zero')
         a=np.array([self.lo/b.lo,self.lo/b.hi,self.hi/b.lo,self.hi/b.hi]);return self.rounded(np.min(a,axis=0),np.max(a,axis=0))
     def __rtruediv__(self,x):return self.box(x)/self
+    def fma_half(self,b,c):
+        """One demonstrated half FMA; the existing 2u allowance is unchanged."""
+        if self.precision!='h':raise TypeError('Explicit half FMA only')
+        b=self.box(b);c=self.box(c)
+        values=np.array([x*y+z for x in(self.lo,self.hi)for y in(b.lo,b.hi)for z in(c.lo,c.hi)])
+        return self.rounded(np.min(values,axis=0),np.max(values,axis=0))
     def __getitem__(self,index):return V(np.asarray(self.lo[index]),np.asarray(self.hi[index]),self.precision,self.point)
 
     def minimum(self,x):b=self.box(x);return V(np.minimum(self.lo,b.lo),np.minimum(self.hi,b.hi),self.precision,self.point)
@@ -156,7 +162,14 @@ def lazy_select(condition: Truth,yes,no):
     return select(condition,yes(),no())
 
 
-def mix(a: V,b,w):b=a.box(b);return a+(b-a)*w
+def mix(a: V,b,w):
+    b=a.box(b)
+    # Same live value, not merely equal interval endpoints: finite IEEE
+    # a+(a-a)*w is exactly a (up to irrelevant set-mode signed zero).
+    # Leave point execution unchanged and keep all other operation budgets.
+    w=a.box(w)
+    if not a.point and b is a and np.broadcast_shapes(a.lo.shape,w.lo.shape)==a.lo.shape:return a
+    return a+(b-a)*w
 def vec(values):
     first=values[0];return V(np.array([x.lo for x in values]),np.array([x.hi for x in values]),first.precision,first.point)
 def exterior(rgb: V):return (rgb.minimum(0)-1)+rgb.maximum(1)

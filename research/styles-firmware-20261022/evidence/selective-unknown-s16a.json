@@ -1,0 +1,33 @@
+{
+  "scope": "Capture the unchanged first selective pow failure in the saved whole context.",
+  "native_calls": 0,
+  "context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+  "first_selective_failure": {
+    "expression": "converted.pow(gamma)",
+    "base_lo": [
+      -293.5,
+      -108.3125,
+      -162.25
+    ],
+    "base_hi": [
+      293.5,
+      108.3125,
+      162.25
+    ],
+    "exponent_lo": 0.9945894608826532,
+    "exponent_hi": 1.0054105391173471,
+    "reason": "Unproven pow domain",
+    "line": 62
+  },
+  "first_context_unknown": [
+    "0,0",
+    {
+      "operator": "selective413",
+      "reason": "Unproven pow domain"
+    }
+  ],
+  "pixel_unknown_count": 12,
+  "writer_known": false,
+  "reachability": "The set base includes negative RGB after interval Lab inversion. This does not establish a reachable negative native converted value; the preserved native point is finite. Joint dependence through semantic/BG/FG/skin/color remains lost. No integer-exponent or arbitrary pow enclosure is assumed.",
+  "domain_or_budget_changed": false
+}

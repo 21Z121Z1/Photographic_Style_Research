@@ -1,7 +1,8 @@
 """Reuse existing v3 three-pass model with an explicit bounded input contract.
 
 Point reproduction reuses v3 sampling/apply with the demonstrated ARM64 CPU
-coefficient contraction; conditional sets retain the existing typed bounds.
+coefficient contraction; conditional sets retain the existing budgets and
+carry shared whole-window dependencies.
 No original-frame recovery is asserted. A scalar guide is broadcast in coefficients but uses R16 lanes in
 apply; a single RGB call is not silently replaced by three scalar calls.
 """
@@ -48,9 +49,11 @@ def forward(inputs: Inputs):
     return results
 
 
-def forward_set(inputs,*,gain=None,guide=None,epsilon=None,output_shape=None,working_domain=None):
+def forward_set(inputs,*,gain=None,guide=None,epsilon=None,output_shape=None,working_domain=None,shared=True,diagnostics=None):
     """Propagate whole half input boxes and supplied f32 epsilon, never centers.
 
+    Shared mode retains named input and rounding generators through the host
+    FMA graph. shared=False keeps the historical independent-box diagnostic.
     Fixed grids/sampler weights follow the declared v3 CPU sampler. Existing
     2u/4u operation bounds are assumptions; no GPU interpolation bound follows.
     Dependency loss may make the variance denominator include zero: reject it.
@@ -69,6 +72,9 @@ def forward_set(inputs,*,gain=None,guide=None,epsilon=None,output_shape=None,wor
         if not isinstance(v,V)or v.point or v.precision!='h'or v.lo.shape!=shape:raise TypeError('Matching entire half image sets required')
         if np.max(np.maximum(abs(v.lo),abs(v.hi)))>8:raise DomainUnknown('Input set exceeds declared abs<=8 domain')
     if not isinstance(epsilon,V)or epsilon.point or epsilon.precision!='f'or epsilon.lo.shape!=()or epsilon.lo<0 or epsilon.hi>1:raise TypeError('Explicit epsilon f32 set in[0,1] required')
+    if shared:
+        from guided_affine import forward_set as correlated
+        return correlated(gain,guide,epsilon,layout,diagnostics=diagnostics)
     def constant(a):return V.value(a,'f',False)
     def broadcast(v,c):return V(np.broadcast_to(v.lo,(*v.lo.shape[:2],c)),np.broadcast_to(v.hi,(*v.hi.shape[:2],c)),'f',False)
     def sample(v,x,y):

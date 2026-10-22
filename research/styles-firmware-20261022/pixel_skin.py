@@ -15,8 +15,11 @@ def decode(x):
     a=x.abs();return select(a.gt(H(hc('292d'),x)),((a+H(hc('2b0a'),x))*H(hc('3b96'),x)).pow(H(hc('40cd'),x)),a*H(hc('2cf4'),x))*x.sign()
 
 
-def encode(x):
-    a=x.abs();return select(a.gt(H(hc('1a69'),x)),a.pow(H(hc('36aa'),x))*H(hc('3c38'),x)+H(hc('ab0a'),x),a*H(hc('4a76'),x))*x.sign()
+def encode(x,*,host_fma=False,observations=None):
+    if type(host_fma)is not bool:raise TypeError('Exact caller-specific host contraction flag required')
+    a=x.abs();power=a.pow(H(hc('36aa'),x));scaled=power*H(hc('3c38'),x);offset=power.fma_half(H(hc('3c38'),x),H(hc('ab0a'),x))if host_fma else scaled+H(hc('ab0a'),x);chosen=select(a.gt(H(hc('1a69'),x)),offset,a*H(hc('4a76'),x));out=chosen*x.sign()
+    if observations is not None:observations.update(abs=a,power=power,scaled=scaled,offset=offset,chosen=chosen,output=out)
+    return out
 
 
 def forward(rgb,skin,guide,theta9,theta10):

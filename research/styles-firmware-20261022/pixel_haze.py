@@ -25,16 +25,19 @@ def mids(rgb,amount):
     return V(a.lo,a.hi,'h',False)
 
 
-def forward(rgb,guide211,person96,parameters: Parameters):
+def forward(rgb,guide211,person96,parameters: Parameters,*,observations=None):
     if not isinstance(parameters,Parameters)or parameters.fields1_8.point!=rgb.point:raise TypeError('Matching explicit haze parameters required')
+    def save(ssa,v):
+        if observations is not None:observations[ssa]=v
+        return v
     p=parameters.fields1_8;mean=dot(rgb,[hc('3555')]*3)
-    def branch(denominator,mids_amount):
-        offset=(p[0]/denominator).h();gain=(F(1,rgb)/(1-offset.f())).h();linear=gain*rgb+offset
+    def branch(denominator,mids_amount,ids):
+        offset=save(ids[0],(p[0]/denominator).h());gain=save(ids[1],(F(1,rgb)/(1-offset.f())).h());linear=save(ids[2],rgb.fma_half(gain,offset))
         scaled=lazy_select(mean.gt(0),lambda:(((mean.f()*gain.f()+offset.f())/strictly_positive_branch(mean).f()).h())*rgb,lambda:H([0,0,0],rgb))
-        changed=mix(scaled,linear,p[5].h()).maximum(0)
-        return mids(changed,mids_amount.h())
-    bg=branch(p[1],p[3]);fg=branch(p[2],p[4]);bg=contrast(bg,p[6].h());bg=local_contrast(bg,guide211,p[7].h())
-    return mix(bg,fg,person96)
+        save(ids[3],scaled);changed=save(ids[4],mix(scaled,linear,p[5].h()).maximum(0))
+        return save(ids[5],mids(changed,mids_amount.h()))
+    bg=branch(p[1],p[3],[22,26,33,47,51,93]);fg=branch(p[2],p[4],[53,57,63,72,74,112]);bg=save(114,contrast(bg,p[6].h()));bg=save(168,local_contrast(bg,guide211,p[7].h()))
+    return save(171,mix(bg,fg,person96))
 
 
 @dataclass(frozen=True)

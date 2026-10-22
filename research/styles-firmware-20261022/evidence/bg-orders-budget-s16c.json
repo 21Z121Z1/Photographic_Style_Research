@@ -1,0 +1,1314 @@
+{
+  "scope": "Only the eight saved S15C failures: channel identity and half-lattice facts.\n\nOrdered polytopes are conservatively enclosed by tightened boxes. No new\nuniform split, shifted gate or changed quotient/product evaluation is used.\nA gray else branch remains separate; any failed positive branch stays unknown.\n",
+  "saved_sha256": "31b167989bddf8a93d67a42ed66f7b8daf655810bcc156ee24bb8e263705a59c",
+  "native_calls": 0,
+  "original_cells": 8,
+  "ordered_positive_domains": 48,
+  "known_positive_domains": 42,
+  "unknown_positive_domains": 6,
+  "remaining_unknown_original_cells": 1,
+  "rows": [
+    {
+      "original_cell": 0,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "input_hi": [
+            0.1698263112707185,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "status": "unknown",
+          "reason": "Finite arithmetic budget exceeded",
+          "active_span_lower": 1.0013580322265625e-05,
+          "failure": {
+            "expression": "newspan / original-half-span",
+            "numerator_lo": 0.0,
+            "numerator_hi": 1.0302466548649247,
+            "denominator_lo": 1.0013580322265625e-05,
+            "denominator_hi": 0.16999221688246363,
+            "joint_endpoint_reachability": "not established; independent cover only"
+          },
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.0292414766307576,
+            "active_span_lower": 1.0013580322265625e-05
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "input_hi": [
+            0.1698263112707185,
+            0.2394291029825464,
+            0.1698263112707185
+          ],
+          "status": "unknown",
+          "reason": "Finite arithmetic budget exceeded",
+          "active_span_lower": 1.0013580322265625e-05,
+          "failure": {
+            "expression": "newspan / original-half-span",
+            "numerator_lo": 0.0,
+            "numerator_hi": 1.535270261883923,
+            "denominator_lo": 1.0013580322265625e-05,
+            "denominator_hi": 0.2396629800705726,
+            "joint_endpoint_reachability": "not established; independent cover only"
+          },
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.534187131074455,
+            "active_span_lower": 1.0013580322265625e-05
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.0,
+            -0.014420070058153133,
+            0.0
+          ],
+          "input_hi": [
+            0.1698263112707185,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "status": "unknown",
+          "reason": "Finite arithmetic budget exceeded",
+          "active_span_lower": 1.0013580322265625e-05,
+          "failure": {
+            "expression": "newspan / original-half-span",
+            "numerator_lo": 0.0,
+            "numerator_hi": 1.044709040036061,
+            "denominator_lo": 1.0013580322265625e-05,
+            "denominator_hi": 0.18442636904028292,
+            "joint_endpoint_reachability": "not established; independent cover only"
+          },
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.0437179576267377,
+            "active_span_lower": 1.0013580322265625e-05
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.0,
+            -0.014420070058153133,
+            0.0
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "status": "unknown",
+          "reason": "Finite arithmetic budget exceeded",
+          "active_span_lower": 1.0013580322265625e-05,
+          "failure": {
+            "expression": "newspan / original-half-span",
+            "numerator_lo": 0.0,
+            "numerator_hi": 1.512341772218198,
+            "denominator_lo": 1.0013580322265625e-05,
+            "denominator_hi": 0.24969115881882717,
+            "joint_endpoint_reachability": "not established; independent cover only"
+          },
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.4968044031238257,
+            "active_span_lower": 1.0013580322265625e-05
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.1698263112707185
+          ],
+          "status": "unknown",
+          "reason": "Finite arithmetic budget exceeded",
+          "active_span_lower": 1.0013580322265625e-05,
+          "failure": {
+            "expression": "newspan / original-half-span",
+            "numerator_lo": 0.0,
+            "numerator_hi": 1.636862335141247,
+            "denominator_lo": 1.0013580322265625e-05,
+            "denominator_hi": 0.2396629800705726,
+            "joint_endpoint_reachability": "not established; independent cover only"
+          },
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.6352930532238381,
+            "active_span_lower": 1.0013580322265625e-05
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.1698263112707185
+          ],
+          "status": "unknown",
+          "reason": "Finite arithmetic budget exceeded",
+          "active_span_lower": 1.0013580322265625e-05,
+          "failure": {
+            "expression": "newspan / original-half-span",
+            "numerator_lo": 0.0,
+            "numerator_hi": 1.6020971647940727,
+            "denominator_lo": 1.0013580322265625e-05,
+            "denominator_hi": 0.23525700666100785,
+            "joint_endpoint_reachability": "not established; independent cover only"
+          },
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.6005340836233892,
+            "active_span_lower": 1.0013580322265625e-05
+          }
+        }
+      ],
+      "unknown": true
+    },
+    {
+      "original_cell": 1,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.0,
+            0.0,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 6347.606996450297,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.6225951234710734,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.0,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "status": "known",
+          "max_width": 4612.470791991143,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.2753599790070156,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.0,
+            -0.014420070058153133,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 6591.037429047103,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.6023384670733274,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.1698263112707185,
+            -0.014420070058153133,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.23502742808362515
+          ],
+          "status": "known",
+          "max_width": 4848.726244750569,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.280839165242797,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.1698263112707185,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.23502742808362515
+          ],
+          "status": "known",
+          "max_width": 277.4560341219999,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.2526833041555295,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.1698263112707185,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.23502742808362515
+          ],
+          "status": "known",
+          "max_width": 255.47625603259473,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.23741818382421756,
+            "active_span_lower": 0.00012189149856567383
+          }
+        }
+      ],
+      "unknown": false
+    },
+    {
+      "original_cell": 17,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.23502742808362515
+          ],
+          "input_hi": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 243.80362187202,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.3568687002960309,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.23502742808362515
+          ],
+          "input_hi": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "status": "known",
+          "max_width": 2.175758523506085,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.029564365751117677,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            -0.014420070058153133,
+            0.23502742808362515
+          ],
+          "input_hi": [
+            0.339652622541437,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 5373.630508115058,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.403484581938931,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            -0.014420070058153133,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 6642.954988036487,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.6157616693638335,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.23502742808362515,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "status": "known",
+          "max_width": 174.5979614985859,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.23600938775469932,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.1698263112707185,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "status": "known",
+          "max_width": 2102.3474242676157,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.8799492443606975,
+            "active_span_lower": 0.00012189149856567383
+          }
+        }
+      ],
+      "unknown": false
+    },
+    {
+      "original_cell": 21,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "input_hi": [
+            0.339652622541437,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 668.4920362641606,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.39439648401145183,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.23502742808362515
+          ],
+          "input_hi": [
+            0.339652622541437,
+            0.4932782760232459,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 2665.71988056667,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9796798311801275,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "input_hi": [
+            0.339652622541437,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 625.9848526856606,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.378577072063052,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.2394291029825464
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 2188.846854276515,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.8782506338111635,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 3777.143186719245,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.0765920509792426,
+            "active_span_lower": 0.00012189149856567383
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.1698263112707185
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.339652622541437
+          ],
+          "status": "known",
+          "max_width": 3249.470997673763,
+          "active_span_lower": 0.00012189149856567383,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9708553668055004,
+            "active_span_lower": 0.00012189149856567383
+          }
+        }
+      ],
+      "unknown": false
+    },
+    {
+      "original_cell": 22,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 2114.4081802130804,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.0532235341252363,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.23502742808362515,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "status": "known",
+          "max_width": 1547.7607791154578,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9212887861218669,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.2394291029825464,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 1807.1224630240645,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9500205642686745,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.339652622541437,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.4700548561672503
+          ],
+          "status": "known",
+          "max_width": 1424.1883921379313,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.8865023280547321,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.339652622541437,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.4700548561672503
+          ],
+          "status": "known",
+          "max_width": 667.6798344942549,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.5875644218736507,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.339652622541437,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.4700548561672503
+          ],
+          "status": "known",
+          "max_width": 538.8233172768761,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.5007374735518179,
+            "active_span_lower": 0.00024378299713134766
+          }
+        }
+      ],
+      "unknown": false
+    },
+    {
+      "original_cell": 38,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.4700548561672503
+          ],
+          "input_hi": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 36.136459240971206,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.15457820846442766,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.4700548561672503
+          ],
+          "input_hi": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "status": "known",
+          "max_width": 19.965208772290985,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.10373248175155447,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.2394291029825464,
+            0.4700548561672503
+          ],
+          "input_hi": [
+            0.5094789338121555,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 1149.2514493728768,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9037389973864566,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.2394291029825464,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 2422.8046861642165,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.0272121099142144,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4700548561672503,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "status": "known",
+          "max_width": 446.11976103766597,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.5265015416183272,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.339652622541437,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "status": "known",
+          "max_width": 1559.5198267142707,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9228808425171566,
+            "active_span_lower": 0.00024378299713134766
+          }
+        }
+      ],
+      "unknown": false
+    },
+    {
+      "original_cell": 42,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "input_hi": [
+            0.5094789338121555,
+            0.5094789338121555,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 41.736952437315125,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.15267922444936666,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.4700548561672503
+          ],
+          "input_hi": [
+            0.5094789338121555,
+            0.7471274490639455,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 882.3326096007366,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.8797110239765406,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "input_hi": [
+            0.5094789338121555,
+            0.5094789338121555,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 10.982282381148831,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.08160747797357665,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.4932782760232459
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.5094789338121555,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 519.3332557405168,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.714878581247814,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.7471274490639455,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 1889.5965347371136,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 1.0147650071889625,
+            "active_span_lower": 0.00024378299713134766
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.339652622541437
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.7050822842508755,
+            0.5094789338121555
+          ],
+          "status": "known",
+          "max_width": 1474.838142203023,
+          "active_span_lower": 0.00024378299713134766,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.8373289616974571,
+            "active_span_lower": 0.00024378299713134766
+          }
+        }
+      ],
+      "unknown": false
+    },
+    {
+      "original_cell": 43,
+      "orders": [
+        {
+          "order": [
+            0,
+            1,
+            2
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "input_hi": [
+            0.679305245082874,
+            0.679305245082874,
+            0.679305245082874
+          ],
+          "status": "known",
+          "max_width": 647.2655047001932,
+          "active_span_lower": 0.0004875659942626953,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.7872748461411634,
+            "active_span_lower": 0.0004875659942626953
+          }
+        },
+        {
+          "order": [
+            0,
+            2,
+            1
+          ],
+          "input_lo": [
+            0.4700548561672503,
+            0.5094789338121555,
+            0.5094789338121555
+          ],
+          "input_hi": [
+            0.679305245082874,
+            0.7471274490639455,
+            0.679305245082874
+          ],
+          "status": "known",
+          "max_width": 845.2910066953962,
+          "active_span_lower": 0.0004875659942626953,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.9035598543723158,
+            "active_span_lower": 0.0004875659942626953
+          }
+        },
+        {
+          "order": [
+            1,
+            0,
+            2
+          ],
+          "input_lo": [
+            0.4932782760232459,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "input_hi": [
+            0.679305245082874,
+            0.679305245082874,
+            0.679305245082874
+          ],
+          "status": "known",
+          "max_width": 538.6992582976288,
+          "active_span_lower": 0.0004875659942626953,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.7016289700077,
+            "active_span_lower": 0.0004875659942626953
+          }
+        },
+        {
+          "order": [
+            1,
+            2,
+            0
+          ],
+          "input_lo": [
+            0.5094789338121555,
+            0.4932782760232459,
+            0.5094789338121555
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.679305245082874,
+            0.679305245082874
+          ],
+          "status": "known",
+          "max_width": 585.2687166818619,
+          "active_span_lower": 0.0004875659942626953,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.7361336689693034,
+            "active_span_lower": 0.0004875659942626953
+          }
+        },
+        {
+          "order": [
+            2,
+            0,
+            1
+          ],
+          "input_lo": [
+            0.5094789338121555,
+            0.5094789338121555,
+            0.5094789338121555
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.7471274490639455,
+            0.679305245082874
+          ],
+          "status": "known",
+          "max_width": 724.0267560967886,
+          "active_span_lower": 0.0004875659942626953,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.8921474235678921,
+            "active_span_lower": 0.0004875659942626953
+          }
+        },
+        {
+          "order": [
+            2,
+            1,
+            0
+          ],
+          "input_lo": [
+            0.5094789338121555,
+            0.5094789338121555,
+            0.5094789338121555
+          ],
+          "input_hi": [
+            0.7050822842508755,
+            0.7050822842508755,
+            0.679305245082874
+          ],
+          "status": "known",
+          "max_width": 555.725813616509,
+          "active_span_lower": 0.0004875659942626953,
+          "else_branch": {
+            "status": "known",
+            "max_width": 0.7368104729908374,
+            "active_span_lower": 0.0004875659942626953
+          }
+        }
+      ],
+      "unknown": false
+    }
+  ],
+  "quotient_order_changed": false,
+  "threshold_changed": false,
+  "rounding_budgets_changed": false,
+  "mask_changed": false,
+  "gray_else_retained": true,
+  "remaining_failure": "Max-lower-bound/span coupling excludes false tiny spans even when an ordered box includes zero. Only the remaining low-magnitude cell still permits positive spans close to the strict threshold; Without the joint relation between changed span and original span, independent changed-span bounds can still exceed the quotient finite budget. Ordered boxes are outer covers of polytopes, not proof that every independent corner is reachable."
+}

@@ -1,0 +1,24 @@
+{
+  "native_calls": 0,
+  "checks": [
+    {
+      "receipt": "internal-pixel-s16b.json",
+      "rebuilt_raw_IR_sha256": "1228226a1a093ea8d3aae1dc9bbb1a6c25ea950681226bfa730de34bbed08421",
+      "function_and_probe_metadata_equal": true,
+      "raw_IR_hash_matches": false
+    },
+    {
+      "receipt": "internal-pixel-11-s16b.json",
+      "rebuilt_raw_IR_sha256": "1228226a1a093ea8d3aae1dc9bbb1a6c25ea950681226bfa730de34bbed08421",
+      "function_and_probe_metadata_equal": true,
+      "raw_IR_hash_matches": false
+    },
+    {
+      "receipt": "encode-pixel-s16b.json",
+      "rebuilt_raw_IR_sha256": "d3ec05f6df6a44eb00a5283617e63c0df114cdd4686b1c63918038bc99320e13",
+      "function_and_probe_metadata_equal": true,
+      "raw_IR_hash_matches": false
+    }
+  ],
+  "raw_IR_hash_caveat": "Old attribute-group emission order used a Python set. Current builder sorts attribute IDs; source/function/probe metadata equality is checked, not byte-identity with historical executed raw IR."
+}

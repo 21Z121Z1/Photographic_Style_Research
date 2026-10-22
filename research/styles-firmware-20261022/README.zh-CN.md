@@ -2,7 +2,7 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新阶段见 [PROGRESS-S15.zh-CN.md](PROGRESS-S15.zh-CN.md)：固定保存的3×4合成上下文连接完整producer→guided→主入口→600→writer；102次原AIR宿主调用，修正guided后1938个half观察有34个内部差异，最终目标逐位一致。12像素的集合仍在selective413 unknown；BG首超限64分域仍有8子域unknown。185项测试通过，保持条件前向与照片逆解的范围区别。
+最新阶段见 [PROGRESS-S16.zh-CN.md](PROGRESS-S16.zh-CN.md)：同一保存上下文的共享窗口依赖使FG系数宽1980.5→5.1953、guided输出1664→.625、warm409宽15824→1.735；12个selective集合unknown仍保留。6次定向宿主观察（2个保存像素，含memory审查复验）后，内部34个位差降至8个bright残差，最终目标仍逐位一致；原8个BG失败分域剩1个，整例仍unknown。191项测试通过，未扩大为原GPU/照片逆解通过。
 
 最终实际插件数据流见 [DATAFLOW.zh-CN.md](DATAFLOW.zh-CN.md)。新插件与旧缓存整文件不同，但已选方法和shader确切相同，不能仅凭旧文件名继承版本身份。
 
