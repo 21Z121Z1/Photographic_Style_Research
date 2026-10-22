@@ -1,0 +1,208 @@
+{
+  "scope": "Audit availability of actual historical producer compiler inputs.\n\nNo reconstruction, shader build, compilation, execution or normalization.\nExact SHA plus retained-execution provenance is required before raw diff.\nEven then a diff is unclassified until a separate, explicit rule is proved.\n",
+  "recorded_actual_producer_IR_sha256": {
+    "S21": "a787d7ada4c12ba8fbc36ad48161f47d5fb63be4fd5a01421731569127b8cf28",
+    "S22": "ba676ebda2421750a32823caa5d664970c78f4fa459650910e65a5269df695da"
+  },
+  "historical_receipt_sha256": {
+    "native-active-s21c.json": "9925c47f30a82dd932ace671e138b81ad9c53b7f0def704bf13564fb6750ef9a",
+    "native-boundaries-s22d.json": "8c10545128a77c226bcc6f3ca6207d45dd0571da3b0c6065b63c94e7527b5d27"
+  },
+  "executed_harness_lifecycle": {
+    "S21": {
+      "harness": "native_active_color.py",
+      "executed_source_sha256": "65db8c99a7422228e8774f67e39f84681248a9791bd53310de98ccfc1a93a17f",
+      "source_matches_original_prebinding": true,
+      "temporary_context": {
+        "source_line": 64,
+        "end_line": 73,
+        "prefix": "psr-active-color-",
+        "explicit_delete_override": false,
+        "default_cleanup_on_context_exit": true,
+        "recorded_artifact": "enumerate(units) writes temporary {i}.ll; producer index0 ->0.ll"
+      },
+      "identity_limit": "source lifecycle evidence; not a global proof that no external copy exists"
+    },
+    "S22": {
+      "harness": "native_color_boundaries.py",
+      "executed_source_sha256": "7661c412e413ee2aac92f79160d7a865910eae5e3ea2cecbc5c39388c99c3ceb",
+      "source_matches_original_prebinding": true,
+      "temporary_context": {
+        "source_line": 68,
+        "end_line": 79,
+        "prefix": "psr-inverse-boundaries-",
+        "explicit_delete_override": false,
+        "default_cleanup_on_context_exit": true,
+        "recorded_artifact": "enumerate(units) writes temporary {i}.ll; producer index0 ->0.ll"
+      },
+      "identity_limit": "source lifecycle evidence; not a global proof that no external copy exists"
+    }
+  },
+  "bounded_temp_scopes": [
+    {
+      "root_label": "user_tmp",
+      "resolved_root_path_sha256": "1b77021c3f91e3ff4878ee9102fa63862d1ded1f90c370236858e9dc25d7a509",
+      "stage": "S21",
+      "top_level_pattern": "psr-active-color-*",
+      "candidate_relative_file": "0.ll",
+      "recursive_search": false,
+      "matching_directory_entries": 0,
+      "status": "read"
+    },
+    {
+      "root_label": "user_tmp",
+      "resolved_root_path_sha256": "1b77021c3f91e3ff4878ee9102fa63862d1ded1f90c370236858e9dc25d7a509",
+      "stage": "S22",
+      "top_level_pattern": "psr-inverse-boundaries-*",
+      "candidate_relative_file": "0.ll",
+      "recursive_search": false,
+      "matching_directory_entries": 0,
+      "status": "read"
+    },
+    {
+      "root_label": "system_tmp",
+      "resolved_root_path_sha256": "11fe14a563f7aed66191800dc08fe0d15049ef7d9dac5f5ab4b0ca20b28e193d",
+      "stage": "S21",
+      "top_level_pattern": "psr-active-color-*",
+      "candidate_relative_file": "0.ll",
+      "recursive_search": false,
+      "matching_directory_entries": 0,
+      "status": "read"
+    },
+    {
+      "root_label": "system_tmp",
+      "resolved_root_path_sha256": "11fe14a563f7aed66191800dc08fe0d15049ef7d9dac5f5ab4b0ca20b28e193d",
+      "stage": "S22",
+      "top_level_pattern": "psr-inverse-boundaries-*",
+      "candidate_relative_file": "0.ll",
+      "recursive_search": false,
+      "matching_directory_entries": 0,
+      "status": "read"
+    }
+  ],
+  "existing_IR_candidates": [
+    {
+      "scope": "existing_research_IR_files",
+      "relative_path": "plugin-24A435/air-0.ll.txt",
+      "exists": true,
+      "bytes": 12415,
+      "actual_sha256": "88f3d83d4ed9938854c21e2a91f37b1bf9c6c9fe495b9c8a2778913cd0be66fc",
+      "matching_recorded_execution_stages": []
+    },
+    {
+      "scope": "existing_research_IR_files",
+      "relative_path": "plugin-24A435/air-1.ll.txt",
+      "exists": true,
+      "bytes": 17815,
+      "actual_sha256": "000d2d95857ed6bd206c319b56d7993f3a53671c259672f7dcdd58542cd6f1f1",
+      "matching_recorded_execution_stages": []
+    },
+    {
+      "scope": "existing_research_IR_files",
+      "relative_path": "plugin-24A435/air-2.ll.txt",
+      "exists": true,
+      "bytes": 24582,
+      "actual_sha256": "cba55c7c781fa90aa84908ae9cad3fbfb5fc1eda4f016aae6b22685b5f31d1b9",
+      "matching_recorded_execution_stages": []
+    },
+    {
+      "scope": "existing_research_IR_files",
+      "relative_path": "plugin-iphone17-3-24A446/SmartStyleV1.bundle/air-0.ll.txt",
+      "exists": true,
+      "bytes": 12415,
+      "actual_sha256": "88f3d83d4ed9938854c21e2a91f37b1bf9c6c9fe495b9c8a2778913cd0be66fc",
+      "matching_recorded_execution_stages": []
+    },
+    {
+      "scope": "existing_research_IR_files",
+      "relative_path": "plugin-iphone17-3-24A446/SmartStyleV1.bundle/air-1.ll.txt",
+      "exists": true,
+      "bytes": 17815,
+      "actual_sha256": "000d2d95857ed6bd206c319b56d7993f3a53671c259672f7dcdd58542cd6f1f1",
+      "matching_recorded_execution_stages": []
+    },
+    {
+      "scope": "existing_research_IR_files",
+      "relative_path": "plugin-iphone17-3-24A446/SmartStyleV1.bundle/air-2.ll.txt",
+      "exists": true,
+      "bytes": 24582,
+      "actual_sha256": "cba55c7c781fa90aa84908ae9cad3fbfb5fc1eda4f016aae6b22685b5f31d1b9",
+      "matching_recorded_execution_stages": []
+    }
+  ],
+  "successful_original_logs": {
+    "S21": {
+      "relative_path": "../s21-final-local-logs/native-binding-s21c.log",
+      "exists": true,
+      "sha256": "c18de9a37d1c355a1370922cd7196f634f21b44654ea25708511b4c5f2a647be",
+      "log_matches_original_post": true,
+      "exact_producer_temp_path_recorded": false
+    },
+    "S22": {
+      "relative_path": "../s22-final-local-logs/native-binding-s22d.log",
+      "exists": true,
+      "sha256": "e95a4a64483747750be7f789491a96d0d6e03ce7bd3def787d8f52f1f1138372",
+      "log_matches_original_post": true,
+      "exact_producer_temp_path_recorded": false
+    }
+  },
+  "actual_pair": {
+    "left": {
+      "expected_sha256": "a787d7ada4c12ba8fbc36ad48161f47d5fb63be4fd5a01421731569127b8cf28",
+      "actual_sha256": null,
+      "sha_verified": false,
+      "retained_execution_provenance": false,
+      "admissible_historical_original": false,
+      "status": "missing_original_path"
+    },
+    "right": {
+      "expected_sha256": "ba676ebda2421750a32823caa5d664970c78f4fa459650910e65a5269df695da",
+      "actual_sha256": null,
+      "sha_verified": false,
+      "retained_execution_provenance": false,
+      "admissible_historical_original": false,
+      "status": "missing_original_path"
+    },
+    "raw_comparison_executed": false,
+    "normalization_rules": [],
+    "normalized_pair_sha256": null,
+    "semantic_equality": "not established",
+    "whole_pipeline_equality": false,
+    "status": "blocked_missing_or_unproved_actual_inputs"
+  },
+  "blocked_action": "SHA verification and literal/semantic diff of the two actual historical producer compiler inputs",
+  "block_reason": "historical harnesses used cleaned TemporaryDirectory units and kept SHA only; no actual raw pair available in bounded known locations; no exact temporary paths in successful logs",
+  "block_status": "missing artifacts, not a permission denial",
+  "global_filesystem_absence_proved": false,
+  "difference_classification": {
+    "names_order_metadata": "not performed; actual pair unavailable",
+    "arithmetic_constants_FP_attributes": "not performed; actual pair unavailable",
+    "memory_summaries_ABI_writes_dependencies": "not performed; actual pair unavailable"
+  },
+  "normalization_rules": [],
+  "normalized_pair_sha256": null,
+  "corroborating_only": {
+    "original_function_metadata_equal": true,
+    "plain_metadata_equal": true,
+    "prefix_half_bit_mismatches": 0,
+    "does_not_prove_module_equality": true
+  },
+  "unchanged_evidence_scope": {
+    "model_interface_states_exhaustively_searched": 146,
+    "original_host_signature_states_with_finite_witnesses": [
+      0,
+      1,
+      2,
+      92,
+      93,
+      94
+    ],
+    "historical_module_equality": "unproved"
+  },
+  "reconstructed_IR_generated": false,
+  "new_model_forward_calls": 0,
+  "new_original_kernel_calls": 0,
+  "new_leaf_cases": 0,
+  "downloads_mounts_private_media_or_process_inventory": false,
+  "next_step": "only a retained original pair with established execution provenance and recorded SHA can reopen historical diff; a future persisted/new run is new evidence and cannot replace S21/S22"
+}

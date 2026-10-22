@@ -1,0 +1,22 @@
+{
+  "label": "s23-tests",
+  "pre_run_binding_sha256": "e407af6d23983eafdd4af19b82eb36642ed604db95cfd96725eb4f69d80827e6",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "0bc3048b4b29b2268c30a1686b6434c75be8e7593c34c116aeff31b1d87265f7",
+  "elapsed_seconds": 0.10922908782958984,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_producer_ir_identity.py",
+    "-v"
+  ]
+}
