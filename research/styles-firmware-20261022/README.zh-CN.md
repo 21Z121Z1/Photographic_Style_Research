@@ -126,3 +126,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S12-C：video haze原helper与主入口选择：[阶段报告](PROGRESS-S12-C.zh-CN.md)。
 
 S12-D：补齐主入口保护与BW通道混合，154项回归；点位差与黑输入unknown见[阶段报告](PROGRESS-S12-D.zh-CN.md)。
+
+S13-A：AIR7增益生产核心，10例宿主90half逐位一致；157项回归及显式上游边界见[阶段报告](PROGRESS-S13-A.zh-CN.md)。
