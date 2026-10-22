@@ -14,18 +14,31 @@ def short(name):
 
 
 MATH_C=SAMPLER_C+'\nfloat psr_pow_scalar(float a,float b){return powf(a,b);}\nfloat psr_sqrt_scalar(float a){return sqrtf(a);}\n'
+MATH_C+='\n'.join('float psr_'+n+'_scalar(float a){return '+n+'f(a);}'for n in ['sin','cos','exp'])+'\nfloat psr_atan2_scalar(float a,float b){return atan2f(a,b);}\n'
 
 
 def shims(names):
     out=['declare float @psr_pow_scalar(float,float)','declare float @psr_sqrt_scalar(float)','declare float @psr_sample(ptr,float)','declare float @llvm.fabs.f32(float)'];done=set()
+    out += ['declare float @psr_'+n+'_scalar(float)'for n in ['sin','cos','exp']]+['declare float @psr_atan2_scalar(float,float)']
     def add(name):
         if name in done:return
         done.add(name)
         operation=name.replace('air.fast_','air.')
+        conversion=re.fullmatch(r'air.convert.f.v(\d+)f(16|32).f.v\1f(16|32)',name)
+        if conversion:
+            n,dst,src=conversion.groups();a=f'<{n} x '+('half'if src=='16'else'float')+'>';b=f'<{n} x '+('half'if dst=='16'else'float')+'>';op='fpext'if dst=='32'else'fptrunc'
+            out.append(f'define {b} @{name}({a} %a){{\n%r={op} {a} %a to {b}\nret {b} %r\n}}');return
+        dot=re.fullmatch(r'air.dot.v(\d+)f(16|32)',name)
+        if dot:
+            n,b=dot.groups();n=int(n);scalar='half'if b=='16'else'float';ty=f'<{n} x {scalar}>';lines=[f'define {scalar} @{name}({ty} %a,{ty} %b){{']
+            for i in range(n):lines += [f'%a{i}=extractelement {ty} %a,i32 {i}',f'%b{i}=extractelement {ty} %b,i32 {i}',f'%p{i}=fmul fast {scalar} %a{i},%b{i}']
+            prev='%p0'
+            for i in range(1,n):lines += [f'%s{i}=fadd fast {scalar} {prev},%p{i}'];prev=f'%s{i}'
+            lines += [f'ret {scalar} {prev}','}'];out.append('\n'.join(lines));return
         vector=None if name=='air.sample_texture_2d.v4f16'else re.search(r'\.v(\d+)f(16|32)$',name);bits='half'if name.endswith('f16')else'float';ty=bits
         if vector:
             n,b=vector.groups();n=int(n);scalar=name[:vector.start()]+f'.f{b}';add(scalar);ty=f'<{n} x {"half"if b=="16"else"float"}>'
-            arity=3 if any(x in operation for x in ['.mix.','.clamp.'])else 2 if any(x in operation for x in ['.pow.','.fmin.','.fmax.'])else 1
+            arity=3 if any(x in operation for x in ['.mix.','.clamp.'])else 2 if any(x in operation for x in ['.pow.','.fmin.','.fmax.','.atan2.'])else 1
             params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
             for lane in range(n):
                 for i in range(arity):lines.append(f'%x{lane}_{i}=extractelement {ty} %a{i},i32 {lane}')
@@ -48,11 +61,15 @@ def shims(names):
         if '.fabs.'in operation:
             pre='%x=fpext half %a to float\n'if ty=='half'else'';x='%x'if ty=='half'else'%a';post='%r=fptrunc float %f to half\nret half %r'if ty=='half'else'ret float %f'
             out.append(f'define {ty} @{name}({ty} %a){{\n'+pre+f'%f=call float @llvm.fabs.f32(float {x})\n'+post+'\n}');return
-        if '.pow.'in operation or '.sqrt.'in operation:
-            powop='.pow.'in operation;arity=2 if powop else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
+        if '.sign.'in operation:
+            zero='0xH0000'if ty=='half'else'0.0';one='0xH3C00'if ty=='half'else'1.0';neg='0xHBC00'if ty=='half'else'-1.0'
+            out.append(f'define {ty} @{name}({ty} %a){{\n%p=fcmp ogt {ty} %a,{zero}\n%n=fcmp olt {ty} %a,{zero}\n%x=select i1 %n,{ty} {neg},{ty} {zero}\n%r=select i1 %p,{ty} {one},{ty} %x\nret {ty} %r\n}}');return
+        math=next((n for n in ['pow','sqrt','sin','cos','atan2','exp']if'.'+n+'.'in operation),None)
+        if math:
+            arity=2 if math in ['pow','atan2']else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
             for i in range(arity):
                 if ty=='half':lines.append(f'%x{i}=fpext half %a{i} to float')
-            args=','.join(f'float %'+(f'x{i}'if ty=='half'else f'a{i}')for i in range(arity));lines.append(f'%f=call float @psr_{"pow"if powop else"sqrt"}_scalar({args})')
+            args=','.join(f'float %'+(f'x{i}'if ty=='half'else f'a{i}')for i in range(arity));lines.append(f'%f=call float @psr_{math}_scalar({args})')
             lines += ['%r=fptrunc float %f to half','ret half %r']if ty=='half'else['ret float %f'];lines+=['}'];out.append('\n'.join(lines));return
         if name=='air.dot.v3f16':
             lines=['define half @air.dot.v3f16(<3 x half> %a,<3 x half> %b){']

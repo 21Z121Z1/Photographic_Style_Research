@@ -20,6 +20,9 @@ class Truth:
     yes: np.ndarray
     no: np.ndarray
 
+    def __or__(self,other):return Truth(self.yes|other.yes,self.no&other.no)
+    def __and__(self,other):return Truth(self.yes&other.yes,self.no|other.no)
+
 
 @dataclass(frozen=True)
 class V:
@@ -91,6 +94,30 @@ class V:
     def sqrt(self):
         if np.any(self.lo<0):raise DomainUnknown('sqrt interval crosses negative domain')
         return self.rounded(np.sqrt(self.lo),np.sqrt(self.hi),transcendental=True)
+    def square(self):
+        low=np.where((self.lo<=0)&(self.hi>=0),0,np.minimum(self.lo*self.lo,self.hi*self.hi))
+        return self.rounded(low,np.maximum(self.lo*self.lo,self.hi*self.hi))
+    def sign(self):return V(np.sign(self.lo),np.sign(self.hi),self.precision,self.point)
+    def exp(self):return self.rounded(np.exp(self.lo),np.exp(self.hi),transcendental=True)
+    def atan2(self,x):
+        x=self.box(x)
+        if self.point:return self.rounded(np.arctan2(self.lo,x.lo),np.arctan2(self.lo,x.lo),transcendental=True)
+        corners=np.array([np.arctan2(y,z)for y in (self.lo,self.hi)for z in (x.lo,x.hi)])
+        # A rectangle touching the origin or crossing the negative-x cut may
+        # contain every direction. Preserve that union as a conservative hull.
+        wide=((self.lo<=0)&(self.hi>=0)&(x.lo<=0))
+        return self.rounded(np.where(wide,-np.pi,corners.min(axis=0)),np.where(wide,np.pi,corners.max(axis=0)),transcendental=True)
+    def _trig(self,cosine):
+        fn=np.cos if cosine else np.sin
+        if self.point:return self.rounded(fn(self.lo),fn(self.lo),transcendental=True)
+        lower=np.minimum(fn(self.lo),fn(self.hi));upper=np.maximum(fn(self.lo),fn(self.hi))
+        offset=0 if cosine else np.pi/2
+        k0=np.ceil((self.lo-offset)/np.pi);k1=np.floor((self.hi-offset)/np.pi)
+        any_extremum=k0<=k1;two=k1-k0>=1;first=np.remainder(k0,2)==0
+        lower=np.where(any_extremum&(two|~first),-1,lower);upper=np.where(any_extremum&(two|first),1,upper)
+        return self.rounded(lower,upper,transcendental=True).clamp(-1,1)
+    def sin(self):return self._trig(False)
+    def cos(self):return self._trig(True)
     def pow(self,x):
         b=self.box(x)
         if np.any(self.lo<0)or np.any((self.lo==0)&(b.lo<0)):raise DomainUnknown('Unproven pow domain')
@@ -99,6 +126,9 @@ class V:
         return self.rounded(np.min(a,axis=0),np.max(a,axis=0),transcendental=True)
     def lt(self,x):b=self.box(x);return Truth(self.hi<b.lo,self.lo>=b.hi)
     def gt(self,x):b=self.box(x);return Truth(self.lo>b.hi,self.hi<=b.lo)
+    def ne(self,x):
+        b=self.box(x)
+        return Truth((self.hi<b.lo)|(self.lo>b.hi),(self.lo==self.hi)&(b.lo==b.hi)&(self.lo==b.lo))
 
 
 def select(condition: Truth,yes: V,no: V):
