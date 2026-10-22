@@ -11,4 +11,10 @@ def build(source):
         for i in range(3):extra += [f'%bw_h{ssa}_{i}=extractelement <3 x half> %{ssa},i32 {i}',f'%bw_f{ssa}_{i}=fpext half %bw_h{ssa}_{i} to float',f'%bw_p{ssa}_{i}=getelementptr [6 x float],ptr @psr_bw_trace,i32 0,i32 {index*3+i}',f'store float %bw_f{ssa}_{i},ptr %bw_p{ssa}_{i}']
         body=body.replace(line,line+'\n'+'\n'.join(extra))
     ir='@psr_bw_trace = global [6 x float] zeroinitializer\n'+ir[:start]+body+ir[end:]
+    # Observation stores must not retain the original root's read-only summary.
+    # Preserve every floating-point attribute; change only memory effects.
+    group=re.search(r'unnamed_addr #(\d+) \{',body)[1]
+    line=re.search(r'^attributes #'+group+r' = .*$',ir,re.M)[0]
+    if'memory(read)'not in line:raise ValueError('Expected original BW read-only memory summary')
+    ir=ir.replace(line,line.replace('memory(read)','memory(readwrite)'))
     return ir,functions

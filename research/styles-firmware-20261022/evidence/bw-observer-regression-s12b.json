@@ -1,0 +1,132 @@
+{
+  "reference_model": "iPhone17,3",
+  "build": "24A446",
+  "metrics": {
+    "stark12": {
+      "calls": 1,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0,
+      "max_known_box_width": 0.8784699450668877
+    },
+    "tonal67": {
+      "calls": 1,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0,
+      "max_known_box_width": 2.6991399124020283
+    },
+    "output477": {
+      "calls": 1,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0,
+      "max_known_box_width": 0.0
+    }
+  },
+  "original_complete_functions_sha256": {
+    "whitesCurve": "24891f62760ca4d1001b6b952ac68534d75114abe001912a04d4f916db18977d",
+    "airyFilter": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22",
+    "starkBWAdjustment": "a823680b3722ce7411bfc2653d59c7c8f985ad90cce47dfb3d34d39d5c50d64b",
+    "renderBWAdjustmentsByCastType": "97c98bc6db04ef463064c93423692ea850d24ecf3efeef355cb3ca729c6aaf84",
+    "contrastFilter": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18"
+  },
+  "original_arithmetic_or_predicates_changed": false,
+  "observation_stores_added": [
+    "stark12",
+    "tonal67"
+  ],
+  "curve_is_explicit_not_recovered": true,
+  "curve_half_sha256": "2a1a66f0b3eea7e831bf2376fdf8cc4b304135c6070ef4448d68a23d314369cd",
+  "raw_cast_SSRParams0_distinct_from_resolved245": true,
+  "source_sha256": {
+    "native_bw_check.py": "ee7f7b19b6342db0303badadb910ce4bb2f7e4fb2d83aab5fc953596ed8c082f",
+    "bw_host.py": "895ebb390644e0924856e8476ce819c91ca081eb0a4dc53c016103941ec257d9",
+    "pixel_bw.py": "6c7c457c73ae725367f8a2c12c2343945f489e84e9b4e060d79a7f47310eb1d0",
+    "outer_cast.py": "73e2723046de849891d1d00fdfba4aa52fc65313079988d166b39b6a9e75ac52",
+    "leaf_host.py": "476f0514d85baa147c7ab77d5e6722ae86e15d1e58826a693abfc5ffbb9d5ad1",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "pixel_leaves.py": "2d994892d423753e6cb72201a19b903566bcdf2a9bd58ad8ed77c819411f2d4b"
+  },
+  "host_ir_sha256": "39628ee8dcae117d6411ce9cdd4c1cb6a79394e4a4fe5377c868e360ca315e82",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "db30b544d90a904ed2fb051b9a433f609c846813106e2aad49f6c480fa52635b",
+  "output_sha256": "c9b9f12fe8f5490a49ccef84272b7dbf5707b017e65298338835a6af8a0c19df",
+  "rows": [
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.37451171875,
+          0.57861328125,
+          0.927734375
+        ],
+        "output477": [
+          0.199951171875,
+          0.39990234375,
+          0.7998046875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 2.6991399124020283
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    }
+  ],
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "full_pipeline_verified": false,
+  "observer_contract_regression": {
+    "one_saved_witness_only": true,
+    "source_receipt_sha256": "df9a2af91a1cd6f0c7460f5c786eb317d054ebca4edee37c42ba14c1574dba1f",
+    "change": "BW observation wrapper memory(read)->memory(readwrite); retain all original FP attributes",
+    "all_three_saved_observations_equal": true,
+    "source_sha256": "b996dec1a4dac129e85c221f36e8083e216871c3aef738853d6269f618885cd7",
+    "original_batch_repeated": false
+  }
+}

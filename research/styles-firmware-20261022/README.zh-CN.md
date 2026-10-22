@@ -120,3 +120,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S11-H：外围cast/BW条件混合与独立tonal观察：[阶段报告](PROGRESS-S11-H.zh-CN.md)。
 
 - S12-A：实际BW477根与tuning失败回归：[阶段报告](PROGRESS-S12-A.zh-CN.md)。
+
+- S12-B：原外围指令直接接真实BW与内部观察：[阶段报告](PROGRESS-S12-B.zh-CN.md)。

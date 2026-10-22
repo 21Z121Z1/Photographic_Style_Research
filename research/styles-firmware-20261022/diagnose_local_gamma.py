@@ -43,7 +43,11 @@ def instrument(ir,checkpoints):
             if 'half'in ty:lines.append(f'%trace_{ssa}_{lane}_f=fpext half {value} to float');value=f'%trace_{ssa}_{lane}_f'
             lines += [f'%trace_{ssa}_{lane}_p=getelementptr [128 x float],ptr @psr_trace,i32 0,i32 {offset}',f'store float {value},ptr %trace_{ssa}_{lane}_p'];offset+=1
         body=body[:m.end()]+'\n'+'\n'.join(lines)+body[m.end():]
-    return '@psr_trace = global [128 x float] zeroinitializer\n'+ir[:start]+body+ir[end:],locations
+    observed='@psr_trace = global [128 x float] zeroinitializer\n'+ir[:start]+body+ir[end:]
+    group=re.search(r'unnamed_addr #(\d+) \{',body)[1];attributes=re.search(r'^attributes #'+group+r' = .*$',observed,re.M)[0]
+    if'memory(read)'not in attributes:raise ValueError('Expected original BG read-only memory summary')
+    observed=observed.replace(attributes,attributes.replace('memory(read)','memory(readwrite)'))
+    return observed,locations
 
 
 def diagnose(source,receipt,output):
@@ -79,7 +83,7 @@ def diagnose(source,receipt,output):
         rows.append(row)
     fused157=float(np.float32(float(data[3])*fc('400B333340000000')+fc('BFF3340000000000')))
     fused166=float(np.float16(float(gamma[164].lo)*float(gamma[163].lo)+1))
-    result={'witness_receipt_sha256':hashlib.sha256(receipt.read_bytes()).hexdigest(),'one_saved_witness_only':True,'old_batches_rerun':False,'original_BG_function_sha256':functions['renderBGAdjustments'],'original_host_ir_sha256':hashlib.sha256(original.encode()).hexdigest(),'instrumented_ir_sha256':hashlib.sha256(traced.encode()).hexdigest(),'instrumentation_output_matches_original_and_saved':stable,'outputs':results,'variant_checkpoints':variant_trace,'diagnostic_variants':'Only fast flags of indicated two original instructions removed; variants are not original GPU execution','one_round_fma_candidates':{'SSA157':fused157,'SSA166':fused166,'match_observed_host':bool(fused157==native[157][0]and fused166==native[166][0])},'first_selected_different_SSA':next((x['SSA']for x in rows if not x['equal']),None),'rows':rows,'source_sha256':{n:hashlib.sha256((Path(__file__).parent/n).read_bytes()).hexdigest()for n in ['diagnose_local_gamma.py','leaf_numeric.py','pixel_remaining.py','leaf_host.py']},'GPU_executed':False}
+    result={'witness_receipt_sha256':hashlib.sha256(receipt.read_bytes()).hexdigest(),'one_saved_witness_only':True,'old_batches_rerun':False,'original_BG_function_sha256':functions['renderBGAdjustments'],'original_host_ir_sha256':hashlib.sha256(original.encode()).hexdigest(),'instrumented_ir_sha256':hashlib.sha256(traced.encode()).hexdigest(),'instrumentation_output_matches_original_and_saved':stable,'observation_memory_summary':'memory(readwrite), preserving all original floating-point attributes','outputs':results,'variant_checkpoints':variant_trace,'diagnostic_variants':'Only fast flags of indicated two original instructions removed; variants are not original GPU execution','one_round_fma_candidates':{'SSA157':fused157,'SSA166':fused166,'match_observed_host':bool(fused157==native[157][0]and fused166==native[166][0])},'first_selected_different_SSA':next((x['SSA']for x in rows if not x['equal']),None),'rows':rows,'source_sha256':{n:hashlib.sha256((Path(__file__).parent/n).read_bytes()).hexdigest()for n in ['diagnose_local_gamma.py','leaf_numeric.py','pixel_remaining.py','leaf_host.py']},'GPU_executed':False}
     output.write_text(json.dumps(result,indent=2)+'\n')
     if not stable:raise AssertionError('Instrumentation perturbed output; trace not accepted')
     return result
