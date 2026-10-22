@@ -1,0 +1,524 @@
+{
+  "witness_receipt_sha256": "10be037b4d9123950a1d1facc997c56a1a513bb3d7dabae5ceaca8b828a78c9b",
+  "one_saved_witness_only": true,
+  "old_batches_rerun": false,
+  "original_BG_function_sha256": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+  "original_host_ir_sha256": "cd0a2bfef738167dfc6df4a719b0ecc77ba403c931551854de2d269fba61e447",
+  "instrumented_ir_sha256": "142dd5b3fbcf77808869504e1d5dd62281d74510419bb9901995d6e8876a8266",
+  "instrumentation_output_matches_original_and_saved": true,
+  "outputs": {
+    "original": [
+      0.197998046875,
+      0.398193359375,
+      0.80126953125
+    ],
+    "instrumented": [
+      0.197998046875,
+      0.398193359375,
+      0.80126953125
+    ],
+    "separate_f32_156_157": [
+      0.197998046875,
+      0.398193359375,
+      0.80126953125
+    ],
+    "separate_half_165_166": [
+      0.19775390625,
+      0.397705078125,
+      0.80126953125
+    ]
+  },
+  "variant_checkpoints": {
+    "instrumented": {
+      "157": [
+        0.15947268903255463
+      ],
+      "158": [
+        0.159423828125
+      ],
+      "165": [
+        0.00341796875
+      ],
+      "166": [
+        1.0029296875
+      ],
+      "170": [
+        0.197998046875,
+        0.398193359375,
+        0.80126953125
+      ]
+    },
+    "separate_f32_156_157": {
+      "157": [
+        0.15947270393371582
+      ],
+      "158": [
+        0.159423828125
+      ],
+      "165": [
+        0.00341796875
+      ],
+      "166": [
+        1.0029296875
+      ],
+      "170": [
+        0.197998046875,
+        0.398193359375,
+        0.80126953125
+      ]
+    },
+    "separate_half_165_166": {
+      "157": [
+        0.15947268903255463
+      ],
+      "158": [
+        0.159423828125
+      ],
+      "165": [
+        0.00341796875
+      ],
+      "166": [
+        1.00390625
+      ],
+      "170": [
+        0.19775390625,
+        0.397705078125,
+        0.80126953125
+      ]
+    }
+  },
+  "diagnostic_variants": "Only fast flags of indicated two original instructions removed; variants are not original GPU execution",
+  "one_round_fma_candidates": {
+    "SSA157": 0.15947268903255463,
+    "SSA166": 1.0029296875,
+    "match_observed_host": true
+  },
+  "first_selected_different_SSA": 157,
+  "rows": [
+    {
+      "SSA": 89,
+      "precision": "h",
+      "native": [
+        0.04998779296875
+      ],
+      "model": [
+        0.04998779296875
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 94,
+      "precision": "h",
+      "native": [
+        0.68310546875
+      ],
+      "model": [
+        0.68310546875
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 98,
+      "precision": "h",
+      "native": [
+        0.2164306640625
+      ],
+      "model": [
+        0.2164306640625
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 99,
+      "precision": "h",
+      "native": [
+        0.447265625,
+        0.63232421875,
+        0.89453125
+      ],
+      "model": [
+        0.447265625,
+        0.63232421875,
+        0.89453125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 100,
+      "precision": "h",
+      "native": [
+        0.63232421875
+      ],
+      "model": [
+        0.63232421875
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 101,
+      "precision": "h",
+      "native": [
+        0.0108184814453125
+      ],
+      "model": [
+        0.0108184814453125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 102,
+      "precision": "h",
+      "native": [
+        0.021636962890625
+      ],
+      "model": [
+        0.021636962890625
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 128,
+      "precision": "h",
+      "native": [
+        0.44677734375,
+        0.6318359375,
+        0.89404296875
+      ],
+      "model": [
+        0.44677734375,
+        0.6318359375,
+        0.89404296875
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 134,
+      "precision": "h",
+      "native": [
+        0.443359375,
+        0.63232421875,
+        0.900390625
+      ],
+      "model": [
+        0.443359375,
+        0.63232421875,
+        0.900390625
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 135,
+      "precision": "h",
+      "native": [
+        0.446044921875,
+        0.6318359375,
+        0.8955078125
+      ],
+      "model": [
+        0.446044921875,
+        0.6318359375,
+        0.8955078125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 136,
+      "precision": "h",
+      "native": [
+        0.446044921875,
+        0.6318359375,
+        0.8955078125
+      ],
+      "model": [
+        0.446044921875,
+        0.6318359375,
+        0.8955078125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 137,
+      "precision": "h",
+      "native": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "model": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 140,
+      "precision": "h",
+      "native": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "model": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 142,
+      "precision": "h",
+      "native": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "model": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "equal": true
+    },
+    {
+      "SSA": 153,
+      "precision": "h",
+      "native": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "model": [
+        0.198974609375,
+        0.399169921875,
+        0.8017578125
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 154,
+      "precision": "h",
+      "native": [
+        0.46630859375
+      ],
+      "model": [
+        0.46630859375
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 155,
+      "precision": "f",
+      "native": [
+        0.39990234375
+      ],
+      "model": [
+        0.39990234375
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 156,
+      "precision": "f",
+      "native": [
+        1.3596680164337158
+      ],
+      "model": [
+        1.3596680164337158
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 157,
+      "precision": "f",
+      "native": [
+        0.15947268903255463
+      ],
+      "model": [
+        0.15947270393371582
+      ],
+      "equal": false,
+      "equal_with_native_local_input": false
+    },
+    {
+      "SSA": 158,
+      "precision": "h",
+      "native": [
+        0.159423828125
+      ],
+      "model": [
+        0.159423828125
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 159,
+      "precision": "f",
+      "native": [
+        0.159423828125
+      ],
+      "model": [
+        0.159423828125
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 160,
+      "precision": "f",
+      "native": [
+        1.2213737964630127
+      ],
+      "model": [
+        1.2213737964630127
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 161,
+      "precision": "f",
+      "native": [
+        0.5003052353858948
+      ],
+      "model": [
+        0.5003052353858948
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 162,
+      "precision": "h",
+      "native": [
+        0.50048828125
+      ],
+      "model": [
+        0.50048828125
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 163,
+      "precision": "h",
+      "native": [
+        0.0341796875
+      ],
+      "model": [
+        0.0341796875
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 164,
+      "precision": "h",
+      "native": [
+        0.0999755859375
+      ],
+      "model": [
+        0.0999755859375
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 165,
+      "precision": "h",
+      "native": [
+        0.00341796875
+      ],
+      "model": [
+        0.00341796875
+      ],
+      "equal": true,
+      "equal_with_native_local_input": true
+    },
+    {
+      "SSA": 166,
+      "precision": "h",
+      "native": [
+        1.0029296875
+      ],
+      "model": [
+        1.00390625
+      ],
+      "equal": false,
+      "equal_with_native_local_input": false
+    },
+    {
+      "SSA": 167,
+      "precision": "h",
+      "native": [
+        1.0029296875
+      ],
+      "model": [
+        1.00390625
+      ],
+      "equal": false,
+      "equal_with_native_local_input": false
+    },
+    {
+      "SSA": 170,
+      "precision": "h",
+      "native": [
+        0.197998046875,
+        0.398193359375,
+        0.80126953125
+      ],
+      "model": [
+        0.19775390625,
+        0.397705078125,
+        0.80126953125
+      ],
+      "equal": false,
+      "equal_with_native_local_input": false
+    },
+    {
+      "SSA": 171,
+      "precision": "h",
+      "native": [
+        0.197998046875,
+        0.398193359375,
+        0.80126953125
+      ],
+      "model": [
+        0.19775390625,
+        0.397705078125,
+        0.80126953125
+      ],
+      "equal": false,
+      "equal_with_native_local_input": false
+    },
+    {
+      "SSA": 174,
+      "precision": "h",
+      "native": [
+        0.197998046875,
+        0.398193359375,
+        0.80126953125
+      ],
+      "model": [
+        0.19775390625,
+        0.397705078125,
+        0.80126953125
+      ],
+      "equal": false,
+      "equal_with_native_local_input": false
+    }
+  ],
+  "source_sha256": {
+    "diagnose_local_gamma.py": "cbb27e3ff75220769ebe2a1419fb20ced18b13d957a83ef0ea87c06fd55d03a3",
+    "leaf_numeric.py": "8e0f001f696953155ba4ac75f4e2b13a3c13e2b68b669b0dddaa25008af5ea2f",
+    "pixel_remaining.py": "aa1841a7c0d51a08b560b473c42d58c3f8ab293660ca065ac6b08c7621dd7eae",
+    "leaf_host.py": "f367c8b164bb12be2a2db73f5e66b2933f460c4ba545533bea9cb1e4492a7045"
+  },
+  "GPU_executed": false
+}

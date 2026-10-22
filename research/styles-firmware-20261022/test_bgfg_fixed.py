@@ -25,7 +25,7 @@ class FixedHelperTests(unittest.TestCase):
 
     def test_multi_leaf_unknown_is_retained_and_never_replaced_by_fixed_result(self):
         p=packet('bg',BG_POS);r=run('bg',I.point([.2,.4,.8]),p,PixelContext(.4,.5,.3),leaf_models=models(Curve1D(tuple(np.linspace(0,1,17)**.8),'test')))
-        self.assertEqual(r.status,'unknown_operator');self.assertIn('Division interval includes zero',r.missing_operator);self.assertIsNone(r.output)
+        self.assertEqual(r.status,'unknown_operator');self.assertIn('domain unknown:',r.missing_operator);self.assertIsNone(r.output)
         with self.assertRaises(TypeError):forward(V.value([.2,.4,.8]),V.value([.3,.5,.7]),p,guide=V.value(.4),person=V.value(.5),skin=V.value(.3),whites=None)
 
     def test_coupled_models_keep_sets_through_complete_controller(self):

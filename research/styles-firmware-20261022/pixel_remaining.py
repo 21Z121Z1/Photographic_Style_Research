@@ -2,6 +2,7 @@
 from leaf_numeric import V,hc,fc,mix,lazy_select,select,exterior,smoothstep,DomainUnknown
 from pixel_leaves import H,F,dot,root_components
 from pixel_color import to_polar,from_polar
+from leaf_domains import strictly_positive_branch
 
 
 def under_grass(rgb,person,amount):
@@ -34,7 +35,7 @@ def tonal_contrast(rgb,skin,amount):
         p2=luma.pow(H(2,rgb)).f()*F(fc('4005A02760000000'),rgb)
         p1=luma.f()*F(fc('3FD765FD80000000'),rgb)
         polynomial=(((p4+p1)+p3)+p2).h()
-        return (polynomial*c)/luma
+        return (polynomial*c)/strictly_positive_branch(luma)
     changed=lazy_select(luma.gt(0),scale,lambda:H([0,0,0],rgb))
     work=mix(c,mix(c,changed,amount),((skin.f()+1)*F(.5,rgb)).h()).clamp()
     return ((rgb.maximum(1)-1)+rgb.minimum(0))+work

@@ -1,6 +1,7 @@
 """Independent typed tonal leaves; explicit guide and half/f32 transitions."""
 from leaf_numeric import V,hc,fc,mix,select,lazy_select,smoothstep,DomainUnknown
 from pixel_leaves import H,F,dot,root_components
+from leaf_domains import strictly_positive_branch
 
 
 def blue_mask(blue):
@@ -12,7 +13,7 @@ def span_preserved(original,changed):
     low=original.min_channels();span=original.max_channels()-low
     def preserve():
         newlow=changed.min_channels();newspan=changed.max_channels()-newlow
-        return (original-low)*(newspan/span)+newlow
+        return (original-low)*(newspan/strictly_positive_branch(span,fc('3EE4F8B580000000')))+newlow
     return lazy_select(span.f().gt(F(fc('3EE4F8B580000000'),original)),preserve,lambda:changed)
 
 

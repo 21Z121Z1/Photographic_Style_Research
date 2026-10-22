@@ -5,6 +5,7 @@ branch unions or rejects an unproved domain; no fitting or native GPU claim.
 """
 import numpy as np
 from leaf_numeric import V,hc,fc,mix,vec,select,lazy_select,exterior,smoothstep,DomainUnknown
+from leaf_domains import strictly_positive_branch
 
 
 def H(x,like):return V.value(x,'h',like.point)
@@ -29,7 +30,7 @@ def whites_curve(rgb: V,amount: V,curve,mode: V):
     c=work.clamp().pow(H(hc('3872'),rgb));z=c.min_channels()
     target=select(z.gt(H(hc('3a00'),rgb)),H(1,rgb),curve_sample(z,curve).clamp())
     changed=mix(z,target,amount)
-    first=lazy_select(z.gt(0),lambda:mix(c,(changed*c)/z,z),lambda:c)
+    first=lazy_select(z.gt(0),lambda:mix(c,(changed*c)/strictly_positive_branch(z),z),lambda:c)
     second=mix(c,(c-z)+changed,mix(z,changed,mode))
     value=exterior(work)+mix(first,second,z).clamp().pow(H(hc('3f33'),rgb))
     return columns(value,[['4011','b353','a060'],['b9d2','3ced','b0e8'],['b4e9','99de','3ca6']]).maximum(0)
@@ -57,7 +58,7 @@ def contrast(rgb: V,amount: V):
     changed=exterior(rgb)+newroot*newroot;low=rgb.min_channels();span=rgb.max_channels()-low
     def preserve():
         newlow=changed.min_channels();newspan=changed.max_channels()-newlow
-        return (rgb-low)*(newspan/span)+newlow
+        return (rgb-low)*(newspan/strictly_positive_branch(span,fc('3EE4F8B580000000')))+newlow
     return lazy_select(span.f().gt(F(fc('3EE4F8B580000000'),rgb)),preserve,lambda:changed)
 
 
