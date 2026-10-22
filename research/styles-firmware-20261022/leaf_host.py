@@ -87,8 +87,26 @@ def shims(names):
     return '\n'.join(out)
 
 
+def inline_functions(source):
+    """Original straight-line BG blocks, with only bijective SSA renaming.
+
+    Gate/f32->half is intentionally outside each half-input block. Parent SHA
+    and exact selected text SHA make this distinction independently checkable.
+    """
+    parent=next(m[0]for m in re.finditer(r'^define[^\n]*@_Z19renderBGAdjustments[^\n]+\{\n.*?^}',source,re.M|re.S))
+    additions=[];metadata={}
+    for name,start,stop,rgb,amount in [('BG.localContrast_inline',90,142,83,89),('BG.gammaContrast_inline',151,174,144,150)]:
+        body=re.search(r'^  %'+str(start)+r' = .*?^  %'+str(stop)+r' = [^\n]+',parent,re.M|re.S)[0]
+        mapping={str(rgb):'rgb','1':'guide',str(amount):'amount'}
+        renamed=re.sub(r'%(\d+)',lambda m:'%'+mapping.get(m[1],'v'+m[1]),body)
+        text=f'define internal fastcc <3 x half> @_Z{len(name)}{name}(<3 x half> %rgb,half %guide,half %amount) #10 {{\n'+renamed+f'\nret <3 x half> %v{stop}\n}}'
+        additions.append(text);metadata[name]={'parent_function_sha256':hashlib.sha256(parent.encode()).hexdigest(),'original_selected_text_sha256':hashlib.sha256(body.encode()).hexdigest(),'original_SSA_inclusive':[start,stop],'external_SSA_mapping':mapping,'arithmetic_or_intrinsics_changed':False,'excludes_f32_gate_and_half_conversion':True,'renamed_wrapper_sha256':hashlib.sha256(text.encode()).hexdigest()}
+    return '\n'.join(additions),metadata
+
+
 def build(source,names):
     fragment(source)  # Exact source identity check only.
+    if any(n.startswith('BG.')for n in names):source+='\n'+inline_functions(source)[0]+'\n'
     functions={}
     for m in re.finditer(r'^define[^\n]*?@([^ (]+)\([^\n]+\{\n',source,re.M):functions[m[1]]=source[m.start():source.index('\n}',m.end())+2]
     roots=[next(n for n in functions if short(n)==name)for name in names];selected=set(roots);pending=list(roots)

@@ -98,3 +98,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 截至S7，已补同硬件/build的CMCapture loader与外部renderer/prior静态连接、cast系数布局和正/负Tone限定分支。最小剩余运行验收依赖同机型/build的可调用iOS运行环境，以及同一帧的参数、stats、matte/guide、颜色转换与绑定上下文；这些不能由更多合成测试替代。IMG_2810还须先取得精确capture build，再匹配其iPhone19,2实际插件及同帧上下文。原生GPU半精度误差、真实照片留出和配对RAW均未新增。没有读取照片库或私人原媒体，没有绕过锁屏；完整目标仍未完成。
 
 - S10-D：saturation 两叶、6 个黑色定义域 unknown：[阶段报告](PROGRESS-S10-D.zh-CN.md)。
+
+- S10-E：剩余七叶与人物/肤色/guide 接线：[阶段报告](PROGRESS-S10-E.zh-CN.md)。

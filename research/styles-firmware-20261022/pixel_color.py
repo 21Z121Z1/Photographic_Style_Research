@@ -29,13 +29,14 @@ def to_polar(c):
     return lab[0],angle,radius
 
 
-def from_polar(light,angle,radius):
+def from_polar(light,angle,radius,*,clamp_output=True):
     lab=vec([light,angle.cos()*radius,angle.sin()*radius]).f()
     v=(lab[1]*F([fc(x)for x in ['3FB8FA4700000000','BFBD270280000000','3FA0B2ED80000000']],lab)+lab[0])+lab[2]*F([fc(x)for x in ['3FCA44DC20000000','3FC10D4280000000','BFE5A90F40000000']],lab)
-    return matrix(signed_power(v,'40029ACA60000000'),[
+    out=matrix(signed_power(v,'40029ACA60000000'),[
         ['4015E38B80000000','BFF200FDA0000000','3F9E845300000000'],
         ['C012915E00000000','4002586A00000000','BFC8BA2560000000'],
-        ['3FC5B6AB00000000','BFC57D9700000000','3FF29E4D40000000']]).h().clamp()
+        ['3FC5B6AB00000000','BFC57D9700000000','3FF29E4D40000000']]).h()
+    return out.clamp()if clamp_output else out
 
 
 def smooth_sat(rgb,gain):

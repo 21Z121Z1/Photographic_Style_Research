@@ -1,0 +1,4186 @@
+{
+  "scope": "Small, separately activated original leaf checks; no accepted batch reruns.\n\nEvery requested leaf has its original complete body and explicit host shims.\nUnknown finite domains remain in the receipt and are not counted as passes.\n",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "leaves": {
+    "underGrassFilter": {
+      "cases": 30,
+      "nonzero_cases": 30,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    },
+    "underToneFilter": {
+      "cases": 30,
+      "nonzero_cases": 30,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    },
+    "tonalContrastFilter": {
+      "cases": 30,
+      "nonzero_cases": 30,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    },
+    "smartContrast": {
+      "cases": 30,
+      "nonzero_cases": 30,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    },
+    "highlightNeg": {
+      "cases": 45,
+      "nonzero_cases": 45,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    },
+    "BG.localContrast_inline": {
+      "cases": 30,
+      "nonzero_cases": 30,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    },
+    "BG.gammaContrast_inline": {
+      "cases": 30,
+      "nonzero_cases": 30,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_in_known_point_domain": 0,
+      "max_absolute_error_in_known_point_domain": 0.0,
+      "range_violations_in_known_set_domain": 0
+    }
+  },
+  "records": 225,
+  "original_function_text_sha256": {
+    "underGrassFilter": "1977ca7f9ca0dac3c0f93246095a1f4e43013bf1f205fb448b443f0a33447e3b",
+    "BG.gammaContrast_inline": "0a771b76a50c34fcfdba95ad1555e7cb05c8fc660c5b2b97270e94a8488c0bd2",
+    "BG.localContrast_inline": "1e63a80004ccdca4b5120c6527c7bf67770be8102b5514821f33dec99480936d",
+    "smartContrast": "1960da8a03063b300c5d480b9b46e4d9a8825c036dee5d4696fc1a8ee9576434",
+    "highlightNeg": "b836d501f9c0a4fb8cd7695572fab314cf0fa7d45dfc5b9f8fffe6346471b3b4",
+    "tonalContrastFilter": "a44bf2a3ea085759c88bb5e010d735001e5f8646033ea5a9727259b876e2e351",
+    "underToneFilter": "f16aa98704798c530cc682774396eaaa75765757828ef9fc97fd25e0daf75f19"
+  },
+  "original_function_bodies_modified": "selected inline blocks only: bijective SSA renaming and new ABI wrapper",
+  "host_fragment_sha256": "9ebc7d096815351700cee1b37c1ddb686c35af5443e6072d93294dac5c2beb8d",
+  "host_math_C_sha256": "e96227ecb32422600e6b4cd4df925769d96af46f4fd4255624a3691dbcd98a8c",
+  "model_sha256": "bf167d003a0db7a1aeb1542fdc36c1c11e74224a47ca9a6c9d3388605aad4d1b",
+  "arithmetic_sha256": "8e0f001f696953155ba4ac75f4e2b13a3c13e2b68b669b0dddaa25008af5ea2f",
+  "host_builder_sha256": "2a10d11f784e3a3618e4b093e381a7f230dc8af6683b24bd8b7c020923e46deb",
+  "checker_sha256": "90a9c28f74e9676a45e3eed60bb30789fc2664959d596853ca22e91aedf0ac8a",
+  "input_sha256": "fbaad3f6ee32f1eb3d3b9186b2749e29c54c6916920c966e9efae12695d613b2",
+  "native_output_sha256": "227bd44fa717bc4e8da6f68af2432cc8ae21d61226417da15aef580aed2c6db7",
+  "GPU_executed": false,
+  "libm_sampler_and_2u_4u_allowances_are_assumptions": true,
+  "unimplemented_placeholders": false,
+  "unknown_cases_retained": true,
+  "accepted_batches_repeated": false,
+  "rows": [
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underGrassFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "underToneFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "tonalContrastFilter",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "smartContrast",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.022003173828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.1099853515625,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "highlightNeg",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.197998046875,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.localContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        -0.04998779296875,
+        0.60009765625,
+        1.099609375,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0010004043579101562,
+        0.0020008087158203125,
+        0.0030002593994140625,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.04998779296875,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.39990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        -0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "leaf": "BG.gammaContrast_inline",
+      "input_half_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.89990234375,
+        0.300048828125,
+        0.0
+      ],
+      "nonzero_parameter": true,
+      "native_nonfinite_values": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    }
+  ],
+  "additional_model_sources": {
+    "pixel_tonal.py": "73fe53dbb33600973b8374e0eecdc4d827cfd2d5d9f0057eee3247927ccfa00c",
+    "pixel_lighten.py": "cf4691a92ffb3dba82916a938088ff8003190a532b2819d06b572d251c499d99",
+    "pixel_color.py": "721af902649ab9117ede146cec3b7393720ce9e1be59cf564d5f4450f815756d",
+    "pixel_remaining.py": "aa1841a7c0d51a08b560b473c42d58c3f8ab293660ca065ac6b08c7621dd7eae"
+  },
+  "inline_original_block_metadata": {
+    "BG.localContrast_inline": {
+      "parent_function_sha256": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+      "original_selected_text_sha256": "07615ca1e68e7bdd6c84fc3a28d8f64eaf9383318a3c0992547d3a6b9f72b5fc",
+      "original_SSA_inclusive": [
+        90,
+        142
+      ],
+      "external_SSA_mapping": {
+        "83": "rgb",
+        "1": "guide",
+        "89": "amount"
+      },
+      "arithmetic_or_intrinsics_changed": false,
+      "excludes_f32_gate_and_half_conversion": true,
+      "renamed_wrapper_sha256": "1e63a80004ccdca4b5120c6527c7bf67770be8102b5514821f33dec99480936d"
+    },
+    "BG.gammaContrast_inline": {
+      "parent_function_sha256": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+      "original_selected_text_sha256": "d0f1130419dc408d9b7830cbd8f386ddc38042cba88e8b737378523cdd5f7187",
+      "original_SSA_inclusive": [
+        151,
+        174
+      ],
+      "external_SSA_mapping": {
+        "144": "rgb",
+        "1": "guide",
+        "150": "amount"
+      },
+      "arithmetic_or_intrinsics_changed": false,
+      "excludes_f32_gate_and_half_conversion": true,
+      "renamed_wrapper_sha256": "0a771b76a50c34fcfdba95ad1555e7cb05c8fc660c5b2b97270e94a8488c0bd2"
+    }
+  }
+}
