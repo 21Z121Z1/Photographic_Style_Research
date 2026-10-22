@@ -1,0 +1,171 @@
+{
+  "scope": "S17 only same saved synthetic3x4 context; neutral selective joint error, one saved bright residual and BG cell0 relation",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "product_reference": "Styles2",
+  "internal_bundle_class": "SmartStyleV1 / CMISmartStyleProcessorV1",
+  "strict_context": "cast0 / tuning2 / neutralBGFG / zero lookup",
+  "context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+  "python": "3.14.5",
+  "clang": "Homebrew clang version 22.1.6",
+  "tests": 198,
+  "test_result": "OK",
+  "test_command": "python3 -m unittest discover -s research/styles-firmware-20261022 -p 'test_*.py' -v",
+  "test_log_sha256": "8f07d609155ef1027b20b08c43ae69d92c72bb596496e89f98b32d450e1a1866",
+  "compileall": "exit0",
+  "git_diff_check": "exit0",
+  "new_original_kernel_calls": {
+    "selective_saved_pixel_0_0": 1,
+    "bright_saved_pixel_1_0": 1,
+    "total": 2,
+    "new_contexts": 0,
+    "new_leaf_cases": 0,
+    "diagnostic_saved_guided_maps_used": true,
+    "not_new_complete_producer_chains": true,
+    "old102_batch_repeated": false
+  },
+  "selective_first_pixel": {
+    "probed_f32_components": 12,
+    "probed_half_components": 21,
+    "point_bit_mismatches": 0,
+    "whole_input_box_not_center": true,
+    "constant_link_blocks": 13,
+    "all_static_constants_match": true,
+    "joint_range_violations": 0,
+    "converted_width_before": 587.0,
+    "converted_width_after": 1.88427734375,
+    "gamma_joint": [
+      1,
+      1
+    ],
+    "negative_endpoint_joint_reachability": "not established",
+    "whole_local_coverage_claim": "analytic enclosure conditional on existing2u/4u and conversion/host math budgets; not a formal all-parameter/GPU proof"
+  },
+  "bright_first_divergence": {
+    "saved_grid": [
+      1,
+      0
+    ],
+    "first_probed_SSA": 150,
+    "old_half_mismatches": 1,
+    "max_error": 0.00048828125,
+    "original_function_text_sha256": "ddc56da9b1f1c70243f2e1618b5da789cfdecdf7feb998b9dd4a1ca9e8202d25",
+    "original_instruction_sha256": {
+      "126": "89c1f5f40052a9dd5956ca9c7770297450d143022901c0692a60b6d42a94a2b7",
+      "132": "6ab5a3fd84803124ad840f21f162e75fe6cca69c1887239834186b8d38abf1fa",
+      "145": "9f57cafe11f6460019f4292a88eb5effef253b620f05b224b28aa76b7369e2ad",
+      "146": "3851d26976da0ec12c3355430a0aca0c25cdca7bed276d617619f32a690cb0f8",
+      "147": "9593418cec1822f5ad47f7955080d0667eb1dc8a47a86697d6bb39795cc166e2",
+      "148": "8943049d1cbe2700dda4cd2560c4d3b54e767b7b4c66eccd1056968565fcc4ee",
+      "149": "534f3ea8b04bbd748061def9e94238f0a4ed78ddcea83c65285af400beb3b6ef",
+      "150": "8107d13d852a6c0d570cab4ad48c98863a83aa5992de998ce7f85bf55f6d53ae"
+    },
+    "actual_AIR_148_149": "fast multiply then fast add; contraction permitted, not an explicit AIR FMA intrinsic",
+    "CPU_model_correction": "half FMA149 under scoped bright host contract; original150 target is interior so clamp inactive",
+    "original_GPU_order_proven": false
+  },
+  "point_before_S16": {
+    "components": 1938,
+    "internal_mismatches": 8,
+    "bright": 8,
+    "tonal": 0,
+    "haze": 0,
+    "max_error": 0.0006103515625,
+    "writer_half_mismatches": 0
+  },
+  "point_after": {
+    "components": 1938,
+    "half_bit_mismatches": 0,
+    "max_error": 0.0,
+    "writer_half_mismatches": 0,
+    "distinct_contexts": 1,
+    "native_calls_for_this_saved_replay": 0
+  },
+  "set_after": {
+    "selective_unknown_pixels": 12,
+    "unselected_internal_unknowns": 24,
+    "first_unknown": [
+      "0,0",
+      {
+        "operator": "selective413",
+        "reason": "Unproven pow domain"
+      }
+    ],
+    "writer_set_known": false,
+    "known_range_coverage_violations": 0,
+    "warm409_width": 1.7349278836472752,
+    "converted_width": 1.88427734375,
+    "gamma": [
+      1,
+      1
+    ]
+  },
+  "BG_cell0": {
+    "local_joint_enclosure_known": true,
+    "original_half_quotient_finite_before_product": true,
+    "quotient_upper": 7098.905306201573,
+    "product_upper": 1.6775594783786734,
+    "output_width": 1.6808028409627604,
+    "original_else_union_kept": true,
+    "default_BG_model_wired": false,
+    "full_BG_verified": false,
+    "new_native_calls": 0,
+    "default_model_remaining_unknown_original_cells": 1
+  },
+  "preserved_failure_regressions": [
+    "encode-scope-regression-s16b.json: global encode FMA introduced18 output/writer differences",
+    "tuning field17 / byte652 wrapper regression",
+    "old24 all-active set unknowns and old8 leaf domain unknowns",
+    "old155.125 and17941.5513 envelopes and S20 nonunique certificate"
+  ],
+  "budgets_thresholds_epsilon_masks_changed": false,
+  "backend_pow_domain_relaxed": false,
+  "center_fallback": false,
+  "source_sha256": {
+    "color_matrices.py": "764179730db97af52d2589796a7d9fb5b548de743685f4f4e3ca209070201f53",
+    "contrast_span_joint.py": "0554734b414d61c8f52845487509a567f5e81400583a9b6cca13a895961954d3",
+    "link_color_constants.py": "d8723ee43608ada0e397e7b2b664bac11cc55f223110e6ecd48eba8222b62790",
+    "native_selective_pixel.py": "918081ff6329a36c53371d9455d87870d2a0f0aa87a0fc9814fa1fa6e00f68db",
+    "replay_selective_joint.py": "563e5a046b82fd1a68c8f9121cc696b59449662578f2d56de287c3439302b69b",
+    "selective_neutral_joint.py": "fedbb196a80026bcfff534757ca55bf13e5a85f331d4b55a58eb40de0ee7015b",
+    "test_selective_joint.py": "81deb7573fa7477886d3a01cad46496cfc7840f9dfb3b400329479f3b6478864",
+    "diagnose_internal_pixel.py": "9e721be50a407673ff0eb68a1ea96b31389515cdc63c4244132be6bab72d07e4",
+    "pixel_bright.py": "920098ca50113922b0f927d1a293377e79f0bf4ad677000658c3c5999af12e07",
+    "pixel_color.py": "c56285b5f245592e02f430868ae6450013a45bb16ad58ea4403cc3aaddaeb471",
+    "pixel_coverage_inventory.py": "e7e66f180f530e8d31166d5f26969bb93057d3c8fdda351c0b8cbb5974d43d5b",
+    "pixel_selective.py": "565958999253667807c3cd1d885d3a3342eeb130e41d13e6ff179ac43b18583a",
+    "test_complete_forward.py": "bb2429096da00c9c136d35a54837f0b1ebc49a58e0398925cd487f9451ca2bac",
+    "leaf_numeric.py": "79e5b1349b9b426141193118f8c7b906b561e7f9e6757b659e0c21d021dc4416",
+    "guided_affine.py": "f941a7bedbf821278118623588779a1fd4bad4d41ffb75f040c903142f5a939c",
+    "complete_forward.py": "14145717941997efc385b11c3a32b1f49bde9457b403fb7e656bc968ac1d9826",
+    "complete_fixture.py": "b2870f6ffd5e79cb24f1e428fd55ed2cf941e05edfcd7194b3e699c01cf1632c"
+  },
+  "receipt_sha256": {
+    "bg-cell0-joint-s17c.json": "a28964d206e9b80e500aa74df9b7d5820c096c77b480f412debcdcf1701b832f",
+    "bright-residual-pixel-s17b.json": "30f96e50c3ec5986e8db4c70062e9b7969773a4e9d7f5e811c455223618b88fe",
+    "color-constant-links-s17a.json": "573e253c49ae678f59bda694cd1156f8b990c05fbbdc7cfbe7fe30e4ed5f8ba5",
+    "pixel-inventory-s17.json": "5e6beb7f002405c1a7092e5bc31d9ea410e6229deb1ec32a4ac12bd82073d203",
+    "point-replay-s17b.json": "b946b128f426050c24d04e0a25aae2d0ec00504f3843512575bf950fe2a5cdb0",
+    "selective-baseline-s17a.json": "ef5652598199debab61765cfb0c2b89b345d05e6980412eada3b28188d55cb66",
+    "selective-one-pixel-s17a.json": "d86aaf8c0b32733fe7b401921f76a767de0a22b1150e738b181f00843e420423",
+    "selective-replay-s17a.json": "4a9a163a0667f7029410d5d3d47d41173c56e5ac21490044d27f25fea9c48872",
+    "unresolved-software-s17.json": "a9aa3565da51466c2e63ba7dc83876bb90c67783f1336e843db71999eea1de28"
+  },
+  "report_sha256": "99774eec1e71b91beb9e22fede7b57d91fcbb19908cdc5da26758104fe7ee0c6",
+  "private_media_used": false,
+  "downloads": 0,
+  "original_GPU_executed": false,
+  "photo_inverse_completed": false,
+  "remaining_software_work": [
+    "selective converted base joint reachability and domain after neutral error enclosure",
+    "unselected highlight/bright set domains and broader pre393 domains",
+    "cell0 local contrast enclosure integration and complete BG composition",
+    "nine unresolved coefficient consumers: untyped pointers/copies/aliases/other consumers; no hardware wait required for static work"
+  ],
+  "remaining_external_dependencies": [
+    "original iOS/GPU and same-frame raw context",
+    "IMG2810 exact capture build and matched iPhone19,2 chain",
+    "raw guides/masks/stats/lookup/curves/34cast and coefficients remain explicit supplied inputs"
+  ],
+  "S16_classification_erratum": "Nine unresolved consumers are unfinished software tracking, removed from pure external dependency category; no repeated same-range scan"
+}

@@ -22,10 +22,10 @@ MAPPED={
     'curvedFromLinear':'raw output transfer branches; connected568..600 with explicit gain/CCM',
     'renderSkinAdjustments':'reused legacy skin with this AIR precision contract; known point differences/black domain retained',
     'highlightRecover':'complete helper conditional model; black/HDR domain unknown retained',
-    'renderBrightAndContrast':'complete conditional helper; bright host differences and set unknowns retained',
+    'renderBrightAndContrast':'complete conditional helper; S17 saved context point residuals0 under scoped CPU half-FMA contract; other domains and set unknowns retained',
     'renderNeutralizingAdjustments':'complete current caller model using full cast and supplied stats',
     'renderWarmthCastAdjustments':'complete conditional root; unproved negative pow sets retained',
-    'renderSelectiveColorAdjustments':'conditional root using explicit lookup texture; missing/invalid domains fail closed',
+    'renderSelectiveColorAdjustments':'conditional root using explicit lookup; S17 strict neutral joint Lab/inverse/gamma error enclosure; negative outer pow domains still unknown',
     'renderBWAdjustmentsByCastType':'actual BW477 root computed; independent stark/tonal observations and zero-domain unknowns',
     'renderVideoHazeCorrection':'complete eight-field root; original guide211, independent internal unknown and main501 gate',
     'renderChannelMixForBWCasts':'complete raw-code root plus actual stats-derived weights; cast15 black0/0 unknown',
@@ -47,7 +47,48 @@ def inventory(source):
         edge={'main_SSA_result':int(ssa),'helper':label,'symbol':name,'function_text_sha256':hashlib.sha256(body.encode()).hexdigest(),'coverage':MAPPED.get(label,'pixel algorithm/connection not modeled in this task'),'source_line':source.count('\n',0,source.index(body))+1}
         if int(ssa)==557 and label=='protectMaskFilter':edge['coverage_evidence']={'report':'PROGRESS-S12-D.zh-CN.md','host_receipt':'evidence/native-postprotect-s12d.json','current_model_replay':'evidence/postprotect-replay-s12d.json','main_region':'502..566','ignore_chroma':True,'new_native_calls':0}
         edges.append(edge)
-    return {'reference':{'hardware_model':'iPhone17,3','OS_build':'24A446','internal_bundle_class':'SmartStyleV1 / CMISmartStyleProcessorV1','IMG_2810_exact_capture_build':'unknown; separate identity'},'main_function_sha256':hashlib.sha256(main[1].encode()).hexdigest(),'direct_pixel_calls':edges,'precomputed_semantic_block290':{'conditional_model':'source2D -> complete original AIR7 -> original guided3 -> original block290 ROI composition, S14-B two new finite synthetic fixtures,6consumer calls','producer_now_modeled':'selected source/linear/matte normalized coordinates, RGBA16 gain storage and alpha, SRL/transfer/CCM/gain/GTC/ratio, both producer write paths, guided3 and ROI5/6 set sampling','static_contract':'gain maps RGBA16Float115; actual epsilon f32.001 from0x1d44e3d78; original guide self20 distinct from selected primary override','remaining_connection':'source/guide/CCM/stats/ROI/frame identity remain explicit; cast2 mutation covered separately inS14C, not inS14B producer composition; original GPU sampler accuracy not established'},'main_prefix_through392':{'known_complete_point_contexts':4,'unknown_point_contexts':1,'unknown_whole_set_contexts':5,'17_independent_observations':'175 known half components bit0, post-semantic35f32 bit0','report':'PROGRESS-S14-C.zh-CN.md'},'final_writer':{'conditional_model':'supplied RGB600 to original RGBA pack/ROI direct or phased imageblock copy, explicit RGBA16 storage only','tests':'S14D seven new tiles; three saved witnesses after diagnostic memory-summary widening; invalid phase rejected','report':'PROGRESS-S14-D.zh-CN.md','original_GPU_or_multithreaded_imageblock':False},'complete_conditional_forward':{'report':'PROGRESS-S16.zh-CN.md','fixture':'evidence/complete-context-s15a.json','host_receipt':'evidence/native-complete-s15a.json','current_replay':'evidence/shared-window-s16-final.json','actual_chain':'same raw synthetic3x4 context: AIR7 -> guided -> complete original main ->600 -> direct writer','native_calls':102,'additional_S16_diagnostic_main_calls':6,'point_model':'1938 observed half components;8 bright residuals after independent half-FMA probes;tonal/haze/335/392/477/567/600/final writer bit0','whole_sets':'12 pixels unknown atselective413; known preceding ranges covered, max width1.73493; no final set output','auxiliary_producers':'guide8/9,person/skin/sky,statistics,lookup,curves,cast/coefficients and input identity remain explicit'},'main_remaining_connections':['original iOS/GPU and same-frame chain unverified; finite synthetic conditional chain is now connected through writer','pre393 four BG finite-budget and one FG finite-budget set unknowns remain local modeling work','other output pixel encodings and original multi-thread GPU behavior are unverified'],'known_numeric_limits':['24 all-active helper calls have set-domain unknowns; point checks do not remove them','old8 leaf-domain unknowns retained','bright and earlier tonal/skin/neutralizing point differences retained','cast15 black0/0, transfer8 selected zero divisor, black HDR gain remain unknown','old155.125 image envelope retained; new true-epsilon ROI chain boxes reach17941.5513','S14B five guided mismatches diagnosed in S15B: CPU FMA(sum_ii,inv9,epsilon) order; saved fixture0 replay and fixture1 targeted coefficient/mean probes now bit0; not a GPU order proof','S14C saved BG contrast: original8 failing boxes inspected via48 ordered positive domains and budgeted half lattice;1 box remains unknown, whole context not certified; no quotient reordering','2u/4u and host sampler are assumptions, not measured GPU error','nine unresolved fields retain unknown consumers; no repeated same-range consumer scan'],'scope':'Updated conditional operator and connection inventory; local model work is distinguished from original GPU/frame dependencies.','GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
+    return {
+        'reference':{'hardware_model':'iPhone17,3','OS_build':'24A446','internal_bundle_class':'SmartStyleV1 / CMISmartStyleProcessorV1','IMG_2810_exact_capture_build':'unknown; separate identity'},
+        'main_function_sha256':hashlib.sha256(main[1].encode()).hexdigest(),
+        'direct_pixel_calls':edges,
+        'precomputed_semantic_block290':{
+            'conditional_model':'source2D -> complete original AIR7 -> original guided3 -> original block290 ROI composition, S14-B two new finite synthetic fixtures,6consumer calls',
+            'producer_now_modeled':'selected source/linear/matte normalized coordinates, RGBA16 gain storage and alpha, SRL/transfer/CCM/gain/GTC/ratio, both producer write paths, guided3 and ROI5/6 set sampling',
+            'static_contract':'gain maps RGBA16Float115; actual epsilon f32.001 from0x1d44e3d78; original guide self20 distinct from selected primary override',
+            'remaining_connection':'source/guide/CCM/stats/ROI/frame identity remain explicit; cast2 mutation covered separately inS14C, not inS14B producer composition; original GPU sampler accuracy not established'},
+        'main_prefix_through392':{'known_complete_point_contexts':4,'unknown_point_contexts':1,'unknown_whole_set_contexts':5,'17_independent_observations':'175 known half components bit0, post-semantic35f32 bit0','report':'PROGRESS-S14-C.zh-CN.md'},
+        'final_writer':{'conditional_model':'supplied RGB600 to original RGBA pack/ROI direct or phased imageblock copy, explicit RGBA16 storage only','tests':'S14D seven new tiles; three saved witnesses after diagnostic memory-summary widening; invalid phase rejected','report':'PROGRESS-S14-D.zh-CN.md','original_GPU_or_multithreaded_imageblock':False},
+        'complete_conditional_forward':{
+            'report':'PROGRESS-S17.zh-CN.md','fixture':'evidence/complete-context-s15a.json','host_receipt':'evidence/native-complete-s15a.json','current_replay':'evidence/selective-replay-s17a.json',
+            'actual_chain':'same raw synthetic3x4 context: AIR7 -> guided -> complete original main ->600 -> direct writer',
+            'strict_scope':'cast0 / tuning2 / neutralBGFG / zero lookup; one saved synthetic context',
+            'historical_S15_original_calls':102,'additional_S16_diagnostic_main_calls':6,'additional_S17_diagnostic_main_calls':2,
+            'point_model':'1938 saved half components bit0 after scoped CPU half-FMA149 correction; not1938 independent cases',
+            'whole_sets':'12 pixels still unknown atselective413; known preceding ranges covered, warm width1.73493; converted joint width1.88428,gamma1; no writer set output',
+            'auxiliary_producers':'guide8/9,person/skin/sky,statistics,lookup,curves,34cast/coefficients and input identity remain explicit'},
+        'S17_local_enclosures':{
+            'neutral_selective':'exact zero lookup/offsets/amplitudes/outputmix contract; Lab/inverse/gamma jointly bounded under existing budgets; negative endpoint reachability and pow remain unproved',
+            'BG_cell0':'evidence/bg-cell0-joint-s17c.json; original half quotient bounded before product; width1.680803 with else union; not wired into full BG acceptance'},
+        'unfinished_software_tracking':{
+            'receipt':'evidence/unresolved-software-s17.json','consumer_slots':9,
+            'hardware_wait_required_to_continue_static_tracking':False,
+            'scope':'remaining untyped pointers, copies/aliases and other consumers; not a declaration of unused fields'},
+        'main_remaining_connections':[
+            'original iOS/GPU and same-frame chain unverified; finite synthetic conditional point chain is connected through writer',
+            '12 selective pow domains, unselected internal domains and wider pre393 BG/FG set domains remain software work',
+            'S17 cell0 local contrast enclosure is separate from full BG/other leaves and original GPU acceptance',
+            'other output pixel encodings and original multi-thread GPU behavior are unverified'],
+        'known_numeric_limits':[
+            '24 old all-active helper set unknowns and old8 leaf-domain unknowns retained without rerun',
+            'saved context point1938 bit0 does not remove historical point differences in other contexts',
+            'cast15 black0/0, transfer8 selected zero divisor, black HDR gain remain unknown',
+            'old155.125 and17941.5513 envelopes retained as historical evidence, not accuracy',
+            'S14B five guided mismatches diagnosed in S15B/S16; saved fixture replays bit0 do not prove GPU order',
+            'S14C/S16 original BG cell0 remains unknown in default model; S17 standalone joint bound preserves quotient/product order but is not full BG verification',
+            '2u/4u, host math and sampler are assumptions, not measured GPU error',
+            'nine unresolved coefficient consumers are unfinished software tracking; no repeated same-range scan'],
+        'scope':'S17 conditional operator and connection inventory; software work and original GPU/frame dependencies are distinct.',
+        'GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
 
 
 if __name__=='__main__':

@@ -20,10 +20,12 @@ def model_probes(c,native,grid):
     return models,expected
 
 
-def check(source,context_file,saved_file,output,grid=(0,0),probe_layout=None):
+def check(source,context_file,saved_file,output,grid=(0,0),probe_layout=None,probe_names=None):
     if output.exists():raise FileExistsError(output)
+    if hashlib.sha256(context_file.read_bytes()).hexdigest()!=json.loads(saved_file.read_text())['context_sha256']:raise ValueError('Saved native outputs do not match this frozen context')
     c=decode(json.loads(context_file.read_text()));saved=json.loads(saved_file.read_text());native={n:np.array(a,dtype='u2').view('f2')for n,a in saved['native_half_bits'].items()};x,y=grid;H=lambda a:V.value(a);F=lambda a:V.value(a,'f');value=lambda n:H(native[n][y,x].reshape(-1)[0]if native[n][y,x].size==1 else native[n][y,x]);stat=lambda g,k:F(c.stats[2560+g*9+k]);models={};expected={}
     models,expected=model_probes(c,native,grid)
+    if probe_names is not None:models={name:models[name]for name in probe_names}
     if probe_layout is not None:
         for name,row in probe_layout.items():models[name]=(models[name][0],{int(ssa):models[name][1][int(ssa)]for ssa,ty,count,offset in row['layout']})
     ir,meta=build(source.read_text(),models)

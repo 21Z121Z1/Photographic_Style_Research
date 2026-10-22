@@ -56,7 +56,7 @@ def forward(rgb,working,person,skin,exposure,stats: BrightStats,*,observations=N
     low=(((square*H(hc('4c00'),rgb)+H(hc('ca00'),rgb))*square)+H(4,rgb))*square
     shaped=save(140,select(square.le(H(hc('3400'),rgb)),low,square.sqrt()))
     delta=save(145,select(mixture.le(H(.5,rgb)),(1-square)*square,shaped-square))
-    adjusted=save(150,(delta*(mixture*H(2,rgb)-1)+square).clamp())
+    adjusted=save(149,delta.fma_half(mixture*H(2,rgb)-1,square));adjusted=save(150,adjusted.clamp())
     target=save(160,decode(mix(square,adjusted,H(hc('399a'),rgb))));reference=save(169,decode(reference))
     changed=save(170,mix(reference,target,H(hc('399a'),rgb)))
     _,angle,_=to_polar(changed);angle=angle+H(hc('bc88'),rgb)

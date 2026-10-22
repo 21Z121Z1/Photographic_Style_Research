@@ -25,7 +25,7 @@ class CompleteTests(unittest.TestCase):
         r=forward(self.context,point=True);m=comparisons(self.native,r);self.assertFalse(r.pixel_unknowns);self.assertTrue(m['writer_known'])
         for n in ['raw_BG','raw_FG','BG_a','FG_a','FG_mean_a','precomputed335','output392','BW477','channel567','output600','writer']:self.assertEqual(m['observations'][n]['half_bit_mismatches'],0,n)
         # Final equality must not erase unselected/internal arithmetic differences.
-        self.assertEqual(self.saved['point']['observations']['bright400']['half_bit_mismatches'],24);self.assertEqual(m['observations']['bright400']['half_bit_mismatches'],8);self.assertEqual(m['observations']['tonal468']['half_bit_mismatches'],0);self.assertEqual(m['observations']['haze493']['half_bit_mismatches'],0)
+        self.assertEqual(self.saved['point']['observations']['bright400']['half_bit_mismatches'],24);self.assertEqual(json.loads((ROOT/'evidence/shared-window-s16-final.json').read_text())['point']['observations']['bright400']['half_bit_mismatches'],8);self.assertEqual(m['observations']['bright400']['half_bit_mismatches'],0);self.assertEqual(m['observations']['tonal468']['half_bit_mismatches'],0);self.assertEqual(m['observations']['haze493']['half_bit_mismatches'],0)
         np.testing.assert_array_equal(r.observations['writer'].lo[0],self.context.output_initial[0])
 
     def test_whole_set_stays_unknown_without_an_oracle_writer(self):

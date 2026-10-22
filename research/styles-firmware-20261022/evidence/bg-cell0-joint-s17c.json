@@ -1,0 +1,58 @@
+{
+  "scope": "Only saved BG contrast cell0; joint quotient/product bounds, no new native cases",
+  "native_calls": 0,
+  "source_receipt_sha256": "31b167989bddf8a93d67a42ed66f7b8daf655810bcc156ee24bb8e263705a59c",
+  "cell": 0,
+  "proof": {
+    "source": "AIR10 contrastFilter SSA3..95",
+    "input_lo": [
+      0.0,
+      -0.014420070058153133,
+      0.0
+    ],
+    "input_hi": [
+      0.23502742808362515,
+      0.2394291029825464,
+      0.1698263112707185
+    ],
+    "A_sqrt_D": 4.910002274356619,
+    "B_absolute": 0.055345562209233104,
+    "changed_lo": [
+      -0.002542878454963877,
+      -0.017018870474668196,
+      -0.002130431324840958
+    ],
+    "changed_hi": [
+      1.6043130533225372,
+      1.6327506637451499,
+      1.1815547449465453
+    ],
+    "threshold": 9.999999747378752e-06,
+    "epsilon_mask_or_budgets_changed": false,
+    "division_before_product_preserved": true,
+    "bound_assumption": "existing2u half arithmetic/4u sqrt; deterministic common scalars; finite IEEE min/max",
+    "branch": "strict-positive plus original else union",
+    "strict_span_lower": 1.0013580322265625e-05,
+    "real_span_upper_at_lower": 1.0083031677663734e-05,
+    "quotient_raw_upper": 7091.979544867682,
+    "quotient_half_upper": 7098.905306201573,
+    "original_product_upper": 1.6775594783786734,
+    "position_ratio_upper": 1.0138714332271943,
+    "post_product_factor": 1.0168446613472566,
+    "post_product_absolute": 1.3505237545993687e-07,
+    "output_lo": [
+      -0.018640551766719214,
+      -0.018640551766719214,
+      -0.018640551766719214
+    ],
+    "output_hi": [
+      1.6621622891960413,
+      1.6621622891960413,
+      1.6621622891960413
+    ],
+    "negative_or_zero_span_not_removed": true,
+    "half_quotient_finiteness_proved_before_product": true
+  },
+  "max_width": 1.6808028409627604,
+  "full_BG_or_camera_verified": false
+}

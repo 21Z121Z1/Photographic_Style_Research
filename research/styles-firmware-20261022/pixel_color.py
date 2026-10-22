@@ -5,6 +5,7 @@ are literal coefficients of this identified build, not a named ICC conversion.
 """
 from leaf_numeric import V,fc,hc,vec,mix,select,lazy_select,smoothstep,DomainUnknown
 from pixel_leaves import H,F,dot
+from color_matrices import TO_LMS_COLUMNS,TO_LAB_COLUMNS,FROM_LAB_A,FROM_LAB_B,FROM_ROOT_COLUMNS,POWER_HEX,INVERSE_POWER_HEX
 
 
 def matrix(rgb,cols):
@@ -15,15 +16,12 @@ def matrix(rgb,cols):
 def signed_power(x,exponent):return x.abs().pow(F(fc(exponent),x))*x.sign()
 
 
-def to_lab(c):
-    lms=matrix(c.f(),[
-        ['3FD4186A60000000','3FC3E33E40000000','3F922DAE80000000'],
-        ['3FE476E3E0000000','3FE840ABE0000000','3FBC0465A0000000'],
-        ['3FA7CE86C0000000','3FB6321060000000','3FEBEC1640000000']])
-    return matrix(signed_power(lms,'3FDB851EC0000000'),[
-        ['3FD99999A0000000','4011D1EB80000000','3FE9C779A0000000'],
-        ['3FD99999A0000000','C013676C80000000','3FD6DC5D60000000'],
-        ['3FC99999A0000000','3FD9581060000000','BFF29AD420000000']]).h()
+def to_lab(c,*,observations=None):
+    lms=matrix(c.f(),TO_LMS_COLUMNS)
+    root=signed_power(lms,POWER_HEX)
+    result=matrix(root,TO_LAB_COLUMNS).h()
+    if observations is not None:observations.update(lms=lms,root=root,lab=result)
+    return result
 
 
 def to_polar(c):
@@ -33,13 +31,13 @@ def to_polar(c):
     return lab[0],angle,radius
 
 
-def from_lab(lab):
+def from_lab(lab,*,observations=None):
     lab=lab.f()
-    v=(lab[1]*F([fc(x)for x in ['3FB8FA4700000000','BFBD270280000000','3FA0B2ED80000000']],lab)+lab[0])+lab[2]*F([fc(x)for x in ['3FCA44DC20000000','3FC10D4280000000','BFE5A90F40000000']],lab)
-    return matrix(signed_power(v,'40029ACA60000000'),[
-        ['4015E38B80000000','BFF200FDA0000000','3F9E845300000000'],
-        ['C012915E00000000','4002586A00000000','BFC8BA2560000000'],
-        ['3FC5B6AB00000000','BFC57D9700000000','3FF29E4D40000000']]).h()
+    v=(lab[1]*F([fc(x)for x in FROM_LAB_A],lab)+lab[0])+lab[2]*F([fc(x)for x in FROM_LAB_B],lab)
+    root=signed_power(v,INVERSE_POWER_HEX)
+    result=matrix(root,FROM_ROOT_COLUMNS).h()
+    if observations is not None:observations.update(inverse_v=v,inverse_root=root,converted=result)
+    return result
 
 
 def from_polar(light,angle,radius,*,clamp_output=True):
