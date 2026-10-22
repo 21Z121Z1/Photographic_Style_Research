@@ -1,0 +1,336 @@
+{
+  "scope": "Join finite-model coverage, reusable inverse queries and original boundaries.",
+  "input_sha256": {
+    "color-partition-s22a.json": "b3e36abb1928562629827c7404771d534722b2021cedeed23ecc26653bd0b030",
+    "color-inverse-s22c.json": "c36ad535eab32c61cf710918cc5ef1e336f944dd1bbaddc3b4a245f3d6a3cb27",
+    "native-boundaries-s22d.json": "8c10545128a77c226bcc6f3ca6207d45dd0571da3b0c6065b63c94e7527b5d27",
+    "query-platform-s22e.json": "6927955057e84a758b5e38165251b537a296dfedd7228aeff5fe868ee635bb5c",
+    "query-point3-s22e.json": "743ba1e163871787b70759c7ecb0c2de83e2af104280ce2be0f54b3687c84ec5",
+    "native-active-s21c.json": "9925c47f30a82dd932ace671e138b81ad9c53b7f0def704bf13564fb6750ef9a"
+  },
+  "complete_model_finite_domain": {
+    "half_cells": 13825,
+    "interface_states": 146,
+    "f32_population": 1052770305,
+    "raw_integer_cover_no_gaps_or_overlap": true,
+    "endpoint_casts_and_adjacent_omission_checks": 55298,
+    "all_endpoint_checks_pass": true,
+    "interior_argument": "IEEE RN-even f32->half is monotone; exact binary midpoint intervals plus exhaustive contiguous raw-bit partition cover every interior f32, without enumerating a billion values",
+    "writer_monotonicity_assumed": false,
+    "equivalence_scope": "same branch/gain364/protect384 under the audited point half/f32 interface; not an original GPU proof",
+    "searched_interface_states": 146,
+    "missing_state_ids": [],
+    "unknown_state_ids": [],
+    "complete_model_coverage": true
+  },
+  "returned_candidates": {
+    "platform": {
+      "candidate_union": [
+        {
+          "lower_real": 0.0,
+          "upper_real": 0.02210235595703125,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 0,
+          "last_f32_bits": 1018499072,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3cb51000",
+          "f32_population": 1018499073,
+          "signature_ids": [
+            0,
+            1
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "interface_classes": [
+        {
+          "state_id": 0,
+          "key": [
+            0,
+            15360,
+            12902
+          ],
+          "intervals": [
+            {
+              "lower_real": 0.0,
+              "upper_real": 2.9802322387695312e-08,
+              "lower_closed": true,
+              "upper_closed": true,
+              "first_f32_bits": 0,
+              "last_f32_bits": 855638016,
+              "first_f32_hex": "0x00000000",
+              "last_f32_hex": "0x33000000",
+              "f32_population": 855638017,
+              "signature_ids": [
+                0
+              ],
+              "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+            }
+          ],
+          "proved_equivalence": "same logical half/f32 branch/gain/protect interface within each class; exact IEEE raw half preimages",
+          "target_relation": "exact independent point-model writer match; original host/GPU requires separate evidence"
+        },
+        {
+          "state_id": 1,
+          "key": [
+            1,
+            15360,
+            12902
+          ],
+          "intervals": [
+            {
+              "lower_real": 2.9802322387695312e-08,
+              "upper_real": 0.02210235595703125,
+              "lower_closed": false,
+              "upper_closed": true,
+              "first_f32_bits": 855638017,
+              "last_f32_bits": 1018499072,
+              "first_f32_hex": "0x33000001",
+              "last_f32_hex": "0x3cb51000",
+              "f32_population": 162861056,
+              "signature_ids": [
+                1
+              ],
+              "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+            }
+          ],
+          "proved_equivalence": "same logical half/f32 branch/gain/protect interface within each class; exact IEEE raw half preimages",
+          "target_relation": "exact independent point-model writer match; original host/GPU requires separate evidence"
+        }
+      ],
+      "model_matching_state_ids": [
+        0,
+        1
+      ],
+      "found_f32_population": 1018499073
+    },
+    "point3": {
+      "candidate_union": [
+        {
+          "lower_real": 0.2989501953125,
+          "upper_real": 0.3006591796875,
+          "lower_closed": false,
+          "upper_closed": false,
+          "first_f32_bits": 1050218497,
+          "last_f32_bits": 1050275839,
+          "first_f32_hex": "0x3e991001",
+          "last_f32_hex": "0x3e99efff",
+          "f32_population": 57343,
+          "signature_ids": [
+            93
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "interface_classes": [
+        {
+          "state_id": 93,
+          "key": [
+            1,
+            15452,
+            12902
+          ],
+          "intervals": [
+            {
+              "lower_real": 0.2989501953125,
+              "upper_real": 0.3006591796875,
+              "lower_closed": false,
+              "upper_closed": false,
+              "first_f32_bits": 1050218497,
+              "last_f32_bits": 1050275839,
+              "first_f32_hex": "0x3e991001",
+              "last_f32_hex": "0x3e99efff",
+              "f32_population": 57343,
+              "signature_ids": [
+                93
+              ],
+              "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+            }
+          ],
+          "proved_equivalence": "same logical half/f32 branch/gain/protect interface within each class; exact IEEE raw half preimages",
+          "target_relation": "exact independent point-model writer match; original host/GPU requires separate evidence"
+        }
+      ],
+      "model_matching_state_ids": [
+        93
+      ],
+      "found_f32_population": 57343
+    }
+  },
+  "original_boundary_checks": [
+    {
+      "raw_f32_bits": 855638016,
+      "raw_f32_hex": "0x33000000",
+      "raw_f32": 2.9802322387695312e-08,
+      "state_id": 0,
+      "reasons": [
+        "zero-half-bin last f32"
+      ],
+      "actual_target_matches": {
+        "platform": true,
+        "point3": false
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 855638017,
+      "raw_f32_hex": "0x33000001",
+      "raw_f32": 2.980232594040899e-08,
+      "state_id": 1,
+      "reasons": [
+        "zero-half-bin adjacent positive half"
+      ],
+      "actual_target_matches": {
+        "platform": true,
+        "point3": false
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 1018499072,
+      "raw_f32_hex": "0x3cb51000",
+      "raw_f32": 0.02210235595703125,
+      "state_id": 1,
+      "reasons": [
+        "platform: last included"
+      ],
+      "actual_target_matches": {
+        "platform": true,
+        "point3": false
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 1018499073,
+      "raw_f32_hex": "0x3cb51001",
+      "raw_f32": 0.0221023578196764,
+      "state_id": 2,
+      "reasons": [
+        "platform: adjacent above"
+      ],
+      "actual_target_matches": {
+        "platform": false,
+        "point3": false
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 1050218496,
+      "raw_f32_hex": "0x3e991000",
+      "raw_f32": 0.2989501953125,
+      "state_id": 92,
+      "reasons": [
+        "point3: adjacent below"
+      ],
+      "actual_target_matches": {
+        "platform": false,
+        "point3": false
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 1050218497,
+      "raw_f32_hex": "0x3e991001",
+      "raw_f32": 0.2989502251148224,
+      "state_id": 93,
+      "reasons": [
+        "point3: first included"
+      ],
+      "actual_target_matches": {
+        "platform": false,
+        "point3": true
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 1050275839,
+      "raw_f32_hex": "0x3e99efff",
+      "raw_f32": 0.3006591498851776,
+      "state_id": 93,
+      "reasons": [
+        "point3: last included"
+      ],
+      "actual_target_matches": {
+        "platform": false,
+        "point3": true
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    },
+    {
+      "raw_f32_bits": 1050275840,
+      "raw_f32_hex": "0x3e99f000",
+      "raw_f32": 0.3006591796875,
+      "state_id": 94,
+      "reasons": [
+        "point3: adjacent above"
+      ],
+      "actual_target_matches": {
+        "platform": false,
+        "point3": false
+      },
+      "logical_interface_matches": {
+        "half357": true,
+        "gain364": true,
+        "protect384": true
+      }
+    }
+  ],
+  "original_host_signature_ids_with_finite_witnesses": [
+    0,
+    1,
+    2,
+    92,
+    93,
+    94
+  ],
+  "all_model_candidate_signature_ids_have_original_witness": true,
+  "original_host_all146_states_exhaustively_verified": false,
+  "new_original_kernel_calls": 270,
+  "new_raw_controls": 8,
+  "cost": {
+    "independent_full_point_model_search_states": 146,
+    "model_search_elapsed_seconds_sum": 54.04935495805694,
+    "extra_boundary_point_model_calls": 8,
+    "query_new_forward_calls": 0,
+    "original_prefix_calls": 78,
+    "original_main_observed_and_plain_calls": 192
+  },
+  "unknown_scope": [
+    "positive canonical f32 above3/8 and negative zero not searched",
+    "original GPU and UI mapping not verified",
+    "unknown-source finished-photo inverse not addressed",
+    "RichSat whole-set zero denominator outer enclosure retained independently",
+    "nine consumer CPU cache breakpoints and old neutral12+24 unknowns retained"
+  ],
+  "unique_parameter_returned": false,
+  "full_photo_inverse_verified": false
+}

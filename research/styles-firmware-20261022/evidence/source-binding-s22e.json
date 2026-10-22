@@ -1,0 +1,16 @@
+{
+  "label": "s22-source-link",
+  "pre_run_binding_sha256": "9ce587dc70641331478833b5130c786d94a463695c322adef9c652f7184d945c",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "11f792034de147e50a50da42389b683a3bacbc9e8d2a0a429ad983db062cda77",
+  "elapsed_seconds": 0.06884384155273438,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "import ast,hashlib,json\nfrom pathlib import Path\nr=Path('research/styles-firmware-20261022');e=r/'evidence';old=Path('../s22-scanned-source');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();pre=json.loads((e/'scan-000-binding-s22b.pre.json').read_text());records={};all_equal=True\nfor name in ['color_inverse.py','run_color_inverse.py']:\n a=old/name;b=r/name;assert sha(a)==pre['source_sha256_before_execution'][name]\n extract=lambda p:{n.name:hashlib.sha256(ast.dump(n,include_attributes=False).encode()).hexdigest()for n in ast.parse(p.read_text()).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}\n left=extract(a);right=extract(b);equal=all(right.get(n)==h for n,h in left.items());all_equal=all_equal and equal;records[name]={'exact_prebound_old_source_sha256':sha(a),'current_source_sha256':sha(b),'preexisting_function_and_class_AST_sha256':left,'all_preexisting_AST_equal':equal,'new_names':sorted(set(right)-left.keys())}\nassert all_equal;unchanged=sha(old/'run_color_inverse.py')==sha(r/'run_color_inverse.py');assert unchanged\nout={'scope':'add reusable target query after finite scan without changing any preexisting search arithmetic; exact old bytes match run prebinding','prebinding_sha256':sha(e/'scan-000-binding-s22b.pre.json'),'sources':records,'all_preexisting_search_functions_AST_equal':all_equal,'run_color_inverse_source_unchanged':unchanged,'new_model_forward_evaluations':0,'new_original_calls':0};p=e/'source-link-s22e.json';assert not p.exists();p.write_text(json.dumps(out,indent=2)+'\\n')\nprint(json.dumps({'all_preexisting_AST_equal':all_equal,'scan_source_unchanged':unchanged}))"
+  ]
+}

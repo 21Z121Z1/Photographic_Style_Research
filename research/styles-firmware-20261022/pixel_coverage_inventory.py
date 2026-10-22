@@ -79,7 +79,16 @@ def inventory(source):
             'optional_shared_semantic':'precomputed335 to FG354 width.57839683->.09057617; default backend unchanged',
             'active_sets':'all12 fail atRichSat rescaled power mean including0; not proven reachable, no writer set',
             'original_GPU_or_photo_inverse_verified':False},
-        'latest_stage':{'report':'PROGRESS-S21.zh-CN.md','nonneutral_receipt':'evidence/native-active-s21c.json','analysis':'evidence/active-analysis-s21d.json','set_failure':'evidence/active-set-diagnostic-s21e.json','pre_run_test_binding':'evidence/test-binding-s21f.pre.json','new_original_host_calls':510,'contexts_not_call_count':5,'full_upstream_selective_negative_reachability':'old neutral unknown retained'},
+        'bounded_color_inverse':{
+            'report':'PROGRESS-S22.zh-CN.md','control':'internal post-scene raw f32 field3 byte12; known frozen source and auxiliary context',
+            'domain':'canonical+0 through3/8,1052770305 f32 bit patterns; negative zero and larger nonnegative controls unsearched',
+            'half_cells':13825,'compressed_interface_states':146,'fresh_complete_point_model_evaluations':146,'missing_or_unknown_states':0,
+            'platform_candidate':'[0,.02210235595703125],1018499073 f32 values; two separate interface states',
+            'point3_candidate':'(.2989501953125,.3006591796875),57343 f32 values; includes old open8191-f32 half cell',
+            'query_API':'query_color_inverse.py solve accepts explicit known-context uint16 writer bits; no nearest/unique fallback',
+            'native_boundary_controls':8,'new_original_kernel_calls':270,'original_host_states_with_any_finite_witness':'0,1,2,92,93,94 of146; not exhaustive original-host domain acceptance',
+            'receipt':'evidence/inverse-audit-s22e.json','not_verified':'unknown source,UI,original GPU,outside finite domain; RichSat whole-set unknown retained'},
+        'latest_stage':{'report':'PROGRESS-S22.zh-CN.md','inverse':'evidence/color-inverse-s22c.json','reusable_queries':['evidence/query-platform-s22e.json','evidence/query-point3-s22e.json'],'native_boundaries':'evidence/native-boundaries-s22d.json','pre_run_test_binding':'evidence/test-binding-s22f.pre.json','new_original_host_calls':270,'new_controls_not_call_count':8,'complete_finite_model_search':True,'original_host_all146_states_verified':False},
         'unfinished_software_tracking':{
             'receipt':'evidence/consumer-paths-s18c.json','consumer_slots':9,
             'hardware_wait_required_to_continue_static_tracking':False,
@@ -100,7 +109,7 @@ def inventory(source):
             'S19 local observed-input exclusion remains separate; S20 complete upstream boxes exclude RGB110 but12 other converted-negative outer domains remain unproved',
             '2u/4u, host math and sampler are assumptions, not measured GPU error',
             'nine unresolved coefficient consumers are unfinished software tracking; no repeated same-range scan'],
-        'scope':'S21 fixed nonneutral color point composition and conditional identifiability; optional shared semantic enclosure, old set failures and S19 audit limitation retained; originalGPU/realframe/inverse unverified.',
+        'scope':'S22 bounded known-source raw-color inverse returns equivalent candidate sets; exhaustive finite MODEL catalog, partial original-host boundaries; old set failures,S19 audit limitation and GPU/unknown-source inverse gaps retained.',
         'GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
 
 
