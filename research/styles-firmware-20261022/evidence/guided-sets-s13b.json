@@ -1,0 +1,158 @@
+{
+  "saved_native_receipt_sha256": "a70887fdadec454b9f485a08275afa20d571b1b20d72b748cc580752a91f3f7c",
+  "source_sha256": {
+    "guided_conditioned.py": "1126a060071deef7d42248ed458918c0c943e6b1abb2c6ef4bc46538ec6c84a8",
+    "check_guided_sets.py": "fc1acca70e7a6d14514967517872db1b7bf39015ac3076b4ae96e78cfd14ba46",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e"
+  },
+  "native_kernel_calls": 0,
+  "GPU_executed": false,
+  "sets_known": 4,
+  "sets_unknown": 1,
+  "known_range_violations": 0,
+  "rows": [
+    {
+      "case": "scalar-resize",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 0.00048828125
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.000244140625
+        },
+        "mean_a": {
+          "range_covered": true,
+          "max_set_width": 0.0003662109375
+        },
+        "mean_b": {
+          "range_covered": true,
+          "max_set_width": 0.00048828125
+        },
+        "output": {
+          "range_covered": true,
+          "max_set_width": 0.002197265625
+        }
+      },
+      "point_unknown": null,
+      "point_bit_mismatches": {
+        "a": 0,
+        "b": 0,
+        "mean_a": 0,
+        "mean_b": 0,
+        "output": 0
+      }
+    },
+    {
+      "case": "RGB-resize",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 0.006591796875
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.00439453125
+        },
+        "mean_a": {
+          "range_covered": true,
+          "max_set_width": 0.00537109375
+        },
+        "mean_b": {
+          "range_covered": true,
+          "max_set_width": 0.00341796875
+        },
+        "output": {
+          "range_covered": true,
+          "max_set_width": 0.0234375
+        }
+      },
+      "point_unknown": null,
+      "point_bit_mismatches": {
+        "a": 0,
+        "b": 0,
+        "mean_a": 0,
+        "mean_b": 0,
+        "output": 0
+      }
+    },
+    {
+      "case": "RGB-scalar-guide",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 0.004150390625
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.00244140625
+        },
+        "mean_a": {
+          "range_covered": true,
+          "max_set_width": 0.0032958984375
+        },
+        "mean_b": {
+          "range_covered": true,
+          "max_set_width": 0.001953125
+        },
+        "output": {
+          "range_covered": true,
+          "max_set_width": 0.0078125
+        }
+      },
+      "point_unknown": null,
+      "point_bit_mismatches": {
+        "a": 0,
+        "b": 0,
+        "mean_a": 0,
+        "mean_b": 0,
+        "output": 0
+      }
+    },
+    {
+      "case": "constant",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 1.9073486328125e-05
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.0
+        },
+        "mean_a": {
+          "range_covered": true,
+          "max_set_width": 1.9073486328125e-05
+        },
+        "mean_b": {
+          "range_covered": true,
+          "max_set_width": 0.0
+        },
+        "output": {
+          "range_covered": true,
+          "max_set_width": 0.0
+        }
+      },
+      "point_unknown": null,
+      "point_bit_mismatches": {
+        "a": 0,
+        "b": 0,
+        "mean_a": 0,
+        "mean_b": 0,
+        "output": 0
+      }
+    },
+    {
+      "case": "epsilon-zero-negative",
+      "set_unknown": "Division interval includes zero",
+      "observations": {},
+      "point_unknown": "Guided v3 finite domain failed; no epsilon change or center fallback"
+    }
+  ],
+  "sampler_error_and_2u_4u_are_assumptions": true
+}

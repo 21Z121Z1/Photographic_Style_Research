@@ -1,0 +1,125 @@
+{
+  "saved_native_receipt_sha256": "a70887fdadec454b9f485a08275afa20d571b1b20d72b748cc580752a91f3f7c",
+  "source_sha256": {
+    "guided_conditioned.py": "df81adc974facf34f8c95ab2732ef4afdaeabaab20fb140d1286a9e2e41f14c0",
+    "check_guided_sets.py": "b4fc2bfdb87256e946824df92f0437f85de674fc88b805fea0e6cd236389c8a6",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e"
+  },
+  "native_kernel_calls": 0,
+  "GPU_executed": false,
+  "sets_known": 4,
+  "sets_unknown": 1,
+  "known_range_violations": 9,
+  "rows": [
+    {
+      "case": "scalar-resize",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 0.00048828125
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.000244140625
+        },
+        "mean_a": {
+          "range_covered": false,
+          "max_set_width": 0.001220703125
+        },
+        "mean_b": {
+          "range_covered": false,
+          "max_set_width": 0.00048828125
+        },
+        "output": {
+          "range_covered": false,
+          "max_set_width": 0.00537109375
+        }
+      }
+    },
+    {
+      "case": "RGB-resize",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 0.006591796875
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.00439453125
+        },
+        "mean_a": {
+          "range_covered": false,
+          "max_set_width": 0.0211181640625
+        },
+        "mean_b": {
+          "range_covered": false,
+          "max_set_width": 0.01318359375
+        },
+        "output": {
+          "range_covered": false,
+          "max_set_width": 0.10205078125
+        }
+      }
+    },
+    {
+      "case": "RGB-scalar-guide",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 0.004150390625
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.00244140625
+        },
+        "mean_a": {
+          "range_covered": false,
+          "max_set_width": 0.012939453125
+        },
+        "mean_b": {
+          "range_covered": false,
+          "max_set_width": 0.0078125
+        },
+        "output": {
+          "range_covered": false,
+          "max_set_width": 0.0322265625
+        }
+      }
+    },
+    {
+      "case": "constant",
+      "set_unknown": null,
+      "observations": {
+        "a": {
+          "range_covered": true,
+          "max_set_width": 1.9073486328125e-05
+        },
+        "b": {
+          "range_covered": true,
+          "max_set_width": 0.0
+        },
+        "mean_a": {
+          "range_covered": true,
+          "max_set_width": 7.62939453125e-05
+        },
+        "mean_b": {
+          "range_covered": true,
+          "max_set_width": 0.0
+        },
+        "output": {
+          "range_covered": true,
+          "max_set_width": 0.0
+        }
+      }
+    },
+    {
+      "case": "epsilon-zero-negative",
+      "set_unknown": "Division interval includes zero",
+      "observations": {}
+    }
+  ],
+  "sampler_error_and_2u_4u_are_assumptions": true
+}
