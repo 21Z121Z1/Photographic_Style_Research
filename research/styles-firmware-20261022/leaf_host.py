@@ -131,13 +131,17 @@ def build(source,names):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
-        elif short(name)in ['deRed','deYellow','deRedNeutralOnly']:
+        elif short(name)=='renderNeutralizingAdjustments':
+            w += ['%cp=getelementptr float,ptr %input,i64 10','%cast=addrspacecast ptr %cp to ptr addrspace(1)','%enabled=fcmp une float %f5,0.0','%up=getelementptr float,ptr %input,i64 6','%uf=load float,ptr %up','%use=fcmp une float %uf,0.0','%stats=alloca %struct.SSRStats,align 4','store %struct.SSRStats zeroinitializer,ptr %stats','%stats1=addrspacecast ptr %stats to ptr addrspace(1)']
+            for i,group in enumerate([2,3,4]):w += [f'%stp{i}=getelementptr float,ptr %input,i64 {7+i}',f'%stf{i}=load float,ptr %stp{i}',f'%stg{i}=getelementptr %struct.SSRStats,ptr %stats,i64 0,i32 1,i64 {group},i32 4',f'store float %stf{i},ptr %stg{i}']
+            args='<3 x half> %x,i1 %enabled,ptr addrspace(1) %cast,half %h3,half %h4,i1 %use,ptr addrspace(1) %stats1'
+        elif short(name)in ['deRed','deYellow','deRedNeutralOnly','skinWarmthFilter']:
             for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
             if short(name)=='deRed':args='<3 x half> %x,half %h3,half %h5,<3 x half> %sv2,half %h4'
             elif short(name)=='deYellow':args='<3 x half> %x,half %h3,half undef,<3 x half> %sv2,half %h4'
             else:
                 w += ['%up=getelementptr float,ptr %input,i64 9','%uf=load float,ptr %up','%uh=fptrunc float %uf to half']
-                args='<3 x half> %x,half %h3,half undef,<3 x half> %sv2,half %h4,half %h5,half %uh'
+                args='<3 x half> %x,half %h3,half %h5,<3 x half> %sv2,half %uh,half %h4'if short(name)=='skinWarmthFilter'else'<3 x half> %x,half %h3,half undef,<3 x half> %sv2,half %h4,half %h5,half %uh'
         elif short(name)=='renderBrightAndContrast':
             w += ['%stats=alloca %struct.SSRStats,align 4','store %struct.SSRStats zeroinitializer,ptr %stats','%stats1=addrspacecast ptr %stats to ptr addrspace(1)']
             for i,(group,field)in enumerate([(2,4),(3,4),(5,0),(6,6),(6,4)]):

@@ -1,5 +1,5 @@
 """Independent neutralizing color leaves, reusing exact working Lab transforms."""
-from leaf_numeric import V,hc,fc,vec,mix,lazy_select
+from leaf_numeric import V,hc,fc,vec,mix,lazy_select,DomainUnknown
 from leaf_domains import strictly_positive_branch
 from pixel_leaves import H,F
 from pixel_color import to_lab,from_lab
@@ -63,3 +63,28 @@ def red_neutral_only(rgb,skin,reference,amount,desaturation,hue_mix):
 
 
 FUNCTIONS={'deRed':de_red,'deYellow':de_yellow,'deRedNeutralOnly':red_neutral_only}
+
+
+def skin_warmth_positive(rgb,person,skin,reference,mode,amount):
+    """Actual neutralizing caller passes mode=half1; mode<=0 fails closed."""
+    if not (mode.lo>0).all():raise DomainUnknown('skinWarmth mode<=0 alternative not modeled')
+    c=rgb.clamp();lab=to_lab(c);radius,u=direction(lab);ref_radius,_=direction(reference)
+    def wrap(x):
+        angle=lazy_select(x[2].ne(0)|x[1].ne(0),lambda:x[2].atan2(x[1]),lambda:H(0,rgb))
+        return lazy_select(angle.ne(0),lambda:angle+H(hc('4648'),rgb),lambda:angle).fmod(H(hc('4648'),rgb))
+    hue=alignment(u)
+    a=smooth(((hue+H(hc('2e66'),rgb))*H(hc('3eaa'),rgb)).clamp())
+    b=smooth(((hue+H(hc('bacd'),rgb))*H(hc('4723'),rgb)).clamp())
+    mask=((1-b.f()*F(.5,rgb))*a.f()).h()
+    angle=wrap(lab);ref_angle=wrap(reference)
+    def region(x):return (((x.f()+F(fc('BFE226C3C0000000'),rgb)).abs()+F(fc('BFE3333340000000'),rgb))*F(fc('C00AAAAAA0000000'),rgb)).clamp()
+    x=region(angle);y=region(ref_angle);both=y*x
+    radius=((both*both)*((radius.f()*F(fc('3FA99999A0000000'),rgb))*(3-2*x))*(3-2*y)+radius.f()).h()
+    shift=H(hc('27ae'),rgb)*mask
+    target=vec([mix(angle.cos()*radius,shift+lab[1],skin),mix(angle.sin()*radius,shift+lab[2],skin)])
+    refmask=smooth(((ref_radius+H(hc('adc3'),rgb))*H(hc('488c'),rgb)).clamp())
+    multiplier=(((1-refmask).f()*F(fc('3FB99999A0000000'),rgb))+1).h()
+    scale=multiplier*person+(1-person)
+    target=target*scale
+    changed=from_lab(vec([lab[0],target[0],target[1]]))
+    return ((rgb.maximum(1)-1)+rgb.minimum(0))+mix(c,changed,amount)

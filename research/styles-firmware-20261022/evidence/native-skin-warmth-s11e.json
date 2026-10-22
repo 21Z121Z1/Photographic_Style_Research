@@ -1,0 +1,456 @@
+{
+  "model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "skinWarmthFilter": {
+      "calls": 16,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0
+    }
+  },
+  "original_complete_function_sha256": {
+    "skinWarmthFilter": "4503d93cffb682aeab8cd42cc8e97a5974d6c8a365f084ca9143ac09e8e32391"
+  },
+  "original_bodies_modified": false,
+  "reference_Lab_is_supplied": true,
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "host_bool_shim": "float!=0 (explicit assumption), not fptoui i1",
+  "host_fmod_shim": "C fmodf then half",
+  "source_sha256": {
+    "pixel_neutral.py": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+    "pixel_color.py": "5ecd215ae1907317f773162803f7c75937df3eff66cdd333e871f4a210f95202",
+    "pixel_skin.py": "2f2f4eac5c97d7a074ffdc9934ceba8a52531d8cc1de2dff1ba5be32bb29ab34",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_host.py": "2a5ebb99051546184729a464064934a1d2df44c618772d73b3ffbea982070a37",
+    "native_neutral_leaves_check.py": "54b8e1a28caa0b6a851c1eab24e5ae108789715b4d7c8f456f672b36561551bf"
+  },
+  "host_ir_sha256": "b86f64f3a00939b87f92ed08afc6b2343b89437a64d2302a59dca0c329810d54",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "3cb070e26392c305a4923ddb2de8928183449ab59a3854ca445e3a5a9ae17ae1",
+  "output_sha256": "44eedb0410aba443354b75c921a0660199fafb3a5f282e496f297dc51abf9c90",
+  "rows": [
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.203857421875,
+        0.40087890625,
+        0.7919921875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.204345703125,
+        0.40087890625,
+        0.791015625
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.196044921875,
+        0.39892578125,
+        0.8076171875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.195556640625,
+        0.39892578125,
+        0.80859375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.7998046875,
+        0.300048828125,
+        0.1500244140625,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.7802734375,
+        0.302734375,
+        0.1561279296875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.7998046875,
+        0.300048828125,
+        0.1500244140625,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.78369140625,
+        0.302490234375,
+        0.155029296875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.7998046875,
+        0.300048828125,
+        0.1500244140625,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.8193359375,
+        0.29736328125,
+        0.1439208984375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.7998046875,
+        0.300048828125,
+        0.1500244140625,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.81591796875,
+        0.297607421875,
+        0.14501953125
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.3994140625,
+        0.39990234375,
+        0.400146484375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.3994140625,
+        0.39990234375,
+        0.400146484375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.400390625,
+        0.39990234375,
+        0.399658203125
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.400390625,
+        0.39990234375,
+        0.399658203125
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7001953125,
+        -0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0999755859375,
+        0.04998779296875,
+        1.0
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "skinWarmthFilter",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7001953125,
+        0.300048828125,
+        0.39990234375,
+        0.64990234375,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    }
+  ],
+  "full_pipeline_verified": false,
+  "set_error_budget_is_host_assumption": true
+}

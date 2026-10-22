@@ -110,3 +110,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S11-C：bright条件模型与主入口分叉集合接口：[阶段报告](PROGRESS-S11-C.zh-CN.md)。
 
 - S11-D：neutralizing三个活跃叶：[阶段报告](PROGRESS-S11-D.zh-CN.md)。
+
+- S11-E：完整neutralizing根与真实cast/stats合同：[阶段报告](PROGRESS-S11-E.zh-CN.md)。
