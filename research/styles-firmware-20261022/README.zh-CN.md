@@ -45,7 +45,11 @@ python3 research/styles-firmware-20261022/inspect_cached_plugin.py /path/to/Smar
 python3 research/styles-firmware-20261022/firmware_probe.py '<evidence JSON 中的 source_url>' iPhone17,3 24A446 /tmp/psr-new-manifest.json
 ```
 
-本机 macOS27.0.1 /26A434，9项测试通过：HTTP200拒绝且不读body、元数据预算/来源、ZIP64偏移、CRC损坏、机型/build错配、精确普通/Recovery OS变体选择、单变量分支、1000个固定种子合成留出样本条件往返、歧义和 S20 plateau 集合保留。没有新真实照片测试，没有原生 GPU 精度验收；合成留出不计作真实照片留出。
+本机 macOS27.0.1 /26A434，15项测试通过：HTTP200拒绝且不读body、元数据预算/来源、ZIP64偏移、CRC损坏、机型/build错配、精确普通/Recovery OS变体选择、断点字节复用/完整CRC、组件未完成/身份变化时禁止解密挂载、单变量分支、1000个固定种子合成留出样本条件往返、歧义和 S20 plateau 集合保留，以及四项产品/内部/metadata版本不混同的反例。没有新真实照片测试，没有原生 GPU 精度验收；合成留出不计作真实照片留出。
+
+`version_gate.py` 对硬件/build、官方镜像成员身份、实际loader分支和插件类分别校验。V1 bundle配产品第二代与metadata16可以通过合成的完整身份链；单改V2名称不能修复缺失build/来源；相同OS build但硬件不同、产品三代样张充当二代均拒绝。当前真实证据运行结果 `evidence/img2810-version-admission.json` 仍未准入：IMG_2810精确build和独立产品代际证据缺失，缓存与loader硬件/build不匹配。这个检查不把静态准入升级成运行加载、图像精度或唯一逆证明。
+
+`compare_texture_tuning.py` 可复验缓存iOS配置和本机macOS配置的精确Studio子表：`iPhone19,2/PortTypeBack/Still/Studio/Common` 的canonical JSON SHA同为 `398fa58e64ca1a9d37008a02179afaf5e10651682661fa6a5abda5ca33c129b0`，包括 UnderEye亮度混合.5和Mattify强度.3；整份plist SHA不同。配置的顺序还含 FilmGrain，grain0时可能不执行。缺iPhone17,3精确键不作为该机功能不存在的证据。配置子表相等不补原始人物统计或实际拍摄选择，见 `evidence/texture-tuning-comparison.json`。
 
 ### 原 CPU 算术循环比较
 
@@ -57,7 +61,7 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 
 ### 有界获取目标参考插件
 
-`evidence/iphone17-3-components.json` 在同一原始manifest SHA下补齐ZIP entry。普通 `Customer Erase Install (IPSW)` 的 OS 是 `043-69462-662.dmg.aea`，8858370048B；Recovery的OS是另一251658240B组件，不混选。`download_component.py` 要求精确变体、stored entry、10GiB组件上限、精确HTTP206、最终CRC/SHA和至少三倍组件加4GiB预留空间，无整包回退、自动重试或删除。当前下载只在本任务仓库外scratch进行，下载准备或进度不算插件提取完成。
+`evidence/iphone17-3-components.json` 在同一原始manifest SHA下补齐ZIP entry。普通 `Customer Erase Install (IPSW)` 的 OS 是 `043-69462-662.dmg.aea`，8858370048B；Recovery的OS是另一251658240B组件，不混选。`download_component.py` 要求精确变体、stored entry、10GiB组件上限、精确HTTP206、最终CRC/SHA和至少三倍组件加4GiB预留空间，无整包回退、自动重试或删除。可显式复用本任务完整16MiB范围断点，至多4个范围请求/64MiB缓冲；中断丢弃的网络body另记上界，不伪称精确累计网络字节。`extract_downloaded.py` 只接受已完成校验的收据，重新核SHA后用公开AEA流程解密、只读挂载、核镜像SystemVersion，导出实际插件文本并卸载本任务挂载点。当前下载只在本任务仓库外scratch进行，下载准备或进度不算插件提取完成。
 
 ## S110 失败和下一步
 

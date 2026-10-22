@@ -1,19 +1,82 @@
 from __future__ import annotations
 
 import io
+import hashlib
+import json
+from pathlib import Path
 import plistlib
 import struct
+import tempfile
+from dataclasses import replace
 import unittest
 from unittest.mock import patch
 import zipfile
+import zlib
 import numpy as np
 
 from firmware_probe import AppleRanges, central_entries, inspect
-from download_component import select_component
+from download_component import download, select_component
+from extract_downloaded import extract
 from thumbnail_model import SampleContext, conditional_inverse, forward, inverse_supplied_curve
+from version_gate import Firmware, Plugin, Loader, Sample, admit_static_sample_chain
 
 
 class MetadataTests(unittest.TestCase):
+    def test_extraction_stops_before_tools_on_incomplete_or_changed_component(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t); out = root / "output"
+            (root / "download.json").write_text(json.dumps({"completed": False}))
+            with patch("extract_downloaded.subprocess.run", side_effect=AssertionError("Must not invoke native tools")):
+                with self.assertRaisesRegex(ValueError, "complete CRC"):
+                    extract(root, out)
+                (root / "image.aea").write_bytes(b"changed")
+                (root / "download.json").write_text(json.dumps({"completed": True, "zip_crc_verified": True,
+                    "entry": {"name": "image.aea", "compressed_bytes": 7}, "sha256": "0"*64}))
+                with self.assertRaisesRegex(ValueError, "identity changed"):
+                    extract(root, out)
+            self.assertFalse(out.exists())
+
+    def test_component_resume_uses_owned_prefix_and_checks_complete_crc(self):
+        prefix = 16 * 1024**2
+        body = bytes(range(256)) * (prefix // 256 + 1)
+        name = b"system.dmg.aea"
+        local = bytearray(30); local[:4] = b"PK\x03\x04"
+        struct.pack_into("<HH", local, 26, len(name), 0)
+        archive = bytes(local) + name + body
+        entry = {"name": name.decode(), "method": 0, "compressed_bytes": len(body),
+                 "uncompressed_bytes": len(body), "local_header_offset": 0, "crc32": f"{zlib.crc32(body):08x}"}
+        url = "https://updates.cdn-apple.com/synthetic.ipsw"
+        metadata = {"source_url": url, "identities": [{"variant": "Customer", "components": {"OS": name.decode()}}],
+                    "image_entries": [entry], "build": "synthetic", "supported_product_types": ["synthetic"],
+                    "build_manifest_sha256": "synthetic", "ipsw_total_bytes": len(archive)}
+        requests = []
+        class Response:
+            status = 206
+            def __init__(self, start, stop):
+                self.start, self.stop = start, stop
+                self.headers = {"Content-Range": f"bytes {start}-{stop}/{len(archive)}"}
+            def geturl(self): return url
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def read(self, n): return archive[self.start:self.stop+1]
+        def open_range(request, timeout):
+            start, stop = map(int, request.headers["Range"].split("=")[1].split("-"))
+            requests.append((start, stop))
+            return Response(start, stop)
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t); mp = root / "metadata.json"; mp.write_text(json.dumps(metadata))
+            out = root / "component"; out.mkdir()
+            (out / name.decode()).write_bytes(body[:prefix])
+            (out / "download.json").write_text(json.dumps({"entry": entry, "source_url": url, "completed": False}))
+            with patch("urllib.request.urlopen", side_effect=open_range):
+                download(mp, "OS", out, "Customer", resume=True)
+            result = json.loads((out / "download.json").read_text())
+            self.assertTrue(result["completed"])
+            self.assertEqual(result["sha256"], hashlib.sha256(body).hexdigest())
+            self.assertEqual((out / name.decode()).read_bytes(), body)
+            self.assertEqual(requests[-1][0], len(local) + len(name) + prefix)
+            self.assertEqual(len(requests), 3)
+
     def test_exact_variant_does_not_select_recovery_os(self):
         m = {"identities": [{"variant": "Customer Erase Install (IPSW)", "components": {"OS": "main"}},
                             {"variant": "Recovery Customer Install", "components": {"OS": "recovery"}}],
@@ -125,6 +188,39 @@ class OperatorTests(unittest.TestCase):
         self.assertGreaterEqual(r["neutral_upper"][0], .75)
         self.assertFalse(r["guaranteed_1e3_mask"][0])
         self.assertTrue(np.isnan(r["candidate"][0]))
+
+
+class VersionTests(unittest.TestCase):
+    def setUp(self):
+        self.firmware = Firmware("synthetic-hardware", "synthetic-build")
+        self.plugin = Plugin(self.firmware, "/VideoProcessors/SmartStyleV1.bundle", "CMISmartStyleProcessorV1", "1", "a"*64, True)
+        self.loader = Loader(self.firmware, self.plugin.bundle_path, self.plugin.class_name, True, True)
+        self.sample = Sample(self.firmware.hardware, self.firmware.build, 2, 16, 3)
+
+    def test_product2_can_use_internal_v1_and_metadata16(self):
+        r = admit_static_sample_chain(self.sample, self.plugin, self.loader, target_product_generation=2)
+        self.assertTrue(r["static_version_chain_admitted"])
+        self.assertFalse(r["runtime_loaded_verified"])
+        self.assertFalse(r["camera_inverse_verified"])
+
+    def test_name_change_to_v2_cannot_fix_missing_build_or_origin(self):
+        sample = replace(self.sample, capture_build=None)
+        plugin = replace(self.plugin, bundle_path="/VideoProcessors/SmartStyleV2.bundle", bundle_version="2",
+                         official_image_membership_verified=False)
+        r = admit_static_sample_chain(sample, plugin, self.loader, target_product_generation=2)
+        self.assertFalse(r["static_version_chain_admitted"])
+        self.assertIn("exact sample capture build unavailable", r["reasons"])
+
+    def test_same_os_build_on_different_hardware_does_not_match(self):
+        loader = replace(self.loader, firmware=Firmware("another-hardware", self.firmware.build))
+        r = admit_static_sample_chain(self.sample, self.plugin, loader, target_product_generation=2)
+        self.assertFalse(r["static_version_chain_admitted"])
+        self.assertIn("loader and plugin firmware identities differ", r["reasons"])
+
+    def test_generation3_sample_does_not_prove_generation2(self):
+        r = admit_static_sample_chain(replace(self.sample, product_generation=3), self.plugin, self.loader,
+                                     target_product_generation=2)
+        self.assertFalse(r["static_version_chain_admitted"])
 
 
 if __name__ == "__main__":

@@ -60,8 +60,19 @@ def inspect(bundle: Path, out: Path, llvm_dis: str) -> dict:
               "info": {k: info.get(k) for k in ("CFBundleIdentifier", "CFBundleVersion", "CFBundleShortVersionString", "DTSDKBuild", "MinimumOSVersion")},
               "cache_origin_is_historical_assertion": True, "container_membership_independently_verified": False,
               "ios_code_executed": False, "sample_matching_verified": False, "methods": [], "air": [], "files": []}
+    objc = subprocess.check_output(["ipsw", "macho", "info", "--objc", str(binary)], text=True)
+    classes = sorted(set(re.findall(r"^@interface ([A-Za-z0-9_]+)", objc, re.M)))
+    result["objc_classes"] = classes
+    result["ipsw_version"] = subprocess.check_output(["ipsw", "version"], text=True).strip()
+    utilities = [name for name in classes if name.startswith("CMISmartStyleProcessorUtilities")
+                 and all(f"-[{name} {selector}]" in objc for selector in SELECTORS[:3])]
+    if len(utilities) != 1:
+        result["error"] = "No unique actual ObjC class implementing all three thumbnail selectors"
+        (out / "inventory.json").write_text(json.dumps(result, indent=2) + "\n")
+        raise ValueError(result["error"])
+    result["actual_utility_class"] = utilities[0]
     for index, selector in enumerate(SELECTORS):
-        symbol = f"-[CMISmartStyleProcessorUtilitiesV1 {selector}]"
+        symbol = f"-[{utilities[0]} {selector}]"
         text = subprocess.check_output(["ipsw", "macho", "disass", "--symbol", symbol,
                                         "--cache", str(out / "symbols.a2s"), str(binary)], text=True)
         instructions = re.findall(r"^(0x[0-9a-f]+):\s+((?:[0-9a-f]{2} ){3}[0-9a-f]{2})\s", text, re.M)
