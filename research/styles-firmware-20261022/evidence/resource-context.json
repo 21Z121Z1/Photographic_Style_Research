@@ -1,0 +1,101 @@
+{
+  "sources": {
+    "SmartStyleTuning.plist": {
+      "bytes": 1594,
+      "sha256": "451dda5a7fbbf315c0fccd59ef5cfeeb63e16deefe390d6142e83f46a593760b"
+    },
+    "StyleEngineTuning.plist": {
+      "bytes": 2456,
+      "sha256": "b2056faeb32a6a0c4ce55765ca0e5f530a62b3db026d8bcffdbb874d1146157d"
+    },
+    "TextureStyleTuning.plist": {
+      "bytes": 1365343,
+      "sha256": "9a0963e5a58aaa8c8c7fb42ccb75a254a9e1012ba594135b991ed8e1f191d31e"
+    }
+  },
+  "hardware_container": "iPhone17,3",
+  "image_build": "24A446",
+  "selected": {
+    "SmartStyleTuning/V1/Default": {
+      "ANSTMasksMatchingTimeInSecondsThreshold": 0.001,
+      "ApplyMaxTemporalFilterOrder": 18,
+      "CoefficientsFilteringGaussianScale": 20,
+      "CoefficientsFilteringHalfWindowTime": 0.4,
+      "CoefficientsFilteringIIR1HistoryFactorRampUpStep": 0.1,
+      "CoefficientsFilteringIIR1InitialHistoryFactor": 0,
+      "CoefficientsFilteringIIR1MaxHistoryFactor": 0.7,
+      "CoefficientsFilteringIIR3": [
+        0.0201,
+        0.0402,
+        0.0201,
+        -0.6414,
+        1.561
+      ],
+      "LearningRate": 2,
+      "SRLCurrentValueWeight": 0.1,
+      "SRLParameters": {
+        "BiasFactorSRLv2": 0.1,
+        "FaceExpDifThreshold": 0.1,
+        "MaskThreshold": 0.3,
+        "MatchPreview": 1.0,
+        "MaxBoost_I": 2.1,
+        "MaxBoost_II": 2.1,
+        "MaxBoost_III": 2.1,
+        "MaxBoost_IV": 2.1,
+        "MaxBoost_V": 2.1,
+        "MaxBoost_VI": 2.1,
+        "MaxCurveBoost": 0.95,
+        "MaxTargetRatioDarkening": 0.6,
+        "MinCurveBoost": 0.05,
+        "MinDarken_I": 0.7,
+        "MinDarken_II": 0.7,
+        "MinDarken_III": 0.7,
+        "MinDarken_IV": 0.65,
+        "MinDarken_V": 0.65,
+        "MinDarken_VI": 0.65,
+        "MinFaceSize": 0.1,
+        "RelightOnlyPersonMask": true,
+        "TargetMedian_I": 0.53,
+        "TargetMedian_II": 0.52,
+        "TargetMedian_III": 0.51,
+        "TargetMedian_IV": 0.47,
+        "TargetMedian_V": 0.4,
+        "TargetMedian_VI": 0.3,
+        "ToneSimilaritySigma": 0.05
+      },
+      "SRLSkinToneLevelFilterMaxAgeFrames": 100,
+      "SRLSkinToneLevelFilterMaxFaceHistory": 10,
+      "StatsUpdateDeltaTimeThreshold": 1
+    },
+    "StyleEngineTuning/StyleEngineV1/12": {
+      "EndLambda": 0,
+      "ExtLambda": 0.2,
+      "LearningModulationOffset": 0,
+      "LearningModulationStrength": 2,
+      "ResidualScaleFactor": 0,
+      "TikLambdaConstant": 0.01,
+      "TikLambdaLinear": 0.01,
+      "TikLambdaQuadratic": 0.01,
+      "WeightPlaneColorSplitStrength": 5,
+      "WeightPlaneDoColorSplit": false,
+      "WeightPlaneStandardDeviation": 2.5
+    },
+    "TextureStyleTuning/iPhone19,2/PortTypeBack/Still/Studio/Common": {
+      "canonical_dictionary_sha256": "398fa58e64ca1a9d37008a02179afaf5e10651682661fa6a5abda5ca33c129b0",
+      "EffectOrder": [
+        "UnderEyeBrightening",
+        "SkinSmoothingStandalone",
+        "Mattify",
+        "FilmGrain"
+      ],
+      "UnderEyeBrightening.brightnessMix": 0.5,
+      "Mattify.editingStrength": 0.3
+    }
+  },
+  "texture_whole_file_matches_host_reference_sha256": true,
+  "exact_iphone17_3_texture_key_present": false,
+  "runtime_useCase12_to_plist_key12_mapping_verified": false,
+  "selected_tuning_to_runtime_units_verified": false,
+  "original_per_person_stats_recovered": false,
+  "scope": "Selected scalar configuration only. SRL MaxBoost names are not measured pixel gains or EV. Key 12 is a candidate for the observed useCase12 getter; the external CommonSettings implementation is still absent. A device key in a cross-device plist is not capture selection."
+}

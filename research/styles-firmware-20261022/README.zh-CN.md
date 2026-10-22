@@ -6,6 +6,8 @@
 
 后续阶段见 [PROGRESS-S2.zh-CN.md](PROGRESS-S2.zh-CN.md)：新增下载0B；完成框架CPU/资源清单与实际导入库绑定，新增通用头GTC算子及133组原指令比较。该阶段23项回归测试、84568个f32中间节点和34048个half新输出均通过，含251个保留的Inf码；与下面历史257头结果分别记录。
 
+现有OS资源阶段见 [PROGRESS-S3.zh-CN.md](PROGRESS-S3.zh-CN.md)：仍新增下载0B；92对相关CMImaging AIR模块中91对在明确限定的内部符号改名/平台与编译器标识例外下全文相等，接回既有UnderEye/SkinSmooth/Mattify等条件算子；保留StyleEngine::Apply的fract实现差异。当前27项单元测试通过，未把静态相等升级为iOS GPU或完整拍摄链认证。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|
