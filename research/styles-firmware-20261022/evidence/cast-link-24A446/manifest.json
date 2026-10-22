@@ -1,0 +1,96 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "CMImaging": {
+      "index": 542,
+      "name": "/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",
+      "version": "764.22.14.0.0",
+      "uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "load_address": 7854592000,
+      "header_and_commands_sha256": "16fec996212b5cc7ad6286abb30426c24c8a9c53b0e677b3efd00e254a1727b0",
+      "function_starts_sha256": "0a07b7a708d8f221cf859b2f28480a5473b8bc7ee5974eb9fba0cf5d7d18e5c1"
+    }
+  },
+  "methods": [
+    {
+      "name": "___ssccmpg_getPrior_block_invoke",
+      "framework": "CMImaging",
+      "file": "cast-index-dictionary.asm.txt",
+      "end_exclusive": "0x1d43350f0",
+      "first_address": "0x1d4334f20",
+      "last_address": "0x1d43350ec",
+      "instruction_count": 116,
+      "checked_bytes": 464,
+      "instructions_sha256": "72c2f649baed686870ed96cd209eead70e12b426cba6e67081e56628eb5375bb",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "a44626684de28800a58fb9db3d6d581f5bd846ddaa12c975ed660c3b80938542"
+    },
+    {
+      "name": "+[CMISmartStyleCCMPriorGenerator calculatePriorCCMforCast:tone:color:intensity:priorStrength:isStartupPrior:].cold.2",
+      "framework": "CMImaging",
+      "file": "cast-index-once.asm.txt",
+      "end_exclusive": "0x1d447531c",
+      "first_address": "0x1d4475308",
+      "last_address": "0x1d4475318",
+      "instruction_count": 5,
+      "checked_bytes": 20,
+      "instructions_sha256": "1645fe98de2225df16c3a538033673411e1c81113effc579d7f223338afd367d",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "c429a442a9fffd9fbaf10a41900c54d557b3ff1366dba9d9840078670c4f1334"
+    },
+    {
+      "name": "_OUTLINED_FUNCTION_28",
+      "framework": "CMImaging",
+      "file": "enqueue-parameter-bind.asm.txt",
+      "end_exclusive": "0x1d430e938",
+      "first_address": "0x1d430e918",
+      "last_address": "0x1d430e934",
+      "instruction_count": 8,
+      "checked_bytes": 32,
+      "instructions_sha256": "ea4d8b6c0d01ec4aaf25fe15487f97aa19e93d2df982cb4c2398cee67dc0d43d",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "bfb5d4e5e46c20db5d5d1131a5492af546a618934c060fa25a70be7bf194a22f"
+    }
+  ],
+  "exporter_sha256": "743e03f9421728096a87ce6408fbd003534346f2160ba728d390a2d1d67b728e",
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 516,
+  "exported_text_postprocess": "Remove only trailing blank lines at EOF and clarify two output filenames; original checked bytes/SHA unchanged."
+}

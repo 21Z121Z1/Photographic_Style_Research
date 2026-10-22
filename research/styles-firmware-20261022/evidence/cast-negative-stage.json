@@ -1,0 +1,408 @@
+{
+  "scope": "Stage S7 static source audit and observed unit-test result; no accepted native batch rerun. Native results are immutable separately hashed receipts.",
+  "recorded_at_UTC": "2026-10-22T11:21:04.976940+00:00",
+  "base_commit": "d7ae80d2c7b3bf6311e5e458f13e4c8bb4f1dcd2",
+  "branch": "research/styles-firmware-local-20261022",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "host": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.5",
+  "downloaded_bytes": 0,
+  "private_media_inputs": 0,
+  "tests": {
+    "command": "python3 -m unittest discover -s research/styles-firmware-20261022 -p 'test_*.py' -v",
+    "run": 56,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "reported_seconds": 0.093
+  },
+  "source_sha256": {
+    "export_cache_methods.py": "38db3af22010a28275987e4dfc712f0bebcff5fdcb7405c93376a971e2bc2b8e",
+    "cast_bank.py": "4bb4f93af320cd0d29334ea142a5346f6d45bd69b08fdefe123cbe77a3a8fa5d",
+    "cast_prior.py": "cb48b1942f5b6067e138aa1de07bb31de6f5cfe07700ef3f5ec58c68e7d6bbde",
+    "collect_cast_names.py": "2efabfb0e2796d8398df01a0773d2fe7b9dc765ddc846bbcc96e9044bde772bb",
+    "collect_cast_tables.py": "82968429d7e685abddca707b3845422925c8ec17534aee45dd9cd2c7675a21e1",
+    "negative_tone.py": "ff6f85b87669060e7af70a5353429b5549dad655d9412097e8df05fe1de8a6ac",
+    "native_cast_prior_check.py": "3d47794fe34555172a0332026395a198f9de1c45b80f22da47ddf9621da164dd",
+    "native_negative_tone_check.py": "14646f836c98af8692a435002d075f568ef40cee9ae30f7b8e621c482ba7f2ad",
+    "native_prior_pack_check.py": "64180b508f00002419a1563ba4ac37a7ecf22febcae9def294f967f91100b7ff",
+    "test_cache_symbols.py": "88431332a7cb1b8021364dfa3a4999542736c5a401c19ac7df3e85237295fcb1",
+    "test_cast_bank.py": "61a7564e84a4c0925437a8fbe3867e5f3130a88ec18dcb16879b70b9c83ee01e",
+    "test_cast_prior.py": "616d07a1fcd5206b4363c98f1fc97b6541fd9c0f75ed4a652b66855b1e49c997",
+    "test_negative_tone.py": "11aa18ab850d8e5174247720adb76f6d75d2c1fe045e6ce5fe6f91c5e05c9fbe",
+    "PROGRESS-S7.zh-CN.md": "eb40f5678729df9bb3e7a816aef7a78ad6ccd2c5fd3b1f54259932c01b4495bf",
+    "README.zh-CN.md": "e43f768eb508afaeab625139454f8e6d9a7c137564c0e081b9c021a69cbf209d"
+  },
+  "native_and_composition_receipts": {
+    "native-cast-prior": {
+      "sha256": "f5181517c9a57350d4f7ecbb4f73d09da7eb6e446c591aeb626fb3c17b3c3bb7",
+      "hardware_reference": "iPhone17,3",
+      "image_build": "24A446",
+      "framework_uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "original_arithmetic_bytes": 556,
+      "original_arithmetic_sha256": "0ef7a4acb6c322d38e5be74ed22e05ae64b4953f0d24641bcad699c3fe4f5801",
+      "original_conversion_bytes": 152,
+      "original_conversion_sha256": "5425ad72dd3fb3464313b5df7b03db9077c0b1f6a2191ba7a1e0d9634e0f0ea5",
+      "original_instruction_words_patched": 0,
+      "original_ADRP_layout_preserved": true,
+      "actual_private_tables": 26,
+      "synthetic_tables": 1,
+      "records": 756,
+      "values_per_stage": 9072,
+      "interpolation_bit_mismatches": 0,
+      "conversion_bit_mismatches": 0,
+      "payload_sha256": "38a3e829a8d26ab33a1c542bb72415c0256f5976066b5e161d4f5f688d5e425f",
+      "native_output_sha256": "42448b1a53a81c511f119b3f9f6b510d2ba4b9ae29bba9dcee709ce537a9a8c8",
+      "harness_C_sha256": "185b8b8cad1f83b963c7c8a049ed230e98f89d059512ba6b80c2f455b38aad17",
+      "harness_assembly_sha256": "a70a6dff91a9e8e51ebef55c2ca6ef333dafaee6e7ba3ba1b1a5c431cd73a23c",
+      "host_executable_sha256": "e33de102d747f99945ad0ef74e75184fc421ac937857446b7a2ebb035ea906ff",
+      "model_sha256": "92cb627c498e3b3eb78cf32c4fb4601ff90f748e00665767bc21a93c1ad4f02a",
+      "checker_sha256": "3d47794fe34555172a0332026395a198f9de1c45b80f22da47ddf9621da164dd",
+      "fpcr": 0,
+      "iOS_library_loaded": false,
+      "native_GPU_executed": false,
+      "original_frame_context": false,
+      "raw_tables_uploaded": false
+    },
+    "native-negative-tone": {
+      "sha256": "a4929b12578ae04ad6e0b2d0a2119b5acf576d2a04c6b1f1fbf9ad7fee22e846",
+      "hardware_reference": "iPhone17,3",
+      "image_build": "24A446",
+      "source_metallib_sha256": "f6d825a7e5c00d0eec2e4721c51bdb7a6b9554073dc632273dec825ae1bf705f",
+      "source_AIR_canonical_sha256": "5ca4d2dce19c7e8825f0608b04d3637ddf05f3eb507f33430670617624c02c53",
+      "model_sha256": "ff6f85b87669060e7af70a5353429b5549dad655d9412097e8df05fe1de8a6ac",
+      "checker_sha256": "14646f836c98af8692a435002d075f568ef40cee9ae30f7b8e621c482ba7f2ad",
+      "shim_source_sha256": "f327596c01d32b51119df278150067d493e153ed48367ceb28e23a307a6d3046",
+      "temporary_host_library_sha256": "fe9ec93b7622d6e87a43ca849e71b0c97360b969f4857e1f302c93b487fcf528",
+      "records": 392,
+      "kernel_calls": 1176,
+      "coefficient_values": 15680,
+      "bit_mismatches_vs_rounded_continuous_center": 834,
+      "max_absolute_error": 2.1577695719088297e-07,
+      "allowance_violations": 0,
+      "max_fraction_of_allowance": 0.48057322707942707,
+      "input_sha256": "d1c1b2fd4d0fb7437f55da9b4e94859efb84459ab10a4611b3a306d13e9464f6",
+      "native_output_sha256": "946e2c5e6398e025ee2a6a61653be17a6a6710982ea98aef63ce14f30824a8a4",
+      "host_pow_allowance_is_an_assumption_not_GPU_proof": true,
+      "native_GPU_executed": false,
+      "iOS_library_loaded": false,
+      "photo_inputs": 0,
+      "positive_batch_repeated": false
+    },
+    "native-prior-packing": {
+      "sha256": "23d17c7594afc026de65a3536384dc527732e9000953ba6eb4cfd58da71485a3",
+      "hardware_reference": "iPhone17,3",
+      "build": "24A446",
+      "original_start": "0x1d42e66cc",
+      "original_bytes": 60,
+      "original_sha256": "4d04926ddf7c0d8a1c2e0438a40590016963e58cca7371169db14ef8a2455d40",
+      "original_instruction_words_patched": 0,
+      "records": 34,
+      "uint32_values": 408,
+      "bit_mismatches": 0,
+      "input_sha256": "9d906bf45b1605f357db2ee08350ef881992c812d4cd1539bdf6e5585b83e2dc",
+      "native_output_sha256": "7a9f5521d91ae478407806951c1c004e60d37b08044e1f36371e07fead06d013",
+      "host_executable_sha256": "3b08ae6c29722055a61356b789f7834cc85f506a62793d55535427efd338ece0",
+      "checker_sha256": "64180b508f00002419a1563ba4ac37a7ecf22febcae9def294f967f91100b7ff",
+      "iOS_library_loaded": false,
+      "GPU_executed": false,
+      "original_photos_used": false
+    },
+    "named-cast-replay": {
+      "sha256": "5042af2d4d22a161f02703b9e060b87dd38d9a20a8bbe4865cba2a0ba61e361c",
+      "hardware": "iPhone17,3",
+      "build": "24A446",
+      "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+      "combinations": 32,
+      "fallback_combinations": 1,
+      "source_sha256": "4bb4f93af320cd0d29334ea142a5346f6d45bd69b08fdefe123cbe77a3a8fa5d",
+      "raw_tables_uploaded": false
+    }
+  },
+  "static_audit": {
+    "methods": 45,
+    "checked_bytes": 56384,
+    "new_methods": 10,
+    "new_checked_bytes": 704,
+    "all_exported_words_equal_actual_cache": true,
+    "rows": [
+      {
+        "file": "evidence/cache-methods-24A446/prior-main.asm.txt",
+        "checked_bytes": 1292,
+        "instructions_sha256": "cf44b3d21c63841405eb919e2525055f4df974bb0eeb24befbab1a23e39dc8f4",
+        "text_sha256": "391ce02c627fa42271b3a23c5d59590a61556ef7cd6cc273e29e708e1d7bf981"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/prior-wrapper.asm.txt",
+        "checked_bytes": 20,
+        "instructions_sha256": "d7371846c3a94fac95470109b7fb9c8756777ba5893dcdf5bc66fd75dd83715b",
+        "text_sha256": "6ffdc2f1f2f0c74b2394640dcae05b4637446b1988e012742c84c66715f40e35"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/prior-conversion.asm.txt",
+        "checked_bytes": 152,
+        "instructions_sha256": "5425ad72dd3fb3464313b5df7b03db9077c0b1f6a2191ba7a1e0d9634e0f0ea5",
+        "text_sha256": "3a7e58d6b40c2160dda6035976676d08fb7251f2aa8e383f50e364007cff6cf6"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/engine-configuration.asm.txt",
+        "checked_bytes": 112,
+        "instructions_sha256": "573fc7ef959540d9c67381c79969580ce6bd7e3fb001bcc1fa43a916ab853eb4",
+        "text_sha256": "6feabe3df9286bb1de1f9ef254d56417a9683d8c53461c7dd9b1381f61fac80e"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/engine-tuning.asm.txt",
+        "checked_bytes": 112,
+        "instructions_sha256": "48089df1809db946f2291e8a3edfa2bec8090cb160073ea830ddbfcdfc69d54d",
+        "text_sha256": "d7e18c63bc9e1d336118dc3f5b235fdf36fd1b101a55f00ee6dde51fc5e83d75"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/engine-tuning-load.asm.txt",
+        "checked_bytes": 764,
+        "instructions_sha256": "9cde8459d53138f2adb52aab1923cc6d64dff2305a156785aebf2ff4704cdaec",
+        "text_sha256": "73daf59a5dc2aa5c0917a11e0d0449e9771cde5c1b371aa946b7763ce5b74f71"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/pixel-renderer-process.asm.txt",
+        "checked_bytes": 816,
+        "instructions_sha256": "68ea9f3402d93d152556879e9cc3d9124082dd90565a3eed3baf12a2ece9a434",
+        "text_sha256": "9fd9039ac6a4eb486741c33e757dbd62eda67a46a9c9d80601fbff72040a0133"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/style-engine-process.asm.txt",
+        "checked_bytes": 28952,
+        "instructions_sha256": "3de5f5562d5c674a481e5c6d19a1882cae3e7af8f463f22b4022b6fe796201e3",
+        "text_sha256": "3dd9918470c6358f54ea5cfefb8fbf5839a202f39c4dbea7991a7f108daf1cc8"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/engine-polynomial-count.asm.txt",
+        "checked_bytes": 56,
+        "instructions_sha256": "510f4a560aa87a0b9b5eb2f7726353702c99e4dbbeb388f4581ed8ebd5cff3d4",
+        "text_sha256": "32506d18e05aacb3b1c4cfdea6aa00f564454c4215389894275e939e4483fcc1"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/engine-system-size.asm.txt",
+        "checked_bytes": 116,
+        "instructions_sha256": "e99c491f06cb6d0458ec8d5b112c5e13b66f21f901ce6b287c9db8e24dbc31b0",
+        "text_sha256": "8ce3b46f416a03b02a58ad11905ce10e419c88f2125ee000506480377b951fc6"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/load-bundle.asm.txt",
+        "checked_bytes": 876,
+        "instructions_sha256": "aea67cc95836bc4befa67eb94117183d9511960071ac3edf435bfce072bf0cbc",
+        "text_sha256": "e62765cbd93f9ad564e5461639421df2a9fefdefac4f496eb4f251bd0e772613"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/learning-loader.asm.txt",
+        "checked_bytes": 1284,
+        "instructions_sha256": "baed6e53a112fa93a07ae0f8b0f841c5a8a5b9bee953c4a33d248605d723a426",
+        "text_sha256": "8041f35ae313d4ebe6a269262b8601b42d4998d34f7c875316628f3d199c0df1"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/encoder-loader.asm.txt",
+        "checked_bytes": 252,
+        "instructions_sha256": "ea0f167d4cfe58b47b7d9ae9e0104d006b359244c400beee4ca10c6f02079223",
+        "text_sha256": "a914260d906f5b849687517055a57961650c9626bcb1d15ec9e327a922da4d5f"
+      },
+      {
+        "file": "evidence/cache-methods-24A446/controller-loader.asm.txt",
+        "checked_bytes": 340,
+        "instructions_sha256": "2f1eb566ebf03d873dca3006360e4b27899a820cbfee2d4ae8cc72e85af6d43c",
+        "text_sha256": "033e7d6238a39b2f7e81c0e1f1728994b15c8098d434b26f336b0e95cf64124e"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/engine-tuning-apply.asm.txt",
+        "checked_bytes": 3012,
+        "instructions_sha256": "f7c228ae1ed95de95bc90aad4d1b0e36a78c6a6f760bc8d83f00d8ac715c99b4",
+        "text_sha256": "08a5a83d6330f60702f7dc645ea5d2a19161bb50fee9da93cb3606cbcc4ee850"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/engine-create-enqueue.asm.txt",
+        "checked_bytes": 5592,
+        "instructions_sha256": "b217dc8a896b7a359479b6b42dc1b1f33c8e364689d222399de11e94d9089b20",
+        "text_sha256": "7de09afc5b12f67d5a002d56e02b54a380778391de824f6b7e0f750b1259025a"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/pixel-input-style.asm.txt",
+        "checked_bytes": 8,
+        "instructions_sha256": "975d1c4738baf696483df02611c7da8d4596e7f77648868ada41994bd2927dd6",
+        "text_sha256": "f0f895f0c488ddd7e58142ac6cd95c6d019f0132085b2585b8cc8c1210454e33"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-input-style.asm.txt",
+        "checked_bytes": 96,
+        "instructions_sha256": "42ccaec266e3a1984b0b151fd0b0827fbd21e699b6f5ad8a8d798b29ce17c2e7",
+        "text_sha256": "60f4362403e9ed0473bd208da544234fd300066231c6c88827a5d645dd4092b2"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-tone-set.asm.txt",
+        "checked_bytes": 72,
+        "instructions_sha256": "c702cb5995238bbad3fc8ac5855e01ff1db008c8cb2cd9bf261fc52d8e24868d",
+        "text_sha256": "a12674f927b5bce5890a21a8f76cc254651dfb64f23d13ae9b6d24362cdb5027"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-color-set.asm.txt",
+        "checked_bytes": 72,
+        "instructions_sha256": "89af05ed4c6edf554fe430f46beb3b535920784f8d1fe1c19bc09986f8a8093a",
+        "text_sha256": "2e1e0e2fab4dff8431a323b51a2ab348d426574ea3556d2623e999e37d032033"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-intensity-set.asm.txt",
+        "checked_bytes": 72,
+        "instructions_sha256": "867c5dd4210ac30f546291c84f9365269619a74ce5d01d9f9a547315675818e6",
+        "text_sha256": "d9801aa055a9b61f46abfd7b055fc1f40d2fe2ff3803dc9d6bf474ca37a5d0e9"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-tone-curve.asm.txt",
+        "checked_bytes": 1136,
+        "instructions_sha256": "0c11950fa89db1201b2b858be329b08b661861e53e11c6a415d2c748294f1c4a",
+        "text_sha256": "ed37a35e33ed8fe77e2090e4b0108739b2aa5893cbc34137cde010482ee9db19"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-process.asm.txt",
+        "checked_bytes": 1356,
+        "instructions_sha256": "5ed42daea30795fb59901e6010d3803967803abf0f2daca575d1f6af394a6bae",
+        "text_sha256": "166236b6b4d548cf1738378a9041d7775b19aff144b4a19e90308607d2a8803c"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-ltm.asm.txt",
+        "checked_bytes": 1428,
+        "instructions_sha256": "e79dc235f6bb1d22385d2fb673dad3c8a46f0fee8aacf52733c0897d0876a515",
+        "text_sha256": "71e2dafc3403f257a680470dfb86975010c3aaa6a45444dad03871a787dc3f80"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-srl-adjust.asm.txt",
+        "checked_bytes": 40,
+        "instructions_sha256": "9a74dc69330f41290289e5422b853b810f21dbe2ef6a804f64583f78c2b46e99",
+        "text_sha256": "84943401c7333385ddc9424dc5acc294b9e95f2dbd3bd9ebf98b47ee8cc59906"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/metal-color-conversion.asm.txt",
+        "checked_bytes": 412,
+        "instructions_sha256": "6dd1c413e42200f72b5bbe028af9dbec98630139b44aff594cec35a361c936a4",
+        "text_sha256": "d340da8ea6ab0bb6a1cff13184b8f9fd27043970407c9e6870d242abee256c27"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/srl-stage.asm.txt",
+        "checked_bytes": 2724,
+        "instructions_sha256": "9ac5a536b9fa5894f364bfd37f8bc1b43cd8ea0430286bbd3cc71295a892aa88",
+        "text_sha256": "4ae255ac912f0cfc5a8cf685b069bf4f7e113c7bcc97a5db8a483385e50ac4bb"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/engine-config-set.asm.txt",
+        "checked_bytes": 12,
+        "instructions_sha256": "750907beed9252e298390587c44fb970f843649abbd0f1f41403aa18e22c7f5e",
+        "text_sha256": "ffa45f27a7c4fb79e26b489350a5377d3b465f2c250c16a195cdffe941787240"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/linear-systems-compile.asm.txt",
+        "checked_bytes": 852,
+        "instructions_sha256": "f04948591633d9f7d555790648a67c82b3c649abf07e2794b5c48c3f0b65e7d7",
+        "text_sha256": "459a57b85d38788f865665f1f67aafa4c2dd7a043ef19df30864b206dc6ba37a"
+      },
+      {
+        "file": "evidence/cache-follow-24A446/linear-prior-planes-set.asm.txt",
+        "checked_bytes": 112,
+        "instructions_sha256": "3a099e862ef5a285c46e7d1f03acaf2a4dacce61fd03350e58490aca9f20696a",
+        "text_sha256": "ba8d15ca55d8b2469eb7436990ac28b8cd6ebb487a94a30a056901b150c2deee"
+      },
+      {
+        "file": "evidence/render-follow-24A446/render-dynamic-parameters.asm.txt",
+        "checked_bytes": 272,
+        "instructions_sha256": "216996f041124314e7d287e2cee75c5acd28980ffc2ae503d47c873e363670c0",
+        "text_sha256": "eceaee45248b2da1e89c0222a0b814fc5bf773bec8f464e479a28fdf377c42b0"
+      },
+      {
+        "file": "evidence/render-follow-24A446/render-static-parameters.asm.txt",
+        "checked_bytes": 788,
+        "instructions_sha256": "83f9dc0b679ea83e57961ba9ca073b2aa2877f1fd30906d21ab471a16345d256",
+        "text_sha256": "0219279bc937c3bf71292778db5dd9d4bc2fcf7f49fc28b5d54ac45eaf71979e"
+      },
+      {
+        "file": "evidence/render-follow-24A446/render-final.asm.txt",
+        "checked_bytes": 184,
+        "instructions_sha256": "86998640ef15748ff4644aabc26419174e9f35a3dbb9cadd6d90fc5df3407bcb",
+        "text_sha256": "f204d68ca16292b7d2fadc08837d232e968f0c1f66928e7e4a6f139420fc5aa4"
+      },
+      {
+        "file": "evidence/render-follow-24A446/render-setup-params.asm.txt",
+        "checked_bytes": 320,
+        "instructions_sha256": "edf90989b27e92fa78b8f9e7d8d6e77201fdf24f39a9ba586a2dcdff249dfcbb",
+        "text_sha256": "9910af47c1b4bbe937f1315abd3663960672c893b2a358df5f38e9a536d6a6a2"
+      },
+      {
+        "file": "evidence/render-compile-24A446/render-compile.asm.txt",
+        "checked_bytes": 1976,
+        "instructions_sha256": "5e7aa8073a015a8b2d83dd2054f2ed1da1f5ed96ffbb3ec805229b7e1f761a23",
+        "text_sha256": "43264e74a7d5cd4a392c68a134b8f7ccc2d074a86a3ab8c4d61d70eee5320453"
+      },
+      {
+        "file": "evidence/cast-connection-24A446/config-prior-set.asm.txt",
+        "checked_bytes": 12,
+        "instructions_sha256": "77c2f5c6e0720d6c79a25283ea36bc6d27d75b77f1cdd6740fcbe66ce2004091",
+        "text_sha256": "ec42f5e1c7b37cdc19036c5dd3eec0b9781ef6d27bc297588c261158146e9760"
+      },
+      {
+        "file": "evidence/cast-connection-24A446/config-prior-get.asm.txt",
+        "checked_bytes": 12,
+        "instructions_sha256": "d87a6786d43a815f4d95faa4f12b6368006aa285eea128bcb3d24e3e4ad2fe28",
+        "text_sha256": "5274caabece7098214486f169fb05c0cabed6986920bd87fa5b54dc26d09deb7"
+      },
+      {
+        "file": "evidence/cast-connection-24A446/builder-prior-set.asm.txt",
+        "checked_bytes": 12,
+        "instructions_sha256": "c47439f87536f9e368f39471fa0e6996786be8959996e931125b2aa8edacf036",
+        "text_sha256": "5a71c8bd335b578cdc64e8f4e4c6f18fe76294e0b06eb91ddf562454f7066b70"
+      },
+      {
+        "file": "evidence/cast-connection-24A446/builder-prior-get.asm.txt",
+        "checked_bytes": 12,
+        "instructions_sha256": "9679bd4062b03c77db523f467c8158f0a078d9880df7efdef0d7f2f28cc74f04",
+        "text_sha256": "8875be6a979b1e3c5674c98ab2ccf274e1ee871e0c210402d8c564189cc6f0c8"
+      },
+      {
+        "file": "evidence/cast-connection-24A446/monochrome-set-init.asm.txt",
+        "checked_bytes": 100,
+        "instructions_sha256": "7618cf95af9230b6fd87b73122383523731719da265ec31d17593ea96c9d2a98",
+        "text_sha256": "2c7d68963ae6f7dabc9d01902f8d18eb8667e70a4cbbb42ae5a1c0988ca777cb"
+      },
+      {
+        "file": "evidence/cast-connection-24A446/cast-monochrome-init.asm.txt",
+        "checked_bytes": 20,
+        "instructions_sha256": "0458e4a138244958ece3f2691070f9daefb4a30477eec9717a1a7f0354cdc9b6",
+        "text_sha256": "a52ff759cbf5a142e17901cb794c43abe120f636128f3666bc650dac2ec2d23b"
+      },
+      {
+        "file": "evidence/cast-link-24A446/cast-index-dictionary.asm.txt",
+        "checked_bytes": 464,
+        "instructions_sha256": "72c2f649baed686870ed96cd209eead70e12b426cba6e67081e56628eb5375bb",
+        "text_sha256": "a44626684de28800a58fb9db3d6d581f5bd846ddaa12c975ed660c3b80938542"
+      },
+      {
+        "file": "evidence/cast-link-24A446/cast-index-once.asm.txt",
+        "checked_bytes": 20,
+        "instructions_sha256": "1645fe98de2225df16c3a538033673411e1c81113effc579d7f223338afd367d",
+        "text_sha256": "c429a442a9fffd9fbaf10a41900c54d557b3ff1366dba9d9840078670c4f1334"
+      },
+      {
+        "file": "evidence/cast-link-24A446/enqueue-parameter-bind.asm.txt",
+        "checked_bytes": 32,
+        "instructions_sha256": "ea4d8b6c0d01ec4aaf25fe15487f97aa19e93d2df982cb4c2398cee67dc0d43d",
+        "text_sha256": "bfb5d4e5e46c20db5d5d1131a5492af546a618934c060fa25a70be7bf194a22f"
+      },
+      {
+        "file": "evidence/cast-number-24A446/constant-integer-value.asm.txt",
+        "checked_bytes": 20,
+        "instructions_sha256": "ec0ee82805ae503c6d5ec420863ef64963ca4d828156c6cca5c10cc7e441c928",
+        "text_sha256": "fd3cd8ea96ec80f5d0647573d2c015cada3646f77349b4fb5f899cf833587ba8"
+      }
+    ]
+  },
+  "accepted_large_native_batches_repeated": false,
+  "native_iOS_or_GPU_verified": false,
+  "new_photo_validation": false,
+  "free_bytes": 27648000000,
+  "process_listing_denial_retried": false
+}

@@ -14,6 +14,8 @@
 
 正Tone→皮肤系数见 [PROGRESS-S6.zh-CN.md](PROGRESS-S6.zh-CN.md)：实际RenderingParamsFromStats中目标θ9/θ10接到已有条件皮肤算子；1033组、2066个系数的原AIR宿主比较有733个逐位差异，max1.19e-7、舍入界越界0。当前41项测试通过；仅该正分支两个系数不依赖stats，其他Tone/语义/像素链继续保留条件。
 
+cast表与负Tone见 [PROGRESS-S7.zh-CN.md](PROGRESS-S7.zh-CN.md)：复用同一固件缓存，新增下载0B。16个内部cast名称/索引、黑白集合、32条startup选择和26张表的静态来源已核；756组原556B插值及完整152B转换比较，两阶段各9072个f32值逐位差异0。负Tone的BG/FG/semantic共40系数以392组原AIR宿主比较，834个逐位差异、max2.16e-7、声明的宿主误差界越界0（pow界为显式假设，非GPU证明）。新增60B原矩阵打包循环408个位模式差异0，接到已有RHS prior接口。当前56项单元测试通过；未重复既有正Tone/SRL/prior大批次，未取得同机型iOS/GPU像素或原帧上下文验收。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|
@@ -83,4 +85,4 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 
 `evidence/s110-failure.json` 记录作业119004152190：提取 exit1；当时实际上传10个文本文件、3588B artifact12316810885，当前 API 列表为空。异常只存在被重定向的 driver.log 中，作业日志没有它。清理时 disk5 被卸载，不足以推断具体失败原因；本轮不补写根因，也不把准备好或挂载过当提取完成。
 
-已完成新参考插件身份与CPU归一化原指令比较。下一步是本硬件/build的CMCapture loader与外部renderer/prior/统计实现；IMG_2810还须先取得精确capture build，再匹配其iPhone19,2实际插件及同帧人脸提亮/曲线/原纹理统计。原生GPU半精度误差、真实照片留出和配对RAW均未新增。没有读取照片库或私人原媒体，没有绕过锁屏；完整目标仍未完成。
+截至S7，已补同硬件/build的CMCapture loader与外部renderer/prior静态连接、cast系数布局和正/负Tone限定分支。最小剩余运行验收依赖同机型/build的可调用iOS运行环境，以及同一帧的参数、stats、matte/guide、颜色转换与绑定上下文；这些不能由更多合成测试替代。IMG_2810还须先取得精确capture build，再匹配其iPhone19,2实际插件及同帧上下文。原生GPU半精度误差、真实照片留出和配对RAW均未新增。没有读取照片库或私人原媒体，没有绕过锁屏；完整目标仍未完成。

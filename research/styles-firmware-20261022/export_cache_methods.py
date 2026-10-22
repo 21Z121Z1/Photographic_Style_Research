@@ -57,6 +57,13 @@ def annotation_functions(cache: CacheBytes,repo: Path):
     return namespace['annotate'],sources
 
 
+def select_symbol(text: str,name: str,address: int | None=None) -> int:
+    hits={int(m[1],16)for m in re.finditer(r'^(0x[0-9a-f]+):[^\n]*?\t([^\t\n]+)\t?$',text,re.M)if m[2]==name}
+    if address is not None:hits={a for a in hits if a==address}
+    if len(hits)!=1:raise ValueError('Symbol must resolve unambiguously; specify its verified address for duplicate local names')
+    return hits.pop()
+
+
 def export(scratch: Path,output: Path,repo: Path,selection: dict | None=None) -> dict:
     if output.exists():raise FileExistsError(output)
     root=scratch/'mount/System/Library/Caches/com.apple.dyld';cache=CacheBytes(root)
@@ -68,18 +75,21 @@ def export(scratch: Path,output: Path,repo: Path,selection: dict | None=None) ->
             'original_iOS_code_executed':False,'binary_uploaded':False,'actual_runtime_loader_verified':False}
     total=0
     for label,methods in (selection if selection is not None else SELECTED).items():
-        if label not in ('cmi','capture'):raise ValueError('Unsupported source framework')
-        framework='CMImaging' if label=='cmi' else 'CMCapture'
-        image=next(x for x in info['dylibs'] if x['name']==f'/System/Library/PrivateFrameworks/{framework}.framework/{framework}')
+        paths={'cmi':('CMImaging','PrivateFrameworks'),'capture':('CMCapture','PrivateFrameworks'),'foundation':('Foundation','Frameworks')}
+        if label not in paths:raise ValueError('Unsupported source framework')
+        framework,group=paths[label]
+        image=next(x for x in info['dylibs'] if x['name']==f'/System/Library/{group}/{framework}.framework/{framework}')
         meta=cache.macho_metadata(image['load_address'])
         if meta['uuid']!=image['uuid']:raise ValueError('Framework UUID mismatch')
         cli=[int(l,16)for l in (scratch/f'{label}-starts.private.txt').read_text().splitlines() if l.startswith('0x')]
         if meta['function_starts']!=cli:raise ValueError('Independent function starts differ from CLI')
         result['frameworks'][framework]={**image,**{k:v for k,v in meta.items()if k!='function_starts'}}
-        symbols={m[2]:int(m[1],16) for m in re.finditer(r'^(0x[0-9a-f]+):[^\n]*?\t([^\t\n]+)\t?$',(scratch/f'{label}-symbols.private.txt').read_text(),re.M)}
-        for short,name in methods:
+        symbols=(scratch/f'{label}-symbols.private.txt').read_text()
+        for item in methods:
+            if len(item)not in (2,3):raise ValueError('Selection needs file/name and optional exact local-symbol address')
+            short,name=item[:2];requested=int(item[2],0)if len(item)==3 else None
             if not re.fullmatch('[a-z0-9-]{1,80}',short):raise ValueError('Unsafe output filename')
-            start=symbols[name];i=bisect.bisect_left(cli,start)
+            start=select_symbol(symbols,name,requested);i=bisect.bisect_left(cli,start)
             if i>=len(cli)-1 or cli[i]!=start:raise ValueError('Symbol is not a function start')
             end=cli[i+1];size=end-start
             if not 0<size<=128*1024 or size%4:raise ValueError('Function byte budget')

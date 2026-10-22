@@ -1,0 +1,14 @@
+{
+  "development_comparison_failed": true,
+  "records": 392,
+  "allowance_violations_before_fix": 252,
+  "max_absolute_error_before_fix": 0.3000000238418572,
+  "original_model_sha256": "09a74b29f22248c95c7d8477a6359b43d83b783a96b0af65533f318269a5623a",
+  "failed_full_receipt_retained_in_owned_private_scratch": true,
+  "cause": "Semantic field5 second-stage first input used mix(.7,a457,amount), but original SSA525 uses a484=mix(1,a457,amount); its other input a505 already applies the .7 branch. Fix the formula; keep rounding allowances unchanged.",
+  "tolerance_relaxed": false,
+  "inputs_or_failed_cases_removed": false,
+  "failed_full_receipt_sha256": "b051d263fc43f6814eb745ad7a9386c6efa91eb42cd4feb632553bcea9256b00",
+  "corrected_model_sha256": "ff6f85b87669060e7af70a5353429b5549dad655d9412097e8df05fe1de8a6ac",
+  "corrected_allowance_violations": 0
+}

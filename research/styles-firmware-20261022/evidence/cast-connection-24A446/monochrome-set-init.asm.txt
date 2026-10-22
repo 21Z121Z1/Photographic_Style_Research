@@ -1,0 +1,29 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+___109+[CMISmartStyleCCMPriorGenerator calculatePriorCCMforCast:tone:color:intensity:priorStrength:isStartupPrior:]_block_invoke
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d4334ea8:
+1d4334ea8: d503237f	pacibsp
+1d4334eac: d10083ff	sub	sp, sp, #0x20
+1d4334eb0: a9017bfd	stp	fp, lr, [sp, #0x10]
+1d4334eb4: 910043fd	add	fp, sp, #0x10
+1d4334eb8: d005ed88	adrp	x8, 0x1e00e6000
+1d4334ebc: f9405d00	ldr	x0, [x8, #0xb8]
+1d4334ec0: f006d228	adrp	x8, 0x1e1d7b000
+1d4334ec4: 91344108	add	x8, x8, #0xd10
+1d4334ec8: f9400102	ldr	x2, [x8] ; 0x1ef35a2d8 CFString 'StarkBW'
+1d4334ecc: f006d228	adrp	x8, 0x1e1d7b000
+1d4334ed0: 91346108	add	x8, x8, #0xd18
+1d4334ed4: f9400108	ldr	x8, [x8] ; 0x1ef35a238 CFString 'LongGray'
+1d4334ed8: a9007fe8	stp	x8, xzr, [sp]
+1d4334edc: 94f3652d	bl	0x1d800e390 ; SELECTOR setWithObjects:
+1d4334ee0: 94f59f88	bl	0x1d809cd00
+1d4334ee4: b009e028	adrp	x8, 0x1e7f39000
+1d4334ee8: f946a101	ldr	x1, [x8, #0xd40]
+1d4334eec: f906a100	str	x0, [x8, #0xd40]
+1d4334ef0: a9417bfd	ldp	fp, lr, [sp, #0x10]
+1d4334ef4: 910083ff	add	sp, sp, #0x20
+1d4334ef8: d50323ff	autibsp
+1d4334efc: ca1e07d0	eor	x16, lr, lr, lsl #0x1
+1d4334f00: b6f00050	tbz	x16, #0x3e, 0x1d4334f08
+1d4334f04: d4388e20	brk	#0xc471
+1d4334f08: 14f59fb6	b	0x1d809cde0
