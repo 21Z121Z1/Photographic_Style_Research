@@ -131,6 +131,9 @@ def build(source,names):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)=='renderSelectiveColorAdjustments':
+            w += ['%cp=getelementptr float,ptr %input,i64 7','%cast=addrspacecast ptr %cp to ptr addrspace(1)','%mp=getelementptr float,ptr %input,i64 6','%mf=load float,ptr %mp','%mh=fptrunc float %mf to half']
+            args='<3 x half> %x,ptr addrspace(1) %cast,ptr addrspace(1) %t,half %h3,half %h4,half %h5,half %mh'
         elif short(name)=='renderWarmthCastAdjustments':
             w += ['%cp=getelementptr float,ptr %input,i64 4','%cast=addrspacecast ptr %cp to ptr addrspace(1)']
             args='<3 x half> %x,ptr addrspace(1) %cast,half %h3'
