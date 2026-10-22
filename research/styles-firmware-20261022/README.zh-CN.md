@@ -112,3 +112,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S11-D：neutralizing三个活跃叶：[阶段报告](PROGRESS-S11-D.zh-CN.md)。
 
 - S11-E：完整neutralizing根与真实cast/stats合同：[阶段报告](PROGRESS-S11-E.zh-CN.md)。
+
+- S11-F：完整warmth根与保护/白平衡分支：[阶段报告](PROGRESS-S11-F.zh-CN.md)。

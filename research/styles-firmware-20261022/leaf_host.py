@@ -131,6 +131,9 @@ def build(source,names):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)=='renderWarmthCastAdjustments':
+            w += ['%cp=getelementptr float,ptr %input,i64 4','%cast=addrspacecast ptr %cp to ptr addrspace(1)']
+            args='<3 x half> %x,ptr addrspace(1) %cast,half %h3'
         elif short(name)=='renderNeutralizingAdjustments':
             w += ['%cp=getelementptr float,ptr %input,i64 10','%cast=addrspacecast ptr %cp to ptr addrspace(1)','%enabled=fcmp une float %f5,0.0','%up=getelementptr float,ptr %input,i64 6','%uf=load float,ptr %up','%use=fcmp une float %uf,0.0','%stats=alloca %struct.SSRStats,align 4','store %struct.SSRStats zeroinitializer,ptr %stats','%stats1=addrspacecast ptr %stats to ptr addrspace(1)']
             for i,group in enumerate([2,3,4]):w += [f'%stp{i}=getelementptr float,ptr %input,i64 {7+i}',f'%stf{i}=load float,ptr %stp{i}',f'%stg{i}=getelementptr %struct.SSRStats,ptr %stats,i64 0,i32 1,i64 {group},i32 4',f'store float %stf{i},ptr %stg{i}']
@@ -160,5 +163,7 @@ def build(source,names):
         for n in range(3):w += [f'%o{n}=extractelement <3 x half> %r,i32 {n}',f'%of{n}=fpext half %o{n} to float',f'%op{n}=getelementptr float,ptr %output,i64 {n}',f'store float %of{n},ptr %op{n}']
         w += ['ret void','}'];wrappers.append('\n'.join(w))
     globals_=re.findall(r'^@__air_sampler_state(?:\.\d+)? = .*$',source,re.M)
-    text='\n'.join([*re.findall(r'^%[^\n]+ = type [^\n]+$',source,re.M),*globals_,*bodies,shims(used),*wrappers,*[re.search(r'^attributes #'+n+r' = .*$',source,re.M)[0]for n in attrs],*[f'!{n} = {definitions[n]}'for n in sorted(ids,key=int)]])+'\n'
+    llvm_used=set(re.findall(r'@(llvm\.[^ (]+)\(', '\n'.join(bodies)))
+    llvm_decls=[re.sub(r' #\d+\s*$','',line)for line in source.splitlines()if line.startswith('declare ')and any('@'+name+'('in line for name in llvm_used)]
+    text='\n'.join([*re.findall(r'^%[^\n]+ = type [^\n]+$',source,re.M),*globals_,*bodies,*llvm_decls,shims(used),*wrappers,*[re.search(r'^attributes #'+n+r' = .*$',source,re.M)[0]for n in attrs],*[f'!{n} = {definitions[n]}'for n in sorted(ids,key=int)]])+'\n'
     return text,{short(n):hashlib.sha256(functions[n].encode()).hexdigest()for n in selected}
