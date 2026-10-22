@@ -128,6 +128,10 @@ def build(source,names):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)=='renderSkinAdjustments':
+            w += ['%coeff=getelementptr float,ptr %input,i64 9','%coeff1=addrspacecast ptr %coeff to ptr addrspace(1)']
+            args='<3 x half> %x,ptr addrspace(1) %coeff1,half %h5,half %h3'
+        elif short(name)=='highlightRecover':args='<3 x half> %x,half %h3,half undef,half undef,half %h4'
         elif short(name)=='whitesCurve':args='<3 x half> %x,ptr addrspace(1) %t,half %h4,half %h5'
         elif short(name)in ['contrastFilter','airyFilter','smoothSatFilter']:args='<3 x half> %x,half %h4'
         elif short(name)=='RichSat':args='<3 x half> %x,half %h4,half undef,half %h5'

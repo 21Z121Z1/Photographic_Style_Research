@@ -104,3 +104,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S10-F：完整 BG/FG 固定域接线、保留集合 unknown 与主入口剩余清单：[阶段报告](PROGRESS-S10-F.zh-CN.md)。
 
 - S11-A：单见证乘加定位与24个首零分母：[阶段报告](PROGRESS-S11-A.zh-CN.md)。
+
+- S11-B：复用皮肤算法的精度适配及高光条件模型：[阶段报告](PROGRESS-S11-B.zh-CN.md)。
