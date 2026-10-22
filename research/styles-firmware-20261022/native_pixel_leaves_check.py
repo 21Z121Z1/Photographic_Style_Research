@@ -19,6 +19,8 @@ def model(name,data,curve,*,point):
     if name in pixel_leaves.LEAVES:return pixel_leaves.LEAVES[name](rgb,amount)
     import pixel_tonal
     if name in pixel_tonal.FUNCTIONS:return pixel_tonal.FUNCTIONS[name](rgb,guide,amount)
+    import pixel_lighten
+    if name in pixel_lighten.FUNCTIONS:return pixel_lighten.FUNCTIONS[name](rgb,guide,amount)
     raise ValueError('Independent leaf model absent: '+name)
 
 
@@ -28,6 +30,8 @@ def cases(name):
     guides=[.4]
     if name in ('ShadowsFilter','ShadowsNegativeFilter'):
         amounts=[.1,.5,.9]if name=='ShadowsFilter'else[-.1,-.5,-.9];guides=[.05,.4,.9]
+    if name in ('lightenFilter','negativeLightenFilter'):
+        amounts=[.1,.5,.9]if name=='lightenFilter'else[1.1,1.4,1.8];guides=[.05,.4,.9]
     modes=[0,1]if name=='whitesCurve'else[0]
     return [np.array([*color,guide,amount,mode],dtype='f2').astype('f4')for color in rgb for guide in guides for amount in amounts for mode in modes]
 
@@ -59,7 +63,7 @@ def check(source: Path,output: Path,names):
     for name in names:
         a=[r for r in rows if r['leaf']==name];per[name]={'cases':len(a),'nonzero_cases':sum(r['nonzero_parameter']for r in a),'point_unknown':sum(r['point_unknown']is not None for r in a),'set_unknown':sum(r['set_unknown']is not None for r in a),'half_bit_mismatches_in_known_point_domain':sum(r['half_bit_mismatches']or 0 for r in a),'max_absolute_error_in_known_point_domain':max([r['max_absolute_error']for r in a if r['max_absolute_error']is not None],default=None),'range_violations_in_known_set_domain':sum(r['range_covered']is False for r in a)}
     r={'scope':__doc__,'hardware_reference':'iPhone17,3','build':'24A446','leaves':per,'records':len(rows),'original_function_text_sha256':functions,'original_function_bodies_modified':False,'host_fragment_sha256':hashlib.sha256(ir.encode()).hexdigest(),'host_math_C_sha256':hashlib.sha256(MATH_C.encode()).hexdigest(),'model_sha256':hashlib.sha256(Path(pixel_leaves.__file__).read_bytes()).hexdigest(),'arithmetic_sha256':hashlib.sha256((Path(__file__).parent/'leaf_numeric.py').read_bytes()).hexdigest(),'host_builder_sha256':hashlib.sha256((Path(__file__).parent/'leaf_host.py').read_bytes()).hexdigest(),'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'input_sha256':inputs_hash.hexdigest(),'native_output_sha256':hashlib.sha256(np.asarray(all_outputs,dtype='f4').tobytes()).hexdigest(),'GPU_executed':False,'libm_sampler_and_2u_4u_allowances_are_assumptions':True,'unimplemented_placeholders':False,'unknown_cases_retained':True,'accepted_batches_repeated':False,'rows':rows}
-    r['additional_model_sources']={name:hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest()for name in ['pixel_tonal.py']}
+    r['additional_model_sources']={name:hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest()for name in ['pixel_tonal.py','pixel_lighten.py']}
     output.write_text(json.dumps(r,indent=2,allow_nan=False)+'\n')
     if any(x['range_violations_in_known_set_domain']for x in per.values()):raise AssertionError('Leaf output outside declared box; receipt retained')
     return r

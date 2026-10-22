@@ -24,6 +24,8 @@ cast表与负Tone见 [PROGRESS-S7.zh-CN.md](PROGRESS-S7.zh-CN.md)：复用同一
 
 Shadows两叶见 [PROGRESS-S10-B.zh-CN.md](PROGRESS-S10-B.zh-CN.md)：各45个非零guide/amount/RGB案例、各135分量逐位差异0，集合越界0；独立模型和adapter接回原controller，95项单元测试通过。只验两个新叶，未重复此前批次，继续saturation/lighten及剩余叶。
 
+Lighten两叶见 [PROGRESS-S10-C.zh-CN.md](PROGRESS-S10-C.zh-CN.md)：各45组/135分量逐位差异0，集合越界0；单独处理negative叶指数参数、guide的未证pow域，默认集合接口接回已完成叶，whites曲线独立供给。98项单元测试通过；后续继续saturation和剩余叶，不等同GPU或照片链通过。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|
