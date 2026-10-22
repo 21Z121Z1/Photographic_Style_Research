@@ -1,0 +1,71 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleProxyRendererV1 _populateStaticRenderParametersFromTuning:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d4372fe8:
+1d4372fe8: d503237f	pacibsp
+1d4372fec: d10483ff	sub	sp, sp, #0x120
+1d4372ff0: a90c6ffc	stp	x28, x27, [sp, #0xc0]
+1d4372ff4: a90d67fa	stp	x26, x25, [sp, #0xd0]
+1d4372ff8: a90e5ff8	stp	x24, x23, [sp, #0xe0]
+1d4372ffc: a90f57f6	stp	x22, x21, [sp, #0xf0]
+1d4373000: a9104ff4	stp	x20, x19, [sp, #0x100]
+1d4373004: a9117bfd	stp	fp, lr, [sp, #0x110]
+1d4373008: 910443fd	add	fp, sp, #0x110
+1d437300c: aa0003f4	mov	x20, x0
+1d4373010: 94f4a7d0	bl	0x1d809cf50
+1d4373014: aa0003f3	mov	x19, x0
+1d4373018: f940da80	ldr	x0, [x20, #0x1b0]
+1d437301c: 94f2f99d	bl	0x1d8031690 ; SELECTOR contents
+1d4373020: aa0003f6	mov	x22, x0
+1d4373024: 6f00e400	movi	v0.2d, #0
+1d4373028: ad0403e0	stp	q0, q0, [sp, #0x80]
+1d437302c: ad0503e0	stp	q0, q0, [sp, #0xa0]
+1d4373030: f9413688	ldr	x8, [x20, #0x268]
+1d4373034: 94f4a7ff	bl	0x1d809d030
+1d4373038: aa0003f5	mov	x21, x0
+1d437303c: 910203e2	add	x2, sp, #0x80
+1d4373040: 910003e3	mov	x3, sp
+1d4373044: 52800204	mov	w4, #0x10
+1d4373048: 94f23af6	bl	0x1d8001c20 ; SELECTOR countByEnumeratingWithState:objects:count:
+1d437304c: b40003c0	cbz	x0, 0x1d43730c4
+1d4373050: aa0003f7	mov	x23, x0
+1d4373054: f9404be8	ldr	x8, [sp, #0x90]
+1d4373058: f9400119	ldr	x25, [x8]
+1d437305c: d280001a	mov	x26, #0
+1d4373060: f9404be8	ldr	x8, [sp, #0x90]
+1d4373064: f9400108	ldr	x8, [x8]
+1d4373068: eb19011f	cmp	x8, x25
+1d437306c: 54000060	b.eq	0x1d4373078
+1d4373070: aa1503e0	mov	x0, x21
+1d4373074: 94f4a72f	bl	0x1d809cd30
+1d4373078: f94047e8	ldr	x8, [sp, #0x88]
+1d437307c: f87a7903	ldr	x3, [x8, x26, lsl #0x3]
+1d4373080: aa1403e0	mov	x0, x20
+1d4373084: aa1603e2	mov	x2, x22
+1d4373088: aa1303e4	mov	x4, x19
+1d437308c: 94f3d815	bl	0x1d80690e0 ; SELECTOR _populateStaticRenderParameters:forInputStyle:fromTuning:
+1d4373090: 910a82d6	add	x22, x22, #0x2a0
+1d4373094: 9100075a	add	x26, x26, #0x1
+1d4373098: f10006f7	subs	x23, x23, #0x1
+1d437309c: 54fffe21	b.ne	0x1d4373060
+1d43730a0: aa0003f8	mov	x24, x0
+1d43730a4: 910203e2	add	x2, sp, #0x80
+1d43730a8: 910003e3	mov	x3, sp
+1d43730ac: aa1503e0	mov	x0, x21
+1d43730b0: 52800204	mov	w4, #0x10
+1d43730b4: 94f23adb	bl	0x1d8001c20 ; SELECTOR countByEnumeratingWithState:objects:count:
+1d43730b8: aa0003f7	mov	x23, x0
+1d43730bc: b5fffd00	cbnz	x0, 0x1d437305c
+1d43730c0: 14000002	b	0x1d43730c8
+1d43730c4: 52800018	mov	w24, #0
+1d43730c8: 94f4a756	bl	0x1d809ce20
+1d43730cc: 94f4a74d	bl	0x1d809ce00
+1d43730d0: aa1803e0	mov	x0, x24
+1d43730d4: a9517bfd	ldp	fp, lr, [sp, #0x110]
+1d43730d8: a9504ff4	ldp	x20, x19, [sp, #0x100]
+1d43730dc: a94f57f6	ldp	x22, x21, [sp, #0xf0]
+1d43730e0: a94e5ff8	ldp	x24, x23, [sp, #0xe0]
+1d43730e4: a94d67fa	ldp	x26, x25, [sp, #0xd0]
+1d43730e8: a94c6ffc	ldp	x28, x27, [sp, #0xc0]
+1d43730ec: 910483ff	add	sp, sp, #0x120
+1d43730f0: d65f0fff	retab

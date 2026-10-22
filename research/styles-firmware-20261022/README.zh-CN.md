@@ -18,6 +18,8 @@ cast表与负Tone见 [PROGRESS-S7.zh-CN.md](PROGRESS-S7.zh-CN.md)：复用同一
 
 正Tone完整字段与接口见 [PROGRESS-S8.zh-CN.md](PROGRESS-S8.zh-CN.md)：复用已验收FG9/10与负Tone算术工具，新增其余38字段。409组、15542系数的原AIR宿主比较有991个逐位差异；全局max约.15，来自FG mids在pow分支边界的真实跳变，27组保留分支包络；非该类案例max2.23e-7，声明误差假设下越界0。原68B场景缩放80组240值逐位差异0。正/负40字段通过强类型接口接到命名SSR字段与已有两字段皮肤consumer；65项单元测试通过。31槽有已选consumer读取点，9槽仍缺静态读取连接；BG/FG/semantic完整像素helper尚未独立建模，不把接口测试称全管线通过。
 
+边界集合、真实枚举与semantic helper见 [PROGRESS-S9.zh-CN.md](PROGRESS-S9.zh-CN.md)：12组相邻f32探针只验集合覆盖；未决状态/范围随接口传播，默认禁止未决中心打包。scene输入1/2/3→3/7/10，其他→4；code21在此resolver不可达，S8该算术测试属反事实。tuning实际8个键映射1..8，未知键走错误冷路径，不能默认0。全部215资源头中8个相关模块及CPU拷贝/别名仍未找到9槽读取，保留unresolved。完整semantic helper新宿主136组/408分量逐位差异0，但用显式宿主采样shim，且实际仅texture6或7缺失时调用。BG/FG推进到分离门控/顺序、集合接口和共享mids，受控48组/144分量逐位差异0；其他叶算子返回unknown。81项单元测试通过，仍没有完整GPU/照片管线认证。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|

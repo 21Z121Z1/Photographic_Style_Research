@@ -1,0 +1,131 @@
+{
+  "scope": "Actual matched enum tables, dictionary pairing and unknown-path evidence.",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "checked_methods": [
+    {
+      "file": "evidence/enum-24A446/scene-enum.asm.txt",
+      "bytes": 36,
+      "sha256": "59e3564b888994238a0f256209b63d0ca341c29f2b76748c18cc361f31b9cf93"
+    },
+    {
+      "file": "evidence/enum-24A446/tuning-enum.asm.txt",
+      "bytes": 128,
+      "sha256": "7418dd5ebc4be2356f66aba465f752907de6bd77501c002b078b5c17ebbe8a15"
+    },
+    {
+      "file": "evidence/enum-24A446/tuning-dictionary.asm.txt",
+      "bytes": 264,
+      "sha256": "07296698b414dab3b60181bdea8df2d29b3705a45e5bade61a21e3b67631ddd9"
+    },
+    {
+      "file": "evidence/enum-24A446/tuning-enum-cold1.asm.txt",
+      "bytes": 20,
+      "sha256": "c806a98cb1dbf1981958f03b7cf112ede58a0e9e6a13de2cdb514d339b1ed445"
+    },
+    {
+      "file": "evidence/enum-24A446/tuning-enum-cold2.asm.txt",
+      "bytes": 44,
+      "sha256": "dc342af5d9cc53418478147cf21c4dee41d39d8d95a759e2c81ff2397dac0d69"
+    },
+    {
+      "file": "evidence/enum-24A446/proxy-static.asm.txt",
+      "bytes": 268,
+      "sha256": "d84d3ac931e3518e7e74c09f5fe3e2523c206dae6d2c01e2f6dde560c3b12154"
+    },
+    {
+      "file": "evidence/enum-24A446/proxy-input-static.asm.txt",
+      "bytes": 616,
+      "sha256": "82b6f09c3f805bfcf6854e6130a5d938732a78496637f672039c6a14bcb7ba7c"
+    },
+    {
+      "file": "evidence/enum-number-24A446/constant-int-value.asm.txt",
+      "bytes": 20,
+      "sha256": "d31289dbf6b229236ebc3536946ace8f011a792c01773199fe21bd0a8baa4b1b"
+    }
+  ],
+  "scene": {
+    "input_type": "uint32 semanticStyleSceneType",
+    "output_SSR_byte": 32,
+    "mapping": {
+      "1": 3,
+      "2": 7,
+      "3": 10
+    },
+    "unknown_fallback": 4,
+    "table_source": {
+      "file": "dyld_shared_cache_arm64e.21",
+      "cache_uuid": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB",
+      "file_offset": 68041952,
+      "vm_address": "0x1d44e3ce0",
+      "bytes": 12,
+      "sha256": "a2a973596defb4797a07c9aacb65a6c50306363047b219cef8959beec7932b17"
+    },
+    "table_sha256": "a2a973596defb4797a07c9aacb65a6c50306363047b219cef8959beec7932b17",
+    "resolved_21_reachable_from_this_resolver": false,
+    "code21_scaling_test_is_counterfactual": true
+  },
+  "tuning": {
+    "input_type": "exact dictionary key/string equality; case sensitive",
+    "output_SSR_byte": 652,
+    "rows": [
+      {
+        "name": "DefaultParameters",
+        "value": 1,
+        "key_address": "0x1ef35a178",
+        "number_address": "0x1ef385e58"
+      },
+      {
+        "name": "WYSIWYG",
+        "value": 2,
+        "key_address": "0x1ef35dd78",
+        "number_address": "0x1ef385e70"
+      },
+      {
+        "name": "UB",
+        "value": 3,
+        "key_address": "0x1ef35dd98",
+        "number_address": "0x1ef385e88"
+      },
+      {
+        "name": "DF",
+        "value": 4,
+        "key_address": "0x1ef35ddb8",
+        "number_address": "0x1ef385ea0"
+      },
+      {
+        "name": "DigitalFlash",
+        "value": 5,
+        "key_address": "0x1ef35ddd8",
+        "number_address": "0x1ef385eb8"
+      },
+      {
+        "name": "SWFR",
+        "value": 6,
+        "key_address": "0x1ef35ddf8",
+        "number_address": "0x1ef385ed0"
+      },
+      {
+        "name": "Video",
+        "value": 7,
+        "key_address": "0x1ef35de18",
+        "number_address": "0x1ef385ee8"
+      },
+      {
+        "name": "QuadraSFD",
+        "value": 8,
+        "key_address": "0x1ef35de38",
+        "number_address": "0x1ef385f00"
+      }
+    ],
+    "numeric_intValue_ivar_offset": 16,
+    "unknown_fallback": null,
+    "unknown_result": "error/assertion cold path, not a default enum",
+    "reserved_invalid_value": 9,
+    "assert_condition": "type != SSRTuningTypeCount",
+    "source_unknown_branch": "0x1d42f3aa8 cbz /0x1d42f3ab8 eq9 ->0x1d42f3ae4 ->cold2 0x1d4475e08; no normal return from that path"
+  },
+  "ObjC_or_assertion_executed": false,
+  "raw_binary_uploaded": false
+}

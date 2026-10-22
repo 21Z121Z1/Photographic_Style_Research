@@ -1,0 +1,156 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "CMImaging": {
+      "index": 542,
+      "name": "/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",
+      "version": "764.22.14.0.0",
+      "uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "load_address": 7854592000,
+      "header_and_commands_sha256": "16fec996212b5cc7ad6286abb30426c24c8a9c53b0e677b3efd00e254a1727b0",
+      "function_starts_sha256": "0a07b7a708d8f221cf859b2f28480a5473b8bc7ee5974eb9fba0cf5d7d18e5c1"
+    }
+  },
+  "methods": [
+    {
+      "name": "_SSRSceneTypeEnumFromSemanticStyleSceneType",
+      "framework": "CMImaging",
+      "file": "scene-enum.asm.txt",
+      "end_exclusive": "0x1d42f3d08",
+      "first_address": "0x1d42f3ce4",
+      "last_address": "0x1d42f3d04",
+      "instruction_count": 9,
+      "checked_bytes": 36,
+      "instructions_sha256": "59e3564b888994238a0f256209b63d0ca341c29f2b76748c18cc361f31b9cf93",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "93a513815df6d8e44482fef11aabf9f596de81a6eb2319d6381ba92caf8e2ca7"
+    },
+    {
+      "name": "_SSRTuningTypeEnumFromString",
+      "framework": "CMImaging",
+      "file": "tuning-enum.asm.txt",
+      "end_exclusive": "0x1d42f3ae8",
+      "first_address": "0x1d42f3a68",
+      "last_address": "0x1d42f3ae4",
+      "instruction_count": 32,
+      "checked_bytes": 128,
+      "instructions_sha256": "7418dd5ebc4be2356f66aba465f752907de6bd77501c002b078b5c17ebbe8a15",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "eb3a4d4177af3e51dfbb5d902bc27234d140570d4f85c37fab24a1647295cb80"
+    },
+    {
+      "name": "___SSRTuningTypeEnumFromString_block_invoke",
+      "framework": "CMImaging",
+      "file": "tuning-dictionary.asm.txt",
+      "end_exclusive": "0x1d4336ac0",
+      "first_address": "0x1d43369b8",
+      "last_address": "0x1d4336abc",
+      "instruction_count": 66,
+      "checked_bytes": 264,
+      "instructions_sha256": "07296698b414dab3b60181bdea8df2d29b3705a45e5bade61a21e3b67631ddd9",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "5ee02002791f4e299930f3a77774e9d81a245ab94b3de8739f0a1e3ca95e14d9"
+    },
+    {
+      "name": "_SSRTuningTypeEnumFromString.cold.1",
+      "framework": "CMImaging",
+      "file": "tuning-enum-cold1.asm.txt",
+      "end_exclusive": "0x1d4475e08",
+      "first_address": "0x1d4475df4",
+      "last_address": "0x1d4475e04",
+      "instruction_count": 5,
+      "checked_bytes": 20,
+      "instructions_sha256": "c806a98cb1dbf1981958f03b7cf112ede58a0e9e6a13de2cdb514d339b1ed445",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "348b40019ddf7a2995e1487b1e7aafaf9ae0ec7fb23c831c674c1a82bbcd3a61"
+    },
+    {
+      "name": "_SSRTuningTypeEnumFromString.cold.2",
+      "framework": "CMImaging",
+      "file": "tuning-enum-cold2.asm.txt",
+      "end_exclusive": "0x1d4475e34",
+      "first_address": "0x1d4475e08",
+      "last_address": "0x1d4475e30",
+      "instruction_count": 11,
+      "checked_bytes": 44,
+      "instructions_sha256": "dc342af5d9cc53418478147cf21c4dee41d39d8d95a759e2c81ff2397dac0d69",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "8dd838f22e085fa73fe5a693b65b5f00b28effaae1e37d20093322ef893211b3"
+    },
+    {
+      "name": "-[CMISmartStyleProxyRendererV1 _populateStaticRenderParametersFromTuning:]",
+      "framework": "CMImaging",
+      "file": "proxy-static.asm.txt",
+      "end_exclusive": "0x1d43730f4",
+      "first_address": "0x1d4372fe8",
+      "last_address": "0x1d43730f0",
+      "instruction_count": 67,
+      "checked_bytes": 268,
+      "instructions_sha256": "d84d3ac931e3518e7e74c09f5fe3e2523c206dae6d2c01e2f6dde560c3b12154",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "c3b4eed85b2708f2e59a5ec2094370098873734ae8b62c7d95811c0e1a0e72d9"
+    },
+    {
+      "name": "-[CMISmartStyleProxyRendererV1 _populateStaticRenderParameters:forInputStyle:fromTuning:]",
+      "framework": "CMImaging",
+      "file": "proxy-input-static.asm.txt",
+      "end_exclusive": "0x1d437335c",
+      "first_address": "0x1d43730f4",
+      "last_address": "0x1d4373358",
+      "instruction_count": 154,
+      "checked_bytes": 616,
+      "instructions_sha256": "82b6f09c3f805bfcf6854e6130a5d938732a78496637f672039c6a14bcb7ba7c",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "333fd5edcb429c84b66afefc04fb8894de25cc63ceb97b3834d2d798e370c00d"
+    }
+  ],
+  "exporter_sha256": "38db3af22010a28275987e4dfc712f0bebcff5fdcb7405c93376a971e2bc2b8e",
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 1376,
+  "exported_text_postprocess": "Remove only trailing blank lines at EOF. Checked instruction words/hash unchanged."
+}

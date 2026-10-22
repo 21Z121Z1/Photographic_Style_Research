@@ -1,0 +1,270 @@
+{
+  "scope": "Bounded named-struct/constant-offset alias trace for nine unresolved slots.\n\nScans all 215 payload headers for typed/name markers, then disassembles only\nmatches. Records loads/stores/vector spans/copies and unresolved escapes.\nAbsence in this bounded inventory never means a field is globally unused.\n",
+  "source_metallib_sha256": "f6d825a7e5c00d0eec2e4721c51bdb7a6b9554073dc632273dec825ae1bf705f",
+  "payload_headers_scanned": 215,
+  "selected_typed_modules": [
+    {
+      "index": 1,
+      "payload_bytes": 9836,
+      "payload_sha256": "bf38a078c104c28e215d7829249d226f886e36da36eb9d9f7954dcfeeb541288",
+      "canonical_sha256": "dffc1efce45c203e984d669165da35eaf618b3b663bd911cc70041051fd27160"
+    },
+    {
+      "index": 2,
+      "payload_bytes": 26720,
+      "payload_sha256": "095744fec38cf78ea4b87a63f2f6a2f0a533bd3a7ecf207d8b43275f6d7a2ec7",
+      "canonical_sha256": "358d79b5dee72d2823dc621f474a67cecf3120f8f3437d8dca49485349ac17d4"
+    },
+    {
+      "index": 5,
+      "payload_bytes": 13940,
+      "payload_sha256": "cb876ef2af9e6ff7c8672ccad392e97f1d5dae835bf109d1861616dc80d5b55a",
+      "canonical_sha256": "3c0b3a7c5d8f90055748e21a68aba9b750da38f1c10122093e62eacb93b70b48"
+    },
+    {
+      "index": 6,
+      "payload_bytes": 16832,
+      "payload_sha256": "3e0c6508333ed17bbf04214c84fd9aa8201c6555abfac491db17658532845c58",
+      "canonical_sha256": "18829186053e194efd7d4ace2a76de248a9007ec859dcfac8dcaf7a7d0f1f983"
+    },
+    {
+      "index": 7,
+      "payload_bytes": 18628,
+      "payload_sha256": "cdd27db0b53979fd78cb38b264a061f47931847800f9ca6439846ab042136709",
+      "canonical_sha256": "ccee8f0df7972d874feaad62fdb79b70c96c0ffcbbbfbc1940d9524a0c08a2fc"
+    },
+    {
+      "index": 10,
+      "payload_bytes": 76276,
+      "payload_sha256": "1af38e5c4a46133910fc839db079339e302b157f8ff3c694addc9f755cf762ce",
+      "canonical_sha256": "87e4205e385f6731aa9f739e92580156c49a73c4556b2d790390fe76e7627224"
+    },
+    {
+      "index": 11,
+      "payload_bytes": 17396,
+      "payload_sha256": "a52943805c1b3e6643feb56b287a2a99c23d7417fec3c64f048b0f31c9e26990",
+      "canonical_sha256": "5ca4d2dce19c7e8825f0608b04d3637ddf05f3eb507f33430670617624c02c53"
+    },
+    {
+      "index": 13,
+      "payload_bytes": 66552,
+      "payload_sha256": "3a9b98997034134ae0c50480b34243484e928695cc209d5b64017c1f62104d73",
+      "canonical_sha256": "b56d7f51d4556af99356bf5963d270358b2422425b7ba929f056d1a4c95668ea"
+    }
+  ],
+  "events": [
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 318,
+      "kind": "store",
+      "offset": 512,
+      "bytes": 4,
+      "fields": [
+        "bg.airy"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 330,
+      "kind": "store",
+      "offset": 536,
+      "bytes": 4,
+      "fields": [
+        "bg.warmthMatchI"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 332,
+      "kind": "store",
+      "offset": 540,
+      "bytes": 4,
+      "fields": [
+        "bg.warmthMatchQ"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 334,
+      "kind": "store",
+      "offset": 544,
+      "bytes": 4,
+      "fields": [
+        "bg.warmthMatchSkyI"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 336,
+      "kind": "store",
+      "offset": 548,
+      "bytes": 4,
+      "fields": [
+        "bg.warmthMatchSkyQ"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 338,
+      "kind": "store",
+      "offset": 552,
+      "bytes": 4,
+      "fields": [
+        "bg.bgGlobalMix"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 484,
+      "kind": "store",
+      "offset": 560,
+      "bytes": 4,
+      "fields": [
+        "fg.airy"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 506,
+      "kind": "store",
+      "offset": 604,
+      "bytes": 4,
+      "fields": [
+        "fg.faceI"
+      ]
+    },
+    {
+      "module": 11,
+      "function": "RenderingParamsFromStats",
+      "line": 508,
+      "kind": "store",
+      "offset": 608,
+      "bytes": 4,
+      "fields": [
+        "fg.faceQ"
+      ]
+    }
+  ],
+  "unresolved_aliases_or_copies": [],
+  "cpu_candidates": [
+    {
+      "file": "evidence/render-follow-24A446/render-dynamic-parameters.asm.txt",
+      "instructions_sha256": "216996f041124314e7d287e2cee75c5acd28980ffc2ae503d47c873e363670c0",
+      "checked_bytes": 272,
+      "literal_offset_candidates": [],
+      "candidate_offsets_are_not_proven_parameter_base_aliases": true
+    },
+    {
+      "file": "evidence/render-follow-24A446/render-static-parameters.asm.txt",
+      "instructions_sha256": "83f9dc0b679ea83e57961ba9ca073b2aa2877f1fd30906d21ab471a16345d256",
+      "checked_bytes": 788,
+      "literal_offset_candidates": [],
+      "candidate_offsets_are_not_proven_parameter_base_aliases": true
+    },
+    {
+      "file": "evidence/render-follow-24A446/render-setup-params.asm.txt",
+      "instructions_sha256": "edf90989b27e92fa78b8f9e7d8d6e77201fdf24f39a9ba586a2dcdff249dfcbb",
+      "checked_bytes": 320,
+      "literal_offset_candidates": [],
+      "candidate_offsets_are_not_proven_parameter_base_aliases": true
+    },
+    {
+      "file": "evidence/enum-24A446/proxy-static.asm.txt",
+      "instructions_sha256": "d84d3ac931e3518e7e74c09f5fe3e2523c206dae6d2c01e2f6dde560c3b12154",
+      "checked_bytes": 268,
+      "literal_offset_candidates": [],
+      "candidate_offsets_are_not_proven_parameter_base_aliases": true
+    },
+    {
+      "file": "evidence/enum-24A446/proxy-input-static.asm.txt",
+      "instructions_sha256": "82b6f09c3f805bfcf6854e6130a5d938732a78496637f672039c6a14bcb7ba7c",
+      "checked_bytes": 616,
+      "literal_offset_candidates": [
+        "1d437323c: b94232c0\tldr\tw0, [x22, #0x230]"
+      ],
+      "candidate_offsets_are_not_proven_parameter_base_aliases": true
+    }
+  ],
+  "known_CPU_tuning_copies": {
+    "cast": [
+      36,
+      172
+    ],
+    "tone": [
+      172,
+      436
+    ],
+    "color": [
+      436,
+      452
+    ],
+    "note": "These exact getValue:size: spans stop before the nine output slots; proxy uses the same spans and 672B array stride."
+  },
+  "fields": {
+    "bg.airy": {
+      "offset": 512,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "bg.warmthMatchI": {
+      "offset": 536,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "bg.warmthMatchQ": {
+      "offset": 540,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "bg.warmthMatchSkyI": {
+      "offset": 544,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "bg.warmthMatchSkyQ": {
+      "offset": 548,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "bg.bgGlobalMix": {
+      "offset": 552,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "fg.airy": {
+      "offset": 560,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "fg.faceI": {
+      "offset": 604,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    },
+    "fg.faceQ": {
+      "offset": 608,
+      "reads": 0,
+      "writes": 1,
+      "status": "unresolved consumer; not unused"
+    }
+  },
+  "trace_complete_for_all_possible_CPU_or_untyped_shader_aliases": false,
+  "raw_AIR_uploaded": false,
+  "auditor_sha256": "f3e3f1c9f9d7e0d6e85be756b9106816d6a511e26fab63d32dd48cefe7e66c5e"
+}

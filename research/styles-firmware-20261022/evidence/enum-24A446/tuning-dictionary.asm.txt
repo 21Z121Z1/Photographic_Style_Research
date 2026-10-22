@@ -1,0 +1,70 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+___SSRTuningTypeEnumFromString_block_invoke
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d43369b8:
+1d43369b8: d503237f	pacibsp
+1d43369bc: d10243ff	sub	sp, sp, #0x90
+1d43369c0: a9087bfd	stp	fp, lr, [sp, #0x80]
+1d43369c4: 910203fd	add	fp, sp, #0x80
+1d43369c8: b006d228	adrp	x8, 0x1e1d7b000
+1d43369cc: 9135e108	add	x8, x8, #0xd78
+1d43369d0: f00d8269	adrp	x9, 0x1ef385000
+1d43369d4: 91396129	add	x9, x9, #0xe58
+1d43369d8: f9400108	ldr	x8, [x8] ; 0x1ef35a178 CFString 'DefaultParameters'
+1d43369dc: b006d22a	adrp	x10, 0x1e1d7b000
+1d43369e0: 9136014a	add	x10, x10, #0xd80
+1d43369e4: f940014a	ldr	x10, [x10] ; 0x1ef35dd78 CFString 'WYSIWYG'
+1d43369e8: a9002be8	stp	x8, x10, [sp]
+1d43369ec: f00d8268	adrp	x8, 0x1ef385000
+1d43369f0: 9139c108	add	x8, x8, #0xe70
+1d43369f4: a90423e9	stp	x9, x8, [sp, #0x40]
+1d43369f8: b006d228	adrp	x8, 0x1e1d7b000
+1d43369fc: 91362108	add	x8, x8, #0xd88
+1d4336a00: f9400108	ldr	x8, [x8] ; 0x1ef35dd98 CFString 'UB'
+1d4336a04: f00d8269	adrp	x9, 0x1ef385000
+1d4336a08: 913a2129	add	x9, x9, #0xe88
+1d4336a0c: b006d22a	adrp	x10, 0x1e1d7b000
+1d4336a10: 9136414a	add	x10, x10, #0xd90
+1d4336a14: f940014a	ldr	x10, [x10] ; 0x1ef35ddb8 CFString 'DF'
+1d4336a18: a9012be8	stp	x8, x10, [sp, #0x10]
+1d4336a1c: f00d8268	adrp	x8, 0x1ef385000
+1d4336a20: 913a8108	add	x8, x8, #0xea0
+1d4336a24: a90523e9	stp	x9, x8, [sp, #0x50]
+1d4336a28: b006d228	adrp	x8, 0x1e1d7b000
+1d4336a2c: 91366108	add	x8, x8, #0xd98
+1d4336a30: f00d8269	adrp	x9, 0x1ef385000
+1d4336a34: 913ae129	add	x9, x9, #0xeb8
+1d4336a38: b006d22a	adrp	x10, 0x1e1d7b000
+1d4336a3c: 9136814a	add	x10, x10, #0xda0
+1d4336a40: f9400108	ldr	x8, [x8] ; 0x1ef35ddd8 CFString 'DigitalFlash'
+1d4336a44: f940014a	ldr	x10, [x10] ; 0x1ef35ddf8 CFString 'SWFR'
+1d4336a48: a9022be8	stp	x8, x10, [sp, #0x20]
+1d4336a4c: f00d8268	adrp	x8, 0x1ef385000
+1d4336a50: 913b4108	add	x8, x8, #0xed0
+1d4336a54: a90623e9	stp	x9, x8, [sp, #0x60]
+1d4336a58: b006d228	adrp	x8, 0x1e1d7b000
+1d4336a5c: 9136a108	add	x8, x8, #0xda8
+1d4336a60: f00d8269	adrp	x9, 0x1ef385000
+1d4336a64: 913ba129	add	x9, x9, #0xee8
+1d4336a68: f9400108	ldr	x8, [x8] ; 0x1ef35de18 CFString 'Video'
+1d4336a6c: b006d22a	adrp	x10, 0x1e1d7b000
+1d4336a70: 9136c14a	add	x10, x10, #0xdb0
+1d4336a74: f940014a	ldr	x10, [x10] ; 0x1ef35de38 CFString 'QuadraSFD'
+1d4336a78: a9032be8	stp	x8, x10, [sp, #0x30]
+1d4336a7c: f00d8268	adrp	x8, 0x1ef385000
+1d4336a80: 913c0108	add	x8, x8, #0xf00
+1d4336a84: a90723e9	stp	x9, x8, [sp, #0x70]
+1d4336a88: 9005ed88	adrp	x8, 0x1e00e6000
+1d4336a8c: f9401100	ldr	x0, [x8, #0x20]
+1d4336a90: 910103e2	add	x2, sp, #0x40
+1d4336a94: 910003e3	mov	x3, sp
+1d4336a98: 52800104	mov	w4, #0x8
+1d4336a9c: 94f32ce5	bl	0x1d8001e30 ; SELECTOR dictionaryWithObjects:forKeys:count:
+1d4336aa0: 94f59898	bl	0x1d809cd00
+1d4336aa4: f009e008	adrp	x8, 0x1e7f39000
+1d4336aa8: f946b109	ldr	x9, [x8, #0xd60]
+1d4336aac: f906b100	str	x0, [x8, #0xd60]
+1d4336ab0: 94f59900	bl	0x1d809ceb0
+1d4336ab4: a9487bfd	ldp	fp, lr, [sp, #0x80]
+1d4336ab8: 910243ff	add	sp, sp, #0x90
+1d4336abc: d65f0fff	retab

@@ -1,0 +1,36 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+_SSRTuningTypeEnumFromString
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42f3a68:
+1d42f3a68: d503237f	pacibsp
+1d42f3a6c: a9bd57f6	stp	x22, x21, [sp, #-0x30]!
+1d42f3a70: a9014ff4	stp	x20, x19, [sp, #0x10]
+1d42f3a74: a9027bfd	stp	fp, lr, [sp, #0x20]
+1d42f3a78: 910083fd	add	fp, sp, #0x20
+1d42f3a7c: 94f6a511	bl	0x1d809cec0
+1d42f3a80: aa0003f3	mov	x19, x0
+1d42f3a84: d009e228	adrp	x8, 0x1e7f39000
+1d42f3a88: f946ad08	ldr	x8, [x8, #0xd58]
+1d42f3a8c: b100051f	cmn	x8, #0x1
+1d42f3a90: 54000261	b.ne	0x1d42f3adc
+1d42f3a94: d009e228	adrp	x8, 0x1e7f39000
+1d42f3a98: f946b100	ldr	x0, [x8, #0xd60]
+1d42f3a9c: aa1303e2	mov	x2, x19
+1d42f3aa0: 94f45fd4	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42f3aa4: 94f6a497	bl	0x1d809cd00
+1d42f3aa8: b40001e0	cbz	x0, 0x1d42f3ae4
+1d42f3aac: aa0003f4	mov	x20, x0
+1d42f3ab0: 94f45c0c	bl	0x1d800aae0 ; SELECTOR intValue
+1d42f3ab4: 7100241f	cmp	w0, #0x9
+1d42f3ab8: 54000160	b.eq	0x1d42f3ae4
+1d42f3abc: aa0003f5	mov	x21, x0
+1d42f3ac0: 94f6a4d4	bl	0x1d809ce10
+1d42f3ac4: 94f6a4cf	bl	0x1d809ce00
+1d42f3ac8: aa1503e0	mov	x0, x21
+1d42f3acc: a9427bfd	ldp	fp, lr, [sp, #0x20]
+1d42f3ad0: a9414ff4	ldp	x20, x19, [sp, #0x10]
+1d42f3ad4: a8c357f6	ldp	x22, x21, [sp], #0x30
+1d42f3ad8: d65f0fff	retab
+1d42f3adc: 940608c6	bl	0x1d4475df4
+1d42f3ae0: 17ffffed	b	0x1d42f3a94
+1d42f3ae4: 940608c9	bl	0x1d4475e08

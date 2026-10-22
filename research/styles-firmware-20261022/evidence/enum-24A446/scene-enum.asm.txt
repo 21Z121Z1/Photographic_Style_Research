@@ -1,0 +1,13 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+_SSRSceneTypeEnumFromSemanticStyleSceneType
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42f3ce4:
+1d42f3ce4: 51000408	sub	w8, w0, #0x1
+1d42f3ce8: 7100091f	cmp	w8, #0x2
+1d42f3cec: 540000a8	b.hi	0x1d42f3d00
+1d42f3cf0: 90000f89	adrp	x9, 0x1d44e3000
+1d42f3cf4: 91338129	add	x9, x9, #0xce0
+1d42f3cf8: b8685920	ldr	w0, [x9, w8, uxtw #0x2]
+1d42f3cfc: d65f03c0	ret
+1d42f3d00: 52800080	mov	w0, #0x4
+1d42f3d04: d65f03c0	ret

@@ -1,0 +1,66 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "Foundation": {
+      "index": 9,
+      "name": "/System/Library/Frameworks/Foundation.framework/Foundation",
+      "version": "5027.0.69.0.0",
+      "uuid": "C041F1D0-5EF1-30A3-BF96-830976173B56",
+      "load_address": 6453846016,
+      "header_and_commands_sha256": "67dfc4484b46791778b4f9674c50eba03449f9779e1058790f1dce06bc050a07",
+      "function_starts_sha256": "579ceb997430136ea57aec88ffdd87751438e67a2503c8a37aab0304e6ff1bf9"
+    }
+  },
+  "methods": [
+    {
+      "name": "-[NSConstantIntegerNumber intValue]",
+      "framework": "Foundation",
+      "file": "constant-int-value.asm.txt",
+      "end_exclusive": "0x180b247e0",
+      "first_address": "0x180b247cc",
+      "last_address": "0x180b247dc",
+      "instruction_count": 5,
+      "checked_bytes": 20,
+      "instructions_sha256": "d31289dbf6b229236ebc3536946ace8f011a792c01773199fe21bd0a8baa4b1b",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.01": "2EE0B16F-14AC-3B0B-8856-9726A6627E97"
+      },
+      "text_sha256": "9b4ba6685a8be4b42c7c69c435fcf368be8aeb16fbc26915e4b5b7e6ed8f1100"
+    }
+  ],
+  "exporter_sha256": "38db3af22010a28275987e4dfc712f0bebcff5fdcb7405c93376a971e2bc2b8e",
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 20,
+  "exported_text_postprocess": "Remove only trailing blank lines at EOF. Checked instruction words/hash unchanged."
+}

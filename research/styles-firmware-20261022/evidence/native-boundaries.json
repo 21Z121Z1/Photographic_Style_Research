@@ -1,0 +1,834 @@
+{
+  "scope": "Twelve adjacent-f32 boundary probes only; accepted 409-case batch not rerun.",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "records": 12,
+  "kernel_calls": 24,
+  "range_violations": 0,
+  "set_coverage_is_not_numerical_agreement": true,
+  "source_comparisons": {
+    "FG_pow": "SSA342 fcmp fast olt float %341, .5; equality selects upper/right branch",
+    "BG_pow": "SSA219 fcmp fast ugt float %195, f32 threshold; finite equality selects lower/left branch"
+  },
+  "checker_sha256": "756cf545282d48cdb1bd90f80ec2e0ae122afcf2a53a9bf7cdf31729f20d6e03",
+  "iOS_GPU_execution": false,
+  "accepted_409_batch_repeated": false,
+  "rows": [
+    {
+      "label": "FG_pow",
+      "tone_f32": 0.39685022830963135,
+      "post_pow_r_f32": 0.4999999701976776,
+      "post_pow_q_f32": 0.32987692952156067,
+      "actual_r_olt_half": true,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.2499999850988388,
+      "center_FG_mids": 0.2499999836135839,
+      "FG_mids_interval": [
+        0.0999997580167723,
+        0.4000002092103955
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.3298768699169159,
+          "operand_f32_upper": 0.32987698912620544,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.49999985098838806,
+          "operand_f32_upper": 0.5000000596046448,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.39685022830963135,
+          "operand_f32_upper": 0.39685022830963135,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.39685022830963135,
+          "operand_f32_upper": 0.39685022830963135,
+          "state": "true",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_pow",
+      "tone_f32": 0.39685025811195374,
+      "post_pow_r_f32": 0.5,
+      "post_pow_q_f32": 0.32987695932388306,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.10000002384185791,
+      "center_FG_mids": 0.24999999769429906,
+      "FG_mids_interval": [
+        0.09999979181047389,
+        0.40000020357812427
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.3298768997192383,
+          "operand_f32_upper": 0.32987701892852783,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.49999988079071045,
+          "operand_f32_upper": 0.5000000596046448,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.39685025811195374,
+          "operand_f32_upper": 0.39685025811195374,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.39685025811195374,
+          "operand_f32_upper": 0.39685025811195374,
+          "state": "true",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_pow",
+      "tone_f32": 0.3968502879142761,
+      "post_pow_r_f32": 0.5,
+      "post_pow_q_f32": 0.32987698912620544,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.10000002384185791,
+      "center_FG_mids": 0.10000005210189256,
+      "FG_mids_interval": [
+        -0.04999999697820734,
+        0.25000010118199245
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.32987692952156067,
+          "operand_f32_upper": 0.3298770487308502,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.49999991059303284,
+          "operand_f32_upper": 0.5000001192092896,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.3968502879142761,
+          "operand_f32_upper": 0.3968502879142761,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.3968502879142761,
+          "operand_f32_upper": 0.3968502879142761,
+          "state": "true",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "BG_pow",
+      "tone_f32": 0.4999999701976776,
+      "post_pow_r_f32": 0.5946035385131836,
+      "post_pow_q_f32": 0.43527522683143616,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.21352428197860718,
+      "center_FG_mids": 0.2135242654575178,
+      "FG_mids_interval": [
+        0.2135239848272288,
+        0.21352454608780677
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.435275137424469,
+          "operand_f32_upper": 0.4352753162384033,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.594603419303894,
+          "operand_f32_upper": 0.5946036577224731,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.4999999701976776,
+          "operand_f32_upper": 0.4999999701976776,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.4999999701976776,
+          "operand_f32_upper": 0.4999999701976776,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "BG_pow",
+      "tone_f32": 0.5,
+      "post_pow_r_f32": 0.5946035385131836,
+      "post_pow_q_f32": 0.43527525663375854,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.21352428197860718,
+      "center_FG_mids": 0.2135242973545397,
+      "FG_mids_interval": [
+        0.21352401672423552,
+        0.2135245779848439
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.4352751672267914,
+          "operand_f32_upper": 0.4352753460407257,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.594603419303894,
+          "operand_f32_upper": 0.5946036577224731,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5,
+          "operand_f32_upper": 0.5,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.5,
+          "operand_f32_upper": 0.5,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "BG_pow",
+      "tone_f32": 0.5000000596046448,
+      "post_pow_r_f32": 0.5946035981178284,
+      "post_pow_q_f32": 0.4352753162384033,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": true,
+      "actual_FG_mids": 0.21352434158325195,
+      "center_FG_mids": 0.2135243611485821,
+      "FG_mids_interval": [
+        0.21352408051824748,
+        0.2135246417789167
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.43527522683143616,
+          "operand_f32_upper": 0.4352754056453705,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5946034789085388,
+          "operand_f32_upper": 0.5946037173271179,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5000000596046448,
+          "operand_f32_upper": 0.5000000596046448,
+          "state": "false",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.5000000596046448,
+          "operand_f32_upper": 0.5000000596046448,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_t04",
+      "tone_f32": 0.3999999761581421,
+      "post_pow_r_f32": 0.5029733777046204,
+      "post_pow_q_f32": 0.33302125334739685,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.10356807708740234,
+      "center_FG_mids": 0.1035680432498528,
+      "FG_mids_interval": [
+        0.10356781505078416,
+        0.10356827144892145
+      ],
+      "branch_determined": true,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.3330211937427521,
+          "operand_f32_upper": 0.3330213129520416,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5029732584953308,
+          "operand_f32_upper": 0.5029734373092651,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.3999999761581421,
+          "operand_f32_upper": 0.3999999761581421,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.3999999761581421,
+          "operand_f32_upper": 0.3999999761581421,
+          "state": "true",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_t04",
+      "tone_f32": 0.4000000059604645,
+      "post_pow_r_f32": 0.5029733777046204,
+      "post_pow_q_f32": 0.33302128314971924,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.10356807708740234,
+      "center_FG_mids": 0.10356807697684711,
+      "FG_mids_interval": [
+        0.1035678487777624,
+        0.10356830517593182
+      ],
+      "branch_determined": true,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.33302122354507446,
+          "operand_f32_upper": 0.333021342754364,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5029732584953308,
+          "operand_f32_upper": 0.5029734969139099,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.4000000059604645,
+          "operand_f32_upper": 0.4000000059604645,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.4000000059604645,
+          "operand_f32_upper": 0.4000000059604645,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_t04",
+      "tone_f32": 0.40000003576278687,
+      "post_pow_r_f32": 0.5029733777046204,
+      "post_pow_q_f32": 0.3330213129520416,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.10356807708740234,
+      "center_FG_mids": 0.10356811070384087,
+      "FG_mids_interval": [
+        0.10356788250474007,
+        0.10356833890294166
+      ],
+      "branch_determined": true,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.33302125334739685,
+          "operand_f32_upper": 0.3330213725566864,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5029733180999756,
+          "operand_f32_upper": 0.5029734969139099,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.40000003576278687,
+          "operand_f32_upper": 0.40000003576278687,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.40000003576278687,
+          "operand_f32_upper": 0.40000003576278687,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_t05",
+      "tone_f32": 0.4999999701976776,
+      "post_pow_r_f32": 0.5946035385131836,
+      "post_pow_q_f32": 0.43527522683143616,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.21352428197860718,
+      "center_FG_mids": 0.2135242654575178,
+      "FG_mids_interval": [
+        0.2135239848272288,
+        0.21352454608780677
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.435275137424469,
+          "operand_f32_upper": 0.4352753162384033,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.594603419303894,
+          "operand_f32_upper": 0.5946036577224731,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.4999999701976776,
+          "operand_f32_upper": 0.4999999701976776,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.4999999701976776,
+          "operand_f32_upper": 0.4999999701976776,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_t05",
+      "tone_f32": 0.5,
+      "post_pow_r_f32": 0.5946035385131836,
+      "post_pow_q_f32": 0.43527525663375854,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": false,
+      "actual_FG_mids": 0.21352428197860718,
+      "center_FG_mids": 0.2135242973545397,
+      "FG_mids_interval": [
+        0.21352401672423552,
+        0.2135245779848439
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.4352751672267914,
+          "operand_f32_upper": 0.4352753460407257,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.594603419303894,
+          "operand_f32_upper": 0.5946036577224731,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5,
+          "operand_f32_upper": 0.5,
+          "state": "true",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.5,
+          "operand_f32_upper": 0.5,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FG_t05",
+      "tone_f32": 0.5000000596046448,
+      "post_pow_r_f32": 0.5946035981178284,
+      "post_pow_q_f32": 0.4352753162384033,
+      "actual_r_olt_half": false,
+      "actual_q_ugt_threshold": true,
+      "actual_FG_mids": 0.21352434158325195,
+      "center_FG_mids": 0.2135243611485821,
+      "FG_mids_interval": [
+        0.21352408051824748,
+        0.2135246417789167
+      ],
+      "branch_determined": false,
+      "range_covered": true,
+      "decisions": [
+        {
+          "name": "BG.q_lighten",
+          "predicate": "ugt",
+          "threshold_f32": 0.43527528643608093,
+          "operand_f32_lower": 0.43527522683143616,
+          "operand_f32_upper": 0.4352754056453705,
+          "state": "undetermined",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            9
+          ]
+        },
+        {
+          "name": "FG.r_mids",
+          "predicate": "olt",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5946034789085388,
+          "operand_f32_upper": 0.5946037173271179,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            19
+          ]
+        },
+        {
+          "name": "FG.t_whites",
+          "predicate": "ole",
+          "threshold_f32": 0.5,
+          "operand_f32_lower": 0.5000000596046448,
+          "operand_f32_upper": 0.5000000596046448,
+          "state": "false",
+          "equality_branch": "true",
+          "affected_flat_fields": [
+            21
+          ]
+        },
+        {
+          "name": "FG.t_shadows_contrast_neck",
+          "predicate": "olt",
+          "threshold_f32": 0.4000000059604645,
+          "operand_f32_lower": 0.5000000596046448,
+          "operand_f32_upper": 0.5000000596046448,
+          "state": "false",
+          "equality_branch": "false",
+          "affected_flat_fields": [
+            23,
+            24,
+            32
+          ]
+        }
+      ]
+    }
+  ]
+}

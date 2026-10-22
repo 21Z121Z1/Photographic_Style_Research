@@ -1,0 +1,158 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleProxyRendererV1 _populateStaticRenderParameters:forInputStyle:fromTuning:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d43730f4:
+1d43730f4: d503237f	pacibsp
+1d43730f8: 6db82beb	stp	d11, d10, [sp, #-0x80]!
+1d43730fc: 6d0123e9	stp	d9, d8, [sp, #0x10]
+1d4373100: a9026ffc	stp	x28, x27, [sp, #0x20]
+1d4373104: a90367fa	stp	x26, x25, [sp, #0x30]
+1d4373108: a9045ff8	stp	x24, x23, [sp, #0x40]
+1d437310c: a90557f6	stp	x22, x21, [sp, #0x50]
+1d4373110: a9064ff4	stp	x20, x19, [sp, #0x60]
+1d4373114: a9077bfd	stp	fp, lr, [sp, #0x70]
+1d4373118: 9101c3fd	add	fp, sp, #0x70
+1d437311c: aa0303f4	mov	x20, x3
+1d4373120: aa0203f5	mov	x21, x2
+1d4373124: aa0003f6	mov	x22, x0
+1d4373128: 94f4a7b6	bl	0x1d809d000
+1d437312c: aa0003f3	mov	x19, x0
+1d4373130: 94f4a78c	bl	0x1d809cf60
+1d4373134: aa0003f7	mov	x23, x0
+1d4373138: 94f3daba	bl	0x1d8069c20 ; SELECTOR castType
+1d437313c: 94f4a6f1	bl	0x1d809cd00
+1d4373140: aa0003f4	mov	x20, x0
+1d4373144: aa1703e0	mov	x0, x23
+1d4373148: 94f3dab2	bl	0x1d8069c10 ; SELECTOR castIntensity
+1d437314c: 4ea01c08	mov	v8.16b, v0.16b
+1d4373150: aa1703e0	mov	x0, x23
+1d4373154: 94f3f10f	bl	0x1d806f590 ; SELECTOR toneBias
+1d4373158: 4ea01c09	mov	v9.16b, v0.16b
+1d437315c: aa1703e0	mov	x0, x23
+1d4373160: 94f3db64	bl	0x1d8069ef0 ; SELECTOR colorBias
+1d4373164: 4ea01c0a	mov	v10.16b, v0.16b
+1d4373168: 94f4a736	bl	0x1d809ce40
+1d437316c: aa1403e0	mov	x0, x20
+1d4373170: 97fe03e7	bl	0x1d42f410c
+1d4373174: aa0003f8	mov	x24, x0
+1d4373178: f94016c8	ldr	x8, [x22, #0x28]
+1d437317c: 94f4a7ad	bl	0x1d809d030
+1d4373180: aa0003f7	mov	x23, x0
+1d4373184: 97fe02e1	bl	0x1d42f3d08
+1d4373188: 36000d80	tbz	w0, #0, 0x1d4373338
+1d437318c: aa1303e0	mov	x0, x19
+1d4373190: 94f3da9c	bl	0x1d8069c00 ; SELECTOR castAdjustmentsTuning
+1d4373194: 94f4a6db	bl	0x1d809cd00
+1d4373198: aa0003fa	mov	x26, x0
+1d437319c: aa1403e2	mov	x2, x20
+1d43731a0: 94f26214	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d43731a4: 94f4a6d7	bl	0x1d809cd00
+1d43731a8: aa0003f9	mov	x25, x0
+1d43731ac: 94f4a731	bl	0x1d809ce70
+1d43731b0: b4000c99	cbz	x25, 0x1d4373340
+1d43731b4: 910092a2	add	x2, x21, #0x24
+1d43731b8: aa1903e0	mov	x0, x25
+1d43731bc: 52801103	mov	w3, #0x88
+1d43731c0: 94f3dfa8	bl	0x1d806b060 ; SELECTOR getValue:size:
+1d43731c4: aa1303e0	mov	x0, x19
+1d43731c8: 94f3f0ee	bl	0x1d806f580 ; SELECTOR toneAdjustmentsTuning
+1d43731cc: 94f4a6cd	bl	0x1d809cd00
+1d43731d0: aa0003fb	mov	x27, x0
+1d43731d4: aa1403e2	mov	x2, x20
+1d43731d8: 94f26206	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d43731dc: 94f4a6c9	bl	0x1d809cd00
+1d43731e0: aa0003fa	mov	x26, x0
+1d43731e4: 94f4a71f	bl	0x1d809ce60
+1d43731e8: 94f4a726	bl	0x1d809ce80
+1d43731ec: b4000afa	cbz	x26, 0x1d4373348
+1d43731f0: 9102b2a2	add	x2, x21, #0xac
+1d43731f4: aa1a03e0	mov	x0, x26
+1d43731f8: 52802103	mov	w3, #0x108
+1d43731fc: 94f3df99	bl	0x1d806b060 ; SELECTOR getValue:size:
+1d4373200: aa1303e0	mov	x0, x19
+1d4373204: 94f3db33	bl	0x1d8069ed0 ; SELECTOR colorAdjustmentsTuning
+1d4373208: 94f4a6be	bl	0x1d809cd00
+1d437320c: aa0003fb	mov	x27, x0
+1d4373210: aa1403e2	mov	x2, x20
+1d4373214: 94f261f7	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d4373218: 94f4a6ba	bl	0x1d809cd00
+1d437321c: aa0003f9	mov	x25, x0
+1d4373220: 94f4a714	bl	0x1d809ce70
+1d4373224: 94f4a717	bl	0x1d809ce80
+1d4373228: b4000959	cbz	x25, 0x1d4373350
+1d437322c: 9106d2a2	add	x2, x21, #0x1b4
+1d4373230: aa1903e0	mov	x0, x25
+1d4373234: 52800203	mov	w3, #0x10
+1d4373238: 94f3df8a	bl	0x1d806b060 ; SELECTOR getValue:size:
+1d437323c: b94232c0	ldr	w0, [x22, #0x230]
+1d4373240: 97fe02a9	bl	0x1d42f3ce4
+1d4373244: aa0003fa	mov	x26, x0
+1d4373248: 71000c1f	cmp	w0, #0x3
+1d437324c: 540000e0	b.eq	0x1d4373268
+1d4373250: 7100575f	cmp	w26, #0x15
+1d4373254: 540001c1	b.ne	0x1d437328c
+1d4373258: 52803588	mov	w8, #0x1ac
+1d437325c: 52803509	mov	w9, #0x1a8
+1d4373260: 5280348a	mov	w10, #0x1a4
+1d4373264: 14000004	b	0x1d4373274
+1d4373268: 52803408	mov	w8, #0x1a0
+1d437326c: 52803389	mov	w9, #0x19c
+1d4373270: 5280330a	mov	w10, #0x198
+1d4373274: bc6a6aa0	ldr	s0, [x21, x10]
+1d4373278: 1e200929	fmul	s9, s9, s0
+1d437327c: bc696aa0	ldr	s0, [x21, x9]
+1d4373280: 1e20094a	fmul	s10, s10, s0
+1d4373284: bc686aa0	ldr	s0, [x21, x8]
+1d4373288: 1e200908	fmul	s8, s8, s0
+1d437328c: aa1403e0	mov	x0, x20
+1d4373290: 97fe0219	bl	0x1d42f3af4
+1d4373294: b90002a0	str	w0, [x21]
+1d4373298: 2d00a6a8	stp	s8, s9, [x21, #0x4]
+1d437329c: bd000eaa	str	s10, [x21, #0xc]
+1d43732a0: aa1703e0	mov	x0, x23
+1d43732a4: 97fe01f1	bl	0x1d42f3a68
+1d43732a8: b9028ea0	str	w0, [x21, #0x28c]
+1d43732ac: 1e2c1000	fmov	s0, #0.50000000
+1d43732b0: 1e200901	fmul	s1, s8, s0
+1d43732b4: 1e3c1002	fmov	s2, #-0.50000000
+1d43732b8: 1e2f1003	fmov	s3, #1.50000000
+1d43732bc: 1f030902	fmadd	s2, s8, s3, s2
+1d43732c0: 1e202100	fcmp	s8, s0
+1d43732c4: 1e224c20	fcsel	s0, s1, s2, mi
+1d43732c8: 7100031f	cmp	w24, #0
+1d43732cc: 1e281c00	fcsel	s0, s0, s8, ne
+1d43732d0: 2d0202a8	stp	s8, s0, [x21, #0x10]
+1d43732d4: 0f03f600	fmov	v0.2s, #1.00000000
+1d43732d8: fd000ea0	str	d0, [x21, #0x18]
+1d43732dc: b90022ba	str	w26, [x21, #0x20]
+1d43732e0: bd4236c0	ldr	s0, [x22, #0x234]
+1d43732e4: bd028aa0	str	s0, [x21, #0x288]
+1d43732e8: bd424ec0	ldr	s0, [x22, #0x24c]
+1d43732ec: bd029ea0	str	s0, [x21, #0x29c]
+1d43732f0: aa1603e0	mov	x0, x22
+1d43732f4: aa1503e2	mov	x2, x21
+1d43732f8: 94f3d86e	bl	0x1d80694b0 ; SELECTOR _updateHazeTuningAdjustments:
+1d43732fc: 94f4a6d9	bl	0x1d809ce60
+1d4373300: 52800015	mov	w21, #0
+1d4373304: 94f4a6cf	bl	0x1d809ce40
+1d4373308: 94f4a6c2	bl	0x1d809ce10
+1d437330c: 94f4a6bd	bl	0x1d809ce00
+1d4373310: aa1503e0	mov	x0, x21
+1d4373314: a9477bfd	ldp	fp, lr, [sp, #0x70]
+1d4373318: a9464ff4	ldp	x20, x19, [sp, #0x60]
+1d437331c: a94557f6	ldp	x22, x21, [sp, #0x50]
+1d4373320: a9445ff8	ldp	x24, x23, [sp, #0x40]
+1d4373324: a94367fa	ldp	x26, x25, [sp, #0x30]
+1d4373328: a9426ffc	ldp	x28, x27, [sp, #0x20]
+1d437332c: 6d4123e9	ldp	d9, d8, [sp, #0x10]
+1d4373330: 6cc82beb	ldp	d11, d10, [sp], #0x80
+1d4373334: d65f0fff	retab
+1d4373338: 940485d7	bl	0x1d4494a94
+1d437333c: 17fffff1	b	0x1d4373300
+1d4373340: 94048605	bl	0x1d4494b54
+1d4373344: 14000004	b	0x1d4373354
+1d4373348: 940485f3	bl	0x1d4494b14
+1d437334c: 14000002	b	0x1d4373354
+1d4373350: 940485e1	bl	0x1d4494ad4
+1d4373354: 12863d75	mov	w21, #0xffffce14
+1d4373358: 17ffffeb	b	0x1d4373304

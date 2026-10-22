@@ -1,0 +1,168 @@
+{
+  "scope": "S9 semantic helper and actual caller contract; static anchors plus separately recorded host arithmetic checks.",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "consumer_AIR_canonical_sha256": "87e4205e385f6731aa9f739e92580156c49a73c4556b2d790390fe76e7627224",
+  "functions": [
+    {
+      "name": "renderFinalAdjustments",
+      "first_line": 54,
+      "last_line": 737,
+      "function_text_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+      "direct_named_callees": [
+        "RichSat",
+        "airyFilter",
+        "applySemanticSRL",
+        "contrastFilter",
+        "highlightRecover",
+        "protectMaskFilter",
+        "renderBGAdjustments",
+        "renderBWAdjustmentsByCastType",
+        "renderBrightAndContrast",
+        "renderChannelMixForBWCasts",
+        "renderFGAdjustments",
+        "renderNeutralizingAdjustments",
+        "renderSelectiveColorAdjustments",
+        "renderSemanticToneAdjustments",
+        "renderSkinAdjustments",
+        "renderVideoHazeCorrection",
+        "renderWarmthCastAdjustments",
+        "smoothSatFilter"
+      ]
+    },
+    {
+      "name": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh",
+      "first_line": 4375,
+      "last_line": 4505,
+      "function_text_sha256": "44403140aa6ccec03fe9dac75a0ff247440943fae99ea92f7b9040d887d6ab6e",
+      "direct_named_callees": []
+    },
+    {
+      "name": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+      "first_line": 4590,
+      "last_line": 4813,
+      "function_text_sha256": "bb5d0a7afd7b83ec52ec70040b4ab910202f9c9e761edcbcfc83d9a8a251ff2b",
+      "direct_named_callees": [
+        "RichSat",
+        "ShadowsFilter",
+        "ShadowsNegativeFilter",
+        "airyFilter",
+        "contrastFilter",
+        "highlightNeg",
+        "lightenFilter",
+        "negativeLightenFilter",
+        "smartContrast",
+        "smoothSatFilter",
+        "tonalContrastFilter",
+        "underToneFilter",
+        "whitesCurve"
+      ]
+    },
+    {
+      "name": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+      "first_line": 5589,
+      "last_line": 5873,
+      "function_text_sha256": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+      "direct_named_callees": [
+        "RichSat",
+        "ShadowsFilter",
+        "ShadowsNegativeFilter",
+        "airyFilter",
+        "contrastFilter",
+        "lightenFilter",
+        "negativeLightenFilter",
+        "smoothSatFilter",
+        "underGrassFilter",
+        "whitesCurve"
+      ]
+    },
+    {
+      "name": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+      "first_line": 5976,
+      "last_line": 6093,
+      "function_text_sha256": "fbf1cf6772d3ee1733f7882e52242a0909a14d3fe8325563fe487d0b5ca02b7c",
+      "direct_named_callees": []
+    }
+  ],
+  "sampler": {
+    "literal_decimal": 34901797601053257,
+    "literal_hex": "0x7bff0000088a49",
+    "interpretation": "pixel / clamp_to_edge / linear per existing S24 control; original hardware interpolation precision remains open"
+  },
+  "helper_inputs": {
+    "working_rgb": "SSA286 = half(linearBaseGain field6) * matrix-transformed texture2 sample, SSA280",
+    "reference_rgb": "SSA196 = matrix-transformed scaled texture1 sample; not assumed unstyled original",
+    "person_weight": "SSA96; supplied aligned half sample",
+    "GTC": "texture argument3, red channel sampled for each RGB component",
+    "coefficient_bytes": [
+      620,
+      648
+    ]
+  },
+  "caller_gate": {
+    "helper_called": "either texture6 or texture7 is null -> block336 /SSA337",
+    "other_path": "both present ->block290 precomputed RGB texture6/7 samples; this alternate path is explicitly unknown in composed API"
+  },
+  "caller_mutations": {
+    "cast_type": 2,
+    "gain_fields": [
+      2,
+      3
+    ],
+    "gain_mutation_condition": "finite tone<=0",
+    "gain_target": "baselineExposure.field7",
+    "all_tone_HR_fields": [
+      5,
+      6
+    ],
+    "HR_target": 1,
+    "mix_weight": "f32(1-f32(.5*scaledIntensity))"
+  },
+  "guide_connection": {
+    "source": "SSA348..350",
+    "BG": "mix(guideTexture9,guideTexture8,half(bgLTM))",
+    "FG": "mix(guideTexture9,guideTexture8,half(fgLTM))",
+    "combined": "mix(BG,FG,personWeight)",
+    "interval_guide_propagated": true
+  },
+  "helper_equation": {
+    "scaled": "min(half(gain*workingRGB),half(1))",
+    "coordinate": "f32(half(scaled * half(half(width)-1))) + .5",
+    "GTC_mix": "half mix(scaled, red GTC samples, half(GTC))",
+    "ratio": "GTC_mix / referenceRGB",
+    "zero_guard": "half(referenceRGB + half(0x9c04)) < 0; equality is retained",
+    "LTM": "mix(ratio,1,half(BG/FG LTM))",
+    "HR": "mix(LTM,min(LTM,1),half(BG/FG HR))",
+    "branch_RGB": "HR * referenceRGB",
+    "output": "mix(BG_RGB,FG_RGB,personWeight)"
+  },
+  "point_model_domain": {
+    "working_rgb": [
+      0,
+      1
+    ],
+    "reference_rgb": [
+      0.0009765625,
+      2
+    ],
+    "person_weight": [
+      0,
+      1
+    ],
+    "seven_coefficients_absolute_budget": 8,
+    "curve": "2..1024 explicitly supplied finite half red nodes, absolute value<=8, named working coordinate",
+    "nonfinite_intermediates": "reject /unknown, not hardware blockage"
+  },
+  "assumptions": [
+    "ideal CPU float-linear clamp sampler",
+    "set propagation allows 2u per half arithmetic operation, u=2^-11",
+    "coefficient pow allowance remains S7/S8 explicit host assumption"
+  ],
+  "BG_FG_progress": {
+    "independent_new_leaf": "complete shared inline mids expression",
+    "controllers": "separate actual order/gates and set-valued initial/final blends; unknown leaves stop and retain input set",
+    "new_native_paths": "only neutral/mids; 20 aborting unmodeled leaf/intrinsic stubs in owned checker",
+    "complete_BG_FG_numeric_verified": false
+  },
+  "whole_iOS_GPU_or_camera_pipeline_verified": false
+}

@@ -26,8 +26,8 @@ class ToneInterfaceTests(unittest.TestCase):
             r=evaluate(RendererControls(.5,tone,0),ResolvedSceneType(0),c)
             if tone<0:expected=negative(tone,NegativeToneContext(c.stats.negative_fields,c.tone_tuning))
             else:expected=positive(tone,PositiveToneContext(c.stats.positive_fields(),c.tone_tuning))
-            np.testing.assert_array_equal(r.values,expected.values());self.assertEqual(len(r.ssr_block_f32()),160)
-            np.testing.assert_array_equal(np.frombuffer(r.ssr_block_f32(),dtype='<f4'),r.values.astype('f4'))
+            np.testing.assert_array_equal(r.values,expected.values());self.assertEqual(len(r.ssr_block_f32(allow_approximation=True)),160)
+            np.testing.assert_array_equal(np.frombuffer(r.ssr_block_f32(allow_approximation=True),dtype='<f4'),r.values.astype('f4'))
             self.assertEqual(r.named_fields()['fg.skinHighLights']['byte_offset'],592)
             self.assertEqual(r.named_fields()['semantic.personHR']['byte_offset'],644)
             self.assertFalse(r.pixel_pipeline_verified)
@@ -35,7 +35,7 @@ class ToneInterfaceTests(unittest.TestCase):
     def test_skin_adapter_reuses_only_two_fields_and_preserves_scope(self):
         r=evaluate(RendererControls(.5,.5,0),ResolvedSceneType(0),frame())
         rgb=np.array([[.2,.3,.4],[.7,.6,.5]],dtype='f4')
-        np.testing.assert_array_equal(r.skin_only_forward(rgb,.4,.3),old_skin(rgb,.4,.3,tone=.5))
+        np.testing.assert_array_equal(r.skin_only_forward(rgb,.4,.3,allow_approximation=True),old_skin(rgb,.4,.3,tone=.5))
         with self.assertRaises(ValueError):r.values[0]=3
 
     def test_domain_rejects_wrong_codes_scaled_outside_domain_and_negative_gap(self):
