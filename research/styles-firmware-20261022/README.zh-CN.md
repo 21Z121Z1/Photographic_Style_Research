@@ -10,6 +10,8 @@
 
 条件prior算子见 [PROGRESS-S4.zh-CN.md](PROGRESS-S4.zh-CN.md)：新增5项测试，共32项通过；原AIR108/109宿主重编译的310次kernel共18058次写入，与显式f32模型有4855个逐位差异，max绝对误差7.63e-6、保守舍入界越界0。它是系数buffer单位模型，未执行原iOS CPU/GPU、未补tone→CCM或原人物统计。
 
+同build CPU链见 [PROGRESS-S5.zh-CN.md](PROGRESS-S5.zh-CN.md)：在现有资源工作后，仅定向取得同manifest的2.35GB SystemOS，实际找到匹配框架；35个方法55680B逐条核原cache字节，补loader、prior矩阵到buffer8、用户值到672B SSR参数及统计shader绑定。新增SRL标量分支4180组原40B指令比较逐位差异0，当前39项测试通过；依然不称完整拍摄/逆解完成。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|

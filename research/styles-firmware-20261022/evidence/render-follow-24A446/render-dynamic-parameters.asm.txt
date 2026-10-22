@@ -1,0 +1,72 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 _calculateDynamicRenderParameters]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42f1114:
+1d42f1114: d503237f	pacibsp
+1d42f1118: d10203ff	sub	sp, sp, #0x80
+1d42f111c: a9045ff8	stp	x24, x23, [sp, #0x40]
+1d42f1120: a90557f6	stp	x22, x21, [sp, #0x50]
+1d42f1124: a9064ff4	stp	x20, x19, [sp, #0x60]
+1d42f1128: a9077bfd	stp	fp, lr, [sp, #0x70]
+1d42f112c: 9101c3fd	add	fp, sp, #0x70
+1d42f1130: aa0003f4	mov	x20, x0
+1d42f1134: f9400400	ldr	x0, [x0, #0x8]
+1d42f1138: 94f5e37a	bl	0x1d8069f20 ; SELECTOR commandBuffer
+1d42f113c: 94f6aef1	bl	0x1d809cd00
+1d42f1140: aa0003f3	mov	x19, x0
+1d42f1144: b4000620	cbz	x0, 0x1d42f1208
+1d42f1148: aa1303e0	mov	x0, x19
+1d42f114c: 94f5e3a5	bl	0x1d8069fe0 ; SELECTOR computeCommandEncoder
+1d42f1150: 94f6aeec	bl	0x1d809cd00
+1d42f1154: b4000600	cbz	x0, 0x1d42f1214
+1d42f1158: aa0003f5	mov	x21, x0
+1d42f115c: f942a688	ldr	x8, [x20, #0x548]
+1d42f1160: 94f6afb4	bl	0x1d809d030
+1d42f1164: aa0003f6	mov	x22, x0
+1d42f1168: aa1503e0	mov	x0, x21
+1d42f116c: aa1603e2	mov	x2, x22
+1d42f1170: 94f5f090	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42f1174: f940ea82	ldr	x2, [x20, #0x1d0]
+1d42f1178: 52800037	mov	w23, #0x1
+1d42f117c: aa1503e0	mov	x0, x21
+1d42f1180: d2800003	mov	x3, #0
+1d42f1184: 52800024	mov	w4, #0x1
+1d42f1188: 94f5f00e	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42f118c: f940ee82	ldr	x2, [x20, #0x1d8]
+1d42f1190: aa1503e0	mov	x0, x21
+1d42f1194: d2800003	mov	x3, #0
+1d42f1198: 52800064	mov	w4, #0x3
+1d42f119c: 94f5f009	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42f11a0: d0000f88	adrp	x8, 0x1d44e3000
+1d42f11a4: 3dc34100	ldr	q0, [x8, #0xd00]
+1d42f11a8: 3d800be0	str	q0, [sp, #0x20]
+1d42f11ac: f9001bf7	str	x23, [sp, #0x30]
+1d42f11b0: 4e080ee0	dup	v0.2d, x23
+1d42f11b4: 3d8003e0	str	q0, [sp]
+1d42f11b8: f9000bf7	str	x23, [sp, #0x10]
+1d42f11bc: 910083e2	add	x2, sp, #0x20
+1d42f11c0: 910003e3	mov	x3, sp
+1d42f11c4: aa1503e0	mov	x0, x21
+1d42f11c8: 94f5e4e2	bl	0x1d806a550 ; SELECTOR dispatchThreadgroups:threadsPerThreadgroup:
+1d42f11cc: aa1503e0	mov	x0, x21
+1d42f11d0: 94f5e58c	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42f11d4: f9400680	ldr	x0, [x20, #0x8]
+1d42f11d8: 94f5007e	bl	0x1d80313d0 ; SELECTOR commit
+1d42f11dc: 94f6af15	bl	0x1d809ce30
+1d42f11e0: 94f6af10	bl	0x1d809ce20
+1d42f11e4: 52800014	mov	w20, #0
+1d42f11e8: 94f6af06	bl	0x1d809ce00
+1d42f11ec: aa1403e0	mov	x0, x20
+1d42f11f0: a9477bfd	ldp	fp, lr, [sp, #0x70]
+1d42f11f4: a9464ff4	ldp	x20, x19, [sp, #0x60]
+1d42f11f8: a94557f6	ldp	x22, x21, [sp, #0x50]
+1d42f11fc: a9445ff8	ldp	x24, x23, [sp, #0x40]
+1d42f1200: 910203ff	add	sp, sp, #0x80
+1d42f1204: d65f0fff	retab
+1d42f1208: 910083e0	add	x0, sp, #0x20
+1d42f120c: 940621f4	bl	0x1d44799dc
+1d42f1210: 14000003	b	0x1d42f121c
+1d42f1214: 910083e0	add	x0, sp, #0x20
+1d42f1218: 940621d7	bl	0x1d4479974
+1d42f121c: b94023f4	ldr	w20, [sp, #0x20]
+1d42f1220: 17fffff2	b	0x1d42f11e8

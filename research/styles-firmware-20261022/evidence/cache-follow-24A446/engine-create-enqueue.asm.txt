@@ -1,0 +1,1402 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMIStyleEngineCreateLinearSystem enqueueToCommandBuffer:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42e63ec:
+1d42e63ec: d503237f	pacibsp
+1d42e63f0: d10603ff	sub	sp, sp, #0x180
+1d42e63f4: a9126ffc	stp	x28, x27, [sp, #0x120]
+1d42e63f8: a91367fa	stp	x26, x25, [sp, #0x130]
+1d42e63fc: a9145ff8	stp	x24, x23, [sp, #0x140]
+1d42e6400: a91557f6	stp	x22, x21, [sp, #0x150]
+1d42e6404: a9164ff4	stp	x20, x19, [sp, #0x160]
+1d42e6408: a9177bfd	stp	fp, lr, [sp, #0x170]
+1d42e640c: 9105c3fd	add	fp, sp, #0x170
+1d42e6410: f90037fe	str	lr, [sp, #0x68]
+1d42e6414: aa0003f5	mov	x21, x0
+1d42e6418: 94f6dace	bl	0x1d809cf50
+1d42e641c: aa0003fc	mov	x28, x0
+1d42e6420: f81a03bf	stur	xzr, [fp, #-0x60]
+1d42e6424: 294ea2a9	ldp	w9, w8, [x21, #0x74]
+1d42e6428: b9007be9	str	w9, [sp, #0x78]
+1d42e642c: b90063e8	str	w8, [sp, #0x60]
+1d42e6430: b9407ea8	ldr	w8, [x21, #0x7c]
+1d42e6434: b9005be8	str	w8, [sp, #0x58]
+1d42e6438: 9103e2a0	add	x0, x21, #0xf8
+1d42e643c: 94f6da4d	bl	0x1d809cd70
+1d42e6440: b40095a0	cbz	x0, 0x1d42e76f4
+1d42e6444: aa0003f4	mov	x20, x0
+1d42e6448: 9103a2a0	add	x0, x21, #0xe8
+1d42e644c: 94f6da49	bl	0x1d809cd70
+1d42e6450: aa0003f7	mov	x23, x0
+1d42e6454: 94f6242f	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6458: 94f6da2a	bl	0x1d809cd00
+1d42e645c: b4009480	cbz	x0, 0x1d42e76ec
+1d42e6460: aa0003f8	mov	x24, x0
+1d42e6464: 910602a0	add	x0, x21, #0x180
+1d42e6468: 94f6da42	bl	0x1d809cd70
+1d42e646c: b40093e0	cbz	x0, 0x1d42e76e8
+1d42e6470: aa0003f6	mov	x22, x0
+1d42e6474: 9105a2a0	add	x0, x21, #0x168
+1d42e6478: 94f6da3e	bl	0x1d809cd70
+1d42e647c: b4009340	cbz	x0, 0x1d42e76e4
+1d42e6480: aa0003f9	mov	x25, x0
+1d42e6484: 9103c2a0	add	x0, x21, #0xf0
+1d42e6488: 94f6da3a	bl	0x1d809cd70
+1d42e648c: aa0003f3	mov	x19, x0
+1d42e6490: 94f62420	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6494: 94f6da1b	bl	0x1d809cd00
+1d42e6498: b4009220	cbz	x0, 0x1d42e76dc
+1d42e649c: aa0003fa	mov	x26, x0
+1d42e64a0: 910622a0	add	x0, x21, #0x188
+1d42e64a4: 94f6da33	bl	0x1d809cd70
+1d42e64a8: b4009180	cbz	x0, 0x1d42e76d8
+1d42e64ac: aa0003fb	mov	x27, x0
+1d42e64b0: f9003bfc	str	x28, [sp, #0x70]
+1d42e64b4: 9105c2a0	add	x0, x21, #0x170
+1d42e64b8: 94f6da2e	bl	0x1d809cd70
+1d42e64bc: b40090a0	cbz	x0, 0x1d42e76d0
+1d42e64c0: aa0003fc	mov	x28, x0
+1d42e64c4: 9105e2a0	add	x0, x21, #0x178
+1d42e64c8: 94f6da2a	bl	0x1d809cd70
+1d42e64cc: f90043f4	str	x20, [sp, #0x80]
+1d42e64d0: aa0003f4	mov	x20, x0
+1d42e64d4: 94f6da4f	bl	0x1d809ce10
+1d42e64d8: 94f6da6e	bl	0x1d809ce90
+1d42e64dc: 94f6da69	bl	0x1d809ce80
+1d42e64e0: 94f6da64	bl	0x1d809ce70
+1d42e64e4: 94f6da47	bl	0x1d809ce00
+1d42e64e8: 94f6da5e	bl	0x1d809ce60
+1d42e64ec: 94f6da51	bl	0x1d809ce30
+1d42e64f0: 94f6da58	bl	0x1d809ce50
+1d42e64f4: 94f6da53	bl	0x1d809ce40
+1d42e64f8: f94043e8	ldr	x8, [sp, #0x80]
+1d42e64fc: 94f6da69	bl	0x1d809cea0
+1d42e6500: f9403bfc	ldr	x28, [sp, #0x70]
+1d42e6504: b4008f94	cbz	x20, 0x1d42e76f4
+1d42e6508: 394342a8	ldrb	w8, [x21, #0xd0]
+1d42e650c: 36000388	tbz	w8, #0, 0x1d42e657c
+1d42e6510: 910382a0	add	x0, x21, #0xe0
+1d42e6514: 94f6da17	bl	0x1d809cd70
+1d42e6518: aa0003f3	mov	x19, x0
+1d42e651c: 94f60d71	bl	0x1d8069ae0 ; SELECTOR bufferView
+1d42e6520: 94f6d9f8	bl	0x1d809cd00
+1d42e6524: aa0003f4	mov	x20, x0
+1d42e6528: 94f6da3a	bl	0x1d809ce10
+1d42e652c: 94f6da35	bl	0x1d809ce00
+1d42e6530: b4009814	cbz	x20, 0x1d42e7830
+1d42e6534: 910382a0	add	x0, x21, #0xe0
+1d42e6538: 94f6da0e	bl	0x1d809cd70
+1d42e653c: aa0003f3	mov	x19, x0
+1d42e6540: 94f61934	bl	0x1d806ca10 ; SELECTOR pixelBufferView
+1d42e6544: aa0003f4	mov	x20, x0
+1d42e6548: 94f6da2e	bl	0x1d809ce00
+1d42e654c: b5000b54	cbnz	x20, 0x1d42e66b4
+1d42e6550: 97ff7164	bl	0x1d42c2ae0
+1d42e6554: 97ff9a34	bl	0x1d42cce24
+1d42e6558: b0000ee3	adrp	x3, 0x1d44c3000
+1d42e655c: 912bdc63	add	x3, x3, #0xaf7 ; 0x1d44c3af7 cstring '_inputISPSMGResultsBuffer.pixelBufferView'
+1d42e6560: 9400a0b3	bl	0x1d430e82c
+1d42e6564: 52803a67	mov	w7, #0x1d3
+1d42e6568: 94f7403e	bl	0x1d80b6660
+1d42e656c: 97ff99ca	bl	0x1d42ccc94
+1d42e6570: 97ff966a	bl	0x1d42cbf18
+1d42e6574: 52803a64	mov	w4, #0x1d3
+1d42e6578: 14000469	b	0x1d42e771c
+1d42e657c: 910402a0	add	x0, x21, #0x100
+1d42e6580: 94f6d9fc	bl	0x1d809cd70
+1d42e6584: b4000820	cbz	x0, 0x1d42e6688
+1d42e6588: aa0003f7	mov	x23, x0
+1d42e658c: 910442a0	add	x0, x21, #0x110
+1d42e6590: 94f6d9f8	bl	0x1d809cd70
+1d42e6594: b4009780	cbz	x0, 0x1d42e7884
+1d42e6598: aa0003f8	mov	x24, x0
+1d42e659c: 910422a0	add	x0, x21, #0x108
+1d42e65a0: 94f6d9f4	bl	0x1d809cd70
+1d42e65a4: b40096e0	cbz	x0, 0x1d42e7880
+1d42e65a8: aa0003f9	mov	x25, x0
+1d42e65ac: 910462a0	add	x0, x21, #0x118
+1d42e65b0: 94f6d9f0	bl	0x1d809cd70
+1d42e65b4: b4009640	cbz	x0, 0x1d42e787c
+1d42e65b8: aa0003fa	mov	x26, x0
+1d42e65bc: 910482a0	add	x0, x21, #0x120
+1d42e65c0: 94f6d9ec	bl	0x1d809cd70
+1d42e65c4: b40095a0	cbz	x0, 0x1d42e7878
+1d42e65c8: aa0003f4	mov	x20, x0
+1d42e65cc: 9104a2a0	add	x0, x21, #0x128
+1d42e65d0: 94f6d9e8	bl	0x1d809cd70
+1d42e65d4: b4009500	cbz	x0, 0x1d42e7874
+1d42e65d8: aa0003fb	mov	x27, x0
+1d42e65dc: 9104c2a0	add	x0, x21, #0x130
+1d42e65e0: 94f6d9e4	bl	0x1d809cd70
+1d42e65e4: b4009460	cbz	x0, 0x1d42e7870
+1d42e65e8: aa0003f6	mov	x22, x0
+1d42e65ec: 9104e2a0	add	x0, x21, #0x138
+1d42e65f0: 94f6d9e0	bl	0x1d809cd70
+1d42e65f4: b40093c0	cbz	x0, 0x1d42e786c
+1d42e65f8: aa0003f3	mov	x19, x0
+1d42e65fc: 910502a0	add	x0, x21, #0x140
+1d42e6600: 94f6d9dc	bl	0x1d809cd70
+1d42e6604: b4009300	cbz	x0, 0x1d42e7864
+1d42e6608: aa0003fc	mov	x28, x0
+1d42e660c: f90043f4	str	x20, [sp, #0x80]
+1d42e6610: 910522a0	add	x0, x21, #0x148
+1d42e6614: 94f6d9d7	bl	0x1d809cd70
+1d42e6618: b4009220	cbz	x0, 0x1d42e785c
+1d42e661c: aa0003f4	mov	x20, x0
+1d42e6620: a904dff8	stp	x24, x23, [sp, #0x48]
+1d42e6624: 910542a0	add	x0, x21, #0x150
+1d42e6628: 94f6d9d2	bl	0x1d809cd70
+1d42e662c: aa0003f7	mov	x23, x0
+1d42e6630: b40092e0	cbz	x0, 0x1d42e788c
+1d42e6634: 910562a0	add	x0, x21, #0x158
+1d42e6638: 94f6d9ce	bl	0x1d809cd70
+1d42e663c: f100001f	cmp	x0, #0
+1d42e6640: 1a9f17f8	cset	w24, eq
+1d42e6644: 94f6d9e3	bl	0x1d809cdd0
+1d42e6648: 94f6d9fe	bl	0x1d809ce40
+1d42e664c: 94f6d9f1	bl	0x1d809ce10
+1d42e6650: 94f6da10	bl	0x1d809ce90
+1d42e6654: 94f6d9eb	bl	0x1d809ce00
+1d42e6658: 94f6d9f6	bl	0x1d809ce30
+1d42e665c: 94f6da09	bl	0x1d809ce80
+1d42e6660: f94043e8	ldr	x8, [sp, #0x80]
+1d42e6664: 94f6da0f	bl	0x1d809cea0
+1d42e6668: 94f6da02	bl	0x1d809ce70
+1d42e666c: 94f6d9fd	bl	0x1d809ce60
+1d42e6670: f94027e8	ldr	x8, [sp, #0x48]
+1d42e6674: 94f6da0b	bl	0x1d809cea0
+1d42e6678: f9402be8	ldr	x8, [sp, #0x50]
+1d42e667c: 94f6da09	bl	0x1d809cea0
+1d42e6680: f9403bfc	ldr	x28, [sp, #0x70]
+1d42e6684: 36000198	tbz	w24, #0, 0x1d42e66b4
+1d42e6688: 97ff7116	bl	0x1d42c2ae0
+1d42e668c: 97ff99e6	bl	0x1d42cce24
+1d42e6690: b0000ee3	adrp	x3, 0x1d44c3000
+1d42e6694: 9124dc63	add	x3, x3, #0x937
+1d42e6698: 9400a065	bl	0x1d430e82c
+1d42e669c: 528039c7	mov	w7, #0x1ce
+1d42e66a0: 94f73ff0	bl	0x1d80b6660
+1d42e66a4: 97ff997c	bl	0x1d42ccc94
+1d42e66a8: 97ff961c	bl	0x1d42cbf18
+1d42e66ac: 528039c4	mov	w4, #0x1ce
+1d42e66b0: 1400041b	b	0x1d42e771c
+1d42e66b4: d2800008	mov	x8, #0
+1d42e66b8: b9407be9	ldr	w9, [sp, #0x78]
+1d42e66bc: b94063ea	ldr	w10, [sp, #0x60]
+1d42e66c0: 1b097d49	mul	w9, w10, w9
+1d42e66c4: b9405bea	ldr	w10, [sp, #0x58]
+1d42e66c8: 1b0a7d36	mul	w22, w9, w10
+1d42e66cc: 910642a9	add	x9, x21, #0x190
+1d42e66d0: 5280006a	mov	w10, #0x3
+1d42e66d4: d10243ab	sub	x11, fp, #0x90
+1d42e66d8: 12001d0c	and	w12, w8, #0xff
+1d42e66dc: 1aca098c	udiv	w12, w12, w10
+1d42e66e0: 0b0c058d	add	w13, w12, w12, lsl #0x1
+1d42e66e4: 4b0d010d	sub	w13, w8, w13
+1d42e66e8: 8b2d112d	add	x13, x9, w13, uxtb #0x4
+1d42e66ec: 9240058c	and	x12, x12, #0x3
+1d42e66f0: 8b0c09ac	add	x12, x13, x12, lsl #0x2
+1d42e66f4: bd400180	ldr	s0, [x12]
+1d42e66f8: bc287960	str	s0, [x11, x8, lsl #0x2]
+1d42e66fc: 91000508	add	x8, x8, #0x1
+1d42e6700: f100311f	cmp	x8, #0xc
+1d42e6704: 54fffea1	b.ne	0x1d42e66d8
+1d42e6708: b9406eb7	ldr	w23, [x21, #0x6c]
+1d42e670c: 39434ea8	ldrb	w8, [x21, #0xd3]
+1d42e6710: 360000a8	tbz	w8, #0, 0x1d42e6724
+1d42e6714: 294f26a8	ldp	w8, w9, [x21, #0x78]
+1d42e6718: 1b097d08	mul	w8, w8, w9
+1d42e671c: 1ac80af8	udiv	w24, w23, w8
+1d42e6720: 14000002	b	0x1d42e6728
+1d42e6724: 52800018	mov	w24, #0
+1d42e6728: b94076b9	ldr	w25, [x21, #0x74]
+1d42e672c: 394342a8	ldrb	w8, [x21, #0xd0]
+1d42e6730: 37000168	tbnz	w8, #0, 0x1d42e675c
+1d42e6734: 9103e2a0	add	x0, x21, #0xf8
+1d42e6738: 94f6d98e	bl	0x1d809cd70
+1d42e673c: aa0003f3	mov	x19, x0
+1d42e6740: aa1c03e2	mov	x2, x28
+1d42e6744: 94f61313	bl	0x1d806b390 ; SELECTOR imageWithTextureArrayBacking:
+1d42e6748: 94f6d96e	bl	0x1d809cd00
+1d42e674c: aa0003f4	mov	x20, x0
+1d42e6750: f81a03a0	stur	x0, [fp, #-0x60]
+1d42e6754: 94f6d9ab	bl	0x1d809ce00
+1d42e6758: b40089f4	cbz	x20, 0x1d42e7894
+1d42e675c: aa1c03e0	mov	x0, x28
+1d42e6760: 94f60cb0	bl	0x1d8069a20 ; SELECTOR blitCommandEncoder
+1d42e6764: 94f6d967	bl	0x1d809cd00
+1d42e6768: b4008040	cbz	x0, 0x1d42e7770
+1d42e676c: aa0003f4	mov	x20, x0
+1d42e6770: b90083f9	str	w25, [sp, #0x80]
+1d42e6774: 0b17031b	add	w27, w24, w23
+1d42e6778: 1ad70ad7	udiv	w23, w22, w23
+1d42e677c: 910602a0	add	x0, x21, #0x180
+1d42e6780: 94f6d97c	bl	0x1d809cd70
+1d42e6784: aa1d03fd	mov	fp, fp
+1d42e6788: 94f6d9da	bl	0x1d809cef0
+1d42e678c: aa0003f3	mov	x19, x0
+1d42e6790: 94f49204	bl	0x1d800afa0 ; SELECTOR length
+1d42e6794: aa0003e4	mov	x4, x0
+1d42e6798: aa1403e0	mov	x0, x20
+1d42e679c: aa1303e2	mov	x2, x19
+1d42e67a0: d2800003	mov	x3, #0
+1d42e67a4: 52800005	mov	w5, #0
+1d42e67a8: 94f610a2	bl	0x1d806aa30 ; SELECTOR fillBuffer:range:value:
+1d42e67ac: 94f6d995	bl	0x1d809ce00
+1d42e67b0: 94f6d994	bl	0x1d809ce00
+1d42e67b4: f90033f4	str	x20, [sp, #0x60]
+1d42e67b8: aa1403e0	mov	x0, x20
+1d42e67bc: 94f61011	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e67c0: d2800018	mov	x24, #0
+1d42e67c4: 394342a8	ldrb	w8, [x21, #0xd0]
+1d42e67c8: f9003ff7	str	x23, [sp, #0x78]
+1d42e67cc: 37004848	tbnz	w8, #0, 0x1d42e70d4
+1d42e67d0: aa1c03e0	mov	x0, x28
+1d42e67d4: 94f60e03	bl	0x1d8069fe0 ; SELECTOR computeCommandEncoder
+1d42e67d8: 94f6d94a	bl	0x1d809cd00
+1d42e67dc: aa0003f8	mov	x24, x0
+1d42e67e0: b4008760	cbz	x0, 0x1d42e78cc
+1d42e67e4: aa1503f6	mov	x22, x21
+1d42e67e8: f8408ec8	ldr	x8, [x22, #0x8]!
+1d42e67ec: 94f6da11	bl	0x1d809d030
+1d42e67f0: aa0003fa	mov	x26, x0
+1d42e67f4: aa1803e0	mov	x0, x24
+1d42e67f8: aa1a03e2	mov	x2, x26
+1d42e67fc: 94f61aed	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e6800: aa1a03e0	mov	x0, x26
+1d42e6804: 94f6234b	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e6808: f9002fe0	str	x0, [sp, #0x58]
+1d42e680c: aa1a03e0	mov	x0, x26
+1d42e6810: 94f61690	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e6814: aa0003f3	mov	x19, x0
+1d42e6818: aa1a03e0	mov	x0, x26
+1d42e681c: 94f62345	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e6820: 9ac00a68	udiv	x8, x19, x0
+1d42e6824: f9002be8	str	x8, [sp, #0x50]
+1d42e6828: 9103a2a0	add	x0, x21, #0xe8
+1d42e682c: 94f6d951	bl	0x1d809cd70
+1d42e6830: aa0003f3	mov	x19, x0
+1d42e6834: 94f62337	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6838: 94f6d932	bl	0x1d809cd00
+1d42e683c: 940036fd	bl	0x1d42f4430
+1d42e6840: d2800003	mov	x3, #0
+1d42e6844: 94f6212b	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6848: 94f6d972	bl	0x1d809ce10
+1d42e684c: 94f6d96d	bl	0x1d809ce00
+1d42e6850: 9103e2c0	add	x0, x22, #0xf8
+1d42e6854: 94f6d947	bl	0x1d809cd70
+1d42e6858: 97ffb7c6	bl	0x1d42d4770
+1d42e685c: d2800003	mov	x3, #0
+1d42e6860: 52800024	mov	w4, #0x1
+1d42e6864: 94f61a57	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e6868: 94f6d966	bl	0x1d809ce00
+1d42e686c: 9400a023	bl	0x1d430e8f8
+1d42e6870: 910326c2	add	x2, x22, #0xc9
+1d42e6874: aa1803e0	mov	x0, x24
+1d42e6878: 52800023	mov	w3, #0x1
+1d42e687c: 52800124	mov	w4, #0x9
+1d42e6880: 94f61a60	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e6884: 9103a2a0	add	x0, x21, #0xe8
+1d42e6888: 94f6d93a	bl	0x1d809cd70
+1d42e688c: f90027e0	str	x0, [sp, #0x48]
+1d42e6890: 94f62320	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6894: 94f6d91b	bl	0x1d809cd00
+1d42e6898: f90023e0	str	x0, [sp, #0x40]
+1d42e689c: 94f623ed	bl	0x1d806f850 ; SELECTOR width
+1d42e68a0: f90013e0	str	x0, [sp, #0x20]
+1d42e68a4: 9103a2a0	add	x0, x21, #0xe8
+1d42e68a8: 94f6d932	bl	0x1d809cd70
+1d42e68ac: f9001fe0	str	x0, [sp, #0x38]
+1d42e68b0: 94f62318	bl	0x1d806f510 ; SELECTOR textureView
+1d42e68b4: 94f6d913	bl	0x1d809cd00
+1d42e68b8: f9001be0	str	x0, [sp, #0x30]
+1d42e68bc: 94f61249	bl	0x1d806b1e0 ; SELECTOR height
+1d42e68c0: f9000fe0	str	x0, [sp, #0x18]
+1d42e68c4: 9103e2c0	add	x0, x22, #0xf8
+1d42e68c8: 94f6d92a	bl	0x1d809cd70
+1d42e68cc: f90017e0	str	x0, [sp, #0x28]
+1d42e68d0: 94f491b4	bl	0x1d800afa0 ; SELECTOR length
+1d42e68d4: aa0003f3	mov	x19, x0
+1d42e68d8: 9103a2a0	add	x0, x21, #0xe8
+1d42e68dc: 94f6d925	bl	0x1d809cd70
+1d42e68e0: aa0003f9	mov	x25, x0
+1d42e68e4: 94f6230b	bl	0x1d806f510 ; SELECTOR textureView
+1d42e68e8: 94f6d906	bl	0x1d809cd00
+1d42e68ec: aa0003fc	mov	x28, x0
+1d42e68f0: 94f623d8	bl	0x1d806f850 ; SELECTOR width
+1d42e68f4: aa0003f7	mov	x23, x0
+1d42e68f8: 9103a2a0	add	x0, x21, #0xe8
+1d42e68fc: 94f6d91d	bl	0x1d809cd70
+1d42e6900: aa0003f4	mov	x20, x0
+1d42e6904: 94f6d95b	bl	0x1d809ce70
+1d42e6908: aa1403e0	mov	x0, x20
+1d42e690c: 94f62301	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6910: 94f6d8fc	bl	0x1d809cd00
+1d42e6914: aa0003fa	mov	x26, x0
+1d42e6918: 94f61232	bl	0x1d806b1e0 ; SELECTOR height
+1d42e691c: 9b007ee8	mul	x8, x23, x0
+1d42e6920: d37ef508	lsl	x8, x8, #0x2
+1d42e6924: a941abe9	ldp	x9, x10, [sp, #0x18]
+1d42e6928: a93527aa	stp	x10, x9, [fp, #-0xb0]
+1d42e692c: 9ac80a68	udiv	x8, x19, x8
+1d42e6930: f81603a8	stur	x8, [fp, #-0xa0]
+1d42e6934: a9452be8	ldp	x8, x10, [sp, #0x50]
+1d42e6938: a90aa3ea	stp	x10, x8, [sp, #0xa8]
+1d42e693c: 52800028	mov	w8, #0x1
+1d42e6940: f9005fe8	str	x8, [sp, #0xb8]
+1d42e6944: 9400185c	bl	0x1d42ecab4
+1d42e6948: aa1803e0	mov	x0, x24
+1d42e694c: 94f60f09	bl	0x1d806a570 ; SELECTOR dispatchThreads:threadsPerThreadgroup:
+1d42e6950: 94f6d948	bl	0x1d809ce70
+1d42e6954: 94f6d92f	bl	0x1d809ce10
+1d42e6958: 94f6d94e	bl	0x1d809ce90
+1d42e695c: f9403bfc	ldr	x28, [sp, #0x70]
+1d42e6960: 94f6d940	bl	0x1d809ce60
+1d42e6964: f94017e8	ldr	x8, [sp, #0x28]
+1d42e6968: 94f6d94e	bl	0x1d809cea0
+1d42e696c: f9401be8	ldr	x8, [sp, #0x30]
+1d42e6970: 94f6d94c	bl	0x1d809cea0
+1d42e6974: f9401fe8	ldr	x8, [sp, #0x38]
+1d42e6978: 94f6d94a	bl	0x1d809cea0
+1d42e697c: f94023e8	ldr	x8, [sp, #0x40]
+1d42e6980: 94f6d948	bl	0x1d809cea0
+1d42e6984: f94027e8	ldr	x8, [sp, #0x48]
+1d42e6988: 94f6d946	bl	0x1d809cea0
+1d42e698c: aa1803e0	mov	x0, x24
+1d42e6990: 94f60f9c	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e6994: 394322c8	ldrb	w8, [x22, #0xc8]
+1d42e6998: f9403ff7	ldr	x23, [sp, #0x78]
+1d42e699c: 370039c8	tbnz	w8, #0, 0x1d42e70d4
+1d42e69a0: aa1c03e0	mov	x0, x28
+1d42e69a4: 94f60d8f	bl	0x1d8069fe0 ; SELECTOR computeCommandEncoder
+1d42e69a8: 94f6d8d6	bl	0x1d809cd00
+1d42e69ac: aa0003fa	mov	x26, x0
+1d42e69b0: 94f6d928	bl	0x1d809ce50
+1d42e69b4: b4007bfa	cbz	x26, 0x1d42e7930
+1d42e69b8: f9400aa8	ldr	x8, [x21, #0x10]
+1d42e69bc: 94f6d99d	bl	0x1d809d030
+1d42e69c0: aa0003f8	mov	x24, x0
+1d42e69c4: aa1a03e0	mov	x0, x26
+1d42e69c8: aa1803e2	mov	x2, x24
+1d42e69cc: 94f61a79	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e69d0: aa1803e0	mov	x0, x24
+1d42e69d4: 94f622d7	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e69d8: aa0003f4	mov	x20, x0
+1d42e69dc: f9002fe0	str	x0, [sp, #0x58]
+1d42e69e0: aa1803e0	mov	x0, x24
+1d42e69e4: 94f6161b	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e69e8: aa0003f3	mov	x19, x0
+1d42e69ec: aa1803e0	mov	x0, x24
+1d42e69f0: 94f622d0	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e69f4: 9ac00a79	udiv	x25, x19, x0
+1d42e69f8: aa1a03e0	mov	x0, x26
+1d42e69fc: aa1403e2	mov	x2, x20
+1d42e6a00: aa1903e3	mov	x3, x25
+1d42e6a04: 94f61beb	bl	0x1d806d9b0 ; SELECTOR setImageblockWidth:height:
+1d42e6a08: 9103a2a0	add	x0, x21, #0xe8
+1d42e6a0c: 94f6d8d9	bl	0x1d809cd70
+1d42e6a10: aa0003f3	mov	x19, x0
+1d42e6a14: 94f622bf	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6a18: 94f6d8ba	bl	0x1d809cd00
+1d42e6a1c: aa0003f4	mov	x20, x0
+1d42e6a20: aa1a03e0	mov	x0, x26
+1d42e6a24: aa1403e2	mov	x2, x20
+1d42e6a28: d2800003	mov	x3, #0
+1d42e6a2c: 94f620b1	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6a30: 94f6d8f8	bl	0x1d809ce10
+1d42e6a34: 94f6d8f3	bl	0x1d809ce00
+1d42e6a38: 9103c2a0	add	x0, x21, #0xf0
+1d42e6a3c: 94f6d8cd	bl	0x1d809cd70
+1d42e6a40: aa0003f3	mov	x19, x0
+1d42e6a44: 94f622b3	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6a48: 94f6d8ae	bl	0x1d809cd00
+1d42e6a4c: aa0003f4	mov	x20, x0
+1d42e6a50: aa1a03e0	mov	x0, x26
+1d42e6a54: aa1403e2	mov	x2, x20
+1d42e6a58: 52800023	mov	w3, #0x1
+1d42e6a5c: 94f620a5	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6a60: 94f6d8ec	bl	0x1d809ce10
+1d42e6a64: 94f6d8e7	bl	0x1d809ce00
+1d42e6a68: 910442a0	add	x0, x21, #0x110
+1d42e6a6c: 94f6d8c1	bl	0x1d809cd70
+1d42e6a70: aa0003f3	mov	x19, x0
+1d42e6a74: aa1a03e0	mov	x0, x26
+1d42e6a78: aa1303e2	mov	x2, x19
+1d42e6a7c: 52800043	mov	w3, #0x2
+1d42e6a80: 94f6209c	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6a84: 94f6d8df	bl	0x1d809ce00
+1d42e6a88: 9101a2a2	add	x2, x21, #0x68
+1d42e6a8c: aa1a03e0	mov	x0, x26
+1d42e6a90: 52800803	mov	w3, #0x40
+1d42e6a94: d2800004	mov	x4, #0
+1d42e6a98: 94f619da	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e6a9c: 910326c2	add	x2, x22, #0xc9
+1d42e6aa0: aa1a03e0	mov	x0, x26
+1d42e6aa4: 52800023	mov	w3, #0x1
+1d42e6aa8: 52800124	mov	w4, #0x9
+1d42e6aac: 94f619d5	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e6ab0: 91034aa2	add	x2, x21, #0xd2
+1d42e6ab4: aa1a03e0	mov	x0, x26
+1d42e6ab8: 52800023	mov	w3, #0x1
+1d42e6abc: 52800144	mov	w4, #0xa
+1d42e6ac0: 94f619d0	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e6ac4: 910442a0	add	x0, x21, #0x110
+1d42e6ac8: 94f6d8aa	bl	0x1d809cd70
+1d42e6acc: aa0003f3	mov	x19, x0
+1d42e6ad0: 94f62360	bl	0x1d806f850 ; SELECTOR width
+1d42e6ad4: aa0003f4	mov	x20, x0
+1d42e6ad8: 910442a0	add	x0, x21, #0x110
+1d42e6adc: 94f6d8a5	bl	0x1d809cd70
+1d42e6ae0: f90027f6	str	x22, [sp, #0x48]
+1d42e6ae4: aa0003f6	mov	x22, x0
+1d42e6ae8: 94f611be	bl	0x1d806b1e0 ; SELECTOR height
+1d42e6aec: aa0003f7	mov	x23, x0
+1d42e6af0: 910442a0	add	x0, x21, #0x110
+1d42e6af4: 94f6d89f	bl	0x1d809cd70
+1d42e6af8: aa0003fc	mov	x28, x0
+1d42e6afc: 94f6d8d5	bl	0x1d809ce50
+1d42e6b00: aa1c03e0	mov	x0, x28
+1d42e6b04: 94f60b5b	bl	0x1d8069870 ; SELECTOR arrayLength
+1d42e6b08: a9355fb4	stp	x20, x23, [fp, #-0xb0]
+1d42e6b0c: f81603a0	stur	x0, [fp, #-0xa0]
+1d42e6b10: f9402fe8	ldr	x8, [sp, #0x58]
+1d42e6b14: a90ae7e8	stp	x8, x25, [sp, #0xa8]
+1d42e6b18: 52800028	mov	w8, #0x1
+1d42e6b1c: f9005fe8	str	x8, [sp, #0xb8]
+1d42e6b20: 940017e5	bl	0x1d42ecab4
+1d42e6b24: aa1a03e0	mov	x0, x26
+1d42e6b28: 94f60e92	bl	0x1d806a570 ; SELECTOR dispatchThreads:threadsPerThreadgroup:
+1d42e6b2c: 94f6d8d9	bl	0x1d809ce90
+1d42e6b30: 94f6d8c0	bl	0x1d809ce30
+1d42e6b34: 94f6d8b3	bl	0x1d809ce00
+1d42e6b38: aa1a03e0	mov	x0, x26
+1d42e6b3c: 94f60f31	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e6b40: 394342a8	ldrb	w8, [x21, #0xd0]
+1d42e6b44: aa1a03f8	mov	x24, x26
+1d42e6b48: a9475ffc	ldp	x28, x23, [sp, #0x70]
+1d42e6b4c: 37002c48	tbnz	w8, #0, 0x1d42e70d4
+1d42e6b50: aa1c03e0	mov	x0, x28
+1d42e6b54: 94f60d23	bl	0x1d8069fe0 ; SELECTOR computeCommandEncoder
+1d42e6b58: 94f6d86a	bl	0x1d809cd00
+1d42e6b5c: aa0003f9	mov	x25, x0
+1d42e6b60: 94f6d8c4	bl	0x1d809ce70
+1d42e6b64: b4006fd9	cbz	x25, 0x1d42e795c
+1d42e6b68: f9400ea8	ldr	x8, [x21, #0x18]
+1d42e6b6c: 94f6d931	bl	0x1d809d030
+1d42e6b70: aa0003f4	mov	x20, x0
+1d42e6b74: f90023e0	str	x0, [sp, #0x40]
+1d42e6b78: aa1903e0	mov	x0, x25
+1d42e6b7c: aa1403e2	mov	x2, x20
+1d42e6b80: 94f61a0c	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e6b84: aa1403e0	mov	x0, x20
+1d42e6b88: 94f6226a	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e6b8c: f9002fe0	str	x0, [sp, #0x58]
+1d42e6b90: aa1403e0	mov	x0, x20
+1d42e6b94: 94f615af	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e6b98: aa0003f3	mov	x19, x0
+1d42e6b9c: aa1403e0	mov	x0, x20
+1d42e6ba0: 94f62264	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e6ba4: f85a03a8	ldur	x8, [fp, #-0x60]
+1d42e6ba8: 9ac00a69	udiv	x9, x19, x0
+1d42e6bac: f9002be9	str	x9, [sp, #0x50]
+1d42e6bb0: aa0803e0	mov	x0, x8
+1d42e6bb4: 94f62257	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6bb8: 94f6d852	bl	0x1d809cd00
+1d42e6bbc: aa0003f3	mov	x19, x0
+1d42e6bc0: 97ffd6fd	bl	0x1d42dc7b4
+1d42e6bc4: 52800063	mov	w3, #0x3
+1d42e6bc8: 94f6204a	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6bcc: 94f6d88d	bl	0x1d809ce00
+1d42e6bd0: 910582a0	add	x0, x21, #0x160
+1d42e6bd4: 94f6d867	bl	0x1d809cd70
+1d42e6bd8: aa0003f3	mov	x19, x0
+1d42e6bdc: 94f6224d	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6be0: 94f6d848	bl	0x1d809cd00
+1d42e6be4: 940017d7	bl	0x1d42ecb40
+1d42e6be8: 528001a3	mov	w3, #0xd
+1d42e6bec: 94f62041	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6bf0: 94f6d888	bl	0x1d809ce10
+1d42e6bf4: 94f6d883	bl	0x1d809ce00
+1d42e6bf8: 9103a2a0	add	x0, x21, #0xe8
+1d42e6bfc: 94f6d85d	bl	0x1d809cd70
+1d42e6c00: aa0003f3	mov	x19, x0
+1d42e6c04: 94f62243	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6c08: 94f6d83e	bl	0x1d809cd00
+1d42e6c0c: 940017cd	bl	0x1d42ecb40
+1d42e6c10: d2800003	mov	x3, #0
+1d42e6c14: 94f62037	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6c18: 94f6d87e	bl	0x1d809ce10
+1d42e6c1c: 94f6d879	bl	0x1d809ce00
+1d42e6c20: 9103c2a0	add	x0, x21, #0xf0
+1d42e6c24: 94f6d853	bl	0x1d809cd70
+1d42e6c28: aa0003f3	mov	x19, x0
+1d42e6c2c: 94f62239	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6c30: 94f6d834	bl	0x1d809cd00
+1d42e6c34: 940017c3	bl	0x1d42ecb40
+1d42e6c38: 52800023	mov	w3, #0x1
+1d42e6c3c: 94f6202d	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6c40: 94f6d874	bl	0x1d809ce10
+1d42e6c44: 94f6d86f	bl	0x1d809ce00
+1d42e6c48: 910422a0	add	x0, x21, #0x108
+1d42e6c4c: 94f6d849	bl	0x1d809cd70
+1d42e6c50: aa0003f3	mov	x19, x0
+1d42e6c54: 97ffd6d8	bl	0x1d42dc7b4
+1d42e6c58: d2800003	mov	x3, #0
+1d42e6c5c: 52800044	mov	w4, #0x2
+1d42e6c60: 94f61958	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e6c64: 94f6d867	bl	0x1d809ce00
+1d42e6c68: 94009f2c	bl	0x1d430e918
+1d42e6c6c: 9103e2a0	add	x0, x21, #0xf8
+1d42e6c70: 94f6d840	bl	0x1d809cd70
+1d42e6c74: aa0003f3	mov	x19, x0
+1d42e6c78: 94f622f6	bl	0x1d806f850 ; SELECTOR width
+1d42e6c7c: aa0003f6	mov	x22, x0
+1d42e6c80: 9103e2a0	add	x0, x21, #0xf8
+1d42e6c84: 94f6d83b	bl	0x1d809cd70
+1d42e6c88: aa0003f4	mov	x20, x0
+1d42e6c8c: 94f61155	bl	0x1d806b1e0 ; SELECTOR height
+1d42e6c90: aa0003f7	mov	x23, x0
+1d42e6c94: 9103e2a0	add	x0, x21, #0xf8
+1d42e6c98: 94f6d836	bl	0x1d809cd70
+1d42e6c9c: aa0003fa	mov	x26, x0
+1d42e6ca0: 94f60af4	bl	0x1d8069870 ; SELECTOR arrayLength
+1d42e6ca4: aa0003fc	mov	x28, x0
+1d42e6ca8: 9103e2a0	add	x0, x21, #0xf8
+1d42e6cac: 94f6d831	bl	0x1d809cd70
+1d42e6cb0: aa0003f8	mov	x24, x0
+1d42e6cb4: f94023e8	ldr	x8, [sp, #0x40]
+1d42e6cb8: 94f6d87a	bl	0x1d809cea0
+1d42e6cbc: aa1803e0	mov	x0, x24
+1d42e6cc0: 94f60aec	bl	0x1d8069870 ; SELECTOR arrayLength
+1d42e6cc4: a9355fb6	stp	x22, x23, [fp, #-0xb0]
+1d42e6cc8: 9b007388	madd	x8, x28, x0, x28
+1d42e6ccc: d341fd08	lsr	x8, x8, #0x1
+1d42e6cd0: f81603a8	stur	x8, [fp, #-0xa0]
+1d42e6cd4: a94527e8	ldp	x8, x9, [sp, #0x50]
+1d42e6cd8: a90aa3e9	stp	x9, x8, [sp, #0xa8]
+1d42e6cdc: 52800028	mov	w8, #0x1
+1d42e6ce0: f9005fe8	str	x8, [sp, #0xb8]
+1d42e6ce4: 94001774	bl	0x1d42ecab4
+1d42e6ce8: aa1903e0	mov	x0, x25
+1d42e6cec: 94f60e21	bl	0x1d806a570 ; SELECTOR dispatchThreads:threadsPerThreadgroup:
+1d42e6cf0: 94f6d858	bl	0x1d809ce50
+1d42e6cf4: 94f6d85f	bl	0x1d809ce70
+1d42e6cf8: 94f6d846	bl	0x1d809ce10
+1d42e6cfc: 94f6d841	bl	0x1d809ce00
+1d42e6d00: aa1903e0	mov	x0, x25
+1d42e6d04: 94f60ebf	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e6d08: 394342a8	ldrb	w8, [x21, #0xd0]
+1d42e6d0c: aa1903f8	mov	x24, x25
+1d42e6d10: a9475ffc	ldp	x28, x23, [sp, #0x70]
+1d42e6d14: 37001e08	tbnz	w8, #0, 0x1d42e70d4
+1d42e6d18: 97ff4fba	bl	0x1d42bac00
+1d42e6d1c: 94f60cb5	bl	0x1d8069ff0 ; SELECTOR computeCommandEncoderWithDispatchType:
+1d42e6d20: 94f6d7f8	bl	0x1d809cd00
+1d42e6d24: aa0003f8	mov	x24, x0
+1d42e6d28: 94f6d84e	bl	0x1d809ce60
+1d42e6d2c: b4006378	cbz	x24, 0x1d42e7998
+1d42e6d30: f85a03a0	ldur	x0, [fp, #-0x60]
+1d42e6d34: 94f621f7	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6d38: 94f6d7f2	bl	0x1d809cd00
+1d42e6d3c: 97ffb68d	bl	0x1d42d4770
+1d42e6d40: 52800063	mov	w3, #0x3
+1d42e6d44: 94f61feb	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6d48: 94f6d82e	bl	0x1d809ce00
+1d42e6d4c: 910422a0	add	x0, x21, #0x108
+1d42e6d50: 94f6d808	bl	0x1d809cd70
+1d42e6d54: 97ffb687	bl	0x1d42d4770
+1d42e6d58: d2800003	mov	x3, #0
+1d42e6d5c: 52800044	mov	w4, #0x2
+1d42e6d60: 94f61918	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e6d64: 94f6d827	bl	0x1d809ce00
+1d42e6d68: 910582a0	add	x0, x21, #0x160
+1d42e6d6c: 94f6d801	bl	0x1d809cd70
+1d42e6d70: aa0003f3	mov	x19, x0
+1d42e6d74: 94f621e7	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6d78: 94f6d7e2	bl	0x1d809cd00
+1d42e6d7c: 940035ad	bl	0x1d42f4430
+1d42e6d80: 528001a3	mov	w3, #0xd
+1d42e6d84: 94f61fdb	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6d88: 94f6d822	bl	0x1d809ce10
+1d42e6d8c: 94f6d81d	bl	0x1d809ce00
+1d42e6d90: 9103a2a0	add	x0, x21, #0xe8
+1d42e6d94: 94f6d7f7	bl	0x1d809cd70
+1d42e6d98: aa0003f3	mov	x19, x0
+1d42e6d9c: 94f621dd	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6da0: 94f6d7d8	bl	0x1d809cd00
+1d42e6da4: 940035a3	bl	0x1d42f4430
+1d42e6da8: d2800003	mov	x3, #0
+1d42e6dac: 94f61fd1	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6db0: 94f6d818	bl	0x1d809ce10
+1d42e6db4: 94f6d813	bl	0x1d809ce00
+1d42e6db8: 9103c2a0	add	x0, x21, #0xf0
+1d42e6dbc: 94f6d7ed	bl	0x1d809cd70
+1d42e6dc0: aa0003f3	mov	x19, x0
+1d42e6dc4: 94f621d3	bl	0x1d806f510 ; SELECTOR textureView
+1d42e6dc8: 94f6d7ce	bl	0x1d809cd00
+1d42e6dcc: 94003599	bl	0x1d42f4430
+1d42e6dd0: 52800023	mov	w3, #0x1
+1d42e6dd4: 94f61fc7	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6dd8: 94f6d80e	bl	0x1d809ce10
+1d42e6ddc: 94f6d809	bl	0x1d809ce00
+1d42e6de0: 910462a0	add	x0, x21, #0x118
+1d42e6de4: 94f6d7e3	bl	0x1d809cd70
+1d42e6de8: 97ffb662	bl	0x1d42d4770
+1d42e6dec: 52800083	mov	w3, #0x4
+1d42e6df0: 94f61fc0	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6df4: 94f6d803	bl	0x1d809ce00
+1d42e6df8: 910482a0	add	x0, x21, #0x120
+1d42e6dfc: 94f6d7dd	bl	0x1d809cd70
+1d42e6e00: 97ffb65c	bl	0x1d42d4770
+1d42e6e04: 528000a3	mov	w3, #0x5
+1d42e6e08: 94f61fba	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e0c: 94f6d7fd	bl	0x1d809ce00
+1d42e6e10: 9104a2a0	add	x0, x21, #0x128
+1d42e6e14: 94f6d7d7	bl	0x1d809cd70
+1d42e6e18: 97ffb656	bl	0x1d42d4770
+1d42e6e1c: 528000c3	mov	w3, #0x6
+1d42e6e20: 94f61fb4	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e24: 94f6d7f7	bl	0x1d809ce00
+1d42e6e28: 9104c2a0	add	x0, x21, #0x130
+1d42e6e2c: 94f6d7d1	bl	0x1d809cd70
+1d42e6e30: 97ffb650	bl	0x1d42d4770
+1d42e6e34: 528000e3	mov	w3, #0x7
+1d42e6e38: 94f61fae	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e3c: 94f6d7f1	bl	0x1d809ce00
+1d42e6e40: 9104e2a0	add	x0, x21, #0x138
+1d42e6e44: 94f6d7cb	bl	0x1d809cd70
+1d42e6e48: 97ffb64a	bl	0x1d42d4770
+1d42e6e4c: 52800103	mov	w3, #0x8
+1d42e6e50: 94f61fa8	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e54: 94f6d7eb	bl	0x1d809ce00
+1d42e6e58: 910502a0	add	x0, x21, #0x140
+1d42e6e5c: 94f6d7c5	bl	0x1d809cd70
+1d42e6e60: 97ffb644	bl	0x1d42d4770
+1d42e6e64: 52800123	mov	w3, #0x9
+1d42e6e68: 94f61fa2	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e6c: 94f6d7e5	bl	0x1d809ce00
+1d42e6e70: 910522a0	add	x0, x21, #0x148
+1d42e6e74: 94f6d7bf	bl	0x1d809cd70
+1d42e6e78: 97ffb63e	bl	0x1d42d4770
+1d42e6e7c: 52800143	mov	w3, #0xa
+1d42e6e80: 94f61f9c	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e84: 94f6d7df	bl	0x1d809ce00
+1d42e6e88: 910542a0	add	x0, x21, #0x150
+1d42e6e8c: 94f6d7b9	bl	0x1d809cd70
+1d42e6e90: 97ffb638	bl	0x1d42d4770
+1d42e6e94: 52800163	mov	w3, #0xb
+1d42e6e98: 94f61f96	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6e9c: 94f6d7d9	bl	0x1d809ce00
+1d42e6ea0: 910562a0	add	x0, x21, #0x158
+1d42e6ea4: 94f6d7b3	bl	0x1d809cd70
+1d42e6ea8: 97ffb632	bl	0x1d42d4770
+1d42e6eac: 52800183	mov	w3, #0xc
+1d42e6eb0: 94f61f90	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e6eb4: 94f6d7d3	bl	0x1d809ce00
+1d42e6eb8: 94009e90	bl	0x1d430e8f8
+1d42e6ebc: b9406ea8	ldr	w8, [x21, #0x6c]
+1d42e6ec0: f9403ff7	ldr	x23, [sp, #0x78]
+1d42e6ec4: f94027fa	ldr	x26, [sp, #0x48]
+1d42e6ec8: 34000fc8	cbz	w8, 0x1d42e70c0
+1d42e6ecc: d2800016	mov	x22, #0
+1d42e6ed0: b94083e8	ldr	w8, [sp, #0x80]
+1d42e6ed4: 6b0802ff	cmp	w23, w8
+1d42e6ed8: 52800068	mov	w8, #0x3
+1d42e6edc: 9a888508	cinc	x8, x8, ls
+1d42e6ee0: f9002fe8	str	x8, [sp, #0x58]
+1d42e6ee4: 1b175ee8	madd	w8, w23, w23, w23
+1d42e6ee8: 53017d08	lsr	w8, w8, #0x1
+1d42e6eec: b90053e8	str	w8, [sp, #0x50]
+1d42e6ef0: 94009e6f	bl	0x1d430e8ac
+1d42e6ef4: 1b167ee8	mul	w8, w23, w22
+1d42e6ef8: b900a7e8	str	w8, [sp, #0xa4]
+1d42e6efc: 910293e2	add	x2, sp, #0xa4
+1d42e6f00: 94009e8e	bl	0x1d430e938
+1d42e6f04: 52800064	mov	w4, #0x3
+1d42e6f08: 94f618be	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e6f0c: f9402fe8	ldr	x8, [sp, #0x58]
+1d42e6f10: f8687b48	ldr	x8, [x26, x8, lsl #0x3]
+1d42e6f14: 94f6d847	bl	0x1d809d030
+1d42e6f18: aa0003f9	mov	x25, x0
+1d42e6f1c: aa1803e0	mov	x0, x24
+1d42e6f20: aa1903e2	mov	x2, x25
+1d42e6f24: 94f61923	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e6f28: 9103e340	add	x0, x26, #0xf8
+1d42e6f2c: 94f6d791	bl	0x1d809cd70
+1d42e6f30: 97ffb610	bl	0x1d42d4770
+1d42e6f34: d2800003	mov	x3, #0
+1d42e6f38: 52800024	mov	w4, #0x1
+1d42e6f3c: 94f618a1	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e6f40: 94f6d7b0	bl	0x1d809ce00
+1d42e6f44: 910602a0	add	x0, x21, #0x180
+1d42e6f48: 94f6d78a	bl	0x1d809cd70
+1d42e6f4c: aa1d03fd	mov	fp, fp
+1d42e6f50: 94f6d7e8	bl	0x1d809cef0
+1d42e6f54: aa0003f3	mov	x19, x0
+1d42e6f58: 94f49012	bl	0x1d800afa0 ; SELECTOR length
+1d42e6f5c: 94009e83	bl	0x1d430e968
+1d42e6f60: 94009e50	bl	0x1d430e8a0
+1d42e6f64: 52800084	mov	w4, #0x4
+1d42e6f68: 94f61896	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e6f6c: 94f6d7a5	bl	0x1d809ce00
+1d42e6f70: 94f6d7a4	bl	0x1d809ce00
+1d42e6f74: 9105a2a0	add	x0, x21, #0x168
+1d42e6f78: 94f6d77e	bl	0x1d809cd70
+1d42e6f7c: aa1d03fd	mov	fp, fp
+1d42e6f80: 94f6d7dc	bl	0x1d809cef0
+1d42e6f84: aa0003f3	mov	x19, x0
+1d42e6f88: 94f49006	bl	0x1d800afa0 ; SELECTOR length
+1d42e6f8c: 9b167c08	mul	x8, x0, x22
+1d42e6f90: b9406ea9	ldr	w9, [x21, #0x6c]
+1d42e6f94: 9ac90903	udiv	x3, x8, x9
+1d42e6f98: 94009e42	bl	0x1d430e8a0
+1d42e6f9c: 528000a4	mov	w4, #0x5
+1d42e6fa0: 94f61888	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e6fa4: 94f6d797	bl	0x1d809ce00
+1d42e6fa8: 94f6d796	bl	0x1d809ce00
+1d42e6fac: aa1903e0	mov	x0, x25
+1d42e6fb0: 94f614a8	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e6fb4: aa0003f3	mov	x19, x0
+1d42e6fb8: aa1903e0	mov	x0, x25
+1d42e6fbc: 94f6215d	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e6fc0: 9ac00a68	udiv	x8, x19, x0
+1d42e6fc4: b9406aa9	ldr	w9, [x21, #0x68]
+1d42e6fc8: 1b092529	madd	w9, w9, w9, w9
+1d42e6fcc: 53017d29	lsr	w9, w9, #0x1
+1d42e6fd0: b94053ea	ldr	w10, [sp, #0x50]
+1d42e6fd4: 1b0a7d29	mul	w9, w9, w10
+1d42e6fd8: 8b090109	add	x9, x8, x9
+1d42e6fdc: d1000529	sub	x9, x9, #0x1
+1d42e6fe0: 9ac80928	udiv	x8, x9, x8
+1d42e6fe4: 94009e36	bl	0x1d430e8bc
+1d42e6fe8: aa1903e0	mov	x0, x25
+1d42e6fec: 94f61499	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e6ff0: 94009e1a	bl	0x1d430e858
+1d42e6ff4: aa1803e0	mov	x0, x24
+1d42e6ff8: 94f60d56	bl	0x1d806a550 ; SELECTOR dispatchThreadgroups:threadsPerThreadgroup:
+1d42e6ffc: f9401aa8	ldr	x8, [x21, #0x30]
+1d42e7000: 94f6d80c	bl	0x1d809d030
+1d42e7004: aa0003f4	mov	x20, x0
+1d42e7008: 94f6d796	bl	0x1d809ce60
+1d42e700c: aa1803e0	mov	x0, x24
+1d42e7010: aa1403e2	mov	x2, x20
+1d42e7014: 94f618e7	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e7018: 910442a0	add	x0, x21, #0x110
+1d42e701c: 94f6d755	bl	0x1d809cd70
+1d42e7020: 97ffb5d4	bl	0x1d42d4770
+1d42e7024: 52800043	mov	w3, #0x2
+1d42e7028: 94f61f32	bl	0x1d806ecf0 ; SELECTOR setTexture:atIndex:
+1d42e702c: 94f6d775	bl	0x1d809ce00
+1d42e7030: 910622a0	add	x0, x21, #0x188
+1d42e7034: 94f6d74f	bl	0x1d809cd70
+1d42e7038: aa1d03fd	mov	fp, fp
+1d42e703c: 94f6d7ad	bl	0x1d809cef0
+1d42e7040: aa0003f3	mov	x19, x0
+1d42e7044: 94f48fd7	bl	0x1d800afa0 ; SELECTOR length
+1d42e7048: 94009e48	bl	0x1d430e968
+1d42e704c: 94009e15	bl	0x1d430e8a0
+1d42e7050: 52800084	mov	w4, #0x4
+1d42e7054: 94f6185b	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e7058: 94f6d76a	bl	0x1d809ce00
+1d42e705c: 94f6d769	bl	0x1d809ce00
+1d42e7060: aa1403e0	mov	x0, x20
+1d42e7064: 94f6147b	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7068: aa0003f3	mov	x19, x0
+1d42e706c: aa1403e0	mov	x0, x20
+1d42e7070: 94f62130	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e7074: 9ac00a68	udiv	x8, x19, x0
+1d42e7078: b9406aa9	ldr	w9, [x21, #0x68]
+1d42e707c: 1b177d29	mul	w9, w9, w23
+1d42e7080: 8b090109	add	x9, x8, x9
+1d42e7084: d1000529	sub	x9, x9, #0x1
+1d42e7088: 9ac80928	udiv	x8, x9, x8
+1d42e708c: 94009e0c	bl	0x1d430e8bc
+1d42e7090: aa1403e0	mov	x0, x20
+1d42e7094: 94f6146f	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7098: aa0003f3	mov	x19, x0
+1d42e709c: 94f6d75d	bl	0x1d809ce10
+1d42e70a0: f90057f3	str	x19, [sp, #0xa8]
+1d42e70a4: 3dc023e0	ldr	q0, [sp, #0x80]
+1d42e70a8: 3c8b03e0	stur	q0, [sp, #0xb0]
+1d42e70ac: 94001682	bl	0x1d42ecab4
+1d42e70b0: aa1803e0	mov	x0, x24
+1d42e70b4: 94f60d27	bl	0x1d806a550 ; SELECTOR dispatchThreadgroups:threadsPerThreadgroup:
+1d42e70b8: 94009e23	bl	0x1d430e944
+1d42e70bc: 54fff1c3	b.lo	0x1d42e6ef4
+1d42e70c0: aa1803e0	mov	x0, x24
+1d42e70c4: 94f60dcf	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e70c8: 394342a8	ldrb	w8, [x21, #0xd0]
+1d42e70cc: 7100051f	cmp	w8, #0x1
+1d42e70d0: 54000281	b.ne	0x1d42e7120
+1d42e70d4: 910602a0	add	x0, x21, #0x180
+1d42e70d8: 94f6d726	bl	0x1d809cd70
+1d42e70dc: aa0003f3	mov	x19, x0
+1d42e70e0: 94f48fb0	bl	0x1d800afa0 ; SELECTOR length
+1d42e70e4: 9adb0814	udiv	x20, x0, x27
+1d42e70e8: 910622a0	add	x0, x21, #0x188
+1d42e70ec: 94f6d721	bl	0x1d809cd70
+1d42e70f0: aa0003f6	mov	x22, x0
+1d42e70f4: 94f48fab	bl	0x1d800afa0 ; SELECTOR length
+1d42e70f8: 9adb0804	udiv	x4, x0, x27
+1d42e70fc: aa1503e0	mov	x0, x21
+1d42e7100: aa1c03e2	mov	x2, x28
+1d42e7104: aa1403e3	mov	x3, x20
+1d42e7108: aa1703e5	mov	x5, x23
+1d42e710c: 94f60879	bl	0x1d80692f0 ; SELECTOR _runISPSMG:lhsStride:rhsStride:numberOfDependentWeights:
+1d42e7110: aa0003fa	mov	x26, x0
+1d42e7114: 94f6d747	bl	0x1d809ce30
+1d42e7118: 94f6d73a	bl	0x1d809ce00
+1d42e711c: 35002d7a	cbnz	w26, 0x1d42e76c8
+1d42e7120: 97ff4eb8	bl	0x1d42bac00
+1d42e7124: 94f60bb3	bl	0x1d8069ff0 ; SELECTOR computeCommandEncoderWithDispatchType:
+1d42e7128: 94f6d6f6	bl	0x1d809cd00
+1d42e712c: aa0003f9	mov	x25, x0
+1d42e7130: 94f6d748	bl	0x1d809ce50
+1d42e7134: b4003359	cbz	x25, 0x1d42e779c
+1d42e7138: f9401ea8	ldr	x8, [x21, #0x38]
+1d42e713c: 94f6d7bd	bl	0x1d809d030
+1d42e7140: aa0003f8	mov	x24, x0
+1d42e7144: aa1903e0	mov	x0, x25
+1d42e7148: aa1803e2	mov	x2, x24
+1d42e714c: 94f61899	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e7150: 94009df2	bl	0x1d430e918
+1d42e7154: b9406ea8	ldr	w8, [x21, #0x6c]
+1d42e7158: 34000828	cbz	w8, 0x1d42e725c
+1d42e715c: d2800014	mov	x20, #0
+1d42e7160: 52800036	mov	w22, #0x1
+1d42e7164: 4e080ec0	dup	v0.2d, x22
+1d42e7168: 3d8023e0	str	q0, [sp, #0x80]
+1d42e716c: 9105a2a0	add	x0, x21, #0x168
+1d42e7170: 94f6d700	bl	0x1d809cd70
+1d42e7174: aa1d03fd	mov	fp, fp
+1d42e7178: 94f6d75e	bl	0x1d809cef0
+1d42e717c: aa0003f3	mov	x19, x0
+1d42e7180: 94f48f88	bl	0x1d800afa0 ; SELECTOR length
+1d42e7184: 9b147c08	mul	x8, x0, x20
+1d42e7188: 97ff7023	bl	0x1d42c3214
+1d42e718c: 528000a4	mov	w4, #0x5
+1d42e7190: 94f6180c	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e7194: 94f6d71b	bl	0x1d809ce00
+1d42e7198: 94f6d71a	bl	0x1d809ce00
+1d42e719c: 9105c2a0	add	x0, x21, #0x170
+1d42e71a0: 94f6d6f4	bl	0x1d809cd70
+1d42e71a4: aa1d03fd	mov	fp, fp
+1d42e71a8: 94f6d752	bl	0x1d809cef0
+1d42e71ac: aa0003f3	mov	x19, x0
+1d42e71b0: 94f48f7c	bl	0x1d800afa0 ; SELECTOR length
+1d42e71b4: 9b147c08	mul	x8, x0, x20
+1d42e71b8: 97ff7017	bl	0x1d42c3214
+1d42e71bc: 528000c4	mov	w4, #0x6
+1d42e71c0: 94f61800	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e71c4: 94f6d70f	bl	0x1d809ce00
+1d42e71c8: 94f6d70e	bl	0x1d809ce00
+1d42e71cc: 9105e2a0	add	x0, x21, #0x178
+1d42e71d0: 94f6d6e8	bl	0x1d809cd70
+1d42e71d4: aa1d03fd	mov	fp, fp
+1d42e71d8: 94f6d746	bl	0x1d809cef0
+1d42e71dc: aa0003f3	mov	x19, x0
+1d42e71e0: 94f48f70	bl	0x1d800afa0 ; SELECTOR length
+1d42e71e4: 9b147c08	mul	x8, x0, x20
+1d42e71e8: 97ff700b	bl	0x1d42c3214
+1d42e71ec: 528000e4	mov	w4, #0x7
+1d42e71f0: 94f617f4	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e71f4: 94f6d703	bl	0x1d809ce00
+1d42e71f8: 94f6d702	bl	0x1d809ce00
+1d42e71fc: aa1803e0	mov	x0, x24
+1d42e7200: 94f61414	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7204: aa0003f3	mov	x19, x0
+1d42e7208: aa1803e0	mov	x0, x24
+1d42e720c: 94f620c9	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e7210: 9ac00a68	udiv	x8, x19, x0
+1d42e7214: d37ef508	lsl	x8, x8, #0x2
+1d42e7218: 91003d08	add	x8, x8, #0xf
+1d42e721c: 927ced02	and	x2, x8, #0xfffffffffffffff0
+1d42e7220: aa1903e0	mov	x0, x25
+1d42e7224: d2800003	mov	x3, #0
+1d42e7228: 94f61ec2	bl	0x1d806ed30 ; SELECTOR setThreadgroupMemoryLength:atIndex:
+1d42e722c: 3dc023e0	ldr	q0, [sp, #0x80]
+1d42e7230: 3c9503a0	stur	q0, [fp, #-0xb0]
+1d42e7234: f81603b6	stur	x22, [fp, #-0xa0]
+1d42e7238: aa1803e0	mov	x0, x24
+1d42e723c: 94f61405	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7240: 94009d86	bl	0x1d430e858
+1d42e7244: aa1903e0	mov	x0, x25
+1d42e7248: 94f60cc2	bl	0x1d806a550 ; SELECTOR dispatchThreadgroups:threadsPerThreadgroup:
+1d42e724c: 91000694	add	x20, x20, #0x1
+1d42e7250: b9406ea8	ldr	w8, [x21, #0x6c]
+1d42e7254: eb08029f	cmp	x20, x8
+1d42e7258: 54fff8a3	b.lo	0x1d42e716c
+1d42e725c: aa1903e0	mov	x0, x25
+1d42e7260: 94f60d68	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e7264: 94f6d6fb	bl	0x1d809ce50
+1d42e7268: 97ff4e66	bl	0x1d42bac00
+1d42e726c: 94f60b61	bl	0x1d8069ff0 ; SELECTOR computeCommandEncoderWithDispatchType:
+1d42e7270: 94f6d6a4	bl	0x1d809cd00
+1d42e7274: aa0003f8	mov	x24, x0
+1d42e7278: 94f6d6fa	bl	0x1d809ce60
+1d42e727c: b4002a78	cbz	x24, 0x1d42e77c8
+1d42e7280: f94022a8	ldr	x8, [x21, #0x40]
+1d42e7284: 94f6d76b	bl	0x1d809d030
+1d42e7288: aa0003f9	mov	x25, x0
+1d42e728c: aa1803e0	mov	x0, x24
+1d42e7290: aa1903e2	mov	x2, x25
+1d42e7294: 94f61847	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e7298: 94009d98	bl	0x1d430e8f8
+1d42e729c: b9406ea8	ldr	w8, [x21, #0x6c]
+1d42e72a0: 0b1706f4	add	w20, w23, w23, lsl #0x1
+1d42e72a4: 340006a8	cbz	w8, 0x1d42e7378
+1d42e72a8: 94009dab	bl	0x1d430e954
+1d42e72ac: d37e7e9a	ubfiz	x26, x20, #0x2, #0x20
+1d42e72b0: 94009d7f	bl	0x1d430e8ac
+1d42e72b4: 910602a0	add	x0, x21, #0x180
+1d42e72b8: 94f6d6ae	bl	0x1d809cd70
+1d42e72bc: aa1d03fd	mov	fp, fp
+1d42e72c0: 94f6d70c	bl	0x1d809cef0
+1d42e72c4: aa0003f3	mov	x19, x0
+1d42e72c8: 94f48f36	bl	0x1d800afa0 ; SELECTOR length
+1d42e72cc: 94009da7	bl	0x1d430e968
+1d42e72d0: 94009d74	bl	0x1d430e8a0
+1d42e72d4: 52800084	mov	w4, #0x4
+1d42e72d8: 94f617ba	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e72dc: 94f6d6c9	bl	0x1d809ce00
+1d42e72e0: 94f6d6c8	bl	0x1d809ce00
+1d42e72e4: 9105c2a0	add	x0, x21, #0x170
+1d42e72e8: 94f6d6a2	bl	0x1d809cd70
+1d42e72ec: aa1d03fd	mov	fp, fp
+1d42e72f0: 94f6d700	bl	0x1d809cef0
+1d42e72f4: aa0003f3	mov	x19, x0
+1d42e72f8: 94f48f2a	bl	0x1d800afa0 ; SELECTOR length
+1d42e72fc: 9b167c08	mul	x8, x0, x22
+1d42e7300: b9406ea9	ldr	w9, [x21, #0x6c]
+1d42e7304: 9ac90903	udiv	x3, x8, x9
+1d42e7308: 94009d66	bl	0x1d430e8a0
+1d42e730c: 528000c4	mov	w4, #0x6
+1d42e7310: 94f617ac	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e7314: 94f6d6bb	bl	0x1d809ce00
+1d42e7318: 94f6d6ba	bl	0x1d809ce00
+1d42e731c: f94056a0	ldr	x0, [x21, #0xa8]
+1d42e7320: 94f469b4	bl	0x1d80019f0 ; SELECTOR bytes
+1d42e7324: 94009d6a	bl	0x1d430e8cc
+1d42e7328: aa1a03e3	mov	x3, x26
+1d42e732c: eb00035f	cmp	x26, x0
+1d42e7330: 54000083	b.lo	0x1d42e7340
+1d42e7334: f94056a0	ldr	x0, [x21, #0xa8]
+1d42e7338: 94f48f1a	bl	0x1d800afa0 ; SELECTOR length
+1d42e733c: aa0003e3	mov	x3, x0
+1d42e7340: 94009d58	bl	0x1d430e8a0
+1d42e7344: 528001c4	mov	w4, #0xe
+1d42e7348: 94f617ae	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e734c: b9406aa8	ldr	w8, [x21, #0x68]
+1d42e7350: f9403fe9	ldr	x9, [sp, #0x78]
+1d42e7354: 9ba97d08	umull	x8, w8, w9
+1d42e7358: 94009d59	bl	0x1d430e8bc
+1d42e735c: aa1903e0	mov	x0, x25
+1d42e7360: 94f613bc	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7364: 94009d3d	bl	0x1d430e858
+1d42e7368: aa1803e0	mov	x0, x24
+1d42e736c: 94f60c81	bl	0x1d806a570 ; SELECTOR dispatchThreads:threadsPerThreadgroup:
+1d42e7370: 94009d75	bl	0x1d430e944
+1d42e7374: 54fffa03	b.lo	0x1d42e72b4
+1d42e7378: aa1803e0	mov	x0, x24
+1d42e737c: 94f60d21	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e7380: 94f6d6b8	bl	0x1d809ce60
+1d42e7384: 97ff4e1f	bl	0x1d42bac00
+1d42e7388: 94f60b1a	bl	0x1d8069ff0 ; SELECTOR computeCommandEncoderWithDispatchType:
+1d42e738c: 94f6d65d	bl	0x1d809cd00
+1d42e7390: aa0003f9	mov	x25, x0
+1d42e7394: 94f6d6af	bl	0x1d809ce50
+1d42e7398: b40022f9	cbz	x25, 0x1d42e77f4
+1d42e739c: f94026a8	ldr	x8, [x21, #0x48]
+1d42e73a0: 94f6d724	bl	0x1d809d030
+1d42e73a4: aa0003f8	mov	x24, x0
+1d42e73a8: aa1903e0	mov	x0, x25
+1d42e73ac: aa1803e2	mov	x2, x24
+1d42e73b0: 94f61800	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e73b4: 94009d59	bl	0x1d430e918
+1d42e73b8: d10243a2	sub	x2, fp, #0x90
+1d42e73bc: aa1903e0	mov	x0, x25
+1d42e73c0: 52800603	mov	w3, #0x30
+1d42e73c4: 52800104	mov	w4, #0x8
+1d42e73c8: 94f6178e	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e73cc: b9406ea8	ldr	w8, [x21, #0x6c]
+1d42e73d0: 34000668	cbz	w8, 0x1d42e749c
+1d42e73d4: 94009d60	bl	0x1d430e954
+1d42e73d8: d37e7e94	ubfiz	x20, x20, #0x2, #0x20
+1d42e73dc: d37ef6fa	lsl	x26, x23, #0x2
+1d42e73e0: 94009d33	bl	0x1d430e8ac
+1d42e73e4: 910622a0	add	x0, x21, #0x188
+1d42e73e8: 94f6d662	bl	0x1d809cd70
+1d42e73ec: aa1d03fd	mov	fp, fp
+1d42e73f0: 94f6d6c0	bl	0x1d809cef0
+1d42e73f4: aa0003f3	mov	x19, x0
+1d42e73f8: 94f48eea	bl	0x1d800afa0 ; SELECTOR length
+1d42e73fc: 94009d5b	bl	0x1d430e968
+1d42e7400: 97ffd4ed	bl	0x1d42dc7b4
+1d42e7404: 52800084	mov	w4, #0x4
+1d42e7408: 94f6176e	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e740c: 94f6d67d	bl	0x1d809ce00
+1d42e7410: 94f6d67c	bl	0x1d809ce00
+1d42e7414: 9105e2a0	add	x0, x21, #0x178
+1d42e7418: 94f6d656	bl	0x1d809cd70
+1d42e741c: aa1d03fd	mov	fp, fp
+1d42e7420: 94f6d6b4	bl	0x1d809cef0
+1d42e7424: aa0003f3	mov	x19, x0
+1d42e7428: 94f48ede	bl	0x1d800afa0 ; SELECTOR length
+1d42e742c: 9b167c08	mul	x8, x0, x22
+1d42e7430: 97ff6f79	bl	0x1d42c3214
+1d42e7434: 528000e4	mov	w4, #0x7
+1d42e7438: 94f61762	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e743c: 94f6d671	bl	0x1d809ce00
+1d42e7440: 94f6d670	bl	0x1d809ce00
+1d42e7444: f94056a0	ldr	x0, [x21, #0xa8]
+1d42e7448: 94f4696a	bl	0x1d80019f0 ; SELECTOR bytes
+1d42e744c: 94009d20	bl	0x1d430e8cc
+1d42e7450: aa1403e3	mov	x3, x20
+1d42e7454: eb00029f	cmp	x20, x0
+1d42e7458: 54000083	b.lo	0x1d42e7468
+1d42e745c: f94056a0	ldr	x0, [x21, #0xa8]
+1d42e7460: 94f48ed0	bl	0x1d800afa0 ; SELECTOR length
+1d42e7464: aa0003e3	mov	x3, x0
+1d42e7468: 97ffd4d3	bl	0x1d42dc7b4
+1d42e746c: 528001c4	mov	w4, #0xe
+1d42e7470: 94f61764	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e7474: f81503ba	stur	x26, [fp, #-0xb0]
+1d42e7478: 3dc023e0	ldr	q0, [sp, #0x80]
+1d42e747c: 3c9583a0	stur	q0, [fp, #-0xa8]
+1d42e7480: aa1803e0	mov	x0, x24
+1d42e7484: 94f61373	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7488: 94009cf4	bl	0x1d430e858
+1d42e748c: aa1903e0	mov	x0, x25
+1d42e7490: 94f60c38	bl	0x1d806a570 ; SELECTOR dispatchThreads:threadsPerThreadgroup:
+1d42e7494: 94009d2c	bl	0x1d430e944
+1d42e7498: 54fffa63	b.lo	0x1d42e73e4
+1d42e749c: aa1903e0	mov	x0, x25
+1d42e74a0: 94f60cd8	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e74a4: 94f6d66b	bl	0x1d809ce50
+1d42e74a8: b9406ea8	ldr	w8, [x21, #0x6c]
+1d42e74ac: 6b08037f	cmp	w27, w8
+1d42e74b0: 54001089	b.ls	0x1d42e76c0
+1d42e74b4: 97ff4dd3	bl	0x1d42bac00
+1d42e74b8: 94f60ace	bl	0x1d8069ff0 ; SELECTOR computeCommandEncoderWithDispatchType:
+1d42e74bc: 94f6d611	bl	0x1d809cd00
+1d42e74c0: aa0003f8	mov	x24, x0
+1d42e74c4: 94f6d667	bl	0x1d809ce60
+1d42e74c8: b4002198	cbz	x24, 0x1d42e78f8
+1d42e74cc: f9402aa8	ldr	x8, [x21, #0x50]
+1d42e74d0: 94f6d6d8	bl	0x1d809d030
+1d42e74d4: aa0003f6	mov	x22, x0
+1d42e74d8: aa1803e0	mov	x0, x24
+1d42e74dc: aa1603e2	mov	x2, x22
+1d42e74e0: 94f617b4	bl	0x1d806d3b0 ; SELECTOR setComputePipelineState:
+1d42e74e4: 294f26a8	ldp	w8, w9, [x21, #0x78]
+1d42e74e8: 1b097d08	mul	w8, w8, w9
+1d42e74ec: b900a7e8	str	w8, [sp, #0xa4]
+1d42e74f0: 910293e2	add	x2, sp, #0xa4
+1d42e74f4: 94009d11	bl	0x1d430e938
+1d42e74f8: 528001a4	mov	w4, #0xd
+1d42e74fc: 94f61741	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e7500: b9406eb9	ldr	w25, [x21, #0x6c]
+1d42e7504: aa1603e0	mov	x0, x22
+1d42e7508: 94f61352	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e750c: aa0003f3	mov	x19, x0
+1d42e7510: aa1603e0	mov	x0, x22
+1d42e7514: 94f62007	bl	0x1d806f530 ; SELECTOR threadExecutionWidth
+1d42e7518: aa0003f4	mov	x20, x0
+1d42e751c: b94072a8	ldr	w8, [x21, #0x70]
+1d42e7520: b9406aa9	ldr	w9, [x21, #0x68]
+1d42e7524: 1b087d28	mul	w8, w9, w8
+1d42e7528: 1b087d1a	mul	w26, w8, w8
+1d42e752c: b900a3fa	str	w26, [sp, #0xa0]
+1d42e7530: 9103e2a0	add	x0, x21, #0xf8
+1d42e7534: 94f6d60f	bl	0x1d809cd70
+1d42e7538: aa0003f7	mov	x23, x0
+1d42e753c: 94f608cd	bl	0x1d8069870 ; SELECTOR arrayLength
+1d42e7540: 1b007f48	mul	w8, w26, w0
+1d42e7544: f9403fe9	ldr	x9, [sp, #0x78]
+1d42e7548: 1ac9091a	udiv	w26, w8, w9
+1d42e754c: 94f6d63d	bl	0x1d809ce40
+1d42e7550: b9009ffa	str	w26, [sp, #0x9c]
+1d42e7554: 910273e2	add	x2, sp, #0x9c
+1d42e7558: 94009cf8	bl	0x1d430e938
+1d42e755c: 52800164	mov	w4, #0xb
+1d42e7560: 94f61728	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e7564: 910283e2	add	x2, sp, #0xa0
+1d42e7568: 94009cf4	bl	0x1d430e938
+1d42e756c: 52800184	mov	w4, #0xc
+1d42e7570: 94f61724	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e7574: 9ad40a74	udiv	x20, x19, x20
+1d42e7578: 6b190377	subs	w23, w27, w25
+1d42e757c: 54000340	b.eq	0x1d42e75e4
+1d42e7580: 5280001a	mov	w26, #0
+1d42e7584: d100069c	sub	x28, x20, #0x1
+1d42e7588: 94009cc9	bl	0x1d430e8ac
+1d42e758c: 910602a0	add	x0, x21, #0x180
+1d42e7590: 94f6d5f8	bl	0x1d809cd70
+1d42e7594: aa0003f3	mov	x19, x0
+1d42e7598: b940a3e8	ldr	w8, [sp, #0xa0]
+1d42e759c: 1b1a7d08	mul	w8, w8, w26
+1d42e75a0: d37e7d03	ubfiz	x3, x8, #0x2, #0x20
+1d42e75a4: 94009cbf	bl	0x1d430e8a0
+1d42e75a8: 52800084	mov	w4, #0x4
+1d42e75ac: 94f61705	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e75b0: 94f6d614	bl	0x1d809ce00
+1d42e75b4: b940a3e8	ldr	w8, [sp, #0xa0]
+1d42e75b8: 8b080388	add	x8, x28, x8
+1d42e75bc: 9ad40908	udiv	x8, x8, x20
+1d42e75c0: 94009cbf	bl	0x1d430e8bc
+1d42e75c4: aa1603e0	mov	x0, x22
+1d42e75c8: 94f61322	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e75cc: 94009ca3	bl	0x1d430e858
+1d42e75d0: aa1803e0	mov	x0, x24
+1d42e75d4: 94f60bdf	bl	0x1d806a550 ; SELECTOR dispatchThreadgroups:threadsPerThreadgroup:
+1d42e75d8: 1100075a	add	w26, w26, #0x1
+1d42e75dc: 6b1a02ff	cmp	w23, w26
+1d42e75e0: 54fffd61	b.ne	0x1d42e758c
+1d42e75e4: b94072a8	ldr	w8, [x21, #0x70]
+1d42e75e8: b9406aa9	ldr	w9, [x21, #0x68]
+1d42e75ec: 1b097d08	mul	w8, w8, w9
+1d42e75f0: 0b08051a	add	w26, w8, w8, lsl #0x1
+1d42e75f4: b900a3fa	str	w26, [sp, #0xa0]
+1d42e75f8: 9103e2a0	add	x0, x21, #0xf8
+1d42e75fc: 94f6d5dd	bl	0x1d809cd70
+1d42e7600: aa0003f3	mov	x19, x0
+1d42e7604: 94f6089b	bl	0x1d8069870 ; SELECTOR arrayLength
+1d42e7608: 1b007f48	mul	w8, w26, w0
+1d42e760c: f9403fe9	ldr	x9, [sp, #0x78]
+1d42e7610: 1ac90908	udiv	w8, w8, w9
+1d42e7614: b9009fe8	str	w8, [sp, #0x9c]
+1d42e7618: 94f6d5fa	bl	0x1d809ce00
+1d42e761c: 910273e2	add	x2, sp, #0x9c
+1d42e7620: 94009cc6	bl	0x1d430e938
+1d42e7624: 52800164	mov	w4, #0xb
+1d42e7628: 94f616f6	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e762c: 910283e2	add	x2, sp, #0xa0
+1d42e7630: 94009cc2	bl	0x1d430e938
+1d42e7634: 52800184	mov	w4, #0xc
+1d42e7638: 94f616f2	bl	0x1d806d200 ; SELECTOR setBytes:length:atIndex:
+1d42e763c: 6b19037f	cmp	w27, w25
+1d42e7640: 54000340	b.eq	0x1d42e76a8
+1d42e7644: 52800019	mov	w25, #0
+1d42e7648: d100069a	sub	x26, x20, #0x1
+1d42e764c: 94009c98	bl	0x1d430e8ac
+1d42e7650: 910622a0	add	x0, x21, #0x188
+1d42e7654: 94f6d5c7	bl	0x1d809cd70
+1d42e7658: aa0003f3	mov	x19, x0
+1d42e765c: b940a3e8	ldr	w8, [sp, #0xa0]
+1d42e7660: 1b197d08	mul	w8, w8, w25
+1d42e7664: d37e7d03	ubfiz	x3, x8, #0x2, #0x20
+1d42e7668: 94009c8e	bl	0x1d430e8a0
+1d42e766c: 52800084	mov	w4, #0x4
+1d42e7670: 94f616d4	bl	0x1d806d1c0 ; SELECTOR setBuffer:offset:atIndex:
+1d42e7674: 94f6d5e3	bl	0x1d809ce00
+1d42e7678: b940a3e8	ldr	w8, [sp, #0xa0]
+1d42e767c: 8b080348	add	x8, x26, x8
+1d42e7680: 9ad40908	udiv	x8, x8, x20
+1d42e7684: 94009c8e	bl	0x1d430e8bc
+1d42e7688: aa1603e0	mov	x0, x22
+1d42e768c: 94f612f1	bl	0x1d806c250 ; SELECTOR maxTotalThreadsPerThreadgroup
+1d42e7690: 94009c72	bl	0x1d430e858
+1d42e7694: aa1803e0	mov	x0, x24
+1d42e7698: 94f60bae	bl	0x1d806a550 ; SELECTOR dispatchThreadgroups:threadsPerThreadgroup:
+1d42e769c: 11000739	add	w25, w25, #0x1
+1d42e76a0: 6b1902ff	cmp	w23, w25
+1d42e76a4: 54fffd61	b.ne	0x1d42e7650
+1d42e76a8: aa1803e0	mov	x0, x24
+1d42e76ac: 94f60c55	bl	0x1d806a800 ; SELECTOR endEncoding
+1d42e76b0: 94f6d5e0	bl	0x1d809ce30
+1d42e76b4: 5280001a	mov	w26, #0
+1d42e76b8: f9403bfc	ldr	x28, [sp, #0x70]
+1d42e76bc: 14000003	b	0x1d42e76c8
+1d42e76c0: 5280001a	mov	w26, #0
+1d42e76c4: aa1903f8	mov	x24, x25
+1d42e76c8: f94033f3	ldr	x19, [sp, #0x60]
+1d42e76cc: 14000019	b	0x1d42e7730
+1d42e76d0: 94f6d5ec	bl	0x1d809ce80
+1d42e76d4: f9403bfc	ldr	x28, [sp, #0x70]
+1d42e76d8: 94f6d5e6	bl	0x1d809ce70
+1d42e76dc: 94f6d5c9	bl	0x1d809ce00
+1d42e76e0: 94f6d5e0	bl	0x1d809ce60
+1d42e76e4: 94f6d5d3	bl	0x1d809ce30
+1d42e76e8: 94f6d5da	bl	0x1d809ce50
+1d42e76ec: 94f6d5d5	bl	0x1d809ce40
+1d42e76f0: 94f6d5c8	bl	0x1d809ce10
+1d42e76f4: 97ff6cfb	bl	0x1d42c2ae0
+1d42e76f8: 97ff95cb	bl	0x1d42cce24
+1d42e76fc: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e7700: 91214463	add	x3, x3, #0x851
+1d42e7704: 94009c4a	bl	0x1d430e82c
+1d42e7708: 52803947	mov	w7, #0x1ca
+1d42e770c: 94f73bd5	bl	0x1d80b6660
+1d42e7710: 97ff9561	bl	0x1d42ccc94
+1d42e7714: 97ff9201	bl	0x1d42cbf18
+1d42e7718: 52803944	mov	w4, #0x1ca
+1d42e771c: aa1503e5	mov	x5, x21
+1d42e7720: 94f73be8	bl	0x1d80b66c0
+1d42e7724: aa0003fa	mov	x26, x0
+1d42e7728: d2800013	mov	x19, #0
+1d42e772c: d2800018	mov	x24, #0
+1d42e7730: d10183a0	sub	x0, fp, #0x60
+1d42e7734: 97ffa6cd	bl	0x1d42d1268
+1d42e7738: f85a03a8	ldur	x8, [fp, #-0x60]
+1d42e773c: 94f6d5d9	bl	0x1d809cea0
+1d42e7740: 94f6d5b0	bl	0x1d809ce00
+1d42e7744: 94f6d5c3	bl	0x1d809ce50
+1d42e7748: 94f6d5d2	bl	0x1d809ce90
+1d42e774c: aa1a03e0	mov	x0, x26
+1d42e7750: a9577bfd	ldp	fp, lr, [sp, #0x170]
+1d42e7754: a9564ff4	ldp	x20, x19, [sp, #0x160]
+1d42e7758: a95557f6	ldp	x22, x21, [sp, #0x150]
+1d42e775c: a9545ff8	ldp	x24, x23, [sp, #0x140]
+1d42e7760: a95367fa	ldp	x26, x25, [sp, #0x130]
+1d42e7764: a9526ffc	ldp	x28, x27, [sp, #0x120]
+1d42e7768: 910603ff	add	sp, sp, #0x180
+1d42e776c: d65f0fff	retab
+1d42e7770: 97ff6cdc	bl	0x1d42c2ae0
+1d42e7774: 97ff95ac	bl	0x1d42cce24
+1d42e7778: b0000ec3	adrp	x3, 0x1d44c0000
+1d42e777c: 9115d863	add	x3, x3, #0x576 ; 0x1d44c0576 cstring 'blitEncoder'
+1d42e7780: 94009c2b	bl	0x1d430e82c
+1d42e7784: 52803d47	mov	w7, #0x1ea
+1d42e7788: 94f73bb6	bl	0x1d80b6660
+1d42e778c: 97ff9542	bl	0x1d42ccc94
+1d42e7790: 97ff91e2	bl	0x1d42cbf18
+1d42e7794: 52803d44	mov	w4, #0x1ea
+1d42e7798: 17ffffe1	b	0x1d42e771c
+1d42e779c: 97ff6cd1	bl	0x1d42c2ae0
+1d42e77a0: 97ff95a1	bl	0x1d42cce24
+1d42e77a4: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e77a8: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e77ac: 94009c20	bl	0x1d430e82c
+1d42e77b0: 528054c7	mov	w7, #0x2a6
+1d42e77b4: 94f73bab	bl	0x1d80b6660
+1d42e77b8: 97ff9537	bl	0x1d42ccc94
+1d42e77bc: 97ff91d7	bl	0x1d42cbf18
+1d42e77c0: 528054c4	mov	w4, #0x2a6
+1d42e77c4: 14000016	b	0x1d42e781c
+1d42e77c8: 97ff6cc6	bl	0x1d42c2ae0
+1d42e77cc: 97ff9596	bl	0x1d42cce24
+1d42e77d0: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e77d4: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e77d8: 94009c15	bl	0x1d430e82c
+1d42e77dc: 52805867	mov	w7, #0x2c3
+1d42e77e0: 94f73ba0	bl	0x1d80b6660
+1d42e77e4: 97ff952c	bl	0x1d42ccc94
+1d42e77e8: 97ff91cc	bl	0x1d42cbf18
+1d42e77ec: 52805864	mov	w4, #0x2c3
+1d42e77f0: 1400004c	b	0x1d42e7920
+1d42e77f4: 97ff6cbb	bl	0x1d42c2ae0
+1d42e77f8: 97ff958b	bl	0x1d42cce24
+1d42e77fc: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e7800: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e7804: 94009c0a	bl	0x1d430e82c
+1d42e7808: 52805bc7	mov	w7, #0x2de
+1d42e780c: 94f73b95	bl	0x1d80b6660
+1d42e7810: 97ff9521	bl	0x1d42ccc94
+1d42e7814: 97ff91c1	bl	0x1d42cbf18
+1d42e7818: 52805bc4	mov	w4, #0x2de
+1d42e781c: aa1503e5	mov	x5, x21
+1d42e7820: 94f73ba8	bl	0x1d80b66c0
+1d42e7824: aa0003fa	mov	x26, x0
+1d42e7828: d2800018	mov	x24, #0
+1d42e782c: 17ffffa7	b	0x1d42e76c8
+1d42e7830: 97ff6cac	bl	0x1d42c2ae0
+1d42e7834: 97ff957c	bl	0x1d42cce24
+1d42e7838: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e783c: 912b4863	add	x3, x3, #0xad2 ; 0x1d44c3ad2 cstring '_inputISPSMGResultsBuffer.bufferView'
+1d42e7840: 94009bfb	bl	0x1d430e82c
+1d42e7844: 52803a47	mov	w7, #0x1d2
+1d42e7848: 94f73b86	bl	0x1d80b6660
+1d42e784c: 97ff9512	bl	0x1d42ccc94
+1d42e7850: 97ff91b2	bl	0x1d42cbf18
+1d42e7854: 52803a44	mov	w4, #0x1d2
+1d42e7858: 17ffffb1	b	0x1d42e771c
+1d42e785c: 94f6d58d	bl	0x1d809ce90
+1d42e7860: f94043f4	ldr	x20, [sp, #0x80]
+1d42e7864: 94f6d567	bl	0x1d809ce00
+1d42e7868: f9403bfc	ldr	x28, [sp, #0x70]
+1d42e786c: 94f6d571	bl	0x1d809ce30
+1d42e7870: 94f6d584	bl	0x1d809ce80
+1d42e7874: 94f6d567	bl	0x1d809ce10
+1d42e7878: 94f6d57e	bl	0x1d809ce70
+1d42e787c: 94f6d579	bl	0x1d809ce60
+1d42e7880: 94f6d574	bl	0x1d809ce50
+1d42e7884: 94f6d56f	bl	0x1d809ce40
+1d42e7888: 17fffb80	b	0x1d42e6688
+1d42e788c: 52800038	mov	w24, #0x1
+1d42e7890: 17fffb6e	b	0x1d42e6648
+1d42e7894: 97ff5ad8	bl	0x1d42be3f4
+1d42e7898: aa0003e1	mov	x1, x0
+1d42e789c: f94037e8	ldr	x8, [sp, #0x68]
+1d42e78a0: 97ff6c9a	bl	0x1d42c2b08
+1d42e78a4: 97ffafca	bl	0x1d42d37cc
+1d42e78a8: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e78ac: 912c8463	add	x3, x3, #0xb21 ; 0x1d44c3b21 cstring 'weightsArrayImage'
+1d42e78b0: 94009bdf	bl	0x1d430e82c
+1d42e78b4: 52803ca7	mov	w7, #0x1e5
+1d42e78b8: 94f73b6a	bl	0x1d80b6660
+1d42e78bc: d2800013	mov	x19, #0
+1d42e78c0: d2800018	mov	x24, #0
+1d42e78c4: 528001da	mov	w26, #0xe
+1d42e78c8: 17ffff9a	b	0x1d42e7730
+1d42e78cc: 97ff6c85	bl	0x1d42c2ae0
+1d42e78d0: 97ff9555	bl	0x1d42cce24
+1d42e78d4: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e78d8: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e78dc: 94009bd4	bl	0x1d430e82c
+1d42e78e0: 52803f27	mov	w7, #0x1f9
+1d42e78e4: 94f73b5f	bl	0x1d80b6660
+1d42e78e8: 97ff94eb	bl	0x1d42ccc94
+1d42e78ec: 97ff918b	bl	0x1d42cbf18
+1d42e78f0: 52803f24	mov	w4, #0x1f9
+1d42e78f4: 1400000b	b	0x1d42e7920
+1d42e78f8: 97ff6c7a	bl	0x1d42c2ae0
+1d42e78fc: 97ff954a	bl	0x1d42cce24
+1d42e7900: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e7904: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e7908: 94009bc9	bl	0x1d430e82c
+1d42e790c: 52805f87	mov	w7, #0x2fc
+1d42e7910: 94f73b54	bl	0x1d80b6660
+1d42e7914: 97ff94e0	bl	0x1d42ccc94
+1d42e7918: 97ff9180	bl	0x1d42cbf18
+1d42e791c: 52805f84	mov	w4, #0x2fc
+1d42e7920: aa1503e5	mov	x5, x21
+1d42e7924: 94f73b67	bl	0x1d80b66c0
+1d42e7928: aa0003fa	mov	x26, x0
+1d42e792c: 17ffff67	b	0x1d42e76c8
+1d42e7930: 97ff6c6c	bl	0x1d42c2ae0
+1d42e7934: 97ff953c	bl	0x1d42cce24
+1d42e7938: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e793c: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e7940: 94009bbb	bl	0x1d430e82c
+1d42e7944: 52804327	mov	w7, #0x219
+1d42e7948: 94f73b46	bl	0x1d80b6660
+1d42e794c: 97ff94d2	bl	0x1d42ccc94
+1d42e7950: 97ff9172	bl	0x1d42cbf18
+1d42e7954: 52804324	mov	w4, #0x219
+1d42e7958: 1400000b	b	0x1d42e7984
+1d42e795c: 97ff6c61	bl	0x1d42c2ae0
+1d42e7960: 97ff9531	bl	0x1d42cce24
+1d42e7964: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e7968: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e796c: 94009bb0	bl	0x1d430e82c
+1d42e7970: 528047c7	mov	w7, #0x23e
+1d42e7974: 94f73b3b	bl	0x1d80b6660
+1d42e7978: 97ff94c7	bl	0x1d42ccc94
+1d42e797c: 97ff9167	bl	0x1d42cbf18
+1d42e7980: 528047c4	mov	w4, #0x23e
+1d42e7984: aa1503e5	mov	x5, x21
+1d42e7988: 94f73b4e	bl	0x1d80b66c0
+1d42e798c: aa0003fa	mov	x26, x0
+1d42e7990: d2800018	mov	x24, #0
+1d42e7994: 17ffff49	b	0x1d42e76b8
+1d42e7998: 97ff6c52	bl	0x1d42c2ae0
+1d42e799c: 97ff9522	bl	0x1d42cce24
+1d42e79a0: 90000ee3	adrp	x3, 0x1d44c3000
+1d42e79a4: 912ccc63	add	x3, x3, #0xb33 ; 0x1d44c3b33 cstring 'commandEncoder'
+1d42e79a8: 94009ba1	bl	0x1d430e82c
+1d42e79ac: 52804c07	mov	w7, #0x260
+1d42e79b0: 94f73b2c	bl	0x1d80b6660
+1d42e79b4: 97ff94b8	bl	0x1d42ccc94
+1d42e79b8: 97ff9158	bl	0x1d42cbf18
+1d42e79bc: 52804c04	mov	w4, #0x260
+1d42e79c0: 17ffffd8	b	0x1d42e7920

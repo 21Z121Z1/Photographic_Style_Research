@@ -1,0 +1,291 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "CMImaging": {
+      "index": 542,
+      "name": "/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",
+      "version": "764.22.14.0.0",
+      "uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "load_address": 7854592000,
+      "header_and_commands_sha256": "16fec996212b5cc7ad6286abb30426c24c8a9c53b0e677b3efd00e254a1727b0",
+      "function_starts_sha256": "0a07b7a708d8f221cf859b2f28480a5473b8bc7ee5974eb9fba0cf5d7d18e5c1"
+    }
+  },
+  "methods": [
+    {
+      "name": "-[CMIStyleEngineProcessor _setTuningParameters]",
+      "framework": "CMImaging",
+      "file": "engine-tuning-apply.asm.txt",
+      "end_exclusive": "0x1d42e230c",
+      "first_address": "0x1d42e1748",
+      "last_address": "0x1d42e2308",
+      "instruction_count": 753,
+      "checked_bytes": 3012,
+      "instructions_sha256": "f7c228ae1ed95de95bc90aad4d1b0e36a78c6a6f760bc8d83f00d8ac715c99b4",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "08a5a83d6330f60702f7dc645ea5d2a19161bb50fee9da93cb3606cbcc4ee850"
+    },
+    {
+      "name": "-[CMIStyleEngineCreateLinearSystem enqueueToCommandBuffer:]",
+      "framework": "CMImaging",
+      "file": "engine-create-enqueue.asm.txt",
+      "end_exclusive": "0x1d42e79c4",
+      "first_address": "0x1d42e63ec",
+      "last_address": "0x1d42e79c0",
+      "instruction_count": 1398,
+      "checked_bytes": 5592,
+      "instructions_sha256": "b217dc8a896b7a359479b6b42dc1b1f33c8e364689d222399de11e94d9089b20",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "7de09afc5b12f67d5a002d56e02b54a380778391de824f6b7e0f750b1259025a"
+    },
+    {
+      "name": "-[CMISmartStylePixelBufferRendererV1 setInputStyle:]",
+      "framework": "CMImaging",
+      "file": "pixel-input-style.asm.txt",
+      "end_exclusive": "0x1d42f2648",
+      "first_address": "0x1d42f2640",
+      "last_address": "0x1d42f2644",
+      "instruction_count": 2,
+      "checked_bytes": 8,
+      "instructions_sha256": "975d1c4738baf696483df02611c7da8d4596e7f77648868ada41994bd2927dd6",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "f0f895f0c488ddd7e58142ac6cd95c6d019f0132085b2585b8cc8c1210454e33"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 setInputStyle:]",
+      "framework": "CMImaging",
+      "file": "metal-input-style.asm.txt",
+      "end_exclusive": "0x1d433d980",
+      "first_address": "0x1d433d920",
+      "last_address": "0x1d433d97c",
+      "instruction_count": 24,
+      "checked_bytes": 96,
+      "instructions_sha256": "42ccaec266e3a1984b0b151fd0b0827fbd21e699b6f5ad8a8d798b29ce17c2e7",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "60f4362403e9ed0473bd208da544234fd300066231c6c88827a5d645dd4092b2"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 setToneBias:]",
+      "framework": "CMImaging",
+      "file": "metal-tone-set.asm.txt",
+      "end_exclusive": "0x1d433db64",
+      "first_address": "0x1d433db1c",
+      "last_address": "0x1d433db60",
+      "instruction_count": 18,
+      "checked_bytes": 72,
+      "instructions_sha256": "c702cb5995238bbad3fc8ac5855e01ff1db008c8cb2cd9bf261fc52d8e24868d",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "a12674f927b5bce5890a21a8f76cc254651dfb64f23d13ae9b6d24362cdb5027"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 setColorBias:]",
+      "framework": "CMImaging",
+      "file": "metal-color-set.asm.txt",
+      "end_exclusive": "0x1d433dbe4",
+      "first_address": "0x1d433db9c",
+      "last_address": "0x1d433dbe0",
+      "instruction_count": 18,
+      "checked_bytes": 72,
+      "instructions_sha256": "89af05ed4c6edf554fe430f46beb3b535920784f8d1fe1c19bc09986f8a8093a",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "2e1e0e2fab4dff8431a323b51a2ab348d426574ea3556d2623e999e37d032033"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 setCastIntensity:]",
+      "framework": "CMImaging",
+      "file": "metal-intensity-set.asm.txt",
+      "end_exclusive": "0x1d433dae4",
+      "first_address": "0x1d433da9c",
+      "last_address": "0x1d433dae0",
+      "instruction_count": 18,
+      "checked_bytes": 72,
+      "instructions_sha256": "867c5dd4210ac30f546291c84f9365269619a74ce5d01d9f9a547315675818e6",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "d9801aa055a9b61f46abfd7b055fc1f40d2fe2ff3803dc9d6bf474ca37a5d0e9"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _calculateCubicSplineToneCurve]",
+      "framework": "CMImaging",
+      "file": "metal-tone-curve.asm.txt",
+      "end_exclusive": "0x1d42e4bf4",
+      "first_address": "0x1d42e4784",
+      "last_address": "0x1d42e4bf0",
+      "instruction_count": 284,
+      "checked_bytes": 1136,
+      "instructions_sha256": "0c11950fa89db1201b2b858be329b08b661861e53e11c6a415d2c748294f1c4a",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "ed37a35e33ed8fe77e2090e4b0108739b2aa5893cbc34137cde010482ee9db19"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 process]",
+      "framework": "CMImaging",
+      "file": "metal-process.asm.txt",
+      "end_exclusive": "0x1d42ee940",
+      "first_address": "0x1d42ee3f4",
+      "last_address": "0x1d42ee93c",
+      "instruction_count": 339,
+      "checked_bytes": 1356,
+      "instructions_sha256": "5ed42daea30795fb59901e6010d3803967803abf0f2daca575d1f6af394a6bae",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "166236b6b4d548cf1738378a9041d7775b19aff144b4a19e90308607d2a8803c"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _processLTMGainMap]",
+      "framework": "CMImaging",
+      "file": "metal-ltm.asm.txt",
+      "end_exclusive": "0x1d42f0640",
+      "first_address": "0x1d42f00ac",
+      "last_address": "0x1d42f063c",
+      "instruction_count": 357,
+      "checked_bytes": 1428,
+      "instructions_sha256": "e79dc235f6bb1d22385d2fb673dad3c8a46f0fee8aacf52733c0897d0876a515",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "71e2dafc3403f257a680470dfb86975010c3aaa6a45444dad03871a787dc3f80"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _getAdjustedSrlCurveParameter]",
+      "framework": "CMImaging",
+      "file": "metal-srl-adjust.asm.txt",
+      "end_exclusive": "0x1d433fc1c",
+      "first_address": "0x1d433fbf4",
+      "last_address": "0x1d433fc18",
+      "instruction_count": 10,
+      "checked_bytes": 40,
+      "instructions_sha256": "9a74dc69330f41290289e5422b853b810f21dbe2ef6a804f64583f78c2b46e99",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "84943401c7333385ddc9424dc5acc294b9e95f2dbd3bd9ebf98b47ee8cc59906"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _configureColorConversion:forTexture:isOutput:]",
+      "framework": "CMImaging",
+      "file": "metal-color-conversion.asm.txt",
+      "end_exclusive": "0x1d42f2d70",
+      "first_address": "0x1d42f2bd4",
+      "last_address": "0x1d42f2d6c",
+      "instruction_count": 103,
+      "checked_bytes": 412,
+      "instructions_sha256": "6dd1c413e42200f72b5bbe028af9dbec98630139b44aff594cec35a361c936a4",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "d340da8ea6ab0bb6a1cff13184b8f9fd27043970407c9e6870d242abee256c27"
+    },
+    {
+      "name": "-[CMISubjectRelightingStage _runSubjectRelighting:rgba:luma:chroma:skinMask:personMask:instanceMasks:instanceMaskConfidences:expBias:exifOrientation:srlV2Plist:faceDataFromANST:toneMap:ltmChroma:gammaCurve:numFacesISPDetected:isChromaGainAdjusted:inputIsLinear:chromaBias:blackPoint:playBackCurve:]",
+      "framework": "CMImaging",
+      "file": "srl-stage.asm.txt",
+      "end_exclusive": "0x1d4368168",
+      "first_address": "0x1d43676c4",
+      "last_address": "0x1d4368164",
+      "instruction_count": 681,
+      "checked_bytes": 2724,
+      "instructions_sha256": "9ac5a536b9fa5894f364bfd37f8bc1b43cd8ea0430286bbd3cc71295a892aa88",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "4ae255ac912f0cfc5a8cf685b069bf4f7e113c7bcc97a5db8a483385e50ac4bb"
+    },
+    {
+      "name": "-[CMIStyleEngineProcessor setConfiguration:]",
+      "framework": "CMImaging",
+      "file": "engine-config-set.asm.txt",
+      "end_exclusive": "0x1d42c4430",
+      "first_address": "0x1d42c4424",
+      "last_address": "0x1d42c442c",
+      "instruction_count": 3,
+      "checked_bytes": 12,
+      "instructions_sha256": "750907beed9252e298390587c44fb970f843649abbd0f1f41403aa18e22c7f5e",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "ffa45f27a7c4fb79e26b489350a5377d3b465f2c250c16a195cdffe941787240"
+    },
+    {
+      "name": "-[CMIStyleEngineCreateLinearSystem _compileShaders:]",
+      "framework": "CMImaging",
+      "file": "linear-systems-compile.asm.txt",
+      "end_exclusive": "0x1d42c0a58",
+      "first_address": "0x1d42c0704",
+      "last_address": "0x1d42c0a54",
+      "instruction_count": 213,
+      "checked_bytes": 852,
+      "instructions_sha256": "f04948591633d9f7d555790648a67c82b3c649abf07e2794b5c48c3f0b65e7d7",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "459a57b85d38788f865665f1f67aafa4c2dd7a043ef19df30864b206dc6ba37a"
+    },
+    {
+      "name": "-[CMIStyleEngineCreateLinearSystem _setWeightPlane:term:priorScaleFactor:]",
+      "framework": "CMImaging",
+      "file": "linear-prior-planes-set.asm.txt",
+      "end_exclusive": "0x1d430d6bc",
+      "first_address": "0x1d430d64c",
+      "last_address": "0x1d430d6b8",
+      "instruction_count": 28,
+      "checked_bytes": 112,
+      "instructions_sha256": "3a099e862ef5a285c46e7d1f03acaf2a4dacce61fd03350e58490aca9f20696a",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "ba8d15ca55d8b2469eb7436990ac28b8cd6ebb487a94a30a056901b150c2deee"
+    }
+  ],
+  "exporter_sha256": "d776720023300a8ab65cafd96c0fc2755886c2adc3f98c295d3470e5c588267f",
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 16996,
+  "exported_text_postprocess": "Remove only trailing blank lines at EOF; original instruction words and checked-byte SHA unchanged"
+}

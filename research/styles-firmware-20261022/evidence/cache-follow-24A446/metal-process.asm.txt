@@ -1,0 +1,343 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 process]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42ee3f4:
+1d42ee3f4: d503237f	pacibsp
+1d42ee3f8: d10183ff	sub	sp, sp, #0x60
+1d42ee3fc: a9025ff8	stp	x24, x23, [sp, #0x20]
+1d42ee400: a90357f6	stp	x22, x21, [sp, #0x30]
+1d42ee404: a9044ff4	stp	x20, x19, [sp, #0x40]
+1d42ee408: a9057bfd	stp	fp, lr, [sp, #0x50]
+1d42ee40c: 910143fd	add	fp, sp, #0x50
+1d42ee410: aa1e03f6	mov	x22, lr
+1d42ee414: aa0003f3	mov	x19, x0
+1d42ee418: f9413000	ldr	x0, [x0, #0x260]
+1d42ee41c: 94f6047d	bl	0x1d806f610 ; SELECTOR tuningVariants
+1d42ee420: 94f6ba38	bl	0x1d809cd00
+1d42ee424: aa0003f5	mov	x21, x0
+1d42ee428: f9414a62	ldr	x2, [x19, #0x290]
+1d42ee42c: 94f47571	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42ee430: 94f6ba34	bl	0x1d809cd00
+1d42ee434: b4000080	cbz	x0, 0x1d42ee444
+1d42ee438: aa0003f4	mov	x20, x0
+1d42ee43c: 94f6ba79	bl	0x1d809ce20
+1d42ee440: 14000007	b	0x1d42ee45c
+1d42ee444: f9413260	ldr	x0, [x19, #0x260]
+1d42ee448: 94f5efea	bl	0x1d806a3f0 ; SELECTOR defaultTuning
+1d42ee44c: 94f6ba2d	bl	0x1d809cd00
+1d42ee450: aa0003f4	mov	x20, x0
+1d42ee454: 94f6ba73	bl	0x1d809ce20
+1d42ee458: b4001ed4	cbz	x20, 0x1d42ee830
+1d42ee45c: 3956c268	ldrb	w8, [x19, #0x5b0]
+1d42ee460: 7100051f	cmp	w8, #0x1
+1d42ee464: 54000081	b.ne	0x1d42ee474
+1d42ee468: aa1303e0	mov	x0, x19
+1d42ee46c: 94f5e8cd	bl	0x1d80687a0 ; SELECTOR _allocateResources
+1d42ee470: 35001f60	cbnz	w0, 0x1d42ee85c
+1d42ee474: f9401a68	ldr	x8, [x19, #0x30]
+1d42ee478: b50000a8	cbnz	x8, 0x1d42ee48c
+1d42ee47c: f9401e68	ldr	x8, [x19, #0x38]
+1d42ee480: b4001cc8	cbz	x8, 0x1d42ee818
+1d42ee484: f9402268	ldr	x8, [x19, #0x40]
+1d42ee488: b4001c88	cbz	x8, 0x1d42ee818
+1d42ee48c: b9428a68	ldr	w8, [x19, #0x288]
+1d42ee490: 7100111f	cmp	w8, #0x4
+1d42ee494: 54000600	b.eq	0x1d42ee554
+1d42ee498: f9401268	ldr	x8, [x19, #0x20]
+1d42ee49c: b4001e68	cbz	x8, 0x1d42ee868
+1d42ee4a0: f9402668	ldr	x8, [x19, #0x48]
+1d42ee4a4: b4001e88	cbz	x8, 0x1d42ee874
+1d42ee4a8: f9410668	ldr	x8, [x19, #0x208]
+1d42ee4ac: f100011f	cmp	x8, #0
+1d42ee4b0: 1a9f17e9	cset	w9, eq
+1d42ee4b4: f9410a6a	ldr	x10, [x19, #0x210]
+1d42ee4b8: f100015f	cmp	x10, #0
+1d42ee4bc: 1a9f17ea	cset	w10, eq
+1d42ee4c0: 6b0a013f	cmp	w9, w10
+1d42ee4c4: 54001bc1	b.ne	0x1d42ee83c
+1d42ee4c8: f9410e6a	ldr	x10, [x19, #0x218]
+1d42ee4cc: f9411269	ldr	x9, [x19, #0x220]
+1d42ee4d0: b400032a	cbz	x10, 0x1d42ee534
+1d42ee4d4: b4001aa9	cbz	x9, 0x1d42ee828
+1d42ee4d8: b4001988	cbz	x8, 0x1d42ee808
+1d42ee4dc: f0091a68	adrp	x8, 0x1e663d000
+1d42ee4e0: f9433d01	ldr	x1, [x8, #0x678]
+1d42ee4e4: aa1603e8	mov	x8, x22
+1d42ee4e8: dac143e8	xpaci	x8
+1d42ee4ec: f90007e8	str	x8, [sp, #0x8]
+1d42ee4f0: b90003ff	str	wzr, [sp]
+1d42ee4f4: b0000e80	adrp	x0, 0x1d44bf000
+1d42ee4f8: 913b5000	add	x0, x0, #0xed4
+1d42ee4fc: b0000f02	adrp	x2, 0x1d44cf000
+1d42ee500: 91289842	add	x2, x2, #0xa26
+1d42ee504: b0000f03	adrp	x3, 0x1d44cf000
+1d42ee508: 9138dc63	add	x3, x3, #0xe37
+1d42ee50c: b0000e84	adrp	x4, 0x1d44bf000
+1d42ee510: 913c7084	add	x4, x4, #0xf1c ; 0x1d44bff1c cstring 'bail'
+1d42ee514: b0000f05	adrp	x5, 0x1d44cf000
+1d42ee518: 913beca5	add	x5, x5, #0xefb
+1d42ee51c: b0000f06	adrp	x6, 0x1d44cf000
+1d42ee520: 9129f8c6	add	x6, x6, #0xa7e ; 0x1d44cfa7e cstring 'CMISmartStyleMetalRendererV1.m'
+1d42ee524: 52805007	mov	w7, #0x280
+1d42ee528: 94f7204e	bl	0x1d80b6660
+1d42ee52c: 52800015	mov	w21, #0
+1d42ee530: 14000091	b	0x1d42ee774
+1d42ee534: b50017a9	cbnz	x9, 0x1d42ee828
+1d42ee538: f100011f	cmp	x8, #0
+1d42ee53c: 1a9f17e8	cset	w8, eq
+1d42ee540: f9413e69	ldr	x9, [x19, #0x278]
+1d42ee544: f100013f	cmp	x9, #0
+1d42ee548: 1a9f17e9	cset	w9, eq
+1d42ee54c: 4a080128	eor	w8, w9, w8
+1d42ee550: 37001608	tbnz	w8, #0, 0x1d42ee810
+1d42ee554: aa1303e0	mov	x0, x19
+1d42ee558: 94f5ebd2	bl	0x1d80694a0 ; SELECTOR _updateColorManagementForInputs
+1d42ee55c: a9438e62	ldp	x2, x3, [x19, #0x38]
+1d42ee560: f9401a64	ldr	x4, [x19, #0x30]
+1d42ee564: aa1303e0	mov	x0, x19
+1d42ee568: 94f5e96e	bl	0x1d8068b20 ; SELECTOR _convertLinearYCbCrToRGB:inputChromaTexture:outputRGBTexture:
+1d42ee56c: 350016c0	cbnz	w0, 0x1d42ee844
+1d42ee570: b9428a68	ldr	w8, [x19, #0x288]
+1d42ee574: 7100111f	cmp	w8, #0x4
+1d42ee578: 54000be0	b.eq	0x1d42ee6f4
+1d42ee57c: aa1303e0	mov	x0, x19
+1d42ee580: 94f5eb90	bl	0x1d80693c0 ; SELECTOR _setupStatsAndRenderParamBuffer
+1d42ee584: 350017e0	cbnz	w0, 0x1d42ee880
+1d42ee588: f9414263	ldr	x3, [x19, #0x280]
+1d42ee58c: aa1303e0	mov	x0, x19
+1d42ee590: aa1403e2	mov	x2, x20
+1d42ee594: 94f5eadb	bl	0x1d8069100 ; SELECTOR _populateStaticRenderParametersFromTuning:inputStatisticsByStatsKey:
+1d42ee598: 350017a0	cbnz	w0, 0x1d42ee88c
+1d42ee59c: b9428a68	ldr	w8, [x19, #0x288]
+1d42ee5a0: f9414a76	ldr	x22, [x19, #0x290]
+1d42ee5a4: b006d469	adrp	x9, 0x1e1d7b000
+1d42ee5a8: 91366129	add	x9, x9, #0xd98
+1d42ee5ac: f9400137	ldr	x23, [x9] ; 0x1ef35ddd8 CFString 'DigitalFlash'
+1d42ee5b0: 37000448	tbnz	w8, #0, 0x1d42ee638
+1d42ee5b4: 7100111f	cmp	w8, #0x4
+1d42ee5b8: 540009e0	b.eq	0x1d42ee6f4
+1d42ee5bc: f9411668	ldr	x8, [x19, #0x228]
+1d42ee5c0: b4000088	cbz	x8, 0x1d42ee5d0
+1d42ee5c4: f9411a68	ldr	x8, [x19, #0x230]
+1d42ee5c8: f100011f	cmp	x8, #0
+1d42ee5cc: 1a9f07e8	cset	w8, ne
+1d42ee5d0: f9410669	ldr	x9, [x19, #0x208]
+1d42ee5d4: b4000089	cbz	x9, 0x1d42ee5e4
+1d42ee5d8: f9410a69	ldr	x9, [x19, #0x210]
+1d42ee5dc: f100013f	cmp	x9, #0
+1d42ee5e0: 1a9f07e9	cset	w9, ne
+1d42ee5e4: f9413e6a	ldr	x10, [x19, #0x278]
+1d42ee5e8: b400194a	cbz	x10, 0x1d42ee910
+1d42ee5ec: 2a090108	orr	w8, w8, w9
+1d42ee5f0: 36001908	tbz	w8, #0, 0x1d42ee910
+1d42ee5f4: f940ee60	ldr	x0, [x19, #0x1d8]
+1d42ee5f8: 94f50c26	bl	0x1d8031690 ; SELECTOR contents
+1d42ee5fc: aa0003e2	mov	x2, x0
+1d42ee600: f9413e63	ldr	x3, [x19, #0x278]
+1d42ee604: f9414264	ldr	x4, [x19, #0x280]
+1d42ee608: aa1303e0	mov	x0, x19
+1d42ee60c: 94f5eab1	bl	0x1d80690d0 ; SELECTOR _populatePreComputedStats:inputStatisticsByStatsType:inputStatisticsByStatsKey:
+1d42ee610: 35001860	cbnz	w0, 0x1d42ee91c
+1d42ee614: eb1702df	cmp	x22, x23
+1d42ee618: 540006e1	b.ne	0x1d42ee6f4
+1d42ee61c: aa1303e0	mov	x0, x19
+1d42ee620: 52800022	mov	w2, #0x1
+1d42ee624: 94f5eb3b	bl	0x1d8069310 ; SELECTOR _runImageReductionAndUpdateBaseGain:
+1d42ee628: 34000660	cbz	w0, 0x1d42ee6f4
+1d42ee62c: aa0003f5	mov	x21, x0
+1d42ee630: 9406297f	bl	0x1d4478c2c
+1d42ee634: 14000050	b	0x1d42ee774
+1d42ee638: f940fe68	ldr	x8, [x19, #0x1f8]
+1d42ee63c: b5000228	cbnz	x8, 0x1d42ee680
+1d42ee640: 52802008	mov	w8, #0x100
+1d42ee644: 790003e8	strh	w8, [sp]
+1d42ee648: d00d8347	adrp	x7, 0x1ef358000
+1d42ee64c: 913660e7	add	x7, x7, #0xd98 ; 0x1ef358d98 CFString 'SSR_SMALL_LIGHTMAP_TEXTURE'
+1d42ee650: aa1303e0	mov	x0, x19
+1d42ee654: 52800322	mov	w2, #0x19
+1d42ee658: 52800403	mov	w3, #0x20
+1d42ee65c: 52800404	mov	w4, #0x20
+1d42ee660: 528000e5	mov	w5, #0x7
+1d42ee664: 52800026	mov	w6, #0x1
+1d42ee668: 94f5ea82	bl	0x1d8069070 ; SELECTOR _newTexture2DWithFormat:width:height:usage:disableCompression:label:retainUntilPurge:useFigMetalAllocator:
+1d42ee66c: f940fe68	ldr	x8, [x19, #0x1f8]
+1d42ee670: f900fe60	str	x0, [x19, #0x1f8]
+1d42ee674: 94f6ba0b	bl	0x1d809cea0
+1d42ee678: f940fe68	ldr	x8, [x19, #0x1f8]
+1d42ee67c: b4001568	cbz	x8, 0x1d42ee928
+1d42ee680: f9410268	ldr	x8, [x19, #0x200]
+1d42ee684: b5000228	cbnz	x8, 0x1d42ee6c8
+1d42ee688: 52802008	mov	w8, #0x100
+1d42ee68c: 790003e8	strh	w8, [sp]
+1d42ee690: d00d8347	adrp	x7, 0x1ef358000
+1d42ee694: 9136e0e7	add	x7, x7, #0xdb8 ; 0x1ef358db8 CFString 'SSR_SMALL_LINEAR_LIGHTMAP_TEXTURE'
+1d42ee698: aa1303e0	mov	x0, x19
+1d42ee69c: 52800322	mov	w2, #0x19
+1d42ee6a0: 52800403	mov	w3, #0x20
+1d42ee6a4: 52800404	mov	w4, #0x20
+1d42ee6a8: 528000e5	mov	w5, #0x7
+1d42ee6ac: 52800026	mov	w6, #0x1
+1d42ee6b0: 94f5ea70	bl	0x1d8069070 ; SELECTOR _newTexture2DWithFormat:width:height:usage:disableCompression:label:retainUntilPurge:useFigMetalAllocator:
+1d42ee6b4: f9410268	ldr	x8, [x19, #0x200]
+1d42ee6b8: f9010260	str	x0, [x19, #0x200]
+1d42ee6bc: 94f6b9f9	bl	0x1d809cea0
+1d42ee6c0: f9410268	ldr	x8, [x19, #0x200]
+1d42ee6c4: b4001388	cbz	x8, 0x1d42ee934
+1d42ee6c8: eb1702df	cmp	x22, x23
+1d42ee6cc: 1a9f17e2	cset	w2, eq
+1d42ee6d0: aa1303e0	mov	x0, x19
+1d42ee6d4: 94f5eb0f	bl	0x1d8069310 ; SELECTOR _runImageReductionAndUpdateBaseGain:
+1d42ee6d8: 35001100	cbnz	w0, 0x1d42ee8f8
+1d42ee6dc: f9401262	ldr	x2, [x19, #0x20]
+1d42ee6e0: f9401a63	ldr	x3, [x19, #0x30]
+1d42ee6e4: a9451664	ldp	x4, x5, [x19, #0x50]
+1d42ee6e8: aa1303e0	mov	x0, x19
+1d42ee6ec: 94f5e8a5	bl	0x1d8068980 ; SELECTOR _calculateHistogramStatsWithImageTexture:linearImageTexture:personMaskTexture:skinMaskTexture:
+1d42ee6f0: 350010a0	cbnz	w0, 0x1d42ee904
+1d42ee6f4: b9428a68	ldr	w8, [x19, #0x288]
+1d42ee6f8: 360802e8	tbz	w8, #0x1, 0x1d42ee754
+1d42ee6fc: aa1303e0	mov	x0, x19
+1d42ee700: 94f5eb74	bl	0x1d80694d0 ; SELECTOR _updateRenderPipelineConfigForInputs
+1d42ee704: 35000ca0	cbnz	w0, 0x1d42ee898
+1d42ee708: aa1303e0	mov	x0, x19
+1d42ee70c: 94f5e889	bl	0x1d8068930 ; SELECTOR _calculateDynamicRenderParameters
+1d42ee710: 35000ca0	cbnz	w0, 0x1d42ee8a4
+1d42ee714: aa1303e0	mov	x0, x19
+1d42ee718: 94f5e91a	bl	0x1d8068b80 ; SELECTOR _createGuideImage
+1d42ee71c: 35000ca0	cbnz	w0, 0x1d42ee8b0
+1d42ee720: aa1303e0	mov	x0, x19
+1d42ee724: 94f5ea87	bl	0x1d8069140 ; SELECTOR _processSegmentationMasks
+1d42ee728: 35000ca0	cbnz	w0, 0x1d42ee8bc
+1d42ee72c: aa1303e0	mov	x0, x19
+1d42ee730: 94f5ea80	bl	0x1d8069130 ; SELECTOR _processLTMGainMap
+1d42ee734: 35000d00	cbnz	w0, 0x1d42ee8d4
+1d42ee738: aa1303e0	mov	x0, x19
+1d42ee73c: 94f5eb6d	bl	0x1d80694f0 ; SELECTOR _upsampleLightMap
+1d42ee740: 35000d00	cbnz	w0, 0x1d42ee8e0
+1d42ee744: aa1303e0	mov	x0, x19
+1d42ee748: 94f5e832	bl	0x1d8068810 ; SELECTOR _applyFinalRendering
+1d42ee74c: 35000d00	cbnz	w0, 0x1d42ee8ec
+1d42ee750: b9428a68	ldr	w8, [x19, #0x288]
+1d42ee754: 36100088	tbz	w8, #0x2, 0x1d42ee764
+1d42ee758: aa1303e0	mov	x0, x19
+1d42ee75c: 94f5e95d	bl	0x1d8068cd0 ; SELECTOR _encodeLinear
+1d42ee760: 35000b40	cbnz	w0, 0x1d42ee8c8
+1d42ee764: aa1303e0	mov	x0, x19
+1d42ee768: 94f5eaa6	bl	0x1d8069200 ; SELECTOR _releaseIntermediateResources
+1d42ee76c: aa0003f5	mov	x21, x0
+1d42ee770: 35000700	cbnz	w0, 0x1d42ee850
+1d42ee774: aa1303e0	mov	x0, x19
+1d42ee778: 94f5eace	bl	0x1d80692b0 ; SELECTOR _resetTextureMappedRegions
+1d42ee77c: 3956c268	ldrb	w8, [x19, #0x5b0]
+1d42ee780: 7100051f	cmp	w8, #0x1
+1d42ee784: 54000321	b.ne	0x1d42ee7e8
+1d42ee788: 91073260	add	x0, x19, #0x1cc
+1d42ee78c: 94f6ba55	bl	0x1d809d0e0
+1d42ee790: 9107e260	add	x0, x19, #0x1f8
+1d42ee794: 97ff8a83	bl	0x1d42d11a0
+1d42ee798: 91080260	add	x0, x19, #0x200
+1d42ee79c: 97ff8a81	bl	0x1d42d11a0
+1d42ee7a0: 9107a260	add	x0, x19, #0x1e8
+1d42ee7a4: 97ff8a7f	bl	0x1d42d11a0
+1d42ee7a8: 9107c260	add	x0, x19, #0x1f0
+1d42ee7ac: 97ff8a7d	bl	0x1d42d11a0
+1d42ee7b0: 9108e260	add	x0, x19, #0x238
+1d42ee7b4: 97ff8a7b	bl	0x1d42d11a0
+1d42ee7b8: 91090260	add	x0, x19, #0x240
+1d42ee7bc: 97ff8a79	bl	0x1d42d11a0
+1d42ee7c0: 9108a260	add	x0, x19, #0x228
+1d42ee7c4: 97ff8a77	bl	0x1d42d11a0
+1d42ee7c8: 9108c260	add	x0, x19, #0x230
+1d42ee7cc: 97ff8a75	bl	0x1d42d11a0
+1d42ee7d0: 91092260	add	x0, x19, #0x248
+1d42ee7d4: 97ff8a73	bl	0x1d42d11a0
+1d42ee7d8: 9100c260	add	x0, x19, #0x30
+1d42ee7dc: 97ff8a71	bl	0x1d42d11a0
+1d42ee7e0: 91073260	add	x0, x19, #0x1cc
+1d42ee7e4: 94f6ba47	bl	0x1d809d100
+1d42ee7e8: 94f6b98a	bl	0x1d809ce10
+1d42ee7ec: aa1503e0	mov	x0, x21
+1d42ee7f0: a9457bfd	ldp	fp, lr, [sp, #0x50]
+1d42ee7f4: a9444ff4	ldp	x20, x19, [sp, #0x40]
+1d42ee7f8: a94357f6	ldp	x22, x21, [sp, #0x30]
+1d42ee7fc: a9425ff8	ldp	x24, x23, [sp, #0x20]
+1d42ee800: 910183ff	add	sp, sp, #0x60
+1d42ee804: d65f0fff	retab
+1d42ee808: f9413e68	ldr	x8, [x19, #0x278]
+1d42ee80c: b4ffea48	cbz	x8, 0x1d42ee554
+1d42ee810: 94062810	bl	0x1d4478850
+1d42ee814: 17ffff46	b	0x1d42ee52c
+1d42ee818: 910073e0	add	x0, sp, #0x1c
+1d42ee81c: 94062986	bl	0x1d4478e34
+1d42ee820: b9401ff5	ldr	w21, [sp, #0x1c]
+1d42ee824: 17ffffd4	b	0x1d42ee774
+1d42ee828: 940627f7	bl	0x1d4478804
+1d42ee82c: 17ffff40	b	0x1d42ee52c
+1d42ee830: 9406299b	bl	0x1d4478e9c
+1d42ee834: 52800095	mov	w21, #0x4
+1d42ee838: 17ffffcf	b	0x1d42ee774
+1d42ee83c: 94062818	bl	0x1d447889c
+1d42ee840: 17ffff3b	b	0x1d42ee52c
+1d42ee844: aa0003f5	mov	x21, x0
+1d42ee848: 9406285c	bl	0x1d44789b8
+1d42ee84c: 17ffffca	b	0x1d42ee774
+1d42ee850: aa1503e0	mov	x0, x21
+1d42ee854: 9406296b	bl	0x1d4478e00
+1d42ee858: 17ffffc7	b	0x1d42ee774
+1d42ee85c: aa0003f5	mov	x21, x0
+1d42ee860: 940627dc	bl	0x1d44787d0
+1d42ee864: 17ffffc4	b	0x1d42ee774
+1d42ee868: 910073e0	add	x0, sp, #0x1c
+1d42ee86c: 94062839	bl	0x1d4478950
+1d42ee870: 17ffffec	b	0x1d42ee820
+1d42ee874: 910073e0	add	x0, sp, #0x1c
+1d42ee878: 9406281c	bl	0x1d44788e8
+1d42ee87c: 17ffffe9	b	0x1d42ee820
+1d42ee880: aa0003f5	mov	x21, x0
+1d42ee884: 9406285a	bl	0x1d44789ec
+1d42ee888: 17ffffbb	b	0x1d42ee774
+1d42ee88c: aa0003f5	mov	x21, x0
+1d42ee890: 94062864	bl	0x1d4478a20
+1d42ee894: 17ffffb8	b	0x1d42ee774
+1d42ee898: aa0003f5	mov	x21, x0
+1d42ee89c: 940628f1	bl	0x1d4478c60
+1d42ee8a0: 17ffffb5	b	0x1d42ee774
+1d42ee8a4: aa0003f5	mov	x21, x0
+1d42ee8a8: 940628fb	bl	0x1d4478c94
+1d42ee8ac: 17ffffb2	b	0x1d42ee774
+1d42ee8b0: aa0003f5	mov	x21, x0
+1d42ee8b4: 94062905	bl	0x1d4478cc8
+1d42ee8b8: 17ffffaf	b	0x1d42ee774
+1d42ee8bc: aa0003f5	mov	x21, x0
+1d42ee8c0: 9406290f	bl	0x1d4478cfc
+1d42ee8c4: 17ffffac	b	0x1d42ee774
+1d42ee8c8: aa0003f5	mov	x21, x0
+1d42ee8cc: 94062940	bl	0x1d4478dcc
+1d42ee8d0: 17ffffa9	b	0x1d42ee774
+1d42ee8d4: aa0003f5	mov	x21, x0
+1d42ee8d8: 94062916	bl	0x1d4478d30
+1d42ee8dc: 17ffffa6	b	0x1d42ee774
+1d42ee8e0: aa0003f5	mov	x21, x0
+1d42ee8e4: 94062920	bl	0x1d4478d64
+1d42ee8e8: 17ffffa3	b	0x1d42ee774
+1d42ee8ec: aa0003f5	mov	x21, x0
+1d42ee8f0: 9406292a	bl	0x1d4478d98
+1d42ee8f4: 17ffffa0	b	0x1d42ee774
+1d42ee8f8: aa0003f5	mov	x21, x0
+1d42ee8fc: 94062856	bl	0x1d4478a54
+1d42ee900: 17ffff9d	b	0x1d42ee774
+1d42ee904: aa0003f5	mov	x21, x0
+1d42ee908: 94062860	bl	0x1d4478a88
+1d42ee90c: 17ffff9a	b	0x1d42ee774
+1d42ee910: 910073e0	add	x0, sp, #0x1c
+1d42ee914: 9406289e	bl	0x1d4478b8c
+1d42ee918: 17ffffc2	b	0x1d42ee820
+1d42ee91c: aa0003f5	mov	x21, x0
+1d42ee920: 940628b6	bl	0x1d4478bf8
+1d42ee924: 17ffff94	b	0x1d42ee774
+1d42ee928: 910073e0	add	x0, sp, #0x1c
+1d42ee92c: 9406287e	bl	0x1d4478b24
+1d42ee930: 17ffffbc	b	0x1d42ee820
+1d42ee934: 910073e0	add	x0, sp, #0x1c
+1d42ee938: 94062861	bl	0x1d4478abc
+1d42ee93c: 17ffffb9	b	0x1d42ee820

@@ -1,0 +1,20 @@
+{
+  "cmi": [
+    ["engine-tuning-apply", "-[CMIStyleEngineProcessor _setTuningParameters]"],
+    ["engine-create-enqueue", "-[CMIStyleEngineCreateLinearSystem enqueueToCommandBuffer:]"],
+    ["pixel-input-style", "-[CMISmartStylePixelBufferRendererV1 setInputStyle:]"],
+    ["metal-input-style", "-[CMISmartStyleMetalRendererV1 setInputStyle:]"],
+    ["metal-tone-set", "-[CMISmartStyleMetalRendererV1 setToneBias:]"],
+    ["metal-color-set", "-[CMISmartStyleMetalRendererV1 setColorBias:]"],
+    ["metal-intensity-set", "-[CMISmartStyleMetalRendererV1 setCastIntensity:]"],
+    ["metal-tone-curve", "-[CMISmartStyleMetalRendererV1 _calculateCubicSplineToneCurve]"],
+    ["metal-process", "-[CMISmartStyleMetalRendererV1 process]"],
+    ["metal-ltm", "-[CMISmartStyleMetalRendererV1 _processLTMGainMap]"],
+    ["metal-srl-adjust", "-[CMISmartStyleMetalRendererV1 _getAdjustedSrlCurveParameter]"],
+    ["metal-color-conversion", "-[CMISmartStyleMetalRendererV1 _configureColorConversion:forTexture:isOutput:]"],
+    ["srl-stage", "-[CMISubjectRelightingStage _runSubjectRelighting:rgba:luma:chroma:skinMask:personMask:instanceMasks:instanceMaskConfidences:expBias:exifOrientation:srlV2Plist:faceDataFromANST:toneMap:ltmChroma:gammaCurve:numFacesISPDetected:isChromaGainAdjusted:inputIsLinear:chromaBias:blackPoint:playBackCurve:]"],
+    ["engine-config-set", "-[CMIStyleEngineProcessor setConfiguration:]"],
+    ["linear-systems-compile", "-[CMIStyleEngineCreateLinearSystem _compileShaders:]"],
+    ["linear-prior-planes-set", "-[CMIStyleEngineCreateLinearSystem _setWeightPlane:term:priorScaleFactor:]"]
+  ]
+}

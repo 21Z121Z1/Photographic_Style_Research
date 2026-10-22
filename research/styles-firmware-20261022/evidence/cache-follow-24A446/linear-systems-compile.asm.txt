@@ -1,0 +1,217 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMIStyleEngineCreateLinearSystem _compileShaders:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42c0704:
+1d42c0704: d503237f	pacibsp
+1d42c0708: d10103ff	sub	sp, sp, #0x40
+1d42c070c: a90157f6	stp	x22, x21, [sp, #0x10]
+1d42c0710: a9024ff4	stp	x20, x19, [sp, #0x20]
+1d42c0714: a9037bfd	stp	fp, lr, [sp, #0x30]
+1d42c0718: 9100c3fd	add	fp, sp, #0x30
+1d42c071c: aa0003f5	mov	x21, x0
+1d42c0720: 94f7720c	bl	0x1d809cf50
+1d42c0724: aa0003f3	mov	x19, x0
+1d42c0728: 94f6a762	bl	0x1d806a4b0 ; SELECTOR device
+1d42c072c: 94f77175	bl	0x1d809cd00
+1d42c0730: aa0003f6	mov	x22, x0
+1d42c0734: 940007c5	bl	0x1d42c2648
+1d42c0738: 94f77172	bl	0x1d809cd00
+1d42c073c: aa0003f4	mov	x20, x0
+1d42c0740: 94f771bc	bl	0x1d809ce30
+1d42c0744: b40013b4	cbz	x20, 0x1d42c09b8
+1d42c0748: b00d84a2	adrp	x2, 0x1ef355000
+1d42c074c: 911ae042	add	x2, x2, #0x6b8 ; 0x1ef3556b8 CFString 'StyleEngineCreateLinearSystem::PolyExpandInput'
+1d42c0750: aa1303e0	mov	x0, x19
+1d42c0754: aa1403e3	mov	x3, x20
+1d42c0758: 94f6a646	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c075c: 94f77169	bl	0x1d809cd00
+1d42c0760: f94006a8	ldr	x8, [x21, #0x8]
+1d42c0764: f90006a0	str	x0, [x21, #0x8]
+1d42c0768: 94f771ce	bl	0x1d809cea0
+1d42c076c: f94006a8	ldr	x8, [x21, #0x8]
+1d42c0770: b40012a8	cbz	x8, 0x1d42c09c4
+1d42c0774: b00d84a2	adrp	x2, 0x1ef355000
+1d42c0778: 911b6042	add	x2, x2, #0x6d8 ; 0x1ef3556d8 CFString 'StyleEngineCreateLinearSystem::PolyExpandTarget'
+1d42c077c: aa1303e0	mov	x0, x19
+1d42c0780: aa1403e3	mov	x3, x20
+1d42c0784: 94f6a63b	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c0788: 94f7715e	bl	0x1d809cd00
+1d42c078c: f9400aa8	ldr	x8, [x21, #0x10]
+1d42c0790: f9000aa0	str	x0, [x21, #0x10]
+1d42c0794: 94f771c3	bl	0x1d809cea0
+1d42c0798: f9400aa8	ldr	x8, [x21, #0x10]
+1d42c079c: b40011a8	cbz	x8, 0x1d42c09d0
+1d42c07a0: b00d84a2	adrp	x2, 0x1ef355000
+1d42c07a4: 911be042	add	x2, x2, #0x6f8 ; 0x1ef3556f8 CFString 'StyleEngineCreateLinearSystem::PairExpandWeights'
+1d42c07a8: aa1303e0	mov	x0, x19
+1d42c07ac: aa1403e3	mov	x3, x20
+1d42c07b0: 94f6a630	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c07b4: 94f77153	bl	0x1d809cd00
+1d42c07b8: f9400ea8	ldr	x8, [x21, #0x18]
+1d42c07bc: f9000ea0	str	x0, [x21, #0x18]
+1d42c07c0: 94f771b8	bl	0x1d809cea0
+1d42c07c4: f9400ea8	ldr	x8, [x21, #0x18]
+1d42c07c8: b40010a8	cbz	x8, 0x1d42c09dc
+1d42c07cc: b00d84a2	adrp	x2, 0x1ef355000
+1d42c07d0: 911c6042	add	x2, x2, #0x718 ; 0x1ef355718 CFString 'StyleEngineCreateLinearSystem::RHS'
+1d42c07d4: aa1303e0	mov	x0, x19
+1d42c07d8: aa1403e3	mov	x3, x20
+1d42c07dc: 94f6a625	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c07e0: 94f77148	bl	0x1d809cd00
+1d42c07e4: f9401aa8	ldr	x8, [x21, #0x30]
+1d42c07e8: f9001aa0	str	x0, [x21, #0x30]
+1d42c07ec: 94f771ad	bl	0x1d809cea0
+1d42c07f0: f9401aa8	ldr	x8, [x21, #0x30]
+1d42c07f4: b4000fa8	cbz	x8, 0x1d42c09e8
+1d42c07f8: b00d84a2	adrp	x2, 0x1ef355000
+1d42c07fc: 911ce042	add	x2, x2, #0x738 ; 0x1ef355738 CFString 'StyleEngineCreateLinearSystem::CalculatePrior'
+1d42c0800: aa1303e0	mov	x0, x19
+1d42c0804: aa1403e3	mov	x3, x20
+1d42c0808: 94f6a61a	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c080c: 94f7713d	bl	0x1d809cd00
+1d42c0810: f9401ea8	ldr	x8, [x21, #0x38]
+1d42c0814: f9001ea0	str	x0, [x21, #0x38]
+1d42c0818: 94f771a2	bl	0x1d809cea0
+1d42c081c: f9401ea8	ldr	x8, [x21, #0x38]
+1d42c0820: b4000ea8	cbz	x8, 0x1d42c09f4
+1d42c0824: b00d84a2	adrp	x2, 0x1ef355000
+1d42c0828: 911d6042	add	x2, x2, #0x758 ; 0x1ef355758 CFString 'StyleEngineCreateLinearSystem::AddPriorToLHS'
+1d42c082c: aa1303e0	mov	x0, x19
+1d42c0830: aa1403e3	mov	x3, x20
+1d42c0834: 94f6a60f	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c0838: 94f77132	bl	0x1d809cd00
+1d42c083c: f94022a8	ldr	x8, [x21, #0x40]
+1d42c0840: f90022a0	str	x0, [x21, #0x40]
+1d42c0844: 94f77197	bl	0x1d809cea0
+1d42c0848: f94022a8	ldr	x8, [x21, #0x40]
+1d42c084c: b4000da8	cbz	x8, 0x1d42c0a00
+1d42c0850: b00d84a2	adrp	x2, 0x1ef355000
+1d42c0854: 911de042	add	x2, x2, #0x778 ; 0x1ef355778 CFString 'StyleEngineCreateLinearSystem::AddPriorToRHS'
+1d42c0858: aa1303e0	mov	x0, x19
+1d42c085c: aa1403e3	mov	x3, x20
+1d42c0860: 94f6a604	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c0864: 94f77127	bl	0x1d809cd00
+1d42c0868: f94026a8	ldr	x8, [x21, #0x48]
+1d42c086c: f90026a0	str	x0, [x21, #0x48]
+1d42c0870: 94f7718c	bl	0x1d809cea0
+1d42c0874: f94026a8	ldr	x8, [x21, #0x48]
+1d42c0878: b4000ca8	cbz	x8, 0x1d42c0a0c
+1d42c087c: b00d84a2	adrp	x2, 0x1ef355000
+1d42c0880: 911e6042	add	x2, x2, #0x798 ; 0x1ef355798 CFString 'StyleEngineCreateLinearSystem::AverageSystems'
+1d42c0884: aa1303e0	mov	x0, x19
+1d42c0888: d2800003	mov	x3, #0
+1d42c088c: 94f6a5f9	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c0890: 94f7711c	bl	0x1d809cd00
+1d42c0894: f9402aa8	ldr	x8, [x21, #0x50]
+1d42c0898: f9002aa0	str	x0, [x21, #0x50]
+1d42c089c: 94f77181	bl	0x1d809cea0
+1d42c08a0: f9402aa8	ldr	x8, [x21, #0x50]
+1d42c08a4: b4000ba8	cbz	x8, 0x1d42c0a18
+1d42c08a8: 39002fff	strb	wzr, [sp, #0xb]
+1d42c08ac: b00d84a4	adrp	x4, 0x1ef355000
+1d42c08b0: 911ee084	add	x4, x4, #0x7b8 ; 0x1ef3557b8 CFString 'StyleEngineCreateLinearSystem::independentSpotlights'
+1d42c08b4: 91002fe2	add	x2, sp, #0xb
+1d42c08b8: aa1403e0	mov	x0, x20
+1d42c08bc: 528006a3	mov	w3, #0x35
+1d42c08c0: 94f6b2c8	bl	0x1d806d3e0 ; SELECTOR setConstantValue:type:withName:
+1d42c08c4: b00d84a2	adrp	x2, 0x1ef355000
+1d42c08c8: 911f6042	add	x2, x2, #0x7d8 ; 0x1ef3557d8 CFString 'StyleEngineCreateLinearSystem::LHS'
+1d42c08cc: aa1303e0	mov	x0, x19
+1d42c08d0: aa1403e3	mov	x3, x20
+1d42c08d4: 94f6a5e7	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c08d8: 94f7710a	bl	0x1d809cd00
+1d42c08dc: f94012a8	ldr	x8, [x21, #0x20]
+1d42c08e0: f90012a0	str	x0, [x21, #0x20]
+1d42c08e4: 94f7716f	bl	0x1d809cea0
+1d42c08e8: f94012a8	ldr	x8, [x21, #0x20]
+1d42c08ec: b40009c8	cbz	x8, 0x1d42c0a24
+1d42c08f0: 52800028	mov	w8, #0x1
+1d42c08f4: 39002fe8	strb	w8, [sp, #0xb]
+1d42c08f8: b00d84a4	adrp	x4, 0x1ef355000
+1d42c08fc: 911ee084	add	x4, x4, #0x7b8 ; 0x1ef3557b8 CFString 'StyleEngineCreateLinearSystem::independentSpotlights'
+1d42c0900: 91002fe2	add	x2, sp, #0xb
+1d42c0904: aa1403e0	mov	x0, x20
+1d42c0908: 528006a3	mov	w3, #0x35
+1d42c090c: 94f6b2b5	bl	0x1d806d3e0 ; SELECTOR setConstantValue:type:withName:
+1d42c0910: b00d84a2	adrp	x2, 0x1ef355000
+1d42c0914: 911f6042	add	x2, x2, #0x7d8 ; 0x1ef3557d8 CFString 'StyleEngineCreateLinearSystem::LHS'
+1d42c0918: aa1303e0	mov	x0, x19
+1d42c091c: aa1403e3	mov	x3, x20
+1d42c0920: 94f6a5d4	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c0924: 94f770f7	bl	0x1d809cd00
+1d42c0928: f94016a8	ldr	x8, [x21, #0x28]
+1d42c092c: f90016a0	str	x0, [x21, #0x28]
+1d42c0930: 94f7715c	bl	0x1d809cea0
+1d42c0934: f94016a8	ldr	x8, [x21, #0x28]
+1d42c0938: b40007c8	cbz	x8, 0x1d42c0a30
+1d42c093c: b00d84a2	adrp	x2, 0x1ef355000
+1d42c0940: 911fe042	add	x2, x2, #0x7f8 ; 0x1ef3557f8 CFString 'StyleEngineCreateLinearSystem::PostProcessISPSMGLHS'
+1d42c0944: aa1303e0	mov	x0, x19
+1d42c0948: d2800003	mov	x3, #0
+1d42c094c: 94f6a5c9	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c0950: 94f770ec	bl	0x1d809cd00
+1d42c0954: f9402ea8	ldr	x8, [x21, #0x58]
+1d42c0958: f9002ea0	str	x0, [x21, #0x58]
+1d42c095c: 94f77151	bl	0x1d809cea0
+1d42c0960: f9402ea8	ldr	x8, [x21, #0x58]
+1d42c0964: b40006c8	cbz	x8, 0x1d42c0a3c
+1d42c0968: b00d84a2	adrp	x2, 0x1ef355000
+1d42c096c: 91206042	add	x2, x2, #0x818 ; 0x1ef355818 CFString 'StyleEngineCreateLinearSystem::PostProcessISPSMGRHS'
+1d42c0970: aa1303e0	mov	x0, x19
+1d42c0974: d2800003	mov	x3, #0
+1d42c0978: 94f6a5be	bl	0x1d806a070 ; SELECTOR computePipelineStateFor:constants:
+1d42c097c: 94f770e1	bl	0x1d809cd00
+1d42c0980: f94032a8	ldr	x8, [x21, #0x60]
+1d42c0984: f90032a0	str	x0, [x21, #0x60]
+1d42c0988: 94f77146	bl	0x1d809cea0
+1d42c098c: f94032a8	ldr	x8, [x21, #0x60]
+1d42c0990: b40005c8	cbz	x8, 0x1d42c0a48
+1d42c0994: 52800015	mov	w21, #0
+1d42c0998: 94f7711e	bl	0x1d809ce10
+1d42c099c: 94f77119	bl	0x1d809ce00
+1d42c09a0: aa1503e0	mov	x0, x21
+1d42c09a4: a9437bfd	ldp	fp, lr, [sp, #0x30]
+1d42c09a8: a9424ff4	ldp	x20, x19, [sp, #0x20]
+1d42c09ac: a94157f6	ldp	x22, x21, [sp, #0x10]
+1d42c09b0: 910103ff	add	sp, sp, #0x40
+1d42c09b4: d65f0fff	retab
+1d42c09b8: 910033e0	add	x0, sp, #0xc
+1d42c09bc: 94065ae7	bl	0x1d4457558
+1d42c09c0: 14000024	b	0x1d42c0a50
+1d42c09c4: 910033e0	add	x0, sp, #0xc
+1d42c09c8: 94065aca	bl	0x1d44574f0
+1d42c09cc: 14000021	b	0x1d42c0a50
+1d42c09d0: 910033e0	add	x0, sp, #0xc
+1d42c09d4: 94065aad	bl	0x1d4457488
+1d42c09d8: 1400001e	b	0x1d42c0a50
+1d42c09dc: 910033e0	add	x0, sp, #0xc
+1d42c09e0: 94065a90	bl	0x1d4457420
+1d42c09e4: 1400001b	b	0x1d42c0a50
+1d42c09e8: 910033e0	add	x0, sp, #0xc
+1d42c09ec: 94065a73	bl	0x1d44573b8
+1d42c09f0: 14000018	b	0x1d42c0a50
+1d42c09f4: 910033e0	add	x0, sp, #0xc
+1d42c09f8: 94065a56	bl	0x1d4457350
+1d42c09fc: 14000015	b	0x1d42c0a50
+1d42c0a00: 910033e0	add	x0, sp, #0xc
+1d42c0a04: 94065a39	bl	0x1d44572e8
+1d42c0a08: 14000012	b	0x1d42c0a50
+1d42c0a0c: 910033e0	add	x0, sp, #0xc
+1d42c0a10: 94065a1c	bl	0x1d4457280
+1d42c0a14: 1400000f	b	0x1d42c0a50
+1d42c0a18: 910033e0	add	x0, sp, #0xc
+1d42c0a1c: 940659ff	bl	0x1d4457218
+1d42c0a20: 1400000c	b	0x1d42c0a50
+1d42c0a24: 910033e0	add	x0, sp, #0xc
+1d42c0a28: 940659e2	bl	0x1d44571b0
+1d42c0a2c: 14000009	b	0x1d42c0a50
+1d42c0a30: 910033e0	add	x0, sp, #0xc
+1d42c0a34: 940659c5	bl	0x1d4457148
+1d42c0a38: 14000006	b	0x1d42c0a50
+1d42c0a3c: 910033e0	add	x0, sp, #0xc
+1d42c0a40: 940659a8	bl	0x1d44570e0
+1d42c0a44: 14000003	b	0x1d42c0a50
+1d42c0a48: 910033e0	add	x0, sp, #0xc
+1d42c0a4c: 9406598b	bl	0x1d4457078
+1d42c0a50: b9400ff5	ldr	w21, [sp, #0xc]
+1d42c0a54: 17ffffd1	b	0x1d42c0998

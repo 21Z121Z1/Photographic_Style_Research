@@ -1,0 +1,42 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+_ssccmpg_float3x4FromMatrix
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42f35e8:
+1d42f35e8: ad400800	ldp	q0, q2, [x0]
+1d42f35ec: 6e026001	ext	v1.16b, v0.16b, v2.16b, #0xc
+1d42f35f0: 3dc00804	ldr	q4, [x0, #0x20]
+1d42f35f4: 6e044043	ext	v3.16b, v2.16b, v4.16b, #0x8
+1d42f35f8: 6e002082	ext	v2.16b, v4.16b, v0.16b, #0x4
+1d42f35fc: 34000321	cbz	w1, 0x1d42f3660
+1d42f3600: 52955568	mov	w8, #0xaaab
+1d42f3604: 72a7d548	movk	w8, #0x3eaa, lsl #0x10
+1d42f3608: 4e040d04	dup	v4.4s, w8
+1d42f360c: 6e24dc00	fmul	v0.4s, v0.4s, v4.4s
+1d42f3610: 4e0c0405	dup	v5.4s, v0.s[1]
+1d42f3614: 4e25d405	fadd	v5.4s, v0.4s, v5.4s
+1d42f3618: 4e140400	dup	v0.4s, v0.s[2]
+1d42f361c: 4e25d400	fadd	v0.4s, v0.4s, v5.4s
+1d42f3620: 4e040400	dup	v0.4s, v0.s[0]
+1d42f3624: 6e24dc21	fmul	v1.4s, v1.4s, v4.4s
+1d42f3628: 7e30d825	faddp	s5, v1.2s
+1d42f362c: 5e140421	mov	s1, v1.s[2]
+1d42f3630: 1e252821	fadd	s1, s1, s5
+1d42f3634: 4e040421	dup	v1.4s, v1.s[0]
+1d42f3638: 6e24dc63	fmul	v3.4s, v3.4s, v4.4s
+1d42f363c: 7e30d865	faddp	s5, v3.2s
+1d42f3640: 5e140463	mov	s3, v3.s[2]
+1d42f3644: 1e252863	fadd	s3, s3, s5
+1d42f3648: 4e040463	dup	v3.4s, v3.s[0]
+1d42f364c: 6e24dc42	fmul	v2.4s, v2.4s, v4.4s
+1d42f3650: 7e30d844	faddp	s4, v2.2s
+1d42f3654: 5e140442	mov	s2, v2.s[2]
+1d42f3658: 1e242842	fadd	s2, s2, s4
+1d42f365c: 4e040442	dup	v2.4s, v2.s[0]
+1d42f3660: 4e833804	zip1	v4.4s, v0.4s, v3.4s
+1d42f3664: 4e837803	zip2	v3.4s, v0.4s, v3.4s
+1d42f3668: 4e823825	zip1	v5.4s, v1.4s, v2.4s
+1d42f366c: 4e827822	zip2	v2.4s, v1.4s, v2.4s
+1d42f3670: 4e853880	zip1	v0.4s, v4.4s, v5.4s
+1d42f3674: 4e857881	zip2	v1.4s, v4.4s, v5.4s
+1d42f3678: 4e823862	zip1	v2.4s, v3.4s, v2.4s
+1d42f367c: d65f03c0	ret

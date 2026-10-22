@@ -1,0 +1,757 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMIStyleEngineProcessor _setTuningParameters]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42e1748:
+1d42e1748: d503237f	pacibsp
+1d42e174c: d10243ff	sub	sp, sp, #0x90
+1d42e1750: 6d013bef	stp	d15, d14, [sp, #0x10]
+1d42e1754: 6d0233ed	stp	d13, d12, [sp, #0x20]
+1d42e1758: 6d032beb	stp	d11, d10, [sp, #0x30]
+1d42e175c: 6d0423e9	stp	d9, d8, [sp, #0x40]
+1d42e1760: a9055ff8	stp	x24, x23, [sp, #0x50]
+1d42e1764: a90657f6	stp	x22, x21, [sp, #0x60]
+1d42e1768: a9074ff4	stp	x20, x19, [sp, #0x70]
+1d42e176c: a9087bfd	stp	fp, lr, [sp, #0x80]
+1d42e1770: 910203fd	add	fp, sp, #0x80
+1d42e1774: aa0003f3	mov	x19, x0
+1d42e1778: f9412000	ldr	x0, [x0, #0x240]
+1d42e177c: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1780: 91176042	add	x2, x2, #0x5d8 ; 0x1ef3585d8 CFString 'WeightPlaneStandardDeviation'
+1d42e1784: 94f4a89b	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1788: 94f6ed5e	bl	0x1d809cd00
+1d42e178c: aa0003f4	mov	x20, x0
+1d42e1790: 94f6eda0	bl	0x1d809ce10
+1d42e1794: b40001f4	cbz	x20, 0x1d42e17d0
+1d42e1798: f9412260	ldr	x0, [x19, #0x240]
+1d42e179c: f00d83a2	adrp	x2, 0x1ef358000
+1d42e17a0: 91176042	add	x2, x2, #0x5d8 ; 0x1ef3585d8 CFString 'WeightPlaneStandardDeviation'
+1d42e17a4: 94f4a893	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e17a8: 94f6ed56	bl	0x1d809cd00
+1d42e17ac: aa0003f4	mov	x20, x0
+1d42e17b0: 94f49d78	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e17b4: 4ea01c08	mov	v8.16b, v0.16b
+1d42e17b8: 94f6ed96	bl	0x1d809ce10
+1d42e17bc: 1e202108	fcmp	s8, #0.00000000
+1d42e17c0: 540000ac	b.gt	0x1d42e17d4
+1d42e17c4: 910033e0	add	x0, sp, #0xc
+1d42e17c8: 94072a96	bl	0x1d44ac220
+1d42e17cc: 14000127	b	0x1d42e1c68
+1d42e17d0: 6f00e408	movi	v8.2d, #0
+1d42e17d4: bd00fe68	str	s8, [x19, #0xfc]
+1d42e17d8: f9412260	ldr	x0, [x19, #0x240]
+1d42e17dc: b00d83a2	adrp	x2, 0x1ef356000
+1d42e17e0: 91366042	add	x2, x2, #0xd98 ; 0x1ef356d98 CFString 'WeightPlaneStandardDeviationForLearn'
+1d42e17e4: 94f4a883	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e17e8: 94f6ed46	bl	0x1d809cd00
+1d42e17ec: aa0003f4	mov	x20, x0
+1d42e17f0: 94f6ed88	bl	0x1d809ce10
+1d42e17f4: b4000154	cbz	x20, 0x1d42e181c
+1d42e17f8: f9412260	ldr	x0, [x19, #0x240]
+1d42e17fc: b00d83a2	adrp	x2, 0x1ef356000
+1d42e1800: 91366042	add	x2, x2, #0xd98 ; 0x1ef356d98 CFString 'WeightPlaneStandardDeviationForLearn'
+1d42e1804: 94f4a87b	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1808: 94f6ed3e	bl	0x1d809cd00
+1d42e180c: aa0003f4	mov	x20, x0
+1d42e1810: 94f49d60	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1814: bd00fe60	str	s0, [x19, #0xfc]
+1d42e1818: 94f6ed7e	bl	0x1d809ce10
+1d42e181c: bd40fe60	ldr	s0, [x19, #0xfc]
+1d42e1820: 1e202008	fcmp	s0, #0.00000000
+1d42e1824: 540051ad	b.le	0x1d42e2258
+1d42e1828: bd010268	str	s8, [x19, #0x100]
+1d42e182c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1830: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1834: 911e6042	add	x2, x2, #0x798 ; 0x1ef35d798 CFString 'WeightPlaneStandardDeviationForIntegrate'
+1d42e1838: 94f4a86e	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e183c: 94f6ed31	bl	0x1d809cd00
+1d42e1840: aa0003f4	mov	x20, x0
+1d42e1844: 94f6ed73	bl	0x1d809ce10
+1d42e1848: b4000154	cbz	x20, 0x1d42e1870
+1d42e184c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1850: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1854: 911e6042	add	x2, x2, #0x798 ; 0x1ef35d798 CFString 'WeightPlaneStandardDeviationForIntegrate'
+1d42e1858: 94f4a866	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e185c: 94f6ed29	bl	0x1d809cd00
+1d42e1860: aa0003f4	mov	x20, x0
+1d42e1864: 94f49d4b	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1868: bd010260	str	s0, [x19, #0x100]
+1d42e186c: 94f6ed69	bl	0x1d809ce10
+1d42e1870: bd410260	ldr	s0, [x19, #0x100]
+1d42e1874: 1e202008	fcmp	s0, #0.00000000
+1d42e1878: 54004f6d	b.le	0x1d42e2264
+1d42e187c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1880: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1884: 911ee042	add	x2, x2, #0x7b8 ; 0x1ef35d7b8 CFString 'WeightPlaneApplySpatialFilter'
+1d42e1888: 94f4a85a	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e188c: 94f6ed1d	bl	0x1d809cd00
+1d42e1890: aa0003f5	mov	x21, x0
+1d42e1894: 94f48043	bl	0x1d80019a0 ; SELECTOR boolValue
+1d42e1898: aa0003f4	mov	x20, x0
+1d42e189c: 94f6ed61	bl	0x1d809ce20
+1d42e18a0: 39041274	strb	w20, [x19, #0x104]
+1d42e18a4: f9412260	ldr	x0, [x19, #0x240]
+1d42e18a8: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e18ac: 911f6042	add	x2, x2, #0x7d8 ; 0x1ef35d7d8 CFString 'WeightPlaneApplySpatialFilterForLearn'
+1d42e18b0: 94f4a850	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e18b4: 94f6ed13	bl	0x1d809cd00
+1d42e18b8: aa0003f5	mov	x21, x0
+1d42e18bc: 94f6ed59	bl	0x1d809ce20
+1d42e18c0: b4000155	cbz	x21, 0x1d42e18e8
+1d42e18c4: f9412260	ldr	x0, [x19, #0x240]
+1d42e18c8: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e18cc: 911f6042	add	x2, x2, #0x7d8 ; 0x1ef35d7d8 CFString 'WeightPlaneApplySpatialFilterForLearn'
+1d42e18d0: 94f4a848	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e18d4: 94f6ed0b	bl	0x1d809cd00
+1d42e18d8: aa0003f5	mov	x21, x0
+1d42e18dc: 94f48031	bl	0x1d80019a0 ; SELECTOR boolValue
+1d42e18e0: 39041260	strb	w0, [x19, #0x104]
+1d42e18e4: 94f6ed4f	bl	0x1d809ce20
+1d42e18e8: 39041674	strb	w20, [x19, #0x105]
+1d42e18ec: f9412260	ldr	x0, [x19, #0x240]
+1d42e18f0: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e18f4: 911fe042	add	x2, x2, #0x7f8 ; 0x1ef35d7f8 CFString 'WeightPlaneApplySpatialFilterForIntegrate'
+1d42e18f8: 94f4a83e	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e18fc: 94f6ed01	bl	0x1d809cd00
+1d42e1900: aa0003f4	mov	x20, x0
+1d42e1904: 94f6ed43	bl	0x1d809ce10
+1d42e1908: b4000154	cbz	x20, 0x1d42e1930
+1d42e190c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1910: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1914: 911fe042	add	x2, x2, #0x7f8 ; 0x1ef35d7f8 CFString 'WeightPlaneApplySpatialFilterForIntegrate'
+1d42e1918: 94f4a836	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e191c: 94f6ecf9	bl	0x1d809cd00
+1d42e1920: aa0003f4	mov	x20, x0
+1d42e1924: 94f4801f	bl	0x1d80019a0 ; SELECTOR boolValue
+1d42e1928: 39041660	strb	w0, [x19, #0x105]
+1d42e192c: 94f6ed39	bl	0x1d809ce10
+1d42e1930: f9412260	ldr	x0, [x19, #0x240]
+1d42e1934: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1938: 91206042	add	x2, x2, #0x818 ; 0x1ef35d818 CFString 'WeightPlaneSpatialFilterWeight'
+1d42e193c: 94f4a82d	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1940: 94f6ecf0	bl	0x1d809cd00
+1d42e1944: aa0003f4	mov	x20, x0
+1d42e1948: 94f6ed32	bl	0x1d809ce10
+1d42e194c: b40001f4	cbz	x20, 0x1d42e1988
+1d42e1950: f9412260	ldr	x0, [x19, #0x240]
+1d42e1954: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1958: 91206042	add	x2, x2, #0x818 ; 0x1ef35d818 CFString 'WeightPlaneSpatialFilterWeight'
+1d42e195c: 94f4a825	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1960: 94f6ece8	bl	0x1d809cd00
+1d42e1964: aa0003f4	mov	x20, x0
+1d42e1968: 94f49d0a	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e196c: 4ea01c08	mov	v8.16b, v0.16b
+1d42e1970: 94f6ed28	bl	0x1d809ce10
+1d42e1974: 1e202108	fcmp	s8, #0.00000000
+1d42e1978: 540000aa	b.ge	0x1d42e198c
+1d42e197c: 910033e0	add	x0, sp, #0xc
+1d42e1980: 94072a42	bl	0x1d44ac288
+1d42e1984: 140000b9	b	0x1d42e1c68
+1d42e1988: 6f00e408	movi	v8.2d, #0
+1d42e198c: bd010a68	str	s8, [x19, #0x108]
+1d42e1990: f9412260	ldr	x0, [x19, #0x240]
+1d42e1994: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1998: 9120e042	add	x2, x2, #0x838 ; 0x1ef35d838 CFString 'WeightPlaneSpatialFilterWeightForLearn'
+1d42e199c: 94f4a815	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e19a0: 94f6ecd8	bl	0x1d809cd00
+1d42e19a4: aa0003f4	mov	x20, x0
+1d42e19a8: 94f6ed1a	bl	0x1d809ce10
+1d42e19ac: b40001b4	cbz	x20, 0x1d42e19e0
+1d42e19b0: f9412260	ldr	x0, [x19, #0x240]
+1d42e19b4: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e19b8: 9120e042	add	x2, x2, #0x838 ; 0x1ef35d838 CFString 'WeightPlaneSpatialFilterWeightForLearn'
+1d42e19bc: 94f4a80d	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e19c0: 94f6ecd0	bl	0x1d809cd00
+1d42e19c4: aa0003f4	mov	x20, x0
+1d42e19c8: 94f49cf2	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e19cc: bd010a60	str	s0, [x19, #0x108]
+1d42e19d0: 94f6ed10	bl	0x1d809ce10
+1d42e19d4: bd410a60	ldr	s0, [x19, #0x108]
+1d42e19d8: 1e202008	fcmp	s0, #0.00000000
+1d42e19dc: 5400486b	b.lt	0x1d42e22e8
+1d42e19e0: bd010e68	str	s8, [x19, #0x10c]
+1d42e19e4: f9412260	ldr	x0, [x19, #0x240]
+1d42e19e8: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e19ec: 91216042	add	x2, x2, #0x858 ; 0x1ef35d858 CFString 'WeightPlaneSpatialFilterWeightForIntegrate'
+1d42e19f0: 94f4a800	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e19f4: 94f6ecc3	bl	0x1d809cd00
+1d42e19f8: aa0003f4	mov	x20, x0
+1d42e19fc: 94f6ed05	bl	0x1d809ce10
+1d42e1a00: b40001b4	cbz	x20, 0x1d42e1a34
+1d42e1a04: f9412260	ldr	x0, [x19, #0x240]
+1d42e1a08: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1a0c: 91216042	add	x2, x2, #0x858 ; 0x1ef35d858 CFString 'WeightPlaneSpatialFilterWeightForIntegrate'
+1d42e1a10: 94f4a7f8	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1a14: 94f6ecbb	bl	0x1d809cd00
+1d42e1a18: aa0003f4	mov	x20, x0
+1d42e1a1c: 94f49cdd	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1a20: bd010e60	str	s0, [x19, #0x10c]
+1d42e1a24: 94f6ecfb	bl	0x1d809ce10
+1d42e1a28: bd410e60	ldr	s0, [x19, #0x10c]
+1d42e1a2c: 1e202008	fcmp	s0, #0.00000000
+1d42e1a30: 5400462b	b.lt	0x1d42e22f4
+1d42e1a34: f9412260	ldr	x0, [x19, #0x240]
+1d42e1a38: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1a3c: 911ae042	add	x2, x2, #0x6b8 ; 0x1ef3586b8 CFString 'WeightPlaneDoColorSplit'
+1d42e1a40: 94f4a7ec	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1a44: 94f6ecaf	bl	0x1d809cd00
+1d42e1a48: aa0003f5	mov	x21, x0
+1d42e1a4c: 94f47fd5	bl	0x1d80019a0 ; SELECTOR boolValue
+1d42e1a50: aa0003f4	mov	x20, x0
+1d42e1a54: 94f6ecf3	bl	0x1d809ce20
+1d42e1a58: 34000074	cbz	w20, 0x1d42e1a64
+1d42e1a5c: 3943e268	ldrb	w8, [x19, #0xf8]
+1d42e1a60: 37004508	tbnz	w8, #0, 0x1d42e2300
+1d42e1a64: f9412260	ldr	x0, [x19, #0x240]
+1d42e1a68: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1a6c: 911b6042	add	x2, x2, #0x6d8 ; 0x1ef3586d8 CFString 'WeightPlaneColorSplitStrength'
+1d42e1a70: 94f4a7e0	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1a74: 94f6eca3	bl	0x1d809cd00
+1d42e1a78: aa0003f5	mov	x21, x0
+1d42e1a7c: 94f49cc5	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1a80: 4ea01c08	mov	v8.16b, v0.16b
+1d42e1a84: 94f6ece7	bl	0x1d809ce20
+1d42e1a88: 1e202108	fcmp	s8, #0.00000000
+1d42e1a8c: 54003f2b	b.lt	0x1d42e2270
+1d42e1a90: f9408a60	ldr	x0, [x19, #0x110]
+1d42e1a94: aa1403e2	mov	x2, x20
+1d42e1a98: 94f62ea6	bl	0x1d806d530 ; SELECTOR setDoColorSplit:
+1d42e1a9c: f9408a60	ldr	x0, [x19, #0x110]
+1d42e1aa0: 4ea81d00	mov	v0.16b, v8.16b
+1d42e1aa4: 94f62e23	bl	0x1d806d330 ; SELECTOR setColorSplitStrength:
+1d42e1aa8: f9412260	ldr	x0, [x19, #0x240]
+1d42e1aac: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1ab0: 9121e042	add	x2, x2, #0x878 ; 0x1ef35d878 CFString 'WeightPlaneConstantPriorScaleFactors'
+1d42e1ab4: 94f4a7cf	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1ab8: 94f6ec92	bl	0x1d809cd00
+1d42e1abc: aa0003f4	mov	x20, x0
+1d42e1ac0: 52800015	mov	w21, #0
+1d42e1ac4: b940fa76	ldr	w22, [x19, #0xf8]
+1d42e1ac8: aa1403e0	mov	x0, x20
+1d42e1acc: 94f48051	bl	0x1d8001c10 ; SELECTOR count
+1d42e1ad0: eb16001f	cmp	x0, x22
+1d42e1ad4: 54000069	b.ls	0x1d42e1ae0
+1d42e1ad8: b940fa60	ldr	w0, [x19, #0xf8]
+1d42e1adc: 14000003	b	0x1d42e1ae8
+1d42e1ae0: aa1403e0	mov	x0, x20
+1d42e1ae4: 94f4804b	bl	0x1d8001c10 ; SELECTOR count
+1d42e1ae8: 2a1503f5	mov	w21, w21
+1d42e1aec: eb15001f	cmp	x0, x21
+1d42e1af0: 54000269	b.ls	0x1d42e1b3c
+1d42e1af4: f940a276	ldr	x22, [x19, #0x140]
+1d42e1af8: aa1403e0	mov	x0, x20
+1d42e1afc: aa1503e2	mov	x2, x21
+1d42e1b00: 94f4a7b0	bl	0x1d800b9c0 ; SELECTOR objectAtIndexedSubscript:
+1d42e1b04: 94f6ec7f	bl	0x1d809cd00
+1d42e1b08: aa0003f7	mov	x23, x0
+1d42e1b0c: 94f49ca1	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1b10: aa1603e0	mov	x0, x22
+1d42e1b14: aa1503e2	mov	x2, x21
+1d42e1b18: 94f62e2a	bl	0x1d806d3c0 ; SELECTOR setConstantPriorScaleFactor:forWeightPlane:
+1d42e1b1c: aa0003f6	mov	x22, x0
+1d42e1b20: 94f6ecc8	bl	0x1d809ce40
+1d42e1b24: 110006b5	add	w21, w21, #0x1
+1d42e1b28: 3707fcf6	tbnz	w22, #0, 0x1d42e1ac4
+1d42e1b2c: 910033e1	add	x1, sp, #0xc
+1d42e1b30: aa1403e0	mov	x0, x20
+1d42e1b34: 94072b69	bl	0x1d44ac8d8
+1d42e1b38: 1400004c	b	0x1d42e1c68
+1d42e1b3c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1b40: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1b44: 91226042	add	x2, x2, #0x898 ; 0x1ef35d898 CFString 'WeightPlaneLinearPriorScaleFactors'
+1d42e1b48: 94f4a7aa	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1b4c: 94f6ec6d	bl	0x1d809cd00
+1d42e1b50: aa0003f5	mov	x21, x0
+1d42e1b54: 94f6ecaf	bl	0x1d809ce10
+1d42e1b58: 52800014	mov	w20, #0
+1d42e1b5c: b940fa76	ldr	w22, [x19, #0xf8]
+1d42e1b60: aa1503e0	mov	x0, x21
+1d42e1b64: 94f4802b	bl	0x1d8001c10 ; SELECTOR count
+1d42e1b68: eb16001f	cmp	x0, x22
+1d42e1b6c: 54000069	b.ls	0x1d42e1b78
+1d42e1b70: b940fa60	ldr	w0, [x19, #0xf8]
+1d42e1b74: 14000003	b	0x1d42e1b80
+1d42e1b78: aa1503e0	mov	x0, x21
+1d42e1b7c: 94f48025	bl	0x1d8001c10 ; SELECTOR count
+1d42e1b80: 2a1403f4	mov	w20, w20
+1d42e1b84: eb14001f	cmp	x0, x20
+1d42e1b88: 54000269	b.ls	0x1d42e1bd4
+1d42e1b8c: f940a276	ldr	x22, [x19, #0x140]
+1d42e1b90: aa1503e0	mov	x0, x21
+1d42e1b94: aa1403e2	mov	x2, x20
+1d42e1b98: 94f4a78a	bl	0x1d800b9c0 ; SELECTOR objectAtIndexedSubscript:
+1d42e1b9c: 94f6ec59	bl	0x1d809cd00
+1d42e1ba0: aa0003f7	mov	x23, x0
+1d42e1ba4: 94f49c7b	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1ba8: aa1603e0	mov	x0, x22
+1d42e1bac: aa1403e2	mov	x2, x20
+1d42e1bb0: 94f631b4	bl	0x1d806e280 ; SELECTOR setLinearPriorScaleFactor:forWeightPlane:
+1d42e1bb4: aa0003f6	mov	x22, x0
+1d42e1bb8: 94f6eca2	bl	0x1d809ce40
+1d42e1bbc: 11000694	add	w20, w20, #0x1
+1d42e1bc0: 3707fcf6	tbnz	w22, #0, 0x1d42e1b5c
+1d42e1bc4: 910033e1	add	x1, sp, #0xc
+1d42e1bc8: aa1503e0	mov	x0, x21
+1d42e1bcc: 94072b22	bl	0x1d44ac854
+1d42e1bd0: 14000026	b	0x1d42e1c68
+1d42e1bd4: f9412260	ldr	x0, [x19, #0x240]
+1d42e1bd8: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1bdc: 9122e042	add	x2, x2, #0x8b8 ; 0x1ef35d8b8 CFString 'WeightPlaneQuadraticPriorScaleFactors'
+1d42e1be0: 94f4a784	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1be4: 94f6ec47	bl	0x1d809cd00
+1d42e1be8: aa0003f4	mov	x20, x0
+1d42e1bec: 94f6ec8d	bl	0x1d809ce20
+1d42e1bf0: 52800015	mov	w21, #0
+1d42e1bf4: b940fa76	ldr	w22, [x19, #0xf8]
+1d42e1bf8: aa1403e0	mov	x0, x20
+1d42e1bfc: 94f48005	bl	0x1d8001c10 ; SELECTOR count
+1d42e1c00: eb16001f	cmp	x0, x22
+1d42e1c04: 54000069	b.ls	0x1d42e1c10
+1d42e1c08: b940fa60	ldr	w0, [x19, #0xf8]
+1d42e1c0c: 14000003	b	0x1d42e1c18
+1d42e1c10: aa1403e0	mov	x0, x20
+1d42e1c14: 94f47fff	bl	0x1d8001c10 ; SELECTOR count
+1d42e1c18: 2a1503f5	mov	w21, w21
+1d42e1c1c: eb15001f	cmp	x0, x21
+1d42e1c20: 54000289	b.ls	0x1d42e1c70
+1d42e1c24: f940a276	ldr	x22, [x19, #0x140]
+1d42e1c28: aa1403e0	mov	x0, x20
+1d42e1c2c: aa1503e2	mov	x2, x21
+1d42e1c30: 94f4a764	bl	0x1d800b9c0 ; SELECTOR objectAtIndexedSubscript:
+1d42e1c34: 94f6ec33	bl	0x1d809cd00
+1d42e1c38: aa0003f7	mov	x23, x0
+1d42e1c3c: 94f49c55	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1c40: aa1603e0	mov	x0, x22
+1d42e1c44: aa1503e2	mov	x2, x21
+1d42e1c48: 94f63336	bl	0x1d806e920 ; SELECTOR setQuadraticPriorScaleFactor:forWeightPlane:
+1d42e1c4c: aa0003f6	mov	x22, x0
+1d42e1c50: 94f6ec7c	bl	0x1d809ce40
+1d42e1c54: 110006b5	add	w21, w21, #0x1
+1d42e1c58: 3707fcf6	tbnz	w22, #0, 0x1d42e1bf4
+1d42e1c5c: 910033e1	add	x1, sp, #0xc
+1d42e1c60: aa1403e0	mov	x0, x20
+1d42e1c64: 94072adb	bl	0x1d44ac7d0
+1d42e1c68: b9400fe0	ldr	w0, [sp, #0xc]
+1d42e1c6c: 14000171	b	0x1d42e2230
+1d42e1c70: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1c74: 94f63523	bl	0x1d806f100 ; SELECTOR skipWeightPlaneSpatialNormalization
+1d42e1c78: aa0003e2	mov	x2, x0
+1d42e1c7c: f9408a60	ldr	x0, [x19, #0x110]
+1d42e1c80: 94f63398	bl	0x1d806eae0 ; SELECTOR setSkipSpatialNormalization:
+1d42e1c84: 94f6ec63	bl	0x1d809ce10
+1d42e1c88: f9412260	ldr	x0, [x19, #0x240]
+1d42e1c8c: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1c90: 91236042	add	x2, x2, #0x8d8 ; 0x1ef35d8d8 CFString 'SpotlightScaleFactor'
+1d42e1c94: 94f4a757	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1c98: 94f6ec1a	bl	0x1d809cd00
+1d42e1c9c: aa0003f4	mov	x20, x0
+1d42e1ca0: 94f49c3c	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1ca4: f9409a60	ldr	x0, [x19, #0x130]
+1d42e1ca8: 94f63362	bl	0x1d806ea30 ; SELECTOR setScaleFactor:
+1d42e1cac: 94f6ec59	bl	0x1d809ce10
+1d42e1cb0: f9412260	ldr	x0, [x19, #0x240]
+1d42e1cb4: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1cb8: 9117e042	add	x2, x2, #0x5f8 ; 0x1ef3585f8 CFString 'ExtLambda'
+1d42e1cbc: 94f4a74d	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1cc0: 94f6ec10	bl	0x1d809cd00
+1d42e1cc4: aa0003f4	mov	x20, x0
+1d42e1cc8: 94f49c32	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1ccc: 4ea01c08	mov	v8.16b, v0.16b
+1d42e1cd0: 94f6ec50	bl	0x1d809ce10
+1d42e1cd4: 1e202108	fcmp	s8, #0.00000000
+1d42e1cd8: 54002d2b	b.lt	0x1d42e227c
+1d42e1cdc: f9412260	ldr	x0, [x19, #0x240]
+1d42e1ce0: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1ce4: 91186042	add	x2, x2, #0x618 ; 0x1ef358618 CFString 'TikLambdaConstant'
+1d42e1ce8: 94f4a742	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1cec: 94f6ec05	bl	0x1d809cd00
+1d42e1cf0: aa0003f4	mov	x20, x0
+1d42e1cf4: 94f49c27	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1cf8: 4ea01c09	mov	v9.16b, v0.16b
+1d42e1cfc: 94f6ec45	bl	0x1d809ce10
+1d42e1d00: 1e202128	fcmp	s9, #0.00000000
+1d42e1d04: 54002c2b	b.lt	0x1d42e2288
+1d42e1d08: f9412260	ldr	x0, [x19, #0x240]
+1d42e1d0c: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1d10: 9118e042	add	x2, x2, #0x638 ; 0x1ef358638 CFString 'TikLambdaLinear'
+1d42e1d14: 94f4a737	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1d18: 94f6ebfa	bl	0x1d809cd00
+1d42e1d1c: aa0003f4	mov	x20, x0
+1d42e1d20: 94f49c1c	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1d24: 4ea01c0a	mov	v10.16b, v0.16b
+1d42e1d28: 94f6ec3a	bl	0x1d809ce10
+1d42e1d2c: 1e202148	fcmp	s10, #0.00000000
+1d42e1d30: 54002b2b	b.lt	0x1d42e2294
+1d42e1d34: f9412260	ldr	x0, [x19, #0x240]
+1d42e1d38: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1d3c: 91196042	add	x2, x2, #0x658 ; 0x1ef358658 CFString 'TikLambdaQuadratic'
+1d42e1d40: 94f4a72c	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1d44: 94f6ebef	bl	0x1d809cd00
+1d42e1d48: aa0003f4	mov	x20, x0
+1d42e1d4c: 94f49c11	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1d50: 4ea01c0b	mov	v11.16b, v0.16b
+1d42e1d54: 94f6ec2f	bl	0x1d809ce10
+1d42e1d58: 1e202168	fcmp	s11, #0.00000000
+1d42e1d5c: 54002a2b	b.lt	0x1d42e22a0
+1d42e1d60: f9412260	ldr	x0, [x19, #0x240]
+1d42e1d64: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1d68: 9123e042	add	x2, x2, #0x8f8 ; 0x1ef35d8f8 CFString 'EndLambda'
+1d42e1d6c: 94f4a721	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1d70: 94f6ebe4	bl	0x1d809cd00
+1d42e1d74: aa0003f4	mov	x20, x0
+1d42e1d78: 94f49c06	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1d7c: 4ea01c0c	mov	v12.16b, v0.16b
+1d42e1d80: 94f6ec24	bl	0x1d809ce10
+1d42e1d84: 1e202188	fcmp	s12, #0.00000000
+1d42e1d88: 5400292b	b.lt	0x1d42e22ac
+1d42e1d8c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1d90: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1d94: 9119e042	add	x2, x2, #0x678 ; 0x1ef358678 CFString 'LearningModulationStrength'
+1d42e1d98: 94f4a716	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1d9c: 94f6ebd9	bl	0x1d809cd00
+1d42e1da0: aa0003f4	mov	x20, x0
+1d42e1da4: 94f49bfb	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1da8: 4ea01c0d	mov	v13.16b, v0.16b
+1d42e1dac: 94f6ec19	bl	0x1d809ce10
+1d42e1db0: 1e2021a8	fcmp	s13, #0.00000000
+1d42e1db4: 5400282b	b.lt	0x1d42e22b8
+1d42e1db8: f9412260	ldr	x0, [x19, #0x240]
+1d42e1dbc: f00d83a2	adrp	x2, 0x1ef358000
+1d42e1dc0: 911a6042	add	x2, x2, #0x698 ; 0x1ef358698 CFString 'LearningModulationOffset'
+1d42e1dc4: 94f4a70b	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1dc8: 94f6ebce	bl	0x1d809cd00
+1d42e1dcc: aa0003f4	mov	x20, x0
+1d42e1dd0: 94f49bf0	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1dd4: 4ea01c0e	mov	v14.16b, v0.16b
+1d42e1dd8: 94f6ec0e	bl	0x1d809ce10
+1d42e1ddc: 1e2021c8	fcmp	s14, #0.00000000
+1d42e1de0: 5400272b	b.lt	0x1d42e22c4
+1d42e1de4: 1e2e09a0	fmul	s0, s13, s14
+1d42e1de8: 1e2e1001	fmov	s1, #1.00000000
+1d42e1dec: 1e212000	fcmp	s0, s1
+1d42e1df0: 54002708	b.hi	0x1d42e22d0
+1d42e1df4: f9412260	ldr	x0, [x19, #0x240]
+1d42e1df8: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1dfc: 91246042	add	x2, x2, #0x918 ; 0x1ef35d918 CFString 'ApplyLearningDifferenceModulation'
+1d42e1e00: 94f4a6fc	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1e04: 94f6ebbf	bl	0x1d809cd00
+1d42e1e08: aa0003f5	mov	x21, x0
+1d42e1e0c: 94f47ee5	bl	0x1d80019a0 ; SELECTOR boolValue
+1d42e1e10: aa0003f4	mov	x20, x0
+1d42e1e14: 94f6ec03	bl	0x1d809ce20
+1d42e1e18: f9412260	ldr	x0, [x19, #0x240]
+1d42e1e1c: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1e20: 9124e042	add	x2, x2, #0x938 ; 0x1ef35d938 CFString 'LearningModulationDifferenceStrength'
+1d42e1e24: 94f4a6f3	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1e28: 94f6ebb6	bl	0x1d809cd00
+1d42e1e2c: aa0003f5	mov	x21, x0
+1d42e1e30: 94f49bd8	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1e34: bd000be0	str	s0, [sp, #0x8]
+1d42e1e38: 94f6ebfa	bl	0x1d809ce20
+1d42e1e3c: f9412260	ldr	x0, [x19, #0x240]
+1d42e1e40: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1e44: 91256042	add	x2, x2, #0x958 ; 0x1ef35d958 CFString 'LearningModulationDifferenceOffset'
+1d42e1e48: 94f4a6ea	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1e4c: 94f6ebad	bl	0x1d809cd00
+1d42e1e50: aa0003f5	mov	x21, x0
+1d42e1e54: 94f49bcf	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e1e58: 4ea01c0f	mov	v15.16b, v0.16b
+1d42e1e5c: 94f6ebf1	bl	0x1d809ce20
+1d42e1e60: f940a260	ldr	x0, [x19, #0x140]
+1d42e1e64: 4ea81d00	mov	v0.16b, v8.16b
+1d42e1e68: 94f62dda	bl	0x1d806d5d0 ; SELECTOR setExtLambda:
+1d42e1e6c: f940a260	ldr	x0, [x19, #0x140]
+1d42e1e70: 4ea91d20	mov	v0.16b, v9.16b
+1d42e1e74: 94f633b7	bl	0x1d806ed50 ; SELECTOR setTikLambdaConstant:
+1d42e1e78: f940a260	ldr	x0, [x19, #0x140]
+1d42e1e7c: 4eaa1d40	mov	v0.16b, v10.16b
+1d42e1e80: 94f633b8	bl	0x1d806ed60 ; SELECTOR setTikLambdaLinear:
+1d42e1e84: f940a260	ldr	x0, [x19, #0x140]
+1d42e1e88: 4eab1d60	mov	v0.16b, v11.16b
+1d42e1e8c: 94f633b9	bl	0x1d806ed70 ; SELECTOR setTikLambdaQuadratic:
+1d42e1e90: f940a260	ldr	x0, [x19, #0x140]
+1d42e1e94: 4eac1d80	mov	v0.16b, v12.16b
+1d42e1e98: 94f62db6	bl	0x1d806d570 ; SELECTOR setEndLambda:
+1d42e1e9c: f940a260	ldr	x0, [x19, #0x140]
+1d42e1ea0: 4ead1da0	mov	v0.16b, v13.16b
+1d42e1ea4: 94f6317f	bl	0x1d806e4a0 ; SELECTOR setModulationMaskStrength:
+1d42e1ea8: f940a260	ldr	x0, [x19, #0x140]
+1d42e1eac: 4eae1dc0	mov	v0.16b, v14.16b
+1d42e1eb0: 94f63178	bl	0x1d806e490 ; SELECTOR setModulationMaskOffset:
+1d42e1eb4: f940a260	ldr	x0, [x19, #0x140]
+1d42e1eb8: aa1403e2	mov	x2, x20
+1d42e1ebc: 94f62c85	bl	0x1d806d0d0 ; SELECTOR setApplyDifferenceModulation:
+1d42e1ec0: f940a260	ldr	x0, [x19, #0x140]
+1d42e1ec4: bd400be0	ldr	s0, [sp, #0x8]
+1d42e1ec8: 94f6316e	bl	0x1d806e480 ; SELECTOR setModulationDifferenceStrength:
+1d42e1ecc: f940a260	ldr	x0, [x19, #0x140]
+1d42e1ed0: 4eaf1de0	mov	v0.16b, v15.16b
+1d42e1ed4: 94f63167	bl	0x1d806e470 ; SELECTOR setModulationDifferenceOffset:
+1d42e1ed8: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1edc: 94f620d1	bl	0x1d806a220 ; SELECTOR createAndSolveGlobalLinearSystem
+1d42e1ee0: aa0003e2	mov	x2, x0
+1d42e1ee4: f940a260	ldr	x0, [x19, #0x140]
+1d42e1ee8: 94f63306	bl	0x1d806eb00 ; SELECTOR setSpatialAverageSystems:
+1d42e1eec: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1ef0: 94f62838	bl	0x1d806bfd0 ; SELECTOR linearSystemPriorMatrix
+1d42e1ef4: f940a260	ldr	x0, [x19, #0x140]
+1d42e1ef8: 94f6327e	bl	0x1d806e8f0 ; SELECTOR setPriorMatrix:
+1d42e1efc: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1f00: 94f6282c	bl	0x1d806bfb0 ; SELECTOR linearSystemBuilder
+1d42e1f04: f100041f	cmp	x0, #0x1
+1d42e1f08: 1a9f17e2	cset	w2, eq
+1d42e1f0c: f940a260	ldr	x0, [x19, #0x140]
+1d42e1f10: 94f633c8	bl	0x1d806ee30 ; SELECTOR setUseISPSMG:
+1d42e1f14: f9413262	ldr	x2, [x19, #0x260]
+1d42e1f18: f940a260	ldr	x0, [x19, #0x140]
+1d42e1f1c: 94f630a1	bl	0x1d806e1a0 ; SELECTOR setIspProcessingSession:
+1d42e1f20: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1f24: 94f620bf	bl	0x1d806a220 ; SELECTOR createAndSolveGlobalLinearSystem
+1d42e1f28: 6f00e408	movi	v8.2d, #0
+1d42e1f2c: 6f00e400	movi	v0.2d, #0
+1d42e1f30: 34000060	cbz	w0, 0x1d42e1f3c
+1d42e1f34: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1f38: 94f62452	bl	0x1d806b080 ; SELECTOR globalLinearSystemMixFactor
+1d42e1f3c: f9407a60	ldr	x0, [x19, #0xf0]
+1d42e1f40: 94f62e6c	bl	0x1d806d8f0 ; SELECTOR setGlobalLinearSystemMixFactor:
+1d42e1f44: fd409660	ldr	d0, [x19, #0x128]
+1d42e1f48: f9407a60	ldr	x0, [x19, #0xf0]
+1d42e1f4c: 94f632f9	bl	0x1d806eb30 ; SELECTOR setSpotlightCount:
+1d42e1f50: b940fa62	ldr	w2, [x19, #0xf8]
+1d42e1f54: f9407a60	ldr	x0, [x19, #0xf0]
+1d42e1f58: 94f633ea	bl	0x1d806ef00 ; SELECTOR setWeightPlaneCount:
+1d42e1f5c: aa1303e0	mov	x0, x19
+1d42e1f60: 94f61c08	bl	0x1d8068f80 ; SELECTOR _linearSystemNumberOfPolynomials
+1d42e1f64: aa0003e2	mov	x2, x0
+1d42e1f68: f9407a60	ldr	x0, [x19, #0xf0]
+1d42e1f6c: 94f63249	bl	0x1d806e890 ; SELECTOR setPolynomialCount:
+1d42e1f70: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1f74: 94f635cb	bl	0x1d806f6a0 ; SELECTOR useBicubicIntegration
+1d42e1f78: aa0003e2	mov	x2, x0
+1d42e1f7c: f940c660	ldr	x0, [x19, #0x188]
+1d42e1f80: 94f633a8	bl	0x1d806ee20 ; SELECTOR setUseBicubicSampling:
+1d42e1f84: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1f88: 94f620a6	bl	0x1d806a220 ; SELECTOR createAndSolveGlobalLinearSystem
+1d42e1f8c: 34000080	cbz	w0, 0x1d42e1f9c
+1d42e1f90: f9420a60	ldr	x0, [x19, #0x410]
+1d42e1f94: 94f6243b	bl	0x1d806b080 ; SELECTOR globalLinearSystemMixFactor
+1d42e1f98: 4ea01c08	mov	v8.16b, v0.16b
+1d42e1f9c: f940c660	ldr	x0, [x19, #0x188]
+1d42e1fa0: 4ea81d00	mov	v0.16b, v8.16b
+1d42e1fa4: 94f62e53	bl	0x1d806d8f0 ; SELECTOR setGlobalLinearSystemMixFactor:
+1d42e1fa8: f940c660	ldr	x0, [x19, #0x188]
+1d42e1fac: 3dc15262	ldr	q2, [x19, #0x540]
+1d42e1fb0: 3dc14e61	ldr	q1, [x19, #0x530]
+1d42e1fb4: 3dc14a60	ldr	q0, [x19, #0x520]
+1d42e1fb8: 94f632da	bl	0x1d806eb20 ; SELECTOR setSpotlightAffineTransform:
+1d42e1fbc: fd427e60	ldr	d0, [x19, #0x4f8]
+1d42e1fc0: fd428261	ldr	d1, [x19, #0x500]
+1d42e1fc4: fd428662	ldr	d2, [x19, #0x508]
+1d42e1fc8: fd428a63	ldr	d3, [x19, #0x510]
+1d42e1fcc: f940c660	ldr	x0, [x19, #0x188]
+1d42e1fd0: 94f632e0	bl	0x1d806eb50 ; SELECTOR setSpotlightZoomROI:
+1d42e1fd4: fd426e60	ldr	d0, [x19, #0x4d8]
+1d42e1fd8: fd427261	ldr	d1, [x19, #0x4e0]
+1d42e1fdc: fd427662	ldr	d2, [x19, #0x4e8]
+1d42e1fe0: fd427a63	ldr	d3, [x19, #0x4f0]
+1d42e1fe4: f940c660	ldr	x0, [x19, #0x188]
+1d42e1fe8: 94f632d6	bl	0x1d806eb40 ; SELECTOR setSpotlightROI:
+1d42e1fec: f9412260	ldr	x0, [x19, #0x240]
+1d42e1ff0: 900d83e2	adrp	x2, 0x1ef35d000
+1d42e1ff4: 9125e042	add	x2, x2, #0x978 ; 0x1ef35d978 CFString 'GlobalBlendOutsideLearningROI'
+1d42e1ff8: 94f4a67e	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e1ffc: 94f6eb41	bl	0x1d809cd00
+1d42e2000: aa0003f4	mov	x20, x0
+1d42e2004: 94f47e67	bl	0x1d80019a0 ; SELECTOR boolValue
+1d42e2008: 340000a0	cbz	w0, 0x1d42e201c
+1d42e200c: f9420a60	ldr	x0, [x19, #0x410]
+1d42e2010: 94f62084	bl	0x1d806a220 ; SELECTOR createAndSolveGlobalLinearSystem
+1d42e2014: aa0003e2	mov	x2, x0
+1d42e2018: 14000002	b	0x1d42e2020
+1d42e201c: 52800002	mov	w2, #0
+1d42e2020: f940c660	ldr	x0, [x19, #0x188]
+1d42e2024: 94f62e3b	bl	0x1d806d910 ; SELECTOR setGlobalSpatialExtrapolation:
+1d42e2028: 94f6eb7a	bl	0x1d809ce10
+1d42e202c: f9412260	ldr	x0, [x19, #0x240]
+1d42e2030: f00d83c2	adrp	x2, 0x1ef35d000
+1d42e2034: 91266042	add	x2, x2, #0x998 ; 0x1ef35d998 CFString 'GlobalBlendMaxGlobalMix'
+1d42e2038: 1e2e1000	fmov	s0, #1.00000000
+1d42e203c: d2800003	mov	x3, #0
+1d42e2040: 94f61f4c	bl	0x1d8069d70 ; SELECTOR cmi_floatValueForKey:defaultValue:found:
+1d42e2044: f940c660	ldr	x0, [x19, #0x188]
+1d42e2048: 94f630e2	bl	0x1d806e3d0 ; SELECTOR setMaxGlobalMixFactor:
+1d42e204c: f9412260	ldr	x0, [x19, #0x240]
+1d42e2050: f00d83c2	adrp	x2, 0x1ef35d000
+1d42e2054: 9126e042	add	x2, x2, #0x9b8 ; 0x1ef35d9b8 CFString 'GlobalBlendRampParameter'
+1d42e2058: 1e269000	fmov	s0, #20.00000000
+1d42e205c: d2800003	mov	x3, #0
+1d42e2060: 94f61f44	bl	0x1d8069d70 ; SELECTOR cmi_floatValueForKey:defaultValue:found:
+1d42e2064: f940c660	ldr	x0, [x19, #0x188]
+1d42e2068: 94f62e2e	bl	0x1d806d920 ; SELECTOR setGlobalSpatialExtrapolationRampFactor:
+1d42e206c: f941fe62	ldr	x2, [x19, #0x3f8]
+1d42e2070: f940c660	ldr	x0, [x19, #0x188]
+1d42e2074: 94f62e17	bl	0x1d806d8d0 ; SELECTOR setGdcParams:
+1d42e2078: f9420a60	ldr	x0, [x19, #0x410]
+1d42e207c: 94f61de5	bl	0x1d8069810 ; SELECTOR applyGDCToCoefficientsDuringIntegration
+1d42e2080: aa0003e2	mov	x2, x0
+1d42e2084: f940c660	ldr	x0, [x19, #0x188]
+1d42e2088: 94f62c1a	bl	0x1d806d0f0 ; SELECTOR setApplyGDCToCoefficients:
+1d42e208c: f9420a60	ldr	x0, [x19, #0x410]
+1d42e2090: 94f61de4	bl	0x1d8069820 ; SELECTOR applyGDCToWeightPlanesDuringIntegration
+1d42e2094: aa0003e2	mov	x2, x0
+1d42e2098: f940c660	ldr	x0, [x19, #0x188]
+1d42e209c: 94f62c19	bl	0x1d806d100 ; SELECTOR setApplyGDCToWeightPlanes:
+1d42e20a0: f9412260	ldr	x0, [x19, #0x240]
+1d42e20a4: f00d83c2	adrp	x2, 0x1ef35d000
+1d42e20a8: 91276042	add	x2, x2, #0x9d8 ; 0x1ef35d9d8 CFString 'ResidualScaleFactor'
+1d42e20ac: 94f4a651	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e20b0: 94f6eb14	bl	0x1d809cd00
+1d42e20b4: aa0003f4	mov	x20, x0
+1d42e20b8: 94f49b36	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e20bc: 4ea01c08	mov	v8.16b, v0.16b
+1d42e20c0: 94f6eb54	bl	0x1d809ce10
+1d42e20c4: 1e202108	fcmp	s8, #0.00000000
+1d42e20c8: 540010ab	b.lt	0x1d42e22dc
+1d42e20cc: f940ca60	ldr	x0, [x19, #0x190]
+1d42e20d0: 4ea81d00	mov	v0.16b, v8.16b
+1d42e20d4: 94f6322b	bl	0x1d806e980 ; SELECTOR setResidualScaleFactor:
+1d42e20d8: f9420a60	ldr	x0, [x19, #0x410]
+1d42e20dc: 94f6224d	bl	0x1d806aa10 ; SELECTOR fastStyleApplication
+1d42e20e0: aa0003e2	mov	x2, x0
+1d42e20e4: f940ca60	ldr	x0, [x19, #0x190]
+1d42e20e8: 94f62d8a	bl	0x1d806d710 ; SELECTOR setFastCoeffSampling:
+1d42e20ec: 3948ba68	ldrb	w8, [x19, #0x22e]
+1d42e20f0: 36000068	tbz	w8, #0, 0x1d42e20fc
+1d42e20f4: 52800022	mov	w2, #0x1
+1d42e20f8: 14000004	b	0x1d42e2108
+1d42e20fc: f9420a60	ldr	x0, [x19, #0x410]
+1d42e2100: 94f61dc0	bl	0x1d8069800 ; SELECTOR applyDithering
+1d42e2104: aa0003e2	mov	x2, x0
+1d42e2108: f940ca60	ldr	x0, [x19, #0x190]
+1d42e210c: 94f62bf5	bl	0x1d806d0e0 ; SELECTOR setApplyDithering:
+1d42e2110: f9420a60	ldr	x0, [x19, #0x410]
+1d42e2114: 94f623db	bl	0x1d806b080 ; SELECTOR globalLinearSystemMixFactor
+1d42e2118: f940ca60	ldr	x0, [x19, #0x190]
+1d42e211c: 94f62df5	bl	0x1d806d8f0 ; SELECTOR setGlobalLinearSystemMixFactor:
+1d42e2120: f9413a60	ldr	x0, [x19, #0x270]
+1d42e2124: f005f1a8	adrp	x8, 0x1e0119000
+1d42e2128: f9468d08	ldr	x8, [x8, #0xd18]
+1d42e212c: f9400102	ldr	x2, [x8] ; 0x27666b660 CFString 'ReadNoise'
+1d42e2130: 94f4a630	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e2134: 94f6eaf3	bl	0x1d809cd00
+1d42e2138: aa0003f4	mov	x20, x0
+1d42e213c: 94f49b15	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e2140: 4ea01c08	mov	v8.16b, v0.16b
+1d42e2144: 94f6eb33	bl	0x1d809ce10
+1d42e2148: f9413a60	ldr	x0, [x19, #0x270]
+1d42e214c: f005f1a8	adrp	x8, 0x1e0119000
+1d42e2150: f9469108	ldr	x8, [x8, #0xd20]
+1d42e2154: f9400102	ldr	x2, [x8] ; 0x27666b680 CFString 'ShotNoise'
+1d42e2158: 94f4a626	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e215c: 94f6eae9	bl	0x1d809cd00
+1d42e2160: aa0003f4	mov	x20, x0
+1d42e2164: 94f49b0b	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e2168: 4ea01c09	mov	v9.16b, v0.16b
+1d42e216c: 94f6eb29	bl	0x1d809ce10
+1d42e2170: f9413a60	ldr	x0, [x19, #0x270]
+1d42e2174: f005f1a8	adrp	x8, 0x1e0119000
+1d42e2178: f9469508	ldr	x8, [x8, #0xd28]
+1d42e217c: f9400102	ldr	x2, [x8] ; 0x27666b6a0 CFString 'SquaredNoise'
+1d42e2180: 94f4a61c	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e2184: 94f6eadf	bl	0x1d809cd00
+1d42e2188: aa0003f4	mov	x20, x0
+1d42e218c: 94f49b01	bl	0x1d8008d90 ; SELECTOR floatValue
+1d42e2190: 4ea01c0a	mov	v10.16b, v0.16b
+1d42e2194: 94f6eb1f	bl	0x1d809ce10
+1d42e2198: 1e280900	fmul	s0, s8, s8
+1d42e219c: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21a0: 94f62f0c	bl	0x1d806ddd0 ; SELECTOR setInputReadNoiseVar:
+1d42e21a4: 1e290920	fmul	s0, s9, s9
+1d42e21a8: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21ac: 94f62f15	bl	0x1d806de00 ; SELECTOR setInputShotNoiseVar:
+1d42e21b0: 1e2a0940	fmul	s0, s10, s10
+1d42e21b4: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21b8: 94f62f7e	bl	0x1d806dfb0 ; SELECTOR setInputSquaredNoiseVar:
+1d42e21bc: aa1303e0	mov	x0, x19
+1d42e21c0: 94f61b70	bl	0x1d8068f80 ; SELECTOR _linearSystemNumberOfPolynomials
+1d42e21c4: aa0003e2	mov	x2, x0
+1d42e21c8: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21cc: 94f631b1	bl	0x1d806e890 ; SELECTOR setPolynomialCount:
+1d42e21d0: b940fa62	ldr	w2, [x19, #0xf8]
+1d42e21d4: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21d8: 94f6334a	bl	0x1d806ef00 ; SELECTOR setWeightPlaneCount:
+1d42e21dc: fd409660	ldr	d0, [x19, #0x128]
+1d42e21e0: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21e4: 94f63253	bl	0x1d806eb30 ; SELECTOR setSpotlightCount:
+1d42e21e8: 6d518660	ldp	d0, d1, [x19, #0x118]
+1d42e21ec: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21f0: 94f632d4	bl	0x1d806ed40 ; SELECTOR setThumbnailSize:
+1d42e21f4: bd423260	ldr	s0, [x19, #0x230]
+1d42e21f8: f940ca60	ldr	x0, [x19, #0x190]
+1d42e21fc: 94f63289	bl	0x1d806ec20 ; SELECTOR setStrengthFactor:
+1d42e2200: f9412260	ldr	x0, [x19, #0x240]
+1d42e2204: f00d83c2	adrp	x2, 0x1ef35d000
+1d42e2208: 9127e042	add	x2, x2, #0x9f8 ; 0x1ef35d9f8 CFString 'MemoryPoolId'
+1d42e220c: 94f4a5f9	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d42e2210: 94f6eabc	bl	0x1d809cd00
+1d42e2214: aa0003f4	mov	x20, x0
+1d42e2218: 94f4b2f6	bl	0x1d800edf0 ; SELECTOR unsignedIntegerValue
+1d42e221c: aa0003e2	mov	x2, x0
+1d42e2220: f9400a60	ldr	x0, [x19, #0x10]
+1d42e2224: 94f6307b	bl	0x1d806e410 ; SELECTOR setMemoryPoolId:
+1d42e2228: 94f6eafa	bl	0x1d809ce10
+1d42e222c: 52800000	mov	w0, #0
+1d42e2230: a9487bfd	ldp	fp, lr, [sp, #0x80]
+1d42e2234: a9474ff4	ldp	x20, x19, [sp, #0x70]
+1d42e2238: a94657f6	ldp	x22, x21, [sp, #0x60]
+1d42e223c: a9455ff8	ldp	x24, x23, [sp, #0x50]
+1d42e2240: 6d4423e9	ldp	d9, d8, [sp, #0x40]
+1d42e2244: 6d432beb	ldp	d11, d10, [sp, #0x30]
+1d42e2248: 6d4233ed	ldp	d13, d12, [sp, #0x20]
+1d42e224c: 6d413bef	ldp	d15, d14, [sp, #0x10]
+1d42e2250: 910243ff	add	sp, sp, #0x90
+1d42e2254: d65f0fff	retab
+1d42e2258: 910033e0	add	x0, sp, #0xc
+1d42e225c: 940729f4	bl	0x1d44aca2c
+1d42e2260: 17fffe82	b	0x1d42e1c68
+1d42e2264: 910033e0	add	x0, sp, #0xc
+1d42e2268: 940729d7	bl	0x1d44ac9c4
+1d42e226c: 17fffe7f	b	0x1d42e1c68
+1d42e2270: 910033e0	add	x0, sp, #0xc
+1d42e2274: 940729ba	bl	0x1d44ac95c
+1d42e2278: 17fffe7c	b	0x1d42e1c68
+1d42e227c: 910033e0	add	x0, sp, #0xc
+1d42e2280: 9407293a	bl	0x1d44ac768
+1d42e2284: 17fffe79	b	0x1d42e1c68
+1d42e2288: 910033e0	add	x0, sp, #0xc
+1d42e228c: 9407291d	bl	0x1d44ac700
+1d42e2290: 17fffe76	b	0x1d42e1c68
+1d42e2294: 910033e0	add	x0, sp, #0xc
+1d42e2298: 94072900	bl	0x1d44ac698
+1d42e229c: 17fffe73	b	0x1d42e1c68
+1d42e22a0: 910033e0	add	x0, sp, #0xc
+1d42e22a4: 940728e3	bl	0x1d44ac630
+1d42e22a8: 17fffe70	b	0x1d42e1c68
+1d42e22ac: 910033e0	add	x0, sp, #0xc
+1d42e22b0: 940728c6	bl	0x1d44ac5c8
+1d42e22b4: 17fffe6d	b	0x1d42e1c68
+1d42e22b8: 910033e0	add	x0, sp, #0xc
+1d42e22bc: 940728a9	bl	0x1d44ac560
+1d42e22c0: 17fffe6a	b	0x1d42e1c68
+1d42e22c4: 910033e0	add	x0, sp, #0xc
+1d42e22c8: 9407288c	bl	0x1d44ac4f8
+1d42e22cc: 17fffe67	b	0x1d42e1c68
+1d42e22d0: 910033e0	add	x0, sp, #0xc
+1d42e22d4: 9407286f	bl	0x1d44ac490
+1d42e22d8: 17fffe64	b	0x1d42e1c68
+1d42e22dc: 910033e0	add	x0, sp, #0xc
+1d42e22e0: 94072852	bl	0x1d44ac428
+1d42e22e4: 17fffe61	b	0x1d42e1c68
+1d42e22e8: 910033e0	add	x0, sp, #0xc
+1d42e22ec: 94072801	bl	0x1d44ac2f0
+1d42e22f0: 17fffe5e	b	0x1d42e1c68
+1d42e22f4: 910033e0	add	x0, sp, #0xc
+1d42e22f8: 94072818	bl	0x1d44ac358
+1d42e22fc: 17fffe5b	b	0x1d42e1c68
+1d42e2300: 910033e0	add	x0, sp, #0xc
+1d42e2304: 9407282f	bl	0x1d44ac3c0
+1d42e2308: 17fffe58	b	0x1d42e1c68

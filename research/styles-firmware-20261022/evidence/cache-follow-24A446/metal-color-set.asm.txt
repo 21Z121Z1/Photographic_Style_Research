@@ -1,0 +1,22 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 setColorBias:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d433db9c:
+1d433db9c: d503237f	pacibsp
+1d433dba0: 6dbd23e9	stp	d9, d8, [sp, #-0x30]!
+1d433dba4: a9014ff4	stp	x20, x19, [sp, #0x10]
+1d433dba8: a9027bfd	stp	fp, lr, [sp, #0x20]
+1d433dbac: 910083fd	add	fp, sp, #0x20
+1d433dbb0: 4ea01c08	mov	v8.16b, v0.16b
+1d433dbb4: aa0003f3	mov	x19, x0
+1d433dbb8: 94f4ab82	bl	0x1d80689c0 ; SELECTOR _checkAndCreateInputStyle
+1d433dbbc: f9400e60	ldr	x0, [x19, #0x18]
+1d433dbc0: 4ea81d00	mov	v0.16b, v8.16b
+1d433dbc4: a9427bfd	ldp	fp, lr, [sp, #0x20]
+1d433dbc8: a9414ff4	ldp	x20, x19, [sp, #0x10]
+1d433dbcc: 6cc323e9	ldp	d9, d8, [sp], #0x30
+1d433dbd0: d50323ff	autibsp
+1d433dbd4: ca1e07d0	eor	x16, lr, lr, lsl #0x1
+1d433dbd8: b6f00050	tbz	x16, #0x3e, 0x1d433dbe0
+1d433dbdc: d4388e20	brk	#0xc471
+1d433dbe0: 14f4bdcc	b	0x1d806d310

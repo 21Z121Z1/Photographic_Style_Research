@@ -1,0 +1,67 @@
+iPhone17,3 /24A446; CMCapture UUID 995FC22B-41BD-37B4-812F-2686B81C2694
+-[BWPhotoEncoderController _loadCreateAndSetupSmartStyleRenderingProcessor]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1b0a22f78:
+1b0a22f78: d503237f	pacibsp
+1b0a22f7c: d10203ff	sub	sp, sp, #0x80
+1b0a22f80: a90557f6	stp	x22, x21, [sp, #0x50]
+1b0a22f84: a9064ff4	stp	x20, x19, [sp, #0x60]
+1b0a22f88: a9077bfd	stp	fp, lr, [sp, #0x70]
+1b0a22f8c: 9101c3fd	add	fp, sp, #0x70
+1b0a22f90: aa0003f3	mov	x19, x0
+1b0a22f94: 9100a3f6	add	x22, sp, #0x28
+1b0a22f98: 9017ba50	adrp	x16, 0x1e016a000
+1b0a22f9c: f9478a10	ldr	x16, [x16, #0xf10]
+1b0a22fa0: aa1603f1	mov	x17, x22
+1b0a22fa4: f2ed5c31	movk	x17, #0x6ae1, lsl #0x30
+1b0a22fa8: dac10a30	pacda	x16, x17
+1b0a22fac: f90017f0	str	x16, [sp, #0x28]
+1b0a22fb0: d0000528	adrp	x8, 0x1b0ac8000
+1b0a22fb4: fd413100	ldr	d0, [x8, #0x260]
+1b0a22fb8: fd001be0	str	d0, [sp, #0x30]
+1b0a22fbc: 910042c8	add	x8, x22, #0x10
+1b0a22fc0: b0fff2f0	adrp	x16, 0x1b087f000
+1b0a22fc4: 913a2210	add	x16, x16, #0xe88
+1b0a22fc8: dac10110	pacia	x16, x8
+1b0a22fcc: f0184048	adrp	x8, 0x1e122d000
+1b0a22fd0: 913dc108	add	x8, x8, #0xf70
+1b0a22fd4: a903a3f0	stp	x16, x8, [sp, #0x38]
+1b0a22fd8: f90027e0	str	x0, [sp, #0x48]
+1b0a22fdc: 97e9f3ac	bl	0x1b049fe8c
+1b0a22fe0: 8b080015	add	x21, x0, x8
+1b0a22fe4: f94002a0	ldr	x0, [x21]
+1b0a22fe8: 95d813f2	bl	0x1b8027fb0 ; SELECTOR smartStyleRenderingVersion
+1b0a22fec: aa0003f4	mov	x20, x0
+1b0a22ff0: f94002a0	ldr	x0, [x21]
+1b0a22ff4: 95d813ef	bl	0x1b8027fb0 ; SELECTOR smartStyleRenderingVersion
+1b0a22ff8: aa0003e4	mov	x4, x0
+1b0a22ffc: f01841a8	adrp	x8, 0x1e1259000
+1b0a23000: f9447905	ldr	x5, [x8, #0x8f0]
+1b0a23004: b01a3ea8	adrp	x8, 0x1e51f8000
+1b0a23008: b9875508	ldrsw	x8, [x8, #0x754]
+1b0a2300c: 8b080275	add	x21, x19, x8
+1b0a23010: a9007fff	stp	xzr, xzr, [sp]
+1b0a23014: a90157f6	stp	x22, x21, [sp, #0x10]
+1b0a23018: b01dc8a2	adrp	x2, 0x1ec338000
+1b0a2301c: 911cc042	add	x2, x2, #0x730 ; 0x1ec338730 CFString 'CMI'
+1b0a23020: b01dc880	adrp	x0, 0x1ec334000
+1b0a23024: 9128c000	add	x0, x0, #0xa30 ; 0x1ec334a30 CFString 'SmartStyle'
+1b0a23028: aa1403e1	mov	x1, x20
+1b0a2302c: aa0003e3	mov	x3, x0
+1b0a23030: 52800006	mov	w6, #0
+1b0a23034: 52800007	mov	w7, #0
+1b0a23038: 97ed759a	bl	0x1b05806a0
+1b0a2303c: aa0003f3	mov	x19, x0
+1b0a23040: 350000e0	cbnz	w0, 0x1b0a2305c
+1b0a23044: f94002a0	ldr	x0, [x21]
+1b0a23048: 52800022	mov	w2, #0x1
+1b0a2304c: 95d80ec5	bl	0x1b8026b60 ; SELECTOR setUseLiveMetalAllocations:
+1b0a23050: f94002a0	ldr	x0, [x21]
+1b0a23054: 52800022	mov	w2, #0x1
+1b0a23058: 95d8064e	bl	0x1b8024990 ; SELECTOR setShouldFlushCVMTLTextureCacheAfterProcessing:
+1b0a2305c: aa1303e0	mov	x0, x19
+1b0a23060: a9477bfd	ldp	fp, lr, [sp, #0x70]
+1b0a23064: a9464ff4	ldp	x20, x19, [sp, #0x60]
+1b0a23068: a94557f6	ldp	x22, x21, [sp, #0x50]
+1b0a2306c: 910203ff	add	sp, sp, #0x80
+1b0a23070: d65f0fff	retab

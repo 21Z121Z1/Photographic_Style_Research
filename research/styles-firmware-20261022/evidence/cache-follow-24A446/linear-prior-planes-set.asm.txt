@@ -1,0 +1,32 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMIStyleEngineCreateLinearSystem _setWeightPlane:term:priorScaleFactor:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d430d64c:
+1d430d64c: d503237f	pacibsp
+1d430d650: 6dbd23e9	stp	d9, d8, [sp, #-0x30]!
+1d430d654: a9014ff4	stp	x20, x19, [sp, #0x10]
+1d430d658: a9027bfd	stp	fp, lr, [sp, #0x20]
+1d430d65c: 910083fd	add	fp, sp, #0x20
+1d430d660: 71000c7f	cmp	w3, #0x3
+1d430d664: 54000222	b.hs	0x1d430d6a8
+1d430d668: aa0203f4	mov	x20, x2
+1d430d66c: b9407408	ldr	w8, [x0, #0x74]
+1d430d670: 6b08005f	cmp	w2, w8
+1d430d674: 540001e2	b.hs	0x1d430d6b0
+1d430d678: 4ea01c08	mov	v8.16b, v0.16b
+1d430d67c: aa0303f3	mov	x19, x3
+1d430d680: f9405400	ldr	x0, [x0, #0xa8]
+1d430d684: 94f3f7ef	bl	0x1d800b640 ; SELECTOR mutableBytes
+1d430d688: 0b140688	add	w8, w20, w20, lsl #0x1
+1d430d68c: 0b130108	add	w8, w8, w19
+1d430d690: bc285808	str	s8, [x0, w8, uxtw #0x2]
+1d430d694: 52800020	mov	w0, #0x1
+1d430d698: a9427bfd	ldp	fp, lr, [sp, #0x20]
+1d430d69c: a9414ff4	ldp	x20, x19, [sp, #0x10]
+1d430d6a0: 6cc323e9	ldp	d9, d8, [sp], #0x30
+1d430d6a4: d65f0fff	retab
+1d430d6a8: 94052624	bl	0x1d4456f38
+1d430d6ac: 14000002	b	0x1d430d6b4
+1d430d6b0: 94052610	bl	0x1d4456ef0
+1d430d6b4: 52800000	mov	w0, #0
+1d430d6b8: 17fffff8	b	0x1d430d698

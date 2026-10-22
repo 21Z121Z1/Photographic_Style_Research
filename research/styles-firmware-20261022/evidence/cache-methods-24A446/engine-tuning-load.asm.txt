@@ -1,0 +1,195 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMIStyleEngineCommonSettings loadTuningParameters]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d448b578:
+1d448b578: d503237f	pacibsp
+1d448b57c: d10543ff	sub	sp, sp, #0x150
+1d448b580: a90f6ffc	stp	x28, x27, [sp, #0xf0]
+1d448b584: a91067fa	stp	x26, x25, [sp, #0x100]
+1d448b588: a9115ff8	stp	x24, x23, [sp, #0x110]
+1d448b58c: a91257f6	stp	x22, x21, [sp, #0x120]
+1d448b590: a9134ff4	stp	x20, x19, [sp, #0x130]
+1d448b594: a9147bfd	stp	fp, lr, [sp, #0x140]
+1d448b598: 910503fd	add	fp, sp, #0x140
+1d448b59c: b4001680	cbz	x0, 0x1d448b86c
+1d448b5a0: aa1e03f6	mov	x22, lr
+1d448b5a4: aa0003f5	mov	x21, x0
+1d448b5a8: 9005e348	adrp	x8, 0x1e00f3000
+1d448b5ac: f9436513	ldr	x19, [x8, #0x6c8]
+1d448b5b0: 94f045f8	bl	0x1d809cd90
+1d448b5b4: aa0003e2	mov	x2, x0
+1d448b5b8: aa1303e0	mov	x0, x19
+1d448b5bc: 94edd901	bl	0x1d80019c0 ; SELECTOR bundleForClass:
+1d448b5c0: 94f045d0	bl	0x1d809cd00
+1d448b5c4: aa0003f3	mov	x19, x0
+1d448b5c8: b4000e80	cbz	x0, 0x1d448b798
+1d448b5cc: f005e2c8	adrp	x8, 0x1e00e6000
+1d448b5d0: f9401114	ldr	x20, [x8, #0x20]
+1d448b5d4: f00d7662	adrp	x2, 0x1ef35a000
+1d448b5d8: 91116042	add	x2, x2, #0x458 ; 0x1ef35a458 CFString 'StyleEngineTuning'
+1d448b5dc: f00d7643	adrp	x3, 0x1ef356000
+1d448b5e0: 9136e063	add	x3, x3, #0xdb8 ; 0x1ef356db8 CFString 'plist'
+1d448b5e4: aa1303e0	mov	x0, x19
+1d448b5e8: 94ee01aa	bl	0x1d800bc90 ; SELECTOR pathForResource:ofType:
+1d448b5ec: 94f045c5	bl	0x1d809cd00
+1d448b5f0: aa0003f7	mov	x23, x0
+1d448b5f4: aa1403e0	mov	x0, x20
+1d448b5f8: aa1703e2	mov	x2, x23
+1d448b5fc: 94edf3c5	bl	0x1d8008510 ; SELECTOR dictionaryWithContentsOfFile:
+1d448b600: 94f045c0	bl	0x1d809cd00
+1d448b604: aa0003f4	mov	x20, x0
+1d448b608: 94f0460e	bl	0x1d809ce40
+1d448b60c: b4000db4	cbz	x20, 0x1d448b7c0
+1d448b610: f00d7662	adrp	x2, 0x1ef35a000
+1d448b614: 9111e042	add	x2, x2, #0x478 ; 0x1ef35a478 CFString 'StyleEngineV1'
+1d448b618: aa1403e0	mov	x0, x20
+1d448b61c: 94ee00f5	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d448b620: 94f045b8	bl	0x1d809cd00
+1d448b624: b4000ec0	cbz	x0, 0x1d448b7fc
+1d448b628: aa0003f8	mov	x24, x0
+1d448b62c: f005e2c8	adrp	x8, 0x1e00e6000
+1d448b630: f9403d00	ldr	x0, [x8, #0x78]
+1d448b634: 94f0459f	bl	0x1d809ccb0
+1d448b638: aa0003f7	mov	x23, x0
+1d448b63c: aa1803e0	mov	x0, x24
+1d448b640: 94edd974	bl	0x1d8001c10 ; SELECTOR count
+1d448b644: aa0003e2	mov	x2, x0
+1d448b648: aa1703e0	mov	x0, x23
+1d448b64c: 94edfaf9	bl	0x1d800a230 ; SELECTOR initWithCapacity:
+1d448b650: b4000f40	cbz	x0, 0x1d448b838
+1d448b654: aa0003f7	mov	x23, x0
+1d448b658: f9000ff3	str	x19, [sp, #0x18]
+1d448b65c: 6f00e400	movi	v0.2d, #0
+1d448b660: ad0603e0	stp	q0, q0, [sp, #0xc0]
+1d448b664: ad0503e0	stp	q0, q0, [sp, #0xa0]
+1d448b668: 94f0464e	bl	0x1d809cfa0
+1d448b66c: aa0003f6	mov	x22, x0
+1d448b670: 910283e2	add	x2, sp, #0xa0
+1d448b674: 910083e3	add	x3, sp, #0x20
+1d448b678: 52800204	mov	w4, #0x10
+1d448b67c: 94edd969	bl	0x1d8001c20 ; SELECTOR countByEnumeratingWithState:objects:count:
+1d448b680: b4000540	cbz	x0, 0x1d448b728
+1d448b684: aa0003f9	mov	x25, x0
+1d448b688: f9405be8	ldr	x8, [sp, #0xb0]
+1d448b68c: f940011c	ldr	x28, [x8]
+1d448b690: f00d77d8	adrp	x24, 0x1ef386000
+1d448b694: 912be318	add	x24, x24, #0xaf8
+1d448b698: d2800013	mov	x19, #0
+1d448b69c: f9405be8	ldr	x8, [sp, #0xb0]
+1d448b6a0: f9400108	ldr	x8, [x8]
+1d448b6a4: eb1c011f	cmp	x8, x28
+1d448b6a8: 54000060	b.eq	0x1d448b6b4
+1d448b6ac: aa1603e0	mov	x0, x22
+1d448b6b0: 94f045a0	bl	0x1d809cd30
+1d448b6b4: f94057e8	ldr	x8, [sp, #0xa8]
+1d448b6b8: f873791b	ldr	x27, [x8, x19, lsl #0x3]
+1d448b6bc: aa1603e0	mov	x0, x22
+1d448b6c0: aa1b03e2	mov	x2, x27
+1d448b6c4: 94ee00cb	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d448b6c8: 94f0458e	bl	0x1d809cd00
+1d448b6cc: aa0003fa	mov	x26, x0
+1d448b6d0: aa1803e0	mov	x0, x24
+1d448b6d4: aa1b03e2	mov	x2, x27
+1d448b6d8: 94ee00c6	bl	0x1d800b9f0 ; SELECTOR objectForKeyedSubscript:
+1d448b6dc: 94f04589	bl	0x1d809cd00
+1d448b6e0: b40003a0	cbz	x0, 0x1d448b754
+1d448b6e4: aa0003fb	mov	x27, x0
+1d448b6e8: aa1703e0	mov	x0, x23
+1d448b6ec: aa1a03e2	mov	x2, x26
+1d448b6f0: aa1b03e3	mov	x3, x27
+1d448b6f4: 94ede3f7	bl	0x1d80046d0 ; SELECTOR setObject:forKeyedSubscript:
+1d448b6f8: 94f045e2	bl	0x1d809ce80
+1d448b6fc: 94f045dd	bl	0x1d809ce70
+1d448b700: 91000673	add	x19, x19, #0x1
+1d448b704: f1000739	subs	x25, x25, #0x1
+1d448b708: 54fffca1	b.ne	0x1d448b69c
+1d448b70c: 910283e2	add	x2, sp, #0xa0
+1d448b710: 910083e3	add	x3, sp, #0x20
+1d448b714: aa1603e0	mov	x0, x22
+1d448b718: 52800204	mov	w4, #0x10
+1d448b71c: 94edd941	bl	0x1d8001c20 ; SELECTOR countByEnumeratingWithState:objects:count:
+1d448b720: aa0003f9	mov	x25, x0
+1d448b724: b5fffba0	cbnz	x0, 0x1d448b698
+1d448b728: 94f045c2	bl	0x1d809ce30
+1d448b72c: f9400ab3	ldr	x19, [x21, #0x10]
+1d448b730: f9000ab7	str	x23, [x21, #0x10]
+1d448b734: 94f04617	bl	0x1d809cf90
+1d448b738: aa0003f5	mov	x21, x0
+1d448b73c: 94f045b1	bl	0x1d809ce00
+1d448b740: 94f045b8	bl	0x1d809ce20
+1d448b744: 94f045bb	bl	0x1d809ce30
+1d448b748: 94f045b2	bl	0x1d809ce10
+1d448b74c: 52800034	mov	w20, #0x1
+1d448b750: 14000007	b	0x1d448b76c
+1d448b754: 94f045c7	bl	0x1d809ce70
+1d448b758: 94f045b6	bl	0x1d809ce30
+1d448b75c: 94f045b9	bl	0x1d809ce40
+1d448b760: 94f045b4	bl	0x1d809ce30
+1d448b764: 94f045ab	bl	0x1d809ce10
+1d448b768: 52800014	mov	w20, #0
+1d448b76c: f9400ff3	ldr	x19, [sp, #0x18]
+1d448b770: 94f045a4	bl	0x1d809ce00
+1d448b774: aa1403e0	mov	x0, x20
+1d448b778: a9547bfd	ldp	fp, lr, [sp, #0x140]
+1d448b77c: a9534ff4	ldp	x20, x19, [sp, #0x130]
+1d448b780: a95257f6	ldp	x22, x21, [sp, #0x120]
+1d448b784: a9515ff8	ldp	x24, x23, [sp, #0x110]
+1d448b788: a95067fa	ldp	x26, x25, [sp, #0x100]
+1d448b78c: a94f6ffc	ldp	x28, x27, [sp, #0xf0]
+1d448b790: 910543ff	add	sp, sp, #0x150
+1d448b794: d65f0fff	retab
+1d448b798: 97f8cb17	bl	0x1d42be3f4
+1d448b79c: aa0003e1	mov	x1, x0
+1d448b7a0: aa1603e8	mov	x8, x22
+1d448b7a4: 97f8cc7a	bl	0x1d42be98c
+1d448b7a8: 900001a3	adrp	x3, 0x1d44bf000
+1d448b7ac: 913e9063	add	x3, x3, #0xfa4 ; 0x1d44bffa4 cstring 'bundle'
+1d448b7b0: 97f9266d	bl	0x1d42d5164
+1d448b7b4: 52803527	mov	w7, #0x1a9
+1d448b7b8: 94f0abaa	bl	0x1d80b6660
+1d448b7bc: 1400002a	b	0x1d448b864
+1d448b7c0: 97f8cb0d	bl	0x1d42be3f4
+1d448b7c4: aa0003e1	mov	x1, x0
+1d448b7c8: aa1603e8	mov	x8, x22
+1d448b7cc: 97f8cc70	bl	0x1d42be98c
+1d448b7d0: d0000243	adrp	x3, 0x1d44d5000
+1d448b7d4: 9101c063	add	x3, x3, #0x70 ; 0x1d44d5070 cstring 'rootTuningParameters'
+1d448b7d8: 900001a4	adrp	x4, 0x1d44bf000
+1d448b7dc: 913c7084	add	x4, x4, #0xf1c ; 0x1d44bff1c cstring 'bail'
+1d448b7e0: f0000245	adrp	x5, 0x1d44d6000
+1d448b7e4: 9117bca5	add	x5, x5, #0x5ef ; 0x1d44d65ef cstring 'Failed to load StyleEngineTuning.plist'
+1d448b7e8: f0000246	adrp	x6, 0x1d44d6000
+1d448b7ec: 91169cc6	add	x6, x6, #0x5a7 ; 0x1d44d65a7 cstring 'CMIStyleEngineCommonSettings.m'
+1d448b7f0: 52803587	mov	w7, #0x1ac
+1d448b7f4: 94f0ab9b	bl	0x1d80b6660
+1d448b7f8: 17ffffde	b	0x1d448b770
+1d448b7fc: 97f8cafe	bl	0x1d42be3f4
+1d448b800: aa0003e1	mov	x1, x0
+1d448b804: aa1603e8	mov	x8, x22
+1d448b808: 97f8cc61	bl	0x1d42be98c
+1d448b80c: d0000243	adrp	x3, 0x1d44d5000
+1d448b810: 9102b863	add	x3, x3, #0xae ; 0x1d44d50ae cstring 'tuningParameters'
+1d448b814: 900001a4	adrp	x4, 0x1d44bf000
+1d448b818: 913c7084	add	x4, x4, #0xf1c ; 0x1d44bff1c cstring 'bail'
+1d448b81c: f0000245	adrp	x5, 0x1d44d6000
+1d448b820: 911890a5	add	x5, x5, #0x624 ; 0x1d44d6624 cstring 'Missing StyleEngineV1 params'
+1d448b824: f0000246	adrp	x6, 0x1d44d6000
+1d448b828: 91169cc6	add	x6, x6, #0x5a7 ; 0x1d44d65a7 cstring 'CMIStyleEngineCommonSettings.m'
+1d448b82c: 528035e7	mov	w7, #0x1af
+1d448b830: 94f0ab8c	bl	0x1d80b6660
+1d448b834: 1400000b	b	0x1d448b860
+1d448b838: 97f8caef	bl	0x1d42be3f4
+1d448b83c: aa0003e1	mov	x1, x0
+1d448b840: aa1603e8	mov	x8, x22
+1d448b844: 97f8cc52	bl	0x1d42be98c
+1d448b848: f0000243	adrp	x3, 0x1d44d6000
+1d448b84c: 91190463	add	x3, x3, #0x641 ; 0x1d44d6641 cstring 'tuningParametersByUseCase'
+1d448b850: 97f92645	bl	0x1d42d5164
+1d448b854: 52803647	mov	w7, #0x1b2
+1d448b858: 94f0ab82	bl	0x1d80b6660
+1d448b85c: 94f0457d	bl	0x1d809ce50
+1d448b860: 94f0456c	bl	0x1d809ce10
+1d448b864: 52800014	mov	w20, #0
+1d448b868: 17ffffc2	b	0x1d448b770
+1d448b86c: 52800014	mov	w20, #0
+1d448b870: 17ffffc1	b	0x1d448b774

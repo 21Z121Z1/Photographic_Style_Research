@@ -1,0 +1,84 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 _setupStatsAndRenderParamBuffer]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d433ee28:
+1d433ee28: d503237f	pacibsp
+1d433ee2c: d10103ff	sub	sp, sp, #0x40
+1d433ee30: a90157f6	stp	x22, x21, [sp, #0x10]
+1d433ee34: a9024ff4	stp	x20, x19, [sp, #0x20]
+1d433ee38: a9037bfd	stp	fp, lr, [sp, #0x30]
+1d433ee3c: 9100c3fd	add	fp, sp, #0x30
+1d433ee40: aa0003f3	mov	x19, x0
+1d433ee44: f00d80c3	adrp	x3, 0x1ef359000
+1d433ee48: 91046063	add	x3, x3, #0x118 ; 0x1ef359118 CFString 'SSR_BUF_STATS'
+1d433ee4c: 52853202	mov	w2, #0x2990
+1d433ee50: 52800024	mov	w4, #0x1
+1d433ee54: 94f4a87b	bl	0x1d8069040 ; SELECTOR _newBufferWithLength:label:sharedAccess:
+1d433ee58: f940ee68	ldr	x8, [x19, #0x1d8]
+1d433ee5c: f900ee60	str	x0, [x19, #0x1d8]
+1d433ee60: 94f57810	bl	0x1d809cea0
+1d433ee64: f940ee68	ldr	x8, [x19, #0x1d8]
+1d433ee68: b4000688	cbz	x8, 0x1d433ef38
+1d433ee6c: f00d80c3	adrp	x3, 0x1ef359000
+1d433ee70: 9104e063	add	x3, x3, #0x138 ; 0x1ef359138 CFString 'SSR_BUF_PARAMS'
+1d433ee74: aa1303e0	mov	x0, x19
+1d433ee78: 52805402	mov	w2, #0x2a0
+1d433ee7c: 52800024	mov	w4, #0x1
+1d433ee80: 94f4a870	bl	0x1d8069040 ; SELECTOR _newBufferWithLength:label:sharedAccess:
+1d433ee84: f940ea68	ldr	x8, [x19, #0x1d0]
+1d433ee88: f900ea60	str	x0, [x19, #0x1d0]
+1d433ee8c: 94f57805	bl	0x1d809cea0
+1d433ee90: f940ea68	ldr	x8, [x19, #0x1d0]
+1d433ee94: b40005a8	cbz	x8, 0x1d433ef48
+1d433ee98: 394a2268	ldrb	w8, [x19, #0x288]
+1d433ee9c: 370000c8	tbnz	w8, #0, 0x1d433eeb4
+1d433eea0: f940ee60	ldr	x0, [x19, #0x1d8]
+1d433eea4: 94f3c9fb	bl	0x1d8031690 ; SELECTOR contents
+1d433eea8: 52853201	mov	w1, #0x2990
+1d433eeac: 94f5774d	bl	0x1d809cbe0
+1d433eeb0: 14000018	b	0x1d433ef10
+1d433eeb4: f9400660	ldr	x0, [x19, #0x8]
+1d433eeb8: 94f4ac1a	bl	0x1d8069f20 ; SELECTOR commandBuffer
+1d433eebc: 94f57791	bl	0x1d809cd00
+1d433eec0: aa0003f5	mov	x21, x0
+1d433eec4: 94f4aad7	bl	0x1d8069a20 ; SELECTOR blitCommandEncoder
+1d433eec8: 94f5778e	bl	0x1d809cd00
+1d433eecc: aa0003f4	mov	x20, x0
+1d433eed0: 94f577d4	bl	0x1d809ce20
+1d433eed4: b4000434	cbz	x20, 0x1d433ef58
+1d433eed8: f940ee75	ldr	x21, [x19, #0x1d8]
+1d433eedc: aa1503e0	mov	x0, x21
+1d433eee0: 94f33030	bl	0x1d800afa0 ; SELECTOR length
+1d433eee4: aa0003e4	mov	x4, x0
+1d433eee8: aa1403e0	mov	x0, x20
+1d433eeec: aa1503e2	mov	x2, x21
+1d433eef0: d2800003	mov	x3, #0
+1d433eef4: 52800005	mov	w5, #0
+1d433eef8: 94f4aece	bl	0x1d806aa30 ; SELECTOR fillBuffer:range:value:
+1d433eefc: aa1403e0	mov	x0, x20
+1d433ef00: 94f4ae40	bl	0x1d806a800 ; SELECTOR endEncoding
+1d433ef04: f9400660	ldr	x0, [x19, #0x8]
+1d433ef08: 94f3c932	bl	0x1d80313d0 ; SELECTOR commit
+1d433ef0c: 94f577c1	bl	0x1d809ce10
+1d433ef10: f940ea60	ldr	x0, [x19, #0x1d0]
+1d433ef14: 94f3c9df	bl	0x1d8031690 ; SELECTOR contents
+1d433ef18: 52805401	mov	w1, #0x2a0
+1d433ef1c: 94f57731	bl	0x1d809cbe0
+1d433ef20: 52800000	mov	w0, #0
+1d433ef24: a9437bfd	ldp	fp, lr, [sp, #0x30]
+1d433ef28: a9424ff4	ldp	x20, x19, [sp, #0x20]
+1d433ef2c: a94157f6	ldp	x22, x21, [sp, #0x10]
+1d433ef30: 910103ff	add	sp, sp, #0x40
+1d433ef34: d65f0fff	retab
+1d433ef38: 910033e0	add	x0, sp, #0xc
+1d433ef3c: 9404eeea	bl	0x1d447aae4
+1d433ef40: b9400fe0	ldr	w0, [sp, #0xc]
+1d433ef44: 17fffff8	b	0x1d433ef24
+1d433ef48: 910023e0	add	x0, sp, #0x8
+1d433ef4c: 9404eecc	bl	0x1d447aa7c
+1d433ef50: b9400be0	ldr	w0, [sp, #0x8]
+1d433ef54: 17fffff4	b	0x1d433ef24
+1d433ef58: 910013e0	add	x0, sp, #0x4
+1d433ef5c: 9404eeae	bl	0x1d447aa14
+1d433ef60: b94007e0	ldr	w0, [sp, #0x4]
+1d433ef64: 17fffff0	b	0x1d433ef24

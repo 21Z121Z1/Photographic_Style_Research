@@ -1,0 +1,28 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 setInputStyle:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d433d920:
+1d433d920: d503237f	pacibsp
+1d433d924: d100c3ff	sub	sp, sp, #0x30
+1d433d928: a9014ff4	stp	x20, x19, [sp, #0x10]
+1d433d92c: a9027bfd	stp	fp, lr, [sp, #0x20]
+1d433d930: 910083fd	add	fp, sp, #0x20
+1d433d934: aa0203f3	mov	x19, x2
+1d433d938: aa0003f4	mov	x20, x0
+1d433d93c: 94f57d81	bl	0x1d809cf40
+1d433d940: f90007e0	str	x0, [sp, #0x8]
+1d433d944: 94f4c60f	bl	0x1d806f180 ; SELECTOR smartStyleVersion
+1d433d948: 7100041f	cmp	w0, #0x1
+1d433d94c: 54000081	b.ne	0x1d433d95c
+1d433d950: 91006280	add	x0, x20, #0x18
+1d433d954: aa1303e1	mov	x1, x19
+1d433d958: 94f57dc6	bl	0x1d809d070
+1d433d95c: f94007e0	ldr	x0, [sp, #0x8]
+1d433d960: a9427bfd	ldp	fp, lr, [sp, #0x20]
+1d433d964: a9414ff4	ldp	x20, x19, [sp, #0x10]
+1d433d968: 9100c3ff	add	sp, sp, #0x30
+1d433d96c: d50323ff	autibsp
+1d433d970: ca1e07d0	eor	x16, lr, lr, lsl #0x1
+1d433d974: b6f00050	tbz	x16, #0x3e, 0x1d433d97c
+1d433d978: d4388e20	brk	#0xc471
+1d433d97c: 14f57d15	b	0x1d809cdd0

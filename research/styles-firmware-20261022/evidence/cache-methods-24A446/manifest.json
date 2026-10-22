@@ -1,0 +1,269 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "CMImaging": {
+      "index": 542,
+      "name": "/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",
+      "version": "764.22.14.0.0",
+      "uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "load_address": 7854592000,
+      "header_and_commands_sha256": "16fec996212b5cc7ad6286abb30426c24c8a9c53b0e677b3efd00e254a1727b0",
+      "function_starts_sha256": "0a07b7a708d8f221cf859b2f28480a5473b8bc7ee5974eb9fba0cf5d7d18e5c1"
+    },
+    "CMCapture": {
+      "index": 254,
+      "name": "/System/Library/PrivateFrameworks/CMCapture.framework/CMCapture",
+      "version": "764.22.14.0.0",
+      "uuid": "995FC22B-41BD-37B4-812F-2686B81C2694",
+      "load_address": 7251968000,
+      "header_and_commands_sha256": "fab2cb9c13e8e7a8ff265619b9b8a99bbddffd3076ed1d760cb7be712eec5b02",
+      "function_starts_sha256": "46024066c350eba96cfc17ece301da626b96602638ab55d31f777deae5cd9550"
+    }
+  },
+  "methods": [
+    {
+      "name": "+[CMISmartStyleCCMPriorGenerator calculatePriorCCMforCast:tone:color:intensity:priorStrength:isStartupPrior:]",
+      "framework": "CMImaging",
+      "file": "prior-main.asm.txt",
+      "end_exclusive": "0x1d42edac0",
+      "first_address": "0x1d42ed5b4",
+      "last_address": "0x1d42edabc",
+      "instruction_count": 323,
+      "checked_bytes": 1292,
+      "instructions_sha256": "cf44b3d21c63841405eb919e2525055f4df974bb0eeb24befbab1a23e39dc8f4",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "391ce02c627fa42271b3a23c5d59590a61556ef7cd6cc273e29e708e1d7bf981"
+    },
+    {
+      "name": "+[CMISmartStyleCCMPriorGenerator calculatePriorCCMforCast:tone:color:intensity:priorStrength:]",
+      "framework": "CMImaging",
+      "file": "prior-wrapper.asm.txt",
+      "end_exclusive": "0x1d42edb6c",
+      "first_address": "0x1d42edb58",
+      "last_address": "0x1d42edb68",
+      "instruction_count": 5,
+      "checked_bytes": 20,
+      "instructions_sha256": "d7371846c3a94fac95470109b7fb9c8756777ba5893dcdf5bc66fd75dd83715b",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "6ffdc2f1f2f0c74b2394640dcae05b4637446b1988e012742c84c66715f40e35"
+    },
+    {
+      "name": "_ssccmpg_float3x4FromMatrix",
+      "framework": "CMImaging",
+      "file": "prior-conversion.asm.txt",
+      "end_exclusive": "0x1d42f3680",
+      "first_address": "0x1d42f35e8",
+      "last_address": "0x1d42f367c",
+      "instruction_count": 38,
+      "checked_bytes": 152,
+      "instructions_sha256": "5425ad72dd3fb3464313b5df7b03db9077c0b1f6a2191ba7a1e0d9634e0f0ea5",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "3a7e58d6b40c2160dda6035976676d08fb7251f2aa8e383f50e364007cff6cf6"
+    },
+    {
+      "name": "-[CMIStyleEngineCommonSettings configurationForUseCase:]",
+      "framework": "CMImaging",
+      "file": "engine-configuration.asm.txt",
+      "end_exclusive": "0x1d42bdfe8",
+      "first_address": "0x1d42bdf78",
+      "last_address": "0x1d42bdfe4",
+      "instruction_count": 28,
+      "checked_bytes": 112,
+      "instructions_sha256": "573fc7ef959540d9c67381c79969580ce6bd7e3fb001bcc1fa43a916ab853eb4",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "6feabe3df9286bb1de1f9ef254d56417a9683d8c53461c7dd9b1381f61fac80e"
+    },
+    {
+      "name": "-[CMIStyleEngineCommonSettings tuningParametersForUseCase:]",
+      "framework": "CMImaging",
+      "file": "engine-tuning.asm.txt",
+      "end_exclusive": "0x1d42be2d0",
+      "first_address": "0x1d42be260",
+      "last_address": "0x1d42be2cc",
+      "instruction_count": 28,
+      "checked_bytes": 112,
+      "instructions_sha256": "48089df1809db946f2291e8a3edfa2bec8090cb160073ea830ddbfcdfc69d54d",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "d7e18c63bc9e1d336118dc3f5b235fdf36fd1b101a55f00ee6dde51fc5e83d75"
+    },
+    {
+      "name": "-[CMIStyleEngineCommonSettings loadTuningParameters]",
+      "framework": "CMImaging",
+      "file": "engine-tuning-load.asm.txt",
+      "end_exclusive": "0x1d448b874",
+      "first_address": "0x1d448b578",
+      "last_address": "0x1d448b870",
+      "instruction_count": 191,
+      "checked_bytes": 764,
+      "instructions_sha256": "9cde8459d53138f2adb52aab1923cc6d64dff2305a156785aebf2ff4704cdaec",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "73daf59a5dc2aa5c0917a11e0d0449e9771cde5c1b371aa946b7763ce5b74f71"
+    },
+    {
+      "name": "-[CMISmartStylePixelBufferRendererV1 process]",
+      "framework": "CMImaging",
+      "file": "pixel-renderer-process.asm.txt",
+      "end_exclusive": "0x1d42edf74",
+      "first_address": "0x1d42edc44",
+      "last_address": "0x1d42edf70",
+      "instruction_count": 204,
+      "checked_bytes": 816,
+      "instructions_sha256": "68ea9f3402d93d152556879e9cc3d9124082dd90565a3eed3baf12a2ece9a434",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "9fd9039ac6a4eb486741c33e757dbd62eda67a46a9c9d80601fbff72040a0133"
+    },
+    {
+      "name": "-[CMIStyleEngineProcessor process]",
+      "framework": "CMImaging",
+      "file": "style-engine-process.asm.txt",
+      "end_exclusive": "0x1d42cb5ac",
+      "first_address": "0x1d42c4494",
+      "last_address": "0x1d42cb5a8",
+      "instruction_count": 7238,
+      "checked_bytes": 28952,
+      "instructions_sha256": "3de5f5562d5c674a481e5c6d19a1882cae3e7af8f463f22b4022b6fe796201e3",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "3dd9918470c6358f54ea5cfefb8fbf5839a202f39c4dbea7991a7f108daf1cc8"
+    },
+    {
+      "name": "-[CMIStyleEngineProcessor _linearSystemNumberOfPolynomials]",
+      "framework": "CMImaging",
+      "file": "engine-polynomial-count.asm.txt",
+      "end_exclusive": "0x1d42e25d0",
+      "first_address": "0x1d42e2598",
+      "last_address": "0x1d42e25cc",
+      "instruction_count": 14,
+      "checked_bytes": 56,
+      "instructions_sha256": "510f4a560aa87a0b9b5eb2f7726353702c99e4dbbeb388f4581ed8ebd5cff3d4",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "32506d18e05aacb3b1c4cfdea6aa00f564454c4215389894275e939e4483fcc1"
+    },
+    {
+      "name": "-[CMIStyleEngineProcessor _linearSystemSize]",
+      "framework": "CMImaging",
+      "file": "engine-system-size.asm.txt",
+      "end_exclusive": "0x1d42da548",
+      "first_address": "0x1d42da4d4",
+      "last_address": "0x1d42da544",
+      "instruction_count": 29,
+      "checked_bytes": 116,
+      "instructions_sha256": "e99c491f06cb6d0458ec8d5b112c5e13b66f21f901ce6b287c9db8e24dbc31b0",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "8ce3b46f416a03b02a58ad11905ce10e419c88f2125ee000506480377b951fc6"
+    },
+    {
+      "name": "_BWLoadProcessorBundle",
+      "framework": "CMCapture",
+      "file": "load-bundle.asm.txt",
+      "end_exclusive": "0x1b04913a4",
+      "first_address": "0x1b0491038",
+      "last_address": "0x1b04913a0",
+      "instruction_count": 219,
+      "checked_bytes": 876,
+      "instructions_sha256": "aea67cc95836bc4befa67eb94117183d9511960071ac3edf435bfce072bf0cbc",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.13": "444459FB-131C-312D-A3C7-B48314ADCE1E"
+      },
+      "text_sha256": "e62765cbd93f9ad564e5461639421df2a9fefdefac4f496eb4f251bd0e772613"
+    },
+    {
+      "name": "-[BWSmartStyleLearningNode _loadAndConfigureSmartStyleBundle]",
+      "framework": "CMCapture",
+      "file": "learning-loader.asm.txt",
+      "end_exclusive": "0x1b04918b4",
+      "first_address": "0x1b04913b0",
+      "last_address": "0x1b04918b0",
+      "instruction_count": 321,
+      "checked_bytes": 1284,
+      "instructions_sha256": "baed6e53a112fa93a07ae0f8b0f841c5a8a5b9bee953c4a33d248605d723a426",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.13": "444459FB-131C-312D-A3C7-B48314ADCE1E"
+      },
+      "text_sha256": "8041f35ae313d4ebe6a269262b8601b42d4998d34f7c875316628f3d199c0df1"
+    },
+    {
+      "name": "-[BWPhotoEncoderController _loadCreateAndSetupSmartStyleRenderingProcessor]",
+      "framework": "CMCapture",
+      "file": "encoder-loader.asm.txt",
+      "end_exclusive": "0x1b0a23074",
+      "first_address": "0x1b0a22f78",
+      "last_address": "0x1b0a23070",
+      "instruction_count": 63,
+      "checked_bytes": 252,
+      "instructions_sha256": "ea0f167d4cfe58b47b7d9ae9e0104d006b359244c400beee4ca10c6f02079223",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.13": "444459FB-131C-312D-A3C7-B48314ADCE1E"
+      },
+      "text_sha256": "a914260d906f5b849687517055a57961650c9626bcb1d15ec9e327a922da4d5f"
+    },
+    {
+      "name": "-[BWSmartStyleRenderingProcessorController _loadSetupAndPrepareSmartStyleRenderingProcessor:]",
+      "framework": "CMCapture",
+      "file": "controller-loader.asm.txt",
+      "end_exclusive": "0x1b05827b4",
+      "first_address": "0x1b0582660",
+      "last_address": "0x1b05827b0",
+      "instruction_count": 85,
+      "checked_bytes": 340,
+      "instructions_sha256": "2f1eb566ebf03d873dca3006360e4b27899a820cbfee2d4ae8cc72e85af6d43c",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.13": "444459FB-131C-312D-A3C7-B48314ADCE1E"
+      },
+      "text_sha256": "033e7d6238a39b2f7e81c0e1f1728994b15c8098d434b26f336b0e95cf64124e"
+    }
+  ],
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 35144,
+  "exported_text_postprocess": "Remove only trailing blank lines at EOF; original instruction words and checked-byte SHA unchanged"
+}

@@ -1,0 +1,14 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 _getAdjustedSrlCurveParameter]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d433fbf4:
+1d433fbf4: bd459801	ldr	s1, [x0, #0x598]
+1d433fbf8: 1e3e1000	fmov	s0, #-1.00000000
+1d433fbfc: 1e202028	fcmp	s1, #0.00000000
+1d433fc00: 1e2e1002	fmov	s2, #1.00000000
+1d433fc04: 1e22c420	fccmp	s1, s2, #0, gt
+1d433fc08: 54000085	b.pl	0x1d433fc18
+1d433fc0c: bd45a000	ldr	s0, [x0, #0x5a0]
+1d433fc10: 7e21d800	ucvtf	s0, s0
+1d433fc14: 1e202820	fadd	s0, s1, s0
+1d433fc18: d65f03c0	ret

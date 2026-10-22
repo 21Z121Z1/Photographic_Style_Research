@@ -1,0 +1,50 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 _applyFinalRendering]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d433f9ec:
+1d433f9ec: d503237f	pacibsp
+1d433f9f0: d100c3ff	sub	sp, sp, #0x30
+1d433f9f4: a9014ff4	stp	x20, x19, [sp, #0x10]
+1d433f9f8: a9027bfd	stp	fp, lr, [sp, #0x20]
+1d433f9fc: 910083fd	add	fp, sp, #0x20
+1d433fa00: f9401008	ldr	x8, [x0, #0x20]
+1d433fa04: b40002c8	cbz	x8, 0x1d433fa5c
+1d433fa08: aa0003f4	mov	x20, x0
+1d433fa0c: f9413408	ldr	x8, [x0, #0x268]
+1d433fa10: b40002e8	cbz	x8, 0x1d433fa6c
+1d433fa14: f9402688	ldr	x8, [x20, #0x48]
+1d433fa18: b4000328	cbz	x8, 0x1d433fa7c
+1d433fa1c: aa1403e0	mov	x0, x20
+1d433fa20: 94f4a404	bl	0x1d8068a30 ; SELECTOR _checkROISpecification
+1d433fa24: 35000340	cbnz	w0, 0x1d433fa8c
+1d433fa28: fd415e80	ldr	d0, [x20, #0x2b8]
+1d433fa2c: fd416281	ldr	d1, [x20, #0x2c0]
+1d433fa30: fd416682	ldr	d2, [x20, #0x2c8]
+1d433fa34: fd416a83	ldr	d3, [x20, #0x2d0]
+1d433fa38: aa1403e0	mov	x0, x20
+1d433fa3c: 94f4a4e1	bl	0x1d8068dc0 ; SELECTOR _finalRenderRegion:
+1d433fa40: aa0003f3	mov	x19, x0
+1d433fa44: 350002a0	cbnz	w0, 0x1d433fa98
+1d433fa48: aa1303e0	mov	x0, x19
+1d433fa4c: a9427bfd	ldp	fp, lr, [sp, #0x20]
+1d433fa50: a9414ff4	ldp	x20, x19, [sp, #0x10]
+1d433fa54: 9100c3ff	add	sp, sp, #0x30
+1d433fa58: d65f0fff	retab
+1d433fa5c: 910033e0	add	x0, sp, #0xc
+1d433fa60: 9404eed6	bl	0x1d447b5b8
+1d433fa64: b9400ff3	ldr	w19, [sp, #0xc]
+1d433fa68: 17fffff8	b	0x1d433fa48
+1d433fa6c: 910023e0	add	x0, sp, #0x8
+1d433fa70: 9404eeb8	bl	0x1d447b550
+1d433fa74: b9400bf3	ldr	w19, [sp, #0x8]
+1d433fa78: 17fffff4	b	0x1d433fa48
+1d433fa7c: 910013e0	add	x0, sp, #0x4
+1d433fa80: 9404ee9a	bl	0x1d447b4e8
+1d433fa84: b94007f3	ldr	w19, [sp, #0x4]
+1d433fa88: 17fffff0	b	0x1d433fa48
+1d433fa8c: aa0003f3	mov	x19, x0
+1d433fa90: 9404ee7c	bl	0x1d447b480
+1d433fa94: 17ffffed	b	0x1d433fa48
+1d433fa98: aa1303e0	mov	x0, x19
+1d433fa9c: 9404ee86	bl	0x1d447b4b4
+1d433faa0: 17ffffea	b	0x1d433fa48

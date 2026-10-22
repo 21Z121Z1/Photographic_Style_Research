@@ -1,0 +1,111 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "CMImaging": {
+      "index": 542,
+      "name": "/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",
+      "version": "764.22.14.0.0",
+      "uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "load_address": 7854592000,
+      "header_and_commands_sha256": "16fec996212b5cc7ad6286abb30426c24c8a9c53b0e677b3efd00e254a1727b0",
+      "function_starts_sha256": "0a07b7a708d8f221cf859b2f28480a5473b8bc7ee5974eb9fba0cf5d7d18e5c1"
+    }
+  },
+  "methods": [
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _calculateDynamicRenderParameters]",
+      "framework": "CMImaging",
+      "file": "render-dynamic-parameters.asm.txt",
+      "end_exclusive": "0x1d42f1224",
+      "first_address": "0x1d42f1114",
+      "last_address": "0x1d42f1220",
+      "instruction_count": 68,
+      "checked_bytes": 272,
+      "instructions_sha256": "216996f041124314e7d287e2cee75c5acd28980ffc2ae503d47c873e363670c0",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "eceaee45248b2da1e89c0222a0b814fc5bf773bec8f464e479a28fdf377c42b0"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _populateStaticRenderParametersFromTuning:inputStatisticsByStatsKey:]",
+      "framework": "CMImaging",
+      "file": "render-static-parameters.asm.txt",
+      "end_exclusive": "0x1d42f24d8",
+      "first_address": "0x1d42f21c4",
+      "last_address": "0x1d42f24d4",
+      "instruction_count": 197,
+      "checked_bytes": 788,
+      "instructions_sha256": "83f9dc0b679ea83e57961ba9ca073b2aa2877f1fd30906d21ab471a16345d256",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "0219279bc937c3bf71292778db5dd9d4bc2fcf7f49fc28b5d54ac45eaf71979e"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _applyFinalRendering]",
+      "framework": "CMImaging",
+      "file": "render-final.asm.txt",
+      "end_exclusive": "0x1d433faa4",
+      "first_address": "0x1d433f9ec",
+      "last_address": "0x1d433faa0",
+      "instruction_count": 46,
+      "checked_bytes": 184,
+      "instructions_sha256": "86998640ef15748ff4644aabc26419174e9f35a3dbb9cadd6d90fc5df3407bcb",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "f204d68ca16292b7d2fadc08837d232e968f0c1f66928e7e4a6f139420fc5aa4"
+    },
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _setupStatsAndRenderParamBuffer]",
+      "framework": "CMImaging",
+      "file": "render-setup-params.asm.txt",
+      "end_exclusive": "0x1d433ef68",
+      "first_address": "0x1d433ee28",
+      "last_address": "0x1d433ef64",
+      "instruction_count": 80,
+      "checked_bytes": 320,
+      "instructions_sha256": "edf90989b27e92fa78b8f9e7d8d6e77201fdf24f39a9ba586a2dcdff249dfcbb",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "9910af47c1b4bbe937f1315abd3663960672c893b2a358df5f38e9a536d6a6a2"
+    }
+  ],
+  "exporter_sha256": "d776720023300a8ab65cafd96c0fc2755886c2adc3f98c295d3470e5c588267f",
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 1564,
+  "exported_text_postprocess": "Remove only trailing blank lines at EOF; original instruction words and checked-byte SHA unchanged"
+}
