@@ -1,0 +1,440 @@
+
+-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:]:
+0x00009794:  7f 23 03 d5   pacibsp
+0x00009798:  ff 43 07 d1   sub	sp, sp, #0x1d0
+0x0000979c:  fc 6f 17 a9   stp	x28, x27, [sp, #0x170]
+0x000097a0:  fa 67 18 a9   stp	x26, x25, [sp, #0x180]
+0x000097a4:  f8 5f 19 a9   stp	x24, x23, [sp, #0x190]
+0x000097a8:  f6 57 1a a9   stp	x22, x21, [sp, #0x1a0]
+0x000097ac:  f4 4f 1b a9   stp	x20, x19, [sp, #0x1b0]
+0x000097b0:  fd 7b 1c a9   stp	fp, lr, [sp, #0x1c0]
+0x000097b4:  fd 03 07 91   add	fp, sp, #0x1c0
+0x000097b8:  f9 03 06 aa   mov	x25, x6
+0x000097bc:  f8 03 05 aa   mov	x24, x5
+0x000097c0:  f3 03 04 aa   mov	x19, x4
+0x000097c4:  fa 03 03 aa   mov	x26, x3
+0x000097c8:  f7 03 00 aa   mov	x23, x0
+0x000097cc:  1d 1a 00 94   bl	j__objc_retain_x2
+0x000097d0:  fb 03 00 aa   mov	x27, x0
+0x000097d4:  17 1a 00 94   bl	j__objc_retain_x19
+0x000097d8:  f5 03 00 aa   mov	x21, x0
+0x000097dc:  a8 00 00 f0   adrp	x8, 0x20000
+0x000097e0:  08 11 45 f9   ldr	x8, [x8, #0xa20] ; __got._kCVPixelBufferMetalCompatibilityKey
+0x000097e4:  08 01 40 f9   ldr	x8, [x8]
+0x000097e8:  a9 00 00 f0   adrp	x9, 0x20000
+0x000097ec:  29 45 45 f9   ldr	x9, [x9, #0xa88] ; __got.___kCFBooleanTrue
+0x000097f0:  aa 00 00 f0   adrp	x10, 0x20000
+0x000097f4:  4a 09 45 f9   ldr	x10, [x10, #0xa10] ; __got._kCVPixelBufferIOSurfaceCoreAnimationCompatibilityKey
+0x000097f8:  4a 01 40 f9   ldr	x10, [x10]
+0x000097fc:  a8 ab 37 a9   stp	x8, x10, [fp, #-0x88]
+0x00009800:  a9 27 39 a9   stp	x9, x9, [fp, #-0x70]
+0x00009804:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009808:  08 0d 45 f9   ldr	x8, [x8, #0xa18] ; __got._kCVPixelBufferIOSurfacePropertiesKey
+0x0000980c:  08 01 40 f9   ldr	x8, [x8]
+0x00009810:  a8 83 18 f8   stur	x8, [fp, #-0x78]
+0x00009814:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009818:  08 41 45 f9   ldr	x8, [x8, #0xa80] ; __got.___NSDictionary0__struct
+0x0000981c:  a8 03 1a f8   stur	x8, [fp, #-0x60]
+0x00009820:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009824:  00 39 45 f9   ldr	x0, [x8, #0xa70] ; __got._OBJC_CLASS_$_NSDictionary
+0x00009828:  a2 c3 01 d1   sub	x2, fp, #0x70
+0x0000982c:  a3 23 02 d1   sub	x3, fp, #0x88
+0x00009830:  64 00 80 52   mov	w4, #0x3
+0x00009834:  03 1c 00 94   bl	j__objc_msgSend(x0, "dictionaryWithObjects:forKeys:count:")
+0x00009838:  a6 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x0000983c:  f6 03 00 aa   mov	x22, x0
+0x00009840:  f5 17 00 f9   str	x21, [sp, #0x28]
+0x00009844:  fb 23 00 b4   cbz	x27, loc_9cc0 ; ⤵ 0x47c
+0x00009848:  1a 24 00 b4   cbz	x26, loc_9cc8 ; ⤵ 0x480
+0x0000984c:  b9 24 00 b4   cbz	x25, loc_9ce0 ; ⤵ 0x494
+0x00009850:  e0 03 1a aa   mov	x0, x26
+0x00009854:  37 19 00 94   bl	j__CVPixelBufferGetWidth
+0x00009858:  f3 03 00 aa   mov	x19, x0
+0x0000985c:  e0 03 1a aa   mov	x0, x26
+0x00009860:  2c 19 00 94   bl	j__CVPixelBufferGetHeight
+0x00009864:  f4 03 00 aa   mov	x20, x0
+0x00009868:  b3 43 17 78   sturh	w19, [fp, #-0x8c]
+0x0000986c:  b4 63 17 78   sturh	w20, [fp, #-0x8a]
+0x00009870:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009874:  08 65 44 f9   ldr	x8, [x8, #0x8c8] ; __got._kFigCaptureSampleBufferAttachmentKey_MetadataDictionary
+0x00009878:  01 01 40 f9   ldr	x1, [x8]
+0x0000987c:  e0 03 1a aa   mov	x0, x26
+0x00009880:  02 00 80 d2   mov	x2, #0
+0x00009884:  df 18 00 94   bl	j__CMGetAttachment
+0x00009888:  92 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x0000988c:  fc 03 00 aa   mov	x28, x0
+0x00009890:  60 23 00 b4   cbz	x0, loc_9cfc ; ⤵ 0x46c
+0x00009894:  bf 03 17 b8   stur	wzr, [fp, #-0x90]
+0x00009898:  a8 00 00 f0   adrp	x8, 0x20000
+0x0000989c:  08 6d 44 f9   ldr	x8, [x8, #0x8d8] ; __got._kFigCaptureStreamLTMThumbnailKey_Format
+0x000098a0:  01 01 40 f9   ldr	x1, [x8]
+0x000098a4:  a2 43 02 d1   sub	x2, fp, #0x90
+0x000098a8:  e0 03 1c aa   mov	x0, x28
+0x000098ac:  35 19 00 94   bl	j__FigCFDictionaryGetInt32IfPresent
+0x000098b0:  fc 1b 00 f9   str	x28, [sp, #0x30]
+0x000098b4:  00 01 00 35   cbnz	w0, loc_98d4 ; ⤵ 0x20
+0x000098b8:  a8 00 00 f0   adrp	x8, 0x20000
+0x000098bc:  08 9d 44 f9   ldr	x8, [x8, #0x938] ; __got._kFigCaptureStreamPreLTMThumbnailKey_Format
+0x000098c0:  01 01 40 f9   ldr	x1, [x8]
+0x000098c4:  a2 43 02 d1   sub	x2, fp, #0x90
+0x000098c8:  e0 03 1c aa   mov	x0, x28
+0x000098cc:  2d 19 00 94   bl	j__FigCFDictionaryGetInt32IfPresent
+0x000098d0:  80 27 00 34   cbz	w0, loc_9dc0 ; ⤵ 0x4f0
+0x000098d4:  ; loc_98d4
+0x000098d4:  a8 03 57 b8   ldur	w8, [fp, #-0x90]
+0x000098d8:  08 0d 00 51   sub	w8, w8, #0x3
+0x000098dc:  1f 0d 00 31   cmn	w8, #0x3
+0x000098e0:  e9 21 00 54   b.ls	loc_9d1c ; ⤵ 0x43c
+0x000098e4:  e5 03 17 aa   mov	x5, x23
+0x000098e8:  a8 8c 48 f8   ldr	x8, [x5, #0x88]!
+0x000098ec:  68 01 00 b5   cbnz	x8, loc_9918 ; ⤵ 0x2c
+0x000098f0:  a8 00 00 f0   adrp	x8, 0x20000
+0x000098f4:  08 49 45 f9   ldr	x8, [x8, #0xa90] ; __got._kCFAllocatorDefault
+0x000098f8:  00 01 40 f9   ldr	x0, [x8]
+0x000098fc:  e1 03 13 2a   mov	w1, w19
+0x00009900:  e2 03 14 2a   mov	w2, w20
+0x00009904:  43 8e 86 52   mov	w3, #0x3472
+0x00009908:  c3 86 ad 72   movk	w3, #0x6c36, lsl #0x10
+0x0000990c:  e4 03 16 aa   mov	x4, x22
+0x00009910:  ec 18 00 94   bl	j__CVPixelBufferCreate
+0x00009914:  80 26 00 35   cbnz	w0, loc_9de4 ; ⤵ 0x4d0
+0x00009918:  ; loc_9918
+0x00009918:  f9 db 01 a9   stp	x25, x22, [sp, #0x18]
+0x0000991c:  00 e4 00 6f   movi	v0.2d, #0
+0x00009920:  e0 83 08 ad   stp	q0, q0, [sp, #0x110]
+0x00009924:  e0 83 07 ad   stp	q0, q0, [sp, #0xf0]
+0x00009928:  e0 83 06 ad   stp	q0, q0, [sp, #0xd0]
+0x0000992c:  16 0a 80 52   mov	w22, #0x50
+0x00009930:  e0 33 80 3d   str	q0, [sp, #0xc0]
+0x00009934:  95 01 00 b4   cbz	x21, loc_9964 ; ⤵ 0x30
+0x00009938:  78 01 00 34   cbz	w24, loc_9964 ; ⤵ 0x2c
+0x0000993c:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009940:  00 a1 44 f9   ldr	x0, [x8, #0x940] ; __got._OBJC_CLASS_$_CMIDistortionModel
+0x00009944:  e2 03 03 91   add	x2, sp, #0xc0
+0x00009948:  e3 03 15 aa   mov	x3, x21
+0x0000994c:  e4 03 1b aa   mov	x4, x27
+0x00009950:  6c 1c 00 94   bl	j__objc_msgSend(x0, "getGDCParams:cameraInfo:metadata:")
+0x00009954:  1f 00 00 71   cmp	w0, #0
+0x00009958:  08 0a 80 52   mov	w8, #0x50
+0x0000995c:  09 0b 80 52   mov	w9, #0x58
+0x00009960:  36 01 88 9a   csel	x22, x9, x8, eq
+0x00009964:  ; loc_9964
+0x00009964:  e0 0e 40 f9   ldr	x0, [x23, #0x18]
+0x00009968:  0e 1b 00 94   bl	j__objc_msgSend(x0, "commandQueue")
+0x0000996c:  59 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x00009970:  f9 03 00 aa   mov	x25, x0
+0x00009974:  03 1b 00 94   bl	j__objc_msgSend(x0, "commandBuffer")
+0x00009978:  56 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x0000997c:  f8 03 00 aa   mov	x24, x0
+0x00009980:  8c 19 00 94   bl	j__objc_release_x25
+0x00009984:  18 1d 00 b4   cbz	x24, loc_9d24 ; ⤵ 0x3a0
+0x00009988:  e0 03 18 aa   mov	x0, x24
+0x0000998c:  15 1b 00 94   bl	j__objc_msgSend(x0, "computeCommandEncoder")
+0x00009990:  50 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x00009994:  f9 03 00 aa   mov	x25, x0
+0x00009998:  80 18 00 b4   cbz	x0, loc_9ca8 ; ⤵ 0x310
+0x0000999c:  e0 0e 40 f9   ldr	x0, [x23, #0x18]
+0x000099a0:  e2 03 1a aa   mov	x2, x26
+0x000099a4:  9f 1a 00 94   bl	j__objc_msgSend(x0, "bindPixelBufferToMTLBuffer:")
+0x000099a8:  4a 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x000099ac:  e0 1f 00 f9   str	x0, [sp, #0x38]
+0x000099b0:  c0 17 00 b4   cbz	x0, loc_9ca8 ; ⤵ 0x2f8
+0x000099b4:  f8 0b 00 f9   str	x24, [sp, #0x10]
+0x000099b8:  f8 03 1b aa   mov	x24, x27
+0x000099bc:  e2 46 40 f9   ldr	x2, [x23, #0x88]
+0x000099c0:  7b 00 80 52   mov	w27, #0x3
+0x000099c4:  e0 03 17 aa   mov	x0, x23
+0x000099c8:  63 00 80 52   mov	w3, #0x3
+0x000099cc:  dd 19 00 94   bl	j__objc_msgSend(x0, "_cachedTexturesFromPixelBuffer:usage:")
+0x000099d0:  40 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x000099d4:  fc 03 00 aa   mov	x28, x0
+0x000099d8:  e0 1b 00 b4   cbz	x0, loc_9d54 ; ⤵ 0x37c
+0x000099dc:  f6 03 00 f9   str	x22, [sp]
+0x000099e0:  e0 03 1a aa   mov	x0, x26
+0x000099e4:  cf 18 00 94   bl	j__CVPixelBufferGetPixelFormatType
+0x000099e8:  e1 03 00 aa   mov	x1, x0
+0x000099ec:  00 00 80 d2   mov	x0, #0
+0x000099f0:  dc 18 00 94   bl	j__CVPixelFormatDescriptionCreateWithPixelFormatType
+0x000099f4:  f6 03 00 aa   mov	x22, x0
+0x000099f8:  e0 03 1a aa   mov	x0, x26
+0x000099fc:  c1 18 00 94   bl	j__CVPixelBufferGetBytesPerRow
+0x00009a00:  15 70 1d 53   lsl	w21, w0, #0x3
+0x00009a04:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009a08:  08 21 45 f9   ldr	x8, [x8, #0xa40] ; __got._kCVPixelFormatBitsPerComponent
+0x00009a0c:  02 01 40 f9   ldr	x2, [x8]
+0x00009a10:  f6 07 00 f9   str	x22, [sp, #0x8]
+0x00009a14:  e0 03 16 aa   mov	x0, x22
+0x00009a18:  4a 1e 00 94   bl	j__objc_msgSend(x0, "objectForKeyedSubscript:")
+0x00009a1c:  2d 19 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x00009a20:  fa 03 00 aa   mov	x26, x0
+0x00009a24:  bf 22 00 94   bl	j__objc_msgSend(x0, "unsignedIntValue")
+0x00009a28:  b5 0a c0 1a   udiv	w21, w21, w0
+0x00009a2c:  65 19 00 94   bl	j__objc_release_x26
+0x00009a30:  a8 03 57 b8   ldur	w8, [fp, #-0x90]
+0x00009a34:  1f 05 00 71   cmp	w8, #0x1
+0x00009a38:  c8 00 80 52   mov	w8, #0x6
+0x00009a3c:  68 03 88 1a   csel	w8, w27, w8, eq
+0x00009a40:  e8 af 00 b9   str	w8, [sp, #0xac]
+0x00009a44:  48 00 00 d0   adrp	x8, 0x13000
+0x00009a48:  00 35 47 fd   ldr	d0, [x8, #0xe68]
+0x00009a4c:  e0 03 0b fc   stur	d0, [sp, #0xb0]
+0x00009a50:  48 00 80 52   mov	w8, #0x2
+0x00009a54:  e8 57 17 29   stp	w8, w21, [sp, #0xb8]
+0x00009a58:  e2 16 40 f9   ldr	x2, [x23, #0x28]
+0x00009a5c:  e0 03 19 aa   mov	x0, x25
+0x00009a60:  60 1f 00 94   bl	j__objc_msgSend(x0, "setComputePipelineState:")
+0x00009a64:  e0 03 19 aa   mov	x0, x25
+0x00009a68:  e2 1f 40 f9   ldr	x2, [sp, #0x38]
+0x00009a6c:  03 00 80 d2   mov	x3, #0
+0x00009a70:  04 00 80 d2   mov	x4, #0
+0x00009a74:  43 1f 00 94   bl	j__objc_msgSend(x0, "setBuffer:offset:atIndex:")
+0x00009a78:  35 00 80 52   mov	w21, #0x1
+0x00009a7c:  a2 33 02 d1   sub	x2, fp, #0x8c
+0x00009a80:  e0 03 19 aa   mov	x0, x25
+0x00009a84:  83 00 80 52   mov	w3, #0x4
+0x00009a88:  24 00 80 52   mov	w4, #0x1
+0x00009a8c:  45 1f 00 94   bl	j__objc_msgSend(x0, "setBytes:length:atIndex:")
+0x00009a90:  e2 b3 02 91   add	x2, sp, #0xac
+0x00009a94:  e0 03 19 aa   mov	x0, x25
+0x00009a98:  83 02 80 52   mov	w3, #0x14
+0x00009a9c:  44 00 80 52   mov	w4, #0x2
+0x00009aa0:  40 1f 00 94   bl	j__objc_msgSend(x0, "setBytes:length:atIndex:")
+0x00009aa4:  e0 03 19 aa   mov	x0, x25
+0x00009aa8:  e2 03 1c aa   mov	x2, x28
+0x00009aac:  03 00 80 d2   mov	x3, #0
+0x00009ab0:  c4 21 00 94   bl	j__objc_msgSend(x0, "setTexture:atIndex:")
+0x00009ab4:  e0 03 19 aa   mov	x0, x25
+0x00009ab8:  02 00 80 d2   mov	x2, #0
+0x00009abc:  23 00 80 52   mov	w3, #0x1
+0x00009ac0:  c0 21 00 94   bl	j__objc_msgSend(x0, "setTexture:atIndex:")
+0x00009ac4:  e0 03 1c aa   mov	x0, x28
+0x00009ac8:  be 22 00 94   bl	j__objc_msgSend(x0, "width")
+0x00009acc:  fa 03 00 aa   mov	x26, x0
+0x00009ad0:  e0 03 1c aa   mov	x0, x28
+0x00009ad4:  23 1c 00 94   bl	j__objc_msgSend(x0, "height")
+0x00009ad8:  fa 03 09 a9   stp	x26, x0, [sp, #0x90]
+0x00009adc:  f5 53 00 f9   str	x21, [sp, #0xa0]
+0x00009ae0:  08 04 80 52   mov	w8, #0x20
+0x00009ae4:  00 0d 08 4e   dup	v0.2d, x8
+0x00009ae8:  e0 1f 80 3d   str	q0, [sp, #0x70]
+0x00009aec:  f5 43 00 f9   str	x21, [sp, #0x80]
+0x00009af0:  e2 43 02 91   add	x2, sp, #0x90
+0x00009af4:  e3 c3 01 91   add	x3, sp, #0x70
+0x00009af8:  e0 03 19 aa   mov	x0, x25
+0x00009afc:  59 1b 00 94   bl	j__objc_msgSend(x0, "dispatchThreads:threadsPerThreadgroup:")
+0x00009b00:  e0 03 17 aa   mov	x0, x23
+0x00009b04:  e2 0f 40 f9   ldr	x2, [sp, #0x18]
+0x00009b08:  e3 00 80 52   mov	w3, #0x7
+0x00009b0c:  23 00 a0 72   movk	w3, #0x1, lsl #0x10
+0x00009b10:  8c 19 00 94   bl	j__objc_msgSend(x0, "_cachedTexturesFromPixelBuffer:usage:")
+0x00009b14:  ef 18 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x00009b18:  f5 03 00 aa   mov	x21, x0
+0x00009b1c:  a0 12 00 b4   cbz	x0, loc_9d70 ; ⤵ 0x254
+0x00009b20:  00 e4 00 6f   movi	v0.2d, #0
+0x00009b24:  e0 83 02 ad   stp	q0, q0, [sp, #0x50]
+0x00009b28:  a8 00 00 f0   adrp	x8, 0x20000
+0x00009b2c:  08 99 44 f9   ldr	x8, [x8, #0x930] ; __got._kFigCaptureStreamMetadata_ValidBufferRect
+0x00009b30:  01 01 40 f9   ldr	x1, [x8]
+0x00009b34:  e2 43 01 91   add	x2, sp, #0x50
+0x00009b38:  e0 1b 40 f9   ldr	x0, [sp, #0x30]
+0x00009b3c:  8d 18 00 94   bl	j__FigCFDictionaryGetCGRectIfPresent
+0x00009b40:  fb 03 18 aa   mov	x27, x24
+0x00009b44:  c0 11 00 34   cbz	w0, loc_9d7c ; ⤵ 0x238
+0x00009b48:  60 02 23 1e   ucvtf	s0, w19
+0x00009b4c:  81 02 23 1e   ucvtf	s1, w20
+0x00009b50:  06 c0 22 1e   fcvt	d6, s0
+0x00009b54:  27 c0 22 1e   fcvt	d7, s1
+0x00009b58:  e0 07 45 6d   ldp	d0, d1, [sp, #0x50]
+0x00009b5c:  e2 0f 46 6d   ldp	d2, d3, [sp, #0x60]
+0x00009b60:  04 e4 00 6f   movi	v4.2d, #0
+0x00009b64:  05 e4 00 6f   movi	v5.2d, #0
+0x00009b68:  96 18 00 94   bl	j__FigCaptureMetadataUtilitiesRectNormalizedToRect
+0x00009b6c:  e0 07 05 6d   stp	d0, d1, [sp, #0x50]
+0x00009b70:  e2 0f 06 6d   stp	d2, d3, [sp, #0x60]
+0x00009b74:  62 04 18 6e   mov	v2.d[1], v3.d[0]
+0x00009b78:  20 04 18 6e   mov	v0.d[1], v1.d[0]
+0x00009b7c:  00 68 61 0e   fcvtn	v0.2s, v0.2d
+0x00009b80:  40 68 61 4e   fcvtn2	v0.4s, v2.2d
+0x00009b84:  e0 13 80 3d   str	q0, [sp, #0x40]
+0x00009b88:  14 04 80 52   mov	w20, #0x20
+0x00009b8c:  e0 03 19 aa   mov	x0, x25
+0x00009b90:  02 04 80 52   mov	w2, #0x20
+0x00009b94:  03 04 80 52   mov	w3, #0x20
+0x00009b98:  5a 1f 00 94   bl	j__objc_msgSend(x0, "setImageblockWidth:height:")
+0x00009b9c:  e8 03 40 f9   ldr	x8, [sp]
+0x00009ba0:  e2 6a 68 f8   ldr	x2, [x23, x8]
+0x00009ba4:  e0 03 19 aa   mov	x0, x25
+0x00009ba8:  0e 1f 00 94   bl	j__objc_msgSend(x0, "setComputePipelineState:")
+0x00009bac:  e0 03 19 aa   mov	x0, x25
+0x00009bb0:  e2 03 1c aa   mov	x2, x28
+0x00009bb4:  03 00 80 d2   mov	x3, #0
+0x00009bb8:  82 21 00 94   bl	j__objc_msgSend(x0, "setTexture:atIndex:")
+0x00009bbc:  36 00 80 52   mov	w22, #0x1
+0x00009bc0:  e0 03 19 aa   mov	x0, x25
+0x00009bc4:  e2 03 15 aa   mov	x2, x21
+0x00009bc8:  23 00 80 52   mov	w3, #0x1
+0x00009bcc:  7d 21 00 94   bl	j__objc_msgSend(x0, "setTexture:atIndex:")
+0x00009bd0:  e2 03 01 91   add	x2, sp, #0x40
+0x00009bd4:  e0 03 19 aa   mov	x0, x25
+0x00009bd8:  03 02 80 52   mov	w3, #0x10
+0x00009bdc:  04 00 80 d2   mov	x4, #0
+0x00009be0:  f0 1e 00 94   bl	j__objc_msgSend(x0, "setBytes:length:atIndex:")
+0x00009be4:  e2 03 03 91   add	x2, sp, #0xc0
+0x00009be8:  e0 03 19 aa   mov	x0, x25
+0x00009bec:  03 0e 80 52   mov	w3, #0x70
+0x00009bf0:  24 00 80 52   mov	w4, #0x1
+0x00009bf4:  eb 1e 00 94   bl	j__objc_msgSend(x0, "setBytes:length:atIndex:")
+0x00009bf8:  e0 03 15 aa   mov	x0, x21
+0x00009bfc:  71 22 00 94   bl	j__objc_msgSend(x0, "width")
+0x00009c00:  f3 03 00 aa   mov	x19, x0
+0x00009c04:  e0 03 15 aa   mov	x0, x21
+0x00009c08:  d6 1b 00 94   bl	j__objc_msgSend(x0, "height")
+0x00009c0c:  f3 03 09 a9   stp	x19, x0, [sp, #0x90]
+0x00009c10:  f6 53 00 f9   str	x22, [sp, #0xa0]
+0x00009c14:  80 0e 08 4e   dup	v0.2d, x20
+0x00009c18:  e0 1f 80 3d   str	q0, [sp, #0x70]
+0x00009c1c:  f6 43 00 f9   str	x22, [sp, #0x80]
+0x00009c20:  e2 43 02 91   add	x2, sp, #0x90
+0x00009c24:  e3 c3 01 91   add	x3, sp, #0x70
+0x00009c28:  e0 03 19 aa   mov	x0, x25
+0x00009c2c:  0d 1b 00 94   bl	j__objc_msgSend(x0, "dispatchThreads:threadsPerThreadgroup:")
+0x00009c30:  e0 03 19 aa   mov	x0, x25
+0x00009c34:  5b 1b 00 94   bl	j__objc_msgSend(x0, "endEncoding")
+0x00009c38:  f8 0b 40 f9   ldr	x24, [sp, #0x10]
+0x00009c3c:  e0 03 18 aa   mov	x0, x24
+0x00009c40:  60 1a 00 94   bl	j__objc_msgSend(x0, "commit")
+0x00009c44:  13 00 80 52   mov	w19, #0
+0x00009c48:  f6 13 40 f9   ldr	x22, [sp, #0x20]
+0x00009c4c:  f4 07 40 f9   ldr	x20, [sp, #0x8]
+0x00009c50:  ; loc_9c50
+0x00009c50:  cc 18 00 94   bl	j__objc_release_x22
+0x00009c54:  c7 18 00 94   bl	j__objc_release_x21
+0x00009c58:  e2 18 00 94   bl	j__objc_release_x28
+0x00009c5c:  e8 1f 40 f9   ldr	x8, [sp, #0x38]
+0x00009c60:  e4 18 00 94   bl	j__objc_release_x8
+0x00009c64:  d3 18 00 94   bl	j__objc_release_x25
+0x00009c68:  ce 18 00 94   bl	j__objc_release_x24
+0x00009c6c:  bd 18 00 94   bl	j__objc_release_x20
+0x00009c70:  e8 1b 40 f9   ldr	x8, [sp, #0x30]
+0x00009c74:  df 18 00 94   bl	j__objc_release_x8
+0x00009c78:  e8 17 40 f9   ldr	x8, [sp, #0x28]
+0x00009c7c:  dd 18 00 94   bl	j__objc_release_x8
+0x00009c80:  d4 18 00 94   bl	j__objc_release_x27
+0x00009c84:  e0 03 13 aa   mov	x0, x19
+0x00009c88:  fd 7b 5c a9   ldp	fp, lr, [sp, #0x1c0]
+0x00009c8c:  f4 4f 5b a9   ldp	x20, x19, [sp, #0x1b0]
+0x00009c90:  f6 57 5a a9   ldp	x22, x21, [sp, #0x1a0]
+0x00009c94:  f8 5f 59 a9   ldp	x24, x23, [sp, #0x190]
+0x00009c98:  fa 67 58 a9   ldp	x26, x25, [sp, #0x180]
+0x00009c9c:  fc 6f 57 a9   ldp	x28, x27, [sp, #0x170]
+0x00009ca0:  ff 43 07 91   add	sp, sp, #0x1d0
+0x00009ca4:  ff 0f 5f d6   retab
+0x00009ca8:  ; loc_9ca8
+0x00009ca8:  14 00 80 d2   mov	x20, #0
+0x00009cac:  ff 1f 00 f9   str	xzr, [sp, #0x38]
+0x00009cb0:  1c 00 80 d2   mov	x28, #0
+0x00009cb4:  15 00 80 d2   mov	x21, #0
+0x00009cb8:  b3 3d 86 12   mov	w19, #0xffffce12
+0x00009cbc:  3b 00 00 14   b	loc_9da8 ; ⤵ 0xec
+0x00009cc0:  ; loc_9cc0
+0x00009cc0:  b7 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.9
+0x00009cc4:  02 00 00 14   b	loc_9ccc ; ⤵ 0x8
+0x00009cc8:  ; loc_9cc8
+0x00009cc8:  a5 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.8
+0x00009ccc:  ; loc_9ccc
+0x00009ccc:  ff 1b 00 f9   str	xzr, [sp, #0x30]
+0x00009cd0:  14 00 80 d2   mov	x20, #0
+0x00009cd4:  18 00 80 d2   mov	x24, #0
+0x00009cd8:  19 00 80 d2   mov	x25, #0
+0x00009cdc:  05 00 00 14   b	loc_9cf0 ; ⤵ 0x14
+0x00009ce0:  ; loc_9ce0
+0x00009ce0:  8f 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.7
+0x00009ce4:  ff 1b 00 f9   str	xzr, [sp, #0x30]
+0x00009ce8:  14 00 80 d2   mov	x20, #0
+0x00009cec:  18 00 80 d2   mov	x24, #0
+0x00009cf0:  ; loc_9cf0
+0x00009cf0:  ff 1f 00 f9   str	xzr, [sp, #0x38]
+0x00009cf4:  1c 00 80 d2   mov	x28, #0
+0x00009cf8:  06 00 00 14   b	loc_9d10 ; ⤵ 0x18
+0x00009cfc:  ; loc_9cfc
+0x00009cfc:  75 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.6
+0x00009d00:  ff 7f 03 a9   stp	xzr, xzr, [sp, #0x30]
+0x00009d04:  14 00 80 d2   mov	x20, #0
+0x00009d08:  18 00 80 d2   mov	x24, #0
+0x00009d0c:  19 00 80 d2   mov	x25, #0
+0x00009d10:  ; loc_9d10
+0x00009d10:  15 00 80 d2   mov	x21, #0
+0x00009d14:  73 3d 86 12   mov	w19, #0xffffce14
+0x00009d18:  25 00 00 14   b	loc_9dac ; ⤵ 0x94
+0x00009d1c:  ; loc_9d1c
+0x00009d1c:  4d 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.4
+0x00009d20:  29 00 00 14   b	loc_9dc4 ; ⤵ 0xa4
+0x00009d24:  ; loc_9d24
+0x00009d24:  e0 43 02 91   add	x0, sp, #0x90
+0x00009d28:  2e 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.3
+0x00009d2c:  14 00 80 d2   mov	x20, #0
+0x00009d30:  00 03 00 36   tbz	w0, #0, loc_9d90 ; ⤵ 0x60
+0x00009d34:  13 00 80 52   mov	w19, #0
+0x00009d38:  f8 03 14 aa   mov	x24, x20
+0x00009d3c:  f9 03 14 aa   mov	x25, x20
+0x00009d40:  f4 1f 00 f9   str	x20, [sp, #0x38]
+0x00009d44:  fc 03 14 aa   mov	x28, x20
+0x00009d48:  f5 03 14 aa   mov	x21, x20
+0x00009d4c:  f6 13 40 f9   ldr	x22, [sp, #0x20]
+0x00009d50:  c0 ff ff 17   b	loc_9c50 ; ⤴ -0x100
+0x00009d54:  ; loc_9d54
+0x00009d54:  14 00 80 d2   mov	x20, #0
+0x00009d58:  15 00 80 d2   mov	x21, #0
+0x00009d5c:  b3 3d 86 12   mov	w19, #0xffffce12
+0x00009d60:  fb 03 18 aa   mov	x27, x24
+0x00009d64:  f6 13 40 f9   ldr	x22, [sp, #0x20]
+0x00009d68:  f8 0b 40 f9   ldr	x24, [sp, #0x10]
+0x00009d6c:  10 00 00 14   b	loc_9dac ; ⤵ 0x40
+0x00009d70:  ; loc_9d70
+0x00009d70:  b3 3d 86 12   mov	w19, #0xffffce12
+0x00009d74:  fb 03 18 aa   mov	x27, x24
+0x00009d78:  03 00 00 14   b	loc_9d84 ; ⤵ 0xc
+0x00009d7c:  ; loc_9d7c
+0x00009d7c:  06 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.2
+0x00009d80:  73 3d 86 12   mov	w19, #0xffffce14
+0x00009d84:  ; loc_9d84
+0x00009d84:  f6 13 40 f9   ldr	x22, [sp, #0x20]
+0x00009d88:  f4 e3 40 a9   ldp	x20, x24, [sp, #0x8]
+0x00009d8c:  08 00 00 14   b	loc_9dac ; ⤵ 0x20
+0x00009d90:  ; loc_9d90
+0x00009d90:  f8 03 14 aa   mov	x24, x20
+0x00009d94:  f3 93 40 b9   ldr	w19, [sp, #0x90]
+0x00009d98:  f9 03 14 aa   mov	x25, x20
+0x00009d9c:  f4 1f 00 f9   str	x20, [sp, #0x38]
+0x00009da0:  fc 03 14 aa   mov	x28, x20
+0x00009da4:  f5 03 14 aa   mov	x21, x20
+0x00009da8:  ; loc_9da8
+0x00009da8:  f6 13 40 f9   ldr	x22, [sp, #0x20]
+0x00009dac:  ; loc_9dac
+0x00009dac:  e0 46 40 f9   ldr	x0, [x23, #0x88]
+0x00009db0:  00 f5 ff b4   cbz	x0, loc_9c50 ; ⤴ -0x160
+0x00009db4:  77 17 00 94   bl	j__CFRelease
+0x00009db8:  ff 46 00 f9   str	xzr, [x23, #0x88]
+0x00009dbc:  a5 ff ff 17   b	loc_9c50 ; ⤴ -0x16c
+0x00009dc0:  ; loc_9dc0
+0x00009dc0:  34 10 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.5
+0x00009dc4:  ; loc_9dc4
+0x00009dc4:  13 00 80 52   mov	w19, #0
+0x00009dc8:  14 00 80 d2   mov	x20, #0
+0x00009dcc:  18 00 80 d2   mov	x24, #0
+0x00009dd0:  19 00 80 d2   mov	x25, #0
+0x00009dd4:  ff 1f 00 f9   str	xzr, [sp, #0x38]
+0x00009dd8:  1c 00 80 d2   mov	x28, #0
+0x00009ddc:  15 00 80 d2   mov	x21, #0
+0x00009de0:  9c ff ff 17   b	loc_9c50 ; ⤴ -0x190
+0x00009de4:  ; loc_9de4
+0x00009de4:  db 0f 00 94   bl	-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:].cold.1
+0x00009de8:  14 00 80 d2   mov	x20, #0
+0x00009dec:  18 00 80 d2   mov	x24, #0
+0x00009df0:  19 00 80 d2   mov	x25, #0
+0x00009df4:  ff 1f 00 f9   str	xzr, [sp, #0x38]
+0x00009df8:  1c 00 80 d2   mov	x28, #0
+0x00009dfc:  15 00 80 d2   mov	x21, #0
+0x00009e00:  33 3e 86 12   mov	w19, #0xffffce0e
+0x00009e04:  ea ff ff 17   b	loc_9dac ; ⤴ -0x58
+

@@ -1,6 +1,8 @@
 # 摄影风格产品代际、实际插件与条件算子：本机阶段
 
-当前为**静态和连续条件算子阶段**，没有完成匹配样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
+已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
+
+最终实际插件数据流见 [DATAFLOW.zh-CN.md](DATAFLOW.zh-CN.md)。新插件与旧缓存整文件不同，但已选方法和shader确切相同，不能仅凭旧文件名继承版本身份。
 
 ## 版本映射
 
@@ -8,7 +10,7 @@
 |---|---|---|
 |[Apple iPhone 16 规格](https://support.apple.com/en-us/121029)|官方标为 Photographic Styles 2，2026-10-22 查询|不能从它推出内部 bundle 为 V2|
 |[Apple iPhone 18 Pro 规格](https://www.apple.com/iphone-18-pro/specs/)|官方标为 Photographic Styles 3，同日查询|不能把纹理样张当第二代产品样张|
-|`evidence/iphone17-3-manifest.json`|官方 IPSW 包内 BuildManifest：iPhone17,3，27.0.1，24A446，d47ap；读取 133051B|该机的实际插件及运行加载路径|
+|`evidence/iphone17-3-manifest.json`|官方 IPSW 包内 BuildManifest：iPhone17,3，27.0.1，24A446，d47ap；读取 133051B；下述OS组件已再验证镜像与插件|该机实际运行loader选择及像素|
 |`evidence/iphone19-2-manifest.json`|官方 BuildManifest：iPhone19,2，27.0.1，24A446，v63ap；读取 161388B|IMG_2810 的精确拍摄 build；该机的实际插件|
 |`evidence/iphone18-1-manifest.json`|官方 BuildManifest：iPhone18,1，27.0，24A435；读取 123375B|缓存插件在该官方镜像中的成员身份，尚未重新提取证明|
 |本机缓存实际文件|SmartStyleV1.bundle / CMISmartStyleProcessorUtilitiesV1，CFBundleVersion=1，SDK build=24A418，MinimumOSVersion=27.0|SDK build 不是安装 OS build；V1 不是产品代际|
@@ -47,7 +49,7 @@ python3 research/styles-firmware-20261022/firmware_probe.py '<evidence JSON 中�
 
 本机 macOS27.0.1 /26A434，15项测试通过：HTTP200拒绝且不读body、元数据预算/来源、ZIP64偏移、CRC损坏、机型/build错配、精确普通/Recovery OS变体选择、断点字节复用/完整CRC、组件未完成/身份变化时禁止解密挂载、单变量分支、1000个固定种子合成留出样本条件往返、歧义和 S20 plateau 集合保留，以及四项产品/内部/metadata版本不混同的反例。没有新真实照片测试，没有原生 GPU 精度验收；合成留出不计作真实照片留出。
 
-`version_gate.py` 对硬件/build、官方镜像成员身份、实际loader分支和插件类分别校验。V1 bundle配产品第二代与metadata16可以通过合成的完整身份链；单改V2名称不能修复缺失build/来源；相同OS build但硬件不同、产品三代样张充当二代均拒绝。当前真实证据运行结果 `evidence/img2810-version-admission.json` 仍未准入：IMG_2810精确build和独立产品代际证据缺失，缓存与loader硬件/build不匹配。这个检查不把静态准入升级成运行加载、图像精度或唯一逆证明。
+`version_gate.py` 对硬件/build、官方镜像成员身份、实际loader分支和插件类分别校验。V1 bundle配产品第二代与metadata16可以通过合成的完整身份链；单改V2名称不能修复缺失build/来源；相同OS build但硬件不同、产品三代样张充当二代均拒绝。原 `evidence/img2810-version-admission.json` 保留；新插件获取后的 `evidence/img2810-version-admission-after-extraction.json` 仍未准入：IMG_2810精确build和独立产品代际绑定缺失，样张/新插件/旧loader硬件不匹配。这个检查不把静态准入升级成运行加载、图像精度或唯一逆证明。
 
 `compare_texture_tuning.py` 可复验缓存iOS配置和本机macOS配置的精确Studio子表：`iPhone19,2/PortTypeBack/Still/Studio/Common` 的canonical JSON SHA同为 `398fa58e64ca1a9d37008a02179afaf5e10651682661fa6a5abda5ca33c129b0`，包括 UnderEye亮度混合.5和Mattify强度.3；整份plist SHA不同。配置的顺序还含 FilmGrain，grain0时可能不执行。缺iPhone17,3精确键不作为该机功能不存在的证据。配置子表相等不补原始人物统计或实际拍摄选择，见 `evidence/texture-tuning-comparison.json`。
 
@@ -61,10 +63,14 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 
 ### 有界获取目标参考插件
 
-`evidence/iphone17-3-components.json` 在同一原始manifest SHA下补齐ZIP entry。普通 `Customer Erase Install (IPSW)` 的 OS 是 `043-69462-662.dmg.aea`，8858370048B；Recovery的OS是另一251658240B组件，不混选。`download_component.py` 要求精确变体、stored entry、10GiB组件上限、精确HTTP206、最终CRC/SHA和至少三倍组件加4GiB预留空间，无整包回退、自动重试或删除。可显式复用本任务完整16MiB范围断点，至多4个范围请求/64MiB缓冲；中断丢弃的网络body另记上界，不伪称精确累计网络字节。`extract_downloaded.py` 只接受已完成校验的收据，重新核SHA后用公开AEA流程解密、只读挂载、核镜像SystemVersion，导出实际插件文本并卸载本任务挂载点。当前下载只在本任务仓库外scratch进行，下载准备或进度不算插件提取完成。
+`evidence/iphone17-3-components.json` 在同一原始manifest SHA下补齐ZIP entry。普通 `Customer Erase Install (IPSW)` 的 OS 是 `043-69462-662.dmg.aea`，8858370048B；Recovery的OS是另一251658240B组件，不混选。`download_component.py` 要求精确变体、stored entry、10GiB组件上限、精确HTTP206、最终CRC/SHA和至少三倍组件加4GiB预留空间，无整包回退、自动重试或删除。可显式复用本任务完整16MiB范围断点，至多4个范围请求/64MiB缓冲；中断丢弃的网络body另记上界，不伪称精确累计网络字节。`extract_downloaded.py` 只接受已完成校验的收据，重新核SHA后用公开AEA流程解密、只读挂载、核镜像SystemVersion，导出实际插件文本并卸载本任务挂载点。
+
+**该定向提取已实际完成**，不再只报准备就绪：组件CRC `21b221df` 验证通过，SHA256 `d15cb56b62aaad5ac84f1169f2e2a8c75030f34279df584b544426eb855468fd`；解密镜像10106175488B，SHA256 `bcf6b21dbc75439e0aa9ad1bb8c0c226e8daa1241130d47e5eb4bab75dad7876`。镜像SystemVersion确认27.0.1 /24A446。真实路径 `System/Library/VideoProcessors/SmartStyleV1.bundle`，只发现此SmartStyle候选，不从另外两名缺失推断产品代际。实际可执行文件SHA `04dbdad5…`、UUID `5A365596-1ACE-39C8-93D5-EF893EA81BAC`、SDK24A442、bundle版本1；6个方法12512B指令逐条回查通过。只读挂载已卸载，完成收据在 `evidence/plugin-iphone17-3-24A446/extraction.json`。
+
+下载曾在7633633280B处DNS失败，失败原记录和同URL HEAD恢复检查保存在 `evidence/component-dns-failure.json`；后续从同断点续传并通过最终CRC，完成记录为 `evidence/component-download.json`。没有改源、整IPSW回退或重复下载既存前缀。公开FCS前置检查与解密正常；FCS材料、原固件和解密镜像只留本任务仓库外scratch，未提交任何Apple二进制。提取后磁盘剩余约35GiB。
 
 ## S110 失败和下一步
 
 `evidence/s110-failure.json` 记录作业119004152190：提取 exit1；当时实际上传10个文本文件、3588B artifact12316810885，当前 API 列表为空。异常只存在被重定向的 driver.log 中，作业日志没有它。清理时 disk5 被卸载，不足以推断具体失败原因；本轮不补写根因，也不把准备好或挂载过当提取完成。
 
-下一步优先用现有缓存对已定位 CPU 归一化循环做合成原指令比较，再判断是否需要从经核验的 iPhone17,3/iPhone19,2 OS entry 有界提取真实插件。尚缺匹配硬件/build的实际插件身份、同帧人脸提亮/曲线/统计、原纹理统计、原生半精度误差及真实照片留出。没有读取照片库或私人原媒体，没有绕过锁屏；完整目标仍未完成。
+已完成新参考插件身份与CPU归一化原指令比较。下一步是本硬件/build的CMCapture loader与外部renderer/prior/统计实现；IMG_2810还须先取得精确capture build，再匹配其iPhone19,2实际插件及同帧人脸提亮/曲线/原纹理统计。原生GPU半精度误差、真实照片留出和配对RAW均未新增。没有读取照片库或私人原媒体，没有绕过锁屏；完整目标仍未完成。

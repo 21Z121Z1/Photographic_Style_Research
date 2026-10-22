@@ -50,20 +50,28 @@ def macho_layout(data: bytes) -> tuple[str, list[tuple[int, int, int]]]:
     return uid, segments
 
 
-def inspect(bundle: Path, out: Path, llvm_dis: str) -> dict:
+def inspect(bundle: Path, out: Path, llvm_dis: str, *, include_processor: bool = False) -> dict:
     info = plistlib.loads((bundle / "Info.plist").read_bytes())
     binary = bundle / info["CFBundleExecutable"]
     data = binary.read_bytes()
     uid, segments = macho_layout(data)
     out.mkdir(parents=True, exist_ok=False)
     result = {"bundle_name": bundle.name, "binary_bytes": len(data), "binary_sha256": digest(data), "uuid": uid,
-              "info": {k: info.get(k) for k in ("CFBundleIdentifier", "CFBundleVersion", "CFBundleShortVersionString", "DTSDKBuild", "MinimumOSVersion")},
+              "info": {k: info.get(k) for k in ("CFBundleIdentifier", "CFBundleVersion", "CFBundleShortVersionString", "DTSDKBuild", "DTSDKName", "MinimumOSVersion")},
               "cache_origin_is_historical_assertion": True, "container_membership_independently_verified": False,
               "ios_code_executed": False, "sample_matching_verified": False, "methods": [], "air": [], "files": []}
     objc = subprocess.check_output(["ipsw", "macho", "info", "--objc", str(binary)], text=True)
     classes = sorted(set(re.findall(r"^@interface ([A-Za-z0-9_]+)", objc, re.M)))
     result["objc_classes"] = classes
     result["ipsw_version"] = subprocess.check_output(["ipsw", "version"], text=True).strip()
+    symbols = subprocess.check_output(["ipsw", "macho", "info", "--symbols", str(binary)], text=True)
+    ivars = []
+    for address, owner, member in re.findall(r"^(0x[0-9a-f]+):[^\n]*?OBJC_IVAR_\$_(CMISmartStyleProcessor[^.\s]*)\.([^\s]+)", symbols, re.M):
+        value = int(address, 16)
+        vm, off, _ = next(s for s in segments if s[0] <= value < s[0] + s[2])
+        ivars.append({"class": owner, "member": member, "metadata_address": address,
+                      "object_offset": struct.unpack_from("<I", data, off + value - vm)[0]})
+    result["objc_ivar_offsets"] = ivars
     utilities = [name for name in classes if name.startswith("CMISmartStyleProcessorUtilities")
                  and all(f"-[{name} {selector}]" in objc for selector in SELECTORS[:3])]
     if len(utilities) != 1:
@@ -71,8 +79,14 @@ def inspect(bundle: Path, out: Path, llvm_dis: str) -> dict:
         (out / "inventory.json").write_text(json.dumps(result, indent=2) + "\n")
         raise ValueError(result["error"])
     result["actual_utility_class"] = utilities[0]
-    for index, selector in enumerate(SELECTORS):
-        symbol = f"-[{utilities[0]} {selector}]"
+    requests = [(f"linear-{index}.asm.txt", f"-[{utilities[0]} {selector}]") for index, selector in enumerate(SELECTORS)]
+    if include_processor:
+        processors = [name for name in classes if re.fullmatch(r"CMISmartStyleProcessor(?:V[0-9]+)?", name)
+                      and f"-[{name} process]" in objc]
+        result["processor_class_candidates"] = processors
+        if len(processors) == 1:
+            requests.append(("processor-process.asm.txt", f"-[{processors[0]} process]"))
+    for name, symbol in requests:
         text = subprocess.check_output(["ipsw", "macho", "disass", "--symbol", symbol,
                                         "--cache", str(out / "symbols.a2s"), str(binary)], text=True)
         instructions = re.findall(r"^(0x[0-9a-f]+):\s+((?:[0-9a-f]{2} ){3}[0-9a-f]{2})\s", text, re.M)
@@ -86,7 +100,6 @@ def inspect(bundle: Path, out: Path, llvm_dis: str) -> dict:
             checked.extend(raw)
         if not instructions:
             raise ValueError(f"No instructions for {symbol}")
-        name = f"linear-{index}.asm.txt"
         (out / name).write_text(text)
         result["methods"].append({"symbol": symbol, "start": instructions[0][0], "last_instruction": instructions[-1][0],
                                   "checked_instruction_bytes": len(checked), "instruction_sha256": digest(checked), "text": name})
@@ -132,7 +145,8 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("bundle", type=Path); p.add_argument("output", type=Path)
     p.add_argument("--llvm-dis", default="/opt/homebrew/opt/llvm/bin/llvm-dis")
+    p.add_argument("--include-processor", action="store_true")
     args = p.parse_args()
-    report = inspect(args.bundle, args.output, args.llvm_dis)
+    report = inspect(args.bundle, args.output, args.llvm_dis, include_processor=args.include_processor)
     print(json.dumps({"uuid": report["uuid"], "methods": len(report["methods"]), "air_modules": len(report["air"]),
                       "checked_instruction_bytes": sum(r["checked_instruction_bytes"] for r in report["methods"])}))

@@ -1,0 +1,1028 @@
+{
+  "bundle_name": "SmartStyleV1.bundle",
+  "binary_bytes": 288176,
+  "binary_sha256": "04dbdad52b959f848ba1d8de07f4fc81c85d1595c8843637a1dc905039112216",
+  "uuid": "5A365596-1ACE-39C8-93D5-EF893EA81BAC",
+  "info": {
+    "CFBundleIdentifier": "com.apple.com.SmartStyle",
+    "CFBundleVersion": "1",
+    "CFBundleShortVersionString": "1.0",
+    "DTSDKBuild": "24A442",
+    "DTSDKName": "iphoneos27.0.internal",
+    "MinimumOSVersion": "27.0"
+  },
+  "cache_origin_is_historical_assertion": false,
+  "container_membership_independently_verified": true,
+  "ios_code_executed": false,
+  "sample_matching_verified": false,
+  "methods": [
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:]",
+      "start": "0x00009794",
+      "last_instruction": "0x00009e04",
+      "checked_instruction_bytes": 1652,
+      "instruction_sha256": "ca4889d984d420d51979c7376a5e70e25128b44614955cdaf1dfd33af1922aab",
+      "text": "linear-0.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:preLTMThumbnailPixelBuffer:postLTMThumbnailPixelBuffer:cameraInfo:applyGDC:cropToPreLTMBounds:toPixelBuffer:]",
+      "start": "0x000034b4",
+      "last_instruction": "0x00003b54",
+      "checked_instruction_bytes": 1700,
+      "instruction_sha256": "6b2d6fb22ed136726ef022c8ae3913ac6360d066d3aa87d152532237f8c0a161",
+      "text": "linear-1.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:postLTMThumbnailPixelBuffer:cameraInfo:applyGDC:cropToPreLTMBounds:toPixelBuffer:]",
+      "start": "0x00009e08",
+      "last_instruction": "0x0000a658",
+      "checked_instruction_bytes": 2132,
+      "instruction_sha256": "5c1d8edabfd1b0ac24f85af481c6528d57e4f73ef4d8f27f5d3ee87b849b9c64",
+      "text": "linear-2.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 _compileShaders]",
+      "start": "0x00005f98",
+      "last_instruction": "0x00006288",
+      "checked_instruction_bytes": 756,
+      "instruction_sha256": "e9e0a76d76e2889eb6ac20864a56b4bf97bf474b548767f356ba853ade31b9f1",
+      "text": "linear-3.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 _createGlobalToneCurveTextureFromMetadataDict:]",
+      "start": "0x00008e48",
+      "last_instruction": "0x00009100",
+      "checked_instruction_bytes": 700,
+      "instruction_sha256": "c2cfa94d9e81fef2466c65403216b40ace46e56c4ac2d20b8fa5a0ab8fc83635",
+      "text": "linear-4.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorV1 process]",
+      "start": "0x0000188c",
+      "last_instruction": "0x00002e4c",
+      "checked_instruction_bytes": 5572,
+      "instruction_sha256": "dd32185e2a981a1f2bc31721fb9295fe264ef2deeb4ffb370d5165684d074d16",
+      "text": "processor-process.asm.txt"
+    }
+  ],
+  "air": [
+    {
+      "index": 0,
+      "wrapper_offset": 1885,
+      "payload_bytes": 5692,
+      "payload_sha256": "1cad1068533d2df2458acfb581600f563623715121ec21445d23460fd2802a9f",
+      "functions": [
+        "smartStyleExtractLTMThumbnail"
+      ],
+      "selected": true,
+      "text": "air-0.ll.txt"
+    },
+    {
+      "index": 1,
+      "wrapper_offset": 7597,
+      "payload_bytes": 7848,
+      "payload_sha256": "1d48c39419b63c04e9c3b374e65959d2cd9c9c91c130ce77bd963261732f6295",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCreateLinearThumbnailFromPreLTMBounds"
+      ],
+      "selected": true,
+      "text": "air-1.ll.txt"
+    },
+    {
+      "index": 2,
+      "wrapper_offset": 15469,
+      "payload_bytes": 9132,
+      "payload_sha256": "3c30b55c9e070cf47624d8bc92e21c90ee34057fb617a624aa276fa3bfe3bfe3",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCreateLinearThumbnail"
+      ],
+      "selected": true,
+      "text": "air-2.ll.txt"
+    },
+    {
+      "index": 3,
+      "wrapper_offset": 24621,
+      "payload_bytes": 6632,
+      "payload_sha256": "ebfb2e17d5283b9f1698cac0b514ba7466b082ef12f1aad07bd55f4aab114090",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCreateThumbnail"
+      ],
+      "selected": false
+    },
+    {
+      "index": 4,
+      "wrapper_offset": 31277,
+      "payload_bytes": 5376,
+      "payload_sha256": "4f742a7c1cb5b0cfb7fff8a2c56ef9aea295d423e03aebbb432a9acd4469c41f",
+      "functions": [
+        "smartStyleAugmentPersonMask"
+      ],
+      "selected": false
+    },
+    {
+      "index": 5,
+      "wrapper_offset": 36685,
+      "payload_bytes": 6796,
+      "payload_sha256": "3998dd21a5c20963ee44a224ae78f1abd1a1012ed3f6393e26de4d1739806e89",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCropAndScaleMask"
+      ],
+      "selected": false
+    },
+    {
+      "index": 6,
+      "wrapper_offset": 43501,
+      "payload_bytes": 6760,
+      "payload_sha256": "7a08bcc992c5a8983de85968c7e652d42c665605e76e64cd4e1ed31674ed32f4",
+      "functions": [
+        "smartStyleOctagonMirrorExtension"
+      ],
+      "selected": false
+    },
+    {
+      "index": 7,
+      "wrapper_offset": 50285,
+      "payload_bytes": 3688,
+      "payload_sha256": "5c8245e9cd5e66e3b91beec0e2c5959173192e3dd230a7cee38e806a6d05fcaa",
+      "functions": [
+        "simpleTestKernel"
+      ],
+      "selected": false
+    },
+    {
+      "index": 8,
+      "wrapper_offset": 53997,
+      "payload_bytes": 5996,
+      "payload_sha256": "59d2a82b270441991a911f92c1760b4c4002c1a05112990886aba957f01b04cf",
+      "functions": [
+        "generateOvercaptureIntegrationThumbnailKernel"
+      ],
+      "selected": false
+    }
+  ],
+  "files": [
+    {
+      "name": "Info.plist",
+      "sha256": "3568586c14d9a542116d1e1d0bb3556c3e012c3eec10fa24016f151e9134f30b",
+      "bytes": 721
+    },
+    {
+      "name": "SmartStyleProcessorV1-Tuning.plist",
+      "sha256": "62f15198ceb268fbff51c43c43154be975fd8558643d8b5adc73ebd823c53638",
+      "bytes": 117
+    },
+    {
+      "name": "air-0.ll.txt",
+      "sha256": "88f3d83d4ed9938854c21e2a91f37b1bf9c6c9fe495b9c8a2778913cd0be66fc",
+      "bytes": 12415
+    },
+    {
+      "name": "air-1.ll.txt",
+      "sha256": "000d2d95857ed6bd206c319b56d7993f3a53671c259672f7dcdd58542cd6f1f1",
+      "bytes": 17815
+    },
+    {
+      "name": "air-2.ll.txt",
+      "sha256": "cba55c7c781fa90aa84908ae9cad3fbfb5fc1eda4f016aae6b22685b5f31d1b9",
+      "bytes": 24582
+    },
+    {
+      "name": "linear-0.asm.txt",
+      "sha256": "a50ffbbf36ce501865a6d36ba8e919da043eb30ee9d2ca9b59c23f29ea75996b",
+      "bytes": 22161
+    },
+    {
+      "name": "linear-1.asm.txt",
+      "sha256": "4e95c8dd962873554eaf89ea9ccdd4a173c79ac84ec1b4d74ed58e25a184ac38",
+      "bytes": 23781
+    },
+    {
+      "name": "linear-2.asm.txt",
+      "sha256": "0a5fafc6cf690a4516554fca9dd11435a46151716ef8ba33b2a943c95c29215e",
+      "bytes": 29472
+    },
+    {
+      "name": "linear-3.asm.txt",
+      "sha256": "66e256fb2ee9fb7865e851323b4d90d60ed5cd7b20e65cabe8bfdd2447bace09",
+      "bytes": 10859
+    },
+    {
+      "name": "linear-4.asm.txt",
+      "sha256": "fcb6d19cd6d1431264c54bb3c83df22232faed7035688a5f6765a3de3a52c8b7",
+      "bytes": 8970
+    },
+    {
+      "name": "processor-process.asm.txt",
+      "sha256": "19532b944e98f3a1becbca546920c0464a0aa4cb8d49165d3c2e44a92b362de7",
+      "bytes": 76364
+    }
+  ],
+  "objc_classes": [
+    "CMISmartStyleOvercaptureThumbnailGenerator",
+    "CMISmartStyleProcessorInputOutputV1",
+    "CMISmartStyleProcessorSettingsV1",
+    "CMISmartStyleProcessorStillImageConfigurationV1",
+    "CMISmartStyleProcessorStreamingConfigurationV1",
+    "CMISmartStyleProcessorTuningV1",
+    "CMISmartStyleProcessorUtilitiesV1",
+    "CMISmartStyleProcessorV1"
+  ],
+  "ipsw_version": "Version: 3.1.707, BuildCommit: Homebrew",
+  "objc_ivar_offsets": [
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_externalMemoryResource",
+      "metadata_address": "0x0000276a8",
+      "object_offset": 8
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_usedMemoryResource",
+      "metadata_address": "0x0000276ac",
+      "object_offset": 16
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_metalContext",
+      "metadata_address": "0x0000276b0",
+      "object_offset": 24
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_cmImagingAllocator",
+      "metadata_address": "0x0000276b4",
+      "object_offset": 32
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_smartStylePixelBufferRenderer",
+      "metadata_address": "0x0000276b8",
+      "object_offset": 40
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleEngineProcessor",
+      "metadata_address": "0x0000276bc",
+      "object_offset": 48
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_utilities",
+      "metadata_address": "0x0000276c0",
+      "object_offset": 56
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldFlushCVMTLTextureCacheAfterProcessing",
+      "metadata_address": "0x0000276c4",
+      "object_offset": 64
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_subjectRelightingStage",
+      "metadata_address": "0x0000276c8",
+      "object_offset": 72
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_ispSMGProcessingSession",
+      "metadata_address": "0x0000276cc",
+      "object_offset": 80
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_ispSTENProcessingSession",
+      "metadata_address": "0x0000276d0",
+      "object_offset": 88
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleRendererOutputStyledThumbnailPixelBuffer",
+      "metadata_address": "0x0000276d4",
+      "object_offset": 96
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_intermediateRendererInputUnstyledPixelBuffer",
+      "metadata_address": "0x0000276d8",
+      "object_offset": 104
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_intermediateRendererInputUnstyledThumbnailPixelBuffer",
+      "metadata_address": "0x0000276dc",
+      "object_offset": 112
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleRendererInputLinearThumbnailPixelBuffer",
+      "metadata_address": "0x0000276e0",
+      "object_offset": 120
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleEngineInputTargetStyledThumbnailPixelBuffer",
+      "metadata_address": "0x0000276e4",
+      "object_offset": 128
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleEngineInputUnstyledThumbnailPixelBuffer",
+      "metadata_address": "0x0000276e8",
+      "object_offset": 136
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleRendererPixelBufferAttributes",
+      "metadata_address": "0x0000276ec",
+      "object_offset": 144
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleEnginePixelBufferAttributes",
+      "metadata_address": "0x0000276f0",
+      "object_offset": 152
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_intermediateStyleRendererThumbnailSize",
+      "metadata_address": "0x0000276f4",
+      "object_offset": 160
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_styleEngineTargetThumbnailSize",
+      "metadata_address": "0x0000276f8",
+      "object_offset": 176
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldGenerateTarget",
+      "metadata_address": "0x0000276fc",
+      "object_offset": 192
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldDownscaleForTargetGeneration",
+      "metadata_address": "0x000027700",
+      "object_offset": 193
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldEncodeLinear",
+      "metadata_address": "0x000027704",
+      "object_offset": 194
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldLearn",
+      "metadata_address": "0x000027708",
+      "object_offset": 195
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldIntegrate",
+      "metadata_address": "0x00002770c",
+      "object_offset": 196
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_shouldApply",
+      "metadata_address": "0x000027710",
+      "object_offset": 197
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_isSetupDone",
+      "metadata_address": "0x000027714",
+      "object_offset": 198
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_processingType",
+      "metadata_address": "0x000027718",
+      "object_offset": 200
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_previousStyle",
+      "metadata_address": "0x00002771c",
+      "object_offset": 208
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_previousPriorStrength",
+      "metadata_address": "0x000027720",
+      "object_offset": 216
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_previousSRLCurveParameter",
+      "metadata_address": "0x000027724",
+      "object_offset": 220
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_srlWeight",
+      "metadata_address": "0x000027728",
+      "object_offset": 224
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_instanceLabelEncodedFirst8Char",
+      "metadata_address": "0x00002772c",
+      "object_offset": 232
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_instanceLabelEncodedLast8Char",
+      "metadata_address": "0x000027730",
+      "object_offset": 240
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_useLiveMetalAllocations",
+      "metadata_address": "0x000027734",
+      "object_offset": 248
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_useSemanticSRLByDefault",
+      "metadata_address": "0x000027738",
+      "object_offset": 249
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_tuningParameters",
+      "metadata_address": "0x00002773c",
+      "object_offset": 256
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_metalCommandQueue",
+      "metadata_address": "0x000027740",
+      "object_offset": 264
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_cameraInfoByPortType",
+      "metadata_address": "0x000027744",
+      "object_offset": 272
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_instanceLabel",
+      "metadata_address": "0x000027748",
+      "object_offset": 280
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_configuration",
+      "metadata_address": "0x00002774c",
+      "object_offset": 288
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_inputOutput",
+      "metadata_address": "0x000027750",
+      "object_offset": 296
+    },
+    {
+      "class": "CMISmartStyleProcessorV1",
+      "member": "_outputIntegratedStyleCoefficientsTexture",
+      "metadata_address": "0x000027754",
+      "object_offset": 304
+    },
+    {
+      "class": "CMISmartStyleProcessorStillImageConfigurationV1",
+      "member": "_styleEngineConfiguration",
+      "metadata_address": "0x000027758",
+      "object_offset": 8
+    },
+    {
+      "class": "CMISmartStyleProcessorStillImageConfigurationV1",
+      "member": "_styleEngineTuningParameters",
+      "metadata_address": "0x00002775c",
+      "object_offset": 16
+    },
+    {
+      "class": "CMISmartStyleProcessorStillImageConfigurationV1",
+      "member": "_intermediateStyleRendererThumbnailSize",
+      "metadata_address": "0x000027760",
+      "object_offset": 24
+    },
+    {
+      "class": "CMISmartStyleProcessorStreamingConfigurationV1",
+      "member": "_temporalFilterInputBufferSize",
+      "metadata_address": "0x000027764",
+      "object_offset": 8
+    },
+    {
+      "class": "CMISmartStyleProcessorStreamingConfigurationV1",
+      "member": "_styleEngineConfiguration",
+      "metadata_address": "0x000027768",
+      "object_offset": 16
+    },
+    {
+      "class": "CMISmartStyleProcessorStreamingConfigurationV1",
+      "member": "_styleEngineTuningParameters",
+      "metadata_address": "0x00002776c",
+      "object_offset": 24
+    },
+    {
+      "class": "CMISmartStyleProcessorStreamingConfigurationV1",
+      "member": "_intermediateStyleRendererThumbnailSize",
+      "metadata_address": "0x000027770",
+      "object_offset": 32
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_computeOnlySubjectRelighting",
+      "metadata_address": "0x000027774",
+      "object_offset": 8
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_subjectRelightingEnabled",
+      "metadata_address": "0x000027778",
+      "object_offset": 9
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_residualsCalculationDisabled",
+      "metadata_address": "0x00002777c",
+      "object_offset": 10
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_applyDither",
+      "metadata_address": "0x000027780",
+      "object_offset": 11
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkinMaskTransform",
+      "metadata_address": "0x000027784",
+      "object_offset": 12
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_semanticStyleSceneType",
+      "metadata_address": "0x000027788",
+      "object_offset": 16
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputSRLCurveParameter",
+      "metadata_address": "0x00002778c",
+      "object_offset": 20
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_globalLinearSystemMixFactor",
+      "metadata_address": "0x000027790",
+      "object_offset": 24
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_personMasksValidHint",
+      "metadata_address": "0x000027794",
+      "object_offset": 28
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSmartStyle",
+      "metadata_address": "0x000027798",
+      "object_offset": 32
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_metalSharedEvent",
+      "metadata_address": "0x00002779c",
+      "object_offset": 40
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputUnstyledPixelBuffer",
+      "metadata_address": "0x0000277a0",
+      "object_offset": 48
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputUnstyledThumbnailPixelBuffer",
+      "metadata_address": "0x0000277a4",
+      "object_offset": 56
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputLearningTargetPixelBuffer",
+      "metadata_address": "0x0000277a8",
+      "object_offset": 64
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputLearningTargetThumbnailPixelBuffer",
+      "metadata_address": "0x0000277ac",
+      "object_offset": 72
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputMetadataDict",
+      "metadata_address": "0x0000277b0",
+      "object_offset": 80
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputLinearMetadataDict",
+      "metadata_address": "0x0000277b4",
+      "object_offset": 88
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputLinearPixelBuffer",
+      "metadata_address": "0x0000277b8",
+      "object_offset": 96
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputGainMapPixelBuffer",
+      "metadata_address": "0x0000277bc",
+      "object_offset": 104
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputDeltaMapPixelBuffer",
+      "metadata_address": "0x0000277c0",
+      "object_offset": 112
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputReferenceForDeltaMapComputationPixelBuffer",
+      "metadata_address": "0x0000277c4",
+      "object_offset": 120
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputWeightSegmentMapPixelBuffer",
+      "metadata_address": "0x0000277c8",
+      "object_offset": 128
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputWeightSegmentMapPixelBufferScaledForISPSMG",
+      "metadata_address": "0x0000277cc",
+      "object_offset": 136
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputPersonMaskPixelBuffer",
+      "metadata_address": "0x0000277d0",
+      "object_offset": 144
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkinMaskPixelBuffer",
+      "metadata_address": "0x0000277d4",
+      "object_offset": 152
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkyMaskPixelBuffer",
+      "metadata_address": "0x0000277d8",
+      "object_offset": 160
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSRLPixelBuffer",
+      "metadata_address": "0x0000277dc",
+      "object_offset": 168
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputStyleCoefficientsPixelBuffer",
+      "metadata_address": "0x0000277e0",
+      "object_offset": 176
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputTuningType",
+      "metadata_address": "0x0000277e4",
+      "object_offset": 184
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputStyledPixelBuffer",
+      "metadata_address": "0x0000277e8",
+      "object_offset": 192
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputGainMapPixelBuffer",
+      "metadata_address": "0x0000277ec",
+      "object_offset": 200
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputSmallLightMapPixelBuffer",
+      "metadata_address": "0x0000277f0",
+      "object_offset": 208
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputSmallLinearLightMapPixelBuffer",
+      "metadata_address": "0x0000277f4",
+      "object_offset": 216
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputDeltaMapPixelBuffer",
+      "metadata_address": "0x0000277f8",
+      "object_offset": 224
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputLearnedStyleCoefficientsPixelBuffer",
+      "metadata_address": "0x0000277fc",
+      "object_offset": 232
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputImageStatistics",
+      "metadata_address": "0x000027800",
+      "object_offset": 240
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputImageStatisticsExtended",
+      "metadata_address": "0x000027804",
+      "object_offset": 248
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputCodedLinearThumbnailPixelBuffer",
+      "metadata_address": "0x000027808",
+      "object_offset": 256
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputCodedLinearThumbnailMetadata",
+      "metadata_address": "0x00002780c",
+      "object_offset": 264
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputSRLStats",
+      "metadata_address": "0x000027810",
+      "object_offset": 272
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputFaceNormalizedRects",
+      "metadata_address": "0x000027814",
+      "object_offset": 280
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkinSmoothingParameters",
+      "metadata_address": "0x000027818",
+      "object_offset": 288
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputTargetPixelBuffer",
+      "metadata_address": "0x00002781c",
+      "object_offset": 296
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputUnstyledCropRect",
+      "metadata_address": "0x000027820",
+      "object_offset": 304
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputUnstyledThumbnailCropRect",
+      "metadata_address": "0x000027824",
+      "object_offset": 336
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputLinearCropRect",
+      "metadata_address": "0x000027828",
+      "object_offset": 368
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputPersonMaskCropRect",
+      "metadata_address": "0x00002782c",
+      "object_offset": 400
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkinMaskCropRect",
+      "metadata_address": "0x000027830",
+      "object_offset": 432
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkinMaskPCR",
+      "metadata_address": "0x000027834",
+      "object_offset": 464
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputSkyMaskCropRect",
+      "metadata_address": "0x000027838",
+      "object_offset": 496
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputStyledCropRect",
+      "metadata_address": "0x00002783c",
+      "object_offset": 528
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_deltaMapRegionToRenderRect",
+      "metadata_address": "0x000027840",
+      "object_offset": 560
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputDeltaMapCropRect",
+      "metadata_address": "0x000027844",
+      "object_offset": 592
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputReferenceForDeltaMapComputationCropRect",
+      "metadata_address": "0x000027848",
+      "object_offset": 624
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_primaryCaptureRect",
+      "metadata_address": "0x00002784c",
+      "object_offset": 656
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_inputCropRectWithinPrimaryCaptureRect",
+      "metadata_address": "0x000027850",
+      "object_offset": 688
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_outputRenderRect",
+      "metadata_address": "0x000027854",
+      "object_offset": 720
+    },
+    {
+      "class": "CMISmartStyleProcessorInputOutputV1",
+      "member": "_spotlightAffineTransform",
+      "metadata_address": "0x000027858",
+      "object_offset": 752
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_styleEngineProcessor",
+      "metadata_address": "0x00002785c",
+      "object_offset": 8
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_styleEngineWeightSegmentMapProcessor",
+      "metadata_address": "0x000027860",
+      "object_offset": 16
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_metalContext",
+      "metadata_address": "0x000027864",
+      "object_offset": 24
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_coefficientsProcessor",
+      "metadata_address": "0x000027868",
+      "object_offset": 32
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_extractThumbnailPipelineState",
+      "metadata_address": "0x00002786c",
+      "object_offset": 40
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_createLinearThumbnailPipelineState",
+      "metadata_address": "0x000027870",
+      "object_offset": 48
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_createLinearThumbnailPipelineStateWithGDC",
+      "metadata_address": "0x000027874",
+      "object_offset": 56
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_createLinearThumbnailCroppedToPreLTMPipelineState",
+      "metadata_address": "0x000027878",
+      "object_offset": 64
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_createLinearThumbnailCroppedToPreLTMPipelineStateWithGDC",
+      "metadata_address": "0x00002787c",
+      "object_offset": 72
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_createThumbnailPipelineState",
+      "metadata_address": "0x000027880",
+      "object_offset": 80
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_createThumbnailsPipelineStateWithGDC",
+      "metadata_address": "0x000027884",
+      "object_offset": 88
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_maskCropAndScalePipelineState",
+      "metadata_address": "0x000027888",
+      "object_offset": 96
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_maskCropAndScalePipelineStateWithGDC",
+      "metadata_address": "0x00002788c",
+      "object_offset": 104
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_maskFalsePositiveRejectionPipelineState",
+      "metadata_address": "0x000027890",
+      "object_offset": 112
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_octagonMirrorExtensionPipelineState",
+      "metadata_address": "0x000027894",
+      "object_offset": 120
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_preLTMLinearMetadataThumbnailPixelBuffer",
+      "metadata_address": "0x000027898",
+      "object_offset": 128
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_preLTMLinearThumbnailPixelBuffer",
+      "metadata_address": "0x00002789c",
+      "object_offset": 136
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_postLTMUnstyledThumbnailPixelBuffer",
+      "metadata_address": "0x0000278a0",
+      "object_offset": 144
+    },
+    {
+      "class": "CMISmartStyleProcessorUtilitiesV1",
+      "member": "_cvMetalTextureCacheRef",
+      "metadata_address": "0x0000278a4",
+      "object_offset": 152
+    },
+    {
+      "class": "CMISmartStyleProcessorTuningV1",
+      "member": "_personMaskDilatedMaskVal",
+      "metadata_address": "0x0000278a8",
+      "object_offset": 8
+    },
+    {
+      "class": "CMISmartStyleProcessorSettingsV1",
+      "member": "_tuningParametersByVariant",
+      "metadata_address": "0x0000278ac",
+      "object_offset": 8
+    }
+  ],
+  "actual_utility_class": "CMISmartStyleProcessorUtilitiesV1",
+  "processor_class_candidates": [
+    "CMISmartStyleProcessorV1"
+  ],
+  "metallib_sha256": "675b74d04efa5727e1e8b71cf39b0541618667d13dbd15d548d105bfba603446",
+  "llvm_version": "Homebrew LLVM version 22.1.6",
+  "official_container_build": "24A446",
+  "official_container_hardware": [
+    "iPhone17,3"
+  ],
+  "official_container_component_sha256": "d15cb56b62aaad5ac84f1169f2e2a8c75030f34279df584b544426eb855468fd"
+}

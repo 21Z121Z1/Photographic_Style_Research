@@ -83,7 +83,7 @@ def extract(scratch: Path, output: Path) -> None:
         if not candidates:
             raise RuntimeError("No target plugin in verified OS image; no substitute claimed")
         for bundle in candidates:
-            inventory = inspect(bundle, output / bundle.name, "/opt/homebrew/opt/llvm/bin/llvm-dis")
+            inventory = inspect(bundle, output / bundle.name, "/opt/homebrew/opt/llvm/bin/llvm-dis", include_processor=True)
             inventory.update(cache_origin_is_historical_assertion=False, container_membership_independently_verified=True,
                              official_container_build=download["build"], official_container_hardware=download["device"],
                              official_container_component_sha256=download["sha256"])
