@@ -13,6 +13,18 @@ from leaf_domains import strictly_positive_branch
 
 EH=2**-10;TH=2**-24;ETH=2**-9;GATE=fc('3EE4F8B580000000')
 
+# Exact saved S15C cell0 outer box and original half contrast parameter.
+# Only this proved family is admitted by the default leaf fallback. The
+# standalone enclose function remains an explicit diagnostic, not a wider
+# admission gate for arbitrary style inputs.
+CELL0_LO=(0.,-.014420070058153133,0.)
+CELL0_HI=(.23502742808362515,.2394291029825464,.1698263112707185)
+CELL0_AMOUNT=.029998779296875
+
+
+def cell0_supported(rgb,amount):
+    return isinstance(rgb,V)and not rgb.point and rgb.precision=='h'and np.shape(rgb.lo)==(3,)and isinstance(amount,V)and not amount.point and amount.precision=='h'and np.shape(amount.lo)==()and np.all(rgb.lo>=CELL0_LO)and np.all(rgb.hi<=CELL0_HI)and float(amount.lo)==CELL0_AMOUNT and float(amount.hi)==CELL0_AMOUNT
+
 
 def maximum(v):return float(np.max(np.maximum(abs(v.lo),abs(v.hi))))
 def error(bound):return EH*bound+TH

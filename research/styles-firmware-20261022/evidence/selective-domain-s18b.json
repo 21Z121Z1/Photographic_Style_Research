@@ -1,0 +1,193 @@
+{
+  "scope": "One clamp-domain counterexample: original AIR prefix ends before pow SSA213.\n\nEight model-only corners select one witness. One original prefix host call\ntests its actual pre-pow half base and gamma. Never evaluate pow on a negative\nbase, infer integer-exponent semantics, clamp its base, or claim original GPU.\n",
+  "reference": "iPhone17,3 /24A446 AIR10",
+  "source_canonical_gate": "leaf_host.build exact canonical module admission",
+  "original_function_text_sha256": "e87fa7591f9868093f866374159e1e9a9e12240aa6875b58aab54a1c17a75e70",
+  "original_selected_prefix_sha256": "ea94b50b31231255e60da69a2c22a9e45db901aba97c9d77e5da52145bfd4001",
+  "original_inclusive_last_SSA": 210,
+  "post_pow_SSA213_executed": false,
+  "host_IR_sha256": "7b7dbd36b0cd83b0419ce28aeb88245a7663aed9ff55f396ccca239459ce3db8",
+  "host_build": {
+    "selectiveColorFilter": "e87fa7591f9868093f866374159e1e9a9e12240aa6875b58aab54a1c17a75e70"
+  },
+  "model_only_corner_candidates": [
+    {
+      "rgb_half": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "converted_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "rgb_half": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "converted_half_bits": [
+        33709,
+        847,
+        15360
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        -5.608797073364258e-05,
+        5.048513412475586e-05,
+        1.0
+      ]
+    },
+    {
+      "rgb_half": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "converted_half_bits": [
+        3814,
+        15359,
+        33960
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        0.0004210472106933594,
+        0.99951171875,
+        -7.104873657226562e-05
+      ]
+    },
+    {
+      "rgb_half": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "converted_half_bits": [
+        32914,
+        15360,
+        15359
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        -8.702278137207031e-06,
+        1.0,
+        0.99951171875
+      ]
+    },
+    {
+      "rgb_half": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "converted_half_bits": [
+        15360,
+        1114,
+        33171
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        1.0,
+        6.639957427978516e-05,
+        -2.4020671844482422e-05
+      ]
+    },
+    {
+      "rgb_half": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "converted_half_bits": [
+        15360,
+        32907,
+        15359
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        1.0,
+        -8.285045623779297e-06,
+        0.99951171875
+      ]
+    },
+    {
+      "rgb_half": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "converted_half_bits": [
+        15359,
+        15360,
+        34863
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        0.99951171875,
+        1.0,
+        -0.00012767314910888672
+      ]
+    },
+    {
+      "rgb_half": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "converted_half_bits": [
+        15360,
+        15360,
+        15360
+      ],
+      "gamma_half_bits": 15360,
+      "converted_half": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "original_host_prefix_calls": 1,
+  "witness_rgb_half": [
+    1.0,
+    1.0,
+    0.0
+  ],
+  "native_converted_half": [
+    0.99951171875,
+    1.0,
+    -0.00012767314910888672
+  ],
+  "native_gamma_half": 1.0,
+  "native_half_bits": [
+    15359,
+    15360,
+    34863,
+    15360
+  ],
+  "negative_components": [
+    2
+  ],
+  "model_vs_host_converted_bit_mismatches": 0,
+  "input_inside_original_clamp_domain": true,
+  "actual_host_rounding_graph_negative_reachable": true,
+  "all_clamp_domain_nonnegative_claim_refuted_for_this_host_contract": true,
+  "original_GPU_negative_reachability": "unverified; host math and contraction are explicit assumptions",
+  "AIR_pow_negative_base_semantics": "not inferred from host powf or gamma1; conservative model restriction retained",
+  "full_domain_proof": "one counterexample refutes universal positivity under this host contract; no characterization of all negative regions or arbitrary lookup",
+  "S17_outer_negative_endpoints_reachable": "not established by this small negative witness",
+  "clamp_domain_or_pow_budgets_changed": false,
+  "original_GPU_executed": false,
+  "zero_lookup_sampler_contract": "Existing leaf float-red sampler ABI, zero values and zero other channels; equivalent only to constant all-zero RGBA lookup at all finite coordinates, not general2D sampler verification",
+  "host_math_C_sha256": "0a03e276107964be2ccac3441bd730b3331ab0c0c189472f05037eff56920ae3",
+  "metadata_only_annotation_no_additional_host_execution": true
+}

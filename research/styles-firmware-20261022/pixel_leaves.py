@@ -49,7 +49,7 @@ def root_components(root: V,amplitude: V):
     return [(amplitude.f()*F(fc(bits),root)).h()*root[i]for i,bits in enumerate(['3FD322D0E0000000','3FE2C8B440000000','3FBD2F1AA0000000'])]
 
 
-def contrast(rgb: V,amount: V):
+def contrast_independent(rgb: V,amount: V):
     c=rgb.clamp();s=dot(c,[hc('3555')]*3).sqrt();delta=c-s;variance=(delta*delta).sum_channels()
     shape=((1-s.f())*s.f()).h();root=c.sqrt();scaled=(amount.f()*F(fc('400B333340000000'),rgb)).h();amplitude=shape*scaled
     r,g,b=root_components(root,amplitude)
@@ -61,6 +61,14 @@ def contrast(rgb: V,amount: V):
         newlow=changed.min_channels();newspan=channel_span(changed)
         return (rgb-low)*(newspan/strictly_positive_branch(span,fc('3EE4F8B580000000')))+newlow
     return lazy_select(span.f().gt(F(fc('3EE4F8B580000000'),rgb)),preserve,lambda:changed)
+
+
+def contrast(rgb: V,amount: V):
+    try:return contrast_independent(rgb,amount)
+    except DomainUnknown:
+        from contrast_span_joint import cell0_supported,enclose
+        if not cell0_supported(rgb,amount):raise
+        return enclose(rgb,amount).output
 
 
 LEAVES={'contrastFilter':contrast,'airyFilter':airy}

@@ -2,7 +2,7 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新阶段见 [PROGRESS-S17.zh-CN.md](PROGRESS-S17.zh-CN.md)：同一保存上下文中，零lookup/零偏移的selective联合误差包络将逆变换宽度587→1.8843、gamma精确约束为1；负底数可达性仍未证，12个pow集合unknown和writer集合缺项保留。两个保存像素共2次定向原AIR宿主调用，定位bright剩余位差并修正限定宿主FMA合同；1938个保存half观察逐位一致，不计作1938个独立案例。BG仅cell0的原half商→乘法关系获得局部联合界，未接成完整BG通过。198项测试通过。9个未定位消费者明确列为未完成软件追踪；原iOS/GPU、同帧输入及照片逆解均未验收。
+最新阶段见 [PROGRESS-S18.zh-CN.md](PROGRESS-S18.zh-CN.md)：cell0联合界已按原保存范围/精确half参数接入默认contrast集合路径，保存64子域unknown从8→7，原S14-C case0仍在完整BG的contrast商有限性处unknown。一次原AIR到pow前的宿主前缀调用证实完整clamp域内RGB=(1,1,0)可产生B=-.0001276731、gamma1；不推断负底数pow语义或原GPU符号。新增AIR13跨函数/无类型别名与两处CPU拷贝分析，9字段仍未定位消费者，保留逐字段路径和断点。205项测试通过。S17的1938保存half零差异仍仅属cast0/tuning2/中性BGFG/零lookup宿主上下文；原GPU、真实同帧、活跃风格及逆解均未验收。
 
 最终实际插件数据流见 [DATAFLOW.zh-CN.md](DATAFLOW.zh-CN.md)。新插件与旧缓存整文件不同，但已选方法和shader确切相同，不能仅凭旧文件名继承版本身份。
 

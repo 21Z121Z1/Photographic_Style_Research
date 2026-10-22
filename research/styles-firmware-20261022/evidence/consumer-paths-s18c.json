@@ -1,0 +1,2928 @@
+{
+  "scope": "New scope: AIR13 interprocedural parameter aliases and two CPU blit islands.\n\nNo215-header rescan. Reports may-reach pointer paths, byte-span accesses and\nunresolved escapes. A missing read in this bounded closure never means unused.\nRaw AIR and CPU image stay outside Git. Existing CPU text SHA is admission.\n",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "AIR13_canonical_sha256": "b56d7f51d4556af99356bf5963d270358b2422425b7ba929f056d1a4c95668ea",
+  "AIR13_kernel_params_binding": "argument4, Metal buffer1, declared672B; metadata22",
+  "new_scope_vs_S9": "call-argument origin propagation from generateColorCubes through recursive helpers, derived pointer/byte-span/copy escapes; two previously untraced CPU blit argument islands; no resource-header rescan",
+  "payloads_statically_inspected": 1,
+  "payload_headers_consumer_scanned": 0,
+  "closure": {
+    "root": "generateColorCubes",
+    "contexts": 12,
+    "functions": [
+      "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+      "generateColorCubes",
+      "getBWChannelMixFromStats",
+      "renderBGAdjustments",
+      "renderBWAdjustmentsByCastType",
+      "renderChannelMixForBWCasts",
+      "renderFGAdjustments",
+      "renderNeutralizingAdjustments",
+      "renderSelectiveColorAdjustments",
+      "renderSkinAdjustments",
+      "renderVideoHazeCorrection",
+      "renderWarmthCastAdjustments"
+    ],
+    "parameter_accesses": [
+      {
+        "function": "generateColorCubes",
+        "line": 88,
+        "instruction_sha256": "ee163be2a319c2d0a588d7cad0bf72ec68bf3cea2e38acd0f28294705f1daba1",
+        "kind": "load",
+        "offset": 232,
+        "offset_upper": 232,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "generateColorCubes",
+        "line": 90,
+        "instruction_sha256": "a26c7fc6addd907601e3099f13c68dd1ec1ba75b61e25bd5dee7f71226bed1f4",
+        "kind": "load",
+        "offset": 236,
+        "offset_upper": 236,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "generateColorCubes",
+        "line": 100,
+        "instruction_sha256": "bc835c1323d89e9ba323b70a7e65fcf03b762bd30708068eaff675ab409c5fd6",
+        "kind": "load",
+        "offset": 8,
+        "offset_upper": 8,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 170,
+        "instruction_sha256": "fc969b4befd45aebad075a513c4f7162b6b30ef767f5ef2115748f138ada5f35",
+        "kind": "load",
+        "offset": 668,
+        "offset_upper": 668,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 176,
+        "instruction_sha256": "142ebf59406373c903cce18a3994b8307584f4b333f6bf9c01a2e4c65b72e7db",
+        "kind": "load",
+        "offset": 168,
+        "offset_upper": 168,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 193,
+        "instruction_sha256": "ca8d24521cd34df98f3352eaace269897fec03306fa6be7b9f14efbb8cefe681",
+        "kind": "load",
+        "offset": 620,
+        "offset_upper": 620,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 196,
+        "instruction_sha256": "f002452b2f61b6b62d4ff7f206adacd3bd295033835676348744a6a943e428c0",
+        "kind": "load",
+        "offset": 624,
+        "offset_upper": 624,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 213,
+        "instruction_sha256": "b41ddfc5d6205a9e9c308c5f4d0b86be3bb57eef4acab1cec9ef846c7ec7d0a0",
+        "kind": "load",
+        "offset": 12,
+        "offset_upper": 12,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 227,
+        "instruction_sha256": "91ad9d6247bed96e54038c46e61122f30e9a0780c1915cb8ccfa24f53b48388f",
+        "kind": "load",
+        "offset": 444,
+        "offset_upper": 444,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 272,
+        "instruction_sha256": "038f1f54699a083c55c367af26796a4bf85225eda33f9142303c7d1a3fe4380b",
+        "kind": "load",
+        "offset": 0,
+        "offset_upper": 0,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 278,
+        "instruction_sha256": "c524a4f77f8f6b69ecc1f9eb9f01694ea8211fc692b705d2d3267d26c2f6fcd7",
+        "kind": "load",
+        "offset": 28,
+        "offset_upper": 28,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 289,
+        "instruction_sha256": "a3ba3a947a28042b554b7d248adcbf88851710ee4d56bd1f3c3f498f68f15b17",
+        "kind": "load",
+        "offset": 448,
+        "offset_upper": 448,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 293,
+        "instruction_sha256": "10dead62b037db544475c96f6f74e52d942c9ff729cc99a6c7ec98943e5a5542",
+        "kind": "load",
+        "offset": 652,
+        "offset_upper": 652,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 296,
+        "instruction_sha256": "2c54dbb07a7ce95b9d7bd1f974955a86c6c7a0897a0187d43ef766399c0374ba",
+        "kind": "load",
+        "offset": 8,
+        "offset_upper": 8,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 303,
+        "instruction_sha256": "cd4cb9e5adb44ecbb2cd1066dc04a58a392348bce4ecbbe645bc10b849447aae",
+        "kind": "load",
+        "offset": 432,
+        "offset_upper": 432,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 358,
+        "instruction_sha256": "f54c0f8fd1792c961555f96a36b0637afa429777c49f843de26700b5a7f28a78",
+        "kind": "load",
+        "offset": 16,
+        "offset_upper": 16,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 364,
+        "instruction_sha256": "e1c6e2b303da5902394491e0343da628a69ba5093536301c272ecca1370c29f4",
+        "kind": "load",
+        "offset": 20,
+        "offset_upper": 20,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 375,
+        "instruction_sha256": "1f4fe1f0d7566c8c196fe9da21a1099447135d8ec2f3df8bdb63b873b1af9fdf",
+        "kind": "load",
+        "offset": 452,
+        "offset_upper": 452,
+        "bytes": 1,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 382,
+        "instruction_sha256": "e31d6272ce37de9cd5060d5f554d3f18920a25c0146780ffe8a0df86126ad7dc",
+        "kind": "load",
+        "offset": 160,
+        "offset_upper": 160,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 435,
+        "instruction_sha256": "f7aa9ca51e605d4659194dd4060347398dbd167cc03adb8b9608f2578f480da6",
+        "kind": "load",
+        "offset": 164,
+        "offset_upper": 164,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderChannelMixForBWCasts",
+        "line": 460,
+        "instruction_sha256": "8289508bfa9dba3a49c64ef221274d1ac2ae83678ee5957819f0563ff41aebf9",
+        "kind": "load",
+        "offset": 0,
+        "offset_upper": 0,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderChannelMixForBWCasts",
+        "line": 468,
+        "instruction_sha256": "721df12675c4fa4ee1c1b9d97e4b0561e146f2a74602cc8b3cb46fb7c7ede8ca",
+        "kind": "load",
+        "offset": 240,
+        "offset_upper": 240,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderChannelMixForBWCasts",
+        "line": 472,
+        "instruction_sha256": "b410e38910cfa65fb6f5e4b422c478739697769c0cf826614a11b77032fd82d2",
+        "kind": "load",
+        "offset": 244,
+        "offset_upper": 244,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderChannelMixForBWCasts",
+        "line": 476,
+        "instruction_sha256": "d792cf764de304da049ca14c58e290c184bf6aacf322a7c71c2b7b2d41683ede",
+        "kind": "load",
+        "offset": 248,
+        "offset_upper": 248,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "getBWChannelMixFromStats",
+        "line": 606,
+        "instruction_sha256": "c0c38dff5caef126981dc14edf987d96a7b64db3f7ae1109a982939dea6fa982",
+        "kind": "load",
+        "offset": 0,
+        "offset_upper": 0,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 857,
+        "instruction_sha256": "bb6bc302fab819cb86e8b317fac8a453d04e5f76d0d6b3248cb8ae721ec0c987",
+        "kind": "load",
+        "offset": 456,
+        "offset_upper": 456,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 859,
+        "instruction_sha256": "e3c7c2ecfb24e3e75dc2d1c98f5d82dcf47d60c433279917e801428036e92348",
+        "kind": "load",
+        "offset": 460,
+        "offset_upper": 460,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 861,
+        "instruction_sha256": "d4b0c279fc71c0f306e666715015f24c91ea7dfbc9e4066af69f4480df1304a8",
+        "kind": "load",
+        "offset": 464,
+        "offset_upper": 464,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 863,
+        "instruction_sha256": "9d67ec1ea5a958a138f6d5b2277f76937e16a97c06426f008b6cd0f8b5e32952",
+        "kind": "load",
+        "offset": 468,
+        "offset_upper": 468,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 865,
+        "instruction_sha256": "3a3b0a0065fbaf473799fe9cbce251ea6bcd739b8514c625724402f8a92fb217",
+        "kind": "load",
+        "offset": 472,
+        "offset_upper": 472,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 867,
+        "instruction_sha256": "479e9bd5b9577249056c67d084c6ae7b947e2b9fd1d076227dd703f87eb4031b",
+        "kind": "load",
+        "offset": 476,
+        "offset_upper": 476,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 869,
+        "instruction_sha256": "b1132d06f11939d414d18d0f6c58f955c93e158cb7c8474ca60cdfaedbfc4b7c",
+        "kind": "load",
+        "offset": 480,
+        "offset_upper": 480,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderVideoHazeCorrection",
+        "line": 871,
+        "instruction_sha256": "ad36ffb3a1c26c52f4925c9c639e9f4dfb4d2e5702d33bdc8ca0d06a58d779ae",
+        "kind": "load",
+        "offset": 484,
+        "offset_upper": 484,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBWAdjustmentsByCastType",
+        "line": 1152,
+        "instruction_sha256": "f3d9d34145c3558a8c385b3f65eb349a01ce8638aec38d679230383efb870507",
+        "kind": "load",
+        "offset": 8,
+        "offset_upper": 8,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBWAdjustmentsByCastType",
+        "line": 1155,
+        "instruction_sha256": "adb720e91c96ea2ded5cc54eb90dc55677cc2d99c77e9e469b586c398182a6a4",
+        "kind": "load",
+        "offset": 252,
+        "offset_upper": 252,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBWAdjustmentsByCastType",
+        "line": 1159,
+        "instruction_sha256": "0ef04ea746ce00d7f80b98cb5c9d1d94f7e6d4f65ce022fb4fced13f80555807",
+        "kind": "load",
+        "offset": 0,
+        "offset_upper": 0,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBWAdjustmentsByCastType",
+        "line": 1165,
+        "instruction_sha256": "e54cab7dafa5e461c58a0a03bf8bd650f4a05ec6f909df5218061ba06efb797e",
+        "kind": "load",
+        "offset": 652,
+        "offset_upper": 652,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBWAdjustmentsByCastType",
+        "line": 1169,
+        "instruction_sha256": "cb5d89878647908f70dc920aaf146479d1c5d41265e841280142900bf1d48c8c",
+        "kind": "load",
+        "offset": 432,
+        "offset_upper": 432,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1428,
+        "instruction_sha256": "4aca2a791659e2250ebbd7f152fb63610937bfee385af13c21510ef239f9456c",
+        "kind": "load",
+        "offset": 96,
+        "offset_upper": 96,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1434,
+        "instruction_sha256": "ea4595e547f80e19a496f81a87b3a1ecb9d1407739e936b5ed5a156f24ab9dcd",
+        "kind": "load",
+        "offset": 108,
+        "offset_upper": 108,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1438,
+        "instruction_sha256": "98adda97f9aa191cd88c02e267c0f99217640d5c4e51746dc147bbaeee13876f",
+        "kind": "load",
+        "offset": 112,
+        "offset_upper": 112,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1442,
+        "instruction_sha256": "5ee594c6f963b11f78072ce57151e4347fa653018eb473f04b884a2a57983df7",
+        "kind": "load",
+        "offset": 116,
+        "offset_upper": 116,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1485,
+        "instruction_sha256": "6c23ca78dc59d9d303522a82bdd4149dcd0d807d44956b47eabe249ad96055b0",
+        "kind": "load",
+        "offset": 100,
+        "offset_upper": 100,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1491,
+        "instruction_sha256": "29b3c88bc3241dae3a7d87724e9be01732357275503ba99b767f1859f40763a2",
+        "kind": "load",
+        "offset": 120,
+        "offset_upper": 120,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1495,
+        "instruction_sha256": "0e857decb93f05c5e4868fc9276e781c36fe911244814f3fd7364b2024b880bb",
+        "kind": "load",
+        "offset": 124,
+        "offset_upper": 124,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1499,
+        "instruction_sha256": "5b0edc4f19fd25b28c8d2e6d220671c6236e18e623eadb5138dd1cd9385b0298",
+        "kind": "load",
+        "offset": 128,
+        "offset_upper": 128,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1542,
+        "instruction_sha256": "5e1ed5bc2512bac55a70211d6ce45913ca917aef5c78568b1ebe7d237d8d8015",
+        "kind": "load",
+        "offset": 104,
+        "offset_upper": 104,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1548,
+        "instruction_sha256": "3115737379643a7679a426f5bb97f7ede2226b33172b0967cb802c690e73df34",
+        "kind": "load",
+        "offset": 132,
+        "offset_upper": 132,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1552,
+        "instruction_sha256": "6c01c1597f2b48446206cb820c8d66db9254211f6f2d8beae351bf71fdc41af2",
+        "kind": "load",
+        "offset": 136,
+        "offset_upper": 136,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSelectiveColorAdjustments",
+        "line": 1556,
+        "instruction_sha256": "bea652e29e94249437ce57a7bb097597809e982ffcb3c19cb0f2ad7ecc20dd96",
+        "kind": "load",
+        "offset": 140,
+        "offset_upper": 140,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1859,
+        "instruction_sha256": "23b9812b12f57f4e9a5b6a8b744c45cac5978d8df060435a301976bbc2074e99",
+        "kind": "load",
+        "offset": 36,
+        "offset_upper": 36,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1873,
+        "instruction_sha256": "4d44d8baec6dec177a97cdc1f6f517e578cd53ec020c2ad46788b5522c759bce",
+        "kind": "load",
+        "offset": 60,
+        "offset_upper": 68,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1877,
+        "instruction_sha256": "475287bd9c513a9adaa34ea06d523cf540114661ec13409a2abb5a66e7a06425",
+        "kind": "load",
+        "offset": 72,
+        "offset_upper": 80,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1883,
+        "instruction_sha256": "4ac3e2eca8ffeea5d8bb33af3b5b707c36b2302ca0402e24ff76f38f8d6878da",
+        "kind": "load",
+        "offset": 84,
+        "offset_upper": 92,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1900,
+        "instruction_sha256": "64be9c53574f603d3367816d0d5cc382eedacdc7b68038e40eb57365cb054a98",
+        "kind": "load",
+        "offset": 44,
+        "offset_upper": 44,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1950,
+        "instruction_sha256": "2fe427ecec55d46147b687aac8459c2b59ce4534a1a8f755d05d947bb8360d9e",
+        "kind": "load",
+        "offset": 40,
+        "offset_upper": 40,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1968,
+        "instruction_sha256": "2a2a38ae78783788d77e6172c7b5c8e926ae76589ad31bb61ec5613fc3b70c81",
+        "kind": "load",
+        "offset": 48,
+        "offset_upper": 48,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1979,
+        "instruction_sha256": "b1b6f4ce3e40d0d63a850168d7a343d7580eece37f87da5aa64316a2f8508887",
+        "kind": "load",
+        "offset": 52,
+        "offset_upper": 52,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1997,
+        "instruction_sha256": "adbbd4d693815a81585a6d2fe5f999c3e2597cfd2f7e9e05553b645b1d05db1b",
+        "kind": "load",
+        "offset": 56,
+        "offset_upper": 56,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderNeutralizingAdjustments",
+        "line": 2425,
+        "instruction_sha256": "ada1b1797954ca50ddc564d82450ff7fae76e5e862128bdc3b090e7d64e59aa4",
+        "kind": "load",
+        "offset": 144,
+        "offset_upper": 144,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderNeutralizingAdjustments",
+        "line": 2432,
+        "instruction_sha256": "00e7c05c496eb195e82d1fb1050c27c2ce062d4e6244934a574040ed28274c93",
+        "kind": "load",
+        "offset": 148,
+        "offset_upper": 148,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderNeutralizingAdjustments",
+        "line": 2510,
+        "instruction_sha256": "567e451568a3eaa0b4f4d833e3bf641e9c848db96355690dae3aa48052a0e5d4",
+        "kind": "load",
+        "offset": 152,
+        "offset_upper": 152,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderNeutralizingAdjustments",
+        "line": 2523,
+        "instruction_sha256": "b68bab60bad9fb70d8775f1d77887312f58a5a0eebf62123c22b43bb06a5c4f7",
+        "kind": "load",
+        "offset": 156,
+        "offset_upper": 156,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSkinAdjustments",
+        "line": 3964,
+        "instruction_sha256": "87617f938bcb355e7c5e02cef9b286f7cd027728a321207fbf0f4c6bcdc72adf",
+        "kind": "load",
+        "offset": 596,
+        "offset_upper": 596,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderSkinAdjustments",
+        "line": 4029,
+        "instruction_sha256": "5b97ccc2e1a433f1fef17a0d9faf5fc4e8649abccc1b5d077c77fbe379f13cca",
+        "kind": "load",
+        "offset": 592,
+        "offset_upper": 592,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4171,
+        "instruction_sha256": "56098f3d7dfc5e6010beab4dd8b17cdfa43e942c13d7722f7849746f4eca8790",
+        "kind": "load",
+        "offset": 556,
+        "offset_upper": 556,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4179,
+        "instruction_sha256": "75ce0550b12af5052ab34336db9aa99fd869dd339675309a74fd4db5652acc77",
+        "kind": "load",
+        "offset": 572,
+        "offset_upper": 572,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4192,
+        "instruction_sha256": "d9254518dcabdae2a584e25d7bd0fbb29a5dab70f83d0ab3da05f49cd7f14c2c",
+        "kind": "load",
+        "offset": 580,
+        "offset_upper": 580,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4213,
+        "instruction_sha256": "938b39427a935f71ef05ed02bed880dc25860c6a531b2ca5f4c5aa2affec265d",
+        "kind": "load",
+        "offset": 616,
+        "offset_upper": 616,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4226,
+        "instruction_sha256": "b58e3ebc57a03bc5f2cf0133c177d16bb70e48fbf2883096a1ffc104ebfc7372",
+        "kind": "load",
+        "offset": 584,
+        "offset_upper": 584,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4239,
+        "instruction_sha256": "7b75b992d223ff7b7b74d6c508ca46dce9f3ae0c639f8610d9e7cea51f025690",
+        "kind": "load",
+        "offset": 600,
+        "offset_upper": 600,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4261,
+        "instruction_sha256": "ec6ef6d741af018c5d8fe717295950034a72dc4662cc83cb4bf37473f3823f92",
+        "kind": "load",
+        "offset": 576,
+        "offset_upper": 576,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4275,
+        "instruction_sha256": "10bdb1ab1dba4a7d23c48474d3a63edee45988a904f2186a3476881e8f57b3a3",
+        "kind": "load",
+        "offset": 564,
+        "offset_upper": 564,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4305,
+        "instruction_sha256": "8a0c8197de7971af732e98493594b7ee16625c1189618f10921124e13bc916ee",
+        "kind": "load",
+        "offset": 612,
+        "offset_upper": 612,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4318,
+        "instruction_sha256": "88629fba23dafe1dba7aee77bd7f31f08dd0d822382ccaaf1729fe6bee284a71",
+        "kind": "load",
+        "offset": 568,
+        "offset_upper": 568,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderFGAdjustments",
+        "line": 4364,
+        "instruction_sha256": "e33cba2021a5350329c525e081cbf77c02b249aa35144321339fd656c6a6c775",
+        "kind": "load",
+        "offset": 588,
+        "offset_upper": 588,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5169,
+        "instruction_sha256": "666c15a8b44d2a4d122d92c080f5c74ad3263f0432755bfe06571f7ebc769d43",
+        "kind": "load",
+        "offset": 500,
+        "offset_upper": 500,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5190,
+        "instruction_sha256": "671fe6bb74ad7b7141fc3bf0afb6e1d9ef240d4e9fbf81c622ace71f0bfef863",
+        "kind": "load",
+        "offset": 492,
+        "offset_upper": 492,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5203,
+        "instruction_sha256": "2f21a427bf8a36bf7ad1d95a892416215a7358d429c203c88e35c1f08efadbfa",
+        "kind": "load",
+        "offset": 488,
+        "offset_upper": 488,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5216,
+        "instruction_sha256": "f6c883b3a22791982b604754aa86779f12cca21e9b21041153db8c8d75e9dbbb",
+        "kind": "load",
+        "offset": 532,
+        "offset_upper": 532,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5230,
+        "instruction_sha256": "81bb4392010965284cabd4cd9a882221920f26a95df5c7c4c645a9ccd1ba7782",
+        "kind": "load",
+        "offset": 516,
+        "offset_upper": 516,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5260,
+        "instruction_sha256": "4319f7714f77d37d7cdfeb3b122fcd9467deae4406d79dcb585535be1f776b18",
+        "kind": "load",
+        "offset": 520,
+        "offset_upper": 520,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5274,
+        "instruction_sha256": "c0cc95ce76f61aad7f94fba4e61ed9e89613c4be1fa39c08f26cc19433b944d4",
+        "kind": "load",
+        "offset": 508,
+        "offset_upper": 508,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5339,
+        "instruction_sha256": "f737b50fddf706760c0c2ca142e59bc224de798eaf01f1cecfaa7cb3a91eebb3",
+        "kind": "load",
+        "offset": 504,
+        "offset_upper": 504,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5375,
+        "instruction_sha256": "26ab858454173d79f8d35bb9cf7cc9f0860f9b8b0df3b6e9c4ceea7b5c124afa",
+        "kind": "load",
+        "offset": 524,
+        "offset_upper": 524,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5413,
+        "instruction_sha256": "f868063d2747ae1e80cd4252fb6888b8452c6d501accb04dd659b1ce5a679766",
+        "kind": "load",
+        "offset": 528,
+        "offset_upper": 528,
+        "bytes": 4,
+        "target_fields": []
+      },
+      {
+        "function": "renderBGAdjustments",
+        "line": 5426,
+        "instruction_sha256": "1746b31d9541ece29cb47bf36f7f7cf7e76d1f27fba4355bc1f92536adc310b5",
+        "kind": "load",
+        "offset": 496,
+        "offset_upper": 496,
+        "bytes": 4,
+        "target_fields": []
+      }
+    ],
+    "pointer_call_edges": [
+      {
+        "function": "generateColorCubes",
+        "line": 126,
+        "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+        "caller": "generateColorCubes",
+        "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "formal_index": 9,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "generateColorCubes",
+        "line": 139,
+        "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+        "caller": "generateColorCubes",
+        "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "formal_index": 9,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 209,
+        "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderBGAdjustments",
+        "formal_index": 4,
+        "base_offset": 488,
+        "declared_span": 68,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix"
+        ]
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 211,
+        "instruction_sha256": "955b5078a948bd2522403f78c08f48417c5fc566039894fb1f35f9301301fa59",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderFGAdjustments",
+        "formal_index": 6,
+        "base_offset": 556,
+        "declared_span": 64,
+        "target_fields": [
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 262,
+        "instruction_sha256": "a2b1297058f7877289a0ea9ee66d2d4b915e6e1e059ba89ee1662c9f68716503",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderSkinAdjustments",
+        "formal_index": 1,
+        "base_offset": 556,
+        "declared_span": 64,
+        "target_fields": [
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 286,
+        "instruction_sha256": "1288bcf25f976758256d6a97b3ea2783558b783db6879a0fdbfa4455218c3bba",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderNeutralizingAdjustments",
+        "formal_index": 2,
+        "base_offset": 36,
+        "declared_span": 136,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 287,
+        "instruction_sha256": "79955f8a11c4ffdb4b9deb0be83ad8a0c449f38090f364a782a0a1a53ace3ed4",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderWarmthCastAdjustments",
+        "formal_index": 1,
+        "base_offset": 36,
+        "declared_span": 136,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 291,
+        "instruction_sha256": "0acb3cc2404e7f8f82a60c635a3d65d0b46c0fb740fbe5f7960655bd06c9a3c5",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderSelectiveColorAdjustments",
+        "formal_index": 1,
+        "base_offset": 36,
+        "declared_span": 136,
+        "target_fields": []
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 356,
+        "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderBWAdjustmentsByCastType",
+        "formal_index": 4,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 372,
+        "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderVideoHazeCorrection",
+        "formal_index": 2,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "line": 453,
+        "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+        "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+        "callee": "renderChannelMixForBWCasts",
+        "formal_index": 2,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "renderChannelMixForBWCasts",
+        "line": 479,
+        "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+        "caller": "renderChannelMixForBWCasts",
+        "callee": "getBWChannelMixFromStats",
+        "formal_index": 1,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      },
+      {
+        "function": "renderChannelMixForBWCasts",
+        "line": 506,
+        "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+        "caller": "renderChannelMixForBWCasts",
+        "callee": "getBWChannelMixFromStats",
+        "formal_index": 1,
+        "base_offset": 0,
+        "declared_span": 672,
+        "target_fields": [
+          "bg.airy",
+          "bg.warmthMatchI",
+          "bg.warmthMatchQ",
+          "bg.warmthMatchSkyI",
+          "bg.warmthMatchSkyQ",
+          "bg.bgGlobalMix",
+          "fg.airy",
+          "fg.faceI",
+          "fg.faceQ"
+        ]
+      }
+    ],
+    "derived_untyped_pointer_ops": [
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1872,
+        "instruction_sha256": "fa1c2d69fd082e837d51a7bf9223342314b0c361dec98d11401798a262922e20",
+        "kind": "induction-bounded array GEP",
+        "offset_range": [
+          60,
+          68
+        ]
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1876,
+        "instruction_sha256": "543b905c8adf1e789dfd5771b761e7a90954afe8ae25c8b9eff18cc4e07c8490",
+        "kind": "induction-bounded array GEP",
+        "offset_range": [
+          72,
+          80
+        ]
+      },
+      {
+        "function": "renderWarmthCastAdjustments",
+        "line": 1882,
+        "instruction_sha256": "6ccd08a5d7b27e870d7c1bcd9a625f75fea49a13d3b26ee1f536fc3a152d62c9",
+        "kind": "induction-bounded array GEP",
+        "offset_range": [
+          84,
+          92
+        ]
+      }
+    ],
+    "bounded_induction_loops": [
+      {
+        "function": "renderWarmthCastAdjustments",
+        "index_SSA": 18,
+        "inclusive_index_range": [
+          0,
+          2
+        ],
+        "selected_instruction_text_sha256": "08d41ce75652fd9f3869559b33b7be590ebe66185d76885c0d4278c5f7e43f89",
+        "proof": "0 entry, unit no-wrap increment, exit at next3, only header/self predecessors in exact admitted AIR13"
+      }
+    ],
+    "unresolved": [],
+    "target_read_count": 0,
+    "all_module_pointer_intrinsics": {
+      "@llvm.memcpy": 0,
+      "@llvm.memmove": 0,
+      "@llvm.memset": 2,
+      "ptrtoint": 0,
+      "inttoptr": 0
+    },
+    "scope": "syntactic interprocedural may-reach closure; no branch feasibility or global-unused proof"
+  },
+  "CPU_copy_islands": [
+    {
+      "address": "0x1d42c67f0",
+      "instruction_window_sha256": "3ba02248f3460781989fdd27859810f35f7012c5aa7d21e8607df11375603360",
+      "argument_alias_facts": "source x21 unresolved; destination self(x20)+0x148 buffer; both offsets0; size destination.length",
+      "bridge_to_SSRParams_not_proven": true
+    },
+    {
+      "address": "0x1d42c69c8",
+      "instruction_window_sha256": "a534e6d4c1c46104eac1299d5f2ab898132b56353aea438bde5e4fe5941a23ec",
+      "argument_alias_facts": "source self(x20)+0x148 buffer; destination bufferView of [sp+0x460]; both offsets0; size source.length",
+      "bridge_to_SSRParams_not_proven": true
+    }
+  ],
+  "CPU_source_sha256": "3dd9918470c6358f54ea5cfefb8fbf5839a202f39c4dbea7991a7f108daf1cc8",
+  "fields": [
+    {
+      "field": "bg.airy",
+      "SSRParams_byte": 512,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 318,
+        "kind": "store",
+        "offset": 512,
+        "bytes": 4,
+        "fields": [
+          "bg.airy"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 209,
+          "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBGAdjustments",
+          "formal_index": 4,
+          "base_offset": 488,
+          "declared_span": 68,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "bg.warmthMatchI",
+      "SSRParams_byte": 536,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 330,
+        "kind": "store",
+        "offset": 536,
+        "bytes": 4,
+        "fields": [
+          "bg.warmthMatchI"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 209,
+          "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBGAdjustments",
+          "formal_index": 4,
+          "base_offset": 488,
+          "declared_span": 68,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "bg.warmthMatchQ",
+      "SSRParams_byte": 540,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 332,
+        "kind": "store",
+        "offset": 540,
+        "bytes": 4,
+        "fields": [
+          "bg.warmthMatchQ"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 209,
+          "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBGAdjustments",
+          "formal_index": 4,
+          "base_offset": 488,
+          "declared_span": 68,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "bg.warmthMatchSkyI",
+      "SSRParams_byte": 544,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 334,
+        "kind": "store",
+        "offset": 544,
+        "bytes": 4,
+        "fields": [
+          "bg.warmthMatchSkyI"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 209,
+          "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBGAdjustments",
+          "formal_index": 4,
+          "base_offset": 488,
+          "declared_span": 68,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "bg.warmthMatchSkyQ",
+      "SSRParams_byte": 548,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 336,
+        "kind": "store",
+        "offset": 548,
+        "bytes": 4,
+        "fields": [
+          "bg.warmthMatchSkyQ"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 209,
+          "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBGAdjustments",
+          "formal_index": 4,
+          "base_offset": 488,
+          "declared_span": 68,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "bg.bgGlobalMix",
+      "SSRParams_byte": 552,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 338,
+        "kind": "store",
+        "offset": 552,
+        "bytes": 4,
+        "fields": [
+          "bg.bgGlobalMix"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 209,
+          "instruction_sha256": "8587e44e0e9cd297e9890947aaeff2177528ba4cf8fc87ccb5883b3193f557a4",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBGAdjustments",
+          "formal_index": 4,
+          "base_offset": 488,
+          "declared_span": 68,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "fg.airy",
+      "SSRParams_byte": 560,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 484,
+        "kind": "store",
+        "offset": 560,
+        "bytes": 4,
+        "fields": [
+          "fg.airy"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 211,
+          "instruction_sha256": "955b5078a948bd2522403f78c08f48417c5fc566039894fb1f35f9301301fa59",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderFGAdjustments",
+          "formal_index": 6,
+          "base_offset": 556,
+          "declared_span": 64,
+          "target_fields": [
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 262,
+          "instruction_sha256": "a2b1297058f7877289a0ea9ee66d2d4b915e6e1e059ba89ee1662c9f68716503",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderSkinAdjustments",
+          "formal_index": 1,
+          "base_offset": 556,
+          "declared_span": 64,
+          "target_fields": [
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "fg.faceI",
+      "SSRParams_byte": 604,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 506,
+        "kind": "store",
+        "offset": 604,
+        "bytes": 4,
+        "fields": [
+          "fg.faceI"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 211,
+          "instruction_sha256": "955b5078a948bd2522403f78c08f48417c5fc566039894fb1f35f9301301fa59",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderFGAdjustments",
+          "formal_index": 6,
+          "base_offset": 556,
+          "declared_span": 64,
+          "target_fields": [
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 262,
+          "instruction_sha256": "a2b1297058f7877289a0ea9ee66d2d4b915e6e1e059ba89ee1662c9f68716503",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderSkinAdjustments",
+          "formal_index": 1,
+          "base_offset": 556,
+          "declared_span": 64,
+          "target_fields": [
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    },
+    {
+      "field": "fg.faceQ",
+      "SSRParams_byte": 608,
+      "known_writer": {
+        "module": 11,
+        "function": "RenderingParamsFromStats",
+        "line": 508,
+        "kind": "store",
+        "offset": 608,
+        "bytes": 4,
+        "fields": [
+          "fg.faceQ"
+        ]
+      },
+      "AIR13_root": "generateColorCubes argument4 / Metal buffer1; 672B declaration",
+      "AIR13_reachable_pointer_edges": [
+        {
+          "function": "generateColorCubes",
+          "line": 126,
+          "instruction_sha256": "3c5080d82d4b2b7965a07ff4cad3f418bdc88ee86a2403cf3253239a04acc8aa",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "generateColorCubes",
+          "line": 139,
+          "instruction_sha256": "cac76292c9438515e18c7ed548d211c44eecfd206e71a0382f7b8249028cd1cd",
+          "caller": "generateColorCubes",
+          "callee": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "formal_index": 9,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 211,
+          "instruction_sha256": "955b5078a948bd2522403f78c08f48417c5fc566039894fb1f35f9301301fa59",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderFGAdjustments",
+          "formal_index": 6,
+          "base_offset": 556,
+          "declared_span": 64,
+          "target_fields": [
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 262,
+          "instruction_sha256": "a2b1297058f7877289a0ea9ee66d2d4b915e6e1e059ba89ee1662c9f68716503",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderSkinAdjustments",
+          "formal_index": 1,
+          "base_offset": 556,
+          "declared_span": 64,
+          "target_fields": [
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 356,
+          "instruction_sha256": "1108a54ac3859e9b2ad792ad101bbe110cdbd579c81821cea4e98c761e39b34a",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderBWAdjustmentsByCastType",
+          "formal_index": 4,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 372,
+          "instruction_sha256": "96fa172430e2ec8ce5261b7b7be0b3993670571e056616268d8583d3a5c8200d",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderVideoHazeCorrection",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "line": 453,
+          "instruction_sha256": "4642be0c0fc47fd95c34adbbaadc39755daad7c8aa0af43d45a3818daa33b663",
+          "caller": "_ZL24renderAdjustmentsForCubeDv3_DhS_bDhDhDhDhDhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEES4_RU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+          "callee": "renderChannelMixForBWCasts",
+          "formal_index": 2,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 479,
+          "instruction_sha256": "08879cfcc572417ef72626e4aa06c62528bfbe92945c5745c71c94e39caa9c0b",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        },
+        {
+          "function": "renderChannelMixForBWCasts",
+          "line": 506,
+          "instruction_sha256": "a474e66a0baf53d7f0ab349f3d3e2b0e8b07b2583b4b50bf591afef686905bef",
+          "caller": "renderChannelMixForBWCasts",
+          "callee": "getBWChannelMixFromStats",
+          "formal_index": 1,
+          "base_offset": 0,
+          "declared_span": 672,
+          "target_fields": [
+            "bg.airy",
+            "bg.warmthMatchI",
+            "bg.warmthMatchQ",
+            "bg.warmthMatchSkyI",
+            "bg.warmthMatchSkyQ",
+            "bg.bgGlobalMix",
+            "fg.airy",
+            "fg.faceI",
+            "fg.faceQ"
+          ]
+        }
+      ],
+      "AIR13_target_accesses": [],
+      "breakpoint": "No target-byte read found in this closed AIR13 parameter-pointer traversal. CPU Proxy +0x1b0 array -> dynamic producer -> cube dispatch bridge remains unextracted; CPU blit island origins are unproved. Other modules/callers remain software work.",
+      "status": "unresolved global consumer; not unused"
+    }
+  ],
+  "missing_CPU_image": {
+    "relative_target": "../firmware-iphone17-3-systemos/decrypted/043-70113-711.dmg",
+    "exists": false,
+    "expected_sha256": "bce06bf973fe4fcce39f5401be42352b96e2e052cf4c182d107ef8fd2d86fe18",
+    "blocked_action": "new byte-verified Proxy dynamic/cube CPU disassembly",
+    "reason": "previously acquired decrypted SystemOS image and dyld files absent in task cache; symbols/objc and selected text remain",
+    "status": "not attempted; missing input, not permission denied",
+    "download_or_mount_attempted": false
+  },
+  "CPU_proxy_next_symbols": [
+    "-[CMISmartStyleProxyRendererV1 _calculateDynamicRenderParameters] @0x1d437335c",
+    "-[CMISmartStyleProxyRendererV1 _generateColorCubes] @0x1d4373474"
+  ],
+  "native_calls": 0,
+  "raw_AIR_uploaded": false,
+  "global_unused_claim": false,
+  "unfinished_software_consumers": 9
+}
