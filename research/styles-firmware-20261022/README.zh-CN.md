@@ -122,3 +122,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S12-A：实际BW477根与tuning失败回归：[阶段报告](PROGRESS-S12-A.zh-CN.md)。
 
 - S12-B：原外围指令直接接真实BW与内部观察：[阶段报告](PROGRESS-S12-B.zh-CN.md)。
+
+- S12-C：video haze原helper与主入口选择：[阶段报告](PROGRESS-S12-C.zh-CN.md)。

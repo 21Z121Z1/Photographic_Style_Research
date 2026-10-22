@@ -133,6 +133,10 @@ def build(source,names,*,extra_functions='',emit_wrappers=True):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)=='renderVideoHazeCorrection':
+            w += ['%params=alloca %struct.SSRParams,align 16','store %struct.SSRParams zeroinitializer,ptr %params','%params1=addrspacecast ptr %params to ptr addrspace(1)']
+            for i in range(8):w += [f'%hp{i}=getelementptr float,ptr %input,i64 {5+i}',f'%hf{i}=load float,ptr %hp{i}',f'%hq{i}=getelementptr %struct.SSRParams,ptr %params,i64 0,i32 12,i32 {1+i}',f'store float %hf{i},ptr %hq{i}']
+            args='<3 x half> %x,half %h3,ptr addrspace(1) %params1,half %h4'
         elif short(name)=='renderBWAdjustmentsByCastType':
             for i in range(6,10):w += [f'%bp{i}=getelementptr float,ptr %input,i64 {i}',f'%bf{i}=load float,ptr %bp{i}']
             w += ['%params=alloca %struct.SSRParams,align 16','store %struct.SSRParams zeroinitializer,ptr %params','%params1=addrspacecast ptr %params to ptr addrspace(1)','%cast=fptoui float %bf8 to i32','%tuning=fptoui float %bf9 to i32']

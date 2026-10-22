@@ -1,0 +1,575 @@
+{
+  "model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "renderVideoHazeCorrection": {
+      "calls": 18,
+      "point_unknown": 2,
+      "set_unknown": 2,
+      "half_bit_mismatches_known": 6,
+      "max_absolute_error_known": 0.0009765625,
+      "range_violations_known": 0
+    }
+  },
+  "original_complete_function_sha256": {
+    "renderVideoHazeCorrection": "ec75fdfa5d97e6d06fb679b927ab8633e1e3f52b77f0e8679afa39a4dcca245e",
+    "contrastFilter": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18"
+  },
+  "original_bodies_modified": false,
+  "reference_Lab_is_supplied": true,
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "host_bool_shim": "float!=0 (explicit assumption), not fptoui i1",
+  "host_fmod_shim": "C fmodf then half",
+  "source_sha256": {
+    "pixel_neutral.py": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+    "pixel_color.py": "5ecd215ae1907317f773162803f7c75937df3eff66cdd333e871f4a210f95202",
+    "pixel_skin.py": "2f2f4eac5c97d7a074ffdc9934ceba8a52531d8cc1de2dff1ba5be32bb29ab34",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_host.py": "3c0960c2733355503a70c2b4adb5fdc194d5106aaed2da21ba67413b9e75e3b2",
+    "native_neutral_leaves_check.py": "b8d8de9a301fe5ec82f1a0201d741c7677d23db6a164421bd61e8be8f8ff3a4e"
+  },
+  "host_ir_sha256": "763c7da1fffd6f14c94e151cea5f1a51ffe5613e067f1dfb8381d810081d419c",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "e83960a56bed67258b377bb3752f3cf73a7cc884fbb496c11cb60220348cc5f7",
+  "output_sha256": "c0c9c58a175156f68769f5a61bb5972c48a55fd7f3da8cb2938503a56316e018",
+  "rows": [
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.282470703125,
+        0.51708984375,
+        0.984375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.309326171875,
+        0.5947265625,
+        1.1591796875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.2744140625,
+        0.50830078125,
+        0.9765625
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.28515625,
+        0.55126953125,
+        1.083984375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.88671875,
+        0.58837890625,
+        0.40966796875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.0009765625,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        1.0107421875,
+        0.6591796875,
+        0.4482421875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.85888671875,
+        0.56640625,
+        0.391357421875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.00048828125,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.95068359375,
+        0.61767578125,
+        0.418701171875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.54052734375,
+        0.54052734375,
+        0.54052734375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.60400390625,
+        0.60400390625,
+        0.60400390625
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.50732421875,
+        0.50732421875,
+        0.50732421875
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.5830078125,
+        0.5830078125,
+        0.5830078125
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.029083251953125,
+        0.029083251953125,
+        0.029083251953125
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.0287017822265625,
+        0.0287017822265625,
+        0.0287017822265625
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.05000000074505806,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.035003662109375,
+        0.035003662109375,
+        0.035003662109375
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.10000000149011612,
+        0.699999988079071,
+        0.8999999761581421,
+        -0.10000000149011612,
+        0.20000000298023224,
+        0.20000000298023224,
+        -0.10000000149011612,
+        0.15000000596046448
+      ],
+      "native_half_output": [
+        0.025054931640625,
+        0.025054931640625,
+        0.025054931640625
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.5,
+        0.05000000074505806,
+        0.0,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.1387939453125,
+        0.256591796875,
+        0.492431640625
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": "Division interval includes zero",
+      "half_bit_mismatches": null,
+      "max_absolute_error": null,
+      "set_unknown": "Division interval includes zero",
+      "range_covered": null
+    },
+    {
+      "helper": "renderVideoHazeCorrection",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.5,
+        0.800000011920929,
+        0.800000011920929,
+        0.6000000238418579,
+        0.10000000149011612,
+        -0.10000000149011612,
+        0.5,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_half_output": [
+        0.168701171875,
+        0.01751708984375,
+        0.0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": "Division interval includes zero",
+      "half_bit_mismatches": null,
+      "max_absolute_error": null,
+      "set_unknown": "Division interval includes zero",
+      "range_covered": null
+    }
+  ],
+  "full_pipeline_verified": false,
+  "set_error_budget_is_host_assumption": true,
+  "declared_case_and_model_provider": {
+    "module": "native_haze_check",
+    "only_new_haze_cases": true,
+    "source_sha256": {
+      "native_haze_check.py": "25800f9f4603cbf2d2a64bf9dcec3e55cf32cb4189b63b3f2c20e1a9dd25f4db",
+      "pixel_haze.py": "5924a553260223e5c1fd3a9f016297d3f87c4c07ac5e66bd4959f20803ddb3f1",
+      "pixel_remaining.py": "6bfe3509d05a974ac47ea127610bf0282572a6964c881b7505e89418d7c428c5",
+      "bgfg_tone.py": "4bf8c575acd0408428f1d25dbf78f139aef3424d074058960c0fb327828b0cc1"
+    },
+    "explicit_haze_fields": "SSRHazeAdjustment fields1..8",
+    "guide_source": "original texture guide211, not mixed guide350"
+  }
+}
