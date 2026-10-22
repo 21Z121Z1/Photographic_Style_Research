@@ -1,0 +1,1534 @@
+{
+  "scope": "Bounded AIR11 store/schema and selected consumer read-site audit.\n\nRecords branch-filtered SSA data dependencies, not a general control-flow or\nwhole-pipeline proof. Private AIR text is read, never copied to the repository.\n",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "producer_AIR_canonical_sha256": "5ca4d2dce19c7e8825f0608b04d3637ddf05f3eb507f33430670617624c02c53",
+  "consumer_AIR_canonical_sha256": "87e4205e385f6731aa9f739e92580156c49a73c4556b2d790390fe76e7627224",
+  "producer_text_sha256": "a3dd5d414f233e84068f0a161e2da9ea57722a40437a514284b8cd84d9b1199d",
+  "consumer_text_sha256": "3eab37d6ea090449f721e5bae2a81fa574a38be4046293482410d5ee9ed629e4",
+  "auditor_sha256": "6e1d18f8f775f1adb3cf448bff109a16b24a53f9bbee36218a8138ec9812ac93",
+  "fields": [
+    {
+      "name": "bg.whites",
+      "struct": "SSRBGAdjustment",
+      "field": 0,
+      "byte_offset": 488,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%244",
+        "stored_value_SSA_or_literal": "%241",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%244",
+        "stored_value_SSA_or_literal": "%241",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][1][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][6][4]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5624,
+          "pointer_SSA": "%29"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.contrast",
+      "struct": "SSRBGAdjustment",
+      "field": 1,
+      "byte_offset": 492,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%245",
+        "stored_value_SSA_or_literal": "%240",
+        "data_dependencies": [
+          "SSRParams[10][14]",
+          "SSRParams[10][21]",
+          "SSRParams[10][25]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][31]",
+          "SSRParams[10][35]",
+          "SSRParams[10][39]",
+          "SSRParams[10][43]",
+          "SSRParams[10][47]",
+          "SSRParams[10][51]",
+          "SSRParams[10][55]",
+          "SSRParams[16]",
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%245",
+        "stored_value_SSA_or_literal": "%240",
+        "data_dependencies": [
+          "SSRParams[10][21]",
+          "SSRParams[10][25]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][31]",
+          "SSRParams[10][35]",
+          "SSRParams[10][39]",
+          "SSRParams[10][43]",
+          "SSRParams[10][47]",
+          "SSRParams[10][51]",
+          "SSRParams[10][55]",
+          "SSRParams[16]",
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5611,
+          "pointer_SSA": "%20"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.richSat",
+      "struct": "SSRBGAdjustment",
+      "field": 2,
+      "byte_offset": 496,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%246",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%246",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5847,
+          "pointer_SSA": "%212"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.shadows",
+      "struct": "SSRBGAdjustment",
+      "field": 3,
+      "byte_offset": 500,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%247",
+        "stored_value_SSA_or_literal": "%239",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%247",
+        "stored_value_SSA_or_literal": "%239",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5590,
+          "pointer_SSA": "%7"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.gammaContrast",
+      "struct": "SSRBGAdjustment",
+      "field": 4,
+      "byte_offset": 504,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%248",
+        "stored_value_SSA_or_literal": "%238",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%248",
+        "stored_value_SSA_or_literal": "%238",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5760,
+          "pointer_SSA": "%145"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.localContrast",
+      "struct": "SSRBGAdjustment",
+      "field": 5,
+      "byte_offset": 508,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%249",
+        "stored_value_SSA_or_literal": "%237",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%249",
+        "stored_value_SSA_or_literal": "%237",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5695,
+          "pointer_SSA": "%84"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.airy",
+      "struct": "SSRBGAdjustment",
+      "field": 6,
+      "byte_offset": 512,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%250",
+        "stored_value_SSA_or_literal": "%236",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%250",
+        "stored_value_SSA_or_literal": "%236",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.mids",
+      "struct": "SSRBGAdjustment",
+      "field": 7,
+      "byte_offset": 516,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%251",
+        "stored_value_SSA_or_literal": "%235",
+        "data_dependencies": [
+          "SSRParams[10][23]",
+          "SSRParams[10][27]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][33]",
+          "SSRParams[10][37]",
+          "SSRParams[10][41]",
+          "SSRParams[10][45]",
+          "SSRParams[10][49]",
+          "SSRParams[10][53]",
+          "SSRParams[10][57]",
+          "SSRParams[16]",
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%251",
+        "stored_value_SSA_or_literal": "%235",
+        "data_dependencies": [
+          "SSRParams[10][23]",
+          "SSRParams[10][27]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][33]",
+          "SSRParams[10][37]",
+          "SSRParams[10][41]",
+          "SSRParams[10][45]",
+          "SSRParams[10][49]",
+          "SSRParams[10][53]",
+          "SSRParams[10][57]",
+          "SSRParams[16]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5651,
+          "pointer_SSA": "%48"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.sat",
+      "struct": "SSRBGAdjustment",
+      "field": 8,
+      "byte_offset": 520,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%252",
+        "stored_value_SSA_or_literal": "%234",
+        "data_dependencies": [
+          "SSRParams[10][22]",
+          "SSRParams[10][26]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][32]",
+          "SSRParams[10][36]",
+          "SSRParams[10][40]",
+          "SSRParams[10][44]",
+          "SSRParams[10][48]",
+          "SSRParams[10][52]",
+          "SSRParams[10][56]",
+          "SSRParams[16]",
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%252",
+        "stored_value_SSA_or_literal": "%234",
+        "data_dependencies": [
+          "SSRParams[10][22]",
+          "SSRParams[10][26]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][32]",
+          "SSRParams[10][36]",
+          "SSRParams[10][40]",
+          "SSRParams[10][44]",
+          "SSRParams[10][48]",
+          "SSRParams[10][52]",
+          "SSRParams[10][56]",
+          "SSRParams[16]",
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5681,
+          "pointer_SSA": "%74"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.lighten",
+      "struct": "SSRBGAdjustment",
+      "field": 9,
+      "byte_offset": 524,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%253",
+        "stored_value_SSA_or_literal": "%233",
+        "data_dependencies": [
+          "SSRParams[10][24]",
+          "SSRParams[10][28]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][34]",
+          "SSRParams[10][38]",
+          "SSRParams[10][42]",
+          "SSRParams[10][46]",
+          "SSRParams[10][50]",
+          "SSRParams[10][54]",
+          "SSRParams[10][58]",
+          "SSRParams[16]",
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%253",
+        "stored_value_SSA_or_literal": "%233",
+        "data_dependencies": [
+          "SSRParams[10][24]",
+          "SSRParams[10][28]",
+          "SSRParams[10][29]",
+          "SSRParams[10][30]",
+          "SSRParams[10][34]",
+          "SSRParams[10][38]",
+          "SSRParams[10][42]",
+          "SSRParams[10][46]",
+          "SSRParams[10][50]",
+          "SSRParams[10][54]",
+          "SSRParams[10][58]",
+          "SSRParams[16]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5796,
+          "pointer_SSA": "%177"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.underGrass",
+      "struct": "SSRBGAdjustment",
+      "field": 10,
+      "byte_offset": 528,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%254",
+        "stored_value_SSA_or_literal": "%232",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%254",
+        "stored_value_SSA_or_literal": "%232",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5834,
+          "pointer_SSA": "%203"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.airyGamma",
+      "struct": "SSRBGAdjustment",
+      "field": 11,
+      "byte_offset": 532,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%255",
+        "stored_value_SSA_or_literal": "%243",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%255",
+        "stored_value_SSA_or_literal": "%243",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 5637,
+          "pointer_SSA": "%38"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.warmthMatchI",
+      "struct": "SSRBGAdjustment",
+      "field": 12,
+      "byte_offset": 536,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%256",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%256",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.warmthMatchQ",
+      "struct": "SSRBGAdjustment",
+      "field": 13,
+      "byte_offset": 540,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%257",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%257",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.warmthMatchSkyI",
+      "struct": "SSRBGAdjustment",
+      "field": 14,
+      "byte_offset": 544,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%258",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%258",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.warmthMatchSkyQ",
+      "struct": "SSRBGAdjustment",
+      "field": 15,
+      "byte_offset": 548,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%259",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%259",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "bg.bgGlobalMix",
+      "struct": "SSRBGAdjustment",
+      "field": 16,
+      "byte_offset": 552,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%260",
+        "stored_value_SSA_or_literal": "1.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%260",
+        "stored_value_SSA_or_literal": "1.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.personMix",
+      "struct": "SSRFGAdjustment",
+      "field": 0,
+      "byte_offset": 556,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%395",
+        "stored_value_SSA_or_literal": "%392",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%395",
+        "stored_value_SSA_or_literal": "%392",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4592,
+          "pointer_SSA": "%10"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.airy",
+      "struct": "SSRFGAdjustment",
+      "field": 1,
+      "byte_offset": 560,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%396",
+        "stored_value_SSA_or_literal": "%386",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%396",
+        "stored_value_SSA_or_literal": "%386",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.mids",
+      "struct": "SSRFGAdjustment",
+      "field": 2,
+      "byte_offset": 564,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%397",
+        "stored_value_SSA_or_literal": "%385",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%397",
+        "stored_value_SSA_or_literal": "%385",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4696,
+          "pointer_SSA": "%82"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.lighten",
+      "struct": "SSRFGAdjustment",
+      "field": 3,
+      "byte_offset": 568,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%398",
+        "stored_value_SSA_or_literal": "%384",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%398",
+        "stored_value_SSA_or_literal": "%384",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4739,
+          "pointer_SSA": "%117"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.whites",
+      "struct": "SSRFGAdjustment",
+      "field": 4,
+      "byte_offset": 572,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%399",
+        "stored_value_SSA_or_literal": "%383",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%399",
+        "stored_value_SSA_or_literal": "%383",
+        "data_dependencies": [
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][1][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][6][4]",
+          "SSRStats[1][9][6]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4600,
+          "pointer_SSA": "%18"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.airyGamma",
+      "struct": "SSRFGAdjustment",
+      "field": 5,
+      "byte_offset": 576,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%400",
+        "stored_value_SSA_or_literal": "%394",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%400",
+        "stored_value_SSA_or_literal": "%394",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4682,
+          "pointer_SSA": "%72"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.shadows",
+      "struct": "SSRFGAdjustment",
+      "field": 6,
+      "byte_offset": 580,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%401",
+        "stored_value_SSA_or_literal": "%382",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%401",
+        "stored_value_SSA_or_literal": "%382",
+        "data_dependencies": [
+          "SSRParams[20]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][9][5]",
+          "SSRStats[1][9][6]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4613,
+          "pointer_SSA": "%27"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.contrast",
+      "struct": "SSRFGAdjustment",
+      "field": 7,
+      "byte_offset": 584,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%402",
+        "stored_value_SSA_or_literal": "%381",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%402",
+        "stored_value_SSA_or_literal": "%381",
+        "data_dependencies": [
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][9][5]",
+          "SSRStats[1][9][6]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4647,
+          "pointer_SSA": "%49"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.smartContrast",
+      "struct": "SSRFGAdjustment",
+      "field": 8,
+      "byte_offset": 588,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%403",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%403",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4785,
+          "pointer_SSA": "%147"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.skinHighLights",
+      "struct": "SSRFGAdjustment",
+      "field": 9,
+      "byte_offset": 592,
+      "positive_coverage": "accepted S6 reused",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%404",
+        "stored_value_SSA_or_literal": "%380",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%404",
+        "stored_value_SSA_or_literal": "%380",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh",
+          "line": 4450,
+          "pointer_SSA": "%75"
+        }
+      ],
+      "independent_pixel_model": "existing semantic_skin_model.forward"
+    },
+    {
+      "name": "fg.skinLocalContrast",
+      "struct": "SSRFGAdjustment",
+      "field": 10,
+      "byte_offset": 596,
+      "positive_coverage": "accepted S6 reused",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%405",
+        "stored_value_SSA_or_literal": "%379",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%405",
+        "stored_value_SSA_or_literal": "%379",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh",
+          "line": 4385,
+          "pointer_SSA": "%14"
+        }
+      ],
+      "independent_pixel_model": "existing semantic_skin_model.forward"
+    },
+    {
+      "name": "fg.saturation",
+      "struct": "SSRFGAdjustment",
+      "field": 11,
+      "byte_offset": 600,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%406",
+        "stored_value_SSA_or_literal": "%378",
+        "data_dependencies": [
+          "SSRParams[10][11]",
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%406",
+        "stored_value_SSA_or_literal": "%378",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4660,
+          "pointer_SSA": "%58"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.faceI",
+      "struct": "SSRFGAdjustment",
+      "field": 12,
+      "byte_offset": 604,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%407",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%407",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.faceQ",
+      "struct": "SSRFGAdjustment",
+      "field": 13,
+      "byte_offset": 608,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%408",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%408",
+        "stored_value_SSA_or_literal": "0.000000e+00",
+        "data_dependencies": []
+      },
+      "selected_consumer_read_sites": [],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.underTone",
+      "struct": "SSRFGAdjustment",
+      "field": 14,
+      "byte_offset": 612,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%409",
+        "stored_value_SSA_or_literal": "%391",
+        "data_dependencies": [
+          "SSRParams[0]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%409",
+        "stored_value_SSA_or_literal": "%391",
+        "data_dependencies": [
+          "SSRParams[0]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4726,
+          "pointer_SSA": "%108"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "fg.neckShade",
+      "struct": "SSRFGAdjustment",
+      "field": 15,
+      "byte_offset": 616,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%410",
+        "stored_value_SSA_or_literal": "%377",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%410",
+        "stored_value_SSA_or_literal": "%377",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+          "line": 4634,
+          "pointer_SSA": "%40"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.bgLTM",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 0,
+      "byte_offset": 620,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%575",
+        "stored_value_SSA_or_literal": "%574",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%575",
+        "stored_value_SSA_or_literal": "%574",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][1][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][6][4]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "renderFinalAdjustments",
+          "line": 398,
+          "pointer_SSA": "%321"
+        },
+        {
+          "function": "renderFinalAdjustments",
+          "line": 417,
+          "pointer_SSA": "%338"
+        },
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 6024,
+          "pointer_SSA": "%53"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.fgLTM",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 1,
+      "byte_offset": 624,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%576",
+        "stored_value_SSA_or_literal": "%573",
+        "data_dependencies": [
+          "SSRParams[10][12]",
+          "SSRParams[2]",
+          "SSRStats[1][0][6]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][6][5]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%576",
+        "stored_value_SSA_or_literal": "%573",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][1][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][6][4]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "renderFinalAdjustments",
+          "line": 386,
+          "pointer_SSA": "%309"
+        },
+        {
+          "function": "renderFinalAdjustments",
+          "line": 419,
+          "pointer_SSA": "%340"
+        },
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 6075,
+          "pointer_SSA": "%104"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.bgExposureGain",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 2,
+      "byte_offset": 628,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%577",
+        "stored_value_SSA_or_literal": "%572",
+        "data_dependencies": [
+          "SSRParams[7]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%577",
+        "stored_value_SSA_or_literal": "%572",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRParams[7]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "renderFinalAdjustments",
+          "line": 295,
+          "pointer_SSA": "%228"
+        },
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 5982,
+          "pointer_SSA": "%11"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.fgExposureGain",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 3,
+      "byte_offset": 632,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%578",
+        "stored_value_SSA_or_literal": "%571",
+        "data_dependencies": [
+          "SSRParams[10][13]",
+          "SSRParams[2]",
+          "SSRParams[7]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%578",
+        "stored_value_SSA_or_literal": "%571",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRParams[7]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "renderFinalAdjustments",
+          "line": 307,
+          "pointer_SSA": "%239"
+        },
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 6038,
+          "pointer_SSA": "%67"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.GTC",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 4,
+      "byte_offset": 636,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%579",
+        "stored_value_SSA_or_literal": "%570",
+        "data_dependencies": [
+          "SSRParams[2]"
+        ]
+      },
+      "negative": {
+        "store_pointer_SSA": "%579",
+        "stored_value_SSA_or_literal": "%570",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 5979,
+          "pointer_SSA": "%8"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.HR",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 5,
+      "byte_offset": 640,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%580",
+        "stored_value_SSA_or_literal": "%569",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%580",
+        "stored_value_SSA_or_literal": "%569",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][1][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][6][4]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "renderFinalAdjustments",
+          "line": 318,
+          "pointer_SSA": "%247"
+        },
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 6027,
+          "pointer_SSA": "%56"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    },
+    {
+      "name": "semantic.personHR",
+      "struct": "SSRSemanticToneAdjustment",
+      "field": 6,
+      "byte_offset": 644,
+      "positive_coverage": "new S8 coefficient model/host comparison",
+      "negative_coverage": "accepted S7 reused",
+      "positive": {
+        "store_pointer_SSA": "%581",
+        "stored_value_SSA_or_literal": "%568",
+        "data_dependencies": []
+      },
+      "negative": {
+        "store_pointer_SSA": "%581",
+        "stored_value_SSA_or_literal": "%568",
+        "data_dependencies": [
+          "SSRParams[18]",
+          "SSRParams[19]",
+          "SSRParams[2]",
+          "SSRStats[1][0][4]",
+          "SSRStats[1][1][4]",
+          "SSRStats[1][5][4]",
+          "SSRStats[1][5][6]",
+          "SSRStats[1][6][4]",
+          "SSRStats[1][6][6]",
+          "SSRStats[1][9][6]",
+          "SSRStats[4]"
+        ]
+      },
+      "selected_consumer_read_sites": [
+        {
+          "function": "renderFinalAdjustments",
+          "line": 324,
+          "pointer_SSA": "%252"
+        },
+        {
+          "function": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+          "line": 6078,
+          "pointer_SSA": "%107"
+        }
+      ],
+      "independent_pixel_model": "not established by coefficient/interface tests"
+    }
+  ],
+  "consumer_functions": [
+    {
+      "name": "renderFinalAdjustments",
+      "first_line": 54,
+      "last_line": 737,
+      "function_text_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+      "direct_named_callees": [
+        "RichSat",
+        "airyFilter",
+        "applySemanticSRL",
+        "contrastFilter",
+        "highlightRecover",
+        "protectMaskFilter",
+        "renderBGAdjustments",
+        "renderBWAdjustmentsByCastType",
+        "renderBrightAndContrast",
+        "renderChannelMixForBWCasts",
+        "renderFGAdjustments",
+        "renderNeutralizingAdjustments",
+        "renderSelectiveColorAdjustments",
+        "renderSemanticToneAdjustments",
+        "renderSkinAdjustments",
+        "renderVideoHazeCorrection",
+        "renderWarmthCastAdjustments",
+        "smoothSatFilter"
+      ]
+    },
+    {
+      "name": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh",
+      "first_line": 4375,
+      "last_line": 4505,
+      "function_text_sha256": "44403140aa6ccec03fe9dac75a0ff247440943fae99ea92f7b9040d887d6ab6e",
+      "direct_named_callees": []
+    },
+    {
+      "name": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+      "first_line": 4590,
+      "last_line": 4813,
+      "function_text_sha256": "bb5d0a7afd7b83ec52ec70040b4ab910202f9c9e761edcbcfc83d9a8a251ff2b",
+      "direct_named_callees": [
+        "RichSat",
+        "ShadowsFilter",
+        "ShadowsNegativeFilter",
+        "airyFilter",
+        "contrastFilter",
+        "highlightNeg",
+        "lightenFilter",
+        "negativeLightenFilter",
+        "smartContrast",
+        "smoothSatFilter",
+        "tonalContrastFilter",
+        "underToneFilter",
+        "whitesCurve"
+      ]
+    },
+    {
+      "name": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+      "first_line": 5589,
+      "last_line": 5873,
+      "function_text_sha256": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+      "direct_named_callees": [
+        "RichSat",
+        "ShadowsFilter",
+        "ShadowsNegativeFilter",
+        "airyFilter",
+        "contrastFilter",
+        "lightenFilter",
+        "negativeLightenFilter",
+        "smoothSatFilter",
+        "underGrassFilter",
+        "whitesCurve"
+      ]
+    },
+    {
+      "name": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+      "first_line": 5976,
+      "last_line": 6093,
+      "function_text_sha256": "fbf1cf6772d3ee1733f7882e52242a0909a14d3fe8325563fe487d0b5ca02b7c",
+      "direct_named_callees": []
+    }
+  ],
+  "counts": {
+    "fields": 40,
+    "new_positive_fields": 38,
+    "reused_positive_fields": 2,
+    "reused_negative_fields": 40,
+    "fields_with_read_site_in_selected_consumer": 31
+  },
+  "control_dependencies_not_in_data_SSA_sets": {
+    "bg": [
+      "SSRParams[17] tuningType",
+      "SSRParams[2] tone sign",
+      "scene4 thresholds select brightness path"
+    ],
+    "fg": [
+      "SSRParams[0] castType",
+      "tone sign and .4/.5/tone^.75=.5 comparisons"
+    ],
+    "semantic": [
+      "tone sign",
+      "min/max/clamp choices"
+    ]
+  },
+  "scene_scaling": {
+    "source_method": "evidence/render-follow-24A446/render-static-parameters.asm.txt",
+    "block_start": "0x1d42f2328",
+    "block_end_exclusive": "0x1d42f236c",
+    "sceneType_byte_offset": 32,
+    "tuningType_byte_offset": 652,
+    "distinct_fields": true,
+    "scene_resolver_symbol_locator": "0x1d42f3ce4 _SSRSceneTypeEnumFromSemanticStyleSceneType",
+    "tuning_resolver_symbol_locator": "0x1d42f3a68 _SSRTuningTypeEnumFromString",
+    "resolver_implementations_modeled": false,
+    "resolved_scene_3_tone_color_intensity_tuning_indices": [
+      59,
+      60,
+      61
+    ],
+    "resolved_scene_21_tone_color_intensity_tuning_indices": [
+      62,
+      63,
+      64
+    ],
+    "other_scene_codes": "identity in selected block",
+    "clamp_in_selected_block": false
+  },
+  "unresolved_selected_read_fields": [
+    "bg.airy",
+    "bg.warmthMatchI",
+    "bg.warmthMatchQ",
+    "bg.warmthMatchSkyI",
+    "bg.warmthMatchSkyQ",
+    "bg.bgGlobalMix",
+    "fg.airy",
+    "fg.faceI",
+    "fg.faceQ"
+  ],
+  "unmodeled_pixel_operators": [
+    {
+      "helper": "renderBGAdjustments",
+      "source_lines": [
+        5589,
+        5873
+      ],
+      "status": "independent numeric pixel model not established",
+      "dependencies": [
+        "working RGB",
+        "curve texture",
+        "guide/luma inputs",
+        "half/fast arithmetic"
+      ]
+    },
+    {
+      "helper": "renderFGAdjustments",
+      "source_lines": [
+        4590,
+        4813
+      ],
+      "status": "independent numeric pixel model not established",
+      "dependencies": [
+        "working RGB",
+        "original/background RGB",
+        "person/skin masks",
+        "guide",
+        "curve texture",
+        "half/fast arithmetic"
+      ]
+    },
+    {
+      "helper": "renderSemanticToneAdjustments",
+      "source_lines": [
+        5976,
+        6093
+      ],
+      "status": "full pixel consumer not modeled; supplied-curve inverse utilities alone do not establish this helper",
+      "dependencies": [
+        "GTC texture/sampler",
+        "BG/FG exposure and LTM/HR coefficients",
+        "person weights",
+        "half arithmetic"
+      ]
+    },
+    {
+      "helper": "renderFinalAdjustments",
+      "source_lines": [
+        54,
+        737
+      ],
+      "status": "outer sampling/color transforms/order/gates not a composed pixel model",
+      "dependencies": [
+        "actual bindings/function constants",
+        "working color/storage domain",
+        "matte/guide alignment"
+      ]
+    }
+  ],
+  "iOS_or_GPU_execution": false,
+  "full_pixel_pipeline_verified": false,
+  "raw_AIR_uploaded": false
+}

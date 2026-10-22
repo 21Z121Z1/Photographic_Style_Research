@@ -1,0 +1,48 @@
+{
+  "scope": "S8 source/receipt linkage and observed regression result; no prior accepted native batches rerun.",
+  "recorded_at_UTC": "2026-10-22T11:40:36.027723+00:00",
+  "base_commit": "f7154e38166da99c6a5604d89293f86d549920a1",
+  "branch": "research/styles-firmware-local-20261022",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "host": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.5",
+  "tests": {
+    "command": "python3 -m unittest discover -s research/styles-firmware-20261022 -p 'test_*.py' -v",
+    "run": 65,
+    "failures": 0,
+    "errors": 0,
+    "reported_seconds": 0.115,
+    "exit_code": 0
+  },
+  "changed_text_sha256": {
+    "PROGRESS-S8.zh-CN.md": "56c5653e784aca3b7432ff74154c72810692e0270f7f8e1b0a136365e5ef72c6",
+    "README.zh-CN.md": "f984fc21e32081aa6623a4bd8ce7dc13a4dec276ed2a7c1de9b4f0d3da004c58",
+    "audit_tone_links.py": "6e1d18f8f775f1adb3cf448bff109a16b24a53f9bbee36218a8138ec9812ac93",
+    "evidence/native-positive-blocks.json": "b44250acbe880829f173e5be8e6951216e7e9b7cdfc16a20835dee0860c7b43a",
+    "evidence/native-scene-scaling.json": "3510dcbd4e1c79dadaa1d37a685ff085593f0a86a614129fc0c553d793d406cb",
+    "evidence/tone-field-links.json": "97f201dea4cd244e6b2d8e8fffae62ba2cbabf9ce5bb8ba249af027cac2179fd",
+    "native_positive_blocks_check.py": "e7728f6241629618fa54bec7bc82d6f9732736db7716a518a8053d26bc603015",
+    "native_scene_scale_check.py": "4a79f1a17992708ce04dd315343481ed831927ad772635f8543a5bd25761ff3f",
+    "positive_tone.py": "63ff9b07608b94d66684e41c7da9fd46cf75ef48f7dbac446c5001f43907e12a",
+    "test_positive_tone.py": "070e7ccfc730bd66474e5c9faceeedbf34344daaca70c2acf979acf183dc00bf",
+    "test_tone_interface.py": "6ff18b6aa44c994d2df3b6995a96d137fd1d6912c1987a769a085dadbc49907a",
+    "tone_interface.py": "834342c77c4b5360509963135f818a2bbbae97841ef37a43001a88c6b0276645"
+  },
+  "accepted_models_byte_identical": true,
+  "accepted_native_batches_repeated": false,
+  "downloaded_bytes": 0,
+  "new_mounts": 0,
+  "private_media_inputs": 0,
+  "ps_denial_retried_or_bypassed": false,
+  "positive_fields": {
+    "total": 40,
+    "new_host_compared": 38,
+    "accepted_reused": 2,
+    "uncovered_small_negative_interval": "(-2^-24,0)",
+    "branch_union_is_not_close_agreement": true
+  },
+  "consumer_read_slots": 31,
+  "unresolved_read_slots": 9,
+  "whole_iOS_GPU_or_pixel_pipeline_verified": false
+}
