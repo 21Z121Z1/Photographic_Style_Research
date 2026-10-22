@@ -9,15 +9,19 @@ from leaf_domains import strictly_positive_branch
 from pixel_leaves import H,F,airy,contrast,dot
 
 
-def tonal(rgb,person,parameter2,tone65,tuning_type):
-    base=H(hc('399a')if tuning_type==5 else hc('3b33'),rgb);weight=-parameter2.minimum(0).h()
-    amount=mix(base,H(hc('accd'),rgb),weight);chroma_mix=mix(H(1,rgb),H(hc('38cd'),rgb),weight)
+def tonal_core(rgb,person,tone65,base,amount,chroma_mix):
     c=airy(rgb,base*H(.5,rgb));offset=(amount.f()*F(fc('3FA99999A0000000'),rgb)).h()
     slope=(F(1,rgb)/(1-(offset*H(2,rgb)).f())).h();linear=slope*c+offset
     luma=dot(c,[hc('3555')]*3)
     scaled=lazy_select(luma.gt(0),lambda:(((slope.f()*luma.f()+offset.f())/strictly_positive_branch(luma).f()).h())*c,lambda:H([0,0,0],rgb))
     changed=mix(scaled,linear,chroma_mix).maximum(0);changed=contrast(changed,(amount.f()*F(fc('BFC99999A0000000'),rgb)).h())
     return mix(changed,rgb,((1-tone65)*person.f()).h())
+
+
+def tonal(rgb,person,parameter2,tone65,tuning_type):
+    base=H(hc('399a')if tuning_type==5 else hc('3b33'),rgb);weight=-parameter2.minimum(0).h()
+    amount=mix(base,H(hc('accd'),rgb),weight);chroma_mix=mix(H(1,rgb),H(hc('38cd'),rgb),weight)
+    return tonal_core(rgb,person,tone65,base,amount,chroma_mix)
 
 
 @dataclass(frozen=True)

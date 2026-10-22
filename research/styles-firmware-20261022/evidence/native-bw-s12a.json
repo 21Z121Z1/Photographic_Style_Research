@@ -1,0 +1,2875 @@
+{
+  "reference_model": "iPhone17,3",
+  "build": "24A446",
+  "metrics": {
+    "stark12": {
+      "calls": 48,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0,
+      "max_known_box_width": 1.2813409711730936
+    },
+    "tonal67": {
+      "calls": 48,
+      "point_unknown": 12,
+      "set_unknown": 24,
+      "half_bit_mismatches_known": 41,
+      "max_absolute_error_known": 0.00146484375,
+      "range_violations_known": 0,
+      "max_known_box_width": 16708.32571967969
+    },
+    "output477": {
+      "calls": 48,
+      "point_unknown": 4,
+      "set_unknown": 4,
+      "half_bit_mismatches_known": 15,
+      "max_absolute_error_known": 0.00146484375,
+      "range_violations_known": 0,
+      "max_known_box_width": 16708.32571967969
+    }
+  },
+  "original_complete_functions_sha256": {
+    "whitesCurve": "24891f62760ca4d1001b6b952ac68534d75114abe001912a04d4f916db18977d",
+    "starkBWAdjustment": "a823680b3722ce7411bfc2653d59c7c8f985ad90cce47dfb3d34d39d5c50d64b",
+    "contrastFilter": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18",
+    "renderBWAdjustmentsByCastType": "97c98bc6db04ef463064c93423692ea850d24ecf3efeef355cb3ca729c6aaf84",
+    "airyFilter": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22"
+  },
+  "original_arithmetic_or_predicates_changed": false,
+  "observation_stores_added": [
+    "stark12",
+    "tonal67"
+  ],
+  "curve_is_explicit_not_recovered": true,
+  "curve_half_sha256": "2a1a66f0b3eea7e831bf2376fdf8cc4b304135c6070ef4448d68a23d314369cd",
+  "raw_cast_SSRParams0_distinct_from_resolved245": true,
+  "source_sha256": {
+    "native_bw_check.py": "ee7f7b19b6342db0303badadb910ce4bb2f7e4fb2d83aab5fc953596ed8c082f",
+    "bw_host.py": "7d5e247e0fb30a55b770456fe340a17ffd305d823af8d281eb2de419edafa38c",
+    "pixel_bw.py": "6c7c457c73ae725367f8a2c12c2343945f489e84e9b4e060d79a7f47310eb1d0",
+    "outer_cast.py": "73e2723046de849891d1d00fdfba4aa52fc65313079988d166b39b6a9e75ac52",
+    "leaf_host.py": "476f0514d85baa147c7ab77d5e6722ae86e15d1e58826a693abfc5ffbb9d5ad1",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "pixel_leaves.py": "2d994892d423753e6cb72201a19b903566bcdf2a9bd58ad8ed77c819411f2d4b"
+  },
+  "host_ir_sha256": "86aac418acc2631b683561aa30c5285ac61c8e1d9a683cbbd49c344b4833b3c5",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "09aa982bfa71022fbf0b75e9356f72e5bf37f9f83d017634800b9d5969e5fdc4",
+  "output_sha256": "46458ea2dc46d55ec48865e7e02a2133cc68c4dbb72d34209dee027e1fbf2467",
+  "rows": [
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.37451171875,
+          0.57861328125,
+          0.927734375
+        ],
+        "output477": [
+          0.199951171875,
+          0.39990234375,
+          0.7998046875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 2.6991399124020283
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ],
+        "tonal67": [
+          0.2890625,
+          0.491455078125,
+          0.865234375
+        ],
+        "output477": [
+          0.199951171875,
+          0.39990234375,
+          0.7998046875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.69477916890125
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.42578125,
+          0.61083984375,
+          0.9189453125
+        ],
+        "output477": [
+          0.199951171875,
+          0.39990234375,
+          0.7998046875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00146484375,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.6241515910380513
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ],
+        "tonal67": [
+          0.3154296875,
+          0.5078125,
+          0.86083984375
+        ],
+        "output477": [
+          0.199951171875,
+          0.39990234375,
+          0.7998046875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 4.961200035223134
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.43798828125,
+          0.6611328125,
+          1.03515625
+        ],
+        "output477": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ],
+        "tonal67": [
+          0.266357421875,
+          0.46484375,
+          0.83740234375
+        ],
+        "output477": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.000244140625,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.489990234375,
+          0.6875,
+          1.013671875
+        ],
+        "output477": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.00146484375,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ],
+        "tonal67": [
+          0.29345703125,
+          0.482421875,
+          0.833984375
+        ],
+        "output477": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.37451171875,
+          0.57861328125,
+          0.927734375
+        ],
+        "output477": [
+          0.37451171875,
+          0.57861328125,
+          0.927734375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 2.6991399124020283
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 2.6991399124020283
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ],
+        "tonal67": [
+          0.2890625,
+          0.491455078125,
+          0.865234375
+        ],
+        "output477": [
+          0.2890625,
+          0.491455078125,
+          0.865234375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.69477916890125
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.69477916890125
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.2481689453125,
+          0.47705078125,
+          0.9267578125
+        ],
+        "tonal67": [
+          0.42578125,
+          0.61083984375,
+          0.9189453125
+        ],
+        "output477": [
+          0.42578125,
+          0.61083984375,
+          0.9189453125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.8784699450668877
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00146484375,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.6241515910380513
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00146484375,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.6241515910380513
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.179931640625,
+          0.3740234375,
+          0.77001953125
+        ],
+        "tonal67": [
+          0.3154296875,
+          0.5078125,
+          0.86083984375
+        ],
+        "output477": [
+          0.3154296875,
+          0.5078125,
+          0.86083984375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9232602940717219
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 4.961200035223134
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 4.961200035223134
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ],
+        "tonal67": [
+          0.828125,
+          0.60546875,
+          0.460693359375
+        ],
+        "output477": [
+          0.7001953125,
+          0.449951171875,
+          0.300048828125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.8925459383364176
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ],
+        "tonal67": [
+          0.765625,
+          0.529296875,
+          0.38232421875
+        ],
+        "output477": [
+          0.7001953125,
+          0.449951171875,
+          0.300048828125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 5.328726849618434
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ],
+        "tonal67": [
+          0.82861328125,
+          0.62841796875,
+          0.49755859375
+        ],
+        "output477": [
+          0.7001953125,
+          0.449951171875,
+          0.300048828125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 5.16561864697528
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ],
+        "tonal67": [
+          0.76611328125,
+          0.54150390625,
+          0.401123046875
+        ],
+        "output477": [
+          0.7001953125,
+          0.449951171875,
+          0.300048828125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 7.071673339879943
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ],
+        "tonal67": [
+          0.95654296875,
+          0.71728515625,
+          0.556640625
+        ],
+        "output477": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ],
+        "tonal67": [
+          0.74609375,
+          0.51025390625,
+          0.36376953125
+        ],
+        "output477": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ],
+        "tonal67": [
+          0.9453125,
+          0.732421875,
+          0.58935546875
+        ],
+        "output477": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Finite arithmetic budget exceeded"
+      }
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ],
+        "tonal67": [
+          0.74853515625,
+          0.52392578125,
+          0.38427734375
+        ],
+        "output477": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ],
+        "tonal67": [
+          0.828125,
+          0.60546875,
+          0.460693359375
+        ],
+        "output477": [
+          0.828125,
+          0.60546875,
+          0.460693359375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.8925459383364176
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 3.8925459383364176
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ],
+        "tonal67": [
+          0.765625,
+          0.529296875,
+          0.38232421875
+        ],
+        "output477": [
+          0.765625,
+          0.529296875,
+          0.38232421875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 5.328726849618434
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 5.328726849618434
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.8359375,
+          0.5537109375,
+          0.379150390625
+        ],
+        "tonal67": [
+          0.82861328125,
+          0.62841796875,
+          0.49755859375
+        ],
+        "output477": [
+          0.82861328125,
+          0.62841796875,
+          0.49755859375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.1418439488578023
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 5.16561864697528
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 5.16561864697528
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.6806640625,
+          0.431640625,
+          0.283203125
+        ],
+        "tonal67": [
+          0.76611328125,
+          0.54150390625,
+          0.401123046875
+        ],
+        "output477": [
+          0.76611328125,
+          0.54150390625,
+          0.401123046875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.2813409711730936
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 7.071673339879943
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 7.071673339879943
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ],
+        "tonal67": [
+          0.5107421875,
+          0.5107421875,
+          0.5107421875
+        ],
+        "output477": [
+          0.39990234375,
+          0.39990234375,
+          0.39990234375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 10418.498059170211
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ],
+        "tonal67": [
+          0.45654296875,
+          0.45654296875,
+          0.45654296875
+        ],
+        "output477": [
+          0.39990234375,
+          0.39990234375,
+          0.39990234375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 14263.822431902337
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ],
+        "tonal67": [
+          0.52294921875,
+          0.52294921875,
+          0.52294921875
+        ],
+        "output477": [
+          0.39990234375,
+          0.39990234375,
+          0.39990234375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 12203.997869351959
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ],
+        "tonal67": [
+          0.462890625,
+          0.462890625,
+          0.462890625
+        ],
+        "output477": [
+          0.39990234375,
+          0.39990234375,
+          0.39990234375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 16708.32571967969
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ],
+        "tonal67": [
+          0.6044921875,
+          0.6044921875,
+          0.603515625
+        ],
+        "output477": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 2,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ],
+        "tonal67": [
+          0.4306640625,
+          0.4306640625,
+          0.430419921875
+        ],
+        "output477": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ],
+        "tonal67": [
+          0.61279296875,
+          0.61279296875,
+          0.611328125
+        ],
+        "output477": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 1,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ],
+        "tonal67": [
+          0.4365234375,
+          0.4365234375,
+          0.436279296875
+        ],
+        "output477": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "point_reasons": {},
+      "set_reasons": {
+        "tonal67": "Nonfinite/unordered typed value"
+      }
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ],
+        "tonal67": [
+          0.5107421875,
+          0.5107421875,
+          0.5107421875
+        ],
+        "output477": [
+          0.5107421875,
+          0.5107421875,
+          0.5107421875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 10418.498059170211
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.0009765625,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 10418.498059170211
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ],
+        "tonal67": [
+          0.45654296875,
+          0.45654296875,
+          0.45654296875
+        ],
+        "output477": [
+          0.45654296875,
+          0.45654296875,
+          0.45654296875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 14263.822431902337
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 3,
+        "max_absolute_error": 0.00048828125,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 14263.822431902337
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.488525390625,
+          0.488525390625,
+          0.488037109375
+        ],
+        "tonal67": [
+          0.52294921875,
+          0.52294921875,
+          0.52294921875
+        ],
+        "output477": [
+          0.52294921875,
+          0.52294921875,
+          0.52294921875
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.9331170324148546
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 12203.997869351959
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 12203.997869351959
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.37451171875,
+          0.37451171875,
+          0.374267578125
+        ],
+        "tonal67": [
+          0.462890625,
+          0.462890625,
+          0.462890625
+        ],
+        "output477": [
+          0.462890625,
+          0.462890625,
+          0.462890625
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 1.0964763428409923
+      },
+      "tonal67": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 16708.32571967969
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 16708.32571967969
+      },
+      "point_reasons": {},
+      "set_reasons": {}
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.056640625,
+          0.056640625,
+          0.056640625
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.028961181640625,
+          0.028961181640625,
+          0.028961181640625
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.037872314453125,
+          0.037872314453125,
+          0.037872314453125
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        0.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.019378662109375,
+          0.019378662109375,
+          0.019378662109375
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.0
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.056640625,
+          0.056640625,
+          0.056640625
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.028961181640625,
+          0.028961181640625,
+          0.028961181640625
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.037872314453125,
+          0.037872314453125,
+          0.037872314453125
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        4.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.019378662109375,
+          0.019378662109375,
+          0.019378662109375
+        ],
+        "output477": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.056640625,
+          0.056640625,
+          0.056640625
+        ],
+        "output477": [
+          0.056640625,
+          0.056640625,
+          0.056640625
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        2.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.028961181640625,
+          0.028961181640625,
+          0.028961181640625
+        ],
+        "output477": [
+          0.028961181640625,
+          0.028961181640625,
+          0.028961181640625
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.0999755859375,
+        0.199951171875,
+        -0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.037872314453125,
+          0.037872314453125,
+          0.037872314453125
+        ],
+        "output477": [
+          0.037872314453125,
+          0.037872314453125,
+          0.037872314453125
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.016955619892549963
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    },
+    {
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.7998046875,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.30000001192092896,
+        15.0,
+        5.0
+      ],
+      "observed": {
+        "stark12": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tonal67": [
+          0.019378662109375,
+          0.019378662109375,
+          0.019378662109375
+        ],
+        "output477": [
+          0.019378662109375,
+          0.019378662109375,
+          0.019378662109375
+        ]
+      },
+      "stark12": {
+        "point_unknown": false,
+        "half_bit_mismatches": 0,
+        "max_absolute_error": 0.0,
+        "set_unknown": false,
+        "range_covered": true,
+        "max_box_width": 0.03224379083554711
+      },
+      "tonal67": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "output477": {
+        "point_unknown": true,
+        "half_bit_mismatches": null,
+        "max_absolute_error": null,
+        "set_unknown": true,
+        "range_covered": null,
+        "max_box_width": null
+      },
+      "point_reasons": {
+        "tonal67": "Division interval includes zero"
+      },
+      "set_reasons": {
+        "tonal67": "Division interval includes zero"
+      }
+    }
+  ],
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "full_pipeline_verified": false
+}
