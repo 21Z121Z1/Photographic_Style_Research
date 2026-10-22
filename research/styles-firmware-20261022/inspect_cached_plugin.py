@@ -89,6 +89,7 @@ def inspect(bundle: Path, out: Path, llvm_dis: str, *, include_processor: bool =
     for name, symbol in requests:
         text = subprocess.check_output(["ipsw", "macho", "disass", "--symbol", symbol,
                                         "--cache", str(out / "symbols.a2s"), str(binary)], text=True)
+        text = text.rstrip() + "\n"
         instructions = re.findall(r"^(0x[0-9a-f]+):\s+((?:[0-9a-f]{2} ){3}[0-9a-f]{2})\s", text, re.M)
         checked = bytearray()
         for addr, code in instructions:
