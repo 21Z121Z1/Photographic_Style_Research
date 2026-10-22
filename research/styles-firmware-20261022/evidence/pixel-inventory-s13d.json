@@ -1,0 +1,195 @@
+{
+  "reference": {
+    "hardware_model": "iPhone17,3",
+    "OS_build": "24A446",
+    "internal_bundle_class": "SmartStyleV1 / CMISmartStyleProcessorV1",
+    "IMG_2810_exact_capture_build": "unknown; separate identity"
+  },
+  "main_function_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+  "direct_pixel_calls": [
+    {
+      "main_SSA_result": 132,
+      "helper": "applySemanticSRL",
+      "symbol": "_Z16applySemanticSRLDv3_DhfDh",
+      "function_text_sha256": "7b0bc774bea262dbea49b3442cfcb4872e2ef763e2f80def203a1a5e67c4e525",
+      "coverage": "AIR7 complete helper model; targeted AIR10 text equality except attribute group IDs; caller connection still explicit",
+      "source_line": 6221
+    },
+    {
+      "main_SSA_result": 137,
+      "helper": "linearFromCurved",
+      "symbol": "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+      "function_text_sha256": "7bcabd624093dc0e3aace0fff3e5a23cdffbd8a7c4795c3b96ba9a9fb2e229bf",
+      "coverage": "raw transfer branches; code3 reuses existing decode; specialized code8 selected zero-divisor unknown",
+      "source_line": 6108
+    },
+    {
+      "main_SSA_result": 337,
+      "helper": "renderSemanticToneAdjustments",
+      "symbol": "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment",
+      "function_text_sha256": "fbf1cf6772d3ee1733f7882e52242a0909a14d3fe8325563fe487d0b5ca02b7c",
+      "coverage": "fallback semantic model; accepted isolated host check",
+      "source_line": 5976
+    },
+    {
+      "main_SSA_result": 352,
+      "helper": "renderBGAdjustments",
+      "symbol": "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+      "function_text_sha256": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+      "coverage": "all leaf algorithms; fixed-field host and conditional set coverage only",
+      "source_line": 5589
+    },
+    {
+      "main_SSA_result": 354,
+      "helper": "renderFGAdjustments",
+      "symbol": "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE",
+      "function_text_sha256": "bb5d0a7afd7b83ec52ec70040b4ab910202f9c9e761edcbcfc83d9a8a251ff2b",
+      "coverage": "all leaf algorithms; fixed-field host and conditional set coverage only",
+      "source_line": 4590
+    },
+    {
+      "main_SSA_result": 370,
+      "helper": "RichSat",
+      "symbol": "_Z7RichSatDv3_DhDhDhDh",
+      "function_text_sha256": "3f23959d740157e9ffb88f509af693e5e082cacc126c28335b2b226127cf4578",
+      "coverage": "reused leaf; outer color coefficient/mixing connection not numerically covered",
+      "source_line": 4079
+    },
+    {
+      "main_SSA_result": 372,
+      "helper": "smoothSatFilter",
+      "symbol": "_Z15smoothSatFilterDv3_DhDh",
+      "function_text_sha256": "5163cdebd82f65a95aa8307c0e526c38db38e8e9ce0e174bb8c03997a901e065",
+      "coverage": "reused leaf; outer color coefficient/mixing connection not numerically covered",
+      "source_line": 4508
+    },
+    {
+      "main_SSA_result": 393,
+      "helper": "renderSkinAdjustments",
+      "symbol": "_Z21renderSkinAdjustmentsDv3_DhRU9MTLdevice15SSRFGAdjustmentDhDh",
+      "function_text_sha256": "44403140aa6ccec03fe9dac75a0ff247440943fae99ea92f7b9040d887d6ab6e",
+      "coverage": "reused legacy skin with this AIR precision contract; known point differences/black domain retained",
+      "source_line": 4375
+    },
+    {
+      "main_SSA_result": 394,
+      "helper": "highlightRecover",
+      "symbol": "_Z16highlightRecoverDv3_DhDhDhDhDh",
+      "function_text_sha256": "af4aafaaf8c3e93727daf5af5302d55a2aa36fec95741bb65a94585cae6cb169",
+      "coverage": "complete helper conditional model; black/HDR domain unknown retained",
+      "source_line": 4279
+    },
+    {
+      "main_SSA_result": 400,
+      "helper": "renderBrightAndContrast",
+      "symbol": "_Z23renderBrightAndContrastDv3_DhS_DhDhDhRU9MTLdevice8SSRStats",
+      "function_text_sha256": "ddc56da9b1f1c70243f2e1618b5da789cfdecdf7feb998b9dd4a1ca9e8202d25",
+      "coverage": "complete conditional helper; bright host differences and set unknowns retained",
+      "source_line": 3788
+    },
+    {
+      "main_SSA_result": 408,
+      "helper": "renderNeutralizingAdjustments",
+      "symbol": "_Z29renderNeutralizingAdjustmentsDv3_DhbRU9MTLdevice18SSRCastAdjustmentsDhDhbRU9MTLdevice8SSRStats",
+      "function_text_sha256": "1b90f3579b1010f6dcb3581808b6d874254da2671a3e63d029a5d6ed3f1e1c23",
+      "coverage": "complete current caller model using full cast and supplied stats",
+      "source_line": 2776
+    },
+    {
+      "main_SSA_result": 409,
+      "helper": "renderWarmthCastAdjustments",
+      "symbol": "_Z27renderWarmthCastAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsDh",
+      "function_text_sha256": "ee2a88c087f46166214ad55e5e0740faa391a64892013ca403bb400b206c03cf",
+      "coverage": "complete conditional root; unproved negative pow sets retained",
+      "source_line": 2275
+    },
+    {
+      "main_SSA_result": 413,
+      "helper": "renderSelectiveColorAdjustments",
+      "symbol": "_Z31renderSelectiveColorAdjustmentsDv3_DhRU9MTLdevice18SSRCastAdjustmentsN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEEDhDhDhDh",
+      "function_text_sha256": "53277ab91ab5ab9fbac05261daa83925a3a69124703160ae952214c4f2060c48",
+      "coverage": "conditional root using explicit lookup texture; missing/invalid domains fail closed",
+      "source_line": 1851
+    },
+    {
+      "main_SSA_result": 426,
+      "helper": "airyFilter",
+      "symbol": "_Z10airyFilterDv3_DhDh",
+      "function_text_sha256": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22",
+      "coverage": "reused leaf and outer tonal/BW root; finite host domains and unknowns retained",
+      "source_line": 1646
+    },
+    {
+      "main_SSA_result": 462,
+      "helper": "contrastFilter",
+      "symbol": "_Z14contrastFilterDv3_DhDh",
+      "function_text_sha256": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18",
+      "coverage": "reused leaf and outer tonal/BW root; finite host domains and unknowns retained",
+      "source_line": 1464
+    },
+    {
+      "main_SSA_result": 477,
+      "helper": "renderBWAdjustmentsByCastType",
+      "symbol": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams",
+      "function_text_sha256": "97c98bc6db04ef463064c93423692ea850d24ecf3efeef355cb3ca729c6aaf84",
+      "coverage": "actual BW477 root computed; independent stark/tonal observations and zero-domain unknowns",
+      "source_line": 1575
+    },
+    {
+      "main_SSA_result": 493,
+      "helper": "renderVideoHazeCorrection",
+      "symbol": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh",
+      "function_text_sha256": "ec75fdfa5d97e6d06fb679b927ab8633e1e3f52b77f0e8679afa39a4dcca245e",
+      "coverage": "complete eight-field root; original guide211, independent internal unknown and main501 gate",
+      "source_line": 1283
+    },
+    {
+      "main_SSA_result": 557,
+      "helper": "protectMaskFilter",
+      "symbol": "_Z17protectMaskFilterDv3_DhS_S_S_b",
+      "function_text_sha256": "1e7ed045795940d7dde1f84b7a5f1be7d1087b1d07f1a3e587ca7520e94a728c",
+      "coverage": "pixel algorithm/connection not modeled in this task",
+      "source_line": 1096
+    },
+    {
+      "main_SSA_result": 567,
+      "helper": "renderChannelMixForBWCasts",
+      "symbol": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+      "function_text_sha256": "db989b81a63947b0e851c32aa6222190e30fa78fa39029b9aa6203e85e7367ea",
+      "coverage": "complete raw-code root plus actual stats-derived weights; cast15 black0/0 unknown",
+      "source_line": 892
+    },
+    {
+      "main_SSA_result": 600,
+      "helper": "curvedFromLinear",
+      "symbol": "_ZN3CMIL16curvedFromLinearIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_",
+      "function_text_sha256": "e4b6202be29de4e23b9e2bdfb53c0221605e193d18fedb8ea835025fc8e9499a",
+      "coverage": "raw output transfer branches; connected568..600 with explicit gain/CCM",
+      "source_line": 758
+    }
+  ],
+  "precomputed_semantic_block290": {
+    "conditional_model": "explicit post-guided-filter texture6/7 inputs; accepted isolated27-call host check",
+    "producer_now_modeled": "AIR7 sampled24/98/matte30 color core, original SRL/transfer/CCM/gain/GTC/ratio, then original matched guided3 CPU passes and conditional sets",
+    "remaining_connection": "source2D texel sampling identity, guide/epsilon/format caller context and producer-to-block290 ROI set sampling/composition are not verified"
+  },
+  "main_remaining_connections": [
+    "early main input/CCM/guide and outer RichSat/smoothSat selections before393 are not a complete composed host verification",
+    "full producer-to-consumer-to600 same-frame composition not verified",
+    "final imageblock/ROI/texture write not executed"
+  ],
+  "known_numeric_limits": [
+    "24 all-active helper calls have set-domain unknowns; point checks do not remove them",
+    "old8 leaf-domain unknowns retained",
+    "bright and earlier tonal/skin/neutralizing point differences retained",
+    "cast15 black0/0, transfer8 selected zero divisor, black HDR gain remain unknown",
+    "guided composed image boxes can reach width155.125; finite coverage is not inverse precision",
+    "2u/4u and host sampler are assumptions, not measured GPU error",
+    "nine unresolved fields retain unknown consumers; no repeated same-range consumer scan"
+  ],
+  "scope": "Updated conditional operator and connection inventory; local model work is distinguished from original GPU/frame dependencies.",
+  "GPU_executed": false,
+  "full_pipeline_verified": false,
+  "private_media_inputs": 0,
+  "new_download_bytes": 0
+}

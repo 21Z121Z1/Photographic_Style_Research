@@ -46,17 +46,24 @@ def forward(inputs: Inputs):
     return results
 
 
-def forward_set(inputs,*,gain=None,guide=None,epsilon=None):
+def forward_set(inputs,*,gain=None,guide=None,epsilon=None,output_shape=None,working_domain=None):
     """Propagate whole half input boxes and supplied f32 epsilon, never centers.
 
     Fixed grids/sampler weights follow the declared v3 CPU sampler. Existing
     2u/4u operation bounds are assumptions; no GPU interpolation bound follows.
     Dependency loss may make the variance denominator include zero: reject it.
     """
-    gain=V.bounds(inputs.input_gain,inputs.input_gain)if gain is None else gain
-    guide=V.bounds(inputs.guide,inputs.guide)if guide is None else guide
-    epsilon=V.bounds(inputs.epsilon_f32,inputs.epsilon_f32,'f')if epsilon is None else epsilon
-    for v,shape in [(gain,inputs.input_gain.shape),(guide,inputs.guide.shape)]:
+    if inputs is None:
+        if not working_domain or not isinstance(gain,V)or not isinstance(guide,V):raise TypeError('Entire supplied image sets and named working domain required')
+        shapes=gain.lo.shape,guide.lo.shape;layout=output_shape
+    else:
+        gain=V.bounds(inputs.input_gain,inputs.input_gain)if gain is None else gain
+        guide=V.bounds(inputs.guide,inputs.guide)if guide is None else guide
+        epsilon=V.bounds(inputs.epsilon_f32,inputs.epsilon_f32,'f')if epsilon is None else epsilon
+        shapes=inputs.input_gain.shape,inputs.guide.shape;layout=inputs.output_shape
+    if not isinstance(layout,tuple)or len(layout)!=2 or any(type(x)is not int or not 1<=x<=32 for x in layout):raise TypeError('Exact bounded output grid required')
+    if any(len(s)!=3 or min(s[:2])<1 or max(s[:2])>32 or s[2]not in(1,3,4)for s in shapes)or shapes[1][2]not in(1,shapes[0][2]):raise TypeError('Declared bounded compatible texture layouts required')
+    for v,shape in [(gain,shapes[0]),(guide,shapes[1])]:
         if not isinstance(v,V)or v.point or v.precision!='h'or v.lo.shape!=shape:raise TypeError('Matching entire half image sets required')
         if np.max(np.maximum(abs(v.lo),abs(v.hi)))>8:raise DomainUnknown('Input set exceeds declared abs<=8 domain')
     if not isinstance(epsilon,V)or epsilon.point or epsilon.precision!='f'or epsilon.lo.shape!=()or epsilon.lo<0 or epsilon.hi>1:raise TypeError('Explicit epsilon f32 set in[0,1] required')
@@ -78,7 +85,7 @@ def forward_set(inputs,*,gain=None,guide=None,epsilon=None):
     sa=zero;sb=zero
     for dx in range(-1,2):
         for dy in range(-1,2):sa=sa+sample(a,x+np.float32(dx),y+np.float32(dy));sb=sb+sample(b,x+np.float32(dx),y+np.float32(dy))
-    ma=(sa/9).h();mb=(sb/9).h();oh,ow=inputs.output_shape;ux=(np.arange(ow,dtype='f4')[None,:]+np.float32(.5))/np.float32(ow);uy=(np.arange(oh,dtype='f4')[:,None]+np.float32(.5))/np.float32(oh)
+    ma=(sa/9).h();mb=(sb/9).h();oh,ow=layout;ux=(np.arange(ow,dtype='f4')[None,:]+np.float32(.5))/np.float32(ow);uy=(np.arange(oh,dtype='f4')[:,None]+np.float32(.5))/np.float32(oh)
     av=normalized(ma,ux,uy);bv=normalized(mb,ux,uy);iv=normalized(guide,ux,uy)
     if guide.lo.shape[2]==1 and c>1:
         lo=np.zeros((oh,ow,c));hi=lo.copy();lo[...,0]=iv.lo[...,0];hi[...,0]=iv.hi[...,0]
