@@ -1,0 +1,20 @@
+{
+  "label": "s25-output-first-transfer-diagnostic",
+  "pre_run_binding_sha256": "0a6342ce7352c82a121d52fbc735161e392e02beef826c01d7a11e63cef69b4c",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "329d51d885f71411b63023ede22f2475c7f78fc80079669f27f22aa7a6fb7fe8",
+  "elapsed_seconds": 4.211328983306885,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/diagnose_output_transfer.py",
+    "../air-cmi-compare/ios/0010.ll.txt",
+    "research/styles-firmware-20261022/evidence/second-context-s25a.json",
+    "research/styles-firmware-20261022/evidence/native-target-B-s25c2.json",
+    "../psr-private-baselines/s25-output-20261022-4c11291a",
+    "research/styles-firmware-20261022/evidence/output-diagnostic-s25c3.json"
+  ]
+}

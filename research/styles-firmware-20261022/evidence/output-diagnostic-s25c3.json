@@ -1,0 +1,226 @@
+{
+  "scope": "First saved target-B output mismatch, traced code3 transfer checkpoints.",
+  "context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+  "saved_sha256": "4718295ba3569f85b388d09149ac9eaec75d14764d6f2935030d15b9635616d8",
+  "grid": [
+    2,
+    1
+  ],
+  "lane": 1,
+  "model_linear597_values": [
+    0.051483154296875,
+    0.00890350341796875,
+    0.13720703125
+  ],
+  "model_linear597_half_bits": [
+    10903,
+    8335,
+    12388
+  ],
+  "saved_native_linear597_half_bits": [
+    10903,
+    8335,
+    12388
+  ],
+  "stages": [
+    {
+      "SSA": 11,
+      "native_bits": [
+        10903,
+        8335,
+        12388
+      ],
+      "model_bits": [
+        10903,
+        8335,
+        12388
+      ],
+      "bit_mismatches": 0
+    },
+    {
+      "SSA": 12,
+      "native_bits": [
+        14674,
+        12125,
+        16152
+      ],
+      "model_bits": [
+        14674,
+        12125,
+        16152
+      ],
+      "bit_mismatches": 0
+    },
+    {
+      "SSA": 13,
+      "native_bits": [
+        13479,
+        12410,
+        14079
+      ],
+      "model_bits": [
+        13479,
+        12411,
+        14079
+      ],
+      "bit_mismatches": 1
+    },
+    {
+      "SSA": 14,
+      "native_bits": [
+        13544,
+        12473,
+        14177
+      ],
+      "model_bits": [
+        13544,
+        12474,
+        14177
+      ],
+      "bit_mismatches": 1
+    },
+    {
+      "SSA": 15,
+      "native_bits": [
+        13319,
+        11757,
+        13952
+      ],
+      "model_bits": [
+        13319,
+        11759,
+        13952
+      ],
+      "bit_mismatches": 1
+    },
+    {
+      "SSA": 17,
+      "native_bits": [
+        13319,
+        11757,
+        13952
+      ],
+      "model_bits": [
+        13319,
+        11759,
+        13952
+      ],
+      "bit_mismatches": 1
+    },
+    {
+      "SSA": 18,
+      "native_bits": [
+        13319,
+        11757,
+        13952
+      ],
+      "model_bits": [
+        13319,
+        11759,
+        13952
+      ],
+      "bit_mismatches": 1
+    }
+  ],
+  "first_divergence": {
+    "SSA": 13,
+    "native_bits": [
+      13479,
+      12410,
+      14079
+    ],
+    "model_bits": [
+      13479,
+      12411,
+      14079
+    ],
+    "bit_mismatches": 1
+  },
+  "observer_stability_half_bit_mismatches": {
+    "channel567": 0,
+    "linear597": 0,
+    "output600": 0
+  },
+  "encode_fma_candidate_half_bits": [
+    13319,
+    11758,
+    13952
+  ],
+  "native_calls": 1,
+  "new_full_point_calls": 1,
+  "private_manifest_sha256": "1471c2666e503583f6c5e363656c830fd243985e2297de93edb9ea8968a04b01",
+  "private_storage_relative_to_task": "psr-private-baselines/s25-output-20261022-4c11291a",
+  "command": {
+    "label": "trace",
+    "argv_redacted": [
+      "/opt/homebrew/opt/llvm/bin/clang",
+      "-target",
+      "arm64-apple-macos27.0",
+      "-Wno-override-module",
+      "-v",
+      "-dynamiclib",
+      "<private_run>/inputs/trace.ll",
+      "<private_run>/inputs/shim.c",
+      "-o",
+      "<private_run>/artifacts/trace.dylib"
+    ],
+    "argv_sha256": "19dddb48f59bf94724d10bd7363230e943e7a52bb6c6a96b429ba9535cbde96c",
+    "compiler_sha256": "9a3ebf66e99cded4cee3f6efe79103994ed155694be5abcfdbb0bdf1910007cf",
+    "reads_only_persisted_inputs": true,
+    "input_files": [
+      "inputs/trace.ll",
+      "inputs/shim.c"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "a88031c920777d15c4bdaa05b51525e09b0bb5d72daf662ab918dbb344f38b52",
+    "exit_code": 0,
+    "elapsed_seconds": 0.3021747500170022,
+    "pre_input_proof": {
+      "name": "before-trace",
+      "sha256": "0de20c0d6b5856e8bedc353cdf2943cc76baab88141e412f9751e03ac4d5d546",
+      "sealed_manifest_sha256": "1471c2666e503583f6c5e363656c830fd243985e2297de93edb9ea8968a04b01",
+      "input_files_verified": 263,
+      "products_verified": 0,
+      "all_SHA_match": true
+    },
+    "post_input_proof": {
+      "name": "after-trace",
+      "sha256": "0114bb78aeade385c9f9dae3ed2adb8e024f2e749a4d4fe912b94b4d42fce906",
+      "sealed_manifest_sha256": "1471c2666e503583f6c5e363656c830fd243985e2297de93edb9ea8968a04b01",
+      "input_files_verified": 263,
+      "products_verified": 0,
+      "all_SHA_match": true
+    },
+    "product": {
+      "name": "artifacts/trace.dylib",
+      "sha256": "4be2ade4eab4d3b6b7332bc7bbfd08e0d87e1522ed1ba4db5c810b332f1a177c",
+      "bytes": 122920
+    }
+  },
+  "products": {
+    "artifacts/trace.dylib": {
+      "name": "artifacts/trace.dylib",
+      "sha256": "4be2ade4eab4d3b6b7332bc7bbfd08e0d87e1522ed1ba4db5c810b332f1a177c",
+      "bytes": 122920
+    }
+  },
+  "proofs": [
+    {
+      "name": "before-load",
+      "sha256": "924c83969e995c782f50a27f4dd74ba4bb008b5a02bb8dbe8d4e3239afc1f5b2",
+      "sealed_manifest_sha256": "1471c2666e503583f6c5e363656c830fd243985e2297de93edb9ea8968a04b01",
+      "input_files_verified": 263,
+      "products_verified": 1,
+      "all_SHA_match": true
+    },
+    {
+      "name": "after-run",
+      "sha256": "4cfbcf7073d88c6f71d4ad2d69406bec12d408e91ddaa1061ebb17f9b68b181c",
+      "sealed_manifest_sha256": "1471c2666e503583f6c5e363656c830fd243985e2297de93edb9ea8968a04b01",
+      "input_files_verified": 263,
+      "products_verified": 1,
+      "all_SHA_match": true
+    }
+  ],
+  "diagnostic_uses_saved_guided_maps_not_full_chain": true
+}

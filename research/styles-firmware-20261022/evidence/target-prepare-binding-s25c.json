@@ -1,0 +1,22 @@
+{
+  "label": "s25-prepare-new-target-host",
+  "pre_run_binding_sha256": "858600947eba04cd428b689083011b9aaccbb8ff005f458577c8087265251db3",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "7cc5a0f7272c63e1dc560c4ae695db41f8a0886abcf09cd1f6de2e6077e8449b",
+  "elapsed_seconds": 0.8682281970977783,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/context_host_baseline.py",
+    "prepare",
+    "../air-cmi-compare/ios",
+    "research/styles-firmware-20261022/evidence/second-context-s25a.json",
+    "research/styles-firmware-20261022/evidence/model-precision-s25b.json",
+    "research/styles-firmware-20261022/evidence/scene-selection-s25a.json",
+    "../psr-private-baselines/s25-target-20261022-6ab920e1",
+    "research/styles-firmware-20261022/evidence/prepared-target-host-s25c.json"
+  ]
+}

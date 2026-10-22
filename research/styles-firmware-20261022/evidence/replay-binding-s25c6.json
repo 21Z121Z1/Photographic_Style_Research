@@ -1,0 +1,16 @@
+{
+  "label": "s25-replay-powf-profile-against-saved-originals",
+  "pre_run_binding_sha256": "41d0d248f8863b85992d2af390092b643a725436908467b1e22f44dbe5d17bca",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "28158c5ace24cd838032e7a08a5d39f58613012278fe767441437d34999eccd3",
+  "elapsed_seconds": 0.8985908031463623,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "\nfrom pathlib import Path\nfrom dataclasses import asdict\nimport sys,json,numpy as np\nr=Path('research/styles-firmware-20261022');e=r/'evidence';sys.path.insert(0,str(r))\nfrom baseline_archive import encoded,sha\nfrom context_color_api import identity\nfrom complete_fixture import decode\nfrom complete_forward import forward\nfrom active_color import Color,replace_color\nfrom color_inverse import f32\nfrom native_complete_check import comparisons\nbase=decode(json.loads((e/'second-context-s25a.json').read_text()));rows=[]\nfor name in ['native-targets-s25c.json','native-target-B-s25c2.json']:\n data=json.loads((e/name).read_text());row=data['rows'][0];native={n:np.array(a,dtype='u2').view('f2')for n,a in {**data['prefix_native_half_bits'],**row['native_half_bits']}.items()};result=forward(replace_color(base,Color(f32(row['control']['raw_f32_bits']))),point=True);cmp=comparisons(native,result);selected=sum(v['half_bit_mismatches']for n,v in cmp['observations'].items()if n!='bright400');rows.append({'saved_receipt':name,'saved_sha256':sha(e/name),'control':row['control'],'point':cmp,'selected_path_half_bit_mismatches':selected,'unselected_bright_half_bit_mismatches':cmp['observations']['bright400']['half_bit_mismatches']});assert selected==0 and cmp['writer_known'] and not cmp['pixel_unknowns']\noutput={'scope':'new explicit final code3 point profile replay against saved original targets; no original rerun','identity':asdict(identity(e/'second-context-s25a.json',e/'model-precision-v3-s25c6.json')),'rows':rows,'new_full_point_calls':2,'native_calls':0,'old_failed_receipts_unchanged':True,'all_internal_bit_exact':False,'no_candidate_budget_or_context_changed':True}\n(e/'target-replay-s25c6.json').write_bytes(encoded(output));print(json.dumps({'selected_bit_mismatches':[x['selected_path_half_bit_mismatches']for x in rows],'unselected_bright_bit_mismatches':[x['unselected_bright_half_bit_mismatches']for x in rows],'new_point_calls':2,'native_calls':0}))\n"
+  ]
+}

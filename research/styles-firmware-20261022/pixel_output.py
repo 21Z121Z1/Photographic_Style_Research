@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from leaf_numeric import V,DomainUnknown,lazy_select,mix
 from pixel_leaves import H,F
 from pixel_transfer import forward as transfer
+from output_code3 import forward as host_code3
 
 
 @dataclass(frozen=True)
@@ -33,7 +34,8 @@ def forward(rgb567,parameters: Parameters):
     if p.input_transfer136==6:one=lazy_select(p.parameter2.gt(0),lambda:mix(H(1,rgb567),H(1,rgb567),(p.parameter2*F(2,rgb567)).abs().h()),lambda:H(1,rgb567))
     gain=one/p.reference_gain176;c=p.output_CCM_columns.h()
     linear=((c[1]*rgb567[1]+c[0]*rgb567[0])+c[2]*rgb567[2])*gain
-    return Result(transfer(linear,p.output_transfer599,to_linear=False),linear,gain)
+    curved=host_code3(linear)if linear.point and p.output_transfer599==3 else transfer(linear,p.output_transfer599,to_linear=False)
+    return Result(curved,linear,gain)
 
 
 def from_post_chain(post_chain,parameters):

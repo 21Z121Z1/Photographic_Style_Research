@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<task>/PSR/research/styles-firmware-20261022/resume_context_witness.py", line 65, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('private',type=Path);p.add_argument('initial',type=Path);p.add_argument('controls',type=Path);p.add_argument('diagnostic',type=Path);p.add_argument('phase');p.add_argument('output',type=Path);a=p.parse_args();run(a.private,a.initial,a.controls,a.diagnostic,a.phase,a.output)
+                                                                                                                                                                                                                                                                                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<task>/PSR/research/styles-firmware-20261022/resume_context_witness.py", line 60, in run
+    if observer or row['native_nonfinite_components']or not row['point']['writer_known']or row['point']['pixel_unknowns']or row['selected_path_half_bit_mismatches']:raise AssertionError('Selected writer path differs; stop with witness, no nearest/budget changes')
+                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Selected writer path differs; stop with witness, no nearest/budget changes

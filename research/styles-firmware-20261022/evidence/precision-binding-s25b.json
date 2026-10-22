@@ -1,0 +1,16 @@
+{
+  "label": "s25-freeze-model-precision",
+  "pre_run_binding_sha256": "39867ec6fc3cd00b557bfa3d52bd99e06f533c09450a90511d7734c8bb0873bd",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "4dad9d88f8b9fe13ca3c19a3a64261fe451139b1635ccefde62f2d6ef2a73679",
+  "elapsed_seconds": 0.22287511825561523,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "import sys;from pathlib import Path;sys.path.insert(0,'research/styles-firmware-20261022');from context_color_api import create_precision;create_precision(Path('research/styles-firmware-20261022/evidence/model-precision-s25b.json'));print('precision frozen; no forward/native calls')"
+  ]
+}

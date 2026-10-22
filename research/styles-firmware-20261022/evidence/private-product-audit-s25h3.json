@@ -1,0 +1,54 @@
+{
+  "scope": "explicit comparison of diagnostic products/logs/proofs against their preexisting public receipts; no native/model call",
+  "records": [
+    {
+      "receipt": "bright-diagnostic-s25c.json",
+      "original_product_SHA_match": true,
+      "compiler_logs_and_proofs_SHA_match": true,
+      "manifest_sha256": "9fb54db950c197c4b8b7b6091343d7ea0e7f6ba65af43834e0e031b0910ae925"
+    },
+    {
+      "receipt": "bright-detail-s25c.json",
+      "original_product_SHA_match": true,
+      "compiler_logs_and_proofs_SHA_match": true,
+      "manifest_sha256": "dabc593489e93542f05d0ee89d82717db07f6c059183bd5ac15eb5fd5036074e"
+    },
+    {
+      "receipt": "output-diagnostic-s25c3.json",
+      "original_product_SHA_match": true,
+      "compiler_logs_and_proofs_SHA_match": true,
+      "manifest_sha256": "1471c2666e503583f6c5e363656c830fd243985e2297de93edb9ea8968a04b01"
+    }
+  ],
+  "raw_log_relocation": {
+    "target-native-binding-s25c": {
+      "original_log_sha256": "f47e0a6bcfd71cc01e5fcfb0a909fbda6fdc538184718eddc0af1a1c9a87f3cc",
+      "private_raw_log_relative_to_task": "s25-validation-logs/target-native-binding-s25c.log",
+      "public_redacted_output": "target-native-binding-s25c.public.txt",
+      "public_redacted_sha256": "ce6306bb8890a5cb6affc0bb797da1961293b8224507639081b6ee10cc9a123a",
+      "raw_bytes_preserved_unchanged": true
+    },
+    "target-B-binding-s25c2": {
+      "original_log_sha256": "469993f66ca27a384726b9630792d42a489f4f2e6e54316dda7834dfb738d09c",
+      "private_raw_log_relative_to_task": "s25-validation-logs/target-B-binding-s25c2.log",
+      "public_redacted_output": "target-B-binding-s25c2.public.txt",
+      "public_redacted_sha256": "7f2604a2498493a156ef408181ceb7771c135e68c5d7d466dc90012290242ef9",
+      "raw_bytes_preserved_unchanged": true
+    },
+    "replay-binding-s25c4": {
+      "original_log_sha256": "cf8a4d2622ead8f80593bc363d78b0f83441237bc65fa6f67395abd470011816",
+      "private_raw_log_relative_to_task": "s25-validation-logs/replay-binding-s25c4.log",
+      "public_redacted_output": "replay-binding-s25c4.public.txt",
+      "public_redacted_sha256": "cf8a4d2622ead8f80593bc363d78b0f83441237bc65fa6f67395abd470011816",
+      "raw_bytes_preserved_unchanged": true
+    },
+    "audit-binding-s25h": {
+      "original_log_sha256": "0059e41dcd55f017fe04bbc30cdba9846095932c750e0478e60bc3cec70f5a82",
+      "private_raw_log_relative_to_task": "s25-validation-logs/audit-binding-s25h.log",
+      "public_redacted_output": "audit-binding-s25h.public.txt",
+      "public_redacted_sha256": "0059e41dcd55f017fe04bbc30cdba9846095932c750e0478e60bc3cec70f5a82",
+      "raw_bytes_preserved_unchanged": true
+    }
+  },
+  "all_checks_pass": true
+}

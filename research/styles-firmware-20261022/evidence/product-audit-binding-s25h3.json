@@ -1,0 +1,16 @@
+{
+  "label": "s25-explicit-diagnostic-product-and-raw-log-audit",
+  "pre_run_binding_sha256": "353b44303913a1c66ad5c02287abaa09271cf7bd3bceabbd7063fa57638bd680",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "224549b912847e91ca110941221cc0ac33840bdee537697e240f543d14dbed98",
+  "elapsed_seconds": 0.4637613296508789,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "\nimport sys,json\nfrom pathlib import Path\nr=Path('research/styles-firmware-20261022');e=r/'evidence';sys.path.insert(0,str(r))\nfrom baseline_archive import Archive,sha,encoded\nload=lambda p:json.loads(p.read_text());records=[]\nfor name in ['bright-diagnostic-s25c.json','bright-detail-s25c.json','output-diagnostic-s25c3.json']:\n d=load(e/name);a=Archive(Path('..')/d['private_storage_relative_to_task']);assert sha(a.path('prepared.private.json'))==d['private_manifest_sha256'];a.verify(d['products']);c=d['command'];assert sha(a.path('logs/trace.stdout'))==c['stdout_sha256'] and sha(a.path('logs/trace.stderr'))==c['stderr_sha256'];assert all(sha(a.path('proofs/'+p['name']+'.json'))==p['sha256']for p in d['proofs']);records.append({'receipt':name,'original_product_SHA_match':True,'compiler_logs_and_proofs_SHA_match':True,'manifest_sha256':d['private_manifest_sha256']})\nlogs=load(e/'raw-log-storage-s25h3.json')\nfor stem,d in logs.items():assert sha(Path('..')/d['private_raw_log_relative_to_task'])==d['original_log_sha256'] and sha(e/d['public_redacted_output'])==d['public_redacted_sha256']\n(e/'private-product-audit-s25h3.json').write_bytes(encoded({'scope':'explicit comparison of diagnostic products/logs/proofs against their preexisting public receipts; no native/model call','records':records,'raw_log_relocation':logs,'all_checks_pass':True}))\nprint('all three diagnostic product/log/proof identities and four unchanged private raw logs verified')\n"
+  ]
+}

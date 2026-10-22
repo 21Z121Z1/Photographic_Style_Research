@@ -1,0 +1,2605 @@
+{
+  "run_id": "s25-target-20261022-6ab920e1",
+  "identity": {
+    "hardware": "iPhone17,3",
+    "build": "24A446",
+    "bundle": "SmartStyleV1",
+    "processor_class": "CMISmartStyleProcessorV1",
+    "main_version_argument": 0,
+    "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+    "precision_contract_sha256": "dfcf24d0d6fc78d931594b707792ec1275d7277e6b04d3988974072422754469"
+  },
+  "context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+  "precision_sha256": "dfcf24d0d6fc78d931594b707792ec1275d7277e6b04d3988974072422754469",
+  "controls_sha256": "962be009087d62787806960a5406f462cf7d38a3f0f60f2fd60792772b82e1e0",
+  "controls": [
+    {
+      "id": "target_A",
+      "raw_f32_bits": 1040187392
+    },
+    {
+      "id": "target_B",
+      "raw_f32_bits": 1051721728
+    }
+  ],
+  "source_sha256": {
+    "active_color.py": "5872893633f8aca67a5be0531f2bea706fa10f354f2ba0b91fc01467ed18a1f8",
+    "air7_full_host.py": "28fd502018bc2cb6bc6250373fc628a8359c171ebf82d6ff6642516366f35ab4",
+    "air7_gain_host.py": "f1a5b7c847ae90a71d4a9393504312e406b755d6a145cea70537545aa10ccab9",
+    "air7_pre_host.py": "b8fa06cb2affc0013cd7d545a9e28e1a13000032ac4ad586cb1ed1ecff1a60d3",
+    "air_alpha.py": "c062f052631eb4a2ded342e93cfd7fe16375cb4347d521dc66d1f9f16b04a9d9",
+    "air_by_name.py": "65476634b7f3709fdd0861953166deca0565cd9b57035e79b0891170df1e96d8",
+    "air_compare.py": "041e96f36ea4b9185060846494bbb296a69fce04713a3484818b6e06618d8128",
+    "all_pixel_leaves.py": "a6cd5f79a194941653a0f55d7ecd37c1cc3bd678ebb2dae92a3c6971e6b02d9f",
+    "analyze_active_color.py": "7dc9da37a777535e6418f5c44b2a15494070db30d87cfcbc642fb27b369a83d0",
+    "audit_active_color.py": "a05cbeb39f568890c481f1240381e3b8f170db084f5385d6b48f0681149cb47e",
+    "audit_bgfg_ulp.py": "04a3c16bd936bb4a94bb1208675993e03b5f03e76a6e193160541d5504db8091",
+    "audit_color_inverse.py": "06d736021c75bdf12e21e5602a513e982b985b673244506d5a1cb148423dd195",
+    "audit_ltm_contracts.py": "80f80d53a77613ae9f2d6f67444fa7c76870b23265978c6019fdc070bac7a589",
+    "audit_ltm_helpers.py": "9c63322da34f56c9eba08e3bd368ae54925e4ae936eb65854cebd110d13f5b72",
+    "audit_tone_links.py": "6e1d18f8f775f1adb3cf448bff109a16b24a53f9bbee36218a8138ec9812ac93",
+    "baseline_archive.py": "a4ea4490618302e2fa9e224f71d62ccc78397df829782dcee89ee652e5618824",
+    "baseline_field3.py": "32e2e7a4343efbcbe1a49923185dc548ab5eced0fb558c3ea2c7dc9cec1be462",
+    "bgfg_fixed.py": "a3bbd41b322fb5ea822466fb4a81f574256d0ec2ebb4c79d84ca9854694ec9af",
+    "bgfg_tone.py": "4bf8c575acd0408428f1d25dbf78f139aef3424d074058960c0fb327828b0cc1",
+    "block290_host.py": "81c502fda3e10d9495307b03ce76b5f70af2499683093cef9e1f18577213954c",
+    "bound_validation.py": "96c3f1569c88f58fa8732cb09e1e6c6b9541a725dfc6985c557455e20ed40c18",
+    "bw_host.py": "895ebb390644e0924856e8476ce819c91ca081eb0a4dc53c016103941ec257d9",
+    "cast_bank.py": "4bb4f93af320cd0d29334ea142a5346f6d45bd69b08fdefe123cbe77a3a8fa5d",
+    "cast_chain.py": "db581e61ba77ad39332b47ee5fd3b5df56ddacaefe4ed698be49555f71439509",
+    "cast_prior.py": "cb48b1942f5b6067e138aa1de07bb31de6f5cfe07700ef3f5ec58c68e7d6bbde",
+    "cast_values.py": "830fa7273f17da632862205463d40ebf5f4702e25f63e42d58c92b038562fdb1",
+    "check_color_joint_contract.py": "8ccde524eba6276ceec1e0ddabde6780117e7e6fc077dffff9e0685c87e508a7",
+    "check_guided_sets.py": "fc1acca70e7a6d14514967517872db1b7bf39015ac3076b4ae96e78cfd14ba46",
+    "collect_cast_names.py": "2efabfb0e2796d8398df01a0773d2fe7b9dc765ddc846bbcc96e9044bde772bb",
+    "collect_cast_tables.py": "82968429d7e685abddca707b3845422925c8ec17534aee45dd9cd2c7675a21e1",
+    "collect_enums.py": "bee064147434db0d96a27eabee9f79f0baeb1b61e410281685604c944c15f131",
+    "color_inverse.py": "ae496a0e691d431ca369359f84a95eecbe83fed897be16eaa395c8de15f19c41",
+    "color_matrices.py": "764179730db97af52d2589796a7d9fb5b548de743685f4f4e3ca209070201f53",
+    "compare_texture_tuning.py": "a7103c5338451ee0cadd8edbaab405b085369d61341368b246f70a435ec06191",
+    "complete_fixture.py": "b2870f6ffd5e79cb24f1e428fd55ed2cf941e05edfcd7194b3e699c01cf1632c",
+    "complete_forward.py": "f7bc4bbbf34694fdfeebd026d1ef0a5c8285ee02614a755e1a5b408ef8585793",
+    "component_inventory.py": "bc507e2722c820220762c2529a016d6db81438af924fe46ce32639a6ffdaabf5",
+    "computed_bw_host.py": "0f56061aedfbe7dc8f3cb8802b5b693d67d38a8caeb987164c76538d123ea4b3",
+    "computed_bw_outer.py": "d5be6e9cca02d90b94c38760354cfdee6efb22bece75fe010fe60013adfaf0d5",
+    "context_color_api.py": "d8b2c1b57de8e807db1cdeecaad2073bddc1839033103acb3ac10c413be95312",
+    "context_host_baseline.py": "f6f0eb7080bba521c5ad1a1c584f0e8d2ac11114646f14a6869d5809c2ba8662",
+    "contrast_order_domains.py": "acee9333ec94568017bbacf92d4eb7cc39e2b6b061809efced9d0e67c44e1073",
+    "contrast_sorted.py": "8f3b8e478fe267349da81b71e9bedcbf5bfb3b9e50db4c81ecfa7f6b0b8e5f5b",
+    "contrast_span_joint.py": "2e9d8bc5b882027d06bc78d7ec5a003405913db93d09f123dc55757b10ac855e",
+    "decrypt_systemos.py": "e2d47256d13eec792ef19c286523004f640bc5dddcd159bfbfbaf88b7b737c26",
+    "diagnose_active_set.py": "eda2be809cb32a902c456931956063603420afd4b872899abad3c594e56cbe2c",
+    "diagnose_bg_dependency.py": "7656aa5bd2200e23e2b2227ac44854b4aeb1d2c62a910253773e0f80e0f5275e",
+    "diagnose_guided.py": "2a7d11afee5e7e4377e48a681ddc1e5408c29e13d2f64424b39aa05e41799b1c",
+    "diagnose_internal_pixel.py": "9e721be50a407673ff0eb68a1ea96b31389515cdc63c4244132be6bab72d07e4",
+    "diagnose_local_gamma.py": "f2bbdef26015c08818cdf39dc474d60bca4b3a01963d8fcabfd0263d9528d0c9",
+    "diagnose_selective_unknown.py": "021931c86403bf4a8e5f1eed1bf6866bc85f2d1ef499beee63b441206e3d0d92",
+    "diagnose_set_denominators.py": "8f188b3f7b56df374d677ef9e28bd0e09a328b00f9f5a4e4025b322cd9a0013e",
+    "download_component.py": "886e0293123613208989ab6a737515674343ce2f16404e183171ce9134a0a71e",
+    "dyld_bytes.py": "7dd3764be3add659b2dcbc1f3bb444726af08617894f94f99acef90cd1b81aba",
+    "export_binding_methods.py": "cf676a41e4262434b83d4c4ee8180ee5243a14a67fa1b965410a643b2f76939c",
+    "export_cache_methods.py": "38db3af22010a28275987e4dfc712f0bebcff5fdcb7405c93376a971e2bc2b8e",
+    "extract_downloaded.py": "88da3eee86a2daba174d7340e1fc62c13d07529c5310f6d9bdbda128e7a1e483",
+    "firmware_probe.py": "c28d72e5ea62ec6f93a69b93e64a888068f92a5ef830f75c44fdd04ed4a1cdea",
+    "full_ltm_chain.py": "a50e142dec955331b446316eb9911b1a3666ab858dd20e5d4816bf7e91b8670a",
+    "gtc_texture.py": "1f3b462c32240d69faab0600dd9e824c477f4857b49bb74c42aafcab74e49239",
+    "guided_affine.py": "f941a7bedbf821278118623588779a1fd4bad4d41ffb75f040c903142f5a939c",
+    "guided_conditioned.py": "dc5ccdb194146a9e71dfb14ba8db1cbaad75db87a6f547562f20459b98bbd6e7",
+    "guided_host.py": "e1333602c7fd6aa4a689b3d23d120bdc869b884d6d6b127721494d6c5ec38489",
+    "guided_precision.py": "4c2622201d52fb9b512e178267a1047e167b111d92bc5711d6d4541f558ee7ee",
+    "guided_trace_host.py": "4eb23e26299ec2a5423da8d37e610802f45afacc7cf4e5fb50f483a1ab21e8e8",
+    "inspect_cached_plugin.py": "d7d37dedab84763fd91b5e67dfd6455747132de93dfd626eb2bb09c3a4863922",
+    "joint_lab.py": "1502c96c96adfa4177119474ad0103fb40dd93949b02641efeeaefc659bfc00d",
+    "leaf_correlations.py": "baa300c4ab404c285d175bf231ab63ca4fa8a78224af21c85c605e14b2e50ea0",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "leaf_host.py": "242b8159f7fa65120b65eb478d58346e4b603d2031d83b3805028487644698b6",
+    "leaf_numeric.py": "79e5b1349b9b426141193118f8c7b906b561e7f9e6757b659e0c21d021dc4416",
+    "link_color_constants.py": "d8723ee43608ada0e397e7b2b664bac11cc55f223110e6ecd48eba8222b62790",
+    "ltm_gain.py": "e398071b6b5fc5c97b52b367f13b610f5deb2057335c66bf865bf4ae6176d2f5",
+    "ltm_guided.py": "b41ec0b91fd1c27ad1610f8d969429712d08429e30e7b9b026bfd4edd8e0e153",
+    "ltm_preprocess.py": "be2583906b7b43770cbc030acd214ad81d056647b491a14a0b899c0a686949a6",
+    "main_full_host.py": "3986a64dce013aa01932d002840bcfe2f8bb33d7c2770d7e6bff48e0eae3fee2",
+    "main_pre393.py": "fc92349aa909a0786f60cfc5925a01e3738ed5404c72af7c4646af55e9db2dd7",
+    "main_pre393_host.py": "b955387cbe9f95ec50e4a4ebf1f90a3b762556ff9556a2ad58b4e30a298353d2",
+    "native_active_color.py": "65db8c99a7422228e8774f67e39f84681248a9791bd53310de98ccfc1a93a17f",
+    "native_bgfg_complete_check.py": "061466e531f7f10168c67dfde6218cbf33f3a3970ef875c5a1a5cf18264b50f2",
+    "native_bgfg_coupled_check.py": "7572e2be91d4de75d16610ace76ab8a5ce97b7e8ed8617475dbde8c3c89781b0",
+    "native_bgfg_mids_check.py": "22da781e3f5f4a6ecf1fabaa96caee10235190e3a5284b453c863a9aae8a4d44",
+    "native_boundary_check.py": "756cf545282d48cdb1bd90f80ec2e0ae122afcf2a53a9bf7cdf31729f20d6e03",
+    "native_bright_check.py": "1cbf9743e2465b430346e6712419d024c3794690b7ae19cdd6a8b56f6a8f2595",
+    "native_bw_check.py": "ee7f7b19b6342db0303badadb910ce4bb2f7e4fb2d83aab5fc953596ed8c082f",
+    "native_cast_prior_check.py": "3d47794fe34555172a0332026395a198f9de1c45b80f22da47ddf9621da164dd",
+    "native_channel_mix_check.py": "63e69508e82ec668e86cda8f131101c2d123c5b4333d5c67e5477f30453a9c0a",
+    "native_color_boundaries.py": "7661c412e413ee2aac92f79160d7a865910eae5e3ea2cecbc5c39388c99c3ceb",
+    "native_complete_check.py": "40f74be4f41adf14a362b0fe582c36b61c513bc33cd0fbcf3adde9a0325f335c",
+    "native_computed_bw_check.py": "4f00398184b6d9387406022b07244d945a6eb3ef56e1ff58277fbf5645a1e6b6",
+    "native_gtc_check.py": "c82214e389685437fe40ccdc4700de81f7c8a08ce6f8ecd027329c7c76a48625",
+    "native_gtc_generic_check.py": "2a121f19ac3f197f28db45242f7553deda034b60b34f4c7d5e1beaadc7d01f65",
+    "native_guided_check.py": "bae75afd216b4fcf9919a819c2e2caae46845c3f7310cc8da7bccd01c2c63333",
+    "native_haze_check.py": "25800f9f4603cbf2d2a64bf9dcec3e55cf32cb4189b63b3f2c20e1a9dd25f4db",
+    "native_ltm_gain_check.py": "41c0d3e1afaaf803ccde42058af8116f2d98b12c122072b7984936bd66cdc3a3",
+    "native_ltm_pre_check.py": "c0b2f38691d03879f9caf8b53b8c2aaaba88ef5a2548d0142eb5fb715275d45c",
+    "native_ltm_roi_chain.py": "2cc5c1dfceba4fdd7f0b4857baf3d8714e08301931bd7322da0f27fb685792bc",
+    "native_main_pre393_check.py": "915c0887e008f43fc066c8c71b8f63eda67ce315dd766adc1297d84051ccdcf9",
+    "native_negative_tone_check.py": "14646f836c98af8692a435002d075f568ef40cee9ae30f7b8e621c482ba7f2ad",
+    "native_neutral_leaves_check.py": "66a59810a9a4bf45f1b83d1ac9ca508d13341a49d6d4d91d5f0f8238ab699a3c",
+    "native_neutral_root_check.py": "5ece7148cbb0559f231e7f134aa21e1da83209dc41a56a4ad5d1d96b18ca26ae",
+    "native_outer_cast_check.py": "7c36ab0a2e021d6eea66a946e3c4a069a87e4faf90796273a7d598ba9e8067fe",
+    "native_output_check.py": "a1ca1484530b8cacd59d7c93fabb9ab0d3c3d8fa347405529afe1dccacb13c30",
+    "native_output_writer_check.py": "9a3fd4a7512b2616e350e0d8cf9a2a27b3df2cc8468433843a1c241f21d66a2a",
+    "native_pixel_leaves_check.py": "90a9c28f74e9676a45e3eed60bb30789fc2664959d596853ca22e91aedf0ac8a",
+    "native_positive_blocks_check.py": "e7728f6241629618fa54bec7bc82d6f9732736db7716a518a8053d26bc603015",
+    "native_positive_tone_check.py": "32e880e317af9b5a1a1a8c301bddc182fddaef2afe18e2eb98806aea9217c755",
+    "native_postprotect_check.py": "f33fc1a46504c42e2a042f5f4b9623117fd912316bd3a7cbbd1dac04121df91b",
+    "native_precomputed_semantic_check.py": "b089734c0b1de5c361a32163e8ac704a1b992e1c8a49e2739b390748dea9c62c",
+    "native_prior_ir_check.py": "0f6f3ede17427ce0793e8f037211f10aa43ba2eee696c63e94669e9df483282f",
+    "native_prior_pack_check.py": "64180b508f00002419a1563ba4ac37a7ecf22febcae9def294f967f91100b7ff",
+    "native_scene_enum_check.py": "7212c1db952794ef6d0ef4aaa2210086574f6517524b20e413a2ccbb4c8fae5e",
+    "native_scene_scale_check.py": "4a79f1a17992708ce04dd315343481ed831927ad772635f8543a5bd25761ff3f",
+    "native_selective_check.py": "3d119f49dc3425b80c96b1c738232778efbe0620c8abb6fd79cc8db0678453ac",
+    "native_selective_domain.py": "1aa4769ad3bf014bcb3913ad8b68909386c8b7a8dcc511de49efd255c41e199c",
+    "native_selective_pixel.py": "918081ff6329a36c53371d9455d87870d2a0f0aa87a0fc9814fa1fa6e00f68db",
+    "native_semantic_tone_check.py": "b82588bd62c8e46506bb9eabc236ce8f967d81ea3e29b93a2a6ba07eb3e959a8",
+    "native_skin_highlight_check.py": "c0692f7dd688a73b1556f16b5587ce6249b1635aad1710dad6ae376e0fe7e9ae",
+    "native_srl_parameter_check.py": "a4b72154b591509184654732139200ad27230bda29ccc3ca386909b15ea61b17",
+    "native_transfer_check.py": "c2724ce646daf6c87c433df111589ae83db9b8eb07e6f5e4cdee4362dafbd35b",
+    "native_warmth_root_check.py": "727e919e170a76b9d78e159be3c46a7679861434c217aa8b3473864b728bc356",
+    "negative_tone.py": "ff6f85b87669060e7af70a5353429b5549dad655d9412097e8df05fe1de8a6ac",
+    "neutral_color_joint.py": "c87a241950f3e0de52d943c6243d405979ab68893ac34738bd4fabad14ef4ce5",
+    "numeric_trace_host.py": "0f7644c21aca701093b8a5e7fe34200d4d85d7c4326d92cca914b86c6bfc2b89",
+    "outer_cast.py": "85f2fc4a7fc4f797fcaeb9745d8b50add15586c6d3bfb16b0a3be1c6023d74bb",
+    "outer_cast_chain.py": "e049427f2b87ca3f87d96cbb01f8df3b880ca8a1b6e1db1a42421ecc70239a31",
+    "outer_cast_host.py": "b08f3f721433f9aee978c672e945c139b5b5fa15319c31feb2ad331f0a7c55ac",
+    "output_host.py": "2571265c2348fd7f527b573db019df2eeeda821cdc5b00a859698c7714b0522a",
+    "output_writer.py": "069a8da7328a035e62a51a89ccd2609b09df9eeaeb5ad2506fcacdd0e16dbdc1",
+    "output_writer_host.py": "cac99f8a4f898f127bcb424678d12b8c34641c06629309bc8076c80bcd065000",
+    "pixel_bright.py": "920098ca50113922b0f927d1a293377e79f0bf4ad677000658c3c5999af12e07",
+    "pixel_bw.py": "6c7c457c73ae725367f8a2c12c2343945f489e84e9b4e060d79a7f47310eb1d0",
+    "pixel_channel_mix.py": "04c0945c011c20f5fa8f2f5bae4b1bd8e42a42e8601e6492d4bece27a30a0a39",
+    "pixel_color.py": "c56285b5f245592e02f430868ae6450013a45bb16ad58ea4403cc3aaddaeb471",
+    "pixel_coverage_inventory.py": "ff4d8d16c1983c412e898e80a40f97235cb90744ffd13a45dcad95325ef976f0",
+    "pixel_haze.py": "ef2a14022b5e17615f0a73f0bb44dc5da3162702c3f3b98f7d4564ab18e941af",
+    "pixel_leaves.py": "13c45acc9a134a141a6e159cc76848ed40528faa38226b7c08d30a6708946291",
+    "pixel_lighten.py": "cf4691a92ffb3dba82916a938088ff8003190a532b2819d06b572d251c499d99",
+    "pixel_neutral.py": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+    "pixel_neutral_root.py": "25dfe1d37b25c6acdff719ca766e355d34a3beec16b1bfdc46207da3b8fcbaed",
+    "pixel_output.py": "fb7a3070251b9d210bd1c9659cba3ac8d00753451ef30bc152db81c56ccd9d9d",
+    "pixel_post_chain.py": "3436686b5dd736fa2d995caa96a07ad7008ab04e3ca5f0b8f14ed88eb07914ca",
+    "pixel_postprotect.py": "c209e1b4ba364fbc1bb4d3cb342c43f76b47bedb9bce30de8fe72aea2c6fde61",
+    "pixel_remaining.py": "6bfe3509d05a974ac47ea127610bf0282572a6964c881b7505e89418d7c428c5",
+    "pixel_selective.py": "565958999253667807c3cd1d885d3a3342eeb130e41d13e6ff179ac43b18583a",
+    "pixel_skin.py": "70e62a9bf9d48e719d478869ba7b33aaa6ca34669a53b25967b0cb83bbb84389",
+    "pixel_tonal.py": "0128514ca05e1216eb341ae4f486c7eecc1476c3d95098110ed13daa3ef43505",
+    "pixel_transfer.py": "80d122cf9e8dad0719b3b760a3c6508c536690e2f0465234d2ab79e644309e93",
+    "pixel_warmth.py": "3fd6b516afccb501035b3c8213bca749752c0ca576d19147c550ea314c39f284",
+    "positive_tone.py": "63ff9b07608b94d66684e41c7da9fd46cf75ef48f7dbac446c5001f43907e12a",
+    "positive_tone_skin.py": "b2d3c6d67ca15e8f8e2ff54fb8a8230186bc33f55a6aaf7fbf8832fbb3ee016a",
+    "post_skin_branches.py": "3a1d04f292d7989a98f3b9e6b5f1c87ad4cf8ae56a4f4f868796e0e2b6b95ae6",
+    "postprotect_host.py": "f8bbddbe8f618c8481e0284373fc1080d281576798bc2da72df29bf3a50370da",
+    "pre_skin_color.py": "6cfe29a2d30cc123506d52829cf47b43db25f479c1365c57923432b67c6a2be7",
+    "precomputed_semantic.py": "0b601e78c5e7ef56c5912301ab25571a48a038b36259086bb4ee9e7234134feb",
+    "producer_ir_identity.py": "e377071e34558a4fcbf75c1c99850b1571592bd0ca4e61250a0632b2cbad275e",
+    "query_color_inverse.py": "7b064621e767b8c471b7034d5707677eff0f77fa74e51d3986a60900a8c1feed",
+    "refine_guided.py": "267ee1b159e686f8b919134224bed00e50f7f455c5f9595d91c373ec654bd826",
+    "regress_bw_observer.py": "b996dec1a4dac129e85c221f36e8083e216871c3aef738853d6269f618885cd7",
+    "regress_internal_memory.py": "42e112b8de01f1da2dfa201f125698383d8de8af60368fe340c011aecc924697",
+    "regress_tuning_layout.py": "b988fc7ff304aa8e857fd8b7afbdb23aba7dd977704a0dc4f10c9afaa65df8ef",
+    "regress_writer_memory.py": "0ed5acf76cdecbadb68e43f956d758a4eff57977e859ad1402a5f6e7c7630d75",
+    "renderer_enums.py": "acff591044f7b16101d0e26f2851604a893018ca03e6ea02f260414603fe0b47",
+    "replay_bg_cell0.py": "751fd76393f788fd4bc4e15505ed22b90cc6187baa91bf132da4e8398cdeb99b",
+    "replay_internal_pixel.py": "a1468efca6376414b44659f6ec39dc498e57c78d54ed688c408088d110f41595",
+    "replay_saved_pixels.py": "bf603b93d75518555435af7a1f5e5e5b85d808b4c2e1415454b84f5754696c83",
+    "replay_selective_joint.py": "563e5a046b82fd1a68c8f9121cc696b59449662578f2d56de287c3439302b69b",
+    "replay_shared_color.py": "fe0823ba1ae7aab058f1ba40b4f4b65d96874fb58ed92c8c4a80eead61d207c5",
+    "replay_shared_sets.py": "75f9ff7436341f73b4c763a89bb9d0299caf5683f9355e66b25157cc0c07e2e5",
+    "replay_sorted_contrast.py": "d180fe75f1f5eaa778a4bef154996aacb94ffff2fd5795126eb0a6a053c04e82",
+    "replay_whites_joint.py": "da8ec87f389be87562bb19e27be060e966ba1473a830a98cdc1204f477d179c3",
+    "resource_context.py": "c3c3c4c9358f42baf59826a0733347a0876f6b2baedd2a715475dd80f7f89733",
+    "run_color_inverse.py": "466878057efcf499598b532038fd4a4b6585d504be4c754e20970213123a847a",
+    "scan_context_color.py": "6e869eb1d936939415e26fedc0e6f46438eecf468ba5e7afefd6d0f681473d0d",
+    "second_scene_fixture.py": "676de324eb3dc960764770315af8c01f70a1dfcb5e36a5eb14718231c13c8869",
+    "select_active_color.py": "ed54052d1e1aff616c1210593416a4cdaa8b1af8bbdfcf37ea0ee352e75db679",
+    "selective_host.py": "225ced10d31c13e5e4fef73305a4654d987fccab7973d8a8945795f40e581b17",
+    "selective_neutral_joint.py": "1e84686b3ecdacfdb4d47bce554beab4df4cb903d9ad56735600e004d0d34c18",
+    "selective_sameframe_domain.py": "0ca707c5e2394ae15e17bf76b65492695cb4fc80e93afd9af60f1423ae0df729",
+    "semantic_caller.py": "71a586bf8f70abc6063605269959819c9cc487a7d82895c029d44aa21e0cae11",
+    "semantic_shared.py": "a0bab626c11d903eda97a774858b6b1e5072528b15467feb370a19eca4aa5e0f",
+    "semantic_tone.py": "909012576bf23c00ad505363ba7ecdfecc25ee34f48c1241f72400c0a2652253",
+    "skin_contract.py": "cc31562363699dc8621d5b77a9ffa7f5ea6fb711d2971bf005ac2d93ed5da525",
+    "srl_parameter.py": "a657c28f657097eba6a1a17f45e7d8d898e269e7edf622653b3ee742b5126ff1",
+    "style_prior.py": "4ccb89423c6cfaf9f1ef273bb28761f43e9a55c4dda6495464f0753269184ca2",
+    "summarize_ltm_roi_chain.py": "6f4a1d9a136575017c8ca2ad73e421646355d85eda0e0df99819532ce779b101",
+    "test_active_control.py": "871c25eb6860ea9d15c072b2875b7f09c56bcabd9e72d47969af64ee32135031",
+    "test_air_compare.py": "74672f5dceb97c6065bb896232fa3cecc414bd7f2ed4efe7b1438098e9be37dd",
+    "test_bgfg_fixed.py": "3401b73f23fb9d3182c2e93ef70407f30195f6d5ad7970b7d355e87e93ab0f48",
+    "test_bgfg_tone.py": "2f1e856605704c760ac9842a4c8c5aa72065d2386eab82c03eb1b1643d49b6d6",
+    "test_cache_symbols.py": "88431332a7cb1b8021364dfa3a4999542736c5a401c19ac7df3e85237295fcb1",
+    "test_cast_bank.py": "61a7564e84a4c0925437a8fbe3867e5f3130a88ec18dcb16879b70b9c83ee01e",
+    "test_cast_prior.py": "616d07a1fcd5206b4363c98f1fc97b6541fd9c0f75ed4a652b66855b1e49c997",
+    "test_color_inverse.py": "8cb0d7d84378de2539df3286140f5cc74deddd212470c98f7657e35e9ff3a680",
+    "test_complete_forward.py": "bb2429096da00c9c136d35a54837f0b1ebc49a58e0398925cd487f9451ca2bac",
+    "test_domain_connections.py": "c13a3ff60da63d5f9a5155226d941346285b3abe84669e79cfac43593d3aa9b8",
+    "test_dyld_bytes.py": "995fda470a4e29c1084d4b9003537602a330f16f32dc2ce6643d60b5c8a5c561",
+    "test_gtc_generic.py": "0257fba0829fad210dd3d9764fed0f1db0f745da6d732e197a6fd8efbafd9737",
+    "test_guided_conditioned.py": "8dfd220b77d8f538cd311a20dc56b2b104332f85545441c1eccd2cf2e9dc7fe6",
+    "test_leaf_domains.py": "cd528ad62bb834d545b2ab5708de24ccf03c1becff896bc47413ad9c186be397",
+    "test_leaf_numeric.py": "dfdfdd455ae19dde6a0256d1b8d4e66f159fb49e3555a4b94e50630eb75feb0b",
+    "test_ltm_gain.py": "78d25a567e7f38a4ff820df8fc20d248129bd3148abd14cc1a73106bbb5523a1",
+    "test_ltm_preprocess.py": "1f17765664e723d2bde731abba230ea32cd17426c002a55d464d4f7edaf91731",
+    "test_main_pre393.py": "0111ca5fd1ccea0d7e9fa9bf00bdde17a409bbb3d4e61515b7c9475be2692c73",
+    "test_negative_tone.py": "11aa18ab850d8e5174247720adb76f6d75d2c1fe045e6ce5fe6f91c5e05c9fbe",
+    "test_neutral_root.py": "1b9884aad6923d322acbc820b1a1019bfc6243d150f5a84c16acb0d47348c270",
+    "test_outer_cast.py": "7d59665f2bf3bef87dbc04cedf06f118ae8957d460f74baeb8aea371962b5a69",
+    "test_output_writer.py": "3b536602d2f98148889cc414d0c3ffa17480f58190d4c72e677c3b3bda063781",
+    "test_pixel_bright.py": "756b720d665a7ca2c1a93c9936ffd0a774bdc049509d13e5eece4a70fc0c7f6d",
+    "test_pixel_bw.py": "4c281f18761f8a652a3e027c05af6f1007f8251946581543b500e970d66f4911",
+    "test_pixel_color.py": "9752ca1dbf00f18ffb6c135806a2c74c005cea53fa7eef74eadc43a288e29ce0",
+    "test_pixel_haze.py": "823c052b780cdbb83c0db17fdb62422605ee599a3f3f113a5151f073740105a7",
+    "test_pixel_leaves.py": "e7f92353ef81edcdbaac0fb616c1a810145bd2d52d7dd78d3eda68a8269ef02e",
+    "test_pixel_lighten.py": "4c585478412a7c3685771956a589b15aea7fdf38f942377f6f2f3563893c956b",
+    "test_pixel_neutral.py": "2ba4f8f303baaab558989e2cdb1f7788e85f9a4fca489a2b05e367acb9cfdbd3",
+    "test_pixel_output.py": "bdc76475807e55e75fba0bc471acb62642d2e6bb683b16e3da18ad81f89d8a06",
+    "test_pixel_post.py": "572b1cfa7c1d939efb74e9ee1bcbedd6c19e0681ba92344d92f59f1693246b6a",
+    "test_pixel_remaining.py": "f31a9557d4e087e33a6ad70daa315635f9be3f0027f2ec233f2d49eb7eff9bc9",
+    "test_pixel_selective.py": "dc4a56662039f4bb8ddfe888b60ac7bfcd06523db820591ae6d484989e07a904",
+    "test_pixel_skin.py": "f7a1ed1198eff5a83f89048e522f39c959e881d64a44bfe6941b55862991aa60",
+    "test_pixel_tonal.py": "689a02f035fc9d0d1c7fe3d553b914c01a0962c50e97f867b27796fe0577cf9e",
+    "test_pixel_warmth.py": "f97c4bcb6d2e9422e40258cac8a58986d02e513ae5766c86476a7660e0220d78",
+    "test_positive_tone.py": "070e7ccfc730bd66474e5c9faceeedbf34344daaca70c2acf979acf183dc00bf",
+    "test_positive_tone_skin.py": "2ba38d2ff113f8abba238c02fff9c80b40b55d58a2619c4446e53fd998189022",
+    "test_precomputed_semantic.py": "a81ab300a31be5a67053945d218219e8098f5af6842f24eeb03f1efbaa66ad0b",
+    "test_producer_ir_identity.py": "4e82c1eedfa8ad24802d7f9a7dc8fe350537dfd9d7bc37881f95b57284ddae0f",
+    "test_renderer_enums.py": "faa959a6fe8ae534938db5818a78a123f96db6aee8f451b167f5b9e9b2340aa2",
+    "test_selective_joint.py": "81deb7573fa7477886d3a01cad46496cfc7840f9dfb3b400329479f3b6478864",
+    "test_semantic_tone.py": "594e0caad8ca0730d71085a79deb40bf23b6afacc3d04a4d007efaf05a52efee",
+    "test_shared_color.py": "de34750fa6212305eadb4651b6546874ce1dd4828d11c3f518beeef983e7d993",
+    "test_shared_window.py": "6aeabafdcd3b0cd9f8567f1bdfa571675f33c5924a5bfa4cf3d22b9b2f18fd80",
+    "test_sorted_sameframe.py": "483f83318cf21460c7a020a379674cc611facab443c8cd3d134de51f698d3d53",
+    "test_srl_parameter.py": "09592087f8cf80ad3209695d07689b35cfde16ff3221f5f00ecb8d0e13f89296",
+    "test_stage.py": "dfca2e02755c19cd1b74d40502742c2c7c260de01238f8b510139a8ba00ab699",
+    "test_style_prior.py": "21f6151072f868f19617bd8f1619871c93d34cba6c73056a6fe9ae6f878c87db",
+    "test_systemos.py": "01b632b57f6dbd9a1908eb9805409c991b5c0fc2e524bef142c01150f8b7311b",
+    "test_texture_numeric.py": "43e95eadda14d17959104542f6ba055f08a39c0bdde4b91a59ae38ffbe32be70",
+    "test_tone_boundaries.py": "8398bb8cec587bf32b3fba4c80ce8df4820f22496abebb15af70eff94fd08714",
+    "test_tone_fragment_sets.py": "b546843ea7f7a1d00ce7d56177e831f3f0a74db90c68b0cd7dc41b5b1ef63395",
+    "test_tone_interface.py": "d21f25cd88341bc13f659d0517bfd787fbd62257ab6a56625570ae4e5835d656",
+    "test_traceable_baseline.py": "434b0d36e39cb0cdb49fc9433d07c15e3f4161e37acd8be2b99772efab19bcc1",
+    "texture_numeric.py": "d6a20173febccf1a0be0a992eba9276276a8fea80dcb00666c697464e248686a",
+    "thumbnail_model.py": "afdb3fbbddecdf6732cb6f635c463afd79d8c53b6e79d0aa4b4f6973b00d685a",
+    "tone_boundaries.py": "5c4ff6641cdc8cd6500dcbb41f537940147ceb1fd291c3038a8a6c60035460eb",
+    "tone_fragment_sets.py": "0a08bc9caa038cbe29e850d3046827e0c7caf9131eac75f260d6dc13a4cdae04",
+    "tone_interface.py": "59c6416fc95c19216e8d23fa5f1bbb7e5d73819818fc1c17abd6210816cffb18",
+    "trace_consumer_paths.py": "56abd0561a845e5c81a1259498e831f92ba713e55e72460d085c09fb83910141",
+    "trace_tone_slots.py": "f3e3f1c9f9d7e0d6e85be756b9106816d6a511e26fab63d32dd48cefe7e66c5e",
+    "traceable_color_baseline.py": "8ca6073f1f5e45b240d5d835023dbd689f629f51f28f9f5626f0ddcbd2140cc9",
+    "typed_bgfg.py": "8e0fd1a7ab422c3158439f01b03861ab81f2aec9a9d41f66ce1b0145d2469587",
+    "verify_ltm_guided.py": "7ccfafac392fdc5369e2b10505669edb4be781936658d53a5b268086921445b0",
+    "version_gate.py": "5796d7197d1f6a58281595fc7ba94af0d3faf96c0f11bf2372eae5823a6e4665",
+    "whites_joint_ratio.py": "296a4734eca0763c114faf2d8ee99d27bb8962f671f379caecd70b9cb4e7dd7e"
+  },
+  "AIR_sha256": {
+    "0007.ll.txt": "8e21d350ccf81b4700ab6da4145ebd11a1b498a1cfe3696c46532881aa8a38e0",
+    "0090.ll.txt": "f0b2d8692c0fc6f1c0c8d60cf5af7445a594511c79ab174e76e76c6e5f232b73",
+    "0091.ll.txt": "513225fdb349bc9d62a7aa5fe614a7de0dd74dee18a726ce61a2c6daa0e517b6",
+    "0092.ll.txt": "3e8b5e47921c4b11918d9e6ecce60a59719fc7537f6df67bd86b809d6f0e7362",
+    "0010.ll.txt": "3eab37d6ea090449f721e5bae2a81fa574a38be4046293482410d5ee9ed629e4"
+  },
+  "field3_contract": {
+    "scope": "Fresh field3 dependency contract from the NEW persisted host IR files.\n\nNo historical module equality is inferred. Output contains contracts and hashes,\nnever proprietary IR text. Unrecognized raw-parameter aliases fail closed.\n",
+    "producer": {
+      "function_sha256": "b1b5f46f0ccbed63532010db071f2e30fa0a63d4049718fe832b07c7f1a38e67",
+      "raw_params_argument": "%9",
+      "fields": [
+        {
+          "SSA": 116,
+          "field": 6,
+          "subfield": null,
+          "instruction_sha256": "91e95ee246100f5aec731b3011cbf24233e7bc0f4c2151a48f4003b0fb28765c"
+        },
+        {
+          "SSA": 124,
+          "field": 15,
+          "subfield": 4,
+          "instruction_sha256": "afd3fbade1d68679133e7f5ce91dcec23f420f04a257680152cd8ddc93556107"
+        },
+        {
+          "SSA": 127,
+          "field": 15,
+          "subfield": 3,
+          "instruction_sha256": "950129776f78881459d04e0210471bda49ba841dab53720d4a494709bb3bebe6"
+        },
+        {
+          "SSA": 165,
+          "field": 15,
+          "subfield": 2,
+          "instruction_sha256": "0fd8fb78d602b6073c02de0a2c20dba778b3612f0f900e60f3022ed85db824ce"
+        }
+      ],
+      "forwarded_full_buffer_calls": [],
+      "file_sha256": "685fd8da9c85a39b520928165810f80920c750e7ec2b78e902e9fa3615d37289",
+      "wrapper_function_sha256": "3fd63248a6a014061a61a1c272c24439a1b116e6e9b45c078060900e37a6e016",
+      "raw_field3_read": false
+    },
+    "guided": [
+      {
+        "file_sha256": "6bde4e5adfcc9593c89769e0344b6054cce04f5dd8c0ddb78f617ce6e279e4d0",
+        "wrapper_sha256": "c45d279bd28246376bbbdcf2e4f1f134e306f152cc60eb8d55346e87cb8fda39",
+        "raw_color_parameter_binding": false
+      },
+      {
+        "file_sha256": "d4aefab6820e1674c1c4451cb392602dbbde7250be660b4a6d471f2181038de5",
+        "wrapper_sha256": "79c934d4490cdff211d0af730dfc8616628fa55dc6d2f3b3f6d3a7eba1ac75b2",
+        "raw_color_parameter_binding": false
+      },
+      {
+        "file_sha256": "e400b0197691fb83848ad2e94114e620bfd16ff0da5ff572845eea05198c1b54",
+        "wrapper_sha256": "8786ad00cf67186c4924cd034d5764cc803434f195bece07f647ba556c6fd1a6",
+        "raw_color_parameter_binding": false
+      }
+    ],
+    "observed_main": {
+      "file_sha256": "786cd858ca4a8241a29feda4e81df6b9764cafc2b71cfd316f7bcd7d8dbb9800",
+      "raw_pointer_scopes": [
+        {
+          "function_sha256": "2213f43bc595ba540e379097ef041cb38f6075f18f1acdabe78c7411dc2353c1",
+          "raw_params_argument": "%17",
+          "fields": [
+            {
+              "SSA": 78,
+              "field": 21,
+              "subfield": null,
+              "instruction_sha256": "1eb41286ff6d5b274491a9ca142d0fa9a54d0755c7c5604d9013910c6e9af87f"
+            },
+            {
+              "SSA": 82,
+              "field": 9,
+              "subfield": 21,
+              "instruction_sha256": "4f351f6984ea51839b6c22d0db5d2e53c096ab17c86ff29fe3cad649e463a30f"
+            },
+            {
+              "SSA": 215,
+              "field": 7,
+              "subfield": null,
+              "instruction_sha256": "46e00eaa73a0eb3eb06af91d32d1a70aa3a843702e359d09603b841aed4a9237"
+            },
+            {
+              "SSA": 217,
+              "field": 2,
+              "subfield": null,
+              "instruction_sha256": "fe276ea62ff992fb445abf6a75b339c1808568ec99b2b0edae3740866f70917d"
+            },
+            {
+              "SSA": 221,
+              "field": 1,
+              "subfield": null,
+              "instruction_sha256": "21713dae34172e5eeb4a5ca5d986ac2f2a20fca50f53ee08f540b7d7ded4670e"
+            },
+            {
+              "SSA": 223,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "e5b7846340a0450c3393d779e12fce5367d84861e3485ec0233c824225269531"
+            },
+            {
+              "SSA": 228,
+              "field": 15,
+              "subfield": 2,
+              "instruction_sha256": "27feeca459645865029b4bb43bb2ec6b189f51cede988507598eeefc66092471"
+            },
+            {
+              "SSA": 230,
+              "field": 1,
+              "subfield": null,
+              "instruction_sha256": "94ad77e6cfcc3ab21e9c447fc1a4f8b4c8b787e6783fcdade344e942d943e317"
+            },
+            {
+              "SSA": 235,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "8d917601467989c7fa62b732ad8ab6e9394977171d0505c6ea18f368bc1fd7d5"
+            },
+            {
+              "SSA": 239,
+              "field": 15,
+              "subfield": 3,
+              "instruction_sha256": "266ed7af55496eda9adf03f5d6f4f93ce6b4d8fde172c7760f09a8fde73ce6ba"
+            },
+            {
+              "SSA": 246,
+              "field": 15,
+              "subfield": null,
+              "instruction_sha256": "61726914328603802678b36627e3b563d6df26a1cb44b9bc6eff8e7c7dfcf665"
+            },
+            {
+              "SSA": 247,
+              "field": 15,
+              "subfield": 5,
+              "instruction_sha256": "c16d3382bc2374bb4afa44bf43595f06ecb1175ba525c6bb7363884e8f16a1b3"
+            },
+            {
+              "SSA": 252,
+              "field": 15,
+              "subfield": 6,
+              "instruction_sha256": "05ab5b99009b509fa119d92935b0ed02d71deadd4e9616f8fe224736781a09aa"
+            },
+            {
+              "SSA": 281,
+              "field": 6,
+              "subfield": null,
+              "instruction_sha256": "759f3abef50c30791536d6ec9e9d020393f0276b2f964e50b3184eedac31f689"
+            },
+            {
+              "SSA": 309,
+              "field": 15,
+              "subfield": 1,
+              "instruction_sha256": "b7480910139694cdffb08bb61168afd1260d261aa187d578b1ff9223c01f66d4"
+            },
+            {
+              "SSA": 340,
+              "field": 15,
+              "subfield": 1,
+              "instruction_sha256": "ccdd729ac0b67f0fe69309c012cd6ac85a918d840502f834e50a69a213a5fedc"
+            },
+            {
+              "SSA": 351,
+              "field": 13,
+              "subfield": null,
+              "instruction_sha256": "3a5f0730f846faef4ae636252e4017d73d52f5f37e8538c719d275e05d27e4f1"
+            },
+            {
+              "SSA": 353,
+              "field": 14,
+              "subfield": null,
+              "instruction_sha256": "8d7819b9a429e419015a3851fd5f44c6678bde50506650c29120fa228df9dc10"
+            },
+            {
+              "SSA": 355,
+              "field": 3,
+              "subfield": null,
+              "instruction_sha256": "76f7de6c3400bb6fb6b9d6c622c4a5a659fa13969f5dfd0938518cddca021a31"
+            },
+            {
+              "SSA": 367,
+              "field": 11,
+              "subfield": 2,
+              "instruction_sha256": "a92bf0b208d415b32e560e9542e5f359e37c515fb2ada27aac658d3d2cd13831"
+            },
+            {
+              "SSA": 406,
+              "field": 9,
+              "subfield": null,
+              "instruction_sha256": "c7a4aba3681471623025c75ac3ab360630cefd5690d8bb864ed3b865fe58e7a5"
+            },
+            {
+              "SSA": 410,
+              "field": 11,
+              "subfield": 3,
+              "instruction_sha256": "9edcabb19c154baf4f2d111408346ed2f21079b5ec08cb6c5afec9116eb97cc2"
+            },
+            {
+              "SSA": 414,
+              "field": 17,
+              "subfield": null,
+              "instruction_sha256": "52acbf19cf80b336b76137e8d393b46642f514acb0876b50068dc90ab3ca53a7"
+            },
+            {
+              "SSA": 423,
+              "field": 10,
+              "subfield": 65,
+              "instruction_sha256": "2c6a133a98f72ba609742cfba752f7a2ba882fcd673e67906de2492fdb8854a8"
+            },
+            {
+              "SSA": 478,
+              "field": 4,
+              "subfield": null,
+              "instruction_sha256": "dad09d96586e2883918089727521e3fe529dd517154cf2a06e084f60cbe8b43a"
+            },
+            {
+              "SSA": 484,
+              "field": 5,
+              "subfield": null,
+              "instruction_sha256": "417cf87ff6ccb947a01efc1026280f1be5441ae986da9b7a9c3253231bebe6ca"
+            },
+            {
+              "SSA": 495,
+              "field": 12,
+              "subfield": 0,
+              "instruction_sha256": "ee3fa91b2c54d192d77d8553cc3221cbf07cf63962201df30c2af90bc1136157"
+            },
+            {
+              "SSA": 502,
+              "field": 9,
+              "subfield": 19,
+              "instruction_sha256": "c383365d4355e63658dfec1d682a96e752bf940cfadf59ff73fde07037441d0b"
+            },
+            {
+              "SSA": 550,
+              "field": 9,
+              "subfield": 20,
+              "instruction_sha256": "8d1f09c55104f35be4f3582d2ce0cbe7e0ad8f2ff97a39e09811e12405f3d0f0"
+            }
+          ],
+          "forwarded_full_buffer_calls": [
+            {
+              "SSA": 477,
+              "callee": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams",
+              "instruction_sha256": "bf160b1e38ab49137ea8ab308f368f24dba9c63aa4b0b8b870a1ea59d8eb28e3"
+            },
+            {
+              "SSA": 493,
+              "callee": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh",
+              "instruction_sha256": "3db40d9b6734c853078eac522fe7dfdfa6bc374a2527481d1f49ad5c6d2af3c9"
+            },
+            {
+              "SSA": 567,
+              "callee": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+              "instruction_sha256": "bcec0e8fcb6cdc900a5b4373186b62ba915dbf3c4cee6ac4688f52b5cb487d93"
+            }
+          ],
+          "function": "psrMainFull"
+        },
+        {
+          "function_sha256": "97c98bc6db04ef463064c93423692ea850d24ecf3efeef355cb3ca729c6aaf84",
+          "raw_params_argument": "%4",
+          "fields": [
+            {
+              "SSA": 6,
+              "field": 2,
+              "subfield": null,
+              "instruction_sha256": "0ea860aa1df0cd1735c7328180fc46aba45b32a90ab9fe80f37773d77363fdc4"
+            },
+            {
+              "SSA": 9,
+              "field": 10,
+              "subfield": 20,
+              "instruction_sha256": "4572e3944e7ccccac4ad4d8494c2442502d2cc4ad1cdf4a1f7ebf7186a73acae"
+            },
+            {
+              "SSA": 13,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "88c12da6982bc3ee250f05c515961a336562dd66d31c0a99e254ee753d14fcf5"
+            },
+            {
+              "SSA": 19,
+              "field": 17,
+              "subfield": null,
+              "instruction_sha256": "802b90cf5a3bc2d6cbcaf3e790a4524d7e190d3f6cc2bb7a1f5bc8fbf2a94adf"
+            },
+            {
+              "SSA": 23,
+              "field": 10,
+              "subfield": 65,
+              "instruction_sha256": "c8d030e2b8ef48b07f9f3ef9d84c8f3a321f41d501e8549e66bef4f64041f57d"
+            }
+          ],
+          "forwarded_full_buffer_calls": [],
+          "function": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams"
+        },
+        {
+          "function_sha256": "ec75fdfa5d97e6d06fb679b927ab8633e1e3f52b77f0e8679afa39a4dcca245e",
+          "raw_params_argument": "%2",
+          "fields": [
+            {
+              "SSA": 5,
+              "field": 12,
+              "subfield": 1,
+              "instruction_sha256": "59b042a8d73923d8926029b78e61b61fe8aa03cd4c3fa36487958d392e5ec13b"
+            },
+            {
+              "SSA": 7,
+              "field": 12,
+              "subfield": 2,
+              "instruction_sha256": "5306ba4a088e0945f3667c72e4b3de382cdc99aef9359708151662d784a534ec"
+            },
+            {
+              "SSA": 9,
+              "field": 12,
+              "subfield": 3,
+              "instruction_sha256": "94145289a9772a64df625414353227ecf6c786373e9489530f4cba8bd10973c2"
+            },
+            {
+              "SSA": 11,
+              "field": 12,
+              "subfield": 4,
+              "instruction_sha256": "a2935a78ed310f7f1362bf7cb4eafe294cc3ab847cd437f37753fb854410e630"
+            },
+            {
+              "SSA": 13,
+              "field": 12,
+              "subfield": 5,
+              "instruction_sha256": "c43e3ab36d75e2de0e70e6aa15fe7edb0679a7d9ac9a5a75af55bf4207a981a0"
+            },
+            {
+              "SSA": 15,
+              "field": 12,
+              "subfield": 6,
+              "instruction_sha256": "2f882cde8f36b4437ce3f6cea8fdbc13de18da8acb1722b17788a3b86ea1367e"
+            },
+            {
+              "SSA": 17,
+              "field": 12,
+              "subfield": 7,
+              "instruction_sha256": "b7c184f0778b41ce583788838877b3bcd431348d8d31b9faec54ddab7e078d67"
+            },
+            {
+              "SSA": 19,
+              "field": 12,
+              "subfield": 8,
+              "instruction_sha256": "e45d79af831fd28ebe07694aa193f68cb33248142a05e2056f1f841d6d94bf26"
+            }
+          ],
+          "forwarded_full_buffer_calls": [],
+          "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+        },
+        {
+          "function_sha256": "db989b81a63947b0e851c32aa6222190e30fa78fa39029b9aa6203e85e7367ea",
+          "raw_params_argument": "%2",
+          "fields": [
+            {
+              "SSA": 5,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "59e454340f3a36fc639c574dd9757168e379ac2c762da7f43e91fbfb8fc1c701"
+            },
+            {
+              "SSA": 8,
+              "field": 10,
+              "subfield": 17,
+              "instruction_sha256": "824e9b97e69c4b8248cbc9dc79939c0160589f9e59be0f3d41e6fd21d4f1e0bf"
+            },
+            {
+              "SSA": 12,
+              "field": 10,
+              "subfield": 18,
+              "instruction_sha256": "b247316c308b2bd3c5be9ee3d25f70664704cb74ad96d2807e05fd52265c2822"
+            },
+            {
+              "SSA": 16,
+              "field": 10,
+              "subfield": 19,
+              "instruction_sha256": "c000363507b1f33ebbbd11742c6b097d5f70333414e468a41b698bdc55dfd428"
+            }
+          ],
+          "forwarded_full_buffer_calls": [
+            {
+              "SSA": 20,
+              "callee": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams",
+              "instruction_sha256": "20a45e37bc1ffe011958403e05dd623fd1d380344a4a1f6c9f90acbf04abaa2c"
+            },
+            {
+              "SSA": 45,
+              "callee": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams",
+              "instruction_sha256": "4d50ef13e66b92cb1f009326a257215b581ee588662d92d1bed5680702540c38"
+            }
+          ],
+          "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+        },
+        {
+          "function_sha256": "d9013e7e1dd71556273cb56a086382df38a3c8f3a6296517eb4d8814bbc7ddc9",
+          "raw_params_argument": "%1",
+          "fields": [
+            {
+              "SSA": 53,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "cc31cdd3a755c4f904bb1bb96403cd11bad4abaedad1ccfc75f4430faae0471d"
+            }
+          ],
+          "forwarded_full_buffer_calls": [],
+          "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+        }
+      ],
+      "field3_precision_checks": {
+        "355": true,
+        "356": true,
+        "357": true,
+        "358": true,
+        "361": true,
+        "364": true,
+        "365": true,
+        "376": true,
+        "377": true,
+        "384": true
+      },
+      "derived_consumers": {
+        "raw356": [
+          {
+            "SSA": "%357",
+            "kind": "logical control",
+            "instruction_sha256": "f7ab2b11b37e0040c7de2c7607c6a5536ee19556141fdda2485c1658980feb38"
+          }
+        ],
+        "half357": [
+          {
+            "SSA": "%obs_f97",
+            "kind": "isolated observation store",
+            "instruction_sha256": "d9804edb98105c174129d21f39f6c45031ed899496c623e529cda1af469c26ea"
+          },
+          {
+            "SSA": "%358",
+            "kind": "logical control",
+            "instruction_sha256": "f87899ae5f9b5b50d6a0c73ce323bd1456433de36951417bf9237a2592fb34b3"
+          },
+          {
+            "SSA": "%359",
+            "kind": "logical control",
+            "instruction_sha256": "a8c5b13b69bca689395e85efe02330ad5fb4fd9ea3df51da05e82f94b22e2d18"
+          },
+          {
+            "SSA": "%361",
+            "kind": "logical control",
+            "instruction_sha256": "2924c8b17dcf3ccb1a6666eea5558ef67492e3336e02472bd3d583c152839477"
+          },
+          {
+            "SSA": "%365",
+            "kind": "logical control",
+            "instruction_sha256": "ccf4811d0cf7aea9f8ce6b8f3a5028f384a2c3bcf644933ffc0b04483dd03c35"
+          }
+        ],
+        "extended358": [
+          {
+            "SSA": "%360",
+            "kind": "logical control",
+            "instruction_sha256": "e7555b46b0f2397b251302736a5452e3929081ed401db5fe10e7a710f5335a9f"
+          },
+          {
+            "SSA": "%376",
+            "kind": "logical control",
+            "instruction_sha256": "71f95d5c0265f07ba4faa1c604dbb6f5e3736efc88fa535f4d367e9000c99325"
+          },
+          {
+            "SSA": "%379",
+            "kind": "logical control",
+            "instruction_sha256": "b36b9a574fed7833a00e04ca62c12714a1ccc2ef750327a70f6e145e4af07608"
+          }
+        ]
+      },
+      "wrapper_function_sha256": "fb59c26afebe26c752b5c58e03989ebe44b4143158180ec80ed771b536047ee3",
+      "control_contract": "sole raw field3 load ->half357 ->branch/gain364/protect384; observer conversions are checked sinks",
+      "historical_module_equality_assumed": false
+    },
+    "plain_main": {
+      "file_sha256": "321987269f6748b0fae93985911ed75e46d66351682cd46f9503efb94a73eec3",
+      "raw_pointer_scopes": [
+        {
+          "function_sha256": "7a4f3911b09960133491fe74c370c24688c664100e0cc0f8e9b34fd99d377443",
+          "raw_params_argument": "%17",
+          "fields": [
+            {
+              "SSA": 78,
+              "field": 21,
+              "subfield": null,
+              "instruction_sha256": "1eb41286ff6d5b274491a9ca142d0fa9a54d0755c7c5604d9013910c6e9af87f"
+            },
+            {
+              "SSA": 82,
+              "field": 9,
+              "subfield": 21,
+              "instruction_sha256": "4f351f6984ea51839b6c22d0db5d2e53c096ab17c86ff29fe3cad649e463a30f"
+            },
+            {
+              "SSA": 215,
+              "field": 7,
+              "subfield": null,
+              "instruction_sha256": "46e00eaa73a0eb3eb06af91d32d1a70aa3a843702e359d09603b841aed4a9237"
+            },
+            {
+              "SSA": 217,
+              "field": 2,
+              "subfield": null,
+              "instruction_sha256": "fe276ea62ff992fb445abf6a75b339c1808568ec99b2b0edae3740866f70917d"
+            },
+            {
+              "SSA": 221,
+              "field": 1,
+              "subfield": null,
+              "instruction_sha256": "21713dae34172e5eeb4a5ca5d986ac2f2a20fca50f53ee08f540b7d7ded4670e"
+            },
+            {
+              "SSA": 223,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "e5b7846340a0450c3393d779e12fce5367d84861e3485ec0233c824225269531"
+            },
+            {
+              "SSA": 228,
+              "field": 15,
+              "subfield": 2,
+              "instruction_sha256": "27feeca459645865029b4bb43bb2ec6b189f51cede988507598eeefc66092471"
+            },
+            {
+              "SSA": 230,
+              "field": 1,
+              "subfield": null,
+              "instruction_sha256": "94ad77e6cfcc3ab21e9c447fc1a4f8b4c8b787e6783fcdade344e942d943e317"
+            },
+            {
+              "SSA": 235,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "8d917601467989c7fa62b732ad8ab6e9394977171d0505c6ea18f368bc1fd7d5"
+            },
+            {
+              "SSA": 239,
+              "field": 15,
+              "subfield": 3,
+              "instruction_sha256": "266ed7af55496eda9adf03f5d6f4f93ce6b4d8fde172c7760f09a8fde73ce6ba"
+            },
+            {
+              "SSA": 246,
+              "field": 15,
+              "subfield": null,
+              "instruction_sha256": "61726914328603802678b36627e3b563d6df26a1cb44b9bc6eff8e7c7dfcf665"
+            },
+            {
+              "SSA": 247,
+              "field": 15,
+              "subfield": 5,
+              "instruction_sha256": "c16d3382bc2374bb4afa44bf43595f06ecb1175ba525c6bb7363884e8f16a1b3"
+            },
+            {
+              "SSA": 252,
+              "field": 15,
+              "subfield": 6,
+              "instruction_sha256": "05ab5b99009b509fa119d92935b0ed02d71deadd4e9616f8fe224736781a09aa"
+            },
+            {
+              "SSA": 281,
+              "field": 6,
+              "subfield": null,
+              "instruction_sha256": "759f3abef50c30791536d6ec9e9d020393f0276b2f964e50b3184eedac31f689"
+            },
+            {
+              "SSA": 309,
+              "field": 15,
+              "subfield": 1,
+              "instruction_sha256": "b7480910139694cdffb08bb61168afd1260d261aa187d578b1ff9223c01f66d4"
+            },
+            {
+              "SSA": 340,
+              "field": 15,
+              "subfield": 1,
+              "instruction_sha256": "ccdd729ac0b67f0fe69309c012cd6ac85a918d840502f834e50a69a213a5fedc"
+            },
+            {
+              "SSA": 351,
+              "field": 13,
+              "subfield": null,
+              "instruction_sha256": "3a5f0730f846faef4ae636252e4017d73d52f5f37e8538c719d275e05d27e4f1"
+            },
+            {
+              "SSA": 353,
+              "field": 14,
+              "subfield": null,
+              "instruction_sha256": "8d7819b9a429e419015a3851fd5f44c6678bde50506650c29120fa228df9dc10"
+            },
+            {
+              "SSA": 355,
+              "field": 3,
+              "subfield": null,
+              "instruction_sha256": "76f7de6c3400bb6fb6b9d6c622c4a5a659fa13969f5dfd0938518cddca021a31"
+            },
+            {
+              "SSA": 367,
+              "field": 11,
+              "subfield": 2,
+              "instruction_sha256": "a92bf0b208d415b32e560e9542e5f359e37c515fb2ada27aac658d3d2cd13831"
+            },
+            {
+              "SSA": 406,
+              "field": 9,
+              "subfield": null,
+              "instruction_sha256": "c7a4aba3681471623025c75ac3ab360630cefd5690d8bb864ed3b865fe58e7a5"
+            },
+            {
+              "SSA": 410,
+              "field": 11,
+              "subfield": 3,
+              "instruction_sha256": "9edcabb19c154baf4f2d111408346ed2f21079b5ec08cb6c5afec9116eb97cc2"
+            },
+            {
+              "SSA": 414,
+              "field": 17,
+              "subfield": null,
+              "instruction_sha256": "52acbf19cf80b336b76137e8d393b46642f514acb0876b50068dc90ab3ca53a7"
+            },
+            {
+              "SSA": 423,
+              "field": 10,
+              "subfield": 65,
+              "instruction_sha256": "2c6a133a98f72ba609742cfba752f7a2ba882fcd673e67906de2492fdb8854a8"
+            },
+            {
+              "SSA": 478,
+              "field": 4,
+              "subfield": null,
+              "instruction_sha256": "dad09d96586e2883918089727521e3fe529dd517154cf2a06e084f60cbe8b43a"
+            },
+            {
+              "SSA": 484,
+              "field": 5,
+              "subfield": null,
+              "instruction_sha256": "417cf87ff6ccb947a01efc1026280f1be5441ae986da9b7a9c3253231bebe6ca"
+            },
+            {
+              "SSA": 495,
+              "field": 12,
+              "subfield": 0,
+              "instruction_sha256": "ee3fa91b2c54d192d77d8553cc3221cbf07cf63962201df30c2af90bc1136157"
+            },
+            {
+              "SSA": 502,
+              "field": 9,
+              "subfield": 19,
+              "instruction_sha256": "c383365d4355e63658dfec1d682a96e752bf940cfadf59ff73fde07037441d0b"
+            },
+            {
+              "SSA": 550,
+              "field": 9,
+              "subfield": 20,
+              "instruction_sha256": "8d1f09c55104f35be4f3582d2ce0cbe7e0ad8f2ff97a39e09811e12405f3d0f0"
+            }
+          ],
+          "forwarded_full_buffer_calls": [
+            {
+              "SSA": 477,
+              "callee": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams",
+              "instruction_sha256": "bf160b1e38ab49137ea8ab308f368f24dba9c63aa4b0b8b870a1ea59d8eb28e3"
+            },
+            {
+              "SSA": 493,
+              "callee": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh",
+              "instruction_sha256": "3db40d9b6734c853078eac522fe7dfdfa6bc374a2527481d1f49ad5c6d2af3c9"
+            },
+            {
+              "SSA": 567,
+              "callee": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats",
+              "instruction_sha256": "bcec0e8fcb6cdc900a5b4373186b62ba915dbf3c4cee6ac4688f52b5cb487d93"
+            }
+          ],
+          "function": "psrMainFull"
+        },
+        {
+          "function_sha256": "97c98bc6db04ef463064c93423692ea850d24ecf3efeef355cb3ca729c6aaf84",
+          "raw_params_argument": "%4",
+          "fields": [
+            {
+              "SSA": 6,
+              "field": 2,
+              "subfield": null,
+              "instruction_sha256": "0ea860aa1df0cd1735c7328180fc46aba45b32a90ab9fe80f37773d77363fdc4"
+            },
+            {
+              "SSA": 9,
+              "field": 10,
+              "subfield": 20,
+              "instruction_sha256": "4572e3944e7ccccac4ad4d8494c2442502d2cc4ad1cdf4a1f7ebf7186a73acae"
+            },
+            {
+              "SSA": 13,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "88c12da6982bc3ee250f05c515961a336562dd66d31c0a99e254ee753d14fcf5"
+            },
+            {
+              "SSA": 19,
+              "field": 17,
+              "subfield": null,
+              "instruction_sha256": "802b90cf5a3bc2d6cbcaf3e790a4524d7e190d3f6cc2bb7a1f5bc8fbf2a94adf"
+            },
+            {
+              "SSA": 23,
+              "field": 10,
+              "subfield": 65,
+              "instruction_sha256": "c8d030e2b8ef48b07f9f3ef9d84c8f3a321f41d501e8549e66bef4f64041f57d"
+            }
+          ],
+          "forwarded_full_buffer_calls": [],
+          "function": "_Z29renderBWAdjustmentsByCastTypeDhDhN5metal9texture2dIDhLNS_6accessE0ELNS_16memory_coherenceE0EvEEDv3_DhRU9MTLdevice9SSRParams"
+        },
+        {
+          "function_sha256": "ec75fdfa5d97e6d06fb679b927ab8633e1e3f52b77f0e8679afa39a4dcca245e",
+          "raw_params_argument": "%2",
+          "fields": [
+            {
+              "SSA": 5,
+              "field": 12,
+              "subfield": 1,
+              "instruction_sha256": "59b042a8d73923d8926029b78e61b61fe8aa03cd4c3fa36487958d392e5ec13b"
+            },
+            {
+              "SSA": 7,
+              "field": 12,
+              "subfield": 2,
+              "instruction_sha256": "5306ba4a088e0945f3667c72e4b3de382cdc99aef9359708151662d784a534ec"
+            },
+            {
+              "SSA": 9,
+              "field": 12,
+              "subfield": 3,
+              "instruction_sha256": "94145289a9772a64df625414353227ecf6c786373e9489530f4cba8bd10973c2"
+            },
+            {
+              "SSA": 11,
+              "field": 12,
+              "subfield": 4,
+              "instruction_sha256": "a2935a78ed310f7f1362bf7cb4eafe294cc3ab847cd437f37753fb854410e630"
+            },
+            {
+              "SSA": 13,
+              "field": 12,
+              "subfield": 5,
+              "instruction_sha256": "c43e3ab36d75e2de0e70e6aa15fe7edb0679a7d9ac9a5a75af55bf4207a981a0"
+            },
+            {
+              "SSA": 15,
+              "field": 12,
+              "subfield": 6,
+              "instruction_sha256": "2f882cde8f36b4437ce3f6cea8fdbc13de18da8acb1722b17788a3b86ea1367e"
+            },
+            {
+              "SSA": 17,
+              "field": 12,
+              "subfield": 7,
+              "instruction_sha256": "b7c184f0778b41ce583788838877b3bcd431348d8d31b9faec54ddab7e078d67"
+            },
+            {
+              "SSA": 19,
+              "field": 12,
+              "subfield": 8,
+              "instruction_sha256": "e45d79af831fd28ebe07694aa193f68cb33248142a05e2056f1f841d6d94bf26"
+            }
+          ],
+          "forwarded_full_buffer_calls": [],
+          "function": "_Z25renderVideoHazeCorrectionDv3_DhDhRU9MTLdevice9SSRParamsDh"
+        },
+        {
+          "function_sha256": "db989b81a63947b0e851c32aa6222190e30fa78fa39029b9aa6203e85e7367ea",
+          "raw_params_argument": "%2",
+          "fields": [
+            {
+              "SSA": 5,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "59e454340f3a36fc639c574dd9757168e379ac2c762da7f43e91fbfb8fc1c701"
+            },
+            {
+              "SSA": 8,
+              "field": 10,
+              "subfield": 17,
+              "instruction_sha256": "824e9b97e69c4b8248cbc9dc79939c0160589f9e59be0f3d41e6fd21d4f1e0bf"
+            },
+            {
+              "SSA": 12,
+              "field": 10,
+              "subfield": 18,
+              "instruction_sha256": "b247316c308b2bd3c5be9ee3d25f70664704cb74ad96d2807e05fd52265c2822"
+            },
+            {
+              "SSA": 16,
+              "field": 10,
+              "subfield": 19,
+              "instruction_sha256": "c000363507b1f33ebbbd11742c6b097d5f70333414e468a41b698bdc55dfd428"
+            }
+          ],
+          "forwarded_full_buffer_calls": [
+            {
+              "SSA": 20,
+              "callee": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams",
+              "instruction_sha256": "20a45e37bc1ffe011958403e05dd623fd1d380344a4a1f6c9f90acbf04abaa2c"
+            },
+            {
+              "SSA": 45,
+              "callee": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams",
+              "instruction_sha256": "4d50ef13e66b92cb1f009326a257215b581ee588662d92d1bed5680702540c38"
+            }
+          ],
+          "function": "_Z26renderChannelMixForBWCastsDhDv3_DhRU9MTLdevice9SSRParamsRU9MTLdevice8SSRStats"
+        },
+        {
+          "function_sha256": "d9013e7e1dd71556273cb56a086382df38a3c8f3a6296517eb4d8814bbc7ddc9",
+          "raw_params_argument": "%1",
+          "fields": [
+            {
+              "SSA": 53,
+              "field": 0,
+              "subfield": null,
+              "instruction_sha256": "cc31cdd3a755c4f904bb1bb96403cd11bad4abaedad1ccfc75f4430faae0471d"
+            }
+          ],
+          "forwarded_full_buffer_calls": [],
+          "function": "_Z24getBWChannelMixFromStatsRU9MTLdevice8SSRStatsRU9MTLdevice9SSRParams"
+        }
+      ],
+      "field3_precision_checks": {
+        "355": true,
+        "356": true,
+        "357": true,
+        "358": true,
+        "361": true,
+        "364": true,
+        "365": true,
+        "376": true,
+        "377": true,
+        "384": true
+      },
+      "derived_consumers": {
+        "raw356": [
+          {
+            "SSA": "%357",
+            "kind": "logical control",
+            "instruction_sha256": "f7ab2b11b37e0040c7de2c7607c6a5536ee19556141fdda2485c1658980feb38"
+          }
+        ],
+        "half357": [
+          {
+            "SSA": "%358",
+            "kind": "logical control",
+            "instruction_sha256": "f87899ae5f9b5b50d6a0c73ce323bd1456433de36951417bf9237a2592fb34b3"
+          },
+          {
+            "SSA": "%359",
+            "kind": "logical control",
+            "instruction_sha256": "a8c5b13b69bca689395e85efe02330ad5fb4fd9ea3df51da05e82f94b22e2d18"
+          },
+          {
+            "SSA": "%361",
+            "kind": "logical control",
+            "instruction_sha256": "2924c8b17dcf3ccb1a6666eea5558ef67492e3336e02472bd3d583c152839477"
+          },
+          {
+            "SSA": "%365",
+            "kind": "logical control",
+            "instruction_sha256": "ccf4811d0cf7aea9f8ce6b8f3a5028f384a2c3bcf644933ffc0b04483dd03c35"
+          }
+        ],
+        "extended358": [
+          {
+            "SSA": "%360",
+            "kind": "logical control",
+            "instruction_sha256": "e7555b46b0f2397b251302736a5452e3929081ed401db5fe10e7a710f5335a9f"
+          },
+          {
+            "SSA": "%376",
+            "kind": "logical control",
+            "instruction_sha256": "71f95d5c0265f07ba4faa1c604dbb6f5e3736efc88fa535f4d367e9000c99325"
+          },
+          {
+            "SSA": "%379",
+            "kind": "logical control",
+            "instruction_sha256": "b36b9a574fed7833a00e04ca62c12714a1ccc2ef750327a70f6e145e4af07608"
+          }
+        ]
+      },
+      "wrapper_function_sha256": "fb59c26afebe26c752b5c58e03989ebe44b4143158180ec80ed771b536047ee3",
+      "control_contract": "sole raw field3 load ->half357 ->branch/gain364/protect384; observer conversions are checked sinks",
+      "historical_module_equality_assumed": false
+    },
+    "field3_byte_offset": 12,
+    "prefix_reuse_permitted_for_fixed_other_inputs": true,
+    "actual_persisted_files_audited": true,
+    "all_checks_pass": true,
+    "historical_whole_module_equality": false,
+    "GPU_or_UI_mapping_verified": false
+  },
+  "compiler": {
+    "resolved_path": "/opt/homebrew/Cellar/llvm/22.1.6/bin/clang-22",
+    "sha256": "9a3ebf66e99cded4cee3f6efe79103994ed155694be5abcfdbb0bdf1910007cf",
+    "version_first_line": "Homebrew clang version 22.1.6",
+    "version_stdout_sha256": "c7f19b396c9e4cbae1b07d1f26c185a2f3d86a47279b52dc7441467d70cf7646",
+    "version_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "host": {
+    "macOS": "27.0.1",
+    "machine": "arm64",
+    "release": "27.0.0"
+  },
+  "python_hashseed": "0",
+  "scope": "new sealed context baseline; no original calls yet",
+  "private_storage_relative_to_task": "psr-private-baselines/s25-target-20261022-6ab920e1",
+  "private_manifest_sha256": "7c63d5c99e2184457cc5cb7b0274dfd3a56773a40c69295027c42b3b77b9fa68",
+  "actual_compiler_inputs": {
+    "inputs/0-producer.ll": {
+      "sha256": "685fd8da9c85a39b520928165810f80920c750e7ec2b78e902e9fa3615d37289",
+      "bytes": 51631,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/1-guided-coeff.ll": {
+      "sha256": "6bde4e5adfcc9593c89769e0344b6054cce04f5dd8c0ddb78f617ce6e279e4d0",
+      "bytes": 16353,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/2-guided-filter.ll": {
+      "sha256": "d4aefab6820e1674c1c4451cb392602dbbde7250be660b4a6d471f2181038de5",
+      "bytes": 12887,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/3-guided-apply.ll": {
+      "sha256": "e400b0197691fb83848ad2e94114e620bfd16ff0da5ff572845eea05198c1b54",
+      "bytes": 10719,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/4-main-observed.ll": {
+      "sha256": "786cd858ca4a8241a29feda4e81df6b9764cafc2b71cfd316f7bcd7d8dbb9800",
+      "bytes": 411988,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/shim.c": {
+      "sha256": "105e0ff7a9fc7a25eb2ceafa8c0ad9b3155bcc76863810d7b020e2eab3d62d51",
+      "bytes": 2366,
+      "role": "actual compiler shim"
+    },
+    "inputs/plain-main.ll": {
+      "sha256": "321987269f6748b0fae93985911ed75e46d66351682cd46f9503efb94a73eec3",
+      "bytes": 395359,
+      "role": "actual plain compiler host IR"
+    }
+  },
+  "sealed_file_hashes": {
+    "generators/active_color.py": {
+      "sha256": "5872893633f8aca67a5be0531f2bea706fa10f354f2ba0b91fc01467ed18a1f8",
+      "bytes": 2097,
+      "role": "exact source snapshot"
+    },
+    "generators/air7_full_host.py": {
+      "sha256": "28fd502018bc2cb6bc6250373fc628a8359c171ebf82d6ff6642516366f35ab4",
+      "bytes": 6243,
+      "role": "exact source snapshot"
+    },
+    "generators/air7_gain_host.py": {
+      "sha256": "f1a5b7c847ae90a71d4a9393504312e406b755d6a145cea70537545aa10ccab9",
+      "bytes": 3548,
+      "role": "exact source snapshot"
+    },
+    "generators/air7_pre_host.py": {
+      "sha256": "b8fa06cb2affc0013cd7d545a9e28e1a13000032ac4ad586cb1ed1ecff1a60d3",
+      "bytes": 4221,
+      "role": "exact source snapshot"
+    },
+    "generators/air_alpha.py": {
+      "sha256": "c062f052631eb4a2ded342e93cfd7fe16375cb4347d521dc66d1f9f16b04a9d9",
+      "bytes": 5490,
+      "role": "exact source snapshot"
+    },
+    "generators/air_by_name.py": {
+      "sha256": "65476634b7f3709fdd0861953166deca0565cd9b57035e79b0891170df1e96d8",
+      "bytes": 2436,
+      "role": "exact source snapshot"
+    },
+    "generators/air_compare.py": {
+      "sha256": "041e96f36ea4b9185060846494bbb296a69fce04713a3484818b6e06618d8128",
+      "bytes": 4731,
+      "role": "exact source snapshot"
+    },
+    "generators/all_pixel_leaves.py": {
+      "sha256": "a6cd5f79a194941653a0f55d7ecd37c1cc3bd678ebb2dae92a3c6971e6b02d9f",
+      "bytes": 364,
+      "role": "exact source snapshot"
+    },
+    "generators/analyze_active_color.py": {
+      "sha256": "7dc9da37a777535e6418f5c44b2a15494070db30d87cfcbc642fb27b369a83d0",
+      "bytes": 5581,
+      "role": "exact source snapshot"
+    },
+    "generators/audit_active_color.py": {
+      "sha256": "a05cbeb39f568890c481f1240381e3b8f170db084f5385d6b48f0681149cb47e",
+      "bytes": 6631,
+      "role": "exact source snapshot"
+    },
+    "generators/audit_bgfg_ulp.py": {
+      "sha256": "04a3c16bd936bb4a94bb1208675993e03b5f03e76a6e193160541d5504db8091",
+      "bytes": 2454,
+      "role": "exact source snapshot"
+    },
+    "generators/audit_color_inverse.py": {
+      "sha256": "06d736021c75bdf12e21e5602a513e982b985b673244506d5a1cb148423dd195",
+      "bytes": 4528,
+      "role": "exact source snapshot"
+    },
+    "generators/audit_ltm_contracts.py": {
+      "sha256": "80f80d53a77613ae9f2d6f67444fa7c76870b23265978c6019fdc070bac7a589",
+      "bytes": 3623,
+      "role": "exact source snapshot"
+    },
+    "generators/audit_ltm_helpers.py": {
+      "sha256": "9c63322da34f56c9eba08e3bd368ae54925e4ae936eb65854cebd110d13f5b72",
+      "bytes": 1236,
+      "role": "exact source snapshot"
+    },
+    "generators/audit_tone_links.py": {
+      "sha256": "6e1d18f8f775f1adb3cf448bff109a16b24a53f9bbee36218a8138ec9812ac93",
+      "bytes": 9564,
+      "role": "exact source snapshot"
+    },
+    "generators/baseline_archive.py": {
+      "sha256": "a4ea4490618302e2fa9e224f71d62ccc78397df829782dcee89ee652e5618824",
+      "bytes": 6417,
+      "role": "exact source snapshot"
+    },
+    "generators/baseline_field3.py": {
+      "sha256": "32e2e7a4343efbcbe1a49923185dc548ab5eced0fb558c3ea2c7dc9cec1be462",
+      "bytes": 6829,
+      "role": "exact source snapshot"
+    },
+    "generators/bgfg_fixed.py": {
+      "sha256": "a3bbd41b322fb5ea822466fb4a81f574256d0ec2ebb4c79d84ca9854694ec9af",
+      "bytes": 4190,
+      "role": "exact source snapshot"
+    },
+    "generators/bgfg_tone.py": {
+      "sha256": "4bf8c575acd0408428f1d25dbf78f139aef3424d074058960c0fb327828b0cc1",
+      "bytes": 7683,
+      "role": "exact source snapshot"
+    },
+    "generators/block290_host.py": {
+      "sha256": "81c502fda3e10d9495307b03ce76b5f70af2499683093cef9e1f18577213954c",
+      "bytes": 1402,
+      "role": "exact source snapshot"
+    },
+    "generators/bound_validation.py": {
+      "sha256": "96c3f1569c88f58fa8732cb09e1e6c6b9541a725dfc6985c557455e20ed40c18",
+      "bytes": 2681,
+      "role": "exact source snapshot"
+    },
+    "generators/bw_host.py": {
+      "sha256": "895ebb390644e0924856e8476ce819c91ca081eb0a4dc53c016103941ec257d9",
+      "bytes": 1394,
+      "role": "exact source snapshot"
+    },
+    "generators/cast_bank.py": {
+      "sha256": "4bb4f93af320cd0d29334ea142a5346f6d45bd69b08fdefe123cbe77a3a8fa5d",
+      "bytes": 4210,
+      "role": "exact source snapshot"
+    },
+    "generators/cast_chain.py": {
+      "sha256": "db581e61ba77ad39332b47ee5fd3b5df56ddacaefe4ed698be49555f71439509",
+      "bytes": 1525,
+      "role": "exact source snapshot"
+    },
+    "generators/cast_prior.py": {
+      "sha256": "cb48b1942f5b6067e138aa1de07bb31de6f5cfe07700ef3f5ec58c68e7d6bbde",
+      "bytes": 4732,
+      "role": "exact source snapshot"
+    },
+    "generators/cast_values.py": {
+      "sha256": "830fa7273f17da632862205463d40ebf5f4702e25f63e42d58c92b038562fdb1",
+      "bytes": 1023,
+      "role": "exact source snapshot"
+    },
+    "generators/check_color_joint_contract.py": {
+      "sha256": "8ccde524eba6276ceec1e0ddabde6780117e7e6fc077dffff9e0685c87e508a7",
+      "bytes": 3880,
+      "role": "exact source snapshot"
+    },
+    "generators/check_guided_sets.py": {
+      "sha256": "fc1acca70e7a6d14514967517872db1b7bf39015ac3076b4ae96e78cfd14ba46",
+      "bytes": 2766,
+      "role": "exact source snapshot"
+    },
+    "generators/collect_cast_names.py": {
+      "sha256": "2efabfb0e2796d8398df01a0773d2fe7b9dc765ddc846bbcc96e9044bde772bb",
+      "bytes": 4830,
+      "role": "exact source snapshot"
+    },
+    "generators/collect_cast_tables.py": {
+      "sha256": "82968429d7e685abddca707b3845422925c8ec17534aee45dd9cd2c7675a21e1",
+      "bytes": 4991,
+      "role": "exact source snapshot"
+    },
+    "generators/collect_enums.py": {
+      "sha256": "bee064147434db0d96a27eabee9f79f0baeb1b61e410281685604c944c15f131",
+      "bytes": 3881,
+      "role": "exact source snapshot"
+    },
+    "generators/color_inverse.py": {
+      "sha256": "ae496a0e691d431ca369359f84a95eecbe83fed897be16eaa395c8de15f19c41",
+      "bytes": 9828,
+      "role": "exact source snapshot"
+    },
+    "generators/color_matrices.py": {
+      "sha256": "764179730db97af52d2589796a7d9fb5b548de743685f4f4e3ca209070201f53",
+      "bytes": 1042,
+      "role": "exact source snapshot"
+    },
+    "generators/compare_texture_tuning.py": {
+      "sha256": "a7103c5338451ee0cadd8edbaab405b085369d61341368b246f70a435ec06191",
+      "bytes": 2163,
+      "role": "exact source snapshot"
+    },
+    "generators/complete_fixture.py": {
+      "sha256": "b2870f6ffd5e79cb24f1e428fd55ed2cf941e05edfcd7194b3e699c01cf1632c",
+      "bytes": 3874,
+      "role": "exact source snapshot"
+    },
+    "generators/complete_forward.py": {
+      "sha256": "f7bc4bbbf34694fdfeebd026d1ef0a5c8285ee02614a755e1a5b408ef8585793",
+      "bytes": 11007,
+      "role": "exact source snapshot"
+    },
+    "generators/component_inventory.py": {
+      "sha256": "bc507e2722c820220762c2529a016d6db81438af924fe46ce32639a6ffdaabf5",
+      "bytes": 6807,
+      "role": "exact source snapshot"
+    },
+    "generators/computed_bw_host.py": {
+      "sha256": "0f56061aedfbe7dc8f3cb8802b5b693d67d38a8caeb987164c76538d123ea4b3",
+      "bytes": 3742,
+      "role": "exact source snapshot"
+    },
+    "generators/computed_bw_outer.py": {
+      "sha256": "d5be6e9cca02d90b94c38760354cfdee6efb22bece75fe010fe60013adfaf0d5",
+      "bytes": 2169,
+      "role": "exact source snapshot"
+    },
+    "generators/context_color_api.py": {
+      "sha256": "d8b2c1b57de8e807db1cdeecaad2073bddc1839033103acb3ac10c413be95312",
+      "bytes": 9285,
+      "role": "exact source snapshot"
+    },
+    "generators/context_host_baseline.py": {
+      "sha256": "f6f0eb7080bba521c5ad1a1c584f0e8d2ac11114646f14a6869d5809c2ba8662",
+      "bytes": 10949,
+      "role": "exact source snapshot"
+    },
+    "generators/contrast_order_domains.py": {
+      "sha256": "acee9333ec94568017bbacf92d4eb7cc39e2b6b061809efced9d0e67c44e1073",
+      "bytes": 6604,
+      "role": "exact source snapshot"
+    },
+    "generators/contrast_sorted.py": {
+      "sha256": "8f3b8e478fe267349da81b71e9bedcbf5bfb3b9e50db4c81ecfa7f6b0b8e5f5b",
+      "bytes": 4676,
+      "role": "exact source snapshot"
+    },
+    "generators/contrast_span_joint.py": {
+      "sha256": "2e9d8bc5b882027d06bc78d7ec5a003405913db93d09f123dc55757b10ac855e",
+      "bytes": 6028,
+      "role": "exact source snapshot"
+    },
+    "generators/decrypt_systemos.py": {
+      "sha256": "e2d47256d13eec792ef19c286523004f640bc5dddcd159bfbfbaf88b7b737c26",
+      "bytes": 3212,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_active_set.py": {
+      "sha256": "eda2be809cb32a902c456931956063603420afd4b872899abad3c594e56cbe2c",
+      "bytes": 3414,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_bg_dependency.py": {
+      "sha256": "7656aa5bd2200e23e2b2227ac44854b4aeb1d2c62a910253773e0f80e0f5275e",
+      "bytes": 4719,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_guided.py": {
+      "sha256": "2a7d11afee5e7e4377e48a681ddc1e5408c29e13d2f64424b39aa05e41799b1c",
+      "bytes": 6351,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_internal_pixel.py": {
+      "sha256": "9e721be50a407673ff0eb68a1ea96b31389515cdc63c4244132be6bab72d07e4",
+      "bytes": 5891,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_local_gamma.py": {
+      "sha256": "f2bbdef26015c08818cdf39dc474d60bca4b3a01963d8fcabfd0263d9528d0c9",
+      "bytes": 8479,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_selective_unknown.py": {
+      "sha256": "021931c86403bf4a8e5f1eed1bf6866bc85f2d1ef499beee63b441206e3d0d92",
+      "bytes": 1865,
+      "role": "exact source snapshot"
+    },
+    "generators/diagnose_set_denominators.py": {
+      "sha256": "8f188b3f7b56df374d677ef9e28bd0e09a328b00f9f5a4e4025b322cd9a0013e",
+      "bytes": 3658,
+      "role": "exact source snapshot"
+    },
+    "generators/download_component.py": {
+      "sha256": "886e0293123613208989ab6a737515674343ce2f16404e183171ce9134a0a71e",
+      "bytes": 6848,
+      "role": "exact source snapshot"
+    },
+    "generators/dyld_bytes.py": {
+      "sha256": "7dd3764be3add659b2dcbc1f3bb444726af08617894f94f99acef90cd1b81aba",
+      "bytes": 9424,
+      "role": "exact source snapshot"
+    },
+    "generators/export_binding_methods.py": {
+      "sha256": "cf676a41e4262434b83d4c4ee8180ee5243a14a67fa1b965410a643b2f76939c",
+      "bytes": 3330,
+      "role": "exact source snapshot"
+    },
+    "generators/export_cache_methods.py": {
+      "sha256": "38db3af22010a28275987e4dfc712f0bebcff5fdcb7405c93376a971e2bc2b8e",
+      "bytes": 7532,
+      "role": "exact source snapshot"
+    },
+    "generators/extract_downloaded.py": {
+      "sha256": "88da3eee86a2daba174d7340e1fc62c13d07529c5310f6d9bdbda128e7a1e483",
+      "bytes": 6024,
+      "role": "exact source snapshot"
+    },
+    "generators/firmware_probe.py": {
+      "sha256": "c28d72e5ea62ec6f93a69b93e64a888068f92a5ef830f75c44fdd04ed4a1cdea",
+      "bytes": 8474,
+      "role": "exact source snapshot"
+    },
+    "generators/full_ltm_chain.py": {
+      "sha256": "a50e142dec955331b446316eb9911b1a3666ab858dd20e5d4816bf7e91b8670a",
+      "bytes": 4800,
+      "role": "exact source snapshot"
+    },
+    "generators/gtc_texture.py": {
+      "sha256": "1f3b462c32240d69faab0600dd9e824c477f4857b49bb74c42aafcab74e49239",
+      "bytes": 4002,
+      "role": "exact source snapshot"
+    },
+    "generators/guided_affine.py": {
+      "sha256": "f941a7bedbf821278118623588779a1fd4bad4d41ffb75f040c903142f5a939c",
+      "bytes": 8586,
+      "role": "exact source snapshot"
+    },
+    "generators/guided_conditioned.py": {
+      "sha256": "dc5ccdb194146a9e71dfb14ba8db1cbaad75db87a6f547562f20459b98bbd6e7",
+      "bytes": 7373,
+      "role": "exact source snapshot"
+    },
+    "generators/guided_host.py": {
+      "sha256": "e1333602c7fd6aa4a689b3d23d120bdc869b884d6d6b127721494d6c5ec38489",
+      "bytes": 6644,
+      "role": "exact source snapshot"
+    },
+    "generators/guided_precision.py": {
+      "sha256": "4c2622201d52fb9b512e178267a1047e167b111d92bc5711d6d4541f558ee7ee",
+      "bytes": 1805,
+      "role": "exact source snapshot"
+    },
+    "generators/guided_trace_host.py": {
+      "sha256": "4eb23e26299ec2a5423da8d37e610802f45afacc7cf4e5fb50f483a1ab21e8e8",
+      "bytes": 1601,
+      "role": "exact source snapshot"
+    },
+    "generators/inspect_cached_plugin.py": {
+      "sha256": "d7d37dedab84763fd91b5e67dfd6455747132de93dfd626eb2bb09c3a4863922",
+      "bytes": 8573,
+      "role": "exact source snapshot"
+    },
+    "generators/joint_lab.py": {
+      "sha256": "1502c96c96adfa4177119474ad0103fb40dd93949b02641efeeaefc659bfc00d",
+      "bytes": 3266,
+      "role": "exact source snapshot"
+    },
+    "generators/leaf_correlations.py": {
+      "sha256": "baa300c4ab404c285d175bf231ab63ca4fa8a78224af21c85c605e14b2e50ea0",
+      "bytes": 769,
+      "role": "exact source snapshot"
+    },
+    "generators/leaf_domains.py": {
+      "sha256": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+      "bytes": 1106,
+      "role": "exact source snapshot"
+    },
+    "generators/leaf_host.py": {
+      "sha256": "242b8159f7fa65120b65eb478d58346e4b603d2031d83b3805028487644698b6",
+      "bytes": 19621,
+      "role": "exact source snapshot"
+    },
+    "generators/leaf_numeric.py": {
+      "sha256": "79e5b1349b9b426141193118f8c7b906b561e7f9e6757b659e0c21d021dc4416",
+      "bytes": 9658,
+      "role": "exact source snapshot"
+    },
+    "generators/link_color_constants.py": {
+      "sha256": "d8723ee43608ada0e397e7b2b664bac11cc55f223110e6ecd48eba8222b62790",
+      "bytes": 2051,
+      "role": "exact source snapshot"
+    },
+    "generators/ltm_gain.py": {
+      "sha256": "e398071b6b5fc5c97b52b367f13b610f5deb2057335c66bf865bf4ae6176d2f5",
+      "bytes": 2611,
+      "role": "exact source snapshot"
+    },
+    "generators/ltm_guided.py": {
+      "sha256": "b41ec0b91fd1c27ad1610f8d969429712d08429e30e7b9b026bfd4edd8e0e153",
+      "bytes": 2415,
+      "role": "exact source snapshot"
+    },
+    "generators/ltm_preprocess.py": {
+      "sha256": "be2583906b7b43770cbc030acd214ad81d056647b491a14a0b899c0a686949a6",
+      "bytes": 3242,
+      "role": "exact source snapshot"
+    },
+    "generators/main_full_host.py": {
+      "sha256": "3986a64dce013aa01932d002840bcfe2f8bb33d7c2770d7e6bff48e0eae3fee2",
+      "bytes": 5812,
+      "role": "exact source snapshot"
+    },
+    "generators/main_pre393.py": {
+      "sha256": "fc92349aa909a0786f60cfc5925a01e3738ed5404c72af7c4646af55e9db2dd7",
+      "bytes": 6109,
+      "role": "exact source snapshot"
+    },
+    "generators/main_pre393_host.py": {
+      "sha256": "b955387cbe9f95ec50e4a4ebf1f90a3b762556ff9556a2ad58b4e30a298353d2",
+      "bytes": 4966,
+      "role": "exact source snapshot"
+    },
+    "generators/native_active_color.py": {
+      "sha256": "65db8c99a7422228e8774f67e39f84681248a9791bd53310de98ccfc1a93a17f",
+      "bytes": 7490,
+      "role": "exact source snapshot"
+    },
+    "generators/native_bgfg_complete_check.py": {
+      "sha256": "061466e531f7f10168c67dfde6218cbf33f3a3970ef875c5a1a5cf18264b50f2",
+      "bytes": 6930,
+      "role": "exact source snapshot"
+    },
+    "generators/native_bgfg_coupled_check.py": {
+      "sha256": "7572e2be91d4de75d16610ace76ab8a5ce97b7e8ed8617475dbde8c3c89781b0",
+      "bytes": 1446,
+      "role": "exact source snapshot"
+    },
+    "generators/native_bgfg_mids_check.py": {
+      "sha256": "22da781e3f5f4a6ecf1fabaa96caee10235190e3a5284b453c863a9aae8a4d44",
+      "bytes": 8715,
+      "role": "exact source snapshot"
+    },
+    "generators/native_boundary_check.py": {
+      "sha256": "756cf545282d48cdb1bd90f80ec2e0ae122afcf2a53a9bf7cdf31729f20d6e03",
+      "bytes": 4135,
+      "role": "exact source snapshot"
+    },
+    "generators/native_bright_check.py": {
+      "sha256": "1cbf9743e2465b430346e6712419d024c3794690b7ae19cdd6a8b56f6a8f2595",
+      "bytes": 4767,
+      "role": "exact source snapshot"
+    },
+    "generators/native_bw_check.py": {
+      "sha256": "ee7f7b19b6342db0303badadb910ce4bb2f7e4fb2d83aab5fc953596ed8c082f",
+      "bytes": 5326,
+      "role": "exact source snapshot"
+    },
+    "generators/native_cast_prior_check.py": {
+      "sha256": "3d47794fe34555172a0332026395a198f9de1c45b80f22da47ddf9621da164dd",
+      "bytes": 8430,
+      "role": "exact source snapshot"
+    },
+    "generators/native_channel_mix_check.py": {
+      "sha256": "63e69508e82ec668e86cda8f131101c2d123c5b4333d5c67e5477f30453a9c0a",
+      "bytes": 1890,
+      "role": "exact source snapshot"
+    },
+    "generators/native_color_boundaries.py": {
+      "sha256": "7661c412e413ee2aac92f79160d7a865910eae5e3ea2cecbc5c39388c99c3ceb",
+      "bytes": 9544,
+      "role": "exact source snapshot"
+    },
+    "generators/native_complete_check.py": {
+      "sha256": "40f74be4f41adf14a362b0fe582c36b61c513bc33cd0fbcf3adde9a0325f335c",
+      "bytes": 7952,
+      "role": "exact source snapshot"
+    },
+    "generators/native_computed_bw_check.py": {
+      "sha256": "4f00398184b6d9387406022b07244d945a6eb3ef56e1ff58277fbf5645a1e6b6",
+      "bytes": 5462,
+      "role": "exact source snapshot"
+    },
+    "generators/native_gtc_check.py": {
+      "sha256": "c82214e389685437fe40ccdc4700de81f7c8a08ce6f8ecd027329c7c76a48625",
+      "bytes": 6964,
+      "role": "exact source snapshot"
+    },
+    "generators/native_gtc_generic_check.py": {
+      "sha256": "2a121f19ac3f197f28db45242f7553deda034b60b34f4c7d5e1beaadc7d01f65",
+      "bytes": 7391,
+      "role": "exact source snapshot"
+    },
+    "generators/native_guided_check.py": {
+      "sha256": "bae75afd216b4fcf9919a819c2e2caae46845c3f7310cc8da7bccd01c2c63333",
+      "bytes": 5935,
+      "role": "exact source snapshot"
+    },
+    "generators/native_haze_check.py": {
+      "sha256": "25800f9f4603cbf2d2a64bf9dcec3e55cf32cb4189b63b3f2c20e1a9dd25f4db",
+      "bytes": 1909,
+      "role": "exact source snapshot"
+    },
+    "generators/native_ltm_gain_check.py": {
+      "sha256": "41c0d3e1afaaf803ccde42058af8116f2d98b12c122072b7984936bd66cdc3a3",
+      "bytes": 4939,
+      "role": "exact source snapshot"
+    },
+    "generators/native_ltm_pre_check.py": {
+      "sha256": "c0b2f38691d03879f9caf8b53b8c2aaaba88ef5a2548d0142eb5fb715275d45c",
+      "bytes": 2149,
+      "role": "exact source snapshot"
+    },
+    "generators/native_ltm_roi_chain.py": {
+      "sha256": "2cc5c1dfceba4fdd7f0b4857baf3d8714e08301931bd7322da0f27fb685792bc",
+      "bytes": 9943,
+      "role": "exact source snapshot"
+    },
+    "generators/native_main_pre393_check.py": {
+      "sha256": "915c0887e008f43fc066c8c71b8f63eda67ce315dd766adc1297d84051ccdcf9",
+      "bytes": 8987,
+      "role": "exact source snapshot"
+    },
+    "generators/native_negative_tone_check.py": {
+      "sha256": "14646f836c98af8692a435002d075f568ef40cee9ae30f7b8e621c482ba7f2ad",
+      "bytes": 6492,
+      "role": "exact source snapshot"
+    },
+    "generators/native_neutral_leaves_check.py": {
+      "sha256": "66a59810a9a4bf45f1b83d1ac9ca508d13341a49d6d4d91d5f0f8238ab699a3c",
+      "bytes": 5257,
+      "role": "exact source snapshot"
+    },
+    "generators/native_neutral_root_check.py": {
+      "sha256": "5ece7148cbb0559f231e7f134aa21e1da83209dc41a56a4ad5d1d96b18ca26ae",
+      "bytes": 2168,
+      "role": "exact source snapshot"
+    },
+    "generators/native_outer_cast_check.py": {
+      "sha256": "7c36ab0a2e021d6eea66a946e3c4a069a87e4faf90796273a7d598ba9e8067fe",
+      "bytes": 3872,
+      "role": "exact source snapshot"
+    },
+    "generators/native_output_check.py": {
+      "sha256": "a1ca1484530b8cacd59d7c93fabb9ab0d3c3d8fa347405529afe1dccacb13c30",
+      "bytes": 4406,
+      "role": "exact source snapshot"
+    },
+    "generators/native_output_writer_check.py": {
+      "sha256": "9a3fd4a7512b2616e350e0d8cf9a2a27b3df2cc8468433843a1c241f21d66a2a",
+      "bytes": 6573,
+      "role": "exact source snapshot"
+    },
+    "generators/native_pixel_leaves_check.py": {
+      "sha256": "90a9c28f74e9676a45e3eed60bb30789fc2664959d596853ca22e91aedf0ac8a",
+      "bytes": 7317,
+      "role": "exact source snapshot"
+    },
+    "generators/native_positive_blocks_check.py": {
+      "sha256": "e7728f6241629618fa54bec7bc82d6f9732736db7716a518a8053d26bc603015",
+      "bytes": 6684,
+      "role": "exact source snapshot"
+    },
+    "generators/native_positive_tone_check.py": {
+      "sha256": "32e880e317af9b5a1a1a8c301bddc182fddaef2afe18e2eb98806aea9217c755",
+      "bytes": 5421,
+      "role": "exact source snapshot"
+    },
+    "generators/native_postprotect_check.py": {
+      "sha256": "f33fc1a46504c42e2a042f5f4b9623117fd912316bd3a7cbbd1dac04121df91b",
+      "bytes": 2516,
+      "role": "exact source snapshot"
+    },
+    "generators/native_precomputed_semantic_check.py": {
+      "sha256": "b089734c0b1de5c361a32163e8ac704a1b992e1c8a49e2739b390748dea9c62c",
+      "bytes": 8471,
+      "role": "exact source snapshot"
+    },
+    "generators/native_prior_ir_check.py": {
+      "sha256": "0f6f3ede17427ce0793e8f037211f10aa43ba2eee696c63e94669e9df483282f",
+      "bytes": 7036,
+      "role": "exact source snapshot"
+    },
+    "generators/native_prior_pack_check.py": {
+      "sha256": "64180b508f00002419a1563ba4ac37a7ecf22febcae9def294f967f91100b7ff",
+      "bytes": 3647,
+      "role": "exact source snapshot"
+    },
+    "generators/native_scene_enum_check.py": {
+      "sha256": "7212c1db952794ef6d0ef4aaa2210086574f6517524b20e413a2ccbb4c8fae5e",
+      "bytes": 3011,
+      "role": "exact source snapshot"
+    },
+    "generators/native_scene_scale_check.py": {
+      "sha256": "4a79f1a17992708ce04dd315343481ed831927ad772635f8543a5bd25761ff3f",
+      "bytes": 4211,
+      "role": "exact source snapshot"
+    },
+    "generators/native_selective_check.py": {
+      "sha256": "3d119f49dc3425b80c96b1c738232778efbe0620c8abb6fd79cc8db0678453ac",
+      "bytes": 5240,
+      "role": "exact source snapshot"
+    },
+    "generators/native_selective_domain.py": {
+      "sha256": "1aa4769ad3bf014bcb3913ad8b68909386c8b7a8dcc511de49efd255c41e199c",
+      "bytes": 6102,
+      "role": "exact source snapshot"
+    },
+    "generators/native_selective_pixel.py": {
+      "sha256": "918081ff6329a36c53371d9455d87870d2a0f0aa87a0fc9814fa1fa6e00f68db",
+      "bytes": 5979,
+      "role": "exact source snapshot"
+    },
+    "generators/native_semantic_tone_check.py": {
+      "sha256": "b82588bd62c8e46506bb9eabc236ce8f967d81ea3e29b93a2a6ba07eb3e959a8",
+      "bytes": 8619,
+      "role": "exact source snapshot"
+    },
+    "generators/native_skin_highlight_check.py": {
+      "sha256": "c0692f7dd688a73b1556f16b5587ce6249b1635aad1710dad6ae376e0fe7e9ae",
+      "bytes": 4961,
+      "role": "exact source snapshot"
+    },
+    "generators/native_srl_parameter_check.py": {
+      "sha256": "a4b72154b591509184654732139200ad27230bda29ccc3ca386909b15ea61b17",
+      "bytes": 4652,
+      "role": "exact source snapshot"
+    },
+    "generators/native_transfer_check.py": {
+      "sha256": "c2724ce646daf6c87c433df111589ae83db9b8eb07e6f5e4cdee4362dafbd35b",
+      "bytes": 1554,
+      "role": "exact source snapshot"
+    },
+    "generators/native_warmth_root_check.py": {
+      "sha256": "727e919e170a76b9d78e159be3c46a7679861434c217aa8b3473864b728bc356",
+      "bytes": 1829,
+      "role": "exact source snapshot"
+    },
+    "generators/negative_tone.py": {
+      "sha256": "ff6f85b87669060e7af70a5353429b5549dad655d9412097e8df05fe1de8a6ac",
+      "bytes": 8558,
+      "role": "exact source snapshot"
+    },
+    "generators/neutral_color_joint.py": {
+      "sha256": "c87a241950f3e0de52d943c6243d405979ab68893ac34738bd4fabad14ef4ce5",
+      "bytes": 2585,
+      "role": "exact source snapshot"
+    },
+    "generators/numeric_trace_host.py": {
+      "sha256": "0f7644c21aca701093b8a5e7fe34200d4d85d7c4326d92cca914b86c6bfc2b89",
+      "bytes": 2773,
+      "role": "exact source snapshot"
+    },
+    "generators/outer_cast.py": {
+      "sha256": "85f2fc4a7fc4f797fcaeb9745d8b50add15586c6d3bfb16b0a3be1c6023d74bb",
+      "bytes": 2965,
+      "role": "exact source snapshot"
+    },
+    "generators/outer_cast_chain.py": {
+      "sha256": "e049427f2b87ca3f87d96cbb01f8df3b880ca8a1b6e1db1a42421ecc70239a31",
+      "bytes": 1013,
+      "role": "exact source snapshot"
+    },
+    "generators/outer_cast_host.py": {
+      "sha256": "b08f3f721433f9aee978c672e945c139b5b5fa15319c31feb2ad331f0a7c55ac",
+      "bytes": 3499,
+      "role": "exact source snapshot"
+    },
+    "generators/output_host.py": {
+      "sha256": "2571265c2348fd7f527b573db019df2eeeda821cdc5b00a859698c7714b0522a",
+      "bytes": 2884,
+      "role": "exact source snapshot"
+    },
+    "generators/output_writer.py": {
+      "sha256": "069a8da7328a035e62a51a89ccd2609b09df9eeaeb5ad2506fcacdd0e16dbdc1",
+      "bytes": 3025,
+      "role": "exact source snapshot"
+    },
+    "generators/output_writer_host.py": {
+      "sha256": "cac99f8a4f898f127bcb424678d12b8c34641c06629309bc8076c80bcd065000",
+      "bytes": 6751,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_bright.py": {
+      "sha256": "920098ca50113922b0f927d1a293377e79f0bf4ad677000658c3c5999af12e07",
+      "bytes": 5150,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_bw.py": {
+      "sha256": "6c7c457c73ae725367f8a2c12c2343945f489e84e9b4e060d79a7f47310eb1d0",
+      "bytes": 2821,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_channel_mix.py": {
+      "sha256": "04c0945c011c20f5fa8f2f5bae4b1bd8e42a42e8601e6492d4bece27a30a0a39",
+      "bytes": 2228,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_color.py": {
+      "sha256": "c56285b5f245592e02f430868ae6450013a45bb16ad58ea4403cc3aaddaeb471",
+      "bytes": 3618,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_coverage_inventory.py": {
+      "sha256": "ff4d8d16c1983c412e898e80a40f97235cb90744ffd13a45dcad95325ef976f0",
+      "bytes": 13329,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_haze.py": {
+      "sha256": "ef2a14022b5e17615f0a73f0bb44dc5da3162702c3f3b98f7d4564ab18e941af",
+      "bytes": 2633,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_leaves.py": {
+      "sha256": "13c45acc9a134a141a6e159cc76848ed40528faa38226b7c08d30a6708946291",
+      "bytes": 5498,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_lighten.py": {
+      "sha256": "cf4691a92ffb3dba82916a938088ff8003190a532b2819d06b572d251c499d99",
+      "bytes": 2786,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_neutral.py": {
+      "sha256": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+      "bytes": 5235,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_neutral_root.py": {
+      "sha256": "25dfe1d37b25c6acdff719ca766e355d34a3beec16b1bfdc46207da3b8fcbaed",
+      "bytes": 3586,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_output.py": {
+      "sha256": "fb7a3070251b9d210bd1c9659cba3ac8d00753451ef30bc152db81c56ccd9d9d",
+      "bytes": 2104,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_post_chain.py": {
+      "sha256": "3436686b5dd736fa2d995caa96a07ad7008ab04e3ca5f0b8f14ed88eb07914ca",
+      "bytes": 1702,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_postprotect.py": {
+      "sha256": "c209e1b4ba364fbc1bb4d3cb342c43f76b47bedb9bce30de8fe72aea2c6fde61",
+      "bytes": 1553,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_remaining.py": {
+      "sha256": "6bfe3509d05a974ac47ea127610bf0282572a6964c881b7505e89418d7c428c5",
+      "bytes": 5130,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_selective.py": {
+      "sha256": "565958999253667807c3cd1d885d3a3342eeb130e41d13e6ff179ac43b18583a",
+      "bytes": 5676,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_skin.py": {
+      "sha256": "70e62a9bf9d48e719d478869ba7b33aaa6ca34669a53b25967b0cb83bbb84389",
+      "bytes": 3351,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_tonal.py": {
+      "sha256": "0128514ca05e1216eb341ae4f486c7eecc1476c3d95098110ed13daa3ef43505",
+      "bytes": 3591,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_transfer.py": {
+      "sha256": "80d122cf9e8dad0719b3b760a3c6508c536690e2f0465234d2ab79e644309e93",
+      "bytes": 2613,
+      "role": "exact source snapshot"
+    },
+    "generators/pixel_warmth.py": {
+      "sha256": "3fd6b516afccb501035b3c8213bca749752c0ca576d19147c550ea314c39f284",
+      "bytes": 4890,
+      "role": "exact source snapshot"
+    },
+    "generators/positive_tone.py": {
+      "sha256": "63ff9b07608b94d66684e41c7da9fd46cf75ef48f7dbac446c5001f43907e12a",
+      "bytes": 6108,
+      "role": "exact source snapshot"
+    },
+    "generators/positive_tone_skin.py": {
+      "sha256": "b2d3c6d67ca15e8f8e2ff54fb8a8230186bc33f55a6aaf7fbf8832fbb3ee016a",
+      "bytes": 2001,
+      "role": "exact source snapshot"
+    },
+    "generators/post_skin_branches.py": {
+      "sha256": "3a1d04f292d7989a98f3b9e6b5f1c87ad4cf8ae56a4f4f868796e0e2b6b95ae6",
+      "bytes": 2692,
+      "role": "exact source snapshot"
+    },
+    "generators/postprotect_host.py": {
+      "sha256": "f8bbddbe8f618c8481e0284373fc1080d281576798bc2da72df29bf3a50370da",
+      "bytes": 2766,
+      "role": "exact source snapshot"
+    },
+    "generators/pre_skin_color.py": {
+      "sha256": "6cfe29a2d30cc123506d52829cf47b43db25f479c1365c57923432b67c6a2be7",
+      "bytes": 1728,
+      "role": "exact source snapshot"
+    },
+    "generators/precomputed_semantic.py": {
+      "sha256": "0b601e78c5e7ef56c5912301ab25571a48a038b36259086bb4ee9e7234134feb",
+      "bytes": 5439,
+      "role": "exact source snapshot"
+    },
+    "generators/producer_ir_identity.py": {
+      "sha256": "e377071e34558a4fcbf75c1c99850b1571592bd0ca4e61250a0632b2cbad275e",
+      "bytes": 9677,
+      "role": "exact source snapshot"
+    },
+    "generators/query_color_inverse.py": {
+      "sha256": "7b064621e767b8c471b7034d5707677eff0f77fa74e51d3986a60900a8c1feed",
+      "bytes": 3068,
+      "role": "exact source snapshot"
+    },
+    "generators/refine_guided.py": {
+      "sha256": "267ee1b159e686f8b919134224bed00e50f7f455c5f9595d91c373ec654bd826",
+      "bytes": 5410,
+      "role": "exact source snapshot"
+    },
+    "generators/regress_bw_observer.py": {
+      "sha256": "b996dec1a4dac129e85c221f36e8083e216871c3aef738853d6269f618885cd7",
+      "bytes": 1346,
+      "role": "exact source snapshot"
+    },
+    "generators/regress_internal_memory.py": {
+      "sha256": "42e112b8de01f1da2dfa201f125698383d8de8af60368fe340c011aecc924697",
+      "bytes": 2104,
+      "role": "exact source snapshot"
+    },
+    "generators/regress_tuning_layout.py": {
+      "sha256": "b988fc7ff304aa8e857fd8b7afbdb23aba7dd977704a0dc4f10c9afaa65df8ef",
+      "bytes": 3029,
+      "role": "exact source snapshot"
+    },
+    "generators/regress_writer_memory.py": {
+      "sha256": "0ed5acf76cdecbadb68e43f956d758a4eff57977e859ad1402a5f6e7c7630d75",
+      "bytes": 3354,
+      "role": "exact source snapshot"
+    },
+    "generators/renderer_enums.py": {
+      "sha256": "acff591044f7b16101d0e26f2851604a893018ca03e6ea02f260414603fe0b47",
+      "bytes": 1080,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_bg_cell0.py": {
+      "sha256": "751fd76393f788fd4bc4e15505ed22b90cc6187baa91bf132da4e8398cdeb99b",
+      "bytes": 4090,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_internal_pixel.py": {
+      "sha256": "a1468efca6376414b44659f6ec39dc498e57c78d54ed688c408088d110f41595",
+      "bytes": 2190,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_saved_pixels.py": {
+      "sha256": "bf603b93d75518555435af7a1f5e5e5b85d808b4c2e1415454b84f5754696c83",
+      "bytes": 2335,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_selective_joint.py": {
+      "sha256": "563e5a046b82fd1a68c8f9121cc696b59449662578f2d56de287c3439302b69b",
+      "bytes": 3707,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_shared_color.py": {
+      "sha256": "fe0823ba1ae7aab058f1ba40b4f4b65d96874fb58ed92c8c4a80eead61d207c5",
+      "bytes": 4931,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_shared_sets.py": {
+      "sha256": "75f9ff7436341f73b4c763a89bb9d0299caf5683f9355e66b25157cc0c07e2e5",
+      "bytes": 3334,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_sorted_contrast.py": {
+      "sha256": "d180fe75f1f5eaa778a4bef154996aacb94ffff2fd5795126eb0a6a053c04e82",
+      "bytes": 6005,
+      "role": "exact source snapshot"
+    },
+    "generators/replay_whites_joint.py": {
+      "sha256": "da8ec87f389be87562bb19e27be060e966ba1473a830a98cdc1204f477d179c3",
+      "bytes": 3689,
+      "role": "exact source snapshot"
+    },
+    "generators/resource_context.py": {
+      "sha256": "c3c3c4c9358f42baf59826a0733347a0876f6b2baedd2a715475dd80f7f89733",
+      "bytes": 2602,
+      "role": "exact source snapshot"
+    },
+    "generators/run_color_inverse.py": {
+      "sha256": "466878057efcf499598b532038fd4a4b6585d504be4c754e20970213123a847a",
+      "bytes": 12173,
+      "role": "exact source snapshot"
+    },
+    "generators/scan_context_color.py": {
+      "sha256": "6e869eb1d936939415e26fedc0e6f46438eecf468ba5e7afefd6d0f681473d0d",
+      "bytes": 2328,
+      "role": "exact source snapshot"
+    },
+    "generators/second_scene_fixture.py": {
+      "sha256": "676de324eb3dc960764770315af8c01f70a1dfcb5e36a5eb14718231c13c8869",
+      "bytes": 3601,
+      "role": "exact source snapshot"
+    },
+    "generators/select_active_color.py": {
+      "sha256": "ed54052d1e1aff616c1210593416a4cdaa8b1af8bbdfcf37ea0ee352e75db679",
+      "bytes": 2969,
+      "role": "exact source snapshot"
+    },
+    "generators/selective_host.py": {
+      "sha256": "225ced10d31c13e5e4fef73305a4654d987fccab7973d8a8945795f40e581b17",
+      "bytes": 1341,
+      "role": "exact source snapshot"
+    },
+    "generators/selective_neutral_joint.py": {
+      "sha256": "1e84686b3ecdacfdb4d47bce554beab4df4cb903d9ad56735600e004d0d34c18",
+      "bytes": 9290,
+      "role": "exact source snapshot"
+    },
+    "generators/selective_sameframe_domain.py": {
+      "sha256": "0ca707c5e2394ae15e17bf76b65492695cb4fc80e93afd9af60f1423ae0df729",
+      "bytes": 6834,
+      "role": "exact source snapshot"
+    },
+    "generators/semantic_caller.py": {
+      "sha256": "71a586bf8f70abc6063605269959819c9cc487a7d82895c029d44aa21e0cae11",
+      "bytes": 1964,
+      "role": "exact source snapshot"
+    },
+    "generators/semantic_shared.py": {
+      "sha256": "a0bab626c11d903eda97a774858b6b1e5072528b15467feb370a19eca4aa5e0f",
+      "bytes": 2263,
+      "role": "exact source snapshot"
+    },
+    "generators/semantic_tone.py": {
+      "sha256": "909012576bf23c00ad505363ba7ecdfecc25ee34f48c1241f72400c0a2652253",
+      "bytes": 7777,
+      "role": "exact source snapshot"
+    },
+    "generators/skin_contract.py": {
+      "sha256": "cc31562363699dc8621d5b77a9ffa7f5ea6fb711d2971bf005ac2d93ed5da525",
+      "bytes": 3118,
+      "role": "exact source snapshot"
+    },
+    "generators/srl_parameter.py": {
+      "sha256": "a657c28f657097eba6a1a17f45e7d8d898e269e7edf622653b3ee742b5126ff1",
+      "bytes": 849,
+      "role": "exact source snapshot"
+    },
+    "generators/style_prior.py": {
+      "sha256": "4ccb89423c6cfaf9f1ef273bb28761f43e9a55c4dda6495464f0753269184ca2",
+      "bytes": 4674,
+      "role": "exact source snapshot"
+    },
+    "generators/summarize_ltm_roi_chain.py": {
+      "sha256": "6f4a1d9a136575017c8ca2ad73e421646355d85eda0e0df99819532ce779b101",
+      "bytes": 1796,
+      "role": "exact source snapshot"
+    },
+    "generators/test_active_control.py": {
+      "sha256": "871c25eb6860ea9d15c072b2875b7f09c56bcabd9e72d47969af64ee32135031",
+      "bytes": 6094,
+      "role": "exact source snapshot"
+    },
+    "generators/test_air_compare.py": {
+      "sha256": "74672f5dceb97c6065bb896232fa3cecc414bd7f2ed4efe7b1438098e9be37dd",
+      "bytes": 2562,
+      "role": "exact source snapshot"
+    },
+    "generators/test_bgfg_fixed.py": {
+      "sha256": "3401b73f23fb9d3182c2e93ef70407f30195f6d5ad7970b7d355e87e93ab0f48",
+      "bytes": 2720,
+      "role": "exact source snapshot"
+    },
+    "generators/test_bgfg_tone.py": {
+      "sha256": "2f1e856605704c760ac9842a4c8c5aa72065d2386eab82c03eb1b1643d49b6d6",
+      "bytes": 2161,
+      "role": "exact source snapshot"
+    },
+    "generators/test_cache_symbols.py": {
+      "sha256": "88431332a7cb1b8021364dfa3a4999542736c5a401c19ac7df3e85237295fcb1",
+      "bytes": 621,
+      "role": "exact source snapshot"
+    },
+    "generators/test_cast_bank.py": {
+      "sha256": "61a7564e84a4c0925437a8fbe3867e5f3130a88ec18dcb16879b70b9c83ee01e",
+      "bytes": 1332,
+      "role": "exact source snapshot"
+    },
+    "generators/test_cast_prior.py": {
+      "sha256": "616d07a1fcd5206b4363c98f1fc97b6541fd9c0f75ed4a652b66855b1e49c997",
+      "bytes": 3038,
+      "role": "exact source snapshot"
+    },
+    "generators/test_color_inverse.py": {
+      "sha256": "8cb0d7d84378de2539df3286140f5cc74deddd212470c98f7657e35e9ff3a680",
+      "bytes": 7871,
+      "role": "exact source snapshot"
+    },
+    "generators/test_complete_forward.py": {
+      "sha256": "bb2429096da00c9c136d35a54837f0b1ebc49a58e0398925cd487f9451ca2bac",
+      "bytes": 4389,
+      "role": "exact source snapshot"
+    },
+    "generators/test_domain_connections.py": {
+      "sha256": "c13a3ff60da63d5f9a5155226d941346285b3abe84669e79cfac43593d3aa9b8",
+      "bytes": 5027,
+      "role": "exact source snapshot"
+    },
+    "generators/test_dyld_bytes.py": {
+      "sha256": "995fda470a4e29c1084d4b9003537602a330f16f32dc2ce6643d60b5c8a5c561",
+      "bytes": 2569,
+      "role": "exact source snapshot"
+    },
+    "generators/test_gtc_generic.py": {
+      "sha256": "0257fba0829fad210dd3d9764fed0f1db0f745da6d732e197a6fd8efbafd9737",
+      "bytes": 4394,
+      "role": "exact source snapshot"
+    },
+    "generators/test_guided_conditioned.py": {
+      "sha256": "8dfd220b77d8f538cd311a20dc56b2b104332f85545441c1eccd2cf2e9dc7fe6",
+      "bytes": 1882,
+      "role": "exact source snapshot"
+    },
+    "generators/test_leaf_domains.py": {
+      "sha256": "cd528ad62bb834d545b2ab5708de24ccf03c1becff896bc47413ad9c186be397",
+      "bytes": 1372,
+      "role": "exact source snapshot"
+    },
+    "generators/test_leaf_numeric.py": {
+      "sha256": "dfdfdd455ae19dde6a0256d1b8d4e66f159fb49e3555a4b94e50630eb75feb0b",
+      "bytes": 1283,
+      "role": "exact source snapshot"
+    },
+    "generators/test_ltm_gain.py": {
+      "sha256": "78d25a567e7f38a4ff820df8fc20d248129bd3148abd14cc1a73106bbb5523a1",
+      "bytes": 1360,
+      "role": "exact source snapshot"
+    },
+    "generators/test_ltm_preprocess.py": {
+      "sha256": "1f17765664e723d2bde731abba230ea32cd17426c002a55d464d4f7edaf91731",
+      "bytes": 2057,
+      "role": "exact source snapshot"
+    },
+    "generators/test_main_pre393.py": {
+      "sha256": "0111ca5fd1ccea0d7e9fa9bf00bdde17a409bbb3d4e61515b7c9475be2692c73",
+      "bytes": 2305,
+      "role": "exact source snapshot"
+    },
+    "generators/test_negative_tone.py": {
+      "sha256": "11aa18ab850d8e5174247720adb76f6d75d2c1fe045e6ce5fe6f91c5e05c9fbe",
+      "bytes": 3347,
+      "role": "exact source snapshot"
+    },
+    "generators/test_neutral_root.py": {
+      "sha256": "1b9884aad6923d322acbc820b1a1019bfc6243d150f5a84c16acb0d47348c270",
+      "bytes": 1937,
+      "role": "exact source snapshot"
+    },
+    "generators/test_outer_cast.py": {
+      "sha256": "7d59665f2bf3bef87dbc04cedf06f118ae8957d460f74baeb8aea371962b5a69",
+      "bytes": 1963,
+      "role": "exact source snapshot"
+    },
+    "generators/test_output_writer.py": {
+      "sha256": "3b536602d2f98148889cc414d0c3ffa17480f58190d4c72e677c3b3bda063781",
+      "bytes": 2633,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_bright.py": {
+      "sha256": "756b720d665a7ca2c1a93c9936ffd0a774bdc049509d13e5eece4a70fc0c7f6d",
+      "bytes": 1891,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_bw.py": {
+      "sha256": "4c281f18761f8a652a3e027c05af6f1007f8251946581543b500e970d66f4911",
+      "bytes": 2191,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_color.py": {
+      "sha256": "9752ca1dbf00f18ffb6c135806a2c74c005cea53fa7eef74eadc43a288e29ce0",
+      "bytes": 2372,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_haze.py": {
+      "sha256": "823c052b780cdbb83c0db17fdb62422605ee599a3f3f113a5151f073740105a7",
+      "bytes": 1575,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_leaves.py": {
+      "sha256": "e7f92353ef81edcdbaac0fb616c1a810145bd2d52d7dd78d3eda68a8269ef02e",
+      "bytes": 2004,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_lighten.py": {
+      "sha256": "4c585478412a7c3685771956a589b15aea7fdf38f942377f6f2f3563893c956b",
+      "bytes": 1500,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_neutral.py": {
+      "sha256": "2ba4f8f303baaab558989e2cdb1f7788e85f9a4fca489a2b05e367acb9cfdbd3",
+      "bytes": 1405,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_output.py": {
+      "sha256": "bdc76475807e55e75fba0bc471acb62642d2e6bb683b16e3da18ad81f89d8a06",
+      "bytes": 1958,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_post.py": {
+      "sha256": "572b1cfa7c1d939efb74e9ee1bcbedd6c19e0681ba92344d92f59f1693246b6a",
+      "bytes": 2782,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_remaining.py": {
+      "sha256": "f31a9557d4e087e33a6ad70daa315635f9be3f0027f2ec233f2d49eb7eff9bc9",
+      "bytes": 2738,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_selective.py": {
+      "sha256": "dc4a56662039f4bb8ddfe888b60ac7bfcd06523db820591ae6d484989e07a904",
+      "bytes": 1937,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_skin.py": {
+      "sha256": "f7a1ed1198eff5a83f89048e522f39c959e881d64a44bfe6941b55862991aa60",
+      "bytes": 2088,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_tonal.py": {
+      "sha256": "689a02f035fc9d0d1c7fe3d553b914c01a0962c50e97f867b27796fe0577cf9e",
+      "bytes": 1567,
+      "role": "exact source snapshot"
+    },
+    "generators/test_pixel_warmth.py": {
+      "sha256": "f97c4bcb6d2e9422e40258cac8a58986d02e513ae5766c86476a7660e0220d78",
+      "bytes": 1303,
+      "role": "exact source snapshot"
+    },
+    "generators/test_positive_tone.py": {
+      "sha256": "070e7ccfc730bd66474e5c9faceeedbf34344daaca70c2acf979acf183dc00bf",
+      "bytes": 3288,
+      "role": "exact source snapshot"
+    },
+    "generators/test_positive_tone_skin.py": {
+      "sha256": "2ba38d2ff113f8abba238c02fff9c80b40b55d58a2619c4446e53fd998189022",
+      "bytes": 1133,
+      "role": "exact source snapshot"
+    },
+    "generators/test_precomputed_semantic.py": {
+      "sha256": "a81ab300a31be5a67053945d218219e8098f5af6842f24eeb03f1efbaa66ad0b",
+      "bytes": 2467,
+      "role": "exact source snapshot"
+    },
+    "generators/test_producer_ir_identity.py": {
+      "sha256": "4e82c1eedfa8ad24802d7f9a7dc8fe350537dfd9d7bc37881f95b57284ddae0f",
+      "bytes": 3096,
+      "role": "exact source snapshot"
+    },
+    "generators/test_renderer_enums.py": {
+      "sha256": "faa959a6fe8ae534938db5818a78a123f96db6aee8f451b167f5b9e9b2340aa2",
+      "bytes": 828,
+      "role": "exact source snapshot"
+    },
+    "generators/test_selective_joint.py": {
+      "sha256": "81deb7573fa7477886d3a01cad46496cfc7840f9dfb3b400329479f3b6478864",
+      "bytes": 6968,
+      "role": "exact source snapshot"
+    },
+    "generators/test_semantic_tone.py": {
+      "sha256": "594e0caad8ca0730d71085a79deb40bf23b6afacc3d04a4d007efaf05a52efee",
+      "bytes": 3126,
+      "role": "exact source snapshot"
+    },
+    "generators/test_shared_color.py": {
+      "sha256": "de34750fa6212305eadb4651b6546874ce1dd4828d11c3f518beeef983e7d993",
+      "bytes": 6721,
+      "role": "exact source snapshot"
+    },
+    "generators/test_shared_window.py": {
+      "sha256": "6aeabafdcd3b0cd9f8567f1bdfa571675f33c5924a5bfa4cf3d22b9b2f18fd80",
+      "bytes": 5395,
+      "role": "exact source snapshot"
+    },
+    "generators/test_sorted_sameframe.py": {
+      "sha256": "483f83318cf21460c7a020a379674cc611facab443c8cd3d134de51f698d3d53",
+      "bytes": 6558,
+      "role": "exact source snapshot"
+    },
+    "generators/test_srl_parameter.py": {
+      "sha256": "09592087f8cf80ad3209695d07689b35cfde16ff3221f5f00ecb8d0e13f89296",
+      "bytes": 858,
+      "role": "exact source snapshot"
+    },
+    "generators/test_stage.py": {
+      "sha256": "dfca2e02755c19cd1b74d40502742c2c7c260de01238f8b510139a8ba00ab699",
+      "bytes": 12360,
+      "role": "exact source snapshot"
+    },
+    "generators/test_style_prior.py": {
+      "sha256": "21f6151072f868f19617bd8f1619871c93d34cba6c73056a6fe9ae6f878c87db",
+      "bytes": 2873,
+      "role": "exact source snapshot"
+    },
+    "generators/test_systemos.py": {
+      "sha256": "01b632b57f6dbd9a1908eb9805409c991b5c0fc2e524bef142c01150f8b7311b",
+      "bytes": 2128,
+      "role": "exact source snapshot"
+    },
+    "generators/test_texture_numeric.py": {
+      "sha256": "43e95eadda14d17959104542f6ba055f08a39c0bdde4b91a59ae38ffbe32be70",
+      "bytes": 2007,
+      "role": "exact source snapshot"
+    },
+    "generators/test_tone_boundaries.py": {
+      "sha256": "8398bb8cec587bf32b3fba4c80ce8df4820f22496abebb15af70eff94fd08714",
+      "bytes": 1687,
+      "role": "exact source snapshot"
+    },
+    "generators/test_tone_fragment_sets.py": {
+      "sha256": "b546843ea7f7a1d00ce7d56177e831f3f0a74db90c68b0cd7dc41b5b1ef63395",
+      "bytes": 1936,
+      "role": "exact source snapshot"
+    },
+    "generators/test_tone_interface.py": {
+      "sha256": "d21f25cd88341bc13f659d0517bfd787fbd62257ab6a56625570ae4e5835d656",
+      "bytes": 3103,
+      "role": "exact source snapshot"
+    },
+    "generators/test_traceable_baseline.py": {
+      "sha256": "434b0d36e39cb0cdb49fc9433d07c15e3f4161e37acd8be2b99772efab19bcc1",
+      "bytes": 7184,
+      "role": "exact source snapshot"
+    },
+    "generators/texture_numeric.py": {
+      "sha256": "d6a20173febccf1a0be0a992eba9276276a8fea80dcb00666c697464e248686a",
+      "bytes": 5031,
+      "role": "exact source snapshot"
+    },
+    "generators/thumbnail_model.py": {
+      "sha256": "afdb3fbbddecdf6732cb6f635c463afd79d8c53b6e79d0aa4b4f6973b00d685a",
+      "bytes": 4603,
+      "role": "exact source snapshot"
+    },
+    "generators/tone_boundaries.py": {
+      "sha256": "5c4ff6641cdc8cd6500dcbb41f537940147ceb1fd291c3038a8a6c60035460eb",
+      "bytes": 2454,
+      "role": "exact source snapshot"
+    },
+    "generators/tone_fragment_sets.py": {
+      "sha256": "0a08bc9caa038cbe29e850d3046827e0c7caf9131eac75f260d6dc13a4cdae04",
+      "bytes": 2562,
+      "role": "exact source snapshot"
+    },
+    "generators/tone_interface.py": {
+      "sha256": "59c6416fc95c19216e8d23fa5f1bbb7e5d73819818fc1c17abd6210816cffb18",
+      "bytes": 7266,
+      "role": "exact source snapshot"
+    },
+    "generators/trace_consumer_paths.py": {
+      "sha256": "56abd0561a845e5c81a1259498e831f92ba713e55e72460d085c09fb83910141",
+      "bytes": 12688,
+      "role": "exact source snapshot"
+    },
+    "generators/trace_tone_slots.py": {
+      "sha256": "f3e3f1c9f9d7e0d6e85be756b9106816d6a511e26fab63d32dd48cefe7e66c5e",
+      "bytes": 7361,
+      "role": "exact source snapshot"
+    },
+    "generators/traceable_color_baseline.py": {
+      "sha256": "8ca6073f1f5e45b240d5d835023dbd689f629f51f28f9f5626f0ddcbd2140cc9",
+      "bytes": 16761,
+      "role": "exact source snapshot"
+    },
+    "generators/typed_bgfg.py": {
+      "sha256": "8e0fd1a7ab422c3158439f01b03861ab81f2aec9a9d41f66ce1b0145d2469587",
+      "bytes": 3725,
+      "role": "exact source snapshot"
+    },
+    "generators/verify_ltm_guided.py": {
+      "sha256": "7ccfafac392fdc5369e2b10505669edb4be781936658d53a5b268086921445b0",
+      "bytes": 3075,
+      "role": "exact source snapshot"
+    },
+    "generators/version_gate.py": {
+      "sha256": "5796d7197d1f6a58281595fc7ba94af0d3faf96c0f11bf2372eae5823a6e4665",
+      "bytes": 3035,
+      "role": "exact source snapshot"
+    },
+    "generators/whites_joint_ratio.py": {
+      "sha256": "296a4734eca0763c114faf2d8ee99d27bb8962f671f379caecd70b9cb4e7dd7e",
+      "bytes": 4245,
+      "role": "exact source snapshot"
+    },
+    "source-air/0007.ll.txt": {
+      "sha256": "8e21d350ccf81b4700ab6da4145ebd11a1b498a1cfe3696c46532881aa8a38e0",
+      "bytes": 55079,
+      "role": "matched existing source AIR"
+    },
+    "source-air/0090.ll.txt": {
+      "sha256": "f0b2d8692c0fc6f1c0c8d60cf5af7445a594511c79ab174e76e76c6e5f232b73",
+      "bytes": 15131,
+      "role": "matched existing source AIR"
+    },
+    "source-air/0091.ll.txt": {
+      "sha256": "513225fdb349bc9d62a7aa5fe614a7de0dd74dee18a726ce61a2c6daa0e517b6",
+      "bytes": 11194,
+      "role": "matched existing source AIR"
+    },
+    "source-air/0092.ll.txt": {
+      "sha256": "3e8b5e47921c4b11918d9e6ecce60a59719fc7537f6df67bd86b809d6f0e7362",
+      "bytes": 9422,
+      "role": "matched existing source AIR"
+    },
+    "source-air/0010.ll.txt": {
+      "sha256": "3eab37d6ea090449f721e5bae2a81fa574a38be4046293482410d5ee9ed629e4",
+      "bytes": 404925,
+      "role": "matched existing source AIR"
+    },
+    "inputs/0-producer.ll": {
+      "sha256": "685fd8da9c85a39b520928165810f80920c750e7ec2b78e902e9fa3615d37289",
+      "bytes": 51631,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/1-guided-coeff.ll": {
+      "sha256": "6bde4e5adfcc9593c89769e0344b6054cce04f5dd8c0ddb78f617ce6e279e4d0",
+      "bytes": 16353,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/2-guided-filter.ll": {
+      "sha256": "d4aefab6820e1674c1c4451cb392602dbbde7250be660b4a6d471f2181038de5",
+      "bytes": 12887,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/3-guided-apply.ll": {
+      "sha256": "e400b0197691fb83848ad2e94114e620bfd16ff0da5ff572845eea05198c1b54",
+      "bytes": 10719,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/4-main-observed.ll": {
+      "sha256": "786cd858ca4a8241a29feda4e81df6b9764cafc2b71cfd316f7bcd7d8dbb9800",
+      "bytes": 411988,
+      "role": "actual new compiler host IR"
+    },
+    "inputs/plain-main.ll": {
+      "sha256": "321987269f6748b0fae93985911ed75e46d66351682cd46f9503efb94a73eec3",
+      "bytes": 395359,
+      "role": "actual plain compiler host IR"
+    },
+    "inputs/shim.c": {
+      "sha256": "105e0ff7a9fc7a25eb2ceafa8c0ad9b3155bcc76863810d7b020e2eab3d62d51",
+      "bytes": 2366,
+      "role": "actual compiler shim"
+    },
+    "context/context.json": {
+      "sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+      "bytes": 141729,
+      "role": "exact predeclared context/precision/controls"
+    },
+    "context/precision.json": {
+      "sha256": "dfcf24d0d6fc78d931594b707792ec1275d7277e6b04d3988974072422754469",
+      "bytes": 58578,
+      "role": "exact predeclared context/precision/controls"
+    },
+    "context/controls.json": {
+      "sha256": "962be009087d62787806960a5406f462cf7d38a3f0f60f2fd60792772b82e1e0",
+      "bytes": 1563,
+      "role": "exact predeclared context/precision/controls"
+    },
+    "contracts/field3.json": {
+      "sha256": "62c95b798319c3170fb0a240aea2a0cd249815c4be5d6a3d1a36bf2347e9d838",
+      "bytes": 31796,
+      "role": "fresh actual-file static contract"
+    },
+    "tool/clang-version.stdout": {
+      "sha256": "c7f19b396c9e4cbae1b07d1f26c185a2f3d86a47279b52dc7441467d70cf7646",
+      "bytes": 220,
+      "role": "compiler version stdout"
+    },
+    "tool/clang-version.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "compiler version stderr"
+    }
+  },
+  "proof": {
+    "name": "prepared",
+    "sha256": "b12518d1d65e1fc91c3dfa13ada08b1afa219a6c30844a8b1d1ff382b43fb531",
+    "sealed_manifest_sha256": "7c63d5c99e2184457cc5cb7b0274dfd3a56773a40c69295027c42b3b77b9fa68",
+    "input_files_verified": 271,
+    "products_verified": 0,
+    "all_SHA_match": true
+  },
+  "new_native_or_model_calls": 0
+}

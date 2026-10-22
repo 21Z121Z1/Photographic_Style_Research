@@ -1,0 +1,22 @@
+{
+  "label": "s25-context-api-and-precision-regressions",
+  "pre_run_binding_sha256": "1a13e4c83d0631142ef70645a4388226b4894f9c25a098cae834b7a2bc1a557f",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "1d3cccfd438b5e9de4bfdf657e6fe8e011d533f4646098a0388520047bc289e8",
+  "elapsed_seconds": 0.4331350326538086,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_context_color_api.py",
+    "-v"
+  ]
+}

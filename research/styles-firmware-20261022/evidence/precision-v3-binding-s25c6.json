@@ -1,0 +1,16 @@
+{
+  "label": "s25-freeze-powf-separate-rounding-profile",
+  "pre_run_binding_sha256": "eb8849df2529d518837a17d8207fd619e023f9d84b8b4766f9594b3fdc95efeb",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "e899d530016978d503006feaedc997c88c41de4139db979d3c3b7065f8157cb1",
+  "elapsed_seconds": 0.20551490783691406,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "import sys;from pathlib import Path;sys.path.insert(0,'research/styles-firmware-20261022');from context_color_api import create_precision;create_precision(Path('research/styles-firmware-20261022/evidence/model-precision-v3-s25c6.json'),host_code3=True);print('powf plus separate half mul/add; fused hypothesis retained as rejected')"
+  ]
+}

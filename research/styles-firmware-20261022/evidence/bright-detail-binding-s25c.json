@@ -1,0 +1,21 @@
+{
+  "label": "s25-bright-local-first-arithmetic",
+  "pre_run_binding_sha256": "ba9db8675c790e66b127cb181521cfcc4d7ef69e1f3cd6ea4e88266b65406d1d",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "06722909de14819a11175ab1327ab0d0d7352f273a4bc4352239d5a0bfafc397",
+  "elapsed_seconds": 1.843717098236084,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/diagnose_scene_bright.py",
+    "../air-cmi-compare/ios/0010.ll.txt",
+    "research/styles-firmware-20261022/evidence/second-context-s25a.json",
+    "research/styles-firmware-20261022/evidence/native-targets-s25c.json",
+    "../psr-private-baselines/s25-bright-detail-20261022-46b22a10",
+    "research/styles-firmware-20261022/evidence/bright-detail-s25c.json",
+    "--detail"
+  ]
+}

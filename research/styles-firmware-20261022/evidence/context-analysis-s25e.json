@@ -1,0 +1,110 @@
+{
+  "scope": "second independent synthetic scene, model collision analysis and necessary boundary plan; truth checked only after blind queries",
+  "identity": {
+    "hardware": "iPhone17,3",
+    "build": "24A446",
+    "bundle": "SmartStyleV1",
+    "processor_class": "CMISmartStyleProcessorV1",
+    "main_version_argument": 0,
+    "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+    "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+  },
+  "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+  "preselection_sha256": "962be009087d62787806960a5406f462cf7d38a3f0f60f2fd60792772b82e1e0",
+  "facts": {
+    "A": {
+      "true_control_f32_bits": 1040187392,
+      "interface_state": 17,
+      "true_control_in_blind_candidates": true,
+      "new_candidate_union": [
+        {
+          "lower_real": 0.123016357421875,
+          "upper_real": 0.12701416015625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1039921152,
+          "last_f32_bits": 1040322560,
+          "first_f32_hex": "0x3dfbf000",
+          "last_f32_hex": "0x3e021000",
+          "f32_population": 401409,
+          "signature_ids": [
+            17
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "new_matching_states": [
+        17
+      ],
+      "old_context_matching_states_for_same_interface_state_writer": [
+        17
+      ],
+      "writer_nonzero_effect_vs_new_scene_state0_half_components": 34
+    },
+    "B": {
+      "true_control_f32_bits": 1051721728,
+      "interface_state": 122,
+      "true_control_in_blind_candidates": true,
+      "new_candidate_union": [
+        {
+          "lower_real": 0.3431396484375,
+          "upper_real": 0.3443603515625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1051701248,
+          "last_f32_bits": 1051742208,
+          "first_f32_hex": "0x3eafb000",
+          "last_f32_hex": "0x3eb05000",
+          "f32_population": 40961,
+          "signature_ids": [
+            122
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "new_matching_states": [
+        122
+      ],
+      "old_context_matching_states_for_same_interface_state_writer": [
+        122
+      ],
+      "writer_nonzero_effect_vs_new_scene_state0_half_components": 36
+    }
+  },
+  "new_collision_groups": [
+    [
+      0,
+      1
+    ]
+  ],
+  "old_context_historical_collision_groups": [
+    [
+      0,
+      1
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      7,
+      8,
+      9
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      71,
+      72
+    ]
+  ],
+  "new_unique_writer_outputs": 145,
+  "old_unique_writer_outputs": 140,
+  "scene_only_causal_comparison": false,
+  "precision_caveat": "S25 uses explicit corrected final code3 powf profile; old S22 catalog retains old precision. Different context outputs/candidate groups are descriptive; no all-state cross-precision equivalence is claimed.",
+  "query_true_control_inputs": false,
+  "universal_scene_invertibility_proved": false,
+  "new_native_or_model_calls": 0
+}

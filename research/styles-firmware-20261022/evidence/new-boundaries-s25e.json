@@ -1,0 +1,147 @@
+{
+  "scope": "frozen rule applied after complete blind queries; no target mutation or old boundary rerun",
+  "identity": {
+    "hardware": "iPhone17,3",
+    "build": "24A446",
+    "bundle": "SmartStyleV1",
+    "processor_class": "CMISmartStyleProcessorV1",
+    "main_version_argument": 0,
+    "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+    "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+  },
+  "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+  "analysis_sha256": "e3c641c8a447d3280967a95208896fe4beb3abbf9cb09ee1a55567b03f8c4e7f",
+  "controls": [
+    {
+      "id": "boundary-0",
+      "raw_f32_bits": 1039921151,
+      "roles": [
+        {
+          "target": "A",
+          "kind": "outside-lower-neighbor"
+        }
+      ],
+      "state_id": 16,
+      "expected_model_writer_sha256": "1052be9596d69ebd40936599679393745f582c7d413fd48f75ae2ce16538d5f3",
+      "expected_target_matches": {
+        "A": false,
+        "B": false
+      }
+    },
+    {
+      "id": "boundary-1",
+      "raw_f32_bits": 1039921152,
+      "roles": [
+        {
+          "target": "A",
+          "kind": "first-included"
+        }
+      ],
+      "state_id": 17,
+      "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+      "expected_target_matches": {
+        "A": true,
+        "B": false
+      }
+    },
+    {
+      "id": "boundary-2",
+      "raw_f32_bits": 1040322560,
+      "roles": [
+        {
+          "target": "A",
+          "kind": "last-included"
+        }
+      ],
+      "state_id": 17,
+      "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+      "expected_target_matches": {
+        "A": true,
+        "B": false
+      }
+    },
+    {
+      "id": "boundary-3",
+      "raw_f32_bits": 1040322561,
+      "roles": [
+        {
+          "target": "A",
+          "kind": "outside-upper-neighbor"
+        }
+      ],
+      "state_id": 18,
+      "expected_model_writer_sha256": "bf32c9f88184728be8fa53e77e7a02237df1bba8fb67a74b9d4a549a8296b623",
+      "expected_target_matches": {
+        "A": false,
+        "B": false
+      }
+    },
+    {
+      "id": "boundary-4",
+      "raw_f32_bits": 1051701247,
+      "roles": [
+        {
+          "target": "B",
+          "kind": "outside-lower-neighbor"
+        }
+      ],
+      "state_id": 121,
+      "expected_model_writer_sha256": "00c8cc01f2f827e00fb7bd23379b237938b4f3302deb364a58ac06090b0335bf",
+      "expected_target_matches": {
+        "A": false,
+        "B": false
+      }
+    },
+    {
+      "id": "boundary-5",
+      "raw_f32_bits": 1051701248,
+      "roles": [
+        {
+          "target": "B",
+          "kind": "first-included"
+        }
+      ],
+      "state_id": 122,
+      "expected_model_writer_sha256": "6be0c6bb3343b9ff14fa74c38c263fe737c2ad73a57989a3ff29f164fb971231",
+      "expected_target_matches": {
+        "A": false,
+        "B": true
+      }
+    },
+    {
+      "id": "boundary-6",
+      "raw_f32_bits": 1051742208,
+      "roles": [
+        {
+          "target": "B",
+          "kind": "last-included"
+        }
+      ],
+      "state_id": 122,
+      "expected_model_writer_sha256": "6be0c6bb3343b9ff14fa74c38c263fe737c2ad73a57989a3ff29f164fb971231",
+      "expected_target_matches": {
+        "A": false,
+        "B": true
+      }
+    },
+    {
+      "id": "boundary-7",
+      "raw_f32_bits": 1051742209,
+      "roles": [
+        {
+          "target": "B",
+          "kind": "outside-upper-neighbor"
+        }
+      ],
+      "state_id": 123,
+      "expected_model_writer_sha256": "c3c67e00b7a818b64dec0321d4116c1320bb02ebaf870068def8a22e0fc32b63",
+      "expected_target_matches": {
+        "A": false,
+        "B": false
+      }
+    }
+  ],
+  "omitted": [],
+  "maximum_controls": 8,
+  "original_calls_not_yet_run": true
+}

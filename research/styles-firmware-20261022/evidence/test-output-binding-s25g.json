@@ -1,0 +1,22 @@
+{
+  "label": "s25-existing-output-operator-regressions",
+  "pre_run_binding_sha256": "ad4490ad1eefda28b519f4af322a59a4a59b4269636233798a08c6472a1fce76",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "8ed099bc8f594341412768ccc77ea204ab6a1346c1fb0e253c54845228eee035",
+  "elapsed_seconds": 0.16226410865783691,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_pixel_output.py",
+    "-v"
+  ]
+}

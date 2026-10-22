@@ -1,0 +1,4 @@
+  File "<string>", line 16
+    raw=row['control']['raw_f32_bits'];key=signature(f32(raw));n=row['native_half_bits'];assert np.all(np.array(n['color_half357'],dtype='u2')==np.float16(f32(raw)).view('u2'));assert np.all(np.array(n['color_gain364'],dtype='u2')==key[1]);assert np.all(np.array(n['color_protect384'],dtype='u2')==key[2]
+                                                                                                                                                                                                                                                             ^
+SyntaxError: '(' was never closed

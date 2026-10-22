@@ -1,0 +1,16 @@
+{
+  "label": "s25-freeze-explicit-corrected-host-point-profile",
+  "pre_run_binding_sha256": "7fee2313872cf4b687252090144443e4a5acd3bed34cbd5910384eecded5dd5a",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "d5750ecd9a68bbe6190c5d029b05dce5a75921358f50b10e23dcd54bad64f46c",
+  "elapsed_seconds": 0.2059471607208252,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "import sys;from pathlib import Path;sys.path.insert(0,'research/styles-firmware-20261022');from context_color_api import create_precision;create_precision(Path('research/styles-firmware-20261022/evidence/model-precision-v2-s25c4.json'),host_code3=True);print('new explicit precision; old contract retained')"
+  ]
+}

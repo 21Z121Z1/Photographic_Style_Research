@@ -1,0 +1,16 @@
+{
+  "label": "s25-blind-target-query-then-truth-and-boundaries",
+  "pre_run_binding_sha256": "5bf0f3f4c7501afdca59df9ebc1a22dde12834cc06b0545c931a4887824edf8b",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "6371683feb482ab07cac9d06adf7f4571e79582352a95a27299fdcf1e7e06144",
+  "elapsed_seconds": 0.2270030975341797,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "\nimport sys\nfrom pathlib import Path\nr=Path('research/styles-firmware-20261022');e=r/'evidence';sys.path.insert(0,str(r))\nfrom context_inverse_workflow import export_and_query,analyze_and_boundaries\nargs=[e/'second-context-s25a.json',e/'model-precision-v3-s25c6.json',e/'color-partition-s22a.json',e/'context-catalog-s25e.json']\nexport_and_query(*args,[e/'native-targets-s25c.json',e/'native-target-B-s25c2.json'],e)\nanalyze_and_boundaries(*args,e/'scene-selection-s25a.json',[e/'query-A-s25e.json',e/'query-B-s25e.json'],e/'context-analysis-s25e.json',e/'new-boundaries-s25e.json')\n"
+  ]
+}

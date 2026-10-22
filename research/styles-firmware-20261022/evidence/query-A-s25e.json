@@ -1,0 +1,88 @@
+{
+  "scope": "exact bounded known-context candidate set; no nearest value or uniqueness claim",
+  "identity": {
+    "hardware": "iPhone17,3",
+    "build": "24A446",
+    "bundle": "SmartStyleV1",
+    "processor_class": "CMISmartStyleProcessorV1",
+    "main_version_argument": 0,
+    "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+    "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+  },
+  "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+  "domain": {
+    "first_f32_bits": 0,
+    "last_f32_bits": 1052770304,
+    "first_f32_hex": "0x00000000",
+    "last_f32_hex": "0x3ec00000",
+    "lower_real": 0.0,
+    "upper_real": 0.375,
+    "lower_closed": true,
+    "upper_closed": true,
+    "f32_population": 1052770305,
+    "basis": "bounded research prefix [canonical+0,3/8] chosen before target matching within the existing [0,1] point-model contract; includes S21 platform and point3; not an Apple or UI range",
+    "negative_zero_searched": false
+  },
+  "partition_proof_reused": true,
+  "model_matching_state_ids": [
+    17
+  ],
+  "candidate_union": [
+    {
+      "lower_real": 0.123016357421875,
+      "upper_real": 0.12701416015625,
+      "lower_closed": true,
+      "upper_closed": true,
+      "first_f32_bits": 1039921152,
+      "last_f32_bits": 1040322560,
+      "first_f32_hex": "0x3dfbf000",
+      "last_f32_hex": "0x3e021000",
+      "f32_population": 401409,
+      "signature_ids": [
+        17
+      ],
+      "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+    }
+  ],
+  "candidate_interface_classes": [
+    {
+      "state_id": 17,
+      "key": [
+        1,
+        15376,
+        12902
+      ],
+      "intervals": [
+        {
+          "lower_real": 0.123016357421875,
+          "upper_real": 0.12701416015625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1039921152,
+          "last_f32_bits": 1040322560,
+          "first_f32_hex": "0x3dfbf000",
+          "last_f32_hex": "0x3e021000",
+          "f32_population": 401409,
+          "signature_ids": [
+            17
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ]
+    }
+  ],
+  "found_f32_population": 401409,
+  "coverage": {
+    "evaluated_states": 146,
+    "missing_state_ids": [],
+    "unknown_state_ids": [],
+    "complete_model_coverage": true
+  },
+  "unresolved_possible_union": [],
+  "unresolved_are_not_excluded": true,
+  "true_control_input_to_solver": false,
+  "new_model_or_native_calls": 0,
+  "original_host_exhaustive": false,
+  "GPU_UI_unknown_source_inverse": false,
+  "target_file_sha256": "871f01da4d78f8db4e2a6d711e8a104cd052a61d9ae1b34d0bdb2fd620f554b6"
+}

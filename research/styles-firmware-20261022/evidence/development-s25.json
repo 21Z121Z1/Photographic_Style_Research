@@ -1,0 +1,32 @@
+{
+  "scope": "S25 failures and corrected precision; original contexts/controls/candidate budget unchanged",
+  "audit_syntax_erratum": "first audit command syntax error before any code executed; corrected h2 audit, original pre/post/log retained; no native/model calls",
+  "retained_failed_receipts": {
+    "target-native-binding-s25c": {
+      "exit_code": 1,
+      "post_sha256": "ab86131b74876de30ea15d378d1068fdc5458a2da7ee8464984f18ab4377dfe7",
+      "log_sha256": "f47e0a6bcfd71cc01e5fcfb0a909fbda6fdc538184718eddc0af1a1c9a87f3cc"
+    },
+    "target-B-binding-s25c2": {
+      "exit_code": 1,
+      "post_sha256": "1ff78abe98b11c80237e5abf9d1e3dc59750cc1391510668d6871e2239544cdf",
+      "log_sha256": "469993f66ca27a384726b9630792d42a489f4f2e6e54316dda7834dfb738d09c"
+    },
+    "replay-binding-s25c4": {
+      "exit_code": 1,
+      "post_sha256": "bc02aa56dc72d9ef06219f928e97c86f5491fa2c19bee5b38be296037fe1bd61",
+      "log_sha256": "cf8a4d2622ead8f80593bc363d78b0f83441237bc65fa6f67395abd470011816"
+    },
+    "audit-binding-s25h": {
+      "exit_code": 1,
+      "post_sha256": "61a1021d497b433cedacb9c40d439d83e599e669ad61d77f87c7d8589f7954b1",
+      "log_sha256": "0059e41dcd55f017fe04bbc30cdba9846095932c750e0478e60bc3cec70f5a82"
+    }
+  },
+  "first_failure": "target A: 6 unselected bright half differences; cast0 static select proves result not selected; separate SSA137 diagnostic matches one-round candidate, no claim all bright errors solved",
+  "second_failure": "target B: final transfer SSA13 pow differs at half tie after f32 powf; one writer component differs",
+  "rejected_hypothesis": "FMA final offset v2 increased writer mismatches to12/13 in recorded debug; actual transfer SSA14/15 demonstrates separate half mul/add",
+  "accepted_profile": "v3 uses explicit system powf f32 then half, separate half multiply/add; saved target selected paths replay0 and eight new boundaries0; bright remains distinct",
+  "rejected_profile_raw_source_retention": "v2 pre-run source SHA retained but no dedicated source snapshot of that model-only hypothesis; not presented as a durable historical raw-source baseline",
+  "replay_failure_cost_limit": "failed v2 command did not persist a per-state counter:1..2 full forwards; source and debug indicate first A, do not replace runtime counter with inferred exact cost"
+}

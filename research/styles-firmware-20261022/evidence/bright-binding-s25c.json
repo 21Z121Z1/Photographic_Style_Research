@@ -1,0 +1,20 @@
+{
+  "label": "s25-first-bright-mismatch-diagnostic",
+  "pre_run_binding_sha256": "589437244cabe2fed50cbd004d9a6d5c341eb2a6ffa1ac9194551fc7afd8f796",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "ec5e42c2351028f9429943a78536721db282a192198c0b2a6c9f766ed5dc7b02",
+  "elapsed_seconds": 1.9876389503479004,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/diagnose_scene_bright.py",
+    "../air-cmi-compare/ios/0010.ll.txt",
+    "research/styles-firmware-20261022/evidence/second-context-s25a.json",
+    "research/styles-firmware-20261022/evidence/native-targets-s25c.json",
+    "../psr-private-baselines/s25-bright-20261022-fb421901",
+    "research/styles-firmware-20261022/evidence/bright-diagnostic-s25c.json"
+  ]
+}
