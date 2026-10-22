@@ -1,0 +1,42 @@
+{
+  "available_component": {
+    "role": "OS",
+    "file": "043-69462-662.dmg.aea",
+    "build": "24A446",
+    "hardware": "iPhone17,3",
+    "decrypted_bytes": 10106175488
+  },
+  "available_selected_files": [
+    "SmartStyleV1 plugin Mach-O, Info.plist, tuning and metallib copied to owned scratch",
+    "CMImaging/CMCapture/CameraColorProcessing/PhotoImaging metallibs and tuning physically present in mounted OS image",
+    "existing24A435 reference metadata/disassemblies; not sample-matching identity",
+    "existing conditional curve and semantic models; no reimplementation of S20"
+  ],
+  "minimum_missing_CPU_bodies": [
+    "CMCapture loader selection on this hardware/build",
+    "CMImaging pixel renderer, CCM prior, style engine and SRL implementations",
+    "CameraColorProcessing original statistics/curve production"
+  ],
+  "root_scope_evidence": {
+    "framework_CPU_paths_absent": true,
+    "System_Library_dyld_absent": true,
+    "Cryptex_OS_symlink_not_followed": true
+  },
+  "next_candidate_component": {
+    "role": "Cryptex1,SystemOS",
+    "source_url": "https://updates.cdn-apple.com/2026FallFCS/38dca0ee-bb5d-4132-ad13-62d57bcd6d32/iPhone17,3_27.0.1_24A446_Restore.ipsw",
+    "entry": {
+      "name": "043-70113-711.dmg.aea",
+      "method": 0,
+      "crc32": "78747dcb",
+      "compressed_bytes": 2348810240,
+      "uncompressed_bytes": 2348810240,
+      "local_header_offset": 9692339875
+    },
+    "decrypted_size_unverified": true,
+    "cache_files_inside_not_yet_verified": true
+  },
+  "new_large_download_started": false,
+  "new_network_download_bytes": 0,
+  "boundaries": "An import ordinal identifies a linked library, not actual ObjC method selection. Missing CPU files in this OS component is not missing implementation on iPhone."
+}

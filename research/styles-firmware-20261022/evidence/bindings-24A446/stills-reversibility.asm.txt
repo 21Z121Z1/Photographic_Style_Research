@@ -1,0 +1,52 @@
+
++[CMISmartStyleProcessorV1 getDefaultProcessorConfigurationForStillsReversibility]:
+0x00006cb4:  7f 23 03 d5   pacibsp
+0x00006cb8:  f6 57 bd a9   stp	x22, x21, [sp, #-0x30]!
+0x00006cbc:  f4 4f 01 a9   stp	x20, x19, [sp, #0x10]
+0x00006cc0:  fd 7b 02 a9   stp	fp, lr, [sp, #0x20]
+0x00006cc4:  fd 83 00 91   add	fp, sp, #0x20
+0x00006cc8:  08 01 00 b0   adrp	x8, 0x27000
+0x00006ccc:  00 a1 23 91   add	x0, x8, #0x8e8 ; CMISmartStyleProcessorStillImageConfigurationV1
+0x00006cd0:  90 24 00 94   bl	j__objc_opt_new
+0x00006cd4:  f3 03 00 aa   mov	x19, x0
+0x00006cd8:  c8 00 00 d0   adrp	x8, 0x20000
+0x00006cdc:  00 b9 44 f9   ldr	x0, [x8, #0x970] ; __got._OBJC_CLASS_$_CMISmartStyleUtilitiesV1
+0x00006ce0:  62 00 80 52   mov	w2, #0x3
+0x00006ce4:  1f 29 00 94   bl	j__objc_msgSend(x0, "intermediateStyleRendererThumbnailSizeForUseCase:")
+0x00006ce8:  e0 03 13 aa   mov	x0, x19
+0x00006cec:  fd 2b 00 94   bl	j__objc_msgSend(x0, "setIntermediateStyleRendererThumbnailSize:")
+0x00006cf0:  d6 00 00 d0   adrp	x22, 0x20000
+0x00006cf4:  c0 c2 44 f9   ldr	x0, [x22, #0x980] ; __got._OBJC_CLASS_$_CMIStyleEngineCommonSettings
+0x00006cf8:  82 01 80 52   mov	w2, #0xc
+0x00006cfc:  59 26 00 94   bl	j__objc_msgSend(x0, "configurationForUseCase:")
+0x00006d00:  74 24 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x00006d04:  f4 03 00 aa   mov	x20, x0
+0x00006d08:  6e 26 00 94   bl	j__objc_msgSend(x0, "copy")
+0x00006d0c:  f5 03 00 aa   mov	x21, x0
+0x00006d10:  e0 03 13 aa   mov	x0, x19
+0x00006d14:  e2 03 15 aa   mov	x2, x21
+0x00006d18:  0a 2d 00 94   bl	j__objc_msgSend(x0, "setStyleEngineConfiguration:")
+0x00006d1c:  95 24 00 94   bl	j__objc_release_x21
+0x00006d20:  90 24 00 94   bl	j__objc_release_x20
+0x00006d24:  c0 c2 44 f9   ldr	x0, [x22, #0x980]
+0x00006d28:  82 01 80 52   mov	w2, #0xc
+0x00006d2c:  ed 2d 00 94   bl	j__objc_msgSend(x0, "tuningParametersForUseCase:")
+0x00006d30:  68 24 00 94   bl	j__objc_claimAutoreleasedReturnValue
+0x00006d34:  f4 03 00 aa   mov	x20, x0
+0x00006d38:  62 26 00 94   bl	j__objc_msgSend(x0, "copy")
+0x00006d3c:  f5 03 00 aa   mov	x21, x0
+0x00006d40:  e0 03 13 aa   mov	x0, x19
+0x00006d44:  e2 03 15 aa   mov	x2, x21
+0x00006d48:  06 2d 00 94   bl	j__objc_msgSend(x0, "setStyleEngineTuningParameters:")
+0x00006d4c:  89 24 00 94   bl	j__objc_release_x21
+0x00006d50:  84 24 00 94   bl	j__objc_release_x20
+0x00006d54:  e0 03 13 aa   mov	x0, x19
+0x00006d58:  fd 7b 42 a9   ldp	fp, lr, [sp, #0x20]
+0x00006d5c:  f4 4f 41 a9   ldp	x20, x19, [sp, #0x10]
+0x00006d60:  f6 57 c3 a8   ldp	x22, x21, [sp], #0x30
+0x00006d64:  ff 23 03 d5   autibsp
+0x00006d68:  d0 07 1e ca   eor	x16, lr, lr, lsl #0x1
+0x00006d6c:  50 00 f0 b6   tbz	x16, #0x3e, loc_6d74 ; ⤵ 0x8
+0x00006d70:  20 8e 38 d4   brk	#0xc471
+0x00006d74:  ; loc_6d74
+0x00006d74:  53 24 00 14   b	j__objc_autoreleaseReturnValue
