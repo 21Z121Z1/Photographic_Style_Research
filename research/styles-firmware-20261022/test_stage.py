@@ -9,10 +9,20 @@ import zipfile
 import numpy as np
 
 from firmware_probe import AppleRanges, central_entries, inspect
+from download_component import select_component
 from thumbnail_model import SampleContext, conditional_inverse, forward, inverse_supplied_curve
 
 
 class MetadataTests(unittest.TestCase):
+    def test_exact_variant_does_not_select_recovery_os(self):
+        m = {"identities": [{"variant": "Customer Erase Install (IPSW)", "components": {"OS": "main"}},
+                            {"variant": "Recovery Customer Install", "components": {"OS": "recovery"}}],
+             "image_entries": [{"name": n, "method": 0, "compressed_bytes": z, "uncompressed_bytes": z}
+                               for n, z in [("main", 9000), ("recovery", 200)]]}
+        self.assertEqual(select_component(m, "OS", "Customer Erase Install (IPSW)")["name"], "main")
+        with self.assertRaisesRegex(ValueError, "unambiguous"):
+            select_component(m, "OS", "missing")
+
     def fixture(self) -> bytes:
         output = io.BytesIO()
         manifest = {"ProductVersion": "27.0.1", "ProductBuildVersion": "24A446",

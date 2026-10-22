@@ -45,7 +45,19 @@ python3 research/styles-firmware-20261022/inspect_cached_plugin.py /path/to/Smar
 python3 research/styles-firmware-20261022/firmware_probe.py '<evidence JSON 中的 source_url>' iPhone17,3 24A446 /tmp/psr-new-manifest.json
 ```
 
-本机 macOS27.0.1 /26A434，8项测试通过：HTTP200拒绝且不读body、元数据预算/来源、ZIP64偏移、CRC损坏、机型/build错配、单变量分支、1000个固定种子合成留出样本条件往返、歧义和 S20 plateau 集合保留。没有新真实照片测试，没有原生 GPU 精度验收；合成留出不计作真实照片留出。
+本机 macOS27.0.1 /26A434，9项测试通过：HTTP200拒绝且不读body、元数据预算/来源、ZIP64偏移、CRC损坏、机型/build错配、精确普通/Recovery OS变体选择、单变量分支、1000个固定种子合成留出样本条件往返、歧义和 S20 plateau 集合保留。没有新真实照片测试，没有原生 GPU 精度验收；合成留出不计作真实照片留出。
+
+### 原 CPU 算术循环比较
+
+```sh
+python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gtc-new.json
+```
+
+在本机 Apple Silicon 上，将已核对的 `_createGlobalToneCurveTextureFromMetadataDict:` 0x8eb0–8f30 的132B原指令放入独立 macOS 测试函数，外壳只提供合成记录、输出指针及ABI保存；原循环不含系统调用或跳转回iOS。输入为6组结构化、128组固定种子随机记录与1组末尾word257干预，总135组、34560个half输出。与复用的 `producer_curve_record_s54.ios_gtc_input_ratios` 后正确half转换逐位比较，**差异0**；word257单变量控制通过。完整iOS库没有加载，未运行Metal、没有照片输入；不覆盖其他记录头、零除数、纹理创建或完整capture调用。收据为 `evidence/native-gtc-loop.json`，含原指令、源码、临时可执行文件和输入/输出SHA；临时可执行文件未提交。
+
+### 有界获取目标参考插件
+
+`evidence/iphone17-3-components.json` 在同一原始manifest SHA下补齐ZIP entry。普通 `Customer Erase Install (IPSW)` 的 OS 是 `043-69462-662.dmg.aea`，8858370048B；Recovery的OS是另一251658240B组件，不混选。`download_component.py` 要求精确变体、stored entry、10GiB组件上限、精确HTTP206、最终CRC/SHA和至少三倍组件加4GiB预留空间，无整包回退、自动重试或删除。当前下载只在本任务仓库外scratch进行，下载准备或进度不算插件提取完成。
 
 ## S110 失败和下一步
 

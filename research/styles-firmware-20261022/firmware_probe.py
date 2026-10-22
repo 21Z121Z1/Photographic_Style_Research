@@ -152,10 +152,14 @@ def inspect(size: int, part: Callable[[int, int], bytes], device: str, build: st
         components = {k: v.get("Info", {}).get("Path") for k, v in ident.get("Manifest", {}).items()
                       if k in ("OS", "Cryptex1,SystemOS", "Cryptex1,AppOS")}
         identities.append({"device_class": info.get("DeviceClass"), "variant": info.get("Variant"), "components": components})
+    selected_names = {name for identity in identities for name in identity["components"].values()}
+    image_entries = [{"name": e.name, "method": e.method, "crc32": f"{e.crc:08x}",
+                      "compressed_bytes": e.compressed, "uncompressed_bytes": e.uncompressed,
+                      "local_header_offset": e.offset} for e in entries if e.name in selected_names]
     return {"product_version": bm["ProductVersion"], "build": build, "supported_product_types": bm["SupportedProductTypes"],
             "build_manifest_sha256": hashlib.sha256(raw).hexdigest(), "central_directory_sha256": hashlib.sha256(directory).hexdigest(),
             "zip_crc_verified": True, "ipsw_total_bytes": size, "whole_ipsw_sha256": None,
-            "identities": identities, "filesystem_image_bytes_downloaded": 0, "plugin_presence_verified": False,
+            "identities": identities, "image_entries": image_entries, "filesystem_image_bytes_downloaded": 0, "plugin_presence_verified": False,
             "sample_capture_build_verified": False}
 
 
