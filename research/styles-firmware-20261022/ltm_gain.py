@@ -43,13 +43,20 @@ def guarded_ratio(numerator,reference):
     return vec(result)
 
 
-def forward(reference96,linear98,parameters: Parameters,curve):
-    if any(not isinstance(x,V)or x.precision!='h'or x.lo.shape!=(3,)for x in [reference96,linear98])or reference96.point!=linear98.point or parameters.scale6.point!=reference96.point:raise TypeError('Matching half reference96/linear98 and parameter backend required')
-    p=parameters.semantic7.h();c=parameters.linear_CCM_columns.h()
-    # Original SSA112 is G product + R product, then B; do not transpose CCM.
-    working=((linear98[1]*c[1]+linear98[0]*c[0])+linear98[2]*c[2])*parameters.scale6.h()
+def gain_ratios(working,reference96,semantic7,curve):
+    """Reuse the identical exposure/GTC/ratio expression without another CCM."""
+    p=semantic7.h()
     def branch(exposure):
         scaled=(working*exposure).minimum(1)
         mapped=mix(scaled,curve_sample(scaled,curve),p[4])
         return guarded_ratio(mapped,reference96)
-    return Result(branch(p[2]),branch(p[3]),working,reference96)
+    return branch(p[2]),branch(p[3])
+
+
+def forward(reference96,linear98,parameters: Parameters,curve):
+    if any(not isinstance(x,V)or x.precision!='h'or x.lo.shape!=(3,)for x in [reference96,linear98])or reference96.point!=linear98.point or parameters.scale6.point!=reference96.point:raise TypeError('Matching half reference96/linear98 and parameter backend required')
+    c=parameters.linear_CCM_columns.h()
+    # Original SSA112 is G product + R product, then B; do not transpose CCM.
+    working=((linear98[1]*c[1]+linear98[0]*c[0])+linear98[2]*c[2])*parameters.scale6.h()
+    bg,fg=gain_ratios(working,reference96,parameters.semantic7,curve)
+    return Result(bg,fg,working,reference96)

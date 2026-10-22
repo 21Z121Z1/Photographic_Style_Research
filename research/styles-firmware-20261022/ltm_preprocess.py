@@ -39,6 +39,7 @@ class Result:
     linear37: V
     post_srl34: V
     upstream_2D_sampling_included: bool=False
+    reference_gain: V|None=None
 
 
 def forward(primary24,matte30,parameters: Parameters):
@@ -53,4 +54,4 @@ def forward(primary24,matte30,parameters: Parameters):
             y=(linear[0].f()*F(fc('3FD0D013A0000000'),linear)+linear[1].f()*F(fc('3FE5B22D00000000'),linear))+linear[2].f()*F(fc('3FAE5C91E0000000'),linear)
             gain=y.pow(exponent.f()-1).h()
     corrected=linear*gain;c=p.input_CCM_columns.h();ref=(corrected[0]*c[0]+corrected[1]*c[1])+corrected[2]*c[2]
-    return Result(ref,linear,work)
+    return Result(ref,linear,work,reference_gain=gain)

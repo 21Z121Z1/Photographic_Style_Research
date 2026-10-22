@@ -1,0 +1,1084 @@
+{
+  "scope": "New complete pre393 main composition, using original recursive helpers.",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "original": {
+    "original_main_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+    "original_main_prefix_through392_sha256": "01d82412e55cf6cd79a74ccacb28ee879a6e9fed7e7103c468f095ca077f5047",
+    "original_helpers_sha256": {
+      "_Z10airyFilterDv3_DhDh": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22",
+      "_Z11whitesCurveDv3_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEEDhDh": "24891f62760ca4d1001b6b952ac68534d75114abe001912a04d4f916db18977d",
+      "_Z12highlightNegDv3_DhDhDh": "b836d501f9c0a4fb8cd7695572fab314cf0fa7d45dfc5b9f8fffe6346471b3b4",
+      "_Z13ShadowsFilterDv3_DhDhDh": "d98c204b6609a6eb42d33e3a53c12bfa113842a9b956fc9a612e96299e3630ab",
+      "_Z13lightenFilterDv3_DhDhDh": "71df4dcc2ae3a4a3732e934199e5db58aac9745ef5185778b30e403bb79173cc",
+      "_Z13smartContrastDv3_DhDhDh": "1960da8a03063b300c5d480b9b46e4d9a8825c036dee5d4696fc1a8ee9576434",
+      "_Z14contrastFilterDv3_DhDh": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18",
+      "_Z15smoothSatFilterDv3_DhDh": "5163cdebd82f65a95aa8307c0e526c38db38e8e9ce0e174bb8c03997a901e065",
+      "_Z15underToneFilterDv3_DhDhDh": "f16aa98704798c530cc682774396eaaa75765757828ef9fc97fd25e0daf75f19",
+      "_Z16applySemanticSRLDv3_DhfDh": "7b0bc774bea262dbea49b3442cfcb4872e2ef763e2f80def203a1a5e67c4e525",
+      "_Z16underGrassFilterDv3_DhDhDh": "1977ca7f9ca0dac3c0f93246095a1f4e43013bf1f205fb448b443f0a33447e3b",
+      "_Z19renderBGAdjustmentsDv3_DhDhDhDhRU9MTLdevice15SSRBGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+      "_Z19renderFGAdjustmentsDv3_DhS_DhDhDhDhRU9MTLdevice15SSRFGAdjustmentN5metal9texture2dIDhLNS3_6accessE0ELNS3_16memory_coherenceE0EvEE": "bb5d0a7afd7b83ec52ec70040b4ab910202f9c9e761edcbcfc83d9a8a251ff2b",
+      "_Z19tonalContrastFilterDv3_DhDhDh": "a44bf2a3ea085759c88bb5e010d735001e5f8646033ea5a9727259b876e2e351",
+      "_Z21ShadowsNegativeFilterDv3_DhDhDh": "ce4b078d7ffacc7e8dbee285bc3368193d3438ad2d5e3090441f5706cc391772",
+      "_Z21negativeLightenFilterDv3_DhDhDh": "b8492283b8439341e4aef132d0278e27593614dce906bbdbe8513370d072a652",
+      "_Z29renderSemanticToneAdjustmentsDv3_DhS_DhN5metal9texture2dIDhLNS0_6accessE0ELNS0_16memory_coherenceE0EvEERU9MTLdevice25SSRSemanticToneAdjustment": "fbf1cf6772d3ee1733f7882e52242a0909a14d3fe8325563fe487d0b5ca02b7c",
+      "_Z7RichSatDv3_DhDhDhDh": "3f23959d740157e9ffb88f509af693e5e082cacc126c28335b2b226127cf4578",
+      "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_": "7bcabd624093dc0e3aace0fff3e5a23cdffbd8a7c4795c3b96ba9a9fb2e229bf"
+    },
+    "original_arithmetic_predicates_and_FP_attrs_modified": false,
+    "changes": "root ABI/name, truncate after392, independent observation stores",
+    "observations": [
+      [
+        "source38",
+        38,
+        3
+      ],
+      [
+        "skin95",
+        95,
+        1
+      ],
+      [
+        "person96",
+        96,
+        1
+      ],
+      [
+        "SRL134",
+        134,
+        3
+      ],
+      [
+        "linear137",
+        137,
+        3
+      ],
+      [
+        "gain176",
+        176,
+        1
+      ],
+      [
+        "reference196",
+        196,
+        3
+      ],
+      [
+        "guide211",
+        211,
+        1
+      ],
+      [
+        "guide214",
+        214,
+        1
+      ],
+      [
+        "working286",
+        286,
+        3
+      ],
+      [
+        "semantic347",
+        347,
+        3
+      ],
+      [
+        "guide350",
+        350,
+        1
+      ],
+      [
+        "BG352",
+        352,
+        3
+      ],
+      [
+        "FG354",
+        354,
+        3
+      ],
+      [
+        "saturated374",
+        374,
+        3
+      ],
+      [
+        "color_mix389",
+        389,
+        1
+      ],
+      [
+        "output392",
+        392,
+        3
+      ]
+    ],
+    "observation_float_count": 37,
+    "host_sampler_contract": "same declared v3 normalized half/GTC ideal pixel-linear asS14B"
+  },
+  "metrics": {
+    "calls": 5,
+    "known_point_rows": 4,
+    "set_unknown_rows": 5,
+    "known_set_violations": 0
+  },
+  "host_IR_sha256": "b1c2c6e5ea1ae76833ba640f28af1f065442e89cead6043fca72b2c8959a5f4a",
+  "C_sha256": "105e0ff7a9fc7a25eb2ceafa8c0ad9b3155bcc76863810d7b020e2eab3d62d51",
+  "source_sha256": {
+    "main_pre393.py": "64f799aa5ccecabcec4521be4958250ff02de592890d3badbdf93c83d945936a",
+    "main_pre393_host.py": "b955387cbe9f95ec50e4a4ebf1f90a3b762556ff9556a2ad58b4e30a298353d2",
+    "native_main_pre393_check.py": "915c0887e008f43fc066c8c71b8f63eda67ce315dd766adc1297d84051ccdcf9",
+    "typed_bgfg.py": "8e0fd1a7ab422c3158439f01b03861ab81f2aec9a9d41f66ce1b0145d2469587",
+    "pre_skin_color.py": "64fbac25efa003f4136627d033ab745e1c89e722108166c9cc59bc2ad12545f9",
+    "ltm_gain.py": "e398071b6b5fc5c97b52b367f13b610f5deb2057335c66bf865bf4ae6176d2f5",
+    "ltm_preprocess.py": "be2583906b7b43770cbc030acd214ad81d056647b491a14a0b899c0a686949a6"
+  },
+  "input_sha256": "b84c704ef68dc61c0bc45923df742a44bc66e49d0930af0de6839a8cd82d64d6",
+  "output_sha256": "90c3ea44fe9f255266b3e60af4e3b7e314113dbfe65b53edc66e7bdf3cb87272",
+  "rows": [
+    {
+      "case": 0,
+      "cast": 2,
+      "version": 0,
+      "SRL": 0.4000000059604645,
+      "color_f32": -0.30000001192092896,
+      "tone_f32": -0.20000000298023224,
+      "maps_present": false,
+      "native_output_half_bits": [
+        14336,
+        14131,
+        13926,
+        13312,
+        13926,
+        14336,
+        14131,
+        13926,
+        13019,
+        12662,
+        12353,
+        15360,
+        13033,
+        12669,
+        12381,
+        12902,
+        13722,
+        12756,
+        13082,
+        13338,
+        12983,
+        12708,
+        12460,
+        13296,
+        12975,
+        12712,
+        12471,
+        12984,
+        12712,
+        12466,
+        12915,
+        12710,
+        12521,
+        13467,
+        12935,
+        12711,
+        12505
+      ],
+      "native_nonfinite": 0,
+      "native_post_semantic_f32": [
+        0.6000000238418579,
+        0.800000011920929,
+        0.8349999785423279,
+        0.9050000309944153,
+        0.6000000238418579,
+        0.7549999952316284,
+        0.7900000214576721
+      ],
+      "point": {
+        "unknown_operator": null,
+        "unknown_reason": null,
+        "source38": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "skin95": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "person96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "SRL134": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "linear137": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "gain176": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "reference196": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide211": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide214": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "working286": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "semantic347": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide350": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "BG352": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "FG354": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "saturated374": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "color_mix389": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "output392": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "post_semantic7": {
+          "f32_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        }
+      },
+      "set": {
+        "unknown_operator": "BG352",
+        "unknown_reason": "Finite arithmetic budget exceeded",
+        "source38": {
+          "range_covered": true,
+          "max_width": 0.02099609375
+        },
+        "skin95": {
+          "range_covered": true,
+          "max_width": 0.0205078125
+        },
+        "person96": {
+          "range_covered": true,
+          "max_width": 0.031005859375
+        },
+        "SRL134": {
+          "range_covered": true,
+          "max_width": 0.02099609375
+        },
+        "linear137": {
+          "range_covered": true,
+          "max_width": 0.02345724037772362
+        },
+        "gain176": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "reference196": {
+          "range_covered": true,
+          "max_width": 0.02551827878191326
+        },
+        "guide211": {
+          "range_covered": true,
+          "max_width": 0.070556640625
+        },
+        "guide214": {
+          "range_covered": true,
+          "max_width": 0.03076171875
+        },
+        "working286": {
+          "range_covered": true,
+          "max_width": 0.012411334222383608
+        },
+        "semantic347": {
+          "range_covered": true,
+          "max_width": 0.38504225091330074
+        },
+        "guide350": {
+          "range_covered": true,
+          "max_width": 0.1820718037979431
+        },
+        "post_semantic7": {
+          "range_covered": true,
+          "max_width": 5.638600232282798e-07
+        }
+      }
+    },
+    {
+      "case": 1,
+      "cast": 0,
+      "version": 1,
+      "SRL": 0.4000000059604645,
+      "color_f32": 0.30000001192092896,
+      "tone_f32": 0.20000000298023224,
+      "maps_present": false,
+      "native_output_half_bits": [
+        14377,
+        14213,
+        13967,
+        13130,
+        13774,
+        13977,
+        13814,
+        13619,
+        12425,
+        12114,
+        11652,
+        15360,
+        12434,
+        12123,
+        11690,
+        13394,
+        13844,
+        12816,
+        13165,
+        13364,
+        12577,
+        12477,
+        12363,
+        13541,
+        12568,
+        12474,
+        12366,
+        12572,
+        12476,
+        12365,
+        12585,
+        12476,
+        12352,
+        13477,
+        12581,
+        12476,
+        12356
+      ],
+      "native_nonfinite": 0,
+      "native_post_semantic_f32": [
+        0.6000000238418579,
+        0.800000011920929,
+        0.8999999761581421,
+        1.100000023841858,
+        0.6000000238418579,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "point": {
+        "unknown_operator": null,
+        "unknown_reason": null,
+        "source38": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "skin95": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "person96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "SRL134": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "linear137": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "gain176": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "reference196": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide211": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide214": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "working286": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "semantic347": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide350": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "BG352": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "FG354": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "saturated374": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "color_mix389": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "output392": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "post_semantic7": {
+          "f32_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        }
+      },
+      "set": {
+        "unknown_operator": "BG352",
+        "unknown_reason": "Finite arithmetic budget exceeded",
+        "source38": {
+          "range_covered": true,
+          "max_width": 0.041015625
+        },
+        "skin95": {
+          "range_covered": true,
+          "max_width": 0.0346734374761582
+        },
+        "person96": {
+          "range_covered": true,
+          "max_width": 0.05225732922554027
+        },
+        "SRL134": {
+          "range_covered": true,
+          "max_width": 0.11282786168158065
+        },
+        "linear137": {
+          "range_covered": true,
+          "max_width": 0.08579870854054858
+        },
+        "gain176": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "reference196": {
+          "range_covered": true,
+          "max_width": 0.08801125644827101
+        },
+        "guide211": {
+          "range_covered": true,
+          "max_width": 0.1407470703125
+        },
+        "guide214": {
+          "range_covered": true,
+          "max_width": 0.060791015625
+        },
+        "working286": {
+          "range_covered": true,
+          "max_width": 0.022512245975015555
+        },
+        "semantic347": {
+          "range_covered": true,
+          "max_width": 1.2967307873890388
+        },
+        "guide350": {
+          "range_covered": true,
+          "max_width": 0.3423530865391033
+        },
+        "post_semantic7": {
+          "range_covered": true,
+          "max_width": 0.0
+        }
+      }
+    },
+    {
+      "case": 2,
+      "cast": 2,
+      "version": 2,
+      "SRL": 2.4000000953674316,
+      "color_f32": 0.15000000596046448,
+      "tone_f32": 0.0,
+      "maps_present": true,
+      "native_output_half_bits": [
+        14418,
+        14131,
+        14008,
+        13312,
+        14172,
+        14163,
+        13850,
+        13746,
+        12714,
+        12211,
+        11946,
+        15360,
+        12724,
+        12223,
+        11985,
+        13435,
+        13885,
+        12875,
+        13083,
+        13389,
+        12695,
+        12184,
+        11950,
+        13574,
+        12671,
+        12177,
+        11956,
+        12689,
+        12169,
+        11939,
+        12709,
+        12153,
+        11914,
+        13795,
+        12702,
+        12159,
+        11923
+      ],
+      "native_nonfinite": 0,
+      "native_post_semantic_f32": [
+        0.6000000238418579,
+        0.800000011920929,
+        0.8349999785423279,
+        0.9050000309944153,
+        0.6000000238418579,
+        0.7549999952316284,
+        0.7900000214576721
+      ],
+      "point": {
+        "unknown_operator": null,
+        "unknown_reason": null,
+        "source38": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "skin95": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "person96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "SRL134": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "linear137": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "gain176": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "reference196": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide211": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide214": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "working286": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "semantic347": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide350": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "BG352": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "FG354": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "saturated374": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "color_mix389": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "output392": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "post_semantic7": {
+          "f32_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        }
+      },
+      "set": {
+        "unknown_operator": "BG352",
+        "unknown_reason": "Finite arithmetic budget exceeded",
+        "source38": {
+          "range_covered": true,
+          "max_width": 0.041015625
+        },
+        "skin95": {
+          "range_covered": true,
+          "max_width": 0.0205078125
+        },
+        "person96": {
+          "range_covered": true,
+          "max_width": 0.06103515625
+        },
+        "SRL134": {
+          "range_covered": true,
+          "max_width": 0.10077295824885385
+        },
+        "linear137": {
+          "range_covered": true,
+          "max_width": 0.08751633802830916
+        },
+        "gain176": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "reference196": {
+          "range_covered": true,
+          "max_width": 0.08982949050267938
+        },
+        "guide211": {
+          "range_covered": true,
+          "max_width": 0.1107177734375
+        },
+        "guide214": {
+          "range_covered": true,
+          "max_width": 0.05078125
+        },
+        "working286": {
+          "range_covered": true,
+          "max_width": 0.016531938231721555
+        },
+        "semantic347": {
+          "range_covered": true,
+          "max_width": 0.17961303010085922
+        },
+        "guide350": {
+          "range_covered": true,
+          "max_width": 0.3121823741897542
+        },
+        "post_semantic7": {
+          "range_covered": true,
+          "max_width": 5.638600232282798e-07
+        }
+      }
+    },
+    {
+      "case": 3,
+      "cast": 0,
+      "version": 2,
+      "SRL": 0.4000000059604645,
+      "color_f32": 0.0,
+      "tone_f32": 0.20000000298023224,
+      "maps_present": true,
+      "native_output_half_bits": [
+        14336,
+        14213,
+        13926,
+        13130,
+        13670,
+        13907,
+        13810,
+        13583,
+        12326,
+        12106,
+        11575,
+        15360,
+        12335,
+        12114,
+        11612,
+        13148,
+        13763,
+        12757,
+        13165,
+        13339,
+        12311,
+        12072,
+        11581,
+        13407,
+        12294,
+        12053,
+        11586,
+        12298,
+        12055,
+        11578,
+        12298,
+        12055,
+        11578,
+        13394,
+        12298,
+        12055,
+        11578
+      ],
+      "native_nonfinite": 0,
+      "native_post_semantic_f32": [
+        0.6000000238418579,
+        0.800000011920929,
+        0.8999999761581421,
+        1.100000023841858,
+        0.6000000238418579,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "point": {
+        "unknown_operator": null,
+        "unknown_reason": null,
+        "source38": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "skin95": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "person96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "SRL134": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "linear137": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "gain176": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "reference196": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide211": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide214": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "working286": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "semantic347": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide350": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "BG352": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "FG354": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "saturated374": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "color_mix389": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "output392": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "post_semantic7": {
+          "f32_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        }
+      },
+      "set": {
+        "unknown_operator": "BG352",
+        "unknown_reason": "Finite arithmetic budget exceeded",
+        "source38": {
+          "range_covered": true,
+          "max_width": 0.041015625
+        },
+        "skin95": {
+          "range_covered": true,
+          "max_width": 0.0346734374761582
+        },
+        "person96": {
+          "range_covered": true,
+          "max_width": 0.026870623230934254
+        },
+        "SRL134": {
+          "range_covered": true,
+          "max_width": 0.09307040763087582
+        },
+        "linear137": {
+          "range_covered": true,
+          "max_width": 0.06239295823871034
+        },
+        "gain176": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "reference196": {
+          "range_covered": true,
+          "max_width": 0.06453367466091364
+        },
+        "guide211": {
+          "range_covered": true,
+          "max_width": 0.1005859375
+        },
+        "guide214": {
+          "range_covered": true,
+          "max_width": 0.040771484375
+        },
+        "working286": {
+          "range_covered": true,
+          "max_width": 0.022375309106097085
+        },
+        "semantic347": {
+          "range_covered": true,
+          "max_width": 0.11124907320320755
+        },
+        "guide350": {
+          "range_covered": true,
+          "max_width": 0.2302397524861806
+        },
+        "post_semantic7": {
+          "range_covered": true,
+          "max_width": 0.0
+        }
+      }
+    },
+    {
+      "case": 4,
+      "cast": 0,
+      "version": 0,
+      "SRL": 0.4000000059604645,
+      "color_f32": 0.30000001192092896,
+      "tone_f32": 0.20000000298023224,
+      "maps_present": false,
+      "native_output_half_bits": [
+        0,
+        0,
+        0,
+        13312,
+        14049,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15360,
+        0,
+        0,
+        0,
+        13230,
+        13804,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13438,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13697,
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "native_post_semantic_f32": [
+        0.6000000238418579,
+        0.800000011920929,
+        0.8999999761581421,
+        1.100000023841858,
+        0.6000000238418579,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "point": {
+        "unknown_operator": "FG354",
+        "unknown_reason": "Division interval includes zero",
+        "source38": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "skin95": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "person96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "SRL134": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "linear137": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "gain176": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "reference196": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide211": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide214": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "working286": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "semantic347": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "guide350": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "BG352": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        },
+        "post_semantic7": {
+          "f32_bit_mismatches": 0,
+          "max_absolute_error": 0.0
+        }
+      },
+      "set": {
+        "unknown_operator": "FG354",
+        "unknown_reason": "Finite arithmetic budget exceeded",
+        "source38": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "skin95": {
+          "range_covered": true,
+          "max_width": 0.0205078125
+        },
+        "person96": {
+          "range_covered": true,
+          "max_width": 0.06103515625
+        },
+        "SRL134": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "linear137": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "gain176": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "reference196": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "guide211": {
+          "range_covered": true,
+          "max_width": 0.110595703125
+        },
+        "guide214": {
+          "range_covered": true,
+          "max_width": 0.05078125
+        },
+        "working286": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "semantic347": {
+          "range_covered": true,
+          "max_width": 0.0
+        },
+        "guide350": {
+          "range_covered": true,
+          "max_width": 0.3019975944919475
+        },
+        "BG352": {
+          "range_covered": true,
+          "max_width": 2.0683990094255296
+        },
+        "post_semantic7": {
+          "range_covered": true,
+          "max_width": 0.0
+        }
+      }
+    }
+  ],
+  "GPU_executed": false,
+  "old_accepted_batches_repeated": false,
+  "parameter_buffer_reset_per_single_context": true,
+  "actual_input_dependencies": "synthetic raw textures,ROI,CCM,cast34,BG17/FG16/semantic7,caller controls; none recovered from a photograph"
+}
