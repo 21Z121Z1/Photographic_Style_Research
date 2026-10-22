@@ -26,7 +26,7 @@ class Result:
     GPU_or_same_frame_verified: bool=False
 
 
-def forward(primary,linear,matte,guide,*,producer_shape,pre_parameters,gain_parameters,consumer_semantic7,curve,epsilon,roi,reference196,person96,input_branch_decisions=()):
+def generate(primary,linear,matte,guide,*,producer_shape,pre_parameters,gain_parameters,curve,epsilon,input_branch_decisions=()):
     point=primary.pixels.point
     if primary.pixel_format!=PixelFormat.RGBA16Float or linear.pixel_format!=PixelFormat.RGBA16Float or guide.pixel_format not in(PixelFormat.RGBA16Float,PixelFormat.R16Float):raise TypeError('Explicit supported source formats required; unverified formats unsupported')
     if any(t.pixels.point!=point for t in [linear,guide])or gain_parameters.scale6.point!=point or pre_parameters.srl_parameter.point!=point:raise TypeError('Matching whole point/set source/parameter backends required')
@@ -50,8 +50,14 @@ def forward(primary,linear,matte,guide,*,producer_shape,pre_parameters,gain_para
             else:result=guided_set(None,gain=t.pixels,guide=guide.pixels,epsilon=epsilon,output_shape=outshape,working_domain=domain)
             outputs.append(result)
         except DomainUnknown as error:outputs.append(None);unknowns['guided_'+name]=str(error)
-    consumer=None
+    return Result(observations,bg,fg,*outputs,None,unknowns,markers)
+
+
+def forward(primary,linear,matte,guide,*,producer_shape,pre_parameters,gain_parameters,consumer_semantic7,curve,epsilon,roi,reference196,person96,input_branch_decisions=()):
+    """Legacy explicit-consumer interface; generation itself needs no consumer oracle."""
+    r=generate(primary,linear,matte,guide,producer_shape=producer_shape,pre_parameters=pre_parameters,gain_parameters=gain_parameters,curve=curve,epsilon=epsilon,input_branch_decisions=input_branch_decisions)
+    outputs=[r.guided_bg,r.guided_fg];unknowns=dict(r.unknowns);consumer=None
     if all(x is not None for x in outputs):
-        try:consumer=consume_block290(Texture(outputs[0]['output'],PixelFormat.RGBA16Float,domain),Texture(outputs[1]['output'],PixelFormat.RGBA16Float,domain),roi,reference196,person96,consumer_semantic7)
+        try:consumer=consume_block290(Texture(outputs[0]['output'],PixelFormat.RGBA16Float,r.raw_bg.working_domain),Texture(outputs[1]['output'],PixelFormat.RGBA16Float,r.raw_fg.working_domain),roi,reference196,person96,consumer_semantic7)
         except DomainUnknown as error:unknowns['consumer']=str(error)
-    return Result(observations,bg,fg,*outputs,consumer,unknowns,markers)
+    return Result(r.producer_observations,r.raw_bg,r.raw_fg,*outputs,consumer,unknowns,r.input_branch_decisions)

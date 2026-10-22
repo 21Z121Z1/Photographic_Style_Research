@@ -1,6 +1,7 @@
 """Reuse existing v3 three-pass model with an explicit bounded input contract.
 
-Point reproduction reuses v3; conditional sets use the existing typed bounds.
+Point reproduction reuses v3 sampling/apply with the demonstrated ARM64 CPU
+coefficient contraction; conditional sets retain the existing typed bounds.
 No original-frame recovery is asserted. A scalar guide is broadcast in coefficients but uses R16 lanes in
 apply; a single RGB call is not silently replaced by three scalar calls.
 """
@@ -39,7 +40,8 @@ class Inputs:
 
 def forward(inputs: Inputs):
     with np.errstate(invalid='ignore',divide='ignore',over='ignore'):
-        a,b,ma,mb=legacy.coefficients(inputs.input_gain,inputs.guide,inputs.radius,inputs.epsilon_f32)
+        from guided_precision import coefficients
+        a,b,ma,mb=coefficients(inputs.input_gain,inputs.guide,inputs.epsilon_f32,legacy)
         out=legacy.apply(inputs.guide,ma,mb,inputs.output_shape)
     results={'a':a,'b':b,'mean_a':ma,'mean_b':mb,'output':out}
     if any(not np.isfinite(x).all()for x in results.values()):raise DomainUnknown('Guided v3 finite domain failed; no epsilon change or center fallback')

@@ -1,0 +1,231 @@
+{
+  "scope": "Replay saved guided checkpoints; three new calls only for missing witnesses.",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "original": [
+    {
+      "canonical_sha256": "34ac3948d377627c1e99ad1ac806f899c35203fc1caa4c6008adb31c238b08c0",
+      "provenance": {
+        "target_triple": "air64_v29-apple-ios27.0.0",
+        "llvm_ident": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+        "type_renames": {
+          "%\"struct.metal::_imageblock_base.156\"": "%\"psr.type.0\""
+        },
+        "internal_global_renames": {
+          "@__air_sampler_state": "@\"psr.internal.0\""
+        }
+      },
+      "original_complete_kernel_sha256": "2ae161fb66928014be9c47084ef5e265ad0bba042df7784526d296b53eb21d4f",
+      "original_kernel_modified": false,
+      "one_thread_per_imageblock": true,
+      "sampler_assumption": "reused v3 1/256 weights, half tie-up",
+      "native_GPU": false
+    },
+    {
+      "canonical_sha256": "e76f3b835980bdee9706ab859c8e140715e4f816e480c4a3461806635b38bfbb",
+      "provenance": {
+        "target_triple": "air64_v29-apple-ios27.0.0",
+        "llvm_ident": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+        "type_renames": {
+          "%\"struct.metal::_imageblock_base.156\"": "%\"psr.type.0\""
+        },
+        "internal_global_renames": {
+          "@__air_sampler_state.1": "@\"psr.internal.0\""
+        }
+      },
+      "original_complete_kernel_sha256": "7310e2d699d6bb7727c2733a107b4a83bb775585559a09d25b155176840b58a2",
+      "original_kernel_modified": false,
+      "one_thread_per_imageblock": true,
+      "sampler_assumption": "reused v3 1/256 weights, half tie-up",
+      "native_GPU": false
+    }
+  ],
+  "baseline_sha256": "bced31558cfb5895d6f9250b72a4c02eb35344ec82bf586518e8de289c1c18d5",
+  "complete_sha256": "f16a7163475e4e78c11c1b7aae33bfd363c6a2ca425aa808f54772367bfd1081",
+  "rows": [
+    {
+      "fixture": 0,
+      "grid": [
+        3,
+        0
+      ],
+      "f32_checkpoints": [
+        {
+          "stage": "sum_p",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "sum_i",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "sum_ip",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "sum_ii",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_p",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_i",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_ip",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_ii",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "cov",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "epsilon_plus_mii",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "var",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "a_f32",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "b_f32",
+          "f32_bit_mismatches": 0
+        }
+      ],
+      "f32_components": 52,
+      "f32_bit_mismatches": 0,
+      "native_calls": 0,
+      "saved_a_bit_mismatches": 0,
+      "saved_mean_a_bit_mismatches": 0
+    },
+    {
+      "fixture": 1,
+      "grid": [
+        0,
+        1
+      ],
+      "f32_checkpoints": [
+        {
+          "stage": "sum_p",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "sum_i",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "sum_ip",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "sum_ii",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_p",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_i",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_ip",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "mean_ii",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "cov",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "epsilon_plus_mii",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "var",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "a_f32",
+          "f32_bit_mismatches": 0
+        },
+        {
+          "stage": "b_f32",
+          "f32_bit_mismatches": 0
+        }
+      ],
+      "f32_components": 52,
+      "f32_bit_mismatches": 0,
+      "native_calls": 3,
+      "observer_a_bits_match_unobserved": true,
+      "unobserved_a_bit_mismatches": 0,
+      "mean_a_targets": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ],
+      "mean_a_probes": [
+        {
+          "grid": [
+            0,
+            0
+          ],
+          "lane": 1,
+          "native_half_bits": [
+            47757,
+            47388,
+            48330,
+            0
+          ],
+          "new_half_bit_mismatches": 0,
+          "old_half_bit_mismatches": 1
+        },
+        {
+          "grid": [
+            0,
+            2
+          ],
+          "lane": 1,
+          "native_half_bits": [
+            47738,
+            48024,
+            48497,
+            0
+          ],
+          "new_half_bit_mismatches": 0,
+          "old_half_bit_mismatches": 1
+        }
+      ],
+      "mean_a_probe_scope": "original AIR91 on explicit computed a/b arrays; not a new full guided/native-image run"
+    }
+  ],
+  "native_calls": 3,
+  "old_batches_repeated": false,
+  "epsilon_changed": false,
+  "sampler_changed": false,
+  "set_budgets_changed": false,
+  "coefficient_order": "inv9 multiply; cov FMA; epsilon_plus_mii=FMA(sum_ii,inv9,epsilon); var=FMA(-mean_i,mean_i,epsilon_plus_mii); b FMA",
+  "iOS_GPU_order_proven": false
+}

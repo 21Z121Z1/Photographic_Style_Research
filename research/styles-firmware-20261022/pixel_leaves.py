@@ -6,6 +6,7 @@ branch unions or rejects an unproved domain; no fitting or native GPU claim.
 import numpy as np
 from leaf_numeric import V,hc,fc,mix,vec,select,lazy_select,exterior,smoothstep,DomainUnknown
 from leaf_domains import strictly_positive_branch
+from leaf_correlations import channel_span
 
 
 def H(x,like):return V.value(x,'h',like.point)
@@ -55,9 +56,9 @@ def contrast(rgb: V,amount: V):
     colored=(((root+amplitude*H(hc('b800'),rgb))+g)+r)+b
     neutral=mix(root,H(hc('3800'),rgb),(-scaled)*shape)
     newroot=mix(neutral,colored,(variance.f()+F(fc('3FE99999A0000000'),rgb)).h()).maximum(0)
-    changed=exterior(rgb)+newroot*newroot;low=rgb.min_channels();span=rgb.max_channels()-low
+    changed=exterior(rgb)+newroot*newroot;low=rgb.min_channels();span=channel_span(rgb)
     def preserve():
-        newlow=changed.min_channels();newspan=changed.max_channels()-newlow
+        newlow=changed.min_channels();newspan=channel_span(changed)
         return (rgb-low)*(newspan/strictly_positive_branch(span,fc('3EE4F8B580000000')))+newlow
     return lazy_select(span.f().gt(F(fc('3EE4F8B580000000'),rgb)),preserve,lambda:changed)
 

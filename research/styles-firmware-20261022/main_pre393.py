@@ -73,7 +73,7 @@ def forward(primary,linear,guide8,guide9,person_tex,skin_tex,sky_tex,maps,*,grid
         stage='cast2 semantic mutation';post=mutate_semantic(semantic7,controls);p=post.h()
         stage='semantic branch'
         if maps[0]is not None and maps[1]is not None:
-            result=consume_block290(*maps,ROI(grid,transforms[5],transforms[6]),ref,person,post);semantic=result['output335']
+            result=consume_block290(*maps,ROI(grid,transforms[5],transforms[6]),ref,person,post);semantic=result['output335'];obs['precomputed335']=semantic
         else:
             bg,fg=gain_ratios(working,ref,post,gtc)
             def branch(ratio,ltm,hr):

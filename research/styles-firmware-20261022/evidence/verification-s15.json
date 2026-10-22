@@ -1,0 +1,60 @@
+{
+  "scope": "S15 fixed synthetic conditional composition and bounded saved-witness diagnostics",
+  "python": "3.14.5",
+  "clang": "Homebrew clang version 22.1.6",
+  "test_command": "python3 -m unittest discover -s research/styles-firmware-20261022 -p 'test_*.py' -v",
+  "tests": 185,
+  "tests_result": "OK",
+  "test_log_sha256": "b19c0fe3454113a81a6dd0fa04cdfebdc6c8f7675e16a1efb58debf766c27882",
+  "compileall_result": "exit0",
+  "git_diff_check_result": "exit0",
+  "native_calls": {
+    "one_complete_context": 102,
+    "guided_first_divergence": 21,
+    "guided_missing_targets": 3,
+    "BG_and_complete_saved_replay": 0,
+    "total": 126
+  },
+  "source_sha256": {
+    "complete_fixture.py": "b2870f6ffd5e79cb24f1e428fd55ed2cf941e05edfcd7194b3e699c01cf1632c",
+    "complete_forward.py": "14145717941997efc385b11c3a32b1f49bde9457b403fb7e656bc968ac1d9826",
+    "diagnose_bg_dependency.py": "7656aa5bd2200e23e2b2227ac44854b4aeb1d2c62a910253773e0f80e0f5275e",
+    "diagnose_guided.py": "2a7d11afee5e7e4377e48a681ddc1e5408c29e13d2f64424b39aa05e41799b1c",
+    "full_ltm_chain.py": "a50e142dec955331b446316eb9911b1a3666ab858dd20e5d4816bf7e91b8670a",
+    "guided_conditioned.py": "0dca227a1baa817565898fa5954338c2a95c07089ce6eae685534c8fd50fff1e",
+    "guided_precision.py": "4c2622201d52fb9b512e178267a1047e167b111d92bc5711d6d4541f558ee7ee",
+    "guided_trace_host.py": "4eb23e26299ec2a5423da8d37e610802f45afacc7cf4e5fb50f483a1ab21e8e8",
+    "leaf_correlations.py": "baa300c4ab404c285d175bf231ab63ca4fa8a78224af21c85c605e14b2e50ea0",
+    "main_full_host.py": "d4b28f6aedc274475cafd15f55eb59a5b5f13f47e59270d8dd1c1674e54c376b",
+    "main_pre393.py": "8cf7757040917277dbe340ce292ae8dfa68d0dc2c386a08245920b764b548041",
+    "native_complete_check.py": "40f74be4f41adf14a362b0fe582c36b61c513bc33cd0fbcf3adde9a0325f335c",
+    "pixel_coverage_inventory.py": "144c8799c14338da5fb7b3cf6c3876fda3c81182f5a5fa65c0919d6f70c1cc0e",
+    "pixel_leaves.py": "9c7dc76c11bffce916c3e407078c8957159484fa7d5e177ebf384a4a2aa20fff",
+    "refine_guided.py": "267ee1b159e686f8b919134224bed00e50f7f455c5f9595d91c373ec654bd826",
+    "test_complete_forward.py": "3659e1d039e8dabf3d4020d4b6ee8e17aad9a0caa81de10084bdb08f81ec9c3c"
+  },
+  "receipt_sha256": {
+    "bg-dependency-s15c.json": "31b167989bddf8a93d67a42ed66f7b8daf655810bcc156ee24bb8e263705a59c",
+    "complete-context-s15a.json": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+    "complete-replay-s15c.json": "eb5c38199fa84cfc1449cc716de8cf6382ca969c31fcf030f0bd06b4b24c95dd",
+    "guided-first-divergence-s15b.json": "bced31558cfb5895d6f9250b72a4c02eb35344ec82bf586518e8de289c1c18d5",
+    "guided-refinement-s15b.json": "8ae6222e3f41f81770222e9e1b61c6d3388952288f3e0b7efc9bf2ce3f3a2caa",
+    "native-complete-s15a.json": "f16a7163475e4e78c11c1b7aae33bfd363c6a2ca425aa808f54772367bfd1081",
+    "pixel-inventory-s15.json": "d6b758cbe9e70c00f184a67959d6c280057f00e6f1efe8d5372e95f1c61762fe"
+  },
+  "full_pipeline_verified": false,
+  "original_GPU_executed": false,
+  "private_media_used": false,
+  "downloads": 0,
+  "remaining_local_software_failures": [
+    "complete whole sets12 pixels selective413 pow domain;24 unselected internal unknowns",
+    "S14C case0 BG352 contrast quotient:1 whole-context unknown;64 local subdomains leave8 unknown",
+    "bright24/tonal7/haze3 point differences on complete context; older numeric/domain gaps retained"
+  ],
+  "remaining_external_dependencies": [
+    "actual iOS/GPU and same-frame raw inputs",
+    "raw auxiliary guide/mask/stat/lookup/curve/coefficient producers",
+    "IMG2810 exact build and matching hardware chain",
+    "nine unresolved coefficient consumers"
+  ]
+}

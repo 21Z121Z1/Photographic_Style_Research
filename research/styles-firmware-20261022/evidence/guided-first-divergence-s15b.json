@@ -1,0 +1,787 @@
+{
+  "scope": "Two saved S14B coefficient witnesses, bounded f32 trace and model replay.",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "original": {
+    "canonical_sha256": "34ac3948d377627c1e99ad1ac806f899c35203fc1caa4c6008adb31c238b08c0",
+    "provenance": {
+      "target_triple": "air64_v29-apple-ios27.0.0",
+      "llvm_ident": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+      "type_renames": {
+        "%\"struct.metal::_imageblock_base.156\"": "%\"psr.type.0\""
+      },
+      "internal_global_renames": {
+        "@__air_sampler_state": "@\"psr.internal.0\""
+      }
+    },
+    "original_complete_kernel_sha256": "2ae161fb66928014be9c47084ef5e265ad0bba042df7784526d296b53eb21d4f",
+    "original_kernel_modified": "independent stores only; must compare coefficient output against saved witness",
+    "one_thread_per_imageblock": true,
+    "sampler_assumption": "reused v3 1/256 weights, half tie-up",
+    "native_GPU": false,
+    "trace_CHECKPOINTS": [
+      [
+        "sum_p",
+        43
+      ],
+      [
+        "sum_i",
+        42
+      ],
+      [
+        "sum_ip",
+        41
+      ],
+      [
+        "sum_ii",
+        40
+      ],
+      [
+        "mean_p",
+        47
+      ],
+      [
+        "mean_i",
+        48
+      ],
+      [
+        "mean_ip",
+        49
+      ],
+      [
+        "mean_ii",
+        50
+      ],
+      [
+        "cov",
+        52
+      ],
+      [
+        "epsilon_plus_mii",
+        56
+      ],
+      [
+        "var",
+        58
+      ],
+      [
+        "a_f32",
+        59
+      ],
+      [
+        "b_f32",
+        61
+      ]
+    ],
+    "trace_only_original_final_f32_SSA": true,
+    "trace_body_sha256": "34436a1d6d425abe2800b7a142bd9bf6f505391f8018bcd960df9f121c4ea9ea"
+  },
+  "native_calls": 21,
+  "old_batches_repeated": false,
+  "rows": [
+    {
+      "fixture": 0,
+      "grid": [
+        3,
+        0
+      ],
+      "first_differing_lane": 2,
+      "old_half_a_bits": [
+        46181,
+        45895,
+        46957,
+        0
+      ],
+      "new_half_a_bits": [
+        46181,
+        45895,
+        46956,
+        0
+      ],
+      "native_half_a_bits": [
+        46181,
+        45895,
+        46956,
+        0
+      ],
+      "native_half_b_bits": [
+        15462,
+        16134,
+        16583,
+        15360
+      ],
+      "stages": [
+        {
+          "name": "sum_p",
+          "SSA": 43,
+          "native_f32_bits": [
+            1091037696,
+            1097717760,
+            1100822528,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1091037696,
+            1097717760,
+            1100822528,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1091037696,
+            1097717760,
+            1100822528,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "sum_i",
+          "SSA": 42,
+          "native_f32_bits": [
+            1084438528,
+            1082360320,
+            1082089472,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1084438528,
+            1082360320,
+            1082089472,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1084438528,
+            1082360320,
+            1082089472,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "sum_ip",
+          "SSA": 41,
+          "native_f32_bits": [
+            1083831955,
+            1087972256,
+            1091262029,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1083831955,
+            1087972256,
+            1091262029,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1083831955,
+            1087972256,
+            1091262029,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "sum_ii",
+          "SSA": 40,
+          "native_f32_bits": [
+            1077482948,
+            1072712990,
+            1071810484,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1077482948,
+            1072712990,
+            1071810484,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1077482948,
+            1072712990,
+            1071810484,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_p",
+          "SSA": 47,
+          "native_f32_bits": [
+            1064411136,
+            1070820011,
+            1074511872,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1064411136,
+            1070820011,
+            1074511872,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1064411136,
+            1070820011,
+            1074511872,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_i",
+          "SSA": 48,
+          "native_f32_bits": [
+            1058084181,
+            1055509163,
+            1055064064,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1058084181,
+            1055509163,
+            1055064064,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1058084181,
+            1055509163,
+            1055064064,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_ip",
+          "SSA": 49,
+          "native_f32_bits": [
+            1057545005,
+            1061225273,
+            1064809950,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1057545005,
+            1061225273,
+            1064809950,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1057545005,
+            1061225273,
+            1064809950,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_ii",
+          "SSA": 50,
+          "native_f32_bits": [
+            1050969376,
+            1045797346,
+            1044995118,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1050969376,
+            1045797346,
+            1044995118,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1050969376,
+            1045797346,
+            1044995118,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "cov",
+          "SSA": 52,
+          "native_f32_bits": [
+            3114576593,
+            3112296497,
+            3120728064,
+            0
+          ],
+          "legacy_f32_bits": [
+            3114576593,
+            3112296497,
+            3120728064,
+            0
+          ],
+          "original_order_f32_bits": [
+            3114576593,
+            3112296497,
+            3120728064,
+            0
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "epsilon_plus_mii",
+          "SSA": 56,
+          "native_f32_bits": [
+            1051002931,
+            1045864455,
+            1045062227,
+            1065361605
+          ],
+          "legacy_f32_bits": [
+            1051002930,
+            1045864455,
+            1045062227,
+            1065361605
+          ],
+          "original_order_f32_bits": [
+            1051002930,
+            1045864455,
+            1045062227,
+            1065361605
+          ],
+          "legacy_bit_mismatches": 1,
+          "original_order_bit_mismatches": 1
+        },
+        {
+          "name": "var",
+          "SSA": 58,
+          "native_f32_bits": [
+            982899422,
+            982433188,
+            982296960,
+            981668864
+          ],
+          "legacy_f32_bits": [
+            982899277,
+            982433171,
+            982296943,
+            981668463
+          ],
+          "original_order_f32_bits": [
+            982899166,
+            982433188,
+            982296960,
+            981668864
+          ],
+          "legacy_bit_mismatches": 4,
+          "original_order_bit_mismatches": 1
+        },
+        {
+          "name": "a_f32",
+          "SSA": 59,
+          "native_f32_bits": [
+            3196888814,
+            3194547540,
+            3203239916,
+            0
+          ],
+          "legacy_f32_bits": [
+            3196888950,
+            3194547568,
+            3203239945,
+            0
+          ],
+          "original_order_f32_bits": [
+            3196889054,
+            3194547540,
+            3203239916,
+            0
+          ],
+          "legacy_bit_mismatches": 3,
+          "original_order_bit_mismatches": 1
+        },
+        {
+          "name": "b_f32",
+          "SSA": 61,
+          "native_f32_bits": [
+            1066188177,
+            1071691314,
+            1075374698,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1066188197,
+            1071691315,
+            1075374699,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1066188211,
+            1071691314,
+            1075374698,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 3,
+          "original_order_bit_mismatches": 1
+        }
+      ],
+      "first_f32_divergence": "epsilon_plus_mii",
+      "candidate_all_f32_checkpoints_equal": false,
+      "observer_half_a_bits_match_saved_unobserved": true
+    },
+    {
+      "fixture": 1,
+      "grid": [
+        0,
+        1
+      ],
+      "first_differing_lane": 1,
+      "old_half_a_bits": [
+        47047,
+        48399,
+        48456,
+        0
+      ],
+      "new_half_a_bits": [
+        47047,
+        48399,
+        48456,
+        0
+      ],
+      "native_half_a_bits": [
+        47047,
+        48400,
+        48456,
+        0
+      ],
+      "native_half_b_bits": [
+        16496,
+        16936,
+        17399,
+        15360
+      ],
+      "stages": [
+        {
+          "name": "sum_p",
+          "SSA": 43,
+          "native_f32_bits": [
+            1099825152,
+            1102235648,
+            1106721792,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1099825152,
+            1102235648,
+            1106721792,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1099825152,
+            1102235648,
+            1106721792,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "sum_i",
+          "SSA": 42,
+          "native_f32_bits": [
+            1083335680,
+            1082612224,
+            1081017344,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1083335680,
+            1082612224,
+            1081017344,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1083335680,
+            1082612224,
+            1081017344,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "sum_ip",
+          "SSA": 41,
+          "native_f32_bits": [
+            1091585821,
+            1093128228,
+            1095563412,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1091585821,
+            1093128228,
+            1095563412,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1091585821,
+            1093128228,
+            1095563412,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "sum_ii",
+          "SSA": 40,
+          "native_f32_bits": [
+            1075111547,
+            1073660090,
+            1069973396,
+            1091567616
+          ],
+          "legacy_f32_bits": [
+            1075111547,
+            1073660090,
+            1069973396,
+            1091567616
+          ],
+          "original_order_f32_bits": [
+            1075111547,
+            1073660090,
+            1069973396,
+            1091567616
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_p",
+          "SSA": 47,
+          "native_f32_bits": [
+            1073508807,
+            1075767979,
+            1079755662,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1073508807,
+            1075767979,
+            1079755662,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1073508807,
+            1075767979,
+            1079755662,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_i",
+          "SSA": 48,
+          "native_f32_bits": [
+            1057103872,
+            1055956992,
+            1054111061,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1057103872,
+            1055956992,
+            1054111061,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1057103872,
+            1055956992,
+            1054111061,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_ip",
+          "SSA": 49,
+          "native_f32_bits": [
+            1065369398,
+            1066740427,
+            1068905035,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1065369398,
+            1066740427,
+            1068905035,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1065369398,
+            1066740427,
+            1068905035,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "mean_ii",
+          "SSA": 50,
+          "native_f32_bits": [
+            1048861464,
+            1046639213,
+            1043362151,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1048861464,
+            1046639213,
+            1043362151,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1048861464,
+            1046639213,
+            1043362151,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "cov",
+          "SSA": 52,
+          "native_f32_bits": [
+            3121674807,
+            3134332908,
+            3133243327,
+            0
+          ],
+          "legacy_f32_bits": [
+            3121674807,
+            3134332908,
+            3133243327,
+            0
+          ],
+          "original_order_f32_bits": [
+            3121674807,
+            3134332908,
+            3133243327,
+            0
+          ],
+          "legacy_bit_mismatches": 0,
+          "original_order_bit_mismatches": 0
+        },
+        {
+          "name": "epsilon_plus_mii",
+          "SSA": 56,
+          "native_f32_bits": [
+            1048895018,
+            1046706321,
+            1043429260,
+            1065361605
+          ],
+          "legacy_f32_bits": [
+            1048895018,
+            1046706322,
+            1043429260,
+            1065361605
+          ],
+          "original_order_f32_bits": [
+            1048895018,
+            1046706322,
+            1043429260,
+            1065361605
+          ],
+          "legacy_bit_mismatches": 1,
+          "original_order_bit_mismatches": 1
+        },
+        {
+          "name": "var",
+          "SSA": 58,
+          "native_f32_bits": [
+            982852096,
+            983963264,
+            982679737,
+            981668864
+          ],
+          "legacy_f32_bits": [
+            982852207,
+            983963375,
+            982679720,
+            981668463
+          ],
+          "original_order_f32_bits": [
+            982852096,
+            983963392,
+            982679737,
+            981668864
+          ],
+          "legacy_bit_mismatches": 4,
+          "original_order_bit_mismatches": 1
+        },
+        {
+          "name": "a_f32",
+          "SSA": 59,
+          "native_f32_bits": [
+            3203980779,
+            3215061033,
+            3215527819,
+            0
+          ],
+          "legacy_f32_bits": [
+            3203980593,
+            3215060924,
+            3215527839,
+            0
+          ],
+          "original_order_f32_bits": [
+            3203980779,
+            3215060908,
+            3215527819,
+            0
+          ],
+          "legacy_bit_mismatches": 3,
+          "original_order_bit_mismatches": 1
+        },
+        {
+          "name": "b_f32",
+          "SSA": 61,
+          "native_f32_bits": [
+            1074661597,
+            1078261826,
+            1082054437,
+            1065353216
+          ],
+          "legacy_f32_bits": [
+            1074661585,
+            1078261801,
+            1082054441,
+            1065353216
+          ],
+          "original_order_f32_bits": [
+            1074661597,
+            1078261797,
+            1082054437,
+            1065353216
+          ],
+          "legacy_bit_mismatches": 3,
+          "original_order_bit_mismatches": 1
+        }
+      ],
+      "first_f32_divergence": "epsilon_plus_mii",
+      "candidate_all_f32_checkpoints_equal": false,
+      "observer_half_a_bits_match_saved_unobserved": null
+    }
+  ],
+  "host_IR_sha256": "a1da4140dd8dceeba4f038cfcd15497c1fe2c73f175fe570ca6b3ebf6fa545f2",
+  "source_sha256": "f0b2d8692c0fc6f1c0c8d60cf5af7445a594511c79ab174e76e76c6e5f232b73",
+  "saved_complete_sha256": "f16a7163475e4e78c11c1b7aae33bfd363c6a2ca425aa808f54772367bfd1081",
+  "input_gain_source": "previously proven bit-identical point producer model; source identities unchanged; no native producer rerun",
+  "provisional_order_only": true,
+  "GPU_executed": false
+}
