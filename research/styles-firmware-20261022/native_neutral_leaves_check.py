@@ -34,7 +34,7 @@ def check(source,output,names=None,observe_native=None):
         for index,name in enumerate(names):
             fn=getattr(lib,f'psr_leaf_{index}');fn.argtypes=[ctypes.c_void_p]*3
             for data in cases(name):
-                native=np.zeros(3,dtype='f4');fn(data.ctypes.data,tex.ctypes.data,native.ctypes.data);outputs.append(native.copy());ih.update(name.encode()+data.tobytes());row={'helper':name,'input':data.tolist(),'native_half_output':native.tolist(),'native_nonfinite':int(np.count_nonzero(~np.isfinite(native)))}
+                native=np.zeros(3,dtype='f4');fn(data.ctypes.data,tex.ctypes.data,native.ctypes.data);outputs.append(native.copy());ih.update(name.encode()+data.tobytes());row={'helper':name,'input':data.tolist(),'native_half_output':[float(x)if np.isfinite(x)else None for x in native],'native_half_bits':native.astype('f2').view('u2').tolist(),'native_nonfinite':int(np.count_nonzero(~np.isfinite(native)))}
                 if observe_native is not None:row.update(observe_native(lib,name,data,native))
                 for point in [True,False]:
                     try:

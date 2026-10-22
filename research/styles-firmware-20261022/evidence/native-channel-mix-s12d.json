@@ -1,0 +1,825 @@
+{
+  "model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "renderChannelMixForBWCasts": {
+      "calls": 24,
+      "point_unknown": 2,
+      "set_unknown": 2,
+      "half_bit_mismatches_known": 15,
+      "max_absolute_error_known": 0.000732421875,
+      "range_violations_known": 0
+    }
+  },
+  "original_complete_function_sha256": {
+    "getBWChannelMixFromStats": "d9013e7e1dd71556273cb56a086382df38a3c8f3a6296517eb4d8814bbc7ddc9",
+    "renderChannelMixForBWCasts": "db989b81a63947b0e851c32aa6222190e30fa78fa39029b9aa6203e85e7367ea"
+  },
+  "original_bodies_modified": false,
+  "reference_Lab_is_supplied": false,
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "host_bool_shim": "float!=0 (explicit assumption), not fptoui i1",
+  "host_fmod_shim": "C fmodf then half",
+  "source_sha256": {
+    "pixel_neutral.py": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+    "pixel_color.py": "5ecd215ae1907317f773162803f7c75937df3eff66cdd333e871f4a210f95202",
+    "pixel_skin.py": "2f2f4eac5c97d7a074ffdc9934ceba8a52531d8cc1de2dff1ba5be32bb29ab34",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_host.py": "e49229c3e3dbffe73497da4eba0f2e55a58ba48ac169a591eb4e6eac3536149c",
+    "native_neutral_leaves_check.py": "66a59810a9a4bf45f1b83d1ac9ca508d13341a49d6d4d91d5f0f8238ab699a3c"
+  },
+  "host_ir_sha256": "6021052c5572fa6d0ec2b5f4ac2171ac559489a5f07af389a472b982a38018ef",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "add4f4b7b51302f040fe0f61848cb99da89a6b969c75dbea582c6be13ae44aee",
+  "output_sha256": "72990cdaffd0f723d99775310042848e288c31f979ab7ae78d67a21a46f7c111",
+  "rows": [
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.199951171875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.199951171875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.346435546875,
+        0.346435546875,
+        0.346435546875
+      ],
+      "native_half_bits": [
+        13707,
+        13707,
+        13707
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.304443359375,
+        0.304443359375,
+        0.304443359375
+      ],
+      "native_half_bits": [
+        13535,
+        13535,
+        13535
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.199951171875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.44384765625,
+        0.44384765625,
+        0.44384765625
+      ],
+      "native_half_bits": [
+        14106,
+        14106,
+        14106
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.000732421875,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.31884765625,
+        0.31884765625,
+        0.31884765625
+      ],
+      "native_half_bits": [
+        13594,
+        13594,
+        13594
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.199951171875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125
+      ],
+      "native_half_bits": [
+        14746,
+        14131,
+        13517
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125
+      ],
+      "native_half_bits": [
+        14746,
+        14131,
+        13517
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.199951171875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.5146484375,
+        0.5146484375,
+        0.5146484375
+      ],
+      "native_half_bits": [
+        14366,
+        14366,
+        14366
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.55859375,
+        0.55859375,
+        0.55859375
+      ],
+      "native_half_bits": [
+        14456,
+        14456,
+        14456
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.00048828125,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.199951171875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.5107421875,
+        0.5107421875,
+        0.5107421875
+      ],
+      "native_half_bits": [
+        14358,
+        14358,
+        14358
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.56689453125,
+        0.56689453125,
+        0.56689453125
+      ],
+      "native_half_bits": [
+        14473,
+        14473,
+        14473
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.199951171875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375
+      ],
+      "native_half_bits": [
+        13926,
+        13926,
+        13926
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375
+      ],
+      "native_half_bits": [
+        13926,
+        13926,
+        13926
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.199951171875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.400634765625,
+        0.400634765625,
+        0.400634765625
+      ],
+      "native_half_bits": [
+        13929,
+        13929,
+        13929
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.000732421875,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.400634765625,
+        0.400634765625,
+        0.400634765625
+      ],
+      "native_half_bits": [
+        13929,
+        13929,
+        13929
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.000732421875,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.199951171875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.400634765625,
+        0.400634765625,
+        0.400634765625
+      ],
+      "native_half_bits": [
+        13929,
+        13929,
+        13929
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 3,
+      "max_absolute_error": 0.000732421875,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.400634765625,
+        0.400634765625,
+        0.400634765625
+      ],
+      "native_half_bits": [
+        13929,
+        13929,
+        13929
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.199951171875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.199951171875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        4.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.199951171875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        null,
+        null,
+        null
+      ],
+      "native_half_bits": [
+        32256,
+        32256,
+        32256
+      ],
+      "native_nonfinite": 3,
+      "point_unknown": "Division interval includes zero",
+      "half_bit_mismatches": null,
+      "max_absolute_error": null,
+      "set_unknown": "Division interval includes zero",
+      "range_covered": null
+    },
+    {
+      "helper": "renderChannelMixForBWCasts",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        15.0,
+        0.30000001192092896,
+        0.6000000238418579,
+        0.10000000149011612,
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "native_half_output": [
+        null,
+        null,
+        null
+      ],
+      "native_half_bits": [
+        32256,
+        32256,
+        32256
+      ],
+      "native_nonfinite": 3,
+      "point_unknown": "Division interval includes zero",
+      "half_bit_mismatches": null,
+      "max_absolute_error": null,
+      "set_unknown": "Division interval includes zero",
+      "range_covered": null
+    }
+  ],
+  "full_pipeline_verified": false,
+  "set_error_budget_is_host_assumption": true,
+  "declared_case_and_model_provider": {
+    "module": "native_channel_mix_check",
+    "only_new_channel_mix_cases": true,
+    "source_sha256": {
+      "native_channel_mix_check.py": "63e69508e82ec668e86cda8f131101c2d123c5b4333d5c67e5477f30453a9c0a",
+      "pixel_channel_mix.py": "d1a342d20b80d795e0190764dbf2f6c1944f65e4a8b43211af97b196a3a651e4",
+      "pixel_neutral_root.py": "25dfe1d37b25c6acdff719ca766e355d34a3beec16b1bfdc46207da3b8fcbaed"
+    },
+    "explicit_context": [
+      "SSRParams0 uint32",
+      "SSRTone17..19 f32",
+      "SSRStats groups2/3/4 field4 f32",
+      "person96 half"
+    ],
+    "black_cast15_unguarded_division_retained": true
+  }
+}

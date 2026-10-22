@@ -124,3 +124,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S12-B：原外围指令直接接真实BW与内部观察：[阶段报告](PROGRESS-S12-B.zh-CN.md)。
 
 - S12-C：video haze原helper与主入口选择：[阶段报告](PROGRESS-S12-C.zh-CN.md)。
+
+S12-D：补齐主入口保护与BW通道混合，154项回归；点位差与黑输入unknown见[阶段报告](PROGRESS-S12-D.zh-CN.md)。

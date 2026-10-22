@@ -1,0 +1,569 @@
+{
+  "model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "psrPostProtect": {
+      "calls": 15,
+      "point_unknown": 0,
+      "set_unknown": 0,
+      "half_bit_mismatches_known": 0,
+      "max_absolute_error_known": 0.0,
+      "range_violations_known": 0
+    }
+  },
+  "original_complete_function_sha256": {
+    "parent_main_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+    "original_SSA502_566_sha256": "c88eba81f2e53ea6143856526e2adc1f5b9f400347d3f8b351db014f4ce85837",
+    "external_SSA_mapping": {
+      "501": "rgb",
+      "476": "color",
+      "17": "params",
+      "18": "stats",
+      "51": "is_null"
+    },
+    "entry_predecessor_preserved": "382",
+    "metadata_and_call_attributes_removed": true,
+    "arithmetic_and_control_flow_changed": false,
+    "included_function_text_sha256": {
+      "protectMaskFilter": "1e7ed045795940d7dde1f84b7a5f1be7d1087b1d07f1a3e587ca7520e94a728c",
+      "psrPostProtect": "499bb80387260b5bc4c06f4632156c7fd5cd1d95860756f8dd91ff55929987b6"
+    }
+  },
+  "original_bodies_modified": "main slice alpha-renamed and metadata/call attributes removed; arithmetic and control flow unchanged",
+  "reference_Lab_is_supplied": false,
+  "old_batches_repeated": false,
+  "GPU_executed": false,
+  "host_bool_shim": "float!=0 (explicit assumption), not fptoui i1",
+  "host_fmod_shim": "C fmodf then half",
+  "source_sha256": {
+    "pixel_neutral.py": "4420e332e8e9763349348614f3cc29dd4cc502d517177287e6f7cd32a53348a3",
+    "pixel_color.py": "5ecd215ae1907317f773162803f7c75937df3eff66cdd333e871f4a210f95202",
+    "pixel_skin.py": "2f2f4eac5c97d7a074ffdc9934ceba8a52531d8cc1de2dff1ba5be32bb29ab34",
+    "leaf_domains.py": "ab4dce81273212752f37bd600c55ed034844bd2d0e10c340df60fc3b1282cedf",
+    "leaf_numeric.py": "127bab3d0d1e33d10cbaa146e5679c7451b7347b69951334a105cc02c5e35a1e",
+    "leaf_host.py": "e49229c3e3dbffe73497da4eba0f2e55a58ba48ac169a591eb4e6eac3536149c",
+    "native_neutral_leaves_check.py": "66a59810a9a4bf45f1b83d1ac9ca508d13341a49d6d4d91d5f0f8238ab699a3c"
+  },
+  "host_ir_sha256": "d4620a6211c89b8531ba510f88fde78631ea69f5d54bb114bc001afe53eda388",
+  "host_math_sha256": "84acf09e398602d78e614184ff093744e6e4e30edf0ccd034bbef5c39ea3cec8",
+  "input_sha256": "503c40f7e6a8e21989ba9a623dcc1f118311d49e957025dcc4587e05299e28c5",
+  "output_sha256": "9dee36509070105fb601d1edff27787f17dc51f574f448a2761c24739385aeb1",
+  "rows": [
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        -0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.73828125,
+        0.3544921875,
+        0.2237548828125
+      ],
+      "native_half_bits": [
+        14824,
+        13740,
+        13097
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125
+      ],
+      "native_half_bits": [
+        14746,
+        14131,
+        13517
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        -0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.7001953125,
+        0.449951171875,
+        0.300048828125
+      ],
+      "native_half_bits": [
+        14746,
+        14131,
+        13517
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.55908203125,
+        0.3203125,
+        0.280517578125
+      ],
+      "native_half_bits": [
+        14457,
+        13600,
+        13437
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375
+      ],
+      "native_half_bits": [
+        13926,
+        13926,
+        13926
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        -0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375
+      ],
+      "native_half_bits": [
+        13926,
+        13926,
+        13926
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.060333251953125,
+        0.01508331298828125,
+        0.007541656494140625
+      ],
+      "native_half_bits": [
+        11193,
+        9145,
+        8121
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.0,
+        0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.0,
+        0.0,
+        0.0,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        -0.4000000059604645,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_half_bits": [
+        0,
+        0,
+        0
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.009999998845160007,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.009999999776482582,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    },
+    {
+      "helper": "psrPostProtect",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        1.0,
+        0.010000000707805157,
+        100.0,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "native_half_output": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875
+      ],
+      "native_half_bits": [
+        12902,
+        13926,
+        14950
+      ],
+      "native_nonfinite": 0,
+      "point_unknown": null,
+      "half_bit_mismatches": 0,
+      "max_absolute_error": 0.0,
+      "set_unknown": null,
+      "range_covered": true
+    }
+  ],
+  "full_pipeline_verified": false,
+  "set_error_budget_is_host_assumption": true,
+  "declared_case_and_model_provider": {
+    "module": "native_postprotect_check",
+    "only_new_postprotect_cases": true,
+    "source_sha256": {
+      "native_postprotect_check.py": "f33fc1a46504c42e2a042f5f4b9623117fd912316bd3a7cbbd1dac04121df91b",
+      "postprotect_host.py": "f8bbddbe8f618c8481e0284373fc1080d281576798bc2da72df29bf3a50370da",
+      "pixel_postprotect.py": "fe58ca043f1905ef1caf379984805f44dbccab59654ab053b53d3b59a1b9fe7f",
+      "pixel_warmth.py": "3fd6b516afccb501035b3c8213bca749752c0ca576d19147c550ea314c39f284"
+    },
+    "explicit_context": [
+      "RGB501",
+      "color476",
+      "texture10 presence",
+      "cast fields19/20 f32",
+      "SSRStats groups2/3/4 field4 f32"
+    ],
+    "threshold": "f32 amount < .01 skips, equality active; no abs",
+    "protect_ignore_chroma": true
+  }
+}
