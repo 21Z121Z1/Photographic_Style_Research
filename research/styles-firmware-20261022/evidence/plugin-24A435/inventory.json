@@ -1,0 +1,212 @@
+{
+  "bundle_name": "SmartStyleV1.bundle",
+  "binary_bytes": 288176,
+  "binary_sha256": "34c7ecc0c6355159edea3e0515571760a230911104eb042907f921c70eca919f",
+  "uuid": "305C2ACD-593F-3B87-98A8-736D9362820D",
+  "info": {
+    "CFBundleIdentifier": "com.apple.com.SmartStyle",
+    "CFBundleVersion": "1",
+    "CFBundleShortVersionString": "1.0",
+    "DTSDKBuild": "24A418",
+    "MinimumOSVersion": "27.0"
+  },
+  "cache_origin_is_historical_assertion": true,
+  "container_membership_independently_verified": false,
+  "ios_code_executed": false,
+  "sample_matching_verified": false,
+  "methods": [
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:ltmThumbnailPixelBuffer:cameraInfo:applyGDC:toPixelBuffer:]",
+      "start": "0x00009794",
+      "last_instruction": "0x00009e04",
+      "checked_instruction_bytes": 1652,
+      "instruction_sha256": "ca4889d984d420d51979c7376a5e70e25128b44614955cdaf1dfd33af1922aab",
+      "text": "linear-0.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:preLTMThumbnailPixelBuffer:postLTMThumbnailPixelBuffer:cameraInfo:applyGDC:cropToPreLTMBounds:toPixelBuffer:]",
+      "start": "0x000034b4",
+      "last_instruction": "0x00003b54",
+      "checked_instruction_bytes": 1700,
+      "instruction_sha256": "6b2d6fb22ed136726ef022c8ae3913ac6360d066d3aa87d152532237f8c0a161",
+      "text": "linear-1.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 createLinearThumbnailFromMetadata:postLTMThumbnailPixelBuffer:cameraInfo:applyGDC:cropToPreLTMBounds:toPixelBuffer:]",
+      "start": "0x00009e08",
+      "last_instruction": "0x0000a658",
+      "checked_instruction_bytes": 2132,
+      "instruction_sha256": "5c1d8edabfd1b0ac24f85af481c6528d57e4f73ef4d8f27f5d3ee87b849b9c64",
+      "text": "linear-2.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 _compileShaders]",
+      "start": "0x00005f98",
+      "last_instruction": "0x00006288",
+      "checked_instruction_bytes": 756,
+      "instruction_sha256": "e9e0a76d76e2889eb6ac20864a56b4bf97bf474b548767f356ba853ade31b9f1",
+      "text": "linear-3.asm.txt"
+    },
+    {
+      "symbol": "-[CMISmartStyleProcessorUtilitiesV1 _createGlobalToneCurveTextureFromMetadataDict:]",
+      "start": "0x00008e48",
+      "last_instruction": "0x00009100",
+      "checked_instruction_bytes": 700,
+      "instruction_sha256": "c2cfa94d9e81fef2466c65403216b40ace46e56c4ac2d20b8fa5a0ab8fc83635",
+      "text": "linear-4.asm.txt"
+    }
+  ],
+  "air": [
+    {
+      "index": 0,
+      "wrapper_offset": 1885,
+      "payload_bytes": 5692,
+      "payload_sha256": "1cad1068533d2df2458acfb581600f563623715121ec21445d23460fd2802a9f",
+      "functions": [
+        "smartStyleExtractLTMThumbnail"
+      ],
+      "selected": true,
+      "text": "air-0.ll.txt"
+    },
+    {
+      "index": 1,
+      "wrapper_offset": 7597,
+      "payload_bytes": 7848,
+      "payload_sha256": "1d48c39419b63c04e9c3b374e65959d2cd9c9c91c130ce77bd963261732f6295",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCreateLinearThumbnailFromPreLTMBounds"
+      ],
+      "selected": true,
+      "text": "air-1.ll.txt"
+    },
+    {
+      "index": 2,
+      "wrapper_offset": 15469,
+      "payload_bytes": 9132,
+      "payload_sha256": "3c30b55c9e070cf47624d8bc92e21c90ee34057fb617a624aa276fa3bfe3bfe3",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCreateLinearThumbnail"
+      ],
+      "selected": true,
+      "text": "air-2.ll.txt"
+    },
+    {
+      "index": 3,
+      "wrapper_offset": 24621,
+      "payload_bytes": 6632,
+      "payload_sha256": "ebfb2e17d5283b9f1698cac0b514ba7466b082ef12f1aad07bd55f4aab114090",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCreateThumbnail"
+      ],
+      "selected": false
+    },
+    {
+      "index": 4,
+      "wrapper_offset": 31277,
+      "payload_bytes": 5376,
+      "payload_sha256": "4f742a7c1cb5b0cfb7fff8a2c56ef9aea295d423e03aebbb432a9acd4469c41f",
+      "functions": [
+        "smartStyleAugmentPersonMask"
+      ],
+      "selected": false
+    },
+    {
+      "index": 5,
+      "wrapper_offset": 36685,
+      "payload_bytes": 6796,
+      "payload_sha256": "3998dd21a5c20963ee44a224ae78f1abd1a1012ed3f6393e26de4d1739806e89",
+      "functions": [
+        "_GLOBAL__sub_I_CMISmartStyleProcessorV1.metal",
+        "smartStyleCropAndScaleMask"
+      ],
+      "selected": false
+    },
+    {
+      "index": 6,
+      "wrapper_offset": 43501,
+      "payload_bytes": 6760,
+      "payload_sha256": "7a08bcc992c5a8983de85968c7e652d42c665605e76e64cd4e1ed31674ed32f4",
+      "functions": [
+        "smartStyleOctagonMirrorExtension"
+      ],
+      "selected": false
+    },
+    {
+      "index": 7,
+      "wrapper_offset": 50285,
+      "payload_bytes": 3688,
+      "payload_sha256": "5c8245e9cd5e66e3b91beec0e2c5959173192e3dd230a7cee38e806a6d05fcaa",
+      "functions": [
+        "simpleTestKernel"
+      ],
+      "selected": false
+    },
+    {
+      "index": 8,
+      "wrapper_offset": 53997,
+      "payload_bytes": 5996,
+      "payload_sha256": "59d2a82b270441991a911f92c1760b4c4002c1a05112990886aba957f01b04cf",
+      "functions": [
+        "generateOvercaptureIntegrationThumbnailKernel"
+      ],
+      "selected": false
+    }
+  ],
+  "files": [
+    {
+      "name": "Info.plist",
+      "sha256": "9c3f2f45dd9b8a496b2f10d4cbf456a74c0f1768c234718f35c8bedaf540a223",
+      "bytes": 721
+    },
+    {
+      "name": "SmartStyleProcessorV1-Tuning.plist",
+      "sha256": "62f15198ceb268fbff51c43c43154be975fd8558643d8b5adc73ebd823c53638",
+      "bytes": 117
+    },
+    {
+      "name": "air-0.ll.txt",
+      "sha256": "88f3d83d4ed9938854c21e2a91f37b1bf9c6c9fe495b9c8a2778913cd0be66fc",
+      "bytes": 12415
+    },
+    {
+      "name": "air-1.ll.txt",
+      "sha256": "000d2d95857ed6bd206c319b56d7993f3a53671c259672f7dcdd58542cd6f1f1",
+      "bytes": 17815
+    },
+    {
+      "name": "air-2.ll.txt",
+      "sha256": "cba55c7c781fa90aa84908ae9cad3fbfb5fc1eda4f016aae6b22685b5f31d1b9",
+      "bytes": 24582
+    },
+    {
+      "name": "linear-0.asm.txt",
+      "sha256": "a50ffbbf36ce501865a6d36ba8e919da043eb30ee9d2ca9b59c23f29ea75996b",
+      "bytes": 22161
+    },
+    {
+      "name": "linear-1.asm.txt",
+      "sha256": "4e95c8dd962873554eaf89ea9ccdd4a173c79ac84ec1b4d74ed58e25a184ac38",
+      "bytes": 23781
+    },
+    {
+      "name": "linear-2.asm.txt",
+      "sha256": "0a5fafc6cf690a4516554fca9dd11435a46151716ef8ba33b2a943c95c29215e",
+      "bytes": 29472
+    },
+    {
+      "name": "linear-3.asm.txt",
+      "sha256": "66e256fb2ee9fb7865e851323b4d90d60ed5cd7b20e65cabe8bfdd2447bace09",
+      "bytes": 10859
+    },
+    {
+      "name": "linear-4.asm.txt",
+      "sha256": "fcb6d19cd6d1431264c54bb3c83df22232faed7035688a5f6765a3de3a52c8b7",
+      "bytes": 8970
+    }
+  ],
+  "metallib_sha256": "675b74d04efa5727e1e8b71cf39b0541618667d13dbd15d548d105bfba603446",
+  "llvm_version": "Homebrew LLVM version 22.1.6"
+}
