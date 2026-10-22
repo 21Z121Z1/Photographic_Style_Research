@@ -12,6 +12,8 @@
 
 同build CPU链见 [PROGRESS-S5.zh-CN.md](PROGRESS-S5.zh-CN.md)：在现有资源工作后，仅定向取得同manifest的2.35GB SystemOS，实际找到匹配框架；35个方法55680B逐条核原cache字节，补loader、prior矩阵到buffer8、用户值到672B SSR参数及统计shader绑定。新增SRL标量分支4180组原40B指令比较逐位差异0，当前39项测试通过；依然不称完整拍摄/逆解完成。
 
+正Tone→皮肤系数见 [PROGRESS-S6.zh-CN.md](PROGRESS-S6.zh-CN.md)：实际RenderingParamsFromStats中目标θ9/θ10接到已有条件皮肤算子；1033组、2066个系数的原AIR宿主比较有733个逐位差异，max1.19e-7、舍入界越界0。当前41项测试通过；仅该正分支两个系数不依赖stats，其他Tone/语义/像素链继续保留条件。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|

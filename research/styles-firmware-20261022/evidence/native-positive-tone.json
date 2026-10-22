@@ -1,0 +1,35 @@
+{
+  "scope": "Compare positive Tone's theta9/10 against original AIR recompiled for CPU.\n\nAIR math intrinsics used by unrelated outputs receive explicit host C shims.\nThe two certified target SSA chains use only f32 multiply/subtract, no shim.\nThis is a coefficient check, not original GPU execution or pixel validation.\n",
+  "hardware_reference": "iPhone17,3",
+  "image_build": "24A446",
+  "source_metallib_sha256": "f6d825a7e5c00d0eec2e4721c51bdb7a6b9554073dc632273dec825ae1bf705f",
+  "source_payload_sha256": "a52943805c1b3e6643feb56b287a2a99c23d7417fec3c64f048b0f31c9e26990",
+  "source_AIR_canonical_sha256": "5ca4d2dce19c7e8825f0608b04d3637ddf05f3eb507f33430670617624c02c53",
+  "model_sha256": "b2d3c6d67ca15e8f8e2ff54fb8a8230186bc33f55a6aaf7fbf8832fbb3ee016a",
+  "checker_sha256": "32e880e317af9b5a1a1a8c301bddc182fddaef2afe18e2eb98806aea9217c755",
+  "explicit_C_shims_sha256": "f327596c01d32b51119df278150067d493e153ed48367ceb28e23a307a6d3046",
+  "temporary_host_library_sha256": "c0e6b2e4cdfd59f642f4d6930f33645c5b8c94aea36b45ccbaaf74c01271ff63",
+  "target_fields": {
+    "SSRParams.tone_offset": 8,
+    "SSRFGAdjustment_offset": 556,
+    "theta9_offset": 592,
+    "theta10_offset": 596
+  },
+  "records": 1033,
+  "coefficient_values": 2066,
+  "bit_mismatches": 733,
+  "max_absolute_error": 1.1920928955078125e-07,
+  "rounding_bound_violations": 0,
+  "per_field_max_absolute_error": [
+    1.1920928955078125e-07,
+    2.9802322387695312e-08
+  ],
+  "synthetic_input_sha256": "a27d7b4378eb54313864575407d920d605921db32d9c581526da4dc7b2c9dc69",
+  "host_output_sha256": "cab28f8c168c6330801087a55eebd7589d1348fdf11a1322af4b9f8fb95a004e",
+  "coefficient_domain": "supplied, already scene-scaled SSRParams tone in [0,1]",
+  "target_theta9_theta10_depend_on_host_pow_shim": false,
+  "unrelated_AIR_outputs_certified": false,
+  "native_GPU_executed": false,
+  "photo_inputs": 0,
+  "unique_camera_inverse_verified": false
+}
