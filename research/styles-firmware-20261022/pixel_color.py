@@ -15,27 +15,35 @@ def matrix(rgb,cols):
 def signed_power(x,exponent):return x.abs().pow(F(fc(exponent),x))*x.sign()
 
 
-def to_polar(c):
+def to_lab(c):
     lms=matrix(c.f(),[
         ['3FD4186A60000000','3FC3E33E40000000','3F922DAE80000000'],
         ['3FE476E3E0000000','3FE840ABE0000000','3FBC0465A0000000'],
         ['3FA7CE86C0000000','3FB6321060000000','3FEBEC1640000000']])
-    lab=matrix(signed_power(lms,'3FDB851EC0000000'),[
+    return matrix(signed_power(lms,'3FDB851EC0000000'),[
         ['3FD99999A0000000','4011D1EB80000000','3FE9C779A0000000'],
         ['3FD99999A0000000','C013676C80000000','3FD6DC5D60000000'],
         ['3FC99999A0000000','3FD9581060000000','BFF29AD420000000']]).h()
+
+
+def to_polar(c):
+    lab=to_lab(c)
     angle=lazy_select(lab[2].ne(0)|lab[1].ne(0),lambda:lab[2].atan2(lab[1]),lambda:H(0,c))
     radius=(lab[1].square()+lab[2].square()).sqrt()
     return lab[0],angle,radius
 
 
-def from_polar(light,angle,radius,*,clamp_output=True):
-    lab=vec([light,angle.cos()*radius,angle.sin()*radius]).f()
+def from_lab(lab):
+    lab=lab.f()
     v=(lab[1]*F([fc(x)for x in ['3FB8FA4700000000','BFBD270280000000','3FA0B2ED80000000']],lab)+lab[0])+lab[2]*F([fc(x)for x in ['3FCA44DC20000000','3FC10D4280000000','BFE5A90F40000000']],lab)
-    out=matrix(signed_power(v,'40029ACA60000000'),[
+    return matrix(signed_power(v,'40029ACA60000000'),[
         ['4015E38B80000000','BFF200FDA0000000','3F9E845300000000'],
         ['C012915E00000000','4002586A00000000','BFC8BA2560000000'],
         ['3FC5B6AB00000000','BFC57D9700000000','3FF29E4D40000000']]).h()
+
+
+def from_polar(light,angle,radius,*,clamp_output=True):
+    out=from_lab(vec([light,angle.cos()*radius,angle.sin()*radius]))
     return out.clamp()if clamp_output else out
 
 

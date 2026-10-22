@@ -118,6 +118,13 @@ class V:
         return self.rounded(lower,upper,transcendental=True).clamp(-1,1)
     def sin(self):return self._trig(False)
     def cos(self):return self._trig(True)
+    def fmod(self,x):
+        b=self.box(x)
+        if np.any(b.lo!=b.hi)or np.any(b.lo<=0):raise DomainUnknown('fmod requires a fixed positive divisor')
+        if self.point:return self.rounded(np.fmod(self.lo,b.lo),np.fmod(self.lo,b.lo),transcendental=True)
+        a=np.fmod(self.lo,b.lo);c=np.fmod(self.hi,b.lo);wrap=np.floor(self.lo/b.lo)!=np.floor(self.hi/b.lo)
+        low=np.where(wrap,np.where(self.lo>=0,0,-b.lo),np.minimum(a,c));high=np.where(wrap,np.where(self.hi<=0,0,b.lo),np.maximum(a,c))
+        return self.rounded(low,high,transcendental=True)
     def pow(self,x):
         b=self.box(x)
         if np.any(self.lo<0)or np.any((self.lo==0)&(b.lo<0)):raise DomainUnknown('Unproven pow domain')

@@ -15,15 +15,18 @@ def short(name):
 
 MATH_C=SAMPLER_C+'\nfloat psr_pow_scalar(float a,float b){return powf(a,b);}\nfloat psr_sqrt_scalar(float a){return sqrtf(a);}\n'
 MATH_C+='\n'.join('float psr_'+n+'_scalar(float a){return '+n+'f(a);}'for n in ['sin','cos','exp'])+'\nfloat psr_atan2_scalar(float a,float b){return atan2f(a,b);}\n'
+MATH_C+='float psr_fmod_scalar(float a,float b){return fmodf(a,b);}\n'
 
 
 def shims(names):
     out=['declare float @psr_pow_scalar(float,float)','declare float @psr_sqrt_scalar(float)','declare float @psr_sample(ptr,float)','declare float @llvm.fabs.f32(float)'];done=set()
     out += ['declare float @psr_'+n+'_scalar(float)'for n in ['sin','cos','exp']]+['declare float @psr_atan2_scalar(float,float)']
+    out += ['declare float @psr_fmod_scalar(float,float)']
     def add(name):
         if name in done:return
         done.add(name)
         operation=name.replace('air.fast_','air.')
+        if name=='air.convert.u.i1.f.f32':out.append('define i1 @air.convert.u.i1.f.f32(float %a){\n%r=fcmp une float %a,0.0\nret i1 %r\n}');return
         conversion=re.fullmatch(r'air.convert.f.v(\d+)f(16|32).f.v\1f(16|32)',name)
         if conversion:
             n,dst,src=conversion.groups();a=f'<{n} x '+('half'if src=='16'else'float')+'>';b=f'<{n} x '+('half'if dst=='16'else'float')+'>';op='fpext'if dst=='32'else'fptrunc'
@@ -64,9 +67,9 @@ def shims(names):
         if '.sign.'in operation:
             zero='0xH0000'if ty=='half'else'0.0';one='0xH3C00'if ty=='half'else'1.0';neg='0xHBC00'if ty=='half'else'-1.0'
             out.append(f'define {ty} @{name}({ty} %a){{\n%p=fcmp ogt {ty} %a,{zero}\n%n=fcmp olt {ty} %a,{zero}\n%x=select i1 %n,{ty} {neg},{ty} {zero}\n%r=select i1 %p,{ty} {one},{ty} %x\nret {ty} %r\n}}');return
-        math=next((n for n in ['pow','sqrt','sin','cos','atan2','exp']if'.'+n+'.'in operation),None)
+        math=next((n for n in ['pow','sqrt','sin','cos','atan2','exp','fmod']if'.'+n+'.'in operation),None)
         if math:
-            arity=2 if math in ['pow','atan2']else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
+            arity=2 if math in ['pow','atan2','fmod']else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
             for i in range(arity):
                 if ty=='half':lines.append(f'%x{i}=fpext half %a{i} to float')
             args=','.join(f'float %'+(f'x{i}'if ty=='half'else f'a{i}')for i in range(arity));lines.append(f'%f=call float @psr_{math}_scalar({args})')
@@ -128,6 +131,13 @@ def build(source,names):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)in ['deRed','deYellow','deRedNeutralOnly']:
+            for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
+            if short(name)=='deRed':args='<3 x half> %x,half %h3,half %h5,<3 x half> %sv2,half %h4'
+            elif short(name)=='deYellow':args='<3 x half> %x,half %h3,half undef,<3 x half> %sv2,half %h4'
+            else:
+                w += ['%up=getelementptr float,ptr %input,i64 9','%uf=load float,ptr %up','%uh=fptrunc float %uf to half']
+                args='<3 x half> %x,half %h3,half undef,<3 x half> %sv2,half %h4,half %h5,half %uh'
         elif short(name)=='renderBrightAndContrast':
             w += ['%stats=alloca %struct.SSRStats,align 4','store %struct.SSRStats zeroinitializer,ptr %stats','%stats1=addrspacecast ptr %stats to ptr addrspace(1)']
             for i,(group,field)in enumerate([(2,4),(3,4),(5,0),(6,6),(6,4)]):
