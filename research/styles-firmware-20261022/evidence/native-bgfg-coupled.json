@@ -1,0 +1,1028 @@
+{
+  "scope": "New small mixed-activation host check of complete original BG/FG helpers.\n\nNo placeholder leaves; all transitive original bodies are linked. This tests\nconditional helper composition, not semantic producer/outer pixel pipeline.\n",
+  "reference_model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "bg": {
+      "calls": 4,
+      "computed_sets": 4,
+      "unknown": 0,
+      "range_violations": 0,
+      "known_point_calls": 4,
+      "point_half_bit_mismatches": 2,
+      "point_max_absolute_error": 0.00048828125,
+      "max_box_width": 1.000976622104645
+    },
+    "fg": {
+      "calls": 4,
+      "computed_sets": 4,
+      "unknown": 0,
+      "range_violations": 0,
+      "known_point_calls": 4,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0,
+      "max_box_width": 5.249569190930268
+    }
+  },
+  "original_complete_function_sha256": {
+    "ShadowsNegativeFilter": "ce4b078d7ffacc7e8dbee285bc3368193d3438ad2d5e3090441f5706cc391772",
+    "lightenFilter": "71df4dcc2ae3a4a3732e934199e5db58aac9745ef5185778b30e403bb79173cc",
+    "ShadowsFilter": "d98c204b6609a6eb42d33e3a53c12bfa113842a9b956fc9a612e96299e3630ab",
+    "whitesCurve": "24891f62760ca4d1001b6b952ac68534d75114abe001912a04d4f916db18977d",
+    "smartContrast": "1960da8a03063b300c5d480b9b46e4d9a8825c036dee5d4696fc1a8ee9576434",
+    "renderBGAdjustments": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+    "smoothSatFilter": "5163cdebd82f65a95aa8307c0e526c38db38e8e9ce0e174bb8c03997a901e065",
+    "airyFilter": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22",
+    "contrastFilter": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18",
+    "underToneFilter": "f16aa98704798c530cc682774396eaaa75765757828ef9fc97fd25e0daf75f19",
+    "negativeLightenFilter": "b8492283b8439341e4aef132d0278e27593614dce906bbdbe8513370d072a652",
+    "highlightNeg": "b836d501f9c0a4fb8cd7695572fab314cf0fa7d45dfc5b9f8fffe6346471b3b4",
+    "underGrassFilter": "1977ca7f9ca0dac3c0f93246095a1f4e43013bf1f205fb448b443f0a33447e3b",
+    "tonalContrastFilter": "a44bf2a3ea085759c88bb5e010d735001e5f8646033ea5a9727259b876e2e351",
+    "renderFGAdjustments": "bb5d0a7afd7b83ec52ec70040b4ab910202f9c9e761edcbcfc83d9a8a251ff2b",
+    "RichSat": "3f23959d740157e9ffb88f509af693e5e082cacc126c28335b2b226127cf4578"
+  },
+  "original_bodies_modified": false,
+  "placeholder_leaves": false,
+  "host_fragment_sha256": "bcfc294424221e3e04eaa75325c93c003a3b82636a2b05dc4b85ee2247cc71a1",
+  "host_math_sha256": "e96227ecb32422600e6b4cd4df925769d96af46f4fd4255624a3691dbcd98a8c",
+  "input_sha256": "b20fbc7dc54e8830168bb427bf94294b224b1787b6b40d11e65d396312920f0d",
+  "native_output_sha256": "7ba794592493897a9e5e97add402fd6e6abdc0445af6de4b5c3bb64780add012",
+  "source_sha256": {
+    "leaf_host.py": "f367c8b164bb12be2a2db73f5e66b2933f460c4ba545533bea9cb1e4492a7045",
+    "leaf_numeric.py": "8e0f001f696953155ba4ac75f4e2b13a3c13e2b68b669b0dddaa25008af5ea2f",
+    "pixel_leaves.py": "bf167d003a0db7a1aeb1542fdc36c1c11e74224a47ca9a6c9d3388605aad4d1b",
+    "pixel_tonal.py": "73fe53dbb33600973b8374e0eecdc4d827cfd2d5d9f0057eee3247927ccfa00c",
+    "pixel_lighten.py": "cf4691a92ffb3dba82916a938088ff8003190a532b2819d06b572d251c499d99",
+    "pixel_color.py": "721af902649ab9117ede146cec3b7393720ce9e1be59cf564d5f4450f815756d",
+    "pixel_remaining.py": "aa1841a7c0d51a08b560b473c42d58c3f8ab293660ca065ac6b08c7621dd7eae",
+    "all_pixel_leaves.py": "a6cd5f79a194941653a0f55d7ecd37c1cc3bd678ebb2dae92a3c6971e6b02d9f",
+    "bgfg_tone.py": "4bf8c575acd0408428f1d25dbf78f139aef3424d074058960c0fb327828b0cc1",
+    "bgfg_fixed.py": "a3bbd41b322fb5ea822466fb4a81f574256d0ec2ebb4c79d84ca9854694ec9af",
+    "native_bgfg_complete_check.py": "061466e531f7f10168c67dfde6218cbf33f3a3970ef875c5a1a5cf18264b50f2"
+  },
+  "point_contract": "Explicit synthetic exact f32 fields only; no uncertain producer centers",
+  "set_contract": "2u arithmetic and 4u transcendentals; normalized-to-pixel 1D linear clamp sampler are host assumptions",
+  "full_camera_pipeline_verified": false,
+  "GPU_executed": false,
+  "accepted_native_batches_repeated": false,
+  "rows": [
+    {
+      "block": "bg",
+      "profile": "local+gamma",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.5,
+        0.300048828125,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.05000000074505806,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 0.05170937869520653,
+      "native_output_half": [
+        0.197998046875,
+        0.398193359375,
+        0.80126953125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "smoothSatFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "BG.localContrast_inline",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "BG.gammaContrast_inline",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "underGrassFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 2,
+      "point_max_absolute_error": 0.00048828125
+    },
+    {
+      "block": "bg",
+      "profile": "local+gamma",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        0.7998046875,
+        0.60009765625,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.05000000074505806,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 0.05261522802203544,
+      "native_output_half": [
+        0.1810302734375,
+        0.377197265625,
+        0.78564453125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "smoothSatFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "BG.localContrast_inline",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "BG.gammaContrast_inline",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "underGrassFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "whites+underGrass",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.5,
+        0.300048828125,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.05000000074505806,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 1.000976622104645,
+      "native_output_half": [
+        0.203857421875,
+        0.40283203125,
+        0.79833984375
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "smoothSatFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "BG.localContrast_inline",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "BG.gammaContrast_inline",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "underGrassFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "whites+underGrass",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        0.7998046875,
+        0.60009765625,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.05000000074505806,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 1.000976622104645,
+      "native_output_half": [
+        0.2022705078125,
+        0.402099609375,
+        0.80126953125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "smoothSatFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "BG.localContrast_inline",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "BG.gammaContrast_inline",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "underGrassFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "neck+underTone",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.5,
+        0.300048828125,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 0.03894460908365216,
+      "native_output_half": [
+        0.234619140625,
+        0.4326171875,
+        0.763671875
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "underToneFilter",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "smartContrast",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "neck+underTone",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        0.7998046875,
+        0.60009765625,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 0.14962241365514284,
+      "native_output_half": [
+        0.2587890625,
+        0.452392578125,
+        0.736328125
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "underToneFilter",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "skip",
+          "parameter_lower": -1.401298464324817e-45,
+          "parameter_upper": 1.401298464324817e-45
+        },
+        {
+          "operator": "smartContrast",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "lighten+smart",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.39990234375,
+        0.5,
+        0.300048828125,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 5.249569190930268,
+      "native_output_half": [
+        0.2314453125,
+        0.43017578125,
+        0.7626953125
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "underToneFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.024999997392296747,
+          "parameter_upper": 0.025000003352761313
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "run",
+          "parameter_lower": 0.03749999608844512,
+          "parameter_upper": 0.03750000502914197
+        },
+        {
+          "operator": "highlightNeg",
+          "gate": "run",
+          "parameter_lower": -0.011000001415610325,
+          "parameter_upper": -0.01099999879300593
+        },
+        {
+          "operator": "smartContrast",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "lighten+smart",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.7001953125,
+        0.7998046875,
+        0.60009765625,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "computed_set",
+      "missing_operator": null,
+      "range_covered": true,
+      "max_output_box_width": 2.4249479197963724,
+      "native_output_half": [
+        0.26220703125,
+        0.46533203125,
+        0.765625
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "RichSat",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "skip",
+          "parameter_lower": 1.0,
+          "parameter_upper": 1.0
+        },
+        {
+          "operator": "mids",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "underToneFilter",
+          "gate": "skip",
+          "parameter_lower": 0.0,
+          "parameter_upper": 0.0
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.024999997392296747,
+          "parameter_upper": 0.025000003352761313
+        },
+        {
+          "operator": "lightenFilter",
+          "gate": "run",
+          "parameter_lower": 0.03749999608844512,
+          "parameter_upper": 0.03750000502914197
+        },
+        {
+          "operator": "highlightNeg",
+          "gate": "run",
+          "parameter_lower": -0.011000001415610325,
+          "parameter_upper": -0.01099999879300593
+        },
+        {
+          "operator": "smartContrast",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    }
+  ],
+  "case_provider": {
+    "declared_substitution": "native_bgfg_coupled_check.coupled_cases",
+    "source_sha256": "7572e2be91d4de75d16610ace76ab8a5ce97b7e8ed8617475dbde8c3c89781b0",
+    "all_active_mixed_24_cases_repeated": false
+  }
+}

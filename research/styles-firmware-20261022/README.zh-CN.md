@@ -100,3 +100,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S10-D：saturation 两叶、6 个黑色定义域 unknown：[阶段报告](PROGRESS-S10-D.zh-CN.md)。
 
 - S10-E：剩余七叶与人物/肤色/guide 接线：[阶段报告](PROGRESS-S10-E.zh-CN.md)。
+
+- S10-F：完整 BG/FG 固定域接线、保留集合 unknown 与主入口剩余清单：[阶段报告](PROGRESS-S10-F.zh-CN.md)。

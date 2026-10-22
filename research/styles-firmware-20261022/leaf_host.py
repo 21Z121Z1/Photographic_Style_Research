@@ -122,7 +122,13 @@ def build(source,names):
         w=[f'define void @psr_leaf_{index}(ptr %input,ptr %texture,ptr %output){{']
         for n in range(6):w += [f'%p{n}=getelementptr float,ptr %input,i64 {n}',f'%f{n}=load float,ptr %p{n}',f'%h{n}=fptrunc float %f{n} to half']
         w += ['%x0=insertelement <3 x half> poison,half %h0,i32 0','%x1=insertelement <3 x half> %x0,half %h1,i32 1','%x=insertelement <3 x half> %x1,half %h2,i32 2','%t=addrspacecast ptr %texture to ptr addrspace(1)']
-        if short(name)=='whitesCurve':args='<3 x half> %x,ptr addrspace(1) %t,half %h4,half %h5'
+        if short(name)in ['renderBGAdjustments','renderFGAdjustments']:
+            w += ['%coeff=getelementptr float,ptr %input,i64 9','%coeff1=addrspacecast ptr %coeff to ptr addrspace(1)']
+            if short(name)=='renderBGAdjustments':args='<3 x half> %x,half %h3,half undef,half %h4,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+            else:
+                for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
+                args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)=='whitesCurve':args='<3 x half> %x,ptr addrspace(1) %t,half %h4,half %h5'
         elif short(name)in ['contrastFilter','airyFilter','smoothSatFilter']:args='<3 x half> %x,half %h4'
         elif short(name)=='RichSat':args='<3 x half> %x,half %h4,half undef,half %h5'
         else:args='<3 x half> %x,half %h3,half %h4'

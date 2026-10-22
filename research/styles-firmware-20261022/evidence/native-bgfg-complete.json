@@ -1,0 +1,1733 @@
+{
+  "scope": "New small mixed-activation host check of complete original BG/FG helpers.\n\nNo placeholder leaves; all transitive original bodies are linked. This tests\nconditional helper composition, not semantic producer/outer pixel pipeline.\n",
+  "reference_model": "iPhone17,3",
+  "OS_build": "24A446",
+  "metrics": {
+    "bg": {
+      "calls": 12,
+      "computed_sets": 0,
+      "unknown": 12,
+      "range_violations": 0,
+      "known_point_calls": 12,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0,
+      "max_box_width": null
+    },
+    "fg": {
+      "calls": 12,
+      "computed_sets": 0,
+      "unknown": 12,
+      "range_violations": 0,
+      "known_point_calls": 12,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0,
+      "max_box_width": null
+    }
+  },
+  "original_complete_function_sha256": {
+    "renderFGAdjustments": "bb5d0a7afd7b83ec52ec70040b4ab910202f9c9e761edcbcfc83d9a8a251ff2b",
+    "smoothSatFilter": "5163cdebd82f65a95aa8307c0e526c38db38e8e9ce0e174bb8c03997a901e065",
+    "ShadowsNegativeFilter": "ce4b078d7ffacc7e8dbee285bc3368193d3438ad2d5e3090441f5706cc391772",
+    "ShadowsFilter": "d98c204b6609a6eb42d33e3a53c12bfa113842a9b956fc9a612e96299e3630ab",
+    "contrastFilter": "7351fae62be8ebed7ce6273c32cbf9e65251bc33f8ddb6fd170474b20841dc18",
+    "smartContrast": "1960da8a03063b300c5d480b9b46e4d9a8825c036dee5d4696fc1a8ee9576434",
+    "underGrassFilter": "1977ca7f9ca0dac3c0f93246095a1f4e43013bf1f205fb448b443f0a33447e3b",
+    "underToneFilter": "f16aa98704798c530cc682774396eaaa75765757828ef9fc97fd25e0daf75f19",
+    "lightenFilter": "71df4dcc2ae3a4a3732e934199e5db58aac9745ef5185778b30e403bb79173cc",
+    "airyFilter": "90978f0c16199a35e956d80fd4a66960d2bda0b99e205e85a5d80e300e3e5e22",
+    "RichSat": "3f23959d740157e9ffb88f509af693e5e082cacc126c28335b2b226127cf4578",
+    "renderBGAdjustments": "5f5014bfac67e43725e27e65ffd721fc9fb448c9284baedcd9193659ddc98243",
+    "highlightNeg": "b836d501f9c0a4fb8cd7695572fab314cf0fa7d45dfc5b9f8fffe6346471b3b4",
+    "whitesCurve": "24891f62760ca4d1001b6b952ac68534d75114abe001912a04d4f916db18977d",
+    "negativeLightenFilter": "b8492283b8439341e4aef132d0278e27593614dce906bbdbe8513370d072a652",
+    "tonalContrastFilter": "a44bf2a3ea085759c88bb5e010d735001e5f8646033ea5a9727259b876e2e351"
+  },
+  "original_bodies_modified": false,
+  "placeholder_leaves": false,
+  "host_fragment_sha256": "5178e98d3bcd53b0524463404c2bde9897a35469c528f1c420ec2a800abbb0e0",
+  "host_math_sha256": "e96227ecb32422600e6b4cd4df925769d96af46f4fd4255624a3691dbcd98a8c",
+  "input_sha256": "cd35da78686eee241feba368f7f101e50269d42b5a14cbab005ec8c9f872e9d4",
+  "native_output_sha256": "2e26d8c2d668f8dbc3794e0703394d64f00f1a80edc733ed8448a0d8d13e728e",
+  "source_sha256": {
+    "leaf_host.py": "f367c8b164bb12be2a2db73f5e66b2933f460c4ba545533bea9cb1e4492a7045",
+    "leaf_numeric.py": "8e0f001f696953155ba4ac75f4e2b13a3c13e2b68b669b0dddaa25008af5ea2f",
+    "pixel_leaves.py": "bf167d003a0db7a1aeb1542fdc36c1c11e74224a47ca9a6c9d3388605aad4d1b",
+    "pixel_tonal.py": "73fe53dbb33600973b8374e0eecdc4d827cfd2d5d9f0057eee3247927ccfa00c",
+    "pixel_lighten.py": "cf4691a92ffb3dba82916a938088ff8003190a532b2819d06b572d251c499d99",
+    "pixel_color.py": "721af902649ab9117ede146cec3b7393720ce9e1be59cf564d5f4450f815756d",
+    "pixel_remaining.py": "aa1841a7c0d51a08b560b473c42d58c3f8ab293660ca065ac6b08c7621dd7eae",
+    "all_pixel_leaves.py": "a6cd5f79a194941653a0f55d7ecd37c1cc3bd678ebb2dae92a3c6971e6b02d9f",
+    "bgfg_tone.py": "4bf8c575acd0408428f1d25dbf78f139aef3424d074058960c0fb327828b0cc1",
+    "bgfg_fixed.py": "a3bbd41b322fb5ea822466fb4a81f574256d0ec2ebb4c79d84ca9854694ec9af",
+    "native_bgfg_complete_check.py": "061466e531f7f10168c67dfde6218cbf33f3a3970ef875c5a1a5cf18264b50f2"
+  },
+  "point_contract": "Explicit synthetic exact f32 fields only; no uncertain producer centers",
+  "set_contract": "2u arithmetic and 4u transcendentals; normalized-to-pixel 1D linear clamp sampler are host assumptions",
+  "full_camera_pipeline_verified": false,
+  "GPU_executed": false,
+  "accepted_native_batches_repeated": false,
+  "rows": [
+    {
+      "block": "bg",
+      "profile": "positive",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.11999999731779099,
+        0.07999999821186066,
+        0.18000000715255737,
+        0.11999999731779099,
+        0.07999999821186066,
+        0.07000000029802322,
+        0.0,
+        0.05999999865889549,
+        0.8999999761581421,
+        0.11999999731779099,
+        0.20000000298023224,
+        0.8999999761581421,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.284423828125,
+        0.497802734375,
+        0.9072265625
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 0.8999999761581421,
+          "parameter_upper": 0.8999999761581421
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "positive",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.11999999731779099,
+        0.07999999821186066,
+        0.18000000715255737,
+        0.11999999731779099,
+        0.07999999821186066,
+        0.07000000029802322,
+        0.0,
+        0.05999999865889549,
+        0.8999999761581421,
+        0.11999999731779099,
+        0.20000000298023224,
+        0.8999999761581421,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.1661376953125,
+        0.357421875,
+        0.80859375
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 0.8999999761581421,
+          "parameter_upper": 0.8999999761581421
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "positive",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.11999999731779099,
+        0.07999999821186066,
+        0.18000000715255737,
+        0.11999999731779099,
+        0.07999999821186066,
+        0.07000000029802322,
+        0.0,
+        0.05999999865889549,
+        0.8999999761581421,
+        0.11999999731779099,
+        0.20000000298023224,
+        0.8999999761581421,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.8974609375,
+        0.272216796875,
+        0.1572265625
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 0.8999999761581421,
+          "parameter_upper": 0.8999999761581421
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "positive",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.11999999731779099,
+        0.07999999821186066,
+        0.18000000715255737,
+        0.11999999731779099,
+        0.07999999821186066,
+        0.07000000029802322,
+        0.0,
+        0.05999999865889549,
+        0.8999999761581421,
+        0.11999999731779099,
+        0.20000000298023224,
+        0.8999999761581421,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.76611328125,
+        0.156005859375,
+        0.07501220703125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 0.8999999761581421,
+          "parameter_upper": 0.8999999761581421
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "positive",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.11999999731779099,
+        0.07999999821186066,
+        0.18000000715255737,
+        0.11999999731779099,
+        0.07999999821186066,
+        0.07000000029802322,
+        0.0,
+        0.05999999865889549,
+        0.8999999761581421,
+        0.11999999731779099,
+        0.20000000298023224,
+        0.8999999761581421,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.515625,
+        0.51611328125,
+        0.513671875
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "positive",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.11999999731779099,
+        0.07999999821186066,
+        0.18000000715255737,
+        0.11999999731779099,
+        0.07999999821186066,
+        0.07000000029802322,
+        0.0,
+        0.05999999865889549,
+        0.8999999761581421,
+        0.11999999731779099,
+        0.20000000298023224,
+        0.8999999761581421,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.37158203125,
+        0.37158203125,
+        0.37158203125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.11999999731779099,
+          "parameter_upper": 0.11999999731779099
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "negative",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        -0.07999999821186066,
+        -0.07000000029802322,
+        -0.10000000149011612,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.05999999865889549,
+        0.0,
+        -0.03999999910593033,
+        0.9200000166893005,
+        -0.11999999731779099,
+        -0.20000000298023224,
+        1.100000023841858,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.197265625,
+        0.370361328125,
+        0.716796875
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.07000000029802322,
+          "parameter_upper": -0.07000000029802322
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 1.100000023841858,
+          "parameter_upper": 1.100000023841858
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "negative",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        -0.07999999821186066,
+        -0.07000000029802322,
+        -0.10000000149011612,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.05999999865889549,
+        0.0,
+        -0.03999999910593033,
+        0.9200000166893005,
+        -0.11999999731779099,
+        -0.20000000298023224,
+        1.100000023841858,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.18505859375,
+        0.34716796875,
+        0.658203125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.07000000029802322,
+          "parameter_upper": -0.07000000029802322
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 1.100000023841858,
+          "parameter_upper": 1.100000023841858
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "negative",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        -0.07999999821186066,
+        -0.07000000029802322,
+        -0.10000000149011612,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.05999999865889549,
+        0.0,
+        -0.03999999910593033,
+        0.9200000166893005,
+        -0.11999999731779099,
+        -0.20000000298023224,
+        1.100000023841858,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.69482421875,
+        0.18359375,
+        0.09765625
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.07000000029802322,
+          "parameter_upper": -0.07000000029802322
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 1.100000023841858,
+          "parameter_upper": 1.100000023841858
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "negative",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        -0.07999999821186066,
+        -0.07000000029802322,
+        -0.10000000149011612,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.05999999865889549,
+        0.0,
+        -0.03999999910593033,
+        0.9200000166893005,
+        -0.11999999731779099,
+        -0.20000000298023224,
+        1.100000023841858,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "airyFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.65869140625,
+        0.1846923828125,
+        0.09918212890625
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.07000000029802322,
+          "parameter_upper": -0.07000000029802322
+        },
+        {
+          "operator": "whitesCurve_BG_mode0",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "airyFilter",
+          "gate": "run",
+          "parameter_lower": 1.100000023841858,
+          "parameter_upper": 1.100000023841858
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "negative",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        -0.07999999821186066,
+        -0.07000000029802322,
+        -0.10000000149011612,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.05999999865889549,
+        0.0,
+        -0.03999999910593033,
+        0.9200000166893005,
+        -0.11999999731779099,
+        -0.20000000298023224,
+        1.100000023841858,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.36279296875,
+        0.36328125,
+        0.36328125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.07000000029802322,
+          "parameter_upper": -0.07000000029802322
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "bg",
+      "profile": "negative",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        -0.07999999821186066,
+        -0.07000000029802322,
+        -0.10000000149011612,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.05999999865889549,
+        0.0,
+        -0.03999999910593033,
+        0.9200000166893005,
+        -0.11999999731779099,
+        -0.20000000298023224,
+        1.100000023841858,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.351318359375,
+        0.35205078125,
+        0.35205078125
+      ],
+      "trace": [
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.07000000029802322,
+          "parameter_upper": -0.07000000029802322
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "positive",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.03999999910593033,
+        0.11999999731779099,
+        0.10000000149011612,
+        0.8999999761581421,
+        0.07999999821186066,
+        0.05000000074505806,
+        0.11999999731779099,
+        0.0,
+        0.0,
+        0.15000000596046448,
+        0.0,
+        0.0,
+        0.20000000298023224,
+        0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.209228515625,
+        0.40966796875,
+        0.78955078125
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.15000000596046448,
+          "parameter_upper": 0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "positive",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.03999999910593033,
+        0.11999999731779099,
+        0.10000000149011612,
+        0.8999999761581421,
+        0.07999999821186066,
+        0.05000000074505806,
+        0.11999999731779099,
+        0.0,
+        0.0,
+        0.15000000596046448,
+        0.0,
+        0.0,
+        0.20000000298023224,
+        0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.27685546875,
+        0.48974609375,
+        0.81103515625
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.15000000596046448,
+          "parameter_upper": 0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "positive",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.03999999910593033,
+        0.11999999731779099,
+        0.10000000149011612,
+        0.8999999761581421,
+        0.07999999821186066,
+        0.05000000074505806,
+        0.11999999731779099,
+        0.0,
+        0.0,
+        0.15000000596046448,
+        0.0,
+        0.0,
+        0.20000000298023224,
+        0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.7373046875,
+        0.235595703125,
+        0.1744384765625
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.15000000596046448,
+          "parameter_upper": 0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "positive",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.03999999910593033,
+        0.11999999731779099,
+        0.10000000149011612,
+        0.8999999761581421,
+        0.07999999821186066,
+        0.05000000074505806,
+        0.11999999731779099,
+        0.0,
+        0.0,
+        0.15000000596046448,
+        0.0,
+        0.0,
+        0.20000000298023224,
+        0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.5498046875,
+        0.409912109375,
+        0.490234375
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.15000000596046448,
+          "parameter_upper": 0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "positive",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.03999999910593033,
+        0.11999999731779099,
+        0.10000000149011612,
+        0.8999999761581421,
+        0.07999999821186066,
+        0.05000000074505806,
+        0.11999999731779099,
+        0.0,
+        0.0,
+        0.15000000596046448,
+        0.0,
+        0.0,
+        0.20000000298023224,
+        0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.384765625,
+        0.41064453125,
+        0.436767578125
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.15000000596046448,
+          "parameter_upper": 0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "positive",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        0.03999999910593033,
+        0.11999999731779099,
+        0.10000000149011612,
+        0.8999999761581421,
+        0.07999999821186066,
+        0.05000000074505806,
+        0.11999999731779099,
+        0.0,
+        0.0,
+        0.15000000596046448,
+        0.0,
+        0.0,
+        0.20000000298023224,
+        0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.369140625,
+        0.494873046875,
+        0.62646484375
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": 0.10000000149011612,
+          "parameter_upper": 0.10000000149011612
+        },
+        {
+          "operator": "ShadowsFilter",
+          "gate": "run",
+          "parameter_lower": 0.07999999821186066,
+          "parameter_upper": 0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.15000000596046448,
+          "parameter_upper": 0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": 0.05000000074505806,
+          "parameter_upper": 0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "negative",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        -0.03999999910593033,
+        -0.11999999731779099,
+        -0.07999999821186066,
+        1.100000023841858,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.11999999731779099,
+        0.0,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        -0.20000000298023224,
+        -0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.216064453125,
+        0.4130859375,
+        0.78076171875
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.15000000596046448,
+          "parameter_upper": -0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.05000000074505806,
+          "parameter_upper": -0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "negative",
+      "input": [
+        0.199951171875,
+        0.39990234375,
+        0.7998046875,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        -0.03999999910593033,
+        -0.11999999731779099,
+        -0.07999999821186066,
+        1.100000023841858,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.11999999731779099,
+        0.0,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        -0.20000000298023224,
+        -0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.207763671875,
+        0.36767578125,
+        0.59326171875
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.15000000596046448,
+          "parameter_upper": -0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.05000000074505806,
+          "parameter_upper": -0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "negative",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        -0.03999999910593033,
+        -0.11999999731779099,
+        -0.07999999821186066,
+        1.100000023841858,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.11999999731779099,
+        0.0,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        -0.20000000298023224,
+        -0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "contrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.7255859375,
+        0.2386474609375,
+        0.1785888671875
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.15000000596046448,
+          "parameter_upper": -0.15000000596046448
+        },
+        {
+          "operator": "contrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.05000000074505806,
+          "parameter_upper": -0.05000000074505806
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "negative",
+      "input": [
+        0.7998046875,
+        0.199951171875,
+        0.0999755859375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        -0.03999999910593033,
+        -0.11999999731779099,
+        -0.07999999821186066,
+        1.100000023841858,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.11999999731779099,
+        0.0,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        -0.20000000298023224,
+        -0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "ShadowsNegativeFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.4033203125,
+        0.298583984375,
+        0.359130859375
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "negative",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.04998779296875,
+        0.199951171875,
+        0.0999755859375,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        -0.03999999910593033,
+        -0.11999999731779099,
+        -0.07999999821186066,
+        1.100000023841858,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.11999999731779099,
+        0.0,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        -0.20000000298023224,
+        -0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "ShadowsNegativeFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.386474609375,
+        0.411865234375,
+        0.437744140625
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    },
+    {
+      "block": "fg",
+      "profile": "negative",
+      "input": [
+        0.39990234375,
+        0.39990234375,
+        0.39990234375,
+        0.89990234375,
+        0.89990234375,
+        0.7998046875,
+        0.300048828125,
+        0.5,
+        0.7001953125
+      ],
+      "field_values": [
+        0.3499999940395355,
+        0.0,
+        -0.03999999910593033,
+        -0.11999999731779099,
+        -0.07999999821186066,
+        1.100000023841858,
+        -0.07999999821186066,
+        -0.05000000074505806,
+        -0.11999999731779099,
+        0.0,
+        0.0,
+        -0.10000000149011612,
+        0.0,
+        0.0,
+        -0.20000000298023224,
+        -0.15000000596046448
+      ],
+      "native_nonfinite_values": 0,
+      "set_status": "unknown_operator",
+      "missing_operator": "tonalContrastFilter: domain unknown: Division interval includes zero",
+      "range_covered": null,
+      "max_output_box_width": null,
+      "native_output_half": [
+        0.27587890625,
+        0.367919921875,
+        0.461181640625
+      ],
+      "trace": [
+        {
+          "operator": "whitesCurve_FG_mode1",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "ShadowsNegativeFilter",
+          "gate": "run",
+          "parameter_lower": -0.07999999821186066,
+          "parameter_upper": -0.07999999821186066
+        },
+        {
+          "operator": "tonalContrastFilter",
+          "gate": "run",
+          "parameter_lower": -0.15000000596046448,
+          "parameter_upper": -0.15000000596046448
+        }
+      ],
+      "point_unknown": null,
+      "point_half_bit_mismatches": 0,
+      "point_max_absolute_error": 0.0
+    }
+  ]
+}
