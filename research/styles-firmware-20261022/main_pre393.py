@@ -46,7 +46,8 @@ def mutate_semantic(p,controls):
     return lazy_select(controls.tone2.gt(F(0,p)),lambda:branch(False),lambda:branch(True))
 
 
-def forward(primary,linear,guide8,guide9,person_tex,skin_tex,sky_tex,maps,*,grid,transforms,pre_parameters,linear_CCM_columns,controls,cast,semantic7,helper_fields,gtc,whites,input_branch_decisions=()):
+def forward(primary,linear,guide8,guide9,person_tex,skin_tex,sky_tex,maps,*,grid,transforms,pre_parameters,linear_CCM_columns,controls,cast,semantic7,helper_fields,gtc,whites,input_branch_decisions=(),shared_semantic=False):
+    if type(shared_semantic)is not bool:raise TypeError('Exact semantic relation backend selector required')
     point=primary.pixels.point;obs={};post=None;stage='source sampling';markers=tuple(input_branch_decisions)
     if not isinstance(controls,Controls)or not isinstance(cast,CastValues)or not isinstance(helper_fields,Fields)or any(v.point!=point for v in [controls.tone2,cast.raw,helper_fields.bg17,semantic7,pre_parameters.srl_parameter,linear_CCM_columns]):raise TypeError('Whole matching parameter/source backends required')
     def uv(field):
@@ -73,7 +74,7 @@ def forward(primary,linear,guide8,guide9,person_tex,skin_tex,sky_tex,maps,*,grid
         stage='cast2 semantic mutation';post=mutate_semantic(semantic7,controls);p=post.h()
         stage='semantic branch'
         if maps[0]is not None and maps[1]is not None:
-            result=consume_block290(*maps,ROI(grid,transforms[5],transforms[6]),ref,person,post);semantic=result['output335'];obs['precomputed335']=semantic
+            result=consume_block290(*maps,ROI(grid,transforms[5],transforms[6]),ref,person,post,shared=shared_semantic);semantic=result['output335'];obs['precomputed335']=semantic
         else:
             bg,fg=gain_ratios(working,ref,post,gtc)
             def branch(ratio,ltm,hr):

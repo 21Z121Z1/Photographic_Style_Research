@@ -1,0 +1,13 @@
+{
+  "scope": "retain the initial S21 targeted pointer-audit failure; no original host call had run yet",
+  "failed_action": "audit full SSRParams pointer forwarding before color-equivalence claims",
+  "reason": "renderChannelMixForBWCasts forwards SSRParams twice at SSA20/45 to getBWChannelMixFromStats; initial whitelist had not followed that child",
+  "status": "failed closed, not permission denied",
+  "original_host_calls_before_failure": 0,
+  "failed_binding_pre_sha256": "acce8cbee18b3ade0338ce637edeac76fb0f07be30e3dec4a6fe59b6ae2c316a",
+  "failed_binding_post_sha256": "9d02dddffdb8c23bf9a2802f3f78d8396f813af053b29fe5282e640358d37a90",
+  "failed_log_sha256": "1989ba312e46ed601f5d7569ea4ae513fdde2831e22d4e27257e78bb8d1c32ec",
+  "correction": "add exact nested child scope, verify all of its raw pointer uses are field0 GEP only; no blind alias whitelist and no coefficient consumer classified unused",
+  "raw_artifacts": "preserved in task scratch; public receipt contains hashes and a sanitized explanation",
+  "threshold_input_domain_or_numeric_budget_changed": false
+}

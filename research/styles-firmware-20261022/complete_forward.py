@@ -87,8 +87,8 @@ def stack(rows,point):
     return V(np.array([[v.lo for v in row]for row in rows]),np.array([[v.hi for v in row]for row in rows]),'h',point)
 
 
-def forward(c: Context,*,point: bool):
-    if not isinstance(c,Context)or type(point)is not bool:raise TypeError('Fixed raw context and exact point/set selection required')
+def forward(c: Context,*,point: bool,shared_semantic=False):
+    if not isinstance(c,Context)or type(point)is not bool or type(shared_semantic)is not bool:raise TypeError('Fixed raw context and exact point/set/relation selection required')
     H=lambda x:V.value(x)if point else V.bounds(x,x)
     F=lambda x:V.value(x,'f')if point else V.bounds(x,x,'f')
     def tex(i):return Texture(H(c.images[i]),PixelFormat.RGBA16Float if i in(0,1,2)else PixelFormat.R16Float,'synthetic raw role'+str(i))
@@ -109,7 +109,7 @@ def forward(c: Context,*,point: bool):
     for y in range(height):
         local={};outputs=[]
         for x in range(width):
-            key=f'{x},{y}';q=pre393(tex(0),tex(1),tex(4),tex(5),tex(6),tex(7),tex(8),maps,grid=(x,y),transforms=transforms,pre_parameters=pre,linear_CCM_columns=F(cols(1)),controls=controls,cast=cast,semantic7=F(p[155:162]),helper_fields=fields,gtc=c.gtc,whites=c.whites);o=dict(q.observations);stage=q.unknown_operator
+            key=f'{x},{y}';q=pre393(tex(0),tex(1),tex(4),tex(5),tex(6),tex(7),tex(8),maps,grid=(x,y),transforms=transforms,pre_parameters=pre,linear_CCM_columns=F(cols(1)),controls=controls,cast=cast,semantic7=F(p[155:162]),helper_fields=fields,gtc=c.gtc,whites=c.whites,shared_semantic=shared_semantic);o=dict(q.observations);stage=q.unknown_operator
             def optional(name,fn):
                 try:o[name]=fn()
                 except DomainUnknown as e:internal[key+':'+name]=str(e)

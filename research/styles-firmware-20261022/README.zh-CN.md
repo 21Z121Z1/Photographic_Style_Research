@@ -2,7 +2,7 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新阶段见 [PROGRESS-S20.zh-CN.md](PROGRESS-S20.zh-CN.md)：核本版smoothSat精度后，完整传播FG→共享Lab/root→往返残差→原half混合392；saturated宽1.08016→.74512，392/warm宽1.73493→.66693，12个像素都排除RGB110，但其他负底数外包络仍使12个selective unknown保留，writer集合未生成。whitesCurve分别证原乘积/原商有限，保留先乘后除；原S14-C case0产生宽BG集合，下一失败移到FG contrast。220项测试通过，新增原宿主调用0；新测试在运行前绑定源码/输入哈希，保留S19恢复审计限制。9字段CPU桥接、原GPU、真实同帧、活跃风格及成片逆解缺项不变。
+最新阶段见 [PROGRESS-S21.zh-CN.md](PROGRESS-S21.zh-CN.md)：只改变内部SSRParams.color byte12，5个固定3×4上下文完成原AIR宿主producer→guided→主入口→writer点比较，各1938个half观察逐位一致；color=.3产生真实非零作用，writer有35分量变化。不同half控制.01/.02得到相同writer；raw.3的half等价区间含8191个f32值，未证明唯一逆。可选semantic共源界将FG宽.57840→.09058，但活跃集合在RichSat均值含零处unknown，无writer集合。230项测试通过；旧中性12+24 unknown、S19审计限制、9字段缓存断点和原GPU/真实同帧/成片逆解缺项保留。
 
 最终实际插件数据流见 [DATAFLOW.zh-CN.md](DATAFLOW.zh-CN.md)。新插件与旧缓存整文件不同，但已选方法和shader确切相同，不能仅凭旧文件名继承版本身份。
 

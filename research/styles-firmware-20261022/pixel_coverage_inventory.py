@@ -69,7 +69,17 @@ def inventory(source):
         'local_enclosures':{
             'neutral_selective':'S20 complete propagation uses joint RGB/LMS/root and original mix half errors; no observed warm substitution; all12 other negative-base domains remain unknown',
             'BG_contrast':'S19 admitted64 parent cover retained, width9483; S20 whites proves original product then quotient finite under supplied zero-origin curve contract, moves S14C failure to FG contrast'},
-        'latest_stage':{'report':'PROGRESS-S20.zh-CN.md','complete_frame_replay':'evidence/shared-color-s20b.json','whites_case0_replay':'evidence/whites-joint-s20c.json','precision_contract':'evidence/color-joint-contract-s20a.json','pre_run_test_binding':'evidence/test-binding-s20d.pre.json','new_original_host_calls':0,'full_upstream_selective_negative_reachability':'unknown'},
+        'complete_active_color':{
+            'report':'PROGRESS-S21.zh-CN.md','raw_control':'post-scene f32 SSRParams.color field3 byte12; UI mapping unverified',
+            'strict_scope':'same frozen3x4 raw source/auxiliary context,cast0/tuning2,other coefficients/lookup fixed; color values0,.01,.02,.3,next-f32(.3)',
+            'native_receipt':'evidence/native-active-s21c.json','analysis':'evidence/active-analysis-s21d.json',
+            'raw_contexts':5,'original_kernel_calls':510,'point_half_components_per_context':1938,'point_half_bit_mismatches':0,
+            'observed_vs_plain_writer_half_bit_mismatches':0,'active_point3_effect':'36 saturated/392 components and35 final RGB half components differ from raw0; writer max difference.0078125',
+            'nonidentifiability':'distinct half controls.01/.02 have same writer; raw.3 f32 preimage has8191 values under IEEE conversion; conditional interface intervals, no unique inverse',
+            'optional_shared_semantic':'precomputed335 to FG354 width.57839683->.09057617; default backend unchanged',
+            'active_sets':'all12 fail atRichSat rescaled power mean including0; not proven reachable, no writer set',
+            'original_GPU_or_photo_inverse_verified':False},
+        'latest_stage':{'report':'PROGRESS-S21.zh-CN.md','nonneutral_receipt':'evidence/native-active-s21c.json','analysis':'evidence/active-analysis-s21d.json','set_failure':'evidence/active-set-diagnostic-s21e.json','pre_run_test_binding':'evidence/test-binding-s21f.pre.json','new_original_host_calls':510,'contexts_not_call_count':5,'full_upstream_selective_negative_reachability':'old neutral unknown retained'},
         'unfinished_software_tracking':{
             'receipt':'evidence/consumer-paths-s18c.json','consumer_slots':9,
             'hardware_wait_required_to_continue_static_tracking':False,
@@ -77,6 +87,7 @@ def inventory(source):
         'main_remaining_connections':[
             'original iOS/GPU and same-frame chain unverified; finite synthetic conditional point chain is connected through writer',
             '12 selective pow domains, unselected internal domains and wider pre393 BG/FG set domains remain software work',
+            'S21 active color point chain accepted only in five fixed contexts; active sets stop atRichSat rescaled-power mean zero-domain outer enclosure',
             'S20 saved S14C case0 produces broad BG set, then FG contrast quotient finite-budget unknown; no whole-runtime or originalGPU acceptance',
             'other output pixel encodings and original multi-thread GPU behavior are unverified'],
         'known_numeric_limits':[
@@ -89,7 +100,7 @@ def inventory(source):
             'S19 local observed-input exclusion remains separate; S20 complete upstream boxes exclude RGB110 but12 other converted-negative outer domains remain unproved',
             '2u/4u, host math and sampler are assumptions, not measured GPU error',
             'nine unresolved coefficient consumers are unfinished software tracking; no repeated same-range scan'],
-        'scope':'S20 conditional coverage inventory; new source hashes bound before validation; S19 recovery hash/mtime limitation preserved; originalGPU/realframe/inverse unverified.',
+        'scope':'S21 fixed nonneutral color point composition and conditional identifiability; optional shared semantic enclosure, old set failures and S19 audit limitation retained; originalGPU/realframe/inverse unverified.',
         'GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
 
 

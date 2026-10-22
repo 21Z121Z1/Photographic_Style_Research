@@ -1,0 +1,183 @@
+{
+  "scope": "Locate the remaining first RichSat set failure, without changing its domain.",
+  "contexts_sha256": "990043b4a334f2aeb9f74f5c22e63fcb0b478c468c9577e503f630a3ac66bbfc",
+  "analysis_sha256": "f2ca1b064d4b6e67db9f35584ef03458291061a49a56e4bcbc3e1aa85e88fcce",
+  "active_context_index": 3,
+  "shared_semantic_enabled": true,
+  "first_pixel_RichSat": {
+    "input_FG354": {
+      "lo": [
+        0.197509765625,
+        0.17431640625,
+        0.1541748046875
+      ],
+      "hi": [
+        0.250244140625,
+        0.220703125,
+        0.2047119140625
+      ],
+      "max_width": 0.052734375
+    },
+    "gain": {
+      "lo": 1.0888766931579423,
+      "hi": 1.0911819053604292,
+      "max_width": 0.002305212202486917
+    },
+    "strength": {
+      "lo": 4.0,
+      "hi": 4.0,
+      "max_width": 0.0
+    },
+    "polar": {
+      "light": {
+        "lo": 0.471435546875,
+        "hi": 0.52392578125,
+        "max_width": 0.052490234375
+      },
+      "angle": {
+        "lo": -3.147728636345981,
+        "hi": 3.147728636345981,
+        "max_width": 6.295457272691962
+      },
+      "radius": {
+        "lo": 0.0,
+        "hi": 0.2824133358357451,
+        "max_width": 0.2824133358357451
+      }
+    },
+    "work_after_original_clamp": {
+      "lo": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hi": [
+        1.0,
+        0.703125,
+        0.7685546875
+      ],
+      "max_width": 1.0
+    },
+    "dot_calls": [
+      {
+        "input": {
+          "lo": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "hi": [
+            1.001953184604645,
+            0.6220310525265658,
+            0.7016374994005536
+          ],
+          "max_width": 1.001953184604645
+        },
+        "result": {
+          "lo": 0.0,
+          "hi": 0.777062274813108,
+          "max_width": 0.777062274813108
+        }
+      },
+      {
+        "input": {
+          "lo": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "hi": [
+            1.0,
+            0.703125,
+            0.7685546875
+          ],
+          "max_width": 1.0
+        },
+        "result": {
+          "lo": 0.0,
+          "hi": 0.8258572912646439,
+          "max_width": 0.8258572912646439
+        }
+      }
+    ],
+    "first_failed_division": {
+      "numerator": {
+        "lo": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hi": [
+          0.828278479123068,
+          0.5142106085549741,
+          0.5800183758373162
+        ],
+        "max_width": 0.828278479123068
+      },
+      "denominator": {
+        "lo": 0.0,
+        "hi": 0.777062274813108,
+        "max_width": 0.777062274813108
+      },
+      "caller": "<lambda>",
+      "file": "pixel_color.py",
+      "line": 65,
+      "reason": "Division interval includes zero"
+    }
+  },
+  "recorded_pixels": 12,
+  "pixel_unknowns": {
+    "0,0": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "1,0": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "2,0": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "3,0": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "0,1": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "1,1": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "2,1": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "3,1": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "0,2": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "1,2": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "2,2": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    },
+    "3,2": {
+      "operator": "outer color355..392",
+      "reason": "Division interval includes zero"
+    }
+  },
+  "writer_set_really_generated": false,
+  "zero_denominator_joint_reachability": "not established; remaining polar/work/power-mean dependency loss; no center/clamp/epsilon change",
+  "new_native_calls": 0,
+  "GPU_verified": false
+}

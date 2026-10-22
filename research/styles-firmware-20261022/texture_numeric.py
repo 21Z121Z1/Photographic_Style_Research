@@ -70,7 +70,8 @@ class ROI:
         return [field[:2]*xy+field[2:]for field in [self.field5,self.field6]]
 
 
-def consume_block290(bg: Texture,fg: Texture,roi: ROI,reference196,person96,semantic7):
+def consume_block290(bg: Texture,fg: Texture,roi: ROI,reference196,person96,semantic7,*,shared=False):
+    if type(shared)is not bool:raise TypeError('Exact semantic relation backend selector required')
     if bg.pixel_format!=PixelFormat.RGBA16Float or fg.pixel_format!=PixelFormat.RGBA16Float:raise TypeError('This caller has actual RGBA16 BG/FG map storage')
     if bg.working_domain!=fg.working_domain:raise TypeError('BG/FG map domains must agree')
     point=bg.pixels.point
@@ -80,4 +81,8 @@ def consume_block290(bg: Texture,fg: Texture,roi: ROI,reference196,person96,sema
     uv6,uv7=roi.coordinates();a=sample_normalized(bg,uv6)[:3];b=sample_normalized(fg,uv7)[:3];p=semantic7.h()
     def branch(sample,ltm,hr):
         local=mix(sample,V.value(1,'h',point),ltm);return mix(local,local.minimum(1),hr)*reference196
-    return {'output335':mix(branch(a,p[0],p[5]),branch(b,p[1],p[6]),person96),'sample305':a,'sample308':b,'uv296':uv6,'uv302':uv7}
+    result={'output335':mix(branch(a,p[0],p[5]),branch(b,p[1],p[6]),person96),'sample305':a,'sample308':b,'uv296':uv6,'uv302':uv7}
+    if shared and not point:
+        from semantic_shared import enclose
+        joint=enclose(a,b,reference196,person96,semantic7);result['output335']=joint.output;result['joint_proof']=joint.proof
+    return result
