@@ -134,3 +134,5 @@ S13-B：复用本版guided三核；4有限fixture五处点位差0、条件集合
 S13-C：原输出gain/CCM/transfer；165项回归、逐位结果和保留零除域见[阶段报告](PROGRESS-S13-C.zh-CN.md)。
 
 S13-D：AIR7入口与生产→guided整图集合接口；168项回归、117half单个位差和最大155.125盒宽均保留，见[阶段报告](PROGRESS-S13-D.zh-CN.md)。
+
+S14-B：源二维→完整AIR7→guided→consumer ROI新组合宿主对照；真实RGBA16/epsilon.001、内部5位差及17941.5513宽包络见[阶段报告](PROGRESS-S14-B.zh-CN.md)。

@@ -1,0 +1,78 @@
+{
+  "reference": {
+    "hardware": "iPhone17,3",
+    "OS_build": "24A446",
+    "CMImaging_UUID": "0A9BC064-A4BC-330E-861A-C70A637B14B3"
+  },
+  "module_canonical_sha256": {
+    "7": "ccee8f0df7972d874feaad62fdb79b70c96c0ffcbbbfbc1940d9524a0c08a2fc",
+    "10": "87e4205e385f6731aa9f739e92580156c49a73c4556b2d790390fe76e7627224"
+  },
+  "gain_map_storage": {
+    "small_BG_FG": 115,
+    "final_BG_FG": 115,
+    "name": "RGBA16Float",
+    "small_grid": "renderer self+0x30 width/height",
+    "final_grid": "renderer original input self+0x20 width/height",
+    "alpha_written_by_producer": 1
+  },
+  "epsilon": {
+    "constant_address": "0x1d44e3d78",
+    "source_instruction": "metal-ltm.asm.txt 0x1d42f03a4/03a8 ->s8, used by both03bc/03e0 calls",
+    "raw_le_hex": "6f12833a",
+    "f32_value": 0.0010000000474974513,
+    "source": {
+      "file": "dyld_shared_cache_arm64e.21",
+      "cache_uuid": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB",
+      "file_offset": 68042104,
+      "vm_address": "0x1d44e3d78",
+      "bytes": 4,
+      "sha256": "0835a5c87ba00a93f8d84fb3bdf20866024a13fc710fc1225e3d67073543bba0"
+    },
+    "source_cache_readonly": true,
+    "GPU_executed": false
+  },
+  "guided_radius": 1,
+  "guide_source": "self+0x20 original input, distinct from producer selected self+0x28 if nonnull else self+0x20",
+  "producer_bindings": {
+    "AIR1/Metal0": "selected primary",
+    "AIR3/Metal1": "linear texture self+0x30",
+    "AIR4/Metal2": "GTC self+0x268",
+    "AIR5/Metal10": "matte self+0x248",
+    "AIR6/Metal8": "smallBG",
+    "AIR7/Metal9": "smallFG"
+  },
+  "coordinates": {
+    "producer": "f32(uint16 gid+.5)/f32(destination6 width,height), normalized clamp-edge linear sampler .3",
+    "GTC": "f32(half(channel*half(width-1)))+.5, pixel linear sampler, y=.5",
+    "consumer": "ROI5/6.scale*f32(logical uint16 gid+.5)+ROI5/6.offset, byte48/64, normalized sampler .3",
+    "output_origin": "ROI12 affects uint16 destination27 only; not added to source UV29",
+    "guided": "coefficients+means at guide grid, apply at final destination grid"
+  },
+  "SDK_header_sha256": "c1b276359f1ea2d8810c405549d9e33e87bc25c437925a7993dd2e1e14895adb",
+  "SDK_enum_values": {
+    "RGBA16Float": 115,
+    "R16Float": 25
+  },
+  "static_method_evidence_sha256": {
+    "ltm-small-alloc.asm.txt": "6372788b83194d1bd4614943723ce309be457cb9a62135b5ec43d65e57b4e918",
+    "ltm-full-alloc.asm.txt": "bd0428a3e512d5056a538e5477e62266ae0ec7b30826306869b4e7e95c4acfda",
+    "guided-encode.asm.txt": "7ef532e7eeb1ddec6f9f77c7b201814b3b7fa11d889cbba11611e562014e4916",
+    "renderer-texture-alloc.asm.txt": "834812d3d04c2cd1ac0cac73805281abaaf989ac020ffb694e72fd56e5b86c9d",
+    "manifest.json": "e11172ca7bdb54865c3053b4af0cd00c0d4bb6c1edc5ac2866d15bde1ef79755"
+  },
+  "source_formats_remaining_explicit": [
+    "selected primary",
+    "linear source",
+    "original guide",
+    "person matte",
+    "GTC"
+  ],
+  "supported_synthetic_storage": [
+    "R16Float",
+    "RGBA16Float"
+  ],
+  "hardware_sampler_precision_verified": false,
+  "GPU_executed": false,
+  "script_sha256": "80f80d53a77613ae9f2d6f67444fa7c76870b23265978c6019fdc070bac7a589"
+}

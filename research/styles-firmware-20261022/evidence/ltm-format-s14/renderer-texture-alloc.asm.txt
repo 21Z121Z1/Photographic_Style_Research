@@ -1,0 +1,153 @@
+iPhone17,3 /24A446; CMImaging UUID 0A9BC064-A4BC-330E-861A-C70A637B14B3
+-[CMISmartStyleMetalRendererV1 _newTexture2DWithFormat:width:height:usage:disableCompression:label:retainUntilPurge:useFigMetalAllocator:]
+Complete bounds independently decoded from LC_FUNCTION_STARTS. All original instruction words verified. Annotations are locators, not algorithm/runtime proofs.
+sub_1d42f2970:
+1d42f2970: d503237f	pacibsp
+1d42f2974: d10203ff	sub	sp, sp, #0x80
+1d42f2978: a9026ffc	stp	x28, x27, [sp, #0x20]
+1d42f297c: a90367fa	stp	x26, x25, [sp, #0x30]
+1d42f2980: a9045ff8	stp	x24, x23, [sp, #0x40]
+1d42f2984: a90557f6	stp	x22, x21, [sp, #0x50]
+1d42f2988: a9064ff4	stp	x20, x19, [sp, #0x60]
+1d42f298c: a9077bfd	stp	fp, lr, [sp, #0x70]
+1d42f2990: 9101c3fd	add	fp, sp, #0x70
+1d42f2994: aa0603f6	mov	x22, x6
+1d42f2998: aa0503f7	mov	x23, x5
+1d42f299c: aa0403f8	mov	x24, x4
+1d42f29a0: aa0303f9	mov	x25, x3
+1d42f29a4: aa0203fa	mov	x26, x2
+1d42f29a8: aa0003f4	mov	x20, x0
+1d42f29ac: 394047bc	ldrb	w28, [fp, #0x11]
+1d42f29b0: b005f008	adrp	x8, 0x1e00f3000
+1d42f29b4: f9454500	ldr	x0, [x8, #0xa88]
+1d42f29b8: f942e688	ldr	x8, [x20, #0x5c8]
+1d42f29bc: d00d8329	adrp	x9, 0x1ef358000
+1d42f29c0: 9137e129	add	x9, x9, #0xdf8 ; 0x1ef358df8 CFString 'Unknown'
+1d42f29c4: f100011f	cmp	x8, #0
+1d42f29c8: 9a880128	csel	x8, x9, x8, eq
+1d42f29cc: a900d3e8	stp	x8, x20, [sp, #0x8]
+1d42f29d0: f90003e7	str	x7, [sp]
+1d42f29d4: d00d8322	adrp	x2, 0x1ef358000
+1d42f29d8: 91376042	add	x2, x2, #0xdd8 ; 0x1ef358dd8 CFString '%@_%@_%p'
+1d42f29dc: 94f46fb1	bl	0x1d800e8a0 ; SELECTOR stringWithFormat:
+1d42f29e0: 94f6a8c8	bl	0x1d809cd00
+1d42f29e4: aa0003f3	mov	x19, x0
+1d42f29e8: 3400007c	cbz	w28, 0x1d42f29f4
+1d42f29ec: 91073280	add	x0, x20, #0x1cc
+1d42f29f0: 94f6a9bc	bl	0x1d809d0e0
+1d42f29f4: f9400680	ldr	x0, [x20, #0x8]
+1d42f29f8: 94f5db42	bl	0x1d8069700 ; SELECTOR allocator
+1d42f29fc: 94f6a8c1	bl	0x1d809cd00
+1d42f2a00: aa0003fb	mov	x27, x0
+1d42f2a04: 94f5e72b	bl	0x1d806c6b0 ; SELECTOR newTextureDescriptor
+1d42f2a08: aa0003f5	mov	x21, x0
+1d42f2a0c: 94f6a91d	bl	0x1d809ce80
+1d42f2a10: b4000cf5	cbz	x21, 0x1d42f2bac
+1d42f2a14: aa1503e0	mov	x0, x21
+1d42f2a18: d2800002	mov	x2, #0
+1d42f2a1c: 94f446e9	bl	0x1d80045c0 ; SELECTOR setLabel:
+1d42f2a20: aa1503e0	mov	x0, x21
+1d42f2a24: 94f5de97	bl	0x1d806a480 ; SELECTOR desc
+1d42f2a28: 94f6a8b6	bl	0x1d809cd00
+1d42f2a2c: aa0003fb	mov	x27, x0
+1d42f2a30: 52800042	mov	w2, #0x2
+1d42f2a34: 94f5f0b7	bl	0x1d806ed10 ; SELECTOR setTextureType:
+1d42f2a38: 94f6a912	bl	0x1d809ce80
+1d42f2a3c: aa1503e0	mov	x0, x21
+1d42f2a40: 94f5de90	bl	0x1d806a480 ; SELECTOR desc
+1d42f2a44: 94f6a8af	bl	0x1d809cd00
+1d42f2a48: aa0003fb	mov	x27, x0
+1d42f2a4c: aa1a03e2	mov	x2, x26
+1d42f2a50: 94f5ef88	bl	0x1d806e870 ; SELECTOR setPixelFormat:
+1d42f2a54: 94f6a90b	bl	0x1d809ce80
+1d42f2a58: aa1503e0	mov	x0, x21
+1d42f2a5c: 94f5de89	bl	0x1d806a480 ; SELECTOR desc
+1d42f2a60: 94f6a8a8	bl	0x1d809cd00
+1d42f2a64: aa0003fa	mov	x26, x0
+1d42f2a68: aa1903e2	mov	x2, x25
+1d42f2a6c: 94f51611	bl	0x1d80382b0 ; SELECTOR setWidth:
+1d42f2a70: 94f6a900	bl	0x1d809ce70
+1d42f2a74: aa1503e0	mov	x0, x21
+1d42f2a78: 94f5de82	bl	0x1d806a480 ; SELECTOR desc
+1d42f2a7c: 94f6a8a1	bl	0x1d809cd00
+1d42f2a80: aa0003f9	mov	x25, x0
+1d42f2a84: aa1803e2	mov	x2, x24
+1d42f2a88: 94f50f96	bl	0x1d80368e0 ; SELECTOR setHeight:
+1d42f2a8c: 94f6a8f5	bl	0x1d809ce60
+1d42f2a90: aa1503e0	mov	x0, x21
+1d42f2a94: 94f5de7b	bl	0x1d806a480 ; SELECTOR desc
+1d42f2a98: 94f6a89a	bl	0x1d809cd00
+1d42f2a9c: aa0003f8	mov	x24, x0
+1d42f2aa0: 52800022	mov	w2, #0x1
+1d42f2aa4: 94f5ea8f	bl	0x1d806d4e0 ; SELECTOR setDepth:
+1d42f2aa8: 94f6a8ea	bl	0x1d809ce50
+1d42f2aac: aa1503e0	mov	x0, x21
+1d42f2ab0: 94f5de74	bl	0x1d806a480 ; SELECTOR desc
+1d42f2ab4: 94f6a893	bl	0x1d809cd00
+1d42f2ab8: aa0003f8	mov	x24, x0
+1d42f2abc: aa1703e2	mov	x2, x23
+1d42f2ac0: 94f5f0d0	bl	0x1d806ee00 ; SELECTOR setUsage:
+1d42f2ac4: 94f6a8e3	bl	0x1d809ce50
+1d42f2ac8: 340001f6	cbz	w22, 0x1d42f2b04
+1d42f2acc: aa1503e0	mov	x0, x21
+1d42f2ad0: 94f5de6c	bl	0x1d806a480 ; SELECTOR desc
+1d42f2ad4: 94f6a88b	bl	0x1d809cd00
+1d42f2ad8: aa0003f6	mov	x22, x0
+1d42f2adc: 52800042	mov	w2, #0x2
+1d42f2ae0: 94f5ea2c	bl	0x1d806d390 ; SELECTOR setCompressionMode:
+1d42f2ae4: 94f6a8d3	bl	0x1d809ce30
+1d42f2ae8: aa1503e0	mov	x0, x21
+1d42f2aec: 94f5de65	bl	0x1d806a480 ; SELECTOR desc
+1d42f2af0: 94f6a884	bl	0x1d809cd00
+1d42f2af4: aa0003f6	mov	x22, x0
+1d42f2af8: d2800002	mov	x2, #0
+1d42f2afc: 94f5ea1d	bl	0x1d806d370 ; SELECTOR setCompressionFootprint:
+1d42f2b00: 94f6a8cc	bl	0x1d809ce30
+1d42f2b04: f9400680	ldr	x0, [x20, #0x8]
+1d42f2b08: 3600017c	tbz	w28, #0, 0x1d42f2b34
+1d42f2b0c: 94f5dafd	bl	0x1d8069700 ; SELECTOR allocator
+1d42f2b10: 94f6a87c	bl	0x1d809cd00
+1d42f2b14: aa0003f7	mov	x23, x0
+1d42f2b18: aa1503e2	mov	x2, x21
+1d42f2b1c: 94f5e6ed	bl	0x1d806c6d0 ; SELECTOR newTextureWithDescriptor:
+1d42f2b20: aa0003f6	mov	x22, x0
+1d42f2b24: 94f6a8c7	bl	0x1d809ce40
+1d42f2b28: 91073280	add	x0, x20, #0x1cc
+1d42f2b2c: 94f6a975	bl	0x1d809d100
+1d42f2b30: 1400000e	b	0x1d42f2b68
+1d42f2b34: 94f5de5f	bl	0x1d806a4b0 ; SELECTOR device
+1d42f2b38: 94f6a872	bl	0x1d809cd00
+1d42f2b3c: aa0003f7	mov	x23, x0
+1d42f2b40: aa1503e0	mov	x0, x21
+1d42f2b44: 94f5de4f	bl	0x1d806a480 ; SELECTOR desc
+1d42f2b48: 94f6a86e	bl	0x1d809cd00
+1d42f2b4c: aa0003f8	mov	x24, x0
+1d42f2b50: aa1703e0	mov	x0, x23
+1d42f2b54: aa1803e2	mov	x2, x24
+1d42f2b58: 94f5e6de	bl	0x1d806c6d0 ; SELECTOR newTextureWithDescriptor:
+1d42f2b5c: aa0003f6	mov	x22, x0
+1d42f2b60: 94f6a8bc	bl	0x1d809ce50
+1d42f2b64: 94f6a8b7	bl	0x1d809ce40
+1d42f2b68: b4000296	cbz	x22, 0x1d42f2bb8
+1d42f2b6c: 394043a8	ldrb	w8, [fp, #0x10]
+1d42f2b70: 34000088	cbz	w8, 0x1d42f2b80
+1d42f2b74: f942c280	ldr	x0, [x20, #0x580]
+1d42f2b78: aa1603e2	mov	x2, x22
+1d42f2b7c: 94f43ad5	bl	0x1d80016d0 ; SELECTOR addObject:
+1d42f2b80: 94f6a8a8	bl	0x1d809ce20
+1d42f2b84: 94f6a89f	bl	0x1d809ce00
+1d42f2b88: aa1603e0	mov	x0, x22
+1d42f2b8c: a9477bfd	ldp	fp, lr, [sp, #0x70]
+1d42f2b90: a9464ff4	ldp	x20, x19, [sp, #0x60]
+1d42f2b94: a94557f6	ldp	x22, x21, [sp, #0x50]
+1d42f2b98: a9445ff8	ldp	x24, x23, [sp, #0x40]
+1d42f2b9c: a94367fa	ldp	x26, x25, [sp, #0x30]
+1d42f2ba0: a9426ffc	ldp	x28, x27, [sp, #0x20]
+1d42f2ba4: 910203ff	add	sp, sp, #0x80
+1d42f2ba8: d65f0fff	retab
+1d42f2bac: 94061978	bl	0x1d447918c
+1d42f2bb0: d2800016	mov	x22, #0
+1d42f2bb4: 17fffff3	b	0x1d42f2b80
+1d42f2bb8: 9406195c	bl	0x1d4479128
+1d42f2bbc: 17fffff1	b	0x1d42f2b80
+

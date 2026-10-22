@@ -1,0 +1,1578 @@
+{
+  "scope": "New full original AIR7/guided/block290 composition with intermediate probes.",
+  "hardware": "iPhone17,3",
+  "build": "24A446",
+  "epsilon_source": "verified cached constant 0x1d44e3d78 bytes6f12833a",
+  "epsilon_f32": 0.0010000000474974513,
+  "gain_pixel_format": 115,
+  "guide_source": "explicit original source texture, distinct from selected primary override in fixture1",
+  "caller_cast0": 0,
+  "semantic_mutation_scope": "producer and post-caller arrays explicitly supplied; cast2 excluded from this combination",
+  "original": [
+    {
+      "canonical_sha256": "ccee8f0df7972d874feaad62fdb79b70c96c0ffcbbbfbc1940d9524a0c08a2fc",
+      "original_functions_sha256": {
+        "_Z16applySemanticSRLDv3_DhfDh": "98154c64241a18bfe5392e801768603d0a907aa786acc156729cf2bcae82233d",
+        "_ZN3CMIL16linearFromCurvedIDhLj3EEEDvT0__T_S2_19CMITransferFunctionS1_": "851d5a3096a66d910c2880af48364f70c2f97ea6059bda57b6b556e2324026a4",
+        "createLTMGainMap": "bcde897e5e788bd44d594f30cd18c09e75f48dd3e9b46d8ce713c22176386868"
+      },
+      "original_functions_modified": "observation stores in root only",
+      "observed_SSA": [
+        24,
+        34,
+        37,
+        96,
+        121,
+        203,
+        205
+      ],
+      "original_arithmetic_predicates_and_FP_attributes_changed": false,
+      "source_sampling_and_original_write_paths_included": true,
+      "host_imageblock_threads": 1,
+      "normalized_sampler": "v3 quantized-linear half, CPU assumption",
+      "GTC_pixel_sampler": "existing ideal pixel-linear CPU assumption",
+      "specialization_flags": "original global loads, supplied exact i8 values set by wrapper"
+    },
+    {
+      "canonical_sha256": "34ac3948d377627c1e99ad1ac806f899c35203fc1caa4c6008adb31c238b08c0",
+      "provenance": {
+        "target_triple": "air64_v29-apple-ios27.0.0",
+        "llvm_ident": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+        "type_renames": {
+          "%\"struct.metal::_imageblock_base.156\"": "%\"psr.type.0\""
+        },
+        "internal_global_renames": {
+          "@__air_sampler_state": "@\"psr.internal.0\""
+        }
+      },
+      "original_complete_kernel_sha256": "2ae161fb66928014be9c47084ef5e265ad0bba042df7784526d296b53eb21d4f",
+      "original_kernel_modified": false,
+      "one_thread_per_imageblock": true,
+      "sampler_assumption": "reused v3 1/256 weights, half tie-up",
+      "native_GPU": false
+    },
+    {
+      "canonical_sha256": "e76f3b835980bdee9706ab859c8e140715e4f816e480c4a3461806635b38bfbb",
+      "provenance": {
+        "target_triple": "air64_v29-apple-ios27.0.0",
+        "llvm_ident": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+        "type_renames": {
+          "%\"struct.metal::_imageblock_base.156\"": "%\"psr.type.0\""
+        },
+        "internal_global_renames": {
+          "@__air_sampler_state.1": "@\"psr.internal.0\""
+        }
+      },
+      "original_complete_kernel_sha256": "7310e2d699d6bb7727c2733a107b4a83bb775585559a09d25b155176840b58a2",
+      "original_kernel_modified": false,
+      "one_thread_per_imageblock": true,
+      "sampler_assumption": "reused v3 1/256 weights, half tie-up",
+      "native_GPU": false
+    },
+    {
+      "canonical_sha256": "a2aed1d6d9c4d7d03744e5a822662f776ca1bcdb4f3428d3c2d66e14a09e2323",
+      "provenance": {
+        "target_triple": "air64_v29-apple-ios27.0.0",
+        "llvm_ident": "Apple metal version 32023.921 (metalfe-32023.921.6)",
+        "type_renames": {
+          "%\"struct.metal::_imageblock_base.156\"": "%\"psr.type.0\""
+        },
+        "internal_global_renames": {
+          "@__air_sampler_state": "@\"psr.internal.0\""
+        }
+      },
+      "original_complete_kernel_sha256": "81d440907e90a6beaaa5a1067e9b67126531110ab0e41998b403697f4ede4e61",
+      "original_kernel_modified": false,
+      "one_thread_per_imageblock": true,
+      "sampler_assumption": "reused v3 1/256 weights, half tie-up",
+      "native_GPU": false
+    },
+    {
+      "original_block_SHA256": "91925f8c34360db730ec4fb88f86b4199062262a84a53216163d73782ae172be",
+      "old_accepted_wrapper_reused": true,
+      "new_4lane_texture_header_and_v3_sampler": true,
+      "original_arithmetic_predicates_unchanged": true,
+      "independent_observations": [
+        305,
+        308,
+        332,
+        320
+      ],
+      "observer_memory_contract": "root has no restrictive memory summary; observation stores valid",
+      "original_sampler_shim_sha256": "65a1d78bda140717ef3e3db4330135ca6565fa6140e1e0717fa1dc2f8fc9687c"
+    }
+  ],
+  "host_IR_sha256": [
+    "b7b2a79afb7f197787ed884fe2886b32538ab24afca2e7c2b8ab2e1117ccc0e7",
+    "6bde4e5adfcc9593c89769e0344b6054cce04f5dd8c0ddb78f617ce6e279e4d0",
+    "d4aefab6820e1674c1c4451cb392602dbbde7250be660b4a6d471f2181038de5",
+    "e400b0197691fb83848ad2e94114e620bfd16ff0da5ff572845eea05198c1b54",
+    "903ad8c131222ac5d5e90114ec581c85df05b3494d9486ae1c9fa476d80196fa"
+  ],
+  "C_sha256": "105e0ff7a9fc7a25eb2ceafa8c0ad9b3155bcc76863810d7b020e2eab3d62d51",
+  "source_sha256": {
+    "native_ltm_roi_chain.py": "2cc5c1dfceba4fdd7f0b4857baf3d8714e08301931bd7322da0f27fb685792bc",
+    "full_ltm_chain.py": "1bcb5ac3802ee62023ff71a1cd1a4b950ccf67fb9beb9dffee5d9f100a8838a2",
+    "texture_numeric.py": "b4c88c05a664dc6aaf259be5456fc02ffe15119cd2761ec203bf4ad84ba83f61",
+    "air7_full_host.py": "28fd502018bc2cb6bc6250373fc628a8359c171ebf82d6ff6642516366f35ab4",
+    "block290_host.py": "81c502fda3e10d9495307b03ce76b5f70af2499683093cef9e1f18577213954c",
+    "guided_host.py": "e1333602c7fd6aa4a689b3d23d120bdc869b884d6d6b127721494d6c5ec38489",
+    "guided_conditioned.py": "5f828d49b0ec133da005618a179c4880fb3eb09f523be7b12504347404311d9b"
+  },
+  "input_sha256": "2f28c26ae09d894325850e645f9fb4e24ba465f25db982fe6ea7e4a9457d8bfd",
+  "output_sha256": "c00068078ff20a5a025985aefa806c28c2b05f51e9a3d2d44101aed2ece08452",
+  "metrics": {
+    "new_fixtures": 2,
+    "consumer_calls": 6,
+    "original_host_kernel_invocations": 210,
+    "point_unknown_rows": 0,
+    "set_unknown_rows": 0,
+    "known_set_violations": 0
+  },
+  "rows": [
+    {
+      "fixture": 0,
+      "grid": [
+        0,
+        0
+      ],
+      "person_half": 0.199951171875,
+      "original_producer_imageblock_flag": false,
+      "point": {
+        "unknowns": {},
+        "source24": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "postSRL34": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "linear37": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "reference96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "working121": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "BG203": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "FG205": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "raw_BG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "raw_FG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "BG_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_mean_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.000244140625,
+          "components": 48
+        },
+        "FG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_mean_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.00048828125,
+          "components": 48
+        },
+        "FG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "sample305": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "sample308": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "consumer335": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        }
+      },
+      "set": {
+        "unknowns": {},
+        "source24": {
+          "range_covered": true,
+          "max_width": 0.0263671875
+        },
+        "postSRL34": {
+          "range_covered": true,
+          "max_width": 0.0263671875
+        },
+        "linear37": {
+          "range_covered": true,
+          "max_width": 0.032730811532709125
+        },
+        "reference96": {
+          "range_covered": true,
+          "max_width": 0.03525830501416255
+        },
+        "working121": {
+          "range_covered": true,
+          "max_width": 0.02073833909489889
+        },
+        "BG203": {
+          "range_covered": true,
+          "max_width": 0.5757751355108265
+        },
+        "FG205": {
+          "range_covered": true,
+          "max_width": 0.6902868712035981
+        },
+        "raw_BG": {
+          "range_covered": true,
+          "max_width": 0.5757751355108265
+        },
+        "raw_FG": {
+          "range_covered": true,
+          "max_width": 0.6902868712035981
+        },
+        "BG_a": {
+          "range_covered": true,
+          "max_width": 1653.5
+        },
+        "BG_b": {
+          "range_covered": true,
+          "max_width": 760.0
+        },
+        "BG_mean_a": {
+          "range_covered": true,
+          "max_width": 1599.0
+        },
+        "BG_mean_b": {
+          "range_covered": true,
+          "max_width": 685.5
+        },
+        "BG_output": {
+          "range_covered": true,
+          "max_width": 1384.5
+        },
+        "FG_a": {
+          "range_covered": true,
+          "max_width": 1980.5
+        },
+        "FG_b": {
+          "range_covered": true,
+          "max_width": 913.5
+        },
+        "FG_mean_a": {
+          "range_covered": true,
+          "max_width": 1915.0
+        },
+        "FG_mean_b": {
+          "range_covered": true,
+          "max_width": 823.75
+        },
+        "FG_output": {
+          "range_covered": true,
+          "max_width": 1664.0
+        },
+        "sample305": {
+          "range_covered": true,
+          "max_width": 1349.0
+        },
+        "sample308": {
+          "range_covered": true,
+          "max_width": 1578.5
+        },
+        "consumer335": {
+          "range_covered": true,
+          "max_width": 2768.1972698672225
+        }
+      },
+      "native_consumer_output_bits": [
+        13259,
+        14090,
+        14863
+      ],
+      "native_consumer_probe_bits": [
+        [
+          15182,
+          15748,
+          16395
+        ],
+        [
+          15436,
+          16021,
+          16582
+        ],
+        [
+          13241,
+          14099,
+          14893
+        ],
+        [
+          13321,
+          14052,
+          14745
+        ]
+      ]
+    },
+    {
+      "fixture": 0,
+      "grid": [
+        2,
+        1
+      ],
+      "person_half": 0.60009765625,
+      "original_producer_imageblock_flag": false,
+      "point": {
+        "unknowns": {},
+        "source24": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "postSRL34": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "linear37": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "reference96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "working121": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "BG203": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "FG205": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "raw_BG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "raw_FG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "BG_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_mean_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.000244140625,
+          "components": 48
+        },
+        "FG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_mean_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.00048828125,
+          "components": 48
+        },
+        "FG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "sample305": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "sample308": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "consumer335": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        }
+      },
+      "set": {
+        "unknowns": {},
+        "source24": {
+          "range_covered": true,
+          "max_width": 0.0263671875
+        },
+        "postSRL34": {
+          "range_covered": true,
+          "max_width": 0.0263671875
+        },
+        "linear37": {
+          "range_covered": true,
+          "max_width": 0.032730811532709125
+        },
+        "reference96": {
+          "range_covered": true,
+          "max_width": 0.03525830501416255
+        },
+        "working121": {
+          "range_covered": true,
+          "max_width": 0.02073833909489889
+        },
+        "BG203": {
+          "range_covered": true,
+          "max_width": 0.5757751355108265
+        },
+        "FG205": {
+          "range_covered": true,
+          "max_width": 0.6902868712035981
+        },
+        "raw_BG": {
+          "range_covered": true,
+          "max_width": 0.5757751355108265
+        },
+        "raw_FG": {
+          "range_covered": true,
+          "max_width": 0.6902868712035981
+        },
+        "BG_a": {
+          "range_covered": true,
+          "max_width": 1653.5
+        },
+        "BG_b": {
+          "range_covered": true,
+          "max_width": 760.0
+        },
+        "BG_mean_a": {
+          "range_covered": true,
+          "max_width": 1599.0
+        },
+        "BG_mean_b": {
+          "range_covered": true,
+          "max_width": 685.5
+        },
+        "BG_output": {
+          "range_covered": true,
+          "max_width": 1384.5
+        },
+        "FG_a": {
+          "range_covered": true,
+          "max_width": 1980.5
+        },
+        "FG_b": {
+          "range_covered": true,
+          "max_width": 913.5
+        },
+        "FG_mean_a": {
+          "range_covered": true,
+          "max_width": 1915.0
+        },
+        "FG_mean_b": {
+          "range_covered": true,
+          "max_width": 823.75
+        },
+        "FG_output": {
+          "range_covered": true,
+          "max_width": 1664.0
+        },
+        "sample305": {
+          "range_covered": true,
+          "max_width": 1313.5
+        },
+        "sample308": {
+          "range_covered": true,
+          "max_width": 1522.5
+        },
+        "consumer335": {
+          "range_covered": true,
+          "max_width": 4487.439053570039
+        }
+      },
+      "native_consumer_output_bits": [
+        13255,
+        14064,
+        14768
+      ],
+      "native_consumer_probe_bits": [
+        [
+          15042,
+          15722,
+          16255
+        ],
+        [
+          15310,
+          15994,
+          16485
+        ],
+        [
+          13185,
+          14089,
+          14842
+        ],
+        [
+          13302,
+          14048,
+          14719
+        ]
+      ]
+    },
+    {
+      "fixture": 0,
+      "grid": [
+        7,
+        5
+      ],
+      "person_half": 0.7998046875,
+      "original_producer_imageblock_flag": false,
+      "point": {
+        "unknowns": {},
+        "source24": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "postSRL34": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "linear37": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "reference96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "working121": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "BG203": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "FG205": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "raw_BG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "raw_FG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "BG_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_mean_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "BG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.000244140625,
+          "components": 48
+        },
+        "FG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_mean_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.00048828125,
+          "components": 48
+        },
+        "FG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "FG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 48
+        },
+        "sample305": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "sample308": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "consumer335": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        }
+      },
+      "set": {
+        "unknowns": {},
+        "source24": {
+          "range_covered": true,
+          "max_width": 0.0263671875
+        },
+        "postSRL34": {
+          "range_covered": true,
+          "max_width": 0.0263671875
+        },
+        "linear37": {
+          "range_covered": true,
+          "max_width": 0.032730811532709125
+        },
+        "reference96": {
+          "range_covered": true,
+          "max_width": 0.03525830501416255
+        },
+        "working121": {
+          "range_covered": true,
+          "max_width": 0.02073833909489889
+        },
+        "BG203": {
+          "range_covered": true,
+          "max_width": 0.5757751355108265
+        },
+        "FG205": {
+          "range_covered": true,
+          "max_width": 0.6902868712035981
+        },
+        "raw_BG": {
+          "range_covered": true,
+          "max_width": 0.5757751355108265
+        },
+        "raw_FG": {
+          "range_covered": true,
+          "max_width": 0.6902868712035981
+        },
+        "BG_a": {
+          "range_covered": true,
+          "max_width": 1653.5
+        },
+        "BG_b": {
+          "range_covered": true,
+          "max_width": 760.0
+        },
+        "BG_mean_a": {
+          "range_covered": true,
+          "max_width": 1599.0
+        },
+        "BG_mean_b": {
+          "range_covered": true,
+          "max_width": 685.5
+        },
+        "BG_output": {
+          "range_covered": true,
+          "max_width": 1384.5
+        },
+        "FG_a": {
+          "range_covered": true,
+          "max_width": 1980.5
+        },
+        "FG_b": {
+          "range_covered": true,
+          "max_width": 913.5
+        },
+        "FG_mean_a": {
+          "range_covered": true,
+          "max_width": 1915.0
+        },
+        "FG_mean_b": {
+          "range_covered": true,
+          "max_width": 823.75
+        },
+        "FG_output": {
+          "range_covered": true,
+          "max_width": 1664.0
+        },
+        "sample305": {
+          "range_covered": true,
+          "max_width": 1263.5
+        },
+        "sample308": {
+          "range_covered": true,
+          "max_width": 1512.5
+        },
+        "consumer335": {
+          "range_covered": true,
+          "max_width": 5294.384777765599
+        }
+      },
+      "native_consumer_output_bits": [
+        13263,
+        14048,
+        14725
+      ],
+      "native_consumer_probe_bits": [
+        [
+          14948,
+          15700,
+          16150
+        ],
+        [
+          15258,
+          15959,
+          16440
+        ],
+        [
+          13147,
+          14078,
+          14806
+        ],
+        [
+          13292,
+          14041,
+          14705
+        ]
+      ]
+    },
+    {
+      "fixture": 1,
+      "grid": [
+        0,
+        0
+      ],
+      "person_half": 0.199951171875,
+      "original_producer_imageblock_flag": true,
+      "point": {
+        "unknowns": {},
+        "source24": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "postSRL34": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "linear37": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "reference96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "working121": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "BG203": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "FG205": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "raw_BG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "raw_FG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "BG_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_mean_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.0009765625,
+          "components": 80
+        },
+        "FG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_mean_a": {
+          "half_bit_mismatches": 2,
+          "max_absolute_error": 0.00048828125,
+          "components": 80
+        },
+        "FG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "sample305": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "sample308": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "consumer335": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        }
+      },
+      "set": {
+        "unknowns": {},
+        "source24": {
+          "range_covered": true,
+          "max_width": 0.048828125
+        },
+        "postSRL34": {
+          "range_covered": true,
+          "max_width": 0.10618139803409588
+        },
+        "linear37": {
+          "range_covered": true,
+          "max_width": 0.08139684155348226
+        },
+        "reference96": {
+          "range_covered": true,
+          "max_width": 0.08341752189646882
+        },
+        "working121": {
+          "range_covered": true,
+          "max_width": 0.02073833909489889
+        },
+        "BG203": {
+          "range_covered": true,
+          "max_width": 1.9691759878747919
+        },
+        "FG205": {
+          "range_covered": true,
+          "max_width": 2.3507569148745344
+        },
+        "raw_BG": {
+          "range_covered": true,
+          "max_width": 1.9691759878747919
+        },
+        "raw_FG": {
+          "range_covered": true,
+          "max_width": 2.3507569148745344
+        },
+        "BG_a": {
+          "range_covered": true,
+          "max_width": 5090.0
+        },
+        "BG_b": {
+          "range_covered": true,
+          "max_width": 2442.0
+        },
+        "BG_mean_a": {
+          "range_covered": true,
+          "max_width": 4436.0
+        },
+        "BG_mean_b": {
+          "range_covered": true,
+          "max_width": 2116.0
+        },
+        "BG_output": {
+          "range_covered": true,
+          "max_width": 4284.0
+        },
+        "FG_a": {
+          "range_covered": true,
+          "max_width": 6070.0
+        },
+        "FG_b": {
+          "range_covered": true,
+          "max_width": 2912.0
+        },
+        "FG_mean_a": {
+          "range_covered": true,
+          "max_width": 5292.0
+        },
+        "FG_mean_b": {
+          "range_covered": true,
+          "max_width": 2523.0
+        },
+        "FG_output": {
+          "range_covered": true,
+          "max_width": 5110.0
+        },
+        "sample305": {
+          "range_covered": true,
+          "max_width": 3458.0
+        },
+        "sample308": {
+          "range_covered": true,
+          "max_width": 4168.0
+        },
+        "consumer335": {
+          "range_covered": true,
+          "max_width": 7264.268427971366
+        }
+      },
+      "native_consumer_output_bits": [
+        13485,
+        14368,
+        15141
+      ],
+      "native_consumer_probe_bits": [
+        [
+          16027,
+          16449,
+          16853
+        ],
+        [
+          16321,
+          16660,
+          17123
+        ],
+        [
+          13499,
+          14389,
+          15201
+        ],
+        [
+          13427,
+          14230,
+          14902
+        ]
+      ]
+    },
+    {
+      "fixture": 1,
+      "grid": [
+        2,
+        1
+      ],
+      "person_half": 0.60009765625,
+      "original_producer_imageblock_flag": true,
+      "point": {
+        "unknowns": {},
+        "source24": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "postSRL34": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "linear37": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "reference96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "working121": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "BG203": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "FG205": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "raw_BG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "raw_FG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "BG_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_mean_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.0009765625,
+          "components": 80
+        },
+        "FG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_mean_a": {
+          "half_bit_mismatches": 2,
+          "max_absolute_error": 0.00048828125,
+          "components": 80
+        },
+        "FG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "sample305": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "sample308": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "consumer335": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        }
+      },
+      "set": {
+        "unknowns": {},
+        "source24": {
+          "range_covered": true,
+          "max_width": 0.048828125
+        },
+        "postSRL34": {
+          "range_covered": true,
+          "max_width": 0.10618139803409588
+        },
+        "linear37": {
+          "range_covered": true,
+          "max_width": 0.08139684155348226
+        },
+        "reference96": {
+          "range_covered": true,
+          "max_width": 0.08341752189646882
+        },
+        "working121": {
+          "range_covered": true,
+          "max_width": 0.02073833909489889
+        },
+        "BG203": {
+          "range_covered": true,
+          "max_width": 1.9691759878747919
+        },
+        "FG205": {
+          "range_covered": true,
+          "max_width": 2.3507569148745344
+        },
+        "raw_BG": {
+          "range_covered": true,
+          "max_width": 1.9691759878747919
+        },
+        "raw_FG": {
+          "range_covered": true,
+          "max_width": 2.3507569148745344
+        },
+        "BG_a": {
+          "range_covered": true,
+          "max_width": 5090.0
+        },
+        "BG_b": {
+          "range_covered": true,
+          "max_width": 2442.0
+        },
+        "BG_mean_a": {
+          "range_covered": true,
+          "max_width": 4436.0
+        },
+        "BG_mean_b": {
+          "range_covered": true,
+          "max_width": 2116.0
+        },
+        "BG_output": {
+          "range_covered": true,
+          "max_width": 4284.0
+        },
+        "FG_a": {
+          "range_covered": true,
+          "max_width": 6070.0
+        },
+        "FG_b": {
+          "range_covered": true,
+          "max_width": 2912.0
+        },
+        "FG_mean_a": {
+          "range_covered": true,
+          "max_width": 5292.0
+        },
+        "FG_mean_b": {
+          "range_covered": true,
+          "max_width": 2523.0
+        },
+        "FG_output": {
+          "range_covered": true,
+          "max_width": 5110.0
+        },
+        "sample305": {
+          "range_covered": true,
+          "max_width": 3708.0
+        },
+        "sample308": {
+          "range_covered": true,
+          "max_width": 4440.0
+        },
+        "consumer335": {
+          "range_covered": true,
+          "max_width": 12955.750769715014
+        }
+      },
+      "native_consumer_output_bits": [
+        13424,
+        14290,
+        14957
+      ],
+      "native_consumer_probe_bits": [
+        [
+          15887,
+          16410,
+          16729
+        ],
+        [
+          16093,
+          16620,
+          16946
+        ],
+        [
+          13460,
+          14372,
+          15117
+        ],
+        [
+          13400,
+          14212,
+          14851
+        ]
+      ]
+    },
+    {
+      "fixture": 1,
+      "grid": [
+        7,
+        5
+      ],
+      "person_half": 0.7998046875,
+      "original_producer_imageblock_flag": true,
+      "point": {
+        "unknowns": {},
+        "source24": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "postSRL34": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "linear37": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "reference96": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "working121": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "BG203": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "FG205": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 18
+        },
+        "raw_BG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "raw_FG": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 24
+        },
+        "BG_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_mean_a": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "BG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_a": {
+          "half_bit_mismatches": 1,
+          "max_absolute_error": 0.0009765625,
+          "components": 80
+        },
+        "FG_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_mean_a": {
+          "half_bit_mismatches": 2,
+          "max_absolute_error": 0.00048828125,
+          "components": 80
+        },
+        "FG_mean_b": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "FG_output": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 80
+        },
+        "sample305": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "sample308": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        },
+        "consumer335": {
+          "half_bit_mismatches": 0,
+          "max_absolute_error": 0.0,
+          "components": 3
+        }
+      },
+      "set": {
+        "unknowns": {},
+        "source24": {
+          "range_covered": true,
+          "max_width": 0.048828125
+        },
+        "postSRL34": {
+          "range_covered": true,
+          "max_width": 0.10618139803409588
+        },
+        "linear37": {
+          "range_covered": true,
+          "max_width": 0.08139684155348226
+        },
+        "reference96": {
+          "range_covered": true,
+          "max_width": 0.08341752189646882
+        },
+        "working121": {
+          "range_covered": true,
+          "max_width": 0.02073833909489889
+        },
+        "BG203": {
+          "range_covered": true,
+          "max_width": 1.9691759878747919
+        },
+        "FG205": {
+          "range_covered": true,
+          "max_width": 2.3507569148745344
+        },
+        "raw_BG": {
+          "range_covered": true,
+          "max_width": 1.9691759878747919
+        },
+        "raw_FG": {
+          "range_covered": true,
+          "max_width": 2.3507569148745344
+        },
+        "BG_a": {
+          "range_covered": true,
+          "max_width": 5090.0
+        },
+        "BG_b": {
+          "range_covered": true,
+          "max_width": 2442.0
+        },
+        "BG_mean_a": {
+          "range_covered": true,
+          "max_width": 4436.0
+        },
+        "BG_mean_b": {
+          "range_covered": true,
+          "max_width": 2116.0
+        },
+        "BG_output": {
+          "range_covered": true,
+          "max_width": 4284.0
+        },
+        "FG_a": {
+          "range_covered": true,
+          "max_width": 6070.0
+        },
+        "FG_b": {
+          "range_covered": true,
+          "max_width": 2912.0
+        },
+        "FG_mean_a": {
+          "range_covered": true,
+          "max_width": 5292.0
+        },
+        "FG_mean_b": {
+          "range_covered": true,
+          "max_width": 2523.0
+        },
+        "FG_output": {
+          "range_covered": true,
+          "max_width": 5110.0
+        },
+        "sample305": {
+          "range_covered": true,
+          "max_width": 4288.0
+        },
+        "sample308": {
+          "range_covered": true,
+          "max_width": 5114.0
+        },
+        "consumer335": {
+          "range_covered": true,
+          "max_width": 17941.551250823606
+        }
+      },
+      "native_consumer_output_bits": [
+        13384,
+        14209,
+        14836
+      ],
+      "native_consumer_probe_bits": [
+        [
+          15679,
+          16288,
+          16538
+        ],
+        [
+          15932,
+          16521,
+          16762
+        ],
+        [
+          13402,
+          14339,
+          14987
+        ],
+        [
+          13380,
+          14176,
+          14798
+        ]
+      ]
+    }
+  ],
+  "GPU_or_photo_executed": false,
+  "old_accepted_batches_repeated": false,
+  "sampler_precision_is_host_assumption": true,
+  "old_155_125_envelope_still_retained": true
+}
