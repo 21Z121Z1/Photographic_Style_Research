@@ -1,0 +1,53 @@
+{
+  "scope": "Matched static producer -> guided-filter -> final consumer links for explicit precomputed inputs. Original producer/guide-filter not numerically reproduced by this stage.",
+  "hardware_reference": "iPhone17,3",
+  "build": "24A446",
+  "producer_module_index": 7,
+  "producer_canonical_sha256": "ccee8f0df7972d874feaad62fdb79b70c96c0ffcbbbfbc1940d9524a0c08a2fc",
+  "consumer_module_index": 10,
+  "consumer_canonical_sha256": "87e4205e385f6731aa9f739e92580156c49a73c4556b2d790390fe76e7627224",
+  "argument_binding_map": [
+    {
+      "AIR_argument": 6,
+      "Metal_texture_binding": 8,
+      "name": "inputBgLTMGainMap"
+    },
+    {
+      "AIR_argument": 7,
+      "Metal_texture_binding": 9,
+      "name": "inputFgLTMGainMap"
+    },
+    {
+      "AIR_argument": 8,
+      "Metal_texture_binding": 5,
+      "name": "inputLightMapTex"
+    },
+    {
+      "AIR_argument": 9,
+      "Metal_texture_binding": 6,
+      "name": "inputLinearLightMapTex"
+    }
+  ],
+  "ROI": {
+    "field5_byte_offset": 48,
+    "field6_byte_offset": 64,
+    "field5_name": "logicalImageToBgLTMGainMapGridScaleAndOffset",
+    "field6_name": "logicalImageToFgLTMGainMapGridScaleAndOffset",
+    "coordinates": "f32(scale*f32(uint16 grid+.5)+offset)",
+    "sampler": "normalized /clamp-to-edge /linear, AIR __air_sampler_state.3"
+  },
+  "CPU": {
+    "existing_process_sequence": "metal-process.asm.txt 0x1d42ee70c dynamic params ->0x1d42ee730 processLTMGainMap ->0x1d42ee73c upsampleLightMap ->0x1d42ee748 applyFinalRendering",
+    "upstream_reused": "evidence/cache-follow-24A446/metal-ltm.asm.txt",
+    "gate": "self+0x579 ==1, otherwise processor skips map generation",
+    "creation": "createLTMGainMap pipeline (existing render-compile 0x1d42f5c90/+5d0c)",
+    "intermediate_slots": "write binding8/9 ->temporary x24/x25",
+    "guided_filter": "0x1d42f03bc/+03e0 encodeToCommandBuffer: input x24/x25, guide self+0x20, output self+0x238/+0x240, kernelRadius1, supplied epsilon",
+    "final_binding": "final-region 0x1d42ef468..490 requires both self+0x238/+0x240, binds Metal8/9"
+  },
+  "producer_math": "AIR7 SSA203/205 = zero-guarded BG/FG post-exposure/GTC RGB divided by matrix-transformed reference SSA96, then texture write (or imageblock write); this is upstream static provenance, not a recovered original frame texture",
+  "block290_math": "sample both precomputed RGB ratios ->BG/FG LTM mix toward1 ->HR mix toward min1 ->multiply referenceRGB ->person blend. No new CCM/GTC/exposure in this block.",
+  "upstream_numeric_generation_verified": false,
+  "fallback_equivalence_assumed": false,
+  "GPU_or_photo_validation": false
+}

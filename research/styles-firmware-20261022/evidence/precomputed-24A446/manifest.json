@@ -1,0 +1,69 @@
+{
+  "hardware": "iPhone17,3",
+  "image_build": "24A446",
+  "cache_uuid": "0094EE12-3B41-3892-A043-9459D9C749FE",
+  "cache_platform": "iOS",
+  "source_reuse": [
+    {
+      "path": "research/hdr-native/evidence/s106/repro/objc_locate.py",
+      "sha256": "54ca22ed6086349efad798bacdb87798deaa21a206a303ae9bf846e55a409ade",
+      "functions": [
+        "ptr",
+        "named",
+        "selector_from_stub"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_capture.py",
+      "sha256": "1a29cf96bc033f6fa907c408c7c60fcb3e07dfcc342daf4d22fb739ccb556d3b",
+      "functions": [
+        "literal",
+        "sel"
+      ]
+    },
+    {
+      "path": "research/hdr-native/evidence/s106/repro/trace_follow.py",
+      "sha256": "dde4954e4f3b8cfa0f7e91cf8397931e40bf1506bc7addfebbd9cc17645b535a",
+      "functions": [
+        "annotate"
+      ]
+    }
+  ],
+  "frameworks": {
+    "CMImaging": {
+      "index": 542,
+      "name": "/System/Library/PrivateFrameworks/CMImaging.framework/CMImaging",
+      "version": "764.22.14.0.0",
+      "uuid": "0A9BC064-A4BC-330E-861A-C70A637B14B3",
+      "load_address": 7854592000,
+      "header_and_commands_sha256": "16fec996212b5cc7ad6286abb30426c24c8a9c53b0e677b3efd00e254a1727b0",
+      "function_starts_sha256": "0a07b7a708d8f221cf859b2f28480a5473b8bc7ee5974eb9fba0cf5d7d18e5c1"
+    }
+  },
+  "methods": [
+    {
+      "name": "-[CMISmartStyleMetalRendererV1 _finalRenderRegion:]",
+      "framework": "CMImaging",
+      "file": "final-region.asm.txt",
+      "end_exclusive": "0x1d42ef624",
+      "first_address": "0x1d42ef27c",
+      "last_address": "0x1d42ef620",
+      "instruction_count": 234,
+      "checked_bytes": 936,
+      "instructions_sha256": "27a77fcfa110227c5f1290e559dc725a7f53f53e9905017c61f6e8dbeb01cbc1",
+      "source_cache_UUIDs": {
+        "dyld_shared_cache_arm64e.21": "88CB27AF-6DC9-31F0-A67D-E19191D2F8EB"
+      },
+      "text_sha256": "851c55fce8f067d24ea58cd61458cd285b5a9513a67d2b816388b799427a77e3"
+    }
+  ],
+  "exporter_sha256": "38db3af22010a28275987e4dfc712f0bebcff5fdcb7405c93376a971e2bc2b8e",
+  "original_iOS_code_executed": false,
+  "binary_uploaded": false,
+  "actual_runtime_loader_verified": false,
+  "total_checked_bytes": 936,
+  "reused_upstream_method": {
+    "file": "evidence/cache-follow-24A446/metal-ltm.asm.txt",
+    "instructions_sha256": "e79dc235f6bb1d22385d2fb673dad3c8a46f0fee8aacf52733c0897d0876a515"
+  }
+}

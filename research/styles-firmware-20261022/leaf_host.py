@@ -1,0 +1,98 @@
+"""Compile only requested original leaf functions with explicit host AIR shims.
+
+No abort/identity placeholders: unsupported intrinsic dependencies are errors.
+The host libm/dot/sampler semantics are declared, not original GPU behavior.
+"""
+import hashlib,json,re
+from pathlib import Path
+from native_semantic_tone_check import fragment,SAMPLER_C
+
+
+def short(name):
+    q=re.match('_Z(\d+)',name)
+    return name[q.end():q.end()+int(q[1])]if q else name
+
+
+MATH_C=SAMPLER_C+'\nfloat psr_pow_scalar(float a,float b){return powf(a,b);}\nfloat psr_sqrt_scalar(float a){return sqrtf(a);}\n'
+
+
+def shims(names):
+    out=['declare float @psr_pow_scalar(float,float)','declare float @psr_sqrt_scalar(float)','declare float @psr_sample(ptr,float)','declare float @llvm.fabs.f32(float)'];done=set()
+    def add(name):
+        if name in done:return
+        done.add(name)
+        vector=None if name=='air.sample_texture_2d.v4f16'else re.search(r'\.v(\d+)f(16|32)$',name);bits='half'if name.endswith('f16')else'float';ty=bits
+        if vector:
+            n,b=vector.groups();n=int(n);scalar=name[:vector.start()]+f'.f{b}';add(scalar);ty=f'<{n} x {"half"if b=="16"else"float"}>'
+            arity=3 if any(x in name for x in ['.mix.','.clamp.'])else 2 if any(x in name for x in ['.pow.','.fmin.','.fmax.'])else 1
+            params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
+            for lane in range(n):
+                for i in range(arity):lines.append(f'%x{lane}_{i}=extractelement {ty} %a{i},i32 {lane}')
+                lines.append(f'%v{lane}=call {"half"if b=="16"else"float"} @{scalar}('+','.join(f'{"half"if b=="16"else"float"} %x{lane}_{i}'for i in range(arity))+')')
+                lines.append(f'%r{lane}=insertelement {ty} '+('poison'if lane==0 else f'%r{lane-1}')+f',{"half"if b=="16"else"float"} %v{lane},i32 {lane}')
+            lines+= [f'ret {ty} %r{n-1}','}'];out.append('\n'.join(lines));return
+        if name=='air.get_width_texture_2d':out.append('define i32 @air.get_width_texture_2d(ptr addrspace(1) %p,i32 %lod){\n%n=load i32,ptr addrspace(1) %p\nret i32 %n\n}');return
+        if name.startswith('air.convert.f.f16.'):
+            op='sitofp'if'.s.i32'in name else'uitofp';out.append(f'define half @{name}(i32 %a){{\n%r={op} i32 %a to half\nret half %r\n}}');return
+        if '.mix.'in name:
+            out.append(f'define {ty} @{name}({ty} %a,{ty} %b,{ty} %w){{\n%d=fsub fast {ty} %b,%a\n%p=fmul fast {ty} %d,%w\n%r=fadd fast {ty} %a,%p\nret {ty} %r\n}}');return
+        if any(x in name for x in ['.fmax3.','.fmin3.']):
+            base=name.replace('3.','.');add(base);out.append(f'define {ty} @{name}({ty} %a,{ty} %b,{ty} %c){{\n%x=call {ty} @{base}({ty} %a,{ty} %b)\n%r=call {ty} @{base}({ty} %x,{ty} %c)\nret {ty} %r\n}}');return
+        if any(x in name for x in ['.fmin.','.fmax.']):
+            pred='olt'if'.fmin.'in name else'ogt';out.append(f'define {ty} @{name}({ty} %a,{ty} %b){{\n%c=fcmp {pred} {ty} %a,%b\n%r=select i1 %c,{ty} %a,{ty} %b\nret {ty} %r\n}}');return
+        if '.clamp.'in name or '.saturate.'in name:
+            base=name[:name.rindex('.')];prefix='air.fast_'if'fast_'in name else'air.';mn=prefix+'fmin.'+('f16'if ty=='half'else'f32');mx=prefix+'fmax.'+('f16'if ty=='half'else'f32');add(mn);add(mx)
+            sat='.saturate.'in name;params=f'{ty} %a'if sat else f'{ty} %a,{ty} %lo,{ty} %hi';lo='0xH0000'if ty=='half'else'0.0';hi='0xH3C00'if ty=='half'else'1.0'
+            out.append(f'define {ty} @{name}({params}){{\n%x=call {ty} @{mx}({ty} %a,{ty} '+(lo if sat else'%lo')+f')\n%r=call {ty} @{mn}({ty} %x,{ty} '+(hi if sat else'%hi')+f')\nret {ty} %r\n}}');return
+        if '.fabs.'in name:
+            pre='%x=fpext half %a to float\n'if ty=='half'else'';x='%x'if ty=='half'else'%a';post='%r=fptrunc float %f to half\nret half %r'if ty=='half'else'ret float %f'
+            out.append(f'define {ty} @{name}({ty} %a){{\n'+pre+f'%f=call float @llvm.fabs.f32(float {x})\n'+post+'\n}');return
+        if '.pow.'in name or '.sqrt.'in name:
+            powop='.pow.'in name;arity=2 if powop else 1;params=','.join(f'{ty} %a{i}'for i in range(arity));lines=[f'define {ty} @{name}({params}){{']
+            for i in range(arity):
+                if ty=='half':lines.append(f'%x{i}=fpext half %a{i} to float')
+            args=','.join(f'float %'+(f'x{i}'if ty=='half'else f'a{i}')for i in range(arity));lines.append(f'%f=call float @psr_{"pow"if powop else"sqrt"}_scalar({args})')
+            lines += ['%r=fptrunc float %f to half','ret half %r']if ty=='half'else['ret float %f'];lines+=['}'];out.append('\n'.join(lines));return
+        if name=='air.dot.v3f16':
+            lines=['define half @air.dot.v3f16(<3 x half> %a,<3 x half> %b){']
+            for i in range(3):lines += [f'%a{i}=extractelement <3 x half> %a,i32 {i}',f'%b{i}=extractelement <3 x half> %b,i32 {i}',f'%p{i}=fmul fast half %a{i},%b{i}']
+            lines+=['%s=fadd fast half %p0,%p1','%r=fadd fast half %s,%p2','ret half %r','}'];out.append('\n'.join(lines));return
+        if name=='air.sample_texture_2d.v4f16':
+            out.append('define {<4 x half>,i8} @air.sample_texture_2d.v4f16(ptr addrspace(1) %p,ptr addrspace(2) %s,<2 x float> %xy,i1 %a,<2 x i32> %o,i1 %b,float %c,float %d,i32 %e){\n%u=extractelement <2 x float> %xy,i32 0\n%t=addrspacecast ptr addrspace(1) %p to ptr\n%f=call float @psr_sample(ptr %t,float %u)\n%h=fptrunc float %f to half\n%v=insertelement <4 x half> zeroinitializer,half %h,i32 0\n%r=insertvalue {<4 x half>,i8} zeroinitializer,<4 x half> %v,0\nret {<4 x half>,i8} %r\n}');return
+        raise ValueError('Unimplemented host intrinsic: '+name)
+    # Dot must be handled before generic vector decomposition.
+    if 'air.dot.v3f16'in names:
+        names=set(names);names.remove('air.dot.v3f16');body=['define half @air.dot.v3f16(<3 x half> %a,<3 x half> %b){']
+        for i in range(3):body += [f'%a{i}=extractelement <3 x half> %a,i32 {i}',f'%b{i}=extractelement <3 x half> %b,i32 {i}',f'%p{i}=fmul fast half %a{i},%b{i}']
+        body += ['%s=fadd fast half %p0,%p1','%r=fadd fast half %s,%p2','ret half %r','}'];out.append('\n'.join(body));done.add('air.dot.v3f16')
+    for name in sorted(names):add(name)
+    return '\n'.join(out)
+
+
+def build(source,names):
+    fragment(source)  # Exact source identity check only.
+    functions={}
+    for m in re.finditer(r'^define[^\n]*?@([^ (]+)\([^\n]+\{\n',source,re.M):functions[m[1]]=source[m.start():source.index('\n}',m.end())+2]
+    roots=[next(n for n in functions if short(n)==name)for name in names];selected=set(roots);pending=list(roots)
+    while pending:
+        for n in re.findall(r'@(_Z[^ (]+)\(',functions[pending.pop()]):
+            if n not in selected:selected.add(n);pending.append(n)
+    bodies=[functions[n]for n in sorted(selected)];used=set(re.findall(r'@(air\.[^ (]+)\(', '\n'.join(bodies)));definitions=dict(re.findall(r'^!(\d+) = (.*)$',source,re.M));ids=set(re.findall(r'!(\d+)', '\n'.join(bodies)));pending=list(ids)
+    while pending:
+        for n in re.findall(r'!(\d+)',definitions[pending.pop()]):
+            if n not in ids:ids.add(n);pending.append(n)
+    attrs=set(re.findall(r'#(\d+)', '\n'.join(bodies)));wrappers=[]
+    for index,name in enumerate(roots):
+        w=[f'define void @psr_leaf_{index}(ptr %input,ptr %texture,ptr %output){{']
+        for n in range(6):w += [f'%p{n}=getelementptr float,ptr %input,i64 {n}',f'%f{n}=load float,ptr %p{n}',f'%h{n}=fptrunc float %f{n} to half']
+        w += ['%x0=insertelement <3 x half> poison,half %h0,i32 0','%x1=insertelement <3 x half> %x0,half %h1,i32 1','%x=insertelement <3 x half> %x1,half %h2,i32 2','%t=addrspacecast ptr %texture to ptr addrspace(1)']
+        if short(name)=='whitesCurve':args='<3 x half> %x,ptr addrspace(1) %t,half %h4,half %h5'
+        elif short(name)in ['contrastFilter','airyFilter','smoothSatFilter']:args='<3 x half> %x,half %h4'
+        elif short(name)=='RichSat':args='<3 x half> %x,half %h4,half undef,half %h5'
+        else:args='<3 x half> %x,half %h3,half %h4'
+        w += [f'%r=call fastcc <3 x half> @{name}({args})']
+        for n in range(3):w += [f'%o{n}=extractelement <3 x half> %r,i32 {n}',f'%of{n}=fpext half %o{n} to float',f'%op{n}=getelementptr float,ptr %output,i64 {n}',f'store float %of{n},ptr %op{n}']
+        w += ['ret void','}'];wrappers.append('\n'.join(w))
+    globals_=re.findall(r'^@__air_sampler_state(?:\.\d+)? = .*$',source,re.M)
+    text='\n'.join([*re.findall(r'^%[^\n]+ = type [^\n]+$',source,re.M),*globals_,*bodies,shims(used),*wrappers,*[re.search(r'^attributes #'+n+r' = .*$',source,re.M)[0]for n in attrs],*[f'!{n} = {definitions[n]}'for n in sorted(ids,key=int)]])+'\n'
+    return text,{short(n):hashlib.sha256(functions[n].encode()).hexdigest()for n in selected}

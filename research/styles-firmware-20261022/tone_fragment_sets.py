@@ -5,7 +5,8 @@ the helper call site; outer sampling/color transforms/skin/style are omitted.
 """
 from dataclasses import dataclass
 from semantic_tone import I,SemanticSetResult
-from semantic_caller import runtime_semantic_set,mixed_guide_set
+from semantic_caller import runtime_semantic_set,mixed_guide_set,prepare_intervals
+from precomputed_semantic import PrecomputedInputs,forward_set as precomputed_set
 from bgfg_tone import PixelContext,PixelResult,run
 
 
@@ -23,8 +24,12 @@ class FragmentResult:
 def forward(inputs,fields,*,cast_type,baseline_exposure,guide_texture8,guide_texture9,skin_weight,texture6_present: bool,texture7_present: bool,leaf_models=None):
     if type(texture6_present)is not bool or type(texture7_present)is not bool:raise ValueError('Explicit presence of both precomputed semantic textures required')
     if texture6_present and texture7_present:
-        return FragmentResult('unknown_precomputed_semantic_path',None,None,None,None,None)
-    semantic=runtime_semantic_set(inputs,fields,cast_type=cast_type,baseline_exposure=baseline_exposure)
+        if not isinstance(inputs,PrecomputedInputs):return FragmentResult('unknown_precomputed_inputs',None,None,None,None,None)
+        lo,hi=prepare_intervals(fields,cast_type=cast_type,baseline_exposure=baseline_exposure)
+        semantic=precomputed_set(inputs,lo,hi,input_branches=fields.branch_decisions)
+    else:
+        if isinstance(inputs,PrecomputedInputs):raise ValueError('Fallback path needs its own working/GTC inputs; no equivalence assumed')
+        semantic=runtime_semantic_set(inputs,fields,cast_type=cast_type,baseline_exposure=baseline_exposure)
     guide=mixed_guide_set(fields,guide_texture8,guide_texture9,inputs.person_weight,cast_type=cast_type,baseline_exposure=baseline_exposure)
     context=PixelContext(guide,inputs.person_weight,skin_weight);rgb=I(semantic.lower,semantic.upper)
     if guide.lo<0 or guide.hi>1:return FragmentResult('unknown_guide_domain',semantic,guide,None,None,None)

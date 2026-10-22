@@ -24,7 +24,7 @@ class FragmentSetTests(unittest.TestCase):
 
     def test_both_precomputed_textures_do_not_enter_the_fallback_helper_model(self):
         r=forward(inputs(),packet(),cast_type=0,baseline_exposure=1,guide_texture8=.4,guide_texture9=.5,skin_weight=.2,texture6_present=True,texture7_present=True)
-        self.assertEqual(r.status,'unknown_precomputed_semantic_path');self.assertIsNone(r.semantic);self.assertIsNone(r.output)
+        self.assertEqual(r.status,'unknown_precomputed_inputs');self.assertIsNone(r.semantic);self.assertIsNone(r.output)
 
 
 if __name__=='__main__':unittest.main()

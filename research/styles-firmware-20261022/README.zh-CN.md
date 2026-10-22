@@ -20,6 +20,8 @@ cast表与负Tone见 [PROGRESS-S7.zh-CN.md](PROGRESS-S7.zh-CN.md)：复用同一
 
 边界集合、真实枚举与semantic helper见 [PROGRESS-S9.zh-CN.md](PROGRESS-S9.zh-CN.md)：12组相邻f32探针只验集合覆盖；未决状态/范围随接口传播，默认禁止未决中心打包。scene输入1/2/3→3/7/10，其他→4；code21在此resolver不可达，S8该算术测试属反事实。tuning实际8个键映射1..8，未知键走错误冷路径，不能默认0。全部215资源头中8个相关模块及CPU拷贝/别名仍未找到9槽读取，保留unresolved。完整semantic helper新宿主136组/408分量逐位差异0，但用显式宿主采样shim，且实际仅texture6或7缺失时调用。BG/FG推进到分离门控/顺序、集合接口和共享mids，受控48组/144分量逐位差异0；其他叶算子返回unknown。81项单元测试通过，仍没有完整GPU/照片管线认证。
 
+预计算semantic与首批共享叶见 [PROGRESS-S10-A.zh-CN.md](PROGRESS-S10-A.zh-CN.md)：AIR参数6/7是Metal8/9的BG/FG LTM gain map，补齐CPU生产/引导滤波/绑定和ROI byte48/64。显式供给两张纹理的block290新27组81分量宿主对照逐位差异0，集合后传接入原接口。whitesCurve两mode共30组、contrast15组、airy8个有限域非零激活案例逐位差异0；另2个airy全黑案例保留domain unknown。上述均使用明确宿主数学/sampler假设，不是GPU或完整照片管线认证；继续补Shadows及其余叶。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|
