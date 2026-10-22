@@ -1,0 +1,22 @@
+{
+  "label": "s24-targeted-tests",
+  "pre_run_binding_sha256": "f6576d218c9fa924baf8432193054c795cca49df72780ffd7745957241c9f56b",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "37531b63ee9e4e6de930c7fd6dd36b6a3c7aac8cb206e1d3fe433723dac05253",
+  "elapsed_seconds": 0.17299604415893555,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_traceable_baseline.py",
+    "-v"
+  ]
+}
