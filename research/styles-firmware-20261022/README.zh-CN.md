@@ -8,6 +8,8 @@
 
 现有OS资源阶段见 [PROGRESS-S3.zh-CN.md](PROGRESS-S3.zh-CN.md)：仍新增下载0B；92对相关CMImaging AIR模块中91对在明确限定的内部符号改名/平台与编译器标识例外下全文相等，接回既有UnderEye/SkinSmooth/Mattify等条件算子；保留StyleEngine::Apply的fract实现差异。当前27项单元测试通过，未把静态相等升级为iOS GPU或完整拍摄链认证。
 
+条件prior算子见 [PROGRESS-S4.zh-CN.md](PROGRESS-S4.zh-CN.md)：新增5项测试，共32项通过；原AIR108/109宿主重编译的310次kernel共18058次写入，与显式f32模型有4855个逐位差异，max绝对误差7.63e-6、保守舍入界越界0。它是系数buffer单位模型，未执行原iOS CPU/GPU、未补tone→CCM或原人物统计。
+
 ## 版本映射
 
 |证据|实际核验|尚未证明|
