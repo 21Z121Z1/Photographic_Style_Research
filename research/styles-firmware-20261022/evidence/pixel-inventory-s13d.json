@@ -148,8 +148,16 @@
       "helper": "protectMaskFilter",
       "symbol": "_Z17protectMaskFilterDv3_DhS_S_S_b",
       "function_text_sha256": "1e7ed045795940d7dde1f84b7a5f1be7d1087b1d07f1a3e587ca7520e94a728c",
-      "coverage": "pixel algorithm/connection not modeled in this task",
-      "source_line": 1096
+      "coverage": "shared protect helper reused; mainSSA502..566 true-ignore-chroma path covered by S12-D, finite supplied-context host/set domains only",
+      "source_line": 1096,
+      "coverage_evidence": {
+        "report": "PROGRESS-S12-D.zh-CN.md",
+        "host_receipt": "evidence/native-postprotect-s12d.json",
+        "current_model_replay": "evidence/postprotect-replay-s12d.json",
+        "main_region": "502..566",
+        "ignore_chroma": true,
+        "new_native_calls": 0
+      }
     },
     {
       "main_SSA_result": 567,

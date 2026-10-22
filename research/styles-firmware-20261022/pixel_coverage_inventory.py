@@ -29,6 +29,7 @@ MAPPED={
     'renderBWAdjustmentsByCastType':'actual BW477 root computed; independent stark/tonal observations and zero-domain unknowns',
     'renderVideoHazeCorrection':'complete eight-field root; original guide211, independent internal unknown and main501 gate',
     'renderChannelMixForBWCasts':'complete raw-code root plus actual stats-derived weights; cast15 black0/0 unknown',
+    'protectMaskFilter':'shared protect helper reused; mainSSA502..566 true-ignore-chroma path covered by S12-D, finite supplied-context host/set domains only',
 }
 
 
@@ -43,7 +44,9 @@ def inventory(source):
         body=definitions[name];label=short(name)
         if 'linearFromCurved'in name:label='linearFromCurved'
         elif 'curvedFromLinear'in name:label='curvedFromLinear'
-        edges.append({'main_SSA_result':int(ssa),'helper':label,'symbol':name,'function_text_sha256':hashlib.sha256(body.encode()).hexdigest(),'coverage':MAPPED.get(label,'pixel algorithm/connection not modeled in this task'),'source_line':source.count('\n',0,source.index(body))+1})
+        edge={'main_SSA_result':int(ssa),'helper':label,'symbol':name,'function_text_sha256':hashlib.sha256(body.encode()).hexdigest(),'coverage':MAPPED.get(label,'pixel algorithm/connection not modeled in this task'),'source_line':source.count('\n',0,source.index(body))+1}
+        if int(ssa)==557 and label=='protectMaskFilter':edge['coverage_evidence']={'report':'PROGRESS-S12-D.zh-CN.md','host_receipt':'evidence/native-postprotect-s12d.json','current_model_replay':'evidence/postprotect-replay-s12d.json','main_region':'502..566','ignore_chroma':True,'new_native_calls':0}
+        edges.append(edge)
     return {'reference':{'hardware_model':'iPhone17,3','OS_build':'24A446','internal_bundle_class':'SmartStyleV1 / CMISmartStyleProcessorV1','IMG_2810_exact_capture_build':'unknown; separate identity'},'main_function_sha256':hashlib.sha256(main[1].encode()).hexdigest(),'direct_pixel_calls':edges,'precomputed_semantic_block290':{'conditional_model':'explicit post-guided-filter texture6/7 inputs; accepted isolated27-call host check','producer_now_modeled':'AIR7 sampled24/98/matte30 color core, original SRL/transfer/CCM/gain/GTC/ratio, then original matched guided3 CPU passes and conditional sets','remaining_connection':'source2D texel sampling identity, guide/epsilon/format caller context and producer-to-block290 ROI set sampling/composition are not verified'},'main_remaining_connections':['early main input/CCM/guide and outer RichSat/smoothSat selections before393 are not a complete composed host verification','full producer-to-consumer-to600 same-frame composition not verified','final imageblock/ROI/texture write not executed'],'known_numeric_limits':['24 all-active helper calls have set-domain unknowns; point checks do not remove them','old8 leaf-domain unknowns retained','bright and earlier tonal/skin/neutralizing point differences retained','cast15 black0/0, transfer8 selected zero divisor, black HDR gain remain unknown','guided composed image boxes can reach width155.125; finite coverage is not inverse precision','2u/4u and host sampler are assumptions, not measured GPU error','nine unresolved fields retain unknown consumers; no repeated same-range consumer scan'],'scope':'Updated conditional operator and connection inventory; local model work is distinguished from original GPU/frame dependencies.','GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
 
 
