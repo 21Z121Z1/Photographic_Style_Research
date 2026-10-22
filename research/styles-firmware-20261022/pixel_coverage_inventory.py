@@ -11,12 +11,12 @@ from leaf_host import short
 
 MAPPED={
     'renderSemanticToneAdjustments':'fallback semantic model; accepted isolated host check',
-    'renderBGAdjustments':'all leaf algorithms; fixed-field host and conditional set coverage only',
-    'renderFGAdjustments':'all leaf algorithms; fixed-field host and conditional set coverage only',
+    'renderBGAdjustments':'S20 saved S14C case0 BG set produced, width13548.88; broad conditional coverage is not runtime/numeric accuracy',
+    'renderFGAdjustments':'all leaf algorithms; S20 saved S14C case0 next fails at FG contrast with half amount0.02000427, outside admitted BG contrast domain',
     'RichSat':'reused leaf; actual outer355..392 color/boost/person mixing connected inS14C, known point domains only; black/whole-set unknowns retained',
-    'smoothSatFilter':'reused leaf; actual nonpositive outer355..392 branch and person mixing connected inS14C; no complete-set claim',
+    'smoothSatFilter':'S20 source-checked f32/half neutral raw-color0 path carries shared RGB/Lab roots and roundtrip displacement through392; other gains retain old model',
     'airyFilter':'reused leaf and outer tonal/BW root; finite host domains and unknowns retained',
-    'contrastFilter':'S19 guarded cell0/sorted7/exact saved-parent cover admitted by default; saved64 all bounded, parent width9483; complete BG next fails at whitesCurve',
+    'contrastFilter':'S19 guarded BG cell0/sorted7/exact saved-parent cover retained; S20 saved S14C case0 advances through BG whites then fails at FG contrast amount0.02000427; no complete-set accuracy claim',
     'applySemanticSRL':'AIR7 complete helper model; targeted AIR10 text equality except attribute group IDs; caller connection still explicit',
     'linearFromCurved':'raw transfer branches; code3 reuses existing decode; specialized code8 selected zero-divisor unknown',
     'curvedFromLinear':'raw output transfer branches; connected568..600 with explicit gain/CCM',
@@ -25,7 +25,7 @@ MAPPED={
     'renderBrightAndContrast':'complete conditional helper; S17 saved context point residuals0 under scoped CPU half-FMA contract; other domains and set unknowns retained',
     'renderNeutralizingAdjustments':'complete current caller model using full cast and supplied stats',
     'renderWarmthCastAdjustments':'complete conditional root; unproved negative pow sets retained',
-    'renderSelectiveColorAdjustments':'conditional root using explicit lookup; S17 strict neutral joint Lab/inverse/gamma error enclosure; negative outer pow domains still unknown',
+    'renderSelectiveColorAdjustments':'S20 shared RGB relation reaches neutral selective in all12 frozen pixels; RGB110 excluded upstream, other negative outer bases retain12 pow unknowns',
     'renderBWAdjustmentsByCastType':'actual BW477 root computed; independent stark/tonal observations and zero-domain unknowns',
     'renderVideoHazeCorrection':'complete eight-field root; original guide211, independent internal unknown and main501 gate',
     'renderChannelMixForBWCasts':'complete raw-code root plus actual stats-derived weights; cast15 black0/0 unknown',
@@ -59,17 +59,17 @@ def inventory(source):
         'main_prefix_through392':{'known_complete_point_contexts':4,'unknown_point_contexts':1,'unknown_whole_set_contexts':5,'17_independent_observations':'175 known half components bit0, post-semantic35f32 bit0','report':'PROGRESS-S14-C.zh-CN.md'},
         'final_writer':{'conditional_model':'supplied RGB600 to original RGBA pack/ROI direct or phased imageblock copy, explicit RGBA16 storage only','tests':'S14D seven new tiles; three saved witnesses after diagnostic memory-summary widening; invalid phase rejected','report':'PROGRESS-S14-D.zh-CN.md','original_GPU_or_multithreaded_imageblock':False},
         'complete_conditional_forward':{
-            'report':'PROGRESS-S17.zh-CN.md','fixture':'evidence/complete-context-s15a.json','host_receipt':'evidence/native-complete-s15a.json','current_replay':'evidence/selective-replay-s17a.json',
+            'report':'PROGRESS-S20.zh-CN.md','fixture':'evidence/complete-context-s15a.json','host_receipt':'evidence/native-complete-s15a.json','current_replay':'evidence/shared-color-s20b.json',
             'actual_chain':'same raw synthetic3x4 context: AIR7 -> guided -> complete original main ->600 -> direct writer',
             'strict_scope':'cast0 / tuning2 / neutralBGFG / zero lookup; one saved synthetic context',
             'historical_S15_original_calls':102,'additional_S16_diagnostic_main_calls':6,'additional_S17_diagnostic_main_calls':2,
             'point_model':'1938 saved half components bit0 after scoped CPU half-FMA149 correction; not1938 independent cases',
-            'whole_sets':'12 pixels still unknown atselective413; known preceding ranges covered, warm width1.73493; converted joint width1.88428,gamma1; no writer set output',
+            'whole_sets':'S20 all12 remain unknown atselective413,24 unselected internal unknowns; saturated width.74512 and392/warm.66693; RGB110 excluded but converted min lower-.192871; no writer set',
             'auxiliary_producers':'guide8/9,person/skin/sky,statistics,lookup,curves,34cast/coefficients and input identity remain explicit'},
         'local_enclosures':{
-            'neutral_selective':'S19 observed same-frame host warm cloud has local positive enclosure under existing selective budgets; never substituted into full upstream sets; S18 RGB110 negative full-clamp witness retained',
-            'BG_contrast':'cell0 plus strictly admitted sorted7 and exact saved64 parent cover; all64 bounded, original half quotient/product and else preserved; parent width9483 is not precision'},
-        'latest_stage':{'report':'PROGRESS-S19.zh-CN.md','default_BG_replay':'evidence/contrast-default-s19a.json','same_frame_domain':'evidence/selective-sameframe-s19b.json','historical_full_clamp_witness':'evidence/selective-domain-s18b.json','new_original_host_calls':0,'full_upstream_selective_negative_reachability':'unknown'},
+            'neutral_selective':'S20 complete propagation uses joint RGB/LMS/root and original mix half errors; no observed warm substitution; all12 other negative-base domains remain unknown',
+            'BG_contrast':'S19 admitted64 parent cover retained, width9483; S20 whites proves original product then quotient finite under supplied zero-origin curve contract, moves S14C failure to FG contrast'},
+        'latest_stage':{'report':'PROGRESS-S20.zh-CN.md','complete_frame_replay':'evidence/shared-color-s20b.json','whites_case0_replay':'evidence/whites-joint-s20c.json','precision_contract':'evidence/color-joint-contract-s20a.json','pre_run_test_binding':'evidence/test-binding-s20d.pre.json','new_original_host_calls':0,'full_upstream_selective_negative_reachability':'unknown'},
         'unfinished_software_tracking':{
             'receipt':'evidence/consumer-paths-s18c.json','consumer_slots':9,
             'hardware_wait_required_to_continue_static_tracking':False,
@@ -77,7 +77,7 @@ def inventory(source):
         'main_remaining_connections':[
             'original iOS/GPU and same-frame chain unverified; finite synthetic conditional point chain is connected through writer',
             '12 selective pow domains, unselected internal domains and wider pre393 BG/FG set domains remain software work',
-            'S19 default contrast64 bounded; complete S14C case0 now fails at whitesCurve (changed*c)/z; no completeBG or originalGPU acceptance',
+            'S20 saved S14C case0 produces broad BG set, then FG contrast quotient finite-budget unknown; no whole-runtime or originalGPU acceptance',
             'other output pixel encodings and original multi-thread GPU behavior are unverified'],
         'known_numeric_limits':[
             '24 old all-active helper set unknowns and old8 leaf-domain unknowns retained without rerun',
@@ -86,10 +86,10 @@ def inventory(source):
             'old155.125 and17941.5513 envelopes retained as historical evidence, not accuracy',
             'S14B five guided mismatches diagnosed in S15B/S16; saved fixture replays bit0 do not prove GPU order',
             'S16 diagnostic48 positive domains remain historical; S19 default64 boxes and sorted42 positive/42else are distinct counts, no new independent host cases',
-            'same-frame observed input exclusion is local only; upstream independence first admits clamp RGB110 at saturated374, full12 selective domains remain unknown',
+            'S19 local observed-input exclusion remains separate; S20 complete upstream boxes exclude RGB110 but12 other converted-negative outer domains remain unproved',
             '2u/4u, host math and sampler are assumptions, not measured GPU error',
             'nine unresolved coefficient consumers are unfinished software tracking; no repeated same-range scan'],
-        'scope':'S19 conditional coverage inventory; default paths, local observed-input bounds, upstream reachability and originalGPU claims remain distinct.',
+        'scope':'S20 conditional coverage inventory; new source hashes bound before validation; S19 recovery hash/mtime limitation preserved; originalGPU/realframe/inverse unverified.',
         'GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
 
 

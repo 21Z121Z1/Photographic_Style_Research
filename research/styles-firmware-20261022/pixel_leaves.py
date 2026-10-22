@@ -26,12 +26,23 @@ def columns(rgb,values):
     return (rgb[0]*cols[0]+rgb[1]*cols[1])+rgb[2]*cols[2]
 
 
-def whites_curve(rgb: V,amount: V,curve,mode: V):
+def whites_curve(rgb: V,amount: V,curve,mode: V,*,observations=None):
     work=columns(rgb,[['383c','2e4c','2452'],['3548','3afd','2f88'],['307f','2734','3aec']])
     c=work.clamp().pow(H(hc('3872'),rgb));z=c.min_channels()
     target=select(z.gt(H(hc('3a00'),rgb)),H(1,rgb),curve_sample(z,curve).clamp())
     changed=mix(z,target,amount)
-    first=lazy_select(z.gt(0),lambda:mix(c,(changed*c)/strictly_positive_branch(z),z),lambda:c)
+    def first_positive():
+        denominator=strictly_positive_branch(z);product=changed*c
+        if observations is not None:observations.update(product42=product,positive_z=denominator)
+        try:quotient=product/denominator
+        except DomainUnknown:
+            if rgb.point:raise
+            from whites_joint_ratio import enclose
+            joint=enclose(c,denominator,amount,curve);quotient=joint.quotient
+            if observations is not None:observations['joint_quotient_proof']=joint.proof
+        if observations is not None:observations['quotient45']=quotient
+        return mix(c,quotient,z)
+    first=lazy_select(z.gt(0),first_positive,lambda:c)
     second=mix(c,(c-z)+changed,mix(z,changed,mode))
     value=exterior(work)+mix(first,second,z).clamp().pow(H(hc('3f33'),rgb))
     return columns(value,[['4011','b353','a060'],['b9d2','3ced','b0e8'],['b4e9','99de','3ca6']]).maximum(0)

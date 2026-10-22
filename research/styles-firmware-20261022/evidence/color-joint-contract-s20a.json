@@ -1,0 +1,116 @@
+{
+  "scope": "Check AIR10 neutral smoothSat/core precision and caller392 before reuse.",
+  "reference": "iPhone17,3 /24A446 AIR10",
+  "smooth_function_sha256": "5163cdebd82f65a95aa8307c0e526c38db38e8e9ce0e174bb8c03997a901e065",
+  "smooth_source_line": 4508,
+  "main_function_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+  "whites_function_sha256": "24891f62760ca4d1001b6b952ac68534d75114abe001912a04d4f916db18977d",
+  "constant_rows": [
+    {
+      "SSA": 6,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "8004b658c3269900c94db9641e8f431de99b02f6e5c8ff2fc5bed836becdafae"
+    },
+    {
+      "SSA": 8,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "71435e773f04f631021812062b72615cfbe4f1ce82f51edc3d1a7df8446789c8"
+    },
+    {
+      "SSA": 11,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "49aeed82adeb61b9388de5cdd6911450cbbe4072078f000647be62e2dc919dad"
+    },
+    {
+      "SSA": 15,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "8d894fb0502191ead2e22807ac03c9a7b63100a401b0c1971bb87fc3e8c5fb62"
+    },
+    {
+      "SSA": 18,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "342830d3dab49d63d2edff8ba3cb1032f985e430d283b7df0047b6004324523f"
+    },
+    {
+      "SSA": 20,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "4522ee330787fdae88d7131ff988fc86e3ceeb26988dc6ee7fc5e5e989bee8ed"
+    },
+    {
+      "SSA": 23,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "049c53e65732783fa7a251478382fbf38583561daf4f010d522ace280dde3a03"
+    },
+    {
+      "SSA": 51,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "6bf7e5d9e3fd70b50175b0b33b10475e9155023de60054c76b6215e96b3bda1d"
+    },
+    {
+      "SSA": 54,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "bc09d187beaffed2cccd07a49e718ce3a4c85f6d82ff915c70582eb279b1809d"
+    },
+    {
+      "SSA": 58,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "bb7a2b3b85914b2dd42db0870185f1074a3d1f1c2371eeda745a51d849c07872"
+    },
+    {
+      "SSA": 61,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "c182d24019a1669c252eed789b15807e03481bc7fea416f0898ad1cd0cee09ea"
+    },
+    {
+      "SSA": 63,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "41b31f764fcd02a7d429f06b5b8383ddc619186c38606551388eed14d443dfd9"
+    },
+    {
+      "SSA": 66,
+      "literal_match": true,
+      "f32_operation": true,
+      "instruction_sha256": "a6afb7daf75904ebb7ddb26634aa4b238c0df23adb3165bfff198d82d9eca044"
+    }
+  ],
+  "precision_checks": {
+    "Lab_half25": true,
+    "dot_half36": true,
+    "sqrt_half37": true,
+    "radius_gain_half41": true,
+    "cos_half42": true,
+    "sin_half45": true,
+    "inverse_half_input48": true,
+    "converted_half68": true,
+    "original_clamp69": true,
+    "original_final_half71": true,
+    "gain_branch_f3273": true
+  },
+  "caller_checks": {
+    "zero_color_square_half361": true,
+    "gain_half364": true,
+    "mix_half392": true,
+    "smooth_gain364": true
+  },
+  "whites_order_checks": {
+    "product_half42": true,
+    "division_half45": true,
+    "index_half22": true
+  },
+  "all_match": true,
+  "reuse_condition": "set backend; exact raw color3 zero -> actual half gain1; gray-gain branch false; original exterior and clamp retained",
+  "native_calls": 0,
+  "original_GPU_verified": false
+}

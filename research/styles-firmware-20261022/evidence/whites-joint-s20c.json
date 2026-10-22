@@ -1,0 +1,774 @@
+{
+  "scope": "Only original S14C case0: product/quotient proof and next actual failure.",
+  "native_receipt_sha256": "af5656e829016d0f14d4346ade2ccdd6eb8072cb7686290dcb1c0e704457f573",
+  "new_original_host_calls": 0,
+  "leaf_trace": [
+    {
+      "leaf": "shadows",
+      "input": {
+        "lo": [
+          0.03907635530491314,
+          -0.01343027284803542,
+          0.026304302938806107
+        ],
+        "hi": [
+          0.3835693196361074,
+          0.3716119780652653,
+          0.2744496347600065
+        ],
+        "max_width": 0.38504225091330074
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.18476376226045024,
+          "hi": 0.36683556605839335,
+          "max_width": 0.1820718037979431
+        },
+        {
+          "lo": 0.040008544921875,
+          "hi": 0.040008544921875,
+          "max_width": 0.0
+        }
+      ],
+      "status": "known",
+      "output": {
+        "lo": [
+          0.0,
+          -0.014420070058153133,
+          0.0
+        ],
+        "hi": [
+          0.9401097123345006,
+          1.000976622104645,
+          0.679305245082874
+        ],
+        "max_width": 1.0153966921627982
+      }
+    },
+    {
+      "leaf": "contrast",
+      "input": {
+        "lo": [
+          0.0,
+          -0.014420070058153133,
+          0.0
+        ],
+        "hi": [
+          0.9401097123345006,
+          1.000976622104645,
+          0.679305245082874
+        ],
+        "max_width": 1.0153966921627982
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.029998779296875,
+          "hi": 0.029998779296875,
+          "max_width": 0.0
+        }
+      ],
+      "division_failures": [
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 26.817537665957076,
+            "max_width": 26.817537665957076
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 1.001954197941814,
+            "max_width": 1.0019441843614918
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.6368905681545636,
+            "max_width": 1.6368905681545636
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.24969115881882717,
+            "max_width": 0.2496811452385049
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.624179965569512,
+            "max_width": 1.624179965569512
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.3544185263181018,
+            "max_width": 0.3544085127377795
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.588481517398278,
+            "max_width": 1.588481517398278
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.48494810587519027,
+            "max_width": 0.484938092294868
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.0805748435973115,
+            "max_width": 1.0805748435973115
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.32376789541650086,
+            "max_width": 0.3237578818361786
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.049664424744841,
+            "max_width": 1.049664424744841
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.27471958438173816,
+            "max_width": 0.2747095708014159
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.1584323097847837,
+            "max_width": 1.1584323097847837
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.4661079803078063,
+            "max_width": 0.46609796672748405
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 1.0797277886310996,
+            "max_width": 1.0797277886310996
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.40787281076242915,
+            "max_width": 0.4078627971821069
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        },
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 0.9806623036315246,
+            "max_width": 0.9806623036315246
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 0.27734323120534066,
+            "max_width": 0.2773332176250184
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        }
+      ],
+      "status": "known",
+      "output": {
+        "lo": [
+          -3143.8942804675803,
+          -3321.1046297630833,
+          -1511.3933272929967
+        ],
+        "hi": [
+          6339.106544893504,
+          3321.850358273403,
+          4677.960603872463
+        ],
+        "max_width": 9483.000825361085
+      }
+    },
+    {
+      "leaf": "whites_curve",
+      "input": {
+        "lo": [
+          -3143.8942804675803,
+          -3321.1046297630833,
+          -1511.3933272929967
+        ],
+        "hi": [
+          6339.106544893504,
+          3321.850358273403,
+          4677.960603872463
+        ],
+        "max_width": 9483.000825361085
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.040008544921875,
+          "hi": 0.040008544921875,
+          "max_width": 0.0
+        },
+        {
+          "lo": 0.0,
+          "hi": 0.0,
+          "max_width": 0.0
+        }
+      ],
+      "division_failures": [
+        {
+          "numerator": {
+            "lo": [
+              -0.042283858252601905,
+              -0.042283858252601905,
+              -0.042283858252601905
+            ],
+            "hi": [
+              1.046115745688194,
+              1.046115745688194,
+              1.046115745688194
+            ],
+            "max_width": 1.088399603940796
+          },
+          "denominator": {
+            "lo": 5.960464477539063e-08,
+            "hi": 1.001953184604645,
+            "max_width": 1.0019531250000002
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        }
+      ],
+      "status": "known",
+      "output": {
+        "lo": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hi": [
+          13404.54297888133,
+          5234.079285422691,
+          5844.3238104922975
+        ],
+        "max_width": 13404.54297888133
+      },
+      "whites_observations": {
+        "product42": {
+          "lo": [
+            -0.042283858252601905,
+            -0.042283858252601905,
+            -0.042283858252601905
+          ],
+          "hi": [
+            1.046115745688194,
+            1.046115745688194,
+            1.046115745688194
+          ],
+          "max_width": 1.088399603940796
+        },
+        "positive_z": {
+          "lo": 5.960464477539063e-08,
+          "hi": 1.001953184604645,
+          "max_width": 1.0019531250000002
+        },
+        "joint_quotient_proof": {
+          "source": "AIR10 whitesCurve z18,target31,changed32,product42,division45",
+          "curve_knots": 17,
+          "curve_origin": 0,
+          "max_table_value_over_coordinate": 1.0,
+          "curve_Lipschitz": 1.09375,
+          "host_sampler_float_error": 4.401555388528425e-06,
+          "target_upper_A_z_plus_B": [
+            1.3333333333360002,
+            4.437236017171041e-06
+          ],
+          "changed_absolute_upper_C_z_plus_D": [
+            1.094603597069828,
+            2.9970481647603476e-07
+          ],
+          "original_mix_intermediate_absolute_upper": {
+            "target_minus_z": 2.3401783617080554,
+            "difference_times_amount": 0.09371862346127814,
+            "changed": 1.0967418596708243
+          },
+          "original_z_positive_lo": 5.960464477539063e-08,
+          "original_z_hi": 1.001953184604645,
+          "original_product42_absolute_upper": [
+            1.099957187496308,
+            1.099957187496308,
+            1.099957187496308
+          ],
+          "original_quotient45_absolute_upper": [
+            7.147739484529242,
+            7.147739484529242,
+            7.147739484529242
+          ],
+          "product_proved_finite_before_quotient": true,
+          "original_product_then_divide_order_preserved": true,
+          "numerator_zero_or_endpoint_reachability_not_inferred": true,
+          "budgets_threshold_epsilon_mask_unchanged": true,
+          "sampler_contract": "explicit host piecewise-linear/clamp supplied half table with2u float-operation allowances and correct half conversion; originalGPU unverified"
+        },
+        "quotient45": {
+          "lo": [
+            -7.147739484529242,
+            -7.147739484529242,
+            -7.147739484529242
+          ],
+          "hi": [
+            7.147739484529242,
+            7.147739484529242,
+            7.147739484529242
+          ],
+          "max_width": 14.295478969058484
+        }
+      }
+    },
+    {
+      "leaf": "mids",
+      "input": {
+        "lo": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hi": [
+          13404.54297888133,
+          5234.079285422691,
+          5844.3238104922975
+        ],
+        "max_width": 13404.54297888133
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.024993896484375,
+          "hi": 0.024993896484375,
+          "max_width": 0.0
+        }
+      ],
+      "status": "known",
+      "output": {
+        "lo": [
+          -39.308507860295556,
+          -15.348219014895916,
+          -17.137791263861143
+        ],
+        "hi": [
+          13443.851486741632,
+          5249.427504437589,
+          5861.461601756162
+        ],
+        "max_width": 13483.159994601929
+      }
+    },
+    {
+      "leaf": "smooth_sat",
+      "input": {
+        "lo": [
+          -39.308507860295556,
+          -15.348219014895916,
+          -17.137791263861143
+        ],
+        "hi": [
+          13443.851486741632,
+          5249.427504437589,
+          5861.461601756162
+        ],
+        "max_width": 13483.159994601929
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.9501953125,
+          "hi": 0.9501953125,
+          "max_width": 0.0
+        }
+      ],
+      "status": "known",
+      "output": {
+        "lo": [
+          -65.60352667845936,
+          -25.615051425901083,
+          -28.601754384790954
+        ],
+        "hi": [
+          13483.274290274428,
+          5264.819754393004,
+          5878.648671969664
+        ],
+        "max_width": 13548.877816952889
+      }
+    },
+    {
+      "leaf": "whites_curve",
+      "input": {
+        "lo": [
+          -4148.823544504465,
+          -1620.0004053269465,
+          -1808.8650734080763
+        ],
+        "hi": [
+          13524.28625694942,
+          5280.900272542787,
+          5896.561706339479
+        ],
+        "max_width": 17673.109801453884
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.0200042724609375,
+          "hi": 0.0200042724609375,
+          "max_width": 0.0
+        },
+        {
+          "lo": 1.0,
+          "hi": 1.0,
+          "max_width": 0.0
+        }
+      ],
+      "division_failures": [
+        {
+          "numerator": {
+            "lo": [
+              -0.022122878478075415,
+              -0.022122878478075415,
+              -0.022122878478075415
+            ],
+            "hi": [
+              1.0259939142655667,
+              1.0259939142655667,
+              1.0259939142655667
+            ],
+            "max_width": 1.0481167927436421
+          },
+          "denominator": {
+            "lo": 5.960464477539063e-08,
+            "hi": 1.001953184604645,
+            "max_width": 1.0019531250000002
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        }
+      ],
+      "status": "known",
+      "output": {
+        "lo": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hi": [
+          21902.6663600815,
+          8287.089286072072,
+          7279.593625779424
+        ],
+        "max_width": 21902.6663600815
+      },
+      "whites_observations": {
+        "product42": {
+          "lo": [
+            -0.022122878478075415,
+            -0.022122878478075415,
+            -0.022122878478075415
+          ],
+          "hi": [
+            1.0259939142655667,
+            1.0259939142655667,
+            1.0259939142655667
+          ],
+          "max_width": 1.0481167927436421
+        },
+        "positive_z": {
+          "lo": 5.960464477539063e-08,
+          "hi": 1.001953184604645,
+          "max_width": 1.0019531250000002
+        },
+        "joint_quotient_proof": {
+          "source": "AIR10 whitesCurve z18,target31,changed32,product42,division45",
+          "curve_knots": 17,
+          "curve_origin": 0,
+          "max_table_value_over_coordinate": 1.0,
+          "curve_Lipschitz": 1.09375,
+          "host_sampler_float_error": 4.401555388528425e-06,
+          "target_upper_A_z_plus_B": [
+            1.3333333333360002,
+            4.437236017171041e-06
+          ],
+          "changed_absolute_upper_C_z_plus_D": [
+            1.047790079784914,
+            2.0948615684386476e-07
+          ],
+          "original_mix_intermediate_absolute_upper": {
+            "target_minus_z": 2.3401783617080554,
+            "difference_times_amount": 0.04685934153396146,
+            "changed": 1.0498368167259065
+          },
+          "original_z_positive_lo": 5.960464477539063e-08,
+          "original_z_hi": 1.001953184604645,
+          "original_product42_absolute_upper": [
+            1.0529146351706293,
+            1.0529146351706293,
+            1.0529146351706293
+          ],
+          "original_quotient45_absolute_upper": [
+            5.581205055167994,
+            5.581205055167994,
+            5.581205055167994
+          ],
+          "product_proved_finite_before_quotient": true,
+          "original_product_then_divide_order_preserved": true,
+          "numerator_zero_or_endpoint_reachability_not_inferred": true,
+          "budgets_threshold_epsilon_mask_unchanged": true,
+          "sampler_contract": "explicit host piecewise-linear/clamp supplied half table with2u float-operation allowances and correct half conversion; originalGPU unverified"
+        },
+        "quotient45": {
+          "lo": [
+            -5.581205055167994,
+            -5.581205055167994,
+            -5.581205055167994
+          ],
+          "hi": [
+            5.581205055167994,
+            5.581205055167994,
+            5.581205055167994
+          ],
+          "max_width": 11.162410110335989
+        }
+      }
+    },
+    {
+      "leaf": "contrast",
+      "input": {
+        "lo": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "hi": [
+          21902.6663600815,
+          8287.089286072072,
+          7279.593625779424
+        ],
+        "max_width": 21902.6663600815
+      },
+      "other_numeric_inputs": [
+        {
+          "lo": 0.0200042724609375,
+          "hi": 0.0200042724609375,
+          "max_width": 0.0
+        }
+      ],
+      "division_failures": [
+        {
+          "numerator": {
+            "lo": 0.0,
+            "hi": 22010.345031575573,
+            "max_width": 22010.345031575573
+          },
+          "denominator": {
+            "lo": 1.0013580322265625e-05,
+            "hi": 21924.055682758375,
+            "max_width": 21924.055672744795
+          },
+          "reason": "Finite arithmetic budget exceeded"
+        }
+      ],
+      "status": "unknown",
+      "reason": "Finite arithmetic budget exceeded"
+    }
+  ],
+  "unknown_stage": "FG354",
+  "unknown_reason": "Finite arithmetic budget exceeded",
+  "first_unhandled_leaf": {
+    "leaf": "contrast",
+    "input": {
+      "lo": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hi": [
+        21902.6663600815,
+        8287.089286072072,
+        7279.593625779424
+      ],
+      "max_width": 21902.6663600815
+    },
+    "other_numeric_inputs": [
+      {
+        "lo": 0.0200042724609375,
+        "hi": 0.0200042724609375,
+        "max_width": 0.0
+      }
+    ],
+    "division_failures": [
+      {
+        "numerator": {
+          "lo": 0.0,
+          "hi": 22010.345031575573,
+          "max_width": 22010.345031575573
+        },
+        "denominator": {
+          "lo": 1.0013580322265625e-05,
+          "hi": 21924.055682758375,
+          "max_width": 21924.055672744795
+        },
+        "reason": "Finite arithmetic budget exceeded"
+      }
+    ],
+    "status": "unknown",
+    "reason": "Finite arithmetic budget exceeded"
+  },
+  "known_prefix_coverage": {
+    "source38": {
+      "covered": true,
+      "lo": [
+        0.49951171875,
+        0.449462890625,
+        0.3994140625
+      ],
+      "hi": [
+        0.5205078125,
+        0.470458984375,
+        0.410400390625
+      ],
+      "max_width": 0.02099609375
+    },
+    "skin95": {
+      "covered": true,
+      "lo": 0.249755859375,
+      "hi": 0.270263671875,
+      "max_width": 0.0205078125
+    },
+    "person96": {
+      "covered": true,
+      "lo": 0.3994140625,
+      "hi": 0.430419921875,
+      "max_width": 0.031005859375
+    },
+    "SRL134": {
+      "covered": true,
+      "lo": [
+        0.49951171875,
+        0.449462890625,
+        0.3994140625
+      ],
+      "hi": [
+        0.5205078125,
+        0.470458984375,
+        0.410400390625
+      ],
+      "max_width": 0.02099609375
+    },
+    "linear137": {
+      "covered": true,
+      "lo": [
+        0.212004324930164,
+        0.16893188810818605,
+        0.13148567511298886
+      ],
+      "hi": [
+        0.23546156530788762,
+        0.18926645154714733,
+        0.14143025006167495
+      ],
+      "max_width": 0.02345724037772362
+    },
+    "gain176": {
+      "covered": true,
+      "lo": 1.0,
+      "hi": 1.0,
+      "max_width": 0.0
+    },
+    "reference196": {
+      "covered": true,
+      "lo": [
+        0.21276518002344935,
+        0.16888631869794,
+        0.13443517258016874
+      ],
+      "hi": [
+        0.2382834588053626,
+        0.19105789348698093,
+        0.1456462497760158
+      ],
+      "max_width": 0.02551827878191326
+    },
+    "guide211": {
+      "covered": true,
+      "lo": 0.19970703125,
+      "hi": 0.270263671875,
+      "max_width": 0.070556640625
+    },
+    "guide214": {
+      "covered": true,
+      "lo": 0.349609375,
+      "hi": 0.38037109375,
+      "max_width": 0.03076171875
+    },
+    "working286": {
+      "covered": true,
+      "lo": [
+        0.18119927438043013,
+        0.22074599202973108,
+        0.2554530651092995
+      ],
+      "hi": [
+        0.19047828339593545,
+        0.2331573262521147,
+        0.2638052753885
+      ],
+      "max_width": 0.012411334222383608
+    },
+    "semantic347": {
+      "covered": true,
+      "lo": [
+        0.03907635530491314,
+        -0.01343027284803542,
+        0.026304302938806107
+      ],
+      "hi": [
+        0.3835693196361074,
+        0.3716119780652653,
+        0.2744496347600065
+      ],
+      "max_width": 0.38504225091330074
+    },
+    "guide350": {
+      "covered": true,
+      "lo": 0.18476376226045024,
+      "hi": 0.36683556605839335,
+      "max_width": 0.1820718037979431
+    },
+    "BG352": {
+      "covered": true,
+      "lo": [
+        -65.60352667845936,
+        -25.615051425901083,
+        -28.601754384790954
+      ],
+      "hi": [
+        13483.274290274428,
+        5264.819754393004,
+        5878.648671969664
+      ],
+      "max_width": 13548.877816952889
+    }
+  },
+  "BG352_conditional_set_produced": true,
+  "FG354_conditional_set_produced": false,
+  "pre393_conditional_set_complete": false,
+  "complete_BG_runtime_verified": false,
+  "GPU_verified": false
+}

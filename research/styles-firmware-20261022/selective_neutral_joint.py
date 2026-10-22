@@ -81,14 +81,32 @@ class Result:
     original_GPU_verified: bool=False
 
 
+@dataclass(frozen=True)
+class CoreResult:
+    source: V
+    inverse_v: V
+    inverse_root: V
+    converted: V
+    proof: dict
+
+
 def enclose(inputs: Inputs):
     if not isinstance(inputs,Inputs):raise TypeError('Validated neutral selective input contract required')
-    rgb=inputs.rgb
+    core=roundtrip(inputs.rgb,shared_lab=True);proof=dict(core.proof,half_gamma_joint_value=1,exact_constant_reasons=['zero texture sampling returns zero for all finite coordinates','same-value zero-lookup mixes give exact1 for saturation/luminosity/gamma','zero hue and gain1 preserve original angle/radius/light except the explicit original polar reconstruction','zero offsets/amplitudes/outputmix preserve that reconstructed vector'])
+    return Result(core.source,core.inverse_v,core.inverse_root,core.converted,V.value(1,point=False),proof)
+
+
+def roundtrip(rgb,*,shared_lab=False):
     if not isinstance(rgb,V)or rgb.point or rgb.precision!='h'or rgb.lo.shape!=(3,):raise TypeError('Whole half RGB input set required')
     c=rgb.clamp();lo,hi=c.lo,c.hi
     # M has only positive entries, so its actual f32 graph admits a relative
     # bound even at zero (plus the existing absolute tiny term).
-    ylo,yhi=interval_matrix(M,lo,hi);am=gamma_n(E32,5);tm=5*T32*(1+E32)**5
+    ylo,yhi=interval_matrix(M,lo,hi);source=[A.box(a,b)for a,b in zip(lo,hi)];shared_info=None
+    if shared_lab:
+        from joint_lab import shared_ideal
+        source,sl,sh,nl,nh,shared_info=shared_ideal(rgb,M,N,POWER);ylo=np.maximum(ylo,sl);yhi=np.minimum(yhi,sh)
+        if np.any(ylo>yhi):raise DomainUnknown('Shared LMS enclosure intersection empty')
+    am=gamma_n(E32,5);tm=5*T32*(1+E32)**5
     rr=max((1+am)**POWER*(1+ET32)*(1+E32)-1,1-(1-am)**POWER*(1-ET32)*(1-E32))
     root_max=yhi**POWER;root_error=rr*root_max+(1+ET32)*(1+E32)*tm**POWER+(2+E32)*T32
     nround=gamma_n(E32,5)*(abs(N)@(root_max+root_error))+5*T32
@@ -96,6 +114,9 @@ def enclose(inputs: Inputs):
     # Keep it in N's cancellation bounds; the existing FP error remains
     # separate. For the old full[0,1]^3 contract this is exactly the old bound.
     root_min=ylo**POWER;nlo,nhi=interval_matrix(N,root_min,root_max)
+    if shared_lab:
+        nlo=np.maximum(nlo,nl);nhi=np.minimum(nhi,nh)
+        if np.any(nlo>nhi):raise DomainUnknown('Shared Lab enclosure intersection empty')
     nfloat=abs(N)@root_error+nround
     lab_abs=np.maximum(abs(nlo),abs(nhi))+nfloat
     conversion_error=UH*lab_abs+2**-25
@@ -122,12 +143,14 @@ def enclose(inputs: Inputs):
     qround=gamma_n(E32,5)*(abs(Q)@(np.maximum(abs(powerlo),abs(powerhi))))+5*T32
     error=abs(Q)@total_power_error+qround+bookkeeping
     # Shared source generators remain in the final nominal Q*M RGB map.
-    source=[A.box(a,b)for a,b in zip(lo,hi)];converted=[]
+    converted=[];half_errors=[]
     for row,e in zip(T,error):
         a=A.value(0)
         for weight,value in zip(row,source):a=a.add(value.scale(float(weight)))
         l,h=a.bounds();cast_error=UH*max(abs(l-e),abs(h+e))+2**-25
+        half_errors.append(float(e+cast_error))
         converted.append((l-e-cast_error,h+e+cast_error))
     out=half_box(np.array([v[0]for v in converted]),np.array([v[1]for v in converted]));gamma=V.value(1,point=False)
     proof={'reference':'iPhone17,3/24A446 selectiveColorFilter SSA11..230','source_clamped_lo':lo.tolist(),'source_clamped_hi':hi.tolist(),'POWER':POWER,'INVERSE_POWER':INVERSE_POWER,'POWER_product':exponent,'M_relative_error':am,'root_error':root_error.tolist(),'Lab_float_error':nfloat.tolist(),'Lab_half_conversion_error':conversion_error.tolist(),'polar':pinfo,'P_times_N_identity_residual':(K-np.eye(3)).tolist(),'inverse_v_error':ev.tolist(),'inverse_power_error':power_error.tolist(),'exponent_mismatch_error':exponent_error,'Q_times_M':T.tolist(),'RGB_before_half_error':error.tolist(),'half_gamma_joint_value':1,'exact_constant_reasons':['zero texture sampling returns zero for all finite coordinates','four zero+1 values and same-value mixes give exact1 for saturation/luminosity/gamma','zero hue preserves angle; saturation1 preserves radius; luminosity1 preserves light','zero offset/amplitude makes both later Lab vectors the same live values'],'2u_4u_epsilon_mask_or_pow_domain_changed':False,'negative_endpoint_joint_reachability':'not established; this is an outer enclosure','matrix_composition_only_in_real_reference_error_proof':True}
-    return Result(c,V.bounds(vlo,vhi,'f'),V.bounds(powerlo,powerhi,'f'),out,gamma,proof)
+    proof.pop('half_gamma_joint_value');proof.pop('exact_constant_reasons');proof['core_scope']='shared real-reference Lab/polar/inverse through converted half only';proof['shared_Lab_reference']=shared_info;proof['converted_half_error_about_QM_RGB']=half_errors
+    return CoreResult(c,V.bounds(vlo,vhi,'f'),V.bounds(powerlo,powerhi,'f'),out,proof)
