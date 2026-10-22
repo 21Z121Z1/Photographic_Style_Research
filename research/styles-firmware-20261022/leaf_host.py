@@ -54,9 +54,9 @@ def shims(names):
             base=name.replace('3.','.');add(base);out.append(f'define {ty} @{name}({ty} %a,{ty} %b,{ty} %c){{\n%x=call {ty} @{base}({ty} %a,{ty} %b)\n%r=call {ty} @{base}({ty} %x,{ty} %c)\nret {ty} %r\n}}');return
         if any(x in operation for x in ['.fmin.','.fmax.']):
             pred='olt'if'.fmin.'in operation else'ogt';out.append(f'define {ty} @{name}({ty} %a,{ty} %b){{\n%c=fcmp {pred} {ty} %a,%b\n%r=select i1 %c,{ty} %a,{ty} %b\nret {ty} %r\n}}');return
-        if '.clamp.'in name or '.saturate.'in name:
+        if '.clamp.'in operation or '.saturate.'in operation:
             base=name[:name.rindex('.')];prefix='air.fast_'if'fast_'in name else'air.';mn=prefix+'fmin.'+('f16'if ty=='half'else'f32');mx=prefix+'fmax.'+('f16'if ty=='half'else'f32');add(mn);add(mx)
-            sat='.saturate.'in name;params=f'{ty} %a'if sat else f'{ty} %a,{ty} %lo,{ty} %hi';lo='0xH0000'if ty=='half'else'0.0';hi='0xH3C00'if ty=='half'else'1.0'
+            sat='.saturate.'in operation;params=f'{ty} %a'if sat else f'{ty} %a,{ty} %lo,{ty} %hi';lo='0xH0000'if ty=='half'else'0.0';hi='0xH3C00'if ty=='half'else'1.0'
             out.append(f'define {ty} @{name}({params}){{\n%x=call {ty} @{mx}({ty} %a,{ty} '+(lo if sat else'%lo')+f')\n%r=call {ty} @{mn}({ty} %x,{ty} '+(hi if sat else'%hi')+f')\nret {ty} %r\n}}');return
         if '.fabs.'in operation:
             pre='%x=fpext half %a to float\n'if ty=='half'else'';x='%x'if ty=='half'else'%a';post='%r=fptrunc float %f to half\nret half %r'if ty=='half'else'ret float %f'
@@ -128,6 +128,12 @@ def build(source,names):
             else:
                 for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
                 args='<3 x half> %x,<3 x half> %sv2,half %h4,half undef,half %h5,half %h3,ptr addrspace(1) %coeff1,ptr addrspace(1) %t'
+        elif short(name)=='renderBrightAndContrast':
+            w += ['%stats=alloca %struct.SSRStats,align 4','store %struct.SSRStats zeroinitializer,ptr %stats','%stats1=addrspacecast ptr %stats to ptr addrspace(1)']
+            for i,(group,field)in enumerate([(2,4),(3,4),(5,0),(6,6),(6,4)]):
+                w += [f'%stp{i}=getelementptr float,ptr %input,i64 {9+i}',f'%stf{i}=load float,ptr %stp{i}',f'%stg{i}=getelementptr %struct.SSRStats,ptr %stats,i64 0,i32 1,i64 {group},i32 {field}',f'store float %stf{i},ptr %stg{i}']
+            for i in range(3):w += [f'%sp{i}=getelementptr float,ptr %input,i64 {6+i}',f'%sf{i}=load float,ptr %sp{i}',f'%sh{i}=fptrunc float %sf{i} to half',f'%sv{i}=insertelement <3 x half> '+('poison'if i==0 else f'%sv{i-1}')+f',half %sh{i},i32 {i}']
+            args='<3 x half> %x,<3 x half> %sv2,half %h3,half %h4,half %h5,ptr addrspace(1) %stats1'
         elif short(name)=='renderSkinAdjustments':
             w += ['%coeff=getelementptr float,ptr %input,i64 9','%coeff1=addrspacecast ptr %coeff to ptr addrspace(1)']
             args='<3 x half> %x,ptr addrspace(1) %coeff1,half %h5,half %h3'

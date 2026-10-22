@@ -126,6 +126,7 @@ class V:
         return self.rounded(np.min(a,axis=0),np.max(a,axis=0),transcendental=True)
     def lt(self,x):b=self.box(x);return Truth(self.hi<b.lo,self.lo>=b.hi)
     def gt(self,x):b=self.box(x);return Truth(self.lo>b.hi,self.hi<=b.lo)
+    def le(self,x):b=self.box(x);return Truth(self.hi<=b.lo,self.lo>b.hi)
     def ne(self,x):
         b=self.box(x)
         return Truth((self.hi<b.lo)|(self.lo>b.hi),(self.lo==self.hi)&(b.lo==b.hi)&(self.lo==b.lo))

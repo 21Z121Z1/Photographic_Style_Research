@@ -106,3 +106,5 @@ python3 research/styles-firmware-20261022/native_gtc_check.py /tmp/psr-native-gt
 - S11-A：单见证乘加定位与24个首零分母：[阶段报告](PROGRESS-S11-A.zh-CN.md)。
 
 - S11-B：复用皮肤算法的精度适配及高光条件模型：[阶段报告](PROGRESS-S11-B.zh-CN.md)。
+
+- S11-C：bright条件模型与主入口分叉集合接口：[阶段报告](PROGRESS-S11-C.zh-CN.md)。
