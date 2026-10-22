@@ -1,0 +1,74 @@
+{
+  "saved_full_receipt_sha256": "d67bbfc61f2a1de63b7dd380100d24cc99300996e6a0d4b23e04ddbb6ccb9b64",
+  "original": {
+    "parent_main_sha256": "68e9b66c5226ea73a222d0e699e842c3dfe9a819a6f83ffa151dbec1302e73ba",
+    "original25_27_sha256": "a2565e37c0167606de9da3df578832798c3d4df1af09d753ea864d215cfd5aa3",
+    "original601_618_sha256": "b66ee0686e0752627697c4b03580c7c62710fb4b387b3f55b9e4d1530c2b2b31",
+    "original_arithmetic_predicates_and_FP_attrs_changed": false,
+    "only_SSA_alpha_renamed": true,
+    "host_diagnostic_memory_summaries_widened": {
+      "31": "memory(read) -> memory(readwrite)",
+      "33": "memory(argmem: readwrite) -> memory(readwrite)"
+    },
+    "phased_scheduler": "all nonleaders first, then leader; copy requires all active barrier arrivals",
+    "tile_storage_pitch": 32,
+    "source_RGBA_alpha": 1,
+    "renderEdge_field2_byte_offset": 8,
+    "outputOffset_field12_byte_offset": 160,
+    "texture_storage_contract": "explicit RGBA16Float115 only; no other output encoding claim",
+    "original_GPU_executed": false
+  },
+  "source_sha256": {
+    "output_writer_host.py": "cac99f8a4f898f127bcb424678d12b8c34641c06629309bc8076c80bcd065000",
+    "native_output_writer_check.py": "9a3fd4a7512b2616e350e0d8cf9a2a27b3df2cc8468433843a1c241f21d66a2a",
+    "regress_writer_memory.py": "f823aa2b17f540cfe07286c73f92ee1ae71d856375bf722586a3658ea4c7d153"
+  },
+  "host_IR_sha256": "cb7bee5d842323bfa3a3fb838aa1f0d0e96a0e8524b259ece2b3374cfb3dc718",
+  "C_sha256": "d8fa1140c44eb3e129647c3379fcb227948d06ee6a49cd94d521bfe04e7a6e9b",
+  "saved_witnesses_replayed": 3,
+  "old_seven_case_batch_repeated": false,
+  "rows": [
+    {
+      "case": "direct",
+      "same_saved_half_bits": true,
+      "counters": {
+        "errors": 0,
+        "pixels": 6,
+        "copies": 0
+      },
+      "input_digest": "a0ae4195cd178d781a61309db96d7666a289cffc2a9b0bb54f5b2cd4ab12d286",
+      "writer_calls": 6
+    },
+    {
+      "case": "edge-clipped",
+      "same_saved_half_bits": true,
+      "counters": {
+        "errors": 0,
+        "pixels": 2,
+        "copies": 1
+      },
+      "input_digest": "d83527aa24e82ef523f5c4a6758aa65c7fcd8191d25dfc8e6198277ad5c20bb8",
+      "writer_calls": 6
+    },
+    {
+      "case": "imageblock-destination-wrap",
+      "same_saved_half_bits": true,
+      "counters": {
+        "errors": 0,
+        "pixels": 6,
+        "copies": 1
+      },
+      "input_digest": "4bcbe5fb0fe6251ac939d7401ec6d685ec8cbaeaabc1928308b9299777a4d462",
+      "writer_calls": 6
+    }
+  ],
+  "invalid_phase_negative": {
+    "case": "leader-first invalid schedule",
+    "host_diagnostic_errors": 1,
+    "written_pixels": 0,
+    "target_unchanged": true,
+    "writer_calls": 6
+  },
+  "GPU_executed": false,
+  "arithmetic_FP_flags_or_inputs_changed": false
+}

@@ -138,3 +138,5 @@ S13-D：AIR7入口与生产→guided整图集合接口；168项回归、117half�
 S14-B：源二维→完整AIR7→guided→consumer ROI新组合宿主对照；真实RGBA16/epsilon.001、内部5位差及17941.5513宽包络见[阶段报告](PROGRESS-S14-B.zh-CN.md)。
 
 S14-C：393前原主入口组合，4完整已知点域、5集合unknown均保留；175项回归与独立374/392观察见[阶段报告](PROGRESS-S14-C.zh-CN.md)。
+
+S14-D：最终RGBA/ROI写出，7 tile、3保存见证和同步负例，180项回归与GPU/格式限制见[阶段报告](PROGRESS-S14-D.zh-CN.md)。
