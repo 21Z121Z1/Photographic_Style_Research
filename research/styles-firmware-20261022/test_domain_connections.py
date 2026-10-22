@@ -20,7 +20,10 @@ class DomainConnectionTests(unittest.TestCase):
     def test_outside_cell0_or_different_amount_keeps_old_unknown(self):
         data=json.loads((E/'bg-dependency-s15c.json').read_text());rgb=V(np.array(data['contrast_input_lo']),np.array(data['contrast_input_hi']),'h',False);amount=V.value(CELL0_AMOUNT,point=False)
         self.assertFalse(cell0_supported(rgb,amount))
-        with self.assertRaises(DomainUnknown):contrast(rgb,amount)
+        # S19 now admits the exact saved parent via its complete64 cover.
+        # A box outside that new strict domain keeps the original unknown.
+        outside=V(rgb.lo,rgb.hi+np.array([0.,.001,0.]),'h',False)
+        with self.assertRaises(DomainUnknown):contrast(outside,amount)
         base=V(np.array(CELL0_LO),np.array(CELL0_HI),'h',False);self.assertFalse(cell0_supported(base,V.value(np.nextafter(np.float16(CELL0_AMOUNT),np.float16(np.inf)),point=False)))
         with patch('pixel_leaves.contrast_independent',side_effect=DomainUnknown('original domain')):
             with self.assertRaisesRegex(DomainUnknown,'original domain'):contrast(base,V.value(.04,point=False))

@@ -49,26 +49,34 @@ def root_components(root: V,amplitude: V):
     return [(amplitude.f()*F(fc(bits),root)).h()*root[i]for i,bits in enumerate(['3FD322D0E0000000','3FE2C8B440000000','3FBD2F1AA0000000'])]
 
 
-def contrast_independent(rgb: V,amount: V):
+def _contrast_body(rgb: V,amount: V,*,input_minimum=None,input_span=None,positive_branch=None):
     c=rgb.clamp();s=dot(c,[hc('3555')]*3).sqrt();delta=c-s;variance=(delta*delta).sum_channels()
     shape=((1-s.f())*s.f()).h();root=c.sqrt();scaled=(amount.f()*F(fc('400B333340000000'),rgb)).h();amplitude=shape*scaled
     r,g,b=root_components(root,amplitude)
     colored=(((root+amplitude*H(hc('b800'),rgb))+g)+r)+b
     neutral=mix(root,H(hc('3800'),rgb),(-scaled)*shape)
     newroot=mix(neutral,colored,(variance.f()+F(fc('3FE99999A0000000'),rgb)).h()).maximum(0)
-    changed=exterior(rgb)+newroot*newroot;low=rgb.min_channels();span=channel_span(rgb)
+    changed=exterior(rgb)+newroot*newroot;low=rgb.min_channels()if input_minimum is None else input_minimum;span=channel_span(rgb)if input_span is None else input_span
     def preserve():
         newlow=changed.min_channels();newspan=channel_span(changed)
         return (rgb-low)*(newspan/strictly_positive_branch(span,fc('3EE4F8B580000000')))+newlow
+    if positive_branch is True:return preserve()
+    if positive_branch is False:return changed
     return lazy_select(span.f().gt(F(fc('3EE4F8B580000000'),rgb)),preserve,lambda:changed)
+
+
+def contrast_independent(rgb: V,amount: V):return _contrast_body(rgb,amount)
 
 
 def contrast(rgb: V,amount: V):
     try:return contrast_independent(rgb,amount)
     except DomainUnknown:
         from contrast_span_joint import cell0_supported,enclose
-        if not cell0_supported(rgb,amount):raise
-        return enclose(rgb,amount).output
+        if cell0_supported(rgb,amount):return enclose(rgb,amount).output
+        from contrast_sorted import family_id,enclose_family,whole_supported,enclose_cover
+        if family_id(rgb,amount)is not None:return enclose_family(rgb,amount).output
+        if whole_supported(rgb,amount):return enclose_cover(rgb,amount)
+        raise
 
 
 LEAVES={'contrastFilter':contrast,'airyFilter':airy}

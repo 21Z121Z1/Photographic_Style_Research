@@ -16,7 +16,7 @@ MAPPED={
     'RichSat':'reused leaf; actual outer355..392 color/boost/person mixing connected inS14C, known point domains only; black/whole-set unknowns retained',
     'smoothSatFilter':'reused leaf; actual nonpositive outer355..392 branch and person mixing connected inS14C; no complete-set claim',
     'airyFilter':'reused leaf and outer tonal/BW root; finite host domains and unknowns retained',
-    'contrastFilter':'original graph plus S18 default set fallback only within savedcell0 bounds/exact half parameter; saved64 unknown8->7; whole S14C case0 remains unknown',
+    'contrastFilter':'S19 guarded cell0/sorted7/exact saved-parent cover admitted by default; saved64 all bounded, parent width9483; complete BG next fails at whitesCurve',
     'applySemanticSRL':'AIR7 complete helper model; targeted AIR10 text equality except attribute group IDs; caller connection still explicit',
     'linearFromCurved':'raw transfer branches; code3 reuses existing decode; specialized code8 selected zero-divisor unknown',
     'curvedFromLinear':'raw output transfer branches; connected568..600 with explicit gain/CCM',
@@ -67,17 +67,17 @@ def inventory(source):
             'whole_sets':'12 pixels still unknown atselective413; known preceding ranges covered, warm width1.73493; converted joint width1.88428,gamma1; no writer set output',
             'auxiliary_producers':'guide8/9,person/skin/sky,statistics,lookup,curves,34cast/coefficients and input identity remain explicit'},
         'local_enclosures':{
-            'neutral_selective':'S17 strict neutral joint error enclosure; S18 full-clamp-domain original host prefix witness has negative B; no pow1 simplification or originalGPU reachability claim',
-            'BG_cell0':'S17 bound now wired into default contrast sets within savedcell0/exact half parameter only; width1.680803; S18 saved64 unknown7 and full S14C case0 still contrast unknown'},
-        'latest_stage':{'report':'PROGRESS-S18.zh-CN.md','default_BG_replay':'evidence/bg-default-replay-s18a.json','original_prefix_domain_witness':'evidence/selective-domain-s18b.json','additional_original_host_prefix_calls':1,'post_negative_base_pow_executed':False},
+            'neutral_selective':'S19 observed same-frame host warm cloud has local positive enclosure under existing selective budgets; never substituted into full upstream sets; S18 RGB110 negative full-clamp witness retained',
+            'BG_contrast':'cell0 plus strictly admitted sorted7 and exact saved64 parent cover; all64 bounded, original half quotient/product and else preserved; parent width9483 is not precision'},
+        'latest_stage':{'report':'PROGRESS-S19.zh-CN.md','default_BG_replay':'evidence/contrast-default-s19a.json','same_frame_domain':'evidence/selective-sameframe-s19b.json','historical_full_clamp_witness':'evidence/selective-domain-s18b.json','new_original_host_calls':0,'full_upstream_selective_negative_reachability':'unknown'},
         'unfinished_software_tracking':{
             'receipt':'evidence/consumer-paths-s18c.json','consumer_slots':9,
             'hardware_wait_required_to_continue_static_tracking':False,
-            'scope':'S18 AIR13 recursive parameter-origin analysis and two CPU blit windows; no target reads in this bounded closure; CPU proxy bridge unextracted because owned SystemOS image is absent; other consumers remain software work'},
+            'scope':'S18 paths and missing CPU image/method/binding restoration list retained; S19 bridge paused, no new search/download/mount; nine consumers remain unfinished software work'},
         'main_remaining_connections':[
             'original iOS/GPU and same-frame chain unverified; finite synthetic conditional point chain is connected through writer',
             '12 selective pow domains, unselected internal domains and wider pre393 BG/FG set domains remain software work',
-            'S18 cell0 admitted by default contrast, seven of saved64 still unknown and whole S14C case0 fails before completeBG; no originalGPU acceptance',
+            'S19 default contrast64 bounded; complete S14C case0 now fails at whitesCurve (changed*c)/z; no completeBG or originalGPU acceptance',
             'other output pixel encodings and original multi-thread GPU behavior are unverified'],
         'known_numeric_limits':[
             '24 old all-active helper set unknowns and old8 leaf-domain unknowns retained without rerun',
@@ -85,10 +85,11 @@ def inventory(source):
             'cast15 black0/0, transfer8 selected zero divisor, black HDR gain remain unknown',
             'old155.125 and17941.5513 envelopes retained as historical evidence, not accuracy',
             'S14B five guided mismatches diagnosed in S15B/S16; saved fixture replays bit0 do not prove GPU order',
-            'S14C/S16 cell0 failure receipts retained; S18 default contrast admits exact proved cell0 domain, preserving quotient/product order; wholeBG remains unknown',
+            'S16 diagnostic48 positive domains remain historical; S19 default64 boxes and sorted42 positive/42else are distinct counts, no new independent host cases',
+            'same-frame observed input exclusion is local only; upstream independence first admits clamp RGB110 at saturated374, full12 selective domains remain unknown',
             '2u/4u, host math and sampler are assumptions, not measured GPU error',
             'nine unresolved coefficient consumers are unfinished software tracking; no repeated same-range scan'],
-        'scope':'S18 conditional operator and connection inventory; software work, missing cached CPU bytes and original GPU/frame dependencies are distinct.',
+        'scope':'S19 conditional coverage inventory; default paths, local observed-input bounds, upstream reachability and originalGPU claims remain distinct.',
         'GPU_executed':False,'full_pipeline_verified':False,'private_media_inputs':0,'new_download_bytes':0}
 
 

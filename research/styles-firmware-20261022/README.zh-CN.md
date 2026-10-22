@@ -2,7 +2,7 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新阶段见 [PROGRESS-S18.zh-CN.md](PROGRESS-S18.zh-CN.md)：cell0联合界已按原保存范围/精确half参数接入默认contrast集合路径，保存64子域unknown从8→7，原S14-C case0仍在完整BG的contrast商有限性处unknown。一次原AIR到pow前的宿主前缀调用证实完整clamp域内RGB=(1,1,0)可产生B=-.0001276731、gamma1；不推断负底数pow语义或原GPU符号。新增AIR13跨函数/无类型别名与两处CPU拷贝分析，9字段仍未定位消费者，保留逐字段路径和断点。205项测试通过。S17的1938保存half零差异仍仅属cast0/tuning2/中性BGFG/零lookup宿主上下文；原GPU、真实同帧、活跃风格及逆解均未验收。
+最新阶段见 [PROGRESS-S19.zh-CN.md](PROGRESS-S19.zh-CN.md)：复用S16其余7盒的排序/half格点证明，按严格准入接回默认contrast；保存64盒全部得到条件包络，完整S14-C case0的下一失败在whitesCurve的`(changed*c)/z`。S15同一保存合成上下文的12个精确宿主warm输入及其包络，可在原selective预算下排除局部负底数；该观测包络未替换完整上游集合，12个selective unknown仍在。211项测试通过，本轮原宿主调用0。9字段CPU桥接按准确缺项暂停；原GPU、真实同帧、活跃风格及成片逆解均未验收。
 
 最终实际插件数据流见 [DATAFLOW.zh-CN.md](DATAFLOW.zh-CN.md)。新插件与旧缓存整文件不同，但已选方法和shader确切相同，不能仅凭旧文件名继承版本身份。
 

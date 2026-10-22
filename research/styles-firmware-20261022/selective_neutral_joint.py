@@ -92,7 +92,10 @@ def enclose(inputs: Inputs):
     rr=max((1+am)**POWER*(1+ET32)*(1+E32)-1,1-(1-am)**POWER*(1-ET32)*(1-E32))
     root_max=yhi**POWER;root_error=rr*root_max+(1+ET32)*(1+E32)*tm**POWER+(2+E32)*T32
     nround=gamma_n(E32,5)*(abs(N)@(root_max+root_error))+5*T32
-    nlo,nhi=interval_matrix(N,np.zeros(3),root_max)
+    # A local input range has a real-reference root lower bound as well.
+    # Keep it in N's cancellation bounds; the existing FP error remains
+    # separate. For the old full[0,1]^3 contract this is exactly the old bound.
+    root_min=ylo**POWER;nlo,nhi=interval_matrix(N,root_min,root_max)
     nfloat=abs(N)@root_error+nround
     lab_abs=np.maximum(abs(nlo),abs(nhi))+nfloat
     conversion_error=UH*lab_abs+2**-25
