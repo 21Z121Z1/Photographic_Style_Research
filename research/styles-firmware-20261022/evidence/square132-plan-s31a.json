@@ -1,0 +1,52 @@
+{
+  "scope": "S31 symbolic enclosure checks and exact-rational constructive witnesses.\n\nFloating evaluations generate boundary candidates only. Every reported\nnonlinear witness is independently certified with integer powers and RN-half.\nNo floating scan is used as the general reachable-range proof.\n",
+  "fixed_strength_half_bits": 15360,
+  "fixed_witnesses": [
+    {
+      "name": "zero",
+      "c": 0
+    },
+    {
+      "name": "smallest_input_subnormal",
+      "c": 1
+    },
+    {
+      "name": "normal_below_old_domain",
+      "c": 5120
+    },
+    {
+      "name": "upper_endpoint",
+      "c": 15360
+    }
+  ],
+  "boundary_candidate_windows": [
+    {
+      "center_half_bits": 7717,
+      "radius_half_encodings": 128,
+      "target_square_bits": [
+        11263,
+        11264,
+        11265
+      ]
+    },
+    {
+      "center_half_bits": 11182,
+      "radius_half_encodings": 128,
+      "target_square_bits": [
+        13311,
+        13312,
+        13313
+      ]
+    }
+  ],
+  "mix_modes": [
+    "separate",
+    "fused"
+  ],
+  "candidate_rule": "ascending input encoding; first predicted hit per target/mode, then exact rational verification; absence is window-only unknown",
+  "candidate_prediction_not_general_proof": true,
+  "general_proof": "symbolic monotone RN enclosure and exact rational constant inequalities",
+  "full_helper_checks": "only four fixed witnesses, model-only; synthetic other channels and working inputs; no original calls",
+  "native_kernel_or_compile_planned": false,
+  "v3_or_whitelist_updates_planned": false
+}

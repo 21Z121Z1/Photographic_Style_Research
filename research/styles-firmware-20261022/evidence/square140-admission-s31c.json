@@ -1,0 +1,780 @@
+{
+  "profile": "independent arithmetic-domain analysis, not default integration",
+  "square_proof_sha256": "e80bc099138e4c7fcb78e5d3707c7bca3ff98667b755a0f05cda9438816d0ca5",
+  "source_sha256": {
+    "square140_contract.py": "ead053659aa9d83cd6f9fe33191f2b31d2244aead60162b2e31cba1a0836e8d8",
+    "check_square140.py": "64d086e1e6f1c81c0d6434c8016d178daa9f7d009264c5a5d648a81288c4563e",
+    "square132_contract.py": "e5c8407e553bdd3139a988153387a554e51b1558c641500e6fb36e2ccdc9731a"
+  },
+  "examples": [
+    {
+      "name": "RN_normality_admission_0x0",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 0,
+        "classification": {
+          "square132_half_bits": 0,
+          "value": [
+            0,
+            1
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": true,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 0,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 0,
+          "135": 51712,
+          "136": 32768,
+          "137": 17408,
+          "138": 0
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 0,
+        "classification": {
+          "square132_half_bits": 0,
+          "value": [
+            0,
+            1
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": true,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 0,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 0,
+          "135": 51712,
+          "136": 32768,
+          "137": 17408,
+          "138": 0
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      }
+    },
+    {
+      "name": "RN_normality_admission_0xc",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 12,
+        "classification": {
+          "square132_half_bits": 12,
+          "value": [
+            3,
+            4194304
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": true,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "unknown",
+        "selected140_half_bits": null,
+        "reason": "selected low path has subnormal operands/results; gradual-underflow premise missing",
+        "subnormal_SSA": [
+          132,
+          134,
+          136,
+          138
+        ]
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 12,
+        "classification": {
+          "square132_half_bits": 12,
+          "value": [
+            3,
+            4194304
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": true,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 48,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 192,
+          "135": 51712,
+          "136": 32912,
+          "137": 17408,
+          "138": 48
+        },
+        "subnormal_SSA": [
+          132,
+          134,
+          136,
+          138
+        ],
+        "gradual_underflow_needed": true,
+        "normal_or_exact_zero_path_independent_of_FZ16": false,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x21d3",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 8659,
+        "classification": {
+          "square132_half_bits": 8659,
+          "value": [
+            1491,
+            131072
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 10657,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 12755,
+          "135": 51689,
+          "136": 45134,
+          "137": 17339,
+          "138": 10657
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 8659,
+        "classification": {
+          "square132_half_bits": 8659,
+          "value": [
+            1491,
+            131072
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 10657,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 12755,
+          "135": 51689,
+          "136": 45134,
+          "137": 17339,
+          "138": 10657
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x2bff",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 11263,
+        "classification": {
+          "square132_half_bits": 11263,
+          "value": [
+            2047,
+            32768
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 12959,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 15359,
+          "135": 51584,
+          "136": 47487,
+          "137": 17056,
+          "138": 12959
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 11263,
+        "classification": {
+          "square132_half_bits": 11263,
+          "value": [
+            2047,
+            32768
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": true,
+          "S29_low_leaf_accepts_input": false,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": true,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 12959,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 15359,
+          "135": 51584,
+          "136": 47487,
+          "137": 17056,
+          "138": 12959
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": true
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x2c00",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 11264,
+        "classification": {
+          "square132_half_bits": 11264,
+          "value": [
+            1,
+            16
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": true,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 12960,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 15360,
+          "135": 51584,
+          "136": 47488,
+          "137": 17056,
+          "138": 12960
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": false
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 11264,
+        "classification": {
+          "square132_half_bits": 11264,
+          "value": [
+            1,
+            16
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": true,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 12960,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 15360,
+          "135": 51584,
+          "136": 47488,
+          "137": 17056,
+          "138": 12960
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": false
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x33ff",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 13311,
+        "classification": {
+          "square132_half_bits": 13311,
+          "value": [
+            2047,
+            8192
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": true,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 14335,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 17407,
+          "135": 51200,
+          "136": 49151,
+          "137": 16384,
+          "138": 14335
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": false
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 13311,
+        "classification": {
+          "square132_half_bits": 13311,
+          "value": [
+            2047,
+            8192
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": true,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 14335,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 17407,
+          "135": 51200,
+          "136": 49151,
+          "137": 16384,
+          "138": 14335
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": false
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x3400",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 13312,
+        "classification": {
+          "square132_half_bits": 13312,
+          "value": [
+            1,
+            4
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": true,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 14336,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 17408,
+          "135": 51200,
+          "136": 49152,
+          "137": 16384,
+          "138": 14336
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": false
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 13312,
+        "classification": {
+          "square132_half_bits": 13312,
+          "value": [
+            1,
+            4
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "low",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": true,
+          "S29_selected_low_covered": true,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "not selected"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 14336,
+        "operation": "mapped half FMA135/FMA137 with multiply134/136/138",
+        "low_stage_half_bits": {
+          "134": 17408,
+          "135": 51200,
+          "136": 49152,
+          "137": 16384,
+          "138": 14336
+        },
+        "subnormal_SSA": [],
+        "gradual_underflow_needed": false,
+        "normal_or_exact_zero_path_independent_of_FZ16": true,
+        "old_S29_unknown_not_reclassified_in_default_model": false
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x3401",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 13313,
+        "classification": {
+          "square132_half_bits": 13313,
+          "value": [
+            1025,
+            4096
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "sqrt",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": false,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "requires sqrtf-to-half accuracy assumption; domain positive normal here"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "unknown",
+        "selected140_half_bits": null,
+        "reason": "sqrt positive/normal domain proven, final sqrtf-to-half accuracy premise missing",
+        "S29_low_leaf_not_used": true
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 13313,
+        "classification": {
+          "square132_half_bits": 13313,
+          "value": [
+            1025,
+            4096
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "sqrt",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": false,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "requires sqrtf-to-half accuracy assumption; domain positive normal here"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 14336,
+        "operation": "sqrt133 selected at140",
+        "S29_low_leaf_not_used": true,
+        "sqrt_quantization_assumed": true
+      }
+    },
+    {
+      "name": "RN_normality_admission_0x3bff",
+      "without_flush_or_sqrt_premise": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 15359,
+        "classification": {
+          "square132_half_bits": 15359,
+          "value": [
+            2047,
+            2048
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "sqrt",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": false,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "requires sqrtf-to-half accuracy assumption; domain positive normal here"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": null,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "unknown",
+        "selected140_half_bits": null,
+        "reason": "sqrt positive/normal domain proven, final sqrtf-to-half accuracy premise missing",
+        "S29_low_leaf_not_used": true
+      },
+      "with_gradual_and_correct_final_sqrt_premises": {
+        "profile": "bright-square134-to140-conditional-rn-domain-v1",
+        "square132_half_bits": 15359,
+        "classification": {
+          "square132_half_bits": 15359,
+          "value": [
+            2047,
+            2048
+          ],
+          "inside_proved_prefix_outer_range": true,
+          "selected140_branch": "sqrt",
+          "equality_at_quarter_belongs_to": "low",
+          "zero": false,
+          "subnormal": false,
+          "below_old_leaf_lower_bound": false,
+          "S29_low_leaf_accepts_input": true,
+          "S29_low_leaf_needed_for140": false,
+          "S29_selected_low_covered": false,
+          "S29_selected_low_unknown": false,
+          "sqrt_numeric_contract": "requires sqrtf-to-half accuracy assumption; domain positive normal here"
+        },
+        "RN_even_is_premise_not_measured_FPCR": true,
+        "gradual_underflow_premise": true,
+        "native_GPU_or_complete_bright_certified": false,
+        "status": "conditional_math_point",
+        "selected140_half_bits": 15359,
+        "operation": "sqrt133 selected at140",
+        "S29_low_leaf_not_used": true,
+        "sqrt_quantization_assumed": true
+      }
+    }
+  ],
+  "unknown_RN": {
+    "profile": "bright-square134-to140-conditional-rn-domain-v1",
+    "square132_half_bits": 13312,
+    "classification": {
+      "square132_half_bits": 13312,
+      "value": [
+        1,
+        4
+      ],
+      "inside_proved_prefix_outer_range": true,
+      "selected140_branch": "low",
+      "equality_at_quarter_belongs_to": "low",
+      "zero": false,
+      "subnormal": false,
+      "below_old_leaf_lower_bound": false,
+      "S29_low_leaf_accepts_input": true,
+      "S29_low_leaf_needed_for140": true,
+      "S29_selected_low_covered": true,
+      "S29_selected_low_unknown": false,
+      "sqrt_numeric_contract": "not selected"
+    },
+    "RN_even_is_premise_not_measured_FPCR": null,
+    "gradual_underflow_premise": null,
+    "native_GPU_or_complete_bright_certified": false,
+    "status": "unknown",
+    "selected140_half_bits": null,
+    "reason": "RN-even premise missing"
+  },
+  "all_examples_are_conditional_mathematical_contracts": true,
+  "low_quarter_equality_exact_result_half_bits": 14336,
+  "prefix_under_old_lower_bound_constructive_counterexample": {
+    "name": "normal_below_old_domain",
+    "c": 5120,
+    "mode": "separate",
+    "exact_prefix": {
+      "c": 5120,
+      "reference112": 8822,
+      "weight128": 11878,
+      "square129": 2360,
+      "difference": 41569,
+      "rounded_product": 38170,
+      "square132": 8659,
+      "mix_mode": "separate",
+      "power_certificate": null
+    },
+    "classification": {
+      "square132_half_bits": 8659,
+      "value": [
+        1491,
+        131072
+      ],
+      "inside_proved_prefix_outer_range": true,
+      "selected140_branch": "low",
+      "equality_at_quarter_belongs_to": "low",
+      "zero": false,
+      "subnormal": false,
+      "below_old_leaf_lower_bound": true,
+      "S29_low_leaf_accepts_input": false,
+      "S29_low_leaf_needed_for140": true,
+      "S29_selected_low_covered": false,
+      "S29_selected_low_unknown": true,
+      "sqrt_numeric_contract": "not selected"
+    },
+    "low_segment": {
+      "134": 12755,
+      "135": 51689,
+      "136": 45134,
+      "137": 17339,
+      "138": 10657,
+      "selected": 10657,
+      "status": "independent exact IEEE/RN contract; not default or GPU acceptance"
+    },
+    "reachability_grade": "constructive helper-prefix input under declared IEEE/power conditions; not fixed-source or originalGPU reachability"
+  },
+  "old_leaf_or_v3_modified": false,
+  "new_kernel_calls": 0,
+  "new_native_compilations": 0,
+  "new_full_model_or_helper_calls": 0
+}
