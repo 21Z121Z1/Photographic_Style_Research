@@ -1,0 +1,22 @@
+{
+  "label": "s30-source-model-input-guards-and-no-oracle-failure-tests",
+  "pre_run_binding_sha256": "4f6b8246dd4b5153ab19bcb466cfb3fe44936da9e28b952e6bff722c1d1b39b6",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "db640c76d9112afdcbe0c40343c02f615fccf47937ad8f34cd4c2c144ac39a7c",
+  "elapsed_seconds": 0.40640711784362793,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_connected_bright.py",
+    "-v"
+  ]
+}

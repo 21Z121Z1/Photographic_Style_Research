@@ -1,0 +1,70 @@
+{
+  "scope": "Freeze S30 three existing controls/four exact sites before model execution.",
+  "context": "second-context-s25a.json",
+  "context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+  "profile": "bright-point-profile-s29c.json",
+  "profile_sha256": "cf5fe37618acbb25a43ba63e99dbfe7247b599828515604870ae67d4515eeff9",
+  "precision_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da",
+  "selection_rule": "S29 residual-row order, first occurrence of every distinct complete-input key; no outcome-based selection",
+  "controls": [
+    {
+      "raw_f32_bits": 1040187392,
+      "control_id": "target_A",
+      "expected_saved_file": "native-targets-s25c.json",
+      "expected_saved_row": 0,
+      "targets": [
+        {
+          "grid": [
+            0,
+            1
+          ],
+          "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7"
+        },
+        {
+          "grid": [
+            2,
+            1
+          ],
+          "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1"
+        }
+      ]
+    },
+    {
+      "raw_f32_bits": 1039921151,
+      "control_id": "boundary-0",
+      "expected_saved_file": "native-boundaries-s25f.json",
+      "expected_saved_row": 0,
+      "targets": [
+        {
+          "grid": [
+            0,
+            1
+          ],
+          "input_key": "10c7aad9aff3003cb213abbe8dd71ecf651476c1696c6fd5ddc0911258145ff3"
+        }
+      ]
+    },
+    {
+      "raw_f32_bits": 1040322561,
+      "control_id": "boundary-3",
+      "expected_saved_file": "native-boundaries-s25f.json",
+      "expected_saved_row": 3,
+      "targets": [
+        {
+          "grid": [
+            2,
+            1
+          ],
+          "input_key": "5a53a0bdab43b52f5cee903629f573db4cc4e9085bdde8be81cf47a70609363e"
+        }
+      ]
+    }
+  ],
+  "full_model_runs_planned": 3,
+  "native_saved_arrays_policy": "loaded only by post-run comparison; never passed to model or used to fill upstream",
+  "raw_context_inputs": "frozen source/linear, auxiliary textures and raw ABI buffers/curves only",
+  "bright_guard_mismatch_policy": "unknown/failure; no native fill, no v3 fallback at target site",
+  "other_pixels": "unchanged v3 bright; selected actual writer remains cast0 skin branch",
+  "no_kernel_or_compile_planned": true,
+  "pre_execution_freeze": true
+}
