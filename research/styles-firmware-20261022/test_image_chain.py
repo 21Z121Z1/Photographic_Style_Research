@@ -101,6 +101,9 @@ class ImageChainTests(unittest.TestCase):
         cp = {c.name: c for c in self.bright.checkpoints}
         self.assertIn('params.exposure7', cp['bright400'].inputs)
         self.assertEqual(cp['selected404'].inputs, ('bright400',))
+        self.assertIn('semantic weight', cp['raw_person63'].domain)
+        self.assertIn('semantic weight', cp['raw_skin70'].domain)
+        self.assertIn('LTM gain ratios', cp['raw_BG'].domain)
         writer = self.bright.model.writer
         rgba = writer.output.pixels.lo
         np.testing.assert_array_equal(rgba[~writer.written_pixels],

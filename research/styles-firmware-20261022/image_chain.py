@@ -233,10 +233,10 @@ def _domain(name: str) -> str:
         return 'RGBA16Float output storage; alpha=1 for written pixels; supplied output transfer enum'
     if name in ('linear597', 'linear137', 'working286'):
         return 'linear working RGB; supplied CCM/transfer contract; no assumed ICC primaries'
-    if name.startswith(('raw_', 'BG_', 'FG_')):
-        return 'LTM gain ratios or guided-filter internal values; see named stage; not display RGB'
     if name in ('person96', 'skin95', 'sky77', 'raw_person63', 'raw_skin70'):
         return 'synthetic semantic weight; caller supplied, no segmentation claim'
+    if name.startswith(('raw_', 'BG_', 'FG_')):
+        return 'LTM gain ratios or guided-filter internal values; see named stage; not display RGB'
     return 'named AIR working stage; half/f32 operation model; no universal [0,1] or display-space claim'
 
 
