@@ -1,5 +1,9 @@
 # 摄影风格产品代际、实际插件与条件算子：本机阶段
 
+Cloud 接续的模块覆盖表、可移植图像链路/CLI、原生材料缺口与运行证据见
+[CONTINUATION.zh-CN.md](CONTINUATION.zh-CN.md)。新增实验与下述绑定 macOS 的 v3
+精度目录分开；未提升为完整 Apple CPU/GPU 或拍摄管线认证。
+
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
 当前FPCR运行绑定见 [PROGRESS-S33.zh-CN.md](PROGRESS-S33.zh-CN.md)：同一线程调用前后FPCR均0、RMode为RN，新增只读wrapper对封存f32 FSQRT执行1次；两侧FCVT属于新wrapper，旧half helper没有执行。16项定向测试通过，新编译1次、整kernel/管线/powf调用0；官方Arm相关正文已读。仅解除这次CPU原语边界的RN缺口，历史S25/S29、其他线程/GPU/全域精度不升级。powf仅静态定位到0x16244的_powf stub，运行时镜像与误差仍缺；初次地址解析缺陷及修正重放均保留。未改v3或解禁cast16/多参数。

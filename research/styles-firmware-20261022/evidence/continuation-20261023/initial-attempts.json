@@ -1,0 +1,63 @@
+{
+  "scope": "retained unbound or interrupted attempts; never counted as new passing validation",
+  "attempts": [
+    {
+      "path_in_workspace": "/workspace/scratch/portable-validation-first/result.json",
+      "sha256": "1e5a5712d9222180fa159a66585781474a7239e8eac4c73782bc1efc4f82c906",
+      "status": null,
+      "summary": null,
+      "sources_unchanged": false,
+      "exit_code": 0,
+      "named_regressions_passed": false,
+      "accepted_as_frozen_validation": false
+    },
+    {
+      "path_in_workspace": "/tmp/psr-chain-synthetic-cli-first/summary.json",
+      "sha256": "4e4028f837030b153ef7b4c4297e53d54cec37a4b3455ca0632077db23d872a7",
+      "status": "source_changed_unbound_results",
+      "summary": {
+        "blocked_or_unknown": 2,
+        "cases": 16,
+        "internal_unknown_cases": 1,
+        "parameter_comparisons": 10,
+        "writers": 14
+      },
+      "sources_unchanged": false,
+      "exit_code": null,
+      "named_regressions_passed": null,
+      "accepted_as_frozen_validation": false
+    },
+    {
+      "path_in_workspace": "/workspace/scratch/chain-bright-synthetic/summary.json",
+      "sha256": "9e18310dd41275b1873a551a4d86b09780d3e9a97982d93efd44cc8b77f506f7",
+      "status": "source_changed_unbound_results",
+      "summary": {
+        "blocked_or_unknown": 3,
+        "cases": 16,
+        "internal_unknown_cases": 3,
+        "parameter_comparisons": 9,
+        "writers": 13
+      },
+      "sources_unchanged": false,
+      "exit_code": null,
+      "named_regressions_passed": null,
+      "accepted_as_frozen_validation": false
+    },
+    {
+      "path_in_workspace": "/workspace/scratch/chain-context-stable",
+      "interrupted_by_task_owner": true,
+      "reason": "correct semantic-weight domain labels before accepting a stable snapshot",
+      "completed_case_records": 5,
+      "inflight_model_calls_unknown": true,
+      "accepted_as_frozen_validation": false
+    },
+    {
+      "path_in_workspace": "/workspace/scratch/chain-bright-stable",
+      "interrupted_by_task_owner": true,
+      "reason": "correct semantic-weight domain labels before accepting a stable snapshot",
+      "completed_case_records": 4,
+      "inflight_model_calls_unknown": true,
+      "accepted_as_frozen_validation": false
+    }
+  ]
+}

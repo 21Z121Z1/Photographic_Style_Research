@@ -1,0 +1,79 @@
+name: styles portable model checks
+on:
+  push:
+    branches: ['research/styles-chain-20261023']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  apple-collector-compile-only:
+    # Standard GitHub-hosted image on this public repository. No custom/large
+    # runner, private framework, sealed binary, or original function invocation.
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.2.4
+      - name: Record actual Apple SDK and host, then compile arm64 collector
+        shell: bash
+        run: |
+          set -euo pipefail
+          task_out="$RUNNER_TEMP/pow-collector-compile"
+          mkdir "$task_out"
+          sw_vers > "$task_out/system.txt"
+          uname -a >> "$task_out/system.txt"
+          xcrun --show-sdk-path >> "$task_out/system.txt"
+          xcrun clang --version > "$task_out/compiler.txt"
+          xcrun clang -arch arm64 -mmacosx-version-min=15.0 -std=c17 -O0 \
+            -frounding-math -ffp-contract=off -Wall -Wextra -Werror \
+            research/styles-firmware-20261022/pow_read_call.c \
+            -o "$task_out/collector" > "$task_out/compile.log" 2>&1
+          xcrun otool -tvV "$task_out/collector" > "$task_out/collector.asm.txt"
+          python - "$task_out" <<'PY'
+          import hashlib,json,pathlib,sys
+          sys.path.insert(0,'research/styles-firmware-20261022')
+          from pow_runtime_binding import check_wrapper
+          root=pathlib.Path(sys.argv[1])
+          check=check_wrapper((root/'collector.asm.txt').read_text())
+          result={'scope':'Apple SDK arm64 collector compile/static inspection only',
+                  'wrapper_machine_window':check,'original_sealed_binary_available':False,
+                  'collector_executed':False,'original_pow_calls':0,
+                  'target_runtime_binding_validated':False,
+                  'binary_sha256':hashlib.sha256((root/'collector').read_bytes()).hexdigest(),
+                  'source_sha256':hashlib.sha256(pathlib.Path('research/styles-firmware-20261022/pow_read_call.c').read_bytes()).hexdigest()}
+          (root/'result.json').write_text(json.dumps(result,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pow-collector-compile-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/pow-collector-compile/*.txt
+            ${{ runner.temp }}/pow-collector-compile/*.log
+            ${{ runner.temp }}/pow-collector-compile/*.json
+          retention-days: 1
+          if-no-files-found: error
+  portable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.2.4 Pillow==11.1.0
+      - name: Scoped regressions and exact-source receipt
+        run: python research/styles-firmware-20261022/validate_portable.py '${{ runner.temp }}/styles-validation'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: styles-portable-${{ github.sha }}
+          path: '${{ runner.temp }}/styles-validation/'
+          retention-days: 1
+          if-no-files-found: error
