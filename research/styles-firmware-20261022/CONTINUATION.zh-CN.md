@@ -92,15 +92,64 @@ field3 是内部 ABI 字段，不是已经核对的 Apple UI 控件。
 不把 identity 伪装成已实现效果，也不猜它们相对 GTM/LTM 的拍摄顺序。
 历史原生单位与其他分支成果见 `evidence/conditional-texture-adapter-index.json`。
 
+`module_sensitivity.py` 在同一源梯度上隔离 15 种干预：GTC identity/权重0/1、
+BG/FG LTM neutral、skin theta9/10、bright exposure0/1、person/skin零 mask、
+UnderEye 强度0/.5/1。每例逐字检查仅声明的 raw 字段/曲线/mask 改变，
+从 source 重算全部阶段并保存差分。UnderEye 三例只采用**本调用者明确指定的 writer 后顺序**，
+不声称 Apple 拍摄顺序；输入是实际 writer 有效 ROI，edited 和八张 mask 是解析合成字段。
+各参数是 raw ABI 系数或已供给曲线，不是已经还原的 UI/原统计参数。
+
+```sh
+python3.13 research/styles-firmware-20261022/module_sensitivity.py \
+  --numerics experimental-portable --selection experimental-bright16 \
+  --output /tmp/psr-module-effects-new
+```
+
+对应测试还证明 inactive BG 分支/未选 bright 参数可不影响 writer，
+以及 person=0 后同一 BG 编辑才影响输出；不把“参数变了”自动解释成“图像必须变”。
+
 `pow_runtime_binding.py` 的 preflight 在 Linux 可执行，run 只接受原封存 dylib、
 明确匹配的 Apple OS build 和 Git 外新私有目录。先核 SHA/Mach-O UUID/真实符号入口、
 tail/stub/GOT/import，再收集一次调用前后 GOT 目标、loaded image UUID/偏移、
 符号是否精确起点、参数/返回位型和 FPCR。失败不自动重试，不设置 FPCR。
 新 C 收集器在 Apple 尚未编译/执行，不能把合成 metadata 测试当原生通过。
 详见 [NATIVE_POW_BINDING.zh-CN.md](NATIVE_POW_BINDING.zh-CN.md)。
+标准 GitHub `macos-15` job 另做收集器 arm64 编译及机器码窗口检查，
+先记录实际 OS/host architecture/SDK/compiler；它从不运行收集器或调用原 pow。
+编译通过也不能升级目标原生绑定。
 
 ## 运行结果与成本
 
 本页后续记录最终稳定源码的运行收据。`master` 和原研究基线均无新增图像链路模块，
 同命令工作负载不存在；性能脚本核实精确 ref 与缺失模块，明确标对照不可用。
 这里只能报当前同机重复成本/波动，不声称相对 master 优化收益，不比较不同机器的时长。
+
+稳定图像实验的精确源码提交为 `611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079`。
+107 项定向回归通过，before/after source 和 evidence hash 均未改变。
+全量 361 项仍为 8 errors，与基线的环境/私有材料错误一致，不能报全测绿。
+原生 CPU/GPU 调用均 0。后续新增代码和最终 HEAD 的 CI 分别核验，不给旧 SHA 通过结果换标签。
+
+|稳定合成运行|实际 writer / 案例|结果与失败边界|
+|---|---|---|
+|context cast0，四场景 × field3=0/.125/.375/1|14/16|colors=1 的 11 像素与 edges=1 的 2 像素在 selective413 未证 pow 域；exit2|
+|显式 bright16，同输入/参数|13/16|gradient=1 在 selected404 未知；colors=.375/1 在 selective413 未知；exit2|
+|全黑，bright16，4×6|0/1|24 像素 selected404 零分母/非有限域未知；没有 epsilon 修补；exit2|
+|缺 person/skin/sky 的显式零回退，4×6，两控制|2/2|保留 1 个案例的未选内部异常；回退行为仅是模型合同|
+
+两套主运行用同一原始 context 对齐后，有 12 对共同 writer 可比较。
+例如 gradient、field3=0，只改显式 raw cast 选择，96 像素/288 RGB 分量的输出差为
+max `0.02587890625`、RMSE `0.010544956055611347`，287 个 half 分量位型改变。
+这证明 bright 在模型中实际影响 writer；不是 Apple 误差，也不证明 cast16 原系数生产正确。
+阶段数组、分布、失败坐标、输入 SHA、命令和检查点文件 hash 见
+`evidence/continuation-20261023/model-trials.json`。
+
+同 Cloud 机器、同一 8×12 梯度、每分支 3 次完整模型，context 中位耗时
+4.3675s、样本标准差 .1854s，bright16 中位 4.3935s、标准差 .2448s。
+每分支三次 writer hash 各自一致；进程峰值 RSS 为 30976KiB，包含导入及全部重复，
+不是单个算子的独占内存。没有相对 master 收益结论。
+完整成本与原始样本见 `costs-611ac4f.json`。
+
+首次并行开发期间的源码变动运行、初次未绑定测试及域标签修正前中断的运行
+另记 `initial-attempts.json`，未计作稳定验证。
+工作区 `styles-synthetic-611ac4f.zip` 包含合成 context、逐阶段 NPZ、诊断 PNG 与完整 summary；
+其 SHA/大小见 `synthetic-artifact.json`，不含原照片或二进制。
