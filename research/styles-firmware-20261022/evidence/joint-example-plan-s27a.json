@@ -1,0 +1,91 @@
+{
+  "scope": "Prepare and audit joint examples using saved v3 rows, no forward calls.",
+  "targets": {
+    "first:7": {
+      "file": "joint-target-first-7-s27a.json",
+      "sha256": "16c7637ca4b6e07f4e9b931f3bc990755b55f20514ba5569beec0a667331432b",
+      "source_state_id": 7,
+      "evidence_origin": "existing conditional model catalog row; no new forward/host output",
+      "catalog_sha256": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce"
+    },
+    "second:7": {
+      "file": "joint-target-second-7-s27a.json",
+      "sha256": "658ea55ee6ef0ea3015b72dfd663006403cfdf9e32a14c82f14ad2b56a0b774c",
+      "source_state_id": 7,
+      "evidence_origin": "existing conditional model catalog row; no new forward/host output",
+      "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6"
+    },
+    "first:0": {
+      "file": "joint-target-first-0-s27a.json",
+      "sha256": "42eb892b9ab0840ed253a23440854998155dc78762847b6f063d45c19036024a",
+      "source_state_id": 0,
+      "evidence_origin": "existing conditional model catalog row; no new forward/host output",
+      "catalog_sha256": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce"
+    },
+    "second:0": {
+      "file": "joint-target-second-0-s27a.json",
+      "sha256": "f7c0c49d4c1fee53d522cdf267df125c6d96bc0364a246a818a79061c498aeaf",
+      "source_state_id": 0,
+      "evidence_origin": "existing conditional model catalog row; no new forward/host output",
+      "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6"
+    },
+    "second:93": {
+      "file": "joint-target-second-93-s27a.json",
+      "sha256": "890a0c95435283cb8e85963e6c97b6c07f9e2efd25528a241d2dc5d67770807a",
+      "source_state_id": 93,
+      "evidence_origin": "existing conditional model catalog row; no new forward/host output",
+      "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6"
+    }
+  },
+  "examples": {
+    "state7": {
+      "request": "joint-request-state7-s27a.json",
+      "request_sha256": "217d1ebc20abd1c3a2eaa5ea8739fa7f15f8efc862c71e0142de313a75c40066",
+      "existing_model_target_rows": [
+        [
+          "first",
+          7
+        ],
+        [
+          "second",
+          7
+        ]
+      ]
+    },
+    "platform": {
+      "request": "joint-request-platform-s27a.json",
+      "request_sha256": "8f262afa83b96807eac36525a0df3479868721cf7e514d690924268c8a087b49",
+      "existing_model_target_rows": [
+        [
+          "first",
+          0
+        ],
+        [
+          "second",
+          0
+        ]
+      ]
+    },
+    "incompatible": {
+      "request": "joint-request-incompatible-s27a.json",
+      "request_sha256": "60f92dc16600c056130364fefd8bd0204d00f77f10a4729bd60d8fd136e8c0e2",
+      "existing_model_target_rows": [
+        [
+          "first",
+          7
+        ],
+        [
+          "second",
+          93
+        ]
+      ]
+    }
+  },
+  "explicit_shared_raw_parameter_declaration": {
+    "same_raw_f32_across_contexts": true,
+    "field_definition": "post-scene SSRParams.color field3 byte12 raw f32"
+  },
+  "two_existing_contexts_only": true,
+  "new_forward_or_kernel_calls": 0,
+  "targets_are_model_only": true
+}

@@ -1,0 +1,432 @@
+{
+  "schema": "psr-joint-known-context-field3-v1",
+  "status": "no_common_raw_parameter_candidate_in_the_declared_model_domain",
+  "shared_parameter_declaration": {
+    "same_raw_f32_across_contexts": true,
+    "field_definition": "post-scene SSRParams.color field3 byte12 raw f32"
+  },
+  "shared_raw_parameter_is_caller_assumption_not_inferred": true,
+  "contract": {
+    "version": [
+      "iPhone17,3",
+      "24A446",
+      "SmartStyleV1",
+      "CMISmartStyleProcessorV1",
+      0
+    ],
+    "precision_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da",
+    "domain": [
+      0,
+      1052770304
+    ],
+    "field_definition": "post-scene SSRParams.color field3 byte12 raw f32",
+    "partition_sha256": "b3e36abb1928562629827c7404771d534722b2021cedeed23ecc26653bd0b030"
+  },
+  "distinct_supported_contexts": 2,
+  "observations": [
+    {
+      "name": "first",
+      "identity": {
+        "hardware": "iPhone17,3",
+        "build": "24A446",
+        "bundle": "SmartStyleV1",
+        "processor_class": "CMISmartStyleProcessorV1",
+        "main_version_argument": 0,
+        "complete_context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+        "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+      },
+      "catalog_sha256": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce",
+      "catalog_provenance": {
+        "mode": "exact accepted full catalog SHA",
+        "accepted_full_catalog_sha256": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce",
+        "known_rows_verified": 146,
+        "unknown_state_ids": [],
+        "missing_state_ids": [],
+        "new_model_rows_accepted": false
+      },
+      "target_writer_sha256": "d10fbd404f9ee4b318254b47df1c1ad428dbe085354c2a8b4fab08f7e5ace428",
+      "query": {
+        "scope": "exact bounded known-context candidate set; no nearest value or uniqueness claim",
+        "identity": {
+          "hardware": "iPhone17,3",
+          "build": "24A446",
+          "bundle": "SmartStyleV1",
+          "processor_class": "CMISmartStyleProcessorV1",
+          "main_version_argument": 0,
+          "complete_context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+          "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+        },
+        "catalog_sha256": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce",
+        "domain": {
+          "first_f32_bits": 0,
+          "last_f32_bits": 1052770304,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3ec00000",
+          "lower_real": 0.0,
+          "upper_real": 0.375,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 1052770305,
+          "basis": "bounded research prefix [canonical+0,3/8] chosen before target matching within the existing [0,1] point-model contract; includes S21 platform and point3; not an Apple or UI range",
+          "negative_zero_searched": false
+        },
+        "partition_proof_reused": true,
+        "model_matching_state_ids": [
+          7,
+          8,
+          9
+        ],
+        "candidate_union": [
+          {
+            "lower_real": 0.073272705078125,
+            "upper_real": 0.091156005859375,
+            "lower_closed": false,
+            "upper_closed": false,
+            "first_f32_bits": 1033244673,
+            "last_f32_bits": 1035644927,
+            "first_f32_hex": "0x3d961001",
+            "last_f32_hex": "0x3dbaafff",
+            "f32_population": 2400255,
+            "signature_ids": [
+              7,
+              8,
+              9
+            ],
+            "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+          }
+        ],
+        "candidate_interface_classes": [
+          {
+            "state_id": 7,
+            "key": [
+              1,
+              15366,
+              12902
+            ],
+            "intervals": [
+              {
+                "lower_real": 0.073272705078125,
+                "upper_real": 0.079681396484375,
+                "lower_closed": false,
+                "upper_closed": false,
+                "first_f32_bits": 1033244673,
+                "last_f32_bits": 1034104831,
+                "first_f32_hex": "0x3d961001",
+                "last_f32_hex": "0x3da32fff",
+                "f32_population": 860159,
+                "signature_ids": [
+                  7
+                ],
+                "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+              }
+            ]
+          },
+          {
+            "state_id": 8,
+            "key": [
+              1,
+              15367,
+              12902
+            ],
+            "intervals": [
+              {
+                "lower_real": 0.079681396484375,
+                "upper_real": 0.085540771484375,
+                "lower_closed": true,
+                "upper_closed": false,
+                "first_f32_bits": 1034104832,
+                "last_f32_bits": 1034891263,
+                "first_f32_hex": "0x3da33000",
+                "last_f32_hex": "0x3daf2fff",
+                "f32_population": 786432,
+                "signature_ids": [
+                  8
+                ],
+                "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+              }
+            ]
+          },
+          {
+            "state_id": 9,
+            "key": [
+              1,
+              15368,
+              12902
+            ],
+            "intervals": [
+              {
+                "lower_real": 0.085540771484375,
+                "upper_real": 0.091156005859375,
+                "lower_closed": true,
+                "upper_closed": false,
+                "first_f32_bits": 1034891264,
+                "last_f32_bits": 1035644927,
+                "first_f32_hex": "0x3daf3000",
+                "last_f32_hex": "0x3dbaafff",
+                "f32_population": 753664,
+                "signature_ids": [
+                  9
+                ],
+                "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+              }
+            ]
+          }
+        ],
+        "found_f32_population": 2400255,
+        "coverage": {
+          "evaluated_states": 146,
+          "missing_state_ids": [],
+          "unknown_state_ids": [],
+          "complete_model_coverage": true
+        },
+        "unresolved_possible_union": [],
+        "unresolved_are_not_excluded": true,
+        "true_control_input_to_solver": false,
+        "new_model_or_native_calls": 0,
+        "original_host_exhaustive": false,
+        "GPU_UI_unknown_source_inverse": false
+      },
+      "known_model_candidates": [
+        {
+          "first_f32_bits": 1033244673,
+          "last_f32_bits": 1035644927,
+          "first_f32_hex": "0x3d961001",
+          "last_f32_hex": "0x3dbaafff",
+          "lower_real": 0.073272705078125,
+          "upper_real": 0.091156005859375,
+          "lower_closed": false,
+          "upper_closed": false,
+          "f32_population": 2400255,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "possible_candidates_including_unresolved": [
+        {
+          "first_f32_bits": 1033244673,
+          "last_f32_bits": 1035644927,
+          "first_f32_hex": "0x3d961001",
+          "last_f32_hex": "0x3dbaafff",
+          "lower_real": 0.073272705078125,
+          "upper_real": 0.091156005859375,
+          "lower_closed": false,
+          "upper_closed": false,
+          "f32_population": 2400255,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "known_f32_population": 2400255,
+      "possible_f32_population": 2400255,
+      "coverage_complete": true
+    },
+    {
+      "name": "second",
+      "identity": {
+        "hardware": "iPhone17,3",
+        "build": "24A446",
+        "bundle": "SmartStyleV1",
+        "processor_class": "CMISmartStyleProcessorV1",
+        "main_version_argument": 0,
+        "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+        "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+      },
+      "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+      "catalog_provenance": {
+        "mode": "exact accepted full catalog SHA",
+        "accepted_full_catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+        "known_rows_verified": 146,
+        "unknown_state_ids": [],
+        "missing_state_ids": [],
+        "new_model_rows_accepted": false
+      },
+      "target_writer_sha256": "d225970ea8ae8833ec2c47af8ff065cb44c6daf5218739cb98d9bc39806b9b7d",
+      "query": {
+        "scope": "exact bounded known-context candidate set; no nearest value or uniqueness claim",
+        "identity": {
+          "hardware": "iPhone17,3",
+          "build": "24A446",
+          "bundle": "SmartStyleV1",
+          "processor_class": "CMISmartStyleProcessorV1",
+          "main_version_argument": 0,
+          "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+          "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+        },
+        "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+        "domain": {
+          "first_f32_bits": 0,
+          "last_f32_bits": 1052770304,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3ec00000",
+          "lower_real": 0.0,
+          "upper_real": 0.375,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 1052770305,
+          "basis": "bounded research prefix [canonical+0,3/8] chosen before target matching within the existing [0,1] point-model contract; includes S21 platform and point3; not an Apple or UI range",
+          "negative_zero_searched": false
+        },
+        "partition_proof_reused": true,
+        "model_matching_state_ids": [
+          93
+        ],
+        "candidate_union": [
+          {
+            "lower_real": 0.2989501953125,
+            "upper_real": 0.3006591796875,
+            "lower_closed": false,
+            "upper_closed": false,
+            "first_f32_bits": 1050218497,
+            "last_f32_bits": 1050275839,
+            "first_f32_hex": "0x3e991001",
+            "last_f32_hex": "0x3e99efff",
+            "f32_population": 57343,
+            "signature_ids": [
+              93
+            ],
+            "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+          }
+        ],
+        "candidate_interface_classes": [
+          {
+            "state_id": 93,
+            "key": [
+              1,
+              15452,
+              12902
+            ],
+            "intervals": [
+              {
+                "lower_real": 0.2989501953125,
+                "upper_real": 0.3006591796875,
+                "lower_closed": false,
+                "upper_closed": false,
+                "first_f32_bits": 1050218497,
+                "last_f32_bits": 1050275839,
+                "first_f32_hex": "0x3e991001",
+                "last_f32_hex": "0x3e99efff",
+                "f32_population": 57343,
+                "signature_ids": [
+                  93
+                ],
+                "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+              }
+            ]
+          }
+        ],
+        "found_f32_population": 57343,
+        "coverage": {
+          "evaluated_states": 146,
+          "missing_state_ids": [],
+          "unknown_state_ids": [],
+          "complete_model_coverage": true
+        },
+        "unresolved_possible_union": [],
+        "unresolved_are_not_excluded": true,
+        "true_control_input_to_solver": false,
+        "new_model_or_native_calls": 0,
+        "original_host_exhaustive": false,
+        "GPU_UI_unknown_source_inverse": false
+      },
+      "known_model_candidates": [
+        {
+          "first_f32_bits": 1050218497,
+          "last_f32_bits": 1050275839,
+          "first_f32_hex": "0x3e991001",
+          "last_f32_hex": "0x3e99efff",
+          "lower_real": 0.2989501953125,
+          "upper_real": 0.3006591796875,
+          "lower_closed": false,
+          "upper_closed": false,
+          "f32_population": 57343,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "possible_candidates_including_unresolved": [
+        {
+          "first_f32_bits": 1050218497,
+          "last_f32_bits": 1050275839,
+          "first_f32_hex": "0x3e991001",
+          "last_f32_hex": "0x3e99efff",
+          "lower_real": 0.2989501953125,
+          "upper_real": 0.3006591796875,
+          "lower_closed": false,
+          "upper_closed": false,
+          "f32_population": 57343,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "known_f32_population": 57343,
+      "possible_f32_population": 57343,
+      "coverage_complete": true
+    }
+  ],
+  "confirmed_model_joint_candidates": [],
+  "confirmed_model_f32_population": 0,
+  "confirmed_joint_interface_state_ids": [],
+  "state_ids_are_display_only_raw_intervals_are_primary": true,
+  "possible_joint_candidates": [],
+  "possible_f32_population": 0,
+  "unresolved_joint_candidates": [],
+  "unresolved_joint_f32_population": 0,
+  "all_single_catalogs_complete": true,
+  "joint_unresolved_region_empty": true,
+  "missing_unknown_never_treated_as_excluded": true,
+  "all_individual_possible_sets_nonempty": true,
+  "information": {
+    "joint_equal_to_single_possible_sets": [],
+    "reduction_from_each_single_possible_population": {
+      "first": 2400255,
+      "second": 57343
+    },
+    "extra_population_reduction_beyond_smallest_single": 57343,
+    "strictly_smaller_than_every_single_possible_set": false,
+    "information_gain_interpretation_applicable": false,
+    "no_extra_elimination_beyond_equal_single_inputs": false
+  },
+  "evidence_levels": {
+    "interval_algebra": "exact raw f32 set operations and populations; retained binary real endpoints/closure",
+    "single_matches": "verified existing conditional point-model catalog rows only; partial coverage disclosed",
+    "shared_parameter": "explicit caller declaration, not a firmware/UI equivalence finding",
+    "joint_original_host_witness": "not supplied or promoted by this API",
+    "GPU_UI_or_unknown_source_inverse": "unverified"
+  },
+  "joint_class_acceptance": "model_only",
+  "single_target_invalidity_claim": false,
+  "nearest_fallback_used": false,
+  "unique_parameter_claim": false,
+  "new_forward_or_original_kernel_calls": 0,
+  "joint_API_source_sha256": "dc5ea4ec798b9492c5c17ed32933fc2e45ecd4de6d5ac3a235994278ff0f8840",
+  "raw_interval_source_sha256": "2daa3dda3303367a15be37e40b5251ff7102a24ca60d7939a89de403de2a5930",
+  "request_sha256": "60f92dc16600c056130364fefd8bd0204d00f77f10a4729bd60d8fd136e8c0e2",
+  "file_inputs_sha256": {
+    "0:joint-request-incompatible-s27a.json": "60f92dc16600c056130364fefd8bd0204d00f77f10a4729bd60d8fd136e8c0e2",
+    "1:complete-context-s15a.json": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+    "2:model-precision-v3-s25c6.json": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da",
+    "3:color-partition-s22a.json": "b3e36abb1928562629827c7404771d534722b2021cedeed23ecc26653bd0b030",
+    "4:first-context-catalog-v3-s26c.json": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce",
+    "5:joint-target-first-7-s27a.json": "16c7637ca4b6e07f4e9b931f3bc990755b55f20514ba5569beec0a667331432b",
+    "6:scan-000-s26b.json": "3dc8b874f7868da244d66fccd94a0870802c68347f51511ab9f914bf14222c7e",
+    "7:scan-016-s26b.json": "73fbbb8d9f91b7a695e1fd6f5ac84f0b7561b11c87999bd22614c75ce73112ca",
+    "8:scan-032-s26b.json": "27b35b210c6effe2d6da6d98d23d630526d2cac964f3e5d4163b1f016a2f1e38",
+    "9:scan-048-s26b.json": "b1bca5e37ee54a45f6ca444ef7115b02e133e9fee69dbe3633a5a16618f02fb5",
+    "10:scan-064-s26b.json": "cf5871caa6d12bcb9ad026c996acb6c99fd068d2d11dab74a3415b837bd2a495",
+    "11:scan-080-s26b.json": "8a75e05c2bc15ddf52d8ab32f78cc82693ba77e163dcd0547de993a4d605fddd",
+    "12:scan-096-s26b.json": "ac5364df30a5462e7fd21159ca128ca1106678be74b5e48bb0a5f84e1715ccea",
+    "13:scan-112-s26b.json": "423ac4f32f1b8d0bcb93170dc5242d4309e94ed8f6156165bcaae141dca957c5",
+    "14:scan-128-s26b.json": "2411515c91ea83942f3d7dd9ae6bcb7d59af2c868ded87eb8053c61eff194242",
+    "15:scan-144-s26b.json": "c6bd3fc452b786cdd5ae1dcf09aa62d7c711c74bee77e608531a18149a64dddb",
+    "16:second-context-s25a.json": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+    "17:context-catalog-s25e.json": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+    "18:joint-target-second-93-s27a.json": "890a0c95435283cb8e85963e6c97b6c07f9e2efd25528a241d2dc5d67770807a",
+    "19:scan-000-s25d.json": "a3da7efa3a31296e2b7eb9c0cd3871909c6d6605a7e51878f37e48f3b4485610",
+    "20:scan-016-s25d.json": "1d39b8f44fd667780115a21717ab3ca695330e808358d7c314b9431625d503fb",
+    "21:scan-032-s25d.json": "6be598b57c39d51b77277087c68ca34be05b641fa441c8566cc276e98a506e6d",
+    "22:scan-048-s25d.json": "f04fdd2bc761900b7b48734f71b38466b4ede2c671a007f77b243cad34b927dc",
+    "23:scan-064-s25d.json": "9b88667e8b35cd34dd06cc7dba3036b97ab101adf04fa33718ec092d04e3c6d6",
+    "24:scan-080-s25d.json": "6a2194760187e663196d4d47d1451887716a1b8c1ffe7b3d08d0572f9693bae3",
+    "25:scan-096-s25d.json": "47d045ec9c9c2fe143ece6931d02d6c68b9ae7730aee6acc44cae5ea656dc991",
+    "26:scan-112-s25d.json": "eac3ddebfee1e2804dd1d5a42e2640ca96646180b739ea140fa38136bd9d4a05",
+    "27:scan-128-s25d.json": "035cda0f559dcae013769843db2b5c0cfc428a4fdf4439ef592b57eb34be22d4",
+    "28:scan-144-s25d.json": "33b64f9c71eea159a966e99e76dd9972e33bc0a9332a033e9398262fdc3c722f"
+  },
+  "input_files_unchanged_during_solve": true
+}

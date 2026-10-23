@@ -1,0 +1,22 @@
+{
+  "label": "s27-final-joint-and-partial-provenance-tests",
+  "pre_run_binding_sha256": "258a369b4012878e2a66f4785e96dd85987e2ee35bac491c6afd127e9fbfdd3a",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "8d10ebd4406129e19bb86f12d3a483d37a5954c3f32349979ae6e8450da15c0d",
+  "elapsed_seconds": 1.5839462280273438,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_joint_color_api.py",
+    "-v"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "psr-shared-field3-request-v1",
+  "shared_parameter": {
+    "same_raw_f32_across_contexts": true,
+    "field_definition": "post-scene SSRParams.color field3 byte12 raw f32"
+  },
+  "observations": [
+    {
+      "name": "first",
+      "context": "complete-context-s15a.json",
+      "precision": "model-precision-v3-s25c6.json",
+      "partition": "color-partition-s22a.json",
+      "catalog": "first-context-catalog-v3-s26c.json",
+      "catalog_sha256": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce",
+      "target": "joint-target-first-7-s27a.json"
+    },
+    {
+      "name": "second",
+      "context": "second-context-s25a.json",
+      "precision": "model-precision-v3-s25c6.json",
+      "partition": "color-partition-s22a.json",
+      "catalog": "context-catalog-s25e.json",
+      "catalog_sha256": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6",
+      "target": "joint-target-second-7-s27a.json"
+    }
+  ]
+}
