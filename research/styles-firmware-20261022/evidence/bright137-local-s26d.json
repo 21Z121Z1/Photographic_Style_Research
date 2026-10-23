@@ -1,0 +1,51 @@
+{
+  "scope": "A fail-closed SSA137 correction for ONE authenticated saved bright witness.\n\nNot wired into pixel_bright or v3. No cast16/multiple-parameter inverse support.\n",
+  "saved_diagnostic_sha256": "825f669bfbf2463361042d45f4773da588051c99e499794a451e2dfb84b3353a",
+  "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+  "grid": [
+    0,
+    1
+  ],
+  "node": 137,
+  "input_square132_half_bits": [
+    11830,
+    13187,
+    12586
+  ],
+  "input_multiplier135_half_bits": [
+    51513,
+    51231,
+    51382
+  ],
+  "native137_half_bits": [
+    16889,
+    16417,
+    16630
+  ],
+  "separate_rounding_half_bits": [
+    16889,
+    16418,
+    16630
+  ],
+  "local_one_round_half_bits": [
+    16889,
+    16417,
+    16630
+  ],
+  "before_half_bit_mismatches": 1,
+  "after_local_half_bit_mismatches": 0,
+  "domain": "exact authenticated saved half3 operands only; no implicit neighborhood or other caller",
+  "default_pixel_bright_modified": false,
+  "v3_precision_contract_modified": false,
+  "remaining_original_bright_differences": {
+    "S25_targets": 6,
+    "S25_boundaries": 18
+  },
+  "downstream_or_full_bright_replayed": false,
+  "cast16_and_multiple_parameter_rejections": {
+    "cast16": "This accepted inverse work covers fixed cast0 and field3 only; cast16/multiple free parameters are unverified and prohibited",
+    "multiple_parameters": "This accepted inverse work covers fixed cast0 and field3 only; cast16/multiple free parameters are unverified and prohibited"
+  },
+  "native_or_full_point_forward_calls": 0,
+  "scope_guard_does_not_certify_new_caller": true
+}

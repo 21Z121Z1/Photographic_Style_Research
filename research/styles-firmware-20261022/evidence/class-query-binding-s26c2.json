@@ -1,0 +1,16 @@
+{
+  "label": "s26-changed-class-candidates-and-legacy-revision",
+  "pre_run_binding_sha256": "135e57d63e638d2665fce540aec6e7f5d1a73a4acc3f188a403228241ebbf5bc",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "5d265cccd214f5d29017534c755932f5a72cd7cca26cd35810c7941f1cae18f4",
+  "elapsed_seconds": 0.6487009525299072,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-c",
+    "\nfrom pathlib import Path\nimport sys,json,numpy as np\nr=Path('research/styles-firmware-20261022');e=r/'evidence';sys.path.insert(0,str(r))\nfrom context_color_api import BoundCatalog,Target,strict_bits,load\nfrom baseline_archive import sha,encoded\nfrom bright137_witness import require_inverse_scope\nprecision=e/'model-precision-v3-s25c6.json';plan=e/'color-partition-s22a.json';contexts={'first':e/'complete-context-s15a.json','second':e/'second-context-s25a.json'};catalogs={'first':e/'first-context-catalog-v3-s26c.json','second':e/'context-catalog-s25e.json'};queries={};handles={}\nfor name in contexts:\n require_inverse_scope(int(np.array(load(contexts[name])['raw_f32_bits']['params'],dtype='u4')[0]),frozenset({3}))\n h=BoundCatalog(contexts[name],precision,plan,catalogs[name],sha(catalogs[name]));ident,m,p,rows=h.checked();handles[name]=(h,ident,rows)\n for i in [4,7,31,71]:queries[name+':'+str(i)]=h.query(Target(ident,sha(catalogs[name]),strict_bits(rows[i]['writer_half_bits'])))\nlegacy={}\nfor f in sorted(e.glob('scan-[0-9][0-9][0-9]-s22b.json')):\n for row in load(f)['rows']:legacy[row['state_id']]=row\nnew=handles['first'][2];changed=[]\nfor i in range(146):\n a=np.array(legacy[i]['writer_half_bits'],dtype='u2');b=np.array(new[i]['writer_half_bits'],dtype='u2');n=int(np.count_nonzero(a!=b))\n if n:changed.append({'state_id':i,'writer_half_bit_mismatches':n})\noldv=load(e/'verification-s22.json');assert all(sha(f)==oldv['evidence_sha256'][f.name]for f in e.glob('scan-[0-9][0-9][0-9]-s22b.json'))\nresult={'scope':'changed-class API queries under exact shared v3, plus explicit old-versus-new first catalog revision; no forwards or native calls','precision_contract_sha256':sha(precision),'comparison_sha256':sha(e/'same-precision-comparison-s26c.json'),'changed_class_queries':queries,'first_scene_legacy_vs_v3_writer_changed_states':changed,'legacy_directory_unchanged':True,'new_directory_was_freshly_evaluated_not_relabelled':True,'current_writer_scope_guard':'cast0 / single field3; cast16 and multiple free parameters prohibited','new_native_or_point_calls':0,'changed_classes_not_original_host_verified':True}\n(e/'changed-class-queries-s26c2.json').write_bytes(encoded(result));print(json.dumps({'legacy_vs_v3_writer_changed_states':len(changed),'changed_class_queries':{k:{'states':q['model_matching_state_ids'],'population':q['found_f32_population'],'intervals':q['candidate_union']}for k,q in queries.items()},'new_calls':0}))\n"
+  ]
+}

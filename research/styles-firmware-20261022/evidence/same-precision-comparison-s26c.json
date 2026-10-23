@@ -1,0 +1,390 @@
+{
+  "scope": "same-v3 comparison of two fixed synthetic146-state catalogs, no native calls or universal injectivity proof",
+  "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da",
+  "identities": {
+    "first": {
+      "hardware": "iPhone17,3",
+      "build": "24A446",
+      "bundle": "SmartStyleV1",
+      "processor_class": "CMISmartStyleProcessorV1",
+      "main_version_argument": 0,
+      "complete_context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+      "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+    },
+    "second": {
+      "hardware": "iPhone17,3",
+      "build": "24A446",
+      "bundle": "SmartStyleV1",
+      "processor_class": "CMISmartStyleProcessorV1",
+      "main_version_argument": 0,
+      "complete_context_sha256": "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6",
+      "precision_contract_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da"
+    }
+  },
+  "catalog_sha256": {
+    "first": "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce",
+    "second": "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6"
+  },
+  "fresh_first_catalog": true,
+  "old_S22_catalog_relabelled": false,
+  "first_scene_replay_sha256": "ec972f1610e653a0996f2ad51ac71683f72b7210fbbaab7cf32a778a92f1675e",
+  "unique_writer_counts": {
+    "first": 140,
+    "second": 145
+  },
+  "collision_groups": {
+    "first": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        7,
+        8,
+        9
+      ],
+      [
+        31,
+        32
+      ],
+      [
+        71,
+        72
+      ]
+    ],
+    "second": [
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "all146_classes_compared": true,
+  "changed_class_state_ids": [
+    4,
+    5,
+    7,
+    8,
+    9,
+    31,
+    32,
+    71,
+    72
+  ],
+  "cross_state_collision_pairs_first": [
+    [
+      0,
+      1
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      7,
+      9
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      71,
+      72
+    ]
+  ],
+  "cross_state_collision_pairs_second": [
+    [
+      0,
+      1
+    ]
+  ],
+  "added_pairs": [],
+  "removed_pairs": [
+    [
+      4,
+      5
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      7,
+      9
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      71,
+      72
+    ]
+  ],
+  "same_state_writer_arrays_differ_between_contexts": 146,
+  "example_queries": {
+    "first:0": {
+      "model_matching_state_ids": [
+        0,
+        1
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.0,
+          "upper_real": 0.02210235595703125,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 0,
+          "last_f32_bits": 1018499072,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3cb51000",
+          "f32_population": 1018499073,
+          "signature_ids": [
+            0,
+            1
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 1018499073
+    },
+    "first:1": {
+      "model_matching_state_ids": [
+        0,
+        1
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.0,
+          "upper_real": 0.02210235595703125,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 0,
+          "last_f32_bits": 1018499072,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3cb51000",
+          "f32_population": 1018499073,
+          "signature_ids": [
+            0,
+            1
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 1018499073
+    },
+    "first:17": {
+      "model_matching_state_ids": [
+        17
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.123016357421875,
+          "upper_real": 0.12701416015625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1039921152,
+          "last_f32_bits": 1040322560,
+          "first_f32_hex": "0x3dfbf000",
+          "last_f32_hex": "0x3e021000",
+          "f32_population": 401409,
+          "signature_ids": [
+            17
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 401409
+    },
+    "first:93": {
+      "model_matching_state_ids": [
+        93
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.2989501953125,
+          "upper_real": 0.3006591796875,
+          "lower_closed": false,
+          "upper_closed": false,
+          "first_f32_bits": 1050218497,
+          "last_f32_bits": 1050275839,
+          "first_f32_hex": "0x3e991001",
+          "last_f32_hex": "0x3e99efff",
+          "f32_population": 57343,
+          "signature_ids": [
+            93
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 57343
+    },
+    "first:122": {
+      "model_matching_state_ids": [
+        122
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.3431396484375,
+          "upper_real": 0.3443603515625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1051701248,
+          "last_f32_bits": 1051742208,
+          "first_f32_hex": "0x3eafb000",
+          "last_f32_hex": "0x3eb05000",
+          "f32_population": 40961,
+          "signature_ids": [
+            122
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 40961
+    },
+    "second:0": {
+      "model_matching_state_ids": [
+        0,
+        1
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.0,
+          "upper_real": 0.02210235595703125,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 0,
+          "last_f32_bits": 1018499072,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3cb51000",
+          "f32_population": 1018499073,
+          "signature_ids": [
+            0,
+            1
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 1018499073
+    },
+    "second:1": {
+      "model_matching_state_ids": [
+        0,
+        1
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.0,
+          "upper_real": 0.02210235595703125,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 0,
+          "last_f32_bits": 1018499072,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3cb51000",
+          "f32_population": 1018499073,
+          "signature_ids": [
+            0,
+            1
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 1018499073
+    },
+    "second:17": {
+      "model_matching_state_ids": [
+        17
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.123016357421875,
+          "upper_real": 0.12701416015625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1039921152,
+          "last_f32_bits": 1040322560,
+          "first_f32_hex": "0x3dfbf000",
+          "last_f32_hex": "0x3e021000",
+          "f32_population": 401409,
+          "signature_ids": [
+            17
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 401409
+    },
+    "second:93": {
+      "model_matching_state_ids": [
+        93
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.2989501953125,
+          "upper_real": 0.3006591796875,
+          "lower_closed": false,
+          "upper_closed": false,
+          "first_f32_bits": 1050218497,
+          "last_f32_bits": 1050275839,
+          "first_f32_hex": "0x3e991001",
+          "last_f32_hex": "0x3e99efff",
+          "f32_population": 57343,
+          "signature_ids": [
+            93
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 57343
+    },
+    "second:122": {
+      "model_matching_state_ids": [
+        122
+      ],
+      "candidate_union": [
+        {
+          "lower_real": 0.3431396484375,
+          "upper_real": 0.3443603515625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "first_f32_bits": 1051701248,
+          "last_f32_bits": 1051742208,
+          "first_f32_hex": "0x3eafb000",
+          "last_f32_hex": "0x3eb05000",
+          "f32_population": 40961,
+          "signature_ids": [
+            122
+          ],
+          "membership": "all uint32 bit patterns first<=bits<=last interpreted as canonical nonnegative f32; inclusive integer endpoints"
+        }
+      ],
+      "population": 40961
+    }
+  },
+  "cross_context_target_rejections": {
+    "first_catalog_with_second_target": "Target context/build/precision/catalog mismatch",
+    "second_catalog_with_first_target": "Target context/build/precision/catalog mismatch"
+  },
+  "context_swap_rejected": true,
+  "new_model_or_native_calls": 0,
+  "universal_scene_inverse_proved": false,
+  "UI_or_unknown_source_inverse_proved": false
+}
