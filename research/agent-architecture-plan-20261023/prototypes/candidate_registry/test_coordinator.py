@@ -5,7 +5,7 @@ import shutil
 import tempfile
 import unittest
 
-from coordinator import Coordinator, HERE, Intent
+from coordinator import Coordinator, HERE, Intent, RegistryChanged
 
 
 class RegistryContractTests(unittest.TestCase):
@@ -73,6 +73,39 @@ class RegistryContractTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             self.coordinator.run(request)
         self.assertEqual(receipt.read_bytes(), previous)
+
+    def test_registry_changed_before_prepare_rejects_cached_policy_and_fresh_object_blocks(self):
+        registry = self.temp/'registry.json'
+        registry.write_bytes((HERE/'registry.json').read_bytes())
+        old = Coordinator(registry=registry)
+        raw = json.loads(registry.read_bytes())
+        raw['capabilities']['portable-image']['availability'] = 'prepared-only'
+        registry.write_text(json.dumps(raw))
+
+        with self.assertRaisesRegex(RegistryChanged, 'loaded configuration'):
+            old.prepare('portable-image', Intent.PORTABLE_MODEL, self.input, self.temp/'old-run')
+        self.assertFalse((self.temp/'old-run').exists())
+        fresh = Coordinator(registry=registry)
+        request = fresh.prepare('portable-image', Intent.PORTABLE_MODEL, self.input, self.temp/'fresh-run')
+        result = fresh.run(request)
+        self.assertEqual(result.status, 'blocked')
+        self.assertIn('prepared only', result.reason)
+        self.assertFalse((self.temp/'fresh-run/cli').exists())
+
+    def test_registry_changed_after_prepare_blocks_before_cli(self):
+        registry = self.temp/'registry.json'
+        registry.write_bytes((HERE/'registry.json').read_bytes())
+        coordinator = Coordinator(registry=registry)
+        request = coordinator.prepare('portable-image', Intent.PORTABLE_MODEL, self.input, self.temp/'run')
+        raw = json.loads(registry.read_bytes())
+        raw['capabilities']['portable-image']['availability'] = 'prepared-only'
+        registry.write_text(json.dumps(raw))
+
+        result = coordinator.run(request)
+        self.assertEqual(result.status, 'blocked')
+        self.assertIn('loaded configuration', result.reason)
+        self.assertIsNone(result.evidence_level)
+        self.assertFalse((self.temp/'run/cli').exists())
 
     def test_historical_darwin_profile_does_not_admit_linux(self):
         import platform

@@ -52,14 +52,28 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+class RegistryChanged(ValueError):
+    """The loaded policy no longer describes the registry file."""
+
+
 class Coordinator:
     """Own registry resolution, dependency snapshots and result admission."""
 
     def __init__(self, repo: Path = REPO, registry: Path = HERE/'registry.json'):
         self.repo, self.registry_file = repo.resolve(), registry.resolve()
-        self._registry = json.loads(self.registry_file.read_text())
+        registry_bytes = self.registry_file.read_bytes()
+        self._registry_sha256 = hashlib.sha256(registry_bytes).hexdigest()
+        self._registry = json.loads(registry_bytes)
         if self._registry['schema'] != 'psr-capability-registry-prototype-v1':
             raise ValueError('Unsupported capability registry')
+
+    def _require_loaded_registry(self) -> None:
+        try:
+            unchanged = digest(self.registry_file) == self._registry_sha256
+        except OSError:
+            unchanged = False
+        if not unchanged:
+            raise RegistryChanged('Registry bytes differ from the loaded configuration; create a new Coordinator')
 
     def _inside(self, relative: str) -> Path:
         path = (self.repo/relative).resolve()
@@ -104,9 +118,15 @@ class Coordinator:
         return tuple(sorted(found))
 
     def snapshot(self, capability: str) -> tuple[tuple[str, str], ...]:
-        return tuple((str(p.relative_to(self.repo)), digest(p)) for p in self.source_paths(capability))
+        self._require_loaded_registry()
+        snapshot = tuple((str(p.relative_to(self.repo)),
+                          self._registry_sha256 if p == self.registry_file else digest(p))
+                         for p in self.source_paths(capability))
+        self._require_loaded_registry()
+        return snapshot
 
     def prepare(self, capability: str, intent: Intent, input_file: Path, output: Path) -> Request:
+        self._require_loaded_registry()
         if type(intent) is not Intent or capability not in self._registry['capabilities']:
             raise TypeError('Registered capability and exact intent enum required')
         input_file = input_file.resolve()
@@ -115,6 +135,10 @@ class Coordinator:
         return Request(capability, intent, input_file, digest(input_file), output.resolve(), self.snapshot(capability))
 
     def _reason(self, request: Request) -> str | None:
+        try:
+            self._require_loaded_registry()
+        except RegistryChanged as exc:
+            return str(exc)
         entry = self._registry['capabilities'][request.capability]
         if request.intent.value != entry['intent']:
             return 'Capability cannot satisfy the requested evidence intent'
@@ -122,7 +146,11 @@ class Coordinator:
             return 'Original sealed material and native execution are unavailable; collector is prepared only'
         if digest(request.input_file) != request.input_sha256:
             return 'Input bytes differ from the prepared request'
-        if self.snapshot(request.capability) != request.source_snapshot:
+        try:
+            current_snapshot = self.snapshot(request.capability)
+        except RegistryChanged as exc:
+            return str(exc)
+        if current_snapshot != request.source_snapshot:
             return 'Source bytes or complete dependency set differ from the prepared request'
         if entry['runtime_profile']:
             profile = json.loads(self._inside(entry['runtime_profile']).read_text())['profile']['runtime']
