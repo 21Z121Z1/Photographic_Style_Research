@@ -1,0 +1,18 @@
+{
+  "label": "s33-compile-and-static-audit-read-only-FPCR-call-wrapper",
+  "pre_run_binding_sha256": "6380f0abef81134ac567878450082eebf2844916ca0981fb1b2b5c7155b841cc",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "4d503b309dd7a827a99ad86a797ae884212bcfe0183ec68a1127c9a9e209f13e",
+  "elapsed_seconds": 0.674994945526123,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/fpcr_binding.py",
+    "prepare",
+    "../psr-private-baselines/s33-fpcr-20261023-041b0df",
+    "research/styles-firmware-20261022/evidence/fpcr-prepared-s33a.json"
+  ]
+}

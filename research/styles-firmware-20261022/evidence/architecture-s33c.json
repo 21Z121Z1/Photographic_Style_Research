@@ -1,0 +1,56 @@
+{
+  "status": "official_Arm_page_body_read_current_S33",
+  "observed_date_UTC": "2026-10-23",
+  "retrieval": "public background in-app browser; read-only rendered DOM after official developer.arm.com redirects to support.arm.com; no login or access-control bypass",
+  "body_read_independently_of_search_snippets": true,
+  "records": [
+    {
+      "id": "FPCR",
+      "manual_version": "M.b (Superseded)",
+      "section": "C5.2.8 FPCR, Floating-point Control Register",
+      "url": "https://support.arm.com/documentation/ddi0487/mb/-Part-C-The-AArch64-Instruction-Set/-Chapter-C5-The-A64-System-Instruction-Class/-C5-2-Special-purpose-registers/-C5-2-8-FPCR--Floating-point-Control-Register",
+      "short_quote": "RMode, bits [23:22]",
+      "facts": [
+        "FPCR is a64-bit control register. RMode23:22 encodes00 RN,01 RP,10 RM,11 RZ.",
+        "The MRS Xt,FPCR access pseudocode assigns FPCR() to the general-purpose destination on the successful access path.",
+        "AHP bit26=0 selects IEEE half format. The observed rawzero also leaves FZ24 and FZ16 19 clear; no general subnormal conformance claim is inferred."
+      ]
+    },
+    {
+      "id": "RN",
+      "manual_version": "M.b (Superseded)",
+      "section": "A1.5.8 Rounding; A1.5.8.1 RN",
+      "url": "https://support.arm.com/documentation/ddi0487/mb/-Part-A-Arm-Architecture-Introduction-and-Overview/-Chapter-A1-Introduction-to-the-Arm-Architecture/-A1-5-Floating-point-support/-A1-5-8-Rounding?lang=en#babdgead",
+      "short_quote": "the number with an even least significant digit",
+      "facts": [
+        "For finite representable-range values, RN picks the nearest destination number; equidistant bracketing numbers resolve to the even least significant digit.",
+        "The rounding mode is selected by FPCR.RMode or the instruction; instructions with fixed or alternate modes must be considered separately."
+      ]
+    },
+    {
+      "id": "FCVT",
+      "manual_version": "M.c (Superseded)",
+      "section": "C3.8.4.1 Convert floating-point precision",
+      "url": "https://support.arm.com/documentation/ddi0487/mc/-Part-C-The-AArch64-Instruction-Set/-Chapter-C3-A64-Instruction-Set-Overview/-C3-8-Data-processing---SIMD-and-floating-point/-C3-8-4-Floating-point-conversion?lang=en",
+      "short_quote": "using the current rounding mode as specified by FPCR.RMode",
+      "facts": [
+        "Scalar floating-point precision conversion FCVT uses the current FPCR.RMode. This is distinct from the named float-to-integer instructions with fixed rounding."
+      ]
+    },
+    {
+      "id": "FPSqrt",
+      "manual_version": "M.b (Superseded)",
+      "section": "J1.4.353 FPSqrt",
+      "url": "https://support.arm.com/documentation/ddi0487/mb/-Part-J-Architectural-Pseudocode/-Chapter-J1-A-profile-Architecture-Pseudocode/-J1-4-Shared-pseudocode/-J1-4-353-FPSqrt",
+      "short_quote": "result = FPRound{N}(value, fpcr);",
+      "facts": [
+        "The function accepts an FPCR value, unpacks the operand, and handles NaN, zero, infinity and negative cases separately.",
+        "On the ordinary positive path N=32 selects prec26, invokes SqrtRounded(value,prec), then FPRound32(value,fpcr).",
+        "This source reading identifies the architectural dependency and does not independently prove the hardware conformance or reconstruct every nested pseudocode helper."
+      ]
+    }
+  ],
+  "quote_policy": "Only short excerpts and paraphrased facts retained; no full manual redistributed. Exact full-body text/hash was not archived.",
+  "historical_S32_retrieval_record_not_rewritten": true,
+  "measurement_is_not_architectural_conformance_test": true
+}

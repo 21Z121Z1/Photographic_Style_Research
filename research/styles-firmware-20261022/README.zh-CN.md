@@ -2,7 +2,9 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新sqrt原语证书见 [PROGRESS-S32.zh-CN.md](PROGRESS-S32.zh-CN.md)：对选中域0x3401..0x3bff全部2047值，精确中点平方证书显示正确RN-f32→RN-half与理想half sqrt无双舍入差异。实际封存宿主是0x15914的f32 FSQRT及两侧FCVT，无libm调用；FPCR仍未测，运行精度和原GPU不升级通过。11项测试通过，新增原宿主/模型/编译均0，未改默认模型。
+当前FPCR运行绑定见 [PROGRESS-S33.zh-CN.md](PROGRESS-S33.zh-CN.md)：同一线程调用前后FPCR均0、RMode为RN，新增只读wrapper对封存f32 FSQRT执行1次；两侧FCVT属于新wrapper，旧half helper没有执行。16项定向测试通过，新编译1次、整kernel/管线/powf调用0；官方Arm相关正文已读。仅解除这次CPU原语边界的RN缺口，历史S25/S29、其他线程/GPU/全域精度不升级。powf仅静态定位到0x16244的_powf stub，运行时镜像与误差仍缺；初次地址解析缺陷及修正重放均保留。未改v3或解禁cast16/多参数。
+
+sqrt数学原语证书见 [PROGRESS-S32.zh-CN.md](PROGRESS-S32.zh-CN.md)：对选中域0x3401..0x3bff全部2047值，精确中点平方证书显示正确RN-f32→RN-half与理想half sqrt无双舍入差异。实际封存宿主是0x15914的f32 FSQRT及两侧FCVT，无libm调用；S32当轮未测FPCR，运行精度和原GPU不升级通过。11项测试通过，新增原宿主/模型/编译均0，未改默认模型。
 
 square数学合同见 [PROGRESS-S31.zh-CN.md](PROGRESS-S31.zh-CN.md)：由实际encode/strength式推导条件外包络[0,2047/2048]，零、次正规、normal且低于1/16及quarter边界均有精确构造见证；0x2bff仅窗口未找到，未宣告不可达。新合同按RN/normality/flush/sqrt条件准入，不用tuple白名单、不接默认模型。12项测试通过，原kernel/编译0；原GPU/FPCR/libm条件仍未认证。
 

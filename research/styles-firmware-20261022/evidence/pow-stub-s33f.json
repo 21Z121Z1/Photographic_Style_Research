@@ -1,0 +1,40 @@
+{
+  "status": "static_tail_branch_stub_unresolved",
+  "product_sha256": "47185c09c0407d7c96aa9dc55e0581ae4e781836951c8b236d17f2ac6f8efbbe",
+  "prior_static_sha256": "dd78ccbd665ac22a805c50e768c068396bbfc4275365f0f57909e542a2d4855c",
+  "inspector_sha256": "edcdc868408f751209754cf8bd8d987b99a7aa04ab91d04ad354ff17345a8be6",
+  "tool_sha256": "1d406425d9347a370133ccc37861867469e4681bdf220ac33c858c46e69090b5",
+  "private_storage_relative_to_task": "psr-private-baselines/s33-fpcr-20261023-041b0df",
+  "tail_branch_image_address": "0x15904",
+  "stub_image_address": "0x16244",
+  "stub_row_count": 0,
+  "matching_powf_rows": 0,
+  "stub_row_sha256": [],
+  "bound_stub_symbol": null,
+  "disassembler_nearest_symbol_annotation_not_used_as_import_identity": true,
+  "metadata_stdout_sha256": "6bcd89aae5440dbe67c5a1d89cd1cfafffaff13cc38a0b936b3d6edad2cf8c5f",
+  "metadata_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "proofs": [
+    {
+      "name": "before-pow-stub-read",
+      "sha256": "f8beab812df02db969b895849d935a833a687d331ac0eae572f944f630af0ac1",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 1,
+      "all_SHA_match": true
+    },
+    {
+      "name": "after-pow-stub-read",
+      "sha256": "6bc1cf6049139e3b891c8708099fd859cd77289357ddb9f23cd0eadcc9e3087f",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 1,
+      "all_SHA_match": true
+    }
+  ],
+  "actual_dynamic_powf_image_version_or_execution_measured": false,
+  "next_gap": "Runtime dyld-resolved powf image/version and its per-input rounding error are unbound. The half-to-f32 powf-to-half chain cannot inherit the sqrt finite-domain rounding theorem or this one sqrt RN observation.",
+  "new_original_calls": 0,
+  "new_compilations": 0,
+  "static_metadata_invocations": 1
+}

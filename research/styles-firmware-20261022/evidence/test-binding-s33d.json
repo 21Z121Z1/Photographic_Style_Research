@@ -1,0 +1,22 @@
+{
+  "label": "s33-saved-FPCR-report-and-failure-path-tests",
+  "pre_run_binding_sha256": "434267bd6f5b9cd98ae6e40550b7ae85c7288e5186c0a017e11b5cae15c4811b",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "a0c680df37d6a04d51095849c51b383f8c0b755946213583e621e355bd95cbfb",
+  "elapsed_seconds": 0.38109278678894043,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_fpcr_binding.py",
+    "-v"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "label": "s33-single-native-thread-read-call-read-FPCR-binding",
+  "pre_run_binding_sha256": "77fc17481e19c9ebcda3702da2f713ddbd54a9ca3a4def7ee524fb65565e321f",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "4003272096fa4c4b20d8127205f95fc87a109b1f82f7132d63e1fedffcd9881d",
+  "elapsed_seconds": 1.7066168785095215,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/fpcr_binding.py",
+    "run",
+    "research/styles-firmware-20261022/evidence/fpcr-prepared-s33a.json",
+    "research/styles-firmware-20261022/evidence/fpcr-current-run-s33b.json"
+  ]
+}

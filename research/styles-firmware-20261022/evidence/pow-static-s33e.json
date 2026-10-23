@@ -1,0 +1,78 @@
+{
+  "status": "static_pow_dependency_located_not_executed",
+  "product_sha256": "47185c09c0407d7c96aa9dc55e0581ae4e781836951c8b236d17f2ac6f8efbbe",
+  "IR_sha256": "b2511df6788aba904212217293d3a668457ea5d5d942e3cb43902cccc8a55c23",
+  "shim_C_sha256": "105e0ff7a9fc7a25eb2ceafa8c0ad9b3155bcc76863810d7b020e2eab3d62d51",
+  "static_inspector_sha256": "e3aa488fddccf526b8b59de98cacb86a2396295aa41ee717098e0c53416275b7",
+  "tool_sha256": "1d406425d9347a370133ccc37861867469e4681bdf220ac33c858c46e69090b5",
+  "private_storage_relative_to_task": "psr-private-baselines/s33-fpcr-20261023-041b0df",
+  "disassembly_stdout_sha256": "2c2174a718bf09561bbba16245e75ce1d787aa88b057280c8701677cb9835d08",
+  "disassembly_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "bright_pow_calls": [
+    {
+      "SSA": 82,
+      "line_sha256": "97f3c2a523eb0037d06d511509d244bfa2d2ba4d72acd9134f7cb1529f3c752d"
+    },
+    {
+      "SSA": 98,
+      "line_sha256": "7dc01515488e83bd10b6cbbde302ee6343ab6913c898d6df23c2bae54d0f2a5f"
+    },
+    {
+      "SSA": 107,
+      "line_sha256": "a1996056b1182b76c005b8f18d9d9318655e260fffaa61136de4828d3ae6b4fc"
+    },
+    {
+      "SSA": 157,
+      "line_sha256": "179ae86247a6ffde236fda97a55d4948a0b4601edf47a7560a51b96dbb97faad"
+    },
+    {
+      "SSA": 166,
+      "line_sha256": "d01388e1b7c0cdc2ec47f955ecd09d4b522f861a88ca0513045c640e7af9b009"
+    },
+    {
+      "SSA": 248,
+      "line_sha256": "48f3366cb4a0911595121d0258b21b689dcdefa71414381999ebd2d2bae58032"
+    },
+    {
+      "SSA": 249,
+      "line_sha256": "26c4746b0cf9fe6a0b080dc240ec077f6536b587e19661d0bf1bcb9ca4c284cf"
+    },
+    {
+      "SSA": 258,
+      "line_sha256": "a3adf8be74d0509ac56dc54100fb58051e65c99577c64f5663328835c90f3ce4"
+    }
+  ],
+  "IR_chain": "bright air.pow.v3f16 -> three air.pow.f16; two half operands fpext to float -> psr_pow_scalar -> fptrunc half",
+  "C_implementation": "powf(a,b), subject to actual compiled call target",
+  "C_function_sha256": "c930c613f24e2178a77d9dac844243c1ab9fc5759ce0a4415cf741bf974230db",
+  "machine_function_sha256": {
+    "_air.pow.f16": "b3ffefc9df07a619e30f93dda4c61ec32b128b989870cdf3dae4895eddbb90d0",
+    "_air.pow.v3f16": "8d4a40beb6d22dd00b61a31fd3bc67b30b8ce28997fd8c35b35190e3601c1013",
+    "_psr_pow_scalar": "969eec1a55d0952d3e4302280108fbef30da714afadc6908ba3d407e30bf562a"
+  },
+  "machine_psr_pow_scalar_call_targets": [],
+  "new_original_calls": 0,
+  "new_compilations": 0,
+  "static_objdump_invocations": 1,
+  "proofs": [
+    {
+      "name": "before-pow-static-read",
+      "sha256": "1f2fe8b0bbea7d8b02e3a847e2b37036d80e5e6436c5b808035a666b9d05b59b",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 1,
+      "all_SHA_match": true
+    },
+    {
+      "name": "after-pow-static-read",
+      "sha256": "828122f1310f419a1ecd4ec9a7befeb1d2b1466c6f35dbb87df359ca6695f576",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 1,
+      "all_SHA_match": true
+    }
+  ],
+  "next_gap": "External powf implementation/version and per-input f32 error relative to half midpoint are not bound. Current FPCR reading for sqrt does not certify any powf call or historical state; sqrt parity theorem cannot establish transcendental pow accuracy.",
+  "powf_executed_or_accuracy_certified": false,
+  "generic_bright_cast16_multiple_fields_unblocked": false
+}

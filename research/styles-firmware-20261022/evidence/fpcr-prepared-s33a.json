@@ -1,0 +1,96 @@
+{
+  "status": "compiled_and_statically_verified_read_only_wrapper_not_yet_called",
+  "private_storage_relative_to_task": "psr-private-baselines/s33-fpcr-20261023-041b0df",
+  "private_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+  "plan": {
+    "input_half_bits": 14464,
+    "input_value_rational": [
+      9,
+      16
+    ],
+    "selection_reason": "predeclared exact normal square9/16; sqrt3/4 avoids inexact/trap side effects; this is an FPCR binding, not a precision stress batch",
+    "original_symbol": "psr_sqrt_scalar",
+    "original_symbol_image_offset": 88328,
+    "original_product_sha256": "47185c09c0407d7c96aa9dc55e0581ae4e781836951c8b236d17f2ac6f8efbbe",
+    "original_call_budget": 1,
+    "no_FPCR_writes_or_mode_switch": true,
+    "same_thread_native_read_call_read": true,
+    "half_conversions": "new wrapper; old sealed half helper not executed",
+    "historical_state_or_other_threads_certified": false
+  },
+  "wrapper_source_sha256": "eb9ae2eca5a2857fd2010256f4fe2d17386b613beb029db9cc6d7b5835bb08d2",
+  "wrapper_product": {
+    "name": "artifacts/read-call.dylib",
+    "sha256": "8bd7b654a4a0c30a39076a0a2b6136090cbbf5533da2c3b55947a0305bc5a787",
+    "bytes": 33520
+  },
+  "original_product_sha256": "47185c09c0407d7c96aa9dc55e0581ae4e781836951c8b236d17f2ac6f8efbbe",
+  "compiler": {
+    "resolved_path": "/opt/homebrew/Cellar/llvm/22.1.6/bin/clang-22",
+    "sha256": "9a3ebf66e99cded4cee3f6efe79103994ed155694be5abcfdbb0bdf1910007cf",
+    "version_first_line": "Homebrew clang version 22.1.6",
+    "version_stdout_sha256": "c7f19b396c9e4cbae1b07d1f26c185a2f3d86a47279b52dc7441467d70cf7646",
+    "version_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "compile_command": {
+    "argv_redacted": [
+      "/opt/homebrew/opt/llvm/bin/clang",
+      "-target",
+      "arm64-apple-macos27.0",
+      "-std=c17",
+      "-O0",
+      "-frounding-math",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-v",
+      "-dynamiclib",
+      "<private_run>/inputs/fpcr_read_call.c",
+      "-o",
+      "<private_run>/artifacts/read-call.dylib"
+    ],
+    "argv_sha256": "90ddf0c8c368b67b493fbf97e0f826cd7e69484f9a207ab2c9275ca79aa12ef2",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "fbccadb71edbc890859bb1f618568fb44db9ad950af029b25625e060592a8608",
+    "seconds": 0.2882120000140276,
+    "compiler_sha256": "9a3ebf66e99cded4cee3f6efe79103994ed155694be5abcfdbb0bdf1910007cf"
+  },
+  "proofs": [
+    {
+      "name": "before-compile",
+      "sha256": "92e1deaec6baa1fdb4cbfd445da10c78392f78a6fbe3b676277196d6a669ba8b",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 0,
+      "all_SHA_match": true
+    },
+    {
+      "name": "after-compile",
+      "sha256": "3ebe68a73f4e5910ad333e146f2f050007fb9d04a6df24e4e5ca5b473924d732",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 0,
+      "all_SHA_match": true
+    },
+    {
+      "name": "after-static-before-load",
+      "sha256": "13a90c32888b557be0bc8c8ec684f888e31b4ff5391b0993d524b1dd150850a9",
+      "sealed_manifest_sha256": "b53078f6f052352594bb9ae8708ccc4c9ee7a01d53b51f7af6ee5e4815b7b385",
+      "input_files_verified": 6,
+      "products_verified": 1,
+      "all_SHA_match": true
+    }
+  ],
+  "disassembly_stdout_sha256": "c0b7dfeb6675177923eda2d759dbb0116e919bd86aa4b75f5b3304aa81eaa9c9",
+  "disassembly_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "FPCR_writing_instructions": 0,
+  "FPCR_read_instructions": 2,
+  "critical_window_function_calls": 1,
+  "critical_window_instruction_sha256": "e484ce6c6dda470ea5814001534b367a5dd99912bfa0a0fb3c7730f911d993fb",
+  "input_and_output_FCVT_inside_same_two_MRS_boundary": true,
+  "thread_queries_outside_FPCR_boundary": true,
+  "original_calls_completed": 0,
+  "new_compilations": 1
+}
