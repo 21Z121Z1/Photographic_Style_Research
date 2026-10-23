@@ -1,0 +1,29 @@
+name: styles portable model checks
+on:
+  push:
+    branches: ['research/styles-chain-20261023']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.2.4 Pillow==11.1.0
+      - name: Scoped regressions and exact-source receipt
+        run: python research/styles-firmware-20261022/validate_portable.py '${{ runner.temp }}/styles-validation'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: styles-portable-${{ github.sha }}
+          path: '${{ runner.temp }}/styles-validation/'
+          retention-days: 1
+          if-no-files-found: error
