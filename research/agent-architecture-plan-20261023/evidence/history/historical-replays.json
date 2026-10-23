@@ -1,0 +1,80 @@
+{
+  "baseline_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "observer_memory_effects": [
+    {
+      "case": "bw_host.py",
+      "ref": "fbe4d25a2941862566c23d9aa204153510d26fd6",
+      "state": "historical_before",
+      "historical_source_sha256": "7d5e247e0fb30a55b770456fe340a17ffd305d823af8d281eb2de419edafa38c",
+      "synthetic_IR_sha256": "e031b0146b90b9345cd59bfc294b3238078673f931ce9be71ee16fb64c09cc79",
+      "generated_IR_sha256": "a0e9b6dbed6019bc9bbbeb3ac75a2b9b69c7c3e708d76e4e3393dbd9f5b0bce3",
+      "trace_stores_inserted": true,
+      "readonly_summary_retained": true,
+      "write_summary_consistent": false,
+      "evidence_level": "historical generator behavior on synthetic IR, no native compile or execution"
+    },
+    {
+      "case": "bw_host.py",
+      "ref": "d4dedf0a842b4c483485957dd4a8c8932f52f380",
+      "state": "historical_fixed",
+      "historical_source_sha256": "895ebb390644e0924856e8476ce819c91ca081eb0a4dc53c016103941ec257d9",
+      "synthetic_IR_sha256": "e031b0146b90b9345cd59bfc294b3238078673f931ce9be71ee16fb64c09cc79",
+      "generated_IR_sha256": "c0f8095d079dd2f37433f49630e0c0db42c3a850400dc7c1f7770cf2b9edbae5",
+      "trace_stores_inserted": true,
+      "readonly_summary_retained": false,
+      "write_summary_consistent": true,
+      "evidence_level": "historical generator behavior on synthetic IR, no native compile or execution"
+    },
+    {
+      "case": "diagnose_local_gamma.py",
+      "ref": "fbe4d25a2941862566c23d9aa204153510d26fd6",
+      "state": "historical_before",
+      "historical_source_sha256": "cbb27e3ff75220769ebe2a1419fb20ced18b13d957a83ef0ea87c06fd55d03a3",
+      "synthetic_IR_sha256": "fe2349764e00eb4c4b170642941ee51d1a132433b0aa726133c0ccfb5205602d",
+      "generated_IR_sha256": "92507f61bbfa9d4512477812bcf6cd7b7f48d928c7244adc8ace9bd2871084e6",
+      "trace_stores_inserted": true,
+      "readonly_summary_retained": true,
+      "write_summary_consistent": false,
+      "evidence_level": "historical generator behavior on synthetic IR, no native compile or execution"
+    },
+    {
+      "case": "diagnose_local_gamma.py",
+      "ref": "d4dedf0a842b4c483485957dd4a8c8932f52f380",
+      "state": "historical_fixed",
+      "historical_source_sha256": "f2bbdef26015c08818cdf39dc474d60bca4b3a01963d8fcabfd0263d9528d0c9",
+      "synthetic_IR_sha256": "fe2349764e00eb4c4b170642941ee51d1a132433b0aa726133c0ccfb5205602d",
+      "generated_IR_sha256": "2dbdf52ad3ee160b4db8f5e00c675523f9cffb67d9d9083287defb51bafa4011",
+      "trace_stores_inserted": true,
+      "readonly_summary_retained": false,
+      "write_summary_consistent": true,
+      "evidence_level": "historical generator behavior on synthetic IR, no native compile or execution"
+    }
+  ],
+  "numeric_metadata": {
+    "half_constant": {
+      "bits": "0xca00",
+      "decoded_by_IEEE_binary16": -12.0,
+      "rejected_label": "v5 = half-FMA(half16, square132, half-6)",
+      "corrected_label": "v5 = half-FMA(half16, square132, half-12); half0xca00 is -12",
+      "rejected_receipt_sha256": "1ef7fb75eb3345a6ebb8b877408bd82658adfc8d6e7543120ec697b6e77ab0fb",
+      "corrected_receipt_sha256": "5c7559d0b4fd9867c531a088f693f785572379dc75ccdd00d0cb59311dd1bba2"
+    },
+    "hex_address": {
+      "synthetic_row_matches_documented_saved_format": "0x0000000000016244 136 _powf",
+      "old_pattern_matches": false,
+      "fixed_rows": [
+        {
+          "symbol": "_powf",
+          "index": 136,
+          "row_sha256": "070c283299efe299bf4cfd34f056c008e282a348eb29149255a9e8d956045e1e"
+        }
+      ],
+      "fixed_parser_source_sha256": "e18d37b0ab065ebaf7b17ab5532bcf0500a42cfd5f9f0e2b1e690d0918aeae23",
+      "old_pattern_from": "audit_pow_stub.py rows expression"
+    },
+    "native_calls": 0,
+    "evidence_level": "exact format decoding and historical parser behavior; no private metadata file or native pow replay"
+  },
+  "new_Apple_CPU_or_GPU_calls": 0,
+  "missing_private_IR_restored": false
+}

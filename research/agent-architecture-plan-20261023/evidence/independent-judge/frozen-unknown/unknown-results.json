@@ -1,0 +1,57 @@
+{
+  "scope": "frozen public sources, actual black-domain negative runs",
+  "model_baseline_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "candidate_commit": "bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+  "source_manifest_sha256": "a468d1edcb9d927d0f53f5dd802aaa9beecd0112f657a4445b0e788a49e6fe00",
+  "candidate_source_sha256": {
+    "research/agent-architecture-plan-20261023/prototypes/candidate_package/demo.py": "cd03b080f43c46553465e63a1076c24b7d4e2b572c69b0f37d7e6959eaf045c8",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py": "de6ca894a0913ceb54b574516443e1426d00935869b3b2f05f44a362e42af4c4",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_package/prove.py": "e050ca3d886f6416854b6149858943903b9e7af724f53b280fe2bd69a4da81d9",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_package/test_execution.py": "6dfdfa5457124bb88766bbd7a052d30c22cd57b21c99fe593aebf15c466bde38",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/coordinator.py": "f5a469c9e2024927956fe72947644c67f622f1ec2d0f93a8c1d490507d84e268",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/registry.json": "9f96e6db3278bf7753b29b725115330bff1dd789cc73d9048102a50cede73595",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/run_probes.py": "f56f5b89d0be9de219acbbfd434c0baf08e1314eac6d0bc4b215a1ecf2e3bd3d",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/test_coordinator.py": "7733a09603425a4b992c197368ae173fa12f2f53c88f9bea55bdcd413e8ab941"
+  },
+  "input_sha256": {
+    "black-context.json": "c8a4103cdab043951a2405eb1df9a081841c2648808974ac6f88bc1dff45647a",
+    "black-spec.json": "3f9d18141f44462e93c1e25a4f40cbcd473550335f77966bb248a596e0fee00c"
+  },
+  "candidate_A_outcome": "UnresolvedModel",
+  "candidate_A_result": {
+    "reasons": [
+      "0,0: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "1,0: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "2,0: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "3,0: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "0,1: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "1,1: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "2,1: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "3,1: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "0,2: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "1,2: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "2,2: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}",
+      "3,2: {'operator': 'selected404', 'reason': 'Selected bright400 unavailable: Division interval includes zero'}"
+    ],
+    "warnings": [
+      "0,0:bright400: Division interval includes zero",
+      "1,0:bright400: Division interval includes zero",
+      "2,0:bright400: Division interval includes zero",
+      "3,0:bright400: Division interval includes zero",
+      "0,1:bright400: Division interval includes zero",
+      "1,1:bright400: Division interval includes zero",
+      "2,1:bright400: Division interval includes zero",
+      "3,1:bright400: Division interval includes zero",
+      "0,2:bright400: Division interval includes zero",
+      "1,2:bright400: Division interval includes zero",
+      "2,2:bright400: Division interval includes zero",
+      "3,2:bright400: Division interval includes zero"
+    ]
+  },
+  "candidate_B_status": "unknown",
+  "candidate_B_evidence_level": "model_only",
+  "candidate_B_reason": null,
+  "candidate_B_writer_count": 0,
+  "native_calls": 0,
+  "model_or_CLI_runs": 2
+}

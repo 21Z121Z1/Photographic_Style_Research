@@ -1,0 +1,135 @@
+{
+  "scope": "Candidate B isolated prototype bug fix only; no production migration or native validation",
+  "repository_head_at_tests": "bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+  "implementation_base": "3aae24d96b1807c9d6c48ce09c4760c8350e650d",
+  "original_source_commit": "bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+  "original_coordinator_sha256": "f5a469c9e2024927956fe72947644c67f622f1ec2d0f93a8c1d490507d84e268",
+  "tested_working_coordinator_sha256": "8e13fffc142cbafe30bc04321006c3f53ffe4d6075b27f348f75563d546683a5",
+  "source_sha256": {
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/coordinator.py": "8e13fffc142cbafe30bc04321006c3f53ffe4d6075b27f348f75563d546683a5",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/test_coordinator.py": "4c0536c9c95e3e139050c057ba2a579da9d3528110ce111e9e25cb91b57b4916",
+    "research/agent-architecture-plan-20261023/prototypes/candidate_registry/RATIONALE.zh-CN.md": "72cc9f701f0ac357e19e9b8c3166f361cab5c5615383b5a009196355094933ab"
+  },
+  "system": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "research/agent-architecture-plan-20261023/evidence/registry-fix-round/replay_registry_drift.py",
+        "--revision",
+        "bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+        "--output",
+        "research/agent-architecture-plan-20261023/evidence/registry-fix-round/red-original"
+      ],
+      "exit_code": 1,
+      "log": "red-original.log",
+      "result": "red-original/result.json"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/agent-architecture-plan-20261023/prototypes/candidate_registry",
+        "-p",
+        "test_coordinator.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests_run": 9,
+      "failures": 0,
+      "errors": 0,
+      "log": "tests-green.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "research/agent-architecture-plan-20261023/evidence/registry-fix-round/replay_registry_drift.py",
+        "--output",
+        "research/agent-architecture-plan-20261023/evidence/registry-fix-round/green-fixed"
+      ],
+      "exit_code": 0,
+      "log": "green-fixed.log",
+      "result": "green-fixed/result.json"
+    }
+  ],
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "red_checks": {
+    "changed_before_prepare_rejected": false,
+    "fresh_object_uses_changed_policy": true,
+    "changed_after_prepare_blocked": true
+  },
+  "green_checks": {
+    "changed_before_prepare_rejected": true,
+    "fresh_object_uses_changed_policy": true,
+    "changed_after_prepare_blocked": true
+  },
+  "native_calls": 0,
+  "Apple_reference_compared": false,
+  "real_portable_cli_runs": {
+    "red_replay": 1,
+    "unit_tests": 1,
+    "green_replay": 0
+  },
+  "not_proven": [
+    "Arbitrary computed import closure",
+    "Atomicity against arbitrary concurrent edits or interpreter mutation",
+    "Apple CPU/GPU numerical equivalence",
+    "Production migration readiness"
+  ],
+  "changes": [
+    "Parse and hash one captured registry byte string",
+    "Keep the loaded registry digest as configuration identity",
+    "Reject drift before prepare and before/after CLI admission",
+    "Preserve initial evidence and model-only result semantics"
+  ],
+  "evidence_sha256": {
+    "green-fixed/after-prepare-run/receipt.json": "08b709d490df5082ca43ab8a15c691fc7c95b42034864734e38a62bd0dc0194b",
+    "green-fixed/after-registry.json": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "green-fixed/before-registry.json": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "green-fixed/coordinator-under-test.py": "8e13fffc142cbafe30bc04321006c3f53ffe4d6075b27f348f75563d546683a5",
+    "green-fixed/fresh-object-run/receipt.json": "6cda470b07b42fe95dcf99c303165bfa4782f7a4a93a11660572d46f7db8315c",
+    "green-fixed/input.json": "231651ff1cd7b9e960e196d6f7e674e96be79a2ba5b6d410eefbb494acafc2f4",
+    "green-fixed/result.json": "039a5f9d8d8ff86ece48105a4eb43b8dd536a742cd0be918685fec11ddad08c6",
+    "green-fixed.log": "6538b54b754784ab4cda81beb982adf4d298687ca03ba73c62cd2135b0e265f4",
+    "red-original/after-prepare-run/receipt.json": "00d81e22b3e5b85070c356ff9cec2dff96bed922e1cad631bba70f8a009598b1",
+    "red-original/after-registry.json": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "red-original/before-registry.json": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "red-original/coordinator-under-test.py": "f5a469c9e2024927956fe72947644c67f622f1ec2d0f93a8c1d490507d84e268",
+    "red-original/fresh-object-run/receipt.json": "7323e2ad44c1f2e92b2e3b0e8930fa9b929367da413d0aa366521c9a6d79afe4",
+    "red-original/input.json": "231651ff1cd7b9e960e196d6f7e674e96be79a2ba5b6d410eefbb494acafc2f4",
+    "red-original/old-object-run/cli/colors-0/checkpoints.npz": "7427beac731758f6a7789dddcd41f10d44d3e75074a3d409da780a24650ea5b3",
+    "red-original/old-object-run/cli/colors-0/context.json": "5fee0dae8eb1dc53117ad87736f7fb31171794e9fd98276b7bb27449fc0270f1",
+    "red-original/old-object-run/cli/colors-0/result.json": "6edc3864596b5e2013f5badd3f368b42b5911dfcca417e2d531cfff37d2be30b",
+    "red-original/old-object-run/cli/colors-0/run-request.json": "72795c509312705717d7f9d9f27124984ee666998e297d9cb87d49f7f880c167",
+    "red-original/old-object-run/cli/colors-0/source-diagnostic.png": "ff49a4e6c9f6dae2c887cca63bbe0e7012d95fef1a5742e0ff15ebdb13a5da32",
+    "red-original/old-object-run/cli/colors-0/writer-diagnostic.png": "057a1e5351ab060114d866e73639d502399ca9a5e9759c96bb4927b38389b6bd",
+    "red-original/old-object-run/command.json": "3a5e826ee08f41fa1e27e808ba35360eff3d7435b98bfd3423220abf44115137",
+    "red-original/old-object-run/command.log": "9914a82593dbd875dfbc2ed2e9229a1af505ea027e88ff6b8890fc1b937d3c84",
+    "red-original/old-object-run/receipt.json": "f52cb0fdec61cb1679f6447f6dc942edfd7fc20e8ae7fd3488ac059a2d5821a8",
+    "red-original/result.json": "ca16d24e687592c4af9b3423c9d66f5e2620f099e5de86f1d0d9829926fba607",
+    "red-original.log": "52376a7fe58a7ca1bfdc961662b3e48db03f2fa3e010389f5e960663cc1306d6",
+    "replay_registry_drift.py": "59bc43634c15c318eec3b9f51f49bbf3bfb473231c8384ded6c4c650f4e19f35",
+    "tests-green.log": "414bde863827b5b8bfd25026b4c47293001427c9f379e24f04dd0100d7bb4179",
+    "README.zh-CN.md": "fb5575734018ba85225a295fda2952845d38896bacff8ebb5f0a1211a44e5e79"
+  },
+  "workflow": {
+    "skills_read": [
+      "correct",
+      "architect",
+      "principle-model-the-domain",
+      "principle-prove-it-works",
+      "principle-test-behavior-not-implementation",
+      "deslop"
+    ],
+    "execution": "Inherited available agent; requested default alternative models unavailable",
+    "cross_model_diversity_verified": false
+  }
+}

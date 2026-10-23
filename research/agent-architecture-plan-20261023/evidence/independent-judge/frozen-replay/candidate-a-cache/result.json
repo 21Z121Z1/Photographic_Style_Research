@@ -1,0 +1,84 @@
+{
+  "probe": "A imports backend, edits helper before preparation, hashes edited disk, compares cached execution with fresh process",
+  "baseline_sources_copied_from": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "copied_python_files": 514,
+  "copied_source_manifest_sha256": "2eb36bef2b6826bfbe6e4c2d3071ce3cfa5a6c0e6b8c0b8ae675065bcd1d3c99",
+  "candidate_sources": {
+    "demo.py": "cd03b080f43c46553465e63a1076c24b7d4e2b572c69b0f37d7e6959eaf045c8",
+    "execution.py": "de6ca894a0913ceb54b574516443e1426d00935869b3b2f05f44a362e42af4c4",
+    "prove.py": "e050ca3d886f6416854b6149858943903b9e7af724f53b280fe2bd69a4da81d9",
+    "test_execution.py": "6dfdfa5457124bb88766bbd7a052d30c22cd57b21c99fe593aebf15c466bde38"
+  },
+  "method_commands": [
+    {
+      "command": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/cache_worker.py",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/frozen-replay/frozen-candidates/candidate_package",
+        "/tmp/architecture-judge-a-y8jxacgb/repo",
+        "/tmp/architecture-judge-a-y8jxacgb/context.json",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/frozen-replay/candidate-a-cache/cached",
+        "cached"
+      ],
+      "exit_code": 0,
+      "log_sha256": "5e48ee36d892f34cbcc34e63836d6581426eef873a7fb807d6c1ad20e619c8ac"
+    },
+    {
+      "command": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/cache_worker.py",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/frozen-replay/frozen-candidates/candidate_package",
+        "/tmp/architecture-judge-a-y8jxacgb/repo",
+        "/tmp/architecture-judge-a-y8jxacgb/context.json",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/frozen-replay/candidate-a-cache/fresh",
+        "fresh"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f4d3a8964ebe397037a00d861dabf59fe8b7a49805d9fdc43ecc14b64d55b243"
+    }
+  ],
+  "run_count": 2,
+  "cached": {
+    "mode": "cached",
+    "outcome": "RenderedModel",
+    "source_commit_in_copied_repo": "9fe9e8534864ba2cf957d11d48f57c74d66d0e4e",
+    "before_helper_sha256": "d0fc7f0d5c9c946f3b061acde81b0d98ddd717a9c57ff3cdab8866b7ac301e5f",
+    "after_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+    "bound_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+    "source_snapshot_sha256": "58589835850af1f37d4b34cf59b9b430458ea343410fd0db9ea256fb32b8f5c7",
+    "context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+    "result": {
+      "writer_path": "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/frozen-replay/candidate-a-cache/cached/writer.npy",
+      "writer_sha256": "0a398831d13398757b6907b7b7a0a3c9a7cbc998c054c731b39ac517ba3e318f",
+      "written_pixels": 12,
+      "warnings": []
+    },
+    "native_calls": 0
+  },
+  "fresh": {
+    "mode": "fresh",
+    "outcome": "RenderedModel",
+    "source_commit_in_copied_repo": "9fe9e8534864ba2cf957d11d48f57c74d66d0e4e",
+    "before_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+    "after_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+    "bound_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+    "source_snapshot_sha256": "58589835850af1f37d4b34cf59b9b430458ea343410fd0db9ea256fb32b8f5c7",
+    "context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+    "result": {
+      "writer_path": "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/frozen-replay/candidate-a-cache/fresh/writer.npy",
+      "writer_sha256": "7193a6071f967df78c7668e5dd7fa7b26ca459f173fe1e0ee122b136aa4f4a6e",
+      "written_pixels": 12,
+      "warnings": []
+    },
+    "native_calls": 0
+  },
+  "same_bound_helper_sha256": true,
+  "same_full_bound_source_snapshot": true,
+  "same_input_sha256": true,
+  "both_accepted": true,
+  "writer_half_bit_mismatches": 36,
+  "max_abs_writer_difference": 0.15966796875,
+  "native_calls": 0,
+  "production_or_candidate_sources_modified": false,
+  "verdict": "ISSUES: disk hashes do not bind imported bytecode in a long-lived process"
+}

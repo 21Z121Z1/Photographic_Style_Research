@@ -1,0 +1,166 @@
+{
+  "scope": "generated skill Launch\u2192Doctor\u2192real portable CLI Drive\u2192readback\u2192negative probes\u2192Cleanup; native preflight observed blocked",
+  "executed_source_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "skill_sha256_before": {
+    ".cursor/skills/verify-photographic-style/SKILL.md": "dca99e0c4a47730cbf4f6ea1eb4ed38cdd97d3a31bd5297b1b975174f20fcefd",
+    ".cursor/skills/verify-photographic-style/features/bright-and-fallbacks.md": "1448b8e6abce8aa71cecd164a79d0456a302b4699cee1483c244e357f89f26ea",
+    ".cursor/skills/verify-photographic-style/features/synthetic-parameters.md": "0e91ac4970bd7fa1c25439425691c16667c9966c215111f8e437b062b77089d9",
+    ".cursor/skills/verify-photographic-style/features/README.md": "f1e8cf80b59c968fe9ebe9216589b0a413e8588f88d62d4c0f5245190b1a7362",
+    ".cursor/skills/verify-photographic-style/features/native-pow.md": "ff107e24a81dbe9102e45c53e87c12e1b58ed35699a24dd09d896e9d874ab39b",
+    ".cursor/skills/verify-photographic-style/features/heif-structure.md": "aa648654e57b9f9f18ebd2b3cf72afac3c3eacea90509187477b9de8b4dd904b",
+    ".cursor/skills/verify-photographic-style/features/macos-app.md": "ac591bf25dbfb0a6e4cf605948adc4a2ce9a525b0a36db588af12fc5fa7303a6",
+    ".cursor/skills/verify-photographic-style/scripts/verify.py": "c16193974f8a96c1b8acc26d2a82fbbe56798cb54f93ffaac4a12d57ab813272"
+  },
+  "skill_sha256_after": {
+    ".cursor/skills/verify-photographic-style/SKILL.md": "dca99e0c4a47730cbf4f6ea1eb4ed38cdd97d3a31bd5297b1b975174f20fcefd",
+    ".cursor/skills/verify-photographic-style/features/bright-and-fallbacks.md": "1448b8e6abce8aa71cecd164a79d0456a302b4699cee1483c244e357f89f26ea",
+    ".cursor/skills/verify-photographic-style/features/synthetic-parameters.md": "0e91ac4970bd7fa1c25439425691c16667c9966c215111f8e437b062b77089d9",
+    ".cursor/skills/verify-photographic-style/features/README.md": "f1e8cf80b59c968fe9ebe9216589b0a413e8588f88d62d4c0f5245190b1a7362",
+    ".cursor/skills/verify-photographic-style/features/native-pow.md": "ff107e24a81dbe9102e45c53e87c12e1b58ed35699a24dd09d896e9d874ab39b",
+    ".cursor/skills/verify-photographic-style/features/heif-structure.md": "aa648654e57b9f9f18ebd2b3cf72afac3c3eacea90509187477b9de8b4dd904b",
+    ".cursor/skills/verify-photographic-style/features/macos-app.md": "ac591bf25dbfb0a6e4cf605948adc4a2ce9a525b0a36db588af12fc5fa7303a6",
+    ".cursor/skills/verify-photographic-style/scripts/verify.py": "c16193974f8a96c1b8acc26d2a82fbbe56798cb54f93ffaac4a12d57ab813272"
+  },
+  "skill_sources_unchanged": true,
+  "helper_source_archived_before_run": "research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/frozen-helper-source.py",
+  "helper_archive_matches_executed_source": true,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "doctor"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_file": "0-stdout.log",
+      "stderr_file": "0-stderr.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "drive",
+        "--feature",
+        "portable-smoke",
+        "--evidence",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/portable-smoke"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_file": "1-stdout.log",
+      "stderr_file": "1-stderr.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "inspect",
+        "--evidence",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/portable-smoke/cli-output"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_file": "2-stdout.log",
+      "stderr_file": "2-stderr.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "reject-probes",
+        "--evidence",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/portable-smoke/cli-output"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_file": "3-stdout.log",
+      "stderr_file": "3-stderr.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "cleanup",
+        "--evidence",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/portable-smoke"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_file": "4-stdout.log",
+      "stderr_file": "4-stderr.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "drive",
+        "--feature",
+        "native-preflight",
+        "--evidence",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/native-preflight"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "stdout_file": "5-stdout.log",
+      "stderr_file": "5-stderr.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/.cursor/skills/verify-photographic-style/scripts/verify.py",
+        "cleanup",
+        "--evidence",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/native-preflight"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "stdout_file": "6-stdout.log",
+      "stderr_file": "6-stderr.log"
+    }
+  ],
+  "portable_verification": {
+    "Apple_validation": false,
+    "cases": 2,
+    "effective_input_hashes_recomputed": true,
+    "native_calls": 0,
+    "source_files_checked": 375,
+    "status": "PASS_portable_artifact_journey",
+    "unknowns": 0,
+    "verified_HEAD": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+    "writers": 2
+  },
+  "portable_cleanup": {
+    "evidence_retained": true,
+    "manifest_sha256": "dc531dfd16090b5e787fe0a5b01461c80c37be56dfa7c121bf763a0e07718698",
+    "process_action": "none; the exact child PID was synchronously reaped by drive",
+    "removed": ".scratch only",
+    "status": "PASS_cleanup_evidence_retained"
+  },
+  "native_preflight": {
+    "blockers": [
+      "requires Apple Darwin arm64; Linux/Intel/libm substitutes rejected",
+      "actual Apple OS build must match the explicitly supplied expected build",
+      "original private sealed S25 dylib is absent"
+    ],
+    "native_validation_performed": false,
+    "preflight_executed": true,
+    "status": "BLOCKED_native_material"
+  },
+  "native_cleanup": {
+    "evidence_retained": true,
+    "manifest_sha256": "cb2c90c25cc35926c2d54887641de17435381cc55b647a9041f048965c8382be",
+    "process_action": "none; the exact child PID was synchronously reaped by drive",
+    "removed": ".scratch only",
+    "status": "PASS_cleanup_evidence_retained"
+  },
+  "unverified_product_paths": [
+    "HEIF inspection without an authorized synthetic HEIF sample",
+    "SwiftUI app and Photos UI without a macOS host and UI driver",
+    "original Apple CPU/GPU path without exact sealed binary and OS build"
+  ],
+  "native_calls": 0,
+  "original_photos_used": false,
+  "source_registration": "local Cursor-format skill files only; no current ChatGPT slash command registration",
+  "prior_iterations": "Sibling portable-smoke/bright-smoke/zero-input/missing-masks/native-preflight directories retain pre-freeze helper iterations; do not call them final-helper validation"
+}

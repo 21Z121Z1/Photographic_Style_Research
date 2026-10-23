@@ -1,0 +1,37 @@
+{
+  "schema": "psr-capability-registry-prototype-v1",
+  "source_roots": [
+    "research/styles-firmware-20261022",
+    "research/semantic-styles",
+    "research/hdr-native"
+  ],
+  "capabilities": {
+    "portable-image": {
+      "operation": "synthetic-image",
+      "entrypoint": "research/styles-firmware-20261022/image_chain_cli.py",
+      "numerics": "experimental-portable",
+      "intent": "portable-model",
+      "result_level": "model_only",
+      "runtime_profile": null,
+      "availability": "runnable"
+    },
+    "host-point-image": {
+      "operation": "synthetic-image",
+      "entrypoint": "research/styles-firmware-20261022/image_chain_cli.py",
+      "numerics": "strict-host",
+      "intent": "portable-model",
+      "result_level": "model_only",
+      "runtime_profile": "research/styles-firmware-20261022/evidence/model-precision-v3-s25c6.json",
+      "availability": "runnable"
+    },
+    "sealed-pow": {
+      "operation": "sealed-native-pow",
+      "entrypoint": "research/styles-firmware-20261022/pow_runtime_binding.py",
+      "numerics": null,
+      "intent": "apple-native",
+      "result_level": null,
+      "runtime_profile": null,
+      "availability": "prepared-only"
+    }
+  }
+}
