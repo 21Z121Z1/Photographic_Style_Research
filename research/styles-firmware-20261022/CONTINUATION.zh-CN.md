@@ -153,3 +153,25 @@ max `0.02587890625`、RMSE `0.010544956055611347`，287 个 half 分量位型改
 另记 `initial-attempts.json`，未计作稳定验证。
 工作区 `styles-synthetic-611ac4f.zip` 包含合成 context、逐阶段 NPZ、诊断 PNG 与完整 summary；
 其 SHA/大小见 `synthetic-artifact.json`，不含原照片或二进制。
+
+模块隔离批次绑定 `4d314bdbfd348b5371f737625c8bacc064930be7`，
+117 项定向测试通过；全量 371 项仍有相同 8 个环境/私有材料 errors。
+实际重算 15 次 source-to-writer、3 次连续 UnderEye 模型，耗时 63.54s。
+14 例产生最终图像，曝光0的 96 个像素在 selected404 unknown，无 writer。
+全部新运行的 Apple CPU/GPU 调用为 0。
+
+|8×12梯度上的独立干预|相对相同基线的最终 RGB max / RMSE|
+|---|---|
+|GTC identity / GTC weight0|.02197265625 / .0109327098873，两例的最终存储 hash 相同|
+|GTC weight1|.010986328125 / .00594408648595|
+|BG LTM neutral|.02349853515625 / .00817065242425|
+|FG LTM neutral|.00634765625 / .00274190032748|
+|skin theta9=.25 / theta10=.25|本梯度最终输出均0差；另有可激活它们的隔离单测，不将无变化当逻辑缺失|
+|bright raw exposure1|.0029296875 / .00114477716817|
+|person mask0|.02099609375 / .00581668564322|
+|skin mask0|.001708984375 / .000338990940408|
+|UnderEye strength0/.5/1|0；.00470483303070 / .00227299557394；.00940835475922 / .00455094708482|
+
+这些是参数干预的 **model-only 输出影响**，不能当 Apple 误差或实际人物分割正确性的证据。
+全部阶段的 max/RMSE/位差、失败与输入身份索引为 `module-trials.json`；
+工作区 `styles-module-effects-4d314bd.zip` 保留完整分布/NPZ，其 hash 见 `module-artifact.json`。
