@@ -1,0 +1,52 @@
+test_all_finite_encodings_round_trip (test_observation_ulps.FiniteHalfTests.test_all_finite_encodings_round_trip) ... ok
+test_nonfinite_wrong_dtype_and_outside_finite_rank_rejected (test_observation_ulps.FiniteHalfTests.test_nonfinite_wrong_dtype_and_outside_finite_rank_rejected) ... ok
+test_signed_zeros_are_distinct_adjacent (test_observation_ulps.FiniteHalfTests.test_signed_zeros_are_distinct_adjacent) ... ok
+test_admissible_rules_are_coordinate_only_and_keep_truth (test_observation_ulps.ObservationTests.test_admissible_rules_are_coordinate_only_and_keep_truth) ... ok
+test_all_120_constraints_are_enforced_independently (test_observation_ulps.ObservationTests.test_all_120_constraints_are_enforced_independently) ... ok
+test_all_unknown_rows_cannot_exclude_second_scene (test_observation_ulps.ObservationTests.test_all_unknown_rows_cannot_exclude_second_scene) ... ok
+test_ambiguity_box_threshold_is_two_not_one_and_not_equivalence (test_observation_ulps.ObservationTests.test_ambiguity_box_threshold_is_two_not_one_and_not_equivalence) ... ok
+test_changed_budget_and_changed_roi_mask_rejected (test_observation_ulps.ObservationTests.test_changed_budget_and_changed_roi_mask_rejected) ... ok
+test_concrete_indistinguishable_parameter_pair_survives_both_scenes (test_observation_ulps.ObservationTests.test_concrete_indistinguishable_parameter_pair_survives_both_scenes) ... ok
+test_contract_external_errors_fail_without_nearest_fallback (test_observation_ulps.ObservationTests.test_contract_external_errors_fail_without_nearest_fallback) ... ok
+test_declaration_duplicate_context_and_mixed_contracts_rejected (test_observation_ulps.ObservationTests.test_declaration_duplicate_context_and_mixed_contracts_rejected) ... ok
+test_joint_tolerance_is_second_single_not_extra_information (test_observation_ulps.ObservationTests.test_joint_tolerance_is_second_single_not_extra_information) ... ok
+test_lookup_and_joint_cannot_call_forward_or_original_kernel (test_observation_ulps.ObservationTests.test_lookup_and_joint_cannot_call_forward_or_original_kernel) ... ok
+test_minimum_failure_is_one_component_one_step (test_observation_ulps.ObservationTests.test_minimum_failure_is_one_component_one_step) ... ok
+test_missing_matching_rows_preserve_unknown_joint_candidates (test_observation_ulps.ObservationTests.test_missing_matching_rows_preserve_unknown_joint_candidates) ... ok
+test_original_exact_api_is_unchanged_for_known_targets (test_observation_ulps.ObservationTests.test_original_exact_api_is_unchanged_for_known_targets) ... FAIL
+test_roi_contract_and_all_states_preflight (test_observation_ulps.ObservationTests.test_roi_contract_and_all_states_preflight) ... ok
+test_saved_exhaustive_single_step_cohort_and_expansions (test_observation_ulps.ObservationTests.test_saved_exhaustive_single_step_cohort_and_expansions) ... ok
+test_wrong_context_shape_and_nonfinite_observation_rejected (test_observation_ulps.ObservationTests.test_wrong_context_shape_and_nonfinite_observation_rejected) ... ok
+
+======================================================================
+FAIL: test_original_exact_api_is_unchanged_for_known_targets (test_observation_ulps.ObservationTests.test_original_exact_api_is_unchanged_for_known_targets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PSR>/research/styles-firmware-20261022/test_observation_ulps.py", line 115, in test_original_exact_api_is_unchanged_for_known_targets
+    self.assertEqual(q['exact']['known_candidates'], old['candidate_union'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'first_f32_bits': 0, 'last_f32_bits': 1018[317 chars]im'}] != [{'lower_real': 0.0, 'upper_real': 0.0221023[346 chars]ts'}]
+
+First differing element 0:
+{'first_f32_bits': 0, 'last_f32_bits': 1018[316 chars]aim'}
+{'lower_real': 0.0, 'upper_real': 0.0221023[345 chars]nts'}
+
+  [{'f32_population': 1018499073,
+    'first_f32_bits': 0,
+    'first_f32_hex': '0x00000000',
+    'last_f32_bits': 1018499072,
+    'last_f32_hex': '0x3cb51000',
+    'lower_closed': True,
+    'lower_real': 0.0,
+-   'membership': 'inclusive raw uint32 interval interpreted as canonical '
+-                 'nonnegative f32; no continuum or nearest-value claim',
++   'membership': 'all uint32 bit patterns first<=bits<=last interpreted as '
++                 'canonical nonnegative f32; inclusive integer endpoints',
++   'signature_ids': [0, 1],
+    'upper_closed': True,
+    'upper_real': 0.02210235595703125}]
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.747s
+
+FAILED (failures=1)

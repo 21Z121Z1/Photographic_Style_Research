@@ -1,0 +1,533 @@
+{
+  "scope": "S28 artificial half-observation tolerance, model_only; known source/auxiliary contexts",
+  "error_contract_sha256": "8a6269e1571434b96ad6a7b6c08f44e985268b4ae42c58cdc0e5f5c7b321852a",
+  "primary_plus1_comparisons": [
+    {
+      "case": "platform",
+      "scene": "first",
+      "original_exact_population": 1018499073,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 1018499073,
+      "tolerance_state_ids": [
+        0,
+        1
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "platform",
+      "scene": "second",
+      "original_exact_population": 1018499073,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 1018499073,
+      "tolerance_state_ids": [
+        0,
+        1
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "state7",
+      "scene": "first",
+      "original_exact_population": 2400255,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 2400255,
+      "tolerance_state_ids": [
+        7,
+        8,
+        9
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "state7",
+      "scene": "second",
+      "original_exact_population": 860159,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 860159,
+      "tolerance_state_ids": [
+        7
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "active_A",
+      "scene": "first",
+      "original_exact_population": 401409,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 401409,
+      "tolerance_state_ids": [
+        17
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "active_A",
+      "scene": "second",
+      "original_exact_population": 401409,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 401409,
+      "tolerance_state_ids": [
+        17
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "active_B",
+      "scene": "first",
+      "original_exact_population": 40961,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 40961,
+      "tolerance_state_ids": [
+        122
+      ],
+      "truth_retained_tolerance": true
+    },
+    {
+      "case": "active_B",
+      "scene": "second",
+      "original_exact_population": 40961,
+      "perturbed_exact_population": 0,
+      "tolerance_population": 40961,
+      "tolerance_state_ids": [
+        122
+      ],
+      "truth_retained_tolerance": true
+    }
+  ],
+  "single_component_cohort": [
+    {
+      "case": "platform",
+      "scene": "first",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        1018499073,
+        1032310785
+      ]
+    },
+    {
+      "case": "platform",
+      "scene": "second",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        1018499073,
+        1018499073
+      ]
+    },
+    {
+      "case": "state7",
+      "scene": "first",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        2400255,
+        3334143
+      ]
+    },
+    {
+      "case": "state7",
+      "scene": "second",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        860159,
+        860159
+      ]
+    },
+    {
+      "case": "active_A",
+      "scene": "first",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        401409,
+        942081
+      ]
+    },
+    {
+      "case": "active_A",
+      "scene": "second",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        401409,
+        401409
+      ]
+    },
+    {
+      "case": "active_B",
+      "scene": "first",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        40961,
+        90113
+      ]
+    },
+    {
+      "case": "active_B",
+      "scene": "second",
+      "count": 72,
+      "exact_empty": 72,
+      "truth_retained_tolerance": 72,
+      "tolerance_population_range": [
+        40961,
+        40961
+      ]
+    }
+  ],
+  "four_error_induced_first_scene_expansions": [
+    {
+      "case": "platform",
+      "scene": "first",
+      "coordinate": [
+        3,
+        3,
+        2
+      ],
+      "delta_half_steps": -1,
+      "observed_writer_sha256": "2009b6ec813d5d8dd5ec4a0b89671e608d47e092925373fed0ed28424559153f",
+      "exact_match_bitmap": "00000000000000000000000000000000000000",
+      "tolerance_match_bitmap": "3f000000000000000000000000000000000000",
+      "exact_state_ids": [],
+      "tolerance_state_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "exact_population": 0,
+      "tolerance_population": 1032310785,
+      "truth_retained_exact": false,
+      "truth_retained_tolerance": true,
+      "matching_raw_union": [
+        {
+          "first_f32_bits": 0,
+          "last_f32_bits": 1032310784,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3d87d000",
+          "lower_real": 0.0,
+          "upper_real": 0.066314697265625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 1032310785,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "example_indistinguishable_state_pair_in_first_observation": [
+        0,
+        2
+      ],
+      "example_raw_f32_pair": [
+        0,
+        1018503168
+      ],
+      "example_raw_values": [
+        0.0,
+        0.0221099853515625
+      ],
+      "second_identity_joint_candidates": [
+        {
+          "first_f32_bits": 0,
+          "last_f32_bits": 1018499072,
+          "first_f32_hex": "0x00000000",
+          "last_f32_hex": "0x3cb51000",
+          "lower_real": 0.0,
+          "upper_real": 0.02210235595703125,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 1018499073,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "second_identity_joint_population": 1018499073,
+      "joint_equals_stronger_second": true,
+      "extra_elimination_beyond_second": 0
+    },
+    {
+      "case": "state7",
+      "scene": "first",
+      "coordinate": [
+        1,
+        3,
+        0
+      ],
+      "delta_half_steps": -1,
+      "observed_writer_sha256": "361e35592b0b8c29601b4639ce1b8f5d6bc0388fc5e2808d91dfc9a4c2d00a4c",
+      "exact_match_bitmap": "00000000000000000000000000000000000000",
+      "tolerance_match_bitmap": "c0030000000000000000000000000000000000",
+      "exact_state_ids": [],
+      "tolerance_state_ids": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "exact_population": 0,
+      "tolerance_population": 3334143,
+      "truth_retained_exact": false,
+      "truth_retained_tolerance": true,
+      "matching_raw_union": [
+        {
+          "first_f32_bits": 1032310785,
+          "last_f32_bits": 1035644927,
+          "first_f32_hex": "0x3d87d001",
+          "last_f32_hex": "0x3dbaafff",
+          "lower_real": 0.066314697265625,
+          "upper_real": 0.091156005859375,
+          "lower_closed": false,
+          "upper_closed": false,
+          "f32_population": 3334143,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "example_indistinguishable_state_pair_in_first_observation": [
+        7,
+        6
+      ],
+      "example_raw_f32_pair": [
+        1033248768,
+        1032314880
+      ],
+      "example_raw_values": [
+        0.07330322265625,
+        0.06634521484375
+      ],
+      "second_identity_joint_candidates": [
+        {
+          "first_f32_bits": 1033244673,
+          "last_f32_bits": 1034104831,
+          "first_f32_hex": "0x3d961001",
+          "last_f32_hex": "0x3da32fff",
+          "lower_real": 0.073272705078125,
+          "upper_real": 0.079681396484375,
+          "lower_closed": false,
+          "upper_closed": false,
+          "f32_population": 860159,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "second_identity_joint_population": 860159,
+      "joint_equals_stronger_second": true,
+      "extra_elimination_beyond_second": 0
+    },
+    {
+      "case": "active_A",
+      "scene": "first",
+      "coordinate": [
+        1,
+        3,
+        1
+      ],
+      "delta_half_steps": 1,
+      "observed_writer_sha256": "e857372a0600703c8092bb7e56213f6ed3f0cb06906d14ff40193cf9f49a948c",
+      "exact_match_bitmap": "00000000000000000000000000000000000000",
+      "tolerance_match_bitmap": "00000300000000000000000000000000000000",
+      "exact_state_ids": [],
+      "tolerance_state_ids": [
+        16,
+        17
+      ],
+      "exact_population": 0,
+      "tolerance_population": 942081,
+      "truth_retained_exact": false,
+      "truth_retained_tolerance": true,
+      "matching_raw_union": [
+        {
+          "first_f32_bits": 1039380480,
+          "last_f32_bits": 1040322560,
+          "first_f32_hex": "0x3df3b000",
+          "last_f32_hex": "0x3e021000",
+          "lower_real": 0.118988037109375,
+          "upper_real": 0.12701416015625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 942081,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "example_indistinguishable_state_pair_in_first_observation": [
+        17,
+        16
+      ],
+      "example_raw_f32_pair": [
+        1039925248,
+        1039384576
+      ],
+      "example_raw_values": [
+        0.123046875,
+        0.1190185546875
+      ],
+      "second_identity_joint_candidates": [
+        {
+          "first_f32_bits": 1039921152,
+          "last_f32_bits": 1040322560,
+          "first_f32_hex": "0x3dfbf000",
+          "last_f32_hex": "0x3e021000",
+          "lower_real": 0.123016357421875,
+          "upper_real": 0.12701416015625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 401409,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "second_identity_joint_population": 401409,
+      "joint_equals_stronger_second": true,
+      "extra_elimination_beyond_second": 0
+    },
+    {
+      "case": "active_B",
+      "scene": "first",
+      "coordinate": [
+        3,
+        4,
+        0
+      ],
+      "delta_half_steps": -1,
+      "observed_writer_sha256": "ea12aa68400da8cf2e89f3b7d46986556ffcd97a121efe1b428070285565d7fb",
+      "exact_match_bitmap": "00000000000000000000000000000000000000",
+      "tolerance_match_bitmap": "00000000000000000000000000000006000000",
+      "exact_state_ids": [],
+      "tolerance_state_ids": [
+        121,
+        122
+      ],
+      "exact_population": 0,
+      "tolerance_population": 90113,
+      "truth_retained_exact": false,
+      "truth_retained_tolerance": true,
+      "matching_raw_union": [
+        {
+          "first_f32_bits": 1051652096,
+          "last_f32_bits": 1051742208,
+          "first_f32_hex": "0x3eaef000",
+          "last_f32_hex": "0x3eb05000",
+          "lower_real": 0.3416748046875,
+          "upper_real": 0.3443603515625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 90113,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "example_indistinguishable_state_pair_in_first_observation": [
+        122,
+        121
+      ],
+      "example_raw_f32_pair": [
+        1051705344,
+        1051656192
+      ],
+      "example_raw_values": [
+        0.34326171875,
+        0.341796875
+      ],
+      "second_identity_joint_candidates": [
+        {
+          "first_f32_bits": 1051701248,
+          "last_f32_bits": 1051742208,
+          "first_f32_hex": "0x3eafb000",
+          "last_f32_hex": "0x3eb05000",
+          "lower_real": 0.3431396484375,
+          "upper_real": 0.3443603515625,
+          "lower_closed": true,
+          "upper_closed": true,
+          "f32_population": 40961,
+          "membership": "inclusive raw uint32 interval interpreted as canonical nonnegative f32; no continuum or nearest-value claim"
+        }
+      ],
+      "second_identity_joint_population": 40961,
+      "joint_equals_stronger_second": true,
+      "extra_elimination_beyond_second": 0
+    }
+  ],
+  "minimum_exact_failure": {
+    "case": {
+      "id": "platform",
+      "state_id": 0,
+      "truth_raw_f32_bits": 0
+    },
+    "scene": "first",
+    "coordinate": [
+      1,
+      1,
+      0
+    ],
+    "delta_half_steps": -1,
+    "L0_changed_components": 1,
+    "Linfinity_half_steps": 1,
+    "minimality": "any nonzero finite-rank perturbation has at least one changed component and at least one rank step; baseline zero perturbation matched"
+  },
+  "minimal_changed_half_codes": [
+    14329,
+    14328
+  ],
+  "primary_contract_external_negative_observations": 24,
+  "all24_contract_external_negative_tolerance_sets_empty": true,
+  "all_primary_admissible_tolerance_joint_equal_to_second": true,
+  "joint_additional_elimination_beyond_strongest_single": 0,
+  "exact_joint_cannot_rescue_a_single_empty_exact_set": true,
+  "pairwise_ambiguity": {
+    "scope": "all10585 distinct-state pairs; prediction-center distance<=1 differs from two radius1 observation boxes overlapping at distance<=2",
+    "pair_count": 10585,
+    "exact_joint_collision_pairs": [
+      [
+        0,
+        1
+      ]
+    ],
+    "single_scene_center_compatible_pair_counts": {
+      "first": 24,
+      "second": 1
+    },
+    "single_scene_radius1_box_overlap_pair_counts": {
+      "first": 877,
+      "second": 1
+    },
+    "joint_radius1_box_overlap_pairs": [
+      [
+        0,
+        1
+      ]
+    ],
+    "new_nonexact_joint_overlap_pairs": [],
+    "new_nonexact_joint_overlap_count": 0,
+    "exact_indistinguishable_parameter_pair": {
+      "state_pair": [
+        0,
+        1
+      ],
+      "raw_f32_bits": [
+        0,
+        1008981770
+      ],
+      "raw_f32_values": [
+        0.0,
+        0.009999999776482582
+      ],
+      "each_context_writer_half_bits_identical": {
+        "first": true,
+        "second": true
+      }
+    },
+    "constructed_measurement_ambiguity_witness": null,
+    "tolerance_relation_not_claimed_equivalence_or_transitive": true,
+    "new_forward_or_kernel_calls": 0
+  },
+  "unknown_states_in_actual_full_directories": 0,
+  "candidate_unions_and_bitmaps": "observation-results-s28b.json",
+  "unknown_policy": "preserve unknown/missing as possible; tested only in synthetic omission fixtures",
+  "new_model_forward_or_original_kernel_calls": 0
+}

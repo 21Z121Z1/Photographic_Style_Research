@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<PSR>/research/styles-firmware-20261022/verify_observation.py", line 279, in <module>
+    audit(args.output, args.summary)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PSR>/research/styles-firmware-20261022/verify_observation.py", line 88, in audit
+    expected = intersect_all(tuple(Interval.read(r) for r in s[mode]['known_candidates']) for s in scans)
+  File "<PSR>/research/styles-firmware-20261022/raw_f32_sets.py", line 96, in intersect_all
+    result=normalize(sets[0])
+                     ~~~~^^^
+TypeError: 'generator' object is not subscriptable

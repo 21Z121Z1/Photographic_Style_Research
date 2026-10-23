@@ -1,0 +1,103 @@
+{
+  "scope": "Freeze S28 artificial measurement contract/rules before matching results.",
+  "contract_sha256": "8a6269e1571434b96ad6a7b6c08f44e985268b4ae42c58cdc0e5f5c7b321852a",
+  "precision_sha256": "9358741644914631950a72161b25967ba9c433400d1faf3dbb4267db1fb036da",
+  "contexts": {
+    "first": "complete-context-s15a.json",
+    "second": "second-context-s25a.json"
+  },
+  "accepted_catalogs": {
+    "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11": [
+      "first-context-catalog-v3-s26c.json",
+      "6c49f76d35aef61b1c6c4bf432aa5d24e72b343e6e15fe9f351914e80a29b6ce"
+    ],
+    "37d3385222f3f42988d79dbbe5db89c3147c6988f5c0b7ef9ff10bab97031be6": [
+      "context-catalog-s25e.json",
+      "5e943c91fe441c55c4fd9bd023daf74cbe5db3afbe4365b5cdc727960bfe5ba6"
+    ]
+  },
+  "partition_sha256": "b3e36abb1928562629827c7404771d534722b2021cedeed23ecc26653bd0b030",
+  "cases": [
+    {
+      "id": "platform",
+      "state_id": 0,
+      "truth_raw_f32_bits": 0
+    },
+    {
+      "id": "state7",
+      "state_id": 7,
+      "truth_raw_f32_bits": 1033248768
+    },
+    {
+      "id": "active_A",
+      "state_id": 17,
+      "truth_raw_f32_bits": 1040187392
+    },
+    {
+      "id": "active_B",
+      "state_id": 122,
+      "truth_raw_f32_bits": 1051721728
+    }
+  ],
+  "primary_patterns": [
+    "identity",
+    "first_rgb_plus1",
+    "first_rgb_minus1",
+    "checker_rgb_pm1",
+    "first_rgb_plus2",
+    "first_alpha_plus1",
+    "first_unwritten_rgb_plus1"
+  ],
+  "admissible_patterns": [
+    "identity",
+    "first_rgb_plus1",
+    "first_rgb_minus1",
+    "checker_rgb_pm1"
+  ],
+  "negative_patterns": [
+    "first_rgb_plus2",
+    "first_alpha_plus1",
+    "first_unwritten_rgb_plus1"
+  ],
+  "perturbation_rule": "first means lexicographic destination(y,x,component), RGB components0/1/2; checker sign +1 iff(y+x+c)even else-1; rules never read truth raw or matching results",
+  "all_one_component_rule": "for every case in listed order, every context in first/second order, all36 writtenRGB coordinates lexicographic and directions[-1,+1], change exactly one half rank step; scan every state/all components",
+  "minimality_objective": "nonzero admissible perturbation lexicographic(L0 changed components,Linfinity half steps); any failure at(1,1)is globally minimal for this discrete nonzero objective",
+  "joint_pairs": [
+    [
+      "identity",
+      "identity"
+    ],
+    [
+      "first_rgb_plus1",
+      "first_rgb_plus1"
+    ],
+    [
+      "first_rgb_plus1",
+      "identity"
+    ],
+    [
+      "identity",
+      "first_rgb_minus1"
+    ],
+    [
+      "checker_rgb_pm1",
+      "checker_rgb_pm1"
+    ],
+    [
+      "first_rgb_plus1",
+      "first_rgb_minus1"
+    ],
+    [
+      "first_alpha_plus1",
+      "identity"
+    ],
+    [
+      "first_rgb_plus2",
+      "identity"
+    ]
+  ],
+  "pairwise_ambiguity_rule": "all10585 i<j interface-state pairs; error boxes overlap iff exact zones identical and each writtenRGB prediction distance<=2; choose lexicographically first new joint-overlap pair not exact-equal in both contexts; construct common observation from per-component interval lower bound",
+  "joint_scope": "same post-scene field3 raw, fixed known source/auxiliary contexts; caller assumption explicit",
+  "no_new_forward_or_original_kernel_calls": true,
+  "contract_frozen_before_any_target_perturbation_or_match_scan": true
+}
