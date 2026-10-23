@@ -1,0 +1,105 @@
+{
+  "schema": "psr-conditional-texture-adapter-evidence-index-v1",
+  "baseline_source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+  "scope": "Existing helper/native evidence index plus new conditional UnderEye adapter; no new native execution",
+  "coverage": [
+    {
+      "effect": "UnderEyeBrightening",
+      "independent_adapter": "texture_style_adapter.apply_under_eye",
+      "formula_reused": "research/semantic-styles/studio_under_eye.py",
+      "arithmetic": "float64 continuous helper; explicit NumPy float16 output storage",
+      "inputs": "explicit edited RGB, eight masks, f32 brightness_mix/strength, named color domain",
+      "new_evidence_level": "model-only logic/storage tests with procedural masks",
+      "native_sampler_or_half_arithmetic_verified": false
+    },
+    {
+      "effect": "SkinSmoothingStandalone",
+      "independent_adapter": null,
+      "existing_native_entry": "research/semantic-styles/texture_units_s10.m",
+      "historical_run": "39158119190",
+      "historical_source_commit": "994e44b7a9a4f20a8b468c9c26ddb693bcd7173f",
+      "new_execution": false,
+      "gap": "No independent finalBlendingKernelInPlace backend implemented; blur/statistics/guided reconstruction remain external"
+    },
+    {
+      "effect": "Mattify",
+      "independent_adapter": null,
+      "existing_native_entry": "research/semantic-styles/texture_units_s10.m",
+      "historical_run": "39158599009",
+      "historical_source_commit": "4aaed774e0b1f09127e47fe6944f4bf201221546",
+      "new_execution": false,
+      "gap": "No independent HSL/region/addback backend implemented; not an affine UnderEye inverse"
+    }
+  ],
+  "source_anchors": [
+    {
+      "path": "research/semantic-styles/studio_under_eye.py",
+      "source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+      "sha256": "e588f764b4b36f154904575a4cfb2a56ced22d11cda7b26637e6aa2fe31329ea"
+    },
+    {
+      "path": "research/semantic-styles/under_eye_final_s6.m",
+      "source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+      "sha256": "374dfeaeab1edd427b4466de5582df9296fca3db5aaa3e691f37abd8d0e9eede"
+    },
+    {
+      "path": "research/semantic-styles/texture_units_s10.m",
+      "source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+      "sha256": "881891df77b2071a05d5e6419fbb921f794feca462103fa0a20849c7cf48043e"
+    },
+    {
+      "path": "research/styles-firmware-20261022/PROGRESS-S3.zh-CN.md",
+      "source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+      "sha256": "54da54b0e91e3e2ad963227dac52d2c5bb6034d338ac6d2f3e2a39593c1705e8"
+    },
+    {
+      "path": "research/semantic-styles/evidence/archive-s11-summary.json",
+      "source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+      "sha256": "cbdd30ab10da5031b3331dd3d94f0fcc3ff004f5ae860ec31385bd707d7ed2fd"
+    },
+    {
+      "path": "research/semantic-styles/evidence/archive-s13-summary.json",
+      "source_commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+      "sha256": "198f15a58c88c45018e294d5c4e46156b62a2f3095b6466dea87f5a934a756b6"
+    }
+  ],
+  "other_branches_read_only": [
+    {
+      "head": "24ed53707bdcd7fc9aaa0a59556932ba1f4ebf7f",
+      "branch": "research/texture-product-integration-20261020",
+      "read": [
+        "research/texture-producer-20261020/README.md",
+        "research/texture-producer-20261020/REPORT.zh-CN.md",
+        "research/texture-producer-20261020/generate_stats.m",
+        "research/texture-styles/validate.py",
+        "research/texture-styles/native_units_s24.py"
+      ],
+      "finding": "Existing SPI statistics production, HEIC write/readback and native final-file replay evidence are retained on that branch; user activation is historical feedback, not rerun here",
+      "copied_sources": []
+    },
+    {
+      "head": "34319fdb735a3f0a62e094e1a41de85bbfd9bd9d",
+      "branch": "research/texture-producer-20261020",
+      "head_only_checked": true
+    },
+    {
+      "head": "2bc4e3d16fc2c6028cdf708f06d79cf3be42a6d5",
+      "branch": "research/texture-generalization-20261020",
+      "head_only_checked": true
+    }
+  ],
+  "contracts": {
+    "color_domain": "caller must name primaries, transfer, and reference; adapter does not identify Apple processing domain",
+    "effect_order": "explicit caller order only; no GTM/LTM placement inferred",
+    "mask_missing": "reject by default; explicitly selected identity fallback is reported",
+    "unsupported_requested_effect": "no final output returned; completed checkpoints retained",
+    "synthetic_masks_prove_segmentation": false,
+    "full_texture_pipeline_verified": false,
+    "full_camera_pipeline_verified": false
+  },
+  "reproduce": [
+    "python3 -m unittest discover -s research/styles-firmware-20261022 -p test_texture_style_adapter.py -v"
+  ],
+  "new_tests": 14,
+  "private_images_or_system_binaries_added": false
+}
