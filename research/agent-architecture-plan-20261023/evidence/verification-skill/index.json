@@ -1,0 +1,37 @@
+{
+  "scope": "generated project-local verification skill; primary verified surface is the explicit portable research CLI",
+  "skill": ".cursor/skills/verify-photographic-style/SKILL.md",
+  "helper": ".cursor/skills/verify-photographic-style/scripts/verify.py",
+  "helper_sha256": "c16193974f8a96c1b8acc26d2a82fbbe56798cb54f93ffaac4a12d57ab813272",
+  "helper_executable": true,
+  "feature_map_files": [
+    ".cursor/skills/verify-photographic-style/features/README.md",
+    ".cursor/skills/verify-photographic-style/features/bright-and-fallbacks.md",
+    ".cursor/skills/verify-photographic-style/features/heif-structure.md",
+    ".cursor/skills/verify-photographic-style/features/macos-app.md",
+    ".cursor/skills/verify-photographic-style/features/native-pow.md",
+    ".cursor/skills/verify-photographic-style/features/synthetic-parameters.md"
+  ],
+  "frozen_receipt": "research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/receipt.json",
+  "frozen_receipt_sha256": "ea55294cebc987f3ed61a66efddef925fbfa24c332d7691bc9f47c5d90602fae",
+  "frozen_execution_source_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "final_helper_source_preserved_before_execution": true,
+  "verified_portable_cases": 2,
+  "verified_portable_writers": 2,
+  "source_files_verified": 375,
+  "negative_probes_rejected": [
+    "portable_result_labelled_Apple",
+    "stale_source_manifest"
+  ],
+  "native_status": "BLOCKED_native_material",
+  "native_calls": 0,
+  "unverified_product_paths": [
+    "HEIF inspection without an authorized synthetic HEIF sample",
+    "SwiftUI app and Photos UI without a macOS host and UI driver",
+    "original Apple CPU/GPU path without exact sealed binary and OS build"
+  ],
+  "prior_iterations_retained": true,
+  "formal_migration_performed": false,
+  "native_Cursor_plugin_or_ChatGPT_command_registration": false,
+  "maintenance": "/maintain-verification-skill is the source workflow for keeping this map current; no schedule created"
+}

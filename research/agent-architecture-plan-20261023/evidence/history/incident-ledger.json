@@ -1,0 +1,538 @@
+{
+  "schema": "psr-historical-trap-ledger-v1",
+  "baseline_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "counting_rule": "Two groups show the same observed mechanism in two separately introduced paths each. Two additional boundary families each hold two different incidents; their grouping is inferred, not a repeated root cause. Eight is an inspected incident/path-record lower bound, not eight corrective commits, eight agent mistakes, exhaustive prevalence, or a ranking of most common faults.",
+  "classes": [
+    {
+      "id": "execution-input-retention",
+      "label": "Executed compiler inputs were temporary and later unavailable for exact identity comparison",
+      "confirmed_incidents": [
+        {
+          "id": "S21-producer-input",
+          "source": {
+            "commit": "435d2ce4aee880148635ca22b9b9ff34287f4d8e",
+            "path": "research/styles-firmware-20261022/native_active_color.py",
+            "sha256": "65db8c99a7422228e8774f67e39f84681248a9791bd53310de98ccfc1a93a17f",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/435d2ce4aee880148635ca22b9b9ff34287f4d8e/research/styles-firmware-20261022/native_active_color.py",
+            "matching_lines": [
+              64
+            ],
+            "needle": "with tempfile.TemporaryDirectory"
+          },
+          "recorded_original_IR_SHA256": "a787d7ada4c12ba8fbc36ad48161f47d5fb63be4fd5a01421731569127b8cf28",
+          "admission": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/producer-identity-s23a.json",
+            "sha256": "7da1a0c21cb3aa94a058308494f389d923ed9ab13b00f91f93a97a66f9a118b7",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/producer-identity-s23a.json",
+            "matching_lines": [
+              4,
+              151
+            ],
+            "needle": "a787d7ada4c12ba8fbc36ad48161f47d5fb63be4fd5a01421731569127b8cf28"
+          }
+        },
+        {
+          "id": "S22-producer-input",
+          "source": {
+            "commit": "b2585a04d5344d147c5b2319557fe01b421caa81",
+            "path": "research/styles-firmware-20261022/native_color_boundaries.py",
+            "sha256": "7661c412e413ee2aac92f79160d7a865910eae5e3ea2cecbc5c39388c99c3ceb",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/b2585a04d5344d147c5b2319557fe01b421caa81/research/styles-firmware-20261022/native_color_boundaries.py",
+            "matching_lines": [
+              68
+            ],
+            "needle": "with tempfile.TemporaryDirectory"
+          },
+          "recorded_original_IR_SHA256": "ba676ebda2421750a32823caa5d664970c78f4fa459650910e65a5269df695da",
+          "admission": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/producer-identity-s23a.json",
+            "sha256": "7da1a0c21cb3aa94a058308494f389d923ed9ab13b00f91f93a97a66f9a118b7",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/producer-identity-s23a.json",
+            "matching_lines": [
+              5,
+              159
+            ],
+            "needle": "ba676ebda2421750a32823caa5d664970c78f4fa459650910e65a5269df695da"
+          }
+        }
+      ],
+      "failure_frequency_unit": "two recorded runs through two independent harnesses; not commit keywords",
+      "observed_impact": "Each original compiler-input 0.ll was cleaned after compile. Historical pair comparison remains blocked; stored hashes cannot reconstruct either original text. No global absence claim is made.",
+      "existing_correction": [
+        {
+          "commit": "5db9cd1903fc69aa340b6bce3790449043cc0da6",
+          "path": "research/styles-firmware-20261022/baseline_archive.py",
+          "sha256": "a4ea4490618302e2fa9e224f71d62ccc78397df829782dcee89ee652e5618824",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/5db9cd1903fc69aa340b6bce3790449043cc0da6/research/styles-firmware-20261022/baseline_archive.py"
+        },
+        {
+          "commit": "5db9cd1903fc69aa340b6bce3790449043cc0da6",
+          "path": "research/styles-firmware-20261022/baseline_field3.py",
+          "sha256": "32e2e7a4343efbcbe1a49923185dc548ab5eced0fb558c3ea2c7dc9cec1be462",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/5db9cd1903fc69aa340b6bce3790449043cc0da6/research/styles-firmware-20261022/baseline_field3.py"
+        },
+        {
+          "commit": "5db9cd1903fc69aa340b6bce3790449043cc0da6",
+          "path": "research/styles-firmware-20261022/traceable_color_baseline.py",
+          "sha256": "8ca6073f1f5e45b240d5d835023dbd689f629f51f28f9f5626f0ddcbd2140cc9",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/5db9cd1903fc69aa340b6bce3790449043cc0da6/research/styles-firmware-20261022/traceable_color_baseline.py"
+        }
+      ],
+      "enforcement_candidate": "One private persistent execution-bundle owner seals actual compiler inputs before compile and yields retained-input references. Extend the existing Archive owner, reject missing bytes/provenance, and keep private generated IR outside Git.",
+      "verification_level": "exact historical source lifecycle plus original public availability admission; old missing IR not recovered",
+      "incident_count": 2,
+      "confidence": "direct",
+      "agent_attribution": {
+        "status": "unknown",
+        "reason": "Commit author identity is not evidence that an agent caused the failure; no bot-specific review or original transcript attribution was available."
+      },
+      "architectural_generalization": {
+        "confidence": "inferred",
+        "meaning": "The proposed owner/type boundary may prevent recurrence. Prototype and migration checks must establish its coverage before adoption."
+      },
+      "group_kind": "same_mechanism_across_paths",
+      "mechanism_match": "same observed lifecycle or side-effect-summary omission",
+      "grouping_confidence": "direct matching mechanism",
+      "scope_caveat": "Separate affected paths before a joint forward correction; no claim of a post-fix recurrence, independent fix count, or repository-wide frequency ranking.",
+      "counts": {
+        "affected_paths_minimum": 2,
+        "recorded_runs": 2,
+        "recorded_runs_count_note": "two separately cited recorded run/attempt identities",
+        "distinct_correction_commits": 1,
+        "correction_commits": [
+          "5db9cd1903fc69aa340b6bce3790449043cc0da6"
+        ]
+      },
+      "path_introduction_commits": {
+        "research/styles-firmware-20261022/native_active_color.py": "435d2ce4aee880148635ca22b9b9ff34287f4d8e",
+        "research/styles-firmware-20261022/native_color_boundaries.py": "b2585a04d5344d147c5b2319557fe01b421caa81"
+      }
+    },
+    {
+      "id": "observer-effect-summary",
+      "label": "Trace stores were inserted while original read-only memory summaries were retained",
+      "confirmed_incidents": [
+        {
+          "id": "BW-observer-readonly",
+          "before": {
+            "commit": "fbe4d25a2941862566c23d9aa204153510d26fd6",
+            "path": "research/styles-firmware-20261022/bw_host.py",
+            "sha256": "7d5e247e0fb30a55b770456fe340a17ffd305d823af8d281eb2de419edafa38c",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/fbe4d25a2941862566c23d9aa204153510d26fd6/research/styles-firmware-20261022/bw_host.py",
+            "matching_lines": [
+              11
+            ],
+            "needle": "store float"
+          },
+          "fixed": {
+            "commit": "d4dedf0a842b4c483485957dd4a8c8932f52f380",
+            "path": "research/styles-firmware-20261022/bw_host.py",
+            "sha256": "895ebb390644e0924856e8476ce819c91ca081eb0a4dc53c016103941ec257d9",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/d4dedf0a842b4c483485957dd4a8c8932f52f380/research/styles-firmware-20261022/bw_host.py",
+            "matching_lines": [
+              19
+            ],
+            "needle": "line.replace('memory(read)','memory(readwrite)')"
+          },
+          "saved_regression": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/bw-observer-regression-s12b.json",
+            "sha256": "a552c01ea43f0e62fe05377dddd121198240183828064d451c811e37b23ba37f",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/bw-observer-regression-s12b.json"
+          }
+        },
+        {
+          "id": "BG-gamma-observer-readonly",
+          "before": {
+            "commit": "fbe4d25a2941862566c23d9aa204153510d26fd6",
+            "path": "research/styles-firmware-20261022/diagnose_local_gamma.py",
+            "sha256": "cbb27e3ff75220769ebe2a1419fb20ced18b13d957a83ef0ea87c06fd55d03a3",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/fbe4d25a2941862566c23d9aa204153510d26fd6/research/styles-firmware-20261022/diagnose_local_gamma.py",
+            "matching_lines": [
+              46
+            ],
+            "needle": "return '@psr_trace"
+          },
+          "fixed": {
+            "commit": "d4dedf0a842b4c483485957dd4a8c8932f52f380",
+            "path": "research/styles-firmware-20261022/diagnose_local_gamma.py",
+            "sha256": "f2bbdef26015c08818cdf39dc474d60bca4b3a01963d8fcabfd0263d9528d0c9",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/d4dedf0a842b4c483485957dd4a8c8932f52f380/research/styles-firmware-20261022/diagnose_local_gamma.py",
+            "matching_lines": [
+              49
+            ],
+            "needle": "attributes.replace('memory(read)','memory(readwrite)')"
+          },
+          "saved_regression": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/local-gamma-observer-s12b.json",
+            "sha256": "96355ed543e0ba20068cfc8b6f6002c62b80b0cccf5e8636d1934555b1bcd89a",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/local-gamma-observer-s12b.json"
+          }
+        }
+      ],
+      "failure_frequency_unit": "two independently affected generator functions, corrected in one commit",
+      "observed_impact": "Invalid compiler side-effect contract. Historical saved numeric output remained the same after correction; optimizer-induced pixel corruption is not established.",
+      "enforcement_candidate": "One instrumentation owner derives memory effects from inserted operations. Generated-IR validation rejects readonly roots with global stores while preserving original FP attributes.",
+      "verification_level": "mine_history.py replays both actual old and fixed generator functions on synthetic IR. Four write-summary results are false,true,false,true. No native compile or kernel run.",
+      "incident_count": 2,
+      "confidence": "direct",
+      "agent_attribution": {
+        "status": "unknown",
+        "reason": "Commit author identity is not evidence that an agent caused the failure; no bot-specific review or original transcript attribution was available."
+      },
+      "architectural_generalization": {
+        "confidence": "inferred",
+        "meaning": "The proposed owner/type boundary may prevent recurrence. Prototype and migration checks must establish its coverage before adoption."
+      },
+      "group_kind": "same_mechanism_across_paths",
+      "mechanism_match": "same observed lifecycle or side-effect-summary omission",
+      "grouping_confidence": "direct matching mechanism",
+      "scope_caveat": "Separate affected paths before a joint forward correction; no claim of a post-fix recurrence, independent fix count, or repository-wide frequency ranking.",
+      "counts": {
+        "affected_paths_minimum": 2,
+        "recorded_runs": null,
+        "recorded_runs_count_note": "Not reconstructed from generator site count",
+        "distinct_correction_commits": 1,
+        "correction_commits": [
+          "d4dedf0a842b4c483485957dd4a8c8932f52f380"
+        ]
+      },
+      "path_introduction_commits": {
+        "research/styles-firmware-20261022/bw_host.py": "fbe4d25a2941862566c23d9aa204153510d26fd6",
+        "research/styles-firmware-20261022/diagnose_local_gamma.py": "9c5d6e23eb9f7d28f7c60dc8d5a7019e725b12f2"
+      }
+    },
+    {
+      "id": "native-build-input-contract",
+      "label": "Probe compiler inputs and Objective-C ownership prerequisites failed before the intended experiment",
+      "confirmed_incidents": [
+        {
+          "id": "S96-translation-inputs",
+          "recorded_run_id": 39496980234,
+          "before": {
+            "commit": "c735ecbbb000426d676eea20a575718f3fe2f8e0",
+            "path": "research/hdr-native/run_semantic_s96.py",
+            "sha256": "49753218e782f2378c24cbc6f0f34d4f1e1a1646856ce62ba5407a5c6746549a",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/c735ecbbb000426d676eea20a575718f3fe2f8e0/research/hdr-native/run_semantic_s96.py",
+            "matching_lines": [
+              26,
+              56
+            ],
+            "needle": "D/'observer_prerequisites_s96.inc'"
+          },
+          "build_log": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/hdr-native/evidence/s96/run/build.log",
+            "sha256": "f552e39e2e44f0363f2a30040fc641041628fb64f6aa5dfa28e6b6f87cf0189b",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/hdr-native/evidence/s96/run/build.log",
+            "matching_lines": [
+              1,
+              2
+            ],
+            "needle": "native_filter_probe_s95.m"
+          },
+          "admission": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/hdr-native/evidence/s96/phase-summary.json",
+            "sha256": "323833bd098fccd65dff6666f3697e5395abc66c55973e1221807d39ee072d73",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/hdr-native/evidence/s96/phase-summary.json",
+            "matching_lines": [
+              8
+            ],
+            "needle": "Compiler argv mistakenly"
+          },
+          "fixed": {
+            "commit": "5f8646db52be89d09563f922a369900aee056081",
+            "path": "research/hdr-native/run_semantic_s97.py",
+            "sha256": "2986dc3ef26df95bb0d7c9868b79ee49c9111250f9cf4422df8e5fd2097fd9a4",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/5f8646db52be89d09563f922a369900aee056081/research/hdr-native/run_semantic_s97.py",
+            "matching_lines": [
+              57
+            ],
+            "needle": "assert command(flags+[D/'semantic_fullframe_s96.m','-o',exe]"
+          },
+          "failure": "Compiler argv included .inc/.json bindings and an old S95 translation unit whose generated include was absent. No pixel operators executed."
+        },
+        {
+          "id": "S108-Class-pointer-ownership",
+          "recorded_run_id": 39531127497,
+          "before": {
+            "commit": "548cf16477d57253fe7003f9b3db9e8d075e8048",
+            "path": "research/hdr-native/native_style_inventory_s108.m",
+            "sha256": "b2b1c777efd160a4a431c5bb56566fc62ffcdf4caaca1b8999d0b56b8abc8e5e",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/548cf16477d57253fe7003f9b3db9e8d075e8048/research/hdr-native/native_style_inventory_s108.m",
+            "matching_lines": [
+              43
+            ],
+            "needle": "Class *list=calloc"
+          },
+          "build_log": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/hdr-native/evidence/s108/run/build.log",
+            "sha256": "41345673f773bdd6cb59f8d0b6b6342c09c0cec1c2849208377fc07e6c4b0ca3",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/hdr-native/evidence/s108/run/build.log",
+            "matching_lines": [
+              1
+            ],
+            "needle": "implicit conversion"
+          },
+          "admission": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/hdr-native/evidence/s108/closure.json",
+            "sha256": "a1ca5a8dc0e573fd8b03888a65d3bd4f3cef72a6a7348d8a1edc358677b5740d",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/hdr-native/evidence/s108/closure.json",
+            "matching_lines": [
+              6
+            ],
+            "needle": "ARC disallows"
+          },
+          "fixed": {
+            "commit": "ebd05cc560dd04e0298a6246d646e6e784f3dc86",
+            "path": "research/hdr-native/native_style_inventory_s109.m",
+            "sha256": "2b0f218efbb50b4e80931f7e028de4df5d78f2139059d3a697a7c0ea679381fa",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/ebd05cc560dd04e0298a6246d646e6e784f3dc86/research/hdr-native/native_style_inventory_s109.m",
+            "matching_lines": [
+              43
+            ],
+            "needle": "Class __unsafe_unretained *list="
+          },
+          "failure": "ARC rejected void* to Class* conversion. Interface inventory never ran."
+        }
+      ],
+      "failure_frequency_unit": "two independent recorded native-run compiler failures",
+      "observed_impact": "Runner jobs failed before their scientific experiment. These failures say nothing about target Apple framework availability or image accuracy.",
+      "enforcement_candidate": "A typed ProbeBuildSpec owns translation units separately from includes/data, required SDK/architecture/ownership mode, and argv. Compile-only preflight precedes scarce target execution; compiler and runtime capabilities have distinct statuses.",
+      "verification_level": "exact old/fixed source plus preserved macOS build logs. Historical Apple compilation not rerun in Linux.",
+      "incident_count": 2,
+      "confidence": "direct",
+      "agent_attribution": {
+        "status": "unknown",
+        "reason": "Commit author identity is not evidence that an agent caused the failure; no bot-specific review or original transcript attribution was available."
+      },
+      "architectural_generalization": {
+        "confidence": "inferred",
+        "meaning": "The proposed owner/type boundary may prevent recurrence. Prototype and migration checks must establish its coverage before adoption."
+      },
+      "group_kind": "summary_family_with_different_mechanisms",
+      "mechanism_match": "different defects grouped only by boundary domain",
+      "grouping_confidence": "inferred planning family, not a repeated root cause",
+      "scope_caveat": "Two real incidents support this boundary as an investigation area, but not one common root cause or proof that a single architecture change prevents both.",
+      "counts": {
+        "affected_paths_minimum": 2,
+        "recorded_runs": 2,
+        "recorded_runs_count_note": "two separately cited recorded run/attempt identities",
+        "distinct_correction_commits": 2,
+        "correction_commits": [
+          "5f8646db52be89d09563f922a369900aee056081",
+          "ebd05cc560dd04e0298a6246d646e6e784f3dc86"
+        ]
+      }
+    },
+    {
+      "id": "foreign-numeric-metadata-decoding",
+      "label": "Hand-decoded numeric metadata disagreed with its encoded representation",
+      "confirmed_incidents": [
+        {
+          "id": "S29-half-ca00",
+          "commit": "79fbd95e61f901ca520d41ab550fbbf1b8ee3a91",
+          "incorrect_receipt": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/bright-machine-map-s29e.json",
+            "sha256": "1ef7fb75eb3345a6ebb8b877408bd82658adfc8d6e7543120ec697b6e77ab0fb",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/bright-machine-map-s29e.json",
+            "matching_lines": [
+              8
+            ],
+            "needle": "half-6"
+          },
+          "corrected_receipt": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/bright-machine-map-s29e2.json",
+            "sha256": "5c7559d0b4fd9867c531a088f693f785572379dc75ccdd00d0cb59311dd1bba2",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/bright-machine-map-s29e2.json",
+            "matching_lines": [
+              8
+            ],
+            "needle": "half-12"
+          },
+          "failure_record": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/source-iteration-s29f.json",
+            "sha256": "8464f1d629de7b278214ed4645306cb1f10e08c9775cf8c8ad877cf552fee8f3",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/source-iteration-s29f.json",
+            "matching_lines": [
+              2
+            ],
+            "needle": "Incorrect manual decoding"
+          },
+          "failure": "half0xca00 was labelled -6 rather than -12. One of ten new leaf tests failed. The old private leaf source was not replayed."
+        },
+        {
+          "id": "S33-hex-address-prefix",
+          "commit": "e5d2bcd8db8b3eb6737237ed88167777b3c920ba",
+          "old_parser": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/audit_pow_stub.py",
+            "sha256": "edcdc868408f751209754cf8bd8d987b99a7aa04ab91d04ad354ff17345a8be6",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/audit_pow_stub.py",
+            "matching_lines": [
+              33
+            ],
+            "needle": "rows=[l for l in lines if re.search"
+          },
+          "failed_receipt": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/evidence/pow-stub-s33f.json",
+            "sha256": "3a30951677de8dd98817d56e3bdf9362a28e8550307997730b9ef3111cff485e",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/evidence/pow-stub-s33f.json",
+            "matching_lines": [
+              2
+            ],
+            "needle": "static_tail_branch_stub_unresolved"
+          },
+          "corrected_parser": {
+            "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+            "path": "research/styles-firmware-20261022/verify_fpcr_binding.py",
+            "sha256": "e18d37b0ab065ebaf7b17ab5532bcf0500a42cfd5f9f0e2b1e690d0918aeae23",
+            "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/verify_fpcr_binding.py",
+            "matching_lines": [
+              68
+            ],
+            "needle": "def resolve_stub_rows"
+          },
+          "failure": "A word-boundary string regex missed zero-padded 0x addresses, so the stub was reported unresolved. The correction parses integer addresses within __TEXT,__stubs."
+        }
+      ],
+      "failure_frequency_unit": "two different decoding/representation incidents, not a common-mechanism recurrence",
+      "observed_impact": "One incorrect numeric leaf/semantic label and one false-unresolved static binding. Neither invalidates unrelated four-tuple bright observations or proves pow runtime behavior.",
+      "enforcement_candidate": "Parse raw HalfBits, Address and section records into typed values and derive labels. Encoded value, decoded value and domain must not be independently handwritten in active metadata.",
+      "verification_level": "mine_history.py exactly decodes real public half bits and compares rejected/corrected receipts, then replays the old actual regex and corrected parser on the documented zero-padded format. No private original table or native pow run.",
+      "incident_count": 2,
+      "confidence": "direct",
+      "agent_attribution": {
+        "status": "unknown",
+        "reason": "Commit author identity is not evidence that an agent caused the failure; no bot-specific review or original transcript attribution was available."
+      },
+      "architectural_generalization": {
+        "confidence": "inferred",
+        "meaning": "The proposed owner/type boundary may prevent recurrence. Prototype and migration checks must establish its coverage before adoption."
+      },
+      "group_kind": "summary_family_with_different_mechanisms",
+      "mechanism_match": "different defects grouped only by boundary domain",
+      "grouping_confidence": "inferred planning family, not a repeated root cause",
+      "scope_caveat": "Two real incidents support this boundary as an investigation area, but not one common root cause or proof that a single architecture change prevents both.",
+      "counts": {
+        "affected_paths_minimum": 2,
+        "recorded_runs": 2,
+        "recorded_runs_count_note": "two separately cited recorded run/attempt identities",
+        "distinct_correction_commits": 2,
+        "correction_commits": [
+          "79fbd95e61f901ca520d41ab550fbbf1b8ee3a91",
+          "e5d2bcd8db8b3eb6737237ed88167777b3c920ba"
+        ]
+      }
+    }
+  ],
+  "incident_count": 8,
+  "all_agent_authorship_unknown": true,
+  "observations_not_counted_as_repeat_faults": [
+    {
+      "topic": "Caller-specific half/f32/pow/FMA policies",
+      "status": "Important precision findings and rejected research hypotheses, not automatically counted as agent defects",
+      "evidence": [
+        {
+          "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+          "path": "research/styles-firmware-20261022/PROGRESS-S16.zh-CN.md",
+          "sha256": "89425ce43a311c2ab925aba9f23f13f2021d468a4a0ae91e4e6d355703e2c07e",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/PROGRESS-S16.zh-CN.md",
+          "matching_lines": [
+            37
+          ],
+          "needle": "新增18个600/writer位差"
+        },
+        {
+          "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+          "path": "research/styles-firmware-20261022/PROGRESS-S25.zh-CN.md",
+          "sha256": "db9a307a181184b10f64811d8bfd26f758557b79d5f1ad77d63f75b679410060",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/research/styles-firmware-20261022/PROGRESS-S25.zh-CN.md",
+          "matching_lines": [
+            22
+          ],
+          "needle": "12410"
+        }
+      ],
+      "preserve": "Do not merge numeric profiles or upgrade evidence scope on a structural cleanup."
+    },
+    {
+      "topic": "sys.path edits, AST cloning, source-manifest ownership",
+      "status": "Structural measurements, not defect incidence",
+      "evidence": "inventory.json",
+      "preserve": "Freeze old SHA-bound scripts; migrate supported entry points with actual output comparisons."
+    },
+    {
+      "topic": "Existing healthy boundaries",
+      "status": "Preserve",
+      "evidence": [
+        {
+          "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+          "path": "Sources/StyleDeltaMapCore/Models/RunModels.swift",
+          "sha256": "f6a3cb6e64381ad51374375c76da60386c9b447b80bc68e1a09142706d4ad9d0",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/Sources/StyleDeltaMapCore/Models/RunModels.swift",
+          "matching_lines": [
+            30
+          ],
+          "needle": "public struct CommandSpec"
+        },
+        {
+          "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+          "path": "Sources/StyleDeltaMapCore/Services/ProcessRunner.swift",
+          "sha256": "d4fe64910a27f9b65c5805285210e971763fb6456a9b525973fd590d8b6c200b",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/Sources/StyleDeltaMapCore/Services/ProcessRunner.swift",
+          "matching_lines": [
+            29
+          ],
+          "needle": "process.arguments = command.arguments"
+        },
+        {
+          "commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+          "path": "tools/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "url": "https://github.com/21Z121Z1/Photographic_Style_Research/blob/611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079/tools/__init__.py"
+        }
+      ],
+      "preserve": "Keep Swift argument arrays and the existing tools package. Do not treat all Python/Swift/research layers as one migration."
+    }
+  ],
+  "feedback_coverage": {
+    "PRs_queried": [
+      1,
+      2,
+      3
+    ],
+    "issue_comments": 0,
+    "inline_review_comments": 0,
+    "review_submissions": 0,
+    "issues_excluding_pull_requests": 0,
+    "team_chat": "No callable Slack tool at investigation start; connection pending",
+    "Cursor_original_transcripts": "Absent; no unrelated project directory search performed",
+    "private_native_material": "Unavailable; not requested or uploaded"
+  },
+  "new_measurements": {
+    "commands": "mine_history.py --ref 611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079 --output NEWDIR",
+    "new_Apple_CPU_or_GPU_calls": 0,
+    "historical_missing_inputs_restored": false
+  },
+  "later_scope_delta": {
+    "commit": "3aae24d96b1807c9d6c48ce09c4760c8350e650d",
+    "module_sensitivity_exists": true,
+    "entry_point": "research/styles-firmware-20261022/module_sensitivity.py",
+    "included_in_611_inventory": false,
+    "future_plan_must_not_call_this_unimplemented": true
+  },
+  "group_count": 4,
+  "confirmed_same_mechanism_classes": 2,
+  "additional_boundary_incident_families": 2
+}

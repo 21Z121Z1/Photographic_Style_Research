@@ -1,0 +1,22 @@
+{
+  "task": "One supported run path that separates portable-model diagnostics from native evidence and binds results to actual immutable sources and inputs",
+  "base_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "candidate_rule": "rank all; structurally different candidates, inherited-model agents, no cross-model diversity claim",
+  "required_probes": [
+    "A real portable CLI or model run remains usable and model-only",
+    "Portable or saved-model evidence cannot certify a requested Apple-native result",
+    "The bound Darwin profile cannot be accepted as this Linux runtime",
+    "A changed source or input cannot reuse a successful result",
+    "The real cross-directory guided dependency must be inside the bound source closure"
+  ],
+  "criteria": [
+    {"name":"Evidence and capability correctness","grade":"Pass only when every required bad request is rejected and the valid portable request executes without native substitution"},
+    {"name":"Source and input ownership","grade":"One owner derives or captures identities, verifies changes, and does not edit historical manifests"},
+    {"name":"Caller work","grade":"Count public calls and caller-supplied policy decisions for one complete operation; prefer fewer with equivalent behavior"},
+    {"name":"Migration cost","grade":"List concrete production files/callers to move for first unit and what can remain frozen; no invented delivery time"},
+    {"name":"Failure visibility","grade":"Blocked, unselected unknown, and diagnostic states survive serialization without becoming success"},
+    {"name":"Design red flags","grade":"Audit split ownership, duplicated lists, importable internals, temporal decomposition, and pass-through layers"}
+  ],
+  "not_measured": ["Apple output accuracy", "native pow runtime", "end-user photographic quality", "performance speedup"],
+  "final_gate": "Review the synthesized plan with the user before formal migration or merge"
+}

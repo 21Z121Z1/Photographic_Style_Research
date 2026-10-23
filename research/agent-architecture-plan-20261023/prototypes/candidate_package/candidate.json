@@ -1,0 +1,36 @@
+{
+  "candidate": "A",
+  "architecture": "domain package with one direct execution owner",
+  "prototype_code_frozen": true,
+  "base_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "public_types": [
+    "Selection",
+    "RenderedModel",
+    "UnresolvedModel",
+    "Rejected",
+    "Study"
+  ],
+  "public_operations": [
+    "portable",
+    "reference",
+    "run"
+  ],
+  "implementation_modules": 1,
+  "python_files": 4,
+  "code_sha256": {
+    "test_execution.py": "6dfdfa5457124bb88766bbd7a052d30c22cd57b21c99fe593aebf15c466bde38",
+    "demo.py": "cd03b080f43c46553465e63a1076c24b7d4e2b572c69b0f37d7e6959eaf045c8",
+    "execution.py": "de6ca894a0913ceb54b574516443e1426d00935869b3b2f05f44a362e42af4c4",
+    "prove.py": "e050ca3d886f6416854b6149858943903b9e7af724f53b280fe2bd69a4da81d9"
+  },
+  "measured_perf_improvement": null,
+  "prototype_limits": [
+    "No native success type or original native execution",
+    "No static type checker was executed",
+    "All tracked code captured conservatively rather than precise dependency closure",
+    "Long-lived Python module cache can differ from disk bytes; independent reproduction pending",
+    "writer_sha256 currently denotes raw half array bytes, not NPY container bytes"
+  ],
+  "evidence": "evidence/proof.json",
+  "formal_migration_applied": false
+}

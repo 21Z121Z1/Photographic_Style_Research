@@ -1,0 +1,76 @@
+{
+  "candidate": "package-owned-execution",
+  "source_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "prototype_source_sha256": {
+    "test_execution.py": "6dfdfa5457124bb88766bbd7a052d30c22cd57b21c99fe593aebf15c466bde38",
+    "demo.py": "cd03b080f43c46553465e63a1076c24b7d4e2b572c69b0f37d7e6959eaf045c8",
+    "execution.py": "de6ca894a0913ceb54b574516443e1426d00935869b3b2f05f44a362e42af4c4",
+    "prove.py": "e050ca3d886f6416854b6149858943903b9e7af724f53b280fe2bd69a4da81d9"
+  },
+  "prototype_sources_unchanged": true,
+  "runtime": {
+    "system": "Linux",
+    "release": "6.18.55",
+    "machine": "x86_64",
+    "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]"
+  },
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3.13",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "log_sha256": "e362f0615360bf2d82969756c9b54d9cd51bcd2ee27a3eb08180b0eea483dfd4"
+    },
+    {
+      "command": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/demo.py",
+        "--output",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/evidence/portable"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "log_sha256": "0ff72d5f0b2f157e71c585a012386360a5d0bd72c76b4b55c1458578bb79a778"
+    },
+    {
+      "command": [
+        "/usr/bin/python3.13",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/demo.py",
+        "--intent",
+        "apple-reference",
+        "--sealed-binary",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/evidence/absent-original.dylib",
+        "--output",
+        "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/evidence/native-request"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "log_sha256": "e940e8aa1d0d1366d93b0c04ffdd5163c7180174f81af3960930650ca270fc2a"
+    }
+  ],
+  "actual_portable_writer_pixels": 12,
+  "captured_source_files": 698,
+  "captured_guided_dependency": true,
+  "native_request_outcome": {
+    "code": "reference_runtime_mismatch",
+    "reasons": [
+      "system",
+      "release",
+      "machine",
+      "numpy"
+    ]
+  },
+  "native_calls": 0,
+  "proof_scope": "portable behavior and rejection logic only; no Apple compiler, original CPU, GPU or full camera verification",
+  "passed": true
+}
