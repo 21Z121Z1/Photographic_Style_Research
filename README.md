@@ -78,6 +78,10 @@ An Apple Photographic Styles HEIC contains these items:
 
 ## Usage
 
+For single-photo or folder HDR-look reconstruction with XDRemux, use the
+[standalone HDR-look launcher](docs/hdr-look.md). Its output contains only
+HDR HEIC photos, with no report or intermediate sidecars.
+
 ### Prerequisites
 
 - Python 3.13+ with: `pillow-heif`, `numpy`, `Pillow`
