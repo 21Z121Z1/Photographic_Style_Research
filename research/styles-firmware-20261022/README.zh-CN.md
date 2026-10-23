@@ -2,7 +2,9 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新人工观测容差实验见 [PROGRESS-S28.zh-CN.md](PROGRESS-S28.zh-CN.md)：仅已写RGB允许±1half ULP，其余分量精确。576个固定单分量扰动全部令精确候选空、容差全部保留真实控制；第一scene的4个扩大集合由第二scene约束收紧，联合仍无超越第二scene的信息增益。0与f32(.01)仍不可区分；合同外误差失败保留。19项测试通过，新增前向/kernel均0。结果仅model_only人工测量合同，不是JPEG/HEIC/GPU误差模型，不改原精确阈值。
+最新bright数学归因见 [PROGRESS-S29.zh-CN.md](PROGRESS-S29.zh-CN.md)：已认证137修正回放完整下游，保存检查点和输出吻合；6+18残差归为4组输入，新增3次复用宿主trace调用后，独立四输入点版本的24项残差为0。机器码将137连接到0xd014的half FMLA；新增有明确域/RN假设的算术叶。10项测试通过，v3和旧失败记录不变，cast16/多参数仍禁入，未认证任意bright或原GPU。
+
+人工观测容差实验见 [PROGRESS-S28.zh-CN.md](PROGRESS-S28.zh-CN.md)：仅已写RGB允许±1half ULP，其余分量精确。576个固定单分量扰动全部令精确候选空、容差全部保留真实控制；第一scene的4个扩大集合由第二scene约束收紧，联合仍无超越第二scene的信息增益。0与f32(.01)仍不可区分；合同外误差失败保留。19项测试通过，新增前向/kernel均0。结果仅model_only人工测量合同，不是JPEG/HEIC/GPU误差模型，不改原精确阈值。
 
 共享raw参数联合候选见 [PROGRESS-S27.zh-CN.md](PROGRESS-S27.zh-CN.md)：显式声明两个已知context共享同一field3 raw f32后，按位型区间精确求交并保留partial/unknown可能候选。state7联合为860159个f32，恰等于更强第二scene，额外信息增益0；0/1平台仍有1018499073个候选，不相容目标返回共同候选空而不判单张非法。23项测试通过，partial已知行须与原目录一致；新增前向/kernel均0，联合只标model，未扩scene域、cast或自由参数。
 

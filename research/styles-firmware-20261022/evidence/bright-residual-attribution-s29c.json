@@ -1,0 +1,3966 @@
+{
+  "profile_sha256": "cf5fe37618acbb25a43ba63e99dbfe7247b599828515604870ae67d4515eeff9",
+  "profile_name": "bright-s29-four-saved-tuples-fma137-point-v1",
+  "scope": "four exact saved complete bright input tuples; conditional point helper only",
+  "unique_points": {
+    "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7": {
+      "inputs": [
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            8619,
+            10933,
+            9899
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            11413,
+            12375,
+            11671
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            13517
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            12820
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            14950
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1050253722
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1055286886
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1053609165
+          ]
+        }
+      ],
+      "first_observed_divergence_SSA": 137,
+      "native132_half_bits": [
+        11830,
+        13187,
+        12586
+      ],
+      "native135_half_bits": [
+        51513,
+        51231,
+        51382
+      ],
+      "native136_half_bits": [
+        48142,
+        49085,
+        48661
+      ],
+      "old_separate137_half_bits": [
+        16889,
+        16418,
+        16630
+      ],
+      "native137_half_bits": [
+        16889,
+        16417,
+        16630
+      ],
+      "one_round137_half_bits": [
+        16889,
+        16417,
+        16630
+      ],
+      "operation_order": "old: half135*half132 -> round_half136, then +half4 -> round_half137; new local rule: multiply+add then one half rounding",
+      "corrected_stages": [
+        {
+          "SSA": 24,
+          "host_bits": [
+            14366
+          ],
+          "corrected_bits": [
+            14366
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 26,
+          "host_bits": [
+            15873
+          ],
+          "corrected_bits": [
+            15873
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 38,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 44,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 58,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 64,
+          "host_bits": [
+            17493
+          ],
+          "corrected_bits": [
+            17493
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 69,
+          "host_bits": [
+            11891,
+            13008,
+            12343
+          ],
+          "corrected_bits": [
+            11891,
+            13008,
+            12343
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 70,
+          "host_bits": [
+            11891,
+            13008,
+            12343
+          ],
+          "corrected_bits": [
+            11891,
+            13008,
+            12343
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 71,
+          "host_bits": [
+            11978,
+            13100,
+            12400
+          ],
+          "corrected_bits": [
+            11978,
+            13100,
+            12400
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 72,
+          "host_bits": [
+            12338,
+            13305,
+            12605
+          ],
+          "corrected_bits": [
+            12338,
+            13305,
+            12605
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 80,
+          "host_bits": [
+            13517
+          ],
+          "corrected_bits": [
+            13517
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 86,
+          "host_bits": [
+            13049,
+            13796,
+            13364
+          ],
+          "corrected_bits": [
+            13049,
+            13796,
+            13364
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 94,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 103,
+          "host_bits": [
+            14345,
+            14624,
+            14438
+          ],
+          "corrected_bits": [
+            14345,
+            14624,
+            14438
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 105,
+          "host_bits": [
+            8619,
+            10933,
+            9899
+          ],
+          "corrected_bits": [
+            8619,
+            10933,
+            9899
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 107,
+          "host_bits": [
+            12519,
+            13487,
+            13057
+          ],
+          "corrected_bits": [
+            12519,
+            13487,
+            13057
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 108,
+          "host_bits": [
+            12588,
+            13553,
+            13155
+          ],
+          "corrected_bits": [
+            12588,
+            13553,
+            13155
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 109,
+          "host_bits": [
+            11986,
+            13327,
+            12705
+          ],
+          "corrected_bits": [
+            11986,
+            13327,
+            12705
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 111,
+          "host_bits": [
+            11986,
+            13327,
+            12705
+          ],
+          "corrected_bits": [
+            11986,
+            13327,
+            12705
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 112,
+          "host_bits": [
+            11986,
+            13327,
+            12705
+          ],
+          "corrected_bits": [
+            11986,
+            13327,
+            12705
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 115,
+          "host_bits": [
+            14481
+          ],
+          "corrected_bits": [
+            14481
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 116,
+          "host_bits": [
+            14411
+          ],
+          "corrected_bits": [
+            14411
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 126,
+          "host_bits": [
+            14351,
+            14616,
+            14439
+          ],
+          "corrected_bits": [
+            14351,
+            14616,
+            14439
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 132,
+          "host_bits": [
+            11830,
+            13187,
+            12586
+          ],
+          "corrected_bits": [
+            11830,
+            13187,
+            12586
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 133,
+          "host_bits": [
+            13564,
+            14273,
+            13933
+          ],
+          "corrected_bits": [
+            13564,
+            14273,
+            13933
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 134,
+          "host_bits": [
+            15926,
+            17283,
+            16682
+          ],
+          "corrected_bits": [
+            15926,
+            17283,
+            16682
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 135,
+          "host_bits": [
+            51513,
+            51231,
+            51382
+          ],
+          "corrected_bits": [
+            51513,
+            51231,
+            51382
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 136,
+          "host_bits": [
+            48142,
+            49085,
+            48661
+          ],
+          "corrected_bits": [
+            48142,
+            49085,
+            48661
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 137,
+          "host_bits": [
+            16889,
+            16417,
+            16630
+          ],
+          "corrected_bits": [
+            16889,
+            16417,
+            16630
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 138,
+          "host_bits": [
+            13475,
+            14273,
+            13928
+          ],
+          "corrected_bits": [
+            13475,
+            14273,
+            13928
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 140,
+          "host_bits": [
+            13475,
+            14273,
+            13928
+          ],
+          "corrected_bits": [
+            13475,
+            14273,
+            13928
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 145,
+          "host_bits": [
+            12843,
+            13311,
+            13222
+          ],
+          "corrected_bits": [
+            12843,
+            13311,
+            13222
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 149,
+          "host_bits": [
+            11876,
+            13529,
+            12783
+          ],
+          "corrected_bits": [
+            11876,
+            13529,
+            12783
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 150,
+          "host_bits": [
+            11876,
+            13529,
+            12783
+          ],
+          "corrected_bits": [
+            11876,
+            13529,
+            12783
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 160,
+          "host_bits": [
+            8464,
+            11302,
+            9942
+          ],
+          "corrected_bits": [
+            8464,
+            11302,
+            9942
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 169,
+          "host_bits": [
+            8619,
+            10933,
+            9903
+          ],
+          "corrected_bits": [
+            8619,
+            10933,
+            9903
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 170,
+          "host_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "corrected_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 213,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 215,
+          "host_bits": [
+            14950
+          ],
+          "corrected_bits": [
+            14950
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 224,
+          "host_bits": [
+            6600,
+            10552,
+            9131
+          ],
+          "corrected_bits": [
+            6600,
+            10552,
+            9131
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 226,
+          "host_bits": [
+            850
+          ],
+          "corrected_bits": [
+            850
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 229,
+          "host_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "corrected_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 232,
+          "host_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "corrected_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 233,
+          "host_bits": [
+            9275,
+            10242,
+            9513
+          ],
+          "corrected_bits": [
+            9275,
+            10242,
+            9513
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 237,
+          "host_bits": [
+            1021374903
+          ],
+          "corrected_bits": [
+            1021374903
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 258,
+          "host_bits": [
+            4949,
+            6556,
+            5427
+          ],
+          "corrected_bits": [
+            4949,
+            6556,
+            5427
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 259,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 272,
+          "host_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "corrected_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 273,
+          "host_bits": [
+            8350,
+            11185,
+            9838
+          ],
+          "corrected_bits": [
+            8350,
+            11185,
+            9838
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 274,
+          "host_bits": [
+            8510,
+            11120,
+            9905
+          ],
+          "corrected_bits": [
+            8510,
+            11120,
+            9905
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 283,
+          "host_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "corrected_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 285,
+          "host_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "corrected_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "bit_mismatches": 0
+        }
+      ],
+      "corrected_final_bits": [
+        8389,
+        11169,
+        9854
+      ],
+      "host_final_bits": [
+        8389,
+        11169,
+        9854
+      ],
+      "first_remaining_observed_divergence": null,
+      "old_final_bits": [
+        8383,
+        11170,
+        9853
+      ]
+    },
+    "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1": {
+      "inputs": [
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            11049,
+            8715,
+            12319
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            12516,
+            11529,
+            13002
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            14418
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            13804
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            14950
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1050253722
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1055286886
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1053609165
+          ]
+        }
+      ],
+      "first_observed_divergence_SSA": 137,
+      "native132_half_bits": [
+        13254,
+        11896,
+        13804
+      ],
+      "native135_half_bits": [
+        51214,
+        51505,
+        50708
+      ],
+      "native136_half_bits": [
+        49121,
+        48179,
+        49280
+      ],
+      "old_separate137_half_bits": [
+        16400,
+        16870,
+        16128
+      ],
+      "native137_half_bits": [
+        16399,
+        16871,
+        16128
+      ],
+      "one_round137_half_bits": [
+        16399,
+        16871,
+        16128
+      ],
+      "operation_order": "old: half135*half132 -> round_half136, then +half4 -> round_half137; new local rule: multiply+add then one half rounding",
+      "corrected_stages": [
+        {
+          "SSA": 24,
+          "host_bits": [
+            14366
+          ],
+          "corrected_bits": [
+            14366
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 26,
+          "host_bits": [
+            15873
+          ],
+          "corrected_bits": [
+            15873
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 38,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 44,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 58,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 64,
+          "host_bits": [
+            17493
+          ],
+          "corrected_bits": [
+            17493
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 69,
+          "host_bits": [
+            13211,
+            12051,
+            13786
+          ],
+          "corrected_bits": [
+            13211,
+            12051,
+            13786
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 70,
+          "host_bits": [
+            13211,
+            12051,
+            13786
+          ],
+          "corrected_bits": [
+            13211,
+            12051,
+            13786
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 71,
+          "host_bits": [
+            13313,
+            12147,
+            13865
+          ],
+          "corrected_bits": [
+            13313,
+            12147,
+            13865
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 72,
+          "host_bits": [
+            13415,
+            12422,
+            13967
+          ],
+          "corrected_bits": [
+            13415,
+            12422,
+            13967
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 80,
+          "host_bits": [
+            13517
+          ],
+          "corrected_bits": [
+            13517
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 86,
+          "host_bits": [
+            13914,
+            13166,
+            14402
+          ],
+          "corrected_bits": [
+            13914,
+            13166,
+            14402
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 94,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 103,
+          "host_bits": [
+            14670,
+            14375,
+            14861
+          ],
+          "corrected_bits": [
+            14670,
+            14375,
+            14861
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 105,
+          "host_bits": [
+            11049,
+            8715,
+            12319
+          ],
+          "corrected_bits": [
+            11049,
+            8715,
+            12319
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 107,
+          "host_bits": [
+            13520,
+            12553,
+            14032
+          ],
+          "corrected_bits": [
+            13520,
+            12553,
+            14032
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 108,
+          "host_bits": [
+            13587,
+            12623,
+            14127
+          ],
+          "corrected_bits": [
+            13587,
+            12623,
+            14127
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 109,
+          "host_bits": [
+            13362,
+            12058,
+            13902
+          ],
+          "corrected_bits": [
+            13362,
+            12058,
+            13902
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 111,
+          "host_bits": [
+            13362,
+            12058,
+            13902
+          ],
+          "corrected_bits": [
+            13362,
+            12058,
+            13902
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 112,
+          "host_bits": [
+            13362,
+            12058,
+            13902
+          ],
+          "corrected_bits": [
+            13362,
+            12058,
+            13902
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 115,
+          "host_bits": [
+            14666
+          ],
+          "corrected_bits": [
+            14666
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 116,
+          "host_bits": [
+            14631
+          ],
+          "corrected_bits": [
+            14631
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 126,
+          "host_bits": [
+            14669,
+            14388,
+            14850
+          ],
+          "corrected_bits": [
+            14669,
+            14388,
+            14850
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 132,
+          "host_bits": [
+            13254,
+            11896,
+            13804
+          ],
+          "corrected_bits": [
+            13254,
+            11896,
+            13804
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 133,
+          "host_bits": [
+            14307,
+            13590,
+            14558
+          ],
+          "corrected_bits": [
+            14307,
+            13590,
+            14558
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 134,
+          "host_bits": [
+            17350,
+            15992,
+            17900
+          ],
+          "corrected_bits": [
+            17350,
+            15992,
+            17900
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 135,
+          "host_bits": [
+            51214,
+            51505,
+            50708
+          ],
+          "corrected_bits": [
+            51214,
+            51505,
+            50708
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 136,
+          "host_bits": [
+            49121,
+            48179,
+            49280
+          ],
+          "corrected_bits": [
+            49121,
+            48179,
+            49280
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 137,
+          "host_bits": [
+            16399,
+            16871,
+            16128
+          ],
+          "corrected_bits": [
+            16399,
+            16871,
+            16128
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 138,
+          "host_bits": [
+            14307,
+            13510,
+            14638
+          ],
+          "corrected_bits": [
+            14307,
+            13510,
+            14638
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 140,
+          "host_bits": [
+            14307,
+            13510,
+            14558
+          ],
+          "corrected_bits": [
+            14307,
+            13510,
+            14558
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 145,
+          "host_bits": [
+            13312,
+            12880,
+            13216
+          ],
+          "corrected_bits": [
+            13312,
+            12880,
+            13216
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 149,
+          "host_bits": [
+            13616,
+            12060,
+            14294
+          ],
+          "corrected_bits": [
+            13616,
+            12060,
+            14294
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 150,
+          "host_bits": [
+            13616,
+            12060,
+            14294
+          ],
+          "corrected_bits": [
+            13616,
+            12060,
+            14294
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 160,
+          "host_bits": [
+            11439,
+            8653,
+            12688
+          ],
+          "corrected_bits": [
+            11439,
+            8653,
+            12688
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 169,
+          "host_bits": [
+            11049,
+            8719,
+            12319
+          ],
+          "corrected_bits": [
+            11049,
+            8719,
+            12319
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 170,
+          "host_bits": [
+            11354,
+            8673,
+            12577
+          ],
+          "corrected_bits": [
+            11354,
+            8673,
+            12577
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 213,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 215,
+          "host_bits": [
+            14950
+          ],
+          "corrected_bits": [
+            14950
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 224,
+          "host_bits": [
+            10675,
+            5878,
+            12116
+          ],
+          "corrected_bits": [
+            10675,
+            5878,
+            12116
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 226,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 229,
+          "host_bits": [
+            11354,
+            8673,
+            12577
+          ],
+          "corrected_bits": [
+            11354,
+            8673,
+            12577
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 232,
+          "host_bits": [
+            11302,
+            8685,
+            12509
+          ],
+          "corrected_bits": [
+            11302,
+            8685,
+            12509
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 233,
+          "host_bits": [
+            10372,
+            9382,
+            10821
+          ],
+          "corrected_bits": [
+            10372,
+            9382,
+            10821
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 237,
+          "host_bits": [
+            1019580855
+          ],
+          "corrected_bits": [
+            1019580855
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 258,
+          "host_bits": [
+            6882,
+            5204,
+            7689
+          ],
+          "corrected_bits": [
+            6882,
+            5204,
+            7689
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 259,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 272,
+          "host_bits": [
+            11302,
+            8685,
+            12509
+          ],
+          "corrected_bits": [
+            11302,
+            8685,
+            12509
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 273,
+          "host_bits": [
+            11233,
+            8367,
+            12566
+          ],
+          "corrected_bits": [
+            11233,
+            8367,
+            12566
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 274,
+          "host_bits": [
+            11292,
+            8609,
+            12521
+          ],
+          "corrected_bits": [
+            11292,
+            8609,
+            12521
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 283,
+          "host_bits": [
+            11268,
+            8477,
+            12546
+          ],
+          "corrected_bits": [
+            11268,
+            8477,
+            12546
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 285,
+          "host_bits": [
+            11268,
+            8477,
+            12546
+          ],
+          "corrected_bits": [
+            11268,
+            8477,
+            12546
+          ],
+          "bit_mismatches": 0
+        }
+      ],
+      "corrected_final_bits": [
+        11268,
+        8477,
+        12546
+      ],
+      "host_final_bits": [
+        11268,
+        8477,
+        12546
+      ],
+      "first_remaining_observed_divergence": null,
+      "old_final_bits": [
+        11269,
+        8474,
+        12545
+      ]
+    },
+    "10c7aad9aff3003cb213abbe8dd71ecf651476c1696c6fd5ddc0911258145ff3": {
+      "inputs": [
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            8622,
+            10931,
+            9900
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            11413,
+            12375,
+            11671
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            13517
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            12820
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            14950
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1050253722
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1055286886
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1053609165
+          ]
+        }
+      ],
+      "first_observed_divergence_SSA": 137,
+      "native132_half_bits": [
+        11832,
+        13187,
+        12586
+      ],
+      "native135_half_bits": [
+        51513,
+        51231,
+        51382
+      ],
+      "native136_half_bits": [
+        48143,
+        49085,
+        48661
+      ],
+      "old_separate137_half_bits": [
+        16888,
+        16418,
+        16630
+      ],
+      "native137_half_bits": [
+        16888,
+        16417,
+        16630
+      ],
+      "one_round137_half_bits": [
+        16888,
+        16417,
+        16630
+      ],
+      "operation_order": "old: half135*half132 -> round_half136, then +half4 -> round_half137; new local rule: multiply+add then one half rounding",
+      "corrected_stages": [
+        {
+          "SSA": 24,
+          "host_bits": [
+            14366
+          ],
+          "corrected_bits": [
+            14366
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 26,
+          "host_bits": [
+            15873
+          ],
+          "corrected_bits": [
+            15873
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 38,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 44,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 58,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 64,
+          "host_bits": [
+            17493
+          ],
+          "corrected_bits": [
+            17493
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 69,
+          "host_bits": [
+            11892,
+            13008,
+            12344
+          ],
+          "corrected_bits": [
+            11892,
+            13008,
+            12344
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 70,
+          "host_bits": [
+            11892,
+            13008,
+            12344
+          ],
+          "corrected_bits": [
+            11892,
+            13008,
+            12344
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 71,
+          "host_bits": [
+            11979,
+            13100,
+            12401
+          ],
+          "corrected_bits": [
+            11979,
+            13100,
+            12401
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 72,
+          "host_bits": [
+            12338,
+            13305,
+            12606
+          ],
+          "corrected_bits": [
+            12338,
+            13305,
+            12606
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 80,
+          "host_bits": [
+            13517
+          ],
+          "corrected_bits": [
+            13517
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 86,
+          "host_bits": [
+            13049,
+            13796,
+            13365
+          ],
+          "corrected_bits": [
+            13049,
+            13796,
+            13365
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 94,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 103,
+          "host_bits": [
+            14345,
+            14624,
+            14438
+          ],
+          "corrected_bits": [
+            14345,
+            14624,
+            14438
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 105,
+          "host_bits": [
+            8622,
+            10931,
+            9900
+          ],
+          "corrected_bits": [
+            8622,
+            10931,
+            9900
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 107,
+          "host_bits": [
+            12520,
+            13487,
+            13057
+          ],
+          "corrected_bits": [
+            12520,
+            13487,
+            13057
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 108,
+          "host_bits": [
+            12589,
+            13553,
+            13155
+          ],
+          "corrected_bits": [
+            12589,
+            13553,
+            13155
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 109,
+          "host_bits": [
+            11988,
+            13327,
+            12705
+          ],
+          "corrected_bits": [
+            11988,
+            13327,
+            12705
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 111,
+          "host_bits": [
+            11988,
+            13327,
+            12705
+          ],
+          "corrected_bits": [
+            11988,
+            13327,
+            12705
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 112,
+          "host_bits": [
+            11988,
+            13327,
+            12705
+          ],
+          "corrected_bits": [
+            11988,
+            13327,
+            12705
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 115,
+          "host_bits": [
+            14481
+          ],
+          "corrected_bits": [
+            14481
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 116,
+          "host_bits": [
+            14411
+          ],
+          "corrected_bits": [
+            14411
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 126,
+          "host_bits": [
+            14351,
+            14616,
+            14439
+          ],
+          "corrected_bits": [
+            14351,
+            14616,
+            14439
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 132,
+          "host_bits": [
+            11832,
+            13187,
+            12586
+          ],
+          "corrected_bits": [
+            11832,
+            13187,
+            12586
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 133,
+          "host_bits": [
+            13565,
+            14273,
+            13933
+          ],
+          "corrected_bits": [
+            13565,
+            14273,
+            13933
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 134,
+          "host_bits": [
+            15928,
+            17283,
+            16682
+          ],
+          "corrected_bits": [
+            15928,
+            17283,
+            16682
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 135,
+          "host_bits": [
+            51513,
+            51231,
+            51382
+          ],
+          "corrected_bits": [
+            51513,
+            51231,
+            51382
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 136,
+          "host_bits": [
+            48143,
+            49085,
+            48661
+          ],
+          "corrected_bits": [
+            48143,
+            49085,
+            48661
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 137,
+          "host_bits": [
+            16888,
+            16417,
+            16630
+          ],
+          "corrected_bits": [
+            16888,
+            16417,
+            16630
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 138,
+          "host_bits": [
+            13476,
+            14273,
+            13928
+          ],
+          "corrected_bits": [
+            13476,
+            14273,
+            13928
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 140,
+          "host_bits": [
+            13476,
+            14273,
+            13928
+          ],
+          "corrected_bits": [
+            13476,
+            14273,
+            13928
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 145,
+          "host_bits": [
+            12844,
+            13311,
+            13222
+          ],
+          "corrected_bits": [
+            12844,
+            13311,
+            13222
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 149,
+          "host_bits": [
+            11878,
+            13529,
+            12783
+          ],
+          "corrected_bits": [
+            11878,
+            13529,
+            12783
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 150,
+          "host_bits": [
+            11878,
+            13529,
+            12783
+          ],
+          "corrected_bits": [
+            11878,
+            13529,
+            12783
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 160,
+          "host_bits": [
+            8464,
+            11302,
+            9942
+          ],
+          "corrected_bits": [
+            8464,
+            11302,
+            9942
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 169,
+          "host_bits": [
+            8619,
+            10933,
+            9903
+          ],
+          "corrected_bits": [
+            8619,
+            10933,
+            9903
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 170,
+          "host_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "corrected_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 213,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 215,
+          "host_bits": [
+            14950
+          ],
+          "corrected_bits": [
+            14950
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 224,
+          "host_bits": [
+            6600,
+            10552,
+            9131
+          ],
+          "corrected_bits": [
+            6600,
+            10552,
+            9131
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 226,
+          "host_bits": [
+            850
+          ],
+          "corrected_bits": [
+            850
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 229,
+          "host_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "corrected_bits": [
+            8510,
+            11218,
+            9930
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 232,
+          "host_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "corrected_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 233,
+          "host_bits": [
+            9275,
+            10242,
+            9513
+          ],
+          "corrected_bits": [
+            9275,
+            10242,
+            9513
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 237,
+          "host_bits": [
+            1021374903
+          ],
+          "corrected_bits": [
+            1021374903
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 258,
+          "host_bits": [
+            4949,
+            6556,
+            5427
+          ],
+          "corrected_bits": [
+            4949,
+            6556,
+            5427
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 259,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 272,
+          "host_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "corrected_bits": [
+            8553,
+            11104,
+            9920
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 273,
+          "host_bits": [
+            8350,
+            11185,
+            9838
+          ],
+          "corrected_bits": [
+            8350,
+            11185,
+            9838
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 274,
+          "host_bits": [
+            8510,
+            11120,
+            9905
+          ],
+          "corrected_bits": [
+            8510,
+            11120,
+            9905
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 283,
+          "host_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "corrected_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 285,
+          "host_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "corrected_bits": [
+            8389,
+            11169,
+            9854
+          ],
+          "bit_mismatches": 0
+        }
+      ],
+      "corrected_final_bits": [
+        8389,
+        11169,
+        9854
+      ],
+      "host_final_bits": [
+        8389,
+        11169,
+        9854
+      ],
+      "first_remaining_observed_divergence": null,
+      "old_final_bits": [
+        8383,
+        11170,
+        9853
+      ]
+    },
+    "5a53a0bdab43b52f5cee903629f573db4cc4e9085bdde8be81cf47a70609363e": {
+      "inputs": [
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            11047,
+            8711,
+            12319
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [
+            3
+          ],
+          "bits": [
+            12516,
+            11529,
+            13002
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            14418
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            13804
+          ]
+        },
+        {
+          "precision": "h",
+          "shape": [],
+          "bits": [
+            14950
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1050253722
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1045220557
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1055286886
+          ]
+        },
+        {
+          "precision": "f",
+          "shape": [],
+          "bits": [
+            1053609165
+          ]
+        }
+      ],
+      "first_observed_divergence_SSA": 137,
+      "native132_half_bits": [
+        13254,
+        11894,
+        13804
+      ],
+      "native135_half_bits": [
+        51214,
+        51505,
+        50708
+      ],
+      "native136_half_bits": [
+        49121,
+        48177,
+        49280
+      ],
+      "old_separate137_half_bits": [
+        16400,
+        16872,
+        16128
+      ],
+      "native137_half_bits": [
+        16399,
+        16871,
+        16128
+      ],
+      "one_round137_half_bits": [
+        16399,
+        16871,
+        16128
+      ],
+      "operation_order": "old: half135*half132 -> round_half136, then +half4 -> round_half137; new local rule: multiply+add then one half rounding",
+      "corrected_stages": [
+        {
+          "SSA": 24,
+          "host_bits": [
+            14366
+          ],
+          "corrected_bits": [
+            14366
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 26,
+          "host_bits": [
+            15873
+          ],
+          "corrected_bits": [
+            15873
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 38,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 44,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 58,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 64,
+          "host_bits": [
+            17493
+          ],
+          "corrected_bits": [
+            17493
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 69,
+          "host_bits": [
+            13213,
+            12051,
+            13786
+          ],
+          "corrected_bits": [
+            13213,
+            12051,
+            13786
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 70,
+          "host_bits": [
+            13213,
+            12051,
+            13786
+          ],
+          "corrected_bits": [
+            13213,
+            12051,
+            13786
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 71,
+          "host_bits": [
+            13314,
+            12147,
+            13865
+          ],
+          "corrected_bits": [
+            13314,
+            12147,
+            13865
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 72,
+          "host_bits": [
+            13416,
+            12422,
+            13967
+          ],
+          "corrected_bits": [
+            13416,
+            12422,
+            13967
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 80,
+          "host_bits": [
+            13517
+          ],
+          "corrected_bits": [
+            13517
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 86,
+          "host_bits": [
+            13915,
+            13166,
+            14402
+          ],
+          "corrected_bits": [
+            13915,
+            13166,
+            14402
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 94,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 103,
+          "host_bits": [
+            14670,
+            14375,
+            14861
+          ],
+          "corrected_bits": [
+            14670,
+            14375,
+            14861
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 105,
+          "host_bits": [
+            11047,
+            8711,
+            12319
+          ],
+          "corrected_bits": [
+            11047,
+            8711,
+            12319
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 107,
+          "host_bits": [
+            13520,
+            12552,
+            14032
+          ],
+          "corrected_bits": [
+            13520,
+            12552,
+            14032
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 108,
+          "host_bits": [
+            13587,
+            12622,
+            14127
+          ],
+          "corrected_bits": [
+            13587,
+            12622,
+            14127
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 109,
+          "host_bits": [
+            13362,
+            12056,
+            13902
+          ],
+          "corrected_bits": [
+            13362,
+            12056,
+            13902
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 111,
+          "host_bits": [
+            13362,
+            12056,
+            13902
+          ],
+          "corrected_bits": [
+            13362,
+            12056,
+            13902
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 112,
+          "host_bits": [
+            13362,
+            12056,
+            13902
+          ],
+          "corrected_bits": [
+            13362,
+            12056,
+            13902
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 115,
+          "host_bits": [
+            14666
+          ],
+          "corrected_bits": [
+            14666
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 116,
+          "host_bits": [
+            14631
+          ],
+          "corrected_bits": [
+            14631
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 126,
+          "host_bits": [
+            14669,
+            14388,
+            14850
+          ],
+          "corrected_bits": [
+            14669,
+            14388,
+            14850
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 132,
+          "host_bits": [
+            13254,
+            11894,
+            13804
+          ],
+          "corrected_bits": [
+            13254,
+            11894,
+            13804
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 133,
+          "host_bits": [
+            14307,
+            13589,
+            14558
+          ],
+          "corrected_bits": [
+            14307,
+            13589,
+            14558
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 134,
+          "host_bits": [
+            17350,
+            15990,
+            17900
+          ],
+          "corrected_bits": [
+            17350,
+            15990,
+            17900
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 135,
+          "host_bits": [
+            51214,
+            51505,
+            50708
+          ],
+          "corrected_bits": [
+            51214,
+            51505,
+            50708
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 136,
+          "host_bits": [
+            49121,
+            48177,
+            49280
+          ],
+          "corrected_bits": [
+            49121,
+            48177,
+            49280
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 137,
+          "host_bits": [
+            16399,
+            16871,
+            16128
+          ],
+          "corrected_bits": [
+            16399,
+            16871,
+            16128
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 138,
+          "host_bits": [
+            14307,
+            13508,
+            14638
+          ],
+          "corrected_bits": [
+            14307,
+            13508,
+            14638
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 140,
+          "host_bits": [
+            14307,
+            13508,
+            14558
+          ],
+          "corrected_bits": [
+            14307,
+            13508,
+            14558
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 145,
+          "host_bits": [
+            13312,
+            12877,
+            13216
+          ],
+          "corrected_bits": [
+            13312,
+            12877,
+            13216
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 149,
+          "host_bits": [
+            13616,
+            12058,
+            14294
+          ],
+          "corrected_bits": [
+            13616,
+            12058,
+            14294
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 150,
+          "host_bits": [
+            13616,
+            12058,
+            14294
+          ],
+          "corrected_bits": [
+            13616,
+            12058,
+            14294
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 160,
+          "host_bits": [
+            11439,
+            8650,
+            12688
+          ],
+          "corrected_bits": [
+            11439,
+            8650,
+            12688
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 169,
+          "host_bits": [
+            11049,
+            8713,
+            12319
+          ],
+          "corrected_bits": [
+            11049,
+            8713,
+            12319
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 170,
+          "host_bits": [
+            11354,
+            8669,
+            12577
+          ],
+          "corrected_bits": [
+            11354,
+            8669,
+            12577
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 213,
+          "host_bits": [
+            15360
+          ],
+          "corrected_bits": [
+            15360
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 215,
+          "host_bits": [
+            14950
+          ],
+          "corrected_bits": [
+            14950
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 224,
+          "host_bits": [
+            10675,
+            5863,
+            12116
+          ],
+          "corrected_bits": [
+            10675,
+            5863,
+            12116
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 226,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 229,
+          "host_bits": [
+            11354,
+            8669,
+            12577
+          ],
+          "corrected_bits": [
+            11354,
+            8669,
+            12577
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 232,
+          "host_bits": [
+            11302,
+            8680,
+            12509
+          ],
+          "corrected_bits": [
+            11302,
+            8680,
+            12509
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 233,
+          "host_bits": [
+            10372,
+            9382,
+            10821
+          ],
+          "corrected_bits": [
+            10372,
+            9382,
+            10821
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 237,
+          "host_bits": [
+            1019580855
+          ],
+          "corrected_bits": [
+            1019580855
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 258,
+          "host_bits": [
+            6882,
+            5204,
+            7689
+          ],
+          "corrected_bits": [
+            6882,
+            5204,
+            7689
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 259,
+          "host_bits": [
+            0
+          ],
+          "corrected_bits": [
+            0
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 272,
+          "host_bits": [
+            11302,
+            8680,
+            12509
+          ],
+          "corrected_bits": [
+            11302,
+            8680,
+            12509
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 273,
+          "host_bits": [
+            11232,
+            8362,
+            12567
+          ],
+          "corrected_bits": [
+            11232,
+            8362,
+            12567
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 274,
+          "host_bits": [
+            11292,
+            8604,
+            12522
+          ],
+          "corrected_bits": [
+            11292,
+            8604,
+            12522
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 283,
+          "host_bits": [
+            11268,
+            8472,
+            12547
+          ],
+          "corrected_bits": [
+            11268,
+            8472,
+            12547
+          ],
+          "bit_mismatches": 0
+        },
+        {
+          "SSA": 285,
+          "host_bits": [
+            11268,
+            8472,
+            12547
+          ],
+          "corrected_bits": [
+            11268,
+            8472,
+            12547
+          ],
+          "bit_mismatches": 0
+        }
+      ],
+      "corrected_final_bits": [
+        11268,
+        8472,
+        12547
+      ],
+      "host_final_bits": [
+        11268,
+        8472,
+        12547
+      ],
+      "first_remaining_observed_divergence": null,
+      "old_final_bits": [
+        11269,
+        8473,
+        12545
+      ]
+    }
+  },
+  "all24_residual_occurrences": [
+    {
+      "saved_file": "native-targets-s25c.json",
+      "row_index": 0,
+      "control": {
+        "id": "target_A",
+        "raw_f32_bits": 1040187392
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8383,
+      "host_output_half_bits": 8389,
+      "corrected_output_half_bits": 8389,
+      "old_signed_half_steps": -6,
+      "old_absolute_error": 4.57763671875e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-targets-s25c.json",
+      "row_index": 0,
+      "control": {
+        "id": "target_A",
+        "raw_f32_bits": 1040187392
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11170,
+      "host_output_half_bits": 11169,
+      "corrected_output_half_bits": 11169,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 3.0517578125e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-targets-s25c.json",
+      "row_index": 0,
+      "control": {
+        "id": "target_A",
+        "raw_f32_bits": 1040187392
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 9853,
+      "host_output_half_bits": 9854,
+      "corrected_output_half_bits": 9854,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 1.52587890625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-targets-s25c.json",
+      "row_index": 0,
+      "control": {
+        "id": "target_A",
+        "raw_f32_bits": 1040187392
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11269,
+      "host_output_half_bits": 11268,
+      "corrected_output_half_bits": 11268,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 6.103515625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-targets-s25c.json",
+      "row_index": 0,
+      "control": {
+        "id": "target_A",
+        "raw_f32_bits": 1040187392
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8474,
+      "host_output_half_bits": 8477,
+      "corrected_output_half_bits": 8477,
+      "old_signed_half_steps": -3,
+      "old_absolute_error": 2.288818359375e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-targets-s25c.json",
+      "row_index": 0,
+      "control": {
+        "id": "target_A",
+        "raw_f32_bits": 1040187392
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 12545,
+      "host_output_half_bits": 12546,
+      "corrected_output_half_bits": 12546,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 0.0001220703125,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 0,
+      "control": {
+        "id": "boundary-0",
+        "raw_f32_bits": 1039921151,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "outside-lower-neighbor"
+          }
+        ],
+        "state_id": 16,
+        "expected_model_writer_sha256": "1052be9596d69ebd40936599679393745f582c7d413fd48f75ae2ce16538d5f3",
+        "expected_target_matches": {
+          "A": false,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "10c7aad9aff3003cb213abbe8dd71ecf651476c1696c6fd5ddc0911258145ff3",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8383,
+      "host_output_half_bits": 8389,
+      "corrected_output_half_bits": 8389,
+      "old_signed_half_steps": -6,
+      "old_absolute_error": 4.57763671875e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 0,
+      "control": {
+        "id": "boundary-0",
+        "raw_f32_bits": 1039921151,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "outside-lower-neighbor"
+          }
+        ],
+        "state_id": 16,
+        "expected_model_writer_sha256": "1052be9596d69ebd40936599679393745f582c7d413fd48f75ae2ce16538d5f3",
+        "expected_target_matches": {
+          "A": false,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "10c7aad9aff3003cb213abbe8dd71ecf651476c1696c6fd5ddc0911258145ff3",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11170,
+      "host_output_half_bits": 11169,
+      "corrected_output_half_bits": 11169,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 3.0517578125e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 0,
+      "control": {
+        "id": "boundary-0",
+        "raw_f32_bits": 1039921151,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "outside-lower-neighbor"
+          }
+        ],
+        "state_id": 16,
+        "expected_model_writer_sha256": "1052be9596d69ebd40936599679393745f582c7d413fd48f75ae2ce16538d5f3",
+        "expected_target_matches": {
+          "A": false,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "10c7aad9aff3003cb213abbe8dd71ecf651476c1696c6fd5ddc0911258145ff3",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 9853,
+      "host_output_half_bits": 9854,
+      "corrected_output_half_bits": 9854,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 1.52587890625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 1,
+      "control": {
+        "id": "boundary-1",
+        "raw_f32_bits": 1039921152,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "first-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8383,
+      "host_output_half_bits": 8389,
+      "corrected_output_half_bits": 8389,
+      "old_signed_half_steps": -6,
+      "old_absolute_error": 4.57763671875e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 1,
+      "control": {
+        "id": "boundary-1",
+        "raw_f32_bits": 1039921152,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "first-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11170,
+      "host_output_half_bits": 11169,
+      "corrected_output_half_bits": 11169,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 3.0517578125e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 1,
+      "control": {
+        "id": "boundary-1",
+        "raw_f32_bits": 1039921152,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "first-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 9853,
+      "host_output_half_bits": 9854,
+      "corrected_output_half_bits": 9854,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 1.52587890625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 1,
+      "control": {
+        "id": "boundary-1",
+        "raw_f32_bits": 1039921152,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "first-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11269,
+      "host_output_half_bits": 11268,
+      "corrected_output_half_bits": 11268,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 6.103515625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 1,
+      "control": {
+        "id": "boundary-1",
+        "raw_f32_bits": 1039921152,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "first-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8474,
+      "host_output_half_bits": 8477,
+      "corrected_output_half_bits": 8477,
+      "old_signed_half_steps": -3,
+      "old_absolute_error": 2.288818359375e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 1,
+      "control": {
+        "id": "boundary-1",
+        "raw_f32_bits": 1039921152,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "first-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 12545,
+      "host_output_half_bits": 12546,
+      "corrected_output_half_bits": 12546,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 0.0001220703125,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 2,
+      "control": {
+        "id": "boundary-2",
+        "raw_f32_bits": 1040322560,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "last-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8383,
+      "host_output_half_bits": 8389,
+      "corrected_output_half_bits": 8389,
+      "old_signed_half_steps": -6,
+      "old_absolute_error": 4.57763671875e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 2,
+      "control": {
+        "id": "boundary-2",
+        "raw_f32_bits": 1040322560,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "last-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11170,
+      "host_output_half_bits": 11169,
+      "corrected_output_half_bits": 11169,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 3.0517578125e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 2,
+      "control": {
+        "id": "boundary-2",
+        "raw_f32_bits": 1040322560,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "last-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        0,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "493b9b2a91a8f1c5a0c28a0166122b55018b0f76adf5ffd173dc0b811fbb34b7",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 9853,
+      "host_output_half_bits": 9854,
+      "corrected_output_half_bits": 9854,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 1.52587890625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 2,
+      "control": {
+        "id": "boundary-2",
+        "raw_f32_bits": 1040322560,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "last-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11269,
+      "host_output_half_bits": 11268,
+      "corrected_output_half_bits": 11268,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 6.103515625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 2,
+      "control": {
+        "id": "boundary-2",
+        "raw_f32_bits": 1040322560,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "last-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8474,
+      "host_output_half_bits": 8477,
+      "corrected_output_half_bits": 8477,
+      "old_signed_half_steps": -3,
+      "old_absolute_error": 2.288818359375e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 2,
+      "control": {
+        "id": "boundary-2",
+        "raw_f32_bits": 1040322560,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "last-included"
+          }
+        ],
+        "state_id": 17,
+        "expected_model_writer_sha256": "21665ffd1809619dfe50eb9a2c6a8082b1d342dcc1944c107d7bba2959343fc1",
+        "expected_target_matches": {
+          "A": true,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "a21d240af44e91a06de19d08a5097798eb2e33c79f779d7906e835e86b5849e1",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 12545,
+      "host_output_half_bits": 12546,
+      "corrected_output_half_bits": 12546,
+      "old_signed_half_steps": -1,
+      "old_absolute_error": 0.0001220703125,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 3,
+      "control": {
+        "id": "boundary-3",
+        "raw_f32_bits": 1040322561,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "outside-upper-neighbor"
+          }
+        ],
+        "state_id": 18,
+        "expected_model_writer_sha256": "bf32c9f88184728be8fa53e77e7a02237df1bba8fb67a74b9d4a549a8296b623",
+        "expected_target_matches": {
+          "A": false,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 0,
+      "input_key": "5a53a0bdab43b52f5cee903629f573db4cc4e9085bdde8be81cf47a70609363e",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 11269,
+      "host_output_half_bits": 11268,
+      "corrected_output_half_bits": 11268,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 6.103515625e-05,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 3,
+      "control": {
+        "id": "boundary-3",
+        "raw_f32_bits": 1040322561,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "outside-upper-neighbor"
+          }
+        ],
+        "state_id": 18,
+        "expected_model_writer_sha256": "bf32c9f88184728be8fa53e77e7a02237df1bba8fb67a74b9d4a549a8296b623",
+        "expected_target_matches": {
+          "A": false,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 1,
+      "input_key": "5a53a0bdab43b52f5cee903629f573db4cc4e9085bdde8be81cf47a70609363e",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 8473,
+      "host_output_half_bits": 8472,
+      "corrected_output_half_bits": 8472,
+      "old_signed_half_steps": 1,
+      "old_absolute_error": 7.62939453125e-06,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    },
+    {
+      "saved_file": "native-boundaries-s25f.json",
+      "row_index": 3,
+      "control": {
+        "id": "boundary-3",
+        "raw_f32_bits": 1040322561,
+        "roles": [
+          {
+            "target": "A",
+            "kind": "outside-upper-neighbor"
+          }
+        ],
+        "state_id": 18,
+        "expected_model_writer_sha256": "bf32c9f88184728be8fa53e77e7a02237df1bba8fb67a74b9d4a549a8296b623",
+        "expected_target_matches": {
+          "A": false,
+          "B": false
+        }
+      },
+      "grid": [
+        2,
+        1
+      ],
+      "output_channel": 2,
+      "input_key": "5a53a0bdab43b52f5cee903629f573db4cc4e9085bdde8be81cf47a70609363e",
+      "first_observed_divergence_SSA": 137,
+      "old_output_half_bits": 12545,
+      "host_output_half_bits": 12547,
+      "corrected_output_half_bits": 12547,
+      "old_signed_half_steps": -2,
+      "old_absolute_error": 0.000244140625,
+      "corrected_matches_saved_host": true,
+      "attribution_scope": "first observed SSA137, native135/132 operands and native136 match; downstream intervention checked through285; not all unobserved SSA certified"
+    }
+  ],
+  "old_target_residuals": 6,
+  "old_boundary_residuals": 18,
+  "corrected_residuals": 0,
+  "all_saved_checkpoints_match": true,
+  "neighbor_input_rejected": "Outside exact authenticated four-tuple bright domain",
+  "new_helper_model_evaluations": 4,
+  "rejected_calls_before_arithmetic": 1,
+  "new_full_pipeline_model_calls": 0,
+  "new_original_kernel_calls": 0,
+  "v3_or_catalogs_changed": false,
+  "cast16_or_multiple_parameters_enabled": false,
+  "GPU_verified": false,
+  "generalized_rule_certified": false
+}
