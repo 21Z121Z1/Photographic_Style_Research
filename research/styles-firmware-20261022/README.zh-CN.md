@@ -2,7 +2,9 @@
 
 已取得**官方 iPhone17,3 /24A446 实际插件，并完成静态和条件算子阶段**；没有完成匹配IMG_2810样张的固件处理、完整拍摄端复现或逆解。独立分支 `research/styles-firmware-local-20261022` 基于 `2132e1fcb6505e601d006b5ca1afde04e36ae649`。没有修改 master、既有研究分支、其他项目、记忆或原媒体。
 
-最新square数学合同见 [PROGRESS-S31.zh-CN.md](PROGRESS-S31.zh-CN.md)：由实际encode/strength式推导条件外包络[0,2047/2048]，零、次正规、normal且低于1/16及quarter边界均有精确构造见证；0x2bff仅窗口未找到，未宣告不可达。新合同按RN/normality/flush/sqrt条件准入，不用tuple白名单、不接默认模型。12项测试通过，原kernel/编译0；原GPU/FPCR/libm条件仍未认证。
+最新sqrt原语证书见 [PROGRESS-S32.zh-CN.md](PROGRESS-S32.zh-CN.md)：对选中域0x3401..0x3bff全部2047值，精确中点平方证书显示正确RN-f32→RN-half与理想half sqrt无双舍入差异。实际封存宿主是0x15914的f32 FSQRT及两侧FCVT，无libm调用；FPCR仍未测，运行精度和原GPU不升级通过。11项测试通过，新增原宿主/模型/编译均0，未改默认模型。
+
+square数学合同见 [PROGRESS-S31.zh-CN.md](PROGRESS-S31.zh-CN.md)：由实际encode/strength式推导条件外包络[0,2047/2048]，零、次正规、normal且低于1/16及quarter边界均有精确构造见证；0x2bff仅窗口未找到，未宣告不可达。新合同按RN/normality/flush/sqrt条件准入，不用tuple白名单、不接默认模型。12项测试通过，原kernel/编译0；原GPU/FPCR/libm条件仍未认证。
 
 source→bright组合见 [PROGRESS-S30.zh-CN.md](PROGRESS-S30.zh-CN.md)：三个既有控制从源图重算producer/guided/主入口，四组完整输入逐位命中S29白名单；bright检查点、三帧5814个保存观察分量和writer位差均0，不用native中间数组补值。10项测试通过，新增完整模型3次、原kernel/编译0。cast0 writer实际走skin分支，因此不证明bright已被选入成片；独立实验不替换v3、不解禁cast16/多参数。
 

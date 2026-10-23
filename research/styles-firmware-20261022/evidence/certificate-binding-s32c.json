@@ -1,0 +1,18 @@
+{
+  "label": "s32-all2047-exact-sqrt-single-half-double-rounding-certificates",
+  "pre_run_binding_sha256": "90d5c01d88c1346e7ab82b385b0a4ea754ae682357729b1bb28154863ce99309",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "3fa6711cd5eac21bd8652c348b67fac29408a787ccb3d62fb0641104ec2b8c8c",
+  "elapsed_seconds": 0.34647607803344727,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "research/styles-firmware-20261022/certify_sqrt_domain.py",
+    "certify",
+    "research/styles-firmware-20261022/evidence/sqrt-domain-plan-s32b.json",
+    "research/styles-firmware-20261022/evidence/sqrt-domain-certificate-s32c.json"
+  ]
+}

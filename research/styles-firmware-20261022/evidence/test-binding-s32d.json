@@ -1,0 +1,22 @@
+{
+  "label": "s32-full-domain-midpoint-certificates-static-chain-and-scope-tests",
+  "pre_run_binding_sha256": "81ac9d8b80431b5900abf33e6d51978a1b347b608ebae1198621adfbf667c6f8",
+  "source_unchanged_during_command": true,
+  "inputs_unchanged_during_command": true,
+  "explicit_inputs_unchanged_during_command": true,
+  "exit_code": 0,
+  "log_sha256": "a5f05375d2d5e633dbf886b16eacdd95c4794c557ea6159cc79f21e71a3ddd5a",
+  "elapsed_seconds": 0.3151559829711914,
+  "native_execution": "only if explicit command requests it; inspect command",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/styles-firmware-20261022",
+    "-p",
+    "test_sqrt_double_round.py",
+    "-v"
+  ]
+}

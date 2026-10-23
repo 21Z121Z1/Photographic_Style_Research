@@ -1,0 +1,14 @@
+{
+  "scope": "S32 full2047-input exact midpoint-squared double-rounding certificate.",
+  "input_first_half_bits": 13313,
+  "input_last_half_bits": 15359,
+  "input_count": 2047,
+  "coverage": "all inclusive encodings0x3401..0x3bff, not random or floating sample",
+  "arithmetic": "Fraction and integer comparisons to squared rounding midpoints, RN ties-even",
+  "conditional_chain": "exact half-to-single -> correctly RN single sqrt -> RN half",
+  "comparison": "ideal correctly RN half sqrt",
+  "native_precision_and_FPCR": "static binary identity/implementation and runtime precision conditions are separate",
+  "native_execution_planned": false,
+  "compilation_planned": false,
+  "default_models_changed": false
+}
