@@ -3,29 +3,29 @@
 ## Autopilot-full steps
 
 - [x] The operator's gates come first.
-- [ ] Spawn one owner per PR, and keep its work where a replacement can find it.
-- [ ] Run owners in parallel off trunk, never stacked.
-- [ ] Swarm-verify once.
+- [x] Adapted: independent owners used exclusive prototype/evidence paths; one Draft plan PR, no production PRs.
+- [x] Adapted: independent prototypes ran in parallel from one immutable baseline; no stacked production migration.
+- [x] Swarm-verify once. Independent judge rejected both initial designs; a fresh reviewer checked B repair.
 - [ ] The owner merges only what you verified, tested on the trunk it lands on. Skip. The user requested a plan review before formal migration or merge.
-- [ ] Run the root layer. Skip autonomous merge approvals. Retain independent artifact review and exact-source validation.
+- [x] Run the root layer. Parent independently reviewed the plan and repair, retaining exact-HEAD verification. Autonomous merge approvals are skipped.
 - [ ] Stand down at once on the operator's stop.
 
 ## Architect phases
 
-- [ ] Ground
-- [ ] Sketch
+- [x] Ground
+- [x] Sketch
 - [ ] Agree. The deliverable is a reviewable plan, not a formal migration.
-- [ ] Implement. Prototype only under the current grant.
-- [ ] Scrap. Replace a prototype if its constraints fail.
+- [x] Implement. Prototype only under the current grant.
+- [x] Scrap. Both initial candidates rejected; B repaired, A execution retained as rejected alternative.
 
 ## Arena phases
 
-- [ ] Frame
-- [ ] Fan out
-- [ ] Cross-judge
-- [ ] Pick
-- [ ] Graft
-- [ ] Verify
+- [x] Frame
+- [x] Fan out
+- [x] Cross-judge
+- [x] Pick
+- [x] Graft
+- [x] Verify. The aggregate command passed on recorded working bytes; final committed-HEAD runs are separate CI/artifact receipts.
 
 ## Investigation scope
 

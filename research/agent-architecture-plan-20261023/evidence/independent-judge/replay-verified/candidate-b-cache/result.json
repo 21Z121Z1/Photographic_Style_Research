@@ -1,0 +1,19 @@
+{
+  "probe": "B existing coordinator before policy file edit versus new coordinator on same current disk registry",
+  "source_commit": "bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+  "candidate_source_sha256": "f5a469c9e2024927956fe72947644c67f622f1ec2d0f93a8c1d490507d84e268",
+  "registry_before_sha256": "9f96e6db3278bf7753b29b725115330bff1dd789cc73d9048102a50cede73595",
+  "registry_after_sha256": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+  "cached_status": "model_only",
+  "fresh_status": "blocked",
+  "cached_bound_registry_sha256": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+  "fresh_bound_registry_sha256": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+  "same_bound_registry": true,
+  "cached_reason": null,
+  "fresh_reason": "Original sealed material and native execution are unavailable; collector is prepared only",
+  "run_count": 2,
+  "actual_CLI_invocations": 1,
+  "native_calls": 0,
+  "production_or_candidate_sources_modified": false,
+  "verdict": "ISSUES: new disk registry bytes are bound to old in-memory capability policy"
+}

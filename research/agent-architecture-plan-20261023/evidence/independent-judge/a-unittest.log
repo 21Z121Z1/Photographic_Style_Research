@@ -1,0 +1,65 @@
+test_caller_cannot_choose_evidence_level_or_prune_source_capture (test_execution.ExecutionTests.test_caller_cannot_choose_evidence_level_or_prune_source_capture) ... ok
+test_changed_exact_context_blocks_even_when_only_whitespace_changed (test_execution.ExecutionTests.test_changed_exact_context_blocks_even_when_only_whitespace_changed) ... ok
+test_cross_directory_dependency_edit_blocks_before_model_loading (test_execution.ExecutionTests.test_cross_directory_dependency_edit_blocks_before_model_loading) ... ok
+test_real_source_to_writer_is_useful_but_has_only_model_evidence (test_execution.ExecutionTests.test_real_source_to_writer_is_useful_but_has_only_model_evidence) ... ERROR
+test_saved_Darwin_contract_cannot_be_accepted_on_this_Linux_host (test_execution.ExecutionTests.test_saved_Darwin_contract_cannot_be_accepted_on_this_Linux_host) ... ERROR
+
+======================================================================
+ERROR: test_real_source_to_writer_is_useful_but_has_only_model_evidence (test_execution.ExecutionTests.test_real_source_to_writer_is_useful_but_has_only_model_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/test_execution.py", line 35, in test_real_source_to_writer_is_useful_but_has_only_model_evidence
+    request = Study.portable(ROOT, CONTEXT, selection=Selection.BRIGHT16)
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py", line 132, in portable
+    return cls(_Plan(repo, _Sources.capture(repo), _Inputs.read(context), selection, 'portable_model'))
+                           ~~~~~~~~~~~~~~~~^^^^^^
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py", line 86, in capture
+    return cls(_git(repo, 'rev-parse', 'HEAD'), tuple(sorted(
+                                                      ~~~~~~^
+        (str(p.relative_to(repo)) if p.is_relative_to(repo) else '@candidate/'+p.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         _sha(p.read_bytes())) for p in paths)))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py", line 88, in <genexpr>
+    _sha(p.read_bytes())) for p in paths)))
+         ~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 625, in read_bytes
+    with self.open(mode='rb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/frozen-helper-source.py'
+
+======================================================================
+ERROR: test_saved_Darwin_contract_cannot_be_accepted_on_this_Linux_host (test_execution.ExecutionTests.test_saved_Darwin_contract_cannot_be_accepted_on_this_Linux_host)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/test_execution.py", line 24, in test_saved_Darwin_contract_cannot_be_accepted_on_this_Linux_host
+    result = Study.reference(ROOT, CONTEXT, PRECISION, Path(folder)/'missing.dylib').run(Path(folder)/'run')
+             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py", line 141, in reference
+    return cls(_Plan(repo, _Sources.capture(repo), _Inputs.read(context), Selection.CONTEXT,
+                           ~~~~~~~~~~~~~~~~^^^^^^
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py", line 86, in capture
+    return cls(_git(repo, 'rev-parse', 'HEAD'), tuple(sorted(
+                                                      ~~~~~~^
+        (str(p.relative_to(repo)) if p.is_relative_to(repo) else '@candidate/'+p.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         _sha(p.read_bytes())) for p in paths)))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package/execution.py", line 88, in <genexpr>
+    _sha(p.read_bytes())) for p in paths)))
+         ~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 625, in read_bytes
+    with self.open(mode='rb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/verification-skill/frozen-run/frozen-helper-source.py'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.165s
+
+FAILED (errors=2)

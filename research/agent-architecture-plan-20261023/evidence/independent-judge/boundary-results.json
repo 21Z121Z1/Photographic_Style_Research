@@ -1,0 +1,108 @@
+{
+  "A": {
+    "probe": "A imports backend, edits helper before preparation, hashes edited disk, compares cached execution with fresh process",
+    "baseline_sources_copied_from": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+    "copied_python_files": 514,
+    "copied_source_manifest_sha256": "2eb36bef2b6826bfbe6e4c2d3071ce3cfa5a6c0e6b8c0b8ae675065bcd1d3c99",
+    "candidate_sources": {
+      "demo.py": "cd03b080f43c46553465e63a1076c24b7d4e2b572c69b0f37d7e6959eaf045c8",
+      "execution.py": "de6ca894a0913ceb54b574516443e1426d00935869b3b2f05f44a362e42af4c4",
+      "prove.py": "e050ca3d886f6416854b6149858943903b9e7af724f53b280fe2bd69a4da81d9",
+      "test_execution.py": "6dfdfa5457124bb88766bbd7a052d30c22cd57b21c99fe593aebf15c466bde38"
+    },
+    "method_commands": [
+      {
+        "command": [
+          "/usr/bin/python3.13",
+          "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/cache_worker.py",
+          "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package",
+          "/tmp/architecture-judge-a-nf3eln4i/repo",
+          "/tmp/architecture-judge-a-nf3eln4i/context.json",
+          "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/candidate-a-cache/cached",
+          "cached"
+        ],
+        "exit_code": 0,
+        "log_sha256": "89d2f24fbd17005430ad4a18bfeb123ab29fe08683bb66dfa6686bcd492b5156"
+      },
+      {
+        "command": [
+          "/usr/bin/python3.13",
+          "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/cache_worker.py",
+          "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/prototypes/candidate_package",
+          "/tmp/architecture-judge-a-nf3eln4i/repo",
+          "/tmp/architecture-judge-a-nf3eln4i/context.json",
+          "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/candidate-a-cache/fresh",
+          "fresh"
+        ],
+        "exit_code": 0,
+        "log_sha256": "c67260e4a3041e8f4b7821c1f0d1708258dd48aff7eb00ac866a27dae1a95c38"
+      }
+    ],
+    "run_count": 2,
+    "cached": {
+      "mode": "cached",
+      "outcome": "RenderedModel",
+      "source_commit_in_copied_repo": "833f03cbe823ea63f757bcdc6267fa2c93bcac50",
+      "before_helper_sha256": "d0fc7f0d5c9c946f3b061acde81b0d98ddd717a9c57ff3cdab8866b7ac301e5f",
+      "after_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+      "bound_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+      "source_snapshot_sha256": "58589835850af1f37d4b34cf59b9b430458ea343410fd0db9ea256fb32b8f5c7",
+      "context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+      "result": {
+        "writer_path": "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/candidate-a-cache/cached/writer.npy",
+        "writer_sha256": "0a398831d13398757b6907b7b7a0a3c9a7cbc998c054c731b39ac517ba3e318f",
+        "written_pixels": 12,
+        "warnings": []
+      },
+      "native_calls": 0
+    },
+    "fresh": {
+      "mode": "fresh",
+      "outcome": "RenderedModel",
+      "source_commit_in_copied_repo": "833f03cbe823ea63f757bcdc6267fa2c93bcac50",
+      "before_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+      "after_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+      "bound_helper_sha256": "cc68af677c9a856f616a26ca7e3c6233aa7769eb1bfea3a7f6ccb2776e6d2cc6",
+      "source_snapshot_sha256": "58589835850af1f37d4b34cf59b9b430458ea343410fd0db9ea256fb32b8f5c7",
+      "context_sha256": "ffae597ca79f92447a2bdae45bbc007450be27ae9165bef78d0e6b3cb0932b11",
+      "result": {
+        "writer_path": "/workspace/Photographic_Style_Architecture/research/agent-architecture-plan-20261023/evidence/independent-judge/candidate-a-cache/fresh/writer.npy",
+        "writer_sha256": "7193a6071f967df78c7668e5dd7fa7b26ca459f173fe1e0ee122b136aa4f4a6e",
+        "written_pixels": 12,
+        "warnings": []
+      },
+      "native_calls": 0
+    },
+    "same_bound_helper_sha256": true,
+    "same_full_bound_source_snapshot": true,
+    "same_input_sha256": true,
+    "both_accepted": true,
+    "writer_half_bit_mismatches": 36,
+    "max_abs_writer_difference": 0.15966796875,
+    "native_calls": 0,
+    "production_or_candidate_sources_modified": false,
+    "verdict": "ISSUES: disk hashes do not bind imported bytecode in a long-lived process"
+  },
+  "B": {
+    "probe": "B existing coordinator before policy file edit versus new coordinator on same current disk registry",
+    "source_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+    "candidate_source_sha256": "f5a469c9e2024927956fe72947644c67f622f1ec2d0f93a8c1d490507d84e268",
+    "registry_before_sha256": "9f96e6db3278bf7753b29b725115330bff1dd789cc73d9048102a50cede73595",
+    "registry_after_sha256": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "cached_status": "model_only",
+    "fresh_status": "blocked",
+    "cached_bound_registry_sha256": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "fresh_bound_registry_sha256": "91bf4dec8141ffc23684f7522062afb4593c29d8be3998257d35f4ec2e4565fb",
+    "same_bound_registry": true,
+    "cached_reason": null,
+    "fresh_reason": "Original sealed material and native execution are unavailable; collector is prepared only",
+    "run_count": 2,
+    "actual_CLI_invocations": 1,
+    "native_calls": 0,
+    "production_or_candidate_sources_modified": false,
+    "verdict": "ISSUES: new disk registry bytes are bound to old in-memory capability policy"
+  },
+  "adaptation": "Independent inherited-model judge. No cross-model diversity claim.",
+  "native_calls": 0,
+  "recommended_unmodified_candidate": null
+}

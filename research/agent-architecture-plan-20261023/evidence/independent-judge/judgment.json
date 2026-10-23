@@ -1,0 +1,156 @@
+{
+  "schema": "psr-independent-prototype-judgment-v1",
+  "reviewed_candidate_commit": "bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+  "model_baseline_commit": "611ac4f6fe525ad3ba80ba5025aa8b5f0a45a079",
+  "candidate_hashes": {
+    "A_execution_py": "de6ca894a0913ceb54b574516443e1426d00935869b3b2f05f44a362e42af4c4",
+    "B_coordinator_py": "f5a469c9e2024927956fe72947644c67f622f1ec2d0f93a8c1d490507d84e268"
+  },
+  "runtime": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "architecture": "x86_64",
+    "python": "Python 3.13.5"
+  },
+  "skills_source_commit": "00d5decc6f05669044fd092dec73da9ef6f7eec0",
+  "method": "Independent inherited-model architecture judge using frozen public candidate source, isolated public baseline source copy and synthetic inputs. No cross-model diversity validation.",
+  "verdict": "ISSUES",
+  "recommended_unmodified_candidate": null,
+  "conditional_phase_zero_base": "B, only after registry bytes/digest ownership fix and counterexample replay; A rejected as current executor",
+  "score_scale": {
+    "0": "blocking invariant failure",
+    "1": "partial, with stated limitation",
+    "2": "satisfies inspected criterion in measured scope"
+  },
+  "scores": [
+    {
+      "criterion": "Evidence and capability correctness",
+      "A": 1,
+      "B": 1,
+      "basis": "Initial ordinary refusal probes preserve model/native separation. B cached availability bypass is an actual capability-policy failure. Neither has native-success implementation."
+    },
+    {
+      "criterion": "Source and input ownership",
+      "A": 0,
+      "B": 0,
+      "basis": "A accepts the same disk snapshot and input with different imported execution. B binds changed disk registry to older cached policy."
+    },
+    {
+      "criterion": "Caller work",
+      "A": 2,
+      "B": 1,
+      "basis": "A example factory+run=2 calls; B constructor+prepare+run=3 calls. Outputs differ, so counts do not establish overall superiority."
+    },
+    {
+      "criterion": "Migration cost",
+      "A": 1,
+      "B": 2,
+      "basis": "A replaces existing CLI admission/output path and must add worker isolation plus checkpoint parity. B can wrap existing image_chain_cli, retain algorithm files/artifacts, then move policy callers incrementally. No delivery-time estimate or production migration measured."
+    },
+    {
+      "criterion": "Failure visibility",
+      "A": 1,
+      "B": 2,
+      "basis": "Actual black-domain A UnresolvedModel and B unknown/writer0 survive. A broad tracked-code capture raises uncaught FileNotFoundError for unrelated tracked-deleted evidence source in dirty shared worktree."
+    },
+    {
+      "criterion": "Design red flags",
+      "A": 0,
+      "B": 1,
+      "basis": "A disk/import cache split; B disk/parsed policy split; both require stronger execution identity. B exploratory public snapshot/source_paths and string statuses remain transition work."
+    }
+  ],
+  "measured_failure_claims": [
+    {
+      "id": "A-cache-before-prepare",
+      "source_hash_key": "A_execution_py",
+      "requests_per_final_replay": 2,
+      "actual_model_runs_per_final_replay": 2,
+      "input": "saved public complete-context-s15a.json, 3x4 bright16; helper edited only in temporary copied repo before prepare",
+      "result": "same bound helper/source/input hashes and both RenderedModel, 36 half components differ, max_abs=0.15966796875",
+      "evidence": "frozen-replay/candidate-a-cache/result.json",
+      "scope": "execution identity counterexample, not Apple error"
+    },
+    {
+      "id": "B-cache-before-prepare",
+      "source_hash_key": "B_coordinator_py",
+      "requests_per_final_replay": 2,
+      "actual_CLI_runs_per_final_replay": 1,
+      "input": "synthetic colors 2x2; independent registry copy availability runnable->prepared-only before prepare",
+      "result": "old Coordinator model_only; new Coordinator blocked; both bind changed disk registry SHA",
+      "evidence": "frozen-replay/candidate-b-cache/result.json",
+      "scope": "capability ownership counterexample, not native execution"
+    },
+    {
+      "id": "black-domain-negative",
+      "requests": 2,
+      "actual_model_or_CLI_runs": 2,
+      "input": "A zeroed saved public primary/linear RGB; B synthetic zero 2x2, bright16",
+      "result": "A UnresolvedModel; B unknown, model_only evidence level, CLI writer_count=0",
+      "evidence": "frozen-unknown/unknown-results.json",
+      "scope": "failure propagation only; not full nonfinite/mask matrix",
+      "source_identity": "frozen-unknown/source-manifest.json, candidate commit bc00b741219e7b9bced7dd9cf1d1cf6d38cd918d",
+      "source_hash_keys": [
+        "A_execution_py",
+        "B_coordinator_py"
+      ]
+    }
+  ],
+  "author_evidence_spotchecked": {
+    "A": "../../prototypes/candidate_package/evidence/proof.json: 5 tests originally pass, one 12-pixel portable model, Linux historical-profile refusal, source files698",
+    "B": "../../prototypes/candidate_registry/artifacts/probe-results.json: one 4-pixel CLI and four refusal requests; static closure70",
+    "independent_root_counterexample": "../root-review-registry-cache/result.json"
+  },
+  "shared_worktree_diagnostic_tests": {
+    "A": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3.13 -m unittest discover -s research/agent-architecture-plan-20261023/prototypes/candidate_package -p test_*.py -v",
+      "tests": 5,
+      "ok": 3,
+      "errors": 2,
+      "reason": "tracked-deleted unrelated evidence/verification-skill/frozen-run/frozen-helper-source.py read by broad source capture",
+      "log": "a-unittest.log"
+    },
+    "B": {
+      "tests": 7,
+      "ok": 7,
+      "errors": 0,
+      "log": "b-unittest.log"
+    },
+    "limitation": "These late shared-worktree unit runs did not capture source before/after and overlap other agents; they are diagnostic logs, not frozen-candidate acceptance."
+  },
+  "phase_zero_acceptance": [
+    "Registry bytes parsed and digested from one read, immutable loaded configuration owns both; do not bind newer disk digest to older parsed entries.",
+    "Changing registry before prepare rejects or reloads atomically; changing it after prepare rejects without CLI; fresh prepared-only configuration blocks without CLI; preserve original failing evidence.",
+    "Use fresh process or controlled immutable loader for each actual model request, with pinned source/input payload. Disk hashes before/after alone cannot certify loaded code identity.",
+    "Preserve image_chain_cli checkpoint NPZ, branch reasons, diagnostic PNG, model/native intent and historical profile refusal; raw-domain fields and unknown must survive serialization.",
+    "Static source closure must detect/refuse undeclared computed imports or require explicit capability extension. The observed 70-file current closure is not arbitrary-Python completeness.",
+    "Keep historical scientific manifests immutable; migration adds new current-run metadata instead of rewriting old source SHA/profile evidence.",
+    "Make missing source/input a typed blocked result. Frozen Python dataclasses and __all__ alone do not enforce all invariants against direct construction/import.",
+    "Native CPU/GPU success stays unavailable until exact native image identity/runtime input/target/rounding evidence exists; registry policy cannot manufacture that evidence."
+  ],
+  "not_measured": [
+    "Apple image accuracy",
+    "native pow or sqrt runtime coverage",
+    "GPU execution",
+    "full product acceptance",
+    "performance improvement",
+    "compiler-enforced type correctness",
+    "arbitrary dynamic Python import closure"
+  ],
+  "comparison_limits": "A original source capture698 and B70 cover different scopes; A writes writer.npy+receipt, B invokes full existing CLI with NPZ/PNG. No speed or cost ratio is valid from those counts or unrelated timers.",
+  "no_further_blocker_found": "No additional independently reproduced critical blocker beyond identity ownership in the inspected prototype scope; this is not exhaustive correctness/security proof.",
+  "production_changes": false,
+  "native_calls": 0,
+  "formal_migration_authorized": false,
+  "scripts": {
+    "reproduce_boundaries.py": "badbb27ccacd48da621b025c93e2704636bf1010deb614632441f3e6b4e8fe67",
+    "cache_worker.py": "cd3aec1f2c0712bdae41db7849bbe02f4c801dafa4f5a0e0fb87809cfdbef554",
+    "probe_unknowns.py": "2794150e0ee5452497dda9acd5c73b421d07e659719c28b3e7c652b2d17a25b2"
+  },
+  "final_frozen_replay": {
+    "boundary_log": "frozen-replay.log",
+    "boundary_result": "frozen-replay/boundary-results.json",
+    "unknown_log": "frozen-unknown.log",
+    "unknown_result": "frozen-unknown/unknown-results.json",
+    "native_calls": 0
+  }
+}
