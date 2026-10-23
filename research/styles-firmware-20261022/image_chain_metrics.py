@@ -24,10 +24,13 @@ class Comparison:
 def compare_rgb(actual, reference, *, pixel_mask=None, threshold=1e-3) -> Comparison:
     """Compare RGB only on supplied common written pixels, reject nonfinite data.
 
-    Arrays must already share shape and coordinate domain. This function does
+    Arrays must use real integer or floating storage and already share shape
+    and coordinate domain. This function does
     not align/resize/expose images or invent a mask for unavailable pixels.
     """
     a = np.asarray(actual); b = np.asarray(reference)
+    if a.dtype.kind not in 'iuf' or b.dtype.kind not in 'iuf':
+        raise TypeError('Real integer or floating RGB/RGBA storage required')
     if a.shape != b.shape or a.ndim != 3 or a.shape[-1] not in (3,4):
         raise TypeError('Identical aligned HxWxRGB/RGBA shapes required')
     if not np.isfinite(a).all() or not np.isfinite(b).all():

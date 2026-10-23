@@ -10,6 +10,25 @@ from synthetic_inputs import Pattern,MaskPattern,SyntheticSpec,rgb_pattern,seman
 
 
 class DiagnosticMetricsTests(unittest.TestCase):
+    def test_reject_non_real_storage_before_numeric_coercion(self):
+        reference=np.zeros((1,1,3),dtype='f4')
+        for dtype in ('c8','c16','bool','O','U1','datetime64[D]','timedelta64[D]'):
+            actual=np.zeros((1,1,3),dtype=dtype)
+            if actual.dtype.kind=='c':actual[0,0,0]=1j
+            with self.subTest(dtype=dtype):
+                with self.assertRaises(TypeError):compare_rgb(actual,reference)
+                with self.assertRaises(TypeError):compare_rgb(reference,actual)
+
+    def test_real_integer_and_float_storage_remain_supported(self):
+        reference=np.zeros((1,1,3),dtype='f4')
+        for dtype in ('u1','i2','u8','i8','f2','f4','f8'):
+            with self.subTest(dtype=dtype):
+                actual=np.ones((1,1,3),dtype=dtype)
+                result=compare_rgb(actual,reference)
+                self.assertEqual(result.max_absolute_error,1)
+                self.assertEqual(result.rmse,1)
+                self.assertEqual(result.half_bit_mismatches,3)
+
     def test_rmse_and_mask_exclude_unwritten_border_and_alpha(self):
         a=np.zeros((2,3,4),dtype='f2');b=a.copy();a[0,0,:3]=[1,2,3]
         a[1,2]=[8,8,8,8];a[0,1,3]=99

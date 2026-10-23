@@ -4,7 +4,8 @@ This module declares its arithmetic and storage separately: the reused continuou
 formula runs in float64, then the RGB output is stored as NumPy float16. This is
 not an implementation of Apple's half operations or sampler. Color domain and
 effect order are caller-supplied contracts, not recovered camera properties.
-SkinSmooth/Mattify have native unit harnesses, but no independent backend here.
+SkinSmooth has a separate conditional final-blend helper in skin_smoothing_final;
+complete SkinSmooth/Mattify effects remain unavailable through this adapter.
 """
 from dataclasses import dataclass
 from enum import Enum

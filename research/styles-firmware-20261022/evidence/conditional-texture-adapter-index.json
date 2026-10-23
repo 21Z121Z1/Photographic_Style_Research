@@ -14,12 +14,15 @@
     },
     {
       "effect": "SkinSmoothingStandalone",
-      "independent_adapter": null,
+      "independent_adapter": "skin_smoothing_final.apply_skin_smoothing_final (conditional final blend only)",
+      "arithmetic": "float64 continuous SEM-23 formula, then binary16 storage; no native operation-order claim",
+      "inputs": "explicit same-domain half X/S/B, pre-saturated S, finite f32 HxW derived a/b weights",
+      "new_evidence_level": "model-only analytical synthetic tests; no new native execution",
       "existing_native_entry": "research/semantic-styles/texture_units_s10.m",
       "historical_run": "39158119190",
       "historical_source_commit": "994e44b7a9a4f20a8b468c9c26ddb693bcd7173f",
       "new_execution": false,
-      "gap": "No independent finalBlendingKernelInPlace backend implemented; blur/statistics/guided reconstruction remain external"
+      "gap": "Complete effect not integrated into run_conditional_texture; blur/statistics/guided reconstruction and native precision remain external"
     },
     {
       "effect": "Mattify",

@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parents[1]
 SUITES = (
     'test_image_chain', 'test_image_chain_cli', 'test_module_sensitivity', 'test_pow_runtime_binding',
-    'test_texture_style_adapter', 'test_bright_saved', 'test_connected_bright',
+    'test_texture_style_adapter', 'test_skin_smoothing_final', 'test_bright_saved', 'test_connected_bright',
     'test_square_contract', 'test_sqrt_double_round', 'test_texture_numeric',
     'test_output_writer', 'test_ltm_gain', 'test_ltm_preprocess',
     'test_precomputed_semantic', 'test_pixel_skin',
