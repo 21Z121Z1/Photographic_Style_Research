@@ -25,3 +25,22 @@ python3.13 research/styles-firmware-20261022/validate_portable.py /tmp/psr-skin-
 
 独立入口保留为条件算子，没有将完整 `SkinSmoothingStandalone` 注册成可用效果。
 调用者仍须明确给出它相对于 GTM、LTM 和其他 Texture 效果的位置。
+
+## 本轮验证
+
+源码提交 `9696c5236453576785279ce5e962f6dc6382f19a` 在 Linux x86_64、
+Python 3.13、NumPy 2.2.4 下通过 125 项限定便携回归。
+执行期间源码和输入证据均未变化；这不是完整历史套件通过。
+日志、源码哈希、运行环境及成本样本见
+[证据索引](evidence/skin-final-20261023/INDEX.json)。
+后续合入原研究分支的证据提交与保存本轮收据没有改变 Python 源码；
+最终 HEAD 的 CI 仍需独立检查，不能直接继承此提交的通过状态。
+
+2×2 梯度的每分支五次同机成本记录保留了全部样本和 writer hash。
+这些是小输入模型成本，不是相机分辨率性能测试。
+`master` 缺少同一可调用链路，无法给出同条件收益，未声称加速。
+
+指标漏洞的真实触发为 complex64 RGB `1j` 对 float32 零图。
+修复前最大误差、RMSE 和 half 位差均误报为零。
+修复后入口拒绝该类型，实数整数与浮点仍可比较。
+新增 SkinSmooth 的零系数位型保持是显式模型合同，不能证明 Apple half 运算顺序。
