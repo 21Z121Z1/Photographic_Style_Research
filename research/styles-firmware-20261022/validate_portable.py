@@ -18,7 +18,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parents[1]
 SUITES = (
-    'test_image_chain', 'test_image_chain_cli', 'test_module_sensitivity', 'test_pow_runtime_binding',
+    'test_validation_binding', 'test_image_chain', 'test_image_chain_cli', 'test_module_sensitivity', 'test_pow_runtime_binding',
     'test_texture_style_adapter', 'test_skin_smoothing_final', 'test_bright_saved', 'test_connected_bright',
     'test_square_contract', 'test_sqrt_double_round', 'test_texture_numeric',
     'test_output_writer', 'test_ltm_gain', 'test_ltm_preprocess',
@@ -31,12 +31,16 @@ def digest(path):
 
 
 def sources():
-    paths = sorted(list(ROOT.glob('*.py')) + list(ROOT.glob('*.c')))
-    paths.append(ROOT.parent / 'semantic-styles/studio_under_eye.py')
-    paths.append(ROOT.parent / 'semantic-styles/spatial_curve_retarget.py')
-    paths.append(ROOT.parent / 'semantic-styles/semantic_curve_inverse.py')
-    paths.append(ROOT.parent / 'hdr-native/guided_reference_v3.py')
+    paths = sorted({*ROOT.glob('*.py'), *ROOT.glob('*.c'),
+                    *(ROOT.parent / 'semantic-styles').glob('*.py'),
+                    ROOT.parent / 'hdr-native/guided_reference_v3.py'})
     return {str(p.relative_to(REPO)): digest(p) for p in paths}
+
+
+def evidence_manifest(root: Path, repository: Path) -> dict[str, str]:
+    """Bind every nested evidence file, including additions and removals."""
+    return {str(p.relative_to(repository)): digest(p)
+            for p in sorted(root.rglob('*')) if p.is_file()}
 
 
 def git(*args):
@@ -45,10 +49,12 @@ def git(*args):
 
 def run(output):
     output = Path(output).resolve()
+    evidence_root = ROOT / 'evidence'
+    if output.is_relative_to(evidence_root.resolve()):
+        raise ValueError('Validation output must be outside the input evidence tree')
     output.mkdir(parents=True, exist_ok=False)
     before = sources()
-    input_hashes = {str(p.relative_to(REPO)): digest(p)
-                    for p in sorted((ROOT / 'evidence').glob('*')) if p.is_file()}
+    input_hashes = evidence_manifest(evidence_root, REPO)
     pre = {
         'scope': 'named portable and public-certificate regressions only',
         'git_HEAD': git('rev-parse', 'HEAD'),
@@ -70,8 +76,7 @@ def run(output):
     log = output / 'tests.log'
     log.write_text(completed.stdout + completed.stderr)
     unchanged = before == sources()
-    inputs_unchanged = all((REPO / path).is_file() and digest(REPO / path) == value
-                           for path, value in input_hashes.items())
+    inputs_unchanged = input_hashes == evidence_manifest(evidence_root, REPO)
     result = {
         'git_HEAD': pre['git_HEAD'], 'command': command,
         'cwd_relative_to_repository': str(ROOT.relative_to(REPO)),
