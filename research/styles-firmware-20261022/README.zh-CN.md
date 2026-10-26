@@ -1,5 +1,8 @@
 # 摄影风格产品代际、实际插件与条件算子：本机阶段
 
+当前原生 CPU/Metal 执行、证据 API 读回及精确条件 UnderEye half 后端见
+[NATIVE_REFERENCE.zh-CN.md](NATIVE_REFERENCE.zh-CN.md)。它们具有独立的新运行身份，未回填 S33 或升级为完整摄影链认证。
+
 Cloud 接续的模块覆盖表、可移植图像链路/CLI、原生材料缺口与运行证据见
 [CONTINUATION.zh-CN.md](CONTINUATION.zh-CN.md)。新增实验与下述绑定 macOS 的 v3
 精度目录分开；未提升为完整 Apple CPU/GPU 或拍摄管线认证。
