@@ -19,6 +19,9 @@ pow 只执行 half 0x2b8f、0x36aa 精确扩成的两个 f32 输入一次。
 
 首轮使用标准 macos-15。实际只有 smartStyleOverlayPersonMask，无 TextureStyles 函数。
 核实 actions/runner-images 官方清单后，第二轮改用标准 macos-26。
-不触发 xcode-27、自定义、付费或 larger runner。
+macos-26 实测同样没有 TextureStyles 函数。
+进一步核实 github/docs 的 supported-github-runners.md，公共仓库标准免费表明确列出 xcode-27。
+该仓库已核为 public，因此第三轮使用该标准 preview 标签，不使用 xlarge、自定义或付费 runner。
+原先“不触发 xcode-27”的保守计划由这次官方计费身份核验取代，不修改预算/安全设置。
 报告通过 GitHub Checks API 原生文本字段发布。它不是代理访问受阻的 artifact 下载目的地。
 只发布本次生成的 JSON、公开源代码哈希及自编探针反汇编；不发布系统库字节或私人媒体。
