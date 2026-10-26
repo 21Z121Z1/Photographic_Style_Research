@@ -44,3 +44,10 @@ CPU 收据包含 Texture 报告 SHA；Texture 收据包含共同源码 manifest 
 最终每次运行总计 36 dispatch，其中真实 source-to-writer 输入 18 次、权重诊断 18 次。
 实际原生权重只用于误差归因，绝不补入主要独立模型。
 额外记录原库选中 AIR 的算术 SSA 摘要、payload SHA 与 llvm-dis 身份，不上传完整 shader 或 bitcode。
+
+权重探针后，独立模型按已读 AIR 的 half 加法/减法/乘法顺序、RN-even/gradual 假设计算 w。
+Mix 候选按 fma(-w,X,X) 后 fma(w,E,previous) 各舍入一次。
+该候选由原生观察选择，AIR fast mix 本身不唯一指定所有编译器的 lowering。
+复用 square132_contract 的精确 Fraction/RN-half 算术，不借 float64 近似 FMA；不使用 native w 补主要模型。
+显式 HalfArithmetic 枚举供调用者接受假设，声明 RGB 样本盒 [-2,2]、全八张对齐 mask。
+当前仅 18 个原生固定条件的有限吻合；默认连续 adapter、原 v3 与历史证书保持原范围。

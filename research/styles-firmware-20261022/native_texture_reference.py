@@ -212,3 +212,29 @@ def weight_diagnostics(raw: dict, inputs: dict) -> dict:
                      'native_image_minus_continuous_mix_with_observed_weight':compare_rgb(observed,diagnostic).record()})
     return {'status':'native_0_1_weight_diagnostics','rows':rows,
             'native_weight_used_by_main_model':False,'sampler_or_compiler_equivalence_proved':False}
+
+
+def compare_independent_half(raw: dict, inputs: dict) -> dict:
+    """Replay exact half equations from raw inputs, without native intermediate substitution."""
+    from under_eye_half import HalfArithmetic, apply_under_eye_half
+    if raw.get('status') != 'native_under_eye_final_mix_completed':
+        return {'status':'native_reference_unavailable','native_intermediates_used':False}
+    rows=[]
+    for actual,reference in zip(raw['rows'],inputs['cases']):
+        images=reference['inputs']
+        source=HalfRGB(unblob(images['source'])[...,:3],DOMAIN)
+        edited=HalfRGB(unblob(images['edited'])[...,:3],DOMAIN)
+        masks=UnderEyeMasks(**{k:HalfMask(unblob(images[k]),'aligned synthetic sample') for k in
+                              ('face','instance','hair','lips','ears','tattoo','glasses','blend')})
+        context=UnderEyeContext(edited,masks,UnderEyeParameters(np.float32(reference['brightness_mix']),np.float32(reference['strength'])))
+        modeled=apply_under_eye_half(source,context,arithmetic=HalfArithmetic.RN_GRADUAL_TWO_FMA)
+        native=np.frombuffer(base64.b64decode(actual['output_f16_base64']),dtype='<f2').reshape(8,12,4)
+        row={'name':actual['name'],'RGB':compare_rgb(native[...,:3],modeled.output.values).record()}
+        if actual.get('weight_f16_base64'):
+            w=np.frombuffer(base64.b64decode(actual['weight_f16_base64']),dtype='<f2').reshape(8,12,4)[...,0]
+            row['weight_half_bit_mismatches']=int(np.count_nonzero(w.view('u2') != modeled.weight.view('u2')))
+        rows.append(row)
+    return {'status':'finite_native_reference_compared','rows':rows,
+            'all_observed_RGB_bits_equal':all(r['RGB']['half_bit_mismatches']==0 for r in rows),
+            'native_intermediates_used':False,'arbitrary_native_inputs_verified':False,
+            'sampler_verified':False,'full_pipeline_verified':False}

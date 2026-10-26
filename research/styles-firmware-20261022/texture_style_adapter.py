@@ -21,6 +21,7 @@ import numpy as np
 
 if TYPE_CHECKING:
     from skin_smoothing_final import SkinSmoothingContext
+    from under_eye_half import HalfArithmetic
 
 
 _HELPER = Path(__file__).resolve().parents[1] / 'semantic-styles/studio_under_eye.py'
@@ -213,7 +214,8 @@ class TextureRun:
 
 def run_conditional_texture(source: HalfRGB, *, effects: tuple[TextureEffect, ...],
                             under_eye: UnderEyeContext | None = None,
-                            skin_smooth_final: SkinSmoothingContext | None = None) -> TextureRun:
+                            skin_smooth_final: SkinSmoothingContext | None = None,
+                            under_eye_arithmetic: HalfArithmetic | None = None) -> TextureRun:
     """Execute only implemented effects in an explicitly requested experimental order.
 
     An unavailable stage returns no final output, preserving preceding checkpoints.
@@ -244,11 +246,16 @@ def run_conditional_texture(source: HalfRGB, *, effects: tuple[TextureEffect, ..
                               (effect.value + ': independent backend unavailable; use existing native unit harness',))
         if under_eye is None:
             return TextureRun(None, tuple(completed), tuple(checkpoints), tuple(gaps) + ('UnderEye: explicit edited/mask context missing',))
-        result = apply_under_eye(current, under_eye)
-        if result.identity_fallback:
-            gaps.append('UnderEye: explicit identity fallback; missing masks=' + ','.join(result.missing_masks))
-        else:
+        if under_eye_arithmetic is not None:
+            from under_eye_half import apply_under_eye_half
+            result = apply_under_eye_half(current, under_eye, arithmetic=under_eye_arithmetic)
             completed.append(effect)
+        else:
+            result = apply_under_eye(current, under_eye)
+            if result.identity_fallback:
+                gaps.append('UnderEye: explicit identity fallback; missing masks=' + ','.join(result.missing_masks))
+            else:
+                completed.append(effect)
         checkpoints.extend(result.checkpoints)
         current = result.output
     return TextureRun(current, tuple(completed), tuple(checkpoints), tuple(gaps))

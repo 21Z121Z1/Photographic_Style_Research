@@ -220,7 +220,7 @@ def collect(output: Path, *, publish: bool = False) -> int:
         except Exception as error:
             texture_report['arithmetic_recipe_error'] = str(error)
         try:
-            from native_texture_reference import prepare, compare_native, bit_mismatch_examples, weight_diagnostics
+            from native_texture_reference import prepare, compare_native, bit_mismatch_examples, weight_diagnostics, compare_independent_half
             manifest,inputs = prepare(output/'under-eye-inputs')
             texture_report['inputs'] = inputs
             texture_exe = output/'under-eye-probe'
@@ -232,6 +232,7 @@ def collect(output: Path, *, publish: bool = False) -> int:
             texture_report['comparison'] = compare_native(native,inputs)
             texture_report['half_bit_mismatch_examples'] = bit_mismatch_examples(native,inputs)
             texture_report['weight_diagnostics'] = weight_diagnostics(native,inputs)
+            texture_report['independent_half_model'] = compare_independent_half(native,inputs)
             texture_report['status'] = texture_report['comparison']['status']
         except Exception as error:
             texture_report['status'] = 'failed_with_retained_evidence'
