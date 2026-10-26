@@ -52,3 +52,9 @@ pow 运行绑定仍需要 SHA256 `47185c09c0407d7c96aa9dc55e0581ae4e781836951c8b
 S32 的 2047 输入域与 RN 运算假设、S33 单次 9/16→3/4 的范围不变。
 完整 Texture 的上游 stats/reconstruction、真实语义分割、原 GPU 和完整摄影产品链仍未验收。
 没有上传私人照片、原系统二进制，也没有触发付费 runner、购买额度或合并 PR。
+
+最终代码及首批收据提交 `22ab73df6b0959d8bb6878d1ca438d605cd060ed` 再跑 130 项定向回归通过。
+全量 discover 实际运行 384 项，保留 8 个环境/私有材料 errors，未改 skip 或阈值。
+完整日志、精确命令、SHA 和 CI/artifact 身份见 `evidence/continuation-20261026/final-index.json`。
+CI run 40280424854 两个 job 均通过；artifact 下载收到 Forbidden，未读回原始报告，
+不能推测其运行时版本或将编译通过写成原 pow 调用通过。
