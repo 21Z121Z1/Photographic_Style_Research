@@ -25,3 +25,16 @@ macos-26 实测同样没有 TextureStyles 函数。
 原先“不触发 xcode-27”的保守计划由这次官方计费身份核验取代，不修改预算/安全设置。
 报告通过 GitHub Checks API 原生文本字段发布。它不是代理访问受阻的 artifact 下载目的地。
 只发布本次生成的 JSON、公开源代码哈希及自编探针反汇编；不发布系统库字节或私人媒体。
+
+GPU 合同在执行前固定。只有库 SHA 精确匹配 16a8a119... 时才运行已知 FinalMix ABI，
+用 Metal reflection 检查 active texture/buffer 索引及尺寸，不兼容即阻断。
+两张 8×12 合成图分别为梯度与色彩边界，先实际重算 portable source→writer，
+只把写入 ROI 送入原生 FinalMix；不把未写边框当输入。
+每图 9 组预声明条件，共 18 次 dispatch，包含零/full/spatial mask、mix 0/.5/1、strength 0/.5/1。
+Edited=half(float64(writerRGB)*.95+.035)；八张 mask 与 stats 均为合成外部上下文。
+输出先以 -99 填充，完成后检查未写 RGB；逐字核 native 读取的所有输入/params/stats SHA。
+保存原生 half 输出、max/RMSE/分位数/分布/失败坐标及参数对输出的影响。
+误差阈值固定 1e-3 仅用于列举失败坐标，不用于宣布完整 Apple 复现。
+
+CPU 与 Texture 原始 JSON 分别通过两条 GitHub Check 文本发布，避免文本长度上限。
+CPU 收据包含 Texture 报告 SHA；Texture 收据包含共同源码 manifest SHA，二者互相绑定。

@@ -135,11 +135,11 @@ def unpack(record: dict) -> dict:
     return json.loads(raw)
 
 
-def publish_check(report: dict, *, conclusion: str) -> dict:
+def publish_check(report: dict, *, conclusion: str, name: str = 'Styles fresh native reference') -> dict:
     text = '```json\n'+encoded(envelope(report)).decode()+'```'
     if len(text.encode()) > 60_000:
         raise ValueError('Native evidence exceeds the GitHub Check text budget')
-    body = {'name':'Styles fresh native reference', 'head_sha':os.environ['GITHUB_SHA'],
+    body = {'name':name, 'head_sha':os.environ['GITHUB_SHA'],
             'external_id':os.environ['GITHUB_RUN_ID']+'-'+os.environ['GITHUB_RUN_ATTEMPT'],
             'status':'completed', 'conclusion':conclusion,
             'output':{'title':'Fresh reference; historical S33 identity unchanged',
@@ -209,6 +209,30 @@ def collect(output: Path, *, publish: bool = False) -> int:
     except Exception as error:
         report['status'] = 'failed_with_retained_evidence'
         report['error'] = str(error)
+    texture_report = None
+    if 'CMITextureStylesUnderEyeBrighten::FinalMix' in report.get('capabilities',{}).get('selected_function_names',[]):
+        texture_report = {'schema':'psr-native-texture-reference-v1','git':report['git'],
+                          'source_manifest_sha256':hashlib.sha256(encoded(report['source_sha256'])).hexdigest(),
+                          'system':report['system']}
+        try:
+            from native_texture_reference import prepare, compare_native
+            manifest,inputs = prepare(output/'under-eye-inputs')
+            texture_report['inputs'] = inputs
+            texture_exe = output/'under-eye-probe'
+            command(['xcrun','clang','-fobjc-arc','-O1','-framework','Foundation','-framework','Metal',
+                     str(ROOT/'native-reference/under_eye_probe.m'),'-o',str(texture_exe)], 'build-under-eye')
+            texture_report['executable_sha256'] = sha(texture_exe)
+            native = json.loads(command([str(texture_exe),str(manifest)], 'under-eye-observation'))
+            texture_report['native'] = native
+            texture_report['comparison'] = compare_native(native,inputs)
+            texture_report['status'] = texture_report['comparison']['status']
+        except Exception as error:
+            texture_report['status'] = 'failed_with_retained_evidence'
+            texture_report['error'] = str(error)
+        report['texture_report_sha256'] = hashlib.sha256(encoded(texture_report)).hexdigest()
+        report['texture_status'] = texture_report['status']
+        report['native_GPU_dispatches'] = texture_report.get('native',{}).get('GPU_dispatches',0)
+        (output/'texture-report.json').write_bytes(encoded(texture_report))
     report['sources_unchanged'] = report['source_sha256'] == source_manifest()
     if not report['sources_unchanged']:
         conclusion = 'failure'
@@ -216,8 +240,15 @@ def collect(output: Path, *, publish: bool = False) -> int:
     (output/'report.json').write_bytes(encoded(report))
     if publish:
         (output/'check.json').write_bytes(encoded(publish_check(report, conclusion=conclusion)))
+        if texture_report is not None:
+            texture_conclusion = 'success' if texture_report['status'] == 'aligned_native_final_stage_observed' else 'failure'
+            if not report['sources_unchanged']:
+                texture_conclusion = 'failure'
+            (output/'texture-check.json').write_bytes(encoded(publish_check(texture_report,
+                conclusion=texture_conclusion,name='Styles native UnderEye reference capture')))
     print(json.dumps({k:report.get(k) for k in ('status','error','math_comparison','capabilities','sources_unchanged')}, indent=2))
-    return 0 if conclusion == 'success' else 1
+    texture_ok = texture_report is None or texture_report['status'] == 'aligned_native_final_stage_observed'
+    return 0 if conclusion == 'success' and texture_ok else 1
 
 
 if __name__ == '__main__':
