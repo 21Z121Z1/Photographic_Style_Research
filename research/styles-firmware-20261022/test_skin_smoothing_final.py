@@ -5,6 +5,8 @@ import numpy as np
 
 from skin_smoothing_final import SkinSmoothingContext, apply_skin_smoothing_final
 from texture_style_adapter import ColorDomain, HalfRGB, TransferDomain
+from texture_style_adapter import (HalfMask, TextureEffect, UnderEyeContext, UnderEyeMasks,
+                                   UnderEyeParameters, run_conditional_texture)
 
 
 class SkinSmoothingFinalTests(unittest.TestCase):
@@ -73,6 +75,45 @@ class SkinSmoothingFinalTests(unittest.TestCase):
     def test_half_overflow_is_rejected_without_clipping(self):
         with self.assertRaises(FloatingPointError):
             apply_skin_smoothing_final(self.source, self.context(a=1e10))
+
+    def test_final_blend_composes_in_requested_order_with_under_eye(self):
+        one = HalfMask(np.ones((3, 4), dtype='f2'), 'synthetic')
+        zero = HalfMask(np.zeros((3, 4), dtype='f2'), 'synthetic')
+        under_eye = UnderEyeContext(
+            HalfRGB(np.full((3, 4, 3), .75, dtype='f2'), self.domain),
+            UnderEyeMasks(one, one, zero, zero, zero, zero, zero, one),
+            UnderEyeParameters(np.float32(1), np.float32(1)))
+        final = TextureEffect.SKIN_SMOOTH_FINAL
+        eye = TextureEffect.UNDER_EYE
+        forward = run_conditional_texture(self.source, effects=(eye, final),
+                                          under_eye=under_eye, skin_smooth_final=self.context(a=.5))
+        reverse = run_conditional_texture(self.source, effects=(final, eye),
+                                          under_eye=under_eye, skin_smooth_final=self.context(a=.5))
+        np.testing.assert_array_equal(forward.output.values, .5)
+        np.testing.assert_array_equal(reverse.output.values, .75)
+        self.assertEqual(forward.completed_effects, (eye, final))
+        self.assertEqual(forward.checkpoints[-1].name, '1.SkinSmoothingFinalBlendOnly.stored_output')
+        self.assertFalse(forward.apple_order_verified)
+        self.assertFalse(forward.full_texture_pipeline_verified)
+
+    def test_conditional_final_blend_never_unlocks_the_full_effect(self):
+        final = TextureEffect.SKIN_SMOOTH_FINAL
+        missing = run_conditional_texture(self.source, effects=(final,))
+        self.assertIsNone(missing.output)
+        self.assertIn('external reconstruction/blur/weights missing', missing.gaps[0])
+        blocked = run_conditional_texture(self.source, effects=(final, TextureEffect.SKIN_SMOOTH),
+                                          skin_smooth_final=self.context(a=.5))
+        self.assertIsNone(blocked.output)
+        self.assertEqual(blocked.completed_effects, (final,))
+        self.assertEqual(len(blocked.checkpoints), 7)
+        np.testing.assert_array_equal(blocked.checkpoints[-1].values, .375)
+
+    def test_repeated_final_blends_consume_previous_stored_output(self):
+        final = TextureEffect.SKIN_SMOOTH_FINAL
+        result = run_conditional_texture(self.source, effects=(final, final),
+                                         skin_smooth_final=self.context(a=.5))
+        np.testing.assert_array_equal(result.output.values, .3125)
+        self.assertEqual(len({cp.name for cp in result.checkpoints}), 14)
 
 
 if __name__ == '__main__':

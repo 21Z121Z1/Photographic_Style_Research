@@ -1,0 +1,48 @@
+{
+  "source_HEAD": "22ab73df6b0959d8bb6878d1ca438d605cd060ed",
+  "full_suite": {
+    "command": [
+      "/usr/bin/python3.13",
+      "-m",
+      "unittest",
+      "discover",
+      "-v"
+    ],
+    "cwd": "research/styles-firmware-20261022",
+    "tests_run": 384,
+    "errors": 8,
+    "passed": false,
+    "log_sha256": "7abb43cf86390fab28a6622d0f3319aaa17b75c37a89356cd123b3d447b8e601",
+    "limitations": [
+      "Darwin arm64 precision profile unavailable",
+      "bound catalog runtime differs",
+      "private S33 archive unavailable"
+    ]
+  },
+  "CI": {
+    "run_id": 40280424854,
+    "conclusion": "success",
+    "scope": [
+      "portable regressions",
+      "collector compile/static only"
+    ],
+    "artifact_download": "Forbidden; raw artifact not inspected",
+    "artifacts": [
+      {
+        "id": 12631628772,
+        "name": "pow-collector-compile-22ab73df6b0959d8bb6878d1ca438d605cd060ed",
+        "size_in_bytes": 6067,
+        "digest": "sha256:4b06655ec5dc0631e34b7fa972df1576bf774869e295d1df70268879b3123afa",
+        "expired": false
+      },
+      {
+        "id": 12631203368,
+        "name": "styles-portable-22ab73df6b0959d8bb6878d1ca438d605cd060ed",
+        "size_in_bytes": 62730,
+        "digest": "sha256:004c2b545308e1e43cd24c4464be50827a46c26fda2155443be246e01e48376f",
+        "expired": false
+      }
+    ]
+  },
+  "Apple_native_calls": 0
+}
