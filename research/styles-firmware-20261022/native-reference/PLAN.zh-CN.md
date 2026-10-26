@@ -17,6 +17,8 @@ pow 只执行 half 0x2b8f、0x36aa 精确扩成的两个 f32 输入一次。
 目标由当前系统 dlsym(powf) 解析，记录实际 loaded image UUID/offset 与符号精度。
 用 c^853 与 f32 中点^2048 的整数比较判断本输入舍入，不调用 Python pow。
 
-GitHub runner 仅为标准 macos-15，不触发 xcode-27、自定义、付费或 larger runner。
+首轮使用标准 macos-15。实际只有 smartStyleOverlayPersonMask，无 TextureStyles 函数。
+核实 actions/runner-images 官方清单后，第二轮改用标准 macos-26。
+不触发 xcode-27、自定义、付费或 larger runner。
 报告通过 GitHub Checks API 原生文本字段发布。它不是代理访问受阻的 artifact 下载目的地。
 只发布本次生成的 JSON、公开源代码哈希及自编探针反汇编；不发布系统库字节或私人媒体。
