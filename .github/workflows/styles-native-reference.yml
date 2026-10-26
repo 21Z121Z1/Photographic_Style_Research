@@ -1,0 +1,36 @@
+name: styles fresh native reference
+on:
+  push:
+    branches: ['research/styles-native-reference-20261026']
+    paths:
+      - 'research/styles-firmware-20261022/**'
+      - '.github/workflows/styles-native-reference.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fresh-apple-reference:
+    runs-on: xcode-27
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      checks: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.2.4
+      - name: Execute new CPU reference and discover actual native Texture capabilities
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/styles-firmware-20261022/native_reference.py '${{ runner.temp }}/styles-native-reference' --publish-check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: styles-native-reference-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/styles-native-reference/*.json
+            ${{ runner.temp }}/styles-native-reference/*.txt
+          retention-days: 1
+          if-no-files-found: error

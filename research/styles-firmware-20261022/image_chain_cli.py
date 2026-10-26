@@ -45,7 +45,8 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def source_manifest():
     # Include the existing guided implementation imported from another directory
     # and all cross-imported semantic sources, not just this command's entry file.
-    files=sorted({*ROOT.glob('*.py'),*(ROOT.parent/'semantic-styles').glob('*.py'),
+    files=sorted({*ROOT.glob('*.py'),*(ROOT/'native-reference').glob('*.c'),
+                  *(ROOT/'native-reference').glob('*.m'),*(ROOT.parent/'semantic-styles').glob('*.py'),
                   ROOT.parent/'hdr-native/guided_reference_v3.py'})
     return {str(p.relative_to(REPO)):sha(p) for p in files if p.is_file()}
 
