@@ -9,7 +9,8 @@ import unittest
 import numpy as np
 
 from native_texture_reference import (CASES, DOMAIN, LIBRARY_SHA256, MaskMode, NativeCase,
-                                      blob, unblob, operands, prepare, compare_native)
+                                      blob, unblob, operands, prepare, compare_native,
+                                      bit_mismatch_examples, weight_diagnostics)
 from texture_style_adapter import HalfRGB
 
 
@@ -91,6 +92,35 @@ class NativeTextureReferenceTests(unittest.TestCase):
         np.testing.assert_array_equal(unblob(blob(a)).view('u2'),a.view('u2'))
         record=blob(a);record['sha256']='0'*64
         with self.assertRaises(ValueError):unblob(record)
+
+    def test_weight_probe_is_separate_and_its_raw_bytes_are_verified(self):
+        raw=copy.deepcopy(self.raw)
+        raw['weight_probe_dispatches']=18;raw['GPU_dispatches']=36
+        zero=np.zeros((8,12,4),dtype='<f2').tobytes()
+        raw['weight_probe_source_sha256']=hashlib.sha256(zero).hexdigest()
+        raw['weight_probe_edited_sha256']=hashlib.sha256(np.ones((8,12,4),dtype='<f2').tobytes()).hexdigest()
+        for row in raw['rows']:
+            row['weight_f16_base64']=base64.b64encode(zero).decode()
+            row['weight_sha256']=hashlib.sha256(zero).hexdigest()
+        self.assertEqual(compare_native(raw,self.inputs)['GPU_dispatches'],36)
+        diagnostic=weight_diagnostics(raw,self.inputs)
+        self.assertEqual(len(diagnostic['rows']),18)
+        self.assertFalse(diagnostic['native_weight_used_by_main_model'])
+        raw['rows'][0]['weight_sha256']='0'*64
+        with self.assertRaises(ValueError):weight_diagnostics(raw,self.inputs)
+
+    def test_one_half_bit_failure_is_retained_below_numeric_threshold(self):
+        raw=copy.deepcopy(self.raw)
+        data=bytearray(base64.b64decode(raw['rows'][0]['output_f16_base64']))
+        data[0]^=1
+        raw['rows'][0]['output_f16_base64']=base64.b64encode(data).decode()
+        raw['rows'][0]['output_sha256']=hashlib.sha256(data).hexdigest()
+        result=compare_native(raw,self.inputs)['rows'][0]['native_minus_model']
+        self.assertEqual(result['half_bit_mismatches'],1)
+        self.assertEqual(result['exceedance_components'],0)
+        examples=bit_mismatch_examples(raw,self.inputs)[raw['rows'][0]['name']]
+        self.assertEqual(len(examples),1)
+        self.assertEqual(examples[0]['channel'],0)
 
 
 if __name__=='__main__':unittest.main()

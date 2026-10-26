@@ -137,8 +137,13 @@ def compare_native(raw: dict, inputs: dict) -> dict:
     if raw.get('input_manifest_sha256') != inputs['input_manifest_sha256']:
         raise ValueError('Actual native input manifest differs')
     expected = inputs['cases']; captured = raw['rows']
-    if len(captured) != len(expected) or raw['GPU_dispatches'] != len(expected):
+    probes = raw.get('weight_probe_dispatches',0)
+    if probes not in (0,len(expected)) or len(captured) != len(expected) or raw['GPU_dispatches'] != len(expected)+probes:
         raise ValueError('Missing or extra native dispatches')
+    if probes:
+        for key,value in (('weight_probe_source_sha256',0),('weight_probe_edited_sha256',1)):
+            if raw.get(key) != hashlib.sha256(np.full((8,12,4),value,dtype='<f2').tobytes()).hexdigest():
+                raise ValueError('Native weight probe inputs differ from 0/1')
     rows = []
     for actual,reference in zip(captured,expected):
         if actual['name'] != reference['name'] or actual['command_status'] != 4:
@@ -159,7 +164,7 @@ def compare_native(raw: dict, inputs: dict) -> dict:
         rows.append({k:reference[k] for k in ('name','pattern','mask_mode','brightness_mix','strength')})
         rows[-1]['native_minus_model'] = compare_rgb(native[...,:3],unblob(reference['model_output'])).record()
         rows[-1]['native_effect_from_input'] = compare_rgb(native,unblob(reference['inputs']['source'])).record()
-    return {'status':'aligned_native_final_stage_observed','GPU_dispatches':len(rows), 'rows':rows,
+    return {'status':'aligned_native_final_stage_observed','GPU_dispatches':len(rows)+probes, 'rows':rows,
             'all_observed_RGB_half_bits_match_continuous_model':all(r['native_minus_model']['half_bit_mismatches'] == 0 for r in rows),
             'Apple_capture_order_verified':False,'full_Texture_pipeline_verified':False,
             'real_segmentation_verified':False,'upstream_native_verified':False}
@@ -182,3 +187,28 @@ def bit_mismatch_examples(raw: dict, inputs: dict) -> dict:
              'native':float(native[y,x,c]),'model':float(model[y,x,c])}
             for y,x,c in mismatches[:16]]
     return result
+
+
+def weight_diagnostics(raw: dict, inputs: dict) -> dict:
+    """Use native 0/1 observations to locate error, never to feed the main model."""
+    if not raw.get('weight_probe_dispatches'):
+        return {'status':'not_collected','native_weight_used_by_main_model':False}
+    rows=[]
+    for actual,reference in zip(raw['rows'],inputs['cases']):
+        data=base64.b64decode(actual['weight_f16_base64'],validate=True)
+        if hashlib.sha256(data).hexdigest() != actual['weight_sha256'] or len(data) != 8*12*8:
+            raise ValueError('Native weight byte identity differs')
+        native_weight=np.frombuffer(data,dtype='<f2').reshape(8,12,4)[...,:3]
+        if not np.isfinite(native_weight).all() or np.any(native_weight<0) or np.any(native_weight>1) or not np.all(native_weight==native_weight[...,:1]):
+            raise ValueError('Invalid native scalar weight observation')
+        m={k:unblob(reference['inputs'][k]).astype('f8') for k in ('face','instance','hair','lips','ears','tattoo','glasses','blend')}
+        continuous=np.clip((m['face']-(m['lips']+m['ears']+m['tattoo']+m['glasses']+m['hair']))*m['instance'],0,1)*m['blend']*reference['brightness_mix']*reference['strength']
+        expected=np.repeat(continuous[...,None],3,axis=-1).astype('f2')
+        x=unblob(reference['inputs']['source'])[...,:3].astype('f8')
+        e=unblob(reference['inputs']['edited'])[...,:3].astype('f8')
+        observed=np.frombuffer(base64.b64decode(actual['output_f16_base64']),dtype='<f2').reshape(8,12,4)[...,:3]
+        diagnostic=((e-x)*native_weight.astype('f8')+x).astype('f2')
+        rows.append({'name':actual['name'], 'native_weight_minus_continuous_model':compare_rgb(native_weight,expected).record(),
+                     'native_image_minus_continuous_mix_with_observed_weight':compare_rgb(observed,diagnostic).record()})
+    return {'status':'native_0_1_weight_diagnostics','rows':rows,
+            'native_weight_used_by_main_model':False,'sampler_or_compiler_equivalence_proved':False}

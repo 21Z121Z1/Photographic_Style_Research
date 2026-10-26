@@ -14,7 +14,7 @@ import subprocess
 
 from native_reference import (REPO, check_root_wrapper, check_wrapper, classify_math,
                               encoded, unpack)
-from native_texture_reference import compare_native, bit_mismatch_examples
+from native_texture_reference import compare_native, bit_mismatch_examples, weight_diagnostics
 
 NAMES = ('Styles fresh native reference','Styles native UnderEye reference capture')
 
@@ -81,6 +81,11 @@ def read(head: str, output: Path, repository: str) -> dict:
         result['GPU_reference_replayed'] = comparison['status'] == 'aligned_native_final_stage_observed'
         result['GPU_comparison'] = comparison
         result['GPU_half_bit_mismatch_examples'] = bit_mismatch_examples(texture['native'],texture['inputs'])
+        if 'weight_diagnostics' in texture:
+            weights=weight_diagnostics(texture['native'],texture['inputs'])
+            if encoded(weights) != encoded(texture['weight_diagnostics']):
+                raise ValueError('Native weight diagnostics do not replay')
+            result['GPU_weight_diagnostics'] = weights
     (output/'verification.json').write_bytes(encoded(result))
     return result
 
@@ -92,4 +97,4 @@ if __name__ == '__main__':
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
     r=read(args.head,args.output,args.repository)
-    print(json.dumps({k:v for k,v in r.items() if k not in ('GPU_comparison','GPU_half_bit_mismatch_examples')},indent=2))
+    print(json.dumps({k:v for k,v in r.items() if k not in ('GPU_comparison','GPU_half_bit_mismatch_examples','GPU_weight_diagnostics')},indent=2))

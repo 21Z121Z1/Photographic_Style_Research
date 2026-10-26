@@ -76,6 +76,13 @@ static void Observe(NSString *manifestPath, NSMutableDictionary *report) {
     NSMutableArray *rows = [NSMutableArray new]; report[@"rows"] = rows;
     NSArray *maskNames = @[@"instance",@"hair",@"face",@"lips",@"ears",@"tattoo",@"glasses"];
     NSString *inputRoot = manifestPath.stringByDeletingLastPathComponent;
+    NSMutableData *zeros = [NSMutableData dataWithLength:width*height*8], *ones = [zeros mutableCopy];
+    for (NSUInteger i=0; i<width*height*4; ++i) ((__fp16 *)ones.mutableBytes)[i] = 1;
+    id<MTLTexture> probeZero = Texture(device,width,height,MTLPixelFormatRGBA16Float,zeros);
+    id<MTLTexture> probeOne = Texture(device,width,height,MTLPixelFormatRGBA16Float,ones);
+    report[@"weight_probe_source_sha256"] = Sha(zeros);
+    report[@"weight_probe_edited_sha256"] = Sha(ones);
+    report[@"weight_probe_dispatches"] = @0;
     for (NSDictionary *test in manifest[@"cases"]) { @autoreleasepool {
         NSMutableDictionary *inputs = [NSMutableDictionary new], *hashes = [NSMutableDictionary new];
         for (NSString *key in @[@"source",@"edited",@"instance",@"hair",@"face",@"lips",@"ears",@"tattoo",@"glasses",@"blend"]) {
@@ -85,31 +92,37 @@ static void Observe(NSString *manifestPath, NSMutableDictionary *report) {
             inputs[key] = Texture(device,width,height,rgb ? MTLPixelFormatRGBA16Float : MTLPixelFormatR16Float,data);
             hashes[key] = Sha(data);
         }
-        NSMutableData *initial = [NSMutableData dataWithLength:width*height*8];
-        for (NSUInteger i=0; i<width*height*4; ++i) ((__fp16 *)initial.mutableBytes)[i] = -99;
-        id<MTLTexture> output = Texture(device,width,height,MTLPixelFormatRGBA16Float,initial);
         float params[13] = {0}, stats[12] = {0}, roi[4] = {0,0,1,1};
         params[2] = [test[@"brightness_mix"] floatValue]; stats[3] = [test[@"strength"] floatValue];
-        id<MTLCommandBuffer> command = [queue commandBuffer];
-        id<MTLComputeCommandEncoder> encoder = [command computeCommandEncoder];
-        [encoder setComputePipelineState:pipeline];
-        [encoder setTexture:inputs[@"source"] atIndex:0]; [encoder setTexture:output atIndex:1];
-        for (NSUInteger i=0; i<maskNames.count; ++i) [encoder setTexture:inputs[maskNames[i]] atIndex:i+2];
-        [encoder setTexture:inputs[@"blend"] atIndex:14]; [encoder setTexture:inputs[@"edited"] atIndex:15];
-        [encoder setBytes:params length:sizeof(params) atIndex:3];
-        [encoder setBytes:stats length:sizeof(stats) atIndex:18];
-        for (NSNumber *index in @[@13,@23,@22,@4,@5,@7,@8,@9,@6,@10]) [encoder setBytes:roi length:sizeof(roi) atIndex:index.unsignedIntegerValue];
-        [encoder dispatchThreads:MTLSizeMake(width,height,1) threadsPerThreadgroup:MTLSizeMake(16,16,1)];
-        [encoder endEncoding]; [command commit]; [command waitUntilCompleted];
-        report[@"GPU_dispatches"] = @([report[@"GPU_dispatches"] unsignedIntegerValue]+1);
-        if (command.error || command.status != MTLCommandBufferStatusCompleted) { report[@"error"] = command.error.localizedDescription ?: @"command not completed"; return; }
-        NSMutableData *data = [NSMutableData dataWithLength:width*height*8];
-        [output getBytes:data.mutableBytes bytesPerRow:width*8 fromRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0];
+        NSData *data = nil, *weight = nil;
+        for (NSUInteger probe=0; probe<2; ++probe) {
+            NSMutableData *initial = [NSMutableData dataWithLength:width*height*8];
+            for (NSUInteger i=0; i<width*height*4; ++i) ((__fp16 *)initial.mutableBytes)[i] = -99;
+            id<MTLTexture> output = Texture(device,width,height,MTLPixelFormatRGBA16Float,initial);
+            id<MTLCommandBuffer> command = [queue commandBuffer];
+            id<MTLComputeCommandEncoder> encoder = [command computeCommandEncoder];
+            [encoder setComputePipelineState:pipeline];
+            [encoder setTexture:probe ? probeZero : inputs[@"source"] atIndex:0]; [encoder setTexture:output atIndex:1];
+            for (NSUInteger i=0; i<maskNames.count; ++i) [encoder setTexture:inputs[maskNames[i]] atIndex:i+2];
+            [encoder setTexture:inputs[@"blend"] atIndex:14]; [encoder setTexture:probe ? probeOne : inputs[@"edited"] atIndex:15];
+            [encoder setBytes:params length:sizeof(params) atIndex:3];
+            [encoder setBytes:stats length:sizeof(stats) atIndex:18];
+            for (NSNumber *index in @[@13,@23,@22,@4,@5,@7,@8,@9,@6,@10]) [encoder setBytes:roi length:sizeof(roi) atIndex:index.unsignedIntegerValue];
+            [encoder dispatchThreads:MTLSizeMake(width,height,1) threadsPerThreadgroup:MTLSizeMake(16,16,1)];
+            [encoder endEncoding]; [command commit]; [command waitUntilCompleted];
+            report[@"GPU_dispatches"] = @([report[@"GPU_dispatches"] unsignedIntegerValue]+1);
+            if (command.error || command.status != MTLCommandBufferStatusCompleted) { report[@"error"] = command.error.localizedDescription ?: @"command not completed"; return; }
+            NSMutableData *readback = [NSMutableData dataWithLength:width*height*8];
+            [output getBytes:readback.mutableBytes bytesPerRow:width*8 fromRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0];
+            if (probe) { weight = readback; report[@"weight_probe_dispatches"] = @([report[@"weight_probe_dispatches"] unsignedIntegerValue]+1); }
+            else data = readback;
+        }
         [rows addObject:@{@"name":test[@"name"], @"input_sha256":hashes,
             @"params_sha256":Sha([NSData dataWithBytes:params length:sizeof(params)]),
             @"stats_sha256":Sha([NSData dataWithBytes:stats length:sizeof(stats)]),
             @"output_sha256":Sha(data), @"output_f16_base64":[data base64EncodedStringWithOptions:0],
-            @"command_status":@(command.status)}];
+            @"weight_sha256":Sha(weight), @"weight_f16_base64":[weight base64EncodedStringWithOptions:0],
+            @"command_status":@(MTLCommandBufferStatusCompleted)}];
     }}
     report[@"library_unchanged"] = @([Sha([NSData dataWithContentsOfFile:path]) isEqual:expected]);
     report[@"status"] = @"native_under_eye_final_mix_completed";

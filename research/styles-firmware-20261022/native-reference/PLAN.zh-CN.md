@@ -38,3 +38,9 @@ Edited=half(float64(writerRGB)*.95+.035)；八张 mask 与 stats 均为合成外
 
 CPU 与 Texture 原始 JSON 分别通过两条 GitHub Check 文本发布，避免文本长度上限。
 CPU 收据包含 Texture 报告 SHA；Texture 收据包含共同源码 manifest SHA，二者互相绑定。
+
+发现空间 mask 下连续模型存在 337 个 half 位差后，新增同上下文的 0/1 权重探针。
+每个条件多一次 dispatch，仅将 source/edited 改为全 0/1，params/stats/masks 保持原字节。
+最终每次运行总计 36 dispatch，其中真实 source-to-writer 输入 18 次、权重诊断 18 次。
+实际原生权重只用于误差归因，绝不补入主要独立模型。
+额外记录原库选中 AIR 的算术 SSA 摘要、payload SHA 与 llvm-dis 身份，不上传完整 shader 或 bitcode。
