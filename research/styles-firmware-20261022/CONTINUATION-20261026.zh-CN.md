@@ -37,6 +37,9 @@ python3.13 -m unittest -v test_skin_smoothing_final test_texture_style_adapter t
 
 收据 before.json 包含实际 HEAD、dirty 状态、源码与输入 SHA 和 OS/架构/Python/NumPy。
 result.json 和 tests.log 记录命令、测试状态与日志 SHA。
+本地干净提交 `26a4e0ac6ca9aa5363ec8f8b81b63d1709ddff90` 的 130 项定向回归通过。
+耗时 10.8496 秒是一次回归成本，不是性能优化测量。
+收据与日志在 `evidence/continuation-20261026/`，输入和源码运行前后不变。
 最终提交的 CI 使用相同入口并上传收据。旧 SHA 的通过不转记给新提交。
 未测新性能优化；旧同机成本与 master 缺少同工作负载的边界仍适用，不能报告优化收益。
 
