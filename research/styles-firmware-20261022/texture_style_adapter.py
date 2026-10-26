@@ -4,16 +4,23 @@ This module declares its arithmetic and storage separately: the reused continuou
 formula runs in float64, then the RGB output is stored as NumPy float16. This is
 not an implementation of Apple's half operations or sampler. Color domain and
 effect order are caller-supplied contracts, not recovered camera properties.
-SkinSmooth has a separate conditional final-blend helper in skin_smoothing_final;
-complete SkinSmooth/Mattify effects remain unavailable through this adapter.
+SkinSmooth final blending requires external reconstruction, blur, and weights.
+The explicit final-blend effect does not implement complete SkinSmooth/Mattify.
 """
+from __future__ import annotations
+
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 from enum import Enum
 import hashlib
 import importlib.util
 from pathlib import Path
 
 import numpy as np
+
+
+if TYPE_CHECKING:
+    from skin_smoothing_final import SkinSmoothingContext
 
 
 _HELPER = Path(__file__).resolve().parents[1] / 'semantic-styles/studio_under_eye.py'
@@ -189,6 +196,7 @@ def apply_under_eye(source: HalfRGB, context: UnderEyeContext) -> UnderEyeResult
 class TextureEffect(Enum):
     UNDER_EYE = 'UnderEyeBrightening'
     SKIN_SMOOTH = 'SkinSmoothingStandalone'
+    SKIN_SMOOTH_FINAL = 'SkinSmoothingFinalBlendOnly'
     MATTIFY = 'Mattify'
 
 
@@ -204,11 +212,14 @@ class TextureRun:
 
 
 def run_conditional_texture(source: HalfRGB, *, effects: tuple[TextureEffect, ...],
-                            under_eye: UnderEyeContext | None = None) -> TextureRun:
+                            under_eye: UnderEyeContext | None = None,
+                            skin_smooth_final: SkinSmoothingContext | None = None) -> TextureRun:
     """Execute only implemented effects in an explicitly requested experimental order.
 
     An unavailable stage returns no final output, preserving preceding checkpoints.
     No camera order or position relative to GTM/LTM is asserted by this interface.
+    SKIN_SMOOTH_FINAL consumes external operands without reconstructing statistics.
+    SKIN_SMOOTH still denotes the unavailable complete effect.
     """
     if not isinstance(source, HalfRGB) or type(effects) is not tuple or any(type(e) is not TextureEffect for e in effects):
         raise TypeError('Typed source and explicit tuple of effect enums are required')
@@ -216,7 +227,18 @@ def run_conditional_texture(source: HalfRGB, *, effects: tuple[TextureEffect, ..
     checkpoints = []
     gaps = []
     current = source
-    for effect in effects:
+    for index, effect in enumerate(effects):
+        if effect is TextureEffect.SKIN_SMOOTH_FINAL:
+            from skin_smoothing_final import apply_skin_smoothing_final
+            if skin_smooth_final is None:
+                return TextureRun(None, tuple(completed), tuple(checkpoints), tuple(gaps) +
+                                  ('SkinSmooth final blend: external reconstruction/blur/weights missing',))
+            result = apply_skin_smoothing_final(current, skin_smooth_final)
+            completed.append(effect)
+            checkpoints.extend(Checkpoint(f'{index}.{effect.value}.{cp.name}', cp.values,
+                                          cp.precision, cp.meaning) for cp in result.checkpoints)
+            current = result.output
+            continue
         if effect is not TextureEffect.UNDER_EYE:
             return TextureRun(None, tuple(completed), tuple(checkpoints), tuple(gaps) +
                               (effect.value + ': independent backend unavailable; use existing native unit harness',))
