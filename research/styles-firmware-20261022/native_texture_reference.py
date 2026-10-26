@@ -163,3 +163,22 @@ def compare_native(raw: dict, inputs: dict) -> dict:
             'all_observed_RGB_half_bits_match_continuous_model':all(r['native_minus_model']['half_bit_mismatches'] == 0 for r in rows),
             'Apple_capture_order_verified':False,'full_Texture_pipeline_verified':False,
             'real_segmentation_verified':False,'upstream_native_verified':False}
+
+
+def bit_mismatch_examples(raw: dict, inputs: dict) -> dict:
+    """Retain actual bit failures even when all errors are below 1e-3."""
+    if raw.get('status') != 'native_under_eye_final_mix_completed':
+        return {}
+    result = {}
+    for actual,reference in zip(raw['rows'],inputs['cases']):
+        data=base64.b64decode(actual['output_f16_base64'],validate=True)
+        native=np.frombuffer(data,dtype='<f2').reshape(8,12,4)[...,:3]
+        model=unblob(reference['model_output'])
+        mismatches=np.argwhere(native.view('u2') != model.view('u2'))
+        result[actual['name']] = [
+            {'y':int(y),'x':int(x),'channel':int(c),
+             'native_half_bits':int(native[y,x,c].view('u2')),
+             'model_half_bits':int(model[y,x,c].view('u2')),
+             'native':float(native[y,x,c]),'model':float(model[y,x,c])}
+            for y,x,c in mismatches[:16]]
+    return result

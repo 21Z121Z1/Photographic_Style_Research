@@ -215,7 +215,12 @@ def collect(output: Path, *, publish: bool = False) -> int:
                           'source_manifest_sha256':hashlib.sha256(encoded(report['source_sha256'])).hexdigest(),
                           'system':report['system']}
         try:
-            from native_texture_reference import prepare, compare_native
+            from under_eye_recipe import collect_recipe
+            texture_report['arithmetic_recipe'] = collect_recipe()
+        except Exception as error:
+            texture_report['arithmetic_recipe_error'] = str(error)
+        try:
+            from native_texture_reference import prepare, compare_native, bit_mismatch_examples
             manifest,inputs = prepare(output/'under-eye-inputs')
             texture_report['inputs'] = inputs
             texture_exe = output/'under-eye-probe'
@@ -225,6 +230,7 @@ def collect(output: Path, *, publish: bool = False) -> int:
             native = json.loads(command([str(texture_exe),str(manifest)], 'under-eye-observation'))
             texture_report['native'] = native
             texture_report['comparison'] = compare_native(native,inputs)
+            texture_report['half_bit_mismatch_examples'] = bit_mismatch_examples(native,inputs)
             texture_report['status'] = texture_report['comparison']['status']
         except Exception as error:
             texture_report['status'] = 'failed_with_retained_evidence'
