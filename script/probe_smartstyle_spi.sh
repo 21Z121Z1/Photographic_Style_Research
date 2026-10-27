@@ -13,7 +13,7 @@ output_path="$1"
 probe_bin="${RUNNER_TEMP:-/tmp}/smartstyle-spi-probe"
 
 clang -std=gnu11 -fobjc-arc -Wall -Wextra -Werror \
-  -framework Foundation \
+  -framework Foundation -framework Metal \
   "${repo_root}/tools/smartstyle_spi_probe.m" \
   -o "${probe_bin}"
 
