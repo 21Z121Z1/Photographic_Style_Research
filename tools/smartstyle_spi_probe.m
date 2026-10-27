@@ -13,6 +13,8 @@
 // an arbitrary function pointer can double-release self when init returns nil.
 @interface NSObject (SmartStyleProbeInitializer)
 - (instancetype)initWithOptionalMetalCommandQueue:(id)queue useCase:(NSUInteger)useCase;
+- (instancetype)initWithoutLibraryUsingOptionalCommandQueue:(id)queue;
+- (instancetype)initWithMetalContext:(id)context useCase:(NSUInteger)useCase;
 @end
 
 static NSString *StringFromCString(const char *s) {
@@ -89,14 +91,15 @@ static NSDictionary *ProbeClass(NSString *name) {
 }
 
 static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long useCase,
-                                     BOOL useNilQueue) {
+                                     BOOL useNilQueue, BOOL useFigContext) {
     Class cls = NSClassFromString(@"CMISmartStyleUtilitiesV1");
     SEL initSelector = NSSelectorFromString(@"initWithOptionalMetalCommandQueue:useCase:");
     Method initMethod = cls ? class_getInstanceMethod(cls, initSelector) : NULL;
     if (!metal || !initMethod) {
         return @{@"attempted": @NO, @"reason": @"No Metal device or initializer"};
     }
-    fprintf(stderr, "constructor: preparing queue useCase=%llu nilQueue=%d\n", useCase, useNilQueue);
+    fprintf(stderr, "constructor: preparing queue useCase=%llu nilQueue=%d figContext=%d\n",
+            useCase, useNilQueue, useFigContext);
     fflush(stderr);
     id<MTLCommandQueue> queue = useNilQueue ? nil : [metal newCommandQueue];
     if (!queue && !useNilQueue) {
@@ -105,8 +108,19 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long us
     @try {
         fprintf(stderr, "constructor: entering init\n");
         fflush(stderr);
-        id instance = [[cls alloc] initWithOptionalMetalCommandQueue:queue
-                                                           useCase:(NSUInteger)useCase];
+        id instance = nil;
+        if (useFigContext) {
+            Class contextClass = NSClassFromString(@"FigMetalContext");
+            id context = [[contextClass alloc] initWithoutLibraryUsingOptionalCommandQueue:queue];
+            fprintf(stderr, "constructor: FigMetalContext returned %s\n", context ? "object" : "nil");
+            fflush(stderr);
+            if (context) {
+                instance = [[cls alloc] initWithMetalContext:context useCase:(NSUInteger)useCase];
+            }
+        } else {
+            instance = [[cls alloc] initWithOptionalMetalCommandQueue:queue
+                                                             useCase:(NSUInteger)useCase];
+        }
         fprintf(stderr, "constructor: init returned %s\n", instance ? "object" : "nil");
         fflush(stderr);
         if (!instance) {
@@ -142,8 +156,9 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long us
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
         if (argc != 2 && !(argc >= 4 && argc <= 5 && strcmp(argv[2], "--constructor") == 0 &&
-            (argc == 4 || strcmp(argv[4], "--nil-queue") == 0))) {
-            fprintf(stderr, "usage: smartstyle_spi_probe OUTPUT_JSON [--constructor USE_CASE [--nil-queue]]\n");
+            (argc == 4 || strcmp(argv[4], "--nil-queue") == 0 ||
+             strcmp(argv[4], "--fig-context") == 0))) {
+            fprintf(stderr, "usage: smartstyle_spi_probe OUTPUT_JSON [--constructor USE_CASE [--nil-queue|--fig-context]]\n");
             return 2;
         }
 
@@ -185,7 +200,10 @@ int main(int argc, const char *argv[]) {
         id<MTLDevice> metal = MTLCreateSystemDefaultDevice();
         BOOL tryConstructor = (argc >= 4);
         unsigned long long useCase = tryConstructor ? strtoull(argv[3], NULL, 10) : 0;
-        NSDictionary *constructorTest = tryConstructor ? ProbeConstructor(metal, useCase, argc == 5) :
+        BOOL useNilQueue = (argc == 5 && strcmp(argv[4], "--nil-queue") == 0);
+        BOOL useFigContext = (argc == 5 && strcmp(argv[4], "--fig-context") == 0);
+        NSDictionary *constructorTest = tryConstructor ? ProbeConstructor(metal, useCase,
+                                                                         useNilQueue, useFigContext) :
             @{@"attempted": @NO, @"reason": @"Constructor kept out of availability probe"};
 
         struct utsname systemInfo;
