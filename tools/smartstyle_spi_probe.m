@@ -1,6 +1,7 @@
 // Read-only CMISmartStyle runtime availability probe for GitHub macOS runners.
 // Does not invoke private rendering methods or process personal photos.
 #import <Foundation/Foundation.h>
+#import <Metal/Metal.h>
 #import <objc/runtime.h>
 #include <dlfcn.h>
 #include <sys/utsname.h>
@@ -21,7 +22,12 @@ static NSArray<NSDictionary *> *MethodsForClass(Class cls, BOOL classMethods) {
             [name localizedCaseInsensitiveContainsString:@"ToneCurve"] ||
             [name localizedCaseInsensitiveContainsString:@"Coefficient"] ||
             [name localizedCaseInsensitiveContainsString:@"LinearThumbnail"] ||
-            [name localizedCaseInsensitiveContainsString:@"GainMap"]) {
+            [name localizedCaseInsensitiveContainsString:@"GainMap"] ||
+            [name hasPrefix:@"init"] ||
+            [name localizedCaseInsensitiveContainsString:@"Setup"] ||
+            [name localizedCaseInsensitiveContainsString:@"Device"] ||
+            [name localizedCaseInsensitiveContainsString:@"UseCase"] ||
+            [name localizedCaseInsensitiveContainsString:@"Context"]) {
             [result addObject:@{
                 @"selector": name,
                 @"type_encoding": StringFromCString(method_getTypeEncoding(methods[i])),
@@ -66,6 +72,10 @@ static NSDictionary *ProbeClass(NSString *name) {
         }
     }
     output[@"exact_candidate_selectors"] = matches;
+    Method inheritedInit = class_getInstanceMethod(cls, @selector(init));
+    output[@"responds_to_inherited_init"] = @(inheritedInit != NULL);
+    output[@"inherited_init_type_encoding"] = StringFromCString(
+        inheritedInit ? method_getTypeEncoding(inheritedInit) : NULL);
     return output;
 }
 
@@ -106,6 +116,8 @@ int main(int argc, const char *argv[]) {
             [classes addObject:ProbeClass(name)];
         }
 
+        id<MTLDevice> metal = MTLCreateSystemDefaultDevice();
+
         struct utsname systemInfo;
         uname(&systemInfo);
         NSDictionary *result = @{
@@ -113,6 +125,8 @@ int main(int argc, const char *argv[]) {
             @"probe_scope": @"dynamic-library/class/method-presence-only; no private SPI invoked",
             @"os_version": [NSProcessInfo processInfo].operatingSystemVersionString,
             @"architecture": StringFromCString(systemInfo.machine),
+            @"metal_default_device_present": @(metal != nil),
+            @"metal_default_device_name": metal ? metal.name : @"",
             @"frameworks": frameworks,
             @"classes": classes,
         };
