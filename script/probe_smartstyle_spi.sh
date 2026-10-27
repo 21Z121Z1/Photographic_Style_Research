@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build/run the isolated, read-only Smart Style SPI availability probe.
+# Build/run availability and isolated constructor probes without personal media.
 set -euo pipefail
 
 if [[ $# -ne 1 ]]; then
@@ -18,3 +18,20 @@ clang -std=gnu11 -fobjc-arc -Wall -Wextra -Werror \
   -o "${probe_bin}"
 
 "${probe_bin}" "${output_path}"
+
+# Constructor exploration runs in separate processes because undefined use
+# cases and virtualized Metal kernels may abort rather than throw exceptions.
+for use_case in 0 1 2 3; do
+  constructor_path="${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${use_case}.json"
+  set +e
+  "${probe_bin}" "${constructor_path}" --constructor "${use_case}" \
+    >"${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${use_case}.stdout" \
+    2>"${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${use_case}.stderr"
+  status=$?
+  set -e
+  if [[ ${status} -ne 0 ]]; then
+    printf '{"attempted":true,"use_case":%s,"exit_status":%s,"constructed":false,"note":"process failed; see stderr artifact"}\n' \
+      "${use_case}" "${status}" >"${constructor_path}"
+  fi
+  printf 'Smart Style constructor useCase=%s exit=%s\n' "${use_case}" "${status}"
+done
