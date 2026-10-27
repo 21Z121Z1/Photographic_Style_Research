@@ -21,17 +21,24 @@ clang -std=gnu11 -fobjc-arc -Wall -Wextra -Werror \
 
 # Constructor exploration runs in separate processes because undefined use
 # cases and virtualized Metal kernels may abort rather than throw exceptions.
-for use_case in 0 1 2 3; do
-  constructor_path="${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${use_case}.json"
+ulimit -c 0
+for trial in 0 1 2 3 0-nil 1-nil; do
+  use_case="${trial%%-*}"
+  constructor_path="${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${trial}.json"
+  probe_args=("${constructor_path}" --constructor "${use_case}")
+  if [[ "${trial}" == *-nil ]]; then
+    probe_args+=(--nil-queue)
+  fi
   set +e
-  "${probe_bin}" "${constructor_path}" --constructor "${use_case}" \
-    >"${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${use_case}.stdout" \
-    2>"${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${use_case}.stderr"
+  "${probe_bin}" "${probe_args[@]}" \
+    >"${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${trial}.stdout" \
+    2>"${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${trial}.stderr"
   status=$?
   set -e
   if [[ ${status} -ne 0 ]]; then
-    printf '{"attempted":true,"use_case":%s,"exit_status":%s,"constructed":false,"note":"process failed; see stderr artifact"}\n' \
-      "${use_case}" "${status}" >"${constructor_path}"
+    printf '{"attempted":true,"trial":"%s","use_case":%s,"exit_status":%s,"constructed":false,"note":"process failed; see stderr artifact"}\n' \
+      "${trial}" "${use_case}" "${status}" >"${constructor_path}"
   fi
-  printf 'Smart Style constructor useCase=%s exit=%s\n' "${use_case}" "${status}"
+  printf 'Smart Style constructor trial=%s exit=%s\n' "${trial}" "${status}"
+  sed -n '1,20p' "${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${trial}.stderr"
 done
