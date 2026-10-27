@@ -29,7 +29,7 @@ jobs:
             tools/smartstyle_spi_probe.m
             script/probe_smartstyle_spi.sh
           persist-credentials: false
-      - name: Compile and run read-only native probe
+      - name: Compile and run isolated native probes
         shell: bash
         run: bash script/probe_smartstyle_spi.sh "${RUNNER_TEMP}/smartstyle-spi-probe.json"
       - name: Save machine-readable result
@@ -37,5 +37,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: smartstyle-spi-${{ matrix.os }}
-          path: ${{ runner.temp }}/smartstyle-spi-probe.json
+          path: |
+            ${{ runner.temp }}/smartstyle-spi-probe.json
+            ${{ runner.temp }}/smartstyle-constructor-*.json
+            ${{ runner.temp }}/smartstyle-constructor-*.stderr
           if-no-files-found: warn
