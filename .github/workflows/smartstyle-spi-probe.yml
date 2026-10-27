@@ -1,0 +1,44 @@
+name: Smart Style SPI availability (macOS)
+
+on:
+  push:
+    branches:
+      - experiment/smartstyle-spi-runner-20261027
+  pull_request:
+    paths:
+      - .github/workflows/smartstyle-spi-probe.yml
+      - tools/smartstyle_spi_probe.m
+      - script/probe_smartstyle_spi.sh
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-26]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            tools/smartstyle_spi_probe.m
+            script/probe_smartstyle_spi.sh
+          persist-credentials: false
+      - name: Compile and run isolated native probes
+        shell: bash
+        run: bash script/probe_smartstyle_spi.sh "${RUNNER_TEMP}/smartstyle-spi-probe.json"
+      - name: Save machine-readable result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartstyle-spi-${{ matrix.os }}
+          path: |
+            ${{ runner.temp }}/smartstyle-spi-probe.json
+            ${{ runner.temp }}/smartstyle-constructor-*.json
+            ${{ runner.temp }}/smartstyle-constructor-*.stderr
+          if-no-files-found: warn
