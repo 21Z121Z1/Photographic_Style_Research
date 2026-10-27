@@ -1,9 +1,12 @@
-// Read-only CMISmartStyle runtime availability probe for GitHub macOS runners.
-// Does not invoke private rendering methods or process personal photos.
+// CMISmartStyle runtime probe for GitHub macOS runners.
+// Constructor experiments are isolated; no personal photos are processed.
 #import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
 #import <objc/runtime.h>
+#import <objc/message.h>
 #include <dlfcn.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/utsname.h>
 
 static NSString *StringFromCString(const char *s) {
@@ -79,7 +82,7 @@ static NSDictionary *ProbeClass(NSString *name) {
     return output;
 }
 
-static NSDictionary *ProbeConstructor(id<MTLDevice> metal) {
+static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long useCase) {
     Class cls = NSClassFromString(@"CMISmartStyleUtilitiesV1");
     SEL initSelector = NSSelectorFromString(@"initWithOptionalMetalCommandQueue:useCase:");
     Method initMethod = cls ? class_getInstanceMethod(cls, initSelector) : NULL;
@@ -92,15 +95,15 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal) {
     }
     @try {
         typedef id (*InitFn)(id, SEL, id, unsigned long long);
-        InitFn initialize = (InitFn)method_getImplementation(initMethod);
-        id instance = initialize([cls alloc], initSelector, queue, 0);
+        InitFn initialize = (InitFn)objc_msgSend;
+        id instance = initialize([cls alloc], initSelector, queue, useCase);
         if (!instance) {
-            return @{@"attempted": @YES, @"use_case": @0, @"constructed": @NO};
+            return @{@"attempted": @YES, @"use_case": @(useCase), @"constructed": @NO};
         }
         SEL fmtSelector = NSSelectorFromString(@"coefficientsPixelBufferPixelFormat");
         Method fmtMethod = class_getInstanceMethod(cls, fmtSelector);
         if (!fmtMethod) {
-            return @{@"attempted": @YES, @"use_case": @0, @"constructed": @YES,
+            return @{@"attempted": @YES, @"use_case": @(useCase), @"constructed": @YES,
                      @"coefficient_format_available": @NO};
         }
         typedef unsigned int (*FormatFn)(id, SEL);
@@ -110,11 +113,11 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal) {
             (char)(pixelFormat >> 24), (char)(pixelFormat >> 16),
             (char)(pixelFormat >> 8), (char)(pixelFormat), '\0'
         };
-        return @{@"attempted": @YES, @"use_case": @0, @"constructed": @YES,
+        return @{@"attempted": @YES, @"use_case": @(useCase), @"constructed": @YES,
                  @"coefficient_pixel_format_uint32": @(pixelFormat),
                  @"coefficient_pixel_format_fourcc": StringFromCString(fourcc)};
     } @catch (NSException *exception) {
-        return @{@"attempted": @YES, @"use_case": @0, @"constructed": @NO,
+        return @{@"attempted": @YES, @"use_case": @(useCase), @"constructed": @NO,
                  @"exception_name": exception.name ?: @"",
                  @"exception_reason": exception.reason ?: @""};
     }
@@ -122,8 +125,8 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal) {
 
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
-        if (argc != 2) {
-            fprintf(stderr, "usage: smartstyle_spi_probe OUTPUT_JSON\n");
+        if (argc != 2 && !(argc == 4 && strcmp(argv[2], "--constructor") == 0)) {
+            fprintf(stderr, "usage: smartstyle_spi_probe OUTPUT_JSON [--constructor USE_CASE]\n");
             return 2;
         }
 
@@ -158,18 +161,21 @@ int main(int argc, const char *argv[]) {
         }
 
         id<MTLDevice> metal = MTLCreateSystemDefaultDevice();
-        NSDictionary *constructorTest = ProbeConstructor(metal);
+        BOOL tryConstructor = (argc == 4);
+        unsigned long long useCase = tryConstructor ? strtoull(argv[3], NULL, 10) : 0;
+        NSDictionary *constructorTest = tryConstructor ? ProbeConstructor(metal, useCase) :
+            @{@"attempted": @NO, @"reason": @"Constructor kept out of availability probe"};
 
         struct utsname systemInfo;
         uname(&systemInfo);
         NSDictionary *result = @{
             @"probe_version": @1,
-            @"probe_scope": @"dynamic-library/class/method-presence-only; no private SPI invoked",
+            @"probe_scope": tryConstructor ? @"isolated private SPI constructor" : @"dynamic-library/class/method-presence-only",
             @"os_version": [NSProcessInfo processInfo].operatingSystemVersionString,
             @"architecture": StringFromCString(systemInfo.machine),
             @"metal_default_device_present": @(metal != nil),
             @"metal_default_device_name": metal ? metal.name : @"",
-            @"constructor_usecase_zero": constructorTest,
+            @"constructor_test": constructorTest,
             @"frameworks": frameworks,
             @"classes": classes,
         };
