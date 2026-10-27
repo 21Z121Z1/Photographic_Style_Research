@@ -9,6 +9,12 @@
 #include <string.h>
 #include <sys/utsname.h>
 
+// Keep ARC's init-family ownership conventions intact. Casting objc_msgSend to
+// an arbitrary function pointer can double-release self when init returns nil.
+@interface NSObject (SmartStyleProbeInitializer)
+- (instancetype)initWithOptionalMetalCommandQueue:(id)queue useCase:(NSUInteger)useCase;
+@end
+
 static NSString *StringFromCString(const char *s) {
     return s ? [NSString stringWithUTF8String:s] ?: @"<invalid UTF-8>" : @"";
 }
@@ -97,12 +103,10 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long us
         return @{@"attempted": @NO, @"reason": @"Metal command queue unavailable"};
     }
     @try {
-        typedef id (*InitFn)(id, SEL, id, unsigned long long);
-        InitFn initialize = (InitFn)objc_msgSend;
-        id allocated = [cls alloc];
-        fprintf(stderr, "constructor: allocated; entering init\n");
+        fprintf(stderr, "constructor: entering init\n");
         fflush(stderr);
-        id instance = initialize(allocated, initSelector, queue, useCase);
+        id instance = [[cls alloc] initWithOptionalMetalCommandQueue:queue
+                                                           useCase:(NSUInteger)useCase];
         fprintf(stderr, "constructor: init returned %s\n", instance ? "object" : "nil");
         fflush(stderr);
         if (!instance) {
