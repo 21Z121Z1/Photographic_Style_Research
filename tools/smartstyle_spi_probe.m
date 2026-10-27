@@ -82,21 +82,29 @@ static NSDictionary *ProbeClass(NSString *name) {
     return output;
 }
 
-static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long useCase) {
+static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long useCase,
+                                     BOOL useNilQueue) {
     Class cls = NSClassFromString(@"CMISmartStyleUtilitiesV1");
     SEL initSelector = NSSelectorFromString(@"initWithOptionalMetalCommandQueue:useCase:");
     Method initMethod = cls ? class_getInstanceMethod(cls, initSelector) : NULL;
     if (!metal || !initMethod) {
         return @{@"attempted": @NO, @"reason": @"No Metal device or initializer"};
     }
-    id<MTLCommandQueue> queue = [metal newCommandQueue];
-    if (!queue) {
+    fprintf(stderr, "constructor: preparing queue useCase=%llu nilQueue=%d\n", useCase, useNilQueue);
+    fflush(stderr);
+    id<MTLCommandQueue> queue = useNilQueue ? nil : [metal newCommandQueue];
+    if (!queue && !useNilQueue) {
         return @{@"attempted": @NO, @"reason": @"Metal command queue unavailable"};
     }
     @try {
         typedef id (*InitFn)(id, SEL, id, unsigned long long);
         InitFn initialize = (InitFn)objc_msgSend;
-        id instance = initialize([cls alloc], initSelector, queue, useCase);
+        id allocated = [cls alloc];
+        fprintf(stderr, "constructor: allocated; entering init\n");
+        fflush(stderr);
+        id instance = initialize(allocated, initSelector, queue, useCase);
+        fprintf(stderr, "constructor: init returned %s\n", instance ? "object" : "nil");
+        fflush(stderr);
         if (!instance) {
             return @{@"attempted": @YES, @"use_case": @(useCase), @"constructed": @NO};
         }
@@ -108,7 +116,11 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long us
         }
         typedef unsigned int (*FormatFn)(id, SEL);
         FormatFn formatFunction = (FormatFn)method_getImplementation(fmtMethod);
+        fprintf(stderr, "constructor: entering pixel format query\n");
+        fflush(stderr);
         unsigned int pixelFormat = formatFunction(instance, fmtSelector);
+        fprintf(stderr, "constructor: pixel format query returned\n");
+        fflush(stderr);
         char fourcc[5] = {
             (char)(pixelFormat >> 24), (char)(pixelFormat >> 16),
             (char)(pixelFormat >> 8), (char)(pixelFormat), '\0'
@@ -125,8 +137,9 @@ static NSDictionary *ProbeConstructor(id<MTLDevice> metal, unsigned long long us
 
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
-        if (argc != 2 && !(argc == 4 && strcmp(argv[2], "--constructor") == 0)) {
-            fprintf(stderr, "usage: smartstyle_spi_probe OUTPUT_JSON [--constructor USE_CASE]\n");
+        if (argc != 2 && !(argc >= 4 && argc <= 5 && strcmp(argv[2], "--constructor") == 0 &&
+            (argc == 4 || strcmp(argv[4], "--nil-queue") == 0))) {
+            fprintf(stderr, "usage: smartstyle_spi_probe OUTPUT_JSON [--constructor USE_CASE [--nil-queue]]\n");
             return 2;
         }
 
@@ -161,9 +174,9 @@ int main(int argc, const char *argv[]) {
         }
 
         id<MTLDevice> metal = MTLCreateSystemDefaultDevice();
-        BOOL tryConstructor = (argc == 4);
+        BOOL tryConstructor = (argc >= 4);
         unsigned long long useCase = tryConstructor ? strtoull(argv[3], NULL, 10) : 0;
-        NSDictionary *constructorTest = tryConstructor ? ProbeConstructor(metal, useCase) :
+        NSDictionary *constructorTest = tryConstructor ? ProbeConstructor(metal, useCase, argc == 5) :
             @{@"attempted": @NO, @"reason": @"Constructor kept out of availability probe"};
 
         struct utsname systemInfo;
