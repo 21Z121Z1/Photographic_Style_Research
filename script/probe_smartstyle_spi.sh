@@ -22,12 +22,14 @@ clang -std=gnu11 -fobjc-arc -Wall -Wextra -Werror \
 # Constructor exploration runs in separate processes because undefined use
 # cases and virtualized Metal kernels may abort rather than throw exceptions.
 ulimit -c 0
-for trial in 0 1 2 3 0-nil 1-nil; do
+for trial in 0 1 2 3 0-nil 1-nil 0-fig 1-fig 2-fig; do
   use_case="${trial%%-*}"
   constructor_path="${RUNNER_TEMP:-/tmp}/smartstyle-constructor-${trial}.json"
   probe_args=("${constructor_path}" --constructor "${use_case}")
   if [[ "${trial}" == *-nil ]]; then
     probe_args+=(--nil-queue)
+  elif [[ "${trial}" == *-fig ]]; then
+    probe_args+=(--fig-context)
   fi
   set +e
   "${probe_bin}" "${probe_args[@]}" \
