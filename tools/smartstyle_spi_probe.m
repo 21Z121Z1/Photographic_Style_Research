@@ -79,6 +79,47 @@ static NSDictionary *ProbeClass(NSString *name) {
     return output;
 }
 
+static NSDictionary *ProbeConstructor(id<MTLDevice> metal) {
+    Class cls = NSClassFromString(@"CMISmartStyleUtilitiesV1");
+    SEL initSelector = NSSelectorFromString(@"initWithOptionalMetalCommandQueue:useCase:");
+    Method initMethod = cls ? class_getInstanceMethod(cls, initSelector) : NULL;
+    if (!metal || !initMethod) {
+        return @{@"attempted": @NO, @"reason": @"No Metal device or initializer"};
+    }
+    id<MTLCommandQueue> queue = [metal newCommandQueue];
+    if (!queue) {
+        return @{@"attempted": @NO, @"reason": @"Metal command queue unavailable"};
+    }
+    @try {
+        typedef id (*InitFn)(id, SEL, id, unsigned long long);
+        InitFn initialize = (InitFn)method_getImplementation(initMethod);
+        id instance = initialize([cls alloc], initSelector, queue, 0);
+        if (!instance) {
+            return @{@"attempted": @YES, @"use_case": @0, @"constructed": @NO};
+        }
+        SEL fmtSelector = NSSelectorFromString(@"coefficientsPixelBufferPixelFormat");
+        Method fmtMethod = class_getInstanceMethod(cls, fmtSelector);
+        if (!fmtMethod) {
+            return @{@"attempted": @YES, @"use_case": @0, @"constructed": @YES,
+                     @"coefficient_format_available": @NO};
+        }
+        typedef unsigned int (*FormatFn)(id, SEL);
+        FormatFn formatFunction = (FormatFn)method_getImplementation(fmtMethod);
+        unsigned int pixelFormat = formatFunction(instance, fmtSelector);
+        char fourcc[5] = {
+            (char)(pixelFormat >> 24), (char)(pixelFormat >> 16),
+            (char)(pixelFormat >> 8), (char)(pixelFormat), '\0'
+        };
+        return @{@"attempted": @YES, @"use_case": @0, @"constructed": @YES,
+                 @"coefficient_pixel_format_uint32": @(pixelFormat),
+                 @"coefficient_pixel_format_fourcc": StringFromCString(fourcc)};
+    } @catch (NSException *exception) {
+        return @{@"attempted": @YES, @"use_case": @0, @"constructed": @NO,
+                 @"exception_name": exception.name ?: @"",
+                 @"exception_reason": exception.reason ?: @""};
+    }
+}
+
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
         if (argc != 2) {
@@ -117,6 +158,7 @@ int main(int argc, const char *argv[]) {
         }
 
         id<MTLDevice> metal = MTLCreateSystemDefaultDevice();
+        NSDictionary *constructorTest = ProbeConstructor(metal);
 
         struct utsname systemInfo;
         uname(&systemInfo);
@@ -127,6 +169,7 @@ int main(int argc, const char *argv[]) {
             @"architecture": StringFromCString(systemInfo.machine),
             @"metal_default_device_present": @(metal != nil),
             @"metal_default_device_name": metal ? metal.name : @"",
+            @"constructor_usecase_zero": constructorTest,
             @"frameworks": frameworks,
             @"classes": classes,
         };
