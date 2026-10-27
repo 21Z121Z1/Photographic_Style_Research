@@ -171,6 +171,11 @@ int main(int argc, const char *argv[]) {
             @"CMISmartStyleUtilitiesV1",
             @"CMISmartStyleProcessorUtilitiesV1",
             @"CMISmartStyleMetalRendererV1",
+            @"CMIMetalContext",
+            @"FigMetalContext",
+            @"CMIStyleEngine",
+            @"CMIStyleEngineApplyStyle",
+            @"CMISmartStyleProxyRendererV1",
         ];
         NSMutableArray *classes = [NSMutableArray array];
         for (NSString *name in classNames) {
