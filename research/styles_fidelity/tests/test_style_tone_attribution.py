@@ -7,6 +7,22 @@ from research.styles_fidelity.tone_attribution import substitute
 
 
 class ToneAttributionTests(unittest.TestCase):
+    def test_candidate_c_and_d_change_only_the_selected_map(self):
+        for group, key in [('c_only', 'c'), ('d_only', 'd')]:
+            with self.subTest(group=group), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                base = {'c': b'old c', 'd': b'old d', '3': b'curve', '4': 6.,
+                        'h': 2., 'i': {'Gain': 8.}, '1': b'coefficients'}
+                candidate = {**base, 'c': b'histogram c', 'd': b'histogram d', '4': 99.}
+                for name, data in [('base', base), ('candidate', candidate)]:
+                    (root / name).mkdir()
+                    (root / name / 'styles.plist').write_bytes(plistlib.dumps(data))
+                    (root / name / 'linear.heic').write_bytes(name.encode())
+                substitute(root / 'base', root / 'candidate', root / 'out', (group,))
+                result = plistlib.loads((root / 'out/styles.plist').read_bytes())
+                self.assertEqual(result, {**base, key: candidate[key]})
+                self.assertEqual((root / 'out/linear.heic').read_bytes(), b'base')
+
     def test_linear_components_can_be_substituted_independently(self):
         original = {'4': 4., 'h': .75, 'i': {'Gain': 3., 'OriginalRangeMax': .5}}
         generated = {'4': 6., 'h': 2., 'i': {'Gain': 8., 'OriginalRangeMax': .25},

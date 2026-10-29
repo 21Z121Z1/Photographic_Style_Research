@@ -22,6 +22,8 @@ GROUPS = {
     'base_gain': (('h',), ()),
     'thumbnail_encoding': (('i',), ()),
     'tone_curve': (('3',), ()),
+    'c_only': (('c',), ()),
+    'd_only': (('d',), ()),
     'light_maps': (('c', 'd', 'e', 'f', 'g'), ()),
     'statistics_scene': (('5', '6', '7', 'j', 'k'), ()),
     'masks': ((), MASKS),
@@ -68,11 +70,15 @@ def main(argv=None):
     parser.add_argument('--holdout', type=Path, action='append', default=[])
     parser.add_argument('--compare-histogram-light-maps', action='store_true',
                         help='compare the frozen source-derived histogram candidate with default generation')
+    parser.add_argument('--isolate-light-maps', action='store_true',
+                        help='separate c/d changes, test a frozen joint candidate, and retain oracle closure')
     args = parser.parse_args(argv)
+    if args.isolate_light_maps and not args.compare_histogram_light_maps:
+        parser.error('--isolate-light-maps requires --compare-histogram-light-maps')
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     report = {'schema': 'styles-tone-attribution-v1', 'passed': False, 'cases': [],
-        'oracle_resources_used_for_diagnosis': not args.compare_histogram_light_maps,
+        'oracle_resources_used_for_diagnosis': args.isolate_light_maps or not args.compare_histogram_light_maps,
         'product_candidate': args.compare_histogram_light_maps,
         'product_defaults_changed': False,
         'native_consumer_scope': 'PISemanticStyleFilter useStyleEngine=NO; not full engine or reversal',
@@ -102,13 +108,23 @@ def main(argv=None):
                 original, generated = root / 'reference', root / 'generated'
                 candidate = root / 'histogram-resources'
                 candidate_metadata = None
+                joint_metadata = None
                 if args.compare_histogram_light_maps:
                     candidate_file = root / 'histogram.heic'
                     candidate_metadata = blind.regenerate(args.generator, args.adapter,
                         root / 'producer/input.heic', candidate_file, equivalence['reference_headroom'],
                         {**blind.DEFAULT, 'histogram_light_maps': True}, verify_pixels=True)
                     blind.extract(compatibility, candidate_file, candidate)
-                # Both generations end before reference resources are extracted.
+                    if args.isolate_light_maps:
+                        # Fixed from the earlier exposure/gain experiment, not
+                        # selected from this run or its holdout. Keep the cap unchanged.
+                        joint_file = root / 'joint.heic'
+                        joint_metadata = blind.regenerate(args.generator, args.adapter,
+                            root / 'producer/input.heic', joint_file, equivalence['reference_headroom'],
+                            {**blind.DEFAULT, 'baseline_scale': 0.75, 'gain_scale': 0.75,
+                             'histogram_light_maps': True}, verify_pixels=True)
+                        blind.extract(compatibility, joint_file, root / 'joint-resources')
+                # All generations end before reference resources are extracted.
                 blind.extract(compatibility, source, original)
                 blind.extract(compatibility, rebuilt, generated)
                 case = {'name': source.name, 'source_sha256': identity,
@@ -120,6 +136,10 @@ def main(argv=None):
                                                      for key in ('4', 'h', 'i')}
                 if candidate_metadata is not None:
                     case['candidate_generated_metadata'] = candidate_metadata
+                if joint_metadata is not None:
+                    case['joint_generated_metadata'] = joint_metadata
+                    case['joint_calibration'] = {**blind.DEFAULT, 'baseline_scale': 0.75,
+                                                 'gain_scale': 0.75, 'histogram_light_maps': True}
                 report['cases'].append(case)
                 references = {tone: render(renderer, source, original, root / f'ref-{tone}', tone)
                               for tone in blind.TONES}
@@ -135,15 +155,30 @@ def main(argv=None):
                             ('all_renderer_inputs', tuple(GROUPS))]
                 if args.compare_histogram_light_maps:
                     variants = [('generated', ()), ('histogram_light_maps', ())]
+                if args.isolate_light_maps:
+                    variants = [('generated', ()), ('c_only', ('c_only',)),
+                                ('d_only', ('d_only',)), ('histogram_light_maps', ()),
+                                ('joint_histogram', ()),
+                                ('brightness_bundle', ('linear_exposure', 'tone_curve', 'light_maps')),
+                                ('all_renderer_inputs', tuple(GROUPS))]
                 for label, groups in variants:
                     resources = root / ('bundle-' + label)
                     base = candidate if label == 'histogram_light_maps' else generated
-                    substitute(base, original, resources, groups)
+                    if label == 'joint_histogram':
+                        base = root / 'joint-resources'
+                    donor = candidate if args.isolate_light_maps and label in ('c_only', 'd_only') else original
+                    substitute(base, donor, resources, groups)
                     metrics = {f'{tone:g}': blind.score(references[tone],
                         render(renderer, source, resources, root / f'{label}-{tone}', tone))
                         for tone in blind.TONES}
                     case['variants'][label] = {'metrics': metrics,
+                        'oracle_resources_used': bool(groups) and donor == original,
                         'mean_nonzero_tone_rmse': (metrics['-0.5']['rmse'] + metrics['0.5']['rmse']) / 2}
+                    assembled = plistlib.loads((resources / 'styles.plist').read_bytes())
+                    case['variants'][label]['resource_sha256'] = {
+                        key: isolate.sha(assembled[key]) for key in ('1', '3', 'c', 'd')}
+                    case['variants'][label]['linear_metadata'] = {
+                        key: assembled.get(key) for key in ('4', 'h', 'i', 'j')}
                     # Observe what the native consumer actually decoded, rather
                     # than inferring it from pre-encoding Rust samples.
                     facts = json.loads((root / f'{label}-0.5/facts.json').read_text())
@@ -151,12 +186,17 @@ def main(argv=None):
                     case['variants'][label]['native_inputs'] = {
                         key: facts[key] for key in ('primary_input', 'thumbnail_input',
                                                    'native_curve_image', 'gtc_calls')}
+                    if args.isolate_light_maps:
+                        negative = json.loads((root / f'{label}--0.5/facts.json').read_text())
+                        case['variants'][label]['negative_tone_native_inputs'] = {
+                            key: negative[key] for key in ('primary_input', 'thumbnail_input',
+                                                          'native_curve_image', 'gtc_calls')}
                     if color_references:
                         case['variants'][label]['color_metrics'] = {
                             f'{color:g}': blind.score(reference, render(renderer, source,
                                 resources, root / f'{label}-color-{color}', 0.0, color))
                             for color, reference in color_references.items()}
-                if not args.compare_histogram_light_maps:
+                if args.isolate_light_maps or not args.compare_histogram_light_maps:
                     closure = case['variants']['all_renderer_inputs']['metrics']
                     if any(m['maximum_absolute'] != 0 for m in closure.values()):
                         raise ValueError('substituted renderer inputs do not reproduce the reference; attribution incomplete')

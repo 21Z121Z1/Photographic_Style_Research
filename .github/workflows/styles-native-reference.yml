@@ -93,6 +93,13 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/fidelity-venv"
           "$RUNNER_TEMP/fidelity-venv/bin/python" -m pip install numpy==2.2.4 Pillow==11.1.0
           echo "$RUNNER_TEMP/fidelity-venv/bin" >> "$GITHUB_PATH"
+      - name: Check out the fixed final-file Texture replay primitives
+        uses: actions/checkout@v4
+        with:
+          ref: 2bc4e3d16fc2c6028cdf708f06d79cf3be42a6d5
+          path: texture-research
+          sparse-checkout: research/texture-producer-20261020
+          persist-credentials: false
       - uses: actions-rust-lang/setup-rust-toolchain@v2
         with:
           toolchain: stable
@@ -103,19 +110,32 @@ jobs:
           git apply "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
           cargo test --locked -p xdremux-engine
           cargo build --locked -p xdremux-runtime --features styles-research --example styles_fidelity
+          cargo build --locked -p xdremux-cli
           swift build --product xdremux-apple-adapter
-      - name: Compare default and histogram generation after migration
+      - name: Isolate c and d and compare the frozen joint calibration
         shell: bash
         run: |
           adapter="$(cd xdremux && swift build --show-bin-path)/xdremux-apple-adapter"
           python3 -m research.styles_fidelity.tone_attribution \
             --compare-histogram-light-maps \
+            --isolate-light-maps \
             --adapter "$adapter" --generator "$GITHUB_WORKSPACE/xdremux/target/debug/examples/styles_fidelity" \
             --research-root "$GITHUB_WORKSPACE/consumer-research" \
             --input consumer-research/research/vm-native/samples/IMG_2600.HEIC \
             --input consumer-research/research/vm-native/samples/IMG_2604.HEIC \
             --holdout consumer-research/research/vm-native/samples/IMG_2608.HEIC \
             --output "$RUNNER_TEMP/styles-fidelity"
+      - name: Replay Texture from the final encoded HDR product
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          adapter="$(cd xdremux && swift build --show-bin-path)/xdremux-apple-adapter"
+          XDREMUX_APPLE_ADAPTER="$adapter" xdremux/target/debug/xdremux convert \
+            --input xdremux/fixtures/proxdr/oppo/find-x9-ultra/uhdr-portrait-02.heic \
+            --output "$RUNNER_TEMP/texture-product.heic" --apple-styles
+          python3 -m research.styles_fidelity.texture \
+            --adapter "$adapter" --research-root "$GITHUB_WORKSPACE/texture-research" \
+            --input "$RUNNER_TEMP/texture-product.heic" --output "$RUNNER_TEMP/texture-final-replay"
       - name: Bind the measurement to the product commit and research patch
         if: always()
         run: |
@@ -141,5 +161,6 @@ jobs:
           path: |
             ${{ runner.temp }}/styles-fidelity/report.json
             ${{ runner.temp }}/styles-fidelity/source-binding.json
+            ${{ runner.temp }}/texture-final-replay/report.json
           retention-days: 7
           if-no-files-found: error

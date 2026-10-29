@@ -91,6 +91,30 @@ its `--research-root` must be a separate checkout at
 Keep supplied portrait media outside public Git and Actions artifacts. Upload
 only numeric reports, hashes and logs.
 
+## Separate c/d and joint calibration experiment
+
+Add `--isolate-light-maps` to `--compare-histogram-light-maps`. The existing
+workflow runs seven evaluator variants on the same two calibration scenes and
+one held-out scene: default, candidate c only, candidate d only, candidate c+d,
+a joint source-generated candidate, the original brightness bundle, and original
+renderer-input closure. The joint candidate fixes baseline/gain scales to 0.75
+using the earlier exposure/gain experiment; it retains the default baseline cap.
+It is frozen before this run and is not a new search or an unseen-data claim.
+All three complete generations finish before original resources are extracted.
+
+The c-only/d-only variants copy just the selected map from the source-generated
+candidate, leaving the other map, curve, thumbnail, exposure and coefficients
+at default. Per-variant hashes and scalar metadata expose the actual inputs.
+Both Tone signs retain decoded-input observations. The last two variants use
+original resources only for diagnosis, with `oracle_resources_used` recorded for
+each variant. Closure must reproduce all three reference Tone points exactly.
+Experiment completion does not mean candidate fidelity acceptance.
+
+The same workflow also replays all existing Texture effects from a final HDR
+product file and compares stored/recomputed statistics in SDR and HDR. Its
+public control depicts mannequins; human-skin validation remains separate.
+Only numeric reports are uploaded. No product defaults or PR85 code change.
+
 ## Promotion
 
 Before moving the candidate into PR85, resolve the negative-Tone regressions and
