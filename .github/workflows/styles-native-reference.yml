@@ -98,10 +98,23 @@ jobs:
           toolchain: stable
       - name: Apply the research patch and build the shared Rust producer
         working-directory: xdremux
+        shell: bash
         run: |
+          set -euo pipefail
           git apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
           git apply "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
-          cargo test --locked -p xdremux-engine
+          git apply "$GITHUB_WORKSPACE/research/styles_fidelity/key1-regression.patch"
+          set +e
+          cargo test --locked -p xdremux-engine --test style_revert_regression -- --nocapture > "$RUNNER_TEMP/key1-before.log" 2>&1
+          baseline_status=$?
+          set -e
+          if [[ "$baseline_status" -eq 0 ]] || ! grep -Fq 'bounded revert lost RGB correspondence' "$RUNNER_TEMP/key1-before.log" || ! grep -Fq 'test result: FAILED. 0 passed; 1 failed;' "$RUNNER_TEMP/key1-before.log"; then
+            cat "$RUNNER_TEMP/key1-before.log"
+            exit 1
+          fi
+          git apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/key1-bounded.patch"
+          git apply "$GITHUB_WORKSPACE/research/styles_fidelity/key1-bounded.patch"
+          cargo test --locked -p xdremux-engine -- --nocapture 2>&1 | tee "$RUNNER_TEMP/key1-after.log"
           cargo build --locked -p xdremux-runtime --features styles-research --example styles_fidelity
           swift build --product xdremux-apple-adapter
       - name: Export complete editable HEICs for Photos comparison
@@ -128,6 +141,9 @@ jobs:
               'product_build': 'disposable research checkout',
               'candidate_patch_applied': subprocess.run(['git', '-C', 'xdremux', 'apply', '--reverse', '--check', str((package / 'xdremux-research.patch').resolve())], capture_output=True).returncode == 0,
               'candidate_patch_sha256': hashlib.sha256((package / 'xdremux-research.patch').read_bytes()).hexdigest(),
+              'key1_repair_patch_sha256': hashlib.sha256((package / 'key1-bounded.patch').read_bytes()).hexdigest(),
+              'key1_regression_patch_sha256': hashlib.sha256((package / 'key1-regression.patch').read_bytes()).hexdigest(),
+              'engine_source_sha256': hashlib.sha256(pathlib.Path('xdremux/crates/xdremux-engine/src/apple_photographic_styles.rs').read_bytes()).hexdigest(),
               'consumer_revision': '37dd551a949047ed14580efa0c0a2556922791b5',
           }
           (output / 'source-binding.json').write_text(json.dumps(binding, indent=2) + '\n')
@@ -135,11 +151,13 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: xdremux-editable-heic-${{ github.sha }}
+          name: xdremux-fixed-editable-heic-${{ github.sha }}
           path: |
             ${{ runner.temp }}/styles-fidelity/report.json
             ${{ runner.temp }}/styles-fidelity/source-binding.json
             ${{ runner.temp }}/styles-fidelity/README.txt
             ${{ runner.temp }}/styles-fidelity/heic/**/*.HEIC
+            ${{ runner.temp }}/key1-before.log
+            ${{ runner.temp }}/key1-after.log
           retention-days: 7
           if-no-files-found: error

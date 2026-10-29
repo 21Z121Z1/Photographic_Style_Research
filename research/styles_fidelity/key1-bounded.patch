@@ -1,0 +1,122 @@
+diff --git a/crates/xdremux-engine/src/apple_photographic_styles.rs b/crates/xdremux-engine/src/apple_photographic_styles.rs
+index 4dd640b..2d45827 100644
+--- a/crates/xdremux-engine/src/apple_photographic_styles.rs
++++ b/crates/xdremux-engine/src/apple_photographic_styles.rs
+@@ -1747,9 +1747,11 @@ pub struct AppleStyleRevertRequest<'a> {
+ /// residual added to identity, so remove-style of an unchanged image stays the
+ /// identity transform.
+ ///
+-/// A plane whose samples do not identify a coefficient keeps that coefficient
+-/// at the identity residual. The existing numerical ridge is only a stabilizer
+-/// for that underdetermined case. It is not a scene calibration. Half rounding
++/// The residual is solved jointly within the existing coefficient bounds.
++/// Independently clipping an unconstrained solution destroys the cancellation
++/// between correlated RGB terms, especially on smooth, nearly gray regions.
++/// The numerical ridge stabilizes underdetermined samples; it is not a scene
++/// calibration. Half rounding
+ /// of the plane weight and the optional 3×3 spatial filter are not reproduced.
+ pub fn apple_style_revert_local_data(
+     request: &AppleStyleRevertRequest<'_>,
+@@ -1888,12 +1890,13 @@ pub fn apple_style_revert_local_data(
+                     let vector = (0..APPLE_STYLE_POLYNOMIAL_COUNT)
+                         .map(|term| rhs[rhs_base + term * APPLE_STYLE_CHANNEL_COUNT + channel])
+                         .collect::<Vec<_>>();
+-                    let solution = solve_linear_system(&matrix, &vector)
+-                        .unwrap_or_else(|_| vec![0.0; APPLE_STYLE_POLYNOMIAL_COUNT]);
++                    let bounds = (0..APPLE_STYLE_POLYNOMIAL_COUNT)
++                        .map(|term| coefficient_bound(term * APPLE_STYLE_CHANNEL_COUNT + channel))
++                        .collect::<Vec<_>>();
++                    let solution = solve_bounded_system(&matrix, &vector, &bounds)?;
+                     for (basis, value) in solution.into_iter().enumerate() {
+-                        let bound = coefficient_bound(basis * APPLE_STYLE_CHANNEL_COUNT + channel);
+                         let index = style_coefficient_index(cell_x, cell_y, plane, basis, channel);
+-                        deltas[index] = value.clamp(-bound, bound);
++                        deltas[index] = value;
+                     }
+                 }
+             }
+@@ -2076,6 +2079,84 @@ fn coefficient_bound(index: usize) -> f64 {
+     }
+ }
+ 
++/// Minimize the ridge quadratic while keeping every residual coefficient in
++/// its box. Active bounds stay fixed while the remaining terms are refitted;
++/// a bound is released when its gradient points back into the feasible region.
++fn solve_bounded_system(
++    matrix: &[f64],
++    vector: &[f64],
++    bounds: &[f64],
++) -> Result<Vec<f64>, AppleStyleDataError> {
++    let count = vector.len();
++    if matrix.len() != count * count || bounds.len() != count {
++        return Err(AppleStyleDataError::SingularSystem);
++    }
++    let mut values = vec![0.0; count];
++    // -1: lower bound, 0: free, +1: upper bound.
++    let mut active = vec![0_i8; count];
++    let tolerance = 1e-10 * vector.iter().map(|v| v.abs()).fold(1.0, f64::max);
++    for _ in 0..(4 * count * count) {
++        let free = (0..count).filter(|&i| active[i] == 0).collect::<Vec<_>>();
++        let mut reduced = Vec::with_capacity(free.len() * free.len());
++        let mut rhs = Vec::with_capacity(free.len());
++        for &row in &free {
++            let fixed = (0..count)
++                .filter(|&i| active[i] != 0)
++                .map(|i| matrix[row * count + i] * values[i])
++                .sum::<f64>();
++            rhs.push(vector[row] - fixed);
++            reduced.extend(free.iter().map(|&column| matrix[row * count + column]));
++        }
++        let solved = solve_linear_system(&reduced, &rhs)?;
++        let mut candidate = values.clone();
++        for (&index, value) in free.iter().zip(solved) {
++            candidate[index] = value;
++        }
++        let mut step = 1.0_f64;
++        let mut hit = None;
++        for &index in &free {
++            let boundary = if candidate[index] > bounds[index] {
++                bounds[index]
++            } else if candidate[index] < -bounds[index] {
++                -bounds[index]
++            } else {
++                continue;
++            };
++            let fraction = (boundary - values[index]) / (candidate[index] - values[index]);
++            if fraction < step {
++                step = fraction;
++                hit = Some((index, boundary));
++            }
++        }
++        if let Some((index, boundary)) = hit {
++            for &i in &free {
++                values[i] += step * (candidate[i] - values[i]);
++            }
++            values[index] = boundary;
++            active[index] = if boundary < 0.0 { -1 } else { 1 };
++            continue;
++        }
++        values = candidate;
++        let release = (0..count)
++            .filter(|&i| active[i] != 0)
++            .map(|i| {
++                let gradient = (0..count)
++                    .map(|j| matrix[i * count + j] * values[j])
++                    .sum::<f64>()
++                    - vector[i];
++                (i, gradient * f64::from(active[i]))
++            })
++            .filter(|&(_, violation)| violation > tolerance)
++            .max_by(|left, right| left.1.total_cmp(&right.1));
++        if let Some((index, _)) = release {
++            active[index] = 0;
++        } else {
++            return Ok(values);
++        }
++    }
++    Err(AppleStyleDataError::SingularSystem)
++}
++
+ fn solve_linear_system(matrix: &[f64], vector: &[f64]) -> Result<Vec<f64>, AppleStyleDataError> {
+     let count = vector.len();
+     if matrix.len() != count * count {

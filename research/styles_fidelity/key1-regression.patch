@@ -1,0 +1,45 @@
+diff --git a/crates/xdremux-engine/tests/style_revert_regression.rs b/crates/xdremux-engine/tests/style_revert_regression.rs
+new file mode 100644
+index 0000000..919df50
+--- /dev/null
++++ b/crates/xdremux-engine/tests/style_revert_regression.rs
+@@ -0,0 +1,39 @@
++use half::f16;
++use xdremux_engine::{apple_style_revert_local_data, AppleStyleRevertRequest};
++
++#[test]
++fn bounded_revert_preserves_the_fitted_rgb_correspondence() {
++    // A neutral exposure change on a uniform, slightly blue surface is
++    // representable within the existing coefficient bounds. Clipping an
++    // unconstrained solution breaks this correspondence and introduces color.
++    let width = 24;
++    let height = 18;
++    let source = [0.5_f32, 0.55, 0.6];
++    let target = [0.2_f32, 0.22, 0.24];
++    let data = apple_style_revert_local_data(&AppleStyleRevertRequest {
++        width,
++        height,
++        styled_rgb: &source.repeat(width * height),
++        recovered_rgb: &target.repeat(width * height),
++    })
++    .unwrap();
++    let [r, g, b] = source.map(f64::from);
++    let basis = [1.0, r, g, b, r * r, r * g, r * b, g * g, g * b, b * b];
++    for (cell, block) in data.chunks_exact(60).enumerate() {
++        for channel in 0..3 {
++            let actual: f64 = basis
++                .iter()
++                .enumerate()
++                .map(|(term, value)| {
++                    let index = 2 * (3 * term + channel);
++                    value * f64::from(f16::from_le_bytes([block[index], block[index + 1]]))
++                })
++                .sum();
++            assert!(
++                (actual - f64::from(target[channel])).abs() < 0.001,
++                "bounded revert lost RGB correspondence at cell {cell}, channel {channel}: expected {}, got {actual}",
++                target[channel]
++            );
++        }
++    }
++}

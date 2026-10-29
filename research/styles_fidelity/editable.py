@@ -21,10 +21,11 @@ def main(argv=None):
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     folders = {key: output / 'heic' / name for key, name in (
-        ('original', '01_original'), ('before', '02_before_default'), ('after', '03_after_joint'))}
+        ('original', '01_original'), ('before', '02_fixed_default'), ('after', '03_fixed_joint'))}
     for directory in folders.values():
         directory.mkdir(parents=True)
     report = {'schema': 'styles-editable-heic-export-v1', 'passed': False,
+              'key1_solver': 'joint box-constrained ridge; refit free terms at active bounds',
               'photos_ui_verified': False, 'product_defaults_changed': False,
               'scope': 'Complete generated HEICs and native full-resolution base preservation; user Photos editing remains unverified.',
               'calibrations': {'before': blind.DEFAULT, 'after': JOINT}, 'cases': []}
@@ -81,8 +82,10 @@ def main(argv=None):
     (output / 'README.txt').write_text('''完整摄影风格 HEIC 对照包
 
 01_original：三张苹果原生 Standard 照片，作为编辑对照。
-02_before_default：相同照片，使用现有默认算法重建摄影风格资源。
-03_after_joint：相同照片，使用固定联合候选重建资源（曝光、增益缩放均为 0.75，直方图 c/d，曝光上限 10.4）。
+02_fixed_default：相同照片，修复 Key 1 拟合后的默认重建。
+03_fixed_joint：相同照片，修复 Key 1 拟合后的联合重建（曝光、增益缩放均为 0.75，直方图 c/d，曝光上限 10.4）。
+
+本轮修复两组共用的 Key 1 局部颜色系数求解：在已有系数界限内联合拟合，超界项固定后重新求解其他项。原来求无约束解后逐项截断会破坏相关 RGB 项之间的补偿，在平滑区域引入色块。曝光、增益与 c/d 参数未重新搜索，原生 Photos 的最终效果仍需导入验证。
 
 这是完整 HEIC，不是 PNG 预览或调完效果的扁平图。请导入 Photos 后自行调整摄影风格的影调、色彩及风格预设。文件本身没有预先套用 ±0.5 Tone。
 

@@ -159,10 +159,19 @@ this does not change generation parameters, render dimensions or score inputs.
 
 The user's Photos comparison uses `python3 -m research.styles_fidelity.editable`,
 which exports the three original public HEICs and six complete generated HEICs
-in `01_original`, `02_before_default`, and `03_after_joint` folders. It uses the
+in `01_original`, `02_fixed_default`, and `03_fixed_joint` folders. It uses the
 same producer and frozen joint calibration, without baking a Tone edit into the
 photo. Native full-resolution SDR/HDR base readbacks must match the source
 exactly; Styles resources and file hashes are retained in the report. The
-current workflow publishes `xdremux-editable-heic-*` for this request. Actual
+current workflow publishes `xdremux-fixed-editable-heic-*` for this request. Actual
 Photos UI editing remains for the user's device test; the previously observed
 abnormal probe previews are not fidelity evidence.
+
+The common key-1 fitter previously clipped each term after an unconstrained
+solve. This breaks the fitted RGB correspondence when correlated terms hit
+different bounds, producing spatial color patches even in the default variant.
+`key1-regression.patch` exercises a representable uniform-color correspondence;
+the native job requires that the original fitter fails this check, then applies
+`key1-bounded.patch` and reruns all engine tests before exporting files. The
+repair keeps the same polynomial, regularization and bounds, solving the box
+constraints jointly. This is separate from exposure/gain or c/d calibration.
