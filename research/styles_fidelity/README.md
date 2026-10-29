@@ -121,3 +121,22 @@ Before moving the candidate into PR85, resolve the negative-Tone regressions and
 repeat the joint Tone/Color controls on additional scene groups. Then verify
 native reversal and final HDR Texture on real human samples independently.
 The preserved HDR container fixes in PR85 have separate product regressions.
+
+## Joint candidate spatial acceptance measurement
+
+The current native workflow runs only default versus the frozen joint candidate,
+with 2048-edge native renders on the same three scenes and five Tone/Color points.
+`joint_spatial` reports per-pixel candidate changes separately from regressions
+against the original reference. Error is max absolute RGB-channel distance;
+regression is candidate error minus default error. Thresholds 0.005/0.01/0.02
+include pixel fraction, 8-connected component count, largest area and its box.
+This measures area and magnitude, rather than rejecting a candidate on one maximum.
+
+Both linear P3 and a fixed diagnostic display projection are reported. The
+projection divides every variant by the same source headroom, clips to [0,1],
+and applies the Display P3 transfer. Clipped fractions are retained. A 0.01
+threshold means one percent of code range in that projection, not one percent
+relative luminance or a perceptual just-noticeable difference. This is not an
+actual Photos HDR display or full-resolution pixel evaluation. Only numeric
+summaries are exported. The previous c/d and Texture experiment is retained in
+`evidence/run-40855897150`; it is not repeated by this focused workflow.

@@ -51,10 +51,10 @@ def substitute(base: Path, reference: Path, output: Path, groups):
     (output / 'styles.plist').write_bytes(plistlib.dumps(generated, fmt=plistlib.FMT_BINARY))
 
 
-def render(renderer: Path, source: Path, resources: Path, directory: Path, tone: float, color=0.0):
+def render(renderer: Path, source: Path, resources: Path, directory: Path, tone: float, color=0.0, *, max_edge=512):
     run([renderer, source, resources, directory], env={**os.environ,
         'XD_TONE_BIAS': str(tone), 'XD_COLOR_BIAS': str(color),
-        'XD_TONE_MAX_EDGE': '512', 'XD_TONE_THUMB_MODE': 'native-stage-mirror'})
+        'XD_TONE_MAX_EDGE': str(max_edge), 'XD_TONE_THUMB_MODE': 'native-stage-mirror'})
     facts = json.loads((directory / 'facts.json').read_text())
     if facts.get('exception') or not any(t.get('use_style_engine') is False
             and t.get('output', {}).get('nonfinite') == 0 for t in facts.get('trials', [])):
