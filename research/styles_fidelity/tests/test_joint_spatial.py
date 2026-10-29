@@ -1,10 +1,16 @@
 import unittest
 import numpy as np
 
-from research.styles_fidelity.joint_spatial import footprint, spatial, display_projection
+from research.styles_fidelity.joint_spatial import footprint, spatial, display_projection, response_signal
 
 
 class JointSpatialTests(unittest.TestCase):
+    def test_zero_or_flat_renders_cannot_be_accepted_as_zero_regression(self):
+        for image in (np.zeros((3,4,3)),np.full((3,4,3),.5)):
+            with self.assertRaises(ValueError):response_signal(image)
+        image=np.zeros((3,4,3));image[1,2]=.5
+        self.assertEqual(response_signal(image)['spatial_range'],.5)
+
     def test_eight_connected_components_and_exclusive_box(self):
         mask = np.zeros((6,8),dtype=bool)
         mask[1,2] = mask[2,3] = mask[3,4] = True

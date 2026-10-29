@@ -109,7 +109,7 @@ jobs:
         run: |
           adapter="$(cd xdremux && swift build --show-bin-path)/xdremux-apple-adapter"
           python3 -m research.styles_fidelity.joint_spatial \
-            --max-edge 2048 \
+            --max-edge 1024 \
             --adapter "$adapter" --generator "$GITHUB_WORKSPACE/xdremux/target/debug/examples/styles_fidelity" \
             --research-root "$GITHUB_WORKSPACE/consumer-research" \
             --input consumer-research/research/vm-native/samples/IMG_2600.HEIC \

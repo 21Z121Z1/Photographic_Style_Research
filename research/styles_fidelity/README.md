@@ -125,7 +125,7 @@ The preserved HDR container fixes in PR85 have separate product regressions.
 ## Joint candidate spatial acceptance measurement
 
 The current native workflow runs only default versus the frozen joint candidate,
-with 2048-edge native renders on the same three scenes and five Tone/Color points.
+with 1024-edge native renders on the same three scenes and the two nonzero Tone points.
 `joint_spatial` reports per-pixel candidate changes separately from regressions
 against the original reference. Error is max absolute RGB-channel distance;
 regression is candidate error minus default error. Thresholds 0.005/0.01/0.02
@@ -140,3 +140,10 @@ relative luminance or a perceptual just-noticeable difference. This is not an
 actual Photos HDR display or full-resolution pixel evaluation. Only numeric
 summaries are exported. The previous c/d and Texture experiment is retained in
 `evidence/run-40855897150`; it is not repeated by this focused workflow.
+
+The 2048 experiment produced indistinguishable outputs without retained signal
+observations, so its zero distances are not acceptance evidence. The focused
+1024 measurement requires spatially varying RGB and a nonzero reference edit
+response, retaining image hashes/ranges. White-anchored SDR projection is reported
+separately from the headroom-scaled view. This round does not repeat the previous
+neutral/Color/Texture controls; it targets the nonzero-Tone regression footprint.

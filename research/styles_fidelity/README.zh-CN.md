@@ -84,7 +84,7 @@ PYTHONPATH=/absolute/path/XDRemux python3 -m unittest discover -s research/style
 
 ## 联合方案的空间影响测量
 
-当前原生工作流只比较默认与固定联合方案：同三张图、五个 Tone/Color 点，长边 2048。
+当前原生工作流只比较默认与固定联合方案：同三张图、两个非零 Tone 点，长边 1024。
 `joint_spatial` 分别统计候选相对默认的变化，以及候选比默认更偏离原片的新增误差。
 逐像素误差为 RGB 各通道绝对差的最大值，新增退步为候选误差减默认误差。
 0.005/0.01/0.02 阈值均记录像素占比、八连通区域数、最大连通区域面积与坐标框。
@@ -93,3 +93,8 @@ PYTHONPATH=/absolute/path/XDRemux python3 -m unittest discover -s research/style
 Display P3 传递函数，并记录截断比例。0.01 是该投影码值满量程的 1%，不是相对
 亮度 1% 或人眼可见阈值；也不等于 Photos 实际 HDR 显示和全分辨率验证。
 只导出数值。此前 c/d、Texture 实验归档在 `evidence/run-40855897150`，本轮不重复。
+
+2048 实验返回无法区分的输出，且未保留有效信号观测，其零距离不作为验收证据。
+1024 测量要求图像有空间变化、参考非零 Tone 确有编辑响应，并记录范围和哈希；
+以白色为锚点的 SDR 显示投影与 headroom 缩放投影分开报告。本轮只测非零影调的
+退步面积，不重复此前中性、Color 和 Texture 控制。

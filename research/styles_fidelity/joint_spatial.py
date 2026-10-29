@@ -70,6 +70,15 @@ def display_projection(rgb, headroom):
                     1.055*np.power(linear, 1/2.4)-.055)
 
 
+def response_signal(pixels):
+    observation = {'minimum':float(pixels.min()),'maximum':float(pixels.max()),
+                   'spatial_range':float(np.ptp(pixels,axis=(0,1)).max()),
+                   'sha256':isolate.sha(pixels.tobytes())}
+    if observation['spatial_range'] <= 1e-8:
+        raise ValueError('photograph render has no spatial signal: '+json.dumps(observation))
+    return observation
+
+
 def spatial(reference, baseline, candidate):
     if (reference.shape != baseline.shape or reference.shape != candidate.shape
             or reference.ndim != 3 or reference.shape[2] != 3
@@ -97,7 +106,7 @@ def main(argv=None):
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--input', type=Path, action='append', required=True)
     parser.add_argument('--holdout', type=Path, action='append', default=[])
-    parser.add_argument('--max-edge', type=int, default=2048)
+    parser.add_argument('--max-edge', type=int, default=1024)
     args = parser.parse_args(argv)
     if args.max_edge <= 0:
         parser.error('--max-edge must be positive')
@@ -108,14 +117,13 @@ def main(argv=None):
               'joint_calibration':JOINT,'max_edge':args.max_edge,
               'oracle_resources_used_for_generation':False,'product_defaults_changed':False,
               'scope':'PISemanticStyleFilter useStyleEngine=NO; scaled native renders, not full-resolution or real-display visibility',
-              'projection':'RGB / measured source headroom, clipped to [0,1], then Display P3 transfer; identical mapping for all variants'}
+              'projection':'white-anchored SDR and RGB / measured source headroom views; clipped to [0,1], then Display P3 transfer; identical mapping for all variants'}
     try:
         report['host'] = measurement_host(args.adapter)
         report['experiment_sha256'] = isolate.sha(Path(__file__).read_bytes())
         with tempfile.TemporaryDirectory(prefix='joint-spatial-',dir=args.output) as temp:
             work = Path(temp)
-            renderer, _, compatibility, report['renderer'] = blind.prepare_renderer(
-                args.research_root,work,capture_pixel_limit=4_000_000)
+            renderer, _, compatibility, report['renderer'] = blind.prepare_renderer(args.research_root,work)
             for index, source in enumerate([*args.input,*args.holdout]):
                 source = source.resolve()
                 if corpus.inspect_bytes(source.read_bytes())['standard_semantic_state'] is not True:
@@ -137,23 +145,36 @@ def main(argv=None):
                 # Reference resources never enter either generator.
                 blind.extract(compatibility,source,root/'reference')
                 report['cases'].append(case)
-                for tone,color in [(-.5,0.),(0.,0.),(.5,0.),(0.,-.5),(0.,.5)]:
+                neutral = render(renderer,source,root/'reference',root/'reference-neutral',
+                                 0.,max_edge=args.max_edge)
+                case['reference_neutral_signal'] = response_signal(neutral)
+                for tone,color in [(-.5,0.),(.5,0.)]:
                     images = [render(renderer,source,root/label,root/f'{label}-{tone}-{color}',
                                      tone,color,max_edge=args.max_edge)
                               for label in ('reference','default','joint')]
+                    signals = {label:response_signal(image) for label,image in
+                               zip(('reference','default','joint'),images)}
+                    edit_delta = float(np.max(np.abs(images[0]-neutral)))
+                    if edit_delta <= 1e-7:
+                        raise ValueError('reference nonzero Tone has no edit response')
                     item = {'tone':tone,'color':color,'width':images[0].shape[1],
                             'height':images[0].shape[0],
+                            'image_signals':signals,'reference_edit_maximum':edit_delta,
                             'metrics':{k:blind.score(images[0],a) for k,a in zip(('default','joint'),images[1:])},
                             'linear':spatial(*images),
+                            'display_white':spatial(*(display_projection(x,1.) for x in images)),
                             'display_projection':spatial(*(display_projection(x,headroom) for x in images)),
                             'projection_headroom':headroom,
                             'projection_clipped_channel_pct':{k:100*float(np.mean((a<0)|(a>headroom)))
+                                for k,a in zip(('reference','default','joint'),images)},
+                            'white_clipped_channel_pct':{k:100*float(np.mean((a<0)|(a>1.)))
                                 for k,a in zip(('reference','default','joint'),images)}}
                     case['edits'].append(item)
                     (args.output/'report.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
                 if isolate.sha(source.read_bytes()) != case['source_sha256']:
                     raise ValueError('source changed')
             report['passed'] = bool(report['cases'])
+            report['signal_validated'] = report['passed']
     except (ValueError,RuntimeError,OSError,KeyError,subprocess.TimeoutExpired) as error:
         report['error'] = str(error)
     finally:
