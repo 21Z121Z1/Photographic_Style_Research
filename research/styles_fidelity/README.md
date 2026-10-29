@@ -154,3 +154,15 @@ white-anchored SDR PNGs with the host's Display P3 ICC profile embedded. All
 variants use the same projection, without auto exposure or difference boosting.
 The fixed public controls in the workflow export these previews on user request;
 this does not change generation parameters, render dimensions or score inputs.
+
+## Complete editable HEIC export
+
+The user's Photos comparison uses `python3 -m research.styles_fidelity.editable`,
+which exports the three original public HEICs and six complete generated HEICs
+in `01_original`, `02_before_default`, and `03_after_joint` folders. It uses the
+same producer and frozen joint calibration, without baking a Tone edit into the
+photo. Native full-resolution SDR/HDR base readbacks must match the source
+exactly; Styles resources and file hashes are retained in the report. The
+current workflow publishes `xdremux-editable-heic-*` for this request. Actual
+Photos UI editing remains for the user's device test; the previously observed
+abnormal probe previews are not fidelity evidence.

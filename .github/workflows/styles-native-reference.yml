@@ -104,18 +104,15 @@ jobs:
           cargo test --locked -p xdremux-engine
           cargo build --locked -p xdremux-runtime --features styles-research --example styles_fidelity
           swift build --product xdremux-apple-adapter
-      - name: Measure the frozen joint candidate regression footprint
+      - name: Export complete editable HEICs for Photos comparison
         shell: bash
         run: |
           adapter="$(cd xdremux && swift build --show-bin-path)/xdremux-apple-adapter"
-          python3 -m research.styles_fidelity.joint_spatial \
-            --max-edge 1024 \
-            --export-previews \
+          python3 -m research.styles_fidelity.editable \
             --adapter "$adapter" --generator "$GITHUB_WORKSPACE/xdremux/target/debug/examples/styles_fidelity" \
-            --research-root "$GITHUB_WORKSPACE/consumer-research" \
             --input consumer-research/research/vm-native/samples/IMG_2600.HEIC \
             --input consumer-research/research/vm-native/samples/IMG_2604.HEIC \
-            --holdout consumer-research/research/vm-native/samples/IMG_2608.HEIC \
+            --input consumer-research/research/vm-native/samples/IMG_2608.HEIC \
             --output "$RUNNER_TEMP/styles-fidelity"
       - name: Bind the measurement to the product commit and research patch
         if: always()
@@ -138,10 +135,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: xdremux-fidelity-${{ github.sha }}
+          name: xdremux-editable-heic-${{ github.sha }}
           path: |
             ${{ runner.temp }}/styles-fidelity/report.json
             ${{ runner.temp }}/styles-fidelity/source-binding.json
-            ${{ runner.temp }}/styles-fidelity/previews/**/*.png
+            ${{ runner.temp }}/styles-fidelity/README.txt
+            ${{ runner.temp }}/styles-fidelity/heic/**/*.HEIC
           retention-days: 7
           if-no-files-found: error
