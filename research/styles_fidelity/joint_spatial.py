@@ -114,7 +114,8 @@ def main(argv=None):
         report['experiment_sha256'] = isolate.sha(Path(__file__).read_bytes())
         with tempfile.TemporaryDirectory(prefix='joint-spatial-',dir=args.output) as temp:
             work = Path(temp)
-            renderer, _, compatibility, report['renderer'] = blind.prepare_renderer(args.research_root,work)
+            renderer, _, compatibility, report['renderer'] = blind.prepare_renderer(
+                args.research_root,work,capture_pixel_limit=4_000_000)
             for index, source in enumerate([*args.input,*args.holdout]):
                 source = source.resolve()
                 if corpus.inspect_bytes(source.read_bytes())['standard_semantic_state'] is not True:

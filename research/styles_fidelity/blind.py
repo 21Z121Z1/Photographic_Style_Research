@@ -57,12 +57,18 @@ def choose_candidate(trials: list[dict]) -> dict:
     return min(valid, key=lambda row: row['training_rmse'])
 
 
-def prepare_renderer(research: Path, output: Path):
+def prepare_renderer(research: Path, output: Path, *, capture_pixel_limit=2_000_000):
     revision = run(['git', '-C', research, 'rev-parse', 'HEAD']).stdout.decode().strip()
     if revision != tone_response.PINNED_RESEARCH_REVISION:
         raise ValueError('native edit renderer source revision differs')
     original = research / 'consumer-model/harness/native_filter_probe.m'
     source = original.read_text()
+    # The source probe's capture budget is independent of pixel-quality checks.
+    # Spatial measurement requests a larger, still bounded output allocation.
+    capture_guard = 'if(w*h>2000000)'
+    if source.count(capture_guard) != 1:
+        raise ValueError('native capture budget patch context differs')
+    source = source.replace(capture_guard, f'if(w*h>{int(capture_pixel_limit)})')
     anchor = '[filter setValue:@(tone) forKey:@"inputToneBias"];facts[@"tone_bias"]=@(tone);'
     if source.count(anchor) != 1:
         raise ValueError('native edit control patch context differs')
@@ -88,6 +94,7 @@ def prepare_renderer(research: Path, output: Path):
          reverse_source, reverse_probe, '-o', reverse])
     compatibility, parser_facts = tone_response.prepare_consumer_compatibility(research, output)
     return binary, reverse, compatibility, {'research_revision': revision,
+        'capture_pixel_limit': capture_pixel_limit,
         'upstream_probe_sha256': isolate.sha(original.read_bytes()),
         'owned_probe_sha256': isolate.sha(owned.read_bytes()), 'parser': parser_facts,
         'reverse_source_sha256': isolate.sha(reverse_source.read_bytes()),
