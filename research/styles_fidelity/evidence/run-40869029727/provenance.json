@@ -1,0 +1,102 @@
+{
+  "run_id": 40869029727,
+  "source_binding": {
+    "research_commit": "b1aba0a559c105f99f94be5c23e4055ee8f77102",
+    "product_commit": "cf1e790e33e04202745bc34e52f1e414c02e290d",
+    "product_build": "disposable research checkout",
+    "candidate_patch_applied": true,
+    "candidate_patch_sha256": "4a12d0c7786bceff25650fd72f0af9bebef76b0f19107423295764dedc6c03fa",
+    "consumer_revision": "37dd551a949047ed14580efa0c0a2556922791b5"
+  },
+  "comparisons": [
+    {
+      "name": "IMG_2600.HEIC",
+      "tone": -0.5,
+      "comparison_png": "IMG_2600_Tone_minus_comparison.png",
+      "comparison_png_sha256": "0587c2ef8f0c378b03bc1dd36c58ffa76f38ab9f736404606705d6819bdd9bca",
+      "native_float_hash_matches_previous_run": {
+        "reference": true,
+        "default": true,
+        "joint": true
+      },
+      "pixel_edits": "none; white-anchored Display P3 transfer, clipping and 8-bit quantization only; sheet adds labels without resampling"
+    },
+    {
+      "name": "IMG_2600.HEIC",
+      "tone": 0.5,
+      "comparison_png": "IMG_2600_Tone_plus_comparison.png",
+      "comparison_png_sha256": "d37001d49dda0ea312bbb28839d7692e91eae8275306996eeb0d49cfbe990ca0",
+      "native_float_hash_matches_previous_run": {
+        "reference": true,
+        "default": true,
+        "joint": true
+      },
+      "pixel_edits": "none; white-anchored Display P3 transfer, clipping and 8-bit quantization only; sheet adds labels without resampling"
+    },
+    {
+      "name": "IMG_2604.HEIC",
+      "tone": -0.5,
+      "comparison_png": "IMG_2604_Tone_minus_comparison.png",
+      "comparison_png_sha256": "101a2244e8e581142ab6864d5884a977f6447ec935627d5e2928fa179af81e9e",
+      "native_float_hash_matches_previous_run": {
+        "reference": true,
+        "default": true,
+        "joint": true
+      },
+      "pixel_edits": "none; white-anchored Display P3 transfer, clipping and 8-bit quantization only; sheet adds labels without resampling"
+    },
+    {
+      "name": "IMG_2604.HEIC",
+      "tone": 0.5,
+      "comparison_png": "IMG_2604_Tone_plus_comparison.png",
+      "comparison_png_sha256": "240a3104e521271fbd284b15bbcde3b6e43c6b3195da724d4578a30bf32dbc14",
+      "native_float_hash_matches_previous_run": {
+        "reference": true,
+        "default": true,
+        "joint": true
+      },
+      "pixel_edits": "none; white-anchored Display P3 transfer, clipping and 8-bit quantization only; sheet adds labels without resampling"
+    },
+    {
+      "name": "IMG_2608.HEIC",
+      "tone": -0.5,
+      "comparison_png": "IMG_2608_Tone_minus_comparison.png",
+      "comparison_png_sha256": "68e7f945efa1f0e47b518fccac30a5fffc4d769beac9013df9590ef66640539c",
+      "native_float_hash_matches_previous_run": {
+        "reference": true,
+        "default": true,
+        "joint": true
+      },
+      "pixel_edits": "none; white-anchored Display P3 transfer, clipping and 8-bit quantization only; sheet adds labels without resampling"
+    },
+    {
+      "name": "IMG_2608.HEIC",
+      "tone": 0.5,
+      "comparison_png": "IMG_2608_Tone_plus_comparison.png",
+      "comparison_png_sha256": "8e44e701dbee3e7cef488383ce0fd65e300e1a80acbadd85bb71e28367170b35",
+      "native_float_hash_matches_previous_run": {
+        "reference": true,
+        "default": true,
+        "joint": true
+      },
+      "pixel_edits": "none; white-anchored Display P3 transfer, clipping and 8-bit quantization only; sheet adds labels without resampling"
+    }
+  ],
+  "all_18_native_float_images_match_previous_measurement": true,
+  "visual_normality": "failed: probe reference and generated variants have severe color artifacts; previous relative-error reductions are not photographic-fidelity evidence",
+  "display": "SDR previews, embedded Display P3 ICC, no per-image exposure normalization",
+  "column_order": [
+    "Apple native reference at the same Tone",
+    "before: current default",
+    "after: frozen joint candidate"
+  ],
+  "artifact_id": 12895522861,
+  "artifact_zip_sha256": "120f2390423047ad3ffbf532106bc65ba4061111d9c0bf14767062b7adb7d7d5",
+  "independent_source_decode": {
+    "file": "IMG_2604.HEIC",
+    "source_sha256": "71d67c74fea30d1ae8e2b355ef695241d3682e80295bfa46820f7d9e1f399c4e",
+    "decoder": "libheif heif-convert, primary SDR image",
+    "observation": "normal scene appearance; obvious colored speckling absent"
+  },
+  "conclusion": "Withdraw photographic-fidelity inference from prior relative-error reductions until native probe/capture/export normality is established; underlying cause not identified."
+}
