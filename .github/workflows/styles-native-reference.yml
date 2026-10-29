@@ -110,6 +110,7 @@ jobs:
           adapter="$(cd xdremux && swift build --show-bin-path)/xdremux-apple-adapter"
           python3 -m research.styles_fidelity.joint_spatial \
             --max-edge 1024 \
+            --export-previews \
             --adapter "$adapter" --generator "$GITHUB_WORKSPACE/xdremux/target/debug/examples/styles_fidelity" \
             --research-root "$GITHUB_WORKSPACE/consumer-research" \
             --input consumer-research/research/vm-native/samples/IMG_2600.HEIC \
@@ -141,5 +142,6 @@ jobs:
           path: |
             ${{ runner.temp }}/styles-fidelity/report.json
             ${{ runner.temp }}/styles-fidelity/source-binding.json
+            ${{ runner.temp }}/styles-fidelity/previews/**/*.png
           retention-days: 7
           if-no-files-found: error

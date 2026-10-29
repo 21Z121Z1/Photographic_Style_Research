@@ -89,7 +89,8 @@ and fixed scene splits. `blind` retains the joint exposure/gain experiment.
 its `--research-root` must be a separate checkout at
 `2bc4e3d16fc2c6028cdf708f06d79cf3be42a6d5`. Each module exposes `--help`.
 Keep supplied portrait media outside public Git and Actions artifacts. Upload
-only numeric reports, hashes and logs.
+only numeric reports, hashes and logs unless the user requests previews of the
+fixed, already-public controls. Supplied private portraits remain excluded.
 
 ## Separate c/d and joint calibration experiment
 
@@ -147,3 +148,9 @@ observations, so its zero distances are not acceptance evidence. The focused
 response, retaining image hashes/ranges. White-anchored SDR projection is reported
 separately from the headroom-scaled view. This round does not repeat the previous
 neutral/Color/Texture controls; it targets the nonzero-Tone regression footprint.
+
+`--export-previews` retains the same measured reference/default/joint images as
+white-anchored SDR PNGs with the host's Display P3 ICC profile embedded. All
+variants use the same projection, without auto exposure or difference boosting.
+The fixed public controls in the workflow export these previews on user request;
+this does not change generation parameters, render dimensions or score inputs.

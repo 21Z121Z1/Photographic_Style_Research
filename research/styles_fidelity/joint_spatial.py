@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 
 import numpy as np
+from PIL import Image
 
 from . import blind, corpus, isolate, native
 from .texture import measurement_host
@@ -79,6 +80,42 @@ def response_signal(pixels):
     return observation
 
 
+def display_p3_profile(work):
+    """Use the host's actual Display P3 ICC profile for photographic previews."""
+    source = work / 'preview-profile.c'
+    executable = work / 'preview-profile'
+    source.write_text('''#include <ApplicationServices/ApplicationServices.h>
+#include <stdio.h>
+int main(void) {
+    CGColorSpaceRef space = CGColorSpaceCreateWithName(kCGColorSpaceDisplayP3);
+    if (!space) return 2;
+    CFDataRef data = CGColorSpaceCopyICCData(space);
+    if (!data) { CGColorSpaceRelease(space); return 3; }
+    size_t size = (size_t)CFDataGetLength(data);
+    size_t written = fwrite(CFDataGetBytePtr(data), 1, size, stdout);
+    CFRelease(data); CGColorSpaceRelease(space);
+    return written == size ? 0 : 4;
+}
+''')
+    subprocess.run(['clang', str(source), '-framework', 'ApplicationServices',
+                    '-framework', 'CoreFoundation', '-o', str(executable)], check=True)
+    return subprocess.check_output([str(executable)])
+
+
+def export_previews(output, name, tone, images, profile):
+    """Export the measured white-anchored view, without individual auto exposure."""
+    directory = output / 'previews' / name / ('tone-minus' if tone < 0 else 'tone-plus')
+    directory.mkdir(parents=True)
+    previews = {}
+    for label, rgb in zip(('reference', 'before', 'after'), images):
+        path = directory / (label + '.png')
+        pixels = np.rint(display_projection(rgb, 1.) * 255).astype('uint8')
+        Image.fromarray(pixels).save(path, icc_profile=profile)
+        previews[label] = {'path': str(path.relative_to(output)),
+                           'sha256': isolate.sha(path.read_bytes())}
+    return previews
+
+
 def spatial(reference, baseline, candidate):
     if (reference.shape != baseline.shape or reference.shape != candidate.shape
             or reference.ndim != 3 or reference.shape[2] != 3
@@ -107,6 +144,8 @@ def main(argv=None):
     parser.add_argument('--input', type=Path, action='append', required=True)
     parser.add_argument('--holdout', type=Path, action='append', default=[])
     parser.add_argument('--max-edge', type=int, default=1024)
+    parser.add_argument('--export-previews', action='store_true',
+                        help='export user-requested Display P3 SDR PNGs of the measured renders')
     args = parser.parse_args(argv)
     if args.max_edge <= 0:
         parser.error('--max-edge must be positive')
@@ -123,6 +162,7 @@ def main(argv=None):
         report['experiment_sha256'] = isolate.sha(Path(__file__).read_bytes())
         with tempfile.TemporaryDirectory(prefix='joint-spatial-',dir=args.output) as temp:
             work = Path(temp)
+            profile = display_p3_profile(work) if args.export_previews else None
             renderer, _, compatibility, report['renderer'] = blind.prepare_renderer(args.research_root,work)
             for index, source in enumerate([*args.input,*args.holdout]):
                 source = source.resolve()
@@ -169,6 +209,8 @@ def main(argv=None):
                                 for k,a in zip(('reference','default','joint'),images)},
                             'white_clipped_channel_pct':{k:100*float(np.mean((a<0)|(a>1.)))
                                 for k,a in zip(('reference','default','joint'),images)}}
+                    if profile is not None:
+                        item['previews'] = export_previews(args.output, source.stem, tone, images, profile)
                     case['edits'].append(item)
                     (args.output/'report.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
                 if isolate.sha(source.read_bytes()) != case['source_sha256']:
