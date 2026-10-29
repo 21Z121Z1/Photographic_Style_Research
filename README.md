@@ -131,6 +131,10 @@ The native macOS app is an operator shell for the existing tools. It does not in
 swift test
 ```
 
+## Reconstruction fidelity research
+
+[Blind Styles reconstruction and final Texture replay](research/styles_fidelity/README.md) retains the candidate producer patch, native measurements, and promotion limits for XDRemux PR85.
+
 ## Documentation
 
 - [NoFusion Reverse Engineering](docs/nofusion_styledeltamap_reverse_engineering.md) — Initial analysis of Apple vs NoFusion HEIC files

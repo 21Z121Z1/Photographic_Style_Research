@@ -1,15 +1,17 @@
-name: styles fresh native reference
+name: Styles native research
 on:
   push:
-    branches: ['research/styles-native-reference-20261026']
+    branches: ['research/styles-native-reference-20261026', 'research/xdremux-fidelity-20261029']
     paths:
       - 'research/styles-firmware-20261022/**'
+      - 'research/styles_fidelity/**'
       - '.github/workflows/styles-native-reference.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   fresh-apple-reference:
+    if: github.ref_name == 'research/styles-native-reference-20261026' || github.event_name == 'workflow_dispatch'
     runs-on: xcode-27
     timeout-minutes: 10
     permissions:
@@ -33,4 +35,111 @@ jobs:
             ${{ runner.temp }}/styles-native-reference/*.json
             ${{ runner.temp }}/styles-native-reference/*.txt
           retention-days: 1
+          if-no-files-found: error
+  fidelity-portable:
+    if: github.ref_name == 'research/xdremux-fidelity-20261029' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: ${{ github.workspace }}/xdremux
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out the product consumer
+        uses: actions/checkout@v4
+        with:
+          repository: 21Z121Z1/XDRemux
+          ref: cf1e790e33e04202745bc34e52f1e414c02e290d
+          path: xdremux
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.2.4 Pillow==11.1.0
+      - name: Check the isolated producer patch and migrated regressions
+        run: |
+          git -C xdremux apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
+          python -m unittest discover -s research/styles_fidelity/tests -t . -v
+  fidelity-native:
+    if: github.ref_name == 'research/xdremux-fidelity-20261029' || github.event_name == 'workflow_dispatch'
+    runs-on: xcode-27
+    timeout-minutes: 60
+    env:
+      PYTHONPATH: ${{ github.workspace }}/xdremux
+      CARGO_TARGET_DIR: ${{ github.workspace }}/xdremux/target
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out the product producer in a disposable checkout
+        uses: actions/checkout@v4
+        with:
+          repository: 21Z121Z1/XDRemux
+          ref: cf1e790e33e04202745bc34e52f1e414c02e290d
+          path: xdremux
+          persist-credentials: false
+      - name: Check out the fixed native consumer and public controls
+        uses: actions/checkout@v4
+        with:
+          ref: 37dd551a949047ed14580efa0c0a2556922791b5
+          path: consumer-research
+          persist-credentials: false
+      - name: Install native HEVC and Python packages
+        shell: bash
+        run: |
+          brew install libheif
+          echo "PKG_CONFIG_PATH=$(brew --prefix libheif)/lib/pkgconfig" >> "$GITHUB_ENV"
+          python3 -m venv "$RUNNER_TEMP/fidelity-venv"
+          "$RUNNER_TEMP/fidelity-venv/bin/python" -m pip install numpy==2.2.4 Pillow==11.1.0
+          echo "$RUNNER_TEMP/fidelity-venv/bin" >> "$GITHUB_PATH"
+      - uses: actions-rust-lang/setup-rust-toolchain@v2
+        with:
+          toolchain: stable
+      - name: Apply the research patch and build the shared Rust producer
+        working-directory: xdremux
+        run: |
+          git apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
+          git apply "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
+          cargo test --locked -p xdremux-engine
+          cargo build --locked -p xdremux-runtime --features styles-research --example styles_fidelity
+          swift build --product xdremux-apple-adapter
+      - name: Compare default and histogram generation after migration
+        shell: bash
+        run: |
+          adapter="$(cd xdremux && swift build --show-bin-path)/xdremux-apple-adapter"
+          python3 -m research.styles_fidelity.tone_attribution \
+            --compare-histogram-light-maps \
+            --adapter "$adapter" --generator "$GITHUB_WORKSPACE/xdremux/target/debug/examples/styles_fidelity" \
+            --research-root "$GITHUB_WORKSPACE/consumer-research" \
+            --input consumer-research/research/vm-native/samples/IMG_2600.HEIC \
+            --input consumer-research/research/vm-native/samples/IMG_2604.HEIC \
+            --holdout consumer-research/research/vm-native/samples/IMG_2608.HEIC \
+            --output "$RUNNER_TEMP/styles-fidelity"
+      - name: Bind the measurement to the product commit and research patch
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, subprocess
+          package = pathlib.Path('research/styles_fidelity')
+          output = pathlib.Path(os.environ['RUNNER_TEMP']) / 'styles-fidelity'
+          output.mkdir(exist_ok=True)
+          binding = {
+              'research_commit': os.environ['GITHUB_SHA'],
+              'product_commit': subprocess.check_output(['git', '-C', 'xdremux', 'rev-parse', 'HEAD'], text=True).strip(),
+              'product_build': 'disposable research checkout',
+              'candidate_patch_applied': subprocess.run(['git', '-C', 'xdremux', 'apply', '--reverse', '--check', str((package / 'xdremux-research.patch').resolve())], capture_output=True).returncode == 0,
+              'candidate_patch_sha256': hashlib.sha256((package / 'xdremux-research.patch').read_bytes()).hexdigest(),
+              'consumer_revision': '37dd551a949047ed14580efa0c0a2556922791b5',
+          }
+          (output / 'source-binding.json').write_text(json.dumps(binding, indent=2) + '\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xdremux-fidelity-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/styles-fidelity/report.json
+            ${{ runner.temp }}/styles-fidelity/source-binding.json
+          retention-days: 7
           if-no-files-found: error

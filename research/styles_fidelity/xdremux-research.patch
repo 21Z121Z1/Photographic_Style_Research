@@ -1,0 +1,819 @@
+diff --git a/crates/xdremux-engine/src/apple_photographic_styles.rs b/crates/xdremux-engine/src/apple_photographic_styles.rs
+index 4dd640b..e62e1a0 100644
+--- a/crates/xdremux-engine/src/apple_photographic_styles.rs
++++ b/crates/xdremux-engine/src/apple_photographic_styles.rs
+@@ -66,6 +66,28 @@ pub struct AppleStyleLinearMetadata {
+     pub encoding_gain: f32,
+ }
+ 
++/// Joint controls for thumbnail exposure and gain. Product defaults preserve
++/// the established calibration; research evaluates alternatives on held-out scenes.
++#[derive(Debug, Clone, Copy, PartialEq)]
++pub struct AppleStyleLinearCalibration {
++    pub baseline_scale: f32,
++    pub gain_scale: f32,
++    pub baseline_maximum: f32,
++    /// Evaluate the histogram writer with source-derived guide statistics.
++    pub histogram_light_maps: bool,
++}
++
++impl Default for AppleStyleLinearCalibration {
++    fn default() -> Self {
++        Self {
++            baseline_scale: 1.0,
++            gain_scale: 1.0,
++            baseline_maximum: 10.4,
++            histogram_light_maps: false,
++        }
++    }
++}
++
+ #[derive(Debug, Clone, PartialEq)]
+ pub struct AppleStyleGlobalToneCurve {
+     pub data: Vec<u8>,
+@@ -101,6 +123,7 @@ pub enum AppleStyleDataError {
+         actual: usize,
+     },
+     InvalidThumbnailExposure,
++    InvalidLinearCalibration,
+     InvalidRefinementParameter {
+         actual: usize,
+         expected: usize,
+@@ -166,6 +189,9 @@ impl fmt::Display for AppleStyleDataError {
+             Self::InvalidThumbnailExposure => formatter.write_str(
+                 "Apple Photographic Styles thumbnail exposure must be finite and positive",
+             ),
++            Self::InvalidLinearCalibration => formatter.write_str(
++                "Styles calibration requires positive finite scales and a baseline maximum in 4..64",
++            ),
+             Self::InvalidRefinementParameter { actual, expected } => write!(
+                 formatter,
+                 "Apple Photographic Styles refinement parameter {actual} is outside 0..{expected}"
+@@ -353,12 +379,35 @@ pub fn apple_style_identity_global_tone_curve() -> Vec<u8> {
+ /// documented by the producer contract. They describe a source-derived
+ /// proxy for the unavailable camera-time LTMDigitalGain; they are not a donor
+ /// image or a scene-independent identity fallback.
+-#[allow(clippy::excessive_precision)]
+ pub fn apple_style_linear_metadata(
+     base_luminance: &[f32],
+     hdr_luminance: &[f32],
+     gain_map_maximum_stops: f32,
+ ) -> Result<AppleStyleLinearMetadata, AppleStyleDataError> {
++    apple_style_linear_metadata_with_calibration(
++        base_luminance,
++        hdr_luminance,
++        gain_map_maximum_stops,
++        AppleStyleLinearCalibration::default(),
++    )
++}
++
++#[allow(clippy::excessive_precision)]
++pub fn apple_style_linear_metadata_with_calibration(
++    base_luminance: &[f32],
++    hdr_luminance: &[f32],
++    gain_map_maximum_stops: f32,
++    calibration: AppleStyleLinearCalibration,
++) -> Result<AppleStyleLinearMetadata, AppleStyleDataError> {
++    if !calibration.baseline_scale.is_finite()
++        || calibration.baseline_scale <= 0.0
++        || !calibration.gain_scale.is_finite()
++        || calibration.gain_scale <= 0.0
++        || !calibration.baseline_maximum.is_finite()
++        || !(4.0..=64.0).contains(&calibration.baseline_maximum)
++    {
++        return Err(AppleStyleDataError::InvalidLinearCalibration);
++    }
+     if base_luminance.is_empty()
+         || base_luminance.len() != hdr_luminance.len()
+         || !base_luminance.iter().all(|value| value.is_finite())
+@@ -373,13 +422,15 @@ pub fn apple_style_linear_metadata(
+         return Err(AppleStyleDataError::InvalidLightMapInput);
+     }
+     let highlight_compression_ratio = hdr_p98 / base_p98;
+-    let baseline_unclamped = highlight_compression_ratio / 0.401_264_06;
+-    let baseline_clamped = baseline_unclamped.clamp(4.0, 10.4);
++    let baseline_unclamped =
++        highlight_compression_ratio / 0.401_264_06 * calibration.baseline_scale;
++    let baseline_clamped = baseline_unclamped.clamp(4.0, calibration.baseline_maximum);
+     let baseline_exposure = (baseline_clamped * 65.0).round() / 65.0;
+     let base_gain = (1.512_718_43
+         + 0.156_706_32 * gain_map_maximum_stops
+         + 0.147_667_24 * highlight_compression_ratio)
+-        .clamp(0.5, 2.5);
++        * calibration.gain_scale;
++    let base_gain = base_gain.clamp(0.5, 2.5);
+     Ok(AppleStyleLinearMetadata {
+         baseline_exposure,
+         baseline_exposure_unclamped: baseline_unclamped,
+@@ -1171,10 +1222,93 @@ pub fn apple_style_light_map(
+         }
+     }
+ 
++    Ok(pack_light_map(&presentation, request.storage_orientation))
++}
++
++/// Conditional local-histogram writer using a supplied guide and normalizer.
++///
++/// The caller supplies arithmetic RGB means in its declared working space.
++/// Integer cell footprints approximate the camera sampling/ROI stage; they do
++/// not recover pre-LTM inputs. The bucket and ordered half writer follow
++/// AIR0002 (histogram 0/7 and lines 706-720), research reference 979bc34,
++/// research/hdr-native/lightmap_model_s55.py and evidence/s56/tail-summary.json.
++pub fn apple_style_histogram_light_map(
++    request: &AppleStyleLightMapRequest<'_>,
++    normalizer: f32,
++) -> Result<Vec<u8>, AppleStyleDataError> {
++    if request.width == 0
++        || request.height == 0
++        || request.width.checked_mul(request.height) != Some(request.luma.len())
++        || !normalizer.is_finite()
++        || normalizer <= 0.0
++        || !f16::from_f32(normalizer).is_finite()
++        || f16::from_f32(normalizer).to_f32() <= 0.0
++    {
++        return Err(AppleStyleDataError::InvalidLightMapInput);
++    }
++    if !(1..=8).contains(&request.storage_orientation) {
++        return Err(AppleStyleDataError::InvalidOrientation(
++            request.storage_orientation,
++        ));
++    }
++    if let Some(index) = request.luma.iter().position(|v| !v.is_finite()) {
++        return Err(AppleStyleDataError::InvalidLightMapSample { index });
++    }
++    let side = APPLE_STYLE_LIGHT_MAP_SIDE;
++    let half_normalizer = f16::from_f32(normalizer).to_f32();
++    let mut presentation = vec![f16::ZERO; side * side];
++    for y in 0..side {
++        let y0 = y * request.height / side;
++        let y1 = ((y + 1) * request.height / side)
++            .max(y0 + 1)
++            .min(request.height);
++        for x in 0..side {
++            let x0 = x * request.width / side;
++            let x1 = ((x + 1) * request.width / side)
++                .max(x0 + 1)
++                .min(request.width);
++            let mut histogram = [0_usize; 256];
++            for j in y0..y1 {
++                for i in x0..x1 {
++                    let normalized =
++                        f16::from_f32(request.luma[j * request.width + i] / half_normalizer)
++                            .to_f32();
++                    let scaled = f16::from_f32(normalized * 256.0).to_f32();
++                    let bucket = scaled.round().clamp(0.0, 255.0) as usize;
++                    histogram[bucket] += 1;
++                }
++            }
++            // Native cumulative count must be strictly greater than n/2.
++            let rank = (y1 - y0) * (x1 - x0) / 2;
++            let mut count = 0;
++            let bucket = histogram
++                .iter()
++                .position(|n| {
++                    count += n;
++                    count > rank
++                })
++                .unwrap_or(255);
++            let p50 = bucket as f32 * f32::from_bits(0x3b80_8081);
++            let product = (normalizer * f32::from_bits(0x401c_3d8f)) * p50;
++            let inner = f16::from_f32(product + f32::from_bits(0xbf87_ede0)).to_f32();
++            let encoded = f16::from_f32((inner + 1.2) * 0.29412);
++            if !encoded.is_finite() {
++                return Err(AppleStyleDataError::NonFiniteLightMapValue {
++                    index: y * side + x,
++                });
++            }
++            presentation[y * side + x] = encoded;
++        }
++    }
++    Ok(pack_light_map(&presentation, request.storage_orientation))
++}
++
++fn pack_light_map(presentation: &[f16], orientation: u8) -> Vec<u8> {
++    let side = APPLE_STYLE_LIGHT_MAP_SIDE;
+     let mut output = Vec::with_capacity(APPLE_STYLE_LIGHT_MAP_BYTE_COUNT);
+     for storage_y in 0..side {
+         for storage_x in 0..side {
+-            let (display_x, display_y) = match request.storage_orientation {
++            let (display_x, display_y) = match orientation {
+                 1 => (storage_x, storage_y),
+                 2 => (side - 1 - storage_x, storage_y),
+                 3 => (side - 1 - storage_x, side - 1 - storage_y),
+@@ -1188,7 +1322,7 @@ pub fn apple_style_light_map(
+             output.extend_from_slice(&presentation[display_y * side + display_x].to_le_bytes());
+         }
+     }
+-    Ok(output)
++    output
+ }
+ 
+ /// The nine-number distribution stored for each style statistics channel.
+@@ -2126,6 +2260,65 @@ fn solve_linear_system(matrix: &[f64], vector: &[f64]) -> Result<Vec<f64>, Apple
+ 
+ #[cfg(test)]
+ mod tests {
++    #[test]
++    fn joint_linear_calibration_preserves_default_and_changes_both_scales() {
++        let base = [0.2, 0.4, 0.6, 0.8];
++        let hdr = [1.6, 3.2, 4.8, 6.4];
++        let original = super::apple_style_linear_metadata(&base, &hdr, 3.0).unwrap();
++        let defaults = super::apple_style_linear_metadata_with_calibration(
++            &base,
++            &hdr,
++            3.0,
++            super::AppleStyleLinearCalibration::default(),
++        )
++        .unwrap();
++        assert_eq!(original, defaults);
++        let changed = super::apple_style_linear_metadata_with_calibration(
++            &base,
++            &hdr,
++            3.0,
++            super::AppleStyleLinearCalibration {
++                baseline_scale: 2.0,
++                gain_scale: 0.25,
++                baseline_maximum: 64.0,
++                histogram_light_maps: false,
++            },
++        )
++        .unwrap();
++        assert!(changed.baseline_exposure > original.baseline_exposure);
++        assert!(changed.base_gain < original.base_gain);
++        assert_eq!(changed.encoding_gain, changed.base_gain * 4.0);
++    }
++
++    #[test]
++    fn invalid_joint_calibration_cannot_enter_the_resource_fit() {
++        for scale in [0.0, -1.0, f32::NAN, f32::INFINITY] {
++            let calibration = super::AppleStyleLinearCalibration {
++                baseline_scale: scale,
++                ..Default::default()
++            };
++            assert!(super::apple_style_linear_metadata_with_calibration(
++                &[0.5],
++                &[2.0],
++                2.0,
++                calibration
++            )
++            .is_err());
++        }
++        for maximum in [3.0, 65.0, f32::NAN] {
++            let calibration = super::AppleStyleLinearCalibration {
++                baseline_maximum: maximum,
++                ..Default::default()
++            };
++            assert!(super::apple_style_linear_metadata_with_calibration(
++                &[0.5],
++                &[2.0],
++                2.0,
++                calibration
++            )
++            .is_err());
++        }
++    }
+     use super::*;
+ 
+     #[test]
+diff --git a/crates/xdremux-engine/src/lib.rs b/crates/xdremux-engine/src/lib.rs
+index ad0bf85..3d3960e 100644
+--- a/crates/xdremux-engine/src/lib.rs
++++ b/crates/xdremux-engine/src/lib.rs
+@@ -46,20 +46,23 @@ pub use apple_photographic_styles::{
+     apple_log_decode, apple_log_encode, apple_style_apply_global_tone_curve,
+     apple_style_data_apply_coefficient_deltas, apple_style_data_from_coefficient_deltas,
+     apple_style_data_from_parameters, apple_style_data_sha256, apple_style_distribution,
+-    apple_style_face_exposure_boost, apple_style_fit_global_polynomial, apple_style_identity_data,
++    apple_style_face_exposure_boost, apple_style_fit_global_polynomial,
++    apple_style_histogram_light_map, apple_style_identity_data,
+     apple_style_identity_global_tone_curve, apple_style_light_map, apple_style_linear_metadata,
+-    apple_style_linear_thumbnail_codes, apple_style_maker_apple_dictionary,
+-    apple_style_monotonic_global_tone_curve, apple_style_polynomial_basis,
+-    apple_style_property_list, apple_style_revert_local_data, apple_style_semantic_tone_channel,
+-    apple_style_solve_refinement_update, resolve_apple_style_scene_type, validate_apple_style_data,
+-    AppleStyleDataError, AppleStyleDataFacts, AppleStyleDistribution, AppleStyleGlobalToneCurve,
+-    AppleStyleLightMapRequest, AppleStyleLinearMetadata, AppleStylePropertyListRequest,
+-    AppleStyleRevertRequest, AppleStyleSampledJacobian, AppleStyleScalarRow, AppleStyleSceneClass,
+-    AppleStyleSceneDecision, AppleStyleSceneScores, AppleStyleSemanticTone, AppleStyleStatistics,
+-    APPLE_LOG_A, APPLE_LOG_B, APPLE_LOG_C, APPLE_STYLE_BLOCK_VALUE_COUNT, APPLE_STYLE_BYTE_COUNT,
+-    APPLE_STYLE_CHANNEL_COUNT, APPLE_STYLE_GRID_HEIGHT, APPLE_STYLE_GRID_WIDTH,
+-    APPLE_STYLE_IDENTITY_SHA256, APPLE_STYLE_LIGHT_MAP_BYTE_COUNT, APPLE_STYLE_LIGHT_MAP_SIDE,
+-    APPLE_STYLE_PLANE_COUNT, APPLE_STYLE_POLYNOMIAL_COUNT, APPLE_STYLE_REFINEMENT_EPSILON,
++    apple_style_linear_metadata_with_calibration, apple_style_linear_thumbnail_codes,
++    apple_style_maker_apple_dictionary, apple_style_monotonic_global_tone_curve,
++    apple_style_polynomial_basis, apple_style_property_list, apple_style_revert_local_data,
++    apple_style_semantic_tone_channel, apple_style_solve_refinement_update,
++    resolve_apple_style_scene_type, validate_apple_style_data, AppleStyleDataError,
++    AppleStyleDataFacts, AppleStyleDistribution, AppleStyleGlobalToneCurve,
++    AppleStyleLightMapRequest, AppleStyleLinearCalibration, AppleStyleLinearMetadata,
++    AppleStylePropertyListRequest, AppleStyleRevertRequest, AppleStyleSampledJacobian,
++    AppleStyleScalarRow, AppleStyleSceneClass, AppleStyleSceneDecision, AppleStyleSceneScores,
++    AppleStyleSemanticTone, AppleStyleStatistics, APPLE_LOG_A, APPLE_LOG_B, APPLE_LOG_C,
++    APPLE_STYLE_BLOCK_VALUE_COUNT, APPLE_STYLE_BYTE_COUNT, APPLE_STYLE_CHANNEL_COUNT,
++    APPLE_STYLE_GRID_HEIGHT, APPLE_STYLE_GRID_WIDTH, APPLE_STYLE_IDENTITY_SHA256,
++    APPLE_STYLE_LIGHT_MAP_BYTE_COUNT, APPLE_STYLE_LIGHT_MAP_SIDE, APPLE_STYLE_PLANE_COUNT,
++    APPLE_STYLE_POLYNOMIAL_COUNT, APPLE_STYLE_REFINEMENT_EPSILON,
+     APPLE_STYLE_REFINEMENT_MAX_PIXELS, APPLE_STYLE_REFINEMENT_PARAMETER_COUNT,
+     APPLE_STYLE_TILE_COUNT,
+ };
+diff --git a/crates/xdremux-engine/tests/histogram_light_map.rs b/crates/xdremux-engine/tests/histogram_light_map.rs
+new file mode 100644
+index 0000000..0319eaa
+--- /dev/null
++++ b/crates/xdremux-engine/tests/histogram_light_map.rs
+@@ -0,0 +1,62 @@
++use xdremux_engine::{apple_style_histogram_light_map, AppleStyleLightMapRequest};
++
++#[test]
++fn histogram_writer_keeps_native_half_floor_and_quantized_median() {
++    // Ordered AIR tail, independently retained in research reference 979bc34:
++    // lightmap_model_s55.py and the 269-case native s56 tail comparison.
++    for (input, expected) in [
++        (0.0, 0x2937_u16),
++        (0.125, 0x302f),
++        (0.5, 0x366b),
++        (1.0, 0x3a11),
++    ] {
++        let values = vec![input; 32 * 32];
++        let request = AppleStyleLightMapRequest {
++            luma: &values,
++            width: 32,
++            height: 32,
++            storage_orientation: 1,
++        };
++        let map = apple_style_histogram_light_map(&request, 1.0).unwrap();
++        assert!(map
++            .as_chunks::<2>()
++            .0
++            .iter()
++            .all(|v| u16::from_le_bytes([v[0], v[1]]) == expected));
++    }
++}
++
++#[test]
++fn isolated_highlights_do_not_replace_the_local_median() {
++    let mut values = vec![0.0; 64 * 64];
++    // Each 2x2 cell contains one white sample and three black samples.
++    for y in (0..64).step_by(2) {
++        for x in (0..64).step_by(2) {
++            values[y * 64 + x] = 1.0;
++        }
++    }
++    let request = AppleStyleLightMapRequest {
++        luma: &values,
++        width: 64,
++        height: 64,
++        storage_orientation: 1,
++    };
++    let map = apple_style_histogram_light_map(&request, 1.0).unwrap();
++    assert!(map
++        .as_chunks::<2>()
++        .0
++        .iter()
++        .all(|v| u16::from_le_bytes([v[0], v[1]]) == 0x2937));
++    assert!(apple_style_histogram_light_map(&request, 0.0).is_err());
++    let extreme = vec![65504.0; 32 * 32];
++    assert!(apple_style_histogram_light_map(
++        &AppleStyleLightMapRequest {
++            luma: &extreme,
++            width: 32,
++            height: 32,
++            storage_orientation: 1,
++        },
++        65504.0
++    )
++    .is_err());
++}
+diff --git a/crates/xdremux-runtime/Cargo.toml b/crates/xdremux-runtime/Cargo.toml
+index b5a08ca..44da2ac 100644
+--- a/crates/xdremux-runtime/Cargo.toml
++++ b/crates/xdremux-runtime/Cargo.toml
+@@ -3,6 +3,13 @@ name = "xdremux-runtime"
+ version = "0.1.0"
+ edition.workspace = true
+ 
++[features]
++styles-research = []
++
++[[example]]
++name = "styles_fidelity"
++required-features = ["styles-research"]
++
+ [dependencies]
+ atomic-write-file = "=0.3.1"
+ ruzstd = "=0.9.1"
+diff --git a/crates/xdremux-runtime/examples/styles_fidelity.rs b/crates/xdremux-runtime/examples/styles_fidelity.rs
+new file mode 100644
+index 0000000..f7cf03a
+--- /dev/null
++++ b/crates/xdremux-runtime/examples/styles_fidelity.rs
+@@ -0,0 +1,40 @@
++//! Research entry point; the product CLI and its source admission are unchanged.
++#[cfg(target_os = "macos")]
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    use std::{fs, path::Path};
++    let path = std::env::args_os()
++        .nth(1)
++        .ok_or("request JSON path required")?;
++    let request: serde_json::Value = serde_json::from_slice(&fs::read(path)?)?;
++    let text = |key: &str| request[key].as_str().ok_or("missing request path");
++    let number = |key: &str| request[key].as_f64().ok_or("missing calibration number");
++    let input = fs::read(text("input")?)?;
++    let before = xdremux_engine::apple_style_data_sha256(&input);
++    let runtime = xdremux_runtime::PortableRuntime::default();
++    runtime.rebuild_styles_for_research(
++        Path::new(text("adapter")?),
++        &input,
++        Path::new(text("output")?),
++        number("maximum_stops")? as f32,
++        xdremux_engine::AppleStyleLinearCalibration {
++            baseline_scale: number("baseline_scale")? as f32,
++            gain_scale: number("gain_scale")? as f32,
++            baseline_maximum: number("baseline_maximum")? as f32,
++            histogram_light_maps: request["histogram_light_maps"].as_bool().unwrap_or(false),
++        },
++    )?;
++    if xdremux_engine::apple_style_data_sha256(&fs::read(text("input")?)?) != before {
++        return Err("research source changed".into());
++    }
++    println!(
++        "{}",
++        serde_json::json!({"source_preserved": true, "input_sha256": before})
++    );
++    Ok(())
++}
++
++#[cfg(not(target_os = "macos"))]
++fn main() {
++    eprintln!("Styles fidelity generation requires macOS and the Apple adapter");
++    std::process::exit(1);
++}
+diff --git a/crates/xdremux-runtime/src/apple_styles.rs b/crates/xdremux-runtime/src/apple_styles.rs
+index 5c87c62..7123859 100644
+--- a/crates/xdremux-runtime/src/apple_styles.rs
++++ b/crates/xdremux-runtime/src/apple_styles.rs
+@@ -10,10 +10,10 @@ use xdremux_codec::EncodedHevcResource;
+ use xdremux_codec::{HeifRasterDecodeRequest, Raster8, RasterPixelFormat};
+ use xdremux_engine::{
+     apple_style_apply_global_tone_curve, apple_style_distribution, apple_style_face_exposure_boost,
+-    apple_style_light_map, apple_style_linear_metadata, apple_style_linear_thumbnail_codes,
+-    apple_style_maker_apple_dictionary, apple_style_monotonic_global_tone_curve,
+-    apple_style_property_list, apple_style_revert_local_data, resolve_apple_style_scene_type,
+-    AppleL8Mask, AppleStyleGlobalToneCurve, AppleStyleLightMapRequest, AppleStyleLinearMetadata,
++    apple_style_light_map, apple_style_linear_thumbnail_codes, apple_style_maker_apple_dictionary,
++    apple_style_monotonic_global_tone_curve, apple_style_property_list,
++    apple_style_revert_local_data, resolve_apple_style_scene_type, AppleL8Mask,
++    AppleStyleGlobalToneCurve, AppleStyleLightMapRequest, AppleStyleLinearMetadata,
+     AppleStylePropertyListRequest, AppleStyleRevertRequest, AppleStyleStatistics,
+     APPLE_PHOTOGRAPHIC_STYLES_SEMANTIC_ROLES,
+ };
+@@ -118,9 +118,53 @@ pub(crate) fn convert_file(
+     executable: impl AsRef<Path>,
+     source: &[u8],
+     output: impl AsRef<Path>,
++) -> Result<PhotographicStylesFileReceipt> {
++    convert_file_impl(runtime, executable.as_ref(), source, output.as_ref(), None)
++}
++
++#[cfg(feature = "styles-research")]
++pub(crate) fn rebuild_for_research(
++    runtime: &PortableRuntime,
++    executable: &Path,
++    source: &[u8],
++    output: &Path,
++    maximum_stops: f32,
++    calibration: xdremux_engine::AppleStyleLinearCalibration,
++) -> Result<PhotographicStylesFileReceipt> {
++    if !maximum_stops.is_finite() || !(0.0..=16.0).contains(&maximum_stops) {
++        return Err(RuntimeError::new(
++            "Styles research input",
++            "invalid measured HDR headroom",
++        ));
++    }
++    if output.exists() {
++        return Err(RuntimeError::new(
++            "Styles research output",
++            "output already exists",
++        ));
++    }
++    // The assembly owner rejects an existing Styles item. The caller supplies
++    // a blind HEIF projection, never a donor resource or a vendor disguise.
++    convert_file_impl(
++        runtime,
++        executable,
++        source,
++        output,
++        Some((maximum_stops, calibration)),
++    )
++}
++
++fn convert_file_impl(
++    runtime: &PortableRuntime,
++    executable: &Path,
++    source: &[u8],
++    output: &Path,
++    research: Option<(f32, xdremux_engine::AppleStyleLinearCalibration)>,
+ ) -> Result<PhotographicStylesFileReceipt> {
+     let mut profile = profile_start();
+-    let output = output.as_ref();
++    let calibration = research
++        .map(|(_, calibration)| calibration)
++        .unwrap_or_default();
+     let parent = publication_parent(output);
+     if !parent.is_dir() {
+         return Err(RuntimeError::new(
+@@ -128,7 +172,11 @@ pub(crate) fn convert_file(
+             format!("output parent is not a directory: {}", parent.display()),
+         ));
+     }
+-    let prepared = runtime.analyze_proxdr(source)?;
++    let prepared = if research.is_none() {
++        Some(runtime.analyze_proxdr(source)?)
++    } else {
++        None
++    };
+     profile_stage(&mut profile, "source_analysis");
+ 
+     let staging = tempfile::Builder::new()
+@@ -141,12 +189,16 @@ pub(crate) fn convert_file(
+     // Build the standard HDR base in memory so an in-place Styles conversion
+     // cannot publish an intermediate file. The request is intentionally
+     // feature-neutral: this operation owns the Styles graph separately.
+-    let product_base = runtime
+-        .convert_proxdr_bytes(source, xdremux_engine::ConversionRequest::default(), |_| {})?
+-        .bytes;
+-    let mut system_encoded = if crate::system_heif_hdr::requested()? {
++    let product_base = if research.is_some() {
++        source.to_vec()
++    } else {
++        runtime
++            .convert_proxdr_bytes(source, xdremux_engine::ConversionRequest::default(), |_| {})?
++            .bytes
++    };
++    let mut system_encoded = if research.is_none() && crate::system_heif_hdr::requested()? {
+         Some(crate::system_heif_hdr::encode_system_base(
+-            executable.as_ref(),
++            executable,
+             &product_base,
+             staging.path(),
+             output,
+@@ -166,7 +218,7 @@ pub(crate) fn convert_file(
+         .map_err(|error| RuntimeError::external("Photographic Styles base staging", error))?;
+     profile_stage(&mut profile, "base_conversion");
+ 
+-    let adapter = AppleAdapterClient::new(executable.as_ref().to_path_buf());
++    let adapter = AppleAdapterClient::new(executable.to_path_buf());
+     if !adapter.supports_photographic_styles()? {
+         return Err(RuntimeError::new(
+             "Photographic Styles adapter",
+@@ -225,11 +277,21 @@ pub(crate) fn convert_file(
+     let semantic_scaffold = fs::read(&semantic_scaffold_path).map_err(|error| {
+         RuntimeError::external("Photographic Styles semantic scaffold read", error)
+     })?;
+-    let semantic_base = xdremux_heif::transplant_apple_semantic_auxiliary_heif(
+-        &base,
+-        &semantic_scaffold,
+-        APPLE_PHOTOGRAPHIC_STYLES_SEMANTIC_ROLES.len(),
+-    )
++    let semantic_base = if research.is_some() {
++        // The blind Apple HDR base is authoritative. Import only the newly
++        // inferred resources, preserving its coded primary and HDR graph.
++        xdremux_heif::merge_apple_semantic_auxiliary_heif(
++            &base,
++            &semantic_scaffold,
++            APPLE_PHOTOGRAPHIC_STYLES_SEMANTIC_ROLES.len(),
++        )
++    } else {
++        xdremux_heif::transplant_apple_semantic_auxiliary_heif(
++            &base,
++            &semantic_scaffold,
++            APPLE_PHOTOGRAPHIC_STYLES_SEMANTIC_ROLES.len(),
++        )
++    }
+     .map_err(|error| {
+         note_system_carrier(
+             carrier_report.as_deref(),
+@@ -262,22 +324,34 @@ pub(crate) fn convert_file(
+             pair,
+             encoded.content_headroom.log2(),
+             LINEAR_THUMBNAIL_MAX_SIZE,
++            calibration,
+         )?
+     } else {
+         let pair = scene_linear_pair(
+             &adapter,
+-            &semantic_base,
++            if research.is_some() {
++                &base
++            } else {
++                &semantic_base
++            },
+             staging.path(),
+             LINEAR_THUMBNAIL_MAX_SIZE,
+         )?;
+-        let maximum_stops = prepared
+-            .scale
+-            .per_channel_gain_map_max
+-            .iter()
+-            .copied()
+-            .chain(std::iter::once(prepared.scale.gain_map_max))
+-            .fold(f64::NEG_INFINITY, f64::max);
+-        derive_style_scene_from_pair(pair, maximum_stops as f32, LINEAR_THUMBNAIL_MAX_SIZE)?
++        let maximum_stops = if let Some((stops, _)) = research {
++            stops
++        } else {
++            let prepared = prepared.as_ref().ok_or_else(|| {
++                RuntimeError::new("Photographic Styles source", "missing ProXDR analysis")
++            })?;
++            prepared
++                .scale
++                .per_channel_gain_map_max
++                .iter()
++                .copied()
++                .chain(std::iter::once(prepared.scale.gain_map_max))
++                .fold(f64::NEG_INFINITY, f64::max) as f32
++        };
++        derive_style_scene_from_pair(pair, maximum_stops, LINEAR_THUMBNAIL_MAX_SIZE, calibration)?
+     };
+     profile_stage(&mut profile, "scene_derivation");
+     let display_thumbnail = linear_thumbnail_raster(&scene_rasters)?;
+@@ -324,20 +398,54 @@ pub(crate) fn convert_file(
+     // Key c is the primary-image guide mean. Key d is the linear-thumbnail
+     // guide mean. The consumer upsamples each with its guided filter and mixes
+     // them; these maps are not multiplied onto luminance.
+-    let tone_light_map = apple_style_light_map(&AppleStyleLightMapRequest {
++    let mut tone_light_map = apple_style_light_map(&AppleStyleLightMapRequest {
+         luma: &scene_rasters.base_luminance,
+         width: scene_rasters.width,
+         height: scene_rasters.height,
+         storage_orientation,
+     })
+     .map_err(|error| RuntimeError::external("Photographic Styles tone light map", error))?;
+-    let linear_light_map = apple_style_light_map(&AppleStyleLightMapRequest {
++    let mut linear_light_map = apple_style_light_map(&AppleStyleLightMapRequest {
+         luma: &scene_rasters.thumbnail_luminance,
+         width: scene_rasters.width,
+         height: scene_rasters.height,
+         storage_orientation,
+     })
+     .map_err(|error| RuntimeError::external("Photographic Styles linear light map", error))?;
++    if calibration.histogram_light_maps {
++        // The native d histogram reads the GTC-mapped linear image, not the
++        // uncurved thumbnail. These guides/normalizers remain source proxies.
++        let mapped = apple_style_apply_global_tone_curve(
++            &scene_rasters.thumbnail_codes,
++            &scene_rasters.global_tone_curve.linear_samples,
++        )
++        .map_err(|error| RuntimeError::external("Styles histogram guide", error))?;
++        let build = |rgb: &[f32]| {
++            let guide = rgb
++                .as_chunks::<3>()
++                .0
++                .iter()
++                .map(|p| (p[0] + p[1] + p[2]) / 3.0)
++                .collect::<Vec<_>>();
++            let normalizer = rgb
++                .iter()
++                .copied()
++                .fold(0.0_f32, f32::max)
++                .max(1.0 / 4096.0);
++            xdremux_engine::apple_style_histogram_light_map(
++                &AppleStyleLightMapRequest {
++                    luma: &guide,
++                    width: scene_rasters.width,
++                    height: scene_rasters.height,
++                    storage_orientation,
++                },
++                normalizer,
++            )
++            .map_err(|error| RuntimeError::external("Styles histogram map", error))
++        };
++        tone_light_map = build(&scene_rasters.base_rgb)?;
++        linear_light_map = build(&mapped)?;
++    }
+     let scene_scores = adapter.vision_scene_scores(&base_path)?;
+     let scene_decision = resolve_apple_style_scene_type(scene_scores)
+         .map_err(|error| RuntimeError::external("Photographic Styles scene policy", error))?;
+@@ -411,8 +519,11 @@ pub(crate) fn convert_file(
+     fs::write(&styles_path, &assembled)
+         .map_err(|error| RuntimeError::external("Texture source staging", error))?;
+     profile_stage(&mut profile, "style_assembly");
+-    let assembled =
+-        crate::apple_texture::generate(&adapter, &styles_path, &assembled, staging.path())?;
++    let assembled = if research.is_none() {
++        crate::apple_texture::generate(&adapter, &styles_path, &assembled, staging.path())?
++    } else {
++        assembled
++    };
+     profile_stage(&mut profile, "texture_generation");
+     xdremux_heif::validate_gain_map_structure(&assembled).map_err(|error| {
+         note_system_carrier(
+@@ -751,6 +862,7 @@ fn derive_style_scene(
+         &full_hdr,
+         gain_map_maximum_stops as f32,
+         maximum_edge,
++        xdremux_engine::AppleStyleLinearCalibration::default(),
+     )
+ }
+ 
+@@ -758,6 +870,7 @@ fn derive_style_scene_from_pair(
+     pair: SceneLinearPair,
+     maximum_stops: f32,
+     maximum_edge: u32,
++    calibration: xdremux_engine::AppleStyleLinearCalibration,
+ ) -> Result<StyleSceneRasters> {
+     let sdr = SceneLinearRgb {
+         width: pair.width,
+@@ -769,7 +882,7 @@ fn derive_style_scene_from_pair(
+         height: pair.height,
+         samples: pair.hdr,
+     };
+-    derive_style_scene_from_linear_images(&sdr, &hdr, maximum_stops, maximum_edge)
++    derive_style_scene_from_linear_images(&sdr, &hdr, maximum_stops, maximum_edge, calibration)
+ }
+ 
+ fn derive_style_scene_from_linear_images(
+@@ -777,6 +890,7 @@ fn derive_style_scene_from_linear_images(
+     full_hdr: &SceneLinearRgb,
+     gain_map_maximum_stops: f32,
+     maximum_edge: u32,
++    calibration: xdremux_engine::AppleStyleLinearCalibration,
+ ) -> Result<StyleSceneRasters> {
+     // Thumbnail reduction happens only after the gain is applied at the base
+     // resolution. Both images use the same linear-light area footprint.
+@@ -826,11 +940,13 @@ fn derive_style_scene_from_linear_images(
+     let base_rgb = base_image.samples;
+     let hdr_rgb = hdr_image.samples;
+ 
+-    let linear_metadata =
+-        apple_style_linear_metadata(&base_luminance, &hdr_luminance, gain_map_maximum_stops)
+-            .map_err(|error| {
+-                RuntimeError::external("Photographic Styles linear metadata", error)
+-            })?;
++    let linear_metadata = xdremux_engine::apple_style_linear_metadata_with_calibration(
++        &base_luminance,
++        &hdr_luminance,
++        gain_map_maximum_stops,
++        calibration,
++    )
++    .map_err(|error| RuntimeError::external("Photographic Styles linear metadata", error))?;
+     let coded_linear_luminance = hdr_luminance
+         .iter()
+         .map(|value| *value / linear_metadata.baseline_exposure)
+@@ -1677,9 +1793,13 @@ mod tests {
+                 .copied()
+                 .chain(std::iter::once(prepared.scale.gain_map_max))
+                 .fold(f64::NEG_INFINITY, f64::max);
+-            let scene =
+-                derive_style_scene_from_pair(pair, maximum_stops as f32, LINEAR_THUMBNAIL_MAX_SIZE)
+-                    .unwrap();
++            let scene = derive_style_scene_from_pair(
++                pair,
++                maximum_stops as f32,
++                LINEAR_THUMBNAIL_MAX_SIZE,
++                xdremux_engine::AppleStyleLinearCalibration::default(),
++            )
++            .unwrap();
+             let expected = linear_thumbnail_raster(&scene).unwrap();
+             assert_eq!(
+                 (decoded.width, decoded.height),
+@@ -1785,6 +1905,7 @@ mod tests {
+             },
+             2.0,
+             2,
++            xdremux_engine::AppleStyleLinearCalibration::default(),
+         )
+         .unwrap();
+         assert_eq!(scene.base_rgb, sdr);
+diff --git a/crates/xdremux-runtime/src/lib.rs b/crates/xdremux-runtime/src/lib.rs
+index 40dbfb0..991ffbe 100644
+--- a/crates/xdremux-runtime/src/lib.rs
++++ b/crates/xdremux-runtime/src/lib.rs
+@@ -426,6 +426,27 @@ impl PortableRuntime {
+         apple_styles::convert_file(self, executable, source, output)
+     }
+ 
++    /// Research-only resource generation from an already isolated Apple HDR
++    /// input. This calls the product's resource producer without ProXDR admission.
++    #[cfg(all(target_os = "macos", feature = "styles-research"))]
++    pub fn rebuild_styles_for_research(
++        &self,
++        executable: &Path,
++        source: &[u8],
++        output: &Path,
++        maximum_stops: f32,
++        calibration: xdremux_engine::AppleStyleLinearCalibration,
++    ) -> Result<PhotographicStylesFileReceipt> {
++        apple_styles::rebuild_for_research(
++            self,
++            executable,
++            source,
++            output,
++            maximum_stops,
++            calibration,
++        )
++    }
++
+     /// Encode one SDR/HDR pair with Core Image's gain-map calculation.
+     ///
+     /// This is the opt-in measurement primitive. It does not publish a Styles
