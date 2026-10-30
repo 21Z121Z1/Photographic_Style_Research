@@ -1,7 +1,7 @@
 name: Styles native research
 on:
   push:
-    branches: ['research/styles-native-reference-20261026', 'research/xdremux-fidelity-20261029']
+    branches: ['research/styles-native-reference-20261026', 'research/xdremux-fidelity-20261029', 'research/key1-lightness-20261030']
     paths:
       - 'research/styles-firmware-20261022/**'
       - 'research/styles_fidelity/**'
@@ -37,7 +37,7 @@ jobs:
           retention-days: 1
           if-no-files-found: error
   fidelity-portable:
-    if: github.ref_name == 'research/xdremux-fidelity-20261029' || github.event_name == 'workflow_dispatch'
+    if: github.ref_name == 'research/xdremux-fidelity-20261029' || github.ref_name == 'research/key1-lightness-20261030' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -62,7 +62,7 @@ jobs:
           git -C xdremux apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/xdremux-research.patch"
           python -m unittest discover -s research/styles_fidelity/tests -t . -v
   fidelity-native:
-    if: github.ref_name == 'research/xdremux-fidelity-20261029' || github.event_name == 'workflow_dispatch'
+    if: github.ref_name == 'research/xdremux-fidelity-20261029' || github.ref_name == 'research/key1-lightness-20261030' || github.event_name == 'workflow_dispatch'
     runs-on: xcode-27
     timeout-minutes: 60
     env:
@@ -115,6 +115,18 @@ jobs:
           git apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/key1-bounded.patch"
           git apply "$GITHUB_WORKSPACE/research/styles_fidelity/key1-bounded.patch"
           cargo test --locked -p xdremux-engine -- --nocapture 2>&1 | tee "$RUNNER_TEMP/key1-after.log"
+          git apply "$GITHUB_WORKSPACE/research/styles_fidelity/key1-lightness-regression.patch"
+          set +e
+          cargo test --locked -p xdremux-runtime --features styles-research --lib key1_revert_keeps_primary_lightness -- --nocapture > "$RUNNER_TEMP/key1-lightness-before.log" 2>&1
+          lightness_status=$?
+          set -e
+          if [[ "$lightness_status" -eq 0 ]] || ! grep -Fq 'key1 revert changed primary lightness' "$RUNNER_TEMP/key1-lightness-before.log" || ! grep -Fq 'test result: FAILED. 0 passed; 1 failed;' "$RUNNER_TEMP/key1-lightness-before.log"; then
+            cat "$RUNNER_TEMP/key1-lightness-before.log"
+            exit 1
+          fi
+          git apply --check "$GITHUB_WORKSPACE/research/styles_fidelity/key1-lightness.patch"
+          git apply "$GITHUB_WORKSPACE/research/styles_fidelity/key1-lightness.patch"
+          cargo test --locked -p xdremux-runtime --features styles-research --lib key1_revert_keeps_primary_lightness -- --nocapture 2>&1 | tee "$RUNNER_TEMP/key1-lightness-after.log"
           cargo build --locked -p xdremux-runtime --features styles-research --example styles_fidelity
           swift build --product xdremux-apple-adapter
       - name: Export complete editable HEICs for Photos comparison
@@ -143,7 +155,10 @@ jobs:
               'candidate_patch_sha256': hashlib.sha256((package / 'xdremux-research.patch').read_bytes()).hexdigest(),
               'key1_repair_patch_sha256': hashlib.sha256((package / 'key1-bounded.patch').read_bytes()).hexdigest(),
               'key1_regression_patch_sha256': hashlib.sha256((package / 'key1-regression.patch').read_bytes()).hexdigest(),
+              'key1_lightness_regression_patch_sha256': hashlib.sha256((package / 'key1-lightness-regression.patch').read_bytes()).hexdigest(),
+              'key1_lightness_patch_sha256': hashlib.sha256((package / 'key1-lightness.patch').read_bytes()).hexdigest(),
               'engine_source_sha256': hashlib.sha256(pathlib.Path('xdremux/crates/xdremux-engine/src/apple_photographic_styles.rs').read_bytes()).hexdigest(),
+              'runtime_source_sha256': hashlib.sha256(pathlib.Path('xdremux/crates/xdremux-runtime/src/apple_styles.rs').read_bytes()).hexdigest(),
               'consumer_revision': '37dd551a949047ed14580efa0c0a2556922791b5',
           }
           (output / 'source-binding.json').write_text(json.dumps(binding, indent=2) + '\n')
@@ -159,5 +174,7 @@ jobs:
             ${{ runner.temp }}/styles-fidelity/heic/**/*.HEIC
             ${{ runner.temp }}/key1-before.log
             ${{ runner.temp }}/key1-after.log
+            ${{ runner.temp }}/key1-lightness-before.log
+            ${{ runner.temp }}/key1-lightness-after.log
           retention-days: 7
           if-no-files-found: error

@@ -183,9 +183,14 @@ curve and semantic tone resources were absorbed a second time: removing the
 style darkened every block and pinned most coefficients at their bounds.
 `key1-lightness-regression.patch` checks that a revert keeps the primary
 luminance and transfers the thumbnail chromaticity on a uniform scene whose
-thumbnail is darker than the primary; it fails on the previous target and
-passes after `key1-lightness.patch`, which keeps the thumbnail chroma at the
-primary luminance. On `research/key1-lightness-20261030` the workflow file
-could not be changed, so `key1-bounded.patch` also carries both lightness
-patches for the exported HEICs; the native job does not yet run the runtime
-before/after check.
+thumbnail is darker than the primary. The native job applies that regression
+after the bounded solver, requires the previous raw-thumbnail target to fail
+with `key1 revert changed primary lightness`, then applies
+`key1-lightness.patch` and requires the same runtime test to pass before it
+builds the exporter. The patch keeps the thumbnail chroma at the primary
+luminance. `key1-bounded.patch` remains only the joint box solver.
+
+An engine-level replay of that uniform scene, using the same pixels the
+runtime test constructs, changed primary lightness by 0.389 before the target
+change and by 0.00019 after it, with chromaticity error 0.00018. That replay
+is not a substitute for the macOS runtime log.
