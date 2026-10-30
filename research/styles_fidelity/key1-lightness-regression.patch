@@ -1,0 +1,91 @@
+diff --git a/crates/xdremux-runtime/src/apple_styles.rs b/crates/xdremux-runtime/src/apple_styles.rs
+index 7123859..a67ab4d 100644
+--- a/crates/xdremux-runtime/src/apple_styles.rs
++++ b/crates/xdremux-runtime/src/apple_styles.rs
+@@ -2122,4 +2122,86 @@ mod tests {
+         ];
+         assert_eq!(single_idr_payload(&annex_b).unwrap(), [0, 0, 0, 2, 0x26, 7]);
+     }
++
++    fn half_to_f64(bits: u16) -> f64 {
++        let sign = if bits & 0x8000 == 0 { 1.0 } else { -1.0 };
++        let exponent = i32::from((bits >> 10) & 0x1f);
++        let mantissa = f64::from(bits & 0x03ff);
++        match exponent {
++            0 => sign * mantissa * 2f64.powi(-24),
++            31 => f64::NAN,
++            _ => sign * (1.0 + mantissa / 1024.0) * 2f64.powi(exponent - 15),
++        }
++    }
++
++    #[test]
++    fn key1_revert_keeps_primary_lightness_and_transfers_scene_chroma() {
++        // Remove-style key1 is applied to the displayed primary. Exposure and
++        // tone are carried by the linear metadata, the global tone curve and
++        // the semantic-tone resources; key1 must not also absorb the
++        // thumbnail's exposure scale, or every reverted pixel gets darker and
++        // the coefficients are driven into their bounds.
++        let width = 24;
++        let height = 18;
++        let sdr_pixel = [0.5_f32, 0.55, 0.6];
++        let hdr_pixel = [0.6_f32, 0.66, 0.84];
++        let scene = derive_style_scene_from_pair(
++            SceneLinearPair {
++                width,
++                height,
++                sdr: sdr_pixel.repeat(width * height),
++                hdr: hdr_pixel.repeat(width * height),
++            },
++            2.0,
++            24,
++            xdremux_engine::AppleStyleLinearCalibration::default(),
++        )
++        .unwrap();
++        let primary = [
++            f64::from(scene.base_rgb[0]),
++            f64::from(scene.base_rgb[1]),
++            f64::from(scene.base_rgb[2]),
++        ];
++        let thumbnail = [
++            f64::from(scene.thumbnail_codes[0]),
++            f64::from(scene.thumbnail_codes[1]),
++            f64::from(scene.thumbnail_codes[2]),
++        ];
++        let lum =
++            |rgb: [f64; 3]| 0.228_974_56 * rgb[0] + 0.691_738_52 * rgb[1] + 0.079_286_91 * rgb[2];
++        let thumbnail_ratio = lum(thumbnail) / lum(primary);
++        assert!(
++            (thumbnail_ratio - 1.0).abs() > 0.05,
++            "test scene must carry an exposure difference, got thumbnail/primary {thumbnail_ratio}"
++        );
++        let data = source_derived_style_data(&scene).unwrap();
++        let [r, g, b] = primary;
++        let basis = [1.0, r, g, b, r * r, r * g, r * b, g * g, g * b, b * b];
++        for (block_index, block) in data.chunks_exact(60).enumerate() {
++            let mut output = [0.0_f64; 3];
++            for (channel, value) in output.iter_mut().enumerate() {
++                *value = basis
++                    .iter()
++                    .enumerate()
++                    .map(|(term, x)| {
++                        let index = 2 * (3 * term + channel);
++                        x * half_to_f64(u16::from_le_bytes([block[index], block[index + 1]]))
++                    })
++                    .sum();
++            }
++            let ratio = lum(output) / lum(primary);
++            assert!(
++                (ratio - 1.0).abs() < 0.005,
++                "key1 revert changed primary lightness at block {block_index}: ratio {ratio}"
++            );
++            for channel in 0..3 {
++                let expected = thumbnail[channel] / lum(thumbnail);
++                let actual = output[channel] / lum(output);
++                assert!(
++                    (actual - expected).abs() < 0.005,
++                    "key1 revert lost scene chroma at block {block_index}, channel {channel}: expected {expected}, got {actual}"
++                );
++            }
++        }
++    }
+ }

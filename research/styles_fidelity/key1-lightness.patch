@@ -1,0 +1,59 @@
+diff --git a/crates/xdremux-runtime/src/apple_styles.rs b/crates/xdremux-runtime/src/apple_styles.rs
+index a67ab4d..66c01d0 100644
+--- a/crates/xdremux-runtime/src/apple_styles.rs
++++ b/crates/xdremux-runtime/src/apple_styles.rs
+@@ -1156,18 +1156,50 @@ fn source_derived_style_data(scene: &StyleSceneRasters) -> Result<Vec<u8>> {
+             "source-derived style raster geometry or values are invalid",
+         ));
+     }
+-    // Remove-style reads the displayed primary and applies key1. The recovered
+-    // target is the same per-channel thumbnail code the semantic-tone stage
+-    // uses. A forward primary-to-styled residual would point the other way.
++    // Remove-style reads the displayed primary and applies key1. The
++    // recovered target takes its chroma from the same per-channel thumbnail
++    // code the semantic-tone stage uses, but keeps the primary's luminance.
++    // The thumbnail code is scene light divided by the baseline exposure and
++    // multiplied by the base gain; that exposure scale and the local tone
++    // difference are rendered by the linear metadata, the global tone curve
++    // and the semantic-tone resources. Fitting key1 to the raw code made it
++    // absorb the same exposure a second time, darkened every revert and drove
++    // most coefficients into their bounds. A forward primary-to-styled
++    // residual would point the other way.
++    let recovered_rgb = luminance_preserving_revert_target(&scene.base_rgb, &scene.thumbnail_codes);
+     apple_style_revert_local_data(&AppleStyleRevertRequest {
+         width: scene.width,
+         height: scene.height,
+         styled_rgb: &scene.base_rgb,
+-        recovered_rgb: &scene.thumbnail_codes,
++        recovered_rgb: &recovered_rgb,
+     })
+     .map_err(|error| RuntimeError::external("Photographic Styles style data", error))
+ }
+ 
++/// Scene chromaticity from the thumbnail at the displayed primary's luminance.
++///
++/// A pixel without thumbnail luminance carries no chroma and keeps the
++/// primary, so remove-style stays the identity there.
++fn luminance_preserving_revert_target(primary: &[f32], thumbnail: &[f32]) -> Vec<f32> {
++    let mut target = Vec::with_capacity(primary.len());
++    for (base, scene) in primary
++        .as_chunks::<3>()
++        .0
++        .iter()
++        .zip(thumbnail.as_chunks::<3>().0)
++    {
++        let base_luminance = f64::from(luminance(*base));
++        let scene_luminance = f64::from(luminance(*scene));
++        if scene_luminance > 1e-6 && base_luminance > 0.0 {
++            let scale = base_luminance / scene_luminance;
++            target.extend(scene.iter().map(|value| (f64::from(*value) * scale) as f32));
++        } else {
++            target.extend_from_slice(base);
++        }
++    }
++    target
++}
++
+ #[cfg(test)]
+ fn srgb_decode(value: f32) -> f32 {
+     if value <= 0.040_45 {

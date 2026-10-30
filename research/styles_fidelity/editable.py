@@ -26,6 +26,7 @@ def main(argv=None):
         directory.mkdir(parents=True)
     report = {'schema': 'styles-editable-heic-export-v1', 'passed': False,
               'key1_solver': 'joint box-constrained ridge; refit free terms at active bounds',
+              'key1_target': 'thumbnail chroma at primary luminance',
               'photos_ui_verified': False, 'product_defaults_changed': False,
               'scope': 'Complete generated HEICs and native full-resolution base preservation; user Photos editing remains unverified.',
               'calibrations': {'before': blind.DEFAULT, 'after': JOINT}, 'cases': []}
@@ -86,6 +87,8 @@ def main(argv=None):
 03_fixed_joint：相同照片，修复 Key 1 拟合后的联合重建（曝光、增益缩放均为 0.75，直方图 c/d，曝光上限 10.4）。
 
 本轮修复两组共用的 Key 1 局部颜色系数求解：在已有系数界限内联合拟合，超界项固定后重新求解其他项。原来求无约束解后逐项截断会破坏相关 RGB 项之间的补偿，在平滑区域引入色块。曝光、增益与 c/d 参数未重新搜索，原生 Photos 的最终效果仍需导入验证。
+
+本轮另改 Key 1 的拟合目标：保留主图亮度，只从线性缩略图取色度。缩略图码值是场景光除以基线曝光再乘基础增益，曝光与局部影调已由线性元数据、全局影调曲线和语义影调资源表达；原来让 Key 1 直接拟合码值，会把同一曝光再算一次，使去风格结果整体变暗，并把大部分系数推到界限上。
 
 这是完整 HEIC，不是 PNG 预览或调完效果的扁平图。请导入 Photos 后自行调整摄影风格的影调、色彩及风格预设。文件本身没有预先套用 ±0.5 Tone。
 
