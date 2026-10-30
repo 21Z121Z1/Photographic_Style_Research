@@ -163,7 +163,7 @@ in `01_original`, `02_fixed_default`, and `03_fixed_joint` folders. It uses the
 same producer and frozen joint calibration, without baking a Tone edit into the
 photo. Native full-resolution SDR/HDR base readbacks must match the source
 exactly; Styles resources and file hashes are retained in the report. The
-current workflow publishes `xdremux-key1-lightness-editable-heic-*` for this request. Actual
+current workflow publishes `xdremux-fixed-editable-heic-*` for this request. Actual
 Photos UI editing remains for the user's device test; the previously observed
 abnormal probe previews are not fidelity evidence.
 
@@ -183,6 +183,9 @@ curve and semantic tone resources were absorbed a second time: removing the
 style darkened every block and pinned most coefficients at their bounds.
 `key1-lightness-regression.patch` checks that a revert keeps the primary
 luminance and transfers the thumbnail chromaticity on a uniform scene whose
-thumbnail is darker than the primary; the native job requires that the previous
-target fails it, then applies `key1-lightness.patch`, which keeps the
-thumbnail chroma at the primary luminance, and reruns the runtime Styles tests.
+thumbnail is darker than the primary; it fails on the previous target and
+passes after `key1-lightness.patch`, which keeps the thumbnail chroma at the
+primary luminance. On `research/key1-lightness-20261030` the workflow file
+could not be changed, so `key1-bounded.patch` also carries both lightness
+patches for the exported HEICs; the native job does not yet run the runtime
+before/after check.
