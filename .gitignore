@@ -22,8 +22,9 @@ Apple_Native_Samples/
 *.HEIC
 *.heic
 
-# Generated artifacts
-artifacts/
+# Generated artifacts at the repository root.
+# Recovered research sources live under livephoto_hdr/recovered/artifacts and stay tracked.
+/artifacts/
 dump.json
 
 # NoFusion
@@ -37,3 +38,7 @@ tests/test_heif_builder.py
 # Temporary files
 /tmp/
 /private/tmp/
+
+# Live Photo HDR research inputs and generated frames. Never commit media or GPS.
+/input/
+livephoto_hdr/output/

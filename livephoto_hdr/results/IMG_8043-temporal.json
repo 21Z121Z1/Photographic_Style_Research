@@ -1,0 +1,2117 @@
+{
+  "schema": "livephoto-hdr-temporal-regression-v1",
+  "native": {
+    "coreImage": "blocked",
+    "metal": "blocked",
+    "vision": "blocked",
+    "cmImagingSPI": "blocked",
+    "executed": false,
+    "success": false,
+    "reason": "This Linux host cannot run Core Image, Metal, Vision, or the private CMImaging SPI. Hosted macOS runners returned constructor_test.constructed=false (HANDOFF 4.1). A green availability check is not native execution."
+  },
+  "inputs": {
+    "mov": "/workspace/input/livephoto-hdr/samples/IMG_8043/IMG_8043.MOV",
+    "heic": "/workspace/input/livephoto-hdr/samples/IMG_8043/IMG_8043.HEIC",
+    "sha256": {
+      "IMG_8043.MOV": "a4f4160d27728d05e85db0f6fb33cbf91340cb20969da7ac7dbe1ad63627ffa1",
+      "IMG_8043.HEIC": "3b54aeaecd67416be2c971fb4e8bc1996d99292e32d6c029d3410eb29af7a8d1"
+    }
+  },
+  "identity": {
+    "contentIdentifier": "C2A874F9-C44D-4504-9A21-46A505ADB63C"
+  },
+  "classification": {
+    "mode": "bypassed",
+    "bypassed": true,
+    "deltaPresent": false,
+    "styleMetadataPresent": true,
+    "sceneThumbnailPresent": true,
+    "nativeInverseExecuted": false,
+    "recoveredStandaloneAbsentFlag": "LivePhotoHDR StyleBypassed returns false when the key is absent, which can select native-delta-coefficients or styled-scene-fallback. This portable classifier returns bypass-flag-absent instead."
+  },
+  "timing": {
+    "movieTimescale": 600,
+    "mainFrames": 74,
+    "sceneThumbnails": 37,
+    "ptsMatchesFfprobe": true,
+    "stillTime": {
+      "value": 833,
+      "scale": 600,
+      "decimal": 1.3883333333333334
+    },
+    "stillInsideLongGap": false,
+    "longGaps": [
+      {
+        "afterThumbnail": 1,
+        "left": {
+          "value": 1,
+          "scale": 15,
+          "decimal": 0.06666666666666667
+        },
+        "right": {
+          "value": 67,
+          "scale": 300,
+          "decimal": 0.22333333333333333
+        },
+        "duration": {
+          "value": 47,
+          "scale": 300,
+          "decimal": 0.15666666666666668
+        },
+        "mainFramesInside": 1,
+        "longGap": true
+      }
+    ],
+    "sceneTrack": {
+      "appleLog": "com.apple.rec2020.apple-log",
+      "width": 128,
+      "height": 96,
+      "colr": {
+        "type": "nclc",
+        "primaries": 9,
+        "transfer": 1,
+        "matrix": 9,
+        "fullRangeFlag": null
+      },
+      "lumaCodeMin": 148,
+      "lumaCodeMax": 726,
+      "codeRange": "full",
+      "codeRangeReason": "ffprobe color_range=pc on this run. The nclc box has no range bit. Luma codes 148..726 also fit the legal 64..940 window, so the pc tag is the deciding evidence. Legal-range unpacking is not applied. The bt709 transfer tag is not the scene EOTF; the logs box says apple-log.",
+      "ffprobe": {
+        "color_range": "pc",
+        "color_space": "bt2020nc",
+        "color_transfer": "bt709",
+        "color_primaries": "bt2020",
+        "side_data_list": [
+          {}
+        ]
+      }
+    },
+    "hVideo": {
+      "count": 74,
+      "first": 0.47332763671875,
+      "last": 0.4725341796875,
+      "min": 0.4725341796875,
+      "max": 0.47332763671875
+    }
+  },
+  "heldOutThumbnails": {
+    "limitation": "Hiding one native thumbnail doubles that interval. It is a stress test, not ground truth for frames that never had a thumbnail.",
+    "exposureFit": false,
+    "space": "Rec.2020 linear after the piecewise Apple Log inverse, scaled by each thumbnail's own h. No P3 matrix.",
+    "summary": {
+      "hold_nearest": 0.08195189257300078,
+      "fixed_log": 0.07822286188600118,
+      "motion_gated": 0.3421369470202126,
+      "motion_ungated": 0.3703330357550244
+    },
+    "rows": [
+      {
+        "thumbnail": 1,
+        "pts": {
+          "value": 1,
+          "scale": 15,
+          "decimal": 0.06666666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 0,
+            "scale": 1,
+            "decimal": 0.0
+          },
+          "right": {
+            "value": 67,
+            "scale": 300,
+            "decimal": 0.22333333333333333
+          },
+          "longGap": true
+        },
+        "motionGated": {
+          "timeConfidence": 0.2985074626865672,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.2676139584053301
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.10011802432185045,
+            "medianEV": 0.059019477357968864,
+            "p90EV": 0.21891551035894194,
+            "signedMedianEV": -8.785954900991655e-05
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.0754713181788797,
+            "medianEV": 0.04294478387459777,
+            "p90EV": 0.164992913396039,
+            "signedMedianEV": -0.000990551359119296
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.26744858764374085,
+            "medianEV": 0.053669916519090144,
+            "p90EV": 0.5667170109789866,
+            "signedMedianEV": -0.000581897678391563
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.2718782003388745,
+            "medianEV": 0.05643031355683714,
+            "p90EV": 0.6765342426976152,
+            "signedMedianEV": -0.0007186071602419686
+          }
+        }
+      },
+      {
+        "thumbnail": 2,
+        "pts": {
+          "value": 67,
+          "scale": 300,
+          "decimal": 0.22333333333333333
+        },
+        "bracket": {
+          "left": {
+            "value": 1,
+            "scale": 15,
+            "decimal": 0.06666666666666667
+          },
+          "right": {
+            "value": 29,
+            "scale": 100,
+            "decimal": 0.29
+          },
+          "longGap": true
+        },
+        "motionGated": {
+          "timeConfidence": 0.2985074626865672,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.2658139742921415
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.024524529272853438,
+            "medianEV": 0.0,
+            "p90EV": 0.07749100820248997,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.025027983746248348,
+            "medianEV": 0.005153042514531414,
+            "p90EV": 0.06798071612698564,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.1960930854605283,
+            "medianEV": 0.011747294006412279,
+            "p90EV": 0.3863873705671996,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.20467473657757085,
+            "medianEV": 0.014195451643756796,
+            "p90EV": 0.5252604879236712,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 3,
+        "pts": {
+          "value": 29,
+          "scale": 100,
+          "decimal": 0.29
+        },
+        "bracket": {
+          "left": {
+            "value": 67,
+            "scale": 300,
+            "decimal": 0.22333333333333333
+          },
+          "right": {
+            "value": 107,
+            "scale": 300,
+            "decimal": 0.3566666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9056069137175142
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.04314283703393811,
+            "medianEV": 0.0,
+            "p90EV": 0.11954538680713053,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.02819089112877755,
+            "medianEV": 0.005806217403012237,
+            "p90EV": 0.07396769770021301,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.13493856972867446,
+            "medianEV": 0.009885056598272879,
+            "p90EV": 0.1937435851550728,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.14946244909831163,
+            "medianEV": 0.011633946149521512,
+            "p90EV": 0.26698306219060913,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 4,
+        "pts": {
+          "value": 107,
+          "scale": 300,
+          "decimal": 0.3566666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 29,
+            "scale": 100,
+            "decimal": 0.29
+          },
+          "right": {
+            "value": 127,
+            "scale": 300,
+            "decimal": 0.42333333333333334
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9151025237924264
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.026445396265748853,
+            "medianEV": 0.0,
+            "p90EV": 0.07503839398134601,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.026557948711853328,
+            "medianEV": 0.005848643008147469,
+            "p90EV": 0.06851299492628252,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.1105634781682422,
+            "medianEV": 0.009288852644485424,
+            "p90EV": 0.1282174829216394,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.12404256354347157,
+            "medianEV": 0.010567665381302938,
+            "p90EV": 0.16490066877423706,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 5,
+        "pts": {
+          "value": 127,
+          "scale": 300,
+          "decimal": 0.42333333333333334
+        },
+        "bracket": {
+          "left": {
+            "value": 107,
+            "scale": 300,
+            "decimal": 0.3566666666666667
+          },
+          "right": {
+            "value": 49,
+            "scale": 100,
+            "decimal": 0.49
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9145718164131731
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.023550837985791887,
+            "medianEV": 0.0,
+            "p90EV": 0.06972261987266425,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.02073814068939213,
+            "medianEV": 0.001084366714472651,
+            "p90EV": 0.05721846733608446,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.10944521527397184,
+            "medianEV": 0.006638944291601501,
+            "p90EV": 0.11774897219127109,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.12159079551557701,
+            "medianEV": 0.008129086210415082,
+            "p90EV": 0.15263669485592893,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 6,
+        "pts": {
+          "value": 49,
+          "scale": 100,
+          "decimal": 0.49
+        },
+        "bracket": {
+          "left": {
+            "value": 127,
+            "scale": 300,
+            "decimal": 0.42333333333333334
+          },
+          "right": {
+            "value": 167,
+            "scale": 300,
+            "decimal": 0.5566666666666666
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.913610975066986
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.01181589770785892,
+            "medianEV": 0.0,
+            "p90EV": 0.03488595953854436,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.014968128201401913,
+            "medianEV": 0.0,
+            "p90EV": 0.042135965926657144,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.10453048785159776,
+            "medianEV": 0.00045385899115979456,
+            "p90EV": 0.10004341869054915,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.11924140261260036,
+            "medianEV": 0.0006731855944308585,
+            "p90EV": 0.1304851511114383,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 7,
+        "pts": {
+          "value": 167,
+          "scale": 300,
+          "decimal": 0.5566666666666666
+        },
+        "bracket": {
+          "left": {
+            "value": 49,
+            "scale": 100,
+            "decimal": 0.49
+          },
+          "right": {
+            "value": 187,
+            "scale": 300,
+            "decimal": 0.6233333333333333
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9144471357762961
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.09191024926019169,
+            "medianEV": 0.05036731755403778,
+            "p90EV": 0.21114558106416056,
+            "signedMedianEV": 0.00032164913419130414
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.048050802475958505,
+            "medianEV": 0.02795771188370666,
+            "p90EV": 0.10750169731169557,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.13291850367070498,
+            "medianEV": 0.030375883146330107,
+            "p90EV": 0.17500373889489415,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.13987137117268675,
+            "medianEV": 0.031182738268004773,
+            "p90EV": 0.19720088500623606,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 8,
+        "pts": {
+          "value": 187,
+          "scale": 300,
+          "decimal": 0.6233333333333333
+        },
+        "bracket": {
+          "left": {
+            "value": 167,
+            "scale": 300,
+            "decimal": 0.5566666666666666
+          },
+          "right": {
+            "value": 69,
+            "scale": 100,
+            "decimal": 0.69
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9114062539090181
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.014701847099374554,
+            "medianEV": 0.0,
+            "p90EV": 0.04368793564230525,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.05174875387583947,
+            "medianEV": 0.028593317884272995,
+            "p90EV": 0.11789908737520279,
+            "signedMedianEV": -0.0013437160996812025
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.16340004979020065,
+            "medianEV": 0.03171014526310367,
+            "p90EV": 0.21419904999653228,
+            "signedMedianEV": -0.0011912533087219401
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.16794211422661648,
+            "medianEV": 0.0326159121867331,
+            "p90EV": 0.24606086483331496,
+            "signedMedianEV": -0.0016112974238149391
+          }
+        }
+      },
+      {
+        "thumbnail": 9,
+        "pts": {
+          "value": 69,
+          "scale": 100,
+          "decimal": 0.69
+        },
+        "bracket": {
+          "left": {
+            "value": 187,
+            "scale": 300,
+            "decimal": 0.6233333333333333
+          },
+          "right": {
+            "value": 227,
+            "scale": 300,
+            "decimal": 0.7566666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9093011444206608
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.020061136067827435,
+            "medianEV": 0.0,
+            "p90EV": 0.054190146965035914,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.01527209087456431,
+            "medianEV": 5.7918313006055655e-05,
+            "p90EV": 0.04295706735958147,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.1475723422975559,
+            "medianEV": 0.001443246562148559,
+            "p90EV": 0.14578092407370444,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.14804311187595673,
+            "medianEV": 0.005776065466076896,
+            "p90EV": 0.19820000099087737,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 10,
+        "pts": {
+          "value": 227,
+          "scale": 300,
+          "decimal": 0.7566666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 69,
+            "scale": 100,
+            "decimal": 0.69
+          },
+          "right": {
+            "value": 247,
+            "scale": 300,
+            "decimal": 0.8233333333333334
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9133688430663202
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.009907922015956734,
+            "medianEV": 0.0,
+            "p90EV": 0.023235160655193866,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.013092139985887178,
+            "medianEV": 0.0,
+            "p90EV": 0.03484937035811286,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.12475432233617098,
+            "medianEV": 1.128382131732053e-06,
+            "p90EV": 0.11846621697104998,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.1312785028075004,
+            "medianEV": 5.411745834571491e-06,
+            "p90EV": 0.15703560715588288,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 11,
+        "pts": {
+          "value": 247,
+          "scale": 300,
+          "decimal": 0.8233333333333334
+        },
+        "bracket": {
+          "left": {
+            "value": 227,
+            "scale": 300,
+            "decimal": 0.7566666666666667
+          },
+          "right": {
+            "value": 89,
+            "scale": 100,
+            "decimal": 0.89
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9110082761741992
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.0062227287907829195,
+            "medianEV": 0.0,
+            "p90EV": 0.0,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.007507405727157864,
+            "medianEV": 0.0,
+            "p90EV": 0.013889006648601933,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.12566532582006862,
+            "medianEV": 0.0,
+            "p90EV": 0.0935283852149172,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.1401674228279233,
+            "medianEV": 0.0,
+            "p90EV": 0.16397897107445789,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 12,
+        "pts": {
+          "value": 89,
+          "scale": 100,
+          "decimal": 0.89
+        },
+        "bracket": {
+          "left": {
+            "value": 247,
+            "scale": 300,
+            "decimal": 0.8233333333333334
+          },
+          "right": {
+            "value": 287,
+            "scale": 300,
+            "decimal": 0.9566666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.917625413599262
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.011315168569528501,
+            "medianEV": 0.0,
+            "p90EV": 0.0357310072204196,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.00864507442761869,
+            "medianEV": 0.0,
+            "p90EV": 0.023211268630180748,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.08890648266069025,
+            "medianEV": 0.0,
+            "p90EV": 0.05819309128257439,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.11299441670515573,
+            "medianEV": 0.0,
+            "p90EV": 0.09493262647120905,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 13,
+        "pts": {
+          "value": 287,
+          "scale": 300,
+          "decimal": 0.9566666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 89,
+            "scale": 100,
+            "decimal": 0.89
+          },
+          "right": {
+            "value": 307,
+            "scale": 300,
+            "decimal": 1.0233333333333334
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9223875403395355
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.016451928590247467,
+            "medianEV": 0.0,
+            "p90EV": 0.04689295520123826,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.012707138487480138,
+            "medianEV": 0.0,
+            "p90EV": 0.03663164303857487,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.046538116358462236,
+            "medianEV": 0.0,
+            "p90EV": 0.04898613817934392,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.053187101889695686,
+            "medianEV": 0.0,
+            "p90EV": 0.05224966260451667,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 14,
+        "pts": {
+          "value": 307,
+          "scale": 300,
+          "decimal": 1.0233333333333334
+        },
+        "bracket": {
+          "left": {
+            "value": 287,
+            "scale": 300,
+            "decimal": 0.9566666666666667
+          },
+          "right": {
+            "value": 109,
+            "scale": 100,
+            "decimal": 1.09
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9228963855829199
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.006407424435781449,
+            "medianEV": 0.0,
+            "p90EV": 0.011787743159753462,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.010891410794799728,
+            "medianEV": 0.0,
+            "p90EV": 0.029357482732609845,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.04471087499091746,
+            "medianEV": 0.0,
+            "p90EV": 0.04124239858812184,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.053709993145735484,
+            "medianEV": 0.0,
+            "p90EV": 0.04354881998359694,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 15,
+        "pts": {
+          "value": 109,
+          "scale": 100,
+          "decimal": 1.09
+        },
+        "bracket": {
+          "left": {
+            "value": 307,
+            "scale": 300,
+            "decimal": 1.0233333333333334
+          },
+          "right": {
+            "value": 347,
+            "scale": 300,
+            "decimal": 1.1566666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9202465404909571
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.089435621620219,
+            "medianEV": 0.052731020890875335,
+            "p90EV": 0.1999607929231022,
+            "signedMedianEV": 0.0003164898942471517
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.0464977383947267,
+            "medianEV": 0.027636318012334016,
+            "p90EV": 0.10195150951287585,
+            "signedMedianEV": -4.1579034171679297e-05
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.0924881941607263,
+            "medianEV": 0.029213057564050127,
+            "p90EV": 0.12358809969889757,
+            "signedMedianEV": -2.2892094082127556e-05
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.10396407340643143,
+            "medianEV": 0.030264960965882493,
+            "p90EV": 0.1364605203882062,
+            "signedMedianEV": -4.237387586725205e-05
+          }
+        }
+      },
+      {
+        "thumbnail": 16,
+        "pts": {
+          "value": 347,
+          "scale": 300,
+          "decimal": 1.1566666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 109,
+            "scale": 100,
+            "decimal": 1.09
+          },
+          "right": {
+            "value": 367,
+            "scale": 300,
+            "decimal": 1.2233333333333334
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9102856921873025
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.06989406812160176,
+            "medianEV": 0.031011891535640324,
+            "p90EV": 0.17505745824099272,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.06673829995987393,
+            "medianEV": 0.038831214622121024,
+            "p90EV": 0.14888173701357363,
+            "signedMedianEV": -0.0016881692028745121
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.19270655120950872,
+            "medianEV": 0.048999199157411466,
+            "p90EV": 0.35025120711679475,
+            "signedMedianEV": -0.0017549712774318493
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.22320097219613727,
+            "medianEV": 0.0515133171444635,
+            "p90EV": 0.5224101295523956,
+            "signedMedianEV": -0.002616954529536031
+          }
+        }
+      },
+      {
+        "thumbnail": 17,
+        "pts": {
+          "value": 367,
+          "scale": 300,
+          "decimal": 1.2233333333333334
+        },
+        "bracket": {
+          "left": {
+            "value": 347,
+            "scale": 300,
+            "decimal": 1.1566666666666667
+          },
+          "right": {
+            "value": 129,
+            "scale": 100,
+            "decimal": 1.29
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.8542443149244706
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.09287686462309862,
+            "medianEV": 0.03585082351132485,
+            "p90EV": 0.2415112883622922,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.051594915866515094,
+            "medianEV": 0.026322341826989337,
+            "p90EV": 0.12778973182170328,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.38260403717986097,
+            "medianEV": 0.055001051744600904,
+            "p90EV": 1.226056356615052,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.42019274397157363,
+            "medianEV": 0.06230328892572734,
+            "p90EV": 1.5476553618931652,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 18,
+        "pts": {
+          "value": 129,
+          "scale": 100,
+          "decimal": 1.29
+        },
+        "bracket": {
+          "left": {
+            "value": 367,
+            "scale": 300,
+            "decimal": 1.2233333333333334
+          },
+          "right": {
+            "value": 407,
+            "scale": 300,
+            "decimal": 1.3566666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.7928703798916125
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.09370208037485848,
+            "medianEV": 0.03680427638595862,
+            "p90EV": 0.24399363246096772,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.041020618735635665,
+            "medianEV": 0.01822455728453498,
+            "p90EV": 0.10018624780006254,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.5617410857824212,
+            "medianEV": 0.07050711051299796,
+            "p90EV": 1.9059464862866173,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.5594814248894117,
+            "medianEV": 0.0704920391844217,
+            "p90EV": 2.0369743923505497,
+            "signedMedianEV": -5.51539098170295e-07
+          }
+        }
+      },
+      {
+        "thumbnail": 19,
+        "pts": {
+          "value": 407,
+          "scale": 300,
+          "decimal": 1.3566666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 129,
+            "scale": 100,
+            "decimal": 1.29
+          },
+          "right": {
+            "value": 427,
+            "scale": 300,
+            "decimal": 1.4233333333333333
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.7506151874034379
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.12194044990550715,
+            "medianEV": 0.04970303012509092,
+            "p90EV": 0.30838021552120887,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.048249244279326864,
+            "medianEV": 0.02310485532673201,
+            "p90EV": 0.11238015697182427,
+            "signedMedianEV": -5.383844891682088e-06
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.64049815998164,
+            "medianEV": 0.09619425990137653,
+            "p90EV": 2.144228086155094,
+            "signedMedianEV": -1.1102230246251565e-16
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.6544443838478936,
+            "medianEV": 0.10727959004971743,
+            "p90EV": 2.257503250120333,
+            "signedMedianEV": -8.547213082055194e-05
+          }
+        }
+      },
+      {
+        "thumbnail": 20,
+        "pts": {
+          "value": 427,
+          "scale": 300,
+          "decimal": 1.4233333333333333
+        },
+        "bracket": {
+          "left": {
+            "value": 407,
+            "scale": 300,
+            "decimal": 1.3566666666666667
+          },
+          "right": {
+            "value": 149,
+            "scale": 100,
+            "decimal": 1.49
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.7146720828118148
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.10822711637572953,
+            "medianEV": 0.043683551520446784,
+            "p90EV": 0.26306911996666843,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.0585675118191388,
+            "medianEV": 0.02626794190551962,
+            "p90EV": 0.14370093803953943,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.708934708406203,
+            "medianEV": 0.1175197967916648,
+            "p90EV": 2.5335958320931073,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.7269712447772487,
+            "medianEV": 0.13489150295730878,
+            "p90EV": 2.518522952057676,
+            "signedMedianEV": -8.175862078019236e-06
+          }
+        }
+      },
+      {
+        "thumbnail": 21,
+        "pts": {
+          "value": 149,
+          "scale": 100,
+          "decimal": 1.49
+        },
+        "bracket": {
+          "left": {
+            "value": 427,
+            "scale": 300,
+            "decimal": 1.4233333333333333
+          },
+          "right": {
+            "value": 467,
+            "scale": 300,
+            "decimal": 1.5566666666666666
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.7905054664086743
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.07196096138857752,
+            "medianEV": 0.03164779986065014,
+            "p90EV": 0.18578153357216465,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.04945446350929588,
+            "medianEV": 0.023224180442327658,
+            "p90EV": 0.112220658917573,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.5936749564765222,
+            "medianEV": 0.0719018259919948,
+            "p90EV": 2.066102066220301,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.613069490304126,
+            "medianEV": 0.08320894228344944,
+            "p90EV": 2.196848000636158,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 22,
+        "pts": {
+          "value": 467,
+          "scale": 300,
+          "decimal": 1.5566666666666666
+        },
+        "bracket": {
+          "left": {
+            "value": 149,
+            "scale": 100,
+            "decimal": 1.49
+          },
+          "right": {
+            "value": 497,
+            "scale": 300,
+            "decimal": 1.6566666666666667
+          },
+          "longGap": true
+        },
+        "motionGated": {
+          "timeConfidence": 0.4,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.32353342106828337
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.07196096138857752,
+            "medianEV": 0.03164779986065014,
+            "p90EV": 0.18578153357216465,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.37246257071599925,
+            "medianEV": 0.3971317358956181,
+            "p90EV": 0.4794373735856909,
+            "signedMedianEV": 0.3970577036357157
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.7509452295177691,
+            "medianEV": 0.40799392829007797,
+            "p90EV": 1.932360032984733,
+            "signedMedianEV": 0.3649563744437565
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.8366383746440352,
+            "medianEV": 0.4356831054498187,
+            "p90EV": 2.1433944439782384,
+            "signedMedianEV": 0.4002418890304764
+          }
+        }
+      },
+      {
+        "thumbnail": 23,
+        "pts": {
+          "value": 497,
+          "scale": 300,
+          "decimal": 1.6566666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 467,
+            "scale": 300,
+            "decimal": 1.5566666666666666
+          },
+          "right": {
+            "value": 533,
+            "scale": 300,
+            "decimal": 1.7766666666666666
+          },
+          "longGap": true
+        },
+        "motionGated": {
+          "timeConfidence": 0.30303030303030304,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.1815393912373875
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.9323551974564149,
+            "medianEV": 1.003249935671314,
+            "p90EV": 1.1435913217384828,
+            "signedMedianEV": -1.003249935671314
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.9436962752934603,
+            "medianEV": 1.010122851783565,
+            "p90EV": 1.1690103402944962,
+            "signedMedianEV": -1.010122851783565
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 1.451837275899681,
+            "medianEV": 1.0512979873436348,
+            "p90EV": 3.2781649353261466,
+            "signedMedianEV": -1.011687831197988
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 1.475547285589483,
+            "medianEV": 1.0715313292649276,
+            "p90EV": 3.218298674235867,
+            "signedMedianEV": -1.0101428649865325
+          }
+        }
+      },
+      {
+        "thumbnail": 24,
+        "pts": {
+          "value": 533,
+          "scale": 300,
+          "decimal": 1.7766666666666666
+        },
+        "bracket": {
+          "left": {
+            "value": 497,
+            "scale": 300,
+            "decimal": 1.6566666666666667
+          },
+          "right": {
+            "value": 181,
+            "scale": 100,
+            "decimal": 1.81
+          },
+          "longGap": true
+        },
+        "motionGated": {
+          "timeConfidence": 0.4347826086956522,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.39746197392052135
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.019121441759062607,
+            "medianEV": 0.0,
+            "p90EV": 0.058986727846855914,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.21334922910768978,
+            "medianEV": 0.21776563698493723,
+            "p90EV": 0.300123874827374,
+            "signedMedianEV": 0.21756896075756016
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.1361136704282312,
+            "medianEV": 0.01874312999376926,
+            "p90EV": 0.2747563688993252,
+            "signedMedianEV": 4.860181590515822e-09
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.41579411015252354,
+            "medianEV": 0.24579952282979511,
+            "p90EV": 1.019185936316039,
+            "signedMedianEV": 0.21940788642869635
+          }
+        }
+      },
+      {
+        "thumbnail": 25,
+        "pts": {
+          "value": 181,
+          "scale": 100,
+          "decimal": 1.81
+        },
+        "bracket": {
+          "left": {
+            "value": 533,
+            "scale": 300,
+            "decimal": 1.7766666666666666
+          },
+          "right": {
+            "value": 563,
+            "scale": 300,
+            "decimal": 1.8766666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.919516206503349
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.019121441759062607,
+            "medianEV": 0.0,
+            "p90EV": 0.058986727846855914,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.03380870400064991,
+            "medianEV": 0.012120705175531654,
+            "p90EV": 0.09082957189297255,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.1556494835061717,
+            "medianEV": 0.01870989011633517,
+            "p90EV": 0.35321433570428196,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.24622521500475433,
+            "medianEV": 0.03893336304513717,
+            "p90EV": 0.8318531057656156,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 26,
+        "pts": {
+          "value": 563,
+          "scale": 300,
+          "decimal": 1.8766666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 181,
+            "scale": 100,
+            "decimal": 1.81
+          },
+          "right": {
+            "value": 583,
+            "scale": 300,
+            "decimal": 1.9433333333333334
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.796535527850485
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.07653559674098323,
+            "medianEV": 0.03388915353255095,
+            "p90EV": 0.1951493967095098,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.03459373095558453,
+            "medianEV": 0.017374418485301857,
+            "p90EV": 0.0883442315526617,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.5720901629023845,
+            "medianEV": 0.061947055178946275,
+            "p90EV": 2.0586961157096186,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.5658297627135903,
+            "medianEV": 0.06398926804028715,
+            "p90EV": 2.109382210229902,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 27,
+        "pts": {
+          "value": 583,
+          "scale": 300,
+          "decimal": 1.9433333333333334
+        },
+        "bracket": {
+          "left": {
+            "value": 563,
+            "scale": 300,
+            "decimal": 1.8766666666666667
+          },
+          "right": {
+            "value": 201,
+            "scale": 100,
+            "decimal": 2.01
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.8257648326810543
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.06431722226674066,
+            "medianEV": 0.019937908657986725,
+            "p90EV": 0.15865680103663563,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.039180782018739146,
+            "medianEV": 0.017778902363065008,
+            "p90EV": 0.09758844062094682,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.520709588765128,
+            "medianEV": 0.05204633024751737,
+            "p90EV": 1.831073691907108,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.513901612454234,
+            "medianEV": 0.05445712317651008,
+            "p90EV": 1.9576530815285555,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 28,
+        "pts": {
+          "value": 201,
+          "scale": 100,
+          "decimal": 2.01
+        },
+        "bracket": {
+          "left": {
+            "value": 583,
+            "scale": 300,
+            "decimal": 1.9433333333333334
+          },
+          "right": {
+            "value": 623,
+            "scale": 300,
+            "decimal": 2.0766666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.8648752591615242
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.03543116673151585,
+            "medianEV": 0.0,
+            "p90EV": 0.10472067888398849,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.04711514678832263,
+            "medianEV": 0.014180476836061384,
+            "p90EV": 0.11541222116274183,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.3448341736941042,
+            "medianEV": 0.03809272178090195,
+            "p90EV": 1.0770100206833417,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.4053004608399215,
+            "medianEV": 0.04929888868269616,
+            "p90EV": 1.5088397883128573,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 29,
+        "pts": {
+          "value": 623,
+          "scale": 300,
+          "decimal": 2.0766666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 201,
+            "scale": 100,
+            "decimal": 2.01
+          },
+          "right": {
+            "value": 643,
+            "scale": 300,
+            "decimal": 2.1433333333333335
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.8845189016152042
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.04342741544443143,
+            "medianEV": 0.011565887465746272,
+            "p90EV": 0.11907288457036524,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.036899714595219214,
+            "medianEV": 0.011149012834253513,
+            "p90EV": 0.09577238203084724,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.3131274934620975,
+            "medianEV": 0.026195365345294874,
+            "p90EV": 0.8753497219575812,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.35125557101270444,
+            "medianEV": 0.03224316346214273,
+            "p90EV": 1.213058033438071,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 30,
+        "pts": {
+          "value": 643,
+          "scale": 300,
+          "decimal": 2.1433333333333335
+        },
+        "bracket": {
+          "left": {
+            "value": 623,
+            "scale": 300,
+            "decimal": 2.0766666666666667
+          },
+          "right": {
+            "value": 221,
+            "scale": 100,
+            "decimal": 2.21
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9023602152187372
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.08910642443416515,
+            "medianEV": 0.05531559599380209,
+            "p90EV": 0.1983938233714551,
+            "signedMedianEV": -0.0001479021570087724
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.05178645880138019,
+            "medianEV": 0.03171093352568155,
+            "p90EV": 0.11648536850936973,
+            "signedMedianEV": -0.0010952889811388644
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.31247191952376757,
+            "medianEV": 0.04555445062697361,
+            "p90EV": 0.7307633407444578,
+            "signedMedianEV": -0.001070701934377638
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.33099422977059956,
+            "medianEV": 0.04682975029090519,
+            "p90EV": 1.0831685179209862,
+            "signedMedianEV": -0.001064324508185166
+          }
+        }
+      },
+      {
+        "thumbnail": 31,
+        "pts": {
+          "value": 221,
+          "scale": 100,
+          "decimal": 2.21
+        },
+        "bracket": {
+          "left": {
+            "value": 643,
+            "scale": 300,
+            "decimal": 2.1433333333333335
+          },
+          "right": {
+            "value": 683,
+            "scale": 300,
+            "decimal": 2.276666666666667
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.9041101107169549
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.028261020722178287,
+            "medianEV": 0.0,
+            "p90EV": 0.08230066280597335,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.04918339849648856,
+            "medianEV": 0.0307066504315352,
+            "p90EV": 0.10560919614636433,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.2514681719681679,
+            "medianEV": 0.04036175760813876,
+            "p90EV": 0.41993113676760774,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.24738436708091224,
+            "medianEV": 0.04089144284884916,
+            "p90EV": 0.5262402343304441,
+            "signedMedianEV": -3.3367197753708666e-06
+          }
+        }
+      },
+      {
+        "thumbnail": 32,
+        "pts": {
+          "value": 683,
+          "scale": 300,
+          "decimal": 2.276666666666667
+        },
+        "bracket": {
+          "left": {
+            "value": 221,
+            "scale": 100,
+            "decimal": 2.21
+          },
+          "right": {
+            "value": 703,
+            "scale": 300,
+            "decimal": 2.3433333333333333
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.87591789020736
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.07097761578664004,
+            "medianEV": 0.02373134969282442,
+            "p90EV": 0.20100118620944663,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.04055179456863655,
+            "medianEV": 0.01767940497885956,
+            "p90EV": 0.10854415815040497,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.2917876910916426,
+            "medianEV": 0.035086064728850674,
+            "p90EV": 0.7731694759058844,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.3494443187802899,
+            "medianEV": 0.0468619923536866,
+            "p90EV": 1.1595301929605357,
+            "signedMedianEV": 0.0
+          }
+        }
+      },
+      {
+        "thumbnail": 33,
+        "pts": {
+          "value": 703,
+          "scale": 300,
+          "decimal": 2.3433333333333333
+        },
+        "bracket": {
+          "left": {
+            "value": 683,
+            "scale": 300,
+            "decimal": 2.276666666666667
+          },
+          "right": {
+            "value": 241,
+            "scale": 100,
+            "decimal": 2.41
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.756470453283641
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.1266053072478895,
+            "medianEV": 0.05534908532756688,
+            "p90EV": 0.3149720595050771,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.04698308599718655,
+            "medianEV": 0.022595767438494008,
+            "p90EV": 0.10847829991663453,
+            "signedMedianEV": -4.3328196539293984e-05
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.5666432526524329,
+            "medianEV": 0.09464770616356044,
+            "p90EV": 1.9652140544718,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.6137096375526475,
+            "medianEV": 0.1238287380160128,
+            "p90EV": 2.1268049714563237,
+            "signedMedianEV": -0.0001101932393203775
+          }
+        }
+      },
+      {
+        "thumbnail": 34,
+        "pts": {
+          "value": 241,
+          "scale": 100,
+          "decimal": 2.41
+        },
+        "bracket": {
+          "left": {
+            "value": 703,
+            "scale": 300,
+            "decimal": 2.3433333333333333
+          },
+          "right": {
+            "value": 743,
+            "scale": 300,
+            "decimal": 2.4766666666666666
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.6900344088059974
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.1133654052928188,
+            "medianEV": 0.04229069354375081,
+            "p90EV": 0.29370360614557933,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.0516141903087941,
+            "medianEV": 0.02312029099292301,
+            "p90EV": 0.11710581974447085,
+            "signedMedianEV": 0.0
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.7042065245743995,
+            "medianEV": 0.14924380547437321,
+            "p90EV": 2.316518473302047,
+            "signedMedianEV": 0.0
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.7228721203162607,
+            "medianEV": 0.1826287054230722,
+            "p90EV": 2.3222219990789568,
+            "signedMedianEV": -2.522835006280033e-05
+          }
+        }
+      },
+      {
+        "thumbnail": 35,
+        "pts": {
+          "value": 743,
+          "scale": 300,
+          "decimal": 2.4766666666666666
+        },
+        "bracket": {
+          "left": {
+            "value": 241,
+            "scale": 100,
+            "decimal": 2.41
+          },
+          "right": {
+            "value": 763,
+            "scale": 300,
+            "decimal": 2.5433333333333334
+          },
+          "longGap": false
+        },
+        "motionGated": {
+          "timeConfidence": 1.0,
+          "lowConfidenceFraction": 0.0,
+          "meanFlowConfidence": 0.7286130612455898
+        },
+        "scores": {
+          "hold_nearest": {
+            "pixels": 10560,
+            "maeEV": 0.12311693319722265,
+            "medianEV": 0.05031729297065901,
+            "p90EV": 0.330836276089707,
+            "signedMedianEV": 0.0
+          },
+          "fixed_log": {
+            "pixels": 10560,
+            "maeEV": 0.05558306449151893,
+            "medianEV": 0.025804061467207262,
+            "p90EV": 0.13371351130184606,
+            "signedMedianEV": -4.730589932289142e-05
+          },
+          "motion_gated": {
+            "pixels": 10560,
+            "maeEV": 0.6327753724730547,
+            "medianEV": 0.11995243800538002,
+            "p90EV": 2.004823192260442,
+            "signedMedianEV": -1.1332668137242763e-10
+          },
+          "motion_ungated": {
+            "pixels": 10560,
+            "maeEV": 0.6473506697833995,
+            "medianEV": 0.13913172289717224,
+            "p90EV": 2.127687720275164,
+            "signedMedianEV": -7.727616842023721e-05
+          }
+        }
+      }
+    ]
+  },
+  "spatialFollow": {
+    "status": "not-applicable",
+    "reason": "74 main frames; the 46-55 window is the 56-frame IMG_8148 pan measurement"
+  },
+  "stillObservation": {
+    "status": "decoded-unregistered",
+    "acceptance": false,
+    "reason": "Still and video thumbnails are not in one recovered color basis, and no SDR geometry registration was run. This MAE is not the acceptance metric.",
+    "photoH": 1.8904410600662231,
+    "photoGain": 7.561764240264893,
+    "photoRange": [
+      -0.0109405517578125,
+      0.99951171875
+    ],
+    "nearestVideoHOverPhotoH": 0.250379473191388,
+    "decode": {
+      "width": 1024,
+      "height": 768,
+      "ffmpeg": {
+        "pix_fmt": "yuv420p10le",
+        "color_range": "pc",
+        "color_primaries": "smpte432",
+        "color_transfer": "linear",
+        "color_space": "smpte170m"
+      },
+      "matrixAssumption": "bt709-coefficients-on-display-p3-primaries",
+      "lumaCodeMin": 156,
+      "lumaCodeMax": 975,
+      "annexBytes": 12672
+    },
+    "unregisteredLumaMaeEV": 3.279901751843101,
+    "unregisteredFinitePixels": 11992,
+    "interpolation": {
+      "timeConfidence": 1.0,
+      "lowConfidenceFraction": 0.11515299479166667,
+      "meanFlowConfidence": 0.8458911034706863,
+      "policy": "interpolation",
+      "longGap": false,
+      "alpha": {
+        "value": 19,
+        "scale": 40,
+        "decimal": 0.475
+      }
+    }
+  },
+  "gtmLtm": "not inverted; the scene thumbnail is a low-frequency reference, not a GTM or LTM inverse"
+}
